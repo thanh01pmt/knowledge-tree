@@ -1,0 +1,3694 @@
+{
+  "fields": [
+    {
+      "code": "CSN",
+      "name": "Computing Systems and Networks",
+      "description": "Bao gồm các nguyên tắc cơ bản, kiến trúc và sự tương tác của phần cứng, hệ điều hành và mạng máy tính. Lĩnh vực này đặt nền móng cho việc hiểu cách các chương trình được thực thi và cách dữ liệu được truyền đi, từ mức logic gate đến hạ tầng mạng toàn cầu.",
+      "display_order": "10",
+      "keywords": "hardware, architecture, operating systems, networks, infrastructure, protocols, systems",
+      "cs2023_ka_mapping": "AR, OS, NC, SF, PDC",
+      "metadata": "{\"icon\": \"memory\", \"color\": \"#2980b9\"}"
+    },
+    {
+      "code": "ASE",
+      "name": "Algorithms and Software Engineering",
+      "description": "Bao gồm tư duy thuật toán để giải quyết vấn đề và các quy trình kỹ thuật để xây dựng phần mềm quy mô lớn, đáng tin cậy. Lĩnh vực này bao quát từ thiết kế giải pháp có cấu trúc, các mô hình lập trình, đến toàn bộ vòng đời phát triển phần mềm.",
+      "display_order": "20",
+      "keywords": "algorithms, software engineering, programming, design patterns, testing, development lifecycle",
+      "cs2023_ka_mapping": "AL, SDF, FPL, SE",
+      "metadata": "{\"icon\": \"code\", \"color\": \"#27ae60\"}"
+    },
+    {
+      "code": "DAI",
+      "name": "Data and Information",
+      "description": "Bao gồm toàn bộ vòng đời của dữ liệu: cách biểu diễn, lưu trữ, quản lý, xử lý, phân tích và trực quan hóa để biến dữ liệu thô thành thông tin và tri thức có giá trị. Lĩnh vực này là nền tảng cho khoa học dữ liệu và các hệ thống dựa trên dữ liệu.",
+      "display_order": "30",
+      "keywords": "data, databases, information, data analysis, visualization, data science, SQL, NoSQL",
+      "cs2023_ka_mapping": "DM, MSF",
+      "metadata": "{\"icon\": \"database\", \"color\": \"#f39c12\"}"
+    },
+    {
+      "code": "MET",
+      "name": "Specialized Computing Methodologies",
+      "description": "Bao gồm các lĩnh vực chuyên sâu và các phương pháp tính toán tiên tiến, nơi Khoa học Máy tính được ứng dụng để giải quyết các vấn đề phức tạp. Các lĩnh vực tiêu biểu bao gồm Trí tuệ Nhân tạo, Đồ họa Máy tính, Điện toán Hiệu năng cao và các nền tảng đặc thù.",
+      "display_order": "40",
+      "keywords": "AI, machine learning, graphics, simulation, distributed systems, IoT, robotics",
+      "cs2023_ka_mapping": "AI, GIT, SPD, PDC",
+      "metadata": "{\"icon\": \"brain\", \"color\": \"#8e44ad\"}"
+    },
+    {
+      "code": "HCC",
+      "name": "Human-Centered Computing",
+      "description": "Bao gồm các nguyên tắc và quy trình thiết kế, xây dựng và đánh giá các hệ thống công nghệ lấy con người làm trung tâm. Lĩnh vực này tập trung vào sự tương tác, trải nghiệm người dùng (UX), giao diện (UI), và đảm bảo khả năng tiếp cận cho mọi đối tượng.",
+      "display_order": "50",
+      "keywords": "HCI, UI, UX, interaction design, user experience, accessibility, usability",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"users\", \"color\": \"#c0392b\"}"
+    },
+    {
+      "code": "IDC",
+      "name": "Digital Society and Professional Practice",
+      "description": "Bao gồm bối cảnh xã hội, đạo đức, pháp lý và các tác động của công nghệ. Lĩnh vực này trang bị các năng lực cần thiết để trở thành một công dân số và một nhà chuyên môn có trách nhiệm, hiểu rõ về quyền riêng tư, sở hữu trí tuệ và đạo đức nghề nghiệp.",
+      "display_order": "60",
+      "keywords": "ethics, society, professionalism, privacy, security policy, law, digital citizenship",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"shield-alt\", \"color\": \"#7f8c8d\"}"
+    }
+  ],
+  "subjects": [
+    {
+      "code": "CS_ARCHITECTURE",
+      "name": "Computer Architecture & Organization",
+      "description": "Nghiên cứu về thiết kế và tổ chức của các thành phần phần cứng máy tính, bao gồm CPU, hệ thống phân cấp bộ nhớ, và cách chúng tương tác để thực thi các chỉ lệnh.",
+      "field_codes": "CSN",
+      "keywords": "CPU, memory hierarchy, digital logic, hardware",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "OPERATING_SYSTEMS",
+      "name": "Operating Systems",
+      "description": "Khám phá các nguyên tắc cốt lõi của hệ điều hành, bao gồm quản lý tiến trình, bộ nhớ, hệ thống tệp và cách HĐH cung cấp một lớp trừu tượng giữa phần cứng và ứng dụng.",
+      "field_codes": "CSN",
+      "keywords": "OS, process management, virtual memory, concurrency",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "PHYSICAL_COMPUTING",
+      "name": "Physical Computing and Robotics",
+      "description": "Tập trung vào việc lập trình các hệ thống tương tác với thế giới vật lý thông qua cảm biến, cơ cấu chấp hành và vi điều khiển, làm nền tảng cho Robotics và các thiết bị nhúng.",
+      "field_codes": "CSN, MET",
+      "keywords": "robotics, Arduino, sensors, embedded systems",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"robot\"}"
+    },
+    {
+      "code": "NETWORKING",
+      "name": "Networking and Communication",
+      "description": "Bao gồm các nguyên tắc về mạng máy tính, mô hình phân lớp, các giao thức truyền thông và kiến trúc của Internet, đảm bảo việc truyền dữ liệu một cách đáng tin cậy.",
+      "field_codes": "CSN",
+      "keywords": "protocols, TCP/IP, routing, Internet",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"network-wired\"}"
+    },
+    {
+      "code": "COMP_THINKING",
+      "name": "Computational Thinking & Algorithms",
+      "description": "Tập trung vào tư duy giải quyết vấn đề có cấu trúc, thiết kế và phân tích hiệu quả của thuật toán. Đây là nền tảng lý thuyết cho mọi lĩnh vực lập trình và khoa học máy tính.",
+      "field_codes": "ASE",
+      "keywords": "problem solving, algorithms, Big O, data structures",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"lightbulb\"}"
+    },
+    {
+      "code": "COMP_MATH",
+      "name": "Computational Mathematics",
+      "description": "Cung cấp các nền tảng toán học thiết yếu cho khoa học máy tính, bao gồm logic, lý thuyết tập hợp, đồ thị, xác suất và thống kê, làm cơ sở cho thuật toán, AI và phân tích dữ liệu.",
+      "field_codes": "ASE, DAI",
+      "keywords": "discrete math, logic, probability, statistics",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"calculator\"}"
+    },
+    {
+      "code": "PROG_FUNDAMENTALS",
+      "name": "Programming Fundamentals",
+      "description": "Bao gồm các khái niệm và kỹ năng lập trình cốt lõi, từ biến, kiểu dữ liệu, luồng điều khiển, đến hàm và các cấu trúc dữ liệu cơ bản, giúp xây dựng nền tảng vững chắc cho mọi lập trình viên.",
+      "field_codes": "ASE",
+      "keywords": "programming, coding, variables, control flow, functions",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"file-code\"}"
+    },
+    {
+      "code": "SW_PARADIGMS",
+      "name": "Software Paradigms and Design",
+      "description": "Khám phá các mô hình lập trình khác nhau (Hướng đối tượng, Hàm, Sự kiện) và các nguyên tắc thiết kế phần mềm, giúp lựa chọn phương pháp tiếp cận phù hợp để xây dựng các hệ thống phức tạp.",
+      "field_codes": "ASE",
+      "keywords": "OOP, functional programming, design patterns, architecture",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "SW_LIFECYCLE",
+      "name": "Software Development Lifecycle",
+      "description": "Bao quát toàn bộ quy trình kỹ thuật phần mềm, từ thu thập yêu cầu, thiết kế, phát triển, đến kiểm thử, triển khai và bảo trì, nhấn mạnh các phương pháp Agile và DevOps.",
+      "field_codes": "ASE",
+      "keywords": "software engineering, Agile, Scrum, testing, version control",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"tasks\"}"
+    },
+    {
+      "code": "WEB_DEV",
+      "name": "Web Development",
+      "description": "Bao gồm các công nghệ, kiến trúc và kỹ thuật để xây dựng các ứng dụng web hiện đại và tương tác, từ giao diện người dùng (frontend) đến logic máy chủ (backend).",
+      "field_codes": "ASE, HCC",
+      "keywords": "HTML, CSS, JavaScript, backend, frontend, API",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"globe\"}"
+    },
+    {
+      "code": "DATA_REP",
+      "name": "Data Representation",
+      "description": "Nghiên cứu cách thông tin được mã hóa, biểu diễn và lưu trữ ở mức độ bit và byte bên trong máy tính, bao gồm hệ đếm, mã hóa ký tự và các kỹ thuật nén.",
+      "field_codes": "DAI",
+      "keywords": "binary, encoding, compression, bits, bytes",
+      "cs2023_ka_mapping": "AR, AL",
+      "metadata": "{\"icon\": \"ruler-combined\"}"
+    },
+    {
+      "code": "DATA_MGMT",
+      "name": "Data Management Systems",
+      "description": "Tập trung vào việc thiết kế, sử dụng và quản lý các hệ thống cơ sở dữ liệu (SQL và NoSQL) để lưu trữ, truy vấn và duy trì tính toàn vẹn của dữ liệu có cấu trúc và bán cấu trúc.",
+      "field_codes": "DAI",
+      "keywords": "database, SQL, NoSQL, data modeling, transactions",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"server\"}"
+    },
+    {
+      "code": "DATA_ANALYSIS",
+      "name": "Data Analysis and Visualization",
+      "description": "Bao gồm các phương pháp và công cụ để thu thập, làm sạch, phân tích thống kê và trực quan hóa dữ liệu nhằm khám phá các mẫu, xu hướng và rút ra tri thức có giá trị.",
+      "field_codes": "DAI",
+      "keywords": "data science, statistics, visualization, data cleaning, EDA",
+      "cs2023_ka_mapping": "MSF, GIT",
+      "metadata": "{\"icon\": \"chart-bar\"}"
+    },
+    {
+      "code": "DISTRIBUTED_SYSTEMS",
+      "name": "Distributed Systems and Cloud",
+      "description": "Bao gồm các nguyên tắc về thiết kế và triển khai các hệ thống hoạt động trên nhiều máy tính, bao gồm điện toán đám mây, xử lý dữ liệu lớn và các thuật toán đồng thuận.",
+      "field_codes": "MET, CSN",
+      "keywords": "cloud computing, distributed, parallel, big data",
+      "cs2023_ka_mapping": "PDC",
+      "metadata": "{\"icon\": \"cloud\"}"
+    },
+    {
+      "code": "AI_ML",
+      "name": "Artificial Intelligence & Machine Learning",
+      "description": "Bao gồm các khái niệm, thuật toán và ứng dụng của trí tuệ nhân tạo, đặc biệt là học máy, cho phép máy tính học hỏi từ dữ liệu để thực hiện các nhiệm vụ thông minh.",
+      "field_codes": "MET",
+      "keywords": "AI, machine learning, neural networks, deep learning",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"brain-circuit\"}"
+    },
+    {
+      "code": "IOT",
+      "name": "Internet of Things (IoT)",
+      "description": "Tập trung vào hệ sinh thái của các thiết bị vật lý được kết nối mạng, từ cảm biến, vi điều khiển đến các giao thức truyền thông và nền tảng đám mây để thu thập và xử lý dữ liệu.",
+      "field_codes": "MET, CSN",
+      "keywords": "IoT, sensors, embedded, MQTT",
+      "cs2023_ka_mapping": "SPD, NC",
+      "metadata": "{\"icon\": \"wifi\"}"
+    },
+    {
+      "code": "GRAPHICS_VISUAL_COMPUTING",
+      "name": "Graphics and Visual Computing",
+      "description": "Bao gồm các kỹ thuật tạo, thao tác và hiển thị hình ảnh kỹ thuật số, từ đồ họa 2D/3D, hoạt hình, đến mô phỏng và thực tế ảo/tăng cường (VR/AR).",
+      "field_codes": "MET",
+      "keywords": "graphics, rendering, animation, simulation, VR, AR",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"vr-cardboard\"}"
+    },
+    {
+      "code": "HCI",
+      "name": "Human-Computer Interaction",
+      "description": "Nghiên cứu về sự tương tác giữa con người và hệ thống máy tính. Lĩnh vực này tập trung vào các mô hình nhận thức, thiết bị và các nguyên tắc để tạo ra sự tương tác hiệu quả và tự nhiên.",
+      "field_codes": "HCC",
+      "keywords": "HCI, interaction, usability, cognition",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"mouse-pointer\"}"
+    },
+    {
+      "code": "UI_UX_DESIGN",
+      "name": "UI/UX Design and Accessibility",
+      "description": "Tập trung vào quy trình thiết kế giao diện (UI) và trải nghiệm người dùng (UX) cho các sản phẩm số, đảm bảo tính thẩm mỹ, khả dụng và khả năng tiếp cận cho mọi người.",
+      "field_codes": "HCC, ASE",
+      "keywords": "UI, UX, design, prototyping, accessibility",
+      "cs2023_ka_mapping": "HCI, SEP",
+      "metadata": "{\"icon\": \"palette\"}"
+    },
+    {
+      "code": "DIGITAL_LITERACY",
+      "name": "Digital Literacy and Collaboration",
+      "description": "Bao gồm các kỹ năng sử dụng thành thạo và hiệu quả các công cụ kỹ thuật số để giao tiếp, cộng tác, quản lý thông tin và giải quyết vấn đề trong môi trường làm việc hiện đại.",
+      "field_codes": "IDC",
+      "keywords": "collaboration, productivity tools, communication, netiquette",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"tools\"}"
+    },
+    {
+      "code": "DIGITAL_CITIZENSHIP",
+      "name": "Digital Citizenship and Ethics",
+      "description": "Bao gồm các quy tắc ứng xử, đạo đức, an toàn và trách nhiệm của một công dân trong xã hội số, nhấn mạnh đến quyền riêng tư, an ninh thông tin và tác động xã hội của công nghệ.",
+      "field_codes": "IDC",
+      "keywords": "ethics, privacy, security, societal impact",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"user-shield\"}"
+    },
+    {
+      "code": "NATIVE_APP_DEV",
+      "name": "Native App Development",
+      "description": "Bao gồm các công nghệ, kiến trúc và kỹ thuật để xây dựng các ứng dụng chạy trực tiếp trên hệ điều hành của một nền tảng cụ thể (iOS, Android, macOS), tận dụng tối đa các API và trải nghiệm người dùng gốc.",
+      "field_codes": "ASE, HCC",
+      "keywords": "native, mobile development, iOS, Android, SwiftUI, UIKit, Jetpack Compose",
+      "cs2023_ka_mapping": "SPD, HCI",
+      "metadata": "{\"icon\": \"mobile-alt\"}"
+    },
+    {
+      "code": "GAME_DEV",
+      "name": "Game Design and Development",
+      "description": "Bao gồm quy trình thiết kế và phát triển trò chơi điện tử, từ cơ chế gameplay, thiết kế màn chơi (level design), vật lý trong game, đến lập trình kịch bản game và cân bằng trải nghiệm người chơi.",
+      "field_codes": "MET, ASE, HCC",
+      "keywords": "game engine, level design, game physics, gameplay, game mechanics, Roblox, Unity",
+      "cs2023_ka_mapping": "SPD, GIT",
+      "metadata": "{\"icon\": \"gamepad\"}"
+    }
+  ],
+  "categories": [
+    {
+      "code": "HARDWARE_COMPONENTS",
+      "name": "Hardware Components & Organization",
+      "description": "Khám phá các thành phần vật lý cốt lõi của máy tính như CPU, bộ nhớ, thiết bị lưu trữ, và cách chúng được tổ chức để tạo thành một hệ thống hoạt động.",
+      "subject_codes": "CS_ARCHITECTURE",
+      "keywords": "CPU, RAM, HDD, SSD, peripherals",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"memory\"}"
+    },
+    {
+      "code": "MEMORY_IO_SYSTEMS",
+      "name": "Memory and I/O Systems",
+      "description": "Nghiên cứu sâu về hệ thống phân cấp bộ nhớ và các cơ chế máy tính tương tác với thiết bị đầu vào/ra, bao gồm polling, interrupts và DMA.",
+      "subject_codes": "CS_ARCHITECTURE",
+      "keywords": "I/O, memory hierarchy, interrupts, DMA",
+      "cs2023_ka_mapping": "AR, OS",
+      "metadata": "{\"icon\": \"exchange-alt\"}"
+    },
+    {
+      "code": "OS_CONCEPTS",
+      "name": "Operating System Concepts",
+      "description": "Giới thiệu các khái niệm nền tảng của hệ điều hành, bao gồm cách nó quản lý tài nguyên hệ thống như tiến trình, bộ nhớ và hệ thống tệp.",
+      "subject_codes": "OPERATING_SYSTEMS",
+      "keywords": "process, thread, virtual memory, file system",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"window-restore\"}"
+    },
+    {
+      "code": "TROUBLESHOOTING",
+      "name": "Hardware & Software Troubleshooting",
+      "description": "Phát triển các kỹ năng chẩn đoán và giải quyết một cách có hệ thống các sự cố phổ biến liên quan đến cả phần cứng và phần mềm máy tính.",
+      "subject_codes": "CS_ARCHITECTURE, SW_LIFECYCLE",
+      "keywords": "debugging, diagnostics, problem solving, error handling",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"screwdriver-wrench\"}"
+    },
+    {
+      "code": "MICROCONTROLLERS",
+      "name": "Microcontrollers & Embedded Systems",
+      "description": "Lập trình cho các vi điều khiển và hệ thống nhúng, tập trung vào các nền tảng phổ biến và các ràng buộc về tài nguyên và thời gian thực.",
+      "subject_codes": "PHYSICAL_COMPUTING",
+      "keywords": "Arduino, Raspberry Pi, embedded, real-time",
+      "cs2023_ka_mapping": "SPD, AR",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "SENSORS_ACTUATORS",
+      "name": "Sensors and Actuators",
+      "description": "Tìm hiểu cách sử dụng cảm biến để thu thập dữ liệu từ môi trường vật lý và dùng cơ cấu chấp hành để tạo ra các tác động vật lý.",
+      "subject_codes": "PHYSICAL_COMPUTING",
+      "keywords": "sensors, actuators, input, output, motors, servos",
+      "cs2023_ka_mapping": "GIT, SPD",
+      "metadata": "{\"icon\": \"tachometer-alt\"}"
+    },
+    {
+      "code": "ROBOTICS_FUNDAMENTALS",
+      "name": "Robotics Fundamentals",
+      "description": "Cung cấp các nguyên tắc cơ bản về thiết kế cơ khí, động học, lập trình và hệ thống điều khiển cho robot.",
+      "subject_codes": "PHYSICAL_COMPUTING, AI_ML",
+      "keywords": "robotics, kinematics, control systems, ROS",
+      "cs2023_ka_mapping": "AI, SPD",
+      "metadata": "{\"icon\": \"robot\"}"
+    },
+    {
+      "code": "MECHANICAL_SYSTEMS",
+      "name": "Mechanical Systems",
+      "description": "Giới thiệu các nguyên tắc về cơ cấu, truyền động và các thành phần cơ khí đơn giản làm nền tảng cho robotics và các hệ thống cơ điện tử.",
+      "subject_codes": "PHYSICAL_COMPUTING",
+      "keywords": "mechanics, gears, levers, drivetrain",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "ELECTRONIC_CIRCUITS",
+      "name": "Electronic Components & Circuits",
+      "description": "Cung cấp kiến thức nền tảng về các linh kiện điện tử cơ bản và nguyên tắc thiết kế mạch, cần thiết cho việc xây dựng các hệ thống vật lý.",
+      "subject_codes": "PHYSICAL_COMPUTING",
+      "keywords": "electronics, circuits, resistors, capacitors, logic gates",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"bolt\"}"
+    },
+    {
+      "code": "NETWORK_PROTOCOLS",
+      "name": "Network Protocols and Layers",
+      "description": "Nghiên cứu mô hình phân lớp mạng (OSI, TCP/IP) và các giao thức ở mỗi tầng, từ tầng vật lý đến tầng ứng dụng.",
+      "subject_codes": "NETWORKING",
+      "keywords": "TCP/IP, OSI model, HTTP, DNS, protocols",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "NETWORK_INFRA",
+      "name": "Network Infrastructure",
+      "description": "Tìm hiểu về các thành phần phần cứng và topo mạng tạo nên hạ tầng mạng, bao gồm router, switch và các phương tiện truyền dẫn.",
+      "subject_codes": "NETWORKING",
+      "keywords": "router, switch, topology, cabling, wireless",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"network-wired\"}"
+    },
+    {
+      "code": "NETWORK_SECURITY",
+      "name": "Network Security",
+      "description": "Tập trung vào các kỹ thuật và công cụ để bảo vệ hạ tầng và dữ liệu trên mạng, bao gồm tường lửa, mã hóa và hệ thống phát hiện xâm nhập.",
+      "subject_codes": "NETWORKING",
+      "keywords": "firewall, encryption, VPN, cybersecurity, threats",
+      "cs2023_ka_mapping": "NC, SEC",
+      "metadata": "{\"icon\": \"user-shield\"}"
+    },
+    {
+      "code": "ABSTRACTION_DECOMP",
+      "name": "Abstraction and Decomposition",
+      "description": "Rèn luyện các kỹ năng tư duy cốt lõi để đơn giản hóa vấn đề bằng cách tạo ra các lớp trừu tượng và chia nhỏ bài toán phức tạp thành các phần dễ quản lý.",
+      "subject_codes": "COMP_THINKING",
+      "keywords": "abstraction, decomposition, problem solving, modeling",
+      "cs2023_ka_mapping": "AL, SDF",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "ALGORITHM_DESIGN",
+      "name": "Algorithm Design and Analysis",
+      "description": "Giới thiệu các chiến lược thiết kế thuật toán kinh điển (tham lam, chia để trị, quy hoạch động) và phương pháp phân tích độ phức tạp (Big O).",
+      "subject_codes": "COMP_THINKING",
+      "keywords": "Big O, greedy, divide and conquer, dynamic programming",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "LOGIC_BOOLEAN",
+      "name": "Logic and Boolean Algebra",
+      "description": "Cung cấp nền tảng logic mệnh đề, đại số Boolean và các cổng logic, là cơ sở toán học cho mọi hoạt động của máy tính.",
+      "subject_codes": "COMP_MATH",
+      "keywords": "logic, boolean, truth tables, logic gates",
+      "cs2023_ka_mapping": "MSF, AR",
+      "metadata": "{\"icon\": \"gate-open\"}"
+    },
+    {
+      "code": "DISCRETE_STRUCTURES",
+      "name": "Discrete Structures",
+      "description": "Khám phá các cấu trúc toán học rời rạc như tập hợp, quan hệ, đồ thị và cây, là ngôn ngữ nền tảng cho cấu trúc dữ liệu và thuật toán.",
+      "subject_codes": "COMP_MATH",
+      "keywords": "sets, graphs, trees, relations, combinatorics",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"diagram-project\"}"
+    },
+    {
+      "code": "VARIABLES_DATA_TYPES",
+      "name": "Variables and Data Types",
+      "description": "Giới thiệu khái niệm về biến, hằng số, phạm vi và các kiểu dữ liệu cơ bản (nguyên thủy, tham chiếu) trong lập trình.",
+      "subject_codes": "PROG_FUNDAMENTALS",
+      "keywords": "variables, data types, primitive, reference, scope",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"tags\"}"
+    },
+    {
+      "code": "OPERATORS_EXPRESSIONS",
+      "name": "Operators and Expressions",
+      "description": "Hướng dẫn cách sử dụng các toán tử số học, so sánh, logic để xây dựng các biểu thức tính toán và đưa ra quyết định trong chương trình.",
+      "subject_codes": "PROG_FUNDAMENTALS",
+      "keywords": "operators, expressions, arithmetic, comparison, logical",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"calculator-alt\"}"
+    },
+    {
+      "code": "CONTROL_FLOW",
+      "name": "Control Flow",
+      "description": "Trình bày các cấu trúc điều khiển luồng thực thi của chương trình, bao gồm các câu lệnh rẽ nhánh (điều kiện) và các cấu trúc lặp.",
+      "subject_codes": "PROG_FUNDAMENTALS",
+      "keywords": "if-else, loops, switch-case, iteration, conditionals",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"code-branch\"}"
+    },
+    {
+      "code": "FUNCTIONS_PROCEDURES",
+      "name": "Functions and Procedures",
+      "description": "Hướng dẫn kỹ thuật đóng gói mã vào các hàm/thủ tục có thể tái sử dụng, bao gồm cách truyền tham số và trả về giá trị.",
+      "subject_codes": "PROG_FUNDAMENTALS",
+      "keywords": "functions, methods, parameters, return values, modularity",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"function\"}"
+    },
+    {
+      "code": "DATA_STRUCTURES_BASIC",
+      "name": "Basic Data Structures",
+      "description": "Giới thiệu các cấu trúc dữ liệu cơ bản thường được tích hợp sẵn trong ngôn ngữ như mảng (array) và danh sách (list).",
+      "subject_codes": "PROG_FUNDAMENTALS",
+      "keywords": "array, list, collections, data structures",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"list-ol\"}"
+    },
+    {
+      "code": "OOP",
+      "name": "Object-Oriented Programming",
+      "description": "Khám phá mô hình lập trình hướng đối tượng, tập trung vào 4 trụ cột: đóng gói, kế thừa, đa hình và trừu tượng.",
+      "subject_codes": "SW_PARADIGMS",
+      "keywords": "OOP, class, object, inheritance, polymorphism",
+      "cs2023_ka_mapping": "FPL, SDF",
+      "metadata": "{\"icon\": \"object-group\"}"
+    },
+    {
+      "code": "FUNCTIONAL_PROG",
+      "name": "Functional Programming",
+      "description": "Giới thiệu mô hình lập trình hàm, nhấn mạnh vào các khái niệm như hàm thuần túy (pure functions), tính bất biến và hàm bậc cao.",
+      "subject_codes": "SW_PARADIGMS",
+      "keywords": "functional, immutability, higher-order functions, lambda",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"lambda\"}"
+    },
+    {
+      "code": "EVENT_DRIVEN_PROG",
+      "name": "Event-Driven Programming",
+      "description": "Trình bày mô hình lập trình dựa trên sự kiện, trong đó luồng chương trình được điều khiển bởi các sự kiện từ người dùng hoặc hệ thống.",
+      "subject_codes": "SW_PARADIGIMS, HCI",
+      "keywords": "events, event handlers, asynchronous, callbacks",
+      "cs2023_ka_mapping": "FPL, HCI",
+      "metadata": "{\"icon\": \"hand-point-up\"}"
+    },
+    {
+      "code": "DESIGN_PATTERNS",
+      "name": "Software Design Patterns",
+      "description": "Cung cấp các giải pháp thiết kế đã được kiểm chứng và có thể tái sử dụng cho các vấn đề thường gặp trong kỹ thuật phần mềm.",
+      "subject_codes": "SW_PARADIGMS",
+      "keywords": "design patterns, singleton, factory, observer, MVC",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"puzzle-piece\"}"
+    },
+    {
+      "code": "DEVELOPMENT_PROCESS",
+      "name": "Software Development Process Models",
+      "description": "So sánh các mô hình quy trình phát triển phần mềm, từ truyền thống như Thác nước đến các phương pháp linh hoạt như Agile và Scrum.",
+      "subject_codes": "SW_LIFECYCLE",
+      "keywords": "Agile, Scrum, Waterfall, methodology, process",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"timeline\"}"
+    },
+    {
+      "code": "TESTING_DEBUGGING",
+      "name": "Testing and Debugging",
+      "description": "Trang bị các kỹ thuật, công cụ và chiến lược để đảm bảo chất lượng phần mềm thông qua kiểm thử và gỡ lỗi hiệu quả.",
+      "subject_codes": "SW_LIFECYCLE",
+      "keywords": "testing, debugging, unit test, integration test, QA",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"bug\"}"
+    },
+    {
+      "code": "VERSION_CONTROL",
+      "name": "Version Control Systems",
+      "description": "Giới thiệu về tầm quan trọng và cách sử dụng các hệ thống quản lý phiên bản (VCS), đặc biệt là Git, để theo dõi và quản lý thay đổi mã nguồn.",
+      "subject_codes": "SW_LIFECYCLE",
+      "keywords": "Git, version control, commit, branch, merge",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"code-commit\"}"
+    },
+    {
+      "code": "FRONTEND_DEV",
+      "name": "Frontend Development",
+      "description": "Tập trung vào việc xây dựng phần giao diện người dùng của ứng dụng web, sử dụng các công nghệ cốt lõi là HTML, CSS và JavaScript.",
+      "subject_codes": "WEB_DEV",
+      "keywords": "HTML, CSS, JavaScript, client-side, UI",
+      "cs2023_ka_mapping": "SPD, HCI",
+      "metadata": "{\"icon\": \"browser\"}"
+    },
+    {
+      "code": "BACKEND_DEV",
+      "name": "Backend Development",
+      "description": "Tập trung vào việc xây dựng phần logic phía máy chủ của ứng dụng web, bao gồm xử lý nghiệp vụ, quản lý dữ liệu và tạo ra các API.",
+      "subject_codes": "WEB_DEV",
+      "keywords": "backend, server-side, API, database",
+      "cs2023_ka_mapping": "SPD, DM",
+      "metadata": "{\"icon\": \"server\"}"
+    },
+    {
+      "code": "WEB_FRAMEWORKS",
+      "name": "Web Frameworks",
+      "description": "Hướng dẫn cách sử dụng các framework phổ biến (ví dụ: React, Django) để tăng tốc và chuẩn hóa quá trình phát triển ứng dụng web.",
+      "subject_codes": "WEB_DEV",
+      "keywords": "frameworks, React, Angular, Vue, Django, Express",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"cubes\"}"
+    },
+    {
+      "code": "BINARY_SYSTEM",
+      "name": "Binary Representation & Number Systems",
+      "description": "Hiểu và sử dụng hệ đếm nhị phân và các hệ đếm khác (thập lục phân) để biểu diễn số, ký tự và các loại dữ liệu khác trong máy tính.",
+      "subject_codes": "DATA_REP",
+      "keywords": "binary, hexadecimal, number systems, bits",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"binary\"}"
+    },
+    {
+      "code": "DATA_ENCODING",
+      "name": "Data Encoding and Compression",
+      "description": "Khám phá các lược đồ mã hóa (ASCII, Unicode) và các thuật toán nén dữ liệu (lossy, lossless) để lưu trữ và truyền tải thông tin hiệu quả.",
+      "subject_codes": "DATA_REP",
+      "keywords": "encoding, compression, ASCII, Unicode, JPEG, MP3",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"file-archive\"}"
+    },
+    {
+      "code": "DATABASE_FUNDAMENTALS",
+      "name": "Database Fundamentals & SQL",
+      "description": "Cung cấp các khái niệm nền tảng về cơ sở dữ liệu quan hệ, mô hình hóa dữ liệu, và kỹ năng sử dụng Ngôn ngữ Truy vấn có Cấu trúc (SQL).",
+      "subject_codes": "DATA_MGMT",
+      "keywords": "database, RDBMS, SQL, normalization, ACID",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"database\"}"
+    },
+    {
+      "code": "DATA_STRUCTURES_ADV",
+      "name": "Advanced Data Structures",
+      "description": "Nghiên cứu sâu về các cấu trúc dữ liệu trừu tượng và thuật toán liên quan như ngăn xếp, hàng đợi, cây, đồ thị, bảng băm.",
+      "subject_codes": "COMP_THINKING, DATA_MGMT",
+      "keywords": "stack, queue, tree, graph, hash table",
+      "cs2023_ka_mapping": "AL, FPL",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "DATA_COLLECTION",
+      "name": "Data Collection and Cleaning",
+      "description": "Bao gồm các phương pháp và công cụ để thu thập dữ liệu từ nhiều nguồn khác nhau và các kỹ thuật tiền xử lý để đảm bảo chất lượng và tính nhất quán của dữ liệu.",
+      "subject_codes": "DATA_ANALYSIS",
+      "keywords": "data collection, data cleaning, ETL, web scraping, API",
+      "cs2023_ka_mapping": "DM, AI",
+      "metadata": "{\"icon\": \"filter\"}"
+    },
+    {
+      "code": "DATA_VISUALIZATION",
+      "name": "Data Visualization",
+      "description": "Nghiên cứu các nguyên tắc và công cụ để biểu diễn dữ liệu một cách trực quan, giúp truyền tải thông điệp, khám phá xu hướng và hỗ trợ ra quyết định.",
+      "subject_codes": "DATA_ANALYSIS, HCI",
+      "keywords": "visualization, charts, graphs, dashboards, D3.js",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"chart-pie\"}"
+    },
+    {
+      "code": "STATISTICS_PROBABILITY",
+      "name": "Statistics and Probability for Computing",
+      "description": "Cung cấp các khái niệm thống kê và xác suất ứng dụng, làm nền tảng cho phân tích dữ liệu, học máy và các thuật toán ngẫu nhiên.",
+      "subject_codes": "DATA_ANALYSIS, COMP_MATH",
+      "keywords": "statistics, probability, distributions, hypothesis testing",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"analytics\"}"
+    },
+    {
+      "code": "CLOUD_COMPUTING",
+      "name": "Cloud Computing Concepts",
+      "description": "Giới thiệu các mô hình dịch vụ (IaaS, PaaS, SaaS), mô hình triển khai (Public, Private, Hybrid) và các khái niệm cốt lõi của điện toán đám mây.",
+      "subject_codes": "DISTRIBUTED_SYSTEMS",
+      "keywords": "cloud, IaaS, PaaS, SaaS, AWS, Azure",
+      "cs2023_ka_mapping": "PDC, NC",
+      "metadata": "{\"icon\": \"cloud-upload-alt\"}"
+    },
+    {
+      "code": "BIG_DATA_TECH",
+      "name": "Big Data Technologies",
+      "description": "Khám phá các kiến trúc và công cụ (như MapReduce, Spark, Hadoop) được thiết kế để lưu trữ, xử lý và phân tích các tập dữ liệu cực lớn.",
+      "subject_codes": "DISTRIBUTED_SYSTEMS",
+      "keywords": "big data, Hadoop, Spark, MapReduce, data processing",
+      "cs2023_ka_mapping": "PDC, DM",
+      "metadata": "{\"icon\": \"stream\"}"
+    },
+    {
+      "code": "PARALLEL_DIST_ALGO",
+      "name": "Parallel & Distributed Algorithms",
+      "description": "Nghiên cứu về thiết kế và phân tích các thuật toán chạy song song trên nhiều bộ xử lý hoặc phân tán trên nhiều máy tính để tăng hiệu năng.",
+      "subject_codes": "DISTRIBUTED_SYSTEMS, COMP_THINKING",
+      "keywords": "parallelism, concurrency, distributed algorithms",
+      "cs2023_ka_mapping": "PDC, AL",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "AI_CONCEPTS",
+      "name": "AI Concepts and History",
+      "description": "Giới thiệu lịch sử, các khái niệm cơ bản, các nhánh chính và các cột mốc quan trọng trong sự phát triển của Trí tuệ Nhân tạo.",
+      "subject_codes": "AI_ML",
+      "keywords": "AI, history of AI, Turing test, strong AI, narrow AI",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"brain\"}"
+    },
+    {
+      "code": "ML_MODELS",
+      "name": "Machine Learning Models",
+      "description": "Khám phá các loại mô hình học máy chính: học có giám sát (regression, classification), không giám sát (clustering) và học tăng cường.",
+      "subject_codes": "AI_ML",
+      "keywords": "machine learning, supervised, unsupervised, reinforcement",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "AI_APPLICATIONS",
+      "name": "AI Applications",
+      "description": "(Mới) Khám phá các ứng dụng thực tế của AI trong các lĩnh vực như xử lý ngôn ngữ tự nhiên (NLP), thị giác máy tính, hệ gợi ý và AI tạo sinh.",
+      "subject_codes": "AI_ML",
+      "keywords": "NLP, computer vision, recommendation systems, generative AI",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"rocket\"}"
+    },
+    {
+      "code": "AI_ETHICS_BIAS",
+      "name": "AI Ethics and Bias",
+      "description": "Thảo luận về các vấn đề đạo đức, trách nhiệm, sự công bằng và các loại thiên vị (bias) có thể tồn tại trong các hệ thống AI.",
+      "subject_codes": "AI_ML, DIGITAL_CITIZENSHIP",
+      "keywords": "AI ethics, fairness, bias, accountability, transparency",
+      "cs2023_ka_mapping": "AI, SEP",
+      "metadata": "{\"icon\": \"balance-scale\"}"
+    },
+    {
+      "code": "IOT_ECOSYSTEM",
+      "name": "IoT Ecosystem",
+      "description": "Tìm hiểu các thành phần của một hệ sinh thái IoT, bao gồm thiết bị (things), xử lý biên (edge), cổng (gateway) và nền tảng đám mây.",
+      "subject_codes": "IOT",
+      "keywords": "IoT, edge computing, gateway, cloud platform",
+      "cs2023_ka_mapping": "SPD, NC",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "IOT_COMMUNICATION",
+      "name": "IoT Communication Protocols",
+      "description": "Khám phá các giao thức truyền tin đặc thù cho môi trường IoT, như MQTT, CoAP, LoRaWAN, được thiết kế cho các thiết bị có tài nguyên hạn chế.",
+      "subject_codes": "IOT, NETWORKING",
+      "keywords": "MQTT, CoAP, LoRaWAN, wireless protocols",
+      "cs2023_ka_mapping": "NC, SPD",
+      "metadata": "{\"icon\": \"broadcast-tower\"}"
+    },
+    {
+      "code": "IOT_SECURITY_SAFETY",
+      "name": "IoT Security and Safety",
+      "description": "Phân tích các mối đe dọa bảo mật và rủi ro an toàn vật lý đặc thù của các hệ thống IoT và các biện pháp phòng chống.",
+      "subject_codes": "IOT",
+      "keywords": "IoT security, device safety, firmware, privacy",
+      "cs2023_ka_mapping": "SEC, SPD",
+      "metadata": "{\"icon\": \"shield-check\"}"
+    },
+    {
+      "code": "GRAPHICS_FUNDAMENTALS",
+      "name": "Graphics Fundamentals & Rendering",
+      "description": "Bao gồm các nguyên tắc cơ bản của đồ họa máy tính, các kỹ thuật và quy trình để tạo ra hình ảnh 2D từ một mô hình 3D (kết xuất).",
+      "subject_codes": "GRAPHICS_VISUAL_COMPUTING",
+      "keywords": "rendering pipeline, rasterization, ray tracing, shaders",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"image\"}"
+    },
+    {
+      "code": "GEOMETRIC_MODELING",
+      "name": "Geometric Modeling",
+      "description": "Nghiên cứu các phương pháp toán học và tính toán để biểu diễn các hình dạng và đối tượng hình học 2D và 3D trong máy tính.",
+      "subject_codes": "GRAPHICS_VISUAL_COMPUTING",
+      "keywords": "modeling, polygons, curves, surfaces, transformations",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"draw-polygon\"}"
+    },
+    {
+      "code": "DIGITAL_IMAGE_MANIPULATION",
+      "name": "Digital Image Manipulation",
+      "description": "Tìm hiểu các kỹ thuật và công cụ để tạo và chỉnh sửa đồ họa raster (dựa trên pixel) và vector (dựa trên đường dẫn).",
+      "subject_codes": "GRAPHICS_VISUAL_COMPUTING",
+      "keywords": "raster, vector, Photoshop, Illustrator, image editing",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"paint-brush\"}"
+    },
+    {
+      "code": "3D_MODELING_ANIMATION",
+      "name": "3D Modeling and Animation",
+      "description": "Bao gồm các kỹ thuật để tạo ra các mô hình ba chiều trên máy tính và các nguyên tắc để tạo chuyển động cho chúng (hoạt hình).",
+      "subject_codes": "GRAPHICS_VISUAL_COMPUTING",
+      "keywords": "3D modeling, animation, rigging, keyframe, Blender",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"cube\"}"
+    },
+    {
+      "code": "HCI_PRINCIPLES",
+      "name": "HCI Principles and Theories",
+      "description": "Cung cấp các nguyên tắc và lý thuyết nền tảng về nhận thức con người và thiết kế tương tác để tạo ra các hệ thống hiệu quả, dễ sử dụng và thú vị.",
+      "subject_codes": "HCI",
+      "keywords": "usability, cognitive load, mental models, affordances",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"user-check\"}"
+    },
+    {
+      "code": "INTERACTION_DEVICES",
+      "name": "Interaction Devices and Paradigms",
+      "description": "Khám phá sự đa dạng của các thiết bị đầu vào/ra (chuột, cảm ứng, giọng nói, VR) và các mô hình tương tác tương ứng (GUI, NUI).",
+      "subject_codes": "HCI",
+      "keywords": "input devices, output, GUI, NUI, VR/AR",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"mouse\"}"
+    },
+    {
+      "code": "UI_UX_PROCESS",
+      "name": "UI/UX Design Process",
+      "description": "Trình bày quy trình thiết kế giao diện và trải nghiệm người dùng một cách có hệ thống, từ nghiên cứu, phác thảo, đến prototyping và kiểm thử.",
+      "subject_codes": "UI_UX_DESIGN",
+      "keywords": "design process, user research, wireframing, prototyping",
+      "cs2023_ka_mapping": "HCI, SE",
+      "metadata": "{\"icon\": \"drafting-compass\"}"
+    },
+    {
+      "code": "GRAPHIC_DESIGN_PRINCIPLES",
+      "name": "Visual Design Principles for UI",
+      "description": "Áp dụng các nguyên tắc cốt lõi về màu sắc, bố cục, khoảng trắng và chữ viết (typography) để tạo ra các giao diện người dùng thẩm mỹ và hiệu quả.",
+      "subject_codes": "UI_UX_DESIGN, HCI",
+      "keywords": "visual design, color theory, typography, layout, UI",
+      "cs2023_ka_mapping": "GIT, HCI",
+      "metadata": "{\"icon\": \"ruler-combined\"}"
+    },
+    {
+      "code": "ACCESSIBILITY",
+      "name": "Accessibility and Inclusive Design",
+      "description": "Giới thiệu các nguyên tắc và kỹ thuật để thiết kế sản phẩm công nghệ mà mọi người, kể cả người có khuyết tật, đều có thể sử dụng được (a11y).",
+      "subject_codes": "UI_UX_DESIGN, DIGITAL_CITIZENSHIP",
+      "keywords": "accessibility, a11y, inclusive design, WCAG",
+      "cs2023_ka_mapping": "HCI, SEP",
+      "metadata": "{\"icon\": \"universal-access\"}"
+    },
+    {
+      "code": "DIGITAL_INTERACTION",
+      "name": "Digital Interaction and Communication",
+      "description": "Bao gồm các kỹ năng và quy tắc ứng xử (netiquette) khi giao tiếp, trình bày ý tưởng và tương tác hiệu quả trong môi trường số.",
+      "subject_codes": "DIGITAL_LITERACY",
+      "keywords": "communication, etiquette, netiquette, presentation",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"comments\"}"
+    },
+    {
+      "code": "COLLABORATION_TOOLS",
+      "name": "Digital Collaboration Tools",
+      "description": "Hướng dẫn sử dụng hiệu quả các công cụ và nền tảng kỹ thuật số để làm việc nhóm, quản lý dự án và hợp tác từ xa.",
+      "subject_codes": "DIGITAL_LITERACY",
+      "keywords": "collaboration, teamwork, project management, Git, Trello",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"users-cog\"}"
+    },
+    {
+      "code": "DEVICE_PROTECTION",
+      "name": "Device and Account Security",
+      "description": "Cung cấp các biện pháp cơ bản để bảo vệ thiết bị và tài khoản trực tuyến khỏi các mối đe dọa phổ biến như virus, malware và truy cập trái phép.",
+      "subject_codes": "DIGITAL_CITIZENSHIP",
+      "keywords": "security, malware, antivirus, passwords, 2FA",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"shield-halved\"}"
+    },
+    {
+      "code": "DATA_PRIVACY_USER",
+      "name": "Personal Data and Privacy",
+      "description": "Trang bị kiến thức và kỹ năng để quản lý \"dấu chân số\", bảo vệ thông tin cá nhân và quyền riêng tư khi tham gia vào thế giới trực tuyến.",
+      "subject_codes": "DIGITAL_CITIZENSHIP",
+      "keywords": "privacy, data protection, digital footprint, scams",
+      "cs2023_ka_mapping": "SEP, SEC",
+      "metadata": "{\"icon\": \"user-secret\"}"
+    },
+    {
+      "code": "DIGITAL_WELLBEING",
+      "name": "Digital Health and Wellbeing",
+      "description": "Thảo luận về các chiến lược để duy trì sự cân bằng, sức khỏe thể chất và tinh thần khi sử dụng công nghệ, tránh các tác động tiêu cực như nghiện.",
+      "subject_codes": "DIGITAL_CITIZENSHIP",
+      "keywords": "wellbeing, digital detox, mental health, screen time",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"heartbeat\"}"
+    },
+    {
+      "code": "SOCIETAL_IMPACT",
+      "name": "Societal Impact of Technology",
+      "description": "Phân tích các tác động hai mặt (tích cực và tiêu cực) của công nghệ đến cấu trúc xã hội, văn hóa, việc làm và các vấn đề toàn cầu.",
+      "subject_codes": "DIGITAL_CITIZENSHIP",
+      "keywords": "societal impact, digital divide, automation, future",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"balance-scale-left\"}"
+    },
+    {
+      "code": "IP_COPYRIGHT",
+      "name": "Intellectual Property and Copyright",
+      "description": "Giới thiệu các quy định về sở hữu trí tuệ, bản quyền, và các loại giấy phép (đặc biệt là mã nguồn mở) trong lĩnh vực công nghệ.",
+      "subject_codes": "DIGITAL_CITIZENSHIP",
+      "keywords": "copyright, intellectual property, licenses, open source",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"copyright\"}"
+    },
+    {
+      "code": "UI_BUILDING_BLOCKS",
+      "name": "UI Building Blocks",
+      "description": "Tập trung vào các thành phần giao diện người dùng cơ bản và cách tùy chỉnh chúng để tạo nên giao diện của ứng dụng.",
+      "subject_codes": "NATIVE_APP_DEV, HCC",
+      "keywords": "UI components, Views, controls, Text, Button, Image, modifiers",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"cubes\"}"
+    },
+    {
+      "code": "LAYOUT_COMPOSITION",
+      "name": "Layout and Composition",
+      "description": "Bao gồm các kỹ thuật và công cụ để sắp xếp, bố cục và kết hợp các thành phần UI thành các giao diện phức tạp và có tính thích ứng.",
+      "subject_codes": "NATIVE_APP_DEV, HCC",
+      "keywords": "layout, composition, stacks, grids, adaptive UI",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"th-large\"}"
+    },
+    {
+      "code": "STATE_DATA_FLOW",
+      "name": "State and Data Flow",
+      "description": "Khám phá cách quản lý trạng thái, luồng dữ liệu và cách giao diện người dùng tự động phản ứng lại với các thay đổi dữ liệu trong kiến trúc hiện đại.",
+      "subject_codes": "DECLARATIVE_UI, NATIVE_APP_DEV, ASE",
+      "keywords": "state management, data flow, binding, state, observable",
+      "cs2023_ka_mapping": "FPL, HCI",
+      "metadata": "{\"icon\": \"sync-alt\"}"
+    },
+    {
+      "code": "NAVIGATION_PRESENTATION",
+      "name": "Navigation and Presentation",
+      "description": "Nghiên cứu các mô hình điều hướng giữa các màn hình và cách trình bày các View một cách tạm thời (modal) trong một ứng dụng.",
+      "subject_codes": "NATIVE_APP_DEV, HCC",
+      "keywords": "navigation, routing, presentation, modal, sheet, stack",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"route\"}"
+    },
+    {
+      "code": "INTERACTION_EFFECTS",
+      "name": "Interaction and Effects",
+      "description": "Tập trung vào việc xử lý các cử chỉ tương tác của người dùng và tạo ra các hiệu ứng hình ảnh như animation và transition để nâng cao trải nghiệm.",
+      "subject_codes": "NATIVE_APP_DEV, HCI",
+      "keywords": "interaction, gestures, animation, transition, haptics",
+      "cs2023_ka_mapping": "HCI, GIT",
+      "metadata": "{\"icon\": \"hand-sparkles\"}"
+    },
+    {
+      "code": "PLATFORM_INTEGRATION",
+      "name": "Platform Services Integration",
+      "description": "Bao gồm các kỹ thuật để tích hợp và sử dụng các dịch vụ và API do nền tảng hệ điều hành cung cấp, như bản đồ, vị trí, media và thông báo.",
+      "subject_codes": "NATIVE_APP_DEV",
+      "keywords": "platform API, services, integration, SDK",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"puzzle-piece\"}"
+    },
+    {
+      "code": "APP_PERSISTENCE",
+      "name": "Application Data Persistence",
+      "description": "Nghiên cứu các phương pháp để lưu trữ dữ liệu của ứng dụng một cách bền vững trên thiết bị, từ cài đặt đơn giản đến cơ sở dữ liệu có cấu trúc.",
+      "subject_codes": "NATIVE_APP_DEV, DAI",
+      "keywords": "persistence, storage, on-device, database, files",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"save\"}"
+    },
+    {
+      "code": "GAME_LEVEL_DESIGN",
+      "name": "Level & Environment Design",
+      "description": "Tập trung vào việc kiến tạo không gian trò chơi, từ việc xây dựng địa hình (terrain), bố trí vật thể, ánh sáng, đến việc định tuyến đường đi cho người chơi để tạo ra trải nghiệm thị giác và thử thách không gian.",
+      "subject_codes": "GAME_DEV",
+      "keywords": "terrain editor, map building, lighting, atmosphere, asset placement, 3D modeling",
+      "cs2023_ka_mapping": "GIT/Modeling",
+      "metadata": "{\"icon\": \"map\"}"
+    },
+    {
+      "code": "GAME_MECHANICS",
+      "name": "Game Mechanics & Systems",
+      "description": "Bao gồm việc thiết kế và triển khai các quy tắc cốt lõi của trò chơi: vòng lặp game (game loop), điều kiện thắng/thua, hệ thống tính điểm, quản lý vật phẩm và các tương tác logic quyết định trải nghiệm gameplay.",
+      "subject_codes": "GAME_DEV",
+      "keywords": "game loop, scoring system, inventory, power-ups, leaderstats, game rules",
+      "cs2023_ka_mapping": "SDF, AL",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "GAME_PHYSICS",
+      "name": "Game Physics & Simulation",
+      "description": "Nghiên cứu và ứng dụng các định luật vật lý vào môi trường ảo để tạo ra các chuyển động thực tế. Bao gồm xử lý va chạm, trọng lực, vận tốc và các ràng buộc cơ học (khớp nối, lò xo, động cơ).",
+      "subject_codes": "GAME_DEV",
+      "keywords": "constraints, collision detection, rigid body, velocity, gravity, raycasting",
+      "cs2023_ka_mapping": "GIT/Rendering",
+      "metadata": "{\"icon\": \"atom\"}"
+    },
+    {
+      "code": "GAME_SCRIPTING",
+      "name": "Game Engine Scripting",
+      "description": "Kỹ năng lập trình đặc thù trong các Game Engine (như Roblox Studio, Unity), tập trung vào kiến trúc hướng sự kiện, thao tác với API của Engine và quản lý vòng đời của các đối tượng trong game.",
+      "subject_codes": "GAME_DEV",
+      "keywords": "lua, event handling, API, scripting, client-server replication",
+      "cs2023_ka_mapping": "PDC, PL",
+      "metadata": "{\"icon\": \"scroll\"}"
+    },
+    {
+      "code": "DEVELOPMENT_ENVIRONMENT",
+      "name": "Development Environment & Tools",
+      "description": "Kỹ năng sử dụng môi trường phát triển tích hợp (IDE), quản lý file, assets, và điều hướng dự án.",
+      "subject_codes": "SW_LIFECYCLE",
+      "keywords": "IDE, tools",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"tools\"}"
+    }
+  ],
+  "topics": [
+    {
+      "code": "HW_CPU",
+      "name": "Central Processing Unit (CPU)",
+      "description": "Bao gồm kiến trúc, chu kỳ lệnh (fetch-decode-execute), và các thành phần cốt lõi của bộ xử lý trung tâm.",
+      "category_codes": "HARDWARE_COMPONENTS",
+      "keywords": "CPU, ALU, CU, registers, instruction cycle",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "HW_MEMORY",
+      "name": "Memory Hierarchy",
+      "description": "Bao gồm các cấp bộ nhớ khác nhau như thanh ghi (registers), bộ nhớ đệm (cache), RAM và vai trò của chúng.",
+      "category_codes": "HARDWARE_COMPONENTS, MEMORY_IO_SYSTEMS",
+      "keywords": "cache, RAM, registers, memory levels",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"memory\"}"
+    },
+    {
+      "code": "HW_STORAGE",
+      "name": "Storage Devices",
+      "description": "Các loại thiết bị lưu trữ lâu dài như ổ cứng HDD, SSD và bộ nhớ flash.",
+      "category_codes": "HARDWARE_COMPONENTS",
+      "keywords": "HDD, SSD, flash storage, persistent storage",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"hdd\"}"
+    },
+    {
+      "code": "HW_IO",
+      "name": "Input/Output Peripherals",
+      "description": "Các thiết bị ngoại vi để nhập và xuất dữ liệu như bàn phím, chuột, màn hình, máy in.",
+      "category_codes": "HARDWARE_COMPONENTS",
+      "keywords": "input, output, peripherals, keyboard, mouse",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"keyboard\"}"
+    },
+    {
+      "code": "IO_MECHANISMS",
+      "name": "I/O Mechanisms",
+      "description": "Các phương pháp khác nhau mà CPU sử dụng để giao tiếp với các thiết bị ngoại vi, bao gồm polling, interrupt, và DMA.",
+      "category_codes": "MEMORY_IO_SYSTEMS",
+      "keywords": "polling, interrupts, DMA, I/O management",
+      "cs2023_ka_mapping": "AR, OS",
+      "metadata": "{\"icon\": \"exchange-alt\"}"
+    },
+    {
+      "code": "OS_PROCESS_MGMT",
+      "name": "Process and Thread Management",
+      "description": "Cách hệ điều hành quản lý, lập lịch và chuyển đổi giữa các tiến trình và luồng.",
+      "category_codes": "OS_CONCEPTS",
+      "keywords": "process, thread, scheduling, context switch",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"tasks\"}"
+    },
+    {
+      "code": "OS_MEMORY_MGMT",
+      "name": "Memory Management in OS",
+      "description": "Các kỹ thuật quản lý bộ nhớ của hệ điều hành, bao gồm bộ nhớ ảo (virtual memory) và phân trang (paging).",
+      "category_codes": "OS_CONCEPTS",
+      "keywords": "virtual memory, paging, segmentation, memory allocation",
+      "cs2023_ka_mapping": "OS, AR",
+      "metadata": "{\"icon\": \"ruler-horizontal\"}"
+    },
+    {
+      "code": "OS_FILE_SYSTEMS",
+      "name": "File Systems",
+      "description": "Cấu trúc và cách hệ điều hành tổ chức, lưu trữ và truy cập dữ liệu trên các thiết bị lưu trữ.",
+      "category_codes": "OS_CONCEPTS",
+      "keywords": "file system, directory, NTFS, ext4, file allocation",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"folder-open\"}"
+    },
+    {
+      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "name": "Systematic Troubleshooting Methodology",
+      "description": "Áp dụng một quy trình có hệ thống (ví dụ: xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
+      "category_codes": "TROUBLESHOOTING",
+      "keywords": "troubleshooting, diagnostics, problem solving",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"search\"}"
+    },
+    {
+      "code": "ERROR_MESSAGES",
+      "name": "Interpreting Error Messages",
+      "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
+      "category_codes": "TROUBLESHOOTING, TESTING_DEBUGGING",
+      "keywords": "error handling, exceptions, debugging, log analysis",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"exclamation-triangle\"}"
+    },
+    {
+      "code": "MCU_PLATFORMS",
+      "name": "Microcontroller Platforms",
+      "description": "Giới thiệu và làm việc với các nền tảng vi điều khiển phổ biến như Arduino, Raspberry Pi, ESP32.",
+      "category_codes": "MICROCONTROLLERS",
+      "keywords": "Arduino, Raspberry Pi, ESP32, microcontrollers",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "EMBEDDED_SYSTEMS",
+      "name": "Embedded Systems Principles",
+      "description": "Các nguyên tắc của hệ thống nhúng, bao gồm các ràng buộc thời gian thực và kiến trúc đặc thù.",
+      "category_codes": "MICROCONTROLLERS",
+      "keywords": "embedded systems, real-time, constraints",
+      "cs2023_ka_mapping": "OS, SPD",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "GPIO_PROG",
+      "name": "GPIO Programming",
+      "description": "Lập trình các chân đầu vào/ra đa dụng (GPIO) để đọc tín hiệu số/tương tự và điều khiển PWM.",
+      "category_codes": "MICROCONTROLLERS",
+      "keywords": "GPIO, digital I/O, analog I/O, PWM",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"code-branch\"}"
+    },
+    {
+      "code": "SENSOR_TYPES",
+      "name": "Sensor Types and Integration",
+      "description": "Các loại cảm biến (nhiệt độ, ánh sáng, chuyển động) và cách tích hợp chúng vào một hệ thống vi điều khiển.",
+      "category_codes": "SENSORS_ACTUATORS",
+      "keywords": "sensors, temperature, light, motion, PIR",
+      "cs2023_ka_mapping": "SPD, GIT",
+      "metadata": "{\"icon\": \"tachometer-alt-fast\"}"
+    },
+    {
+      "code": "ACTUATOR_CONTROL",
+      "name": "Actuator Control",
+      "description": "Điều khiển các cơ cấu chấp hành như động cơ DC, động cơ servo, rơ-le để tạo ra tác động vật lý.",
+      "category_codes": "SENSORS_ACTUATORS",
+      "keywords": "actuators, DC motor, servo, relay, control",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"fan\"}"
+    },
+    {
+      "code": "ROBOT_KINEMATICS",
+      "name": "Robot Kinematics and Motion",
+      "description": "Các nguyên tắc cơ bản về động học robot (thuận và nghịch) để mô tả và điều khiển chuyển động của các khớp và bộ phận.",
+      "category_codes": "ROBOTICS_FUNDAMENTALS",
+      "keywords": "kinematics, robot motion, degrees of freedom",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"robot\"}"
+    },
+    {
+      "code": "ROBOT_CONTROL",
+      "name": "Robot Control Systems",
+      "description": "Lập trình hệ thống điều khiển cho robot, từ điều khiển vòng hở đến vòng kín (sử dụng phản hồi từ cảm biến).",
+      "category_codes": "ROBOTICS_FUNDAMENTALS",
+      "keywords": "control systems, feedback loop, PID controller",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"gamepad\"}"
+    },
+    {
+      "code": "BASIC_MECHANISMS",
+      "name": "Basic Mechanical Systems",
+      "description": "Giới thiệu các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy, ròng rọc và vai trò của chúng trong truyền động.",
+      "category_codes": "MECHANICAL_SYSTEMS",
+      "keywords": "gears, levers, pulleys, mechanical advantage",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "BASIC_ELECTRONIC_COMPONENTS",
+      "name": "Basic Electronic Components",
+      "description": "Tìm hiểu các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) cơ bản.",
+      "category_codes": "ELECTRONIC_CIRCUITS",
+      "keywords": "resistor, capacitor, diode, transistor",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"bolt\"}"
+    },
+    {
+      "code": "CIRCUIT_PRINCIPLES",
+      "name": "Basic Circuit Principles",
+      "description": "Các nguyên tắc cơ bản về mạch điện, như định luật Ohm, mắc nối tiếp và song song, và cách đọc sơ đồ mạch.",
+      "category_codes": "ELECTRONIC_CIRCUITS",
+      "keywords": "Ohm's law, series circuit, parallel circuit, schematics",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "NET_LAYERS",
+      "name": "Network Layers and Models",
+      "description": "Mô hình phân tầng mạng (OSI, TCP/IP) và chức năng chính của mỗi tầng.",
+      "category_codes": "NETWORK_PROTOCOLS",
+      "keywords": "OSI model, TCP/IP model, encapsulation, layers",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "IP_ROUTING",
+      "name": "IP Addressing and Routing",
+      "description": "Địa chỉ IP (IPv4, IPv6), mặt nạ mạng con và các nguyên tắc định tuyến gói tin cơ bản.",
+      "category_codes": "NETWORK_PROTOCOLS",
+      "keywords": "IP address, subnet, routing, IPv4, IPv6",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"route\"}"
+    },
+    {
+      "code": "TRANSPORT_PROTOCOLS",
+      "name": "Transport Protocols (TCP/UDP)",
+      "description": "Sự khác biệt và trường hợp sử dụng của hai giao thức tầng vận chuyển chính: TCP (tin cậy) và UDP (nhanh).",
+      "category_codes": "NETWORK_PROTOCOLS",
+      "keywords": "TCP, UDP, port, handshake, datagram",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"shipping-fast\"}"
+    },
+    {
+      "code": "APP_PROTOCOLS",
+      "name": "Application Layer Protocols",
+      "description": "Các giao thức tầng ứng dụng phổ biến như HTTP (Web), DNS (Phân giải tên miền), FTP (Truyền tệp).",
+      "category_codes": "NETWORK_PROTOCOLS, WEB_DEV",
+      "keywords": "HTTP, DNS, FTP, SMTP, application layer",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"globe-americas\"}"
+    },
+    {
+      "code": "ROUTERS_SWITCHES",
+      "name": "Routers and Switches",
+      "description": "Phân biệt chức năng của router (định tuyến giữa các mạng khác nhau) và switch (kết nối các thiết bị trong cùng một mạng).",
+      "category_codes": "NETWORK_INFRA",
+      "keywords": "router, switch, LAN, WAN, networking hardware",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"ethernet\"}"
+    },
+    {
+      "code": "PHYSICAL_MEDIA",
+      "name": "Physical Media & Wireless",
+      "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
+      "category_codes": "NETWORK_INFRA",
+      "keywords": "Ethernet cable, fiber optic, Wi-Fi, Bluetooth",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"wifi\"}"
+    },
+    {
+      "code": "NETWORK_TOPOLOGIES",
+      "name": "Network Topologies",
+      "description": "Các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
+      "category_codes": "NETWORK_INFRA",
+      "keywords": "topology, star, bus, ring, mesh",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "FIREWALLS_IDS",
+      "name": "Firewalls and Intrusion Detection Systems",
+      "description": "Sử dụng tường lửa để lọc lưu lượng mạng và hệ thống phát hiện/phòng chống xâm nhập (IDS/IPS) để giám sát các mối đe dọa.",
+      "category_codes": "NETWORK_SECURITY",
+      "keywords": "firewall, IDS, IPS, network security",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"shield-virus\"}"
+    },
+    {
+      "code": "ENCRYPTION_PROTOCOLS",
+      "name": "Encryption and Secure Protocols",
+      "description": "Các nguyên tắc mã hóa và các giao thức bảo mật như TLS/SSL, HTTPS, WPA để bảo vệ dữ liệu trên đường truyền.",
+      "category_codes": "NETWORK_SECURITY",
+      "keywords": "encryption, TLS, SSL, HTTPS, WPA",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"lock\"}"
+    },
+    {
+      "code": "NETWORK_ATTACKS",
+      "name": "Common Network Attacks",
+      "description": "Nhận diện và hiểu cơ chế của các loại tấn công mạng phổ biến như DoS/DDoS, Man-in-the-Middle, và Spoofing.",
+      "category_codes": "NETWORK_SECURITY",
+      "keywords": "DoS, DDoS, man-in-the-middle, spoofing",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"user-secret\"}"
+    },
+    {
+      "code": "ALGO_STRATEGIES",
+      "name": "Algorithmic Strategies",
+      "description": "Các chiến lược thiết kế thuật toán kinh điển như Tham lam (Greedy), Chia để trị (Divide & Conquer), và Quy hoạch động (Dynamic Programming).",
+      "category_codes": "ALGORITHM_DESIGN",
+      "keywords": "greedy, divide and conquer, dynamic programming",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"chess-knight\"}"
+    },
+    {
+      "code": "ALGO_ANALYSIS",
+      "name": "Algorithm Analysis (Big O)",
+      "description": "Phân tích độ phức tạp thời gian và không gian của thuật toán bằng ký hiệu Big O để đánh giá hiệu năng.",
+      "category_codes": "ALGORITHM_DESIGN",
+      "keywords": "Big O, complexity, time complexity, space complexity",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"tachometer-alt\"}"
+    },
+    {
+      "code": "SEARCH_SORT_ALGO",
+      "name": "Searching and Sorting Algorithms",
+      "description": "Các thuật toán tìm kiếm (tuần tự, nhị phân) và sắp xếp (chèn, chọn, nổi bọt, nhanh, trộn) kinh điển.",
+      "category_codes": "ALGORITHM_DESIGN, DATA_STRUCTURES_ADV",
+      "keywords": "search, sort, binary search, quicksort, merge sort",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"sort-alpha-down\"}"
+    },
+    {
+      "code": "LOGIC_PROPOSITIONS",
+      "name": "Propositional Logic",
+      "description": "Logic mệnh đề, bảng chân lý và các phép toán logic cơ bản (AND, OR, NOT).",
+      "category_codes": "LOGIC_BOOLEAN",
+      "keywords": "proposition, truth table, logical operators",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"table-list\"}"
+    },
+    {
+      "code": "BOOLEAN_ALGEBRA",
+      "name": "Boolean Algebra and Logic Gates",
+      "description": "Đại số Boolean và mối liên hệ với các cổng logic, nền tảng của mạch số và biểu thức điều kiện trong lập trình.",
+      "category_codes": "LOGIC_BOOLEAN",
+      "keywords": "boolean algebra, logic gates, AND, OR, NOT",
+      "cs2023_ka_mapping": "MSF, AR",
+      "metadata": "{\"icon\": \"gate-open\"}"
+    },
+    {
+      "code": "GRAPH_THEORY",
+      "name": "Graph Theory Fundamentals",
+      "description": "Các khái niệm cơ bản về lý thuyết đồ thị: đỉnh, cạnh, đường đi, chu trình và các loại đồ thị.",
+      "category_codes": "DISCRETE_STRUCTURES",
+      "keywords": "graph, vertex, edge, path, cycle",
+      "cs2023_ka_mapping": "MSF, AL",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "TREE_STRUCTURES",
+      "name": "Tree Structures",
+      "description": "Các khái niệm về cấu trúc cây, bao gồm cây nhị phân, các thuật toán duyệt cây (pre-order, in-order, post-order).",
+      "category_codes": "DISCRETE_STRUCTURES",
+      "keywords": "tree, binary tree, traversal, root, leaf",
+      "cs2023_ka_mapping": "MSF, AL",
+      "metadata": "{\"icon\": \"folder-tree\"}"
+    },
+    {
+      "code": "VAR_CONSTANTS",
+      "name": "Variables and Constants",
+      "description": "Giới thiệu khái niệm về biến để lưu trữ dữ liệu có thể thay đổi, hằng số cho giá trị bất biến, và khái niệm về phạm vi (scope) của chúng.",
+      "category_codes": "VARIABLES_DATA_TYPES",
+      "keywords": "variables, constants, scope, declaration",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"tag\"}"
+    },
+    {
+      "code": "PRIMITIVE_TYPES",
+      "name": "Primitive Data Types",
+      "description": "Khám phá các kiểu dữ liệu nguyên thủy được xây dựng sẵn trong ngôn ngữ, như số nguyên (integer), số thực (float), logic (boolean) và ký tự (character).",
+      "category_codes": "VARIABLES_DATA_TYPES",
+      "keywords": "data types, integer, float, boolean, char",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"tags\"}"
+    },
+    {
+      "code": "REFERENCE_TYPES",
+      "name": "Reference Data Types",
+      "description": "Tìm hiểu về các kiểu dữ liệu tham chiếu (hoặc phức hợp) như chuỗi (string), đối tượng (object), mảng, và sự khác biệt về quản lý bộ nhớ so với kiểu nguyên thủy.",
+      "category_codes": "VARIABLES_DATA_TYPES",
+      "keywords": "reference types, objects, strings, arrays, pointers",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "ARITHMETIC_OPS",
+      "name": "Arithmetic Operators",
+      "description": "Hướng dẫn sử dụng các toán tử số học cơ bản (+, -, *, /, %) và hiểu về thứ tự ưu tiên của chúng trong các biểu thức.",
+      "category_codes": "OPERATORS_EXPRESSIONS",
+      "keywords": "arithmetic, operators, math, precedence",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"calculator-alt\"}"
+    },
+    {
+      "code": "COMPARISON_LOGICAL_OPS",
+      "name": "Comparison and Logical Operators",
+      "description": "Sử dụng các toán tử so sánh (==, !=, <, >) và logic (AND, OR, NOT) để xây dựng các biểu thức điều kiện phức tạp.",
+      "category_codes": "OPERATORS_EXPRESSIONS",
+      "keywords": "comparison, logical, boolean operators, conditions",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"equals\"}"
+    },
+    {
+      "code": "CONDITIONAL_LOGIC",
+      "name": "Conditional Logic (Selection)",
+      "description": "Trình bày các cấu trúc rẽ nhánh như if-else và switch-case để chương trình có thể đưa ra quyết định dựa trên các điều kiện khác nhau.",
+      "category_codes": "CONTROL_FLOW",
+      "keywords": "if-else, switch, conditionals, selection, branching",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"code-branch\"}"
+    },
+    {
+      "code": "ITERATION_LOOPS",
+      "name": "Iteration and Loops",
+      "description": "Trình bày các cấu trúc lặp như for, while và do-while để thực thi một khối mã lặp đi lặp lại.",
+      "category_codes": "CONTROL_FLOW",
+      "keywords": "loops, for, while, iteration, repetition",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"redo\"}"
+    },
+    {
+      "code": "EXCEPTION_HANDLING",
+      "name": "Exception Handling",
+      "description": "Giới thiệu kỹ thuật xử lý các lỗi và ngoại lệ xảy ra trong quá trình chạy chương trình bằng khối lệnh try-catch để tăng tính ổn định.",
+      "category_codes": "CONTROL_FLOW, TESTING_DEBUGGING",
+      "keywords": "exceptions, try-catch, error handling, robustness",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"exclamation-circle\"}"
+    },
+    {
+      "code": "FUNC_SYNTAX",
+      "name": "Function Syntax and Calls",
+      "description": "Hướng dẫn cú pháp định nghĩa và gọi hàm, bao gồm cách truyền tham số (parameters) và đối số (arguments) để thực hiện các tác vụ.",
+      "category_codes": "FUNCTIONS_PROCEDURES",
+      "keywords": "functions, methods, parameters, arguments, subroutines",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"function\"}"
+    },
+    {
+      "code": "RETURN_VALUES",
+      "name": "Return Values and Scope",
+      "description": "Tìm hiểu cách hàm trả về kết quả và khái niệm về phạm vi của biến (local, global) để quản lý dữ liệu hiệu quả.",
+      "category_codes": "FUNCTIONS_PROCEDURES",
+      "keywords": "return, scope, local variables, global variables",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"arrow-left\"}"
+    },
+    {
+      "code": "ARRAYS",
+      "name": "Arrays",
+      "description": "Khám phá cấu trúc dữ liệu mảng: khai báo, truy cập phần tử qua chỉ số (index), và các thao tác cơ bản.",
+      "category_codes": "DATA_STRUCTURES_BASIC",
+      "keywords": "array, index, data structure, collection",
+      "cs2023_ka_mapping": "SDF, AL",
+      "metadata": "{\"icon\": \"th\"}"
+    },
+    {
+      "code": "LISTS_COLLECTIONS",
+      "name": "Lists and Dynamic Collections",
+      "description": "Giới thiệu các cấu trúc dữ liệu danh sách động và các bộ sưu tập khác có thể thay đổi kích thước, như List hoặc ArrayList.",
+      "category_codes": "DATA_STRUCTURES_BASIC",
+      "keywords": "list, ArrayList, dynamic array, collection",
+      "cs2023_ka_mapping": "SDF, AL",
+      "metadata": "{\"icon\": \"list-ul\"}"
+    },
+    {
+      "code": "CLASSES_OBJECTS",
+      "name": "Classes and Objects",
+      "description": "Giới thiệu khái niệm trung tâm của OOP: định nghĩa một \"khuôn mẫu\" (class) với các thuộc tính và hành vi, sau đó tạo ra các \"thể hiện\" (object) từ khuôn mẫu đó.",
+      "category_codes": "OOP",
+      "keywords": "class, object, instantiation, attributes, methods",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"object-group\"}"
+    },
+    {
+      "code": "INHERITANCE_POLY",
+      "name": "Inheritance and Polymorphism",
+      "description": "Khám phá hai trụ cột của OOP: Kế thừa để tái sử dụng và mở rộng code, và Đa hình để xử lý các đối tượng khác nhau qua một giao diện chung.",
+      "category_codes": "OOP",
+      "keywords": "inheritance, polymorphism, subclass, superclass, overriding",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "ENCAPSULATION_ABSTRACTION",
+      "name": "Encapsulation and Abstraction",
+      "description": "Tìm hiểu cách đóng gói dữ liệu để bảo vệ trạng thái của đối tượng và cách tạo ra các giao diện trừu tượng để che giấu sự phức tạp bên trong.",
+      "category_codes": "OOP",
+      "keywords": "encapsulation, abstraction, data hiding, access modifiers",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"box-archive\"}"
+    },
+    {
+      "code": "STATIC_MEMBERS",
+      "name": "Static Members",
+      "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
+      "category_codes": "OOP",
+      "keywords": "static, class variable, class method",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"star-of-life\"}"
+    },
+    {
+      "code": "FIRST_CLASS_FUNCTIONS",
+      "name": "First-Class & Higher-Order Functions",
+      "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
+      "category_codes": "FUNCTIONAL_PROG",
+      "keywords": "higher-order functions, lambda, closures, first-class functions",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"lambda\"}"
+    },
+    {
+      "code": "IMMUTABILITY",
+      "name": "Immutability and Pure Functions",
+      "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
+      "category_codes": "FUNCTIONAL_PROG",
+      "keywords": "immutability, pure functions, side effects, functional",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"snowflake\"}"
+    },
+    {
+      "code": "EVENT_HANDLERS",
+      "name": "Events and Event Handling",
+      "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
+      "category_codes": "EVENT_DRIVEN_PROG",
+      "keywords": "events, event handler, listener, callback",
+      "cs2023_ka_mapping": "FPL, HCI",
+      "metadata": "{\"icon\": \"hand-point-up\"}"
+    },
+    {
+      "code": "ASYNCHRONOUS_PROG",
+      "name": "Asynchronous Programming",
+      "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+      "category_codes": "EVENT_DRIVEN_PROG",
+      "keywords": "async, await, promises, callbacks, non-blocking",
+      "cs2023_ka_mapping": "FPL, PDC",
+      "metadata": "{\"icon\": \"hourglass-start\"}"
+    },
+    {
+      "code": "AGILE_SCRUM",
+      "name": "Agile and Scrum Framework",
+      "description": "Giới thiệu các phương pháp và nguyên tắc phát triển phần mềm linh hoạt (Agile), tập trung vào khuôn khổ Scrum với các vai trò, sự kiện và tạo tác của nó.",
+      "category_codes": "DEVELOPMENT_PROCESS",
+      "keywords": "Agile, Scrum, sprint, standup, backlog",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"users-class\"}"
+    },
+    {
+      "code": "UNIT_INTEGRATION_TESTING",
+      "name": "Unit and Integration Testing",
+      "description": "Phân biệt và thực hành viết các bài kiểm thử đơn vị (unit test) để kiểm tra từng thành phần nhỏ và kiểm thử tích hợp (integration test) để kiểm tra sự tương tác giữa chúng.",
+      "category_codes": "TESTING_DEBUGGING",
+      "keywords": "unit test, integration test, TDD, test cases",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"vials\"}"
+    },
+    {
+      "code": "DEBUGGING_TECH",
+      "name": "Debugging Techniques",
+      "description": "Trang bị các kỹ thuật gỡ lỗi hiệu quả, bao gồm sử dụng breakpoints, logging, và các công cụ phân tích lỗi của IDE.",
+      "category_codes": "TESTING_DEBUGGING",
+      "keywords": "debugging, breakpoint, debugger, troubleshooting",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"bug-slash\"}"
+    },
+    {
+      "code": "GIT_BASICS",
+      "name": "Git Basics",
+      "description": "Hướng dẫn các lệnh Git cơ bản (commit, push, pull, branch) và quy trình làm việc cơ bản để quản lý phiên bản mã nguồn.",
+      "category_codes": "VERSION_CONTROL",
+      "keywords": "Git, VCS, commit, push, pull, branch",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"code-commit\"}"
+    },
+    {
+      "code": "HTML_CSS",
+      "name": "HTML and CSS Fundamentals",
+      "description": "Cung cấp kiến thức nền tảng về Ngôn ngữ Đánh dấu Siêu văn bản (HTML) để cấu trúc nội dung và Cascading Style Sheets (CSS) để định dạng giao diện web.",
+      "category_codes": "FRONTEND_DEV",
+      "keywords": "HTML, CSS, selectors, box model, semantic HTML",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"file-code\"}"
+    },
+    {
+      "code": "JAVASCRIPT_DOM",
+      "name": "JavaScript and the DOM",
+      "description": "Hướng dẫn lập trình phía client bằng JavaScript và cách sử dụng Mô hình Đối tượng Tài liệu (DOM) để tương tác và thay đổi nội dung trang web một cách linh hoạt.",
+      "category_codes": "FRONTEND_DEV",
+      "keywords": "JavaScript, DOM, event handling, client-side scripting",
+      "cs2023_ka_mapping": "SPD, FPL",
+      "metadata": "{\"icon\": \"js\"}"
+    },
+    {
+      "code": "SERVER_SIDE_LOGIC",
+      "name": "Server-Side Logic",
+      "description": "Xây dựng logic ứng dụng chạy trên máy chủ bằng các ngôn ngữ như Python, Node.js, Java để xử lý yêu cầu, truy cập dữ liệu và thực hiện các nghiệp vụ.",
+      "category_codes": "BACKEND_DEV",
+      "keywords": "backend, server-side, Node.js, Python, business logic",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"server\"}"
+    },
+    {
+      "code": "API_DESIGN",
+      "name": "API Design and Development",
+      "description": "Thiết kế và xây dựng các Giao diện Lập trình Ứng dụng (API), đặc biệt là RESTful API, để các thành phần phần mềm (frontend, backend, mobile) có thể giao tiếp với nhau.",
+      "category_codes": "BACKEND_DEV",
+      "keywords": "API, REST, JSON, HTTP methods, endpoint",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"plug\"}"
+    },
+    {
+      "code": "RELATIONAL_DB",
+      "name": "Relational Database Concepts",
+      "description": "Giới thiệu các khái niệm cốt lõi của cơ sở dữ liệu quan hệ, bao gồm bảng, khóa chính, khóa ngoại và các nguyên tắc chuẩn hóa dữ liệu.",
+      "category_codes": "DATABASE_FUNDAMENTALS",
+      "keywords": "RDBMS, relational model, primary key, foreign key, normalization",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"table\"}"
+    },
+    {
+      "code": "SQL_QUERIES",
+      "name": "SQL Queries",
+      "description": "Hướng dẫn viết các câu lệnh SQL để truy vấn (SELECT), chèn (INSERT), cập nhật (UPDATE) và xóa (DELETE) dữ liệu từ cơ sở dữ liệu quan hệ.",
+      "category_codes": "DATABASE_FUNDAMENTALS",
+      "keywords": "SQL, SELECT, JOIN, GROUP BY, query",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"search-location\"}"
+    },
+    {
+      "code": "TRANSACTION_MANAGEMENT",
+      "name": "Database Transaction Management",
+      "description": "Tìm hiểu về khái niệm giao dịch và các thuộc tính ACID (Atomicity, Consistency, Isolation, Durability) để đảm bảo tính toàn vẹn của dữ liệu.",
+      "category_codes": "DATABASE_FUNDAMENTALS",
+      "keywords": "transaction, ACID, commit, rollback, concurrency control",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"lock\"}"
+    },
+    {
+      "code": "STACKS_QUEUES",
+      "name": "Stacks and Queues",
+      "description": "Nghiên cứu hai cấu trúc dữ liệu tuyến tính cơ bản: Ngăn xếp (LIFO - Last-In, First-Out) và Hàng đợi (FIFO - First-In, First-Out).",
+      "category_codes": "DATA_STRUCTURES_ADV",
+      "keywords": "stack, queue, LIFO, FIFO, data structures",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "TREES_HEAPS",
+      "name": "Trees and Heaps",
+      "description": "Khám phá các cấu trúc dữ liệu dạng cây như cây tìm kiếm nhị phân (BST) và cây đống (heap), cùng các thuật toán liên quan.",
+      "category_codes": "DATA_STRUCTURES_ADV, DISCRETE_STRUCTURES",
+      "keywords": "tree, binary search tree, heap, tree traversal",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "HASH_TABLES",
+      "name": "Hash Tables",
+      "description": "Tìm hiểu về cấu trúc dữ liệu bảng băm, cách hoạt động của hàm băm và các chiến lược xử lý xung đột (collision).",
+      "category_codes": "DATA_STRUCTURES_ADV",
+      "keywords": "hash table, hash function, dictionary, map, collision",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"hashtag\"}"
+    },
+    {
+      "code": "DATA_VIS_TOOLS",
+      "name": "Data Visualization Tools",
+      "description": "Hướng dẫn sử dụng các thư viện hoặc công cụ phổ biến (như Matplotlib, Seaborn, D3.js, Tableau) để tạo ra các biểu đồ và đồ thị hiệu quả từ dữ liệu.",
+      "category_codes": "DATA_VISUALIZATION",
+      "keywords": "visualization tools, Matplotlib, D3.js, Tableau, charting",
+      "cs2023_ka_mapping": "GIT, MSF",
+      "metadata": "{\"icon\": \"chart-line\"}"
+    },
+    {
+      "code": "SUPERVISED_LEARNING",
+      "name": "Supervised Learning",
+      "description": "Giới thiệu các mô hình học có giám sát, nơi thuật toán học từ dữ liệu đã được gán nhãn, bao gồm các bài toán Hồi quy (Regression) và Phân loại (Classification).",
+      "category_codes": "ML_MODELS",
+      "keywords": "supervised learning, regression, classification, labeled data",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"tag\"}"
+    },
+    {
+      "code": "UNSUPERVISED_LEARNING",
+      "name": "Unsupervised Learning",
+      "description": "Giới thiệu các mô hình học không giám sát, nơi thuật toán tự khám phá cấu trúc trong dữ liệu chưa được gán nhãn, bao gồm Phân cụm (Clustering).",
+      "category_codes": "ML_MODELS",
+      "keywords": "unsupervised learning, clustering, K-Means, unlabeled data",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"shapes\"}"
+    },
+    {
+      "code": "REINFORCEMENT_LEARNING",
+      "name": "Reinforcement Learning",
+      "description": "Khám phá mô hình học tăng cường, trong đó một tác nhân (agent) học cách hành động trong một môi trường để tối đa hóa phần thưởng tích lũy.",
+      "category_codes": "ML_MODELS",
+      "keywords": "reinforcement learning, agent, environment, reward, RL",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"gamepad-alt\"}"
+    },
+    {
+      "code": "IOT_DEVICES_SENSORS",
+      "name": "IoT Devices and Sensors",
+      "description": "Giới thiệu các loại thiết bị và cảm biến phổ biến trong hệ sinh thái IoT, và cách chúng thu thập dữ liệu từ thế giới thực.",
+      "category_codes": "IOT_ECOSYSTEM",
+      "keywords": "IoT devices, sensors, wearables, smart home",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"broadcast-tower\"}"
+    },
+    {
+      "code": "EDGE_FOG_CLOUD",
+      "name": "IoT Architectures (Edge, Fog, Cloud)",
+      "description": "Phân tích các kiến trúc xử lý dữ liệu khác nhau trong một hệ thống IoT: tại thiết bị (Edge), tại lớp trung gian (Fog), hoặc trên nền tảng đám mây (Cloud).",
+      "category_codes": "IOT_ECOSYSTEM, DISTRIBUTED_SYSTEMS",
+      "keywords": "edge computing, fog computing, cloud, IoT architecture",
+      "cs2023_ka_mapping": "SPD, PDC",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "IOT_PROTOCOLS_MQTT",
+      "name": "IoT Messaging Protocols (MQTT)",
+      "description": "Tập trung vào giao thức truyền tin MQTT, một tiêu chuẩn phổ biến cho các thiết bị IoT do tính nhẹ và hiệu quả.",
+      "category_codes": "IOT_COMMUNICATION",
+      "keywords": "MQTT, publish-subscribe, IoT protocols, messaging",
+      "cs2023_ka_mapping": "NC, SPD",
+      "metadata": "{\"icon\": \"envelope-open-text\"}"
+    },
+    {
+      "code": "UI_UX_HEURISTICS",
+      "name": "Usability Heuristics",
+      "description": "Nghiên cứu các nguyên tắc vàng (heuristics) về thiết kế giao diện người dùng để đảm bảo tính khả dụng, dễ học và hiệu quả.",
+      "category_codes": "HCI_PRINCIPLES, UI_UX_PROCESS",
+      "keywords": "usability, heuristics, Nielsen's heuristics, user-friendly",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"check-circle\"}"
+    },
+    {
+      "code": "USER_RESEARCH",
+      "name": "User Research and Personas",
+      "description": "Tìm hiểu các phương pháp nghiên cứu người dùng (phỏng vấn, khảo sát) và kỹ thuật xây dựng chân dung người dùng (personas) để định hướng quá trình thiết kế.",
+      "category_codes": "UI_UX_PROCESS",
+      "keywords": "user research, personas, user interviews, surveys",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"user-friends\"}"
+    },
+    {
+      "code": "WIREFRAMING_PROTOTYPING",
+      "name": "Wireframing and Prototyping",
+      "description": "Thực hành các kỹ thuật tạo bản phác thảo cấu trúc (wireframe) và các mẫu thử tương tác (prototype) để trực quan hóa và kiểm tra các ý tưởng thiết kế.",
+      "category_codes": "UI_UX_PROCESS",
+      "keywords": "wireframe, prototype, mockup, Figma, Adobe XD",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"drafting-compass\"}"
+    },
+    {
+      "code": "WCAG_STANDARDS",
+      "name": "Web Content Accessibility Guidelines (WCAG)",
+      "description": "Giới thiệu các tiêu chuẩn quốc tế (WCAG) và các cấp độ tuân thủ (A, AA, AAA) để đảm bảo nội dung web có thể tiếp cận được bởi người khuyết tật.",
+      "category_codes": "ACCESSIBILITY",
+      "keywords": "WCAG, accessibility, a11y, web standards",
+      "cs2023_ka_mapping": "HCI, SEP",
+      "metadata": "{\"icon\": \"universal-access\"}"
+    },
+    {
+      "code": "ASSISTIVE_TECH",
+      "name": "Assistive Technologies",
+      "description": "Tìm hiểu về các công nghệ hỗ trợ như trình đọc màn hình (screen readers), bàn phím thay thế, và cách chúng giúp người khuyết tật sử dụng công nghệ.",
+      "category_codes": "ACCESSIBILITY",
+      "keywords": "assistive tech, screen reader, accessibility tools",
+      "cs2023_ka_mapping": "HCI, SEP",
+      "metadata": "{\"icon\": \"headset\"}"
+    },
+    {
+      "code": "DIGITAL_INTERACTION",
+      "name": "Digital Interaction and Etiquette",
+      "description": "Phát triển các kỹ năng và quy tắc ứng xử (netiquette) khi giao tiếp và tương tác chuyên nghiệp trong môi trường số, từ email đến các nền tảng cộng tác.",
+      "category_codes": "DIGITAL_LITERACY",
+      "keywords": "netiquette, digital communication, etiquette",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"comments\"}"
+    },
+    {
+      "code": "COLLABORATION_TOOLS",
+      "name": "Digital Collaboration Tools",
+      "description": "Hướng dẫn sử dụng hiệu quả các công cụ và nền tảng kỹ thuật số để làm việc nhóm, quản lý dự án và hợp tác từ xa (ví dụ: Trello, Slack, Google Workspace).",
+      "category_codes": "DIGITAL_LITERACY",
+      "keywords": "collaboration, teamwork, project management tools",
+      "cs2023_ka_mapping": "SEP, SE",
+      "metadata": "{\"icon\": \"users-cog\"}"
+    },
+    {
+      "code": "PHISHING_SCAMS",
+      "name": "Recognizing Phishing and Scams",
+      "description": "Rèn luyện kỹ năng nhận diện các email, tin nhắn và trang web lừa đảo để bảo vệ bản thân và tổ chức khỏi các cuộc tấn công lừa đảo.",
+      "category_codes": "DATA_PRIVACY_USER",
+      "keywords": "phishing, scams, social engineering, cybersecurity",
+      "cs2023_ka_mapping": "SEC, SEP",
+      "metadata": "{\"icon\": \"fish\"}"
+    },
+    {
+      "code": "PRIVACY_SETTINGS",
+      "name": "Using Privacy Settings and Tools",
+      "description": "Hướng dẫn cách sử dụng các cài đặt quyền riêng tư trên các dịch vụ web, mạng xã hội và trình duyệt để kiểm soát thông tin cá nhân.",
+      "category_codes": "DATA_PRIVACY_USER",
+      "keywords": "privacy settings, cookies, data protection, GDPR",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"user-cog\"}"
+    },
+    {
+      "code": "PASSWORD_STRENGTH",
+      "name": "Strong Passwords & Authentication",
+      "description": "Các tiêu chí để tạo một mật khẩu mạnh và các phương pháp xác thực hiện đại như xác thực hai yếu tố (2FA) để tăng cường bảo mật.",
+      "category_codes": "DEVICE_PROTECTION",
+      "keywords": "passwords, authentication, 2FA, MFA, security",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"key\"}"
+    },
+    {
+      "code": "MALWARE_TYPES",
+      "name": "Malware Protection",
+      "description": "Phân biệt các loại phần mềm độc hại (virus, worm, ransomware) và các biện pháp phòng chống như sử dụng phần mềm diệt virus.",
+      "category_codes": "DEVICE_PROTECTION",
+      "keywords": "malware, virus, ransomware, antivirus",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"shield-virus\"}"
+    },
+    {
+      "code": "RENDERING",
+      "name": "Rendering Pipeline & Techniques",
+      "description": "Nghiên cứu các giai đoạn trong quy trình kết xuất đồ họa (graphics pipeline) và các kỹ thuật chính như Rasterization và Ray Tracing.",
+      "category_codes": "GRAPHICS_FUNDAMENTALS",
+      "keywords": "rendering pipeline, rasterization, ray tracing, shaders",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"image\"}"
+    },
+    {
+      "code": "GEOMETRIC_TRANSFORMATIONS",
+      "name": "2D/3D Geometric Transformations",
+      "description": "Tìm hiểu các phép biến đổi hình học cơ bản (tịnh tiến, quay, co giãn) và cách biểu diễn chúng bằng ma trận trong không gian 2D và 3D.",
+      "category_codes": "GEOMETRIC_MODELING",
+      "keywords": "transformations, matrix, translation, rotation, scaling",
+      "cs2023_ka_mapping": "GIT, MSF",
+      "metadata": "{\"icon\": \"ruler-combined\"}"
+    },
+    {
+      "code": "RASTER_GRAPHICS_CONCEPTS",
+      "name": "Raster Graphics Concepts",
+      "description": "Khám phá các khái niệm liên quan đến đồ họa dựa trên pixel, như lớp (layers), chế độ hòa trộn, mặt nạ, và các công cụ chỉnh sửa.",
+      "category_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "keywords": "raster, pixels, layers, blending modes, Photoshop",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"paint-brush-alt\"}"
+    },
+    {
+      "code": "VECTOR_GRAPHICS_CONCEPTS",
+      "name": "Vector Graphics Concepts",
+      "description": "Khám phá các khái niệm liên quan đến đồ họa dựa trên đường dẫn toán học, bao gồm đường cong Bézier và các phép toán hình khối.",
+      "category_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "keywords": "vector, paths, Bézier curves, SVG, Illustrator",
+      "cs2023_ka_mapping": "GIT, MSF",
+      "metadata": "{\"icon\": \"vector-square\"}"
+    },
+    {
+      "code": "GRAPHIC_DESIGN_PRINCIPLES",
+      "name": "Visual Design Principles for UI",
+      "description": "Áp dụng các nguyên tắc cốt lõi về màu sắc, bố cục, khoảng trắng và chữ viết (typography) để tạo ra các giao diện người dùng thẩm mỹ và hiệu quả.",
+      "category_codes": "UI_UX_DESIGN, HCI",
+      "keywords": "visual design, color theory, typography, layout, UI",
+      "cs2023_ka_mapping": "GIT, HCI",
+      "metadata": "{\"icon\":\"palette\"}"
+    },
+    {
+      "code": "POLYGONAL_MODELING",
+      "name": "3D Polygonal Modeling",
+      "description": "Thực hành kỹ thuật mô hình hóa 3D bằng cách sử dụng mắt lưới đa giác (polygonal mesh) gồm các đỉnh, cạnh và mặt.",
+      "category_codes": "3D_MODELING_ANIMATION",
+      "keywords": "3D modeling, polygonal mesh, vertex, edge, face",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"cube\"}"
+    },
+    {
+      "code": "SOLID_MODELING",
+      "name": "3D Solid Modeling (CSG)",
+      "description": "Thực hành kỹ thuật mô hình hóa 3D bằng cách kết hợp các khối hình học rắn cơ bản thông qua các phép toán Boolean (CSG).",
+      "category_codes": "3D_MODELING_ANIMATION",
+      "keywords": "solid modeling, CSG, boolean operations, CAD",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"shapes\"}"
+    },
+    {
+      "code": "3D_ANIMATION_PRINCIPLES",
+      "name": "3D Animation Principles",
+      "description": "Áp dụng các nguyên tắc tạo chuyển động cho mô hình 3D, bao gồm tạo khung hình chính (keyframing) và các đường cong chuyển động.",
+      "category_codes": "3D_MODELING_ANIMATION",
+      "keywords": "3D animation, keyframe, timeline, rigging",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"film\"}"
+    },
+    {
+      "code": "RENDERING_CONCEPTS",
+      "name": "3D Rendering Concepts",
+      "description": "Tìm hiểu các yếu tố cơ bản trong quá trình kết xuất 3D, như vật liệu (materials), kết cấu (textures), và ánh sáng (lighting).",
+      "category_codes": "GRAPHICS_FUNDAMENTALS, 3D_MODELING_ANIMATION",
+      "keywords": "3D rendering, materials, textures, lighting, shadows",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"lightbulb-on\"}"
+    },
+    {
+      "code": "UI_CONTROLS",
+      "name": "Basic UI Controls",
+      "description": "Sử dụng các control cơ bản để hiển thị thông tin (Text, Image) và nhận tương tác từ người dùng (Button, TextField, Picker).",
+      "category_codes": "UI_BUILDING_BLOCKS",
+      "keywords": "Text, Image, Button, TextField, Picker, Toggle",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"keyboard\"}"
+    },
+    {
+      "code": "UI_MODIFIERS",
+      "name": "UI Modifiers",
+      "description": "Áp dụng các bộ điều chỉnh (modifiers) để tùy biến giao diện của các View, như thay đổi font, màu sắc, padding và background.",
+      "category_codes": "UI_BUILDING_BLOCKS",
+      "keywords": "modifiers, styling, font, color, padding",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"paint-brush\"}"
+    },
+    {
+      "code": "STACK_LAYOUT",
+      "name": "Stack-Based Layout",
+      "description": "Sắp xếp các View theo chiều dọc (VStack), chiều ngang (HStack) hoặc xếp chồng lên nhau (ZStack) để tạo các bố cục cơ bản.",
+      "category_codes": "LAYOUT_COMPOSITION",
+      "keywords": "stacks, VStack, HStack, ZStack, layout",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "GRID_LAYOUT",
+      "name": "Grid-Based Layout",
+      "description": "Sắp xếp các View thành một lưới hai chiều, thường được sử dụng để hiển thị các bộ sưu tập.",
+      "category_codes": "LAYOUT_COMPOSITION",
+      "keywords": "grid, LazyVGrid, LazyHGrid, collection",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"th\"}"
+    },
+    {
+      "code": "ADAPTIVE_LAYOUT",
+      "name": "Adaptive Layout",
+      "description": "Các kỹ thuật để giao diện có thể tự động thích ứng với các kích thước màn hình, hướng và nền tảng khác nhau.",
+      "category_codes": "LAYOUT_COMPOSITION",
+      "keywords": "adaptive, responsive, size classes, GeometryReader",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"expand-arrows-alt\"}"
+    },
+    {
+      "code": "DECLARATIVE_UI_MODEL",
+      "name": "Declarative UI Model",
+      "description": "Hiểu mô hình lập trình giao diện khai báo, trong đó UI là một hàm của trạng thái (UI = f(state)).",
+      "category_codes": "STATE_DATA_FLOW",
+      "keywords": "declarative UI, state-driven, UI as function",
+      "cs2023_ka_mapping": "HCI, FPL",
+      "metadata": "{\"icon\": \"wand-magic-sparkles\"}"
+    },
+    {
+      "code": "STATE_MANAGEMENT",
+      "name": "State Management",
+      "description": "Quản lý trạng thái giao diện, từ trạng thái cục bộ của một View đến các trạng thái phức tạp và được chia sẻ giữa nhiều View.",
+      "category_codes": "STATE_DATA_FLOW",
+      "keywords": "state, @State, @StateObject, ViewModel, Source of Truth",
+      "cs2023_ka_mapping": "HCI, SDF",
+      "metadata": "{\"icon\": \"brain-circuit\"}"
+    },
+    {
+      "code": "DATA_BINDING",
+      "name": "Data Binding",
+      "description": "Kỹ thuật tạo liên kết hai chiều giữa dữ liệu trong code và các control trên giao diện, cho phép UI tự động cập nhật và ngược lại.",
+      "category_codes": "STATE_DATA_FLOW",
+      "keywords": "binding, two-way binding, @Binding",
+      "cs2023_ka_mapping": "HCI, SDF",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "OBSERVABLE_MODEL",
+      "name": "Observable Model Pattern",
+      "description": "Áp dụng mẫu thiết kế \"đối tượng có thể quan sát\" để tự động thông báo cho giao diện khi dữ liệu hoặc trạng thái trong một đối tượng phức tạp (ViewModel) thay đổi.",
+      "category_codes": "STATE_DATA_FLOW, DESIGN_PATTERNS",
+      "keywords": "observable, publisher, subscriber, @Published",
+      "cs2023_ka_mapping": "SE, FPL",
+      "metadata": "{\"icon\": \"broadcast-tower\"}"
+    },
+    {
+      "code": "HIERARCHICAL_NAVIGATION",
+      "name": "Hierarchical Navigation",
+      "description": "Xây dựng luồng điều hướng phân cấp (stack-based), cho phép người dùng \"đi sâu\" vào các màn hình chi tiết và quay trở lại.",
+      "category_codes": "NAVIGATION_PRESENTATION",
+      "keywords": "navigation, stack navigation, NavigationStack, push, pop",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "MODAL_PRESENTATION",
+      "name": "Modal Presentation",
+      "description": "Trình bày các View một cách tạm thời lên trên màn hình hiện tại để thực hiện một tác vụ cụ thể, như điền form hoặc hiển thị cảnh báo.",
+      "category_codes": "NAVIGATION_PRESENTATION",
+      "keywords": "modal, sheet, alert, popover, presentation",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"window-maximize\"}"
+    },
+    {
+      "code": "GESTURE_HANDLING",
+      "name": "Gesture Handling",
+      "description": "Lập trình để nhận biết và phản hồi lại các cử chỉ tương tác của người dùng như chạm, nhấn giữ và kéo.",
+      "category_codes": "INTERACTION_EFFECTS",
+      "keywords": "gestures, tap, drag, long press, interaction",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"hand-pointer\"}"
+    },
+    {
+      "code": "UI_ANIMATION",
+      "name": "UI Animation & Transitions",
+      "description": "Áp dụng các hiệu ứng chuyển động và chuyển tiếp để làm cho các thay đổi giao diện trở nên mượt mà và trực quan hơn.",
+      "category_codes": "INTERACTION_EFFECTS",
+      "keywords": "animation, transition, motion, effects",
+      "cs2023_ka_mapping": "GIT, HCI",
+      "metadata": "{\"icon\": \"film\"}"
+    },
+    {
+      "code": "GEOSPATIAL_SERVICES",
+      "name": "Geospatial Services",
+      "description": "Tích hợp và sử dụng các dịch vụ bản đồ và vị trí của nền tảng để hiển thị bản đồ và lấy vị trí người dùng.",
+      "category_codes": "PLATFORM_INTEGRATION",
+      "keywords": "MapKit, Core Location, maps, GPS",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"map-marked-alt\"}"
+    },
+    {
+      "code": "MEDIA_SERVICES",
+      "name": "Media & System Services",
+      "description": "Tương tác với các dịch vụ hệ thống như thư viện ảnh/video, camera, âm thanh và thông báo.",
+      "category_codes": "PLATFORM_INTEGRATION",
+      "keywords": "PhotosPicker, Camera, AVFoundation, UserNotifications",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"photo-video\"}"
+    },
+    {
+      "code": "USER_PREFERENCES_STORAGE",
+      "name": "User Preferences Storage",
+      "description": "Sử dụng các cơ chế lưu trữ key-value của hệ điều hành để lưu các cài đặt và tùy chọn nhỏ của người dùng.",
+      "category_codes": "APP_PERSISTENCE",
+      "keywords": "UserDefaults, AppStorage, preferences",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"sliders-h\"}"
+    },
+    {
+      "code": "STRUCTURED_DATA_STORAGE",
+      "name": "Structured On-Device Storage",
+      "description": "Sử dụng các framework cơ sở dữ liệu như Core Data hoặc ghi/đọc file để quản lý các tập dữ liệu có cấu trúc trên thiết bị.",
+      "category_codes": "APP_PERSISTENCE",
+      "keywords": "Core Data, FileManager, Codable, on-device database",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"database\"}"
+    },
+    {
+      "code": "GAME_ENV_BUILDING",
+      "name": "Game Environment Building",
+      "description": "Kỹ thuật xây dựng thế giới trò chơi sử dụng các công cụ như Terrain Editor (địa hình), Lighting (ánh sáng), và sắp đặt Assets (tài nguyên) để tạo không khí (atmosphere) cho game.",
+      "category_codes": "GAME_LEVEL_DESIGN",
+      "keywords": "terrain, lighting, skybox, atmosphere, map building",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"mountain\"}"
+    },
+    {
+      "code": "GAMEPLAY_MECHANICS",
+      "name": "Gameplay Mechanics Scripting",
+      "description": "Lập trình các luật chơi cụ thể như hệ thống tính điểm (scoring), điều kiện thắng/thua, cơ chế hồi sinh, và quản lý kho đồ (inventory) của người chơi.",
+      "category_codes": "GAME_MECHANICS",
+      "keywords": "leaderstats, scoring, win condition, inventory, spawning",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"gamepad\"}"
+    },
+    {
+      "code": "PHYSICS_CONSTRAINTS",
+      "name": "Physics Constraints & Joints",
+      "description": "Sử dụng các khớp nối vật lý (Constraints) như bản lề (Hinge), lò xo (Spring), động cơ (Motor) để tạo ra các cơ cấu chuyển động cơ học (xe, cửa, bẫy) trong game.",
+      "category_codes": "GAME_PHYSICS",
+      "keywords": "constraints, hinge, motor, spring, joints, mechanics",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "GAME_OBJ_SCRIPTING",
+      "name": "Game Object Scripting",
+      "description": "Kỹ năng viết mã để thao tác trực tiếp với các đối tượng trong Game Engine (như Part, Model), bao gồm thay đổi thuộc tính, nhân bản (Cloning) và hủy (Destroy).",
+      "category_codes": "GAME_SCRIPTING",
+      "keywords": "scripting, manipulation, clone, destroy, properties",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"cube\"}"
+    },
+    {
+      "code": "APP_DEPLOYMENT",
+      "name": "Application Deployment & Distribution",
+      "description": "Quy trình đóng gói phần mềm thành sản phẩm cuối cùng (ví dụ: file .exe, publish lên Web/Store) để phân phối đến người dùng cuối.",
+      "category_codes": "SW_LIFECYCLE",
+      "keywords": "deployment, packaging, pyinstaller, publishing, hosting",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"box-open\"}"
+    },
+    {
+      "code": "AI_ASSISTED_CODING",
+      "name": "AI-Assisted Coding",
+      "description": "Kỹ năng sử dụng các công cụ Trí tuệ nhân tạo (như ChatGPT, Copilot, Locofy) để sinh mã nguồn, chuyển đổi thiết kế sang code và hỗ trợ gỡ lỗi.",
+      "category_codes": "AI_ML, DEVELOPMENT_PROCESS",
+      "keywords": "AI coding, generative AI, copilot, design-to-code",
+      "cs2023_ka_mapping": "SE, AI",
+      "metadata": "{\"icon\": \"robot\"}"
+    },
+    {
+      "code": "IDE_NAVIGATION",
+      "name": "IDE Navigation",
+      "description": "Điều hướng và quản lý cấu trúc file, assets trong dự án.",
+      "category_codes": "DEVELOPMENT_ENVIRONMENT",
+      "keywords": "IDE, file, assets",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    },
+    {
+      "code": "DEBUGGING_TECHNIQUES",
+      "name": "Debugging Techniques",
+      "description": "Kỹ thuật và công cụ dùng để gỡ lỗi.",
+      "category_codes": "TESTING_DEBUGGING",
+      "keywords": "debug",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    }
+  ],
+  "concepts": [
+    {
+      "code": "CPU_ARCHITECTURE",
+      "name": "CPU Architecture",
+      "description": "Phân biệt kiến trúc von Neumann và Harvard, và vai trò của các khối chức năng chính là ALU và CU.",
+      "topic_codes": "HW_CPU",
+      "keywords": "von Neumann, Harvard, ALU, Control Unit",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "FETCH_DECODE_EXECUTE",
+      "name": "Fetch-Decode-Execute Cycle",
+      "description": "Mô tả chu trình lệnh cơ bản mà một CPU thực hiện để xử lý một chỉ lệnh: lấy lệnh, giải mã lệnh, và thực thi lệnh.",
+      "topic_codes": "HW_CPU",
+      "keywords": "instruction cycle, fetch, decode, execute",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"sync-alt\"}"
+    },
+    {
+      "code": "MEMORY_TYPES",
+      "name": "Memory Types",
+      "description": "Phân biệt giữa RAM (bộ nhớ truy cập ngẫu nhiên, khả biến) và ROM (bộ nhớ chỉ đọc, bất biến).",
+      "topic_codes": "HW_MEMORY",
+      "keywords": "RAM, ROM, volatile, non-volatile",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"memory\"}"
+    },
+    {
+      "code": "CACHE_HIERARCHY",
+      "name": "Cache Hierarchy",
+      "description": "Hiểu vai trò của các cấp bộ nhớ đệm (L1, L2, L3) trong việc tăng tốc độ truy cập dữ liệu bằng cách tận dụng tính cục bộ (locality).",
+      "topic_codes": "HW_MEMORY",
+      "keywords": "cache, L1 cache, L2 cache, locality",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "HDD_VS_SSD",
+      "name": "HDD vs. SSD",
+      "description": "So sánh sự khác biệt về cấu tạo, nguyên lý hoạt động, tốc độ và độ bền giữa ổ cứng cơ (HDD) và ổ cứng thể rắn (SSD).",
+      "topic_codes": "HW_STORAGE",
+      "keywords": "HDD, SSD, storage, persistent",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"hdd\"}"
+    },
+    {
+      "code": "IO_METHODS_POLLING_INTERRUPT",
+      "name": "I/O Methods: Polling vs. Interrupt",
+      "description": "So sánh hai phương pháp chính để xử lý I/O: chủ động kiểm tra liên tục (Polling) và bị động chờ tín hiệu ngắt (Interrupt).",
+      "topic_codes": "IO_MECHANISMS",
+      "keywords": "polling, interrupt, I/O management",
+      "cs2023_ka_mapping": "AR, OS",
+      "metadata": "{\"icon\": \"exchange-alt\"}"
+    },
+    {
+      "code": "DMA_CONCEPT",
+      "name": "Direct Memory Access (DMA)",
+      "description": "Hiểu khái niệm Truy cập Bộ nhớ Trực tiếp (DMA), cho phép các thiết bị phần cứng truy cập bộ nhớ chính độc lập với CPU.",
+      "topic_codes": "IO_MECHANISMS",
+      "keywords": "DMA, direct memory access, hardware",
+      "cs2023_ka_mapping": "AR, OS",
+      "metadata": "{\"icon\": \"forward\"}"
+    },
+    {
+      "code": "PROCESS_VS_THREAD",
+      "name": "Process vs. Thread",
+      "description": "Phân biệt sự khác nhau giữa một tiến trình (một chương trình đang chạy với không gian bộ nhớ riêng) và một luồng (một luồng thực thi trong một tiến trình).",
+      "topic_codes": "OS_PROCESS_MGMT",
+      "keywords": "process, thread, multitasking, multithreading",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"tasks\"}"
+    },
+    {
+      "code": "SCHEDULING_ALGORITHMS",
+      "name": "CPU Scheduling Algorithms",
+      "description": "Giới thiệu các thuật toán lập lịch CPU cơ bản như FCFS (First-Come, First-Served), SJF (Shortest Job First), và Round Robin.",
+      "topic_codes": "OS_PROCESS_MGMT",
+      "keywords": "scheduling, FCFS, SJF, Round Robin",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"calendar-alt\"}"
+    },
+    {
+      "code": "VIRTUAL_MEMORY",
+      "name": "Virtual Memory Concept",
+      "description": "Hiểu khái niệm bộ nhớ ảo và lợi ích của nó trong việc cho phép mỗi tiến trình có một không gian địa chỉ riêng biệt và lớn hơn bộ nhớ vật lý.",
+      "topic_codes": "OS_MEMORY_MGMT",
+      "keywords": "virtual memory, address space, paging",
+      "cs2023_ka_mapping": "OS, AR",
+      "metadata": "{\"icon\": \"map\"}"
+    },
+    {
+      "code": "FILE_ALLOCATION",
+      "name": "File Allocation Methods",
+      "description": "Khám phá các phương pháp cấp phát không gian cho tệp tin trên đĩa, bao gồm cấp phát liên tục, liên kết (danh sách móc nối), và chỉ mục.",
+      "topic_codes": "OS_FILE_SYSTEMS",
+      "keywords": "file allocation, contiguous, linked, indexed",
+      "cs2023_ka_mapping": "OS",
+      "metadata": "{\"icon\": \"file-invoice\"}"
+    },
+    {
+      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "name": "Systematic Troubleshooting",
+      "description": "Áp dụng một quy trình có hệ thống (xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
+      "topic_codes": "TROUBLESHOOTING",
+      "keywords": "troubleshooting, diagnostics, problem solving",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"search\"}"
+    },
+    {
+      "code": "ERROR_MESSAGES",
+      "name": "Interpreting Error Messages",
+      "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
+      "topic_codes": "TROUBLESHOOTING, DEBUGGING_TECH",
+      "keywords": "error handling, exceptions, debugging, log analysis",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"exclamation-triangle\"}"
+    },
+    {
+      "code": "ARDUINO_BASICS",
+      "name": "Arduino Basics",
+      "description": "Nắm vững cấu trúc cơ bản của một chương trình Arduino (sketch) với hai hàm chính là setup() (chạy một lần) và loop() (chạy lặp lại).",
+      "topic_codes": "MCU_PLATFORMS",
+      "keywords": "Arduino, sketch, setup, loop",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "RASPBERRY_PI_BASICS",
+      "name": "Raspberry Pi Basics",
+      "description": "Nhận biết Raspberry Pi như một máy tính đơn bo (SBC) và hiểu cách tương tác với hệ điều hành Raspbian (nay là Raspberry Pi OS).",
+      "topic_codes": "MCU_PLATFORMS",
+      "keywords": "Raspberry Pi, SBC, Raspbian, Linux",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"raspberry-pi\"}"
+    },
+    {
+      "code": "DIGITAL_ANALOG_IO",
+      "name": "Digital vs. Analog I/O Pins",
+      "description": "Phân biệt chức năng của các chân I/O số (đọc/ghi giá trị HIGH/LOW) và các chân I/O tương tự (đọc giá trị trong một khoảng liên tục).",
+      "topic_codes": "GPIO_PROG",
+      "keywords": "digital I/O, analog I/O, GPIO, HIGH, LOW",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"wave-square\"}"
+    },
+    {
+      "code": "PWM",
+      "name": "Pulse Width Modulation (PWM)",
+      "description": "Hiểu và sử dụng kỹ thuật Điều chế Độ rộng Xung (PWM) để giả lập tín hiệu tương tự, thường dùng để điều khiển độ sáng LED hoặc tốc độ động cơ.",
+      "topic_codes": "GPIO_PROG",
+      "keywords": "PWM, analogWrite, duty cycle",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"chart-area\"}"
+    },
+    {
+      "code": "TEMP_HUMIDITY_SENSORS",
+      "name": "Reading Temp/Humidity Sensors",
+      "description": "Sử dụng thư viện để đọc dữ liệu từ các cảm biến nhiệt độ và độ ẩm kỹ thuật số phổ biến như DHT11 hoặc DHT22.",
+      "topic_codes": "SENSOR_TYPES",
+      "keywords": "DHT11, temperature sensor, humidity sensor",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"thermometer-half\"}"
+    },
+    {
+      "code": "LIGHT_MOTION_SENSORS",
+      "name": "Reading Light/Motion Sensors",
+      "description": "Sử dụng cảm biến quang trở (LDR) để đo cường độ ánh sáng và cảm biến hồng ngoại thụ động (PIR) để phát hiện chuyển động.",
+      "topic_codes": "SENSOR_TYPES",
+      "keywords": "LDR, photoresistor, PIR sensor, motion detection",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"lightbulb\"}"
+    },
+    {
+      "code": "MOTOR_CONTROL",
+      "name": "DC Motor and Servo Control",
+      "description": "Phân biệt và điều khiển hai loại động cơ phổ biến: động cơ DC (điều khiển tốc độ) và động cơ Servo (điều khiển vị trí/góc).",
+      "topic_codes": "ACTUATOR_CONTROL",
+      "keywords": "DC motor, servo motor, actuator control",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"fan\"}"
+    },
+    {
+      "code": "ROUTERS_SWITCHES",
+      "name": "Routers and Switches",
+      "description": "Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+      "topic_codes": "NETWORK_INFRA",
+      "keywords": "router, switch, LAN, WAN, networking hardware",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"ethernet\"}"
+    },
+    {
+      "code": "PHYSICAL_MEDIA",
+      "name": "Physical Media & Wireless",
+      "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
+      "topic_codes": "NETWORK_INFRA",
+      "keywords": "Ethernet cable, fiber optic, Wi-Fi, Bluetooth",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"wifi\"}"
+    },
+    {
+      "code": "NETWORK_TOPOLOGIES",
+      "name": "Network Topologies",
+      "description": "Nhận biết các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
+      "topic_codes": "NETWORK_INFRA",
+      "keywords": "topology, star, bus, ring, mesh",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "ABSTRACTION_LAYERS",
+      "name": "Layers of Abstraction",
+      "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+      "topic_codes": "ABSTRACTION_DECOMP",
+      "keywords": "abstraction, layers, information hiding",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "PROBLEM_DECOMPOSITION",
+      "name": "Problem Decomposition",
+      "description": "Kỹ thuật chia một vấn đề lớn và phức tạp thành các vấn đề con nhỏ hơn, dễ quản lý hơn, là một phần cốt lõi của tư duy tính toán.",
+      "topic_codes": "ABSTRACTION_DECOMP",
+      "keywords": "decomposition, divide and conquer, problem solving",
+      "cs2023_ka_mapping": "SDF, AL",
+      "metadata": "{\"icon\": \"puzzle-piece\"}"
+    },
+    {
+      "code": "CREATIONAL_PATTERNS",
+      "name": "Creational Design Patterns",
+      "description": "Hiểu mục đích của các mẫu thiết kế khởi tạo, như Singleton (đảm bảo một lớp chỉ có một thể hiện) và Factory (tạo đối tượng mà không cần chỉ rõ lớp cụ thể).",
+      "topic_codes": "DESIGN_PATTERNS",
+      "keywords": "creational patterns, singleton, factory",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"plus-square\"}"
+    },
+    {
+      "code": "STRUCTURAL_PATTERNS",
+      "name": "Structural Design Patterns",
+      "description": "Hiểu mục đích của các mẫu thiết kế cấu trúc, như Adapter (cho phép các giao diện không tương thích làm việc với nhau) và Decorator (thêm chức năng cho đối tượng một cách linh hoạt).",
+      "topic_codes": "DESIGN_PATTERNS",
+      "keywords": "structural patterns, adapter, decorator",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "BEHAVIORAL_PATTERNS",
+      "name": "Behavioral Design Patterns",
+      "description": "Hiểu mục đích của các mẫu thiết kế hành vi, như Observer (định nghĩa sự phụ thuộc một-nhiều) và Strategy (cho phép chọn thuật toán lúc chạy).",
+      "topic_codes": "DESIGN_PATTERNS",
+      "keywords": "behavioral patterns, observer, strategy",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"directions\"}"
+    },
+    {
+      "code": "AGILE_PRINCIPLES",
+      "name": "Agile Principles",
+      "description": "Nắm vững các nguyên tắc cốt lõi của phát triển phần mềm linh hoạt, như ưu tiên sự hài lòng của khách hàng và thích ứng với thay đổi.",
+      "topic_codes": "DEVELOPMENT_PROCESS",
+      "keywords": "Agile, manifesto, iterative development",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"users-class\"}"
+    },
+    {
+      "code": "SCRUM_ROLES_EVENTS",
+      "name": "Scrum Roles and Events",
+      "description": "Nhận biết các vai trò (Product Owner, Scrum Master) và các sự kiện (Sprint, Daily Standup, Retrospective) trong khuôn khổ Scrum.",
+      "topic_codes": "DEVELOPMENT_PROCESS",
+      "keywords": "Scrum, sprint, standup, backlog, roles",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"users-cog\"}"
+    },
+    {
+      "code": "VERSION_CONTROL_WORKFLOW",
+      "name": "Version Control Workflow",
+      "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+      "topic_codes": "VERSION_CONTROL",
+      "keywords": "Git workflow, Git Flow, branching strategy",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"code-branch\"}"
+    },
+    {
+      "code": "FRONTEND_FRAMEWORKS",
+      "name": "Frontend Frameworks/Libraries",
+      "description": "Hiểu vai trò của các thư viện/framework như React, Vue, Angular trong việc xây dựng các giao diện người dùng tương tác và có cấu trúc.",
+      "topic_codes": "WEB_FRAMEWORKS",
+      "keywords": "frameworks, React, Angular, Vue, SPA",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"react\"}"
+    },
+    {
+      "code": "BACKEND_FRAMEWORKS",
+      "name": "Backend Frameworks",
+      "description": "Hiểu vai trò của các framework như Django (Python), Express (Node.js) trong việc tăng tốc xây dựng logic và API phía máy chủ.",
+      "topic_codes": "WEB_FRAMEWORKS",
+      "keywords": "frameworks, Django, Express, Spring, backend",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"server\"}"
+    },
+    {
+      "code": "RELATIONAL_VS_NONRELATIONAL",
+      "name": "Relational vs. NoSQL Databases",
+      "description": "So sánh sự khác biệt cơ bản giữa cơ sở dữ liệu quan hệ (SQL) và không quan hệ (NoSQL) về mô hình dữ liệu, tính nhất quán và khả năng mở rộng.",
+      "topic_codes": "DATABASE_FUNDAMENTALS",
+      "keywords": "SQL vs NoSQL, relational, non-relational",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"database\"}"
+    },
+    {
+      "code": "DATA_EXPLORATION_EDA",
+      "name": "Exploratory Data Analysis (EDA)",
+      "description": "Hiểu quy trình Phân tích Dữ liệu Khám phá để tóm tắt các đặc điểm chính của tập dữ liệu, thường bằng các phương pháp trực quan.",
+      "topic_codes": "DATA_COLLECTION",
+      "keywords": "EDA, data exploration, data analysis",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"search-plus\"}"
+    },
+    {
+      "code": "DATA_CLEANING_TECHNIQUES",
+      "name": "Data Cleaning Techniques",
+      "description": "Nắm vững các kỹ thuật cơ bản để xử lý dữ liệu bị thiếu (missing values), dữ liệu nhiễu (noise) và dữ liệu không nhất quán.",
+      "topic_codes": "DATA_COLLECTION",
+      "keywords": "data cleaning, preprocessing, missing data",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"broom\"}"
+    },
+    {
+      "code": "CHART_TYPES",
+      "name": "Choosing Appropriate Chart Types",
+      "description": "Nắm vững cách lựa chọn loại biểu đồ phù hợp (cột, đường, tròn, phân tán) để biểu diễn các loại dữ liệu và thông điệp khác nhau.",
+      "topic_codes": "DATA_VISUALIZATION",
+      "keywords": "charts, graphs, visualization, chart selection",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"chart-pie-alt\"}"
+    },
+    {
+      "code": "CLOUD_MODELS_IAAS_PAAS_SAAS",
+      "name": "Cloud Service Models",
+      "description": "Phân biệt ba mô hình dịch vụ điện toán đám mây chính: IaaS (Cơ sở hạ tầng), PaaS (Nền tảng), và SaaS (Phần mềm như một Dịch vụ).",
+      "topic_codes": "CLOUD_COMPUTING",
+      "keywords": "IaaS, PaaS, SaaS, cloud services",
+      "cs2023_ka_mapping": "PDC",
+      "metadata": "{\"icon\": \"cloud\"}"
+    },
+    {
+      "code": "CLOUD_DEPLOYMENT_MODELS",
+      "name": "Cloud Deployment Models",
+      "description": "Phân biệt các mô hình triển khai đám mây: Public, Private, và Hybrid Cloud.",
+      "topic_codes": "CLOUD_COMPUTING",
+      "keywords": "public cloud, private cloud, hybrid cloud",
+      "cs2023_ka_mapping": "PDC",
+      "metadata": "{\"icon\": \"cloud-upload-alt\"}"
+    },
+    {
+      "code": "VIRTUALIZATION",
+      "name": "Virtualization Concept",
+      "description": "Hiểu công nghệ ảo hóa, cho phép tạo ra các phiên bản ảo của tài nguyên máy tính như máy chủ, hệ điều hành, hoặc mạng.",
+      "topic_codes": "CLOUD_COMPUTING, OS_CONCEPTS",
+      "keywords": "virtualization, VM, hypervisor",
+      "cs2023_ka_mapping": "OS, PDC",
+      "metadata": "{\"icon\": \"desktop\"}"
+    },
+    {
+      "code": "MAPREDUCE_CONCEPT",
+      "name": "MapReduce Concept",
+      "description": "Hiểu mô hình lập trình MapReduce để xử lý song song các tập dữ liệu lớn, bao gồm hai bước chính là map và reduce.",
+      "topic_codes": "BIG_DATA_TECH",
+      "keywords": "MapReduce, big data, distributed processing",
+      "cs2023_ka_mapping": "PDC",
+      "metadata": "{\"icon\": \"stream\"}"
+    },
+    {
+      "code": "CAP_THEOREM",
+      "name": "CAP Theorem",
+      "description": "Nắm vững định lý CAP (Consistency, Availability, Partition tolerance) và sự đánh đổi của nó trong các hệ thống phân tán.",
+      "topic_codes": "PARALLEL_DIST_ALGO",
+      "keywords": "CAP theorem, distributed systems, consistency",
+      "cs2023_ka_mapping": "PDC",
+      "metadata": "{\"icon\": \"balance-scale-right\"}"
+    },
+    {
+      "code": "REGRESSION_CLASSIFICATION",
+      "name": "Regression vs. Classification",
+      "description": "Phân biệt hai loại bài toán chính trong học có giám sát: dự đoán giá trị liên tục (hồi quy) và dự đoán nhãn (phân loại).",
+      "topic_codes": "ML_MODELS",
+      "keywords": "regression, classification, supervised learning",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"file-invoice\"}"
+    },
+    {
+      "code": "CLUSTERING_ALGORITHMS",
+      "name": "Clustering Algorithms",
+      "description": "Hiểu khái niệm phân cụm và các thuật toán cơ bản như K-Means để nhóm các điểm dữ liệu tương tự lại với nhau.",
+      "topic_codes": "ML_MODELS",
+      "keywords": "clustering, K-Means, unsupervised learning",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"shapes\"}"
+    },
+    {
+      "code": "NEURAL_NETWORKS_BASICS",
+      "name": "Neural Networks Basics",
+      "description": "Nắm vững các thành phần cơ bản của mạng nơ-ron nhân tạo, bao gồm nơ-ron, lớp (layer), trọng số và hàm kích hoạt.",
+      "topic_codes": "ML_MODELS",
+      "keywords": "neural network, neuron, layer, activation function",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"brain-circuit\"}"
+    },
+    {
+      "code": "AI_HISTORY_MILESTONES",
+      "name": "History and Milestones of AI",
+      "description": "Nhận biết các cột mốc lịch sử quan trọng trong sự phát triển của AI, từ phép thử Turing đến sự bùng nổ của Deep Learning.",
+      "topic_codes": "AI_CONCEPTS",
+      "keywords": "AI history, Turing test, deep learning",
+      "cs2023_ka_mapping": "AI, SEP",
+      "metadata": "{\"icon\": \"monument\"}"
+    },
+    {
+      "code": "TYPES_OF_AI",
+      "name": "Types of AI: Narrow vs. General",
+      "description": "Phân biệt giữa AI hẹp (chuyên cho một nhiệm vụ cụ thể) và AI tổng quát (có khả năng trí tuệ như con người).",
+      "topic_codes": "AI_CONCEPTS",
+      "keywords": "narrow AI, general AI, AGI, strong AI",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"brain\"}"
+    },
+    {
+      "code": "REINFORCEMENT_LEARNING_BASICS",
+      "name": "Reinforcement Learning Basics",
+      "description": "Nắm vững các thành phần cốt lõi của học tăng cường: tác nhân (agent), môi trường (environment), hành động (action), trạng thái (state), và phần thưởng (reward).",
+      "topic_codes": "REINFORCEMENT_LEARNING",
+      "keywords": "reinforcement learning, agent, reward, RL",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"gamepad-alt\"}"
+    },
+    {
+      "code": "AI_BIAS",
+      "name": "Bias in AI",
+      "description": "Hiểu cách thiên vị trong dữ liệu huấn luyện hoặc trong thiết kế thuật toán có thể dẫn đến các quyết định không công bằng từ hệ thống AI.",
+      "topic_codes": "AI_ETHICS_BIAS",
+      "keywords": "AI bias, fairness, ethics, training data",
+      "cs2023_ka_mapping": "AI, SEP",
+      "metadata": "{\"icon\": \"balance-scale\"}"
+    },
+    {
+      "code": "ALGORITHMIC_BIAS_SOCIETY",
+      "name": "Algorithmic Bias in Society",
+      "description": "Phân tích cách các thuật toán có thể tạo ra hoặc khuếch đại các thành kiến xã hội, dẫn đến các quyết định không công bằng trong đời sống.",
+      "topic_codes": "SOCIETAL_IMPACT, AI_ETHICS_BIAS",
+      "keywords": "algorithmic bias, fairness, ethics, societal impact",
+      "cs2023_ka_mapping": "SEP, AI",
+      "metadata": "{\"icon\": \"balance-scale\"}"
+    },
+    {
+      "code": "IOT_PROTOCOLS_MQTT",
+      "name": "IoT Messaging Protocols (MQTT)",
+      "description": "Hiểu nguyên lý hoạt động của giao thức MQTT theo mô hình publish-subscribe, được thiết kế cho các thiết bị IoT.",
+      "topic_codes": "IOT_COMMUNICATION",
+      "keywords": "MQTT, publish-subscribe, IoT protocols",
+      "cs2023_ka_mapping": "NC, SPD",
+      "metadata": "{\"icon\": \"envelope-open-text\"}"
+    },
+    {
+      "code": "IOT_SECURITY_THREATS",
+      "name": "Common IoT Security Threats",
+      "description": "Nhận biết các mối đe dọa bảo mật đặc thù cho thiết bị IoT, như tấn công vào firmware, mật khẩu mặc định yếu, và các giao thức không an toàn.",
+      "topic_codes": "IOT_SECURITY_SAFETY",
+      "keywords": "IoT security, firmware, botnet",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"shield-virus\"}"
+    },
+    {
+      "code": "IOT_SAFETY_RISKS",
+      "name": "IoT Safety Risks",
+      "description": "Phân tích các rủi ro về an toàn vật lý do hệ thống IoT gây ra, ví dụ như lỗi trong xe tự lái, thiết bị y tế, hoặc nhà thông minh.",
+      "topic_codes": "IOT_SECURITY_SAFETY",
+      "keywords": "IoT safety, physical risk, critical systems",
+      "cs2023_ka_mapping": "SEP, SEC",
+      "metadata": "{\"icon\": \"car-crash\"}"
+    },
+    {
+      "code": "RENDERING_PIPELINE",
+      "name": "Graphics Rendering Pipeline",
+      "description": "Hiểu các giai đoạn chính trong quy trình kết xuất đồ họa, từ mô hình 3D đến các pixel cuối cùng trên màn hình.",
+      "topic_codes": "RENDERING_CONCEPTS",
+      "keywords": "rendering pipeline, vertex shader, fragment shader",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"stream\"}"
+    },
+    {
+      "code": "SIMULATION_MODELING",
+      "name": "Simulation Modeling",
+      "description": "Hiểu các kỹ thuật xây dựng mô hình toán học và tính toán để mô phỏng một hệ thống hoặc hiện tượng trong thế giới thực.",
+      "topic_codes": "SIMULATION_MODELING",
+      "keywords": "simulation, modeling, physics engine",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "2D_3D_TRANSFORMATIONS_MATH",
+      "name": "2D/3D Geometric Transformations",
+      "description": "Hiểu cách sử dụng các phép toán ma trận cơ bản cho việc tịnh tiến (translation), quay (rotation), và co giãn (scaling) các đối tượng.",
+      "topic_codes": "GEOMETRIC_TRANSFORMATIONS",
+      "keywords": "transformations, matrix, translation, rotation, scaling",
+      "cs2023_ka_mapping": "GIT, MSF",
+      "metadata": "{\"icon\": \"ruler-combined\"}"
+    },
+    {
+      "code": "USER_CENTERED_DESIGN",
+      "name": "User-Centered Design Process",
+      "description": "Hiểu quy trình thiết kế lấy người dùng làm trung tâm, nhấn mạnh việc thấu hiểu và đáp ứng nhu cầu của người dùng ở mọi giai đoạn.",
+      "topic_codes": "UI_UX_PROCESS",
+      "keywords": "UCD, user-centered, design thinking",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"user-check\"}"
+    },
+    {
+      "code": "PERSONAS_AND_SCENARIOS",
+      "name": "Personas and Scenarios",
+      "description": "Nắm vững kỹ thuật tạo ra các hồ sơ người dùng hư cấu (personas) và các kịch bản sử dụng (scenarios) để định hướng thiết kế.",
+      "topic_codes": "USER_RESEARCH",
+      "keywords": "persona, scenario, user story",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"user-tie\"}"
+    },
+    {
+      "code": "AFFORDANCES_SIGNIFIERS",
+      "name": "Affordances and Signifiers",
+      "description": "Phân biệt khái niệm \"khả năng\" (affordances - những gì một đối tượng có thể làm) và \"dấu hiệu\" (signifiers - gợi ý trực quan về cách sử dụng).",
+      "topic_codes": "HCI_PRINCIPLES",
+      "keywords": "affordance, signifier, discoverability",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"lightbulb-on\"}"
+    },
+    {
+      "code": "FEEDBACK_AND_RESPONSE",
+      "name": "Feedback and System Response",
+      "description": "Hiểu tầm quan trọng của việc cung cấp phản hồi ngay lập tức và rõ ràng cho các hành động của người dùng để tạo ra trải nghiệm tốt.",
+      "topic_codes": "HCI_PRINCIPLES",
+      "keywords": "feedback, response time, user interface",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"comment-alt-dots\"}"
+    },
+    {
+      "code": "DIGITAL_IDENTITY",
+      "name": "Digital Identity Management",
+      "description": "Hiểu khái niệm về danh tính số và cách quản lý hình ảnh cá nhân và chuyên nghiệp trên các nền tảng trực tuyến.",
+      "topic_codes": "DIGITAL_INTERACTION, DATA_PRIVACY_USER",
+      "keywords": "digital identity, online profile, reputation",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"id-card\"}"
+    },
+    {
+      "code": "INFORMATION_CREDIBILITY",
+      "name": "Assessing Information Credibility",
+      "description": "Phát triển kỹ năng đánh giá độ tin cậy của thông tin trực tuyến, bao gồm kiểm tra nguồn, tác giả, và phát hiện thông tin sai lệch.",
+      "topic_codes": "DIGITAL_LITERACY",
+      "keywords": "credibility, fact-checking, misinformation",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"check-double\"}"
+    },
+    {
+      "code": "DIGITAL_FOOTPRINT",
+      "name": "Digital Footprint",
+      "description": "Hiểu rằng mọi hoạt động trực tuyến đều để lại một \"dấu chân số\" có thể tồn tại lâu dài và ảnh hưởng đến quyền riêng tư và danh tiếng.",
+      "topic_codes": "DATA_PRIVACY_USER",
+      "keywords": "digital footprint, privacy, online presence",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"shoe-prints\"}"
+    },
+    {
+      "code": "CYBERBULLYING",
+      "name": "Cyberbullying and Response",
+      "description": "Nhận biết các hình thức bắt nạt trên mạng và các chiến lược để ứng phó một cách an toàn và hiệu quả.",
+      "topic_codes": "DIGITAL_WELLBEING",
+      "keywords": "cyberbullying, online safety, harassment",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"user-ninja\"}"
+    },
+    {
+      "code": "COPYRIGHT_CREATIVE_COMMONS",
+      "name": "Copyright & Creative Commons",
+      "description": "Phân biệt giữa bản quyền tiêu chuẩn (\"all rights reserved\") và các giấy phép mở như Creative Commons (\"some rights reserved\").",
+      "topic_codes": "IP_COPYRIGHT",
+      "keywords": "copyright, Creative Commons, licenses, intellectual property",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"copyright\"}"
+    },
+    {
+      "code": "DIGITAL_DIVIDE",
+      "name": "The Digital Divide",
+      "description": "Hiểu về khoảng cách trong việc tiếp cận, sử dụng và hưởng lợi từ công nghệ giữa các nhóm dân cư khác nhau.",
+      "topic_codes": "SOCIETAL_IMPACT",
+      "keywords": "digital divide, equity, access, inclusion",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"users-slash\"}"
+    },
+    {
+      "code": "LAYER_BLEND_MODES",
+      "name": "Layer Blending Modes",
+      "description": "Hiểu cách các chế độ hòa trộn (Multiply, Screen, Overlay) xác định cách các lớp pixel tương tác với nhau để tạo ra hiệu ứng hình ảnh.",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS",
+      "keywords": "blending modes, layers, Photoshop",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "ADJUSTMENT_LAYERS",
+      "name": "Non-Destructive Adjustment Layers",
+      "description": "Nắm vững kỹ thuật sử dụng các lớp hiệu chỉnh riêng biệt để thay đổi màu sắc/tông độ mà không phá hủy dữ liệu điểm ảnh gốc.",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS",
+      "keywords": "adjustment layers, non-destructive, Photoshop",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"sliders-h\"}"
+    },
+    {
+      "code": "LAYER_MASKING",
+      "name": "Layer Masking",
+      "description": "Kỹ thuật sử dụng mặt nạ (mask) thang độ xám để che hoặc hiện các phần của một lớp một cách linh hoạt và phi phá hủy.",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS",
+      "keywords": "layer mask, masking, Photoshop",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"fill-drip\"}"
+    },
+    {
+      "code": "IMAGE_WARPING",
+      "name": "Mesh and Liquify Warping",
+      "description": "Hiểu các kỹ thuật làm biến dạng hình ảnh một cách tự do bằng cách sử dụng lưới (mesh warp) hoặc các công cụ mô phỏng chất lỏng (liquify).",
+      "topic_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "keywords": "warping, liquify, mesh warp, image manipulation",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"border-style-alt\"}"
+    },
+    {
+      "code": "IMAGE_RETOUCHING",
+      "name": "Image Retouching Techniques",
+      "description": "Nắm vững các kỹ thuật làm sạch và phục chế ảnh như xóa khuyết điểm (spot healing), nhân bản (clone stamp) và vá thông minh (content-aware fill).",
+      "topic_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "keywords": "retouching, healing brush, clone stamp",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"magic\"}"
+    },
+    {
+      "code": "IMAGE_COMPOSITING",
+      "name": "Image Compositing",
+      "description": "Kỹ thuật kết hợp nhiều hình ảnh khác nhau để tạo thành một tác phẩm duy nhất, liền mạch, thường sử dụng layer mask và blending modes.",
+      "topic_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "keywords": "compositing, photomontage, image combination",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"images\"}"
+    },
+    {
+      "code": "QR_CODE_GENERATION",
+      "name": "QR Code Generation",
+      "description": "Hiểu khái niệm và ứng dụng của việc tạo mã QR (Quick Response) trong thiết kế đồ họa vector.",
+      "topic_codes": "VECTOR_GRAPHICS_CONCEPTS",
+      "keywords": "QR code, vector, barcode",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"qrcode\"}"
+    },
+    {
+      "code": "STROKE_PROPERTIES",
+      "name": "Advanced Stroke Properties",
+      "description": "Tìm hiểu các thuộc tính nâng cao của đường viền vector như thay đổi độ dày, kiểu nét đứt, và áp dụng họa tiết.",
+      "topic_codes": "VECTOR_GRAPHICS_CONCEPTS",
+      "keywords": "stroke, path, vector, Illustrator",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"pen-fancy\"}"
+    },
+    {
+      "code": "SHAPE_BUILDING",
+      "name": "Shape Building",
+      "description": "Kỹ thuật sử dụng các phép toán Boolean (hợp, trừ, giao) một cách trực quan để xây dựng các hình khối vector phức tạp từ các hình đơn giản.",
+      "topic_codes": "VECTOR_GRAPHICS_CONCEPTS, SOLID_MODELING",
+      "keywords": "shape builder, pathfinder, boolean operations",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"shapes\"}"
+    },
+    {
+      "code": "OBJECT_PROPERTIES",
+      "name": "Object Properties/Attributes",
+      "description": "Hiểu rằng các đối tượng trong một môi trường lập trình có các thuộc tính (properties) có thể truy cập và thay đổi được (ví dụ: object.x, object.color).",
+      "topic_codes": "OBJECT_INSTANTIATION, UI_UX_PRINCIPLES",
+      "keywords": "properties, attributes, state, object",
+      "cs2023_ka_mapping": "SDF, HCI",
+      "metadata": "{\"icon\": \"list\"}"
+    },
+    {
+      "code": "EVENT_BASED_PROGRAMMING",
+      "name": "Event-Based Programming Model",
+      "description": "Hiểu mô hình lập trình trong đó luồng của chương trình được quyết định bởi các sự kiện (như hành động của người dùng) thay vì một chuỗi lệnh tuần tự.",
+      "topic_codes": "EVENT_HANDLERS",
+      "keywords": "event-driven, event loop, asynchronous",
+      "cs2023_ka_mapping": "FPL, HCI",
+      "metadata": "{\"icon\": \"hand-point-up\"}"
+    },
+    {
+      "code": "LIGHTING_AND_SHADOWS",
+      "name": "Lighting and Shadows",
+      "description": "Hiểu vai trò của các loại nguồn sáng (hướng, điểm, khu vực) và cách chúng tương tác với các vật thể để tạo ra bóng đổ trong một cảnh 3D.",
+      "topic_codes": "RENDERING_CONCEPTS",
+      "keywords": "lighting, shadows, 3D rendering, light source",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"lightbulb-on\"}"
+    },
+    {
+      "code": "MATERIAL_AND_TEXTURE",
+      "name": "Material and Texture Mapping",
+      "description": "Phân biệt giữa vật liệu (xác định thuộc tính bề mặt như độ bóng, màu sắc) và kết cấu (áp một hình ảnh 2D lên bề mặt 3D).",
+      "topic_codes": "RENDERING_CONCEPTS",
+      "keywords": "material, texture, UV mapping, shading",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"bowling-ball\"}"
+    },
+    {
+      "code": "KEYFRAME_ANIMATION",
+      "name": "Keyframe Animation",
+      "description": "Nắm vững nguyên tắc tạo hoạt hình bằng cách định nghĩa các trạng thái chính (keyframe) tại các điểm thời gian khác nhau và để phần mềm nội suy chuyển động ở giữa.",
+      "topic_codes": "3D_ANIMATION_PRINCIPLES",
+      "keywords": "keyframe, animation, timeline, interpolation",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"film\"}"
+    },
+    {
+      "code": "BOOLEAN_OPERATIONS_3D",
+      "name": "3D Boolean Operations",
+      "description": "Sử dụng các phép toán Boolean (Union, Subtract, Intersect) trên các khối hình học rắn để tạo ra các hình dạng 3D phức tạp.",
+      "topic_codes": "SOLID_MODELING",
+      "keywords": "boolean operations, CSG, 3D modeling",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"shapes\"}"
+    },
+    {
+      "code": "MESH_EXTRUSION",
+      "name": "Mesh Extrusion",
+      "description": "Hiểu kỹ thuật kéo dài (extrude) một mặt, cạnh hoặc đỉnh của một mắt lưới để tạo ra hình khối mới.",
+      "topic_codes": "POLYGONAL_MODELING",
+      "keywords": "extrude, polygonal modeling, 3D modeling",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"caret-square-up\"}"
+    },
+    {
+      "code": "POLYGON_MESH",
+      "name": "Polygonal Mesh (Vertex, Edge, Face)",
+      "description": "Nắm vững cấu trúc của một mắt lưới đa giác, bao gồm ba thành phần cơ bản là đỉnh (vertex), cạnh (edge), và mặt (face).",
+      "topic_codes": "POLYGONAL_MODELING",
+      "keywords": "mesh, vertex, edge, face, 3D model",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"draw-polygon\"}"
+    },
+    {
+      "code": "TRANSFORMATION_OPERATIONS",
+      "name": "2D Transformation Operations",
+      "description": "Thực hiện các phép biến đổi hình học 2D cơ bản trên các đối tượng đồ họa: di chuyển (translate), xoay (rotate), và thay đổi kích thước (scale).",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS, VECTOR_GRAPHICS_CONCEPTS",
+      "keywords": "transform, translate, rotate, scale",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"expand-arrows-alt\"}"
+    },
+    {
+      "code": "COLOR_THEORY",
+      "name": "Color Theory",
+      "description": "Hiểu các mô hình màu cơ bản (RGB, CMYK, HSV) và các nguyên tắc phối màu (tương phản, tương đồng) trong thiết kế.",
+      "topic_codes": "GRAPHIC_DESIGN_PRINCIPLES",
+      "keywords": "color theory, RGB, CMYK, color wheel",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"palette\"}"
+    },
+    {
+      "code": "COMPOSITION_PRINCIPLES",
+      "name": "Composition Principles",
+      "description": "Áp dụng các nguyên tắc bố cục trong thiết kế như Quy tắc 1/3, đường dẫn thị giác, và sự cân bằng để tạo ra một thiết kế hài hòa.",
+      "topic_codes": "GRAPHIC_DESIGN_PRINCIPLES",
+      "keywords": "composition, layout, rule of thirds, balance",
+      "cs2023_ka_mapping": "GIT, HCI",
+      "metadata": "{\"icon\": \"th-large\"}"
+    },
+    {
+      "code": "BASIC_MECHANISMS",
+      "name": "Basic Mechanisms",
+      "description": "Nhận biết và hiểu nguyên lý hoạt động của các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy và ròng rọc.",
+      "topic_codes": "MECHANICAL_SYSTEMS",
+      "keywords": "gears, levers, pulleys, mechanical advantage",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "BASIC_ELECTRONIC_COMPONENTS",
+      "name": "Basic Electronic Components",
+      "description": "Nhận biết các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) và chức năng cơ bản của chúng.",
+      "topic_codes": "ELECTRONIC_CIRCUITS",
+      "keywords": "resistor, capacitor, diode, transistor",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"bolt\"}"
+    },
+    {
+      "code": "CIRCUIT_PRINCIPLES",
+      "name": "Basic Circuit Principles",
+      "description": "Áp dụng các nguyên tắc cơ bản về mạch điện, như định luật Ohm và cách các linh kiện hoạt động khi mắc nối tiếp và song song.",
+      "topic_codes": "ELECTRONIC_CIRCUITS",
+      "keywords": "Ohm's law, series circuit, parallel circuit",
+      "cs2023_ka_mapping": "AR",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "OSI_MODEL",
+      "name": "The OSI Model",
+      "description": "Mô tả 7 tầng của mô hình tham chiếu OSI và chức năng chính của mỗi tầng trong quá trình giao tiếp mạng.",
+      "topic_codes": "NET_LAYERS",
+      "keywords": "OSI model, 7 layers, networking model",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"layer-group\"}"
+    },
+    {
+      "code": "TCP_IP_MODEL",
+      "name": "The TCP/IP Model",
+      "description": "Mô tả 4 tầng của mô hình TCP/IP (mô hình thực tế của Internet) và sự tương ứng với mô hình OSI.",
+      "topic_codes": "NET_LAYERS",
+      "keywords": "TCP/IP model, Internet protocol suite",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"network-wired\"}"
+    },
+    {
+      "code": "IPV4_VS_IPV6",
+      "name": "IPv4 vs. IPv6",
+      "description": "So sánh cấu trúc, không gian địa chỉ và sự cần thiết của IPv6 so với IPv4.",
+      "topic_codes": "IP_ROUTING",
+      "keywords": "IPv4, IPv6, IP address, addressing",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"map-signs\"}"
+    },
+    {
+      "code": "SUBNETTING",
+      "name": "Subnetting",
+      "description": "Nắm vững kỹ thuật chia một mạng IP lớn thành các mạng con (subnets) nhỏ hơn để quản lý hiệu quả và tối ưu hóa địa chỉ.",
+      "topic_codes": "IP_ROUTING",
+      "keywords": "subnet, subnet mask, CIDR, networking",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "GREEDY_ALGORITHMS",
+      "name": "Greedy Algorithms",
+      "description": "Hiểu chiến lược thiết kế thuật toán Tham lam: đưa ra lựa chọn có vẻ tốt nhất ở mỗi bước với hy vọng dẫn đến giải pháp tối ưu toàn cục.",
+      "topic_codes": "ALGO_STRATEGIES",
+      "keywords": "greedy, optimization, algorithmic strategy",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"hand-holding-usd\"}"
+    },
+    {
+      "code": "DIVIDE_CONQUER",
+      "name": "Divide and Conquer",
+      "description": "Hiểu chiến lược Chia để trị: chia bài toán lớn thành các bài toán con độc lập, giải quyết chúng, rồi kết hợp kết quả lại.",
+      "topic_codes": "ALGO_STRATEGIES",
+      "keywords": "divide and conquer, recursion, merge sort",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"columns\"}"
+    },
+    {
+      "code": "DYNAMIC_PROGRAMMING",
+      "name": "Dynamic Programming",
+      "description": "Hiểu kỹ thuật Quy hoạch động: giải quyết các bài toán con chồng chéo bằng cách lưu lại kết quả để tránh tính toán lại.",
+      "topic_codes": "ALGO_STRATEGIES",
+      "keywords": "dynamic programming, DP, memoization, tabulation",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"table\"}"
+    },
+    {
+      "code": "BIG_O_NOTATION",
+      "name": "Big O Notation",
+      "description": "Sử dụng ký hiệu Big O để mô tả độ phức tạp tiệm cận (asymptotic complexity) của thuật toán, đo lường hiệu năng khi kích thước đầu vào tăng lên.",
+      "topic_codes": "ALGO_ANALYSIS",
+      "keywords": "Big O, complexity, time complexity, space complexity",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"tachometer-alt\"}"
+    },
+    {
+      "code": "LINEAR_BINARY_SEARCH",
+      "name": "Linear vs. Binary Search",
+      "description": "So sánh độ phức tạp (O(n) vs O(log n)) và điều kiện áp dụng (mảng bất kỳ vs mảng đã sắp xếp) của hai thuật toán tìm kiếm cơ bản.",
+      "topic_codes": "SEARCH_SORT_ALGO",
+      "keywords": "linear search, binary search, search algorithm",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"search\"}"
+    },
+    {
+      "code": "BUBBLE_INSERTION_SORT",
+      "name": "Bubble Sort & Insertion Sort",
+      "description": "Hiểu và triển khai các thuật toán sắp xếp đơn giản như Sắp xếp nổi bọt (Bubble Sort) và Sắp xếp chèn (Insertion Sort), với độ phức tạp O(n^2).",
+      "topic_codes": "SEARCH_SORT_ALGO",
+      "keywords": "bubble sort, insertion sort, sorting algorithms",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"sort-amount-down\"}"
+    },
+    {
+      "code": "TRUTH_TABLES",
+      "name": "Truth Tables",
+      "description": "Kỹ thuật lập bảng chân lý để xác định giá trị logic của một mệnh đề phức hợp dựa trên tất cả các khả năng của các mệnh đề thành phần.",
+      "topic_codes": "LOGIC_PROPOSITIONS",
+      "keywords": "truth table, propositional logic, boolean",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"table-list\"}"
+    },
+    {
+      "code": "LOGIC_GATES",
+      "name": "Logic Gates (AND, OR, NOT)",
+      "description": "Nắm vững hoạt động của các cổng logic cơ bản (AND, OR, NOT) và cách chúng thực hiện các phép toán Boolean trên các tín hiệu nhị phân.",
+      "topic_codes": "BOOLEAN_ALGEBRA",
+      "keywords": "logic gates, AND, OR, NOT, digital logic",
+      "cs2023_ka_mapping": "AR, MSF",
+      "metadata": "{\"icon\": \"gate-open\"}"
+    },
+    {
+      "code": "PRIMITIVE_TYPE_DECLARATION",
+      "name": "Declaring Primitive Types",
+      "description": "Nắm vững cú pháp khai báo biến với các kiểu dữ liệu nguyên thủy (int, bool, float) trong một ngôn ngữ lập trình cụ thể.",
+      "topic_codes": "VARIABLES_DATA_TYPES, PRIMITIVE_TYPES",
+      "keywords": "declaration, primitive types, int, boolean",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"tag\"}"
+    },
+    {
+      "code": "REFERENCE_TYPE_DECLARATION",
+      "name": "Declaring Reference Types",
+      "description": "Nắm vững cú pháp khai báo biến với các kiểu dữ liệu tham chiếu (String, Array, Object) và hiểu cách chúng được lưu trữ trong bộ nhớ.",
+      "topic_codes": "VARIABLES_DATA_TYPES, REFERENCE_TYPES",
+      "keywords": "declaration, reference types, string, object",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "IF_ELSE_STATEMENT",
+      "name": "If-Else Statement",
+      "description": "Nắm vững cú pháp và logic của câu lệnh if-else để thực hiện một trong hai khối mã dựa trên một điều kiện logic.",
+      "topic_codes": "CONDITIONAL_LOGIC",
+      "keywords": "if-else, conditional statement, selection",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"code-branch\"}"
+    },
+    {
+      "code": "SWITCH_CASE",
+      "name": "Switch-Case Statement",
+      "description": "Sử dụng câu lệnh switch để lựa chọn thực thi một trong nhiều khối mã dựa trên giá trị của một biến hoặc biểu thức.",
+      "topic_codes": "CONDITIONAL_LOGIC",
+      "keywords": "switch-case, selection, multi-way branching",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"list-ul\"}"
+    },
+    {
+      "code": "FOR_LOOP",
+      "name": "For Loop",
+      "description": "Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+      "topic_codes": "ITERATION_LOOPS",
+      "keywords": "for loop, iteration, looping, repetition",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"redo\"}"
+    },
+    {
+      "code": "WHILE_LOOP",
+      "name": "While Loop",
+      "description": "Nắm vững cú pháp và cách sử dụng vòng lặp while để lặp lại một khối mã khi một điều kiện cho trước vẫn còn đúng.",
+      "topic_codes": "ITERATION_LOOPS",
+      "keywords": "while loop, iteration, looping, condition",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"sync\"}"
+    },
+    {
+      "code": "ARRAY_OPERATIONS",
+      "name": "Array Operations",
+      "description": "Thực hiện các thao tác cơ bản trên mảng: truy cập phần tử qua chỉ số (index), lấy độ dài, và duyệt qua các phần tử.",
+      "topic_codes": "ARRAYS",
+      "keywords": "array, index, access, iteration",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"th\"}"
+    },
+    {
+      "code": "LIST_OPERATIONS",
+      "name": "List Operations",
+      "description": "Thực hiện các thao tác trên danh sách động: thêm, xóa, tìm kiếm phần tử và lấy kích thước.",
+      "topic_codes": "LISTS_COLLECTIONS",
+      "keywords": "list, add, remove, search, dynamic array",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"list-ol\"}"
+    },
+    {
+      "code": "UNIT_TESTING",
+      "name": "Unit Testing",
+      "description": "Hiểu và viết các bài kiểm thử đơn vị để xác minh tính đúng đắn của từng hàm hoặc phương thức một cách độc lập.",
+      "topic_codes": "UNIT_INTEGRATION_TESTING",
+      "keywords": "unit test, TDD, test case, assertion",
+      "cs2023_ka_mapping": "SE",
+      "metadata": "{\"icon\": \"vial\"}"
+    },
+    {
+      "code": "BREAKPOINTS",
+      "name": "Using Breakpoints",
+      "description": "Nắm vững cách sử dụng các điểm dừng (breakpoints) trong một IDE để tạm dừng chương trình và kiểm tra trạng thái của các biến.",
+      "topic_codes": "DEBUGGING_TECH",
+      "keywords": "breakpoint, debugger, debugging, IDE",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"bug\"}"
+    },
+    {
+      "code": "HTML_STRUCTURE",
+      "name": "HTML Document Structure",
+      "description": "Nắm vững cấu trúc cơ bản của một tài liệu HTML với các thẻ <html>, <head>, và <body>.",
+      "topic_codes": "HTML_CSS",
+      "keywords": "HTML, document structure, head, body",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"file-alt\"}"
+    },
+    {
+      "code": "CSS_SELECTORS",
+      "name": "CSS Selectors",
+      "description": "Sử dụng các bộ chọn CSS (theo thẻ, lớp, ID) để nhắm mục tiêu và áp dụng kiểu cho các phần tử HTML cụ thể.",
+      "topic_codes": "HTML_CSS",
+      "keywords": "CSS, selectors, class, ID, styling",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"mouse-pointer\"}"
+    },
+    {
+      "code": "DOM_MANIPULATION",
+      "name": "DOM Manipulation",
+      "description": "Sử dụng JavaScript để truy cập và thay đổi động nội dung, cấu trúc và kiểu dáng của một trang web đang chạy thông qua DOM API.",
+      "topic_codes": "JAVASCRIPT_DOM",
+      "keywords": "DOM, JavaScript, getElementById, innerHTML",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"hand-sparkles\"}"
+    },
+    {
+      "code": "SQL_SELECT",
+      "name": "SQL SELECT Statement",
+      "description": "Nắm vững cú pháp của câu lệnh SELECT để truy vấn và lấy dữ liệu từ một hoặc nhiều cột trong một bảng.",
+      "topic_codes": "SQL_QUERIES",
+      "keywords": "SQL, SELECT, FROM, WHERE",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"search\"}"
+    },
+    {
+      "code": "SQL_JOIN",
+      "name": "SQL JOINs",
+      "description": "Sử dụng các loại JOIN (INNER, LEFT, RIGHT) để kết hợp các hàng từ hai hoặc nhiều bảng dựa trên một cột liên quan.",
+      "topic_codes": "SQL_QUERIES",
+      "keywords": "SQL, JOIN, INNER JOIN, LEFT JOIN",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "STACK_OPERATIONS",
+      "name": "Stack Operations (Push/Pop)",
+      "description": "Hiểu và triển khai hai thao tác cơ bản của cấu trúc dữ liệu Ngăn xếp (LIFO): push (đẩy vào) và pop (lấy ra).",
+      "topic_codes": "STACKS_QUEUES",
+      "keywords": "stack, push, pop, LIFO",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"layer-plus\"}"
+    },
+    {
+      "code": "QUEUE_OPERATIONS",
+      "name": "Queue Operations (Enqueue/Dequeue)",
+      "description": "Hiểu và triển khai hai thao tác cơ bản của cấu trúc dữ liệu Hàng đợi (FIFO): enqueue (thêm vào cuối) và dequeue (lấy ra từ đầu).",
+      "topic_codes": "STACKS_QUEUES",
+      "keywords": "queue, enqueue, dequeue, FIFO",
+      "cs2023_ka_mapping": "AL",
+      "metadata": "{\"icon\": \"arrow-from-right\"}"
+    },
+    {
+      "code": "AI_VS_ML",
+      "name": "AI vs. ML vs. Deep Learning",
+      "description": "Phân biệt rõ ràng mối quan hệ và sự khác biệt giữa các thuật ngữ: Trí tuệ Nhân tạo, Học máy, và Học sâu.",
+      "topic_codes": "AI_CONCEPTS",
+      "keywords": "AI, ML, Deep Learning, definitions",
+      "cs2023_ka_mapping": "AI",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "USER_PERSONAS",
+      "name": "Creating User Personas",
+      "description": "Kỹ thuật tạo ra các hồ sơ người dùng hư cấu nhưng dựa trên nghiên cứu, để định hướng và tạo sự đồng cảm trong quá trình thiết kế.",
+      "topic_codes": "USER_RESEARCH",
+      "keywords": "persona, user research, empathy map",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"user-tie\"}"
+    },
+    {
+      "code": "USABILITY_TESTING",
+      "name": "Usability Testing",
+      "description": "Nắm vững quy trình cơ bản của việc kiểm thử tính khả dụng: quan sát người dùng thực sự sử dụng một sản phẩm để xác định các vấn đề.",
+      "topic_codes": "UI_UX_PROCESS",
+      "keywords": "usability testing, user testing, feedback",
+      "cs2023_ka_mapping": "HCI, SE",
+      "metadata": "{\"icon\": \"clipboard-check\"}"
+    },
+    {
+      "code": "PASSWORD_STRENGTH",
+      "name": "Strong Passwords",
+      "description": "Nắm vững các tiêu chí để tạo một mật khẩu mạnh và an toàn, khó bị đoán hoặc bẻ khóa.",
+      "topic_codes": "PASSWORD_STRENGTH",
+      "keywords": "password, security, authentication",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"key\"}"
+    },
+    {
+      "code": "PHISHING_IDENTIFICATION",
+      "name": "Identifying Phishing Attempts",
+      "description": "Nhận biết các dấu hiệu cảnh báo của một email hoặc tin nhắn lừa đảo, như lỗi chính tả, URL lạ, và yêu cầu khẩn cấp.",
+      "topic_codes": "PHISHING_SCAMS",
+      "keywords": "phishing, scam, social engineering, email security",
+      "cs2023_ka_mapping": "SEC, SEP",
+      "metadata": "{\"icon\": \"fish\"}"
+    },
+    {
+      "code": "LOGIC_ERRORS",
+      "name": "Logical Errors",
+      "description": "Nhận biết các lỗi trong logic của chương trình khiến nó chạy không đúng kết quả mong đợi, mặc dù không gây ra lỗi cú pháp hay lỗi runtime.",
+      "topic_codes": "DEBUGGING_TECH, TESTING_DEBUGGING",
+      "keywords": "logical error, bug, incorrect output",
+      "cs2023_ka_mapping": "SDF, SE",
+      "metadata": "{\"icon\": \"brain\"}"
+    },
+    {
+      "code": "SYNTAX_ERRORS",
+      "name": "Syntax Errors",
+      "description": "Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.",
+      "topic_codes": "DEBUGGING_TECH, TESTING_DEBUGGING",
+      "keywords": "syntax error, compiler error, parsing error",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"file-exclamation\"}"
+    },
+    {
+      "code": "RUNTIME_ERRORS",
+      "name": "Runtime Errors",
+      "description": "Nhận biết các lỗi xảy ra trong quá trình chương trình đang chạy, ví dụ như chia cho zero hoặc truy cập vào một phần tử không tồn tại của mảng.",
+      "topic_codes": "DEBUGGING_TECH, TESTING_DEBUGGING",
+      "keywords": "runtime error, exception, crash",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"running\"}"
+    },
+    {
+      "code": "API_INTEGRATION",
+      "name": "API Integration",
+      "description": "Hiểu kỹ thuật gọi các API từ bên ngoài để lấy dữ liệu hoặc sử dụng chức năng của một dịch vụ khác trong ứng dụng của mình.",
+      "topic_codes": "API_DESIGN, WEB_DEV",
+      "keywords": "API, integration, REST, fetch",
+      "cs2023_ka_mapping": "SE, SPD",
+      "metadata": "{\"icon\": \"plug\"}"
+    },
+    {
+      "code": "REST_PRINCIPLES",
+      "name": "REST Architectural Principles",
+      "description": "Nắm vững các nguyên tắc của kiến trúc REST (Representational State Transfer) trong thiết kế API, như stateless và client-server.",
+      "topic_codes": "API_DESIGN",
+      "keywords": "REST, stateless, API design, architectural style",
+      "cs2023_ka_mapping": "SE, SPD",
+      "metadata": "{\"icon\": \"network-wired\"}"
+    },
+    {
+      "code": "DATABASE_NORMALIZATION",
+      "name": "Database Normalization",
+      "description": "Hiểu quá trình tổ chức các cột và bảng trong cơ sở dữ liệu quan hệ để giảm thiểu sự dư thừa dữ liệu và cải thiện tính toàn vẹn.",
+      "topic_codes": "DATABASE_FUNDAMENTALS",
+      "keywords": "normalization, 1NF, 2NF, 3NF, database design",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"columns\"}"
+    },
+    {
+      "code": "STATISTICAL_MEASURES",
+      "name": "Basic Statistical Measures",
+      "description": "Nắm vững cách tính và ý nghĩa của các thước đo thống kê cơ bản như trung bình (mean), trung vị (median), và độ lệch chuẩn (standard deviation).",
+      "topic_codes": "STATISTICS_PROBABILITY",
+      "keywords": "mean, median, standard deviation, statistics",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"chart-bar\"}"
+    },
+    {
+      "code": "PROBABILITY_BASICS",
+      "name": "Basic Probability",
+      "description": "Nắm vững các khái niệm xác suất cơ bản, bao gồm không gian mẫu, biến cố, và các quy tắc tính xác suất (cộng, nhân).",
+      "topic_codes": "STATISTICS_PROBABILITY",
+      "keywords": "probability, sample space, event",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"dice-d6\"}"
+    },
+    {
+      "code": "DATA_DISTRIBUTIONS",
+      "name": "Basic Data Distributions",
+      "description": "Nhận biết các phân phối dữ liệu phổ biến như phân phối chuẩn (Normal/Gaussian) và phân phối đều (Uniform).",
+      "topic_codes": "PROBABILITY_DISTRIBUTIONS",
+      "keywords": "distribution, normal distribution, uniform distribution",
+      "cs2023_ka_mapping": "MSF",
+      "metadata": "{\"icon\": \"bell\"}"
+    },
+    {
+      "code": "CLASS_DEFINITION",
+      "name": "Class Definition",
+      "description": "Nắm vững cú pháp để định nghĩa một lớp (class) với các thuộc tính (fields/attributes) và phương thức (methods).",
+      "topic_codes": "CLASSES_OBJECTS",
+      "keywords": "class, attributes, methods, OOP",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"file-code\"}"
+    },
+    {
+      "code": "OBJECT_INSTANTIATION",
+      "name": "Object Instantiation",
+      "description": "Hiểu quá trình tạo một đối tượng (thể hiện/instance) từ một lớp bằng cách sử dụng hàm khởi tạo (constructor).",
+      "topic_codes": "CLASSES_OBJECTS",
+      "keywords": "object, instance, constructor, new",
+      "cs2023_ka_mapping": "SDF, FPL",
+      "metadata": "{\"icon\": \"cube\"}"
+    },
+    {
+      "code": "INHERITANCE_SYNTAX",
+      "name": "Inheritance Syntax",
+      "description": "Nắm vững cú pháp để một lớp con (subclass) có thể kế thừa các thuộc tính và phương thức từ một lớp cha (superclass).",
+      "topic_codes": "INHERITANCE_POLY",
+      "keywords": "inheritance, subclass, superclass, extends",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "METHOD_OVERRIDING",
+      "name": "Method Overriding",
+      "description": "Hiểu kỹ thuật ghi đè (override) một phương thức của lớp cha trong lớp con để cung cấp một triển khai cụ thể hơn.",
+      "topic_codes": "INHERITANCE_POLY",
+      "keywords": "overriding, polymorphism, dynamic dispatch",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"clone\"}"
+    },
+    {
+      "code": "ACCESS_MODIFIERS",
+      "name": "Access Modifiers",
+      "description": "Hiểu và sử dụng các từ khóa kiểm soát truy cập (ví dụ: public, private, protected) để thực thi tính đóng gói.",
+      "topic_codes": "ENCAPSULATION_ABSTRACTION",
+      "keywords": "access modifiers, public, private, encapsulation",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"user-lock\"}"
+    },
+    {
+      "code": "STATIC_MEMBERS",
+      "name": "Static Members",
+      "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
+      "topic_codes": "OOP",
+      "keywords": "static, class variable, class method",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"star-of-life\"}"
+    },
+    {
+      "code": "FIRST_CLASS_FUNCTIONS",
+      "name": "First-Class & Higher-Order Functions",
+      "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
+      "topic_codes": "FUNCTIONAL_PROG",
+      "keywords": "higher-order functions, lambda, closures, first-class functions",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"lambda\"}"
+    },
+    {
+      "code": "IMMUTABILITY",
+      "name": "Immutability and Pure Functions",
+      "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
+      "topic_codes": "FUNCTIONAL_PROG",
+      "keywords": "immutability, pure functions, side effects, functional",
+      "cs2023_ka_mapping": "FPL",
+      "metadata": "{\"icon\": \"snowflake\"}"
+    },
+    {
+      "code": "EVENT_HANDLERS",
+      "name": "Events and Event Handling",
+      "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
+      "topic_codes": "EVENT_DRIVEN_PROG",
+      "keywords": "events, event handler, listener, callback",
+      "cs2023_ka_mapping": "FPL, HCI",
+      "metadata": "{\"icon\": \"hand-point-up\"}"
+    },
+    {
+      "code": "ASYNCHRONOUS_PROG",
+      "name": "Asynchronous Programming",
+      "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+      "topic_codes": "EVENT_DRIVEN_PROG",
+      "keywords": "async, await, promises, callbacks, non-blocking",
+      "cs2023_ka_mapping": "FPL, PDC",
+      "metadata": "{\"icon\": \"hourglass-start\"}"
+    },
+    {
+      "code": "SHARED_EDITING_ETIQUETTE",
+      "name": "Etiquette for Collaborative Editing",
+      "description": "Áp dụng các quy tắc ứng xử khi làm việc trên các tài liệu chung, như sử dụng chế độ \"gợi ý\" (suggesting) và để lại bình luận rõ ràng.",
+      "topic_codes": "COLLABORATION_ETIQUETTE",
+      "keywords": "collaboration, etiquette, Google Docs, comments",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"comments-alt\"}"
+    },
+    {
+      "code": "TCP_HANDSHAKE",
+      "name": "TCP Three-Way Handshake",
+      "description": "Mô tả quá trình bắt tay ba bước (SYN, SYN-ACK, ACK) để thiết lập một kết nối TCP đáng tin cậy.",
+      "topic_codes": "TRANSPORT_PROTOCOLS",
+      "keywords": "TCP, handshake, SYN, ACK, connection",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"hands-helping\"}"
+    },
+    {
+      "code": "HTTP_METHODS",
+      "name": "HTTP Methods (GET, POST)",
+      "description": "Phân biệt các phương thức HTTP cơ bản như GET để yêu cầu dữ liệu và POST để gửi dữ liệu lên máy chủ.",
+      "topic_codes": "APP_PROTOCOLS",
+      "keywords": "HTTP, GET, POST, REST, request methods",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"exchange\"}"
+    },
+    {
+      "code": "DNS_LOOKUP",
+      "name": "DNS Lookup Process",
+      "description": "Mô tả quá trình phân giải một tên miền (ví dụ: google.com) thành một địa chỉ IP tương ứng để máy tính có thể kết nối.",
+      "topic_codes": "APP_PROTOCOLS",
+      "keywords": "DNS, domain name, IP address, resolution",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"book-spells\"}"
+    },
+    {
+      "code": "TWO_FACTOR_AUTH",
+      "name": "Two-Factor Authentication (2FA)",
+      "description": "Hiểu nguyên lý và tầm quan trọng của Xác thực Hai Yếu tố (2FA) trong việc tăng cường bảo mật tài khoản.",
+      "topic_codes": "DEVICE_PROTECTION, DATA_PRIVACY_USER",
+      "keywords": "2FA, MFA, authentication, security",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"key\"}"
+    },
+    {
+      "code": "MALWARE_TYPES",
+      "name": "Malware Types",
+      "description": "Phân biệt các loại phần mềm độc hại phổ biến như virus, worm, và ransomware.",
+      "topic_codes": "DEVICE_PROTECTION",
+      "keywords": "malware, virus, ransomware, cybersecurity",
+      "cs2023_ka_mapping": "SEC",
+      "metadata": "{\"icon\": \"shield-virus\"}"
+    },
+    {
+      "code": "WIREFRAMING",
+      "name": "Wireframing",
+      "description": "Kỹ thuật tạo ra các bản phác thảo cấu trúc (wireframe) cho một trang web hoặc ứng dụng để xác định bố cục và luồng chức năng.",
+      "topic_codes": "WIREFRAMING_PROTOTYPING",
+      "keywords": "wireframe, UX, design, layout",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"pencil-ruler\"}"
+    },
+    {
+      "code": "PROTOTYPING",
+      "name": "Prototyping",
+      "description": "Kỹ thuật tạo ra các mẫu thử tương tác (prototype) từ mức độ chi tiết thấp đến cao để kiểm tra và thu thập phản hồi về ý tưởng thiết kế.",
+      "topic_codes": "WIREFRAMING_PROTOTYPING",
+      "keywords": "prototype, mockup, UI, UX, Figma",
+      "cs2023_ka_mapping": "HCI, SE",
+      "metadata": "{\"icon\": \"drafting-compass\"}"
+    },
+    {
+      "code": "SCREEN_READERS",
+      "name": "Screen Readers",
+      "description": "Hiểu cách trình đọc màn hình hoạt động và tầm quan trọng của việc viết mã HTML ngữ nghĩa để hỗ trợ người dùng khiếm thị.",
+      "topic_codes": "ASSISTIVE_TECH",
+      "keywords": "screen reader, accessibility, a11y, semantic HTML",
+      "cs2023_ka_mapping": "HCI, SEP",
+      "metadata": "{\"icon\": \"blind\"}"
+    },
+    {
+      "code": "WCAG_PRINCIPLES",
+      "name": "WCAG Principles (POUR)",
+      "description": "Nắm vững bốn nguyên tắc của WCAG: Perceivable (Có thể nhận biết), Operable (Có thể vận hành), Understandable (Có thể hiểu), và Robust (Mạnh mẽ).",
+      "topic_codes": "WCAG_STANDARDS",
+      "keywords": "WCAG, POUR, accessibility, principles",
+      "cs2023_ka_mapping": "HCI, SEP",
+      "metadata": "{\"icon\": \"universal-access\"}"
+    },
+    {
+      "code": "NETIQUETTE",
+      "name": "Netiquette (Online Etiquette)",
+      "description": "Nắm vững các quy tắc ứng xử phù hợp khi giao tiếp trực tuyến, như cách viết email, bình luận và tham gia thảo luận một cách chuyên nghiệp.",
+      "topic_codes": "DIGITAL_INTERACTION",
+      "keywords": "netiquette, digital communication, etiquette",
+      "cs2023_ka_mapping": "SEP",
+      "metadata": "{\"icon\": \"comments\"}"
+    },
+    {
+      "code": "COLLABORATIVE_PLATFORMS",
+      "name": "Collaborative Platforms",
+      "description": "Sử dụng hiệu quả các nền tảng làm việc nhóm như Google Workspace, Microsoft Teams, và Trello để quản lý công việc và cộng tác.",
+      "topic_codes": "COLLABORATION_TOOLS",
+      "keywords": "collaboration, teamwork, project management",
+      "cs2023_ka_mapping": "SEP, SE",
+      "metadata": "{\"icon\": \"users-cog\"}"
+    },
+    {
+      "code": "LOCAL_VIEW_STATE",
+      "name": "Local View State",
+      "description": "Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+      "topic_codes": "STATE_MANAGEMENT",
+      "keywords": "state, @State, local state, ephemeral state",
+      "cs2023_ka_mapping": "HCI, SDF",
+      "metadata": "{\"icon\": \"dot-circle\"}"
+    },
+    {
+      "code": "TWO_WAY_BINDING",
+      "name": "Two-Way Data Binding",
+      "description": "Sử dụng cơ chế như @Binding (ký hiệu $) để tạo một liên kết tham chiếu hai chiều, cho phép một View con vừa đọc vừa ghi vào trạng thái của View cha.",
+      "topic_codes": "DATA_BINDING",
+      "keywords": "binding, @Binding, two-way binding",
+      "cs2023_ka_mapping": "HCI, SDF",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "SHARED_OBSERVABLE_STATE",
+      "name": "Shared Observable State",
+      "description": "Sử dụng mẫu Observable Object (với @StateObject, @ObservedObject) để quản lý và chia sẻ các trạng thái phức tạp (dạng class) giữa nhiều View khác nhau.",
+      "topic_codes": "STATE_MANAGEMENT, OBSERVABLE_MODEL",
+      "keywords": "@StateObject, @ObservedObject, ViewModel, shared state",
+      "cs2023_ka_mapping": "HCI, FPL",
+      "metadata": "{\"icon\": \"share-alt\"}"
+    },
+    {
+      "code": "PUBLISHER_SUBSCRIBER_MODEL",
+      "name": "Publisher-Subscriber Model for UI",
+      "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+      "topic_codes": "OBSERVABLE_MODEL",
+      "keywords": "publisher, subscriber, @Published, Combine",
+      "cs2023_ka_mapping": "FPL, SE",
+      "metadata": "{\"icon\": \"broadcast-tower\"}"
+    },
+    {
+      "code": "MVVM_PATTERN",
+      "name": "MVVM Architectural Pattern",
+      "description": "Áp dụng mẫu kiến trúc Model-View-ViewModel để tách biệt giao diện (View), trạng thái và logic giao diện (ViewModel), và dữ liệu cốt lõi (Model).",
+      "topic_codes": "UI_ARCH_PATTERNS",
+      "keywords": "MVVM, architecture, ViewModel",
+      "cs2023_ka_mapping": "SE, HCI",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "TAP_GESTURE",
+      "name": "Tap Gesture",
+      "description": "Nhận biết và phản hồi lại các sự kiện chạm đơn hoặc chạm nhiều lần của người dùng trên một View.",
+      "topic_codes": "GESTURE_HANDLING",
+      "keywords": "tap, onTapGesture, double tap",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"hand-point-up\"}"
+    },
+    {
+      "code": "DRAG_GESTURE",
+      "name": "Drag Gesture",
+      "description": "Theo dõi và xử lý cử chỉ kéo của người dùng để di chuyển các đối tượng hoặc thực hiện các hành động tương tác.",
+      "topic_codes": "GESTURE_HANDLING",
+      "keywords": "drag, translation, gesture",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"arrows-alt\"}"
+    },
+    {
+      "code": "IMPLICIT_EXPLICIT_ANIMATION",
+      "name": "Implicit vs. Explicit Animation",
+      "description": "Phân biệt và áp dụng hiệu ứng chuyển động ngầm định (gắn vào View) và tường minh (kích hoạt tại một thời điểm cụ thể).",
+      "topic_codes": "UI_ANIMATION",
+      "keywords": "implicit, explicit, animation, withAnimation",
+      "cs2023_ka_mapping": "GIT, HCI",
+      "metadata": "{\"icon\": \"magic\"}"
+    },
+    {
+      "code": "VIEW_TRANSITIONS",
+      "name": "View Transitions",
+      "description": "Định nghĩa cách một View xuất hiện hoặc biến mất khỏi màn hình bằng các hiệu ứng như mờ dần, trượt, hoặc co giãn.",
+      "topic_codes": "UI_ANIMATION",
+      "keywords": "transition, .transition, effects",
+      "cs2023_ka_mapping": "GIT, HCI",
+      "metadata": "{\"icon\": \"exchange-alt\"}"
+    },
+    {
+      "code": "MAP_INTEGRATION",
+      "name": "Map Integration",
+      "description": "Tích hợp và hiển thị một bản đồ tương tác trong ứng dụng, điều khiển vùng hiển thị và thêm các điểm đánh dấu (annotations).",
+      "topic_codes": "GEOSPATIAL_SERVICES",
+      "keywords": "MapKit, MapView, annotation",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"map-marked-alt\"}"
+    },
+    {
+      "code": "LOCATION_SERVICES_API",
+      "name": "Location Services API",
+      "description": "Yêu cầu quyền và sử dụng các API của hệ điều hành (Core Location) để lấy vị trí hiện tại của người dùng.",
+      "topic_codes": "GEOSPATIAL_SERVICES",
+      "keywords": "Core Location, location, GPS, permissions",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"location-arrow\"}"
+    },
+    {
+      "code": "MEDIA_PICKER_API",
+      "name": "Media Picker API",
+      "description": "Tích hợp giao diện chọn media của hệ thống (PhotosPicker) để cho phép người dùng chọn ảnh hoặc video từ thư viện một cách an toàn.",
+      "topic_codes": "MEDIA_SERVICES",
+      "keywords": "PhotosPicker, image picker, media library",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"images\"}"
+    },
+    {
+      "code": "LOCAL_NOTIFICATION_API",
+      "name": "Local Notification API",
+      "description": "Sử dụng API hệ thống (UserNotifications) để lập lịch và gửi các thông báo cục bộ cho người dùng dựa trên thời gian hoặc các sự kiện khác.",
+      "topic_codes": "MEDIA_SERVICES",
+      "keywords": "UserNotifications, local notification, alert",
+      "cs2023_ka_mapping": "NC",
+      "metadata": "{\"icon\": \"bell\"}"
+    },
+    {
+      "code": "APP_EXTENSION_MODEL",
+      "name": "App Extension Model",
+      "description": "Hiểu mô hình kiến trúc của các thành phần mở rộng như Widgets, chạy độc lập nhưng liên kết với ứng dụng chính để hiển thị dữ liệu.",
+      "topic_codes": "PLATFORM_INTEGRATION",
+      "keywords": "app extensions, WidgetKit, widgets",
+      "cs2023_ka_mapping": "SPD",
+      "metadata": "{\"icon\": \"puzzle-piece\"}"
+    },
+    {
+      "code": "KEY_VALUE_PERSISTENCE",
+      "name": "Key-Value Persistence",
+      "description": "Sử dụng cơ chế lưu trữ key-value đơn giản của hệ điều hành (UserDefaults, @AppStorage) để lưu các cài đặt và tùy chọn nhỏ của người dùng.",
+      "topic_codes": "USER_PREFERENCES_STORAGE",
+      "keywords": "UserDefaults, AppStorage, key-value",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"tags\"}"
+    },
+    {
+      "code": "CORE_DATA_ORM",
+      "name": "Core Data (ORM)",
+      "description": "Sử dụng framework Core Data như một Object-Relational Mapper (ORM) để định nghĩa model, thiết lập stack, và quản lý việc lưu trữ, truy vấn, xóa, sửa dữ liệu.",
+      "topic_codes": "STRUCTURED_DATA_STORAGE",
+      "keywords": "Core Data, ORM, NSManagedObject, FetchRequest",
+      "cs2023_ka_mapping": "DM",
+      "metadata": "{\"icon\": \"database\"}"
+    },
+    {
+      "code": "JSON_SERIALIZATION",
+      "name": "JSON Serialization/Deserialization",
+      "description": "Sử dụng cơ chế Codable để mã hóa (serialize) các đối tượng Swift thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng.",
+      "topic_codes": "DATA_ENCODING, API_DESIGN",
+      "keywords": "JSON, Codable, serialization, deserialization, Encoder, Decoder",
+      "cs2023_ka_mapping": "AL, SE",
+      "metadata": "{\"icon\": \"file-code\"}"
+    },
+    {
+      "code": "GAME_LOOP",
+      "name": "Game Loop",
+      "description": "Vòng lặp vô hạn duy trì trạng thái của trò chơi, xử lý đầu vào, cập nhật vật lý và vẽ lại hình ảnh (render) liên tục.",
+      "topic_codes": "GAMEPLAY_MECHANICS",
+      "keywords": "game loop, update loop, tick",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"sync\"}"
+    },
+    {
+      "code": "COLLISION_DETECTION",
+      "name": "Collision Detection",
+      "description": "Cơ chế phát hiện khi hai vật thể trong không gian game chạm vào nhau hoặc xuyên qua nhau để kích hoạt sự kiện.",
+      "topic_codes": "GAME_PHYSICS",
+      "keywords": "collision, hitbox, raycasting",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"car-crash\"}"
+    },
+    {
+      "code": "PHYSICS_CONSTRAINTS",
+      "name": "Physics Constraints",
+      "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
+      "topic_codes": "PHYSICS_CONSTRAINTS",
+      "keywords": "constraints, hinge, spring, joints",
+      "cs2023_ka_mapping": "GIT",
+      "metadata": "{\"icon\": \"link\"}"
+    },
+    {
+      "code": "LEVEL_LAYOUT",
+      "name": "Level Layout Design",
+      "description": "Kỹ thuật sắp đặt không gian, chướng ngại vật và đường đi để tạo ra dòng chảy (flow) và độ khó hợp lý cho người chơi.",
+      "topic_codes": "GAME_ENV_BUILDING",
+      "keywords": "level design, layout, map design",
+      "cs2023_ka_mapping": "HCI",
+      "metadata": "{\"icon\": \"map\"}"
+    },
+    {
+      "code": "LEADERBOARD_SYSTEM",
+      "name": "Leaderboard/Scoring System",
+      "description": "Cấu trúc dữ liệu và logic để theo dõi, cập nhật và hiển thị điểm số hoặc thành tích của người chơi trong thời gian thực.",
+      "topic_codes": "GAMEPLAY_MECHANICS",
+      "keywords": "leaderboard, scoring, stats",
+      "cs2023_ka_mapping": "SDF",
+      "metadata": "{\"icon\": \"trophy\"}"
+    },
+    {
+      "code": "PROJECT_ASSETS_MANAGEMENT",
+      "name": "Project Assets Management",
+      "description": "Quản lý tài nguyên hình ảnh, màu sắc trong IDE.",
+      "topic_codes": "IDE_NAVIGATION",
+      "keywords": "assets",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    },
+    {
+      "code": "DECLARATIVE_UI_PARADIGM",
+      "name": "Declarative UI Paradigm",
+      "description": "Xây dựng giao diện kiểu khai báo.",
+      "topic_codes": "UI_CONTROLS",
+      "keywords": "declarative",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    },
+    {
+      "code": "UI_MODIFIERS",
+      "name": "UI Modifiers",
+      "description": "Áp dụng các hàm thay đổi giao diện.",
+      "topic_codes": "UI_MODIFIERS",
+      "keywords": "modifier",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    },
+    {
+      "code": "STATE_PROPERTY_WRAPPER",
+      "name": "State Property Wrapper",
+      "description": "Theo dõi trạng thái bằng property wrapper.",
+      "topic_codes": "LOCAL_VIEW_STATE",
+      "keywords": "state",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    },
+    {
+      "code": "SYNTAX_VS_RUNTIME_ERRORS",
+      "name": "Syntax vs Runtime Errors",
+      "description": "Phân biệt các loại lỗi trong quá trình dev.",
+      "topic_codes": "ERROR_MESSAGES,DEBUGGING_TECHNIQUES",
+      "keywords": "error",
+      "cs2023_ka_mapping": "",
+      "metadata": ""
+    }
+  ],
+  "learning_objectives": []
+}

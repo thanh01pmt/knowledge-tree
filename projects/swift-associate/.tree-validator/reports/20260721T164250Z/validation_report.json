@@ -1,0 +1,96 @@
+{
+  "generated_at": "2026-07-21T16:42:50.897748+00:00",
+  "summary": {
+    "status": "PASS",
+    "total_issues": 6,
+    "errors": 0,
+    "warnings": 6,
+    "by_rule": {
+      "ORPHAN_NODE": 6
+    },
+    "by_level": {
+      "subjects": {
+        "ERROR": 0,
+        "WARNING": 1
+      },
+      "categories": {
+        "ERROR": 0,
+        "WARNING": 4
+      },
+      "concepts": {
+        "ERROR": 0,
+        "WARNING": 1
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 8,
+      "categories": 11,
+      "topics": 12,
+      "concepts": 18,
+      "learning_objectives": 109
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "subjects",
+      "code": "DIGITAL_LITERACY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "DATA_PRIVACY_USER",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "FUNCTIONAL_PROG",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "TROUBLESHOOTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "UI_UX_PROCESS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ERROR_MESSAGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

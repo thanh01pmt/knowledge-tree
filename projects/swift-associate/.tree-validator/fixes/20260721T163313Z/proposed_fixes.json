@@ -1,0 +1,867 @@
+[
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "STATE_DATA_FLOW",
+    "field": "subject_codes",
+    "broken_ref": "ASE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "STATE_DATA_FLOW",
+    "field": "subject_codes",
+    "broken_ref": "DECLARATIVE_UI",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "UI_BUILDING_BLOCKS",
+    "field": "subject_codes",
+    "broken_ref": "HCC",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "topics",
+    "code": "DIGITAL_INTERACTION",
+    "field": "category_codes",
+    "broken_ref": "DIGITAL_LITERACY",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "USER_CENTERED_DESIGN",
+    "field": "topic_codes",
+    "broken_ref": "UI_UX_PROCESS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "DIGITAL_IDENTITY",
+    "field": "topic_codes",
+    "broken_ref": "DATA_PRIVACY_USER",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "STATE_PROPERTY_WRAPPER",
+    "field": "topic_codes",
+    "broken_ref": "LOCAL_VIEW_STATE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-IDE",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-XCODE-FILES",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-XCODE-SWIFT",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-XCODE-PLIST",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-XCODE-XCASSETS",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-XCODE-ASSETS",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ASSET-IMPORT",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ASSET-RECOGNIZE",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ASSET-USE",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-XCODE-UI-AREAS",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-XCODE-NAVIGATOR",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-XCODE-INSPECTOR",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-XCODE-EDITOR",
+    "field": "concept_codes",
+    "broken_ref": "IDE_NAVIGATION",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-FUNCTIONS",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-FUNCTIONS",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-FUNC-WRITE",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-FUNC-CALL",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-FUNC-LABELS",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-FUNC-PARAMS",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-FUNC-RETURN",
+    "field": "concept_codes",
+    "broken_ref": "FUNCTIONS_METHODS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-OPERATORS",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-OPERATORS",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-OP-ARITHMETIC",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-OP-COMPOUND",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-OP-COMPARISON",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-OP-LOGICAL",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-DATA-STRUCTURES",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-STRUCTS",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STRUCT-DECL",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STRUCT-INIT",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STRUCT-METHOD",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STRUCT-INST-CREATE",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STRUCT-INST-USE",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-COLLECTIONS",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-ARRAYS",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ARR-DECL",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ARR-INDEX-READ",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ARR-INDEX-WRITE",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ARR-PROPS",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-ARR-METHODS",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-CONTROL-FLOW",
+    "field": "concept_codes",
+    "broken_ref": "IF_ELSE_STATEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-CONDS",
+    "field": "concept_codes",
+    "broken_ref": "IF_ELSE_STATEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-COND-IF",
+    "field": "concept_codes",
+    "broken_ref": "IF_ELSE_STATEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-COND-SWITCH",
+    "field": "concept_codes",
+    "broken_ref": "SWITCH_CASE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-STATE",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-VARS",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VAR-LET",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VAR-INFERENCE",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VAR-EXPLICIT",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VAR-TYPES",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-NAMING",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-NAME-CAMEL",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-NAME-RULES",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-DECLARATIVE",
+    "field": "concept_codes",
+    "broken_ref": "DECLARATIVE_UI_MODEL",
+    "suggestions": [
+      {
+        "suggested_value": "DECLARATIVE_UI_PARADIGM",
+        "confidence": 0.744
+      }
+    ],
+    "note": null,
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFTUI-PARADIGM",
+    "field": "concept_codes",
+    "broken_ref": "DECLARATIVE_UI_MODEL",
+    "suggestions": [
+      {
+        "suggested_value": "DECLARATIVE_UI_PARADIGM",
+        "confidence": 0.744
+      }
+    ],
+    "note": null,
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-PARADIGM-DIFF",
+    "field": "concept_codes",
+    "broken_ref": "DECLARATIVE_UI_MODEL",
+    "suggestions": [
+      {
+        "suggested_value": "DECLARATIVE_UI_PARADIGM",
+        "confidence": 0.744
+      }
+    ],
+    "note": null,
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFTUI-CONTENT",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VIEW-TEXT",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VIEW-IMAGE",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VIEW-SHAPE",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-VIEW-COLOR",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFTUI-STACKS",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STACK-HSTACK",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STACK-VSTACK",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STACK-ZSTACK",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STACK-SPACER",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFTUI-HIERARCHY",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-HIERARCHY-PARENT",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFTUI-INTERACTIVE",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-INT-BUTTON",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-INT-TEXTFIELD",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-INT-SLIDER",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-INT-TOGGLE",
+    "field": "concept_codes",
+    "broken_ref": "UI_CONTROLS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-STATE-BIND",
+    "field": "concept_codes",
+    "broken_ref": "DATA_BINDING",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-DEBUGGING",
+    "field": "concept_codes",
+    "broken_ref": "DEBUGGING_TECHNIQUES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-INTERPRET",
+    "field": "concept_codes",
+    "broken_ref": "ERROR_MESSAGES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-MSG-CONSOLE",
+    "field": "concept_codes",
+    "broken_ref": "ERROR_MESSAGES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-MSG-FIX",
+    "field": "concept_codes",
+    "broken_ref": "ERROR_MESSAGES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  }
+]

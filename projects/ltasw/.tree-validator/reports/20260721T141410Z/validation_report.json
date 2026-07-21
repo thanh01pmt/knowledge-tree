@@ -1,0 +1,1886 @@
+{
+  "generated_at": "2026-07-21T14:14:10.302766+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 261,
+    "errors": 1,
+    "warnings": 260,
+    "by_rule": {
+      "MISSING_FILE": 1,
+      "ORPHAN_NODE": 260
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 1,
+        "WARNING": 0
+      },
+      "categories": {
+        "ERROR": 0,
+        "WARNING": 3
+      },
+      "topics": {
+        "ERROR": 0,
+        "WARNING": 20
+      },
+      "concepts": {
+        "ERROR": 0,
+        "WARNING": 237
+      }
+    },
+    "node_counts": {
+      "fields": 6,
+      "subjects": 22,
+      "categories": 71,
+      "topics": 165,
+      "concepts": 237,
+      "learning_objectives": 0
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "MISSING_FILE",
+      "level": "learning_objectives",
+      "code": "-",
+      "message": "Không tìm thấy file learning-objectives-ltasw.tsv"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "AI_APPLICATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "BINARY_SYSTEM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "INTERACTION_DEVICES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ADAPTIVE_LAYOUT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "AGILE_SCRUM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "DATA_VIS_TOOLS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "DECLARATIVE_UI_MODEL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "EDGE_FOG_CLOUD",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "EMBEDDED_SYSTEMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ERROR_MESSAGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "GIT_BASICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "GRAPH_THEORY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "HASH_TABLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "HIERARCHICAL_NAVIGATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "HW_IO",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "IOT_DEVICES_SENSORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "MODAL_PRESENTATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "RENDERING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ROBOT_CONTROL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ROBOT_KINEMATICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "TRANSACTION_MANAGEMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "TREES_HEAPS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "TREE_STRUCTURES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "2D_3D_TRANSFORMATIONS_MATH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ABSTRACTION_LAYERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ACCESS_MODIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ADJUSTMENT_LAYERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "AFFORDANCES_SIGNIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "AGILE_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "AI_BIAS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "AI_HISTORY_MILESTONES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "AI_VS_ML",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ALGORITHMIC_BIAS_SOCIETY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "API_DESIGN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "API_INTEGRATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "APP_EXTENSION_MODEL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "APP_PROTOCOLS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ARDUINO_BASICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ARITHMETIC_OPS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ARRAY_OPERATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ASYNCHRONOUS_PROG",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BACKEND_FRAMEWORKS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BASIC_ELECTRONIC_COMPONENTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BASIC_MECHANISMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BEHAVIORAL_PATTERNS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BIG_O_NOTATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BOOLEAN_OPERATIONS_3D",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BREAKPOINTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BUBBLE_INSERTION_SORT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CACHE_HIERARCHY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CAP_THEOREM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CHART_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CIRCUIT_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLASSES_OBJECTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLASS_DEFINITION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLOUD_COMPUTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLOUD_DEPLOYMENT_MODELS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLOUD_MODELS_IAAS_PAAS_SAAS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLUSTERING_ALGORITHMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COLLABORATIVE_PLATFORMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COLOR_THEORY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COMPARISON_LOGICAL_OPS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COMPOSITION_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CONDITIONAL_LOGIC",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COPYRIGHT_CREATIVE_COMMONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CORE_DATA_ORM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CPU_ARCHITECTURE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CREATIONAL_PATTERNS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CSS_SELECTORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CYBERBULLYING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATABASE_NORMALIZATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_BINDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_CLEANING_TECHNIQUES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_DISTRIBUTIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_ENCODING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_EXPLORATION_EDA",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_STRUCTURES_BASIC",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DEBUGGING_TECH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DESIGN_PATTERNS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DEVELOPMENT_PROCESS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DEVICE_PROTECTION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_ANALOG_IO",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_CITIZENSHIP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_DIVIDE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_FOOTPRINT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_IDENTITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIVIDE_CONQUER",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DMA_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DNS_LOOKUP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DOM_MANIPULATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DRAG_GESTURE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DYNAMIC_PROGRAMMING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ENCAPSULATION_ABSTRACTION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ENCRYPTION_PROTOCOLS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ERROR_MESSAGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EVENT_BASED_PROGRAMMING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EVENT_HANDLERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EXCEPTION_HANDLING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EXPLICIT_ANIMATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FEEDBACK_AND_RESPONSE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FETCH_DECODE_EXECUTE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FILE_ALLOCATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FIRST_CLASS_FUNCTIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FOR_LOOP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FRONTEND_FRAMEWORKS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FUNCTIONS_PROCEDURES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FUNC_SYNTAX",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "GEOSPATIAL_SERVICES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "GESTURE_HANDLING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "GRAPHIC_DESIGN_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "GREEDY_ALGORITHMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "GRID_LAYOUT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "HDD_VS_SSD",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "HTML_STRUCTURE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "HTTP_METHODS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IF_ELSE_STATEMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMAGE_COMPOSITING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMAGE_RETOUCHING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMAGE_WARPING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMMUTABILITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMPLICIT_ANIMATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMPLICIT_EXPLICIT_ANIMATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "INFORMATION_CREDIBILITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "INHERITANCE_POLY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "INHERITANCE_SYNTAX",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IOT_PROTOCOLS_MQTT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IOT_SAFETY_RISKS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IOT_SECURITY_THREATS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IO_METHODS_POLLING_INTERRUPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IPV4_VS_IPV6",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ITERATION_LOOPS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "JSON_SERIALIZATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "KEYFRAME_ANIMATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "KEY_VALUE_PERSISTENCE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LAYER_BLEND_MODES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LAYER_MASKING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LAYOUT_COMPOSITION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LIGHTING_AND_SHADOWS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LIGHT_MOTION_SENSORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LINEAR_BINARY_SEARCH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LIST_OPERATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOCAL_NOTIFICATION_API",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOCAL_VIEW_STATE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOCATION_SERVICES_API",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOGIC_ERRORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOGIC_GATES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LONGPRESS_GESTURE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MALWARE_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MAPREDUCE_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MAP_ANNOTATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MAP_INTEGRATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MATERIAL_AND_TEXTURE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MEDIA_PICKER_API",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MEDIA_SERVICES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MEMORY_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MESH_EXTRUSION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "METHOD_OVERRIDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MOTOR_CONTROL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MVVM_PATTERN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "NETIQUETTE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "NETWORK_PROTOCOLS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "NETWORK_SECURITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "NETWORK_TOPOLOGIES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "NEURAL_NETWORKS_BASICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "NOTIFICATION_SERVICES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBSERVABLE_MODEL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ONDEVICE_PERSISTENCE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OOP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OPERATORS_EXPRESSIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OSI_MODEL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OS_CONCEPTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OS_FILE_SYSTEMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PASSWORD_STRENGTH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PERSONAS_AND_SCENARIOS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PHISHING_IDENTIFICATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PHYSICAL_MEDIA",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "POLYGON_MESH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PRIMITIVE_TYPE_DECLARATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PROBABILITY_BASICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PROBLEM_DECOMPOSITION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PROCESS_VS_THREAD",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PROTOTYPING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PUBLISHER_SUBSCRIBER_MODEL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PWM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "QR_CODE_GENERATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "QUEUE_OPERATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RASPBERRY_PI_BASICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "REFERENCE_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "REFERENCE_TYPE_DECLARATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "REGRESSION_CLASSIFICATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "REINFORCEMENT_LEARNING_BASICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RELATIONAL_VS_NONRELATIONAL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RENDERING_PIPELINE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "REST_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RETURN_VALUES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ROUTERS_SWITCHES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RUNTIME_ERRORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SCHEDULING_ALGORITHMS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SCREEN_READERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SCRUM_ROLES_EVENTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SHA",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SHAPE_BUILDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SHARED_EDITING_ETIQUETTE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SHARED_OBSERVABLE_STATE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SIMULATION_MODELING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SQL_JOIN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SQL_SELECT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STACK_LAYOUT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STACK_OPERATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STATE_MANAGEMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STATIC_MEMBERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STATISTICAL_MEASURES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STROKE_PROPERTIES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STRUCTURAL_PATTERNS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STRUCTURED_ONDEVICE_DB",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SUBNETTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SWITCH_CASE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SYNTAX_ERRORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SYSTEMATIC_TROUBLESHOOTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TAP_GESTURE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TCP_HANDSHAKE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TCP_IP_MODEL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TEMP_HUMIDITY_SENSORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TESTING_DEBUGGING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TRANSFORMATION_OPERATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TRANSPORT_PROTOCOLS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TROUBLESHOOTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TRUTH_TABLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TWO_FACTOR_AUTH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TWO_WAY_BINDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TYPES_OF_AI",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_ANIMATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_ANIMATION_TRANSITION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_ARCH_PATTERNS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_BUILDING_BLOCKS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_MODIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_STATE_LIFECYCLE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_UX_HEURISTICS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_UX_PROCESS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UNIT_TESTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "USABILITY_TESTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "USER_CENTERED_DESIGN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "USER_PERSONAS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "USER_PREFERENCES_STORAGE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "USER_PREFS_STORAGE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VARIABLES_DATA_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VAR_CONSTANTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VERSION_CONTROL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VERSION_CONTROL_WORKFLOW",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIEW_LIFECYCLE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIEW_TRANSITIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIRTUALIZATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIRTUAL_MEMORY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WCAG_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WHILE_LOOP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WIDGETKIT_INTEGRATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WIREFRAMING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

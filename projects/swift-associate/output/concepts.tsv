@@ -1,0 +1,19 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+UI_MODIFIERS	UI Modifiers	Áp dụng các hàm thay đổi giao diện.	ARRAYS	modifier		
+ARRAY_OPERATIONS	Array Operations	Thực hiện các thao tác cơ bản trên mảng: truy cập phần tử qua chỉ số (index), lấy độ dài, và duyệt qua các phần tử.	ARRAYS	array, index, access, iteration	SDF	"{""icon"": ""th""}"
+STATE_PROPERTY_WRAPPER	State Property Wrapper	Theo dõi trạng thái bằng property wrapper.	ARRAYS	state		
+LOCAL_VIEW_STATE	Local View State	Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.	STATE_MANAGEMENT	state, @State, local state, ephemeral state	HCI, SDF	"{""icon"": ""dot-circle""}"
+PROJECT_ASSETS_MANAGEMENT	Project Assets Management	Quản lý tài nguyên hình ảnh, màu sắc trong IDE.	IDE_NAVIGATION	assets		
+FIRST_CLASS_FUNCTIONS	First-Class & Higher-Order Functions	"Khám phá khái niệm hàm là ""công dân hạng nhất"" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm."	ARRAYS	higher-order functions, lambda, closures, first-class functions	FPL	"{""icon"": ""lambda""}"
+FOR_LOOP	For Loop	Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.	ITERATION_LOOPS	for loop, iteration, looping, repetition	SDF	"{""icon"": ""redo""}"
+IF_ELSE_STATEMENT	If-Else Statement	Nắm vững cú pháp và logic của câu lệnh if-else để thực hiện một trong hai khối mã dựa trên một điều kiện logic.	CONDITIONAL_LOGIC	if-else, conditional statement, selection	SDF	"{""icon"": ""code-branch""}"
+SYNTAX_VS_RUNTIME_ERRORS	Syntax vs Runtime Errors	Phân biệt các loại lỗi trong quá trình dev.	DEBUGGING_TECHNIQUES	error		
+ERROR_MESSAGES	Interpreting Error Messages	Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.	DEBUGGING_TECH	error handling, exceptions, debugging, log analysis	SDF, SE	"{""icon"": ""exclamation-triangle""}"
+USER_CENTERED_DESIGN	User-Centered Design Process	Hiểu quy trình thiết kế lấy người dùng làm trung tâm, nhấn mạnh việc thấu hiểu và đáp ứng nhu cầu của người dùng ở mọi giai đoạn.	ARRAYS	UCD, user-centered, design thinking	HCI	"{""icon"": ""user-check""}"
+DECLARATIVE_UI_PARADIGM	Declarative UI Paradigm	Xây dựng giao diện kiểu khai báo.	UI_CONTROLS	declarative		
+SWITCH_CASE	Switch-Case Statement	Sử dụng câu lệnh switch để lựa chọn thực thi một trong nhiều khối mã dựa trên giá trị của một biến hoặc biểu thức.	CONDITIONAL_LOGIC	switch-case, selection, multi-way branching	SDF	"{""icon"": ""list-ul""}"
+WHILE_LOOP	While Loop	Nắm vững cú pháp và cách sử dụng vòng lặp while để lặp lại một khối mã khi một điều kiện cho trước vẫn còn đúng.	ITERATION_LOOPS	while loop, iteration, looping, condition	SDF	"{""icon"": ""sync""}"
+TWO_WAY_BINDING	Two-Way Data Binding	Sử dụng cơ chế như @Binding (ký hiệu $) để tạo một liên kết tham chiếu hai chiều, cho phép một View con vừa đọc vừa ghi vào trạng thái của View cha.	DATA_BINDING	binding, @Binding, two-way binding	HCI, SDF	"{""icon"": ""link""}"
+PRIMITIVE_TYPE_DECLARATION	Declaring Primitive Types	Nắm vững cú pháp khai báo biến với các kiểu dữ liệu nguyên thủy (int, bool, float) trong một ngôn ngữ lập trình cụ thể.	PRIMITIVE_TYPES	declaration, primitive types, int, boolean	SDF	"{""icon"": ""tag""}"
+REFERENCE_TYPE_DECLARATION	Declaring Reference Types	Nắm vững cú pháp khai báo biến với các kiểu dữ liệu tham chiếu (String, Array, Object) và hiểu cách chúng được lưu trữ trong bộ nhớ.	REFERENCE_TYPES	declaration, reference types, string, object	SDF	"{""icon"": ""link""}"
+DIGITAL_IDENTITY	Digital Identity Management	Hiểu khái niệm về danh tính số và cách quản lý hình ảnh cá nhân và chuyên nghiệp trên các nền tảng trực tuyến.	DIGITAL_INTERACTION	digital identity, online profile, reputation	SEP	"{""icon"": ""id-card""}"

@@ -1,0 +1,132 @@
+[
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "STATE_DATA_FLOW",
+    "field": "subject_codes",
+    "broken_ref": "ASE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "STATE_DATA_FLOW",
+    "field": "subject_codes",
+    "broken_ref": "DECLARATIVE_UI",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "UI_BUILDING_BLOCKS",
+    "field": "subject_codes",
+    "broken_ref": "HCC",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "topics",
+    "code": "DIGITAL_INTERACTION",
+    "field": "category_codes",
+    "broken_ref": "DIGITAL_LITERACY",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "USER_CENTERED_DESIGN",
+    "field": "topic_codes",
+    "broken_ref": "UI_UX_PROCESS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "DIGITAL_IDENTITY",
+    "field": "topic_codes",
+    "broken_ref": "DATA_PRIVACY_USER",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "STATE_PROPERTY_WRAPPER",
+    "field": "topic_codes",
+    "broken_ref": "LOCAL_VIEW_STATE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-DEV-ENV",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-XCODE-NAV",
+    "field": "concept_codes",
+    "broken_ref": "PROJECT_ASSETS_MANAGEMENT",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-PROG-STATE",
+    "field": "concept_codes",
+    "broken_ref": "DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "ULO-PROG-STATE",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "CIO-SWIFT-VARS",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "learning_objectives",
+    "code": "SIO-SWIFT-LET",
+    "field": "concept_codes",
+    "broken_ref": "VARIABLES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  }
+]

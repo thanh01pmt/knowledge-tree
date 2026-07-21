@@ -1,0 +1,838 @@
+{
+  "generated_at": "2026-07-21T16:33:13.817845+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 87,
+    "errors": 85,
+    "warnings": 2,
+    "by_rule": {
+      "BROKEN_REFERENCE": 85,
+      "ORPHAN_NODE": 2
+    },
+    "by_level": {
+      "categories": {
+        "ERROR": 3,
+        "WARNING": 0
+      },
+      "topics": {
+        "ERROR": 1,
+        "WARNING": 0
+      },
+      "concepts": {
+        "ERROR": 3,
+        "WARNING": 2
+      },
+      "learning_objectives": {
+        "ERROR": 78,
+        "WARNING": 0
+      }
+    },
+    "node_counts": {
+      "fields": 3,
+      "subjects": 4,
+      "categories": 5,
+      "topics": 7,
+      "concepts": 9,
+      "learning_objectives": 109
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "categories",
+      "code": "STATE_DATA_FLOW",
+      "message": "'ASE' không tồn tại trong bảng cha.",
+      "field": "subject_codes",
+      "ref": "ASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "categories",
+      "code": "STATE_DATA_FLOW",
+      "message": "'DECLARATIVE_UI' không tồn tại trong bảng cha.",
+      "field": "subject_codes",
+      "ref": "DECLARATIVE_UI"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "categories",
+      "code": "UI_BUILDING_BLOCKS",
+      "message": "'HCC' không tồn tại trong bảng cha.",
+      "field": "subject_codes",
+      "ref": "HCC"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "topics",
+      "code": "DIGITAL_INTERACTION",
+      "message": "'DIGITAL_LITERACY' không tồn tại trong bảng cha.",
+      "field": "category_codes",
+      "ref": "DIGITAL_LITERACY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "concepts",
+      "code": "USER_CENTERED_DESIGN",
+      "message": "'UI_UX_PROCESS' không tồn tại trong bảng cha.",
+      "field": "topic_codes",
+      "ref": "UI_UX_PROCESS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "concepts",
+      "code": "DIGITAL_IDENTITY",
+      "message": "'DATA_PRIVACY_USER' không tồn tại trong bảng cha.",
+      "field": "topic_codes",
+      "ref": "DATA_PRIVACY_USER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "concepts",
+      "code": "STATE_PROPERTY_WRAPPER",
+      "message": "'LOCAL_VIEW_STATE' không tồn tại trong bảng cha.",
+      "field": "topic_codes",
+      "ref": "LOCAL_VIEW_STATE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-IDE",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-XCODE-FILES",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-XCODE-SWIFT",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-XCODE-PLIST",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-XCODE-XCASSETS",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-XCODE-ASSETS",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ASSET-IMPORT",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ASSET-RECOGNIZE",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ASSET-USE",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-XCODE-UI-AREAS",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-XCODE-NAVIGATOR",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-XCODE-INSPECTOR",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-XCODE-EDITOR",
+      "message": "'IDE_NAVIGATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IDE_NAVIGATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-FUNCTIONS",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-FUNCTIONS",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-FUNC-WRITE",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-FUNC-CALL",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-FUNC-LABELS",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-FUNC-PARAMS",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-FUNC-RETURN",
+      "message": "'FUNCTIONS_METHODS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FUNCTIONS_METHODS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-OPERATORS",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-OPERATORS",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-OP-ARITHMETIC",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-OP-COMPOUND",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-OP-COMPARISON",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-OP-LOGICAL",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DATA-STRUCTURES",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-STRUCTS",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STRUCT-DECL",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STRUCT-INIT",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STRUCT-METHOD",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STRUCT-INST-CREATE",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STRUCT-INST-USE",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-COLLECTIONS",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-ARRAYS",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ARR-DECL",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ARR-INDEX-READ",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ARR-INDEX-WRITE",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ARR-PROPS",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-ARR-METHODS",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-CONTROL-FLOW",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-CONDS",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-COND-IF",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-COND-SWITCH",
+      "message": "'SWITCH_CASE' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SWITCH_CASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-STATE",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-VARS",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VAR-LET",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VAR-INFERENCE",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VAR-EXPLICIT",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VAR-TYPES",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-NAMING",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-NAME-CAMEL",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-NAME-RULES",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DECLARATIVE",
+      "message": "'DECLARATIVE_UI_MODEL' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_MODEL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFTUI-PARADIGM",
+      "message": "'DECLARATIVE_UI_MODEL' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_MODEL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-PARADIGM-DIFF",
+      "message": "'DECLARATIVE_UI_MODEL' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_MODEL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFTUI-CONTENT",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VIEW-TEXT",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VIEW-IMAGE",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VIEW-SHAPE",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VIEW-COLOR",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFTUI-STACKS",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STACK-HSTACK",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STACK-VSTACK",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STACK-ZSTACK",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STACK-SPACER",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFTUI-HIERARCHY",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-HIERARCHY-PARENT",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFTUI-INTERACTIVE",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-INT-BUTTON",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-INT-TEXTFIELD",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-INT-SLIDER",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-INT-TOGGLE",
+      "message": "'UI_CONTROLS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_CONTROLS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-STATE-BIND",
+      "message": "'DATA_BINDING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_BINDING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DEBUGGING",
+      "message": "'DEBUGGING_TECHNIQUES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DEBUGGING_TECHNIQUES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-INTERPRET",
+      "message": "'ERROR_MESSAGES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ERROR_MESSAGES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-MSG-CONSOLE",
+      "message": "'ERROR_MESSAGES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ERROR_MESSAGES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-MSG-FIX",
+      "message": "'ERROR_MESSAGES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ERROR_MESSAGES"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DECLARATIVE_UI_PARADIGM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "STATE_PROPERTY_WRAPPER",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

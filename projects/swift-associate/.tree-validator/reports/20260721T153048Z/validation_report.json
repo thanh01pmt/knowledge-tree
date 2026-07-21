@@ -1,0 +1,204 @@
+{
+  "generated_at": "2026-07-21T15:30:48.221521+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 17,
+    "errors": 13,
+    "warnings": 4,
+    "by_rule": {
+      "BROKEN_REFERENCE": 13,
+      "ORPHAN_NODE": 4
+    },
+    "by_level": {
+      "categories": {
+        "ERROR": 3,
+        "WARNING": 0
+      },
+      "topics": {
+        "ERROR": 1,
+        "WARNING": 0
+      },
+      "concepts": {
+        "ERROR": 3,
+        "WARNING": 4
+      },
+      "learning_objectives": {
+        "ERROR": 6,
+        "WARNING": 0
+      }
+    },
+    "node_counts": {
+      "fields": 3,
+      "subjects": 4,
+      "categories": 5,
+      "topics": 7,
+      "concepts": 9,
+      "learning_objectives": 15
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "categories",
+      "code": "STATE_DATA_FLOW",
+      "message": "'ASE' không tồn tại trong bảng cha.",
+      "field": "subject_codes",
+      "ref": "ASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "categories",
+      "code": "STATE_DATA_FLOW",
+      "message": "'DECLARATIVE_UI' không tồn tại trong bảng cha.",
+      "field": "subject_codes",
+      "ref": "DECLARATIVE_UI"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "categories",
+      "code": "UI_BUILDING_BLOCKS",
+      "message": "'HCC' không tồn tại trong bảng cha.",
+      "field": "subject_codes",
+      "ref": "HCC"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "topics",
+      "code": "DIGITAL_INTERACTION",
+      "message": "'DIGITAL_LITERACY' không tồn tại trong bảng cha.",
+      "field": "category_codes",
+      "ref": "DIGITAL_LITERACY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "concepts",
+      "code": "USER_CENTERED_DESIGN",
+      "message": "'UI_UX_PROCESS' không tồn tại trong bảng cha.",
+      "field": "topic_codes",
+      "ref": "UI_UX_PROCESS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "concepts",
+      "code": "DIGITAL_IDENTITY",
+      "message": "'DATA_PRIVACY_USER' không tồn tại trong bảng cha.",
+      "field": "topic_codes",
+      "ref": "DATA_PRIVACY_USER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "concepts",
+      "code": "STATE_PROPERTY_WRAPPER",
+      "message": "'LOCAL_VIEW_STATE' không tồn tại trong bảng cha.",
+      "field": "topic_codes",
+      "ref": "LOCAL_VIEW_STATE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DEV-ENV",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-XCODE-NAV",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROG-STATE",
+      "message": "'DATA_TYPES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DATA_TYPES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROG-STATE",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SWIFT-VARS",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LET",
+      "message": "'VARIABLES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VARIABLES"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DECLARATIVE_UI_PARADIGM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_IDENTITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_MODIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WHILE_LOOP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

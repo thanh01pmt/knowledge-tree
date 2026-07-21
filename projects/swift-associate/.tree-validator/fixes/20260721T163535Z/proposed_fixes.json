@@ -1,0 +1,137 @@
+[
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "STATE_DATA_FLOW",
+    "field": "subject_codes",
+    "broken_ref": "DECLARATIVE_UI",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "STATE_DATA_FLOW",
+    "field": "subject_codes",
+    "broken_ref": "ASE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "categories",
+    "code": "UI_BUILDING_BLOCKS",
+    "field": "subject_codes",
+    "broken_ref": "HCC",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "topics",
+    "code": "DIGITAL_INTERACTION",
+    "field": "category_codes",
+    "broken_ref": "DIGITAL_LITERACY",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "SYNTAX_VS_RUNTIME_ERRORS",
+    "field": "topic_codes",
+    "broken_ref": "ERROR_MESSAGES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "ERROR_MESSAGES",
+    "field": "topic_codes",
+    "broken_ref": "TROUBLESHOOTING",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "DIGITAL_IDENTITY",
+    "field": "topic_codes",
+    "broken_ref": "DATA_PRIVACY_USER",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "USER_CENTERED_DESIGN",
+    "field": "topic_codes",
+    "broken_ref": "UI_UX_PROCESS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "FIRST_CLASS_FUNCTIONS",
+    "field": "topic_codes",
+    "broken_ref": "FUNCTIONAL_PROG",
+    "suggestions": [
+      {
+        "suggested_value": "CONDITIONAL_LOGIC",
+        "confidence": 0.625
+      }
+    ],
+    "note": null,
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "REFERENCE_TYPE_DECLARATION",
+    "field": "topic_codes",
+    "broken_ref": "VARIABLES_DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "UI_MODIFIERS",
+    "field": "topic_codes",
+    "broken_ref": "UI_MODIFIERS",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "PRIMITIVE_TYPE_DECLARATION",
+    "field": "topic_codes",
+    "broken_ref": "VARIABLES_DATA_TYPES",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  },
+  {
+    "rule_id": "BROKEN_REFERENCE",
+    "level": "concepts",
+    "code": "STATE_PROPERTY_WRAPPER",
+    "field": "topic_codes",
+    "broken_ref": "LOCAL_VIEW_STATE",
+    "suggestions": null,
+    "note": "Không tìm thấy code nào đủ giống — cần bổ sung thủ công.",
+    "status": "pending_review"
+  }
+]
