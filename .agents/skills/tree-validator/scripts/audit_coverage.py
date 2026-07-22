@@ -136,6 +136,15 @@ def audit_project_coverage(slug: str, repo_root: Path):
         for r in reader:
             los.append(r)
 
+    # 1b. Load project concepts (for Dimension 2 audit)
+    project_concepts = []
+    concepts_tsv = out_dir / "concepts.tsv"
+    if concepts_tsv.is_file():
+        with open(concepts_tsv, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            for r in reader:
+                project_concepts.append(r)
+
     # 2. Extract sections from PDF or context-audit.md
     sections = parse_pdf_sections(raw_pdf)
 
@@ -224,8 +233,73 @@ def audit_project_coverage(slug: str, repo_root: Path):
     with open(report_file, "w", encoding="utf-8") as f:
         f.write("\n".join(report_lines))
 
+    # ── Dimension 2: Concept Coverage ────────────────────────────────────────
+    concept_covered: list[dict] = []
+    concept_uncovered: list[dict] = []
+
+    if project_concepts:
+        lo_concept_coverage: dict[str, list[str]] = {}
+        for lo in los:
+            codes = [c.strip() for c in lo.get("concept_codes", "").replace(";", ",").split(",") if c.strip()]
+            for c in codes:
+                lo_concept_coverage.setdefault(c, []).append(lo["code"])
+
+        for concept in project_concepts:
+            code = (concept.get("code") or "").strip()
+            if code:
+                lo_list = lo_concept_coverage.get(code, [])
+                entry = {"concept": concept, "code": code, "lo_codes": lo_list}
+                if lo_list:
+                    concept_covered.append(entry)
+                else:
+                    concept_uncovered.append(entry)
+
+    # Append Dimension 2 to report
+    d2_lines: list[str] = [
+        "",
+        "---",
+        "",
+        "## Chiều 2 — Concept Coverage (Concept → LO)",
+        "",
+        f"- **Tổng số Concepts:** {len(project_concepts)}",
+        f"- **Concepts có LO:** {len(concept_covered)}",
+        f"- **Concepts chưa có LO:** {len(concept_uncovered)}",
+        "",
+    ]
+    if concept_uncovered:
+        d2_lines += [
+            "### ⚠️ Concepts chưa được phủ bởi LO nào",
+            "",
+            "| Code | Name |",
+            "|---|---|",
+        ]
+        for e in concept_uncovered:
+            d2_lines.append(f"| `{e['code']}` | {e['concept'].get('name','')} |")
+        d2_lines.append("")
+        d2_lines.append("**→ Action:** Thêm LO cho các concepts trên. Chạy `/detect-gaps` để có plan chi tiết.")
+    else:
+        d2_lines.append("✅ **Tất cả concepts đều có ít nhất 1 LO.**")
+
+    d2_lines += [
+        "",
+        "### Bảng Concept → LOs",
+        "",
+        "| Concept | Name | LOs phụ trách |",
+        "|---|---|---|",
+    ]
+    for e in concept_covered:
+        lo_str = ", ".join(f"`{c}`" for c in e["lo_codes"][:4])
+        if len(e["lo_codes"]) > 4:
+            lo_str += f" ... (+{len(e['lo_codes'])-4} more)"
+        d2_lines.append(f"| `{e['code']}` | {e['concept'].get('name','')} | {lo_str} |")
+
+    full_report_lines = report_lines + d2_lines
+
+    with open(report_file, "w", encoding="utf-8") as f:
+        f.write("\n".join(full_report_lines))
+
     with open(work_dir / "coverage_audit.md", "w", encoding="utf-8") as f:
-        f.write("\n".join(report_lines))
+        f.write("\n".join(full_report_lines))
 
     print(f"==================================================")
     print(f"📊 REVERSE COVERAGE AUDIT RESULTS for '{slug}'")

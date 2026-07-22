@@ -1,0 +1,107 @@
+{
+  "generated_at": "2026-07-22T14:38:48.052662+00:00",
+  "summary": {
+    "status": "PASS",
+    "total_issues": 7,
+    "errors": 0,
+    "warnings": 7,
+    "by_rule": {
+      "CIO_INSUFFICIENT_SIO": 2,
+      "ORPHAN_NODE": 5
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 0,
+        "WARNING": 2
+      },
+      "subjects": {
+        "ERROR": 0,
+        "WARNING": 1
+      },
+      "categories": {
+        "ERROR": 0,
+        "WARNING": 4
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 8,
+      "categories": 11,
+      "topics": 12,
+      "concepts": 18,
+      "learning_objectives": 139
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-ITERATE-OVER-COLLECTION",
+      "message": "CIO 'Traverse Every Element of a Collection Using a Loop' (CIO-ITERATE-OVER-COLLECTION) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-EVALUATE-MODIFIER-ORDER",
+      "message": "CIO 'Predict How Modifier Order Affects Rendered Output' (CIO-EVALUATE-MODIFIER-ORDER) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "subjects",
+      "code": "DIGITAL_LITERACY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "DATA_PRIVACY_USER",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "FUNCTIONAL_PROG",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "TROUBLESHOOTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "UI_UX_PROCESS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

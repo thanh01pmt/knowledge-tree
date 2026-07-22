@@ -69,6 +69,9 @@ RULE_DESCRIPTIONS = {
     "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
     "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
     "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
     "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
     "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
     "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
@@ -419,6 +422,78 @@ def check_lo_type_rules(lo_rows):
     return issues
 
 
+def check_lo_concept_codes(lo_rows, project_concept_codes: set):
+    """ERROR if any concept_code in a LO does not exist in the project's concepts.tsv.
+    Only runs when project_concept_codes is non-empty (i.e. concepts.tsv has been built)."""
+    issues = []
+    if not project_concept_codes:
+        return issues  # concepts.tsv rỗng → bỏ qua (có thể chưa build-tree)
+    for r in lo_rows:
+        code = (r.get("code") or "").strip()
+        raw = r.get("concept_codes", "") or ""
+        pieces = split_codes(raw)
+        for p in pieces:
+            if p not in project_concept_codes:
+                issues.append(Issue(
+                    "ERROR", "LO_CONCEPT_NOT_IN_PROJECT", "learning_objectives", code,
+                    f"concept_code '{p}' không tồn tại trong concepts.tsv của project.",
+                    field="concept_codes", ref=p
+                ))
+    return issues
+
+
+def check_concept_lo_coverage(concept_rows, lo_rows):
+    """WARNING if a concept in concepts.tsv has no LO pointing to it.
+    Only runs when both concepts and LOs are non-empty."""
+    issues = []
+    if not concept_rows or not lo_rows:
+        return issues
+
+    covered: set[str] = set()
+    for r in lo_rows:
+        raw = r.get("concept_codes", "") or ""
+        for c in raw.replace(";", ",").split(","):
+            c = c.strip()
+            if c:
+                covered.add(c)
+
+    for concept in concept_rows:
+        code = (concept.get("code") or "").strip()
+        name = (concept.get("name") or "").strip()
+        if code and code not in covered:
+            issues.append(Issue(
+                "WARNING", "LO_CONCEPT_UNCOVERED", "concepts", code,
+                f"Concept '{name}' ({code}) không có LO nào trỏ đến trong learning-objectives.tsv."
+            ))
+    return issues
+
+
+def check_cio_sio_depth(lo_rows, min_sios: int = 2):
+    """WARNING if a CIO has fewer than min_sios SPECIFIC_IMPL children.
+    Each CIO should have at least 2 SIOs to ensure adequate instructional depth."""
+    issues = []
+    cios = {r["code"]: r for r in lo_rows if r.get("lo_type") == "CONCEPTUAL_IMPL" and r.get("code")}
+    if not cios:
+        return issues
+
+    cio_sio_count: dict[str, int] = {c: 0 for c in cios}
+    for r in lo_rows:
+        if r.get("lo_type") == "SPECIFIC_IMPL":
+            parent = (r.get("parent_lo_code") or "").strip()
+            if parent in cio_sio_count:
+                cio_sio_count[parent] += 1
+
+    for cio_code, count in cio_sio_count.items():
+        if count < min_sios:
+            cio_name = (cios[cio_code].get("name") or "").strip()
+            issues.append(Issue(
+                "WARNING", "CIO_INSUFFICIENT_SIO", "learning_objectives", cio_code,
+                f"CIO '{cio_name}' ({cio_code}) chỉ có {count} SIO con "
+                f"(yêu cầu ≥ {min_sios}). Phân rã chưa đủ chi tiết thực hành."
+            ))
+    return issues
+
+
 def check_line_endings(data_dir: Path, filenames):
     issues = []
     styles = {}
@@ -491,6 +566,9 @@ def run_checks(data_dir: Path, tables, code_sets):
 
     issues += check_lo_parent_and_cycles(lo_rows, code_sets[LO_LEVEL["name"]])
     issues += check_lo_type_rules(lo_rows)
+    issues += check_lo_concept_codes(lo_rows, code_sets.get("concepts", set()))
+    issues += check_concept_lo_coverage(tables.get("concepts", []), lo_rows)
+    issues += check_cio_sio_depth(lo_rows, min_sios=2)
 
     for i in range(len(ALL_LEVELS) - 1):
         parent_lvl, child_lvl = ALL_LEVELS[i], ALL_LEVELS[i + 1]

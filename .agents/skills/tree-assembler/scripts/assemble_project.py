@@ -1,7 +1,24 @@
-import json
+#!/usr/bin/env python3
+"""
+assemble_project.py — Build 5 taxonomy TSV files (fields → concepts) from master_tree.json.
+
+Hai chế độ hoạt động:
+  --source mapping-plan  (MẶC ĐỊNH): Đọc concept codes từ mapping-plan.md để build taxonomy.
+                                      Đây là thứ tự ĐÚNG: build taxonomy trước, generate LO sau.
+  --source lo-tsv        (tương thích ngược): Đọc concept_codes từ learning-objectives.tsv,
+                                               rồi build taxonomy ngược từ LO.
+
+Lưu ý: Chỉ build 5 file (fields, subjects, categories, topics, concepts).
+        File learning-objectives.tsv được sinh riêng bởi /generate-los (llm_extract_lo.py).
+"""
+
+import argparse
 import csv
-from pathlib import Path
+import json
+import re
 import sys
+from pathlib import Path
+
 
 def find_repo_root(start: Path) -> Path:
     cur = start.resolve()
@@ -13,107 +30,199 @@ def find_repo_root(start: Path) -> Path:
         cur = cur.parent
     return start.resolve()
 
-def build_project(slug):
-    repo = find_repo_root(Path.cwd())
-    out_dir = repo / "projects" / slug / "output"
-    master_json = repo / ".agents/skills/taxonomy-mapper/resources/master_tree.json"
-    lo_tsv = out_dir / "learning-objectives.tsv"
-    
-    with open(master_json, 'r', encoding='utf-8') as f:
-        master = json.load(f)
-        
-    levels = ['fields', 'subjects', 'categories', 'topics', 'concepts']
-    code_to_lvl = {}
-    code_to_row = {}
+
+def load_status(repo_root: Path) -> dict:
+    status_file = repo_root / "status.yaml"
+    res = {}
+    if status_file.is_file():
+        with open(status_file, "r", encoding="utf-8") as f:
+            for line in f:
+                if ":" in line and not line.strip().startswith("#"):
+                    k, v = line.split(":", 1)
+                    res[k.strip()] = v.strip().strip("'\"")
+    return res
+
+
+def extract_codes_from_mapping_plan(plan_path: Path) -> set:
+    """Parse concept codes from mapping-plan.md.
+    Recognises lines containing backtick-quoted UPPER_SNAKE_CASE tokens."""
+    if not plan_path.is_file():
+        print(f"❌ Error: mapping-plan.md không tìm thấy tại {plan_path}")
+        sys.exit(1)
+
+    content = plan_path.read_text(encoding="utf-8")
+    # Match all `CODE_LIKE_THIS` tokens (UPPER_SNAKE_CASE or UPPER-WITH-DASH)
+    codes = set(re.findall(r"`([A-Z][A-Z0-9_\-]{2,})`", content))
+    return codes
+
+
+def extract_codes_from_lo_tsv(lo_tsv: Path) -> set:
+    """Parse concept_codes column from learning-objectives.tsv."""
+    if not lo_tsv.is_file():
+        print(f"⚠️ Warning: learning-objectives.tsv không tìm thấy tại {lo_tsv}. Taxonomy sẽ rỗng.")
+        return set()
+
+    target_concepts = set()
+    with open(lo_tsv, "r", encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        for r in reader:
+            c_str = r.get("concept_codes", "")
+            for c in c_str.replace(";", ",").split(","):
+                c = c.strip()
+                if c:
+                    target_concepts.add(c)
+    return target_concepts
+
+
+def build_lookup_tables(master: dict) -> tuple[dict, dict, dict]:
+    """Build code → level and code → row lookup tables from master_tree.json."""
+    levels = ["fields", "subjects", "categories", "topics", "concepts"]
+    code_to_lvl, code_to_row = {}, {}
     for lvl in levels:
         for row in master.get(lvl, []):
-            code = row['code']
+            code = row["code"]
             code_to_lvl[code] = lvl
-            code_to_row[code] = dict(row) # copy
-            
+            code_to_row[code] = dict(row)
+    return levels, code_to_lvl, code_to_row
+
+
+def collect_ancestors(code: str, code_to_lvl: dict, code_to_row: dict, result: dict):
+    """Recursively collect a code and all its ancestors into result dict."""
     parent_keys = {
-        'concepts': 'topic_codes',
-        'topics': 'category_codes',
-        'categories': 'subject_codes',
-        'subjects': 'field_codes',
-        'fields': None
+        "concepts": "topic_codes",
+        "topics": "category_codes",
+        "categories": "subject_codes",
+        "subjects": "field_codes",
+        "fields": None,
     }
+    row = code_to_row.get(code)
+    if not row:
+        return
+    actual_lvl = code_to_lvl[code]
+    result.setdefault(actual_lvl, {})
+    if code in result[actual_lvl]:
+        return
+    result[actual_lvl][code] = row
 
-    def collect_ancestors(code, result):
-        row = code_to_row.get(code)
-        if not row:
-            return
-        actual_lvl = code_to_lvl[code]
-        if actual_lvl not in result:
-            result[actual_lvl] = {}
-        if code in result[actual_lvl]:
-            return
-        result[actual_lvl][code] = row
+    pkey = parent_keys.get(actual_lvl)
+    if pkey and row.get(pkey):
+        p_codes = [c.strip() for c in row[pkey].replace(";", ",").split(",") if c.strip()]
+        for pc in p_codes:
+            if pc in code_to_lvl:
+                collect_ancestors(pc, code_to_lvl, code_to_row, result)
 
-        pkey = parent_keys.get(actual_lvl)
-        if pkey and row.get(pkey):
-            p_codes = [c.strip() for c in row[pkey].replace(';', ',').split(',') if c.strip()]
-            for pc in p_codes:
-                if pc in code_to_lvl:
-                    collect_ancestors(pc, result)
 
-    # Read concepts from learning-objectives.tsv if present
-    target_concepts = set()
-    if lo_tsv.is_file():
-        with open(lo_tsv, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f, delimiter='\t')
-            for r in reader:
-                c_str = r.get('concept_codes', '')
-                for c in c_str.replace(';', ',').split(','):
-                    c = c.strip()
-                    if c:
-                        target_concepts.add(c)
-                        
-    result = {}
-    for c in target_concepts:
-        collect_ancestors(c, result)
-
-    # Sanitize parent references so each level ONLY references codes present in the level directly above it
+def sanitize_parent_refs(result: dict, levels: list):
+    """Trim cross-level parent references to only valid codes at each level."""
     level_codes = {lvl: set(result.get(lvl, {}).keys()) for lvl in levels}
-    
-    # Clean subjects -> field_codes
-    for s_code, row in result.get('subjects', {}).items():
-        fc = [c.strip() for c in row.get('field_codes', '').replace(';', ',').split(',') if c.strip() in level_codes['fields']]
-        row['field_codes'] = ', '.join(fc) if fc else 'ASE'
 
-    # Clean categories -> subject_codes
-    for c_code, row in result.get('categories', {}).items():
-        sc = [c.strip() for c in row.get('subject_codes', '').replace(';', ',').split(',') if c.strip() in level_codes['subjects']]
-        row['subject_codes'] = ', '.join(sc) if sc else list(level_codes['subjects'])[0]
+    def clean(rows_dict, parent_field, parent_lvl, fallback_fn):
+        for row in rows_dict.values():
+            valid = [c.strip() for c in row.get(parent_field, "").replace(";", ",").split(",")
+                     if c.strip() in level_codes[parent_lvl]]
+            row[parent_field] = ", ".join(valid) if valid else fallback_fn()
 
-    # Clean topics -> category_codes
-    for t_code, row in result.get('topics', {}).items():
-        cc = [c.strip() for c in row.get('category_codes', '').replace(';', ',').split(',') if c.strip() in level_codes['categories']]
-        row['category_codes'] = ', '.join(cc) if cc else list(level_codes['categories'])[0]
+    if result.get("subjects"):
+        clean(result["subjects"], "field_codes", "fields",
+              lambda: next(iter(level_codes["fields"]), ""))
+    if result.get("categories"):
+        clean(result["categories"], "subject_codes", "subjects",
+              lambda: next(iter(level_codes["subjects"]), ""))
+    if result.get("topics"):
+        clean(result["topics"], "category_codes", "categories",
+              lambda: next(iter(level_codes["categories"]), ""))
+    if result.get("concepts"):
+        clean(result["concepts"], "topic_codes", "topics",
+              lambda: next(iter(level_codes["topics"]), ""))
 
-    # Clean concepts -> topic_codes
-    for c_code, row in result.get('concepts', {}).items():
-        tc = [c.strip() for c in row.get('topic_codes', '').replace(';', ',').split(',') if c.strip() in level_codes['topics']]
-        row['topic_codes'] = ', '.join(tc) if tc else list(level_codes['topics'])[0]
 
-    # Write TSVs for fields, subjects, categories, topics, concepts
-    headers_map = {
-        "fields": ["code", "name", "description", "display_order", "keywords", "cs2023_ka_mapping", "metadata"],
-        "subjects": ["code", "name", "description", "field_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-        "categories": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-        "topics": ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-        "concepts": ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    }
-    
-    for lvl, keys in headers_map.items():
+HEADERS_MAP = {
+    "fields":     ["code", "name", "description", "display_order", "keywords", "cs2023_ka_mapping", "metadata"],
+    "subjects":   ["code", "name", "description", "field_codes", "keywords", "cs2023_ka_mapping", "metadata"],
+    "categories": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata"],
+    "topics":     ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata"],
+    "concepts":   ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"],
+}
+
+
+def write_tsvs(result: dict, out_dir: Path, levels: list):
+    out_dir.mkdir(parents=True, exist_ok=True)
+    for lvl in levels:
+        keys = HEADERS_MAP[lvl]
         rows = list(result.get(lvl, {}).values())
-        with open(out_dir / f"{lvl}.tsv", 'w', encoding='utf-8', newline='') as f:
-            writer = csv.writer(f, delimiter='\t')
+        with open(out_dir / f"{lvl}.tsv", "w", encoding="utf-8", newline="") as f:
+            writer = csv.writer(f, delimiter="\t")
             writer.writerow(keys)
             for r in rows:
                 writer.writerow([r.get(k, "") for k in keys])
-                
-    print(f"Successfully assembled 100% clean tree hierarchy for '{slug}'!")
+        print(f"  ✓ {lvl}.tsv — {len(rows)} rows")
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Assemble taxonomy TSV files from master_tree.json")
+    parser.add_argument("--project", type=str, help="Project slug")
+    parser.add_argument(
+        "--source",
+        choices=["mapping-plan", "lo-tsv"],
+        default="mapping-plan",
+        help="Source to determine which concept codes to include. Default: mapping-plan (recommended)."
+    )
+    args = parser.parse_args()
+
+    repo = find_repo_root(Path.cwd())
+
+    slug = args.project
+    if not slug:
+        status = load_status(repo)
+        slug = status.get("active_project")
+        if not slug:
+            print("❌ Error: Không có project. Truyền --project hoặc set active_project trong status.yaml.")
+            sys.exit(1)
+
+    out_dir = repo / "projects" / slug / "output"
+    work_dir = repo / "projects" / slug / ".work"
+    master_json = repo / ".agents/skills/taxonomy-mapper/resources/master_tree.json"
+
+    if not master_json.is_file():
+        print(f"❌ Error: master_tree.json không tìm thấy tại {master_json}.")
+        print("   Hãy chạy parse_master_tree.py trước.")
+        sys.exit(1)
+
+    with open(master_json, "r", encoding="utf-8") as f:
+        master = json.load(f)
+
+    levels, code_to_lvl, code_to_row = build_lookup_tables(master)
+
+    # Determine target concept codes
+    if args.source == "mapping-plan":
+        plan_path = work_dir / "mapping-plan.md"
+        print(f"[*] Mode: mapping-plan — đọc concept codes từ {plan_path.name}")
+        target_codes = extract_codes_from_mapping_plan(plan_path)
+        # Filter to only concept-level codes
+        concept_codes = {c for c in target_codes if code_to_lvl.get(c) == "concepts"}
+        # Also allow topics/categories to be explicitly targeted
+        non_concept = target_codes - concept_codes
+        print(f"[*] Tìm thấy {len(concept_codes)} concept codes, {len(non_concept)} codes cấp khác trong mapping-plan.")
+    else:
+        lo_tsv = out_dir / "learning-objectives.tsv"
+        print(f"[*] Mode: lo-tsv — đọc concept codes từ {lo_tsv.name} (backward-compatible)")
+        concept_codes = extract_codes_from_lo_tsv(lo_tsv)
+
+    if not concept_codes:
+        print("⚠️  Warning: Không tìm thấy concept codes hợp lệ. Output TSVs sẽ rỗng.")
+
+    # Collect ancestors for all target codes
+    result: dict = {}
+    for c in concept_codes:
+        collect_ancestors(c, code_to_lvl, code_to_row, result)
+
+    sanitize_parent_refs(result, levels)
+
+    print(f"\n[*] Building taxonomy TSVs for project '{slug}'...")
+    write_tsvs(result, out_dir, levels)
+    print(f"\n[✓] Taxonomy assembled for '{slug}'!")
+    print("[→] Tiếp theo: chạy /generate-los để sinh learning-objectives.tsv.")
+
 
 if __name__ == "__main__":
-    build_project(sys.argv[1] if len(sys.argv) > 1 else "swift-associate")
+    main()

@@ -1,7 +1,7 @@
 # Báo cáo Đối chiếu Ngược Độ Phủ Syllabus (Reverse Coverage Audit)
 
 - **Dự án:** `swift-associate`
-- **Thời gian kiểm tra:** 2026-07-22T14:38:48.133388+00:00
+- **Thời gian kiểm tra:** 2026-07-22T14:29:56.620897+00:00
 - **Tổng số mục Syllabus:** 43
 - **Số mục đã phủ trong LO:** 41
 - **Số mục còn thiếu (Gaps):** 2
@@ -58,36 +58,3 @@
 |---|---|---|
 | Swift Language Usage | `3.4` | Create and manipulate arrays |
 | different data types | `3.6.1` | Differentiate between constants and variables |
-
----
-
-## Chiều 2 — Concept Coverage (Concept → LO)
-
-- **Tổng số Concepts:** 18
-- **Concepts có LO:** 18
-- **Concepts chưa có LO:** 0
-
-✅ **Tất cả concepts đều có ít nhất 1 LO.**
-
-### Bảng Concept → LOs
-
-| Concept | Name | LOs phụ trách |
-|---|---|---|
-| `UI_MODIFIERS` | UI Modifiers | `ULO-VIEW-STYLING`, `CIO-APPLY-VIEW-MODIFIERS`, `SIO-SWIFT-MOD-PADDING`, `SIO-SWIFT-MOD-BACKGROUND` ... (+6 more) |
-| `ARRAY_OPERATIONS` | Array Operations | `ULO-ORDERED-COLLECTION`, `CIO-DECLARE-ORDERED-COLLECTION`, `SIO-SWIFT-ARRAY-DECLARE`, `SIO-SWIFT-ARRAY-EMPTY` ... (+6 more) |
-| `STATE_PROPERTY_WRAPPER` | State Property Wrapper | `CIO-MANAGE-LOCAL-REACTIVE-STATE`, `SIO-SWIFT-STATE-DECLARE` |
-| `LOCAL_VIEW_STATE` | Local View State | `ULO-DATA-DRIVEN-UI` |
-| `PROJECT_ASSETS_MANAGEMENT` | Project Assets Management | `ULO-IDE-NAVIGATION`, `CIO-CATEGORIZE-PROJECT-FILES`, `SIO-XCODE-SWIFT-FILE`, `SIO-XCODE-PLIST-FILE` ... (+8 more) |
-| `FIRST_CLASS_FUNCTIONS` | First-Class & Higher-Order Functions | `ULO-PARAMETERIZED-SUBROUTINE`, `CIO-DEFINE-SUBROUTINE`, `SIO-SWIFT-FUNC-DEFINE`, `SIO-SWIFT-FUNC-VOID` ... (+7 more) |
-| `FOR_LOOP` | For Loop | `ULO-DEFINITE-ITERATION`, `CIO-ITERATE-OVER-COLLECTION`, `SIO-SWIFT-FOR-IN-ARRAY`, `CIO-ITERATE-NUMERIC-RANGE` ... (+5 more) |
-| `IF_ELSE_STATEMENT` | If-Else Statement | `ULO-CONDITIONAL-EXECUTION`, `CIO-BRANCH-ON-CONDITION`, `SIO-SWIFT-IF-ELSE`, `CIO-TRACE-CONDITIONAL-LOGIC` ... (+1 more) |
-| `SYNTAX_VS_RUNTIME_ERRORS` | Syntax vs Runtime Errors | `ULO-DEBUGGING-FUNDAMENTALS`, `CIO-CLASSIFY-ERROR-TYPES`, `SIO-SWIFT-SYNTAX-ERROR`, `SIO-SWIFT-RUNTIME-ERROR` ... (+1 more) |
-| `ERROR_MESSAGES` | Interpreting Error Messages | `CIO-INTERPRET-ERROR-FEEDBACK`, `SIO-XCODE-READ-CONSOLE-ERRORS`, `SIO-XCODE-APPLY-FIXIT` |
-| `USER_CENTERED_DESIGN` | User-Centered Design Process | `ULO-USER-CENTERED-DESIGN`, `CIO-APPLY-DESIGN-CYCLE`, `SIO-SWIFT-BRAINSTORM`, `SIO-SWIFT-PLAN-STRUCTURE` ... (+5 more) |
-| `DECLARATIVE_UI_PARADIGM` | Declarative UI Paradigm | `ULO-DECLARATIVE-UI`, `CIO-DISTINGUISH-UI-PARADIGMS`, `SIO-SWIFT-DECLARATIVE-VS-IMPERATIVE`, `SIO-SWIFT-STATE-DRIVEN-UPDATE` ... (+21 more) |
-| `SWITCH_CASE` | Switch-Case Statement | `SIO-SWIFT-SWITCH-CASE`, `SIO-SWIFT-TRACE-SWITCH` |
-| `WHILE_LOOP` | While Loop | `ULO-INDEFINITE-ITERATION`, `CIO-LOOP-WHILE-CONDITION`, `SIO-SWIFT-WHILE-LOOP`, `SIO-SWIFT-WHILE-TERMINATION` |
-| `TWO_WAY_BINDING` | Two-Way Data Binding | `SIO-SWIFT-STATE-TWO-WAY-BIND` |
-| `PRIMITIVE_TYPE_DECLARATION` | Declaring Primitive Types | `ULO-ARITHMETIC-LOGIC-OPS`, `CIO-COMPUTE-ARITHMETIC`, `SIO-SWIFT-ARITHMETIC-OPS`, `SIO-SWIFT-COMPOUND-ASSIGN` ... (+13 more) |
-| `REFERENCE_TYPE_DECLARATION` | Declaring Reference Types | `ULO-COMPOSITE-DATA-TYPE`, `CIO-DEFINE-COMPOSITE-TYPE`, `SIO-SWIFT-STRUCT-DEFINE`, `SIO-SWIFT-STRUCT-METHODS` ... (+3 more) |
-| `DIGITAL_IDENTITY` | Digital Identity Management | `ULO-DATA-PRIVACY-SECURITY`, `CIO-PROTECT-USER-DATA`, `SIO-SWIFT-EVALUATE-INFO-SHARING`, `SIO-SWIFT-IDENTIFY-SECURITY-CHALLENGES` ... (+3 more) |
