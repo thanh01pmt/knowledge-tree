@@ -34,7 +34,7 @@ def load_status(repo_root: Path) -> dict:
     return res
 
 def parse_pdf_sections(raw_pdf_path: Path) -> list:
-    """Parses exact Objective Domains items from raw_pdf.txt."""
+    """Parses exact Objective Domains items from raw_pdf.txt dynamically."""
     sections = []
     if not raw_pdf_path.is_file():
         return sections
@@ -50,18 +50,6 @@ def parse_pdf_sections(raw_pdf_path: Path) -> list:
         if not line_s:
             continue
 
-        # Domain headers like 'Planning and Design', 'XCode Project Navigation', 'Swift Language Usage', 'View Building with SwiftUI', 'Debugging'
-        if line_s in [
-            "Planning and Design",
-            "XCode Project Navigation",
-            "Swift Language Usage",
-            "Swift Language Usage (Continued)",
-            "View Building with SwiftUI",
-            "Debugging"
-        ]:
-            current_domain = line_s.replace(" (Continued)", "")
-            continue
-
         # Match objective numbers like '1.1.', '1.1.1.', '2.1.', '3.4.1.'
         match_obj = re.match(r"^(\d+\.\d+(\.\d+)?)\.?\s*(.*)", line_s)
         if match_obj:
@@ -73,6 +61,59 @@ def parse_pdf_sections(raw_pdf_path: Path) -> list:
                     "code": code_num,
                     "title": title
                 })
+        else:
+            # Treat short unpunctuated non-page lines as dynamic domain headers
+            if len(line_s) < 60 and not line_s.endswith(".") and not line_s.startswith("Page "):
+                current_domain = line_s.replace(" (Continued)", "")
+
+    return sections
+
+def parse_context_audit(audit_path: Path) -> list:
+    """Fallback: extracts topics/objectives from context-audit.md if raw_pdf.txt is missing."""
+    sections = []
+    if not audit_path.is_file():
+        return sections
+
+    with open(audit_path, "r", encoding="utf-8") as f:
+        content = f.read()
+
+    lines = content.splitlines()
+    current_domain = "General"
+    item_counter = 1
+
+    for line in lines:
+        line_s = line.strip()
+        if not line_s:
+            continue
+
+        if line_s.startswith(("#", "##", "###", "####")):
+            header_text = line_s.lstrip("#").strip()
+            if header_text.lower() not in ["context audit", "overview", "summary", "handoff", "inputs", "outputs"]:
+                current_domain = header_text
+            continue
+
+        m_bullet = re.match(r"^[\*\-\+]\s*(.*)", line_s)
+        m_num = re.match(r"^(\d+(\.\d+)*)\.?\s*(.*)", line_s)
+
+        if m_bullet:
+            title = m_bullet.group(1).strip()
+            if len(title) > 5 and not title.startswith(("Goal:", "Inputs:", "Outputs:", "Process:")):
+                sections.append({
+                    "domain": current_domain,
+                    "code": f"AUDIT-{item_counter}",
+                    "title": title
+                })
+                item_counter += 1
+        elif m_num:
+            code_num = m_num.group(1)
+            title = m_num.group(3).strip()
+            if len(title) > 3:
+                sections.append({
+                    "domain": current_domain,
+                    "code": code_num,
+                    "title": title
+                })
+                item_counter += 1
 
     return sections
 
@@ -81,6 +122,7 @@ def audit_project_coverage(slug: str, repo_root: Path):
     work_dir = proj_dir / ".work"
     out_dir = proj_dir / "output"
     raw_pdf = work_dir / "raw_pdf.txt"
+    context_audit = work_dir / "context-audit.md"
     lo_tsv = out_dir / "learning-objectives.tsv"
 
     if not lo_tsv.is_file():
@@ -94,35 +136,15 @@ def audit_project_coverage(slug: str, repo_root: Path):
         for r in reader:
             los.append(r)
 
-    # 2. Extract sections from PDF
+    # 2. Extract sections from PDF or context-audit.md
     sections = parse_pdf_sections(raw_pdf)
 
-    # Fallback to context-audit if raw_pdf not found/parsed
     if not sections:
-        sections = [
-            {"domain": "Planning and Design", "code": "1.1", "title": "Design cycle (brainstorm, plan, prototype, evaluate)"},
-            {"domain": "Planning and Design", "code": "1.2", "title": "Protect sensitive data and security challenges"},
-            {"domain": "Planning and Design", "code": "1.3", "title": "Visual design with accessibility in mind"},
-            {"domain": "Xcode Project Navigation", "code": "2.1", "title": "Differentiate basic file types"},
-            {"domain": "Xcode Project Navigation", "code": "2.2", "title": "Import and use assets"},
-            {"domain": "Xcode Project Navigation", "code": "2.4", "title": "Configure UI areas"},
-            {"domain": "Swift Language Usage", "code": "3.1", "title": "Functions execution and argument labels"},
-            {"domain": "Swift Language Usage", "code": "3.2", "title": "Calculate results with operators"},
-            {"domain": "Swift Language Usage", "code": "3.3", "title": "Create and evaluate structures"},
-            {"domain": "Swift Language Usage", "code": "3.4", "title": "Create and manipulate arrays"},
-            {"domain": "Swift Language Usage", "code": "3.5", "title": "Control flow loops and conditionals"},
-            {"domain": "Swift Language Usage", "code": "3.6", "title": "Constants, variables, and data types"},
-            {"domain": "Swift Language Usage", "code": "3.7", "title": "Naming syntax and identifier rules"},
-            {"domain": "View Building with SwiftUI", "code": "4.1", "title": "Imperative vs declarative programming"},
-            {"domain": "View Building with SwiftUI", "code": "4.2", "title": "Create Content Views (Text, Image, Shape, Color)"},
-            {"domain": "View Building with SwiftUI", "code": "4.3", "title": "Implement Modifiers"},
-            {"domain": "View Building with SwiftUI", "code": "4.4", "title": "Create Container Views (Stacks)"},
-            {"domain": "View Building with SwiftUI", "code": "4.5", "title": "View hierarchy"},
-            {"domain": "View Building with SwiftUI", "code": "4.6", "title": "Interactive Views"},
-            {"domain": "View Building with SwiftUI", "code": "4.7", "title": "@State Property Wrapper"},
-            {"domain": "Debugging", "code": "5.1", "title": "Syntax vs run-time errors"},
-            {"domain": "Debugging", "code": "5.2", "title": "Interpret error messages"}
-        ]
+        sections = parse_context_audit(context_audit)
+
+    if not sections:
+        print(f"⚠️ Warning: No syllabus items found in {raw_pdf} or {context_audit}.")
+        return
 
     # 3. Perform matching between Syllabus Sections and LOs
     lo_full_text = [

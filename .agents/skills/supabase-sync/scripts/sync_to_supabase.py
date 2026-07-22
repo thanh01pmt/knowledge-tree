@@ -126,6 +126,17 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
     print(f"🎉 DEPENDENCY-AWARE SYNC COMPLETED FOR '{slug}'!")
     print(f"==================================================")
 
+def load_status(repo_root: Path) -> dict:
+    status_file = repo_root / "status.yaml"
+    res = {}
+    if status_file.is_file():
+        with open(status_file, "r", encoding="utf-8") as f:
+            for line in f:
+                if ":" in line and not line.strip().startswith("#"):
+                    k, v = line.split(":", 1)
+                    res[k.strip()] = v.strip().strip("'\"")
+    return res
+
 def main():
     parser = argparse.ArgumentParser(description="Sync project TSV files to Supabase database with dependency ordering")
     parser.add_argument("--project", type=str, help="Project slug")
@@ -134,7 +145,11 @@ def main():
     repo_root = find_repo_root(Path.cwd())
     slug = args.project
     if not slug:
-        slug = "swift-associate"
+        status = load_status(repo_root)
+        slug = status.get("active_project")
+        if not slug:
+            print("❌ Error: No project specified and active_project not set in status.yaml")
+            sys.exit(1)
 
     sync_project_to_supabase(slug, repo_root)
 

@@ -1,3 +1,7 @@
+---
+description: Run this workflow to sync the validated project TSV output files (`projects/<project>/output/*.tsv`) into the corresponding tables in the Supabase database.
+---
+
 # Workflow: Sync to Supabase
 
 > Run this workflow to sync the validated project TSV output files (`projects/<project>/output/*.tsv`) into the corresponding tables in the Supabase database.
@@ -6,6 +10,7 @@
 **Owner:** `@tree-assembler`
 
 ## Contract
+
 1. Read the 6 validated TSV output files from `projects/<project>/output/`.
 2. Connect to the active Supabase project database via API / Service Role Key.
 3. For each table (`fields`, `subjects`, `categories`, `topics`, `concepts`, `learning_objectives`):

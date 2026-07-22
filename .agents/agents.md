@@ -13,6 +13,10 @@
 | `/audit-coverage` | @tree-validator | Run `audit_coverage.py` to cross-reference LO output against source PDF |
 | `/sync-supabase` | @tree-assembler | Run `sync_to_supabase.py` to push TSVs into Supabase Cloud DB |
 
+## scaffolder
+- Goal: Scaffold project directory structure, 6 output TSV headers, and set active project in `status.yaml`.
+- Script: `.agents/skills/tree-validator/scripts/scaffold_tree.py`
+
 ## @context-analyzer
 - Goal: Extract syllabus and knowledge domains from `projects/<project>/context/` source files.
 - Skill: `project-context-loader`

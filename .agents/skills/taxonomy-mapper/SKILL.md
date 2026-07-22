@@ -9,7 +9,7 @@ description: Cross-reference extracted project syllabus with the Master Knowledg
 
 ## Inputs
 - `.work/context-audit.md` (What needs to be taught/tested)
-- `.agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv` (or the parsed JSON in `.agents/resources/master_tree.json`)
+- `.agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv` (or the parsed JSON in `.agents/skills/taxonomy-mapper/resources/master_tree.json`)
 
 ## Outputs
 - `.work/mapping-plan.md`
