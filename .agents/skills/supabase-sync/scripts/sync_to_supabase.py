@@ -16,6 +16,11 @@ import csv
 import os
 import sys
 from pathlib import Path
+
+# Sanitize NO_PROXY to prevent httpx InvalidURL parsing error on IPv6 addresses like ::1
+os.environ.pop("NO_PROXY", None)
+os.environ.pop("no_proxy", None)
+
 from supabase import create_client
 
 def find_repo_root(start: Path) -> Path:
