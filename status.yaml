@@ -1,7 +1,7 @@
 active_project: swift-associate
-last_validated_at: '2026-07-22T14:39:24.674777+00:00'
+last_validated_at: '2026-07-22T14:51:14.513919+00:00'
 last_validation_status: PASS
-last_report_path: projects/swift-associate/.tree-validator/reports/20260722T143924Z/validation_report.md
+last_report_path: projects/swift-associate/.tree-validator/reports/20260722T145114Z/validation_report.md
 pending_manual_fixes: 0
 pending_proposed_fixes: 0
 proposed_fixes_path: projects/swift-associate/.tree-validator/fixes/20260722T143924Z/proposed_fixes.md

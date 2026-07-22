@@ -1,0 +1,1041 @@
+{
+  "generated_at": "2026-07-22T14:49:50.595832+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 110,
+    "errors": 106,
+    "warnings": 4,
+    "by_rule": {
+      "BROKEN_REFERENCE": 53,
+      "LO_CONCEPT_NOT_IN_PROJECT": 53,
+      "ORPHAN_NODE": 4
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 106,
+        "WARNING": 0
+      },
+      "subjects": {
+        "ERROR": 0,
+        "WARNING": 1
+      },
+      "categories": {
+        "ERROR": 0,
+        "WARNING": 3
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 7,
+      "categories": 8,
+      "topics": 7,
+      "concepts": 11,
+      "learning_objectives": 141
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PARAMETERIZED-SUBROUTINE",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DEFINE-SUBROUTINE",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-DEFINE",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-VOID",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARG-LABELS",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-INVOKE-SUBROUTINE",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-CALL",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-RETURN-CAPTURE",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-TRACE-SUBROUTINE-EXECUTION",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE-FUNC-CALL",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PREDICT-FUNC-OUTPUT",
+      "message": "'FIRST_CLASS_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-ARITHMETIC-LOGIC-OPS",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-COMPUTE-ARITHMETIC",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARITHMETIC-OPS",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPOUND-ASSIGN",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-EVALUATE-BOOLEAN-EXPR",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARISON-OPS",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LOGICAL-OPS",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-COMPOSITE-DATA-TYPE",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DEFINE-COMPOSITE-TYPE",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-DEFINE",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-METHODS",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-INSTANTIATE-COMPOSITE-TYPE",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-INIT",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-ACCESS",
+      "message": "'REFERENCE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-ORDERED-COLLECTION",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARE-ORDERED-COLLECTION",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-DECLARE",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-EMPTY",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-ACCESS-MODIFY-COLLECTION",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-READ-INDEX",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-WRITE-INDEX",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-PROPERTIES",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-METHODS",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FOR-IN-ARRAY",
+      "message": "'ARRAY_OPERATIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-CONDITIONAL-EXECUTION",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-BRANCH-ON-CONDITION",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-IF-ELSE",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SWITCH-CASE",
+      "message": "'SWITCH_CASE' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SWITCH_CASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-TRACE-CONDITIONAL-LOGIC",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE-IF-CHAIN",
+      "message": "'IF_ELSE_STATEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE-SWITCH",
+      "message": "'SWITCH_CASE' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SWITCH_CASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-MUTABLE-IMMUTABLE-STATE",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARE-VALUE-BINDING",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LET-CONSTANT",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-VAR-VARIABLE",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-APPLY-TYPE-SYSTEM",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TYPE-INFERENCE",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EXPLICIT-TYPE",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-APPLY-NAMING-CONVENTIONS",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CAMELCASE",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ID-RULES",
+      "message": "'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STATE-TWO-WAY-BIND",
+      "message": "'TWO_WAY_BINDING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "TWO_WAY_BINDING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PARAMETERIZED-SUBROUTINE",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DEFINE-SUBROUTINE",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-DEFINE",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-VOID",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARG-LABELS",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-INVOKE-SUBROUTINE",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-CALL",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FUNC-RETURN-CAPTURE",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-TRACE-SUBROUTINE-EXECUTION",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE-FUNC-CALL",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PREDICT-FUNC-OUTPUT",
+      "message": "concept_code 'FIRST_CLASS_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FIRST_CLASS_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-ARITHMETIC-LOGIC-OPS",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-COMPUTE-ARITHMETIC",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARITHMETIC-OPS",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPOUND-ASSIGN",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-EVALUATE-BOOLEAN-EXPR",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARISON-OPS",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LOGICAL-OPS",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-COMPOSITE-DATA-TYPE",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DEFINE-COMPOSITE-TYPE",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-DEFINE",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-METHODS",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-INSTANTIATE-COMPOSITE-TYPE",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-INIT",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRUCT-ACCESS",
+      "message": "concept_code 'REFERENCE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "REFERENCE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-ORDERED-COLLECTION",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARE-ORDERED-COLLECTION",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-DECLARE",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-EMPTY",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-ACCESS-MODIFY-COLLECTION",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-READ-INDEX",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-WRITE-INDEX",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-PROPERTIES",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ARRAY-METHODS",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-FOR-IN-ARRAY",
+      "message": "concept_code 'ARRAY_OPERATIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "ARRAY_OPERATIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-CONDITIONAL-EXECUTION",
+      "message": "concept_code 'IF_ELSE_STATEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-BRANCH-ON-CONDITION",
+      "message": "concept_code 'IF_ELSE_STATEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-IF-ELSE",
+      "message": "concept_code 'IF_ELSE_STATEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SWITCH-CASE",
+      "message": "concept_code 'SWITCH_CASE' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SWITCH_CASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-TRACE-CONDITIONAL-LOGIC",
+      "message": "concept_code 'IF_ELSE_STATEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE-IF-CHAIN",
+      "message": "concept_code 'IF_ELSE_STATEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "IF_ELSE_STATEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE-SWITCH",
+      "message": "concept_code 'SWITCH_CASE' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SWITCH_CASE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-MUTABLE-IMMUTABLE-STATE",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARE-VALUE-BINDING",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LET-CONSTANT",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-VAR-VARIABLE",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-APPLY-TYPE-SYSTEM",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TYPE-INFERENCE",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EXPLICIT-TYPE",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-APPLY-NAMING-CONVENTIONS",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CAMELCASE",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ID-RULES",
+      "message": "concept_code 'PRIMITIVE_TYPE_DECLARATION' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PRIMITIVE_TYPE_DECLARATION"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STATE-TWO-WAY-BIND",
+      "message": "concept_code 'TWO_WAY_BINDING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "TWO_WAY_BINDING"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "subjects",
+      "code": "DIGITAL_LITERACY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "DATA_PRIVACY_USER",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "TROUBLESHOOTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "UI_UX_PROCESS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}
