@@ -88,6 +88,8 @@ def discover_and_download_roadmap_json(target_url: str, dest_path: Path) -> bool
     """
     parsed = urllib.parse.urlparse(target_url)
     slug = parsed.path.strip("/").split("/")[-1]
+    if slug.endswith(".json"):
+        slug = slug[:-5]
     if not slug:
         slug = "frontend"
         
@@ -148,7 +150,10 @@ def discover_and_download_roadmap_json(target_url: str, dest_path: Path) -> bool
     return False
 
 def extract_roadmap_from_json(json_path: Path) -> list[dict]:
-    """Extract structured topics, subtopics, and exact graph edges from roadmap.sh JSON payload"""
+    """Extract structured topics, subtopics, and exact graph edges from a single roadmap.sh JSON payload."""
+    if not json_path.exists():
+        return []
+
     with open(json_path, "r", encoding="utf-8") as f:
         data = json.load(f)
 
@@ -157,9 +162,8 @@ def extract_roadmap_from_json(json_path: Path) -> list[dict]:
 
     node_labels = {}
     for nid, n in nodes.items():
-        ntype = n.get("type", "")
         data_obj = n.get("data", {})
-        label = data_obj.get("label") or n.get("label") or f"[{ntype}]"
+        label = data_obj.get("label") or n.get("label") or f"[{n.get('type', '')}]"
         node_labels[nid] = label
 
     # Build adjacency parent map from edges
@@ -177,9 +181,9 @@ def extract_roadmap_from_json(json_path: Path) -> list[dict]:
     idx = 1
     for nid, n in nodes.items():
         ntype = n.get("type", "")
-        if ntype in ["topic", "subtopic"]:
+        if ntype in ["topic", "subtopic", "button", "section"]:
             name = node_labels.get(nid, "").strip()
-            if not name or len(name) < 2:
+            if not name or len(name) < 2 or name.startswith("[") or "Continue Learning" in name:
                 continue
             parents = parent_map.get(name, [])
             prereq = ", ".join(parents) if parents else "ROOT (Start)"
@@ -348,7 +352,13 @@ CONCRETE_TOOL_MAP = {
     "Jest": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
     "Vitest": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
     "Cypress": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
-    "Playwright": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools")
+    "Playwright": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
+
+    # Type Systems & TypeScript
+    "TypeScript": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification"),
+    "Type Checkers": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification"),
+    "tsconfig.json": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification"),
+    "Compiler Options": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification")
 }
 
 
@@ -387,7 +397,11 @@ def evaluate_candidate_item(name: str, master_concepts: list[dict]):
         "Browsers and how they work?": ("WEB_BROWSER_ENGINES", "Web Browser Architecture & Engines"),
         "CSS Box Model": ("UI_BOX_MODEL_LAYOUT", "UI Box Model Layout System"),
         "Box Model": ("UI_BOX_MODEL_LAYOUT", "UI Box Model Layout System"),
-        "APIs with requests": ("HTTP_API_CLIENTS", "HTTP API Clients & Requests")
+        "APIs with requests": ("HTTP_API_CLIENTS", "HTTP API Clients & Requests"),
+        "Introduction to TypeScript": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification"),
+        "TypeScript vs JavaScript": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification"),
+        "TS and JS Interoperability": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification"),
+        "Installation and Configuration": ("TYPE_SYSTEMS_TYPESCRIPT", "Type Systems & TypeScript Specification")
     }
 
     if cleaned_name in CONCEPT_NOUN_MAP:

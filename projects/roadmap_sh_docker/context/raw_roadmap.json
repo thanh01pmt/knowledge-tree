@@ -1,0 +1,372 @@
+{
+  "url": "https://roadmap.sh/docker",
+  "topics_count": 61,
+  "topics": [
+    {
+      "order": 1,
+      "name": "Introduction",
+      "type": "TOPIC",
+      "prerequisite": "Docker"
+    },
+    {
+      "order": 2,
+      "name": "What are Containers?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 3,
+      "name": "Why do we need Containers?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 4,
+      "name": "Bare Metal vs VMs vs Containers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 5,
+      "name": "Kubernetes Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 6,
+      "name": "DevOps Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 7,
+      "name": "Docker Beginner to Pro",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 8,
+      "name": "Docker and OCI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 9,
+      "name": "Package Managers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "Users / Groups Permissions",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 11,
+      "name": "Shell Commands",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 12,
+      "name": "Shell Scripting",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 13,
+      "name": "Programming Languages",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "Application Architecture",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "Underlying Technologies",
+      "type": "TOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 16,
+      "name": "Namespaces",
+      "type": "SUBTOPIC",
+      "prerequisite": "Underlying Technologies"
+    },
+    {
+      "order": 17,
+      "name": "cgroups",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "Union Filesystems",
+      "type": "SUBTOPIC",
+      "prerequisite": "Underlying Technologies"
+    },
+    {
+      "order": 19,
+      "name": "Installation / Setup",
+      "type": "TOPIC",
+      "prerequisite": "Underlying Technologies"
+    },
+    {
+      "order": 20,
+      "name": "Docker Desktop (Win/Mac/Linux)",
+      "type": "SUBTOPIC",
+      "prerequisite": "Installation / Setup"
+    },
+    {
+      "order": 21,
+      "name": "Docker Engine ( Linux )",
+      "type": "SUBTOPIC",
+      "prerequisite": "Installation / Setup"
+    },
+    {
+      "order": 22,
+      "name": "Basics of Docker",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "Data Persistence",
+      "type": "TOPIC",
+      "prerequisite": "Basics of Docker"
+    },
+    {
+      "order": 24,
+      "name": "Ephemeral Container Filesystem",
+      "type": "SUBTOPIC",
+      "prerequisite": "Data Persistence"
+    },
+    {
+      "order": 25,
+      "name": "Volume Mounts",
+      "type": "SUBTOPIC",
+      "prerequisite": "Data Persistence"
+    },
+    {
+      "order": 26,
+      "name": "Bind Mounts",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "Using 3rd Party Container Images",
+      "type": "TOPIC",
+      "prerequisite": "Data Persistence"
+    },
+    {
+      "order": 28,
+      "name": "Databases",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "Command Line Utilities",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 30,
+      "name": "Building Container Images",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Dockerfiles",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "Efficient Layer Caching",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Image Size and Security",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 34,
+      "name": "Container Registries",
+      "type": "TOPIC",
+      "prerequisite": "Building Container Images"
+    },
+    {
+      "order": 35,
+      "name": "Dockerhub",
+      "type": "SUBTOPIC",
+      "prerequisite": "Container Registries"
+    },
+    {
+      "order": 36,
+      "name": "Image Tagging Best Practices",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 37,
+      "name": "Others (ghcr, ecr, gcr, acr, etc)",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Running Containers",
+      "type": "TOPIC",
+      "prerequisite": "Container Registries"
+    },
+    {
+      "order": 39,
+      "name": "docker run",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "docker compose",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 41,
+      "name": "Runtime Configuration Options",
+      "type": "SUBTOPIC",
+      "prerequisite": "docker compose"
+    },
+    {
+      "order": 42,
+      "name": "Container Security",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 43,
+      "name": "Runtime Security",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 44,
+      "name": "Image Security",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 45,
+      "name": "Docker CLI",
+      "type": "TOPIC",
+      "prerequisite": "Container Security"
+    },
+    {
+      "order": 46,
+      "name": "Images",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "Containers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Docker CLI"
+    },
+    {
+      "order": 48,
+      "name": "Volumes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "Networks",
+      "type": "SUBTOPIC",
+      "prerequisite": "Docker CLI"
+    },
+    {
+      "order": 50,
+      "name": "Developer Experience",
+      "type": "TOPIC",
+      "prerequisite": "Networking"
+    },
+    {
+      "order": 51,
+      "name": "Hot Reloading",
+      "type": "SUBTOPIC",
+      "prerequisite": "Developer Experience"
+    },
+    {
+      "order": 52,
+      "name": "Debuggers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Developer Experience"
+    },
+    {
+      "order": 53,
+      "name": "Tests",
+      "type": "SUBTOPIC",
+      "prerequisite": "Developer Experience"
+    },
+    {
+      "order": 54,
+      "name": "Continuous Integration",
+      "type": "SUBTOPIC",
+      "prerequisite": "Developer Experience"
+    },
+    {
+      "order": 55,
+      "name": "Deploying Containers",
+      "type": "TOPIC",
+      "prerequisite": "Developer Experience"
+    },
+    {
+      "order": 56,
+      "name": "PaaS Options",
+      "type": "SUBTOPIC",
+      "prerequisite": "Deploying Containers"
+    },
+    {
+      "order": 57,
+      "name": "Kubernetes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "Nomad",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "Docker Swarm",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "Networking",
+      "type": "TOPIC",
+      "prerequisite": "Docker CLI"
+    }
+  ]
+}

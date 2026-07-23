@@ -1,6 +1,6 @@
 {
   "url": "https://roadmap.sh/frontend",
-  "topics_count": 120,
+  "topics_count": 132,
   "topics": [
     {
       "order": 1,
@@ -454,270 +454,342 @@
     },
     {
       "order": 76,
+      "name": "Nodejs",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 77,
       "name": "Electron",
       "type": "SUBTOPIC",
       "prerequisite": "Desktop Apps"
     },
     {
-      "order": 77,
+      "order": 78,
       "name": "Tauri",
       "type": "SUBTOPIC",
       "prerequisite": "Desktop Apps"
     },
     {
-      "order": 78,
+      "order": 79,
       "name": "Flutter",
       "type": "SUBTOPIC",
       "prerequisite": "Desktop Apps"
     },
     {
-      "order": 79,
+      "order": 80,
       "name": "SWC",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 80,
+      "order": 81,
       "name": "Astro",
       "type": "SUBTOPIC",
       "prerequisite": "SSG"
     },
     {
-      "order": 81,
+      "order": 82,
+      "name": "Fullstack",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 83,
+      "name": "Visit Beginner Friendly Version",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "Beginner Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 85,
       "name": "Bun",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 82,
+      "order": 86,
+      "name": "Intermediate Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 87,
       "name": "Biome",
       "type": "SUBTOPIC",
       "prerequisite": "Linters & Formatters"
     },
     {
-      "order": 83,
+      "order": 88,
       "name": "Rolldown",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 84,
+      "order": 89,
+      "name": "Advanced Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 90,
       "name": "Tanstack Start",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 85,
+      "order": 91,
       "name": "Deployment",
       "type": "TOPIC",
       "prerequisite": "Type Checkers"
     },
     {
-      "order": 86,
+      "order": 92,
       "name": "GitHub Pages",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 87,
+      "order": 93,
       "name": "Vercel",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 88,
+      "order": 94,
       "name": "Cloudflare",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 89,
+      "order": 95,
       "name": "Netlify",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 90,
+      "order": 96,
       "name": "Railway",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 91,
+      "order": 97,
       "name": "Render",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 92,
+      "order": 98,
       "name": "Performance",
       "type": "TOPIC",
       "prerequisite": "Design Systems"
     },
     {
-      "order": 93,
+      "order": 99,
       "name": "Lighthouse",
       "type": "SUBTOPIC",
       "prerequisite": "Performance"
     },
     {
-      "order": 94,
+      "order": 100,
       "name": "DevTools Usage",
       "type": "SUBTOPIC",
       "prerequisite": "Performance"
     },
     {
-      "order": 95,
+      "order": 101,
       "name": "Service Workers",
       "type": "SUBTOPIC",
       "prerequisite": "Performance"
     },
     {
-      "order": 96,
+      "order": 102,
       "name": "Streamed Responses",
       "type": "SUBTOPIC",
       "prerequisite": "Performance"
     },
     {
-      "order": 97,
+      "order": 103,
       "name": "Design Systems",
       "type": "TOPIC",
       "prerequisite": "Deployment"
     },
     {
-      "order": 98,
+      "order": 104,
       "name": "Web APIs",
       "type": "TOPIC",
       "prerequisite": "At this point you should have the expertise of an intermediate level frontend developer. Keep practicing and sharpening your skills."
     },
     {
-      "order": 99,
+      "order": 105,
       "name": "Accessibility",
       "type": "TOPIC",
       "prerequisite": "GraphQL"
     },
     {
-      "order": 100,
+      "order": 106,
+      "name": "Backend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 107,
+      "name": "Design System",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 108,
+      "name": "TypeScript",
+      "type": "BUTTON",
+      "prerequisite": "Type Checkers"
+    },
+    {
+      "order": 109,
       "name": "Cache-Control",
       "type": "SUBTOPIC",
       "prerequisite": "Performance"
     },
     {
-      "order": 101,
+      "order": 110,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 111,
       "name": "Claude Code",
       "type": "SUBTOPIC",
       "prerequisite": "AI Assisted Coding"
     },
     {
-      "order": 102,
+      "order": 112,
       "name": "Copilot",
       "type": "SUBTOPIC",
       "prerequisite": "AI Assisted Coding"
     },
     {
-      "order": 103,
+      "order": 113,
       "name": "Cursor",
       "type": "SUBTOPIC",
       "prerequisite": "AI Assisted Coding"
     },
     {
-      "order": 104,
+      "order": 114,
       "name": "Antigravity",
       "type": "SUBTOPIC",
       "prerequisite": "AI Assisted Coding"
     },
     {
-      "order": 105,
+      "order": 115,
       "name": "How LLMs work",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 106,
+      "order": 116,
       "name": "AI vs Traditional Coding",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 107,
+      "order": 117,
       "name": "Code Reviews",
       "type": "SUBTOPIC",
       "prerequisite": "Applications"
     },
     {
-      "order": 108,
+      "order": 118,
       "name": "Docs Generation",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 109,
+      "order": 119,
       "name": "Learn the Basics",
       "type": "TOPIC",
       "prerequisite": "AI in Development"
     },
     {
-      "order": 110,
+      "order": 120,
       "name": "AI Assisted Coding",
       "type": "TOPIC",
       "prerequisite": "Learn a Framework"
     },
     {
-      "order": 111,
+      "order": 121,
       "name": "Prompting Techniques",
       "type": "TOPIC",
       "prerequisite": "AI Assisted Coding"
     },
     {
-      "order": 112,
+      "order": 122,
       "name": "Gemini",
       "type": "SUBTOPIC",
       "prerequisite": "Implementing AI"
     },
     {
-      "order": 113,
+      "order": 123,
       "name": "OpenAI",
       "type": "SUBTOPIC",
       "prerequisite": "Implementing AI"
     },
     {
-      "order": 114,
+      "order": 124,
       "name": "Anthropic",
       "type": "SUBTOPIC",
       "prerequisite": "Implementing AI"
     },
     {
-      "order": 115,
+      "order": 125,
       "name": "Implementing AI",
       "type": "TOPIC",
       "prerequisite": "Skills"
     },
     {
-      "order": 116,
+      "order": 126,
       "name": "Refactoring",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 117,
+      "order": 127,
       "name": "Applications",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 118,
+      "order": 128,
+      "name": "Prompt Engineering",
+      "type": "BUTTON",
+      "prerequisite": "Prompting Techniques"
+    },
+    {
+      "order": 129,
+      "name": "AI Agents Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 130,
       "name": "Agents",
       "type": "TOPIC",
       "prerequisite": "Prompting Techniques, AI Agents Roadmap"
     },
     {
-      "order": 119,
+      "order": 131,
       "name": "MCP",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 120,
+      "order": 132,
       "name": "Skills",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"

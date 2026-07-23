@@ -1,0 +1,8 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+SINGLE_ENDPOINT_QUERY_ARCHITECTURE	Declarative Query API Architecture vs REST	Nguyên lý Declarative Query API, Single Endpoint, Client-driven queries, Execution engine.	API_QUERY_LANGUAGES	Declarative Query API Architecture vs REST		"{""icon"": ""code""}"
+GRAPHQL_SDL_SCHEMAS	Schema Definition Language (SDL)	Định nghĩa Type, Query, Mutation, Subscription, Scalars, Enums, Input types.	API_QUERY_LANGUAGES	Schema Definition Language (SDL)		"{""icon"": ""code""}"
+GRAPHQL_QUERIES_MUTATIONS	Queries, Mutations & Selection Sets	Selection sets, Arguments, Aliases, Fragments, Directives (@include/@skip).	API_QUERY_LANGUAGES	Queries, Mutations & Selection Sets		"{""icon"": ""code""}"
+WEBSOCKET_REALTIME_STREAMING	Declarative Query API Subscriptions & Real-time WebSockets	Subscriptions, WebSocket transport layer, Event streaming.	API_QUERY_LANGUAGES	Declarative Query API Subscriptions & Real-time WebSockets		"{""icon"": ""code""}"
+RESOLVER_EXECUTION_PIPELINES	Declarative Query API Server Engine & Resolver Functions	Resolver signature (parent, args, context, info), Declarative Query API Server Engine setup, error handling.	API_QUERY_LANGUAGES	Apollo Server & Resolver Functions		"{""icon"": ""code""}"
+GRAPHQL_DATALOADER_OPTIMIZATION	N+1 Problem & DataLoader Batching	Giải quyết lỗi N+1 Query, Batching & Caching requests với DataLoader.	API_QUERY_LANGUAGES	N+1 Problem & DataLoader Batching		"{""icon"": ""code""}"
+GRAPHQL_CLIENT_INTEGRATION	Normalized Client & Normalized Cache	Normalized Client integration, useQuery/useMutation, InMemoryCache, Optimistic UI.	API_QUERY_LANGUAGES	Apollo Client & Normalized Cache		"{""icon"": ""code""}"

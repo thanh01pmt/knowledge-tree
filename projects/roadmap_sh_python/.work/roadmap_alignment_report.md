@@ -2,28 +2,30 @@
 
 - **Target Roadmap:** https://roadmap.sh/python
 - **Project Slug:** roadmap_sh_python
-- **Total Topics Crawled (Layer 1 - Crawl4AI):** 85
-- **Matched with Master Tree:** 14
-- **Missing Candidates (Gaps):** 71
+- **Total Topics Crawled (Layer 1 - Crawl4AI):** 89
+- **Matched with Master Tree:** 16
+- **Missing Candidates (Gaps):** 73
 
 ## 🟢 Matched Topics with Sequence & Prerequisite Context
 
 | Order | Roadmap Topic | Prerequisite Node (Trước) | Match Type | Master Code | Master Name |
 |---|---|---|---|---|---| 
-| 2 | **Basic Syntax** | `Learn the Basics` | Fuzzy (Concept - 50%) | `BASIC_MECHANISMS` | Basic Mechanisms |
-| 3 | **Variables and Data Types** | `Learn the Basics` | Fuzzy (Topic - 50%) | `SENSOR_TYPES` | Sensor Types and Integration |
-| 13 | **Arrays and Linked Lists** | `Data Structures & Algorithms` | Fuzzy (Topic - 50%) | `LISTS_COLLECTIONS` | Lists and Dynamic Collections |
-| 14 | **Heaps, Stacks and Queues** | `ROOT (Start)` | Fuzzy (Topic - 75%) | `STACKS_QUEUES` | Stacks and Queues |
-| 16 | **Binary Search Tree** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `LINEAR_BINARY_SEARCH` | Linear vs. Binary Search |
-| 18 | **Sorting Algorithms** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CLUSTERING_ALGORITHMS` | Clustering Algorithms |
-| 29 | **Inheritance** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `INHERITANCE_SYNTAX` | Inheritance Syntax |
-| 36 | **List Comprehensions** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `LIST_OPERATIONS` | List Operations |
-| 47 | **Fast API** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `API_INTEGRATION` | API Integration |
-| 60 | **Static Typing** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `STATIC_MEMBERS` | Static Members |
-| 65 | **Code Formatting** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CODE_LINTING_FORMATTING` | Code Formatting & Static Analysis |
-| 71 | **Testing** | `File Handling` | Fuzzy (Concept - 50%) | `UNIT_TESTING` | Unit Testing |
-| 78 | **File Handling** | `ROOT (Start)` | Fuzzy (Topic - 50%) | `OS_FILE_SYSTEMS` | File Systems |
-| 83 | **Operators** | `Learn the Basics` | Fuzzy (Topic - 50%) | `ARITHMETIC_OPS` | Arithmetic Operators |
+| 1 | **Backend** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `BACKEND_FRAMEWORKS` | Backend Frameworks |
+| 2 | **Python for Data Analysis** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `DATA_EXPLORATION_EDA` | Exploratory Data Analysis (EDA) |
+| 4 | **Basic Syntax** | `Learn the Basics` | Fuzzy (Concept - 50%) | `BASIC_MECHANISMS` | Basic Mechanisms |
+| 5 | **Variables and Data Types** | `Learn the Basics` | Fuzzy (Topic - 50%) | `SENSOR_TYPES` | Sensor Types and Integration |
+| 15 | **Arrays and Linked Lists** | `Data Structures & Algorithms` | Fuzzy (Topic - 50%) | `LISTS_COLLECTIONS` | Lists and Dynamic Collections |
+| 16 | **Heaps, Stacks and Queues** | `ROOT (Start)` | Fuzzy (Topic - 75%) | `STACKS_QUEUES` | Stacks and Queues |
+| 18 | **Binary Search Tree** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `LINEAR_BINARY_SEARCH` | Linear vs. Binary Search |
+| 20 | **Sorting Algorithms** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CLUSTERING_ALGORITHMS` | Clustering Algorithms |
+| 31 | **Inheritance** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `INHERITANCE_SYNTAX` | Inheritance Syntax |
+| 38 | **List Comprehensions** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `LIST_OPERATIONS` | List Operations |
+| 49 | **Fast API** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `API_INTEGRATION` | API Integration |
+| 62 | **Static Typing** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `STATIC_MEMBERS` | Static Members |
+| 67 | **Code Formatting** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CODE_LINTING_FORMATTING` | Code Formatting & Static Analysis |
+| 73 | **Testing** | `File Handling` | Fuzzy (Concept - 50%) | `UNIT_TESTING` | Unit Testing |
+| 82 | **File Handling** | `ROOT (Start)` | Fuzzy (Topic - 50%) | `OS_FILE_SYSTEMS` | File Systems |
+| 87 | **Operators** | `Learn the Basics` | Fuzzy (Topic - 50%) | `ARITHMETIC_OPS` | Arithmetic Operators |
 
 ## ⚖️ 2-Step Decision Framework: Candidate Item Classification
 
@@ -31,54 +33,54 @@
 
 | Order | Concrete Tool | Target Abstract Concept Code | Target Concept Name | Status | Action Plan |
 |---|---|---|---|---|---|
-| 55 | **uv** | `PACKAGE_MANAGEMENT` | Package & Dependency Management | `Concept Exists` | Map 'uv' as Keyword under Concept 'PACKAGE_MANAGEMENT' (Exists) |
-| 58 | **virtualenv** | `VIRTUAL_ENVIRONMENTS` | Virtual Environment Management | `Create Abstract Concept` | Map 'virtualenv' as Keyword under Concept 'VIRTUAL_ENVIRONMENTS' (Create New Abstract Concept) |
+| 57 | **uv** | `PACKAGE_MANAGEMENT` | Package & Dependency Management | `Concept Exists` | Map 'uv' as Keyword under Concept 'PACKAGE_MANAGEMENT' (Exists) |
+| 60 | **virtualenv** | `VIRTUAL_ENVIRONMENTS` | Virtual Environment Management | `Create Abstract Concept` | Map 'virtualenv' as Keyword under Concept 'VIRTUAL_ENVIRONMENTS' (Create New Abstract Concept) |
 
 ### 📐 2. Abstract Concepts (Promote directly to Master Tree)
 
 | Order | Candidate Item | Proposed Concept Code | Action Plan |
 |---|---|---|---|
-| 1 | **Learn the Basics** | `THE_BASICS` | Promote 'Learn the Basics' as Noun Concept Code 'THE_BASICS' to Master Tree |
-| 4 | **Conditionals** | `CONDITIONALS` | Promote 'Conditionals' as Noun Concept Code 'CONDITIONALS' to Master Tree |
-| 5 | **Type Casting** | `TYPE_CASTING` | Promote 'Type Casting' as Noun Concept Code 'TYPE_CASTING' to Master Tree |
-| 6 | **Exceptions** | `EXCEPTIONS` | Promote 'Exceptions' as Noun Concept Code 'EXCEPTIONS' to Master Tree |
-| 7 | **Functions, Builtin Functions** | `FUNCTIONS_BUILTIN_FUNCTIONS` | Promote 'Functions, Builtin Functions' as Noun Concept Code 'FUNCTIONS_BUILTIN_FUNCTIONS' to Master Tree |
-| 8 | **Lists** | `LISTS` | Promote 'Lists' as Noun Concept Code 'LISTS' to Master Tree |
-| 9 | **Tuples** | `TUPLES` | Promote 'Tuples' as Noun Concept Code 'TUPLES' to Master Tree |
-| 10 | **Sets** | `SETS` | Promote 'Sets' as Noun Concept Code 'SETS' to Master Tree |
-| 11 | **Dictionaries** | `DICTIONARIES` | Promote 'Dictionaries' as Noun Concept Code 'DICTIONARIES' to Master Tree |
-| 12 | **Loops** | `LOOPS` | Promote 'Loops' as Noun Concept Code 'LOOPS' to Master Tree |
-| 15 | **HashMaps** | `HASHMAPS` | Promote 'HashMaps' as Noun Concept Code 'HASHMAPS' to Master Tree |
-| 17 | **Recursion** | `RECURSION` | Promote 'Recursion' as Noun Concept Code 'RECURSION' to Master Tree |
-| 19 | **Modules** | `MODULES` | Promote 'Modules' as Noun Concept Code 'MODULES' to Master Tree |
-| 20 | **Data Structures & Algorithms** | `DATA_STRUCTURES_ALGORITHMS` | Promote 'Data Structures & Algorithms' as Noun Concept Code 'DATA_STRUCTURES_ALGORITHMS' to Master Tree |
-| 21 | **Builtin** | `BUILTIN` | Promote 'Builtin' as Noun Concept Code 'BUILTIN' to Master Tree |
-| 22 | **Custom** | `CUSTOM` | Promote 'Custom' as Noun Concept Code 'CUSTOM' to Master Tree |
-| 23 | **Lambdas** | `LAMBDAS` | Promote 'Lambdas' as Noun Concept Code 'LAMBDAS' to Master Tree |
-| 24 | **Decorators** | `DECORATORS` | Promote 'Decorators' as Noun Concept Code 'DECORATORS' to Master Tree |
-| 25 | **Iterators** | `ITERATORS` | Promote 'Iterators' as Noun Concept Code 'ITERATORS' to Master Tree |
-| 26 | **Regular Expressions** | `REGULAR_EXPRESSIONS` | Promote 'Regular Expressions' as Noun Concept Code 'REGULAR_EXPRESSIONS' to Master Tree |
-| ... *and 49 more abstract concept proposals* | | |
+| 3 | **Learn the Basics** | `THE_BASICS` | Promote 'Learn the Basics' as Noun Concept Code 'THE_BASICS' to Master Tree |
+| 6 | **Conditionals** | `CONDITIONALS` | Promote 'Conditionals' as Noun Concept Code 'CONDITIONALS' to Master Tree |
+| 7 | **Type Casting** | `TYPE_CASTING` | Promote 'Type Casting' as Noun Concept Code 'TYPE_CASTING' to Master Tree |
+| 8 | **Exceptions** | `EXCEPTIONS` | Promote 'Exceptions' as Noun Concept Code 'EXCEPTIONS' to Master Tree |
+| 9 | **Functions, Builtin Functions** | `FUNCTIONS_BUILTIN_FUNCTIONS` | Promote 'Functions, Builtin Functions' as Noun Concept Code 'FUNCTIONS_BUILTIN_FUNCTIONS' to Master Tree |
+| 10 | **Lists** | `LISTS` | Promote 'Lists' as Noun Concept Code 'LISTS' to Master Tree |
+| 11 | **Tuples** | `TUPLES` | Promote 'Tuples' as Noun Concept Code 'TUPLES' to Master Tree |
+| 12 | **Sets** | `SETS` | Promote 'Sets' as Noun Concept Code 'SETS' to Master Tree |
+| 13 | **Dictionaries** | `DICTIONARIES` | Promote 'Dictionaries' as Noun Concept Code 'DICTIONARIES' to Master Tree |
+| 14 | **Loops** | `LOOPS` | Promote 'Loops' as Noun Concept Code 'LOOPS' to Master Tree |
+| 17 | **HashMaps** | `HASHMAPS` | Promote 'HashMaps' as Noun Concept Code 'HASHMAPS' to Master Tree |
+| 19 | **Recursion** | `RECURSION` | Promote 'Recursion' as Noun Concept Code 'RECURSION' to Master Tree |
+| 21 | **Modules** | `MODULES` | Promote 'Modules' as Noun Concept Code 'MODULES' to Master Tree |
+| 22 | **Data Structures & Algorithms** | `DATA_STRUCTURES_ALGORITHMS` | Promote 'Data Structures & Algorithms' as Noun Concept Code 'DATA_STRUCTURES_ALGORITHMS' to Master Tree |
+| 23 | **Builtin** | `BUILTIN` | Promote 'Builtin' as Noun Concept Code 'BUILTIN' to Master Tree |
+| 24 | **Custom** | `CUSTOM` | Promote 'Custom' as Noun Concept Code 'CUSTOM' to Master Tree |
+| 25 | **Lambdas** | `LAMBDAS` | Promote 'Lambdas' as Noun Concept Code 'LAMBDAS' to Master Tree |
+| 26 | **Decorators** | `DECORATORS` | Promote 'Decorators' as Noun Concept Code 'DECORATORS' to Master Tree |
+| 27 | **Iterators** | `ITERATORS` | Promote 'Iterators' as Noun Concept Code 'ITERATORS' to Master Tree |
+| 28 | **Regular Expressions** | `REGULAR_EXPRESSIONS` | Promote 'Regular Expressions' as Noun Concept Code 'REGULAR_EXPRESSIONS' to Master Tree |
+| ... *and 51 more abstract concept proposals* | | |
 
 ## 🔎 Layer 2: SearXNG Independent Multi-Source Verification
 
 | Order | Candidate Topic | Prerequisite Node (Trước) | Status | Reference Source | Snippet / Description |
 |---|---|---|---|---|---|
-| 1 | **Learn the Basics** | `Python` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 4 | **Conditionals** | `Learn the Basics` | `High (Verified)` | [Conditional](https://en.wikipedia.org/wiki/Conditional) | Topics referred to by the same term |
-| 5 | **Type Casting** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 6 | **Exceptions** | `Learn the Basics` | `High (Verified)` | [Exception](https://en.wikipedia.org/wiki/Exception) | Topics referred to by the same term |
-| 7 | **Functions, Builtin Functions** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 8 | **Lists** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 9 | **Tuples** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 10 | **Sets** | `ROOT (Start)` | `High (Verified)` | [Set](https://en.wikipedia.org/wiki/Set) | Topics referred to by the same term |
-| 11 | **Dictionaries** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 12 | **Loops** | `Learn the Basics` | `High (Verified)` | [Loop](https://en.wikipedia.org/wiki/Loop) | Topics referred to by the same term |
-| 15 | **HashMaps** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 17 | **Recursion** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 19 | **Modules** | `Data Structures & Algorithms` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 20 | **Data Structures & Algorithms** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 21 | **Builtin** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 3 | **Learn the Basics** | `Python` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 6 | **Conditionals** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 7 | **Type Casting** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 8 | **Exceptions** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 9 | **Functions, Builtin Functions** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 10 | **Lists** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 11 | **Tuples** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 12 | **Sets** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 13 | **Dictionaries** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 14 | **Loops** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 17 | **HashMaps** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 19 | **Recursion** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 21 | **Modules** | `Data Structures & Algorithms` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 22 | **Data Structures & Algorithms** | `Learn the Basics` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 23 | **Builtin** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
 
 ## 📚 Layer 3: Context7 Official Library Documentation & Description
 

@@ -1,0 +1,594 @@
+{
+  "url": "https://roadmap.sh/typescript",
+  "topics_count": 98,
+  "topics": [
+    {
+      "order": 1,
+      "name": "JavaScript Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "TypeScript"
+    },
+    {
+      "order": 2,
+      "name": "Introduction to TypeScript",
+      "type": "TOPIC",
+      "prerequisite": "JavaScript Roadmap"
+    },
+    {
+      "order": 3,
+      "name": "TypeScript vs JavaScript",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to TypeScript"
+    },
+    {
+      "order": 4,
+      "name": "TS and JS Interoperability",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to TypeScript"
+    },
+    {
+      "order": 5,
+      "name": "Installation and Configuration",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to TypeScript"
+    },
+    {
+      "order": 6,
+      "name": "tsconfig.json",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 7,
+      "name": "Compiler Options",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 8,
+      "name": "Running TypeScript",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to TypeScript"
+    },
+    {
+      "order": 9,
+      "name": "tsc",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "ts-node",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 11,
+      "name": "TS Playground",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 12,
+      "name": "TypeScript Types",
+      "type": "TOPIC",
+      "prerequisite": "Introduction to TypeScript"
+    },
+    {
+      "order": 13,
+      "name": "boolean",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "number",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "string",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 16,
+      "name": "void",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 17,
+      "name": "undefined",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "null",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "Interface",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 20,
+      "name": "Class",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 21,
+      "name": "Enum",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 22,
+      "name": "Array",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "Tuple",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "Object",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "unknown",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "any",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "never",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 28,
+      "name": "as const",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "as [type]",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 30,
+      "name": "as any",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Non-null Assertion",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "satisfies keyword",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Type Inference",
+      "type": "TOPIC",
+      "prerequisite": "TypeScript Types"
+    },
+    {
+      "order": 34,
+      "name": "Type Compatibility",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "Combining Types",
+      "type": "TOPIC",
+      "prerequisite": "Type Compatibility"
+    },
+    {
+      "order": 36,
+      "name": "Union Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 37,
+      "name": "Intersection Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Type Aliases",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "keyof Operator",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Type Guards / Narrowing",
+      "type": "TOPIC",
+      "prerequisite": "Combining Types"
+    },
+    {
+      "order": 41,
+      "name": "instanceof",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Guards / Narrowing"
+    },
+    {
+      "order": 42,
+      "name": "typeof",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Guards / Narrowing"
+    },
+    {
+      "order": 43,
+      "name": "Equality",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Guards / Narrowing"
+    },
+    {
+      "order": 44,
+      "name": "Truthiness",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Guards / Narrowing"
+    },
+    {
+      "order": 45,
+      "name": "Type Predicates",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Guards / Narrowing"
+    },
+    {
+      "order": 46,
+      "name": "TypeScript Functions",
+      "type": "TOPIC",
+      "prerequisite": "Type Guards / Narrowing"
+    },
+    {
+      "order": 47,
+      "name": "Typing Functions",
+      "type": "SUBTOPIC",
+      "prerequisite": "TypeScript Functions"
+    },
+    {
+      "order": 48,
+      "name": "Function Overloading",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "TypeScript Interfaces",
+      "type": "TOPIC",
+      "prerequisite": "TypeScript Functions"
+    },
+    {
+      "order": 50,
+      "name": "Types vs Interfaces",
+      "type": "SUBTOPIC",
+      "prerequisite": "TypeScript Interfaces"
+    },
+    {
+      "order": 51,
+      "name": "Extending Interfaces",
+      "type": "SUBTOPIC",
+      "prerequisite": "TypeScript Interfaces"
+    },
+    {
+      "order": 52,
+      "name": "Interface Declaration",
+      "type": "SUBTOPIC",
+      "prerequisite": "TypeScript Interfaces"
+    },
+    {
+      "order": 53,
+      "name": "Hybrid Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "TypeScript Interfaces"
+    },
+    {
+      "order": 54,
+      "name": "Classes",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "Constructor Params",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "Constructor Overloading",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "Access Modifiers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "Abstract Classes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "Inheritance vs Polymorphism",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "Method Overriding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "Generics",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "Generic Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "Generics"
+    },
+    {
+      "order": 63,
+      "name": "Generic Constraints",
+      "type": "SUBTOPIC",
+      "prerequisite": "Generics"
+    },
+    {
+      "order": 64,
+      "name": "Decorators",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 65,
+      "name": "Utility Types",
+      "type": "TOPIC",
+      "prerequisite": "Decorators"
+    },
+    {
+      "order": 66,
+      "name": "Partial",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 67,
+      "name": "Pick",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 68,
+      "name": "Omit",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "Readonly",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 70,
+      "name": "Record",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 71,
+      "name": "Exclude",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 72,
+      "name": "Extract",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 73,
+      "name": "NonNullable",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 74,
+      "name": "Parameters",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 75,
+      "name": "ReturnType",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 76,
+      "name": "InstanceType",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 77,
+      "name": "Awaited",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 78,
+      "name": "Advanced Types",
+      "type": "TOPIC",
+      "prerequisite": "Utility Types"
+    },
+    {
+      "order": 79,
+      "name": "Mapped Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Types"
+    },
+    {
+      "order": 80,
+      "name": "Conditional Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 81,
+      "name": "Literal Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 82,
+      "name": "Template Literal Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 83,
+      "name": "Recursive Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "TypeScript Modules",
+      "type": "TOPIC",
+      "prerequisite": "Advanced Types"
+    },
+    {
+      "order": 85,
+      "name": "Namespaces",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 86,
+      "name": "Ambient Modules",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 87,
+      "name": "External Modules",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 88,
+      "name": "Namespace Augmentation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 89,
+      "name": "Global Augmentation",
+      "type": "SUBTOPIC",
+      "prerequisite": "TypeScript Modules"
+    },
+    {
+      "order": 90,
+      "name": "Ecosystem",
+      "type": "TOPIC",
+      "prerequisite": "TypeScript Modules"
+    },
+    {
+      "order": 91,
+      "name": "Formatting",
+      "type": "SUBTOPIC",
+      "prerequisite": "Ecosystem"
+    },
+    {
+      "order": 92,
+      "name": "Linting",
+      "type": "SUBTOPIC",
+      "prerequisite": "Ecosystem"
+    },
+    {
+      "order": 93,
+      "name": "Useful Packages",
+      "type": "SUBTOPIC",
+      "prerequisite": "Ecosystem"
+    },
+    {
+      "order": 94,
+      "name": "Build Tools",
+      "type": "SUBTOPIC",
+      "prerequisite": "Ecosystem"
+    },
+    {
+      "order": 95,
+      "name": "Frontend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 96,
+      "name": "Backend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 97,
+      "name": "Node.js",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 98,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

@@ -1,0 +1,118 @@
+# Context Syllabus Audit for Node.js Developer Roadmap
+
+## Core Topics
+- Introduction to Node.js
+- Modules
+- npm
+- Error Handling
+- Async Programming
+- Working with Files
+- Command Line Apps
+- Building & Consuming APIs
+- Monitor Changes (Dev)
+- Template Engines
+- Working with Databases
+- Testing
+- Logging
+- Keep app Running
+- Threads
+- Streams
+- Debugging
+- Common Built-in Modules
+
+## Subtopics & Detailed Skills
+- What is Node.js?
+- Why use Node.js?
+- History of Node.js
+- Node.js vs Browser
+- Running Node.js Code
+- CommonJS
+- ESM
+- Creating & Importing
+- [global] keyword
+- Global Installation
+- Local Installation
+- Updating Packages
+- Running Scripts
+- npm workspaces
+- Creating Packages
+- Semantic Versioning
+- JavaScript Errors
+- System Errors
+- User Specified Errors
+- Assertion Errors
+- Uncaught Exceptions
+- Handling Async Errors
+- Callstack / Stack Trace
+- Using Debugger
+- npx
+- Promises
+- async/await
+- Callbacks
+- setTimeout
+- setInterval
+- setImmediate
+- process.nextTick
+- Event Emitter
+- Event Loop
+- process.cwd()
+- path module
+- fs module
+- __dirname
+- __filename
+- glob
+- globby
+- fs-extra
+- chokidar
+- dotenv package
+- process.env
+- Exitting / Exit Codes
+- process.stdin
+- prompts package
+- Inquirer Package
+- stdout / stderr
+- chalk package
+- figlet package
+- cli-progress
+- process.argv
+- commander
+- Express.js
+- fastify
+- NestJS
+- Hono
+- http module
+- axios
+- ky
+- fetch
+- got package
+- jsonwebtoken
+- passport.js
+- --watch
+- nodemon
+- ejs
+- pug
+- marko
+- Mongoose
+- Prisma
+- Native Drivers
+- Knex
+- Drizzle
+- TypeORM
+- Sequelize
+- Prisma
+- Native Drivers
+- Vitest
+- node:test
+- Jest
+- Playwright
+- Cypress
+- Winston
+- Morgan
+- pm2 
+- Child Process
+- Cluster
+- Worker Threads
+- Memory Leaks
+- node --inspect
+- Using APM
+- Garbage Collection

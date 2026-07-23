@@ -1,0 +1,4 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+CONTAINERIZATION	Container Virtualization Architecture & Image Management	Dockerfile syntax, Image layers, Containers lifecycle, Registry.	CONTAINERIZATION_DOCKER	Dockerfile, Images, Containers, Layers		"{""icon"": ""cubes""}"
+DOCKER_NETWORKING_VOLUMES	Container Virtualization Volumes & Network Isolation	Named Volumes, Bind Mounts, Custom Bridge Networks, Port Mapping.	CONTAINERIZATION_DOCKER	Volumes, Bind Mounts, Bridge Network, Port Forwarding		"{""icon"": ""network-wired""}"
+DOCKER_COMPOSE_ORCHESTRATION	Multi-Container Container Virtualization Compose Setup	Container Virtualization-compose.yml, Services, Environment Files, Compose Up.	CONTAINERIZATION_DOCKER	Docker Compose, docker-compose.yml, Services		"{""icon"": ""cogs""}"

@@ -1,6 +1,6 @@
 {
   "url": "https://roadmap.sh/backend",
-  "topics_count": 155,
+  "topics_count": 170,
   "topics": [
     {
       "order": 1,
@@ -442,492 +442,582 @@
     },
     {
       "order": 74,
+      "name": "Design & Architecture",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 75,
       "name": "Graceful Degradation",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 75,
+      "order": 76,
       "name": "Throttling",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 76,
+      "order": 77,
       "name": "Backpressure",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 77,
+      "order": 78,
       "name": "Loadshifting",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 78,
+      "order": 79,
       "name": "Circuit Breaker",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 79,
+      "order": 80,
       "name": "Instrumentation",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 80,
+      "order": 81,
       "name": "Monitoring",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 81,
+      "order": 82,
       "name": "Telemetry",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 82,
+      "order": 83,
+      "name": "DevOps",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
       "name": "MD5",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 83,
+      "order": 85,
       "name": "SHA",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 84,
+      "order": 86,
       "name": "scrypt",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 85,
+      "order": 87,
       "name": "bcrypt",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 86,
+      "order": 88,
       "name": "HTTPS",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 87,
+      "order": 89,
       "name": "OWASP Risks",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 88,
+      "order": 90,
       "name": "SSL/TLS",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 89,
+      "order": 91,
       "name": "CORS",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 90,
+      "order": 92,
       "name": "Server Security",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 91,
+      "order": 93,
       "name": "CSP",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 92,
+      "order": 94,
+      "name": "API Security Best Practices",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 95,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 96,
+      "name": "Visit Beginner Friendly Version",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 97,
       "name": "How does the internet work?",
       "type": "SUBTOPIC",
       "prerequisite": "Introduction"
     },
     {
-      "order": 93,
+      "order": 98,
       "name": "What is HTTP?",
       "type": "SUBTOPIC",
       "prerequisite": "Introduction"
     },
     {
-      "order": 94,
+      "order": 99,
       "name": "What is Domain Name?",
       "type": "SUBTOPIC",
       "prerequisite": "Introduction"
     },
     {
-      "order": 95,
+      "order": 100,
       "name": "What is hosting?",
       "type": "SUBTOPIC",
       "prerequisite": "Introduction"
     },
     {
-      "order": 96,
+      "order": 101,
       "name": "DNS and how it works?",
       "type": "SUBTOPIC",
       "prerequisite": "Introduction"
     },
     {
-      "order": 97,
+      "order": 102,
       "name": "Browsers and how they work?",
       "type": "SUBTOPIC",
       "prerequisite": "Introduction"
     },
     {
-      "order": 98,
+      "order": 103,
       "name": "Authentication",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 99,
+      "order": 104,
       "name": "JWT",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 100,
+      "order": 105,
       "name": "Basic Authentication",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 101,
+      "order": 106,
       "name": "Token Authentication",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 102,
+      "order": 107,
       "name": "OAuth",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 103,
+      "order": 108,
       "name": "Cookie Based Auth",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 104,
+      "order": 109,
       "name": "OpenID",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 105,
+      "order": 110,
       "name": "SAML",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 106,
+      "order": 111,
+      "name": "Docker",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 112,
+      "name": "Kubernetes",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 113,
       "name": "Elasticsearch",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 107,
+      "order": 114,
       "name": "Solr",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 108,
+      "order": 115,
       "name": "Real-Time Data",
       "type": "TOPIC",
       "prerequisite": "Server Sent Events, Design & Architecture"
     },
     {
-      "order": 109,
+      "order": 116,
       "name": "Long / Short Polling",
       "type": "SUBTOPIC",
       "prerequisite": "Real-Time Data"
     },
     {
-      "order": 110,
+      "order": 117,
       "name": "Redis",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 111,
+      "order": 118,
       "name": "DynamoDB",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 112,
+      "order": 119,
       "name": "Firebase",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 113,
+      "order": 120,
       "name": "RethinkDB",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 114,
+      "order": 121,
       "name": "SQLite",
       "type": "SUBTOPIC",
       "prerequisite": "Relational Databases"
     },
     {
-      "order": 115,
+      "order": 122,
       "name": "Influx DB",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 116,
+      "order": 123,
       "name": "TimescaleDB",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 117,
+      "order": 124,
       "name": "Cassandra",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 118,
+      "order": 125,
       "name": "AWS Neptune",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 119,
+      "order": 126,
       "name": "Observability",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 120,
+      "order": 127,
+      "name": "Basic Operations Skills",
+      "type": "BUTTON",
+      "prerequisite": "NoSQL Databases"
+    },
+    {
+      "order": 128,
+      "name": "Full Stack",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 129,
       "name": "Frontend Basics",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 121,
+      "order": 130,
       "name": "HTML",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 122,
+      "order": 131,
       "name": "CSS",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 123,
+      "order": 132,
       "name": "JavaScript",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 124,
+      "order": 133,
+      "name": "Beginner Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 134,
+      "name": "Intermediate Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 135,
+      "name": "System Design",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 136,
       "name": "Microservices",
       "type": "SUBTOPIC",
       "prerequisite": "Architectural Patterns"
     },
     {
-      "order": 125,
+      "order": 137,
       "name": "Serverless",
       "type": "SUBTOPIC",
       "prerequisite": "Architectural Patterns"
     },
     {
-      "order": 126,
+      "order": 138,
       "name": "ClickHouse",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 127,
+      "order": 139,
       "name": "ScyllaDB",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 128,
+      "order": 140,
       "name": "DGraph",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 129,
+      "order": 141,
       "name": "Migrations",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 130,
+      "order": 142,
+      "name": "System Design",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 143,
       "name": "Claude Code",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 131,
+      "order": 144,
       "name": "Copilot",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 132,
+      "order": 145,
       "name": "Cursor",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 133,
+      "order": 146,
       "name": "Antigravity",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 134,
+      "order": 147,
       "name": "How LLMs work",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 135,
+      "order": 148,
       "name": "AI vs Traditional Coding",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 136,
+      "order": 149,
       "name": "Code Reviews",
       "type": "SUBTOPIC",
       "prerequisite": "Applications"
     },
     {
-      "order": 137,
+      "order": 150,
       "name": "Documentation Generation",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 138,
+      "order": 151,
       "name": "Learn the Basics",
       "type": "TOPIC",
       "prerequisite": "AI in Development"
     },
     {
-      "order": 139,
+      "order": 152,
       "name": "AI Assisted Coding",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 140,
+      "order": 153,
       "name": "Prompting Techniques",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 141,
+      "order": 154,
       "name": "Gemini",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 142,
+      "order": 155,
       "name": "OpenAI",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 143,
+      "order": 156,
       "name": "Anthropic",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 144,
+      "order": 157,
       "name": "Refactoring",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 145,
+      "order": 158,
       "name": "Applications",
       "type": "TOPIC",
       "prerequisite": "Learn the Basics, AI Assisted Coding"
     },
     {
-      "order": 146,
+      "order": 159,
+      "name": "Prompt Engineering Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 160,
+      "name": "AI Agents Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 161,
       "name": "Streaming",
       "type": "SUBTOPIC",
       "prerequisite": "Integration Patterns"
     },
     {
-      "order": 147,
+      "order": 162,
       "name": "Structured Outputs",
       "type": "SUBTOPIC",
       "prerequisite": "Integration Patterns"
     },
     {
-      "order": 148,
+      "order": 163,
       "name": "Function Calling",
       "type": "SUBTOPIC",
       "prerequisite": "Integration Patterns"
     },
     {
-      "order": 149,
+      "order": 164,
       "name": "Integration Patterns",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 150,
+      "order": 165,
       "name": "RAGs",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 151,
+      "order": 166,
       "name": "Vectors",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 152,
+      "order": 167,
       "name": "Embeddings",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 153,
+      "order": 168,
       "name": "MCP",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 154,
+      "order": 169,
       "name": "Skills",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 155,
+      "order": 170,
       "name": "Agents",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"

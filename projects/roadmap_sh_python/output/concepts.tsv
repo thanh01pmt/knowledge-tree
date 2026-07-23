@@ -1,0 +1,4 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+HIGH_LEVEL_DATA_STRUCTURES	High-Level Scripting Core Syntax & Data Structures	Lists, Dicts, Sets, OOP, Decorators, Generators, Context Managers.	DYNAMIC_SCRIPTING_RUNTIMES	Lists, Dicts, OOP, Decorators, Generators		"{""icon"": ""code""}"
+ISOLATED_ENVIRONMENTS_PACKAGING	Virtual Environments & Dependency Managers	venv, virtualenv, pip, poetry, uv, conda, PyPI.	DYNAMIC_SCRIPTING_RUNTIMES	venv, pip, poetry, uv, PyPI		"{""icon"": ""cogs""}"
+DECLARATIVE_WEB_APIS_VALIDATION	High-Level Scripting Web Frameworks (Declarative Web API & Full-stack Web Framework)	Declarative Web API, Full-stack Web Framework, Pydantic data validation, SQLAlchemy ORM.	DYNAMIC_SCRIPTING_RUNTIMES	FastAPI, Django, Pydantic, SQLAlchemy		"{""icon"": ""server""}"

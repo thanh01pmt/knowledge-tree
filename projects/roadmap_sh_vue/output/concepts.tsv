@@ -1,0 +1,8 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+SINGLE_FILE_COMPONENT_SYNTAX	Single File Component Architecture (.Reactive UI)	Cấu trúc .Reactive UI SFC, template syntax, chỉ thị v-if/v-for, script setup.	COMPONENT_UI_SYSTEMS	Single File Component Architecture (.Reactive Library)		"{""icon"": ""code""}"
+REACTIVE_DATA_BINDING	Reactive Data Engine & Proxies	Hệ thống phản ứng Proxy, ref(), reactive(), toRefs(), state mutation.	COMPONENT_UI_SYSTEMS	Reactive Data Engine & Proxies		"{""icon"": ""code""}"
+COMPUTED_PROPERTIES_AND_WATCHERS	Computed Properties & Side-Effect Watchers	computed() có cache, watch(), watchEffect(), lắng nghe thay đổi state.	COMPONENT_UI_SYSTEMS	Computed Properties & Side-Effect Watchers		"{""icon"": ""code""}"
+INTER_COMPONENT_COMMUNICATION	Inter-Component Communication (Props & Emits)	defineProps(), defineEmits(), Slots, Provide/Inject API.	COMPONENT_UI_SYSTEMS	Inter-Component Communication (Props & Emits)		"{""icon"": ""code""}"
+MODULAR_STATE_STORES	Modular State Store Management	Modular State Store store, State, Getters, Actions, modular stores.	COMPONENT_UI_SYSTEMS	Modular State Store Management		"{""icon"": ""code""}"
+ROUTER_NAVIGATION_GUARDS	Router Navigation & Route Guards	Reactive UI Router 4, dynamic routing, beforeEach navigation guards.	COMPONENT_UI_SYSTEMS	Router Navigation & Route Guards		"{""icon"": ""code""}"
+UNIVERSAL_SSR_SSG_RENDERING	Universal SSR/SSG Rendering Frameworks	Universal SSR Framework 3, file-based routing, SSR/SSG, auto-imports, useFetch.	COMPONENT_UI_SYSTEMS	Universal SSR/SSG Rendering Frameworks		"{""icon"": ""code""}"

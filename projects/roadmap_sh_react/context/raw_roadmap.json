@@ -1,0 +1,516 @@
+{
+  "url": "https://roadmap.sh/react",
+  "topics_count": 85,
+  "topics": [
+    {
+      "order": 1,
+      "name": "TypeScript",
+      "type": "BUTTON",
+      "prerequisite": "Types & Validation"
+    },
+    {
+      "order": 2,
+      "name": "Frontend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 3,
+      "name": "CLI Tools",
+      "type": "TOPIC",
+      "prerequisite": "JavaScript Roadmap"
+    },
+    {
+      "order": 4,
+      "name": "JavaScript Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "React"
+    },
+    {
+      "order": 5,
+      "name": "Vite",
+      "type": "SUBTOPIC",
+      "prerequisite": "CLI Tools"
+    },
+    {
+      "order": 6,
+      "name": "Components",
+      "type": "TOPIC",
+      "prerequisite": "CLI Tools"
+    },
+    {
+      "order": 7,
+      "name": "Functional Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 8,
+      "name": "JSX",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 9,
+      "name": "Props vs State",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "Conditional Rendering",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 11,
+      "name": "Composition",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 12,
+      "name": "Rendering",
+      "type": "TOPIC",
+      "prerequisite": "Components, Hooks"
+    },
+    {
+      "order": 13,
+      "name": "Component Lifecycle",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "Lists and Keys",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "Render Props",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 16,
+      "name": "Refs",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 17,
+      "name": "Events",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "High Order Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "Hooks",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 20,
+      "name": "useEffect",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 21,
+      "name": "Creating Custom Hooks",
+      "type": "SUBTOPIC",
+      "prerequisite": "Hooks"
+    },
+    {
+      "order": 22,
+      "name": "useCallback",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "useRef",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "useMemo",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "useReducer",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "useContext",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "useState",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 28,
+      "name": "Hooks Best Practices",
+      "type": "SUBTOPIC",
+      "prerequisite": "Hooks"
+    },
+    {
+      "order": 29,
+      "name": "Routers",
+      "type": "TOPIC",
+      "prerequisite": "Hooks"
+    },
+    {
+      "order": 30,
+      "name": "Tanstack Router",
+      "type": "SUBTOPIC",
+      "prerequisite": "Routers"
+    },
+    {
+      "order": 31,
+      "name": "React Router",
+      "type": "SUBTOPIC",
+      "prerequisite": "Routers"
+    },
+    {
+      "order": 32,
+      "name": "State Management",
+      "type": "TOPIC",
+      "prerequisite": "Routers, Writing CSS"
+    },
+    {
+      "order": 33,
+      "name": "Context",
+      "type": "SUBTOPIC",
+      "prerequisite": "State Management"
+    },
+    {
+      "order": 34,
+      "name": "Zustand",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "Jotai",
+      "type": "SUBTOPIC",
+      "prerequisite": "State Management"
+    },
+    {
+      "order": 36,
+      "name": "Writing CSS",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 37,
+      "name": "Headless Components",
+      "type": "TOPIC",
+      "prerequisite": "Component / Libraries"
+    },
+    {
+      "order": 38,
+      "name": "Tailwind CSS",
+      "type": "SUBTOPIC",
+      "prerequisite": "Writing CSS"
+    },
+    {
+      "order": 39,
+      "name": "Component / Libraries",
+      "type": "TOPIC",
+      "prerequisite": "Writing CSS"
+    },
+    {
+      "order": 40,
+      "name": "Panda CSS",
+      "type": "SUBTOPIC",
+      "prerequisite": "Writing CSS"
+    },
+    {
+      "order": 41,
+      "name": "Chakra UI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Component / Libraries"
+    },
+    {
+      "order": 42,
+      "name": "Material UI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Component / Libraries"
+    },
+    {
+      "order": 43,
+      "name": "Shadcn UI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Component / Libraries"
+    },
+    {
+      "order": 44,
+      "name": "CSS Modules",
+      "type": "SUBTOPIC",
+      "prerequisite": "Writing CSS"
+    },
+    {
+      "order": 45,
+      "name": "Radix UI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Headless Components"
+    },
+    {
+      "order": 46,
+      "name": "React Aria",
+      "type": "SUBTOPIC",
+      "prerequisite": "Headless Components"
+    },
+    {
+      "order": 47,
+      "name": "Ark UI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Headless Components"
+    },
+    {
+      "order": 48,
+      "name": "API Calls",
+      "type": "TOPIC",
+      "prerequisite": "Headless Components"
+    },
+    {
+      "order": 49,
+      "name": "Apollo",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "Relay",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 51,
+      "name": "urql",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "swr",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 53,
+      "name": "Tanstack Query",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 54,
+      "name": "Axios",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "rtk-query",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "Testing",
+      "type": "TOPIC",
+      "prerequisite": "API Calls"
+    },
+    {
+      "order": 57,
+      "name": "Jest",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 58,
+      "name": "Vitest",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 59,
+      "name": "react-testing-library",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 60,
+      "name": "Cypress",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "Playwright",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "Frameworks",
+      "type": "TOPIC",
+      "prerequisite": "Forms"
+    },
+    {
+      "order": 63,
+      "name": "Next.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "Frameworks"
+    },
+    {
+      "order": 64,
+      "name": "Astro",
+      "type": "SUBTOPIC",
+      "prerequisite": "Frameworks"
+    },
+    {
+      "order": 65,
+      "name": "react-router",
+      "type": "SUBTOPIC",
+      "prerequisite": "Frameworks"
+    },
+    {
+      "order": 66,
+      "name": "Forms",
+      "type": "TOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 67,
+      "name": "React Hook Form",
+      "type": "SUBTOPIC",
+      "prerequisite": "Forms"
+    },
+    {
+      "order": 68,
+      "name": "Formik",
+      "type": "SUBTOPIC",
+      "prerequisite": "Forms"
+    },
+    {
+      "order": 69,
+      "name": "Types & Validation",
+      "type": "TOPIC",
+      "prerequisite": "Frameworks"
+    },
+    {
+      "order": 70,
+      "name": "TypeScript",
+      "type": "SUBTOPIC",
+      "prerequisite": "Types & Validation"
+    },
+    {
+      "order": 71,
+      "name": "Zod",
+      "type": "SUBTOPIC",
+      "prerequisite": "Types & Validation"
+    },
+    {
+      "order": 72,
+      "name": "Animation",
+      "type": "TOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 73,
+      "name": "Server APIs",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 74,
+      "name": "Framer Motion",
+      "type": "SUBTOPIC",
+      "prerequisite": "Animation"
+    },
+    {
+      "order": 75,
+      "name": "react spring",
+      "type": "SUBTOPIC",
+      "prerequisite": "Animation"
+    },
+    {
+      "order": 76,
+      "name": "GSock",
+      "type": "SUBTOPIC",
+      "prerequisite": "Animation"
+    },
+    {
+      "order": 77,
+      "name": "Suspense",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 78,
+      "name": "Portals",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 79,
+      "name": "Error Boundaries",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 80,
+      "name": "Mobile Applications",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 81,
+      "name": "React Native",
+      "type": "SUBTOPIC",
+      "prerequisite": "Mobile Applications"
+    },
+    {
+      "order": 82,
+      "name": "MobX",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 83,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "Angular",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 85,
+      "name": "Vue",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

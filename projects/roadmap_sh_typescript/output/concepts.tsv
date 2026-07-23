@@ -1,0 +1,8 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+PRIMITIVE_TYPE_ANNOTATIONS	Primitive Types & Type Inference	Kiểu dữ liệu nguyên thủy, type annotations, type inference, any, unknown, never.	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Primitive Types & Type Inference		"{""icon"": ""code""}"
+INTERFACE_TYPE_CONTRACTS	Interfaces & Type Contracts	Khai báo interface, type alias, union types, intersection types, type assertions.	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Interfaces & Type Contracts		"{""icon"": ""code""}"
+FUNCTION_SIGNATURE_TUPLES	Function Signatures & Tuple Types	Khai báo hàm, function overloads, optional parameters, tuples, enums.	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Function Signatures & Tuple Types		"{""icon"": ""code""}"
+CLASS_OBJECT_ORIENTED_PATTERNS	Classes & Object-Oriented Abstraction	Lớp, access modifiers (public/private/protected), abstract classes, implements.	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Classes & Object-Oriented Abstraction		"{""icon"": ""code""}"
+GENERIC_TYPE_MANIPULATION	Generic Programming & Utility Types	Generics constraints, Partial, Readonly, Record, Pick, Omit, ReturnType.	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Generic Programming & Utility Types		"{""icon"": ""code""}"
+STATIC_COMPILER_CONFIGURATION	Static Code Compiler & Build Options	Trình biên dịch static code, thuộc tính compilerOptions (strict, target, moduleResolution).	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Static Code Compiler & Build Options		"{""icon"": ""code""}"
+MODULE_TYPE_DECLARATIONS	Module Resolution & Type Declarations	ES Modules, tệp khai báo kiểu .d.ts, gói @types/, module resolution.	TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Module Resolution & Type Declarations		"{""icon"": ""code""}"

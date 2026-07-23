@@ -1,0 +1,696 @@
+{
+  "url": "https://roadmap.sh/nodejs",
+  "topics_count": 115,
+  "topics": [
+    {
+      "order": 1,
+      "name": "JavaScript Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "Node.js"
+    },
+    {
+      "order": 2,
+      "name": "Introduction to Node.js",
+      "type": "TOPIC",
+      "prerequisite": "JavaScript Roadmap"
+    },
+    {
+      "order": 3,
+      "name": "What is Node.js?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Node.js"
+    },
+    {
+      "order": 4,
+      "name": "Why use Node.js?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Node.js"
+    },
+    {
+      "order": 5,
+      "name": "History of Node.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Node.js"
+    },
+    {
+      "order": 6,
+      "name": "Node.js vs Browser",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Node.js"
+    },
+    {
+      "order": 7,
+      "name": "Running Node.js Code",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Node.js"
+    },
+    {
+      "order": 8,
+      "name": "Modules",
+      "type": "TOPIC",
+      "prerequisite": "Introduction to Node.js"
+    },
+    {
+      "order": 9,
+      "name": "CommonJS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "ESM",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 11,
+      "name": "Creating & Importing",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 12,
+      "name": "npm",
+      "type": "TOPIC",
+      "prerequisite": "Modules"
+    },
+    {
+      "order": 13,
+      "name": "Global Installation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "Local Installation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "Updating Packages",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 16,
+      "name": "Running Scripts",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 17,
+      "name": "npm workspaces",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "Creating Packages",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "Semantic Versioning",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 20,
+      "name": "Error Handling",
+      "type": "TOPIC",
+      "prerequisite": "npm"
+    },
+    {
+      "order": 21,
+      "name": "JavaScript Errors",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 22,
+      "name": "System Errors",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "User Specified Errors",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "Assertion Errors",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "Uncaught Exceptions",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "Handling Async Errors",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "Callstack / Stack Trace",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 28,
+      "name": "Using Debugger",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "npx",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 30,
+      "name": "Async Programming",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Promises",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "async/await",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Callbacks",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 34,
+      "name": "setTimeout",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "setInterval",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 36,
+      "name": "setImmediate",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 37,
+      "name": "process.nextTick",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Event Emitter",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "Event Loop",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Working with Files",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 41,
+      "name": "process.cwd()",
+      "type": "SUBTOPIC",
+      "prerequisite": "Working with Files"
+    },
+    {
+      "order": 42,
+      "name": "path module",
+      "type": "SUBTOPIC",
+      "prerequisite": "Working with Files"
+    },
+    {
+      "order": 43,
+      "name": "fs module",
+      "type": "SUBTOPIC",
+      "prerequisite": "Working with Files"
+    },
+    {
+      "order": 44,
+      "name": "__dirname",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 45,
+      "name": "__filename",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 46,
+      "name": "glob",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "globby",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 48,
+      "name": "fs-extra",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "chokidar",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "Command Line Apps",
+      "type": "TOPIC",
+      "prerequisite": "Working with Files"
+    },
+    {
+      "order": 51,
+      "name": "dotenv package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "process.env",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 53,
+      "name": "Exitting / Exit Codes",
+      "type": "SUBTOPIC",
+      "prerequisite": "Command Line Apps"
+    },
+    {
+      "order": 54,
+      "name": "process.stdin",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "prompts package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "Inquirer Package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "stdout / stderr",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "chalk package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "figlet package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "cli-progress",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "process.argv",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "commander",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 63,
+      "name": "Building & Consuming APIs",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 64,
+      "name": "Express.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 65,
+      "name": "fastify",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 66,
+      "name": "NestJS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 67,
+      "name": "Hono",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 68,
+      "name": "http module",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "axios",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 70,
+      "name": "ky",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 71,
+      "name": "fetch",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 72,
+      "name": "got package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 73,
+      "name": "jsonwebtoken",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 74,
+      "name": "passport.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 75,
+      "name": "Monitor Changes (Dev)",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 76,
+      "name": "--watch",
+      "type": "SUBTOPIC",
+      "prerequisite": "Monitor Changes (Dev)"
+    },
+    {
+      "order": 77,
+      "name": "nodemon",
+      "type": "SUBTOPIC",
+      "prerequisite": "Monitor Changes (Dev)"
+    },
+    {
+      "order": 78,
+      "name": "Template Engines",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 79,
+      "name": "ejs",
+      "type": "SUBTOPIC",
+      "prerequisite": "Template Engines"
+    },
+    {
+      "order": 80,
+      "name": "pug",
+      "type": "SUBTOPIC",
+      "prerequisite": "Template Engines"
+    },
+    {
+      "order": 81,
+      "name": "marko",
+      "type": "SUBTOPIC",
+      "prerequisite": "Template Engines"
+    },
+    {
+      "order": 82,
+      "name": "Working with Databases",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 83,
+      "name": "Mongoose",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "Prisma",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 85,
+      "name": "Native Drivers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 86,
+      "name": "Knex",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 87,
+      "name": "Drizzle",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 88,
+      "name": "TypeORM",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 89,
+      "name": "Sequelize",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 90,
+      "name": "Prisma",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 91,
+      "name": "Native Drivers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 92,
+      "name": "Testing",
+      "type": "TOPIC",
+      "prerequisite": "Working with Databases"
+    },
+    {
+      "order": 93,
+      "name": "Vitest",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 94,
+      "name": "node:test",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 95,
+      "name": "Jest",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 96,
+      "name": "Playwright",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 97,
+      "name": "Cypress",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 98,
+      "name": "Logging",
+      "type": "TOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 99,
+      "name": "Winston",
+      "type": "SUBTOPIC",
+      "prerequisite": "Logging"
+    },
+    {
+      "order": 100,
+      "name": "Morgan",
+      "type": "SUBTOPIC",
+      "prerequisite": "Logging"
+    },
+    {
+      "order": 101,
+      "name": "Keep app Running",
+      "type": "TOPIC",
+      "prerequisite": "Logging"
+    },
+    {
+      "order": 102,
+      "name": "pm2",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 103,
+      "name": "Threads",
+      "type": "TOPIC",
+      "prerequisite": "Keep app Running"
+    },
+    {
+      "order": 104,
+      "name": "Child Process",
+      "type": "SUBTOPIC",
+      "prerequisite": "Threads"
+    },
+    {
+      "order": 105,
+      "name": "Cluster",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 106,
+      "name": "Worker Threads",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 107,
+      "name": "Streams",
+      "type": "TOPIC",
+      "prerequisite": "Threads"
+    },
+    {
+      "order": 108,
+      "name": "Debugging",
+      "type": "TOPIC",
+      "prerequisite": "Streams"
+    },
+    {
+      "order": 109,
+      "name": "Memory Leaks",
+      "type": "SUBTOPIC",
+      "prerequisite": "Debugging"
+    },
+    {
+      "order": 110,
+      "name": "node --inspect",
+      "type": "SUBTOPIC",
+      "prerequisite": "Debugging"
+    },
+    {
+      "order": 111,
+      "name": "Using APM",
+      "type": "SUBTOPIC",
+      "prerequisite": "Debugging"
+    },
+    {
+      "order": 112,
+      "name": "Garbage Collection",
+      "type": "SUBTOPIC",
+      "prerequisite": "Memory Leaks"
+    },
+    {
+      "order": 113,
+      "name": "Common Built-in Modules",
+      "type": "TOPIC",
+      "prerequisite": "Debugging"
+    },
+    {
+      "order": 114,
+      "name": "Visit Backend Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 115,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

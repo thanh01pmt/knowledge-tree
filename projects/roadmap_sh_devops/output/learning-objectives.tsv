@@ -1,0 +1,13 @@
+code	name	description	lo_type	parent_lo_code	concept_codes
+ULO-CICD	Master Continuous Integration and Deployment	Người học có khả năng tự động hóa quy trình kiểm thử và triển khai.	UNIVERSAL		CI_CD_PIPELINES
+CIO-AUTOMATED-CI-WORKFLOW	Build Automated CI Workflows	Người học có khả năng tạo file workflow .Repository Hosting/workflows/deploy.yml.	CONCEPTUAL_IMPL	ULO-CICD	CI_CD_PIPELINES
+SIO-CI-AUTOMATED-TEST-STEP	Run Automated Test Step in CI Pipeline	Người học có khả năng thêm bước tự động chạy unit test khi push mã nguồn.	SPECIFIC_IMPL	CIO-AUTOMATED-CI-WORKFLOW	CI_CD_PIPELINES
+SIO-AUTOMATED-SSH-DEPLOYMENT	Deploy Artifacts to Remote VPS via SSH	Người học có khả năng tự động build và SSH push artifact lên server sản xuất.	SPECIFIC_IMPL	CIO-AUTOMATED-CI-WORKFLOW	CI_CD_PIPELINES
+ULO-INFRASTRUCTURE-AS-CODE	Master Infrastructure as Code Principles	Người học có khả năng quản lý hạ tầng đám mây bằng mã nguồn.	UNIVERSAL		INFRASTRUCTURE_AS_CODE
+CIO-PROVISIONING	Provision Cloud Resources with Infrastructure as Code Engine	Người học có khả năng viết file cấu hình .tf để khởi tạo server trên AWS/GCP.	CONCEPTUAL_IMPL	ULO-INFRASTRUCTURE-AS-CODE	INFRASTRUCTURE_AS_CODE
+SIO-TERRAFORM-APPLY-PLAN	Preview Infrastructure Changes with terraform plan	Người học có khả năng chạy lệnh terraform plan để kiểm tra các tài nguyên sắp tạo.	SPECIFIC_IMPL	CIO-PROVISIONING	INFRASTRUCTURE_AS_CODE
+SIO-KUBERNETES-DEPLOYMENT-YAML	Deploy Pods using Kubernetes Manifests	Người học có khả năng viết manifest deployment.yaml để quản lý cụm container trên K8s.	SPECIFIC_IMPL	CIO-PROVISIONING	INFRASTRUCTURE_AS_CODE
+ULO-SYSTEM-OBSERVABILITY	Master System Monitoring and Observability	Người học có khả năng giám sát chỉ số và log của hệ thống máy chủ.	UNIVERSAL		SYSTEM_MONITORING_LOGGING
+CIO-VISUAL-METRICS	Set Up Metrics Dashboard with Metrics Collector and Metrics Dashboard	Người học có khả năng cấu hình thu thập metrics bằng Metrics Collector và dựng dashboard Metrics Dashboard.	CONCEPTUAL_IMPL	ULO-SYSTEM-OBSERVABILITY	SYSTEM_MONITORING_LOGGING
+SIO-PROMETHEUS-EXPORTER-SCRAPE	Expose System Metrics via Prometheus Exporters	Người học có khả năng cấu hình node-exporter để phát chỉ số CPU/RAM cho Prometheus.	SPECIFIC_IMPL	CIO-VISUAL-METRICS	SYSTEM_MONITORING_LOGGING
+SIO-GRAFANA-ALERT-RULES	Configure Automated Alerts in Grafana	Người học có khả năng thiết lập quy tắc cảnh báo tự động gửi về Slack/Telegram khi server quá tải.	SPECIFIC_IMPL	CIO-VISUAL-METRICS	SYSTEM_MONITORING_LOGGING

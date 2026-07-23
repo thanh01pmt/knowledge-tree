@@ -1,0 +1,13 @@
+code	name	description	lo_type	parent_lo_code	concept_codes
+ULO-SYNTAX	Master Core High-Level Scripting Language Fundamentals	Người học có khả năng nắm vững cú pháp và kiểu dữ liệu High-Level Scripting.	UNIVERSAL		HIGH_LEVEL_DATA_STRUCTURES
+CIO-OOP-DECORATORS	Implement High-Level Scripting Classes and Function Decorators	Người học có khả năng áp dụng lập trình hướng đối tượng và Decorator trong High-Level Scripting.	CONCEPTUAL_IMPL	ULO-SYNTAX	HIGH_LEVEL_DATA_STRUCTURES
+SIO-PYTHON-LIST-COMPREHENSION	Optimize Data Filtering with List Comprehension	Người học có khả năng viết cú pháp List Comprehension để duyệt và lọc danh sách gọn gàng.	SPECIFIC_IMPL	CIO-OOP-DECORATORS	HIGH_LEVEL_DATA_STRUCTURES
+SIO-PYTHON-DECORATOR-WRAPPER	Write Custom Function Decorator (@wrapper)	Người học có khả năng tạo hàm Decorator tùy chỉnh bọc tính thời gian chạy hàm.	SPECIFIC_IMPL	CIO-OOP-DECORATORS	HIGH_LEVEL_DATA_STRUCTURES
+ULO-VIRTUAL-ENVS	Master High-Level Scripting Dependency Management and Environments	Người học có khả năng quản lý môi trường ảo và gói thư viện High-Level Scripting.	UNIVERSAL		ISOLATED_ENVIRONMENTS_PACKAGING
+CIO-VIRTUALENV-MANAGEMENT	Create Isolated Virtual Environments	Người học có khả năng tạo và kích hoạt môi trường ảo cách ly bằng venv hoặc poetry.	CONCEPTUAL_IMPL	ULO-VIRTUAL-ENVS	ISOLATED_ENVIRONMENTS_PACKAGING
+SIO-PYTHON-VENV-ACTIVATE	Create and Activate Python venv	Người học có khả năng khởi tạo môi trường ảo python -m venv .venv và kích hoạt source .venv/bin/activate.	SPECIFIC_IMPL	CIO-VIRTUALENV-MANAGEMENT	ISOLATED_ENVIRONMENTS_PACKAGING
+SIO-PIP-REQUIREMENTS-TXT	Manage Dependencies via requirements.txt	Người học có khả năng xuất và cài đặt gói phụ thuộc bằng pip freeze và pip install -r requirements.txt.	SPECIFIC_IMPL	CIO-VIRTUALENV-MANAGEMENT	ISOLATED_ENVIRONMENTS_PACKAGING
+ULO-FRAMEWORK	Master Modern Web APIs with Declarative Web API	Người học có khả năng xây dựng API hiệu năng cao với Declarative Web API.	UNIVERSAL		DECLARATIVE_WEB_APIS_VALIDATION
+CIO-PYDANTIC-VALIDATE	Validate Request Payload with Pydantic Models	Người học có khả năng sử dụng Pydantic BaseModels để tự động kiểm tra dữ liệu vào.	CONCEPTUAL_IMPL	ULO-FRAMEWORK	DECLARATIVE_WEB_APIS_VALIDATION
+SIO-FASTAPI-ASYNC-ROUTE	Define Async Path Operation Functions	Người học có khả năng khai báo hàm async def handling HTTP request trong FastAPI.	SPECIFIC_IMPL	CIO-PYDANTIC-VALIDATE	DECLARATIVE_WEB_APIS_VALIDATION
+SIO-FASTAPI-DEPENDENCY-INJECTION	Inject Shared Logic with Depends()	Người học có khả năng phân quyền và tái sử dụng logic bằng hệ thống Depends() của FastAPI.	SPECIFIC_IMPL	CIO-PYDANTIC-VALIDATE	DECLARATIVE_WEB_APIS_VALIDATION

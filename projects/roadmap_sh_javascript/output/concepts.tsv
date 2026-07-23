@@ -1,0 +1,8 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+VARIABLES_AND_DATA_TYPES	Variables, Data Types & Equality	Kiểu dữ liệu thô/tham chiếu, let/const/var, ép kiểu ngầm định Coercion, so sánh == và ===.	DYNAMIC_SCRIPTING_RUNTIMES	Variables, Data Types & Equality		"{""icon"": ""code""}"
+LEXICAL_SCOPE_CLOSURES	Functions, Lexical Scope & Closures	Hàm bậc cao, Closure, phạm vi Lexical Scope, arrow functions, từ khóa this, call/apply/bind.	DYNAMIC_SCRIPTING_RUNTIMES	Functions, Lexical Scope & Closures		"{""icon"": ""code""}"
+PROTOTYPAL_INHERITANCE	Objects, Prototypes & Inheritance	Object literals, Prototype chain, kế thừa mẫu prototype, cú pháp Class ES6.	DYNAMIC_SCRIPTING_RUNTIMES	Objects, Prototypes & Inheritance		"{""icon"": ""code""}"
+ASYNCHRONOUS_EVENT_LOOP	Asynchronous Programming & Event Loop	Mô hình bất đồng bộ, Event Loop, Call Stack, Microtask/Macrotask Queue, Promises, async/await.	DYNAMIC_SCRIPTING_RUNTIMES	Asynchronous Programming & Event Loop		"{""icon"": ""code""}"
+MODERN_ECMASCRIPT_SYNTAX	Modern ECMAScript Standards & Modules	Cú pháp ES6+, Destructuring, Spread/Rest, Template Literals, ES Modules (import/export).	DYNAMIC_SCRIPTING_RUNTIMES	Modern ECMAScript Standards & Modules		"{""icon"": ""code""}"
+DOM_TREE_MANIPULATION	Browser DOM Manipulation & Events	Thao tác cây DOM, querySelector, lắng nghe sự kiện, Event Delegation, Bubbling & Capturing.	DYNAMIC_SCRIPTING_RUNTIMES	Browser DOM Manipulation & Events		"{""icon"": ""code""}"
+EXCEPTION_HANDLING_DEBUGGING	Exception Handling & Browser Inspector Debugging	Xử lý ngoại lệ try-catch-finally, Custom Errors, Console API, điểm dừng breakpoint Browser Inspector.	DYNAMIC_SCRIPTING_RUNTIMES	Exception Handling & DevTools Debugging		"{""icon"": ""code""}"

@@ -1,0 +1,420 @@
+{
+  "url": "https://roadmap.sh/graphql",
+  "topics_count": 69,
+  "topics": [
+    {
+      "order": 1,
+      "name": "Introduction",
+      "type": "TOPIC",
+      "prerequisite": "GraphQL"
+    },
+    {
+      "order": 2,
+      "name": "What is GraphQL",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 3,
+      "name": "Problems GraphQL Solves",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 4,
+      "name": "Thinking in Graphs",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 5,
+      "name": "GraphQL Queries",
+      "type": "TOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 6,
+      "name": "Frontend Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 7,
+      "name": "GraphQL on Frontend",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 8,
+      "name": "GraphQL on Backend",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction"
+    },
+    {
+      "order": 9,
+      "name": "What are Queries?",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 10,
+      "name": "Fields",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 11,
+      "name": "Aliases",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 12,
+      "name": "Arguments",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 13,
+      "name": "Directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 14,
+      "name": "Variables",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 15,
+      "name": "Fragments",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 16,
+      "name": "Mutations",
+      "type": "TOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 17,
+      "name": "What are Mutations?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Mutations"
+    },
+    {
+      "order": 18,
+      "name": "Multiple Fields in Mutation",
+      "type": "SUBTOPIC",
+      "prerequisite": "Mutations"
+    },
+    {
+      "order": 19,
+      "name": "Operation Name",
+      "type": "SUBTOPIC",
+      "prerequisite": "Mutations"
+    },
+    {
+      "order": 20,
+      "name": "Subscriptions",
+      "type": "TOPIC",
+      "prerequisite": "Mutations"
+    },
+    {
+      "order": 21,
+      "name": "What are Subscriptions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Subscriptions"
+    },
+    {
+      "order": 22,
+      "name": "Event Based Subscriptions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Subscriptions"
+    },
+    {
+      "order": 23,
+      "name": "Live Queries",
+      "type": "SUBTOPIC",
+      "prerequisite": "Subscriptions"
+    },
+    {
+      "order": 24,
+      "name": "@defer / @stream directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "Subscriptions"
+    },
+    {
+      "order": 25,
+      "name": "Schema",
+      "type": "TOPIC",
+      "prerequisite": "Subscriptions"
+    },
+    {
+      "order": 26,
+      "name": "Type System",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "Fields",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 28,
+      "name": "Scalars",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "Enums",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 30,
+      "name": "Interfaces",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Lists",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "Objects",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Unions",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 34,
+      "name": "Arguments",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL Queries"
+    },
+    {
+      "order": 35,
+      "name": "Validation",
+      "type": "TOPIC",
+      "prerequisite": "Schema"
+    },
+    {
+      "order": 36,
+      "name": "Execution",
+      "type": "TOPIC",
+      "prerequisite": "Validation"
+    },
+    {
+      "order": 37,
+      "name": "Root Fields",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Resolvers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "Synchronous",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Asynchronous",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 41,
+      "name": "Scalar Coercion",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 42,
+      "name": "Lists",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 43,
+      "name": "Validation",
+      "type": "SUBTOPIC",
+      "prerequisite": "Schema"
+    },
+    {
+      "order": 44,
+      "name": "Producing the Result",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 45,
+      "name": "Serving over Internet",
+      "type": "TOPIC",
+      "prerequisite": "Execution"
+    },
+    {
+      "order": 46,
+      "name": "GraphQL Over HTTP Spec",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "Caching",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 48,
+      "name": "Batching",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "Authorization",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "Specification",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 51,
+      "name": "Realtime",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "Authorization",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 53,
+      "name": "Specification",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 54,
+      "name": "Authorization",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "Pagination",
+      "type": "TOPIC",
+      "prerequisite": "Serving over Internet"
+    },
+    {
+      "order": 56,
+      "name": "GraphQL.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "GraphQL Go",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "GraphQL Java",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "graphql-http",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "GraphQL Yoga",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "Apollo Server",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "mercurius",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 63,
+      "name": "graphql-http",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 64,
+      "name": "Relay",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 65,
+      "name": "Apollo Client",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 66,
+      "name": "Urql",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 67,
+      "name": "Backend Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 68,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "Graphene",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

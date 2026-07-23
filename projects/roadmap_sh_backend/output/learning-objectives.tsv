@@ -1,1 +1,49 @@
 code	name	description	lo_type	parent_lo_code	concept_codes
+ULO-BACKEND-INTERNET	Master Backend Internet Infrastructure	Người học có khả năng giải thích nguyên lý hạ tầng mạng cho ứng dụng máy chủ.	UNIVERSAL		INTERNET_FUNDAMENTALS
+CIO-SERVER-CLIENT-FLOW	Analyze Server-Client Request Lifecycle	Người học có khả năng phân tích luồng xử lý yêu cầu tại máy chủ backend.	CONCEPTUAL_IMPL	ULO-BACKEND-INTERNET	INTERNET_FUNDAMENTALS
+SIO-SOCKET-LISTENER-SETUP	Configure TCP Server Socket	Người học có khả năng thiết lập TCP socket listener trên server.	SPECIFIC_IMPL	CIO-SERVER-CLIENT-FLOW	INTERNET_FUNDAMENTALS
+SIO-DNS-LOOKUP-SERVER	Trace DNS Resolution for Backend APIs	Người học có khả năng truy vết phân giải DNS cho các API dịch vụ backend.	SPECIFIC_IMPL	CIO-SERVER-CLIENT-FLOW	INTERNET_FUNDAMENTALS
+ULO-BACKEND-LANGUAGES	Master Backend Programming Languages	Người học có khả năng làm chủ ngôn ngữ lập trình máy chủ.	UNIVERSAL		BACKEND_LANGUAGES
+CIO-LANGUAGE-RUNTIME-CHOICE	Select and Configure Backend Runtimes	Người học có khả năng lựa chọn và cấu hình môi trường thực thi backend.	CONCEPTUAL_IMPL	ULO-BACKEND-LANGUAGES	BACKEND_LANGUAGES
+SIO-PYTHON-FASTAPI-SERVER	Setup Python FastAPI Backend Server	Người học có khả năng khởi tạo máy chủ ứng dụng bằng Python FastAPI.	SPECIFIC_IMPL	CIO-LANGUAGE-RUNTIME-CHOICE	BACKEND_LANGUAGES
+SIO-GO-HTTP-SERVER-SETUP	Build High Concurrency Server with Go	Người học có khả năng viết máy chủ xử lý đồng thời cao bằng ngôn ngữ Go.	SPECIFIC_IMPL	CIO-LANGUAGE-RUNTIME-CHOICE	BACKEND_LANGUAGES
+ULO-RELATIONAL-DATABASES	Master Relational Database Systems (RDBMS)	Người học có khả năng làm chủ thiết kế và quản trị CSDL quan hệ.	UNIVERSAL		RELATIONAL_DATABASES
+CIO-RELATIONAL-SCHEMA-DESIGN	Design Normalized Database Schemas	Người học có khả năng thiết kế chuẩn hóa cơ sở dữ liệu 3NF và khóa ngoại.	CONCEPTUAL_IMPL	ULO-RELATIONAL-DATABASES	RELATIONAL_DATABASES
+SIO-POSTGRES-SCHEMA-MIGRATION	Execute Schema Migrations on PostgreSQL	Người học có khả năng thực hiện migration cấu trúc bảng trên PostgreSQL.	SPECIFIC_IMPL	CIO-RELATIONAL-SCHEMA-DESIGN	RELATIONAL_DATABASES
+SIO-SQL-INDEX-OPTIMIZATION	Optimize Query Performance with B-Tree Indexes	Người học có khả năng tạo B-Tree index để tăng tốc truy vấn SQL.	SPECIFIC_IMPL	CIO-RELATIONAL-SCHEMA-DESIGN	RELATIONAL_DATABASES
+ULO-NOSQL-DATABASES	Master NoSQL Database Architectures	Người học có khả năng làm chủ các hệ cơ sở dữ liệu phi quan hệ.	UNIVERSAL		NOSQL_DATABASES
+CIO-DOCUMENT-KEYVALUE-STORES	Model Unstructured Data in NoSQL	Người học có khả năng thiết kế mô hình dữ liệu Document và Key-Value.	CONCEPTUAL_IMPL	ULO-NOSQL-DATABASES	NOSQL_DATABASES
+SIO-MONGODB-DOCUMENT-CRUD	Execute Document CRUD in MongoDB	Người học có khả năng thực hiện truy vấn tài liệu trong MongoDB.	SPECIFIC_IMPL	CIO-DOCUMENT-KEYVALUE-STORES	NOSQL_DATABASES
+SIO-REDIS-INMEMORY-STORE	Store Transient State in Redis Key-Value Store	Người học có khả năng đọc ghi dữ liệu transient trên bộ nhớ RAM với Redis.	SPECIFIC_IMPL	CIO-DOCUMENT-KEYVALUE-STORES	NOSQL_DATABASES
+ULO-WEB-APIS-DESIGN	Master API Architecture and Design Specifications	Người học có khả năng nắm vững thiết kế giao diện ứng dụng REST và Declarative Query API.	UNIVERSAL		WEB_APIS_DESIGN
+CIO-RESTFUL-API-DESIGN	Design Standardized RESTful Endpoints	Người học có khả năng xây dựng các endpoint REST chuẩn hóa HTTP verbs.	CONCEPTUAL_IMPL	ULO-WEB-APIS-DESIGN	WEB_APIS_DESIGN
+SIO-OPENAPI-SWAGGER-DOCS	Generate OpenAPI Specifications and Swagger	Người học có khả năng tạo tài liệu API tự động bằng OpenAPI / Swagger.	SPECIFIC_IMPL	CIO-RESTFUL-API-DESIGN	WEB_APIS_DESIGN
+SIO-EXPRESS-ROUTER-MIDDLEWARE	Implement API Controllers and Middleware	Người học có khả năng viết router controller và middleware xử lý request.	SPECIFIC_IMPL	CIO-RESTFUL-API-DESIGN	WEB_APIS_DESIGN
+ULO-BACKEND-AUTHENTICATION	Master Backend Authentication and API Security	Người học có khả năng làm chủ xác thực và bảo mật máy chủ.	UNIVERSAL		SERVER_SIDE_AUTHENTICATION
+CIO-TOKEN-BASED-AUTH	Implement Stateless JWT Token Authentication	Người học có khả năng triển khai luồng xác thực qua Token JWT.	CONCEPTUAL_IMPL	ULO-BACKEND-AUTHENTICATION	SERVER_SIDE_AUTHENTICATION
+SIO-JWT-SIGN-VERIFY	Sign and Validate JWT Bearer Tokens	Người học có khả năng tạo và kiểm tra chữ ký mã hóa JWT Token.	SPECIFIC_IMPL	CIO-TOKEN-BASED-AUTH	SERVER_SIDE_AUTHENTICATION
+SIO-BCRYPT-PASSWORD-HASH	Hash User Passwords using Bcrypt	Người học có khả năng băm mật khẩu người dùng bằng Bcrypt trước khi lưu DB.	SPECIFIC_IMPL	CIO-TOKEN-BASED-AUTH	SERVER_SIDE_AUTHENTICATION
+ULO-CACHING-STRATEGIES	Master Caching and Performance Optimization	Người học có khả năng làm chủ các chiến lược lưu trữ bộ nhớ đệm.	UNIVERSAL		CACHING_STRATEGIES
+CIO-CACHE-INVALIDATION-PATTERNS	Implement Cache Aside and Write Through	Người học có khả năng áp dụng mô hình Cache-Aside và Write-Through.	CONCEPTUAL_IMPL	ULO-CACHING-STRATEGIES	CACHING_STRATEGIES
+SIO-REDIS-CACHE-ASIDE	Cache DB Queries with Redis Cache-Aside Pattern	Người học có khả năng lưu bộ nhớ đệm kết quả query DB vào Redis.	SPECIFIC_IMPL	CIO-CACHE-INVALIDATION-PATTERNS	CACHING_STRATEGIES
+SIO-CDN-CACHE-CONTROL-HEADERS	Configure CDN Edge Caching Rules	Người học có khả năng thiết lập quy tắc lưu trữ bộ nhớ đệm trên CDN Edge.	SPECIFIC_IMPL	CIO-CACHE-INVALIDATION-PATTERNS	CACHING_STRATEGIES
+ULO-MESSAGE-BROKERS	Master Message Queues and Asynchronous Processing	Người học có khả năng làm chủ kiến trúc xử lý tin nhắn bất đồng bộ.	UNIVERSAL		MESSAGE_BROKERS
+CIO-PUB-SUB-MESSAGE-QUEUE	Implement Publish Subscribe Message Patterns	Người học có khả năng triển khai mô hình phát và nhận tin nhắn Pub/Sub.	CONCEPTUAL_IMPL	ULO-MESSAGE-BROKERS	MESSAGE_BROKERS
+SIO-RABBITMQ-QUEUE-CONSUMER	Build Asynchronous Task Consumer with RabbitMQ	Người học có khả năng xây dựng worker lắng nghe hàng đợi công việc bằng RabbitMQ.	SPECIFIC_IMPL	CIO-PUB-SUB-MESSAGE-QUEUE	MESSAGE_BROKERS
+SIO-KAFKA-EVENT-STREAM	Stream Real-time Events with Apache Kafka	Người học có khả năng xử lý dòng dữ liệu sự kiện thời gian thực bằng Kafka.	SPECIFIC_IMPL	CIO-PUB-SUB-MESSAGE-QUEUE	MESSAGE_BROKERS
+ULO-SEARCH-ENGINES-BACKEND	Master Full-Text Search Engines	Người học có khả năng làm chủ công cụ tìm kiếm toàn văn.	UNIVERSAL		FULL_TEXT_SEARCH_ENGINES
+CIO-ELASTICSEARCH-INDEXING	Index and Search Documents in Full-Text Search Engine	Người học có khả năng đánh chỉ mục và truy vấn dữ liệu trong Full-Text Search Engine.	CONCEPTUAL_IMPL	ULO-SEARCH-ENGINES-BACKEND	FULL_TEXT_SEARCH_ENGINES
+SIO-ELASTICSEARCH-QUERY-DSL	Write Full-Text Search Queries using Query DSL	Người học có khả năng viết câu truy vấn tìm kiếm nâng cao bằng Query DSL.	SPECIFIC_IMPL	CIO-ELASTICSEARCH-INDEXING	FULL_TEXT_SEARCH_ENGINES
+SIO-ELASTICSEARCH-MAPPING-SETUP	Configure Custom Index Mappings and Analyzers	Người học có khả năng cấu hình mapping và bộ phân tích từ vựng tokenizer trong ES.	SPECIFIC_IMPL	CIO-ELASTICSEARCH-INDEXING	FULL_TEXT_SEARCH_ENGINES
+ULO-CI-CD-PIPELINES	Master Continuous Integration and Deployment	Người học có khả năng làm chủ tự động hóa quy trình triển khai.	UNIVERSAL		CI_CD_PIPELINES
+CIO-PIPELINE-AUTOMATION	Automate Build Test and Deploy Pipelines	Người học có khả năng xây dựng đường ống CI/CD tự động hóa.	CONCEPTUAL_IMPL	ULO-CI-CD-PIPELINES	CI_CD_PIPELINES
+SIO-GITHUB-ACTIONS-CI-TEST	Configure Automated Unit Test Job in GitHub Actions	Người học có khả năng thiết lập bước tự động chạy unit test trên GitHub Actions.	SPECIFIC_IMPL	CIO-PIPELINE-AUTOMATION	CI_CD_PIPELINES
+SIO-DOCKER-IMAGE-PUSH-REGISTRY	Build and Push Docker Image to Container Registry	Người học có khả năng tự động đóng gói và đẩy Docker Image lên Docker Hub/ECR.	SPECIFIC_IMPL	CIO-PIPELINE-AUTOMATION	CI_CD_PIPELINES
+ULO-CONTAINERIZATION	Master Containerization and Cloud Infrastructure	Người học có khả năng làm chủ đóng gói ứng dụng container.	UNIVERSAL		CONTAINERIZATION
+CIO-CONTAINER-MANAGEMENT	Manage Container Virtualization Containers and Networks	Người học có khả năng quản lý vòng đời container và mạng kết nối.	CONCEPTUAL_IMPL	ULO-CONTAINERIZATION	CONTAINERIZATION
+SIO-DOCKERFILE-MULTI-STAGE	Optimize Container Footprint with Multi-stage Build	Người học có khả năng viết Dockerfile Multi-stage build tối ưu kích thước image.	SPECIFIC_IMPL	CIO-CONTAINER-MANAGEMENT	CONTAINERIZATION
+SIO-DOCKER-COMPOSE-UP	Orchestrate Microservice Containers with Docker Compose	Người học có khả năng khởi chạy cụm dịch vụ microservices bằng Docker Compose.	SPECIFIC_IMPL	CIO-CONTAINER-MANAGEMENT	CONTAINERIZATION
+ULO-SYSTEM-DESIGN-SCALABILITY	Master Distributed System Design and Scalability	Người học có khả năng làm chủ thiết kế hệ thống phân tán chịu tải cao.	UNIVERSAL		SYSTEM_DESIGN_SCALABILITY
+CIO-LOAD-BALANCING-MICROSERVICES	Design High Availability Architecture	Người học có khả năng thiết kế kiến trúc ứng dụng sẵn sàng cao HA.	CONCEPTUAL_IMPL	ULO-SYSTEM-DESIGN-SCALABILITY	SYSTEM_DESIGN_SCALABILITY
+SIO-NGINX-LOAD-BALANCER-CONFIG	Configure Nginx Reverse Proxy and Load Balancer	Người học có khả năng cấu hình Nginx làm Reverse Proxy và Cân bằng tải.	SPECIFIC_IMPL	CIO-LOAD-BALANCING-MICROSERVICES	SYSTEM_DESIGN_SCALABILITY
+SIO-DATABASE-SHARDING-READ-REPLICA	Implement Database Read Replicas and Sharding	Người học có khả năng thiết lập Database Read Replicas để phân tải đọc ghi.	SPECIFIC_IMPL	CIO-LOAD-BALANCING-MICROSERVICES	SYSTEM_DESIGN_SCALABILITY

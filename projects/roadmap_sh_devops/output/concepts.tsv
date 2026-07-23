@@ -1,0 +1,4 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+CI_CD_PIPELINES	Continuous Integration & Deployment Pipelines	Automated Pipelines, Automated CI, Repository Hosting CI, Build/Test/Deploy jobs.	DEVOPS_PRACTICES	CI/CD, Automated CI, Repository Hosting CI, Automated Build		"{""icon"": ""cogs""}"
+INFRASTRUCTURE_AS_CODE	Infrastructure as Code & Cloud Provisioning	IaC Engine, Ansible, AWS/Cloud Resources, Container Orchestrator Manifests.	DEVOPS_PRACTICES	IaC Engine, Ansible, IaC, Container Orchestrator, Cloud		"{""icon"": ""server""}"
+SYSTEM_MONITORING_LOGGING	Monitoring, Observability & Log Analytics	Metrics Collector metrics, Metrics Dashboard dashboards, Log Analytics Engine Stack, Distributed Tracing.	DEVOPS_PRACTICES	Metrics Collector, Metrics Dashboard, Log Analytics Engine, Observability, Logs		"{""icon"": ""chart-line""}"

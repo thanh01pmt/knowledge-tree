@@ -1,0 +1,13 @@
+code	name	description	lo_type	parent_lo_code	concept_codes
+ULO-CONTAINERIZATION	Master Containerization with Container Virtualization	Người học có khả năng nắm vững nguyên lý đóng gói ứng dụng container.	UNIVERSAL		CONTAINERIZATION
+CIO-CONTAINERFILE-IMAGE-BUILD	Build Optimized Container Virtualization Images	Người học có khả năng viết tệp Dockerfile để đóng gói mã nguồn và môi trường thực thi.	CONCEPTUAL_IMPL	ULO-CONTAINERIZATION	CONTAINERIZATION
+SIO-MULTI-STAGE-DOCKER-BUILD	Optimize Image Size with Multi-stage Builds	Người học có khả năng sử dụng Multi-stage build để giảm tối đa dung lượng Docker image.	SPECIFIC_IMPL	CIO-CONTAINERFILE-IMAGE-BUILD	CONTAINERIZATION
+SIO-DOCKER-RUN-PORT-MAPPING	Run Container with Port Mapping (-p)	Người học có khả năng khởi chạy container và mapping cổng kết nối (-p 8080:80).	SPECIFIC_IMPL	CIO-CONTAINERFILE-IMAGE-BUILD	CONTAINERIZATION
+ULO-NETWORKS-STORAGE	Master Container Virtualization Storage and Networking	Người học có khả năng làm chủ mạng và ổ lưu trữ container.	UNIVERSAL		DOCKER_NETWORKING_VOLUMES
+CIO-VOLUME-PERSISTENCE	Persist Container Data with Named Volumes	Người học có khả năng tạo Container Virtualization Volume duy trì dữ liệu không bị mất khi container dừng.	CONCEPTUAL_IMPL	ULO-NETWORKS-STORAGE	DOCKER_NETWORKING_VOLUMES
+SIO-BIND-MOUNT-DEV-SETUP	Configure Bind Mounts for Local Live Reload	Người học có khả năng gắn trực tiếp thư mục mã nguồn máy host vào container bằng Bind Mount.	SPECIFIC_IMPL	CIO-VOLUME-PERSISTENCE	DOCKER_NETWORKING_VOLUMES
+SIO-CUSTOM-BRIDGE-NETWORK	Create Isolated Custom Bridge Networks	Người học có khả năng tạo mạng bridge riêng cho các container giao tiếp nội bộ an toàn.	SPECIFIC_IMPL	CIO-VOLUME-PERSISTENCE	DOCKER_NETWORKING_VOLUMES
+ULO-COMPOSE	Master Multi-Container Environments with Compose	Người học có khả năng điều phối ứng dụng đa container.	UNIVERSAL		DOCKER_COMPOSE_ORCHESTRATION
+CIO-COMPOSE-SERVICES	Configure Services in Container Virtualization-compose.yml	Người học có khả năng định nghĩa các dịch vụ web, database, cache trong file compose.	CONCEPTUAL_IMPL	ULO-COMPOSE	DOCKER_COMPOSE_ORCHESTRATION
+SIO-DOCKER-COMPOSE-ENV-VARS	Inject Environment Variables into Compose Services	Người học có khả năng nạp biến môi trường từ tệp .env vào các service container.	SPECIFIC_IMPL	CIO-COMPOSE-SERVICES	DOCKER_COMPOSE_ORCHESTRATION
+SIO-DOCKER-COMPOSE-UP-COMMAND	Orchestrate Containers with docker compose up	Người học có khả năng khởi động và dừng toàn bộ cụm container bằng lệnh docker compose up.	SPECIFIC_IMPL	CIO-COMPOSE-SERVICES	DOCKER_COMPOSE_ORCHESTRATION

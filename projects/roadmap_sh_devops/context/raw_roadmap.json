@@ -1,0 +1,876 @@
+{
+  "url": "https://roadmap.sh/devops",
+  "topics_count": 145,
+  "topics": [
+    {
+      "order": 1,
+      "name": "Learn a Programming Language",
+      "type": "TOPIC",
+      "prerequisite": "DevOps"
+    },
+    {
+      "order": 2,
+      "name": "Python",
+      "type": "SUBTOPIC",
+      "prerequisite": "Learn a Programming Language"
+    },
+    {
+      "order": 3,
+      "name": "Ruby",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 4,
+      "name": "Go",
+      "type": "SUBTOPIC",
+      "prerequisite": "Learn a Programming Language"
+    },
+    {
+      "order": 5,
+      "name": "Rust",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 6,
+      "name": "JavaScript / Node.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "Learn a Programming Language"
+    },
+    {
+      "order": 7,
+      "name": "Operating System",
+      "type": "TOPIC",
+      "prerequisite": "Learn a Programming Language"
+    },
+    {
+      "order": 8,
+      "name": "Ubuntu / Debian",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 9,
+      "name": "SUSE Linux",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "RHEL / Derivatives",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 11,
+      "name": "FreeBSD",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 12,
+      "name": "OpenBSD",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 13,
+      "name": "NetBSD",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "Windows",
+      "type": "SUBTOPIC",
+      "prerequisite": "Operating System"
+    },
+    {
+      "order": 15,
+      "name": "Terminal Knowledge",
+      "type": "TOPIC",
+      "prerequisite": "Operating System"
+    },
+    {
+      "order": 16,
+      "name": "Process Monitoring",
+      "type": "SUBTOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 17,
+      "name": "Performance Monitoring",
+      "type": "SUBTOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 18,
+      "name": "Networking Tools",
+      "type": "SUBTOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 19,
+      "name": "Text Manipulation",
+      "type": "SUBTOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 20,
+      "name": "Bash",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 21,
+      "name": "Power Shell",
+      "type": "SUBTOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 22,
+      "name": "Vim / Nano /  Emacs",
+      "type": "SUBTOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 23,
+      "name": "Version Control Systems",
+      "type": "TOPIC",
+      "prerequisite": "Terminal Knowledge"
+    },
+    {
+      "order": 24,
+      "name": "Git",
+      "type": "SUBTOPIC",
+      "prerequisite": "Version Control Systems"
+    },
+    {
+      "order": 25,
+      "name": "VCS Hosting",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "GitHub",
+      "type": "SUBTOPIC",
+      "prerequisite": "VCS Hosting"
+    },
+    {
+      "order": 27,
+      "name": "GitLab",
+      "type": "SUBTOPIC",
+      "prerequisite": "VCS Hosting"
+    },
+    {
+      "order": 28,
+      "name": "Bitbucket",
+      "type": "SUBTOPIC",
+      "prerequisite": "VCS Hosting"
+    },
+    {
+      "order": 29,
+      "name": "What is and how to setup X ?",
+      "type": "TOPIC",
+      "prerequisite": "Containers"
+    },
+    {
+      "order": 30,
+      "name": "Forward Proxy",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Firewall",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "Nginx",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Tomcat",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 34,
+      "name": "Apache",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "Caddy",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 36,
+      "name": "IIS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 37,
+      "name": "Caching Server",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Load Balancer",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "Reverse Proxy",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Containers",
+      "type": "TOPIC",
+      "prerequisite": "VCS Hosting"
+    },
+    {
+      "order": 41,
+      "name": "Docker",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 42,
+      "name": "LXC",
+      "type": "SUBTOPIC",
+      "prerequisite": "Containers"
+    },
+    {
+      "order": 43,
+      "name": "Cloud Providers",
+      "type": "TOPIC",
+      "prerequisite": "Network Engineer"
+    },
+    {
+      "order": 44,
+      "name": "AWS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 45,
+      "name": "Azure",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 46,
+      "name": "Google Cloud",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "Digital Ocean",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 48,
+      "name": "Alibaba Cloud",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "Hetzner",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "Heroku",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 51,
+      "name": "FTP / SFTP",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "DNS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 53,
+      "name": "HTTP",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 54,
+      "name": "HTTPS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "SSL / TLS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "SSH",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "White / Grey Listing",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "SMTP",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "DMARC",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "IMAP",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "SPF",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "POP3S",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 63,
+      "name": "Domain Keys",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 64,
+      "name": "OSI Model",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 65,
+      "name": "Networking & Protocols",
+      "type": "TOPIC",
+      "prerequisite": "What is and how to setup X ?"
+    },
+    {
+      "order": 66,
+      "name": "Serverless",
+      "type": "TOPIC",
+      "prerequisite": "Cloud Providers"
+    },
+    {
+      "order": 67,
+      "name": "Vercel",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 68,
+      "name": "Cloudflare",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "Azure Functions",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 70,
+      "name": "AWS Lambda",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 71,
+      "name": "Netlify",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 72,
+      "name": "Provisioning",
+      "type": "TOPIC",
+      "prerequisite": "[section]"
+    },
+    {
+      "order": 73,
+      "name": "AWS CDK",
+      "type": "SUBTOPIC",
+      "prerequisite": "Provisioning"
+    },
+    {
+      "order": 74,
+      "name": "CloudFormation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 75,
+      "name": "Pulumi",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 76,
+      "name": "Terraform",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 77,
+      "name": "Configuration Management",
+      "type": "TOPIC",
+      "prerequisite": "Provisioning"
+    },
+    {
+      "order": 78,
+      "name": "Ansible",
+      "type": "SUBTOPIC",
+      "prerequisite": "Configuration Management"
+    },
+    {
+      "order": 79,
+      "name": "Chef",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 80,
+      "name": "Puppet",
+      "type": "SUBTOPIC",
+      "prerequisite": "Configuration Management"
+    },
+    {
+      "order": 81,
+      "name": "CI / CD Tools",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 82,
+      "name": "GitHub Actions",
+      "type": "SUBTOPIC",
+      "prerequisite": "CI / CD Tools"
+    },
+    {
+      "order": 83,
+      "name": "GitLab CI",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "Jenkins",
+      "type": "SUBTOPIC",
+      "prerequisite": "CI / CD Tools"
+    },
+    {
+      "order": 85,
+      "name": "Circle CI",
+      "type": "SUBTOPIC",
+      "prerequisite": "CI / CD Tools"
+    },
+    {
+      "order": 86,
+      "name": "Octopus Deploy",
+      "type": "SUBTOPIC",
+      "prerequisite": "CI / CD Tools"
+    },
+    {
+      "order": 87,
+      "name": "TeamCity",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 88,
+      "name": "Secret Management",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 89,
+      "name": "Sealed Secrets",
+      "type": "SUBTOPIC",
+      "prerequisite": "Secret Management"
+    },
+    {
+      "order": 90,
+      "name": "Cloud Specific Tools",
+      "type": "SUBTOPIC",
+      "prerequisite": "Secret Management"
+    },
+    {
+      "order": 91,
+      "name": "Vault",
+      "type": "SUBTOPIC",
+      "prerequisite": "Secret Management"
+    },
+    {
+      "order": 92,
+      "name": "SOPs",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 93,
+      "name": "Infrastructure Monitoring",
+      "type": "TOPIC",
+      "prerequisite": "Secret Management"
+    },
+    {
+      "order": 94,
+      "name": "Zabbix",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 95,
+      "name": "Prometheus",
+      "type": "SUBTOPIC",
+      "prerequisite": "Infrastructure Monitoring"
+    },
+    {
+      "order": 96,
+      "name": "Datadog",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 97,
+      "name": "Grafana",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 98,
+      "name": "Logs Management",
+      "type": "TOPIC",
+      "prerequisite": "Infrastructure Monitoring"
+    },
+    {
+      "order": 99,
+      "name": "Elastic Stack",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 100,
+      "name": "Graylog",
+      "type": "SUBTOPIC",
+      "prerequisite": "Logs Management"
+    },
+    {
+      "order": 101,
+      "name": "Splunk",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 102,
+      "name": "Papertrail",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 103,
+      "name": "Container Orchestration",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 104,
+      "name": "GKE / EKS / AKS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 105,
+      "name": "AWS ECS / Fargate",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 106,
+      "name": "Docker Swarm",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 107,
+      "name": "Artifact Management",
+      "type": "TOPIC",
+      "prerequisite": "Observability"
+    },
+    {
+      "order": 108,
+      "name": "Artifactory",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 109,
+      "name": "Nexus",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 110,
+      "name": "Cloud Smith",
+      "type": "SUBTOPIC",
+      "prerequisite": "Artifact Management"
+    },
+    {
+      "order": 111,
+      "name": "GitOps",
+      "type": "TOPIC",
+      "prerequisite": "Artifact Management"
+    },
+    {
+      "order": 112,
+      "name": "ArgoCD",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 113,
+      "name": "FluxCD",
+      "type": "SUBTOPIC",
+      "prerequisite": "GitOps"
+    },
+    {
+      "order": 114,
+      "name": "Service Mesh",
+      "type": "TOPIC",
+      "prerequisite": "GitOps"
+    },
+    {
+      "order": 115,
+      "name": "Istio",
+      "type": "SUBTOPIC",
+      "prerequisite": "Service Mesh"
+    },
+    {
+      "order": 116,
+      "name": "Consul",
+      "type": "SUBTOPIC",
+      "prerequisite": "Service Mesh"
+    },
+    {
+      "order": 117,
+      "name": "Linkerd",
+      "type": "SUBTOPIC",
+      "prerequisite": "Service Mesh"
+    },
+    {
+      "order": 118,
+      "name": "Envoy",
+      "type": "SUBTOPIC",
+      "prerequisite": "Service Mesh"
+    },
+    {
+      "order": 119,
+      "name": "Cloud Design Patterns",
+      "type": "TOPIC",
+      "prerequisite": "Service Mesh"
+    },
+    {
+      "order": 120,
+      "name": "Availability",
+      "type": "SUBTOPIC",
+      "prerequisite": "Cloud Design Patterns"
+    },
+    {
+      "order": 121,
+      "name": "Data Management",
+      "type": "SUBTOPIC",
+      "prerequisite": "Cloud Design Patterns"
+    },
+    {
+      "order": 122,
+      "name": "Design and Implementation",
+      "type": "SUBTOPIC",
+      "prerequisite": "Cloud Design Patterns"
+    },
+    {
+      "order": 123,
+      "name": "Management and Monitoring",
+      "type": "SUBTOPIC",
+      "prerequisite": "Cloud Design Patterns"
+    },
+    {
+      "order": 124,
+      "name": "Backend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 125,
+      "name": "Docker",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 126,
+      "name": "Kubernetes",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 127,
+      "name": "Linux",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 128,
+      "name": "Visit the Beginner Version",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 129,
+      "name": "Loki",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 130,
+      "name": "Kubernetes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 131,
+      "name": "GCP Functions",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 132,
+      "name": "Observability",
+      "type": "TOPIC",
+      "prerequisite": "Container Orchestration"
+    },
+    {
+      "order": 133,
+      "name": "Jaeger",
+      "type": "SUBTOPIC",
+      "prerequisite": "Observability"
+    },
+    {
+      "order": 134,
+      "name": "New Relic",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 135,
+      "name": "Datadog",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 136,
+      "name": "Prometheus",
+      "type": "SUBTOPIC",
+      "prerequisite": "Infrastructure Monitoring"
+    },
+    {
+      "order": 137,
+      "name": "OpenTelemetry",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 138,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 139,
+      "name": "ESO",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 140,
+      "name": "Dynatrace",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 141,
+      "name": "Salt",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 142,
+      "name": "OpenShift",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 143,
+      "name": "Network Engineer",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 144,
+      "name": "Network Engineer",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 145,
+      "name": "Render",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

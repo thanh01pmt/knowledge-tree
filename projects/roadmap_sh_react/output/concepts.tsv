@@ -1,0 +1,8 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+COMPONENT_BASED_UI	Component Architecture & Declarative Rendering	Cú pháp khai báo UI, Functional components, cây phần tử component, Fragments.	COMPONENT_UI_SYSTEMS	Component Architecture & Declarative Rendering		"{""icon"": ""code""}"
+COMPONENT_PROPS_AND_STATE	Props & Local State Management	Truyền dữ liệu props, quản lý local state, bất biến state, nâng trạng thái state.	COMPONENT_UI_SYSTEMS	Props & Local State Management		"{""icon"": ""code""}"
+LIFECYCLE_AND_SIDE_EFFECTS	Lifecycle & Side-Effect Operations	Xử lý tác vụ bất đồng bộ side effects, hàm cleanup dọn dẹp bộ nhớ, custom hooks.	COMPONENT_UI_SYSTEMS	Lifecycle & Side-Effect Operations		"{""icon"": ""code""}"
+MEMOIZATION_AND_RECONCILIATION	Performance Memoization & Virtual DOM Reconciliation	Ghi nhớ kết quả tính toán memoization, thuật toán so sánh Virtual DOM reconciliation, key props.	COMPONENT_UI_SYSTEMS	Performance Memoization & Virtual DOM Reconciliation		"{""icon"": ""code""}"
+GLOBAL_STATE_MANAGEMENT	Context API & Global State Management	Chia sẻ trạng thái toàn cục qua Context Provider, thư viện quản lý state toàn cục.	COMPONENT_UI_SYSTEMS	Context API & Global State Management		"{""icon"": ""code""}"
+CLIENT_SIDE_ROUTING	Client-Side Routing & Navigation	Phân tuyến trang client, dynamic route parameters, nested layouts, protected routes.	COMPONENT_UI_SYSTEMS	Client-Side Routing & Navigation		"{""icon"": ""code""}"
+SERVER_SIDE_RENDERING_ARCHITECTURE	Server-Side Rendering & Server Components	Kiến trúc render phía server SSR, Server Components (RSC), Client Components, Server Actions.	COMPONENT_UI_SYSTEMS	Server-Side Rendering & Server Components		"{""icon"": ""code""}"

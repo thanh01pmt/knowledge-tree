@@ -1,513 +1,537 @@
 {
   "url": "https://roadmap.sh/python",
-  "topics_count": 85,
+  "topics_count": 89,
   "topics": [
     {
       "order": 1,
+      "name": "Backend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 2,
+      "name": "Python for Data Analysis",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 3,
       "name": "Learn the Basics",
       "type": "TOPIC",
       "prerequisite": "Python"
     },
     {
-      "order": 2,
+      "order": 4,
       "name": "Basic Syntax",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 3,
+      "order": 5,
       "name": "Variables and Data Types",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 4,
+      "order": 6,
       "name": "Conditionals",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 5,
+      "order": 7,
       "name": "Type Casting",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 6,
+      "order": 8,
       "name": "Exceptions",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 7,
+      "order": 9,
       "name": "Functions, Builtin Functions",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 8,
+      "order": 10,
       "name": "Lists",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 9,
+      "order": 11,
       "name": "Tuples",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 10,
+      "order": 12,
       "name": "Sets",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 11,
+      "order": 13,
       "name": "Dictionaries",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 12,
+      "order": 14,
       "name": "Loops",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 13,
+      "order": 15,
       "name": "Arrays and Linked Lists",
       "type": "SUBTOPIC",
       "prerequisite": "Data Structures & Algorithms"
     },
     {
-      "order": 14,
+      "order": 16,
       "name": "Heaps, Stacks and Queues",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 15,
+      "order": 17,
       "name": "HashMaps",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 16,
+      "order": 18,
       "name": "Binary Search Tree",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 17,
+      "order": 19,
       "name": "Recursion",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 18,
+      "order": 20,
       "name": "Sorting Algorithms",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 19,
+      "order": 21,
       "name": "Modules",
       "type": "TOPIC",
       "prerequisite": "Data Structures & Algorithms"
     },
     {
-      "order": 20,
+      "order": 22,
       "name": "Data Structures & Algorithms",
       "type": "TOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 21,
+      "order": 23,
       "name": "Builtin",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 22,
+      "order": 24,
       "name": "Custom",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 23,
+      "order": 25,
       "name": "Lambdas",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 24,
+      "order": 26,
       "name": "Decorators",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 25,
+      "order": 27,
       "name": "Iterators",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 26,
+      "order": 28,
       "name": "Regular Expressions",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 27,
+      "order": 29,
       "name": "Object Oriented Programming",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 28,
+      "order": 30,
       "name": "Classes",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 29,
+      "order": 31,
       "name": "Inheritance",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 30,
+      "order": 32,
       "name": "Methods",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 31,
+      "order": 33,
       "name": "Package Managers",
       "type": "TOPIC",
       "prerequisite": "Object Oriented Programming"
     },
     {
-      "order": 32,
+      "order": 34,
       "name": "PyPI",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 33,
+      "order": 35,
       "name": "Pip",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 34,
+      "order": 36,
       "name": "Conda",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 35,
+      "order": 37,
       "name": "Poetry",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 36,
+      "order": 38,
       "name": "List Comprehensions",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 37,
+      "order": 39,
       "name": "Generator Expressions",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 38,
+      "order": 40,
       "name": "Paradigms",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 39,
+      "order": 41,
       "name": "Context Manager",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 40,
+      "order": 42,
       "name": "Learn a Framework",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 41,
+      "order": 43,
       "name": "Pyramid",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 42,
+      "order": 44,
       "name": "Plotly Dash",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 43,
+      "order": 45,
       "name": "gevent",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 44,
+      "order": 46,
       "name": "aiohttp",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 45,
+      "order": 47,
       "name": "Tornado",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 46,
+      "order": 48,
       "name": "Sanic",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 47,
+      "order": 49,
       "name": "Fast API",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 48,
+      "order": 50,
       "name": "Django",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 49,
+      "order": 51,
       "name": "Flask",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 50,
+      "order": 52,
       "name": "Concurrency",
       "type": "TOPIC",
       "prerequisite": "Learn a Framework"
     },
     {
-      "order": 51,
+      "order": 53,
       "name": "GIL",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 52,
+      "order": 54,
       "name": "Threading",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 53,
+      "order": 55,
       "name": "Multiprocessing",
       "type": "SUBTOPIC",
       "prerequisite": "Concurrency"
     },
     {
-      "order": 54,
+      "order": 56,
       "name": "Asynchrony",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 55,
+      "order": 57,
       "name": "uv",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 56,
+      "order": 58,
       "name": "pyproject.toml",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 57,
+      "order": 59,
       "name": "Pipenv",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 58,
+      "order": 60,
       "name": "virtualenv",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 59,
+      "order": 61,
       "name": "pyenv",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 60,
+      "order": 62,
       "name": "Static Typing",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 61,
+      "order": 63,
       "name": "Pydantic",
       "type": "SUBTOPIC",
       "prerequisite": "Static Typing"
     },
     {
-      "order": 62,
+      "order": 64,
       "name": "mypy",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 63,
+      "order": 65,
       "name": "pyright",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 64,
+      "order": 66,
       "name": "pyre",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 65,
+      "order": 67,
       "name": "Code Formatting",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 66,
+      "order": 68,
       "name": "ruff",
       "type": "SUBTOPIC",
       "prerequisite": "Code Formatting"
     },
     {
-      "order": 67,
+      "order": 69,
       "name": "black",
       "type": "SUBTOPIC",
       "prerequisite": "Code Formatting"
     },
     {
-      "order": 68,
+      "order": 70,
       "name": "yapf",
       "type": "SUBTOPIC",
       "prerequisite": "Code Formatting"
     },
     {
-      "order": 69,
+      "order": 71,
       "name": "Sphinx",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 70,
+      "order": 72,
       "name": "Common Packages",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 71,
+      "order": 73,
       "name": "Testing",
       "type": "TOPIC",
       "prerequisite": "File Handling"
     },
     {
-      "order": 72,
+      "order": 74,
       "name": "doctest",
       "type": "SUBTOPIC",
       "prerequisite": "Testing"
     },
     {
-      "order": 73,
+      "order": 75,
       "name": "pytest",
       "type": "SUBTOPIC",
       "prerequisite": "Testing"
     },
     {
-      "order": 74,
+      "order": 76,
       "name": "unittest / pyUnit",
       "type": "SUBTOPIC",
       "prerequisite": "Testing"
     },
     {
-      "order": 75,
+      "order": 77,
       "name": "typing",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 76,
+      "order": 78,
       "name": "tox",
       "type": "SUBTOPIC",
       "prerequisite": "Testing"
     },
     {
-      "order": 77,
+      "order": 79,
+      "name": "DevOps",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 80,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 81,
       "name": "Working with Strings",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 78,
+      "order": 82,
       "name": "File Handling",
       "type": "TOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 79,
+      "order": 83,
       "name": "pdm",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 80,
+      "order": 84,
       "name": "Encapsulation",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"
     },
     {
-      "order": 81,
+      "order": 85,
       "name": "Variable Scope",
       "type": "TOPIC",
       "prerequisite": "Object Oriented Programming"
     },
     {
-      "order": 82,
+      "order": 86,
       "name": "glob",
       "type": "SUBTOPIC",
       "prerequisite": "File Handling"
     },
     {
-      "order": 83,
+      "order": 87,
       "name": "Operators",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 84,
+      "order": 88,
       "name": "Comments",
       "type": "SUBTOPIC",
       "prerequisite": "Learn the Basics"
     },
     {
-      "order": 85,
+      "order": 89,
       "name": "Type Annot.",
       "type": "SUBTOPIC",
       "prerequisite": "ROOT (Start)"

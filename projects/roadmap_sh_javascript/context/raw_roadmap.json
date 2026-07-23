@@ -1,0 +1,792 @@
+{
+  "url": "https://roadmap.sh/javascript",
+  "topics_count": 131,
+  "topics": [
+    {
+      "order": 1,
+      "name": "TypeScript",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 2,
+      "name": "Frontend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 3,
+      "name": "Introduction to JavaScript",
+      "type": "TOPIC",
+      "prerequisite": "JavaScript"
+    },
+    {
+      "order": 4,
+      "name": "What is JavaScript",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to JavaScript"
+    },
+    {
+      "order": 5,
+      "name": "History of JavaScript",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to JavaScript"
+    },
+    {
+      "order": 6,
+      "name": "JavaScript Versions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to JavaScript"
+    },
+    {
+      "order": 7,
+      "name": "How to run JavaScript",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to JavaScript"
+    },
+    {
+      "order": 8,
+      "name": "Variable Declarations",
+      "type": "SUBTOPIC",
+      "prerequisite": "All about Variables"
+    },
+    {
+      "order": 9,
+      "name": "Hoisting",
+      "type": "SUBTOPIC",
+      "prerequisite": "All about Variables"
+    },
+    {
+      "order": 10,
+      "name": "Variable Naming Rules",
+      "type": "SUBTOPIC",
+      "prerequisite": "All about Variables"
+    },
+    {
+      "order": 11,
+      "name": "Variable Scopes",
+      "type": "SUBTOPIC",
+      "prerequisite": "All about Variables"
+    },
+    {
+      "order": 12,
+      "name": "var",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 13,
+      "name": "let",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "const",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "Block",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 16,
+      "name": "Function",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 17,
+      "name": "Global",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "All about Variables",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "Data Types",
+      "type": "TOPIC",
+      "prerequisite": "All about Variables"
+    },
+    {
+      "order": 20,
+      "name": "string",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 21,
+      "name": "undefined",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 22,
+      "name": "number",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "bigint",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "boolean",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "null",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "Symbol",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "Object",
+      "type": "SUBTOPIC",
+      "prerequisite": "Data Types"
+    },
+    {
+      "order": 28,
+      "name": "Object Prototype",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "Prototypal Inheritance",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 30,
+      "name": "typeof operator",
+      "type": "SUBTOPIC",
+      "prerequisite": "Data Types"
+    },
+    {
+      "order": 31,
+      "name": "Built-in Objects",
+      "type": "SUBTOPIC",
+      "prerequisite": "Object"
+    },
+    {
+      "order": 32,
+      "name": "Type Casting",
+      "type": "TOPIC",
+      "prerequisite": "Data Types"
+    },
+    {
+      "order": 33,
+      "name": "Type Conversion vs Coercion",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Casting"
+    },
+    {
+      "order": 34,
+      "name": "Explicit Type Casting",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Casting"
+    },
+    {
+      "order": 35,
+      "name": "Implicit Type Casting",
+      "type": "SUBTOPIC",
+      "prerequisite": "Type Casting"
+    },
+    {
+      "order": 36,
+      "name": "Data Structures",
+      "type": "TOPIC",
+      "prerequisite": "Type Casting"
+    },
+    {
+      "order": 37,
+      "name": "Keyed Collections",
+      "type": "SUBTOPIC",
+      "prerequisite": "Data Structures"
+    },
+    {
+      "order": 38,
+      "name": "Map",
+      "type": "SUBTOPIC",
+      "prerequisite": "Keyed Collections"
+    },
+    {
+      "order": 39,
+      "name": "Weak Map",
+      "type": "SUBTOPIC",
+      "prerequisite": "Keyed Collections"
+    },
+    {
+      "order": 40,
+      "name": "Set",
+      "type": "SUBTOPIC",
+      "prerequisite": "Keyed Collections"
+    },
+    {
+      "order": 41,
+      "name": "Weak Set",
+      "type": "SUBTOPIC",
+      "prerequisite": "Keyed Collections"
+    },
+    {
+      "order": 42,
+      "name": "Indexed Collections",
+      "type": "SUBTOPIC",
+      "prerequisite": "Data Structures"
+    },
+    {
+      "order": 43,
+      "name": "Typed Arrays",
+      "type": "SUBTOPIC",
+      "prerequisite": "Indexed Collections"
+    },
+    {
+      "order": 44,
+      "name": "Arrays",
+      "type": "SUBTOPIC",
+      "prerequisite": "Indexed Collections"
+    },
+    {
+      "order": 45,
+      "name": "Structured Data",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 46,
+      "name": "JSON",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "Equality Comparisons",
+      "type": "TOPIC",
+      "prerequisite": "Data Structures"
+    },
+    {
+      "order": 48,
+      "name": "==",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "===",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "Object.is",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 51,
+      "name": "isLooselyEqual",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "isStrictlyEqual",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 53,
+      "name": "SameValueZero",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 54,
+      "name": "Loops and Iterations",
+      "type": "TOPIC",
+      "prerequisite": "Equality Comparisons"
+    },
+    {
+      "order": 55,
+      "name": "for",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "do...while",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "while",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "for...in loop",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "for...of loop",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "break / continue",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "Control Flow",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "Exceptional Handling",
+      "type": "SUBTOPIC",
+      "prerequisite": "Control Flow"
+    },
+    {
+      "order": 63,
+      "name": "Conditional Statements",
+      "type": "SUBTOPIC",
+      "prerequisite": "Control Flow"
+    },
+    {
+      "order": 64,
+      "name": "if...else",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 65,
+      "name": "Switch",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 66,
+      "name": "throw statement",
+      "type": "SUBTOPIC",
+      "prerequisite": "Exceptional Handling"
+    },
+    {
+      "order": 67,
+      "name": "try/catch/finally",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 68,
+      "name": "Error Objects",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "Expressions & Operators",
+      "type": "TOPIC",
+      "prerequisite": "Control Flow"
+    },
+    {
+      "order": 70,
+      "name": "Assignment Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 71,
+      "name": "Comparison Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 72,
+      "name": "Arithmetic Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 73,
+      "name": "Bitwise Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 74,
+      "name": "Logical Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 75,
+      "name": "BigInt Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 76,
+      "name": "String Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 77,
+      "name": "Conditional Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 78,
+      "name": "Comma Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 79,
+      "name": "Unary Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "Expressions & Operators"
+    },
+    {
+      "order": 80,
+      "name": "Functions",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 81,
+      "name": "Function Parameters",
+      "type": "SUBTOPIC",
+      "prerequisite": "Functions"
+    },
+    {
+      "order": 82,
+      "name": "Arrow Functions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Functions"
+    },
+    {
+      "order": 83,
+      "name": "IIFEs",
+      "type": "SUBTOPIC",
+      "prerequisite": "Functions"
+    },
+    {
+      "order": 84,
+      "name": "arguments object",
+      "type": "SUBTOPIC",
+      "prerequisite": "Functions"
+    },
+    {
+      "order": 85,
+      "name": "Scope & Function Stack",
+      "type": "SUBTOPIC",
+      "prerequisite": "Functions"
+    },
+    {
+      "order": 86,
+      "name": "Built-in Functions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Functions"
+    },
+    {
+      "order": 87,
+      "name": "Default Params",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 88,
+      "name": "Rest",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 89,
+      "name": "Recursion",
+      "type": "SUBTOPIC",
+      "prerequisite": "Scope & Function Stack"
+    },
+    {
+      "order": 90,
+      "name": "Lexical Scoping",
+      "type": "SUBTOPIC",
+      "prerequisite": "Scope & Function Stack"
+    },
+    {
+      "order": 91,
+      "name": "Closures",
+      "type": "SUBTOPIC",
+      "prerequisite": "Scope & Function Stack"
+    },
+    {
+      "order": 92,
+      "name": "Strict Mode",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 93,
+      "name": "Using (this) keyword",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 94,
+      "name": "in a method",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using (this) keyword"
+    },
+    {
+      "order": 95,
+      "name": "in a function",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using (this) keyword"
+    },
+    {
+      "order": 96,
+      "name": "using it alone",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using (this) keyword"
+    },
+    {
+      "order": 97,
+      "name": "in event handlers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using (this) keyword"
+    },
+    {
+      "order": 98,
+      "name": "in arrow functions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using (this) keyword"
+    },
+    {
+      "order": 99,
+      "name": "Function Borrowing",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 100,
+      "name": "Explicit Binding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 101,
+      "name": "call",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 102,
+      "name": "apply",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 103,
+      "name": "bind",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 104,
+      "name": "Asynchronous JavaScript",
+      "type": "TOPIC",
+      "prerequisite": "Using (this) keyword"
+    },
+    {
+      "order": 105,
+      "name": "Event Loop",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 106,
+      "name": "setTimeout",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 107,
+      "name": "setInterval",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 108,
+      "name": "Callbacks",
+      "type": "SUBTOPIC",
+      "prerequisite": "Callback Hell, Asynchronous JavaScript"
+    },
+    {
+      "order": 109,
+      "name": "Promises",
+      "type": "SUBTOPIC",
+      "prerequisite": "Asynchronous JavaScript"
+    },
+    {
+      "order": 110,
+      "name": "Callback Hell",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 111,
+      "name": "async/await",
+      "type": "SUBTOPIC",
+      "prerequisite": "Promises"
+    },
+    {
+      "order": 112,
+      "name": "Working with APIs",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 113,
+      "name": "Fetch",
+      "type": "SUBTOPIC",
+      "prerequisite": "Working with APIs"
+    },
+    {
+      "order": 114,
+      "name": "XMLHTTPRequest",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 115,
+      "name": "Classes",
+      "type": "TOPIC",
+      "prerequisite": "Working with APIs"
+    },
+    {
+      "order": 116,
+      "name": "Iterators and Generators",
+      "type": "TOPIC",
+      "prerequisite": "Classes"
+    },
+    {
+      "order": 117,
+      "name": "Modules in JavaScript",
+      "type": "TOPIC",
+      "prerequisite": "Iterators and Generators"
+    },
+    {
+      "order": 118,
+      "name": "CommonJS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 119,
+      "name": "ESM",
+      "type": "SUBTOPIC",
+      "prerequisite": "Modules in JavaScript"
+    },
+    {
+      "order": 120,
+      "name": "Memory Management",
+      "type": "TOPIC",
+      "prerequisite": "Modules in JavaScript"
+    },
+    {
+      "order": 121,
+      "name": "Memory Lifecycle",
+      "type": "SUBTOPIC",
+      "prerequisite": "Memory Management"
+    },
+    {
+      "order": 122,
+      "name": "DOM APIs",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 123,
+      "name": "Garbage Collection",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 124,
+      "name": "Using Browser DevTools",
+      "type": "TOPIC",
+      "prerequisite": "Memory Management"
+    },
+    {
+      "order": 125,
+      "name": "Debugging Issues",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using Browser DevTools"
+    },
+    {
+      "order": 126,
+      "name": "Debugging Memory Leaks",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using Browser DevTools"
+    },
+    {
+      "order": 127,
+      "name": "Debugging Performance",
+      "type": "SUBTOPIC",
+      "prerequisite": "Using Browser DevTools"
+    },
+    {
+      "order": 128,
+      "name": "React",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 129,
+      "name": "Node.js",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 130,
+      "name": "SameValue",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 131,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

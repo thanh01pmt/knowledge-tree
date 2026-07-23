@@ -1,0 +1,1002 @@
+{
+  "url": "https://roadmap.sh/angular",
+  "topics_count": 166,
+  "topics": [
+    {
+      "order": 1,
+      "name": "TypeScript",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 2,
+      "name": "Frontend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 3,
+      "name": "React",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 4,
+      "name": "Node.js",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 5,
+      "name": "JavaScript Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "Angular"
+    },
+    {
+      "order": 6,
+      "name": "Introduction to Angular",
+      "type": "TOPIC",
+      "prerequisite": "JavaScript Roadmap"
+    },
+    {
+      "order": 7,
+      "name": "Angular Architecture",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Angular"
+    },
+    {
+      "order": 8,
+      "name": "Setting up a New Project",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Angular"
+    },
+    {
+      "order": 9,
+      "name": "Angular and History",
+      "type": "SUBTOPIC",
+      "prerequisite": "Introduction to Angular"
+    },
+    {
+      "order": 10,
+      "name": "Learn TypeScript Basics",
+      "type": "BUTTON",
+      "prerequisite": "Introduction to Angular"
+    },
+    {
+      "order": 11,
+      "name": "Components",
+      "type": "TOPIC",
+      "prerequisite": "Learn TypeScript Basics"
+    },
+    {
+      "order": 12,
+      "name": "Component Anatomy",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 13,
+      "name": "Provider",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 14,
+      "name": "changeDetection",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "Template",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 16,
+      "name": "Standalone",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 17,
+      "name": "viewProvider",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "Encapsulation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "Selector",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 20,
+      "name": "Styles",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 21,
+      "name": "Imports",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 22,
+      "name": "Metadata",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "Communication",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "Parent-Child Interaction",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "ViewChild",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "ContentChild",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "Component Lifecycle",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 28,
+      "name": "Dynamic Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "Modules",
+      "type": "TOPIC",
+      "prerequisite": "Components"
+    },
+    {
+      "order": 30,
+      "name": "Module Architecture",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Creating Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "Creating Modules",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Feature Modules",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 34,
+      "name": "Lazy Loading Modules",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "Dependencies",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 36,
+      "name": "Templates",
+      "type": "TOPIC",
+      "prerequisite": "Modules"
+    },
+    {
+      "order": 37,
+      "name": "Interpolation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Template Statements",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "Understand Binding",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Data Binding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 41,
+      "name": "Property Binding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 42,
+      "name": "Attribute Binding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 43,
+      "name": "Event Binding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 44,
+      "name": "Two-way Binding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 45,
+      "name": "Control Flow",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 46,
+      "name": "@Input & @Output",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "Template Ref Vars",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 48,
+      "name": "Template Syntax",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "@if",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "@else",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 51,
+      "name": "@else if",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "@for",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 53,
+      "name": "@switch",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 54,
+      "name": "@case",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "@default",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "@let",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "@defer",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "Pipes",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "Change Detection",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "Common Pipes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "Pipes Precedence",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 62,
+      "name": "Custom Pipes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 63,
+      "name": "Directives",
+      "type": "TOPIC",
+      "prerequisite": "Templates"
+    },
+    {
+      "order": 64,
+      "name": "Structural Directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 65,
+      "name": "Attribute Directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 66,
+      "name": "Custom Directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 67,
+      "name": "Routing",
+      "type": "TOPIC",
+      "prerequisite": "Directives, Accessibility"
+    },
+    {
+      "order": 68,
+      "name": "Configuration",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "Lazy Loading",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 70,
+      "name": "Router Outlets",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 71,
+      "name": "Router Links",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 72,
+      "name": "Router Events",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 73,
+      "name": "Guards",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 74,
+      "name": "Services  & Remote Data",
+      "type": "TOPIC",
+      "prerequisite": "Routing"
+    },
+    {
+      "order": 75,
+      "name": "Dependency Injection",
+      "type": "SUBTOPIC",
+      "prerequisite": "Services  & Remote Data"
+    },
+    {
+      "order": 76,
+      "name": "Forms",
+      "type": "TOPIC",
+      "prerequisite": "Services  & Remote Data"
+    },
+    {
+      "order": 77,
+      "name": "Reactive Forms",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 78,
+      "name": "Typed Forms",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 79,
+      "name": "Template-driven Forms",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 80,
+      "name": "Dynamic Forms",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 81,
+      "name": "Custom Validators",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 82,
+      "name": "Control Value Accessor",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 83,
+      "name": "HTTP Client",
+      "type": "TOPIC",
+      "prerequisite": "Forms"
+    },
+    {
+      "order": 84,
+      "name": "Setting Up the Client",
+      "type": "SUBTOPIC",
+      "prerequisite": "HTTP Client"
+    },
+    {
+      "order": 85,
+      "name": "Making Requests",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 86,
+      "name": "Writing Interceptors",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 87,
+      "name": "RxJS Basics",
+      "type": "TOPIC",
+      "prerequisite": "HTTP Client"
+    },
+    {
+      "order": 88,
+      "name": "Observable Pattern",
+      "type": "SUBTOPIC",
+      "prerequisite": "RxJS Basics"
+    },
+    {
+      "order": 89,
+      "name": "Observable Lifecycle",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 90,
+      "name": "RxJS vs Promises",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 91,
+      "name": "Operators",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 92,
+      "name": "Filtering",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 93,
+      "name": "Rate Limiting",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 94,
+      "name": "Transformation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 95,
+      "name": "Combination",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 96,
+      "name": "Signals",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 97,
+      "name": "RxJS Interop",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 98,
+      "name": "Inputs as Signals",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 99,
+      "name": "Queries as Signals",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 100,
+      "name": "Model Inputs",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 101,
+      "name": "State Management",
+      "type": "TOPIC",
+      "prerequisite": "Signals"
+    },
+    {
+      "order": 102,
+      "name": "NGXS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 103,
+      "name": "NgRx",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 104,
+      "name": "Zones",
+      "type": "TOPIC",
+      "prerequisite": "State Management"
+    },
+    {
+      "order": 105,
+      "name": "Zoneless Applications",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 106,
+      "name": "Developer Tools",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 107,
+      "name": "Angular CLI",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 108,
+      "name": "Local Setup",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 109,
+      "name": "Deployment",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 110,
+      "name": "End-to-End Testing",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 111,
+      "name": "Schematics",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 112,
+      "name": "Build Environments",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 113,
+      "name": "CLI Builders",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 114,
+      "name": "AoT Compilation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 115,
+      "name": "DevTools",
+      "type": "SUBTOPIC",
+      "prerequisite": "Developer Tools"
+    },
+    {
+      "order": 116,
+      "name": "Language Service",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 117,
+      "name": "Libraries",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 118,
+      "name": "Using Libraries",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 119,
+      "name": "Creating Libraries",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 120,
+      "name": "SSR",
+      "type": "TOPIC",
+      "prerequisite": "Developer Tools"
+    },
+    {
+      "order": 121,
+      "name": "SSG",
+      "type": "TOPIC",
+      "prerequisite": "SSR"
+    },
+    {
+      "order": 122,
+      "name": "AnalogJS",
+      "type": "SUBTOPIC",
+      "prerequisite": "SSG"
+    },
+    {
+      "order": 123,
+      "name": "Security",
+      "type": "TOPIC",
+      "prerequisite": "SSG"
+    },
+    {
+      "order": 124,
+      "name": "Cross-site Scripting",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 125,
+      "name": "Sanitization",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 126,
+      "name": "Trusting Safe Values",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 127,
+      "name": "Enforce Trusted Types",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 128,
+      "name": "HTTP Vulnerabilities",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 129,
+      "name": "Cross-site Request Forgery",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 130,
+      "name": "HttpClient CSRF",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 131,
+      "name": "XSRF protection",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 132,
+      "name": "Cross-site Script Inclusion",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 133,
+      "name": "Accessibility",
+      "type": "TOPIC",
+      "prerequisite": "Security"
+    },
+    {
+      "order": 134,
+      "name": "Attributes",
+      "type": "SUBTOPIC",
+      "prerequisite": "Accessibility"
+    },
+    {
+      "order": 135,
+      "name": "UI Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "Accessibility"
+    },
+    {
+      "order": 136,
+      "name": "Containers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Accessibility"
+    },
+    {
+      "order": 137,
+      "name": "Routing",
+      "type": "SUBTOPIC",
+      "prerequisite": "Directives, Accessibility"
+    },
+    {
+      "order": 138,
+      "name": "Link Identification",
+      "type": "SUBTOPIC",
+      "prerequisite": "Accessibility"
+    },
+    {
+      "order": 139,
+      "name": "Performance",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 140,
+      "name": "Deferrable Views",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 141,
+      "name": "Image Optimization",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 142,
+      "name": "Zone Pollution",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 143,
+      "name": "Slow Computations",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 144,
+      "name": "Hydration",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 145,
+      "name": "Testing",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 146,
+      "name": "Testing Services",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 147,
+      "name": "Testing Pipes",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 148,
+      "name": "Testing Requests",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 149,
+      "name": "Services with Dependencies",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 150,
+      "name": "Component Bindings",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 151,
+      "name": "Testing Directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 152,
+      "name": "Debugging Tests",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 153,
+      "name": "Component Templates",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 154,
+      "name": "Code Coverage",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 155,
+      "name": "Internationalization",
+      "type": "TOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 156,
+      "name": "Localize Package",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 157,
+      "name": "Locales by ID",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 158,
+      "name": "Translation Files",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 159,
+      "name": "Multiple Locales",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internationalization"
+    },
+    {
+      "order": 160,
+      "name": "Animation",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 161,
+      "name": "Transitions & Triggers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 162,
+      "name": "Complex Sequences",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 163,
+      "name": "Reusable Animations",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 164,
+      "name": "Route Transitions",
+      "type": "SUBTOPIC",
+      "prerequisite": "Animation"
+    },
+    {
+      "order": 165,
+      "name": "Vue.js",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 166,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

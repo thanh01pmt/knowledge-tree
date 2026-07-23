@@ -1,0 +1,19 @@
+code	name	description	category_codes
+SERVER_RUNTIME_FUNDAMENTALS	Server Runtime Architecture & Fundamentals	Tổng quan nguyên lý hoạt động của môi trường thực thi server và kiến trúc hệ thống.	BACKEND_ENGINEERING
+MODULE_SYSTEMS_AND_RESOLUTION	Module Systems & Resolution Algorithms	Hệ thống đóng gói module, nạp mã nguồn và phân giải đường dẫn.	BACKEND_ENGINEERING
+PACKAGE_DEPENDENCY_MANAGEMENT	Package & Dependency Management	Quản lý gói thư viện phụ thuộc, phiên bản và không gian làm việc workspace.	BACKEND_ENGINEERING
+ASYNC_EVENT_DRIVEN_PROGRAMMING	Asynchronous Event-Driven Programming	Lập trình bất đồng bộ, vòng lặp sự kiện Event Loop và mô hình EventEmitter.	BACKEND_ENGINEERING
+FILE_SYSTEM_I_O_OPERATIONS	File System & Path Operations	Thao tác trên hệ thống tệp tin, chuẩn hóa đường dẫn và theo dõi thay đổi tệp.	BACKEND_ENGINEERING
+CLI_INTERACTIVE_APPLICATIONS	CLI Applications & Process Input Output	Xây dựng ứng dụng giao diện dòng lệnh CLI, đọc biến môi trường và tương tác dữ liệu đầu vào.	BACKEND_ENGINEERING
+WEB_APIS_ROUTING_AUTHENTICATION	Web API Architecture, Routing & Authentication	Thiết kế web API, phân tuyến đường dẫn, nạp middleware và các cơ chế xác thực người dùng.	BACKEND_ENGINEERING
+HOT_RELOAD_DEVELOPMENT_WATCHERS	Development Environment Watchers & Hot Reloading	Cơ chế theo dõi tự động tự nạp lại ứng dụng trong môi trường phát triển.	BACKEND_ENGINEERING
+SERVER_SIDE_TEMPLATE_ENGINES	Server-Side Template Engines & View Rendering	Biên dịch và hiển thị giao diện động phía máy chủ bằng template engine.	BACKEND_ENGINEERING
+PERSISTENT_DATABASE_INTEGRATION	Persistent Database Integration & ORMs	Tích hợp cơ sở dữ liệu quan hệ, NoSQL và các bộ công cụ ánh xạ đối tượng ORM.	BACKEND_ENGINEERING
+AUTOMATED_TESTING_FRAMEWORKS	Automated Testing Frameworks & Assertion Engines	Tự động hóa kiểm thử đơn vị, kiểm thử tích hợp API và bộ công cụ khẳng định test.	BACKEND_ENGINEERING
+STRUCTURED_APPLICATION_LOGGING	Structured Application Logging & Observability	Ghi log ứng dụng có cấu trúc, phân tích vết hệ thống và quan sát hiệu năng.	BACKEND_ENGINEERING
+PROCESS_MANAGEMENT_SUPERVISION	Process Management, Supervision & Clustering	Quản lý tiến trình chạy nền, tự động khởi động lại và nhân bản tiến trình đa nhân CPU.	BACKEND_ENGINEERING
+MULTI_THREADING_CONCURRENCY	Multi-Threading, Concurrency & Child Processes	Xử lý đa luồng Worker Threads, truyền tin nhắn IPC và tạo tiến trình con Child Process.	BACKEND_ENGINEERING
+STREAM_DATA_PIPELINES_BUFFERS	Stream Data Pipelines & Binary Memory Buffers	Truyền tải luồng dữ liệu Stream liên tục và thao tác trên bộ nhớ nhị phân Buffer.	BACKEND_ENGINEERING
+RUNTIME_INSPECTOR_DEBUGGING	Runtime Inspector Debugging & Callstacks	Gỡ lỗi tiến trình máy chủ, gắn bộ debugger và truy vết callstack.	BACKEND_ENGINEERING
+BUILTIN_SYSTEM_UTILITIES	Builtin System Utilities & Cryptography	Các module mã hóa bảo mật, phân tích tài nguyên hệ điều hành và tiện ích hệ thống.	BACKEND_ENGINEERING
+ROBUST_ERROR_HANDLING_EXCEPTIONS	Robust Error Handling & Exception Management	Xử lý ngoại lệ ứng dụng, bắt lỗi bất đồng bộ và kiểm soát lỗi hệ thống uncaught exception.	BACKEND_ENGINEERING

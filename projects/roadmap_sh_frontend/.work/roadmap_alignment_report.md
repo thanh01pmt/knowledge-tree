@@ -2,9 +2,9 @@
 
 - **Target Roadmap:** https://roadmap.sh/frontend
 - **Project Slug:** roadmap_sh_frontend
-- **Total Topics Crawled (Layer 1 - Crawl4AI):** 120
-- **Matched with Master Tree:** 14
-- **Missing Candidates (Gaps):** 106
+- **Total Topics Crawled (Layer 1 - Crawl4AI):** 132
+- **Matched with Master Tree:** 15
+- **Missing Candidates (Gaps):** 117
 
 ## 🟢 Matched Topics with Sequence & Prerequisite Context
 
@@ -19,11 +19,12 @@
 | 36 | **Testing** | `Auth Strategies` | Fuzzy (Concept - 50%) | `UNIT_TESTING` | Unit Testing |
 | 41 | **Auth Strategies** | `Module Bundlers` | Fuzzy (Topic - 50%) | `ALGO_STRATEGIES` | Algorithmic Strategies |
 | 51 | **Shadow DOM** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `DOM_MANIPULATION` | DOM Manipulation |
-| 97 | **Design Systems** | `Deployment` | Fuzzy (Topic - 50%) | `OS_FILE_SYSTEMS` | File Systems |
-| 100 | **Cache-Control** | `Performance` | Fuzzy (Concept - 50%) | `CACHE_HIERARCHY` | Cache Hierarchy |
-| 106 | **AI vs Traditional Coding** | `ROOT (Start)` | Fuzzy (Topic - 50%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
-| 110 | **AI Assisted Coding** | `Learn a Framework` | Fuzzy (Topic - 100%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
-| 111 | **Prompting Techniques** | `AI Assisted Coding` | Fuzzy (Topic - 50%) | `DEBUGGING_TECH` | Debugging Techniques |
+| 103 | **Design Systems** | `Deployment` | Fuzzy (Topic - 50%) | `OS_FILE_SYSTEMS` | File Systems |
+| 106 | **Backend** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `BACKEND_FRAMEWORKS` | Backend Frameworks |
+| 109 | **Cache-Control** | `Performance` | Fuzzy (Concept - 50%) | `CACHE_HIERARCHY` | Cache Hierarchy |
+| 116 | **AI vs Traditional Coding** | `ROOT (Start)` | Fuzzy (Topic - 50%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
+| 120 | **AI Assisted Coding** | `Learn a Framework` | Fuzzy (Topic - 100%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
+| 121 | **Prompting Techniques** | `AI Assisted Coding` | Fuzzy (Topic - 50%) | `DEBUGGING_TECH` | Debugging Techniques |
 
 ## ⚖️ 2-Step Decision Framework: Candidate Item Classification
 
@@ -51,10 +52,12 @@
 | 38 | **Jest** | `AUTOMATED_TESTING_TOOLS` | Automated Testing Frameworks & Tools | `Concept Exists` | Map 'Jest' as Keyword under Concept 'AUTOMATED_TESTING_TOOLS' (Exists) |
 | 39 | **Playwright** | `AUTOMATED_TESTING_TOOLS` | Automated Testing Frameworks & Tools | `Concept Exists` | Map 'Playwright' as Keyword under Concept 'AUTOMATED_TESTING_TOOLS' (Exists) |
 | 40 | **Cypress** | `AUTOMATED_TESTING_TOOLS` | Automated Testing Frameworks & Tools | `Concept Exists` | Map 'Cypress' as Keyword under Concept 'AUTOMATED_TESTING_TOOLS' (Exists) |
+| 48 | **Type Checkers** | `TYPE_SYSTEMS_TYPESCRIPT` | Type Systems & TypeScript Specification | `Create Abstract Concept` | Map 'Type Checkers' as Keyword under Concept 'TYPE_SYSTEMS_TYPESCRIPT' (Create New Abstract Concept) |
 | 53 | **Svelte** | `FRONTEND_FRAMEWORKS` | Frontend UI Frameworks & Component Libraries | `Concept Exists` | Map 'Svelte' as Keyword under Concept 'FRONTEND_FRAMEWORKS' (Exists) |
 | 54 | **Vue.js** | `FRONTEND_FRAMEWORKS` | Frontend UI Frameworks & Component Libraries | `Concept Exists` | Map 'Vue.js' as Keyword under Concept 'FRONTEND_FRAMEWORKS' (Exists) |
 | 55 | **Angular** | `FRONTEND_FRAMEWORKS` | Frontend UI Frameworks & Component Libraries | `Concept Exists` | Map 'Angular' as Keyword under Concept 'FRONTEND_FRAMEWORKS' (Exists) |
 | 56 | **React** | `FRONTEND_FRAMEWORKS` | Frontend UI Frameworks & Component Libraries | `Concept Exists` | Map 'React' as Keyword under Concept 'FRONTEND_FRAMEWORKS' (Exists) |
+| 108 | **TypeScript** | `TYPE_SYSTEMS_TYPESCRIPT` | Type Systems & TypeScript Specification | `Create Abstract Concept` | Map 'TypeScript' as Keyword under Concept 'TYPE_SYSTEMS_TYPESCRIPT' (Create New Abstract Concept) |
 
 ### 📐 2. Abstract Concepts (Promote directly to Master Tree)
 
@@ -79,8 +82,8 @@
 | 45 | **CSP** | `CSP` | Promote 'CSP' as Noun Concept Code 'CSP' to Master Tree |
 | 46 | **OWASP Risks** | `OWASP_RISKS` | Promote 'OWASP Risks' as Noun Concept Code 'OWASP_RISKS' to Master Tree |
 | 47 | **Web Components** | `WEB_COMPONENTS` | Promote 'Web Components' as Noun Concept Code 'WEB_COMPONENTS' to Master Tree |
-| 48 | **Type Checkers** | `TYPE_CHECKERS` | Promote 'Type Checkers' as Noun Concept Code 'TYPE_CHECKERS' to Master Tree |
-| ... *and 62 more abstract concept proposals* | | |
+| 49 | **Custom Elements** | `CUSTOM_ELEMENTS` | Promote 'Custom Elements' as Noun Concept Code 'CUSTOM_ELEMENTS' to Master Tree |
+| ... *and 71 more abstract concept proposals* | | |
 
 ## 🔎 Layer 2: SearXNG Independent Multi-Source Verification
 

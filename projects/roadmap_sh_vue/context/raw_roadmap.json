@@ -1,0 +1,534 @@
+{
+  "url": "https://roadmap.sh/vue",
+  "topics_count": 88,
+  "topics": [
+    {
+      "order": 1,
+      "name": "TypeScript Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 2,
+      "name": "Frontend Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 3,
+      "name": "Components",
+      "type": "TOPIC",
+      "prerequisite": "Boostrapping a Project"
+    },
+    {
+      "order": 4,
+      "name": "JavaScript Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "Vue"
+    },
+    {
+      "order": 5,
+      "name": "create-vue",
+      "type": "SUBTOPIC",
+      "prerequisite": "Boostrapping a Project"
+    },
+    {
+      "order": 6,
+      "name": "Single File Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "Components"
+    },
+    {
+      "order": 7,
+      "name": "Component Registration",
+      "type": "SUBTOPIC",
+      "prerequisite": "Components"
+    },
+    {
+      "order": 8,
+      "name": "Props",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 9,
+      "name": "Events",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "v-model",
+      "type": "SUBTOPIC",
+      "prerequisite": "Components, Forms Handling"
+    },
+    {
+      "order": 11,
+      "name": "Attribute Inheritance",
+      "type": "SUBTOPIC",
+      "prerequisite": "Components"
+    },
+    {
+      "order": 12,
+      "name": "Templates",
+      "type": "TOPIC",
+      "prerequisite": "Components"
+    },
+    {
+      "order": 13,
+      "name": "Directives",
+      "type": "TOPIC",
+      "prerequisite": "Templates"
+    },
+    {
+      "order": 14,
+      "name": "API Styles",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 15,
+      "name": "Options API",
+      "type": "SUBTOPIC",
+      "prerequisite": "API Styles"
+    },
+    {
+      "order": 16,
+      "name": "Composition API",
+      "type": "SUBTOPIC",
+      "prerequisite": "API Styles"
+    },
+    {
+      "order": 17,
+      "name": "App Configurations",
+      "type": "TOPIC",
+      "prerequisite": "Rendering"
+    },
+    {
+      "order": 18,
+      "name": "Rendering Lists",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "Error / Warn Handler",
+      "type": "SUBTOPIC",
+      "prerequisite": "App Configurations"
+    },
+    {
+      "order": 20,
+      "name": "Global Properties",
+      "type": "SUBTOPIC",
+      "prerequisite": "App Configurations"
+    },
+    {
+      "order": 21,
+      "name": "Performance",
+      "type": "SUBTOPIC",
+      "prerequisite": "App Configurations"
+    },
+    {
+      "order": 22,
+      "name": "Conditional Rendering",
+      "type": "SUBTOPIC",
+      "prerequisite": "Rendering"
+    },
+    {
+      "order": 23,
+      "name": "v-text",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "v-html",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "v-show",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "v-if",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 27,
+      "name": "v-else",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 28,
+      "name": "v-else-if",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 29,
+      "name": "v-for",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 30,
+      "name": "v-on",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "v-bind",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "v-model",
+      "type": "SUBTOPIC",
+      "prerequisite": "Components, Forms Handling"
+    },
+    {
+      "order": 33,
+      "name": "v-slot",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 34,
+      "name": "v-once",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "v-pre",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 36,
+      "name": "v-cloak",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 37,
+      "name": "Optimizing Renders",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 38,
+      "name": "Debugging",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "Lifecycle Hooks",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Forms Handling",
+      "type": "TOPIC",
+      "prerequisite": "Lifecycle Hooks"
+    },
+    {
+      "order": 41,
+      "name": "Input Bindings",
+      "type": "SUBTOPIC",
+      "prerequisite": "Forms Handling"
+    },
+    {
+      "order": 42,
+      "name": "v-model",
+      "type": "SUBTOPIC",
+      "prerequisite": "Components, Forms Handling"
+    },
+    {
+      "order": 43,
+      "name": "Modifiers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Forms Handling"
+    },
+    {
+      "order": 44,
+      "name": "Event Handling",
+      "type": "TOPIC",
+      "prerequisite": "Forms Handling"
+    },
+    {
+      "order": 45,
+      "name": "Binding Events",
+      "type": "SUBTOPIC",
+      "prerequisite": "Event Handling"
+    },
+    {
+      "order": 46,
+      "name": "Inline / Method Handlers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 47,
+      "name": "Event Modifiers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 48,
+      "name": "Key Modifiers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 49,
+      "name": "Mouse Button Modifiers",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "Computed Properties",
+      "type": "TOPIC",
+      "prerequisite": "Event Handling"
+    },
+    {
+      "order": 51,
+      "name": "Async Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 52,
+      "name": "Teleport Components",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 53,
+      "name": "Provide / Inject",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 54,
+      "name": "Custom Directives",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 55,
+      "name": "Plugins",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 56,
+      "name": "Watchers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 57,
+      "name": "Slots",
+      "type": "SUBTOPIC",
+      "prerequisite": "Advanced Topics"
+    },
+    {
+      "order": 58,
+      "name": "Transition",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "Transition Group",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "VueUse",
+      "type": "SUBTOPIC",
+      "prerequisite": "Utilities"
+    },
+    {
+      "order": 61,
+      "name": "Routing",
+      "type": "TOPIC",
+      "prerequisite": "Ecosystems"
+    },
+    {
+      "order": 62,
+      "name": "Vue Router",
+      "type": "SUBTOPIC",
+      "prerequisite": "Routing"
+    },
+    {
+      "order": 63,
+      "name": "Forms",
+      "type": "TOPIC",
+      "prerequisite": "Routing"
+    },
+    {
+      "order": 64,
+      "name": "FormKit",
+      "type": "SUBTOPIC",
+      "prerequisite": "Forms"
+    },
+    {
+      "order": 65,
+      "name": "Vee Validate",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 66,
+      "name": "Vuelidate",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 67,
+      "name": "SSR",
+      "type": "TOPIC",
+      "prerequisite": "Forms"
+    },
+    {
+      "order": 68,
+      "name": "SSG",
+      "type": "TOPIC",
+      "prerequisite": "SSR"
+    },
+    {
+      "order": 69,
+      "name": "Quasar",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 70,
+      "name": "Nuxt.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "SSG, SSR"
+    },
+    {
+      "order": 71,
+      "name": "VitePress",
+      "type": "SUBTOPIC",
+      "prerequisite": "SSG"
+    },
+    {
+      "order": 72,
+      "name": "Vitest",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 73,
+      "name": "Vue Testing Library",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 74,
+      "name": "Cypress",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 75,
+      "name": "Playwright",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 76,
+      "name": "Tailwind CSS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 77,
+      "name": "Vuetify",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 78,
+      "name": "Element UI",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 79,
+      "name": "State Management",
+      "type": "TOPIC",
+      "prerequisite": "[section]"
+    },
+    {
+      "order": 80,
+      "name": "Pinia",
+      "type": "SUBTOPIC",
+      "prerequisite": "State Management"
+    },
+    {
+      "order": 81,
+      "name": "API Calls",
+      "type": "TOPIC",
+      "prerequisite": "State Management"
+    },
+    {
+      "order": 82,
+      "name": "Apollo",
+      "type": "SUBTOPIC",
+      "prerequisite": "API Calls"
+    },
+    {
+      "order": 83,
+      "name": "Axios",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "fetch",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 85,
+      "name": "Tanstack Query",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 86,
+      "name": "Mobile Apps",
+      "type": "TOPIC",
+      "prerequisite": "API Calls"
+    },
+    {
+      "order": 87,
+      "name": "Capacitor",
+      "type": "SUBTOPIC",
+      "prerequisite": "Mobile Apps"
+    },
+    {
+      "order": 88,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

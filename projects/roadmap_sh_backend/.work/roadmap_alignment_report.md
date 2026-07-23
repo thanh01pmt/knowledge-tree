@@ -2,9 +2,9 @@
 
 - **Target Roadmap:** https://roadmap.sh/backend
 - **Project Slug:** roadmap_sh_backend
-- **Total Topics Crawled (Layer 1 - Crawl4AI):** 155
-- **Matched with Master Tree:** 23
-- **Missing Candidates (Gaps):** 132
+- **Total Topics Crawled (Layer 1 - Crawl4AI):** 170
+- **Matched with Master Tree:** 24
+- **Missing Candidates (Gaps):** 146
 
 ## 🟢 Matched Topics with Sequence & Prerequisite Context
 
@@ -25,14 +25,15 @@
 | 49 | **Unit Testing** | `Testing` | Exact (Concept) | `UNIT_TESTING` | Unit Testing |
 | 50 | **Testing** | `More about Databases` | Fuzzy (Concept - 50%) | `UNIT_TESTING` | Unit Testing |
 | 53 | **Service Mesh** | `Architectural Patterns` | Fuzzy (Concept - 50%) | `MESH_EXTRUSION` | Mesh Extrusion |
-| 94 | **What is Domain Name?** | `Introduction` | Fuzzy (Concept - 50%) | `DOMAIN_NAME_SYSTEM` | Domain Name System (DNS) |
-| 100 | **Basic Authentication** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `BASIC_MECHANISMS` | Basic Mechanisms |
-| 120 | **Frontend Basics** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `ARDUINO_BASICS` | Arduino Basics |
-| 122 | **CSS** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CSS_SELECTORS` | CSS Selectors |
-| 135 | **AI vs Traditional Coding** | `Learn the Basics` | Fuzzy (Topic - 50%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
-| 139 | **AI Assisted Coding** | `ROOT (Start)` | Fuzzy (Topic - 100%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
-| 140 | **Prompting Techniques** | `ROOT (Start)` | Fuzzy (Topic - 50%) | `DEBUGGING_TECH` | Debugging Techniques |
-| 149 | **Integration Patterns** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `API_INTEGRATION` | API Integration |
+| 74 | **Design & Architecture** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CPU_ARCHITECTURE` | CPU Architecture |
+| 99 | **What is Domain Name?** | `Introduction` | Fuzzy (Concept - 50%) | `DOMAIN_NAME_SYSTEM` | Domain Name System (DNS) |
+| 105 | **Basic Authentication** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `BASIC_MECHANISMS` | Basic Mechanisms |
+| 129 | **Frontend Basics** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `ARDUINO_BASICS` | Arduino Basics |
+| 131 | **CSS** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `CSS_SELECTORS` | CSS Selectors |
+| 148 | **AI vs Traditional Coding** | `Learn the Basics` | Fuzzy (Topic - 50%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
+| 152 | **AI Assisted Coding** | `ROOT (Start)` | Fuzzy (Topic - 100%) | `AI_ASSISTED_CODING` | AI-Assisted Coding |
+| 153 | **Prompting Techniques** | `ROOT (Start)` | Fuzzy (Topic - 50%) | `DEBUGGING_TECH` | Debugging Techniques |
+| 164 | **Integration Patterns** | `ROOT (Start)` | Fuzzy (Concept - 50%) | `API_INTEGRATION` | API Integration |
 
 ## ⚖️ 2-Step Decision Framework: Candidate Item Classification
 
@@ -42,6 +43,7 @@
 |---|---|---|---|---|---|
 | 16 | **GitHub** | `VCS_HOSTING` | Version Control Hosting Platforms | `Concept Exists` | Map 'GitHub' as Keyword under Concept 'VCS_HOSTING' (Exists) |
 | 17 | **GitLab** | `VCS_HOSTING` | Version Control Hosting Platforms | `Concept Exists` | Map 'GitLab' as Keyword under Concept 'VCS_HOSTING' (Exists) |
+| 111 | **Docker** | `CONTAINERIZATION` | Containerization & Isolation | `Create Abstract Concept` | Map 'Docker' as Keyword under Concept 'CONTAINERIZATION' (Create New Abstract Concept) |
 
 ### 📐 2. Abstract Concepts (Promote directly to Master Tree)
 
@@ -67,22 +69,22 @@
 | 23 | **MariaDB** | `MARIADB` | Promote 'MariaDB' as Noun Concept Code 'MARIADB' to Master Tree |
 | 26 | **ORMs** | `ORMS` | Promote 'ORMs' as Noun Concept Code 'ORMS' to Master Tree |
 | 28 | **ACID** | `ACID` | Promote 'ACID' as Noun Concept Code 'ACID' to Master Tree |
-| ... *and 110 more abstract concept proposals* | | |
+| ... *and 123 more abstract concept proposals* | | |
 
 ## 🔎 Layer 2: SearXNG Independent Multi-Source Verification
 
 | Order | Candidate Topic | Prerequisite Node (Trước) | Status | Reference Source | Snippet / Description |
 |---|---|---|---|---|---|
-| 1 | **Open API Specs** | `Learn about APIs` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 1 | **Open API Specs** | `Learn about APIs` | `High (Verified)` | [OpenAPI Specification - Versio](https://swagger.io/specification/) | The OpenAPI Specification (OAS) defines a standard, language-agnostic interface to HTTP APIs which allows both humans and computers to discover and un |
 | 2 | **Search Engines** | `Message Brokers` | `SearXNG Standby` | N/A | No response from search engine upstream. |
 | 3 | **Learn about APIs** | `Relational Databases` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 4 | **Introduction** | `Backend` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 4 | **Introduction** | `Backend` | `High (Verified)` | [Introduction](https://en.wikipedia.org/wiki/Introduction) | Topics referred to by the same term |
 | 5 | **Rust** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
 | 6 | **PHP** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 7 | **Go** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 7 | **Go** | `ROOT (Start)` | `High (Verified)` | [Go](https://en.wikipedia.org/wiki/Go) | Topics referred to by the same term |
 | 8 | **JavaScript** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
 | 9 | **Java** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
-| 10 | **Python** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
+| 10 | **Python** | `ROOT (Start)` | `High (Verified)` | [Python](https://en.wikipedia.org/wiki/Python) | Topics referred to by the same term |
 | 11 | **C#** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
 | 12 | **Ruby** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
 | 13 | **Pick a Backend Language** | `ROOT (Start)` | `SearXNG Standby` | N/A | No response from search engine upstream. |
