@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Crawl & Align Roadmap Script with Tri-Layer Strategy:
-- Layer 1: Crawl4AI (Roadmap SVG crawling)
+- Layer 1: Crawl4AI (Roadmap SVG crawling & Gap Identification)
 - Layer 2: SearXNG (Independent web verification & multi-source reference search)
 - Layer 3: Context7 API (Official technical library docs & description extraction)
 """
@@ -237,11 +237,10 @@ def verify_candidates_with_searxng(candidates: list[str], env: dict, max_verify:
     print(f"🔎 [Layer 2 - SearXNG] Independently verifying top {min(len(candidates), max_verify)} candidates...")
 
     for candidate in candidates[:max_verify]:
-        query = f"{candidate} python data analysis"
+        query = candidate
         url = f"{searxng_url}/search?" + urllib.parse.urlencode({
             "q": query,
-            "format": "json",
-            "categories": "general"
+            "format": "json"
         })
 
         try:
@@ -264,10 +263,10 @@ def verify_candidates_with_searxng(candidates: list[str], env: dict, max_verify:
                     verified_results.append({
                         "candidate": candidate,
                         "verified": False,
-                        "confidence": "Unverified",
-                        "title": "",
+                        "confidence": "SearXNG Standby",
+                        "title": "N/A",
                         "url": "",
-                        "snippet": "No search results returned."
+                        "snippet": "No response from search engine upstream."
                     })
         except Exception as e:
             verified_results.append({
@@ -282,7 +281,7 @@ def verify_candidates_with_searxng(candidates: list[str], env: dict, max_verify:
     return verified_results
 
 # ── LAYER 3: CONTEXT7 API ───────────────────────────────────────────────────
-def enrich_candidates_with_context7(candidates: list[str], env: dict, max_enrich: int = 10) -> list[dict]:
+def enrich_candidates_with_context7(candidates: list[str], env: dict, max_enrich: int = 15) -> list[dict]:
     """Fetch official library docs & descriptions using Context7 API"""
     ctx7_key = env.get("CONTEXT7_API_KEY", "")
     headers = {"User-Agent": "Mozilla/5.0"}
@@ -345,7 +344,7 @@ def main():
     searxng_results = verify_candidates_with_searxng(missing, env, max_verify=15)
     
     # Layer 3 Execution (Context7 Official Library Docs Enrichment)
-    context7_results = enrich_candidates_with_context7(missing, env, max_enrich=10)
+    context7_results = enrich_candidates_with_context7(missing, env, max_enrich=15)
     
     report_path = PROJECT_ROOT / ".work" / "roadmap_alignment_report.md"
     report_path.parent.mkdir(parents=True, exist_ok=True)
@@ -360,10 +359,9 @@ def main():
         f.write("## 🟢 Matched Topics\n\n")
         f.write("| Roadmap Topic | Match Type | Master Code | Master Name |\n")
         f.write("|---|---|---|---|\n")
-        for m in matched[:15]:
+        for m in matched:
             f.write(f"| {m['roadmap_name']} | {m['match_type']} | `{m['code']}` | {m['matched_name']} |\n")
-        if len(matched) > 15:
-            f.write(f"| ... *and {len(matched)-15} more matched items* | | | |\n")
+
             
         f.write("\n## 🔎 Layer 2: SearXNG Independent Multi-Source Verification\n\n")
         f.write("| Candidate Topic | Status | Reference Source | Snippet / Description |\n")
