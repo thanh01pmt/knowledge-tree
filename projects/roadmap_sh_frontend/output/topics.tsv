@@ -1,0 +1,5 @@
+code	name	description	category_codes	keywords	cs2023_ka_mapping	metadata
+APP_PROTOCOLS	Application Layer Protocols	Các giao thức tầng ứng dụng phổ biến như HTTP (Web), DNS (Phân giải tên miền), FTP (Truyền tệp).	NETWORK_PROTOCOLS	HTTP, DNS, FTP, SMTP, application layer	NC	"{""icon"": ""globe-americas""}"
+DEBUGGING_TECH	Debugging Techniques	Trang bị các kỹ thuật gỡ lỗi hiệu quả, bao gồm sử dụng breakpoints, logging, và các công cụ phân tích lỗi của IDE.	TESTING_DEBUGGING	debugging, breakpoint, debugger, troubleshooting	SDF, SE	"{""icon"": ""bug-slash""}"
+GRAPHIC_DESIGN_PRINCIPLES	Visual Design Principles for UI	Áp dụng các nguyên tắc cốt lõi về màu sắc, bố cục, khoảng trắng và chữ viết (typography) để tạo ra các giao diện người dùng thẩm mỹ và hiệu quả.	CLOUD_COMPUTING	visual design, color theory, typography, layout, UI	GIT, HCI	"{""icon"":""palette""}"
+NET_LAYERS	Network Layers and Models	Mô hình phân tầng mạng (OSI, TCP/IP) và chức năng chính của mỗi tầng.	NETWORK_PROTOCOLS	OSI model, TCP/IP model, encapsulation, layers	NC	"{""icon"": ""layer-group""}"

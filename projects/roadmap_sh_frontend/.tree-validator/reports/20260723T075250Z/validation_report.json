@@ -1,0 +1,278 @@
+{
+  "generated_at": "2026-07-23T07:52:50.216560+00:00",
+  "summary": {
+    "status": "PASS",
+    "total_issues": 30,
+    "errors": 0,
+    "warnings": 30,
+    "by_rule": {
+      "LO_CONCEPT_UNCOVERED": 2,
+      "CIO_INSUFFICIENT_SIO": 16,
+      "ORPHAN_NODE": 11,
+      "INCONSISTENT_LINE_ENDINGS": 1
+    },
+    "by_level": {
+      "concepts": {
+        "ERROR": 0,
+        "WARNING": 4
+      },
+      "learning_objectives": {
+        "ERROR": 0,
+        "WARNING": 16
+      },
+      "subjects": {
+        "ERROR": 0,
+        "WARNING": 2
+      },
+      "categories": {
+        "ERROR": 0,
+        "WARNING": 7
+      },
+      "_file": {
+        "ERROR": 0,
+        "WARNING": 1
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 8,
+      "categories": 10,
+      "topics": 4,
+      "concepts": 18,
+      "learning_objectives": 48
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "ERROR_MESSAGES",
+      "message": "Concept 'Interpreting Error Messages' (ERROR_MESSAGES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "message": "Concept 'Systematic Troubleshooting' (TROUBLESHOOTING_METHODOLOGY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CLIENT-SERVER-FLOW",
+      "message": "CIO 'Analyze Client Server Request Response Cycle' (CIO-CLIENT-SERVER-FLOW) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-HTTP-HEADER-STATUS",
+      "message": "CIO 'Understand HTTP Headers and Status Codes' (CIO-HTTP-HEADER-STATUS) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-DNS-RECORD-TYPES",
+      "message": "CIO 'Configure DNS Record Types' (CIO-DNS-RECORD-TYPES) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CDN-EDGE-DELIVERY",
+      "message": "CIO 'Utilize CDN and Edge Networks' (CIO-CDN-EDGE-DELIVERY) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CRITICAL-RENDER-PATH",
+      "message": "CIO 'Analyze Critical Rendering Path' (CIO-CRITICAL-RENDER-PATH) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-BOX-SIZING-STRATEGY",
+      "message": "CIO 'Apply Box Sizing and Spacing' (CIO-BOX-SIZING-STRATEGY) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-GRID-CONTAINER-ALIGN",
+      "message": "CIO 'Align Items with Flexbox and Grid' (CIO-GRID-CONTAINER-ALIGN) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-MEDIA-QUERIES-BREAK",
+      "message": "CIO 'Implement Breakpoints and Fluid Layout' (CIO-MEDIA-QUERIES-BREAK) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-LOCKFILE-VERSIONING",
+      "message": "CIO 'Manage Semantic Versioning and Lockfiles' (CIO-LOCKFILE-VERSIONING) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TREE-SHAKING-BUNDLING",
+      "message": "CIO 'Optimize Bundle Size with Tree Shaking' (CIO-TREE-SHAKING-BUNDLING) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-STATIC-LINT-RULES",
+      "message": "CIO 'Enforce Lint Rules and Code Style' (CIO-STATIC-LINT-RULES) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-PR-PULL-REQUEST-FLOW",
+      "message": "CIO 'Manage Code Review via Pull Requests' (CIO-PR-PULL-REQUEST-FLOW) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-COMPONENT-STATE-PROPS",
+      "message": "CIO 'Manage Component State and Props' (CIO-COMPONENT-STATE-PROPS) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-UNIT-E2E-STRATEGY",
+      "message": "CIO 'Implement Unit and End to End Tests' (CIO-UNIT-E2E-STRATEGY) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CORS-POLICY-HEADERS",
+      "message": "CIO 'Configure CORS Headers and Preflight' (CIO-CORS-POLICY-HEADERS) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TOKEN-SESSION-AUTH",
+      "message": "CIO 'Implement Token and Session Auth' (CIO-TOKEN-SESSION-AUTH) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "subjects",
+      "code": "HCI",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "subjects",
+      "code": "UI_UX_DESIGN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "DEVELOPMENT_ENVIRONMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "FRONTEND_DEV",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "LAYOUT_COMPOSITION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "NETWORK_SECURITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "TROUBLESHOOTING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "VERSION_CONTROL",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "categories",
+      "code": "WEB_FRAMEWORKS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ERROR_MESSAGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "INCONSISTENT_LINE_ENDINGS",
+      "level": "_file",
+      "code": "learning-objectives.tsv",
+      "message": "File dùng line-ending LF, khác đa số các file khác (CRLF)."
+    }
+  ]
+}

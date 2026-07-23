@@ -350,7 +350,7 @@
       "code": "NETWORK_PROTOCOLS",
       "name": "Network Protocols and Layers",
       "description": "Nghiên cứu mô hình phân lớp mạng (OSI, TCP/IP) và các giao thức ở mỗi tầng, từ tầng vật lý đến tầng ứng dụng.",
-      "subject_codes": "NETWORKING",
+      "subject_codes": "NETWORKING, WEB_DEV",
       "keywords": "TCP/IP, OSI model, HTTP, DNS, protocols",
       "cs2023_ka_mapping": "NC",
       "metadata": "{\"icon\": \"layer-group\"}"
@@ -368,7 +368,7 @@
       "code": "NETWORK_SECURITY",
       "name": "Network Security",
       "description": "Tập trung vào các kỹ thuật và công cụ để bảo vệ hạ tầng và dữ liệu trên mạng, bao gồm tường lửa, mã hóa và hệ thống phát hiện xâm nhập.",
-      "subject_codes": "NETWORKING",
+      "subject_codes": "NETWORKING, WEB_DEV",
       "keywords": "firewall, encryption, VPN, cybersecurity, threats",
       "cs2023_ka_mapping": "NC, SEC",
       "metadata": "{\"icon\": \"user-shield\"}"
@@ -503,7 +503,7 @@
       "code": "TESTING_DEBUGGING",
       "name": "Testing and Debugging",
       "description": "Trang bị các kỹ thuật, công cụ và chiến lược để đảm bảo chất lượng phần mềm thông qua kiểm thử và gỡ lỗi hiệu quả.",
-      "subject_codes": "SW_LIFECYCLE",
+      "subject_codes": "SW_LIFECYCLE, WEB_DEV",
       "keywords": "testing, debugging, unit test, integration test, QA",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"bug\"}"
@@ -944,7 +944,7 @@
       "code": "DEVELOPMENT_ENVIRONMENT",
       "name": "Development Environment & Tools",
       "description": "Kỹ năng sử dụng môi trường phát triển tích hợp (IDE), quản lý file, assets, và điều hướng dự án.",
-      "subject_codes": "SW_LIFECYCLE",
+      "subject_codes": "SW_LIFECYCLE, WEB_DEV",
       "keywords": "IDE, tools",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"tools\"}"
@@ -2343,8 +2343,8 @@
       "code": "FRONTEND_FRAMEWORKS",
       "name": "Frontend Frameworks/Libraries",
       "description": "Hiểu vai trò của các thư viện/framework như React, Vue, Angular trong việc xây dựng các giao diện người dùng tương tác và có cấu trúc.",
-      "topic_codes": "WEB_FRAMEWORKS",
-      "keywords": "frameworks, React, Angular, Vue, SPA",
+      "topic_codes": "FRONTEND_DEV, WEB_FRAMEWORKS",
+      "keywords": "Angular, React, SPA, Solid JS, Svelte, Vue, Vue.js, frameworks",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"react\"}"
     },
@@ -3688,6 +3688,141 @@
       "keywords": "error",
       "cs2023_ka_mapping": "",
       "metadata": ""
+    },
+    {
+      "code": "INTERNET_FUNDAMENTALS",
+      "name": "Internet Architecture & Protocols",
+      "description": "Nguyên tắc hoạt động của Internet và mô hình Client-Server.",
+      "topic_codes": "APP_PROTOCOLS, NET_LAYERS",
+      "keywords": "IP, packet routing, client-server",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "HTTP_PROTOCOL",
+      "name": "HTTP Protocol & Specification",
+      "description": "Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+      "topic_codes": "APP_PROTOCOLS",
+      "keywords": "headers, status codes, REST",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "DOMAIN_NAME_SYSTEM",
+      "name": "Domain Name System (DNS)",
+      "description": "Hệ thống phân giải tên miền DNS.",
+      "topic_codes": "APP_PROTOCOLS",
+      "keywords": "A record, CNAME, NS",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "WEB_HOSTING",
+      "name": "Web Hosting & Infrastructure",
+      "description": "Hạ tầng lưu trữ và phân phối ứng dụng web.",
+      "topic_codes": "APP_PROTOCOLS, CLOUD_COMPUTING",
+      "keywords": "CDN, static hosting, edge",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "WEB_BROWSER_ENGINES",
+      "name": "Web Browser Architecture & Engines",
+      "description": "Kiến trúc trình duyệt web và cơ chế render.",
+      "topic_codes": "APP_PROTOCOLS, FRONTEND_DEV",
+      "keywords": "DOM tree, CSSOM, reflow, repaint",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "UI_BOX_MODEL_LAYOUT",
+      "name": "UI Box Model Layout System",
+      "description": "Mô hình bố cục khung khối UI trừu tượng (Margin, Border, Padding).",
+      "topic_codes": "LAYOUT_COMPOSITION, FRONTEND_DEV",
+      "keywords": "box-sizing, margin, padding, border",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "FLEXBOX_GRID_LAYOUT",
+      "name": "Flexible & Grid Layout Systems",
+      "description": "Hệ thống dàn trang linh hoạt và dạng lưới.",
+      "topic_codes": "LAYOUT_COMPOSITION, FRONTEND_DEV",
+      "keywords": "flexbox, css grid, alignment",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "RESPONSIVE_DESIGN",
+      "name": "Responsive Web Design Principles",
+      "description": "Nguyên lý thiết kế ứng dụng web đáp ứng đa màn hình.",
+      "topic_codes": "LAYOUT_COMPOSITION, GRAPHIC_DESIGN_PRINCIPLES",
+      "keywords": "media queries, breakpoints, fluid",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "PACKAGE_MANAGEMENT",
+      "name": "Package & Dependency Management",
+      "description": "Nguyên lý và công cụ quản lý thư viện phụ thuộc.",
+      "topic_codes": "DEVELOPMENT_ENVIRONMENT, VERSION_CONTROL",
+      "keywords": "npm, yarn, pnpm, pip, conda, uv",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "MODULE_BUNDLERS",
+      "name": "Module Bundlers & Build Tools",
+      "description": "Công cụ đóng gói module và biên dịch tài nguyên.",
+      "topic_codes": "DEVELOPMENT_ENVIRONMENT",
+      "keywords": "Vite, Webpack, Rollup, Parcel, esbuild",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "CODE_LINTING_FORMATTING",
+      "name": "Code Formatting & Static Analysis",
+      "description": "Công cụ linter và định dạng mã nguồn tự động.",
+      "topic_codes": "DEVELOPMENT_ENVIRONMENT, TROUBLESHOOTING_METHODOLOGY",
+      "keywords": "ESLint, Prettier",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "VCS_HOSTING",
+      "name": "Version Control Hosting Platforms",
+      "description": "Nền tảng lưu trữ và quản lý mã nguồn lưu vết.",
+      "topic_codes": "VERSION_CONTROL, DEVELOPMENT_ENVIRONMENT",
+      "keywords": "GitHub, GitLab, Bitbucket",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "AUTOMATED_TESTING_TOOLS",
+      "name": "Automated Testing Frameworks & Tools",
+      "description": "Khung kiểm thử tự động unit test và end-to-end.",
+      "topic_codes": "TESTING_DEBUGGING, ERROR_MESSAGES",
+      "keywords": "Jest, Vitest, Cypress, Playwright",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "CROSS_ORIGIN_SECURITY",
+      "name": "Cross-Origin Security & Policies",
+      "description": "Cơ chế bảo mật truy cập tài nguyên chia sẻ cross-origin.",
+      "topic_codes": "NETWORK_SECURITY, APP_PROTOCOLS",
+      "keywords": "CORS, Same-Origin Policy",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
+    },
+    {
+      "code": "WEB_AUTHENTICATION_STRATEGIES",
+      "name": "Web Authentication & Authorization",
+      "description": "Các chiến lược xác thực và phân quyền người dùng web.",
+      "topic_codes": "NETWORK_SECURITY, APP_PROTOCOLS",
+      "keywords": "JWT, OAuth, Session Cookies, WebAuthn",
+      "cs2023_ka_mapping": "",
+      "metadata": "{\"icon\": \"code\"}"
     }
   ],
   "learning_objectives": []

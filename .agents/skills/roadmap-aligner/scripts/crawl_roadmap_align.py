@@ -22,9 +22,12 @@ from bs4 import BeautifulSoup
 # Root path configuration
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent.parent.parent
-MASTER_TSV_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
+STAGING_TSV_PATH = PROJECT_ROOT / "general-context" / "mlo-knowlege-tree.tsv"
+ORIGINAL_MASTER_TSV_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
+MASTER_TSV_PATH = STAGING_TSV_PATH if STAGING_TSV_PATH.exists() else ORIGINAL_MASTER_TSV_PATH
 DOTENV_PATH = PROJECT_ROOT / ".env"
 DOTENV_LOCAL_PATH = PROJECT_ROOT / ".env.local"
+
 
 def load_env():
     """Load environment variables from .env and .env.local"""
@@ -75,6 +78,120 @@ def fetch_roadmap(url: str, env: dict) -> str:
         if not results or not results[0].get("success"):
             raise RuntimeError(f"Crawl failed: {res}")
         return results[0]["html"]
+
+def discover_and_download_roadmap_json(target_url: str, dest_path: Path) -> bool:
+    """
+    Auto-discover and download the exact roadmap JSON payload for ANY roadmap.sh URL.
+    Strategies:
+    1. Direct slug endpoint: https://roadmap.sh/<slug>.json
+    2. HTML inspection: parse script tags / embedded React state for JSON URL or raw data.
+    """
+    parsed = urllib.parse.urlparse(target_url)
+    slug = parsed.path.strip("/").split("/")[-1]
+    if not slug:
+        slug = "frontend"
+        
+    headers = {"User-Agent": "Mozilla/5.0"}
+    
+    # Strategy 1: Direct endpoint https://roadmap.sh/<slug>.json
+    direct_json_url = f"https://roadmap.sh/{slug}.json"
+    print(f"🔍 [JSON Discovery Engine] Strategy 1: Trying endpoint {direct_json_url}...")
+    try:
+        req = urllib.request.Request(direct_json_url, headers=headers)
+        with urllib.request.urlopen(req) as resp:
+            content = resp.read()
+            obj = json.loads(content.decode("utf-8"))
+            if "nodes" in obj:
+                dest_path.parent.mkdir(parents=True, exist_ok=True)
+                dest_path.write_bytes(content)
+                print(f"✅ [JSON Discovery Engine] Discovered & saved JSON for '{slug}' -> {dest_path} ({len(content)} bytes)")
+                return True
+    except Exception as e:
+        print(f"ℹ️ Strategy 1 missed: {e}")
+
+    # Strategy 2: HTML discovery
+    print(f"🔍 [JSON Discovery Engine] Strategy 2: Inspecting HTML at {target_url}...")
+    try:
+        req = urllib.request.Request(target_url, headers=headers)
+        with urllib.request.urlopen(req) as resp:
+            html = resp.read().decode("utf-8")
+            
+        soup = BeautifulSoup(html, "html.parser")
+        for script in soup.find_all("script"):
+            src = script.get("src", "")
+            if src.endswith(".json") and "roadmap" in src:
+                full_url = urllib.parse.urljoin(target_url, src)
+                try:
+                    r = urllib.request.Request(full_url, headers=headers)
+                    with urllib.request.urlopen(r) as res:
+                        content = res.read()
+                        obj = json.loads(content.decode("utf-8"))
+                        if "nodes" in obj:
+                            dest_path.parent.mkdir(parents=True, exist_ok=True)
+                            dest_path.write_bytes(content)
+                            print(f"✅ Discovered JSON from script src: {full_url}")
+                            return True
+                except Exception:
+                    pass
+            
+            stext = script.string or ""
+            if "nodes" in stext and "edges" in stext:
+                m = re.search(r"(\{\"_id\":.*\"nodes\":\[.*\]\})", stext)
+                if m:
+                    dest_path.parent.mkdir(parents=True, exist_ok=True)
+                    dest_path.write_text(m.group(1), encoding="utf-8")
+                    print(f"✅ Discovered embedded script JSON for '{slug}'")
+                    return True
+    except Exception as e:
+        print(f"⚠️ Strategy 2 failed: {e}")
+
+    return False
+
+def extract_roadmap_from_json(json_path: Path) -> list[dict]:
+    """Extract structured topics, subtopics, and exact graph edges from roadmap.sh JSON payload"""
+    with open(json_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
+
+    nodes = {n["id"]: n for n in data.get("nodes", [])}
+    edges = data.get("edges", [])
+
+    node_labels = {}
+    for nid, n in nodes.items():
+        ntype = n.get("type", "")
+        data_obj = n.get("data", {})
+        label = data_obj.get("label") or n.get("label") or f"[{ntype}]"
+        node_labels[nid] = label
+
+    # Build adjacency parent map from edges
+    parent_map = {}
+    for e in edges:
+        src_id = e.get("source")
+        tgt_id = e.get("target")
+        if src_id in nodes and tgt_id in nodes:
+            src_lbl = node_labels.get(src_id, "")
+            tgt_lbl = node_labels.get(tgt_id, "")
+            if src_lbl and tgt_lbl:
+                parent_map.setdefault(tgt_lbl, []).append(src_lbl)
+
+    structured_topics = []
+    idx = 1
+    for nid, n in nodes.items():
+        ntype = n.get("type", "")
+        if ntype in ["topic", "subtopic"]:
+            name = node_labels.get(nid, "").strip()
+            if not name or len(name) < 2:
+                continue
+            parents = parent_map.get(name, [])
+            prereq = ", ".join(parents) if parents else "ROOT (Start)"
+            structured_topics.append({
+                "order": idx,
+                "name": name,
+                "type": ntype.upper(),
+                "prerequisite": prereq
+            })
+            idx += 1
+
+    return structured_topics
 
 def extract_roadmap_topics_with_sequence(html: str) -> list[dict]:
     """Extract topic names along with sequence index and prerequisite flow from SVG"""
@@ -477,14 +594,63 @@ def enrich_candidates_with_context7(candidates: list[dict], env: dict, max_enric
     return enriched
 
 def main():
-    target_url = sys.argv[1] if len(sys.argv) > 1 else "https://roadmap.sh/python-data-analysis"
+    target_url = "https://roadmap.sh/frontend"
+    project_slug = "roadmap_sh_frontend"
+
+    if len(sys.argv) > 1:
+        target_url = sys.argv[1]
+    
+    for i, arg in enumerate(sys.argv):
+        if arg == "--project" and i + 1 < len(sys.argv):
+            project_slug = sys.argv[i + 1]
+        elif i == 2 and not arg.startswith("--"):
+            project_slug = arg
+
     env = load_env()
     
     # Layer 1 Execution
-    html = fetch_roadmap(target_url, env)
-    structured_topics = extract_roadmap_topics_with_sequence(html)
-    print(f"✅ Extracted {len(structured_topics)} sequence-ordered topics from {target_url}")
+    json_path = None
+    if project_slug:
+        parsed_slug = urllib.parse.urlparse(target_url).path.strip("/").split("/")[-1] or "frontend"
+        dest_json = PROJECT_ROOT / "projects" / project_slug / "context" / f"{parsed_slug}.json"
+        
+        if not dest_json.exists():
+            discover_and_download_roadmap_json(target_url, dest_json)
+            
+        if dest_json.exists():
+            json_path = dest_json
+
+    if json_path and json_path.exists():
+        print(f"📊 [JSON Graph Engine] Parsing graph structure directly from {json_path.name}...")
+        structured_topics = extract_roadmap_from_json(json_path)
+    else:
+        html = fetch_roadmap(target_url, env)
+        structured_topics = extract_roadmap_topics_with_sequence(html)
     
+    print(f"✅ Extracted {len(structured_topics)} structured topics & graph relations from {target_url}")
+    
+    # Save into project context if project_slug is defined
+    if project_slug:
+        project_context_dir = PROJECT_ROOT / "projects" / project_slug / "context"
+        project_context_dir.mkdir(parents=True, exist_ok=True)
+        
+        raw_json_path = project_context_dir / "raw_roadmap.json"
+        with open(raw_json_path, "w", encoding="utf-8") as f:
+            json.dump({
+                "url": target_url,
+                "topics_count": len(structured_topics),
+                "topics": structured_topics
+            }, f, indent=2, ensure_ascii=False)
+            
+        syllabus_md_path = project_context_dir / "syllabus.md"
+        with open(syllabus_md_path, "w", encoding="utf-8") as f:
+            f.write(f"# Syllabus: {target_url}\n\n")
+            f.write(f"Source URL: {target_url}\n\n")
+            f.write("## Sequence & Topics Graph\n\n")
+            for t in structured_topics:
+                f.write(f"{t['order']}. **{t['name']}** (Prerequisite: `{t['prerequisite']}`)\n")
+        print(f"📁 Saved project context files to: {project_context_dir}")
+
     concepts, topics, categories = parse_master_tsv(MASTER_TSV_PATH)
     print(f"📊 Master Tree loaded: {len(concepts)} concepts, {len(topics)} topics, {len(categories)} categories")
     
@@ -508,18 +674,21 @@ def main():
     context7_results = enrich_candidates_with_context7(missing, env, max_enrich=15)
     
     report_path = PROJECT_ROOT / ".work" / "roadmap_alignment_report.md"
+    if project_slug:
+        report_path = PROJECT_ROOT / "projects" / project_slug / ".work" / "roadmap_alignment_report.md"
     report_path.parent.mkdir(parents=True, exist_ok=True)
     
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(f"# Tri-Layer Alignment & 2-Step Decision Framework Report\n\n")
         f.write(f"- **Target Roadmap:** {target_url}\n")
+        f.write(f"- **Project Slug:** {project_slug}\n")
         f.write(f"- **Total Topics Crawled (Layer 1 - Crawl4AI):** {len(structured_topics)}\n")
         f.write(f"- **Matched with Master Tree:** {len(matched)}\n")
         f.write(f"- **Missing Candidates (Gaps):** {len(missing)}\n\n")
         
         f.write("## 🟢 Matched Topics with Sequence & Prerequisite Context\n\n")
         f.write("| Order | Roadmap Topic | Prerequisite Node (Trước) | Match Type | Master Code | Master Name |\n")
-        f.write("|---|---|---|---|---|---|\n")
+        f.write("|---|---|---|---|---|---| \n")
         for m in matched:
             f.write(f"| {m['order']} | **{m['roadmap_name']}** | `{m['prerequisite']}` | {m['match_type']} | `{m['code']}` | {m['matched_name']} |\n")
             
@@ -559,3 +728,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

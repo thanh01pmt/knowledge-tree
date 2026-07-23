@@ -1,0 +1,42 @@
+{
+  "current_version": "v2.2.0-staging.6",
+  "base_master_version": "v2.2.0",
+  "last_updated": "2026-07-23T14:52:57.235652",
+  "versions": [
+    {
+      "version": "v2.2.0-staging.0",
+      "timestamp": "2026-07-23T11:13:01.446078",
+      "description": "Initialized staging working copy from Master Knowledge Tree v2.2.0"
+    },
+    {
+      "version": "v2.2.0-staging.1",
+      "timestamp": "2026-07-23T11:15:30.558665",
+      "description": "Applied approved plan nodes: +6 cats, +7 topics, +15 concepts"
+    },
+    {
+      "version": "v2.2.0-staging.2",
+      "timestamp": "2026-07-23T11:39:36.649947",
+      "description": "Applied approved plan nodes: +0 cats, +0 topics, +0 concepts"
+    },
+    {
+      "version": "v2.2.0-staging.3",
+      "timestamp": "2026-07-23T11:42:06.658049",
+      "description": "Applied approved plan nodes: +0 cats, +0 topics, +0 concepts"
+    },
+    {
+      "version": "v2.2.0-staging.4",
+      "timestamp": "2026-07-23T11:43:17.429234",
+      "description": "Applied N:N Reusable Topology: +15 concepts mapped to existing Master Categories/Topics"
+    },
+    {
+      "version": "v2.2.0-staging.5",
+      "timestamp": "2026-07-23T11:49:57.908529",
+      "description": "Applied N:N Reusable Topology: +15 concepts mapped to existing Master Categories/Topics"
+    },
+    {
+      "version": "v2.2.0-staging.6",
+      "timestamp": "2026-07-23T14:52:57.235667",
+      "description": "Applied N:N Reusable Topology: +15 concepts mapped to existing Master Categories/Topics"
+    }
+  ]
+}

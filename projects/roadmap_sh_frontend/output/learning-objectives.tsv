@@ -1,0 +1,49 @@
+code	name	description	lo_type	parent_lo_code	concept_codes
+ULO-INTERNET-ARCHITECTURE	Understand Internet Architecture and Protocols	Người học có khả năng giải thích nguyên lý hoạt động của kiến trúc Internet và mô hình Client-Server.	UNIVERSAL		INTERNET_FUNDAMENTALS
+CIO-CLIENT-SERVER-FLOW	Analyze Client Server Request Response Cycle	Người học có khả năng phân tích luồng truyền dữ liệu giữa client và server qua các tầng mạng.	CONCEPTUAL_IMPL	ULO-INTERNET-ARCHITECTURE	INTERNET_FUNDAMENTALS
+SIO-WEB-PACKET-ROUTING	Trace HTTP Packet Routing in Browser	Người học có khả năng theo dõi luồng gói tin HTTP từ trình duyệt đến web server qua IP và router.	SPECIFIC_IMPL	CIO-CLIENT-SERVER-FLOW	INTERNET_FUNDAMENTALS
+ULO-HTTP-SPECIFICATION	Master HTTP Protocol and Specifications	Người học có khả năng giải thích cấu trúc và thông số của giao thức truyền tải siêu văn bản HTTP.	UNIVERSAL		HTTP_PROTOCOL
+CIO-HTTP-HEADER-STATUS	Understand HTTP Headers and Status Codes	Người học có khả năng phân tích các nhóm status code và HTTP header trong các yêu cầu giao tiếp.	CONCEPTUAL_IMPL	ULO-HTTP-SPECIFICATION	HTTP_PROTOCOL
+SIO-FETCH-HTTP-STATUS	Handle HTTP Status Codes in Web Apps	Người học có khả năng xử lý các mã trạng thái HTTP 200, 400, 401, 404, 500 khi gọi API bằng Fetch.	SPECIFIC_IMPL	CIO-HTTP-HEADER-STATUS	HTTP_PROTOCOL
+ULO-DOMAIN-NAME-SYSTEM	Understand Domain Name Resolution	Người học có khả năng giải thích cơ chế phân giải tên miền DNS trên môi trường mạng.	UNIVERSAL		DOMAIN_NAME_SYSTEM
+CIO-DNS-RECORD-TYPES	Configure DNS Record Types	Người học có khả năng phân biệt và cấu hình các loại bản ghi DNS tiêu chuẩn.	CONCEPTUAL_IMPL	ULO-DOMAIN-NAME-SYSTEM	DOMAIN_NAME_SYSTEM
+SIO-DNS-RECORD-SETUP	Setup A and CNAME Records for Domain	Người học có khả năng tạo bản ghi A record và CNAME cho tên miền ứng dụng web trên DNS Provider.	SPECIFIC_IMPL	CIO-DNS-RECORD-TYPES	DOMAIN_NAME_SYSTEM
+ULO-WEB-HOSTING-DEPL	Understand Web Infrastructure and Hosting	Người học có khả năng giải thích cơ chế lưu trữ và phân phối nội dung ứng dụng web.	UNIVERSAL		WEB_HOSTING
+CIO-CDN-EDGE-DELIVERY	Utilize CDN and Edge Networks	Người học có khả năng tối ưu hóa tốc độ tải trang bằng mạng phân phối nội dung CDN và Edge Storage.	CONCEPTUAL_IMPL	ULO-WEB-HOSTING-DEPL	WEB_HOSTING
+SIO-VERCEL-STATIC-DEPLOY	Deploy Web Application to Edge CDN	Người học có khả năng triển khai ứng dụng web lên hệ thống Hosting Edge như Vercel hoặc Netlify.	SPECIFIC_IMPL	CIO-CDN-EDGE-DELIVERY	WEB_HOSTING
+ULO-BROWSER-RENDERING	Understand Browser Architecture and Engine	Người học có khả năng giải thích luồng xử lý và hiển thị trang của trình duyệt web.	UNIVERSAL		WEB_BROWSER_ENGINES
+CIO-CRITICAL-RENDER-PATH	Analyze Critical Rendering Path	Người học có khả năng phân tích chuỗi các bước render từ HTML parsing đến Reflow và Repaint.	CONCEPTUAL_IMPL	ULO-BROWSER-RENDERING	WEB_BROWSER_ENGINES
+SIO-CHROME-DEVTOOLS-PERF	Audit Rendering Performance in DevTools	Người học có khả năng sử dụng Performance tab trong Chrome DevTools để đo đạc và giảm Reflow.	SPECIFIC_IMPL	CIO-CRITICAL-RENDER-PATH	WEB_BROWSER_ENGINES
+ULO-UI-BOX-MODEL	Master UI Box Model Layout	Người học có khả năng áp dụng mô hình khung khối UI trừu tượng trong dàn trang giao diện.	UNIVERSAL		UI_BOX_MODEL_LAYOUT
+CIO-BOX-SIZING-STRATEGY	Apply Box Sizing and Spacing	Người học có khả năng thiết lập thuộc tính box-sizing và quản lý margin, padding cho các thẻ UI.	CONCEPTUAL_IMPL	ULO-UI-BOX-MODEL	UI_BOX_MODEL_LAYOUT
+SIO-CSS-BORDER-BOX	Configure Border Box Layout in CSS	Người học có khả năng thiết lập `box-sizing: border-box` trên toàn bộ phần tử UI bằng CSS.	SPECIFIC_IMPL	CIO-BOX-SIZING-STRATEGY	UI_BOX_MODEL_LAYOUT
+ULO-FLEX-GRID-LAYOUT	Master Flexbox and Grid Systems	Người học có khả năng thiết kế giao diện bằng hệ thống dàn trang linh hoạt Flexbox và CSS Grid.	UNIVERSAL		FLEXBOX_GRID_LAYOUT
+CIO-GRID-CONTAINER-ALIGN	Align Items with Flexbox and Grid	Người học có khả năng bố trí và căn chỉnh vị trí phần tử con trong container linh hoạt.	CONCEPTUAL_IMPL	ULO-FLEX-GRID-LAYOUT	FLEXBOX_GRID_LAYOUT
+SIO-CSS-GRID-LAYOUT-SPEC	Create 2D Layout with CSS Grid	Người học có khả năng định nghĩa các dòng và cột `grid-template-columns` bằng CSS Grid.	SPECIFIC_IMPL	CIO-GRID-CONTAINER-ALIGN	FLEXBOX_GRID_LAYOUT
+ULO-RESPONSIVE-DESIGN	Master Responsive Design Principles	Người học có khả năng thiết kế ứng dụng web hiển thị đáp ứng tương thích đa màn hình.	UNIVERSAL		RESPONSIVE_DESIGN
+CIO-MEDIA-QUERIES-BREAK	Implement Breakpoints and Fluid Layout	Người học có khả năng thiết lập điểm ngắt breakpoint và kích thước dạng linh hoạt fluid size.	CONCEPTUAL_IMPL	ULO-RESPONSIVE-DESIGN	RESPONSIVE_DESIGN
+SIO-CSS-MEDIA-QUERIES	Write Mobile First Media Queries	Người học có khả năng viết các câu lệnh `@media (min-width: 768px)` theo chuẩn Mobile-First.	SPECIFIC_IMPL	CIO-MEDIA-QUERIES-BREAK	RESPONSIVE_DESIGN
+ULO-PACKAGE-MANAGEMENT	Master Dependency Management	Người học có khả năng quản lý các thư viện phụ thuộc trong dự án phát triển phần mềm.	UNIVERSAL		PACKAGE_MANAGEMENT
+CIO-LOCKFILE-VERSIONING	Manage Semantic Versioning and Lockfiles	Người học có khả năng kiểm soát phiên bản thư viện qua semantic versioning và tệp lockfile.	CONCEPTUAL_IMPL	ULO-PACKAGE-MANAGEMENT	PACKAGE_MANAGEMENT
+SIO-NPM-PNPM-COMMANDS	Install Dependencies via npm and pnpm	Người học có khả năng cài đặt và cập nhật gói phụ thuộc bằng công cụ lệnh `npm` hoặc `pnpm`.	SPECIFIC_IMPL	CIO-LOCKFILE-VERSIONING	PACKAGE_MANAGEMENT
+ULO-MODULE-BUNDLING	Master Module Bundlers and Build Tools	Người học có khả năng quản lý quy trình đóng gói module và biên dịch tài nguyên web.	UNIVERSAL		MODULE_BUNDLERS
+CIO-TREE-SHAKING-BUNDLING	Optimize Bundle Size with Tree Shaking	Người học có khả năng áp dụng kỹ thuật loại bỏ mã thừa tree shaking khi đóng gói mã nguồn.	CONCEPTUAL_IMPL	ULO-MODULE-BUNDLING	MODULE_BUNDLERS
+SIO-VITE-BUILD-CONFIG	Configure Build Output in Vite	Người học có khả năng cấu hình file `vite.config.js` để tạo bản build tối ưu cho production.	SPECIFIC_IMPL	CIO-TREE-SHAKING-BUNDLING	MODULE_BUNDLERS
+ULO-CODE-STATIC-ANALYSIS	Master Code Formatting and Linting	Người học có khả năng duy trì chất lượng mã nguồn thông qua định dạng và phân tích tĩnh.	UNIVERSAL		CODE_LINTING_FORMATTING
+CIO-STATIC-LINT-RULES	Enforce Lint Rules and Code Style	Người học có khả năng áp dụng bộ quy tắc kiểm tra lỗi ngữ pháp và chuẩn trình bày mã.	CONCEPTUAL_IMPL	ULO-CODE-STATIC-ANALYSIS	CODE_LINTING_FORMATTING
+SIO-ESLINT-PRETTIER-SETUP	Configure ESLint and Prettier Rules	Người học có khả năng cài đặt và liên kết ESLint với Prettier trong dự án JavaScript.	SPECIFIC_IMPL	CIO-STATIC-LINT-RULES	CODE_LINTING_FORMATTING
+ULO-VCS-PLATFORMS	Master Version Control Hosting	Người học có khả năng quản lý mã nguồn trên các nền tảng phân nhánh và lưu trữ đám mây.	UNIVERSAL		VCS_HOSTING
+CIO-PR-PULL-REQUEST-FLOW	Manage Code Review via Pull Requests	Người học có khả năng quản lý quy trình xét duyệt mã nguồn thông qua Pull/Merge Request.	CONCEPTUAL_IMPL	ULO-VCS-PLATFORMS	VCS_HOSTING
+SIO-GITHUB-ACTION-CI	Create GitHub Actions CI Workflow	Người học có khả năng tạo file `.github/workflows/ci.yml` để tự động hóa kiểm tra mã nguồn.	SPECIFIC_IMPL	CIO-PR-PULL-REQUEST-FLOW	VCS_HOSTING
+ULO-FRONTEND-FRAMEWORKS	Master UI Component Frameworks	Người học có khả năng phát triển ứng dụng giao diện theo mô hình thành phần UI Component.	UNIVERSAL		FRONTEND_FRAMEWORKS
+CIO-COMPONENT-STATE-PROPS	Manage Component State and Props	Người học có khả năng quản lý dữ liệu trạng thái state và truyền tham số props giữa các component.	CONCEPTUAL_IMPL	ULO-FRONTEND-FRAMEWORKS	FRONTEND_FRAMEWORKS
+SIO-REACT-HOOKS-STATE	Implement React useState and useEffect	Người học có khả năng sử dụng React Hooks `useState` và `useEffect` để điều khiển giao diện.	SPECIFIC_IMPL	CIO-COMPONENT-STATE-PROPS	FRONTEND_FRAMEWORKS
+ULO-AUTOMATED-TESTING	Master Automated Testing Frameworks	Người học có khả năng xây dựng kịch bản kiểm thử tự động đảm bảo chất lượng phần mềm.	UNIVERSAL		AUTOMATED_TESTING_TOOLS
+CIO-UNIT-E2E-STRATEGY	Implement Unit and End to End Tests	Người học có khả năng viết các bài test đơn vị unit test và test tích hợp end-to-end.	CONCEPTUAL_IMPL	ULO-AUTOMATED-TESTING	AUTOMATED_TESTING_TOOLS
+SIO-VITEST-PLAYWRIGHT	Write Tests with Vitest and Playwright	Người học có khả năng viết test case bằng Vitest cho logic hàm và Playwright cho luồng UI.	SPECIFIC_IMPL	CIO-UNIT-E2E-STRATEGY	AUTOMATED_TESTING_TOOLS
+ULO-CROSS-ORIGIN-SEC	Master Cross-Origin Security	Người học có khả năng giải thích và áp dụng chính sách chia sẻ tài nguyên giữa các nguồn.	UNIVERSAL		CROSS_ORIGIN_SECURITY
+CIO-CORS-POLICY-HEADERS	Configure CORS Headers and Preflight	Người học có khả năng xử lý yêu cầu preflight OPTIONS và cài đặt các header CORS hợp lệ.	CONCEPTUAL_IMPL	ULO-CROSS-ORIGIN-SEC	CROSS_ORIGIN_SECURITY
+SIO-EXPRESS-CORS-SETUP	Enable CORS Middleware in Web API	Người học có khả năng cấu hình middleware `cors()` trong Web API server để cho phép client truy cập.	SPECIFIC_IMPL	CIO-CORS-POLICY-HEADERS	CROSS_ORIGIN_SECURITY
+ULO-WEB-AUTH-STRATEGIES	Master Web Authentication Strategies	Người học có khả năng thiết kế giải pháp xác thực và phân quyền cho người dùng web.	UNIVERSAL		WEB_AUTHENTICATION_STRATEGIES
+CIO-TOKEN-SESSION-AUTH	Implement Token and Session Auth	Người học có khả năng so sánh và triển khai xác thực qua Session Cookie và JWT Token.	CONCEPTUAL_IMPL	ULO-WEB-AUTH-STRATEGIES	WEB_AUTHENTICATION_STRATEGIES
+SIO-JWT-STORAGE-COOKIE	Store JWT in HttpOnly Cookie	Người học có khả năng lưu trữ JWT Token trong HttpOnly Cookie để chống tấn công XSS.	SPECIFIC_IMPL	CIO-TOKEN-SESSION-AUTH	WEB_AUTHENTICATION_STRATEGIES
