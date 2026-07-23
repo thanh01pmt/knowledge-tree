@@ -9,11 +9,11 @@ description: Extract and generate structured Learning Objectives (ULO, CIO, SIO)
 
 ## Model Sư Phạm — Abstraction Axis
 
-| Tầng | Bản chất | Ràng buộc | Mã định danh |
+| Tầng | Bản chất (Tri-Level Hypothesis [T6]) | Ràng buộc & Phép thử | Mã định danh |
 |---|---|---|---|
-| **ULO** | Năng lực cốt lõi, độc lập với ngôn ngữ/công cụ | KHÔNG đề cập tên công nghệ; `parent_lo_code = ""` | `ULO-<FEATURE_SLUG>` |
-| **CIO** | Pattern/approach cụ thể hơn, vẫn **language-neutral** | KHÔNG có tên công nghệ trong `name`; mỗi CIO ≥ 2 SIO con | `CIO-<FEATURE_SLUG>` |
-| **SIO** | Gắn với **công nghệ cụ thể của project** (đọc từ context) | Tên công nghệ PHẢI có trong `name`/`description` | `SIO-<TECH_PREFIX>-<FEATURE_SLUG>` |
+| **ULO** | **Computational Level**: Năng lực cốt lõi, WHAT/WHY | Ưu tiên chọn động từ Bloom cấp cao (**Evaluate/Create**); `parent_lo_code = ""` | `ULO-<FEATURE_SLUG>` |
+| **CIO** | **Algorithmic Level**: Biểu diễn thủ tục, **language-neutral** | **BẮT BUỘC Phép thử Marr 2-Ngôn-ngữ** (map thử sang $\ge 2$ công cụ, không dính token-order); mỗi CIO $\ge 2$ SIO con | `CIO-<FEATURE_SLUG>` |
+| **SIO** | **Implementational Level**: Cụ thể công nghệ | Tên công nghệ PHẢI có trong `name`/`description` | `SIO-<TECH_PREFIX>-<FEATURE_SLUG>` |
 
 > ⚠️ Công nghệ cụ thể (Swift, Python, SQL...) **do context quy định**, không phải hardcode. Script tự động detect từ `context/`, `context-audit.md`, `raw_pdf.txt`.
 
@@ -30,6 +30,9 @@ description: Extract and generate structured Learning Objectives (ULO, CIO, SIO)
 - **Description:** `"Người học có khả năng [verb] [object]..."` (tiếng Việt, 1-3 câu)
 - **parent_lo_code:** ULO → `""`; CIO → ULO code; SIO → CIO code
 - **lo_type:** ULO → `UNIVERSAL`; CIO → `CONCEPTUAL_IMPL`; SIO → `SPECIFIC_IMPL`
+- **knowledge_dimension_code:** `FACTUAL`, `CONCEPTUAL`, `PROCEDURAL`, hoặc `METACOGNITIVE` (xác định theo loại đối tượng tri thức [T1])
+- **suggested_bloom_levels:** Cấp độ Bloom gợi ý (ví dụ: `REMEMBER,UNDERSTAND`, `APPLY`, `CREATE`)
+
 
 ## Prerequisite
 

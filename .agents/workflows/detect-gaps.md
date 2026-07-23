@@ -8,6 +8,7 @@ Phát hiện 3 loại gap trong Knowledge Tree của project hiện tại:
 |---|---|---|
 | **A** | `CONCEPT_WITHOUT_LO` | Concept trong `concepts.tsv` chưa có LO nào trỏ đến |
 | **B** | `CIO_SHALLOW` | CIO có < 2 SIO con — phân rã chưa đủ sâu |
+| **D** | `MARR_TEST_VIOLATED_CIO` | CIO chứa từ khóa cú pháp/công nghệ vi phạm Phép thử Marr (không độc lập cú pháp) |
 | **C** | `MASTER_CANDIDATE` | Concept từ `master_tree.json` liên quan đến syllabus nhưng chưa được chọn vào project |
 
 ## Khi nào dùng

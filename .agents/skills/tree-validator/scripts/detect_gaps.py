@@ -152,6 +152,29 @@ def detect_shallow_cios(project_los: list[dict], min_sios: int = 2) -> list[dict
     return shallow
 
 
+# ─── Gap D: CIOs violating Marr's Representation-Independent test ─────────────
+
+TECH_KEYWORDS = {
+    "python", "swift", "javascript", "typescript", "java", "golang", "c++",
+    "class", "def", "func", "function", "var", "let", "struct", "import", "enum"
+}
+
+def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:
+    """Return CIOs containing technology/syntax-specific tokens violating Marr's test."""
+    cios = [r for r in project_los if r.get("lo_type") == "CONCEPTUAL_IMPL"]
+    violations = []
+    for cio in cios:
+        text = (cio.get("name", "") + " " + cio.get("description", "")).lower()
+        found_kw = [kw for kw in TECH_KEYWORDS if re.search(r'\b' + re.escape(kw) + r'\b', text)]
+        if found_kw:
+            violations.append({
+                "code": cio.get("code", ""),
+                "name": cio.get("name", ""),
+                "keywords": found_kw
+            })
+    return violations
+
+
 # ─── Gap C: Master Tree Candidates ───────────────────────────────────────────
 
 def detect_master_candidates(
@@ -330,6 +353,7 @@ def main():
     # Detect gaps
     gap_a = detect_concept_without_lo(project_concepts, project_los)
     gap_b = detect_shallow_cios(project_los, min_sios=2)
+    gap_d = detect_non_neutral_cios(project_los)
     gap_c = detect_master_candidates(
         master_concepts, project_concept_codes, syllabus_text,
         min_score=args.min_score, top_n=args.top_n
@@ -341,16 +365,22 @@ def main():
     print(f"{'='*54}")
     status_a = "❌" if gap_a else "✅"
     status_b = "⚠️ " if gap_b else "✅"
+    status_d = "❌" if gap_d else "✅"
     status_c = "ℹ️ " if gap_c else "✅"
-    print(f"  {status_a} Gap A (Concepts without LO):   {len(gap_a)}")
+    print(f"  {status_a} Gap A (Concepts without LO):       {len(gap_a)}")
     if gap_a:
         for g in gap_a:
             print(f"       • {g['code']}: {g['name']}")
-    print(f"  {status_b} Gap B (Shallow CIOs < 2 SIO):  {len(gap_b)}")
+    print(f"  {status_b} Gap B (Shallow CIOs < 2 SIO):      {len(gap_b)}")
     if gap_b:
         for g in gap_b:
             print(f"       • {g['code']} ({g['sio_count']} SIO)")
-    print(f"  {status_c} Gap C (Master Candidates):     {len(gap_c)}")
+    print(f"  {status_d} Gap D (Marr Test Violated CIOs): {len(gap_d)}")
+    if gap_d:
+        for g in gap_d:
+            print(f"       • {g['code']}: contains {', '.join(g['keywords'])}")
+    print(f"  {status_c} Gap C (Master Candidates):         {len(gap_c)}")
+
     if gap_c:
         for g in gap_c[:5]:
             print(f"       • [{g['score']}] {g['code']}: {g['name']}")

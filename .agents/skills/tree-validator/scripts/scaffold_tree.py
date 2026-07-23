@@ -13,7 +13,7 @@ HEADERS = {
     "categories.tsv": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata"],
     "topics.tsv": ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata"],
     "concepts.tsv": ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "learning-objectives.tsv": ["code", "name", "description", "lo_type", "parent_lo_code", "concept_codes"]
+    "learning-objectives.tsv": ["code", "name", "description", "lo_type", "knowledge_dimension_code", "suggested_bloom_levels", "parent_lo_code", "concept_codes"]
 }
 
 def find_repo_root(start: Path) -> Path:

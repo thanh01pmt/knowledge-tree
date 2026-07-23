@@ -113,6 +113,10 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
                 payload["lo_type"] = r.get("lo_type", "UNIVERSAL").strip()
                 p_code = r.get("parent_lo_code", "").strip()
                 payload["parent_lo_code"] = p_code if p_code and p_code.upper() != "NULL" else None
+                if "knowledge_dimension_code" in r and r["knowledge_dimension_code"].strip():
+                    payload["knowledge_dimension_code"] = r["knowledge_dimension_code"].strip()
+                if "suggested_bloom_levels" in r and r["suggested_bloom_levels"].strip():
+                    payload["suggested_bloom_levels"] = [v.strip() for v in r["suggested_bloom_levels"].replace(";", ",").split(",") if v.strip()]
 
             if code in code_to_id:
                 payload["id"] = code_to_id[code]
