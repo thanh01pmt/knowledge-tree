@@ -156,7 +156,7 @@ def detect_shallow_cios(project_los: list[dict], min_sios: int = 2) -> list[dict
 
 TECH_KEYWORDS = {
     "python", "swift", "javascript", "typescript", "java", "golang", "c++",
-    "class", "def", "func", "function", "var", "let", "struct", "import", "enum"
+    "def", "func", "struct", "import"
 }
 
 def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:

@@ -43,6 +43,7 @@
 | `/audit-coverage`      | @tree-validator   | Run `audit_coverage.py` to cross-reference LO output against source PDF                        |
 | `/sync-supabase`       | @tree-assembler   | Run `sync_to_supabase.py` to push TSVs into Supabase Cloud DB                                  |
 | `/crawl-roadmap <url>` | @roadmap-aligner  | Scaffold project in `projects/`, run standard pipeline, and propose merge to General Context   |
+| `/validate-master-tree`| @tree-validator   | Run `validate_master_tree.py` for Master Tree referential integrity and collision detection   |
 
 ## scaffolder
 
@@ -73,5 +74,5 @@
 
 ## @tree-validator
 
-- Goal: Run validation script (`validate_tree.py`) & reverse coverage audit (`audit_coverage.py`) to ensure 100% referential integrity and 100% syllabus coverage.
+- Goal: Run validation scripts (`validate_master_tree.py`, `validate_tree.py`) & reverse coverage audit (`audit_coverage.py`) to ensure 100% referential integrity and 100% syllabus coverage.
 - Skill: `tree-validator`

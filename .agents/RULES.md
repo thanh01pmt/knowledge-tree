@@ -35,3 +35,6 @@ Before writing the final TSV files (e.g. running `/build-tree`), you MUST show t
 Sau khi tạo xong `learning-objectives.tsv` và hoàn tất `/build-tree`, BẮT BUỘC phải thực hiện kiểm tra đối chiếu ngược (`/audit-coverage` hoặc chạy `audit_coverage.py`) giữa dữ liệu `learning-objectives.tsv` vừa sinh ra với tài liệu nguồn trong `projects/<project>/context/`.
 - Đảm bảo 100% mục trong syllabus nguồn đều có ít nhất 1 mã LO đảm nhiệm.
 - Phát hiện các khoảng trống (gaps) hoặc dư thừa để xuất báo cáo `coverage_report.md`.
+
+## 7. Master Tree Integrity Gate
+Master Tree Integrity Gate — before `/map-taxonomy` or `/build-tree` reads from the Master Tree, `/validate-master-tree` (or `validate_master_tree.py`) must have PASSed since the tree was last modified.

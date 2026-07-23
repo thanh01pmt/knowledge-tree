@@ -476,7 +476,7 @@
       "code": "EVENT_DRIVEN_PROG",
       "name": "Event-Driven Programming",
       "description": "Trình bày mô hình lập trình dựa trên sự kiện, trong đó luồng chương trình được điều khiển bởi các sự kiện từ người dùng hoặc hệ thống.",
-      "subject_codes": "SW_PARADIGIMS, HCI",
+      "subject_codes": "SW_PARADIGMS, HCI",
       "keywords": "events, event handlers, asynchronous, callbacks",
       "cs2023_ka_mapping": "FPL, HCI",
       "metadata": "{\"icon\": \"hand-point-up\"}"
@@ -761,7 +761,7 @@
       "metadata": "{\"icon\": \"drafting-compass\"}"
     },
     {
-      "code": "GRAPHIC_DESIGN_PRINCIPLES",
+      "code": "GRAPHIC_DESIGN_CAT",
       "name": "Visual Design Principles for UI",
       "description": "Áp dụng các nguyên tắc cốt lõi về màu sắc, bố cục, khoảng trắng và chữ viết (typography) để tạo ra các giao diện người dùng thẩm mỹ và hiệu quả.",
       "subject_codes": "UI_UX_DESIGN, HCI",
@@ -779,7 +779,7 @@
       "metadata": "{\"icon\": \"universal-access\"}"
     },
     {
-      "code": "DIGITAL_INTERACTION",
+      "code": "DIGITAL_INTERACTION_CAT",
       "name": "Digital Interaction and Communication",
       "description": "Bao gồm các kỹ năng và quy tắc ứng xử (netiquette) khi giao tiếp, trình bày ý tưởng và tương tác hiệu quả trong môi trường số.",
       "subject_codes": "DIGITAL_LITERACY",
@@ -788,7 +788,7 @@
       "metadata": "{\"icon\": \"comments\"}"
     },
     {
-      "code": "COLLABORATION_TOOLS",
+      "code": "COLLABORATION_TOOLS_CAT",
       "name": "Digital Collaboration Tools",
       "description": "Hướng dẫn sử dụng hiệu quả các công cụ và nền tảng kỹ thuật số để làm việc nhóm, quản lý dự án và hợp tác từ xa.",
       "subject_codes": "DIGITAL_LITERACY",
@@ -845,7 +845,7 @@
       "code": "UI_BUILDING_BLOCKS",
       "name": "UI Building Blocks",
       "description": "Tập trung vào các thành phần giao diện người dùng cơ bản và cách tùy chỉnh chúng để tạo nên giao diện của ứng dụng.",
-      "subject_codes": "NATIVE_APP_DEV, HCC",
+      "subject_codes": "NATIVE_APP_DEV, HCI",
       "keywords": "UI components, Views, controls, Text, Button, Image, modifiers",
       "cs2023_ka_mapping": "HCI",
       "metadata": "{\"icon\": \"cubes\"}"
@@ -854,7 +854,7 @@
       "code": "LAYOUT_COMPOSITION",
       "name": "Layout and Composition",
       "description": "Bao gồm các kỹ thuật và công cụ để sắp xếp, bố cục và kết hợp các thành phần UI thành các giao diện phức tạp và có tính thích ứng.",
-      "subject_codes": "NATIVE_APP_DEV, HCC",
+      "subject_codes": "NATIVE_APP_DEV, HCI",
       "keywords": "layout, composition, stacks, grids, adaptive UI",
       "cs2023_ka_mapping": "HCI",
       "metadata": "{\"icon\": \"th-large\"}"
@@ -863,7 +863,7 @@
       "code": "STATE_DATA_FLOW",
       "name": "State and Data Flow",
       "description": "Khám phá cách quản lý trạng thái, luồng dữ liệu và cách giao diện người dùng tự động phản ứng lại với các thay đổi dữ liệu trong kiến trúc hiện đại.",
-      "subject_codes": "DECLARATIVE_UI, NATIVE_APP_DEV, ASE",
+      "subject_codes": "NATIVE_APP_DEV, SW_PARADIGMS",
       "keywords": "state management, data flow, binding, state, observable",
       "cs2023_ka_mapping": "FPL, HCI",
       "metadata": "{\"icon\": \"sync-alt\"}"
@@ -872,7 +872,7 @@
       "code": "NAVIGATION_PRESENTATION",
       "name": "Navigation and Presentation",
       "description": "Nghiên cứu các mô hình điều hướng giữa các màn hình và cách trình bày các View một cách tạm thời (modal) trong một ứng dụng.",
-      "subject_codes": "NATIVE_APP_DEV, HCC",
+      "subject_codes": "NATIVE_APP_DEV, HCI",
       "keywords": "navigation, routing, presentation, modal, sheet, stack",
       "cs2023_ka_mapping": "HCI",
       "metadata": "{\"icon\": \"route\"}"
@@ -899,7 +899,7 @@
       "code": "APP_PERSISTENCE",
       "name": "Application Data Persistence",
       "description": "Nghiên cứu các phương pháp để lưu trữ dữ liệu của ứng dụng một cách bền vững trên thiết bị, từ cài đặt đơn giản đến cơ sở dữ liệu có cấu trúc.",
-      "subject_codes": "NATIVE_APP_DEV, DAI",
+      "subject_codes": "NATIVE_APP_DEV, DATA_MGMT",
       "keywords": "persistence, storage, on-device, database, files",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"save\"}"
@@ -1162,7 +1162,7 @@
       "code": "APP_PROTOCOLS",
       "name": "Application Layer Protocols",
       "description": "Các giao thức tầng ứng dụng phổ biến như HTTP (Web), DNS (Phân giải tên miền), FTP (Truyền tệp).",
-      "category_codes": "NETWORK_PROTOCOLS, WEB_DEV",
+      "category_codes": "NETWORK_PROTOCOLS",
       "keywords": "HTTP, DNS, FTP, SMTP, application layer",
       "cs2023_ka_mapping": "NC",
       "metadata": "{\"icon\": \"globe-americas\"}"
@@ -1639,7 +1639,7 @@
       "code": "EDGE_FOG_CLOUD",
       "name": "IoT Architectures (Edge, Fog, Cloud)",
       "description": "Phân tích các kiến trúc xử lý dữ liệu khác nhau trong một hệ thống IoT: tại thiết bị (Edge), tại lớp trung gian (Fog), hoặc trên nền tảng đám mây (Cloud).",
-      "category_codes": "IOT_ECOSYSTEM, DISTRIBUTED_SYSTEMS",
+      "category_codes": "CLOUD_COMPUTING",
       "keywords": "edge computing, fog computing, cloud, IoT architecture",
       "cs2023_ka_mapping": "SPD, PDC",
       "metadata": "{\"icon\": \"layer-group\"}"
@@ -1702,7 +1702,7 @@
       "code": "DIGITAL_INTERACTION",
       "name": "Digital Interaction and Etiquette",
       "description": "Phát triển các kỹ năng và quy tắc ứng xử (netiquette) khi giao tiếp và tương tác chuyên nghiệp trong môi trường số, từ email đến các nền tảng cộng tác.",
-      "category_codes": "DIGITAL_LITERACY",
+      "category_codes": "DIGITAL_INTERACTION_CAT",
       "keywords": "netiquette, digital communication, etiquette",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"comments\"}"
@@ -1711,7 +1711,7 @@
       "code": "COLLABORATION_TOOLS",
       "name": "Digital Collaboration Tools",
       "description": "Hướng dẫn sử dụng hiệu quả các công cụ và nền tảng kỹ thuật số để làm việc nhóm, quản lý dự án và hợp tác từ xa (ví dụ: Trello, Slack, Google Workspace).",
-      "category_codes": "DIGITAL_LITERACY",
+      "category_codes": "COLLABORATION_TOOLS_CAT",
       "keywords": "collaboration, teamwork, project management tools",
       "cs2023_ka_mapping": "SEP, SE",
       "metadata": "{\"icon\": \"users-cog\"}"
@@ -1792,7 +1792,7 @@
       "code": "GRAPHIC_DESIGN_PRINCIPLES",
       "name": "Visual Design Principles for UI",
       "description": "Áp dụng các nguyên tắc cốt lõi về màu sắc, bố cục, khoảng trắng và chữ viết (typography) để tạo ra các giao diện người dùng thẩm mỹ và hiệu quả.",
-      "category_codes": "UI_UX_DESIGN, HCI",
+      "category_codes": "GRAPHIC_DESIGN_CAT",
       "keywords": "visual design, color theory, typography, layout, UI",
       "cs2023_ka_mapping": "GIT, HCI",
       "metadata": "{\"icon\":\"palette\"}"
@@ -2026,7 +2026,7 @@
       "code": "APP_DEPLOYMENT",
       "name": "Application Deployment & Distribution",
       "description": "Quy trình đóng gói phần mềm thành sản phẩm cuối cùng (ví dụ: file .exe, publish lên Web/Store) để phân phối đến người dùng cuối.",
-      "category_codes": "SW_LIFECYCLE",
+      "category_codes": "DEVELOPMENT_ENVIRONMENT",
       "keywords": "deployment, packaging, pyinstaller, publishing, hosting",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"box-open\"}"
@@ -2035,7 +2035,7 @@
       "code": "AI_ASSISTED_CODING",
       "name": "AI-Assisted Coding",
       "description": "Kỹ năng sử dụng các công cụ Trí tuệ nhân tạo (như ChatGPT, Copilot, Locofy) để sinh mã nguồn, chuyển đổi thiết kế sang code và hỗ trợ gỡ lỗi.",
-      "category_codes": "AI_ML, DEVELOPMENT_PROCESS",
+      "category_codes": "AI_APPLICATIONS",
       "keywords": "AI coding, generative AI, copilot, design-to-code",
       "cs2023_ka_mapping": "SE, AI",
       "metadata": "{\"icon\": \"robot\"}"
@@ -2160,19 +2160,19 @@
       "metadata": "{\"icon\": \"file-invoice\"}"
     },
     {
-      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "code": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
       "name": "Systematic Troubleshooting",
       "description": "Áp dụng một quy trình có hệ thống (xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
-      "topic_codes": "TROUBLESHOOTING",
+      "topic_codes": "TROUBLESHOOTING_METHODOLOGY",
       "keywords": "troubleshooting, diagnostics, problem solving",
       "cs2023_ka_mapping": "SDF, SE",
       "metadata": "{\"icon\": \"search\"}"
     },
     {
-      "code": "ERROR_MESSAGES",
+      "code": "ERROR_MESSAGES_CONCEPT",
       "name": "Interpreting Error Messages",
       "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
-      "topic_codes": "TROUBLESHOOTING, DEBUGGING_TECH",
+      "topic_codes": "ERROR_MESSAGES",
       "keywords": "error handling, exceptions, debugging, log analysis",
       "cs2023_ka_mapping": "SDF, SE",
       "metadata": "{\"icon\": \"exclamation-triangle\"}"
@@ -2241,28 +2241,28 @@
       "metadata": "{\"icon\": \"fan\"}"
     },
     {
-      "code": "ROUTERS_SWITCHES",
+      "code": "ROUTERS_SWITCHES_CONCEPT",
       "name": "Routers and Switches",
       "description": "Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
-      "topic_codes": "NETWORK_INFRA",
+      "topic_codes": "ROUTERS_SWITCHES",
       "keywords": "router, switch, LAN, WAN, networking hardware",
       "cs2023_ka_mapping": "NC",
       "metadata": "{\"icon\": \"ethernet\"}"
     },
     {
-      "code": "PHYSICAL_MEDIA",
+      "code": "PHYSICAL_MEDIA_CONCEPT",
       "name": "Physical Media & Wireless",
       "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
-      "topic_codes": "NETWORK_INFRA",
+      "topic_codes": "PHYSICAL_MEDIA",
       "keywords": "Ethernet cable, fiber optic, Wi-Fi, Bluetooth",
       "cs2023_ka_mapping": "NC",
       "metadata": "{\"icon\": \"wifi\"}"
     },
     {
-      "code": "NETWORK_TOPOLOGIES",
+      "code": "NETWORK_TOPOLOGIES_CONCEPT",
       "name": "Network Topologies",
       "description": "Nhận biết các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
-      "topic_codes": "NETWORK_INFRA",
+      "topic_codes": "NETWORK_TOPOLOGIES",
       "keywords": "topology, star, bus, ring, mesh",
       "cs2023_ka_mapping": "NC",
       "metadata": "{\"icon\": \"sitemap\"}"
@@ -2271,7 +2271,7 @@
       "code": "ABSTRACTION_LAYERS",
       "name": "Layers of Abstraction",
       "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
-      "topic_codes": "ABSTRACTION_DECOMP",
+      "topic_codes": "ALGO_STRATEGIES",
       "keywords": "abstraction, layers, information hiding",
       "cs2023_ka_mapping": "SDF, SE",
       "metadata": "{\"icon\": \"layer-group\"}"
@@ -2280,7 +2280,7 @@
       "code": "PROBLEM_DECOMPOSITION",
       "name": "Problem Decomposition",
       "description": "Kỹ thuật chia một vấn đề lớn và phức tạp thành các vấn đề con nhỏ hơn, dễ quản lý hơn, là một phần cốt lõi của tư duy tính toán.",
-      "topic_codes": "ABSTRACTION_DECOMP",
+      "topic_codes": "ALGO_STRATEGIES",
       "keywords": "decomposition, divide and conquer, problem solving",
       "cs2023_ka_mapping": "SDF, AL",
       "metadata": "{\"icon\": \"puzzle-piece\"}"
@@ -2289,7 +2289,7 @@
       "code": "CREATIONAL_PATTERNS",
       "name": "Creational Design Patterns",
       "description": "Hiểu mục đích của các mẫu thiết kế khởi tạo, như Singleton (đảm bảo một lớp chỉ có một thể hiện) và Factory (tạo đối tượng mà không cần chỉ rõ lớp cụ thể).",
-      "topic_codes": "DESIGN_PATTERNS",
+      "topic_codes": "CLASSES_OBJECTS",
       "keywords": "creational patterns, singleton, factory",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"plus-square\"}"
@@ -2298,7 +2298,7 @@
       "code": "STRUCTURAL_PATTERNS",
       "name": "Structural Design Patterns",
       "description": "Hiểu mục đích của các mẫu thiết kế cấu trúc, như Adapter (cho phép các giao diện không tương thích làm việc với nhau) và Decorator (thêm chức năng cho đối tượng một cách linh hoạt).",
-      "topic_codes": "DESIGN_PATTERNS",
+      "topic_codes": "CLASSES_OBJECTS",
       "keywords": "structural patterns, adapter, decorator",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"sitemap\"}"
@@ -2307,7 +2307,7 @@
       "code": "BEHAVIORAL_PATTERNS",
       "name": "Behavioral Design Patterns",
       "description": "Hiểu mục đích của các mẫu thiết kế hành vi, như Observer (định nghĩa sự phụ thuộc một-nhiều) và Strategy (cho phép chọn thuật toán lúc chạy).",
-      "topic_codes": "DESIGN_PATTERNS",
+      "topic_codes": "CLASSES_OBJECTS",
       "keywords": "behavioral patterns, observer, strategy",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"directions\"}"
@@ -2316,7 +2316,7 @@
       "code": "AGILE_PRINCIPLES",
       "name": "Agile Principles",
       "description": "Nắm vững các nguyên tắc cốt lõi của phát triển phần mềm linh hoạt, như ưu tiên sự hài lòng của khách hàng và thích ứng với thay đổi.",
-      "topic_codes": "DEVELOPMENT_PROCESS",
+      "topic_codes": "AGILE_SCRUM",
       "keywords": "Agile, manifesto, iterative development",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"users-class\"}"
@@ -2325,7 +2325,7 @@
       "code": "SCRUM_ROLES_EVENTS",
       "name": "Scrum Roles and Events",
       "description": "Nhận biết các vai trò (Product Owner, Scrum Master) và các sự kiện (Sprint, Daily Standup, Retrospective) trong khuôn khổ Scrum.",
-      "topic_codes": "DEVELOPMENT_PROCESS",
+      "topic_codes": "AGILE_SCRUM",
       "keywords": "Scrum, sprint, standup, backlog, roles",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"users-cog\"}"
@@ -2334,7 +2334,7 @@
       "code": "VERSION_CONTROL_WORKFLOW",
       "name": "Version Control Workflow",
       "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
-      "topic_codes": "VERSION_CONTROL",
+      "topic_codes": "GIT_BASICS",
       "keywords": "Git workflow, Git Flow, branching strategy",
       "cs2023_ka_mapping": "SE",
       "metadata": "{\"icon\": \"code-branch\"}"
@@ -2343,7 +2343,7 @@
       "code": "FRONTEND_FRAMEWORKS",
       "name": "Frontend Frameworks/Libraries",
       "description": "Hiểu vai trò của các thư viện/framework như React, Vue, Angular trong việc xây dựng các giao diện người dùng tương tác và có cấu trúc.",
-      "topic_codes": "FRONTEND_DEV, WEB_FRAMEWORKS",
+      "topic_codes": "HTML_CSS",
       "keywords": "Angular, React, SPA, Solid JS, Svelte, Vue, Vue.js, frameworks",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"react\"}"
@@ -2352,7 +2352,7 @@
       "code": "BACKEND_FRAMEWORKS",
       "name": "Backend Frameworks",
       "description": "Hiểu vai trò của các framework như Django (Python), Express (Node.js) trong việc tăng tốc xây dựng logic và API phía máy chủ.",
-      "topic_codes": "WEB_FRAMEWORKS",
+      "topic_codes": "SERVER_SIDE_LOGIC",
       "keywords": "frameworks, Django, Express, Spring, backend",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"server\"}"
@@ -2361,7 +2361,7 @@
       "code": "RELATIONAL_VS_NONRELATIONAL",
       "name": "Relational vs. NoSQL Databases",
       "description": "So sánh sự khác biệt cơ bản giữa cơ sở dữ liệu quan hệ (SQL) và không quan hệ (NoSQL) về mô hình dữ liệu, tính nhất quán và khả năng mở rộng.",
-      "topic_codes": "DATABASE_FUNDAMENTALS",
+      "topic_codes": "RELATIONAL_DB",
       "keywords": "SQL vs NoSQL, relational, non-relational",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"database\"}"
@@ -2370,7 +2370,7 @@
       "code": "DATA_EXPLORATION_EDA",
       "name": "Exploratory Data Analysis (EDA)",
       "description": "Hiểu quy trình Phân tích Dữ liệu Khám phá để tóm tắt các đặc điểm chính của tập dữ liệu, thường bằng các phương pháp trực quan.",
-      "topic_codes": "DATA_COLLECTION",
+      "topic_codes": "DATA_VIS_TOOLS",
       "keywords": "EDA, data exploration, data analysis",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"search-plus\"}"
@@ -2379,7 +2379,7 @@
       "code": "DATA_CLEANING_TECHNIQUES",
       "name": "Data Cleaning Techniques",
       "description": "Nắm vững các kỹ thuật cơ bản để xử lý dữ liệu bị thiếu (missing values), dữ liệu nhiễu (noise) và dữ liệu không nhất quán.",
-      "topic_codes": "DATA_COLLECTION",
+      "topic_codes": "DATA_VIS_TOOLS",
       "keywords": "data cleaning, preprocessing, missing data",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"broom\"}"
@@ -2388,7 +2388,7 @@
       "code": "CHART_TYPES",
       "name": "Choosing Appropriate Chart Types",
       "description": "Nắm vững cách lựa chọn loại biểu đồ phù hợp (cột, đường, tròn, phân tán) để biểu diễn các loại dữ liệu và thông điệp khác nhau.",
-      "topic_codes": "DATA_VISUALIZATION",
+      "topic_codes": "DATA_VIS_TOOLS",
       "keywords": "charts, graphs, visualization, chart selection",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"chart-pie-alt\"}"
@@ -2397,7 +2397,7 @@
       "code": "CLOUD_MODELS_IAAS_PAAS_SAAS",
       "name": "Cloud Service Models",
       "description": "Phân biệt ba mô hình dịch vụ điện toán đám mây chính: IaaS (Cơ sở hạ tầng), PaaS (Nền tảng), và SaaS (Phần mềm như một Dịch vụ).",
-      "topic_codes": "CLOUD_COMPUTING",
+      "topic_codes": "SERVER_SIDE_LOGIC",
       "keywords": "IaaS, PaaS, SaaS, cloud services",
       "cs2023_ka_mapping": "PDC",
       "metadata": "{\"icon\": \"cloud\"}"
@@ -2406,7 +2406,7 @@
       "code": "CLOUD_DEPLOYMENT_MODELS",
       "name": "Cloud Deployment Models",
       "description": "Phân biệt các mô hình triển khai đám mây: Public, Private, và Hybrid Cloud.",
-      "topic_codes": "CLOUD_COMPUTING",
+      "topic_codes": "APP_DEPLOYMENT",
       "keywords": "public cloud, private cloud, hybrid cloud",
       "cs2023_ka_mapping": "PDC",
       "metadata": "{\"icon\": \"cloud-upload-alt\"}"
@@ -2415,7 +2415,7 @@
       "code": "VIRTUALIZATION",
       "name": "Virtualization Concept",
       "description": "Hiểu công nghệ ảo hóa, cho phép tạo ra các phiên bản ảo của tài nguyên máy tính như máy chủ, hệ điều hành, hoặc mạng.",
-      "topic_codes": "CLOUD_COMPUTING, OS_CONCEPTS",
+      "topic_codes": "OS_PROCESS_MGMT",
       "keywords": "virtualization, VM, hypervisor",
       "cs2023_ka_mapping": "OS, PDC",
       "metadata": "{\"icon\": \"desktop\"}"
@@ -2424,7 +2424,7 @@
       "code": "MAPREDUCE_CONCEPT",
       "name": "MapReduce Concept",
       "description": "Hiểu mô hình lập trình MapReduce để xử lý song song các tập dữ liệu lớn, bao gồm hai bước chính là map và reduce.",
-      "topic_codes": "BIG_DATA_TECH",
+      "topic_codes": "ALGO_STRATEGIES",
       "keywords": "MapReduce, big data, distributed processing",
       "cs2023_ka_mapping": "PDC",
       "metadata": "{\"icon\": \"stream\"}"
@@ -2433,7 +2433,7 @@
       "code": "CAP_THEOREM",
       "name": "CAP Theorem",
       "description": "Nắm vững định lý CAP (Consistency, Availability, Partition tolerance) và sự đánh đổi của nó trong các hệ thống phân tán.",
-      "topic_codes": "PARALLEL_DIST_ALGO",
+      "topic_codes": "SERVER_SIDE_LOGIC",
       "keywords": "CAP theorem, distributed systems, consistency",
       "cs2023_ka_mapping": "PDC",
       "metadata": "{\"icon\": \"balance-scale-right\"}"
@@ -2442,7 +2442,7 @@
       "code": "REGRESSION_CLASSIFICATION",
       "name": "Regression vs. Classification",
       "description": "Phân biệt hai loại bài toán chính trong học có giám sát: dự đoán giá trị liên tục (hồi quy) và dự đoán nhãn (phân loại).",
-      "topic_codes": "ML_MODELS",
+      "topic_codes": "SUPERVISED_LEARNING",
       "keywords": "regression, classification, supervised learning",
       "cs2023_ka_mapping": "AI",
       "metadata": "{\"icon\": \"file-invoice\"}"
@@ -2451,7 +2451,7 @@
       "code": "CLUSTERING_ALGORITHMS",
       "name": "Clustering Algorithms",
       "description": "Hiểu khái niệm phân cụm và các thuật toán cơ bản như K-Means để nhóm các điểm dữ liệu tương tự lại với nhau.",
-      "topic_codes": "ML_MODELS",
+      "topic_codes": "UNSUPERVISED_LEARNING",
       "keywords": "clustering, K-Means, unsupervised learning",
       "cs2023_ka_mapping": "AI",
       "metadata": "{\"icon\": \"shapes\"}"
@@ -2460,7 +2460,7 @@
       "code": "NEURAL_NETWORKS_BASICS",
       "name": "Neural Networks Basics",
       "description": "Nắm vững các thành phần cơ bản của mạng nơ-ron nhân tạo, bao gồm nơ-ron, lớp (layer), trọng số và hàm kích hoạt.",
-      "topic_codes": "ML_MODELS",
+      "topic_codes": "SUPERVISED_LEARNING",
       "keywords": "neural network, neuron, layer, activation function",
       "cs2023_ka_mapping": "AI",
       "metadata": "{\"icon\": \"brain-circuit\"}"
@@ -2469,7 +2469,7 @@
       "code": "AI_HISTORY_MILESTONES",
       "name": "History and Milestones of AI",
       "description": "Nhận biết các cột mốc lịch sử quan trọng trong sự phát triển của AI, từ phép thử Turing đến sự bùng nổ của Deep Learning.",
-      "topic_codes": "AI_CONCEPTS",
+      "topic_codes": "SUPERVISED_LEARNING",
       "keywords": "AI history, Turing test, deep learning",
       "cs2023_ka_mapping": "AI, SEP",
       "metadata": "{\"icon\": \"monument\"}"
@@ -2478,7 +2478,7 @@
       "code": "TYPES_OF_AI",
       "name": "Types of AI: Narrow vs. General",
       "description": "Phân biệt giữa AI hẹp (chuyên cho một nhiệm vụ cụ thể) và AI tổng quát (có khả năng trí tuệ như con người).",
-      "topic_codes": "AI_CONCEPTS",
+      "topic_codes": "SUPERVISED_LEARNING",
       "keywords": "narrow AI, general AI, AGI, strong AI",
       "cs2023_ka_mapping": "AI",
       "metadata": "{\"icon\": \"brain\"}"
@@ -2496,7 +2496,7 @@
       "code": "AI_BIAS",
       "name": "Bias in AI",
       "description": "Hiểu cách thiên vị trong dữ liệu huấn luyện hoặc trong thiết kế thuật toán có thể dẫn đến các quyết định không công bằng từ hệ thống AI.",
-      "topic_codes": "AI_ETHICS_BIAS",
+      "topic_codes": "USER_RESEARCH",
       "keywords": "AI bias, fairness, ethics, training data",
       "cs2023_ka_mapping": "AI, SEP",
       "metadata": "{\"icon\": \"balance-scale\"}"
@@ -2505,16 +2505,16 @@
       "code": "ALGORITHMIC_BIAS_SOCIETY",
       "name": "Algorithmic Bias in Society",
       "description": "Phân tích cách các thuật toán có thể tạo ra hoặc khuếch đại các thành kiến xã hội, dẫn đến các quyết định không công bằng trong đời sống.",
-      "topic_codes": "SOCIETAL_IMPACT, AI_ETHICS_BIAS",
+      "topic_codes": "USER_RESEARCH",
       "keywords": "algorithmic bias, fairness, ethics, societal impact",
       "cs2023_ka_mapping": "SEP, AI",
       "metadata": "{\"icon\": \"balance-scale\"}"
     },
     {
-      "code": "IOT_PROTOCOLS_MQTT",
+      "code": "IOT_PROTOCOLS_MQTT_CONCEPT",
       "name": "IoT Messaging Protocols (MQTT)",
       "description": "Hiểu nguyên lý hoạt động của giao thức MQTT theo mô hình publish-subscribe, được thiết kế cho các thiết bị IoT.",
-      "topic_codes": "IOT_COMMUNICATION",
+      "topic_codes": "IOT_PROTOCOLS_MQTT",
       "keywords": "MQTT, publish-subscribe, IoT protocols",
       "cs2023_ka_mapping": "NC, SPD",
       "metadata": "{\"icon\": \"envelope-open-text\"}"
@@ -2523,7 +2523,7 @@
       "code": "IOT_SECURITY_THREATS",
       "name": "Common IoT Security Threats",
       "description": "Nhận biết các mối đe dọa bảo mật đặc thù cho thiết bị IoT, như tấn công vào firmware, mật khẩu mặc định yếu, và các giao thức không an toàn.",
-      "topic_codes": "IOT_SECURITY_SAFETY",
+      "topic_codes": "NETWORK_ATTACKS",
       "keywords": "IoT security, firmware, botnet",
       "cs2023_ka_mapping": "SEC",
       "metadata": "{\"icon\": \"shield-virus\"}"
@@ -2532,7 +2532,7 @@
       "code": "IOT_SAFETY_RISKS",
       "name": "IoT Safety Risks",
       "description": "Phân tích các rủi ro về an toàn vật lý do hệ thống IoT gây ra, ví dụ như lỗi trong xe tự lái, thiết bị y tế, hoặc nhà thông minh.",
-      "topic_codes": "IOT_SECURITY_SAFETY",
+      "topic_codes": "NETWORK_ATTACKS",
       "keywords": "IoT safety, physical risk, critical systems",
       "cs2023_ka_mapping": "SEP, SEC",
       "metadata": "{\"icon\": \"car-crash\"}"
@@ -2550,7 +2550,7 @@
       "code": "SIMULATION_MODELING",
       "name": "Simulation Modeling",
       "description": "Hiểu các kỹ thuật xây dựng mô hình toán học và tính toán để mô phỏng một hệ thống hoặc hiện tượng trong thế giới thực.",
-      "topic_codes": "SIMULATION_MODELING",
+      "topic_codes": "ALGO_STRATEGIES",
       "keywords": "simulation, modeling, physics engine",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"project-diagram\"}"
@@ -2568,7 +2568,7 @@
       "code": "USER_CENTERED_DESIGN",
       "name": "User-Centered Design Process",
       "description": "Hiểu quy trình thiết kế lấy người dùng làm trung tâm, nhấn mạnh việc thấu hiểu và đáp ứng nhu cầu của người dùng ở mọi giai đoạn.",
-      "topic_codes": "UI_UX_PROCESS",
+      "topic_codes": "USER_RESEARCH",
       "keywords": "UCD, user-centered, design thinking",
       "cs2023_ka_mapping": "HCI",
       "metadata": "{\"icon\": \"user-check\"}"
@@ -2586,7 +2586,7 @@
       "code": "AFFORDANCES_SIGNIFIERS",
       "name": "Affordances and Signifiers",
       "description": "Phân biệt khái niệm \"khả năng\" (affordances - những gì một đối tượng có thể làm) và \"dấu hiệu\" (signifiers - gợi ý trực quan về cách sử dụng).",
-      "topic_codes": "HCI_PRINCIPLES",
+      "topic_codes": "UI_UX_HEURISTICS",
       "keywords": "affordance, signifier, discoverability",
       "cs2023_ka_mapping": "HCI",
       "metadata": "{\"icon\": \"lightbulb-on\"}"
@@ -2595,7 +2595,7 @@
       "code": "FEEDBACK_AND_RESPONSE",
       "name": "Feedback and System Response",
       "description": "Hiểu tầm quan trọng của việc cung cấp phản hồi ngay lập tức và rõ ràng cho các hành động của người dùng để tạo ra trải nghiệm tốt.",
-      "topic_codes": "HCI_PRINCIPLES",
+      "topic_codes": "UI_UX_HEURISTICS",
       "keywords": "feedback, response time, user interface",
       "cs2023_ka_mapping": "HCI",
       "metadata": "{\"icon\": \"comment-alt-dots\"}"
@@ -2604,7 +2604,7 @@
       "code": "DIGITAL_IDENTITY",
       "name": "Digital Identity Management",
       "description": "Hiểu khái niệm về danh tính số và cách quản lý hình ảnh cá nhân và chuyên nghiệp trên các nền tảng trực tuyến.",
-      "topic_codes": "DIGITAL_INTERACTION, DATA_PRIVACY_USER",
+      "topic_codes": "PRIVACY_SETTINGS",
       "keywords": "digital identity, online profile, reputation",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"id-card\"}"
@@ -2613,7 +2613,7 @@
       "code": "INFORMATION_CREDIBILITY",
       "name": "Assessing Information Credibility",
       "description": "Phát triển kỹ năng đánh giá độ tin cậy của thông tin trực tuyến, bao gồm kiểm tra nguồn, tác giả, và phát hiện thông tin sai lệch.",
-      "topic_codes": "DIGITAL_LITERACY",
+      "topic_codes": "DIGITAL_INTERACTION",
       "keywords": "credibility, fact-checking, misinformation",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"check-double\"}"
@@ -2622,7 +2622,7 @@
       "code": "DIGITAL_FOOTPRINT",
       "name": "Digital Footprint",
       "description": "Hiểu rằng mọi hoạt động trực tuyến đều để lại một \"dấu chân số\" có thể tồn tại lâu dài và ảnh hưởng đến quyền riêng tư và danh tiếng.",
-      "topic_codes": "DATA_PRIVACY_USER",
+      "topic_codes": "PRIVACY_SETTINGS",
       "keywords": "digital footprint, privacy, online presence",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"shoe-prints\"}"
@@ -2631,7 +2631,7 @@
       "code": "CYBERBULLYING",
       "name": "Cyberbullying and Response",
       "description": "Nhận biết các hình thức bắt nạt trên mạng và các chiến lược để ứng phó một cách an toàn và hiệu quả.",
-      "topic_codes": "DIGITAL_WELLBEING",
+      "topic_codes": "DIGITAL_INTERACTION",
       "keywords": "cyberbullying, online safety, harassment",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"user-ninja\"}"
@@ -2640,7 +2640,7 @@
       "code": "COPYRIGHT_CREATIVE_COMMONS",
       "name": "Copyright & Creative Commons",
       "description": "Phân biệt giữa bản quyền tiêu chuẩn (\"all rights reserved\") và các giấy phép mở như Creative Commons (\"some rights reserved\").",
-      "topic_codes": "IP_COPYRIGHT",
+      "topic_codes": "DIGITAL_INTERACTION",
       "keywords": "copyright, Creative Commons, licenses, intellectual property",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"copyright\"}"
@@ -2649,7 +2649,7 @@
       "code": "DIGITAL_DIVIDE",
       "name": "The Digital Divide",
       "description": "Hiểu về khoảng cách trong việc tiếp cận, sử dụng và hưởng lợi từ công nghệ giữa các nhóm dân cư khác nhau.",
-      "topic_codes": "SOCIETAL_IMPACT",
+      "topic_codes": "DIGITAL_INTERACTION",
       "keywords": "digital divide, equity, access, inclusion",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"users-slash\"}"
@@ -2685,7 +2685,7 @@
       "code": "IMAGE_WARPING",
       "name": "Mesh and Liquify Warping",
       "description": "Hiểu các kỹ thuật làm biến dạng hình ảnh một cách tự do bằng cách sử dụng lưới (mesh warp) hoặc các công cụ mô phỏng chất lỏng (liquify).",
-      "topic_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS",
       "keywords": "warping, liquify, mesh warp, image manipulation",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"border-style-alt\"}"
@@ -2694,7 +2694,7 @@
       "code": "IMAGE_RETOUCHING",
       "name": "Image Retouching Techniques",
       "description": "Nắm vững các kỹ thuật làm sạch và phục chế ảnh như xóa khuyết điểm (spot healing), nhân bản (clone stamp) và vá thông minh (content-aware fill).",
-      "topic_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS",
       "keywords": "retouching, healing brush, clone stamp",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"magic\"}"
@@ -2703,7 +2703,7 @@
       "code": "IMAGE_COMPOSITING",
       "name": "Image Compositing",
       "description": "Kỹ thuật kết hợp nhiều hình ảnh khác nhau để tạo thành một tác phẩm duy nhất, liền mạch, thường sử dụng layer mask và blending modes.",
-      "topic_codes": "DIGITAL_IMAGE_MANIPULATION",
+      "topic_codes": "RASTER_GRAPHICS_CONCEPTS",
       "keywords": "compositing, photomontage, image combination",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"images\"}"
@@ -2739,7 +2739,7 @@
       "code": "OBJECT_PROPERTIES",
       "name": "Object Properties/Attributes",
       "description": "Hiểu rằng các đối tượng trong một môi trường lập trình có các thuộc tính (properties) có thể truy cập và thay đổi được (ví dụ: object.x, object.color).",
-      "topic_codes": "OBJECT_INSTANTIATION, UI_UX_PRINCIPLES",
+      "topic_codes": "CLASSES_OBJECTS",
       "keywords": "properties, attributes, state, object",
       "cs2023_ka_mapping": "SDF, HCI",
       "metadata": "{\"icon\": \"list\"}"
@@ -2835,28 +2835,28 @@
       "metadata": "{\"icon\": \"th-large\"}"
     },
     {
-      "code": "BASIC_MECHANISMS",
+      "code": "BASIC_MECHANISMS_CONCEPT",
       "name": "Basic Mechanisms",
       "description": "Nhận biết và hiểu nguyên lý hoạt động của các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy và ròng rọc.",
-      "topic_codes": "MECHANICAL_SYSTEMS",
+      "topic_codes": "BASIC_MECHANISMS",
       "keywords": "gears, levers, pulleys, mechanical advantage",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"cogs\"}"
     },
     {
-      "code": "BASIC_ELECTRONIC_COMPONENTS",
+      "code": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
       "name": "Basic Electronic Components",
       "description": "Nhận biết các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) và chức năng cơ bản của chúng.",
-      "topic_codes": "ELECTRONIC_CIRCUITS",
+      "topic_codes": "BASIC_ELECTRONIC_COMPONENTS",
       "keywords": "resistor, capacitor, diode, transistor",
       "cs2023_ka_mapping": "AR",
       "metadata": "{\"icon\": \"bolt\"}"
     },
     {
-      "code": "CIRCUIT_PRINCIPLES",
+      "code": "CIRCUIT_PRINCIPLES_CONCEPT",
       "name": "Basic Circuit Principles",
       "description": "Áp dụng các nguyên tắc cơ bản về mạch điện, như định luật Ohm và cách các linh kiện hoạt động khi mắc nối tiếp và song song.",
-      "topic_codes": "ELECTRONIC_CIRCUITS",
+      "topic_codes": "CIRCUIT_PRINCIPLES",
       "keywords": "Ohm's law, series circuit, parallel circuit",
       "cs2023_ka_mapping": "AR",
       "metadata": "{\"icon\": \"project-diagram\"}"
@@ -2973,7 +2973,7 @@
       "code": "PRIMITIVE_TYPE_DECLARATION",
       "name": "Declaring Primitive Types",
       "description": "Nắm vững cú pháp khai báo biến với các kiểu dữ liệu nguyên thủy (int, bool, float) trong một ngôn ngữ lập trình cụ thể.",
-      "topic_codes": "VARIABLES_DATA_TYPES, PRIMITIVE_TYPES",
+      "topic_codes": "PRIMITIVE_TYPES",
       "keywords": "declaration, primitive types, int, boolean",
       "cs2023_ka_mapping": "SDF",
       "metadata": "{\"icon\": \"tag\"}"
@@ -2982,7 +2982,7 @@
       "code": "REFERENCE_TYPE_DECLARATION",
       "name": "Declaring Reference Types",
       "description": "Nắm vững cú pháp khai báo biến với các kiểu dữ liệu tham chiếu (String, Array, Object) và hiểu cách chúng được lưu trữ trong bộ nhớ.",
-      "topic_codes": "VARIABLES_DATA_TYPES, REFERENCE_TYPES",
+      "topic_codes": "REFERENCE_TYPES",
       "keywords": "declaration, reference types, string, object",
       "cs2023_ka_mapping": "SDF",
       "metadata": "{\"icon\": \"link\"}"
@@ -3126,7 +3126,7 @@
       "code": "AI_VS_ML",
       "name": "AI vs. ML vs. Deep Learning",
       "description": "Phân biệt rõ ràng mối quan hệ và sự khác biệt giữa các thuật ngữ: Trí tuệ Nhân tạo, Học máy, và Học sâu.",
-      "topic_codes": "AI_CONCEPTS",
+      "topic_codes": "SUPERVISED_LEARNING",
       "keywords": "AI, ML, Deep Learning, definitions",
       "cs2023_ka_mapping": "AI",
       "metadata": "{\"icon\": \"project-diagram\"}"
@@ -3144,13 +3144,13 @@
       "code": "USABILITY_TESTING",
       "name": "Usability Testing",
       "description": "Nắm vững quy trình cơ bản của việc kiểm thử tính khả dụng: quan sát người dùng thực sự sử dụng một sản phẩm để xác định các vấn đề.",
-      "topic_codes": "UI_UX_PROCESS",
+      "topic_codes": "USER_RESEARCH",
       "keywords": "usability testing, user testing, feedback",
       "cs2023_ka_mapping": "HCI, SE",
       "metadata": "{\"icon\": \"clipboard-check\"}"
     },
     {
-      "code": "PASSWORD_STRENGTH",
+      "code": "PASSWORD_STRENGTH_CONCEPT",
       "name": "Strong Passwords",
       "description": "Nắm vững các tiêu chí để tạo một mật khẩu mạnh và an toàn, khó bị đoán hoặc bẻ khóa.",
       "topic_codes": "PASSWORD_STRENGTH",
@@ -3171,7 +3171,7 @@
       "code": "LOGIC_ERRORS",
       "name": "Logical Errors",
       "description": "Nhận biết các lỗi trong logic của chương trình khiến nó chạy không đúng kết quả mong đợi, mặc dù không gây ra lỗi cú pháp hay lỗi runtime.",
-      "topic_codes": "DEBUGGING_TECH, TESTING_DEBUGGING",
+      "topic_codes": "DEBUGGING_TECH",
       "keywords": "logical error, bug, incorrect output",
       "cs2023_ka_mapping": "SDF, SE",
       "metadata": "{\"icon\": \"brain\"}"
@@ -3180,7 +3180,7 @@
       "code": "SYNTAX_ERRORS",
       "name": "Syntax Errors",
       "description": "Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.",
-      "topic_codes": "DEBUGGING_TECH, TESTING_DEBUGGING",
+      "topic_codes": "ERROR_MESSAGES",
       "keywords": "syntax error, compiler error, parsing error",
       "cs2023_ka_mapping": "SDF",
       "metadata": "{\"icon\": \"file-exclamation\"}"
@@ -3189,7 +3189,7 @@
       "code": "RUNTIME_ERRORS",
       "name": "Runtime Errors",
       "description": "Nhận biết các lỗi xảy ra trong quá trình chương trình đang chạy, ví dụ như chia cho zero hoặc truy cập vào một phần tử không tồn tại của mảng.",
-      "topic_codes": "DEBUGGING_TECH, TESTING_DEBUGGING",
+      "topic_codes": "EXCEPTION_HANDLING",
       "keywords": "runtime error, exception, crash",
       "cs2023_ka_mapping": "SDF",
       "metadata": "{\"icon\": \"running\"}"
@@ -3198,7 +3198,7 @@
       "code": "API_INTEGRATION",
       "name": "API Integration",
       "description": "Hiểu kỹ thuật gọi các API từ bên ngoài để lấy dữ liệu hoặc sử dụng chức năng của một dịch vụ khác trong ứng dụng của mình.",
-      "topic_codes": "API_DESIGN, WEB_DEV",
+      "topic_codes": "API_DESIGN",
       "keywords": "API, integration, REST, fetch",
       "cs2023_ka_mapping": "SE, SPD",
       "metadata": "{\"icon\": \"plug\"}"
@@ -3216,7 +3216,7 @@
       "code": "DATABASE_NORMALIZATION",
       "name": "Database Normalization",
       "description": "Hiểu quá trình tổ chức các cột và bảng trong cơ sở dữ liệu quan hệ để giảm thiểu sự dư thừa dữ liệu và cải thiện tính toàn vẹn.",
-      "topic_codes": "DATABASE_FUNDAMENTALS",
+      "topic_codes": "RELATIONAL_DB",
       "keywords": "normalization, 1NF, 2NF, 3NF, database design",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"columns\"}"
@@ -3225,7 +3225,7 @@
       "code": "STATISTICAL_MEASURES",
       "name": "Basic Statistical Measures",
       "description": "Nắm vững cách tính và ý nghĩa của các thước đo thống kê cơ bản như trung bình (mean), trung vị (median), và độ lệch chuẩn (standard deviation).",
-      "topic_codes": "STATISTICS_PROBABILITY",
+      "topic_codes": "ALGO_ANALYSIS",
       "keywords": "mean, median, standard deviation, statistics",
       "cs2023_ka_mapping": "MSF",
       "metadata": "{\"icon\": \"chart-bar\"}"
@@ -3234,7 +3234,7 @@
       "code": "PROBABILITY_BASICS",
       "name": "Basic Probability",
       "description": "Nắm vững các khái niệm xác suất cơ bản, bao gồm không gian mẫu, biến cố, và các quy tắc tính xác suất (cộng, nhân).",
-      "topic_codes": "STATISTICS_PROBABILITY",
+      "topic_codes": "ALGO_ANALYSIS",
       "keywords": "probability, sample space, event",
       "cs2023_ka_mapping": "MSF",
       "metadata": "{\"icon\": \"dice-d6\"}"
@@ -3243,7 +3243,7 @@
       "code": "DATA_DISTRIBUTIONS",
       "name": "Basic Data Distributions",
       "description": "Nhận biết các phân phối dữ liệu phổ biến như phân phối chuẩn (Normal/Gaussian) và phân phối đều (Uniform).",
-      "topic_codes": "PROBABILITY_DISTRIBUTIONS",
+      "topic_codes": "ALGO_ANALYSIS",
       "keywords": "distribution, normal distribution, uniform distribution",
       "cs2023_ka_mapping": "MSF",
       "metadata": "{\"icon\": \"bell\"}"
@@ -3294,46 +3294,46 @@
       "metadata": "{\"icon\": \"user-lock\"}"
     },
     {
-      "code": "STATIC_MEMBERS",
+      "code": "STATIC_MEMBERS_CONCEPT",
       "name": "Static Members",
       "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
-      "topic_codes": "OOP",
+      "topic_codes": "STATIC_MEMBERS",
       "keywords": "static, class variable, class method",
       "cs2023_ka_mapping": "FPL",
       "metadata": "{\"icon\": \"star-of-life\"}"
     },
     {
-      "code": "FIRST_CLASS_FUNCTIONS",
+      "code": "FIRST_CLASS_FUNCTIONS_CONCEPT",
       "name": "First-Class & Higher-Order Functions",
       "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
-      "topic_codes": "FUNCTIONAL_PROG",
+      "topic_codes": "FIRST_CLASS_FUNCTIONS",
       "keywords": "higher-order functions, lambda, closures, first-class functions",
       "cs2023_ka_mapping": "FPL",
       "metadata": "{\"icon\": \"lambda\"}"
     },
     {
-      "code": "IMMUTABILITY",
+      "code": "IMMUTABILITY_CONCEPT",
       "name": "Immutability and Pure Functions",
       "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
-      "topic_codes": "FUNCTIONAL_PROG",
+      "topic_codes": "IMMUTABILITY",
       "keywords": "immutability, pure functions, side effects, functional",
       "cs2023_ka_mapping": "FPL",
       "metadata": "{\"icon\": \"snowflake\"}"
     },
     {
-      "code": "EVENT_HANDLERS",
+      "code": "EVENT_HANDLERS_CONCEPT",
       "name": "Events and Event Handling",
       "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
-      "topic_codes": "EVENT_DRIVEN_PROG",
+      "topic_codes": "EVENT_HANDLERS",
       "keywords": "events, event handler, listener, callback",
       "cs2023_ka_mapping": "FPL, HCI",
       "metadata": "{\"icon\": \"hand-point-up\"}"
     },
     {
-      "code": "ASYNCHRONOUS_PROG",
+      "code": "ASYNCHRONOUS_PROG_CONCEPT",
       "name": "Asynchronous Programming",
       "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
-      "topic_codes": "EVENT_DRIVEN_PROG",
+      "topic_codes": "ASYNCHRONOUS_PROG",
       "keywords": "async, await, promises, callbacks, non-blocking",
       "cs2023_ka_mapping": "FPL, PDC",
       "metadata": "{\"icon\": \"hourglass-start\"}"
@@ -3342,7 +3342,7 @@
       "code": "SHARED_EDITING_ETIQUETTE",
       "name": "Etiquette for Collaborative Editing",
       "description": "Áp dụng các quy tắc ứng xử khi làm việc trên các tài liệu chung, như sử dụng chế độ \"gợi ý\" (suggesting) và để lại bình luận rõ ràng.",
-      "topic_codes": "COLLABORATION_ETIQUETTE",
+      "topic_codes": "COLLABORATION_TOOLS",
       "keywords": "collaboration, etiquette, Google Docs, comments",
       "cs2023_ka_mapping": "SEP",
       "metadata": "{\"icon\": \"comments-alt\"}"
@@ -3378,16 +3378,16 @@
       "code": "TWO_FACTOR_AUTH",
       "name": "Two-Factor Authentication (2FA)",
       "description": "Hiểu nguyên lý và tầm quan trọng của Xác thực Hai Yếu tố (2FA) trong việc tăng cường bảo mật tài khoản.",
-      "topic_codes": "DEVICE_PROTECTION, DATA_PRIVACY_USER",
+      "topic_codes": "PASSWORD_STRENGTH",
       "keywords": "2FA, MFA, authentication, security",
       "cs2023_ka_mapping": "SEC",
       "metadata": "{\"icon\": \"key\"}"
     },
     {
-      "code": "MALWARE_TYPES",
+      "code": "MALWARE_TYPES_CONCEPT",
       "name": "Malware Types",
       "description": "Phân biệt các loại phần mềm độc hại phổ biến như virus, worm, và ransomware.",
-      "topic_codes": "DEVICE_PROTECTION",
+      "topic_codes": "MALWARE_TYPES",
       "keywords": "malware, virus, ransomware, cybersecurity",
       "cs2023_ka_mapping": "SEC",
       "metadata": "{\"icon\": \"shield-virus\"}"
@@ -3486,7 +3486,7 @@
       "code": "MVVM_PATTERN",
       "name": "MVVM Architectural Pattern",
       "description": "Áp dụng mẫu kiến trúc Model-View-ViewModel để tách biệt giao diện (View), trạng thái và logic giao diện (ViewModel), và dữ liệu cốt lõi (Model).",
-      "topic_codes": "UI_ARCH_PATTERNS",
+      "topic_codes": "OBSERVABLE_MODEL",
       "keywords": "MVVM, architecture, ViewModel",
       "cs2023_ka_mapping": "SE, HCI",
       "metadata": "{\"icon\": \"sitemap\"}"
@@ -3567,7 +3567,7 @@
       "code": "APP_EXTENSION_MODEL",
       "name": "App Extension Model",
       "description": "Hiểu mô hình kiến trúc của các thành phần mở rộng như Widgets, chạy độc lập nhưng liên kết với ứng dụng chính để hiển thị dữ liệu.",
-      "topic_codes": "PLATFORM_INTEGRATION",
+      "topic_codes": "MEDIA_SERVICES",
       "keywords": "app extensions, WidgetKit, widgets",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"puzzle-piece\"}"
@@ -3594,7 +3594,7 @@
       "code": "JSON_SERIALIZATION",
       "name": "JSON Serialization/Deserialization",
       "description": "Sử dụng cơ chế Codable để mã hóa (serialize) các đối tượng Swift thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng.",
-      "topic_codes": "DATA_ENCODING, API_DESIGN",
+      "topic_codes": "STRUCTURED_DATA_STORAGE",
       "keywords": "JSON, Codable, serialization, deserialization, Encoder, Decoder",
       "cs2023_ka_mapping": "AL, SE",
       "metadata": "{\"icon\": \"file-code\"}"
@@ -3612,13 +3612,13 @@
       "code": "COLLISION_DETECTION",
       "name": "Collision Detection",
       "description": "Cơ chế phát hiện khi hai vật thể trong không gian game chạm vào nhau hoặc xuyên qua nhau để kích hoạt sự kiện.",
-      "topic_codes": "GAME_PHYSICS",
+      "topic_codes": "PHYSICS_CONSTRAINTS",
       "keywords": "collision, hitbox, raycasting",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"car-crash\"}"
     },
     {
-      "code": "PHYSICS_CONSTRAINTS",
+      "code": "PHYSICS_CONSTRAINTS_CONCEPT",
       "name": "Physics Constraints",
       "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
       "topic_codes": "PHYSICS_CONSTRAINTS",
@@ -3663,7 +3663,7 @@
       "metadata": ""
     },
     {
-      "code": "UI_MODIFIERS",
+      "code": "UI_MODIFIERS_CONCEPT",
       "name": "UI Modifiers",
       "description": "Áp dụng các hàm thay đổi giao diện.",
       "topic_codes": "UI_MODIFIERS",
@@ -3675,7 +3675,7 @@
       "code": "STATE_PROPERTY_WRAPPER",
       "name": "State Property Wrapper",
       "description": "Theo dõi trạng thái bằng property wrapper.",
-      "topic_codes": "LOCAL_VIEW_STATE",
+      "topic_codes": "STATE_MANAGEMENT",
       "keywords": "state",
       "cs2023_ka_mapping": "",
       "metadata": ""
@@ -3720,7 +3720,7 @@
       "code": "WEB_HOSTING",
       "name": "Web Hosting & Infrastructure",
       "description": "Hạ tầng lưu trữ và phân phối ứng dụng web.",
-      "topic_codes": "APP_PROTOCOLS, CLOUD_COMPUTING",
+      "topic_codes": "APP_DEPLOYMENT",
       "keywords": "CDN, static hosting, edge",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3729,7 +3729,7 @@
       "code": "WEB_BROWSER_ENGINES",
       "name": "Web Browser Architecture & Engines",
       "description": "Kiến trúc trình duyệt web và cơ chế render.",
-      "topic_codes": "APP_PROTOCOLS, FRONTEND_DEV",
+      "topic_codes": "HTML_CSS",
       "keywords": "DOM tree, CSSOM, reflow, repaint",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3738,7 +3738,7 @@
       "code": "UI_BOX_MODEL_LAYOUT",
       "name": "UI Box Model Layout System",
       "description": "Mô hình bố cục khung khối UI trừu tượng (Margin, Border, Padding).",
-      "topic_codes": "LAYOUT_COMPOSITION, FRONTEND_DEV",
+      "topic_codes": "STACK_LAYOUT",
       "keywords": "box-sizing, margin, padding, border",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3747,7 +3747,7 @@
       "code": "FLEXBOX_GRID_LAYOUT",
       "name": "Flexible & Grid Layout Systems",
       "description": "Hệ thống dàn trang linh hoạt và dạng lưới.",
-      "topic_codes": "LAYOUT_COMPOSITION, FRONTEND_DEV",
+      "topic_codes": "GRID_LAYOUT",
       "keywords": "flexbox, css grid, alignment",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3756,7 +3756,7 @@
       "code": "RESPONSIVE_DESIGN",
       "name": "Responsive Web Design Principles",
       "description": "Nguyên lý thiết kế ứng dụng web đáp ứng đa màn hình.",
-      "topic_codes": "LAYOUT_COMPOSITION, GRAPHIC_DESIGN_PRINCIPLES",
+      "topic_codes": "ADAPTIVE_LAYOUT",
       "keywords": "media queries, breakpoints, fluid",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3765,7 +3765,7 @@
       "code": "PACKAGE_MANAGEMENT",
       "name": "Package & Dependency Management",
       "description": "Nguyên lý và công cụ quản lý thư viện phụ thuộc.",
-      "topic_codes": "DEVELOPMENT_ENVIRONMENT, VERSION_CONTROL",
+      "topic_codes": "IDE_NAVIGATION",
       "keywords": "npm, yarn, pnpm, pip, conda, uv",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3774,7 +3774,7 @@
       "code": "MODULE_BUNDLERS",
       "name": "Module Bundlers & Build Tools",
       "description": "Công cụ đóng gói module và biên dịch tài nguyên.",
-      "topic_codes": "DEVELOPMENT_ENVIRONMENT",
+      "topic_codes": "IDE_NAVIGATION",
       "keywords": "Vite, Webpack, Rollup, Parcel, esbuild",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3783,7 +3783,7 @@
       "code": "CODE_LINTING_FORMATTING",
       "name": "Code Formatting & Static Analysis",
       "description": "Công cụ linter và định dạng mã nguồn tự động.",
-      "topic_codes": "DEVELOPMENT_ENVIRONMENT, TROUBLESHOOTING_METHODOLOGY",
+      "topic_codes": "IDE_NAVIGATION",
       "keywords": "ESLint, Prettier",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3792,7 +3792,7 @@
       "code": "VCS_HOSTING",
       "name": "Version Control Hosting Platforms",
       "description": "Nền tảng lưu trữ và quản lý mã nguồn lưu vết.",
-      "topic_codes": "VERSION_CONTROL, DEVELOPMENT_ENVIRONMENT",
+      "topic_codes": "GIT_BASICS",
       "keywords": "GitHub, GitLab, Bitbucket",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3801,7 +3801,7 @@
       "code": "AUTOMATED_TESTING_TOOLS",
       "name": "Automated Testing Frameworks & Tools",
       "description": "Khung kiểm thử tự động unit test và end-to-end.",
-      "topic_codes": "TESTING_DEBUGGING, ERROR_MESSAGES",
+      "topic_codes": "UNIT_INTEGRATION_TESTING",
       "keywords": "Jest, Vitest, Cypress, Playwright",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3810,7 +3810,7 @@
       "code": "CROSS_ORIGIN_SECURITY",
       "name": "Cross-Origin Security & Policies",
       "description": "Cơ chế bảo mật truy cập tài nguyên chia sẻ cross-origin.",
-      "topic_codes": "NETWORK_SECURITY, APP_PROTOCOLS",
+      "topic_codes": "FIREWALLS_IDS",
       "keywords": "CORS, Same-Origin Policy",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
@@ -3819,7 +3819,7 @@
       "code": "WEB_AUTHENTICATION_STRATEGIES",
       "name": "Web Authentication & Authorization",
       "description": "Các chiến lược xác thực và phân quyền người dùng web.",
-      "topic_codes": "NETWORK_SECURITY, APP_PROTOCOLS",
+      "topic_codes": "ENCRYPTION_PROTOCOLS",
       "keywords": "JWT, OAuth, Session Cookies, WebAuthn",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"

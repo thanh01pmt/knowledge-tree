@@ -831,9 +831,11 @@ def main():
         status["last_report_path"] = str((report_dir / "validation_report.md").relative_to(repo_root))
         status["pending_manual_fixes"] = no_fix_issue_count
         status["pending_proposed_fixes"] = len(proposals)
-        if args.fix:
+        if args.fix and proposals:
             status["proposed_fixes_path"] = str(
                 (artifact_paths["fix_dir"] / "proposed_fixes.md").relative_to(repo_root))
+        else:
+            status["proposed_fixes_path"] = None
         status_path.parent.mkdir(parents=True, exist_ok=True)
         write_status_yaml(status_path, status)
 

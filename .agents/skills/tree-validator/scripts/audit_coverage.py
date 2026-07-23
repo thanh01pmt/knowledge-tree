@@ -171,9 +171,10 @@ def audit_project_coverage(slug: str, repo_root: Path):
 
         matches = []
         if keywords:
+            min_matches = min(2, len(keywords))
             for idx, text in enumerate(lo_full_text):
                 matched_count = sum(1 for kw in keywords if kw in text)
-                if matched_count >= 1:
+                if matched_count >= min_matches:
                     matches.append(los[idx]["code"])
 
         if matches:

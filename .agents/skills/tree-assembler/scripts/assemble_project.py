@@ -78,11 +78,19 @@ def build_lookup_tables(master: dict) -> tuple[dict, dict, dict]:
     """Build code → level and code → row lookup tables from master_tree.json."""
     levels = ["fields", "subjects", "categories", "topics", "concepts"]
     code_to_lvl, code_to_row = {}, {}
+    collisions = []
     for lvl in levels:
         for row in master.get(lvl, []):
             code = row["code"]
+            if code in code_to_lvl and code_to_lvl[code] != lvl:
+                collisions.append((code, code_to_lvl[code], lvl))
             code_to_lvl[code] = lvl
             code_to_row[code] = dict(row)
+    if collisions:
+        print("❌ Codes reused across multiple Master Tree levels:")
+        for code, lvl1, lvl2 in collisions:
+            print(f"   • '{code}' is both a {lvl1[:-1]} and a {lvl2[:-1]}")
+        sys.exit(1)
     return levels, code_to_lvl, code_to_row
 
 
@@ -115,25 +123,31 @@ def collect_ancestors(code: str, code_to_lvl: dict, code_to_row: dict, result: d
 def sanitize_parent_refs(result: dict, levels: list):
     """Trim cross-level parent references to only valid codes at each level."""
     level_codes = {lvl: set(result.get(lvl, {}).keys()) for lvl in levels}
+    dropped = []
 
-    def clean(rows_dict, parent_field, parent_lvl, fallback_fn):
-        for row in rows_dict.values():
+    def clean(rows_dict, parent_field, parent_lvl, level_name):
+        for code, row in list(rows_dict.items()):
             valid = [c.strip() for c in row.get(parent_field, "").replace(";", ",").split(",")
                      if c.strip() in level_codes[parent_lvl]]
-            row[parent_field] = ", ".join(valid) if valid else fallback_fn()
+            if valid:
+                row[parent_field] = ", ".join(valid)
+            else:
+                dropped.append((level_name, code, row.get(parent_field, "")))
+                del rows_dict[code]
 
     if result.get("subjects"):
-        clean(result["subjects"], "field_codes", "fields",
-              lambda: next(iter(level_codes["fields"]), ""))
+        clean(result["subjects"], "field_codes", "fields", "subjects")
     if result.get("categories"):
-        clean(result["categories"], "subject_codes", "subjects",
-              lambda: next(iter(level_codes["subjects"]), ""))
+        clean(result["categories"], "subject_codes", "subjects", "categories")
     if result.get("topics"):
-        clean(result["topics"], "category_codes", "categories",
-              lambda: next(iter(level_codes["categories"]), ""))
+        clean(result["topics"], "category_codes", "categories", "topics")
     if result.get("concepts"):
-        clean(result["concepts"], "topic_codes", "topics",
-              lambda: next(iter(level_codes["topics"]), ""))
+        clean(result["concepts"], "topic_codes", "topics", "concepts")
+
+    if dropped:
+        print("⚠️  Rows dropped for lacking any valid parent (fix the Master Tree or mapping-plan):")
+        for level_name, code, raw in dropped:
+            print(f"   • {level_name}/{code} (had: '{raw}')")
 
 
 HEADERS_MAP = {
