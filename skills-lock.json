@@ -1,6 +1,12 @@
 {
   "version": 1,
   "skills": {
+    "context7-mcp": {
+      "source": "upstash/context7",
+      "sourceType": "github",
+      "skillPath": "skills/context7-mcp/SKILL.md",
+      "computedHash": "5469e63939588b98cc8185697897960793e44318a0a4f64af52cb326da24f897"
+    },
     "supabase": {
       "source": "supabase/agent-skills",
       "sourceType": "github",

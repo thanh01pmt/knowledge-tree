@@ -14,6 +14,7 @@
 | `/validate-tree` | @tree-validator | Run `validate_tree.py` for structural referential integrity |
 | `/audit-coverage` | @tree-validator | Run `audit_coverage.py` to cross-reference LO output against source PDF |
 | `/sync-supabase` | @tree-assembler | Run `sync_to_supabase.py` to push TSVs into Supabase Cloud DB |
+| `/crawl-roadmap <url>` | @roadmap-aligner | Crawl external roadmap.sh & align/enrich Master TSV |
 
 ## scaffolder
 - Goal: Scaffold project directory structure, 6 output TSV headers, and set active project in `status.yaml`.
@@ -28,6 +29,11 @@
 - Handover: `.work/mapping-plan.md`
 - Skill: `taxonomy-mapper`
 
+## @roadmap-aligner
+- Goal: Crawl external roadmaps (roadmap.sh) via Crawl4AI server & align missing topics with Master TSV.
+- Handover: `.work/roadmap_alignment_report.md`
+- Skill: `roadmap-aligner`
+
 ## @tree-assembler
 - Goal: (1) Build 5 taxonomy TSVs from approved mapping-plan. (2) Generate learning-objectives.tsv via /generate-los after build-tree. (3) Sync to Supabase via /sync-supabase.
 - Skill: `tree-assembler`, `learning-objective-generator`, `supabase-sync`
@@ -35,3 +41,4 @@
 ## @tree-validator
 - Goal: Run validation script (`validate_tree.py`) & reverse coverage audit (`audit_coverage.py`) to ensure 100% referential integrity and 100% syllabus coverage.
 - Skill: `tree-validator`
+
