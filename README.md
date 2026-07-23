@@ -1,5 +1,10 @@
 # Universal Agentic Knowledge Tree Pipeline
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-2.1-4ba51d.svg)](CODE_OF_CONDUCT.md)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 Hệ thống xây dựng và tự động hóa Khung tri thức (Knowledge Tree) cho các chứng chỉ, môn học và lộ trình công nghệ (Roadmaps), vận hành thông qua **Agentic Workflows (slash commands)**. Hệ thống kết hợp sự linh hoạt của LLM trong việc đối chiếu syllabus/đồ thị tri thức và tính chính xác (deterministic) của các script Python trong việc quản lý, kiểm định dữ liệu.
 
 ---
@@ -144,3 +149,18 @@ python3 .agents/skills/roadmap-aligner/scripts/apply_plan_to_staging.py
 # 7. Đồng bộ 6 file TSV của dự án lên Supabase Database
 python3 .agents/skills/supabase-sync/scripts/sync_to_supabase.py --project <project-slug>
 ```
+
+---
+
+## 🤝 Cộng đồng & Đóng góp (Community & Contributing)
+
+Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng! Dù bạn muốn đề xuất node tri thức mới, nâng cấp các script kiểm định, hay đóng góp lộ trình môn học mới:
+
+- **Hướng dẫn Đóng góp:** Đọc thêm tại [CONTRIBUTING.md](CONTRIBUTING.md).
+- **Quy tắc Ứng xử:** Tham khảo [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+- **Báo cáo Lỗ hổng Bảo mật:** Xem chính sách bảo mật tại [SECURITY.md](SECURITY.md).
+
+## 📜 Giấy phép (License)
+
+Dự án được phát hành theo giấy phép open-source [MIT License](LICENSE).
+
