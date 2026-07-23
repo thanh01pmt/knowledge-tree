@@ -177,20 +177,63 @@ def parse_master_tsv(tsv_path: Path):
 
 # ── 2-STEP DECISION FRAMEWORK FOR CANDIDATE EVALUATION ────────────────────────
 CONCRETE_TOOL_MAP = {
+    # Package Managers & Build Tools
     "pip": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
     "npm": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
+    "yarn": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
+    "pnpm": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
     "conda": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
     "uv": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
     "cargo": ("PACKAGE_MANAGEMENT", "Package & Dependency Management"),
+    
+    # Virtual Environments & Containers
     "virtualenv / venv": ("VIRTUAL_ENVIRONMENTS", "Virtual Environment Management"),
     "virtualenv": ("VIRTUAL_ENVIRONMENTS", "Virtual Environment Management"),
     "venv": ("VIRTUAL_ENVIRONMENTS", "Virtual Environment Management"),
+    "Docker": ("CONTAINERIZATION", "Containerization & Isolation"),
+    
+    # IDEs & Editor Setup
     "VS Code": ("DEVELOPMENT_ENVIRONMENTS", "Integrated Development Environments (IDEs)"),
     "JupyterLab": ("DEVELOPMENT_ENVIRONMENTS", "Integrated Development Environments (IDEs)"),
     "Google Colab": ("DEVELOPMENT_ENVIRONMENTS", "Integrated Development Environments (IDEs)"),
     "IDEs": ("DEVELOPMENT_ENVIRONMENTS", "Integrated Development Environments (IDEs)"),
-    "Environment Setup": ("DEVELOPMENT_ENVIRONMENTS", "Integrated Development Environments (IDEs)")
+    "Environment Setup": ("DEVELOPMENT_ENVIRONMENTS", "Integrated Development Environments (IDEs)"),
+    
+    # VCS Hosting Platforms
+    "GitHub": ("VCS_HOSTING", "Version Control Hosting Platforms"),
+    "GitLab": ("VCS_HOSTING", "Version Control Hosting Platforms"),
+    "Bitbucket": ("VCS_HOSTING", "Version Control Hosting Platforms"),
+    
+    # Frontend Frameworks & Libraries (Specific Tool Implementations)
+    "React": ("FRONTEND_FRAMEWORKS", "Frontend UI Frameworks & Component Libraries"),
+    "Vue.js": ("FRONTEND_FRAMEWORKS", "Frontend UI Frameworks & Component Libraries"),
+    "Angular": ("FRONTEND_FRAMEWORKS", "Frontend UI Frameworks & Component Libraries"),
+    "Svelte": ("FRONTEND_FRAMEWORKS", "Frontend UI Frameworks & Component Libraries"),
+    "Solid JS": ("FRONTEND_FRAMEWORKS", "Frontend UI Frameworks & Component Libraries"),
+    "Preact": ("FRONTEND_FRAMEWORKS", "Frontend UI Frameworks & Component Libraries"),
+    
+    # CSS Preprocessors & Frameworks
+    "Tailwind CSS": ("CSS_FRAMEWORKS", "CSS Frameworks & Styling Tools"),
+    "Bootstrap": ("CSS_FRAMEWORKS", "CSS Frameworks & Styling Tools"),
+    "Sass": ("CSS_PREPROCESSORS", "CSS Preprocessors & Extensions"),
+    "PostCSS": ("CSS_PREPROCESSORS", "CSS Preprocessors & Extensions"),
+    
+    # Build & Bundling Tools
+    "Vite": ("MODULE_BUNDLERS", "Module Bundlers & Build Tools"),
+    "Webpack": ("MODULE_BUNDLERS", "Module Bundlers & Build Tools"),
+    "Rollup": ("MODULE_BUNDLERS", "Module Bundlers & Build Tools"),
+    "Parcel": ("MODULE_BUNDLERS", "Module Bundlers & Build Tools"),
+    "esbuild": ("MODULE_BUNDLERS", "Module Bundlers & Build Tools"),
+    
+    # Testing & Linting Tools
+    "ESLint": ("CODE_LINTING_FORMATTING", "Code Linting & Formatting Tools"),
+    "Prettier": ("CODE_LINTING_FORMATTING", "Code Linting & Formatting Tools"),
+    "Jest": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
+    "Vitest": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
+    "Cypress": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools"),
+    "Playwright": ("AUTOMATED_TESTING_TOOLS", "Automated Testing Frameworks & Tools")
 }
+
 
 def evaluate_candidate_item(name: str, master_concepts: list[dict]):
     """
@@ -213,15 +256,47 @@ def evaluate_candidate_item(name: str, master_concepts: list[dict]):
             "action": f"Map '{name_clean}' as Keyword under Concept '{target_code}' ({'Exists' if existing else 'Create New Abstract Concept'})"
         }
     
-    # Step 2: Abstract Concept promotion
-    # Convert name to UPPER_SNAKE_CASE code proposal
-    proposed_code = re.sub(r"[^A-Za-z0-9]+", "_", name_clean).strip("_").upper()
+    # Step 2: Abstract Concept promotion & Noun Phrase Normalization
+    # 2a. Clean question sentences and verbs into Noun Phrases
+    cleaned_name = name_clean
+    
+    # Custom Abstraction & Noun Phrase Mappings
+    CONCEPT_NOUN_MAP = {
+        "How does the internet work?": ("INTERNET_FUNDAMENTALS", "Internet Fundamentals & Architecture"),
+        "What is HTTP?": ("HTTP_PROTOCOL", "HTTP Protocol & Specification"),
+        "What is Domain Name?": ("DOMAIN_NAME_SYSTEM", "Domain Name System (DNS)"),
+        "What is hosting?": ("WEB_HOSTING", "Web Hosting & Infrastructure"),
+        "DNS and how it works?": ("DOMAIN_NAME_SYSTEM", "Domain Name System (DNS)"),
+        "Browsers and how they work?": ("WEB_BROWSER_ENGINES", "Web Browser Architecture & Engines"),
+        "CSS Box Model": ("UI_BOX_MODEL_LAYOUT", "UI Box Model Layout System"),
+        "Box Model": ("UI_BOX_MODEL_LAYOUT", "UI Box Model Layout System"),
+        "APIs with requests": ("HTTP_API_CLIENTS", "HTTP API Clients & Requests")
+    }
+
+    if cleaned_name in CONCEPT_NOUN_MAP:
+        proposed_code, clean_title = CONCEPT_NOUN_MAP[cleaned_name]
+        return {
+            "type": "ABSTRACT_CONCEPT_PROPOSAL",
+            "item": name_clean,
+            "proposed_code": proposed_code,
+            "action": f"Promote '{name_clean}' as Noun Concept Code '{proposed_code}' ({clean_title}) to Master Tree"
+        }
+
+    # Strip question patterns: "How does...", "What is...", "how it works?", "Learn a..."
+    cleaned_name = re.sub(r"^(What is|How does|How|Learn a|Learn)\s+", "", cleaned_name, flags=re.IGNORECASE)
+    cleaned_name = re.sub(r"\s+and how it works\??$", "", cleaned_name, flags=re.IGNORECASE)
+    cleaned_name = re.sub(r"\s+and how they work\??$", "", cleaned_name, flags=re.IGNORECASE)
+    cleaned_name = cleaned_name.strip("? ")
+
+    # Convert normalized name to UPPER_SNAKE_CASE noun code proposal
+    proposed_code = re.sub(r"[^A-Za-z0-9]+", "_", cleaned_name).strip("_").upper()
     return {
         "type": "ABSTRACT_CONCEPT_PROPOSAL",
         "item": name_clean,
         "proposed_code": proposed_code,
-        "action": f"Promote '{name_clean}' as Abstract Concept Code '{proposed_code}' to Master Tree"
+        "action": f"Promote '{name_clean}' as Noun Concept Code '{proposed_code}' to Master Tree"
     }
+
 
 def align_topics(roadmap_topics: list[dict], master_concepts: list[dict], master_topics: list[dict]):
     """Align extracted roadmap topics with existing master concepts & topics preserving sequence"""
