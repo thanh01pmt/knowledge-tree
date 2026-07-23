@@ -10,7 +10,7 @@
 3. **Tiền tố Câu Mô tả LO Chuẩn hóa**:
    - 100% câu mô tả trong `learning-objectives.tsv` BẮT BUỘC bắt đầu bằng: **`"Người học có khả năng ..."`**.
 4. **Quy mô & Độ phủ Tri thức Cạn kiệt ($\ge 80 - 160$ LOs)**:
-   - Trích xuất cạn kệt 100% nội dung `context/*.json` và `context/*.pdf` với quy mô trung bình **$\ge 80 - 120$ LOs**.
+   - Trích xuất cạn kệt 100% nội dung `context/*.json` và `context/*.pdf` với quy mô trung bình **$\ge 80 - 160$ LOs**.
    - Bắt buộc phải **PASS cả 2 script**: `validate_tree.py` (`[PASS] 0 lỗi`) và `audit_coverage.py` (`Coverage Score ≥ 90%`).
 5. **Cấm Dùng Script thế chuỗi regex cơ học (No Dumb Find-and-Replace)**:
    - Mọi câu từ mô tả ULO/CIO/Concept phải được viết tự nhiên, mạch lạc, không find-and-replace thô ráp.

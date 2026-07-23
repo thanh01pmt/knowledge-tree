@@ -1,0 +1,160 @@
+# Context Syllabus Audit for roadmap_sh_backend
+
+## Core Topics
+- Search Engines
+- Learn about APIs
+- Introduction
+- Pick a Backend Language
+- Version Control Systems
+- Repo Hosting Services
+- Relational Databases
+- NoSQL Databases
+- More about Databases
+- Scaling Databases
+- Caching
+- Testing
+- CI / CD
+- Architectural Patterns
+- Message Brokers
+- Learn about Web Servers
+- Building For Scale
+- Real-Time Data
+- Frontend Basics
+- Learn the Basics
+- AI Assisted Coding
+- Applications
+- Integration Patterns
+
+## Subtopics & Detailed Skills
+- Open API Specs
+- Rust
+- PHP
+- Go
+- JavaScript
+- Java
+- Python
+- C#
+- Ruby
+- Git
+- GitHub
+- GitLab
+- PostgreSQL
+- MS SQL
+- MySQL
+- Oracle
+- MariaDB
+- ORMs
+- Normalization
+- ACID
+- Failure Modes
+- Transactions
+- Profiling Performance
+- N+1 Problem
+- Database Indexes
+- Sharding Strategies
+- Data Replication
+- CAP Theorem
+- JSON APIs
+- SOAP
+- gRPC
+- REST
+- GraphQL
+- HTTP Caching
+- Web Security
+- Integration Testing
+- Functional Testing
+- Unit Testing
+- Monolith
+- Service Mesh
+- SOA
+- Twelve Factor Apps
+- RabbitMQ
+- Kafka
+- LXC
+- WebSockets
+- Server Sent Events
+- Nginx
+- Caddy
+- Apache
+- MS IIS
+- Redis
+- Memcached
+- MongoDB
+- CouchDB
+- Neo4j
+- Graceful Degradation
+- Throttling
+- Backpressure
+- Loadshifting
+- Circuit Breaker
+- Instrumentation
+- Monitoring
+- Telemetry
+- MD5
+- SHA
+- scrypt
+- bcrypt
+- HTTPS
+- OWASP Risks
+- SSL/TLS
+- CORS
+- Server Security
+- CSP
+- How does the internet work?
+- What is HTTP?
+- What is Domain Name?
+- What is hosting?
+- DNS and how it works?
+- Browsers and how they work?
+- Authentication
+- JWT
+- Basic Authentication
+- Token Authentication
+- OAuth
+- Cookie Based Auth
+- OpenID
+- SAML
+- Elasticsearch
+- Solr
+- Long / Short Polling
+- Redis
+- DynamoDB
+- Firebase
+- RethinkDB
+- SQLite
+- Influx DB
+- TimescaleDB
+- Cassandra
+- AWS Neptune
+- Observability
+- HTML
+- CSS
+- JavaScript
+- Microservices
+- Serverless
+- ClickHouse
+- ScyllaDB
+- DGraph
+- Migrations
+- Claude Code
+- Copilot
+- Cursor
+- Antigravity
+- How LLMs work
+- AI vs Traditional Coding
+- Code Reviews
+- Documentation Generation
+- Prompting Techniques
+- Gemini
+- OpenAI
+- Anthropic
+- Refactoring
+- Streaming
+- Structured Outputs
+- Function Calling
+- RAGs
+- Vectors
+- Embeddings
+- MCP
+- Skills
+- Agents

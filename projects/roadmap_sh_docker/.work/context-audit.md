@@ -1,0 +1,62 @@
+# Context Syllabus Audit for roadmap_sh_docker
+
+## Core Topics
+- Introduction
+- Underlying Technologies
+- Installation / Setup
+- Basics of Docker
+- Data Persistence
+- Using 3rd Party Container Images
+- Building Container Images
+- Container Registries
+- Running Containers
+- Container Security
+- Docker CLI
+- Developer Experience
+- Deploying Containers
+- Networking
+
+## Subtopics & Detailed Skills
+- What are Containers?
+- Why do we need Containers?
+- Bare Metal vs VMs vs Containers
+- Docker and OCI
+- Package Managers
+- Users / Groups Permissions
+- Shell Commands
+- Shell Scripting
+- Programming Languages
+- Application Architecture
+- Namespaces
+- cgroups
+- Union Filesystems
+- Docker Desktop (Win/Mac/Linux)
+- Docker Engine ( Linux )
+- Ephemeral Container Filesystem
+- Volume Mounts
+- Bind Mounts
+- Databases
+- Command Line Utilities
+- Dockerfiles
+- Efficient Layer Caching
+- Image Size and Security
+- Dockerhub
+- Image Tagging Best Practices
+- Others (ghcr, ecr, gcr, acr, etc)
+- docker run
+- docker compose
+- Runtime Configuration Options
+- Runtime Security
+- Image Security
+- Images
+- Containers
+- Volumes
+- Networks
+- Hot Reloading
+- Debuggers
+- Tests
+- Continuous Integration
+- PaaS Options
+- Kubernetes
+- Nomad
+- Docker Swarm

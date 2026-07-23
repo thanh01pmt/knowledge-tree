@@ -1,0 +1,142 @@
+# Context Syllabus Audit for roadmap_sh_devops
+
+## Core Topics
+- Learn a Programming Language
+- Operating System
+- Terminal Knowledge
+- Version Control Systems
+- VCS Hosting
+- What is and how to setup X ?
+- Containers
+- Cloud Providers
+- Networking & Protocols
+- Serverless
+- Provisioning
+- Configuration Management
+- CI / CD Tools
+- Secret Management
+- Infrastructure Monitoring
+- Logs Management
+- Container Orchestration
+- Artifact Management
+- GitOps
+- Service Mesh
+- Cloud Design Patterns
+- Observability
+
+## Subtopics & Detailed Skills
+- Python
+- Ruby
+- Go
+- Rust
+- JavaScript / Node.js
+- Ubuntu / Debian
+- SUSE Linux
+- RHEL / Derivatives
+- FreeBSD
+- OpenBSD
+- NetBSD
+- Windows
+- Process Monitoring
+- Performance Monitoring
+- Networking Tools
+- Text Manipulation
+- Bash
+- Power Shell
+- Vim / Nano /  Emacs
+- Git
+- GitHub
+- GitLab
+- Bitbucket
+- Forward Proxy
+- Firewall
+- Nginx
+- Tomcat
+- Apache
+- Caddy
+- IIS
+- Caching Server
+- Load Balancer
+- Reverse Proxy
+- Docker
+- LXC
+- AWS
+- Azure
+- Google Cloud
+- Digital Ocean
+- Alibaba Cloud
+- Hetzner
+- Heroku 
+- FTP / SFTP
+- DNS
+- HTTP
+- HTTPS
+- SSL / TLS
+- SSH
+- White / Grey Listing
+- SMTP
+- DMARC
+- IMAP
+- SPF
+- POP3S
+- Domain Keys
+- OSI Model
+- Vercel
+- Cloudflare
+- Azure Functions
+- AWS Lambda
+- Netlify
+- AWS CDK
+- CloudFormation
+- Pulumi
+- Terraform
+- Ansible
+- Chef
+- Puppet
+- GitHub Actions
+- GitLab CI
+- Jenkins
+- Circle CI
+- Octopus Deploy
+- TeamCity
+- Sealed Secrets
+- Cloud Specific Tools
+- Vault
+- SOPs
+- Zabbix
+- Prometheus
+- Datadog
+- Grafana
+- Elastic Stack
+- Graylog
+- Splunk
+- Papertrail
+- GKE / EKS / AKS
+- AWS ECS / Fargate
+- Docker Swarm
+- Artifactory
+- Nexus
+- Cloud Smith
+- ArgoCD
+- FluxCD
+- Istio
+- Consul
+- Linkerd
+- Envoy
+- Availability
+- Data Management
+- Design and Implementation
+- Management and Monitoring
+- Loki
+- Kubernetes
+- GCP Functions
+- Jaeger
+- New Relic
+- Datadog
+- Prometheus
+- OpenTelemetry
+- ESO
+- Dynatrace
+- Salt
+- OpenShift
+- Render

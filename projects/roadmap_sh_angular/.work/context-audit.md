@@ -1,0 +1,163 @@
+# Context Syllabus Audit for roadmap_sh_angular
+
+## Core Topics
+- Introduction to Angular
+- Components
+- Communication
+- Modules
+- Templates
+- Understand Binding
+- Template Syntax
+- Pipes
+- Directives
+- Routing
+- Services  & Remote Data
+- Forms
+- HTTP Client
+- RxJS Basics
+- Signals
+- State Management
+- Zones
+- Developer Tools
+- SSR
+- SSG
+- Security
+- Accessibility
+- Performance
+- Testing
+- Internationalization
+- Animation
+
+## Subtopics & Detailed Skills
+- Angular Architecture
+- Setting up a New Project
+- Angular and History
+- Component Anatomy
+- Provider
+- changeDetection
+- Template
+- Standalone
+- viewProvider
+- Encapsulation
+- Selector
+- Styles
+- Imports
+- Metadata
+- Parent-Child Interaction
+- ViewChild
+- ContentChild
+- Component Lifecycle
+- Dynamic Components
+- Module Architecture
+- Creating Components
+- Creating Modules
+- Feature Modules
+- Lazy Loading Modules
+- Dependencies
+- Interpolation
+- Template Statements
+- Data Binding
+- Property Binding
+- Attribute Binding
+- Event Binding
+- Two-way Binding
+- Control Flow
+- @Input & @Output
+- Template Ref Vars
+- @if
+- @else
+- @else if
+- @for
+- @switch
+- @case
+- @default
+- @let
+- @defer
+- Change Detection
+- Common Pipes
+- Pipes Precedence
+- Custom Pipes
+- Structural Directives
+- Attribute Directives
+- Custom Directives
+- Configuration
+- Lazy Loading
+- Router Outlets
+- Router Links
+- Router Events
+- Guards
+- Dependency Injection
+- Reactive Forms
+- Typed Forms
+- Template-driven Forms
+- Dynamic Forms
+- Custom Validators
+- Control Value Accessor
+- Setting Up the Client
+- Making Requests
+- Writing Interceptors
+- Observable Pattern
+- Observable Lifecycle
+- RxJS vs Promises
+- Operators
+- Filtering
+- Rate Limiting
+- Transformation
+- Combination
+- RxJS Interop
+- Inputs as Signals
+- Queries as Signals
+- Model Inputs
+- NGXS
+- NgRx
+- Zoneless Applications
+- Angular CLI
+- Local Setup
+- Deployment
+- End-to-End Testing
+- Schematics
+- Build Environments
+- CLI Builders
+- AoT Compilation
+- DevTools
+- Language Service
+- Libraries
+- Using Libraries
+- Creating Libraries
+- AnalogJS
+- Cross-site Scripting
+- Sanitization
+- Trusting Safe Values
+- Enforce Trusted Types
+- HTTP Vulnerabilities
+- Cross-site Request Forgery
+- HttpClient CSRF
+- XSRF protection
+- Cross-site Script Inclusion
+- Attributes
+- UI Components
+- Containers
+- Routing
+- Link Identification
+- Deferrable Views
+- Image Optimization
+- Zone Pollution
+- Slow Computations
+- Hydration
+- Testing Services
+- Testing Pipes
+- Testing Requests
+- Services with Dependencies
+- Component Bindings
+- Testing Directives
+- Debugging Tests
+- Component Templates
+- Code Coverage
+- Localize Package
+- Locales by ID
+- Translation Files
+- Multiple Locales
+- Transitions & Triggers
+- Complex Sequences
+- Reusable Animations
+- Route Transitions

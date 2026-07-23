@@ -1,0 +1,98 @@
+# Context Syllabus Audit for roadmap_sh_typescript
+
+## Core Topics
+- Introduction to TypeScript
+- TypeScript Types
+- Type Inference
+- Type Compatibility
+- Combining Types
+- Type Guards / Narrowing
+- TypeScript Functions
+- TypeScript Interfaces
+- Classes
+- Generics
+- Decorators
+- Utility Types
+- Advanced Types
+- TypeScript Modules
+- Ecosystem
+
+## Subtopics & Detailed Skills
+- TypeScript vs JavaScript
+- TS and JS Interoperability
+- Installation and Configuration
+- tsconfig.json
+- Compiler Options
+- Running TypeScript
+- tsc
+- ts-node
+- TS Playground
+- boolean
+- number
+- string
+- void
+- undefined
+- null
+- Interface
+- Class
+- Enum
+- Array
+- Tuple
+- Object
+- unknown
+- any
+- never
+- as const
+- as [type]
+- as any
+- Non-null Assertion
+- satisfies keyword
+- Union Types
+- Intersection Types
+- Type Aliases
+- keyof Operator
+- instanceof
+- typeof
+- Equality
+- Truthiness
+- Type Predicates
+- Typing Functions
+- Function Overloading
+- Types vs Interfaces
+- Extending Interfaces
+- Interface Declaration
+- Hybrid Types
+- Constructor Params
+- Constructor Overloading
+- Access Modifiers
+- Abstract Classes
+- Inheritance vs Polymorphism
+- Method Overriding
+- Generic Types
+- Generic Constraints
+- Partial
+- Pick
+- Omit
+- Readonly
+- Record
+- Exclude
+- Extract
+- NonNullable
+- Parameters
+- ReturnType
+- InstanceType
+- Awaited
+- Mapped Types
+- Conditional Types
+- Literal Types
+- Template Literal Types
+- Recursive Types
+- Namespaces
+- Ambient Modules
+- External Modules
+- Namespace Augmentation
+- Global Augmentation
+- Formatting
+- Linting
+- Useful Packages
+- Build Tools

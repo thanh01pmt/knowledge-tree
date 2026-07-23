@@ -1,0 +1,104 @@
+{
+  "generated_at": "2026-07-23T09:17:01.194289+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 6,
+    "errors": 6,
+    "warnings": 0,
+    "by_rule": {
+      "BROKEN_REFERENCE": 3,
+      "LO_CONCEPT_NOT_IN_PROJECT": 3
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 6,
+        "WARNING": 0
+      }
+    },
+    "node_counts": {
+      "fields": 1,
+      "subjects": 1,
+      "categories": 1,
+      "topics": 16,
+      "concepts": 16,
+      "learning_objectives": 84
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-GRAPHQL-SYNC-ASYNC-PRODUCING-RESULT",
+      "message": "'RESOLVER_EXECUTION_FUNCTIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "RESOLVER_EXECUTION_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-GRAPHQL-AUTHORIZATION-BATCHING",
+      "message": "'GRAPHQL_SECURITY_RATE_LIMITING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "GRAPHQL_SECURITY_RATE_LIMITING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-GRAPHQL-MERCURIUS-GRAPHENE-SERVERS",
+      "message": "'APOLLO_SERVER_ENGINE' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "APOLLO_SERVER_ENGINE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-GRAPHQL-SYNC-ASYNC-PRODUCING-RESULT",
+      "message": "concept_code 'RESOLVER_EXECUTION_FUNCTIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "RESOLVER_EXECUTION_FUNCTIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-GRAPHQL-AUTHORIZATION-BATCHING",
+      "message": "concept_code 'GRAPHQL_SECURITY_RATE_LIMITING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "GRAPHQL_SECURITY_RATE_LIMITING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-GRAPHQL-MERCURIUS-GRAPHENE-SERVERS",
+      "message": "concept_code 'APOLLO_SERVER_ENGINE' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "APOLLO_SERVER_ENGINE"
+    }
+  ]
+}

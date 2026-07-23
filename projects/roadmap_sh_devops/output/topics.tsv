@@ -1,2 +1,23 @@
 code	name	description	category_codes
-DEVOPS_PRACTICES	Software Operations Practices & Automation Pipelines	Chủ đề tự động hóa hạ tầng và tích hợp liên tục.	DEVOPS_INFRASTRUCTURE
+PROGRAMMING_LANGUAGE_DEVOPS	Programming & Automation Languages	Chủ đề trọng tâm: Programming & Automation Languages	SOFTWARE_SYSTEMS_ENGINEERING
+OPERATING_SYSTEM_ADMINISTRATION	Operating System Concepts & Administration	Chủ đề trọng tâm: Operating System Concepts & Administration	SOFTWARE_SYSTEMS_ENGINEERING
+NETWORKING_PROTOCOLS_SECURITY	Networking Protocols, Security & DNS	Chủ đề trọng tâm: Networking Protocols, Security & DNS	SOFTWARE_SYSTEMS_ENGINEERING
+INFRASTRUCTURE_PROVISIONING_TERRAFORM	Infrastructure as Code (Terraform/OpenTofu)	Chủ đề trọng tâm: Infrastructure as Code (Terraform/OpenTofu)	SOFTWARE_SYSTEMS_ENGINEERING
+CONFIGURATION_MANAGEMENT_ANSIBLE	Configuration Management (Ansible)	Chủ đề trọng tâm: Configuration Management (Ansible)	SOFTWARE_SYSTEMS_ENGINEERING
+CI_CD_PIPELINE_ORCHESTRATION	Continuous Integration & Continuous Delivery (CI/CD)	Chủ đề trọng tâm: Continuous Integration & Continuous Delivery (CI/CD)	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINERIZATION_ENGINE_DOCKER	Containerization Runtimes & Image Building	Chủ đề trọng tâm: Containerization Runtimes & Image Building	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_ORCHESTRATION_KUBERNETES	Container Orchestration & Cluster Management	Chủ đề trọng tâm: Container Orchestration & Cluster Management	SOFTWARE_SYSTEMS_ENGINEERING
+LOG_AGGREGATION_OBSERVABILITY	Log Aggregation & Centralized Observability	Chủ đề trọng tâm: Log Aggregation & Centralized Observability	SOFTWARE_SYSTEMS_ENGINEERING
+METRICS_MONITORING_ALERTING	Metrics Monitoring & Alert Management	Chủ đề trọng tâm: Metrics Monitoring & Alert Management	SOFTWARE_SYSTEMS_ENGINEERING
+DISTRIBUTED_TRACING_TELEMETRY	Distributed Tracing & OpenTelemetry	Chủ đề trọng tâm: Distributed Tracing & OpenTelemetry	SOFTWARE_SYSTEMS_ENGINEERING
+CLOUD_INFRASTRUCTURE_AWS	Cloud Infrastructure & Services (AWS)	Chủ đề trọng tâm: Cloud Infrastructure & Services (AWS)	SOFTWARE_SYSTEMS_ENGINEERING
+CLOUD_INFRASTRUCTURE_GCP	Google Cloud Platform Infrastructure (GCP)	Chủ đề trọng tâm: Google Cloud Platform Infrastructure (GCP)	SOFTWARE_SYSTEMS_ENGINEERING
+CLOUD_NATIVE_SERVERLESS_LAMBDA	Serverless Computing & Cloud Functions	Chủ đề trọng tâm: Serverless Computing & Cloud Functions	SOFTWARE_SYSTEMS_ENGINEERING
+SITE_RELIABILITY_ENGINEERING_SRE	Site Reliability Engineering (SRE) & Service Level Objectives	Chủ đề trọng tâm: Site Reliability Engineering (SRE) & Service Level Objectives	SOFTWARE_SYSTEMS_ENGINEERING
+SERVICE_MESH_ISTIO	Service Mesh Architecture (Istio)	Chủ đề trọng tâm: Service Mesh Architecture (Istio)	SOFTWARE_SYSTEMS_ENGINEERING
+SECRET_MANAGEMENT_VAULT	Secrets Management & Vault Security	Chủ đề trọng tâm: Secrets Management & Vault Security	SOFTWARE_SYSTEMS_ENGINEERING
+GITOPS_ARGO_CD	GitOps & Continuous Deployment (ArgoCD)	Chủ đề trọng tâm: GitOps & Continuous Deployment (ArgoCD)	SOFTWARE_SYSTEMS_ENGINEERING
+ARTIFACT_REPOSITORY_MANAGEMENT	Artifact Repositories & Package Registries	Chủ đề trọng tâm: Artifact Repositories & Package Registries	SOFTWARE_SYSTEMS_ENGINEERING
+BACKUP_DISASTER_RECOVERY	Backup, Disaster Recovery & High Availability	Chủ đề trọng tâm: Backup, Disaster Recovery & High Availability	SOFTWARE_SYSTEMS_ENGINEERING
+COST_OPTIMIZATION_FINOPS	Cloud Cost Optimization & FinOps	Chủ đề trọng tâm: Cloud Cost Optimization & FinOps	SOFTWARE_SYSTEMS_ENGINEERING
+HIGH_PERFORMANCE_LOAD_BALANCING	Reverse Proxies & High-Performance Load Balancing	Chủ đề trọng tâm: Reverse Proxies & High-Performance Load Balancing	SOFTWARE_SYSTEMS_ENGINEERING

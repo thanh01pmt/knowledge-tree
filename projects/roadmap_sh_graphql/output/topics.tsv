@@ -1,2 +1,17 @@
 code	name	description	category_codes
-API_QUERY_LANGUAGES	Declarative Query API API Query Language & Ecosystem	Chủ đề trọng tâm: Declarative Query API API Query Language & Ecosystem	BACKEND_ENGINEERING
+GRAPHQL_SCHEMA_TYPE_SYSTEM	Schema Definition Language & Type System	Chủ đề trọng tâm: Schema Definition Language & Type System	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_QUERY_MUTATION_OPERATIONS	Queries, Mutations & Operation Syntax	Chủ đề trọng tâm: Queries, Mutations & Operation Syntax	SOFTWARE_SYSTEMS_ENGINEERING
+RESOLVER_EXECUTION_FUNCTIONS	Resolver Functions & Execution Engine	Chủ đề trọng tâm: Resolver Functions & Execution Engine	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_SUBSCRIPTIONS_WEBSOCKETS	Realtime Subscriptions & WebSockets	Chủ đề trọng tâm: Realtime Subscriptions & WebSockets	SOFTWARE_SYSTEMS_ENGINEERING
+SCHEMA_DIRECTIVES_TRANSFORMATIONS	Custom Schema Directives & AST Transformations	Chủ đề trọng tâm: Custom Schema Directives & AST Transformations	SOFTWARE_SYSTEMS_ENGINEERING
+APOLLO_SERVER_ENGINE	Apollo Server & Enterprise Backend Integration	Chủ đề trọng tâm: Apollo Server & Enterprise Backend Integration	SOFTWARE_SYSTEMS_ENGINEERING
+APOLLO_CLIENT_STATE_CACHING	Apollo Client & Normalized Cache	Chủ đề trọng tâm: Apollo Client & Normalized Cache	SOFTWARE_SYSTEMS_ENGINEERING
+FEDERATION_MICROSERVICES_GRAPH	GraphQL Federation & Distributed Supergraphs	Chủ đề trọng tâm: GraphQL Federation & Distributed Supergraphs	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_SECURITY_RATE_LIMITING	Security, Depth Limiting & Rate Limiting	Chủ đề trọng tâm: Security, Depth Limiting & Rate Limiting	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_TESTING_MOCKING	Automated Testing & Schema Mocking	Chủ đề trọng tâm: Automated Testing & Schema Mocking	SOFTWARE_SYSTEMS_ENGINEERING
+CODE_GENERATION_TYPESCRIPT_GQL	Automated Code Generation (GraphQL Codegen)	Chủ đề trọng tâm: Automated Code Generation (GraphQL Codegen)	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_ERROR_HANDLING_FORMATTING	Error Handling & Response Formatting	Chủ đề trọng tâm: Error Handling & Response Formatting	SOFTWARE_SYSTEMS_ENGINEERING
+RELAY_SPECIFICATION_PAGINATION	Relay Specification & Cursor-based Pagination	Chủ đề trọng tâm: Relay Specification & Cursor-based Pagination	SOFTWARE_SYSTEMS_ENGINEERING
+PERSISTED_QUERIES_PERFORMANCE	Persisted Queries & Network Optimization	Chủ đề trọng tâm: Persisted Queries & Network Optimization	SOFTWARE_SYSTEMS_ENGINEERING
+DEFER_STREAM_DIRECTIVES	Incremental Delivery (@defer and @stream)	Chủ đề trọng tâm: Incremental Delivery (@defer and @stream)	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_VS_REST_GRPC_GATEWAYS	API Architecture Comparison & Protocol Gateways	Chủ đề trọng tâm: API Architecture Comparison & Protocol Gateways	SOFTWARE_SYSTEMS_ENGINEERING

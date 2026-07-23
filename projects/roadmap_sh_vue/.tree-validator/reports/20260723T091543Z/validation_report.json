@@ -1,0 +1,176 @@
+{
+  "generated_at": "2026-07-23T09:15:43.936391+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 14,
+    "errors": 14,
+    "warnings": 0,
+    "by_rule": {
+      "BROKEN_REFERENCE": 7,
+      "LO_CONCEPT_NOT_IN_PROJECT": 7
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 14,
+        "WARNING": 0
+      }
+    },
+    "node_counts": {
+      "fields": 1,
+      "subjects": 1,
+      "categories": 1,
+      "topics": 16,
+      "concepts": 16,
+      "learning_objectives": 89
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-WATCHERS-VUEUSE-UTILITIES",
+      "message": "'COMPOSITION_REACTIVITY_API' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "COMPOSITION_REACTIVITY_API"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-FORMKIT-VUELIDATE-RULES",
+      "message": "'VUE_FORM_VALIDATION_RULES' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VUE_FORM_VALIDATION_RULES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-QUASAR-VITEPRESS-SSG",
+      "message": "'NUXTJS_SSR_FULLSTACK' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "NUXTJS_SSR_FULLSTACK"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-VITEST-CYPRESS-PLAYWRIGHT",
+      "message": "'VUE_TESTING_UTILS_VITEST' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VUE_TESTING_UTILS_VITEST"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-APOLLO-TANSTACK-QUERY",
+      "message": "'PINIA_CENTRALIZED_STORE' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PINIA_CENTRALIZED_STORE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-CAPACITOR-MOBILE-DEPLOY",
+      "message": "'VUE_TELEPORT_KEEPALIVE' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VUE_TELEPORT_KEEPALIVE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-DEVTOOLS-DEBUGGING",
+      "message": "'COMPOSITION_REACTIVITY_API' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "COMPOSITION_REACTIVITY_API"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-WATCHERS-VUEUSE-UTILITIES",
+      "message": "concept_code 'COMPOSITION_REACTIVITY_API' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "COMPOSITION_REACTIVITY_API"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-FORMKIT-VUELIDATE-RULES",
+      "message": "concept_code 'VUE_FORM_VALIDATION_RULES' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VUE_FORM_VALIDATION_RULES"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-QUASAR-VITEPRESS-SSG",
+      "message": "concept_code 'NUXTJS_SSR_FULLSTACK' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "NUXTJS_SSR_FULLSTACK"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-VITEST-CYPRESS-PLAYWRIGHT",
+      "message": "concept_code 'VUE_TESTING_UTILS_VITEST' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VUE_TESTING_UTILS_VITEST"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-APOLLO-TANSTACK-QUERY",
+      "message": "concept_code 'PINIA_CENTRALIZED_STORE' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PINIA_CENTRALIZED_STORE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-CAPACITOR-MOBILE-DEPLOY",
+      "message": "concept_code 'VUE_TELEPORT_KEEPALIVE' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VUE_TELEPORT_KEEPALIVE"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-VUE-DEVTOOLS-DEBUGGING",
+      "message": "concept_code 'COMPOSITION_REACTIVITY_API' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "COMPOSITION_REACTIVITY_API"
+    }
+  ]
+}

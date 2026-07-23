@@ -1,2 +1,17 @@
 code	name	description	category_codes
-COMPONENT_UI_SYSTEMS	Component-Based UI Systems & Frameworks	Chủ đề trọng tâm: Component-Based UI Systems & Frameworks	FRONTEND_ENGINEERING
+DECLARATIVE_VIEW_TEMPLATES	Declarative Templates & Directives	Chủ đề trọng tâm: Declarative Templates & Directives	SOFTWARE_SYSTEMS_ENGINEERING
+COMPOSITION_REACTIVITY_API	Composition API & Reactive State	Chủ đề trọng tâm: Composition API & Reactive State	SOFTWARE_SYSTEMS_ENGINEERING
+COMPONENT_PROPS_EMITS_SLOTS	Component Props, Emits & Content Slots	Chủ đề trọng tâm: Component Props, Emits & Content Slots	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_ROUTER_SPA_NAVIGATION	Single-Page Routing & Navigation Guards	Chủ đề trọng tâm: Single-Page Routing & Navigation Guards	SOFTWARE_SYSTEMS_ENGINEERING
+PINIA_CENTRALIZED_STORE	Centralized State Management (Pinia)	Chủ đề trọng tâm: Centralized State Management (Pinia)	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_CUSTOM_DIRECTIVES_PLUGINS	Custom Directives & Plugin Architecture	Chủ đề trọng tâm: Custom Directives & Plugin Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_ASYNC_COMPONENTS_SUSPENSE	Async Components & Suspense Boundaries	Chủ đề trọng tâm: Async Components & Suspense Boundaries	SOFTWARE_SYSTEMS_ENGINEERING
+NUXTJS_SSR_FULLSTACK	Server-Side Rendering (Nuxt.js)	Chủ đề trọng tâm: Server-Side Rendering (Nuxt.js)	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_TESTING_UTILS_VITEST	Automated Testing for Vue Components	Chủ đề trọng tâm: Automated Testing for Vue Components	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_TRANSITION_ANIMATIONS	View Transitions & CSS Animations	Chủ đề trọng tâm: View Transitions & CSS Animations	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_TELEPORT_KEEPALIVE	Builtin System Components (Teleport, KeepAlive)	Chủ đề trọng tâm: Builtin System Components (Teleport, KeepAlive)	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_TYPESCRIPT_INTEGRATION	TypeScript Integration & Type Safety	Chủ đề trọng tâm: TypeScript Integration & Type Safety	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_PERFORMANCE_OPTIMIZATION	Performance Tuning & Render Optimization	Chủ đề trọng tâm: Performance Tuning & Render Optimization	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_FORM_VALIDATION_RULES	Form Validation Engines (Vuelidate/VeeValidate)	Chủ đề trọng tâm: Form Validation Engines (Vuelidate/VeeValidate)	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_UI_LIBRARY_SYSTEMS	UI Component Libraries (Vuetify/Element Plus)	Chủ đề trọng tâm: UI Component Libraries (Vuetify/Element Plus)	SOFTWARE_SYSTEMS_ENGINEERING
+VUE_MICRO_FRONTENDS_FEDERATION	Micro-Frontends & Federation in Vue	Chủ đề trọng tâm: Micro-Frontends & Federation in Vue	SOFTWARE_SYSTEMS_ENGINEERING

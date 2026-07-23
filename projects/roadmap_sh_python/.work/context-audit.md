@@ -1,0 +1,90 @@
+# Context Syllabus Audit for roadmap_sh_python
+
+## Core Topics
+- Learn the Basics
+- Modules
+- Data Structures & Algorithms
+- Lambdas
+- Decorators
+- Iterators
+- Regular Expressions
+- Object Oriented Programming
+- Package Managers
+- List Comprehensions
+- Generator Expressions
+- Paradigms
+- Context Manager
+- Learn a Framework
+- Concurrency
+- Static Typing
+- Code Formatting
+- Common Packages
+- Testing
+- File Handling
+- Variable Scope
+
+## Subtopics & Detailed Skills
+- Basic Syntax
+- Variables and Data Types
+- Conditionals
+- Type Casting
+- Exceptions
+- Functions, Builtin Functions
+- Lists
+- Tuples
+- Sets
+- Dictionaries
+- Loops
+- Arrays and Linked Lists
+- Heaps, Stacks and Queues
+- HashMaps
+- Binary Search Tree
+- Recursion
+- Sorting Algorithms
+- Builtin
+- Custom
+- Classes
+- Inheritance
+- Methods
+- PyPI
+- Pip
+- Conda
+- Poetry
+- Pyramid
+- Plotly Dash
+- gevent
+- aiohttp
+- Tornado
+- Sanic
+- Fast API
+- Django
+- Flask
+- GIL
+- Threading
+- Multiprocessing
+- Asynchrony
+- uv
+- pyproject.toml
+- Pipenv
+- virtualenv
+- pyenv
+- Pydantic
+- mypy
+- pyright
+- pyre
+- ruff
+- black
+- yapf
+- Sphinx
+- doctest
+- pytest
+- unittest / pyUnit
+- typing
+- tox
+- Working with Strings
+- pdm
+- Encapsulation
+- glob
+- Operators
+- Comments
+- Type Annot.

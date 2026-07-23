@@ -1,2 +1,17 @@
 code	name	description	category_codes
-CONTAINERIZATION_DOCKER	Containerization & Container Virtualization Platform	Chủ đề công nghệ container Container Virtualization.	DEVOPS_INFRASTRUCTURE
+CONTAINER_VIRTUALIZATION_FUNDAMENTALS	Container Virtualization Architecture	Chủ đề trọng tâm: Container Virtualization Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+IMAGE_SPECIFICATION_BUILDING	Image Specifications & Layer Stacking	Chủ đề trọng tâm: Image Specifications & Layer Stacking	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_NETWORKING_SYSTEMS	Container Networking & Port Mapping	Chủ đề trọng tâm: Container Networking & Port Mapping	SOFTWARE_SYSTEMS_ENGINEERING
+PERSISTENT_DATA_VOLUMES	Persistent Storage & Volume Drivers	Chủ đề trọng tâm: Persistent Storage & Volume Drivers	SOFTWARE_SYSTEMS_ENGINEERING
+MULTI_CONTAINER_COMPOSE	Multi-Container Orchestration (Docker Compose)	Chủ đề trọng tâm: Multi-Container Orchestration (Docker Compose)	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_REGISTRY_DISTRIBUTION	Image Registries & Artifact Distribution	Chủ đề trọng tâm: Image Registries & Artifact Distribution	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_SECURITY_HARDENING	Container Security & Vulnerability Scanning	Chủ đề trọng tâm: Container Security & Vulnerability Scanning	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_LOGGING_MONITORING	Container Logging & Observability Drivers	Chủ đề trọng tâm: Container Logging & Observability Drivers	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_ORCHESTRATION_KUBERNETES	Container Orchestration (Kubernetes Basics)	Chủ đề trọng tâm: Container Orchestration (Kubernetes Basics)	SOFTWARE_SYSTEMS_ENGINEERING
+BUILDX_MULTI_ARCH_BUILDING	Multi-Architecture Image Builds (Buildx)	Chủ đề trọng tâm: Multi-Architecture Image Builds (Buildx)	SOFTWARE_SYSTEMS_ENGINEERING
+DOCKER_SWARM_CLUSTERING	Native Cluster Clustering (Docker Swarm)	Chủ đề trọng tâm: Native Cluster Clustering (Docker Swarm)	SOFTWARE_SYSTEMS_ENGINEERING
+DEVELOPMENT_CONTAINERIZATION_DEVCONTAINERS	Development Containerization & DevContainers	Chủ đề trọng tâm: Development Containerization & DevContainers	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_HEALTHCHECK_SELF_HEALING	Healthchecks & Container Self-Healing	Chủ đề trọng tâm: Healthchecks & Container Self-Healing	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_CLEANUP_RESOURCE_PRUNING	Resource Pruning & Garbage Collection	Chủ đề trọng tâm: Resource Pruning & Garbage Collection	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_CI_CD_AUTOMATION	CI/CD Pipeline Container Automation	Chủ đề trọng tâm: CI/CD Pipeline Container Automation	SOFTWARE_SYSTEMS_ENGINEERING
+CONTAINER_RUNTIME_SPEC_OCI	Open Container Initiative (OCI) & Low-Level Runtimes	Chủ đề trọng tâm: Open Container Initiative (OCI) & Low-Level Runtimes	SOFTWARE_SYSTEMS_ENGINEERING

@@ -1,2 +1,19 @@
 code	name	description	category_codes
-BACKEND_ARCHITECTURE	Backend Architecture & Infrastructure	Chủ đề kiến trúc máy chủ, API và cơ sở dữ liệu backend.	BACKEND_ENGINEERING
+INTERNET_NETWORKING_FUNDAMENTALS	Internet & Network Protocol Fundamentals	Chủ đề trọng tâm: Internet & Network Protocol Fundamentals	SOFTWARE_SYSTEMS_ENGINEERING
+SERVER_SIDE_PROGRAMMING_LANGUAGES	Server-Side Programming Languages	Chủ đề trọng tâm: Server-Side Programming Languages	SOFTWARE_SYSTEMS_ENGINEERING
+VERSION_CONTROL_GIT_SYSTEMS	Version Control & Source Code Management	Chủ đề trọng tâm: Version Control & Source Code Management	SOFTWARE_SYSTEMS_ENGINEERING
+RELATIONAL_DATABASE_MANAGEMENT	Relational Databases (RDBMS) & SQL	Chủ đề trọng tâm: Relational Databases (RDBMS) & SQL	SOFTWARE_SYSTEMS_ENGINEERING
+NOSQL_DATABASE_MANAGEMENT	Non-Relational Databases (NoSQL)	Chủ đề trọng tâm: Non-Relational Databases (NoSQL)	SOFTWARE_SYSTEMS_ENGINEERING
+DATABASE_INDEXING_PERFORMANCE	Database Indexing & Query Performance	Chủ đề trọng tâm: Database Indexing & Query Performance	SOFTWARE_SYSTEMS_ENGINEERING
+RESTFUL_API_ARCHITECTURE	RESTful API Design & OpenAPI Specifications	Chủ đề trọng tâm: RESTful API Design & OpenAPI Specifications	SOFTWARE_SYSTEMS_ENGINEERING
+GRAPHQL_API_ARCHITECTURE	GraphQL API Architecture & Schema Definition	Chủ đề trọng tâm: GraphQL API Architecture & Schema Definition	SOFTWARE_SYSTEMS_ENGINEERING
+AUTHENTICATION_AUTHORIZATION_SECURITY	Authentication & Authorization Architecture	Chủ đề trọng tâm: Authentication & Authorization Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+SECURITY_VULNERABILITY_PROTECTION	Web Security Safeguards & OWASP Top 10	Chủ đề trọng tâm: Web Security Safeguards & OWASP Top 10	SOFTWARE_SYSTEMS_ENGINEERING
+CACHING_STRATEGIES_REDIS	Caching Strategies & Performance Acceleration	Chủ đề trọng tâm: Caching Strategies & Performance Acceleration	SOFTWARE_SYSTEMS_ENGINEERING
+MESSAGE_QUEUES_ASYNC_WORKERS	Asynchronous Message Queues & Event Streaming	Chủ đề trọng tâm: Asynchronous Message Queues & Event Streaming	SOFTWARE_SYSTEMS_ENGINEERING
+SYSTEM_DESIGN_SCALABILITY	System Design, Scalability & Load Balancing	Chủ đề trọng tâm: System Design, Scalability & Load Balancing	SOFTWARE_SYSTEMS_ENGINEERING
+API_GATEWAY_SERVICE_ROUTING	API Gateways & Microservices Routing	Chủ đề trọng tâm: API Gateways & Microservices Routing	SOFTWARE_SYSTEMS_ENGINEERING
+CI_CD_DEPLOYMENT_AUTOMATION	CI/CD Pipelines & Cloud Deployment	Chủ đề trọng tâm: CI/CD Pipelines & Cloud Deployment	SOFTWARE_SYSTEMS_ENGINEERING
+SOFTWARE_DESIGN_PATTERNS	Design Patterns & Software Architecture	Chủ đề trọng tâm: Design Patterns & Software Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+MICROSERVICES_ARCHITECTURE	Microservices Architecture & Distributed Systems	Chủ đề trọng tâm: Microservices Architecture & Distributed Systems	SOFTWARE_SYSTEMS_ENGINEERING
+STRUCTURED_LOGGING_OBSERVABILITY	Structured Logging & Observability (APM)	Chủ đề trọng tâm: Structured Logging & Observability (APM)	SOFTWARE_SYSTEMS_ENGINEERING

@@ -1,0 +1,131 @@
+# Context Syllabus Audit for roadmap_sh_javascript
+
+## Core Topics
+- Introduction to JavaScript
+- All about Variables
+- Data Types
+- Type Casting
+- Data Structures
+- Equality Comparisons
+- Loops and Iterations
+- Control Flow
+- Expressions & Operators
+- Functions
+- Strict Mode
+- Using (this) keyword
+- Asynchronous JavaScript
+- Working with APIs
+- Classes
+- Iterators and Generators
+- Modules in JavaScript
+- Memory Management
+- DOM APIs
+- Using Browser DevTools
+
+## Subtopics & Detailed Skills
+- What is JavaScript
+- History of JavaScript
+- JavaScript Versions
+- How to run JavaScript
+- Variable Declarations
+- Hoisting
+- Variable Naming Rules
+- Variable Scopes
+- var
+- let
+- const
+- Block
+- Function
+- Global
+- string
+- undefined
+- number
+- bigint
+- boolean
+- null
+- Symbol
+- Object
+- Object Prototype
+- Prototypal Inheritance
+- typeof operator
+- Built-in Objects
+- Type Conversion vs Coercion
+- Explicit Type Casting
+- Implicit Type Casting
+- Keyed Collections
+- Map
+- Weak Map
+- Set
+- Weak Set
+- Indexed Collections
+- Typed Arrays
+- Arrays
+- Structured Data
+- JSON
+- ==
+- ===
+- Object.is
+- isLooselyEqual
+- isStrictlyEqual
+- SameValueZero
+- for
+- do...while
+- while
+- for...in loop
+- for...of loop
+- break / continue
+- Exceptional Handling
+- Conditional Statements
+- if...else
+- Switch
+- throw statement
+- try/catch/finally
+- Error Objects
+- Assignment Operators
+- Comparison Operators
+- Arithmetic Operators
+- Bitwise Operators
+- Logical Operators
+- BigInt Operators
+- String Operators
+- Conditional Operators
+- Comma Operators
+- Unary Operators
+- Function Parameters
+- Arrow Functions
+- IIFEs
+- arguments object
+- Scope & Function Stack
+- Built-in Functions
+- Default Params
+- Rest
+- Recursion
+- Lexical Scoping
+- Closures
+- in a method
+- in a function
+- using it alone
+- in event handlers
+- in arrow functions
+- Function Borrowing
+- Explicit Binding
+- call
+- apply
+- bind
+- Event Loop
+- setTimeout
+- setInterval
+- Callbacks
+- Promises
+- Callback Hell
+- async/await
+- Fetch
+- XMLHTTPRequest
+- CommonJS
+- ESM
+- Memory Lifecycle
+- Garbage Collection
+- Debugging Issues
+- Debugging Memory Leaks
+- Debugging Performance
+- SameValue

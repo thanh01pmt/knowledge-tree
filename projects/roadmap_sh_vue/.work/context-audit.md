@@ -1,0 +1,89 @@
+# Context Syllabus Audit for roadmap_sh_vue
+
+## Core Topics
+- Components
+- Templates
+- Directives
+- API Styles
+- App Configurations
+- Lifecycle Hooks
+- Forms Handling
+- Event Handling
+- Computed Properties
+- Routing
+- Forms
+- SSR
+- SSG
+- State Management
+- API Calls
+- Mobile Apps
+
+## Subtopics & Detailed Skills
+- create-vue
+- Single File Components
+- Component Registration
+- Props
+- Events
+- v-model
+- Attribute Inheritance
+- Options API
+- Composition API
+- Rendering Lists
+- Error / Warn Handler
+- Global Properties
+- Performance
+- Conditional Rendering
+- v-text
+- v-html
+- v-show
+- v-if
+- v-else
+- v-else-if
+- v-for
+- v-on
+- v-bind
+- v-model
+- v-slot
+- v-once
+- v-pre
+- v-cloak
+- Optimizing Renders
+- Debugging
+- Input Bindings
+- v-model
+- Modifiers
+- Binding Events
+- Inline / Method Handlers
+- Event Modifiers
+- Key Modifiers
+- Mouse Button Modifiers
+- Async Components
+- Teleport Components
+- Provide / Inject
+- Custom Directives
+- Plugins
+- Watchers
+- Slots
+- Transition
+- Transition Group
+- VueUse
+- Vue Router
+- FormKit
+- Vee Validate
+- Vuelidate
+- Quasar
+- Nuxt.js
+- VitePress
+- Vitest
+- Vue Testing Library
+- Cypress
+- Playwright
+- Tailwind CSS
+- Vuetify
+- Element UI
+- Pinia
+- Apollo
+- Axios
+- fetch
+- Tanstack Query
+- Capacitor

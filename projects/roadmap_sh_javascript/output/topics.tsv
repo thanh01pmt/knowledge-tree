@@ -1,2 +1,19 @@
 code	name	description	category_codes
-DYNAMIC_SCRIPTING_RUNTIMES	Dynamic Scripting & Runtime Engines	Chủ đề trọng tâm: Dynamic Scripting & Runtime Engines	PROGRAMMING_LANGUAGES
+JS_SYNTAX_VARIABLES	Language Syntax & Variable Declarations	Chủ đề trọng tâm: Language Syntax & Variable Declarations	SOFTWARE_SYSTEMS_ENGINEERING
+JS_PRIMITIVE_OBJECT_TYPES	Data Types & Type Conversion	Chủ đề trọng tâm: Data Types & Type Conversion	SOFTWARE_SYSTEMS_ENGINEERING
+JS_CONTROL_FLOW_LOOPS	Control Flow & Iteration Constructs	Chủ đề trọng tâm: Control Flow & Iteration Constructs	SOFTWARE_SYSTEMS_ENGINEERING
+JS_FUNCTIONS_CLOSURES	First-Class Functions & Closures	Chủ đề trọng tâm: First-Class Functions & Closures	SOFTWARE_SYSTEMS_ENGINEERING
+JS_OBJECTS_PROTOTYPES	Objects & Prototype Chain Inheritance	Chủ đề trọng tâm: Objects & Prototype Chain Inheritance	SOFTWARE_SYSTEMS_ENGINEERING
+JS_CLASSES_OOP	Classes & Object-Oriented Abstraction	Chủ đề trọng tâm: Classes & Object-Oriented Abstraction	SOFTWARE_SYSTEMS_ENGINEERING
+JS_ARRAYS_COLLECTIONS	Array Manipulation & Functional Iterators	Chủ đề trọng tâm: Array Manipulation & Functional Iterators	SOFTWARE_SYSTEMS_ENGINEERING
+JS_ASYNC_CALLBACKS_PROMISES	Async Callbacks & Promise Specifications	Chủ đề trọng tâm: Async Callbacks & Promise Specifications	SOFTWARE_SYSTEMS_ENGINEERING
+JS_ASYNC_AWAIT_SYNTAX	Async/Await Syntax & Error Boundaries	Chủ đề trọng tâm: Async/Await Syntax & Error Boundaries	SOFTWARE_SYSTEMS_ENGINEERING
+JS_DOM_MANIPULATION_EVENTS	DOM Manipulation & Event Delegation Engine	Chủ đề trọng tâm: DOM Manipulation & Event Delegation Engine	SOFTWARE_SYSTEMS_ENGINEERING
+JS_BROWSER_WEB_APIS	Browser Web APIs & Storage Mechanisms	Chủ đề trọng tâm: Browser Web APIs & Storage Mechanisms	SOFTWARE_SYSTEMS_ENGINEERING
+JS_ES6_MODERN_FEATURES	ES6+ Modern Syntax & Destructuring	Chủ đề trọng tâm: ES6+ Modern Syntax & Destructuring	SOFTWARE_SYSTEMS_ENGINEERING
+JS_MODULES_IMPORT_EXPORT	ES Modules & Modular Architecture	Chủ đề trọng tâm: ES Modules & Modular Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+JS_MEMORY_GARBAGE_COLLECTION	Memory Management & Garbage Collection	Chủ đề trọng tâm: Memory Management & Garbage Collection	SOFTWARE_SYSTEMS_ENGINEERING
+JS_ERROR_HANDLING_DEBUGGING	Error Handling & Inspector Debugging	Chủ đề trọng tâm: Error Handling & Inspector Debugging	SOFTWARE_SYSTEMS_ENGINEERING
+JS_REGULAR_EXPRESSIONS	Regular Expressions & Pattern Matching	Chủ đề trọng tâm: Regular Expressions & Pattern Matching	SOFTWARE_SYSTEMS_ENGINEERING
+JS_TESTING_UNIT_INTEGRATION	Automated Testing & Assertion Libraries	Chủ đề trọng tâm: Automated Testing & Assertion Libraries	SOFTWARE_SYSTEMS_ENGINEERING
+JS_BUILD_TOOLS_BUNDLERS	Module Bundlers & Transpilation Build Tools	Chủ đề trọng tâm: Module Bundlers & Transpilation Build Tools	SOFTWARE_SYSTEMS_ENGINEERING

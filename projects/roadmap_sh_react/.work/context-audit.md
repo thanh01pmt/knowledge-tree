@@ -1,0 +1,84 @@
+# Context Syllabus Audit for roadmap_sh_react
+
+## Core Topics
+- CLI Tools
+- Components
+- Rendering
+- Hooks
+- Routers
+- State Management
+- Writing CSS
+- Headless Components
+- Component / Libraries
+- API Calls
+- Testing
+- Frameworks
+- Forms
+- Types & Validation
+- Animation
+- Server APIs
+- Suspense
+- Portals
+- Error Boundaries
+- Mobile Applications
+
+## Subtopics & Detailed Skills
+- Vite
+- Functional Components
+- JSX
+- Props vs State
+- Conditional Rendering
+- Composition
+- Component Lifecycle
+- Lists and Keys
+- Render Props
+- Refs
+- Events
+- High Order Components
+- useEffect
+- Creating Custom Hooks
+- useCallback
+- useRef
+- useMemo
+- useReducer
+- useContext
+- useState
+- Hooks Best Practices
+- Tanstack Router
+- React Router
+- Context
+- Zustand
+- Jotai
+- Tailwind CSS
+- Panda CSS
+- Chakra UI
+- Material UI
+- Shadcn UI
+- CSS Modules
+- Radix UI
+- React Aria
+- Ark UI
+- Apollo
+- Relay
+- urql
+- swr
+- Tanstack Query
+- Axios
+- rtk-query
+- Jest
+- Vitest
+- react-testing-library
+- Cypress
+- Playwright
+- Next.js
+- Astro
+- react-router
+- React Hook Form
+- Formik
+- TypeScript
+- Zod
+- Framer Motion
+- react spring
+- GSock
+- React Native
+- MobX

@@ -1,2 +1,21 @@
 code	name	description	category_codes
-ENTERPRISE_UI_FRAMEWORKS	Enterprise Component Framework Framework & Enterprise Architecture	Chủ đề trọng tâm: Enterprise Component Framework Framework & Enterprise Architecture	FRONTEND_ENGINEERING
+COMPONENT_DECORATOR_ARCHITECTURE	Component Architecture & Decorators	Chủ đề trọng tâm: Component Architecture & Decorators	SOFTWARE_SYSTEMS_ENGINEERING
+TEMPLATE_DATA_BINDING_DIRECTIVES	Template Data Binding & Control Flow Directives	Chủ đề trọng tâm: Template Data Binding & Control Flow Directives	SOFTWARE_SYSTEMS_ENGINEERING
+DEPENDENCY_INJECTION_SERVICES	Dependency Injection & Hierarchical Injectors	Chủ đề trọng tâm: Dependency Injection & Hierarchical Injectors	SOFTWARE_SYSTEMS_ENGINEERING
+RXJS_REACTIVE_PROGRAMMING	Reactive Programming with RxJS & Observables	Chủ đề trọng tâm: Reactive Programming with RxJS & Observables	SOFTWARE_SYSTEMS_ENGINEERING
+SIGNALS_REACTIVE_STATE	Angular Signals & Fine-Grained Reactivity	Chủ đề trọng tâm: Angular Signals & Fine-Grained Reactivity	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_ROUTER_LAZY_LOADING	Modular Routing, Guards & Lazy Loading	Chủ đề trọng tâm: Modular Routing, Guards & Lazy Loading	SOFTWARE_SYSTEMS_ENGINEERING
+REACTIVE_FORMS_VALIDATION	Reactive Forms & Schema Validation	Chủ đề trọng tâm: Reactive Forms & Schema Validation	SOFTWARE_SYSTEMS_ENGINEERING
+HTTP_CLIENT_INTERCEPTORS	HTTP Client & Functional Interceptors	Chủ đề trọng tâm: HTTP Client & Functional Interceptors	SOFTWARE_SYSTEMS_ENGINEERING
+CUSTOM_PIPES_DATA_TRANSFORM	Pipes & Data Transformation	Chủ đề trọng tâm: Pipes & Data Transformation	SOFTWARE_SYSTEMS_ENGINEERING
+CUSTOM_DIRECTIVES_DOM_MANIPULATION	Structural & Attribute Directives	Chủ đề trọng tâm: Structural & Attribute Directives	SOFTWARE_SYSTEMS_ENGINEERING
+NGRX_REDUX_STATE_STORE	Global State Management with NgRx	Chủ đề trọng tâm: Global State Management with NgRx	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_MODULES_VS_STANDALONE	NgModule Architecture & Standalone Migration	Chủ đề trọng tâm: NgModule Architecture & Standalone Migration	SOFTWARE_SYSTEMS_ENGINEERING
+ZONEJS_CHANGE_DETECTION	Change Detection Strategy & Zone.js	Chủ đề trọng tâm: Change Detection Strategy & Zone.js	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_TESTING_JASMINE_KARMA	Automated Component Testing (Jasmine/Karma/Jest)	Chủ đề trọng tâm: Automated Component Testing (Jasmine/Karma/Jest)	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_CLI_SCHEMATICS_BUILD	Angular CLI, Schematics & Workspace Tooling	Chủ đề trọng tâm: Angular CLI, Schematics & Workspace Tooling	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_SSR_HYDRATION_UNIVERSAL	Server-Side Rendering (Angular SSR & Hydration)	Chủ đề trọng tâm: Server-Side Rendering (Angular SSR & Hydration)	SOFTWARE_SYSTEMS_ENGINEERING
+CONTENT_PROLECTION_VIEWCHILD	Content Projection & View Child DOM Queries	Chủ đề trọng tâm: Content Projection & View Child DOM Queries	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_SECURITY_SANITIZATION	Web Security & Contextual Sanitization	Chủ đề trọng tâm: Web Security & Contextual Sanitization	SOFTWARE_SYSTEMS_ENGINEERING
+ANGULAR_ANIMATIONS_DSL	Complex View Animations & State Triggers	Chủ đề trọng tâm: Complex View Animations & State Triggers	SOFTWARE_SYSTEMS_ENGINEERING
+MICRO_FRONTENDS_SINGLE_SPA_ANGULAR	Micro-Frontends & Module Federation (Angular)	Chủ đề trọng tâm: Micro-Frontends & Module Federation (Angular)	SOFTWARE_SYSTEMS_ENGINEERING

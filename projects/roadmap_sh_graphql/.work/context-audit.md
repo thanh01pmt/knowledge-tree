@@ -1,0 +1,71 @@
+# Context Syllabus Audit for roadmap_sh_graphql
+
+## Core Topics
+- Introduction
+- GraphQL Queries
+- Mutations
+- Subscriptions
+- Schema
+- Validation
+- Execution
+- Serving over Internet
+- Pagination
+
+## Subtopics & Detailed Skills
+- What is GraphQL
+- Problems GraphQL Solves
+- Thinking in Graphs
+- GraphQL on Frontend
+- GraphQL on Backend
+- What are Queries?
+- Fields
+- Aliases
+- Arguments
+- Directives
+- Variables
+- Fragments
+- What are Mutations?
+- Multiple Fields in Mutation
+- Operation Name
+- What are Subscriptions
+- Event Based Subscriptions
+- Live Queries
+- @defer / @stream directives
+- Type System
+- Fields
+- Scalars
+- Enums
+- Interfaces
+- Lists
+- Objects
+- Unions
+- Arguments
+- Root Fields
+- Resolvers
+- Synchronous
+- Asynchronous
+- Scalar Coercion
+- Lists
+- Validation
+- Producing the Result
+- GraphQL Over HTTP Spec
+- Caching
+- Batching
+- Authorization
+- Specification
+- Realtime
+- Authorization
+- Specification
+- Authorization
+- GraphQL.js
+- GraphQL Go
+- GraphQL Java
+- graphql-http
+- GraphQL Yoga
+- Apollo Server
+- mercurius
+- graphql-http
+- Relay
+- Apollo Client
+- Urql
+- Graphene

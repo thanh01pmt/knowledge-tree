@@ -1,2 +1,17 @@
 code	name	description	category_codes
-TYPE_SYSTEMS_AND_STATIC_ANALYSIS	Type Systems & Static Code Analysis	Chủ đề trọng tâm: Type Systems & Static Code Analysis	PROGRAMMING_LANGUAGES
+PRIMITIVE_TYPES_SYSTEM	Primitive Types & Type Annotations	Chủ đề trọng tâm: Primitive Types & Type Annotations	SOFTWARE_SYSTEMS_ENGINEERING
+INTERFACE_CONTRACTS_SYSTEM	Interfaces & Object Contracts	Chủ đề trọng tâm: Interfaces & Object Contracts	SOFTWARE_SYSTEMS_ENGINEERING
+FUNCTION_SIGNATURES_TUPLES	Function Signatures & Tuple Types	Chủ đề trọng tâm: Function Signatures & Tuple Types	SOFTWARE_SYSTEMS_ENGINEERING
+OBJECT_ORIENTED_PATTERNS	Classes & Object-Oriented Abstraction	Chủ đề trọng tâm: Classes & Object-Oriented Abstraction	SOFTWARE_SYSTEMS_ENGINEERING
+GENERIC_PROGRAMMING_UTILITIES	Generic Programming & Utility Types	Chủ đề trọng tâm: Generic Programming & Utility Types	SOFTWARE_SYSTEMS_ENGINEERING
+STATIC_COMPILER_CONFIG	Static Code Compiler & Build Options	Chủ đề trọng tâm: Static Code Compiler & Build Options	SOFTWARE_SYSTEMS_ENGINEERING
+MODULE_DECLARATIONS_TYPES	Module Resolution & Declaration Files	Chủ đề trọng tâm: Module Resolution & Declaration Files	SOFTWARE_SYSTEMS_ENGINEERING
+TYPE_GUARD_NARROWING_SYSTEM	Type Guards & Control Flow Analysis	Chủ đề trọng tâm: Type Guards & Control Flow Analysis	SOFTWARE_SYSTEMS_ENGINEERING
+ADVANCED_MAPPED_CONDITIONAL_TYPES	Mapped & Conditional Types	Chủ đề trọng tâm: Mapped & Conditional Types	SOFTWARE_SYSTEMS_ENGINEERING
+DECORATOR_METADATA_REFLECTION	Decorators & Metadata Reflection	Chủ đề trọng tâm: Decorators & Metadata Reflection	SOFTWARE_SYSTEMS_ENGINEERING
+ENUMS_AND_CONST_ASSERTIONS	Enums & Const Assertions	Chủ đề trọng tâm: Enums & Const Assertions	SOFTWARE_SYSTEMS_ENGINEERING
+ASYNC_ITERATION_GENERATORS	Async Iteration & Generators	Chủ đề trọng tâm: Async Iteration & Generators	SOFTWARE_SYSTEMS_ENGINEERING
+TSCONFIG_PROJECT_REFERENCES	Project References & Monorepo Build Systems	Chủ đề trọng tâm: Project References & Monorepo Build Systems	SOFTWARE_SYSTEMS_ENGINEERING
+LINTING_FORMATTING_INTEGRATION	Code Linting & Formatting Integration	Chủ đề trọng tâm: Code Linting & Formatting Integration	SOFTWARE_SYSTEMS_ENGINEERING
+TESTING_FRAMEWORK_TYPINGS	Testing Framework Typings & Mocking	Chủ đề trọng tâm: Testing Framework Typings & Mocking	SOFTWARE_SYSTEMS_ENGINEERING
+PRODUCTION_BUILD_BUNDLING	Production Build & Bundling Tools	Chủ đề trọng tâm: Production Build & Bundling Tools	SOFTWARE_SYSTEMS_ENGINEERING

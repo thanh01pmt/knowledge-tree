@@ -1,2 +1,19 @@
 code	name	description	category_codes
-COMPONENT_UI_SYSTEMS	Component-Based UI Systems & Frameworks	Chủ đề trọng tâm: Component-Based UI Systems & Frameworks	FRONTEND_ENGINEERING
+COMPONENT_BASED_ARCHITECTURE	Component-Based UI Architecture	Chủ đề trọng tâm: Component-Based UI Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+STATE_MANAGEMENT_HOOKS	State Management & React Hooks	Chủ đề trọng tâm: State Management & React Hooks	SOFTWARE_SYSTEMS_ENGINEERING
+CUSTOM_HOOKS_COMPOSITION	Custom Hooks & Logic Reusability	Chủ đề trọng tâm: Custom Hooks & Logic Reusability	SOFTWARE_SYSTEMS_ENGINEERING
+CONTEXT_GLOBAL_STATE	Context API & Global State Sharing	Chủ đề trọng tâm: Context API & Global State Sharing	SOFTWARE_SYSTEMS_ENGINEERING
+ROUTING_NAVIGATION_SYSTEM	Single-Page Routing & Navigation Engine	Chủ đề trọng tâm: Single-Page Routing & Navigation Engine	SOFTWARE_SYSTEMS_ENGINEERING
+FORM_HANDLING_VALIDATION	Form Control & Input Validation	Chủ đề trọng tâm: Form Control & Input Validation	SOFTWARE_SYSTEMS_ENGINEERING
+PERFORMANCE_MEMOIZATION_OPT	Performance Optimization & Memoization	Chủ đề trọng tâm: Performance Optimization & Memoization	SOFTWARE_SYSTEMS_ENGINEERING
+EXTERNAL_STATE_STORE_REDUX	Global External State Management	Chủ đề trọng tâm: Global External State Management	SOFTWARE_SYSTEMS_ENGINEERING
+ASYNC_DATA_FETCHING_TANSTACK	Async Data Fetching & Server State	Chủ đề trọng tâm: Async Data Fetching & Server State	SOFTWARE_SYSTEMS_ENGINEERING
+UI_STYLING_SOLUTIONS	UI Component Styling Architecture	Chủ đề trọng tâm: UI Component Styling Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+SERVER_SIDE_RENDERING_NEXTJS	Server-Side Rendering & App Router	Chủ đề trọng tâm: Server-Side Rendering & App Router	SOFTWARE_SYSTEMS_ENGINEERING
+TESTING_REACT_COMPONENTS	Automated Component Testing Suites	Chủ đề trọng tâm: Automated Component Testing Suites	SOFTWARE_SYSTEMS_ENGINEERING
+PORTALS_REFS_UNCONTROLLED	Portals, Refs & Imperative Handlers	Chủ đề trọng tâm: Portals, Refs & Imperative Handlers	SOFTWARE_SYSTEMS_ENGINEERING
+ERROR_BOUNDARIES_RESILIENCE	Error Boundaries & Application Resilience	Chủ đề trọng tâm: Error Boundaries & Application Resilience	SOFTWARE_SYSTEMS_ENGINEERING
+SUSPENSE_CONCURRENT_FEATURES	Suspense & Concurrent React Architecture	Chủ đề trọng tâm: Suspense & Concurrent React Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+MICRO_FRONTENDS_FEDERATION	Micro-Frontends & Module Federation	Chủ đề trọng tâm: Micro-Frontends & Module Federation	SOFTWARE_SYSTEMS_ENGINEERING
+ACCESSIBILITY_A11Y_PATTERNS	Web Accessibility (a11y) Architecture	Chủ đề trọng tâm: Web Accessibility (a11y) Architecture	SOFTWARE_SYSTEMS_ENGINEERING
+STATE_MACHINE_COMPOSABLE_LOGIC	Finite State Machines & Logic Engines	Chủ đề trọng tâm: Finite State Machines & Logic Engines	SOFTWARE_SYSTEMS_ENGINEERING
