@@ -1,33 +1,38 @@
 # Universal Agentic Knowledge Tree Pipeline
 
+🌐 **Language / Ngôn ngữ:** **[English](README.md)** | [Tiếng Việt](README.vi.md)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![Code of Conduct](https://img.shields.io/badge/Contributor%20Covenant-2.1-4ba51d.svg)](CODE_OF_CONDUCT.md)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 
-Hệ thống xây dựng và tự động hóa Khung tri thức (Knowledge Tree) cho các chứng chỉ, môn học và lộ trình công nghệ (Roadmaps), vận hành thông qua **Agentic Workflows (slash commands)**. Hệ thống kết hợp sự linh hoạt của LLM trong việc đối chiếu syllabus/đồ thị tri thức và tính chính xác (deterministic) của các script Python trong việc quản lý, kiểm định dữ liệu.
+An agentic automation framework for constructing, validating, and managing educational **Knowledge Trees** across certifications, courses, and technology roadmaps. Driven by **Agentic Workflows (slash commands)**, the system combines LLM intelligence for syllabus mapping with deterministic Python scripts for data integrity, validation, and database synchronization.
 
 ---
 
-## 🏛️ Kiến trúc Cốt lõi & Nguyên tắc Thiết kế
+## 🏛️ Core Architecture & Design Principles
 
-- **R1 (Final-only output):** Thư mục `projects/<project-slug>/output/` chỉ chứa đúng 6 file TSV artifact đã vượt qua 100% vòng kiểm định referential integrity:
+- **R1 (Final-Only Output):** The `projects/<project-slug>/output/` directory strictly contains 6 validated TSV artifacts that pass 100% referential integrity checks:
   `fields.tsv`, `subjects.tsv`, `categories.tsv`, `topics.tsv`, `concepts.tsv`, `learning-objectives.tsv`.
-- **R2 (Project-First Paradigm cho Roadmap Crawling):** Khi cào dữ liệu từ các nguồn bên ngoài (như `roadmap.sh`), hệ thống **tự động khởi tạo một project độc lập** trong `projects/`, tự động dò tìm file đồ thị JSON gốc (`Auto-Discovery Engine`), và triển khai đầy đủ quy trình chuẩn hóa của project trước khi đề xuất hợp nhất (Merge Proposal) vào Cây tri thức Master chung (`general-context/mlo-knowlege-tree.tsv`).
-- **R3 (N:N Reuse Topology First):** Tái sử dụng tối đa các Category/Topic/Subject đã có sẵn trong Master Tree thông qua liên kết Many-to-Many (dấu phẩy `,`), tránh tạo ra các node trùng lặp gây phình to cây tri thức.
-- **R4 (LLM boundary):** LLM chỉ đảm nhiệm khâu nghiên cứu tài liệu nguồn (`context-audit`), trích xuất mục tiêu học tập (`generate-los`) và đối chiếu phân tầng (`map-taxonomy`). Khâu khởi tạo, lắp ráp TSV và kiểm tra lỗi (validate) do script Python đảm nhiệm 100%.
-- **R5 (File is state):** Mọi trạng thái trung gian được lưu tại `.work/`. Trạng thái dự án đang làm việc (`active_project`) được quản lý tại `status.yaml`.
+- **R2 (Project-First Paradigm for Roadmap Crawling):** External roadmaps (e.g., `roadmap.sh`) automatically scaffold an independent project under `projects/`, utilize an **Auto-Discovery Engine** to parse raw graph JSON, and run standard validation before proposing a merge into the Master Knowledge Tree (`general-context/mlo-knowlege-tree.tsv`).
+- **R3 (N:N Reuse Topology First):** Maximize reuse of existing Categories/Topics/Subjects in the Master Tree via Many-to-Many comma-separated relationships (`,`), avoiding redundant node creation.
+- **R4 (LLM Boundary):** LLMs perform domain research (`context-audit`), objective extraction (`generate-los`), and taxonomy mapping (`map-taxonomy`). File scaffolding, TSV assembly, and error validation are 100% deterministic Python scripts.
+- **R5 (File is State):** All intermediate state is stored in `.work/`. Active project state (`active_project`) is tracked in `status.yaml`.
 
 ---
 
-## 📂 Cấu trúc Thư mục Dự án
+## 📂 Repository Directory Structure
 
 ```text
 knowledge-tree/
-├── .agents/                                # Bộ não pipeline & định nghĩa agents/skills
+├── .github/                                # GitHub issue templates & PR guidelines
+│   ├── ISSUE_TEMPLATE/                     # Templates for Bug Reports & Taxonomy Proposals
+│   └── PULL_REQUEST_TEMPLATE.md
+├── .agents/                                # Agent definitions, rules, and skills
 │   ├── RULES.md
-│   ├── agents.md
-│   ├── workflows/                          # Hợp đồng slash commands (.md)
+│   ├── AGENTS.md
+│   ├── workflows/                          # Slash command markdown contracts
 │   │   ├── init.md
 │   │   ├── set-project.md
 │   │   ├── crawl-roadmap.md
@@ -37,6 +42,7 @@ knowledge-tree/
 │   │   ├── generate-los.md
 │   │   ├── detect-gaps.md
 │   │   ├── validate-tree.md
+│   │   ├── validate-master-tree.md
 │   │   ├── audit-coverage.md
 │   │   └── sync-supabase.md
 │   └── skills/
@@ -56,111 +62,119 @@ knowledge-tree/
 │       ├── tree-validator/
 │       │   ├── scripts/scaffold_tree.py
 │       │   ├── scripts/validate_tree.py
+│       │   ├── scripts/validate_master_tree.py
 │       │   ├── scripts/detect_gaps.py
 │       │   └── scripts/audit_coverage.py
 │       └── supabase-sync/
 │           └── scripts/sync_to_supabase.py
 │
 ├── general-context/                        # Master Knowledge Tree Staging Copy
-│   ├── mlo-knowlege-tree.tsv              # Cây tri thức Master chung
-│   └── version_history.json               # Lịch sử nâng cấp phiên bản
+│   ├── mlo-knowlege-tree.tsv              # Global Master Knowledge Tree TSV
+│   └── version_history.json               # Release & version history
 │
-├── projects/                               # Các dự án tri thức độc lập
-│   └── <project-slug>/                     # Ví dụ: roadmap_sh_frontend, swift-associate
-│       ├── context/                        # Tài liệu nguồn (syllabus.md, raw_roadmap.json, <slug>.json)
-│       ├── .work/                          # Trạng thái xử lý trung gian (mapping-plan.md, gap_report.md)
-│       ├── .tree-validator/                # Log báo cáo kiểm định integrity
-│       └── output/                         # 6 file TSV thành phẩm (R1)
+├── projects/                               # Independent project knowledge trees
+│   └── <project-slug>/                     # E.g. roadmap_sh_python, swift-associate
+│       ├── context/                        # Source context (syllabus.md, raw_roadmap.json, etc.)
+│       ├── .work/                          # Intermediate working files (mapping-plan.md, etc.)
+│       ├── .tree-validator/                # Validation reports and fix logs
+│       └── output/                         # 6 final TSV artifacts (R1)
 │
-└── status.yaml                             # Quản lý active_project và trạng thái kiểm định
+├── CODE_OF_CONDUCT.md                      # Contributor Covenant Code of Conduct
+├── CONTRIBUTING.md                         # Contribution guidelines & validation steps
+├── LICENSE                                 # MIT Open Source License
+├── SECURITY.md                             # Security policy & vulnerability reporting
+└── status.yaml                             # Active project tracking & validation status
 ```
 
 ---
 
-## 🔄 Luồng Slash Commands (Agent Workflows)
+## 🔄 Agent Workflows & Pipeline Flowchart
 
 ```mermaid
 flowchart TD
-    subgraph "Nguồn bên ngoài (Roadmaps / Syllabus)"
-        URL["🌐 /crawl-roadmap <URL>"] --> InitProj["📁 Scaffold Project độc lập (projects/<slug>)"]
-        InitProj --> Discovery["🔎 Auto-Discovery Engine (Tải <slug>.json / parse DAG)"]
+    subgraph "External Sources (Roadmaps / Syllabi)"
+        URL["🌐 /crawl-roadmap <URL>"] --> InitProj["📁 Scaffold Project (projects/<slug>)"]
+        InitProj --> Discovery["🔎 Auto-Discovery Engine (Download JSON / Parse DAG)"]
         Discovery --> Audit
     end
 
     subgraph "Standard Project Pipeline"
-        Init["/init <project>"] --> Audit["/context-audit (Đọc context/)"]
-        Audit --> Map["/map-taxonomy (Tạo mapping-plan.md)"]
-        Map --> UserReview{"Chờ User phê duyệt Plan"}
-        UserReview -- Sửa đổi --> Map
-        UserReview -- Đồng ý --> Build["/build-tree (Dựng 5 bảng taxonomy TSV)"]
-        Build --> GenLO["/generate-los (Sinh learning-objectives.tsv)"]
-        GenLO --> Validate["/validate-tree (Kiểm định referential integrity 100%)"]
+        Init["/init <project>"] --> Audit["/context-audit (Inspect context/)"]
+        Audit --> Map["/map-taxonomy (Generate mapping-plan.md)"]
+        Map --> UserReview{"Await User Plan Approval"}
+        UserReview -- Revision --> Map
+        UserReview -- Approved --> Build["/build-tree (Assemble 5 Taxonomy TSVs)"]
+        Build --> GenLO["/generate-los (Generate learning-objectives.tsv)"]
+        GenLO --> Validate["/validate-tree (Verify 100% Referential Integrity)"]
         Validate --> GapCheck["/detect-gaps & /audit-coverage"]
     end
 
     subgraph "Master Merge & Database Sync"
         GapCheck --> MergeProp["📊 Diff & Master Merge Proposal (N:N Reuse)"]
-        MergeProp -- Phê duyệt --> SyncMaster["🚀 Update general-context/mlo-knowlege-tree.tsv"]
-        Validate --> SyncDB["☁️ /sync-supabase (Đẩy 6 TSV lên Supabase DB)"]
+        MergeProp -- Approved --> SyncMaster["🚀 Update general-context/mlo-knowlege-tree.tsv"]
+        Validate --> SyncDB["☁️ /sync-supabase (Push 6 TSVs to Supabase DB)"]
     end
 ```
 
 ---
 
-## 📋 Bảng Lệnh Slash Commands Chi tiết
+## 📋 Slash Commands Reference Table
 
-| Command | Chủ sở hữu | Dùng LLM? | Chức năng / Kết quả chính |
+| Command | Skill Owner | Uses LLM? | Primary Function / Result |
 |---|---|---|---|
-| `/init <project>` | `scaffolder` | ❌ | Khởi tạo cấu trúc dự án `projects/<project>/` và 6 header TSV |
-| `/set-project` | `coordinator` | ❌ | Thay đổi `active_project` trong `status.yaml` |
-| `/crawl-roadmap <url>` | `@roadmap-aligner` | ✅ | Khởi tạo project, tự động cào JSON đồ thị, chạy pipeline chuẩn và đề xuất merge vào Master |
-| `/context-audit` | `@context-analyzer` | ✅ | Đọc nội dung trong `context/` $\rightarrow$ `.work/context-audit.md` |
-| `/map-taxonomy` | `@taxonomy-mapper` | ✅ | Đối chiếu syllabus với Master Tree $\rightarrow$ `projects/<project>/.work/mapping-plan.md` |
-| `/build-tree` | `@tree-assembler` | ❌ | Lắp ráp 5 file taxonomy TSV (`fields` $\rightarrow$ `concepts`) từ `mapping-plan.md` |
-| `/generate-los` | `@tree-assembler` | ✅ | Trích xuất & sinh `learning-objectives.tsv` chuẩn ULO, CIO, SIO grounded theo concept code |
-| `/detect-gaps` | `@tree-validator` | ❌ | Phát hiện 3 loại gap (Missing LO, Shallow CIO, Master Candidates) |
-| `/validate-tree` | `@tree-validator` | ❌ | Kiểm tra Referentail Integrity 100% PASS $\rightarrow$ `.tree-validator/reports/` |
-| `/audit-coverage` | `@tree-validator` | ❌ | Kiểm tra đối chiếu ngược độ phủ syllabus từ `learning-objectives.tsv` |
-| `/sync-supabase` | `@tree-assembler` | ❌ | Đồng bộ 6 file TSV thành phẩm của project lên cơ sở dữ liệu Supabase Cloud |
+| `/init <project>` | `scaffolder` | ❌ | Scaffold project structure under `projects/<slug>/` and 6 TSV headers |
+| `/set-project` | `coordinator` | ❌ | Update `active_project` in `status.yaml` |
+| `/crawl-roadmap <url>` | `@roadmap-aligner` | ✅ | Scaffold project, crawl graph JSON, run standard pipeline & propose master merge |
+| `/context-audit` | `@context-analyzer` | ✅ | Inspect syllabus in `context/` $\rightarrow$ `.work/context-audit.md` |
+| `/map-taxonomy` | `@taxonomy-mapper` | ✅ | Cross-reference syllabus with Master Tree $\rightarrow$ `.work/mapping-plan.md` |
+| `/build-tree` | `@tree-assembler` | ❌ | Assemble 5 taxonomy TSV files (`fields` $\rightarrow$ `concepts`) from mapping plan |
+| `/generate-los` | `@tree-assembler` | ✅ | Generate grounded `learning-objectives.tsv` (ULO, CIO, SIO) |
+| `/detect-gaps` | `@tree-validator` | ❌ | Detect Missing LOs, Shallow CIOs, and Master Candidates |
+| `/validate-tree` | `@tree-validator` | ❌ | Enforce 100% Referential Integrity PASS $\rightarrow$ `.tree-validator/reports/` |
+| `/validate-master-tree` | `@tree-validator` | ❌ | Enforce Referential Integrity & Collision checks for Master Tree TSVs |
+| `/audit-coverage` | `@tree-validator` | ❌ | Perform Reverse Coverage Audit against source syllabus |
+| `/sync-supabase` | `@tree-assembler` | ❌ | Synchronize 6 validated TSV files to Supabase Cloud DB |
 
 ---
 
-## 🛠️ Trợ lý Lệnh cho Lập trình viên (Developer Helpers)
+## 🛠️ Developer CLI Reference
 
 ```bash
-# 1. Khởi tạo dự án mới
+# 1. Scaffold a new project
 python3 .agents/skills/tree-validator/scripts/scaffold_tree.py <project-slug>
 
-# 2. Cào & Phân tích Đồ thị JSON tự động từ roadmap.sh
+# 2. Crawl & analyze JSON graph from roadmap.sh
 python3 .agents/skills/roadmap-aligner/scripts/crawl_roadmap_align.py https://roadmap.sh/backend --project roadmap_sh_backend
 
-# 3. Lắp ráp 5 bảng Taxonomy từ mapping-plan
+# 3. Assemble 5 taxonomy TSVs from mapping plan
 python3 .agents/skills/tree-assembler/scripts/assemble_project.py --project <project-slug> --source mapping-plan
 
-# 4. Kiểm định toàn vẹn dữ liệu dự án (Referential Integrity)
+# 4. Validate project referential integrity
 python3 .agents/skills/tree-validator/scripts/validate_tree.py --project <project-slug>
 
-# 5. So sánh Diff giữa Staging và Master Tree
+# 5. Validate Master Tree referential integrity & collisions
+python3 .agents/skills/tree-validator/scripts/validate_master_tree.py --tsv general-context/mlo-knowlege-tree.tsv
+
+# 6. Generate Master Tree diff report
 python3 .agents/skills/roadmap-aligner/scripts/tree_diff.py
 
-# 6. Hợp nhất thay đổi Staging vào General Context Master Tree
+# 7. Apply staging changes to Master Tree
 python3 .agents/skills/roadmap-aligner/scripts/apply_plan_to_staging.py
 
-# 7. Đồng bộ 6 file TSV của dự án lên Supabase Database
+# 8. Sync 6 TSV artifacts to Supabase Database
 python3 .agents/skills/supabase-sync/scripts/sync_to_supabase.py --project <project-slug>
 ```
 
 ---
 
-## 🤝 Cộng đồng & Đóng góp (Community & Contributing)
+## 🤝 Community & Contributing
 
-Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng! Dù bạn muốn đề xuất node tri thức mới, nâng cấp các script kiểm định, hay đóng góp lộ trình môn học mới:
+We welcome contributions from the community! Whether you want to propose new taxonomy nodes, refine validation scripts, or submit new course roadmaps:
 
-- **Hướng dẫn Đóng góp:** Đọc thêm tại [CONTRIBUTING.md](CONTRIBUTING.md).
-- **Quy tắc Ứng xử:** Tham khảo [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
-- **Báo cáo Lỗ hổng Bảo mật:** Xem chính sách bảo mật tại [SECURITY.md](SECURITY.md).
+- **Contribution Guidelines:** Read [CONTRIBUTING.md](CONTRIBUTING.md).
+- **Code of Conduct:** Read [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md).
+- **Security Policy:** Read [SECURITY.md](SECURITY.md).
 
-## 📜 Giấy phép (License)
+## 📜 License
 
-Dự án được phát hành theo giấy phép open-source [MIT License](LICENSE).
-
+Distributed under the open-source [MIT License](LICENSE).
