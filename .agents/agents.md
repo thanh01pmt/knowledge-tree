@@ -5,16 +5,19 @@
 1. **Quy chuẩn Trung tính 100% (Technology-Agnostic / Neutral Rules)**:
    - **Fields, Subjects, Categories, Topics, Concepts, ULOs, CIOs**: **100% TRUNG TÍNH (Mã, Tên, Mô tả)**. Cấm tuyệt đối tên công nghệ hay ngôn ngữ lập trình cụ thể (như TypeScript, React, Vue, Docker, Python, v.v.).
    - **SIOs (`lo_type: SPECIFIC_IMPL`)**: **TẦNG DUY NHẤT CHỨA CÔNG NGHỆ CỤ THỂ**.
-2. **Mô hình Quan hệ N:N (Many-to-Many Relationships)**:
+2. **Quy tắc Đặt mã SIO & Đối chiếu Mẫu Đa Công nghệ (SIO Cross-Referencing Rules)**:
+   - **Định dạng mã SIO**: `SIO-<TECH_PREFIX>-<FEATURE_SLUG>` (dạng `UPPER_SNAKE_CASE`).
+   - **Đối chiếu Mẫu SIO Đa Công nghệ**: Do tầng Concept/ULO/CIO là 100% Trung tính và dùng chung, khi xây dựng SIO cho một công nghệ mới (ví dụ: Swift), Agent **CẦN TRA CỨU & ĐỐI CHIẾU** các SIO đã có ở các cây công nghệ khác (như JS, Python) nằm cùng mã CIO/Concept để nhân bản mẫu mã và đổi tên/nội dung tương đương cho công nghệ mới.
+3. **Mô hình Quan hệ N:N (Many-to-Many Relationships)**:
    - Quan hệ **Concept $\leftrightarrow$ ULO $\leftrightarrow$ CIO $\leftrightarrow$ SIO** là N:N. Phân tách danh sách mã bằng dấu phẩy trong `concept_codes` và `parent_lo_code`.
-3. **Tiền tố Câu Mô tả LO Chuẩn hóa**:
+4. **Tiền tố Câu Mô tả LO Chuẩn hóa**:
    - 100% câu mô tả trong `learning-objectives.tsv` BẮT BUỘC bắt đầu bằng: **`"Người học có khả năng ..."`**.
-4. **Quy mô & Độ phủ Tri thức Cạn kiệt ($\ge 80 - 160$ LOs)**:
+5. **Quy mô & Độ phủ Tri thức Cạn kiệt ($\ge 80 - 160$ LOs)**:
    - Trích xuất cạn kệt 100% nội dung `context/*.json` và `context/*.pdf` với quy mô trung bình **$\ge 80 - 160$ LOs**.
    - Bắt buộc phải **PASS cả 2 script**: `validate_tree.py` (`[PASS] 0 lỗi`) và `audit_coverage.py` (`Coverage Score ≥ 90%`).
-5. **Cấm Dùng Script thế chuỗi regex cơ học (No Dumb Find-and-Replace)**:
+6. **Cấm Dùng Script thế chuỗi regex cơ học (No Dumb Find-and-Replace)**:
    - Mọi câu từ mô tả ULO/CIO/Concept phải được viết tự nhiên, mạch lạc, không find-and-replace thô ráp.
-6. **Sạch sẽ Thư mục Root**:
+7. **Sạch sẽ Thư mục Root**:
    - Không để lại script Python rác tại thư mục gốc workspace. All automation scripts belong inside `.agents/skills/`.
 
 ## Workflow Index

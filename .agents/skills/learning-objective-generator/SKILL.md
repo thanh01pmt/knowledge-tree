@@ -9,18 +9,27 @@ description: Extract and generate structured Learning Objectives (ULO, CIO, SIO)
 
 ## Model Sư Phạm — Abstraction Axis
 
-| Tầng | Bản chất | Ràng buộc |
-|---|---|---|
-| **ULO** | Năng lực cốt lõi, độc lập với ngôn ngữ/công cụ | KHÔNG đề cập tên công nghệ; `parent_lo_code = ""` |
-| **CIO** | Pattern/approach cụ thể hơn, vẫn **language-neutral** | KHÔNG có tên công nghệ trong `name`; mỗi CIO ≥ 2 SIO con |
-| **SIO** | Gắn với **công nghệ cụ thể của project** (đọc từ context) | Tên công nghệ PHẢI có trong `name`/`description` |
+| Tầng | Bản chất | Ràng buộc | Mã định danh |
+|---|---|---|---|
+| **ULO** | Năng lực cốt lõi, độc lập với ngôn ngữ/công cụ | KHÔNG đề cập tên công nghệ; `parent_lo_code = ""` | `ULO-<FEATURE_SLUG>` |
+| **CIO** | Pattern/approach cụ thể hơn, vẫn **language-neutral** | KHÔNG có tên công nghệ trong `name`; mỗi CIO ≥ 2 SIO con | `CIO-<FEATURE_SLUG>` |
+| **SIO** | Gắn với **công nghệ cụ thể của project** (đọc từ context) | Tên công nghệ PHẢI có trong `name`/`description` | `SIO-<TECH_PREFIX>-<FEATURE_SLUG>` |
 
 > ⚠️ Công nghệ cụ thể (Swift, Python, SQL...) **do context quy định**, không phải hardcode. Script tự động detect từ `context/`, `context-audit.md`, `raw_pdf.txt`.
+
+## SIO Cross-Referencing & Naming Conventions
+
+1. **Cấu trúc Mã SIO:** `SIO-<TECH_PREFIX>-<FEATURE_SLUG>` (dạng `UPPER_SNAKE_CASE`).
+   - Ví dụ: `SIO-JS-OBJECT-LITERAL-METHODS`, `SIO-SWIFT-DICTIONARY-LITERAL-METHODS`, `SIO-PY-DICT-KEYS-VALUES-GET`.
+2. **Đối chiếu Mẫu SIO Đa Công nghệ (Cross-Technology Pattern Reference):**
+   - Tầng **Concept / ULO / CIO** là **100% Trung tính** và dùng chung cho mọi dự án.
+   - Khi xây dựng SIO cho một công nghệ mới (ví dụ: Swift), Agent **CẦN TRA CỨU & ĐỐI CHIẾU** các SIO sẵn có từ các dự án khác (JS, Python...) kết nối cùng mã CIO/Concept để kế thừa cấu trúc và chuyển đổi tên/từ khóa tương đương cho công nghệ mới.
 
 ## Format Bắt Buộc
 
 - **Description:** `"Người học có khả năng [verb] [object]..."` (tiếng Việt, 1-3 câu)
 - **parent_lo_code:** ULO → `""`; CIO → ULO code; SIO → CIO code
+- **lo_type:** ULO → `UNIVERSAL`; CIO → `CONCEPTUAL_IMPL`; SIO → `SPECIFIC_IMPL`
 
 ## Prerequisite
 
@@ -60,5 +69,5 @@ Script `llm_extract_lo.py` tự suy technology theo thứ tự ưu tiên:
 
 ```bash
 python3 .agents/skills/tree-validator/scripts/validate_tree.py --project <slug>
-python3 .agents/skills/tree-validator/scripts/detect_gaps.py --project <slug>
+python3 .agents/skills/tree-validator/scripts/audit_coverage.py --project <slug>
 ```
