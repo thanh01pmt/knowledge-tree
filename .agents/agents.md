@@ -15,7 +15,7 @@
    - 100% câu mô tả trong `learning-objectives.tsv` BẮT BUỘC bắt đầu bằng: **`"Người học có khả năng ..."`**.
 5. **Quy mô & Độ phủ Tri thức Cạn kiệt ($\ge 80 - 160$ LOs)**:
    - Trích xuất cạn kệt 100% nội dung `context/*.json` và `context/*.pdf` với quy mô trung bình **$\ge 80 - 160$ LOs**.
-   - Bắt buộc phải **PASS cả 2 script**: `validate_tree.py` (`[PASS] 0 lỗi`) và `audit_coverage.py` (`Coverage Score ≥ 90%`).
+   - Bắt buộc phải **PASS cả 2 script**: `validate_tree.py` (`[PASS] 0 lỗi`) và `audit_coverage.py` (`Coverage Score ≥ 95%`).
 6. **Phân định 2 Trục Bloom & Khuyến khích Bloom Cấp cao ở ULO (Anderson & Krathwohl [T1])**:
    - Phân định rõ 2 trục độc lập: **Cognitive Process** (động từ Bloom: Remember $\rightarrow$ Create) và **Knowledge Dimension** (`FACTUAL`, `CONCEPTUAL`, `PROCEDURAL`, `METACOGNITIVE`).
    - Khi nội dung cho phép, chủ động chọn động từ cấp **Evaluate / Create** cho tầng ULO để tránh "lực hút tự nhiên" (natural pull) kéo tất cả LOs về Understand/Apply.

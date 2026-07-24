@@ -25,4 +25,4 @@ description: Cross-reference extracted project syllabus with the Master Knowledg
    - For existing codes: Just list them.
    - For NEW Concept proposals: Mark clearly with `[NEW NODE PROPOSAL]`, provide `UPPER_SNAKE_CASE` code (must be a NOUN PHRASE), Name, Description, and its comma-separated parent codes.
 5. Organize the plan hierarchically for review.
-6. **STOP:** You do not write any project TSVs directly. You propose the plan for user/teacher approval. Upon approval, apply to staging via `.agents/skills/roadmap-aligner/scripts/apply_plan_to_staging.py`.
+6. **STOP:** You do not write any project TSVs directly. You propose the plan for user/teacher approval. Upon approval, run `/build-tree` (which executes `assemble_project.py` reading `master_tree.json` to assemble the 5 project taxonomy TSVs into `projects/<slug>/output/`). *Note: `apply_plan_to_staging.py` is reserved exclusively for the `/crawl-roadmap` workflow to merge external nodes into General Context.*

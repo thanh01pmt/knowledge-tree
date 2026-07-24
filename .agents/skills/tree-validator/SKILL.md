@@ -9,12 +9,13 @@ description: Kiểm tra tính toàn vẹn tham chiếu của knowledge tree và 
 repo-root/
 ├── projects/
 │   └── <project-slug>/
-│       ├── fields.tsv
-│       ├── subjects.tsv
-│       ├── categories.tsv
-│       ├── topics.tsv
-│       ├── concepts.tsv
-│       ├── learning-objectives.tsv
+│       ├── output/
+│       │   ├── fields.tsv
+│       │   ├── subjects.tsv
+│       │   ├── categories.tsv
+│       │   ├── topics.tsv
+│       │   ├── concepts.tsv
+│       │   └── learning-objectives.tsv
 │       └── .tree-validator/            # tự scaffold bởi script, không cần tạo tay
 │           └── reports/<timestamp>/{validation_report.md, coverage_report.md}
 ├── .agents/

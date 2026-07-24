@@ -22,6 +22,8 @@ description: Đồng bộ dữ liệu 6 file TSV của dự án (fields, subject
    In `learning_objectives`, `UNIVERSAL` nodes are written before `CONCEPTUAL_IMPL`, which are written before `SPECIFIC_IMPL`.
 3. **Upsert Semantics:**
    Look up existing UUID `id` by `code`. If `code` exists, upsert using `id` to update data in-place without breaking relational keys. If missing, insert as new record.
+4. **Non-destructive Upsert Policy (No Automatic Deletes):**
+   `sync_to_supabase.py` uses `.upsert()` / `.insert()` exclusively. It **does NOT** execute `.delete()` on records that are removed from local TSV files. This behavior is intentional to prevent accidental cascade deletion of student progress tracking and historical mastery metrics (`student_mastery`). If a record must be purged from Supabase, it must be deleted via explicit SQL migration or direct admin database query.
 
 ## Scripts
 - `.agents/skills/supabase-sync/scripts/sync_to_supabase.py`

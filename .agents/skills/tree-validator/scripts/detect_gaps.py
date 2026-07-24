@@ -2,11 +2,12 @@
 """
 detect_gaps.py — Gap Detection Tool cho Knowledge Tree.
 
-Phát hiện 3 loại gap:
+Phát hiện 4 loại gap:
   Gap A (CONCEPT_WITHOUT_LO):  Concept trong project chưa có LO nào trỏ đến.
   Gap B (CIO_SHALLOW):         CIO có ít hơn 2 SIO con → phân rã chưa đủ sâu.
+  Gap D (MARR_VIOLATION):      CIO vi phạm Phép thử Marr 2-Ngôn-ngữ (chứa tên công nghệ/cú pháp ngôn ngữ cụ thể).
   Gap C (MASTER_CANDIDATE):    Concept từ master_tree.json liên quan đến syllabus
-                                nhưng chưa được đưa vào project taxonomy.
+                               nhưng chưa được đưa vào project taxonomy.
 
 Chạy: python3 detect_gaps.py --project <slug>
 """
@@ -155,9 +156,22 @@ def detect_shallow_cios(project_los: list[dict], min_sios: int = 2) -> list[dict
 # ─── Gap D: CIOs violating Marr's Representation-Independent test ─────────────
 
 TECH_KEYWORDS = {
-    "python", "swift", "javascript", "typescript", "java", "golang", "c++",
-    "def", "func", "struct", "import"
+    "python", "swift", "javascript", "typescript", "java", "golang", "rust", "ruby", "php",
+    "docker", "kubernetes", "c++", "cpp", "c#", "csharp",
+    "def", "func", "struct", "import", "class", "interface", "trait", "decorator", "annotation",
+    "lambda", "async", "await", "malloc", "free", "nil", "null", "undefined", "cout", "printf"
 }
+
+SYNTAX_PATTERNS = [
+    (r'(?:\bc\+\+|\bcpp\b)', "c++"),
+    (r'(?:\bc#|\bcsharp\b)', "c#"),
+    (r'\bclass\s+\w+\s*\(\s*\w+\s*\)', "syntax: class Child(Parent)"),
+    (r'\bdef\s+\w+', "syntax: def function"),
+    (r'\bfunc\s+\w+', "syntax: func function"),
+    (r'\bfn\s+\w+', "syntax: fn function"),
+    (r'\bimport\s+\w+', "syntax: import statement"),
+    (r'\bfrom\s+\w+\s+import\b', "syntax: from ... import"),
+]
 
 def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:
     """Return CIOs containing technology/syntax-specific tokens violating Marr's test."""
@@ -165,7 +179,18 @@ def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:
     violations = []
     for cio in cios:
         text = (cio.get("name", "") + " " + cio.get("description", "")).lower()
-        found_kw = [kw for kw in TECH_KEYWORDS if re.search(r'\b' + re.escape(kw) + r'\b', text)]
+        found_kw = []
+        for kw in TECH_KEYWORDS:
+            if kw in ("c++", "cpp", "c#", "csharp"):
+                continue  # Handled by SYNTAX_PATTERNS
+            if re.search(r'\b' + re.escape(kw) + r'\b', text):
+                found_kw.append(kw)
+        
+        for pattern, label in SYNTAX_PATTERNS:
+            if re.search(pattern, text):
+                if label not in found_kw:
+                    found_kw.append(label)
+
         if found_kw:
             violations.append({
                 "code": cio.get("code", ""),
@@ -211,6 +236,7 @@ def render_report(
     slug: str,
     gap_a: list[dict],
     gap_b: list[dict],
+    gap_d: list[dict],
     gap_c: list[dict],
     min_score: float,
 ) -> str:
@@ -270,6 +296,30 @@ def render_report(
     lines += [
         "---",
         "",
+        "## Gap D — Marr's Test Violated CIOs (`MARR_VIOLATION`)",
+        "",
+        "> CIO chứa từ khóa công nghệ, cú pháp hoặc cấu trúc ngôn ngữ cụ thể — vi phạm Phép thử Marr 2-Ngôn-ngữ.",
+        "",
+    ]
+
+    if gap_d:
+        lines += [
+            f"**{len(gap_d)} CIO(s) vi phạm tính Trung tính (Marr Test):**",
+            "",
+            "| CIO Code | CIO Name | Detected Keywords / Patterns |",
+            "|---|---|---|",
+        ]
+        for g in gap_d:
+            kws = ", ".join(f"`{k}`" for k in g["keywords"])
+            lines.append(f"| `{g['code']}` | {g['name']} | {kws} |")
+        lines.append("")
+        lines.append("**→ Action:** Viết lại mô tả/tên CIO thành khái niệm/thủ tục trung tính 100% độc lập ngôn ngữ, hoặc chuyển xuống tầng SIO.")
+    else:
+        lines += ["✅ **Tất cả CIOs đều đạt Phép thử Marr (100% Trung tính).**", ""]
+
+    lines += [
+        "---",
+        "",
         "## Gap C — Master Tree Candidates (`MASTER_CANDIDATE`)",
         "",
         f"> Concepts từ `master_tree.json` **chưa có trong project** nhưng keyword-match với syllabus (score ≥ {min_score}).",
@@ -301,7 +351,7 @@ def render_report(
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Detect 3 types of gaps in the project Knowledge Tree."
+        description="Detect 4 types of gaps in the project Knowledge Tree."
     )
     parser.add_argument("--project", type=str, help="Project slug")
     parser.add_argument(
@@ -389,7 +439,7 @@ def main():
     print(f"{'='*54}")
 
     # Write reports
-    report_content = render_report(slug, gap_a, gap_b, gap_c, args.min_score)
+    report_content = render_report(slug, gap_a, gap_b, gap_d, gap_c, args.min_score)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     report_dir = project_dir / ".tree-validator" / "reports" / stamp
     report_dir.mkdir(parents=True, exist_ok=True)

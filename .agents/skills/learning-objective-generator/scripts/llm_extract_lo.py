@@ -313,7 +313,9 @@ Tầng 1 — UNIVERSAL (ULO):
 
 Tầng 2 — CONCEPTUAL_IMPL (CIO):
   • Mô tả một PATTERN hoặc APPROACH cụ thể để hiện thực ULO.
-  • Vẫn language-neutral — KHÔNG nhắc tên công nghệ cụ thể ({technology}) trong name.
+  • ĐÁP ỨNG PHÉP THỬ MARR 2-NGÔN-NGỮ (Representation-Independent / Algorithmic Level): Mô tả CIO BẮT BUỘC TRUNG TÍNH 100%, không bị ràng buộc bởi từ khóa, cú pháp, hay thứ tự token của bất kỳ ngôn ngữ đơn lẻ nào.
+  • THỰC HIỆN KIỂM THỬ TRƯỚC KHI SINH: Thử ánh xạ mô tả CIO sang ≥ 2 ngôn ngữ khác nhau (như Python vs Go/Java/Swift). Nếu mô tả chỉ khớp tự nhiên với 1 ngôn ngữ (ép thứ tự từ khóa token-order hoặc cú pháp riêng), đó là SIO trá hình → BẮT BUỘC viết lại thành thủ tục/khái niệm trung tính.
+  • KHÔNG nhắc tên công nghệ ({technology}) hay từ khóa cú pháp (class, func, def, import, v.v.) trong tên và mô tả.
   • Trả lời: "Theo pattern/cách tiếp cận nào người học có thể đạt ULO này?"
   • Tên: Verb + Object (VD: "Iterate Over a Collection", "Define a Named Function").
   • parent_lo_code → trỏ về ULO tương ứng.
@@ -359,7 +361,7 @@ QUY TẮC ĐỘ PHỦ
 ════════════════════════════════════════════
 
 • Phân rã ĐẦY ĐỦ tất cả mục trong syllabus, không bỏ sót.
-• Mỗi bullet/mục sinh ít nhất: 1 ULO + 1 CIO + 2 SIO.
+• Đảm bảo mật độ LO phù hợp với độ phức tạp của khái niệm: sinh 1-2 ULO cho mục chính, mỗi ULO phát triển 1-2 CIO trung tính, và mỗi CIO có ÍT NHẤT 2 SIO con.
 • Mỗi CIO phải có ÍT NHẤT 2 SIO con.
 • Code phải DUY NHẤT trong toàn bộ output.
 • parent_lo_code phải trỏ đến code ĐANG TỒN TẠI trong output (không bịa code).
