@@ -1,0 +1,42 @@
+name: Deploy Multi-MCP Server to Oracle Cloud VM
+
+on:
+  push:
+    branches:
+      - main
+      - stable
+
+jobs:
+  deploy:
+    name: Build & Deploy to Remote Oracle VM
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Codebase
+        uses: actions/checkout@v4
+
+      - name: Deploy to Remote VM via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.ORACLE_HOST }}
+          username: ${{ secrets.ORACLE_USER }}
+          key: ${{ secrets.ORACLE_SSH_KEY }}
+          port: 22
+          script: |
+            echo "🚀 Starting Automated Deployment on Oracle VM..."
+            
+            # Navigate to project directory
+            cd /home/ubuntu/knowledge-tree
+            
+            # Pull latest changes from git
+            git fetch --all
+            git reset --hard origin/main
+            
+            # Rebuild and restart docker container
+            docker compose up -d --build
+            
+            # Verify container health
+            sleep 3
+            curl -s http://localhost:8888/health
+            
+            echo "✅ Deployment Completed Successfully!"
