@@ -34,7 +34,11 @@
 | ---------------------- | ----------------- | ---------------------------------------------------------------------------------------------- |
 | `/init <project>`      | scaffolder        | Scaffold project TSV files (updates status.yaml)                                               |
 | `/set-project`         | coordinator       | Update active_project in status.yaml                                                           |
-| `/context-audit`       | @context-analyzer | Read project syllabus/PDFs                                                                     |
+| `/scaffold-keywords <target> --source <path>` | scaffolder | Tạo `.work/kw/`, chunk tài liệu nguồn (PDF/MD/TXT)                              |
+| `/extract-terms`       | @keyword-extractor | YAKE + LLM candidate-gen → embedding filter → `candidates_filtered.md`                        |
+| `/verify-terms`        | @keyword-extractor | LLM dedup + omission-check loop → `verify-report.md` (**điểm duyệt người**)                   |
+| `/finalize-keywords`   | @keyword-extractor | Export `output/keywords.tsv` + inject vào `context-audit.md`                                  |
+| `/context-audit`       | @context-analyzer | Read project syllabus/PDFs (+ `context/keywords.tsv` nếu có từ ATE pipeline)                  |
 | `/map-taxonomy`        | @taxonomy-mapper  | Cross-reference syllabus with Master TSV -> mapping-plan.md                                    |
 | `/build-tree`          | @tree-assembler   | Apply mapping-plan.md to build 5 taxonomy TSVs (fields → concepts)                             |
 | `/generate-los`        | @tree-assembler   | Generate `learning-objectives.tsv` via LLM, grounded in project concept codes                  |
@@ -50,9 +54,14 @@
 - Goal: Scaffold project directory structure, 6 output TSV headers, and set active project in `status.yaml`.
 - Script: `.agents/skills/tree-validator/scripts/scaffold_tree.py`
 
+## @keyword-extractor
+
+- Goal: Vét cạn thuật ngữ chuyên ngành (ATE) từ tài liệu nguồn theo chủ đề mục tiêu. Pipeline lai: YAKE + LLM candidate-gen → embedding filter → LLM dedup + omission-check loop. Output tích hợp vào `/context-audit`.
+- Skill: `keyword-extractor`
+
 ## @context-analyzer
 
-- Goal: Extract syllabus and knowledge domains from `projects/<project>/context/` source files.
+- Goal: Extract syllabus and knowledge domains from `projects/<project>/context/` source files. Nếu `context/keywords.tsv` tồn tại (từ ATE pipeline `/finalize-keywords`), tích hợp section `## ATE Keywords` vào domain breakdown — không cần extract lại từ PDF.
 - Skill: `project-context-loader`
 
 ## @taxonomy-mapper
