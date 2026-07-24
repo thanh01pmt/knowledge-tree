@@ -56,21 +56,46 @@ sequenceDiagram
 ## 📝 3. Chi Tiết Các Bước Vận Hành
 
 ### 🔹 Bước 1: Ràng Phạm Vi Bằng Bộ 6 Tiêu Chí Đơn Giản (High-Certainty Scope Check)
-Khi người dùng đưa ra mong muốn tự nhiên, Agent **chọn 2-3 câu hỏi phù hợp nhất từ Bộ 6 Tiêu chí Chắc chắn Trả lời được Ngay** để thu hẹp scope mà không gây áp lực kỹ thuật:
+
+> 🌟 **Quy Tắc Vàng UX (Golden UX Rule)**: **KHÔNG BAO GIỜ để người học phải tự nghĩ toàn bộ từ con số 0.** Mọi câu hỏi ở Bước 1 BẮT BUỘC phải đưa ra các **Lựa chọn gợi ý sẵn (A, B, C)** để bấm chọn 1-click, kèm theo tùy chọn **"D. Khác (Gõ tùy chỉnh ngắn)"**.
+
+Khi người dùng đưa ra mong muốn tự nhiên, Agent **chọn 2-3 câu hỏi phù hợp nhất từ Bộ 6 Tiêu chí** với đầy đủ phương án chọn sẵn:
 
 1. ⏱️ **Quỹ thời gian & Tần suất (Time Budget & Frequency)**:
-   - *"Mỗi tuần bạn có thể dành khoảng bao nhiêu giờ cho lộ trình này?"* (VD: 3-5h/tuần, 10-15h/tuần hay 20+h/tuần?).
-   - *"Bạn muốn học dàn trải 30-45 phút mỗi ngày hay học dồn vào cuối tuần?"*
+   - *"Mỗi tuần bạn có thể dành khoảng bao nhiêu giờ cho lộ trình này?"*
+     - `A. Cấp tốc (15-20h/tuần)`
+     - `B. Vừa phải (8-10h/tuần)`
+     - `C. Nhẹ nhàng (3-5h/tuần)`
+     - `D. Khác (Nhập số giờ cụ thể)`
 2. 🎯 **Mục đích & Kết quả Tối thượng (Ultimate Outcome / Deadline)**:
-   - *"Mục tiêu lớn nhất của bạn sau lộ trình này là gì?"* (A: Làm ra sản phẩm MVP ngay; B: Nắm vững bản chất để đi phỏng vấn/đổi ngành; C: Ôn thi lấy chứng chỉ).
-3. 🎨 **Định dạng / Định hướng Học tập Yêu thích (Preferred Modality)**:
-   - *"Bạn thích tiếp thu kiến thức qua hình thức nào nhất?"* (A: Video / Audio Podcast; B: Bài đọc / Cheatsheets; C: Thực hành Hands-on Code Lab ngay).
-4. 💻 **Môi trường & Thiết bị Khả dụng (Hardware / Environment Limits)**:
-   - *"Bạn sẽ học trên thiết bị nào?"* (A: Laptop PC mạnh chạy Docker/Local DB; B: Máy tính nhẹ dùng Browser Cloud IDEs; C: iPad / Smartphone chủ yếu nghe Audio & xem tài liệu khi di chuyển).
+   - *"Mục tiêu lớn nhất của bạn sau lộ trình này là gì?"*
+     - `A. Làm ra sản phẩm MVP chạy được ngay`
+     - `B. Nắm vững bản chất để đi phỏng vấn / đổi ngành`
+     - `C. Ôn thi lấy chứng chỉ / thi vượt cấp`
+     - `D. Khác (Ghi rõ mục tiêu cá nhân)`
+3. 🎨 **Định dạng Học tập Yêu thích (Preferred Learning Modality)**:
+   - *"Bạn thích tiếp thu kiến thức qua hình thức nào nhất?"*
+     - `A. Video bài giảng & Audio Podcast (Nghe & Xem khi di chuyển)`
+     - `B. Bài đọc Markdown & Cheatsheets (Đọc & Ghi chú)`
+     - `C. Thực hành Hands-on Code Labs (Làm bài tập ngay)`
+     - `D. Khác (Kết hợp linh hoạt)`
+4. 💻 **Môi trường & Thiết bị Khả dụng (Hardware & Environment Limits)**:
+   - *"Bạn sẽ học và thực hành trên thiết bị nào?"*
+     - `A. Laptop/PC cấu hình mạnh (Docker, Local DB, Heavy IDEs)`
+     - `B. Máy tính nhẹ / Văn phòng (Dùng Browser & Cloud IDEs)`
+     - `C. iPad / Smartphone (Chủ yếu nghe Audio & xem tài liệu)`
+     - `D. Khác (Vừa học máy tính vừa học điện thoại)`
 5. 💰 **Ngân sách Công cụ & Dịch vụ (Tooling / Cloud Budget)**:
-   - *"Bạn ưu tiên dùng 100% công cụ miễn phí/mã nguồn mở hay sẵn sàng trả phí dịch vụ Cloud API nếu cần?"*
-6. 📊 **Mức độ Tự tin Tự đánh giá (Self-Assessed Baseline - Không dùng từ chuyên môn)**:
-   - *"Với chủ đề này, bạn cảm thấy bản thân đang ở đâu?"* (A: Mới hoàn toàn từ con số 0; B: Đã biết sơ qua khái niệm; C: Đã làm thực tế, cần học nâng cao).
+   - *"Bạn ưu tiên dùng công cụ nào?"*
+     - `A. 100% Miễn phí & Open-source`
+     - `B. Sẵn sàng trả phí Cloud / API nếu tối ưu thời gian`
+     - `C. Khác...`
+6. 📊 **Mức độ Tự tin Tự đánh giá (Self-Assessed Baseline)**:
+   - *"Với chủ đề này, bạn tự đánh giá bản thân đang ở đâu?"*
+     - `A. Mới hoàn toàn từ con số 0`
+     - `B. Đã biết sơ qua khái niệm, cần hệ thống lại`
+     - `C. Đã làm thực tế rồi, cần học nâng cao`
+     - `D. Khác...`
 
 ---
 
