@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "knowledge-tree": {
+      "command": "uv",
+      "args": [
+        "run",
+        "--with", "fastmcp>=3.0.0",
+        "--with", "supabase>=2.0.0",
+        "--with", "pandas>=2.0.0",
+        "mcp/server.py"
+      ],
+      "cwd": "${workspaceFolder}"
+    }
+  }
+}

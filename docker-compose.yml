@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  knowledge-tree-mcp:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: knowledge-tree-mcp
+    restart: unless-stopped
+    ports:
+      - "8888:8000"
+    environment:
+      - FASTMCP_TRANSPORT=http
+      - FASTMCP_HOST=0.0.0.0
+      - FASTMCP_PORT=8000
+      # Pass Supabase environment variables if configured
+      - SUPABASE_URL=${SUPABASE_URL:-}
+      - SUPABASE_KEY=${SUPABASE_KEY:-}
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 15s
+      timeout: 5s
+      retries: 3
