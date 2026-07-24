@@ -1,6 +1,7 @@
 name: Deploy Multi-MCP Server to Oracle Cloud VM
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
