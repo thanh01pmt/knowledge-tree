@@ -24,14 +24,14 @@ jobs:
           key: ${{ secrets.ORACLE_SSH_KEY }}
           port: 22
           script: |
-            echo "🚀 Starting Automated Deployment on Oracle VM..."
+            echo "🚀 Starting Automated Deployment on Oracle VM for branch '${{ github.ref_name }}'..."
             
             # Navigate to project directory
             cd /home/ubuntu/knowledge-tree
             
-            # Pull latest changes from git
+            # Pull latest changes from the triggered branch
             git fetch --all
-            git reset --hard origin/main
+            git reset --hard origin/${{ github.ref_name }}
             
             # Rebuild and restart docker container
             docker compose up -d --build
