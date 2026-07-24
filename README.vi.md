@@ -68,6 +68,18 @@ knowledge-tree/
 │       └── supabase-sync/
 │           └── scripts/sync_to_supabase.py
 │
+├── mcp/                                    # Multi-Server Hub FastMCP v3
+│   ├── main.py                             # FastMCP Hub entrypoint (mount toàn bộ sub-servers)
+│   ├── README.md                           # Tài liệu hướng dẫn công cụ & cấu hình MCP
+│   └── servers/                            # Các Sub-MCP Servers (kt_server, system_server, v.v.)
+│       ├── kt_server.py                    # Công cụ Knowledge Tree Operations (kt_*)
+│       └── system_server.py                # Công cụ System Ops & Resources (sys_*)
+│
+├── docs/                                   # Tài liệu & Hướng dẫn kỹ thuật
+│   └── instructions/                       # Hướng dẫn chi tiết cho Developer
+│       ├── how-to-add-new-mcp-server.md    # Hướng dẫn bổ sung Sub-MCP Server mới
+│       └── ci-cd-deployment.md             # Hướng dẫn cấu hình CI/CD GitHub Actions
+│
 ├── general-context/                        # Master Knowledge Tree Staging Copy
 │   ├── mlo-knowlege-tree.tsv              # Cây tri thức Master chung
 │   └── version_history.json               # Lịch sử nâng cấp phiên bản
@@ -79,6 +91,10 @@ knowledge-tree/
 │       ├── .tree-validator/                # Log báo cáo kiểm định integrity
 │       └── output/                         # 6 file TSV thành phẩm (R1)
 │
+├── Dockerfile                              # Cấu hình Container Docker cho FastMCP Hub
+├── docker-compose.yml                      # Cấu hình Docker Compose service (port 8888:8000)
+├── pyproject.toml                          # Khai báo thư viện phụ thuộc Python
+├── .mcp.json                               # Cấu hình MCP Client cho AI IDEs / Agents
 ├── CODE_OF_CONDUCT.md                      # Quy tắc ứng xử cộng đồng
 ├── CONTRIBUTING.md                         # Hướng dẫn đóng góp cho cộng đồng
 ├── LICENSE                                 # Giấy phép mở MIT
@@ -134,6 +150,41 @@ flowchart TD
 | `/validate-master-tree` | `@tree-validator` | ❌ | Kiểm tra referential integrity & collision cho Cây tri thức Master |
 | `/audit-coverage` | `@tree-validator` | ❌ | Kiểm tra đối chiếu ngược độ phủ syllabus từ `learning-objectives.tsv` |
 | `/sync-supabase` | `@tree-assembler` | ❌ | Đồng bộ 6 file TSV thành phẩm của project lên cơ sở dữ liệu Supabase Cloud |
+
+---
+
+## 🚀 Multi-MCP Server & Triển Khai Container
+
+Dự án tích hợp sẵn một **FastMCP v3 Multi-Server Hub** tại thư mục [`mcp/`](file:///Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/mcp), cung cấp toàn bộ công cụ tự động hóa kiểm định, phát hiện lỗ hổng và đồng bộ dữ liệu dưới dạng các MCP Tools chuẩn cho bất kỳ AI Agent nào (Pi, Cursor, Claude Desktop, Antigravity).
+
+### Kiến Trúc FastMCP Hub
+- **Entrypoint**: [`mcp/main.py`](file:///Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/mcp/main.py)
+- **Danh sách Sub-Servers**:
+  - `kt`: Công cụ Knowledge Tree (`kt_validate_tree`, `kt_detect_gaps`, `kt_audit_coverage`, `kt_sync_supabase`, `kt_scaffold_project`)
+  - `sys`: Công cụ hệ thống & tài nguyên (`sys_get_system_status`, `skills://{name}`, `guide_workflow`)
+
+### Khởi Chạy Nhanh (Local)
+```bash
+# Khởi chạy FastMCP Hub ở local
+uv run python mcp/main.py
+
+# Health check
+curl http://localhost:8000/health
+```
+
+### Triển Khai Docker & Remote Oracle Cloud VM
+```bash
+# Chạy container qua Docker Compose
+docker compose up -d --build
+
+# Container mở cổng HTTP transport tại port 8888
+curl http://localhost:8888/health
+```
+
+### CI/CD Tự Động Deploy Với GitHub Actions
+- **Workflow**: [`.github/workflows/deploy.yml`](file://.github/workflows/deploy.yml)
+- **Cơ chế**: Tự động deploy khi push/merge code vào nhánh `stable` (hoặc bấm chạy thủ công `workflow_dispatch`).
+- **Hướng dẫn chi tiết**: Xem [`docs/instructions/ci-cd-deployment.md`](file://docs/instructions/ci-cd-deployment.md).
 
 ---
 

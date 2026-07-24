@@ -68,6 +68,22 @@ knowledge-tree/
 │       └── supabase-sync/
 │           └── scripts/sync_to_supabase.py
 │
+├── mcp/                                    # FastMCP v3 Multi-Server Hub
+│   ├── main.py                             # FastMCP Hub entrypoint (mounts all sub-servers)
+│   ├── README.md                           # FastMCP Server & Tools documentation
+│   └── servers/                            # Sub-MCP Servers (kt_server, system_server, etc.)
+│       ├── kt_server.py                    # Knowledge Tree Tools (kt_*)
+│       └── system_server.py                # System Ops & Resources (sys_*)
+│
+├── docs/                                   # Documentation & Instructions
+│   └── instructions/                       # Step-by-step developer guides
+│       ├── how-to-add-new-mcp-server.md    # Guide to adding new MCP sub-servers
+│       └── ci-cd-deployment.md             # GitHub Actions CI/CD deployment guide
+│
+├── .github/
+│   └── workflows/
+│       └── deploy.yml                      # CI/CD pipeline (Deploys to Oracle VM on stable branch)
+│
 ├── general-context/                        # Master Knowledge Tree Staging Copy
 │   ├── mlo-knowlege-tree.tsv              # Global Master Knowledge Tree TSV
 │   └── version_history.json               # Release & version history
@@ -79,6 +95,10 @@ knowledge-tree/
 │       ├── .tree-validator/                # Validation reports and fix logs
 │       └── output/                         # 6 final TSV artifacts (R1)
 │
+├── Dockerfile                              # Container definition for FastMCP Hub
+├── docker-compose.yml                      # Docker compose service definition (port 8888:8000)
+├── pyproject.toml                          # Python project dependencies
+├── .mcp.json                               # MCP client configuration for AI IDEs / Agents
 ├── CODE_OF_CONDUCT.md                      # Contributor Covenant Code of Conduct
 ├── CONTRIBUTING.md                         # Contribution guidelines & validation steps
 ├── LICENSE                                 # MIT Open Source License
@@ -134,6 +154,41 @@ flowchart TD
 | `/validate-master-tree` | `@tree-validator` | ❌ | Enforce Referential Integrity & Collision checks for Master Tree TSVs |
 | `/audit-coverage` | `@tree-validator` | ❌ | Perform Reverse Coverage Audit against source syllabus |
 | `/sync-supabase` | `@tree-assembler` | ❌ | Synchronize 6 validated TSV files to Supabase Cloud DB |
+
+---
+
+## 🚀 Multi-MCP Server & Container Deployment
+
+The project includes a **FastMCP v3 Multi-Server Hub** located in [`mcp/`](file:///Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/mcp), exposing project operations, validation, gap detection, and database sync as standard MCP tools for any AI Agent (Pi, Cursor, Claude Desktop, Antigravity).
+
+### FastMCP Hub Architecture
+- **Entrypoint**: [`mcp/main.py`](file:///Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/mcp/main.py)
+- **Sub-Servers**:
+  - `kt`: Knowledge Tree tools (`kt_validate_tree`, `kt_detect_gaps`, `kt_audit_coverage`, `kt_sync_supabase`, `kt_scaffold_project`)
+  - `sys`: System tools & resources (`sys_get_system_status`, `skills://{name}`, `guide_workflow`)
+
+### Quick Run
+```bash
+# Run locally with FastMCP
+uv run python mcp/main.py
+
+# Health check
+curl http://localhost:8000/health
+```
+
+### Docker & Remote Oracle VM Deployment
+```bash
+# Run via Docker Compose
+docker compose up -d --build
+
+# Container exposes HTTP transport on port 8888
+curl http://localhost:8888/health
+```
+
+### CI/CD Deployment via GitHub Actions
+- **Workflow**: [`.github/workflows/deploy.yml`](file://.github/workflows/deploy.yml)
+- **Trigger**: Automatic deployment on `git push` to `stable` branch (or manual `workflow_dispatch`).
+- **Guide**: See [`docs/instructions/ci-cd-deployment.md`](file://docs/instructions/ci-cd-deployment.md).
 
 ---
 
