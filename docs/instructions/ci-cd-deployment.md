@@ -10,7 +10,7 @@ File workflow nằm tại:
 👉 [.github/workflows/deploy.yml](file:///Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/.github/workflows/deploy.yml)
 
 ### Cơ chế hoạt động:
-1. Khi có sự kiện `push` lên nhánh `main` hoặc `stable`.
+1. Khi có sự kiện `push` hoặc merge code vào nhánh **`stable`** (hoặc khi bấm `workflow_dispatch` chạy thủ công).
 2. GitHub Runner khởi tạo, checkout mã nguồn mới nhất.
 3. Dùng SSH Key tự động kết nối bảo mật tới máy chủ Oracle VM (`ubuntu@140.245.127.64`).
 4. Thực thi lệnh cập nhật repo (`git reset --hard origin/main`), tự động rebuild Docker Image và khởi chạy container (`docker compose up -d --build`).
