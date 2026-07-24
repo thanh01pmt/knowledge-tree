@@ -6,7 +6,14 @@ Tài liệu này nghiên cứu chuyên sâu cấu trúc **13 Bảng Curriculum**
 
 ## 🏛️ 1. Hệ Thống 13 Bảng Curriculum Trong Supabase Cloud
 
-Qua rà soát trực tiếp dữ liệu Supabase DB của dự án, hệ thống CSDL chứa **13 bảng Curriculum** hoạt động song song với 6 bảng Đồ thị Tri thức (Knowledge Tree):
+Qua rà soát trực tiếp dữ liệu Supabase DB và codebase của dự án **`qms-monorepo`** (tại `packages/learnwell-platform`), hệ thống CSDL chứa **13 bảng Curriculum** hoạt động song song với 6 bảng Đồ thị Tri thức (Knowledge Tree):
+
+> [!NOTE]
+> **Phát hiện quan trọng từ Codebase `qms-monorepo`:**
+> 1. Bảng `learning_objective_prerequisites` đã được tạo sẵn trong `supabase/public_schema.sql` với ràng buộc `check_different_los (learning_objective_code <> prerequisite_lo_code)` và 2 Foreign Keys nối tới `learning_objectives(code)`.
+> 2. File dữ liệu gốc `supabase/data_only.sql` hiện có **0 bản ghi dữ liệu mẫu** cho bảng này.
+> 3. Tài liệu thiết kế hệ thống trong `src/help-docs/for-devs/` của LearnWell định hướng sử dụng **Sequence Mining & AI/Graph Embedding** để tự động suy luận và điền các cạnh `prerequisite`.
+
 
 ```mermaid
 flowchart TD
