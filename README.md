@@ -177,12 +177,15 @@ curl http://localhost:8000/health
 ```
 
 ### Docker & Remote Oracle VM Deployment
+- **Public Domain Endpoint**: `https://kt-mcp.orchable.xyz/mcp`
+- **Public Health Check**: `https://kt-mcp.orchable.xyz/health`
+
 ```bash
-# Run via Docker Compose
+# Run via Docker Compose on remote VM
 docker compose up -d --build
 
-# Container exposes HTTP transport on port 8888
-curl http://localhost:8888/health
+# Health check via Domain
+curl https://kt-mcp.orchable.xyz/health
 ```
 
 ### CI/CD Deployment via GitHub Actions

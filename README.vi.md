@@ -173,12 +173,15 @@ curl http://localhost:8000/health
 ```
 
 ### Triển Khai Docker & Remote Oracle Cloud VM
+- **Public Domain Endpoint**: `https://kt-mcp.orchable.xyz/mcp`
+- **Public Health Check**: `https://kt-mcp.orchable.xyz/health`
+
 ```bash
-# Chạy container qua Docker Compose
+# Chạy container qua Docker Compose trên máy chủ
 docker compose up -d --build
 
-# Container mở cổng HTTP transport tại port 8888
-curl http://localhost:8888/health
+# Kiểm tra sức khỏe qua tên miền chính thức
+curl https://kt-mcp.orchable.xyz/health
 ```
 
 ### CI/CD Tự Động Deploy Với GitHub Actions
