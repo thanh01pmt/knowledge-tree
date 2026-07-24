@@ -55,11 +55,22 @@ sequenceDiagram
 
 ## 📝 3. Chi Tiết Các Bước Vận Hành
 
-### 🔹 Bước 1: Ràng Phạm Vi Bằng Câu Hỏi Dễ (Scope Constraint Check)
-Khi người dùng đưa ra mong muốn tự nhiên, Agent **chỉ hỏi tối đa 2-3 câu hỏi thực tế**:
-- ⏱️ **Quỹ thời gian khả dụng**: *"Bạn có thể dành khoảng bao nhiêu giờ mỗi tuần cho lộ trình này?"* (VD: 3-5h/tuần hay 15-20h/tuần).
-- 📅 **Tần suất học tập**: *"Bạn muốn học dàn trải mỗi ngày 45 phút hay học tập trung vào 2 ngày cuối tuần?"*
-- 🎯 **Đầu ra kỳ vọng**: *"Bạn cần một sản phẩm chạy được ngay (MVP) hay cần nắm vững bản chất để đi phỏng vấn?"*
+### 🔹 Bước 1: Ràng Phạm Vi Bằng Bộ 6 Tiêu Chí Đơn Giản (High-Certainty Scope Check)
+Khi người dùng đưa ra mong muốn tự nhiên, Agent **chọn 2-3 câu hỏi phù hợp nhất từ Bộ 6 Tiêu chí Chắc chắn Trả lời được Ngay** để thu hẹp scope mà không gây áp lực kỹ thuật:
+
+1. ⏱️ **Quỹ thời gian & Tần suất (Time Budget & Frequency)**:
+   - *"Mỗi tuần bạn có thể dành khoảng bao nhiêu giờ cho lộ trình này?"* (VD: 3-5h/tuần, 10-15h/tuần hay 20+h/tuần?).
+   - *"Bạn muốn học dàn trải 30-45 phút mỗi ngày hay học dồn vào cuối tuần?"*
+2. 🎯 **Mục đích & Kết quả Tối thượng (Ultimate Outcome / Deadline)**:
+   - *"Mục tiêu lớn nhất của bạn sau lộ trình này là gì?"* (A: Làm ra sản phẩm MVP ngay; B: Nắm vững bản chất để đi phỏng vấn/đổi ngành; C: Ôn thi lấy chứng chỉ).
+3. 🎨 **Định dạng / Định hướng Học tập Yêu thích (Preferred Modality)**:
+   - *"Bạn thích tiếp thu kiến thức qua hình thức nào nhất?"* (A: Video / Audio Podcast; B: Bài đọc / Cheatsheets; C: Thực hành Hands-on Code Lab ngay).
+4. 💻 **Môi trường & Thiết bị Khả dụng (Hardware / Environment Limits)**:
+   - *"Bạn sẽ học trên thiết bị nào?"* (A: Laptop PC mạnh chạy Docker/Local DB; B: Máy tính nhẹ dùng Browser Cloud IDEs; C: iPad / Smartphone chủ yếu nghe Audio & xem tài liệu khi di chuyển).
+5. 💰 **Ngân sách Công cụ & Dịch vụ (Tooling / Cloud Budget)**:
+   - *"Bạn ưu tiên dùng 100% công cụ miễn phí/mã nguồn mở hay sẵn sàng trả phí dịch vụ Cloud API nếu cần?"*
+6. 📊 **Mức độ Tự tin Tự đánh giá (Self-Assessed Baseline - Không dùng từ chuyên môn)**:
+   - *"Với chủ đề này, bạn cảm thấy bản thân đang ở đâu?"* (A: Mới hoàn toàn từ con số 0; B: Đã biết sơ qua khái niệm; C: Đã làm thực tế, cần học nâng cao).
 
 ---
 
