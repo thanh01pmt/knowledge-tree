@@ -26,22 +26,35 @@
    - Mọi câu từ mô tả ULO/CIO/Concept phải được viết tự nhiên, mạch lạc, không find-and-replace thô ráp.
 9. **Sạch sẽ Thư mục Root**:
    - Không để lại script Python rác tại thư mục gốc workspace. All automation scripts belong inside `.agents/skills/`.
+10. **Ràng buộc Phê duyệt Đồng bộ DB / Cloud (Explicit Confirmation Required for DB Sync)**:
+    - **CẤM TUYỆT ĐỐI** tự động thực thi lệnh đồng bộ `/sync-supabase` hoặc đẩy dữ liệu lên cơ sở dữ liệu/nền tảng lưu trữ nếu **chưa nhận được sự đồng ý và phê duyệt trực tiếp từ người dùng**.
+11. **Cấm Viết Script Bypass để Lách Luật Validation (No Metric Gaming / Fallback Bypasses)**:
+    - Khi script pipeline hoặc mô hình LLM bị lỗi (như lỗi parse JSON, validation error), Agent **BẮT BUỘC BÁO CÁO LỖI GỐC (Root Error)** cho người dùng để thảo luận phương án xử lý.
+    - **CẤM TUYỆT ĐỐI** viết các script ngắn/tạm bợ (dummy fallback) nhằm tạo dữ liệu thu gọn/rác chỉ để ép bài test (`validate_tree.py`, `audit_coverage.py`) báo `[PASS] 0 lỗi`.
+12. **Bảo tồn & Minh bạch Dữ liệu (Data Preservation & Transparency)**:
+    - Khi có sự sai lệch hoặc xung đột giữa dữ liệu mới và bản lưu trữ/backup trước đó, Agent phải chủ động giải thích nguyên nhân gốc rễ và xin ý kiến người dùng trước khi ghi đè hoặc phục hồi dữ liệu.
 
 
 ## Workflow Index
 
 | Command                | Owner             | Primary result                                                                                 |
 | ---------------------- | ----------------- | ---------------------------------------------------------------------------------------------- |
+| `/run-pipeline`        | coordinator       | **Full End-to-End Workflow** with 5 explicit Human-in-the-loop (HITL) review checkpoints       |
 | `/init <project>`      | scaffolder        | Scaffold project TSV files (updates status.yaml)                                               |
 | `/set-project`         | coordinator       | Update active_project in status.yaml                                                           |
 | `/scaffold-keywords <target> --source <path>` | scaffolder | Tạo `.work/kw/`, chunk tài liệu nguồn (PDF/MD/TXT)                              |
 | `/extract-terms`       | @keyword-extractor | YAKE + LLM candidate-gen → embedding filter → `candidates_filtered.md`                        |
 | `/verify-terms`        | @keyword-extractor | LLM dedup + omission-check loop → `verify-report.md` (**điểm duyệt người**)                   |
 | `/finalize-keywords`   | @keyword-extractor | Export `output/keywords.tsv` + inject vào `context-audit.md`                                  |
+| `/escalate-concepts`   | @keyword-extractor | Keyword → concept trung tính + match Master Tree → `concept_candidates.tsv` + Gap D detection  |
 | `/context-audit`       | @context-analyzer | Read project syllabus/PDFs (+ `context/keywords.tsv` nếu có từ ATE pipeline)                  |
 | `/map-taxonomy`        | @taxonomy-mapper  | Cross-reference syllabus with Master TSV -> mapping-plan.md                                    |
 | `/build-tree`          | @tree-assembler   | Apply mapping-plan.md to build 5 taxonomy TSVs (fields → concepts)                             |
-| `/generate-los`        | @tree-assembler   | Generate `learning-objectives.tsv` via LLM, grounded in project concept codes                  |
+| `/generate-los`        | @tree-assembler   | Generate `learning-objectives.tsv` via LLM, 1-shot (legacy/fast path)                          |
+| `/generate-ulos`       | @tree-assembler   | Phase A: Sinh ULOs từ concepts, Bloom ưu tiên Evaluate/Create — **điểm duyệt**                 |
+| `/generate-cios`       | @tree-assembler   | Phase B: Sinh CIOs với Marr 2-Language Test per-CIO — **điểm duyệt**                           |
+| `/generate-sios`       | @tree-assembler   | Phase C: Sinh SIOs (tech-specific) + merge → `learning-objectives.tsv`                          |
+| `/map-prerequisites`   | @tree-assembler   | Phase E: Sinh `lo_prerequisites.tsv` từ file LO và bối cảnh Curriculum DAG                     |
 | `/detect-gaps`         | @tree-validator   | Run `detect_gaps.py` to find 3 gap types: missing LO coverage, shallow CIOs, master candidates |
 | `/validate-tree`       | @tree-validator   | Run `validate_tree.py` for structural referential integrity                                    |
 | `/audit-coverage`      | @tree-validator   | Run `audit_coverage.py` to cross-reference LO output against source PDF                        |
@@ -56,7 +69,7 @@
 
 ## @keyword-extractor
 
-- Goal: Vét cạn thuật ngữ chuyên ngành (ATE) từ tài liệu nguồn theo chủ đề mục tiêu. Pipeline lai: YAKE + LLM candidate-gen → embedding filter → LLM dedup + omission-check loop. Output tích hợp vào `/context-audit`.
+- Goal: Vét cạn thuật ngữ chuyên ngành (ATE) từ tài liệu nguồn theo chủ đề mục tiêu. Pipeline lai: YAKE + LLM candidate-gen → embedding filter → LLM dedup + omission-check loop. Output tích hợp vào `/context-audit`. Sau `/finalize-keywords`, lệnh `/escalate-concepts` abstraction keywords lên concept trung tính và match với Master Tree (phát hiện Gap D).
 - Skill: `keyword-extractor`
 
 ## @context-analyzer

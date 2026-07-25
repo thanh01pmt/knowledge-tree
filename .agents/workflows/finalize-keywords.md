@@ -58,6 +58,11 @@ projects/<project>/
 ## After This Step
 
 ```
-→ /context-audit    (để @context-analyzer tích hợp keywords vào domain breakdown)
-→ /map-taxonomy     (taxonomy mapper đã có full context)
+→ /escalate-concepts  (recommended)
+   Abstraction keywords → concept trung tính + match Master Tree
+   → Sinh concept_candidates.tsv + phát hiện Gap D
+   → Làm hints cho /map-taxonomy
+
+→ /context-audit   (nếu bỏ qua /escalate-concepts)
+   @context-analyzer đọc keywords.tsv và tích hợp vào domain breakdown
 ```

@@ -55,14 +55,16 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
         print(f"❌ Error: Output directory '{out_dir}' does not exist.")
         sys.exit(1)
 
-    # 1. BẮT BUỘC THỨ TỰ ĐỒNG BỘ TOP-DOWN (FIELDS -> SUBJECTS -> CATEGORIES -> TOPICS -> CONCEPTS -> LEARNING_OBJECTIVES)
+    # 1. BẮT BUỘC THỨ TỰ ĐỒNG BỘ TOP-DOWN
+    # Bao gồm cả learning_objective_prerequisites ở cuối cùng (Phase E)
     tables_config = [
         ("fields.tsv", "fields", ["field_codes"]),
         ("subjects.tsv", "subjects", ["field_codes"]),
         ("categories.tsv", "categories", ["subject_codes", "field_codes"]),
         ("topics.tsv", "topics", ["category_codes", "subject_codes", "field_codes"]),
         ("concepts.tsv", "concepts", ["topic_codes", "category_codes", "subject_codes", "field_codes"]),
-        ("learning-objectives.tsv", "learning_objectives", ["concept_codes", "topic_codes", "category_codes", "subject_codes", "field_codes"])
+        ("learning-objectives.tsv", "learning_objectives", ["concept_codes", "topic_codes", "category_codes", "subject_codes", "field_codes"]),
+        ("lo_prerequisites.tsv", "learning_objective_prerequisites", [])
     ]
 
     print(f"==================================================")
@@ -79,6 +81,24 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             reader = csv.DictReader(f, delimiter="\t")
             rows = list(reader)
 
+        if table_name == "learning_objective_prerequisites":
+            synced_count = 0
+            for r in rows:
+                target_code = r.get("learning_objective_code", "").strip()
+                prereq_code = r.get("prerequisite_lo_code", "").strip()
+                if not target_code or not prereq_code:
+                    continue
+                payload = {
+                    "learning_objective_code": target_code,
+                    "prerequisite_lo_code": prereq_code
+                }
+                # Thử upsert bằng cặp key (yêu cầu bảng Supabase setup đúng primary key)
+                supabase.table(table_name).upsert(payload).execute()
+                synced_count += 1
+            print(f"  • {table_name:<20}: {synced_count} synced (Upserted)")
+            continue
+
+        # For normal tables
         # Retrieve existing code -> id mapping from Supabase table
         existing_data = supabase.table(table_name).select("id, code").execute()
         code_to_id = {r["code"]: r["id"] for r in existing_data.data if r.get("code")}
@@ -93,7 +113,7 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
         inserted_count = 0
 
         for r in rows:
-            code = r["code"].strip()
+            code = r.get("code", "").strip()
             if not code:
                 continue
 
@@ -113,9 +133,9 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
                 payload["lo_type"] = r.get("lo_type", "UNIVERSAL").strip()
                 p_code = r.get("parent_lo_code", "").strip()
                 payload["parent_lo_code"] = p_code if p_code and p_code.upper() != "NULL" else None
-                if "knowledge_dimension_code" in r and r["knowledge_dimension_code"].strip():
+                if "knowledge_dimension_code" in r and r.get("knowledge_dimension_code", "").strip():
                     payload["knowledge_dimension_code"] = r["knowledge_dimension_code"].strip()
-                if "suggested_bloom_levels" in r and r["suggested_bloom_levels"].strip():
+                if "suggested_bloom_levels" in r and r.get("suggested_bloom_levels", "").strip():
                     payload["suggested_bloom_levels"] = [v.strip() for v in r["suggested_bloom_levels"].replace(";", ",").split(",") if v.strip()]
 
             if code in code_to_id:

@@ -688,9 +688,16 @@ def main():
     context7_results = enrich_candidates_with_context7(missing, env, max_enrich=15)
     
     report_path = PROJECT_ROOT / ".work" / "roadmap_alignment_report.md"
+    dag_path = PROJECT_ROOT / ".work" / "roadmap_dag_context.json"
     if project_slug:
         report_path = PROJECT_ROOT / "projects" / project_slug / ".work" / "roadmap_alignment_report.md"
+        dag_path = PROJECT_ROOT / "projects" / project_slug / ".work" / "roadmap_dag_context.json"
     report_path.parent.mkdir(parents=True, exist_ok=True)
+    
+    # Save the raw DAG context for Phase E (Prerequisite Mapping)
+    with open(dag_path, "w", encoding="utf-8") as f:
+        json.dump(structured_topics, f, ensure_ascii=False, indent=2)
+    print(f"✅ Saved DAG Context to {dag_path}")
     
     with open(report_path, "w", encoding="utf-8") as f:
         f.write(f"# Tri-Layer Alignment & 2-Step Decision Framework Report\n\n")

@@ -29,12 +29,38 @@ description: Run this workflow to crawl external roadmaps (e.g. roadmap.sh), sca
 
 ---
 
+### Giai đoạn 1.5: ATE Pipeline — Vét cạn thuật ngữ (Tùy chọn, Khuyến nghị)
+
+> Chạy ngay sau khi có `context/` để đảm bảo coverage thuật ngữ đầy đủ trước khi map taxonomy.
+
+4a. **Scaffold Keywords**:
+    ```bash
+    # target-context = tên chủ đề từ URL (tự động extract hoặc do user cung cấp)
+    /scaffold-keywords "<topic từ URL>" --source projects/<project_name>/context/
+    ```
+
+4b. **Extract Terms** (`/extract-terms`): YAKE + LLM candidate-gen → relevance filter
+
+4c. **Verify Terms** (`/verify-terms`): Dedup + omission-check → **xem `verify-report.md`**
+
+4d. **Finalize Keywords** (`/finalize-keywords`): Ghi `output/keywords.tsv` + inject context-audit
+
+4e. **Escalate Concepts** (`/escalate-concepts`): Keywords → concept trung tính + match Master Tree → **xem `concept_escalation.md`**
+
+> Sau bước này, `output/concept_candidates.tsv` sẵn sàng làm hints cho `/map-taxonomy`.
+
+---
+
 ### Giai đoạn 2: Quy trình Chuẩn của Project (Standard Project Pipeline)
 
 4. **Context Audit (`/context-audit`)**: Trích xuất chủ đề và kiến thức miền từ `projects/<project_name>/context/`.
 5. **Taxonomy Mapping (`/map-taxonomy`)**: Đối chiếu context với Master Tree và lập kế hoạch `projects/<project_name>/.work/mapping-plan.md`.
 6. **Build Tree (`/build-tree`)**: Dựng 5 file taxonomy TSVs trong `projects/<project_name>/output/` (`fields.tsv`, `subjects.tsv`, `categories.tsv`, `topics.tsv`, `concepts.tsv`).
-7. **Generate Learning Objectives (`/generate-los`)**: Sinh file `learning-objectives.tsv` (chuẩn ULO, CIO, SIO) grounded theo concept codes của project.
+7. **Generate Learning Objectives**: Sinh file `learning-objectives.tsv` (chuẩn ULO, CIO, SIO):
+   - **Khuyến nghị (chất lượng cao hơn):** Pipeline phân cấp với điểm duyệt:
+     `/generate-ulos` → duyệt → `/generate-cios` → duyệt Marr Test → `/generate-sios`
+   - **Nhanh (1 lượt):** `/generate-los` (backward compat, không có human review checkpoints)
+
 8. **Validate & Audit (`/validate-tree`)**: Run `validate_tree.py` & `audit_coverage.py` đảm bảo referential integrity 100% PASS và phủ 100% syllabus.
 9. *(Tùy chọn)* **Sync Supabase (`/sync-supabase`)**: Đồng bộ 6 file TSV của project lên cơ sở dữ liệu Supabase.
 

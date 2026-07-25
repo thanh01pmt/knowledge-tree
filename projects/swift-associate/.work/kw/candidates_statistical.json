@@ -1,0 +1,3899 @@
+[
+  {
+    "term_normalized": "swift associate objective domains",
+    "term_original": "Swift Associate Objective Domains",
+    "best_score": 3.2e-05,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate objective domains earning",
+    "term_original": "Associate Objective Domains Earning",
+    "best_score": 4.1e-05,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate swift language usage",
+    "term_original": "Associate Swift Language Usage",
+    "best_score": 0.000127,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate swift language",
+    "term_original": "Swift Associate Swift Language",
+    "best_score": 0.000232,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate certification demonstrates",
+    "term_original": "Swift Associate certification demonstrates",
+    "best_score": 0.000269,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate app development",
+    "term_original": "SWIFT Associate App Development",
+    "best_score": 0.000285,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate objective",
+    "term_original": "Swift Associate Objective",
+    "best_score": 0.000394,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate objective domains",
+    "term_original": "Associate Objective Domains",
+    "best_score": 0.000504,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "objective domains earning",
+    "term_original": "Objective Domains Earning",
+    "best_score": 0.000521,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "development with swift associate",
+    "term_original": "Development with Swift Associate",
+    "best_score": 0.000595,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate certification",
+    "term_original": "Swift Associate certification",
+    "best_score": 0.000924,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate certification demonstrates knowledge",
+    "term_original": "Associate certification demonstrates knowledge",
+    "best_score": 0.000977,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift language usage",
+    "term_original": "Swift Language Usage",
+    "best_score": 0.001137,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "view building with swiftui",
+    "term_original": "View Building with SwiftUI",
+    "best_score": 0.001362,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate swift language",
+    "term_original": "Associate Swift Language",
+    "best_score": 0.001647,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate app development",
+    "term_original": "Associate App Development",
+    "best_score": 0.001881,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "app development with swift",
+    "term_original": "App Development with Swift",
+    "best_score": 0.002037,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate swift",
+    "term_original": "Swift Associate Swift",
+    "best_score": 0.002071,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate",
+    "term_original": "Swift Associate",
+    "best_score": 0.002439,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift associate app",
+    "term_original": "SWIFT Associate App",
+    "best_score": 0.003217,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate certification demonstrates",
+    "term_original": "Associate certification demonstrates",
+    "best_score": 0.00418,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "design swift language usage",
+    "term_original": "Design Swift Language Usage",
+    "best_score": 0.006047,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "domains earning the app",
+    "term_original": "Domains Earning the App",
+    "best_score": 0.006187,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate objective",
+    "term_original": "Associate Objective",
+    "best_score": 0.006227,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "objective domains",
+    "term_original": "Objective Domains",
+    "best_score": 0.00644,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "domains earning",
+    "term_original": "Domains Earning",
+    "best_score": 0.00644,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interface with swift associate",
+    "term_original": "interface WITH SWIFT Associate",
+    "best_score": 0.006884,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "solid foundation in programming",
+    "term_original": "solid foundation in programming",
+    "best_score": 0.006928,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "exploring app development",
+    "term_original": "exploring app development",
+    "best_score": 0.007497,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "development with swift",
+    "term_original": "Development with Swift",
+    "best_score": 0.007766,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "language usage",
+    "term_original": "Language Usage",
+    "best_score": 0.008212,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "view building",
+    "term_original": "View Building",
+    "best_score": 0.008212,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "earning the app development",
+    "term_original": "Earning the App Development",
+    "best_score": 0.010137,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "cultures while exploring app",
+    "term_original": "cultures while exploring app",
+    "best_score": 0.010308,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "programming with swift",
+    "term_original": "programming with Swift",
+    "best_score": 0.011727,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "demonstrates knowledge of key",
+    "term_original": "demonstrates knowledge of key",
+    "best_score": 0.012175,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certification demonstrates knowledge",
+    "term_original": "certification demonstrates knowledge",
+    "best_score": 0.012175,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "app development",
+    "term_original": "App Development",
+    "best_score": 0.012564,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "key computing concepts",
+    "term_original": "key computing concepts",
+    "best_score": 0.012805,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate certification",
+    "term_original": "Associate certification",
+    "best_score": 0.014502,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift language",
+    "term_original": "Swift Language",
+    "best_score": 0.014859,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate swift",
+    "term_original": "Associate Swift",
+    "best_score": 0.014859,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "knowledge of key computing",
+    "term_original": "knowledge of key computing",
+    "best_score": 0.014994,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "user interface with swift",
+    "term_original": "user interface WITH SWIFT",
+    "best_score": 0.015042,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "building with swiftui",
+    "term_original": "Building with SwiftUI",
+    "best_score": 0.017772,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift",
+    "term_original": "Swift",
+    "best_score": 0.020912,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate app",
+    "term_original": "Associate App",
+    "best_score": 0.021409,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "design swift language",
+    "term_original": "Design Swift Language",
+    "best_score": 0.026983,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift and swiftui",
+    "term_original": "Swift and SwiftUI",
+    "best_score": 0.031484,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "’ll demonstrate knowledge",
+    "term_original": "’ll demonstrate knowledge",
+    "best_score": 0.032524,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "impact of computing",
+    "term_original": "impact of computing",
+    "best_score": 0.03367,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "solid foundation",
+    "term_original": "solid foundation",
+    "best_score": 0.03534,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "foundation in programming",
+    "term_original": "foundation in programming",
+    "best_score": 0.03534,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "associate",
+    "term_original": "Associate",
+    "best_score": 0.038685,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "knowledge of key",
+    "term_original": "knowledge of key",
+    "best_score": 0.041071,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "continued",
+    "term_original": "Continued",
+    "best_score": 0.042867,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create container views",
+    "term_original": "Create Container Views",
+    "best_score": 0.044463,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "development",
+    "term_original": "Development",
+    "best_score": 0.044625,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "button",
+    "term_original": "Button",
+    "best_score": 0.044876,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "slider",
+    "term_original": "Slider",
+    "best_score": 0.044876,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interface with swift",
+    "term_original": "interface WITH SWIFT",
+    "best_score": 0.044989,
+    "source_chunks": [
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "exploring app",
+    "term_original": "exploring app",
+    "best_score": 0.045633,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "cultures while exploring",
+    "term_original": "cultures while exploring",
+    "best_score": 0.045919,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certification demonstrates",
+    "term_original": "certification demonstrates",
+    "best_score": 0.052469,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "content views using text",
+    "term_original": "Content Views using Text",
+    "best_score": 0.055083,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "demonstrates knowledge",
+    "term_original": "demonstrates knowledge",
+    "best_score": 0.061141,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "demonstrate knowledge",
+    "term_original": "demonstrate knowledge",
+    "best_score": 0.061141,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "state property wrapper",
+    "term_original": "State Property Wrapper",
+    "best_score": 0.063838,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "key computing",
+    "term_original": "key computing",
+    "best_score": 0.063995,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "computing concepts",
+    "term_original": "computing concepts",
+    "best_score": 0.063995,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "explicit typing debugging",
+    "term_original": "explicit typing Debugging",
+    "best_score": 0.066114,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "views",
+    "term_original": "Views",
+    "best_score": 0.071407,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "usage",
+    "term_original": "Usage",
+    "best_score": 0.075266,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "view",
+    "term_original": "View",
+    "best_score": 0.075266,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create content views",
+    "term_original": "Create Content Views",
+    "best_score": 0.075676,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apps on society",
+    "term_original": "apps on society",
+    "best_score": 0.076693,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interactive views including",
+    "term_original": "Interactive Views including",
+    "best_score": 0.077429,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "toggle",
+    "term_original": "Toggle",
+    "best_score": 0.07799,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create",
+    "term_original": "Create",
+    "best_score": 0.079506,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0007",
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "earning the app",
+    "term_original": "Earning the App",
+    "best_score": 0.079876,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "objective",
+    "term_original": "Objective",
+    "best_score": 0.079992,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "domains",
+    "term_original": "Domains",
+    "best_score": 0.079992,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "earning",
+    "term_original": "Earning",
+    "best_score": 0.079992,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "textfield",
+    "term_original": "TextField",
+    "best_score": 0.085833,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "planning and design swift",
+    "term_original": "Planning and Design Swift",
+    "best_score": 0.088055,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply interactive views including",
+    "term_original": "apply Interactive Views including",
+    "best_score": 0.089789,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "app",
+    "term_original": "App",
+    "best_score": 0.09044,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "user interface",
+    "term_original": "user interface",
+    "best_score": 0.097004,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "areas of the user",
+    "term_original": "areas of the user",
+    "best_score": 0.097004,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "design swift",
+    "term_original": "Design Swift",
+    "best_score": 0.098529,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "computing and apps",
+    "term_original": "computing and apps",
+    "best_score": 0.101738,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "typing debugging",
+    "term_original": "typing Debugging",
+    "best_score": 0.103625,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "economies",
+    "term_original": "economies",
+    "best_score": 0.105393,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "knowledge",
+    "term_original": "knowledge",
+    "best_score": 0.106766,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "stack views statements",
+    "term_original": "Stack Views statements",
+    "best_score": 0.107624,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "language",
+    "term_original": "Language",
+    "best_score": 0.108223,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "building",
+    "term_original": "Building",
+    "best_score": 0.108223,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certiport",
+    "term_original": "Certiport",
+    "best_score": 0.113976,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "views inside of stack",
+    "term_original": "Views inside of Stack",
+    "best_score": 0.115532,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "inside of stack views",
+    "term_original": "inside of Stack Views",
+    "best_score": 0.115532,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "implement modifiers including",
+    "term_original": "Implement Modifiers including",
+    "best_score": 0.116914,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "container views",
+    "term_original": "Container Views",
+    "best_score": 0.117756,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "stack views",
+    "term_original": "Stack Views",
+    "best_score": 0.122614,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "views using text",
+    "term_original": "Views using Text",
+    "best_score": 0.12459,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "concepts and a solid",
+    "term_original": "concepts and a solid",
+    "best_score": 0.127802,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply interactive views",
+    "term_original": "apply Interactive Views",
+    "best_score": 0.130115,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interactive views",
+    "term_original": "Interactive Views",
+    "best_score": 0.130169,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "state property",
+    "term_original": "State Property",
+    "best_score": 0.131623,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create container",
+    "term_original": "Create Container",
+    "best_score": 0.132886,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "’ll demonstrate",
+    "term_original": "’ll demonstrate",
+    "best_score": 0.134871,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swiftui",
+    "term_original": "SwiftUI",
+    "best_score": 0.135977,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "xcode project navigation",
+    "term_original": "XCode Project Navigation",
+    "best_score": 0.137755,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "property wrapper to control",
+    "term_original": "Property Wrapper to control",
+    "best_score": 0.140445,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate array properties",
+    "term_original": "evaluate array properties",
+    "best_score": 0.140751,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "project navigation",
+    "term_original": "Project Navigation",
+    "best_score": 0.140976,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "structure xcode project navigation",
+    "term_original": "structure XCode Project Navigation",
+    "best_score": 0.143197,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "views including",
+    "term_original": "Views including",
+    "best_score": 0.149252,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create and manipulate arrays",
+    "term_original": "Create and manipulate arrays",
+    "best_score": 0.150491,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "content views",
+    "term_original": "Content Views",
+    "best_score": 0.150616,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "society",
+    "term_original": "society",
+    "best_score": 0.15546,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "impact",
+    "term_original": "impact",
+    "best_score": 0.15546,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "modifiers including",
+    "term_original": "Modifiers including",
+    "best_score": 0.159251,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "modify an array element",
+    "term_original": "modify an array element",
+    "best_score": 0.161641,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "computing",
+    "term_original": "computing",
+    "best_score": 0.162773,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create content",
+    "term_original": "Create Content",
+    "best_score": 0.167514,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "array element",
+    "term_original": "array element",
+    "best_score": 0.169089,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "project",
+    "term_original": "project",
+    "best_score": 0.16976,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate",
+    "term_original": "evaluate",
+    "best_score": 0.170441,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "array",
+    "term_original": "array",
+    "best_score": 0.176831,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "property wrapper",
+    "term_original": "Property Wrapper",
+    "best_score": 0.177295,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "color",
+    "term_original": "Color",
+    "best_score": 0.181759,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certification",
+    "term_original": "certification",
+    "best_score": 0.184753,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "key",
+    "term_original": "key",
+    "best_score": 0.184753,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "concepts",
+    "term_original": "concepts",
+    "best_score": 0.184753,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "solid",
+    "term_original": "solid",
+    "best_score": 0.184753,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "foundation",
+    "term_original": "foundation",
+    "best_score": 0.184753,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "programming",
+    "term_original": "programming",
+    "best_score": 0.184753,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "design",
+    "term_original": "Design",
+    "best_score": 0.185092,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "assess a visual design",
+    "term_original": "Assess a visual design",
+    "best_score": 0.185136,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "constants and variables",
+    "term_original": "constants and variables",
+    "best_score": 0.186444,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "implement modifiers",
+    "term_original": "Implement Modifiers",
+    "best_score": 0.186638,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "debugging",
+    "term_original": "Debugging",
+    "best_score": 0.197448,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate array",
+    "term_original": "evaluate array",
+    "best_score": 0.19772,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "element using its index",
+    "term_original": "element using its index",
+    "best_score": 0.200837,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apps",
+    "term_original": "apps",
+    "best_score": 0.208284,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "cultures",
+    "term_original": "cultures",
+    "best_score": 0.20953,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "exploring",
+    "term_original": "exploring",
+    "best_score": 0.20953,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "views statements",
+    "term_original": "Views statements",
+    "best_score": 0.210275,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "structure",
+    "term_original": "structure",
+    "best_score": 0.213075,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "data types",
+    "term_original": "data types",
+    "best_score": 0.214593,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "array properties",
+    "term_original": "array properties",
+    "best_score": 0.21587,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "design cycle",
+    "term_original": "design cycle",
+    "best_score": 0.217316,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "arrange views",
+    "term_original": "arrange Views",
+    "best_score": 0.223082,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "views inside",
+    "term_original": "Views inside",
+    "best_score": 0.223082,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "including",
+    "term_original": "including",
+    "best_score": 0.22734,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "limited",
+    "term_original": "limited",
+    "best_score": 0.22734,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "view hierarchy",
+    "term_original": "View hierarchy",
+    "best_score": 0.227751,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "control",
+    "term_original": "control",
+    "best_score": 0.237616,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "image",
+    "term_original": "Image",
+    "best_score": 0.243218,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "shape",
+    "term_original": "Shape",
+    "best_score": 0.243218,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "instance",
+    "term_original": "instance",
+    "best_score": 0.247689,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "wrapper to control",
+    "term_original": "Wrapper to control",
+    "best_score": 0.248436,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "assess a visual",
+    "term_original": "Assess a visual",
+    "best_score": 0.25012,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "accessibility in mind",
+    "term_original": "accessibility in mind",
+    "best_score": 0.25012,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "conditional and arrange views",
+    "term_original": "conditional and arrange Views",
+    "best_score": 0.252986,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "arrange views inside",
+    "term_original": "arrange Views inside",
+    "best_score": 0.252986,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate constants and variables",
+    "term_original": "evaluate constants and variables",
+    "best_score": 0.255904,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "summarize the design cycle",
+    "term_original": "Summarize the design cycle",
+    "best_score": 0.259227,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "declare the properties",
+    "term_original": "Declare the properties",
+    "best_score": 0.260104,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "constants",
+    "term_original": "constants",
+    "best_score": 0.26058,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "variables",
+    "term_original": "variables",
+    "best_score": 0.26058,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "visual design with accessibility",
+    "term_original": "visual design with accessibility",
+    "best_score": 0.263093,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "declare",
+    "term_original": "Declare",
+    "best_score": 0.264784,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apple",
+    "term_original": "Apple",
+    "best_score": 0.265019,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apple inc.",
+    "term_original": "Apple Inc.",
+    "best_score": 0.266621,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "syntax",
+    "term_original": "syntax",
+    "best_score": 0.268181,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "view hierarchy produced",
+    "term_original": "View hierarchy produced",
+    "best_score": 0.268826,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "properties",
+    "term_original": "properties",
+    "best_score": 0.269383,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "demonstrates",
+    "term_original": "demonstrates",
+    "best_score": 0.269835,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "demonstrate",
+    "term_original": "demonstrate",
+    "best_score": 0.269835,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "data",
+    "term_original": "data",
+    "best_score": 0.273027,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create and manipulate",
+    "term_original": "Create and manipulate",
+    "best_score": 0.277913,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "manipulate arrays",
+    "term_original": "manipulate arrays",
+    "best_score": 0.277913,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate structures",
+    "term_original": "evaluate structures",
+    "best_score": 0.27861,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "explicit typing",
+    "term_original": "explicit typing",
+    "best_score": 0.292228,
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interface",
+    "term_original": "interface",
+    "best_score": 0.297366,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "areas",
+    "term_original": "areas",
+    "best_score": 0.297366,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "user",
+    "term_original": "user",
+    "best_score": 0.297366,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "state",
+    "term_original": "State",
+    "best_score": 0.299726,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "trademarks",
+    "term_original": "trademarks",
+    "best_score": 0.300158,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "modifiers",
+    "term_original": "Modifiers",
+    "best_score": 0.302134,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "instance of a structure",
+    "term_original": "instance of a structure",
+    "best_score": 0.302142,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "parameters and returns",
+    "term_original": "parameters and returns",
+    "best_score": 0.304136,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "text",
+    "term_original": "Text",
+    "best_score": 0.30621,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "brainstorm",
+    "term_original": "Brainstorm",
+    "best_score": 0.308032,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "plan",
+    "term_original": "plan",
+    "best_score": 0.308032,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "prototype",
+    "term_original": "prototype",
+    "best_score": 0.308032,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "define methods",
+    "term_original": "Define methods",
+    "best_score": 0.312906,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "differentiate between constants",
+    "term_original": "Differentiate between constants",
+    "best_score": 0.315011,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "appearance of a view",
+    "term_original": "appearance of a View",
+    "best_score": 0.317012,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "navigation",
+    "term_original": "Navigation",
+    "best_score": 0.318321,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate constants",
+    "term_original": "evaluate constants",
+    "best_score": 0.321467,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "inside of stack",
+    "term_original": "inside of Stack",
+    "best_score": 0.323073,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "registered",
+    "term_original": "registered",
+    "best_score": 0.324825,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "planning and design",
+    "term_original": "Planning and Design",
+    "best_score": 0.326357,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "modify an array",
+    "term_original": "modify an array",
+    "best_score": 0.326554,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "spacer",
+    "term_original": "Spacer",
+    "best_score": 0.327484,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply swift",
+    "term_original": "Apply Swift",
+    "best_score": 0.332149,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "xcode project",
+    "term_original": "XCode Project",
+    "best_score": 0.334802,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "structure xcode project",
+    "term_original": "structure XCode Project",
+    "best_score": 0.33603,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "visual design",
+    "term_original": "visual design",
+    "best_score": 0.343561,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "design with accessibility",
+    "term_original": "design with accessibility",
+    "best_score": 0.343561,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "imperative and declarative programming",
+    "term_original": "imperative and declarative programming",
+    "best_score": 0.347212,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "xcode",
+    "term_original": "Xcode",
+    "best_score": 0.34775,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply interactive",
+    "term_original": "apply Interactive",
+    "best_score": 0.36153,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "content",
+    "term_original": "Content",
+    "best_score": 0.361802,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create an instance",
+    "term_original": "Create an instance",
+    "best_score": 0.364224,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "container",
+    "term_original": "Container",
+    "best_score": 0.368838,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "argument labels",
+    "term_original": "argument labels",
+    "best_score": 0.370404,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "differentiate between imperative",
+    "term_original": "Differentiate between imperative",
+    "best_score": 0.371756,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "declarative programming",
+    "term_original": "declarative programming",
+    "best_score": 0.371756,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "identify",
+    "term_original": "Identify",
+    "best_score": 0.378164,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift identifier",
+    "term_original": "Swift identifier",
+    "best_score": 0.378368,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "types but not limited",
+    "term_original": "types but not limited",
+    "best_score": 0.381294,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "stack",
+    "term_original": "Stack",
+    "best_score": 0.382392,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "control the flow",
+    "term_original": "control the flow",
+    "best_score": 0.385158,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "property",
+    "term_original": "Property",
+    "best_score": 0.388066,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "wrapper",
+    "term_original": "Wrapper",
+    "best_score": 0.388066,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "planning",
+    "term_original": "Planning",
+    "best_score": 0.389987,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "assess",
+    "term_original": "Assess",
+    "best_score": 0.395661,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "mind",
+    "term_original": "mind",
+    "best_score": 0.395661,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "inc.",
+    "term_original": "Inc.",
+    "best_score": 0.397138,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "arrays",
+    "term_original": "arrays",
+    "best_score": 0.400549,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interactive",
+    "term_original": "Interactive",
+    "best_score": 0.403241,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "summarize the design",
+    "term_original": "Summarize the design",
+    "best_score": 0.406692,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "index",
+    "term_original": "index",
+    "best_score": 0.408959,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "modify",
+    "term_original": "modify",
+    "best_score": 0.408959,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "element",
+    "term_original": "element",
+    "best_score": 0.408959,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "import",
+    "term_original": "Import",
+    "best_score": 0.415254,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply swift identifier",
+    "term_original": "Apply Swift identifier",
+    "best_score": 0.415305,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swift identifier rules",
+    "term_original": "Swift identifier rules",
+    "best_score": 0.415305,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "write",
+    "term_original": "Write",
+    "best_score": 0.422146,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "differentiate",
+    "term_original": "Differentiate",
+    "best_score": 0.423202,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0007",
+      "chunk_0008",
+      "chunk_0009",
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "structures",
+    "term_original": "structures",
+    "best_score": 0.426151,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "naming syntax",
+    "term_original": "naming syntax",
+    "best_score": 0.439423,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "’ll",
+    "term_original": "’ll",
+    "best_score": 0.440426,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "trademarks of apple inc.",
+    "term_original": "trademarks of Apple Inc.",
+    "best_score": 0.441822,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "properties of a structure",
+    "term_original": "properties of a structure",
+    "best_score": 0.444933,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create and interpret",
+    "term_original": "Create and interpret",
+    "best_score": 0.452175,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "imperative and declarative",
+    "term_original": "imperative and declarative",
+    "best_score": 0.454847,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certiport logo",
+    "term_original": "Certiport logo",
+    "best_score": 0.467114,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "methods",
+    "term_original": "methods",
+    "best_score": 0.469784,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "manipulate",
+    "term_original": "manipulate",
+    "best_score": 0.474279,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "typing",
+    "term_original": "typing",
+    "best_score": 0.475545,
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "explicit",
+    "term_original": "explicit",
+    "best_score": 0.475545,
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "parameters",
+    "term_original": "parameters",
+    "best_score": 0.478368,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "flow of execution",
+    "term_original": "flow of execution",
+    "best_score": 0.478936,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "summarize how sensitive",
+    "term_original": "Summarize how sensitive",
+    "best_score": 0.481579,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "protected and compromised",
+    "term_original": "protected and compromised",
+    "best_score": 0.481579,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "summarize",
+    "term_original": "Summarize",
+    "best_score": 0.482249,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "cycle",
+    "term_original": "cycle",
+    "best_score": 0.482249,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "labels",
+    "term_original": "labels",
+    "best_score": 0.482917,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "returns",
+    "term_original": "returns",
+    "best_score": 0.482917,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "define",
+    "term_original": "Define",
+    "best_score": 0.488191,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "declarative",
+    "term_original": "declarative",
+    "best_score": 0.493289,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "asset",
+    "term_original": "asset",
+    "best_score": 0.49492,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "assets",
+    "term_original": "assets",
+    "best_score": 0.49492,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "execution of functions",
+    "term_original": "execution of functions",
+    "best_score": 0.495683,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply swift identifier rules",
+    "term_original": "Apply Swift identifier rules",
+    "best_score": 0.499166,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "visual",
+    "term_original": "visual",
+    "best_score": 0.505677,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "accessibility",
+    "term_original": "accessibility",
+    "best_score": 0.505677,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "select",
+    "term_original": "Select",
+    "best_score": 0.508511,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "padding",
+    "term_original": "padding",
+    "best_score": 0.519168,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "background",
+    "term_original": "background",
+    "best_score": 0.519168,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "frame",
+    "term_original": "frame",
+    "best_score": 0.519168,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "foregroundcolor",
+    "term_original": "foregroundColor",
+    "best_score": 0.519168,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "font",
+    "term_original": "font",
+    "best_score": 0.519168,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "implement",
+    "term_original": "Implement",
+    "best_score": 0.520573,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "types",
+    "term_original": "types",
+    "best_score": 0.523276,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "explain the view",
+    "term_original": "Explain the View",
+    "best_score": 0.525952,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "initialize the properties",
+    "term_original": "Initialize the properties",
+    "best_score": 0.527665,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "summarize how sensitive data",
+    "term_original": "Summarize how sensitive data",
+    "best_score": 0.528037,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "differentiate between basic",
+    "term_original": "Differentiate between basic",
+    "best_score": 0.528999,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "file types",
+    "term_original": "file types",
+    "best_score": 0.528999,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "explain the view hierarchy",
+    "term_original": "Explain the View hierarchy",
+    "best_score": 0.532044,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "call",
+    "term_original": "call",
+    "best_score": 0.533031,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "functions",
+    "term_original": "functions",
+    "best_score": 0.533031,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "compromised",
+    "term_original": "compromised",
+    "best_score": 0.533697,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "analyze and predict",
+    "term_original": "analyze and predict",
+    "best_score": 0.540099,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "legal",
+    "term_original": "Legal",
+    "best_score": 0.543782,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create and evaluate structures",
+    "term_original": "Create and evaluate structures",
+    "best_score": 0.545569,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "execution",
+    "term_original": "execution",
+    "best_score": 0.553469,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "argument",
+    "term_original": "argument",
+    "best_score": 0.559699,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "hstack",
+    "term_original": "HStack",
+    "best_score": 0.560774,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "vstack",
+    "term_original": "VStack",
+    "best_score": 0.560774,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "zstack",
+    "term_original": "ZStack",
+    "best_score": 0.560774,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "calculate",
+    "term_original": "Calculate",
+    "best_score": 0.566442,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "operators",
+    "term_original": "operators",
+    "best_score": 0.566442,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply",
+    "term_original": "Apply",
+    "best_score": 0.567103,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "initialize",
+    "term_original": "initialize",
+    "best_score": 0.567918,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "imperative",
+    "term_original": "imperative",
+    "best_score": 0.567918,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "calculate the results",
+    "term_original": "Calculate the results",
+    "best_score": 0.568775,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "naming",
+    "term_original": "naming",
+    "best_score": 0.569163,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "imported",
+    "term_original": "imported",
+    "best_score": 0.573592,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "recognize",
+    "term_original": "recognize",
+    "best_score": 0.573592,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "results",
+    "term_original": "results",
+    "best_score": 0.576819,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "analyze",
+    "term_original": "analyze",
+    "best_score": 0.576819,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "resizable",
+    "term_original": "resizable",
+    "best_score": 0.576819,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply type",
+    "term_original": "Apply type",
+    "best_score": 0.579727,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "initialize an array",
+    "term_original": "initialize an array",
+    "best_score": 0.5823,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "flow",
+    "term_original": "flow",
+    "best_score": 0.585107,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "predict loop",
+    "term_original": "predict loop",
+    "best_score": 0.586377,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "loop structures",
+    "term_original": "loop structures",
+    "best_score": 0.586377,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "sharing",
+    "term_original": "Sharing",
+    "best_score": 0.589617,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "information",
+    "term_original": "information",
+    "best_score": 0.589617,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "sensitive data",
+    "term_original": "sensitive data",
+    "best_score": 0.589658,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "data can be protected",
+    "term_original": "data can be protected",
+    "best_score": 0.589658,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "run-time errors",
+    "term_original": "run-time errors",
+    "best_score": 0.594395,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "knowledge of the impact",
+    "term_original": "knowledge of the impact",
+    "best_score": 0.598984,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "analyze and predict loop",
+    "term_original": "analyze and predict loop",
+    "best_score": 0.599906,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "errors",
+    "term_original": "errors",
+    "best_score": 0.603075,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "error",
+    "term_original": "error",
+    "best_score": 0.603075,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interpret error",
+    "term_original": "Interpret error",
+    "best_score": 0.606337,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "error messages",
+    "term_original": "error messages",
+    "best_score": 0.606337,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "predict",
+    "term_original": "predict",
+    "best_score": 0.607974,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "loop",
+    "term_original": "loop",
+    "best_score": 0.607974,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "statements",
+    "term_original": "statements",
+    "best_score": 0.608279,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "rules",
+    "term_original": "rules",
+    "best_score": 0.608763,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "structure xcode",
+    "term_original": "structure XCode",
+    "best_score": 0.608937,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "sensitive",
+    "term_original": "sensitive",
+    "best_score": 0.609043,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "protected",
+    "term_original": "protected",
+    "best_score": 0.609043,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "running an app",
+    "term_original": "running an app",
+    "best_score": 0.613393,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "run-time",
+    "term_original": "run-time",
+    "best_score": 0.61817,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "explain",
+    "term_original": "Explain",
+    "best_score": 0.619533,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "program",
+    "term_original": "program",
+    "best_score": 0.619533,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "security",
+    "term_original": "Security",
+    "best_score": 0.620751,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "challenges",
+    "term_original": "challenges",
+    "best_score": 0.620751,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interpret",
+    "term_original": "Interpret",
+    "best_score": 0.625901,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "messages",
+    "term_original": "messages",
+    "best_score": 0.625901,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "security challenges",
+    "term_original": "Security challenges",
+    "best_score": 0.626894,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "ethical",
+    "term_original": "ethical",
+    "best_score": 0.631864,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "impacts",
+    "term_original": "impacts",
+    "best_score": 0.631864,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "outcome",
+    "term_original": "outcome",
+    "best_score": 0.63857,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "conditional",
+    "term_original": "conditional",
+    "best_score": 0.63857,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "arrange",
+    "term_original": "arrange",
+    "best_score": 0.63857,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "inside",
+    "term_original": "inside",
+    "best_score": 0.63857,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "registered trademarks",
+    "term_original": "registered trademarks",
+    "best_score": 0.639332,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "sharing personal",
+    "term_original": "Sharing personal",
+    "best_score": 0.639676,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "application information",
+    "term_original": "application information",
+    "best_score": 0.639676,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "type",
+    "term_original": "type",
+    "best_score": 0.647112,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "actions",
+    "term_original": "actions",
+    "best_score": 0.647806,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "configure",
+    "term_original": "configure",
+    "best_score": 0.647806,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "camel",
+    "term_original": "camel",
+    "best_score": 0.648886,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "casing",
+    "term_original": "casing",
+    "best_score": 0.648886,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "running",
+    "term_original": "running",
+    "best_score": 0.648886,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "hierarchy",
+    "term_original": "hierarchy",
+    "best_score": 0.649455,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "produced",
+    "term_original": "produced",
+    "best_score": 0.649455,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "regions",
+    "term_original": "regions",
+    "best_score": 0.650208,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "predict loop structures",
+    "term_original": "predict loop structures",
+    "best_score": 0.659883,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "basic",
+    "term_original": "basic",
+    "best_score": 0.661175,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "file",
+    "term_original": "file",
+    "best_score": 0.661175,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "personal",
+    "term_original": "personal",
+    "best_score": 0.661656,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "application",
+    "term_original": "application",
+    "best_score": 0.661656,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "identifier",
+    "term_original": "identifier",
+    "best_score": 0.670219,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "produced by a program",
+    "term_original": "produced by a program",
+    "best_score": 0.673246,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interpret the outcome",
+    "term_original": "interpret the outcome",
+    "best_score": 0.688536,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "outcome of conditional",
+    "term_original": "outcome of conditional",
+    "best_score": 0.688536,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "conditional and arrange",
+    "term_original": "conditional and arrange",
+    "best_score": 0.688536,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "identifier rules",
+    "term_original": "identifier rules",
+    "best_score": 0.689202,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "differentiate between basic file",
+    "term_original": "Differentiate between basic file",
+    "best_score": 0.696573,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "basic file types",
+    "term_original": "basic file types",
+    "best_score": 0.696573,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "logo",
+    "term_original": "logo",
+    "best_score": 0.698367,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "inference",
+    "term_original": "inference",
+    "best_score": 0.699603,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "appearance",
+    "term_original": "appearance",
+    "best_score": 0.699603,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "socioeconomic",
+    "term_original": "socioeconomic",
+    "best_score": 0.700257,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "countries",
+    "term_original": "countries",
+    "best_score": 0.708274,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "actions to configure",
+    "term_original": "actions to configure",
+    "best_score": 0.723107,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "configure different areas",
+    "term_original": "configure different areas",
+    "best_score": 0.723107,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "interpret error messages",
+    "term_original": "Interpret error messages",
+    "best_score": 0.725094,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "camel casing",
+    "term_original": "camel casing",
+    "best_score": 0.727272,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "casing building",
+    "term_original": "casing building",
+    "best_score": 0.727272,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "building and running",
+    "term_original": "building and running",
+    "best_score": 0.727272,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "hierarchy produced",
+    "term_original": "hierarchy produced",
+    "best_score": 0.729482,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "differentiate between syntax",
+    "term_original": "Differentiate between syntax",
+    "best_score": 0.742624,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "evaluate the execution",
+    "term_original": "evaluate the execution",
+    "best_score": 0.771533,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "basic file",
+    "term_original": "basic file",
+    "best_score": 0.776681,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "personal and application",
+    "term_original": "personal and application",
+    "best_score": 0.77869,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "ethical and socioeconomic",
+    "term_original": "ethical and socioeconomic",
+    "best_score": 0.793617,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "socioeconomic impacts",
+    "term_original": "socioeconomic impacts",
+    "best_score": 0.793617,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "trademarks of apple",
+    "term_original": "trademarks of Apple",
+    "best_score": 0.811859,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "demonstrate how to control",
+    "term_original": "Demonstrate how to control",
+    "best_score": 0.820153,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "type inference",
+    "term_original": "type inference",
+    "best_score": 0.827223,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "select the appropriate actions",
+    "term_original": "Select the appropriate actions",
+    "best_score": 0.846055,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "trademarks of certiport",
+    "term_original": "trademarks of Certiport",
+    "best_score": 0.850394,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "countries and regions",
+    "term_original": "countries and regions",
+    "best_score": 0.853656,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "syntax and run-time",
+    "term_original": "syntax and run-time",
+    "best_score": 0.857605,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply type inference",
+    "term_original": "Apply type inference",
+    "best_score": 0.864351,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "sharing personal and application",
+    "term_original": "Sharing personal and application",
+    "best_score": 0.865561,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "personal and application information",
+    "term_original": "personal and application information",
+    "best_score": 0.865561,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "syntax and run-time errors",
+    "term_original": "syntax and run-time errors",
+    "best_score": 0.890154,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "registered trademarks of certiport",
+    "term_original": "registered trademarks of Certiport",
+    "best_score": 0.918941,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "create and evaluate",
+    "term_original": "Create and evaluate",
+    "best_score": 0.921205,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "inference appearance",
+    "term_original": "inference appearance",
+    "best_score": 0.958648,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "camel casing building",
+    "term_original": "camel casing building",
+    "best_score": 0.964496,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "casing building and running",
+    "term_original": "casing building and running",
+    "best_score": 0.964496,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certiport logo are registered",
+    "term_original": "Certiport logo are registered",
+    "best_score": 0.979762,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "ethical and socioeconomic impacts",
+    "term_original": "ethical and socioeconomic impacts",
+    "best_score": 1.016756,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "swiftui are trademarks",
+    "term_original": "SwiftUI are trademarks",
+    "best_score": 1.234785,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "asset has been imported",
+    "term_original": "asset has been imported",
+    "best_score": 1.262707,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "recognize available assets",
+    "term_original": "recognize available assets",
+    "best_score": 1.262707,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "resizable and their results",
+    "term_original": "resizable and their results",
+    "best_score": 1.280814,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "type inference appearance",
+    "term_original": "type inference appearance",
+    "best_score": 1.327633,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "logo are registered",
+    "term_original": "logo are registered",
+    "best_score": 1.379101,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "apply type inference appearance",
+    "term_original": "Apply type inference appearance",
+    "best_score": 1.480362,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "logo are registered trademarks",
+    "term_original": "logo are registered trademarks",
+    "best_score": 1.567263,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term_normalized": "certiport and the certiport",
+    "term_original": "Certiport and the Certiport",
+    "best_score": 3.290733,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  }
+]

@@ -1,0 +1,86 @@
+[
+  {
+    "chunk_id": "chunk_0000",
+    "heading_trail": "(no heading)",
+    "text": "App Development\nwith Swift\nAssociate\nObjective Domains\nEarning the App Development with Swift Associate certification demonstrates knowledge of key computing\nconcepts and a solid foundation in programming with Swift and SwiftUI. They’ll demonstrate knowledge of the\nimpact of computing and apps on society, economies, and cultures while exploring app development.",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0001",
+    "heading_trail": "Planning and Design Swift Language Usage",
+    "text": "impact of computing and apps on society, economies, and cultures while exploring app development.\nPlanning and Design Swift Language Usage\n1.1. Summarize the design cycle 3.1. Write, call and/or evaluate the execution of functions\n1.1.1. Brainstorm, plan, prototype, evaluate 3.1.1. Evaluate the use of argument labels, parameters",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0002",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns",
+    "text": "1.1.1. Brainstorm, plan, prototype, evaluate 3.1.1. Evaluate the use of argument labels, parameters\nand returns\n1.2. Summarize how sensitive data can be protected and\ncompromised 3.2. Calculate the results when using various operators\n1.2.1. Sharing personal and application information 3.3. Create and evaluate structures\n1.2.2. Security challenges 3.3.1. Declare the properties of a structure\n1.2.3. Legal, ethical and socioeconomic impacts 3.3.2. Initialize the properties of a structure\n1.3. Assess a visual design with accessibility in mind 3.3.3. Define methods",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0003",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > 3.3.4. Create an instance of a structure",
+    "text": "1.3. Assess a visual design with accessibility in mind 3.3.3. Define methods\n3.3.4. Create an instance of a structure\nXCode Project Navigation\n3.3.5. Use an instance of a structure",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0004",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > 2.1. Differentiate between basic file types",
+    "text": "3.3.5. Use an instance of a structure\n2.1. Differentiate between basic file types\n2.2. After an asset has been imported, recognize available\nassets and how they are used in a project",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0005",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > 2.3. Import and/or use an asset",
+    "text": "assets and how they are used in a project\n2.3. Import and/or use an asset\n2.4. Select the appropriate actions to configure\ndifferent areas of the user interface",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0006",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > WITH SWIFT",
+    "text": "different areas of the user interface\nWITH SWIFT\nAssociate\nApp Development",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0007",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > with Swift",
+    "text": "App Development\nwith Swift\nAssociate\nSwift Language Usage (Continued) View Building with SwiftUI\n3.4. Create and manipulate arrays 4.1. Differentiate between imperative and declarative",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0008",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > programming",
+    "text": "3.4. Create and manipulate arrays 4.1. Differentiate between imperative and declarative\nprogramming\n3.4.1. Declare and/or initialize an array with values\n4.2. Create Content Views using Text, Image, Shape,\n3.4.2. Identify and/or modify an array element using its index",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0009",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > and/or Color",
+    "text": "3.4.2. Identify and/or modify an array element using its index\nand/or Color\n3.4.3. Use and/or evaluate array properties and/or methods\n4.3. Implement Modifiers including, but not limited to,\n3.5. Demonstrate how to control the flow of execution .padding, .background, .frame, .foregroundColor, .font,\n3.5.1. Create, analyze and predict loop structures and .resizable\nand their results 4.4. Create Container Views (HStack, VStack, ZStack, Spacer)\n3.5.2. Create and interpret the outcome of conditional and arrange Views inside of Stack Views\nstatements 4.5. Explain the View hierarchy produced by a program\n3.6. Declare and/or evaluate constants and variables of 4.6. Create and/or apply Interactive Views including,\ndifferent data types but not limited to, Button, TextField, Slider, and Toggle\n3.6.1. Differentiate between constants and variables 4.7. Use @State Property Wrapper to control the",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0010",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > 3.6.2. Apply type inference appearance of a View",
+    "text": "different data types but not limited to, Button, TextField, Slider, and Toggle\n3.6.1. Differentiate between constants and variables 4.7. Use @State Property Wrapper to control the\n3.6.2. Apply type inference appearance of a View\n3.6.3. Use explicit typing",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  },
+  {
+    "chunk_id": "chunk_0011",
+    "heading_trail": "Planning and Design Swift Language Usage > and returns > Debugging",
+    "text": "3.6.3. Use explicit typing\nDebugging\n3.7. Use the appropriate naming syntax\n5.1. Differentiate between syntax and run-time errors when\n3.7.1. Use appropriate camel casing building and running an app\n3.7.2. Apply Swift identifier rules 5.2. Interpret error messages\n© 2025 Certiport, Inc. Certiport and the Certiport logo are registered trademarks of Certiport Inc. Apple, Xcode, Swift and SwiftUI are trademarks of Apple Inc., registered in the U.S. and other countries and regions.",
+    "source_file": "Apple Associate - Objective Domains_0125.pdf",
+    "target_context": "Apple App Development with Swift Associate"
+  }
+]

@@ -73,6 +73,7 @@ Pipeline này kết hợp cả hai track, filter domain-relevance rồi mới de
 | `/extract-terms` | `@keyword-extractor` | ✅ | `candidates_filtered.md` |
 | `/verify-terms` | `@keyword-extractor` | ✅ | `verify-report.md` ← **điểm duyệt** |
 | `/finalize-keywords` | `@keyword-extractor` | ❌ | `output/keywords.tsv` + inject vào context-audit |
+| `/escalate-concepts` | `@keyword-extractor` | ✅ | `concept_candidates.tsv` + `concept_escalation.md` ← **điểm duyệt** |
 
 ---
 
