@@ -176,7 +176,13 @@ def main():
     if not api_key:
         print("[ERROR] OPENAI_API_KEY không tìm thấy.", file=sys.stderr)
         sys.exit(1)
-    client = OpenAI(api_key=api_key)
+    try:
+        import httpx
+        http_client = httpx.Client(transport=httpx.HTTPTransport())
+        base_url = os.environ.get("OPENAI_BASE_URL") or None
+        client = OpenAI(api_key=api_key, base_url=base_url, http_client=http_client)
+    except Exception as e:
+        client = OpenAI(api_key=api_key)
 
     links = map_prerequisites(client, los, dag_context, args.model)
     
