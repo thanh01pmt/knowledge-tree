@@ -1,0 +1,3472 @@
+[
+  {
+    "term": "App Development with Swift Associate",
+    "aliases": [
+      "SWIFT Associate App Development",
+      "Development with Swift Associate",
+      "SWIFT Associate App",
+      "App Development with Swift",
+      "Swift Associate",
+      "Associate App Development",
+      "Swift Associate Swift",
+      "Development with Swift",
+      "interface WITH SWIFT Associate",
+      "Associate Swift",
+      "Associate App",
+      "Swift Associate Objective",
+      "App Development",
+      "Swift Associate certification",
+      "Swift Associate certification demonstrates",
+      "Swift Associate Swift Language",
+      "exploring app development",
+      "Earning the App Development",
+      "Associate Swift Language",
+      "Associate Swift Language Usage"
+    ],
+    "category": "software",
+    "relevance_score": 0.9705,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0006",
+      "chunk_0007",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Swift",
+    "aliases": [
+      "programming with Swift",
+      "Apply Swift",
+      "Planning and Design Swift",
+      "interface WITH SWIFT",
+      "user interface WITH SWIFT",
+      "Design Swift",
+      "Swift and SwiftUI",
+      "Design Swift Language"
+    ],
+    "category": "software",
+    "relevance_score": 0.7238,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "App",
+    "aliases": [
+      "apps",
+      "application",
+      "running an app",
+      "exploring app",
+      "computing and apps",
+      "cultures while exploring app"
+    ],
+    "category": "software",
+    "relevance_score": 0.6686,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007",
+      "chunk_0011",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Swift Language",
+    "aliases": [
+      "Swift Language Usage",
+      "Design Swift Language Usage"
+    ],
+    "category": "software",
+    "relevance_score": 0.6585,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Swift identifier rules",
+    "aliases": [
+      "Swift identifier",
+      "Apply Swift identifier",
+      "Apply Swift identifier rules"
+    ],
+    "category": "concept",
+    "relevance_score": 0.5771,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "SwiftUI",
+    "aliases": [
+      "Building with SwiftUI",
+      "View Building with SwiftUI",
+      "SwiftUI are trademarks"
+    ],
+    "category": "software",
+    "relevance_score": 0.6386,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Apple",
+    "aliases": [
+      "Apple Inc.",
+      "trademarks of Apple Inc.",
+      "trademarks of Apple"
+    ],
+    "category": "other",
+    "relevance_score": 0.5958,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Swift Associate",
+    "aliases": [
+      "Associate",
+      "Associate certification",
+      "Associate certification demonstrates",
+      "Swift Associate Objective Domains"
+    ],
+    "category": "concept",
+    "relevance_score": 0.8522,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Objective Domains",
+    "aliases": [
+      "Associate Objective"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3613,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Earning the App",
+    "aliases": [
+      "Domains Earning the App"
+    ],
+    "category": "concept",
+    "relevance_score": 0.6356,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Development",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.5665,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "application information",
+    "aliases": [
+      "Sharing personal and application",
+      "personal and application",
+      "personal and application information"
+    ],
+    "category": "concept",
+    "relevance_score": 0.5353,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "project",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.5305,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Project Navigation",
+    "aliases": [
+      "XCode Project Navigation",
+      "structure XCode Project Navigation"
+    ],
+    "category": "software",
+    "relevance_score": 0.5058,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Associate Certification",
+    "aliases": [
+      "Associate certification demonstrates knowledge",
+      "Associate Objective Domains Earning",
+      "Associate Objective Domains",
+      "Earning"
+    ],
+    "category": "concept",
+    "relevance_score": 0.5437,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "program",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4954,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "XCode Project",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4905,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "programming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4893,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "apps on society",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4871,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Apply",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4834,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "foundation in programming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4636,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4612,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0007",
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Apply Interactive Views",
+    "aliases": [
+      "apply Interactive",
+      "apply Interactive Views including"
+    ],
+    "category": "concept",
+    "relevance_score": 0.4329,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Implement",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4585,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "user",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4564,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "produced by a program",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4525,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "areas of the user",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4502,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create and manipulate",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.45,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "concepts",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4467,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "user interface",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4448,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "asset",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4426,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Inc.",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.5028,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Navigation",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4403,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Select",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4385,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "solid foundation in programming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4377,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "interface",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4373,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Planning and Design",
+    "aliases": [
+      "Planning",
+      "plan"
+    ],
+    "category": "concept",
+    "relevance_score": 0.4344,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "visual design with accessibility",
+    "aliases": [
+      "visual design",
+      "design with accessibility",
+      "accessibility in mind"
+    ],
+    "category": "concept",
+    "relevance_score": 0.434,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "apply Interactive Views",
+    "aliases": [
+      "Interactive Views including",
+      "Interactive"
+    ],
+    "category": "concept",
+    "relevance_score": 0.4329,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "actions",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4321,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Usage",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4319,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create and evaluate",
+    "aliases": [
+      "Create Content",
+      "Create and manipulate arrays"
+    ],
+    "category": "concept",
+    "relevance_score": 0.4312,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0008",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "statements",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4302,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "recognize",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4292,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Sharing",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4287,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "structure XCode Project",
+    "aliases": [],
+    "category": "tool",
+    "relevance_score": 0.4286,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Apply type",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4272,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "computing",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4258,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Design",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4254,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Objective",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.425,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "background",
+    "aliases": [
+      ".background"
+    ],
+    "category": "software",
+    "relevance_score": 0.4228,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "assets",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4187,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "accessibility",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4164,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "areas",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4078,
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Assess",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4044,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Building",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4105,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Button",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.418,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "computing concepts",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.409,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "conditional",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.415,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Content",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4119,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create and interpret",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4089,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create Content Views",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4096,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "data",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4168,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Define",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4053,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "design cycle",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4067,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Identify",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4091,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Image",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4091,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "initialize",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4121,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Interactive Views",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4043,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "logo are registered trademarks",
+    "aliases": [
+      "logo are registered"
+    ],
+    "category": "other",
+    "relevance_score": 0.4052,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "methods",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.414,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "prototype",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4162,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "recognize available assets",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4134,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Select the appropriate actions",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4122,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Summarize the design cycle",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4043,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Text",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4055,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Views inside of Stack",
+    "aliases": [
+      "inside of Stack Views",
+      "inside of Stack"
+    ],
+    "category": "software",
+    "relevance_score": 0.4062,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Views statements",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4162,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Xcode",
+    "aliases": [],
+    "category": "tool",
+    "relevance_score": 0.4153,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "certification",
+    "aliases": [
+      "certification demonstrates"
+    ],
+    "category": "concept",
+    "relevance_score": 0.4036,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "operators",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4032,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "functions",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4027,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": ".foregroundColor",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4025,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "visual",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4021,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "key computing concepts",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.402,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "logo",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.402,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Stack Views statements",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.4017,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "actions to configure",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4017,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "error",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4015,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "registered",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4012,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "asset has been imported",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4012,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "arrange",
+    "aliases": [
+      "arrange Views"
+    ],
+    "category": "concept",
+    "relevance_score": 0.4007,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Assess a visual design",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.4003,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": ".resizable",
+    "aliases": [
+      "resizable and their results"
+    ],
+    "category": "software",
+    "relevance_score": 0.3999,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "file",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3998,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Brainstorm",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3997,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "exploring",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3995,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "personal",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3988,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "instance",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3986,
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "information",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.396,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "conditional statements",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3957,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "array",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3951,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Objective Domains Earning",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3948,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "analyze",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3944,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Certiport",
+    "aliases": [
+      "the Certiport",
+      "Certiport and the Certiport"
+    ],
+    "category": "other",
+    "relevance_score": 0.3794,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Domains Earning",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3932,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Sharing personal",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.393,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "trademark",
+    "aliases": [
+      "registered trademarks",
+      "trademarks"
+    ],
+    "category": "other",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": ".padding",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3926,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "naming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3925,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": ".font",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3918,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "labels",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3915,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "function execution",
+    "aliases": [
+      "execution of functions"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "declarative programming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3903,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "initialize properties",
+    "aliases": [
+      "Initialize the properties"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "imperative",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3893,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "inference",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3893,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "knowledge",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.389,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "configure different areas",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.388,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "view hierarchy",
+    "aliases": [
+      "View hierarchy produced"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3697,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "analyze and predict",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3872,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "arrays",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3871,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "View",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3868,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Wrapper to control",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3868,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "conditional and arrange Views",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3868,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "errors",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3863,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Debugging",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.386,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "array properties",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3859,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "conditional outcome",
+    "aliases": [
+      "outcome of conditional"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "challenges",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3854,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "certification demonstrates knowledge",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3853,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "explicit",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.385,
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "foundation",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3849,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Certiport",
+    "aliases": [
+      "Certiport logo are registered",
+      "registered trademarks of Certiport"
+    ],
+    "category": "other",
+    "relevance_score": 0.3794,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "demonstrate",
+    "aliases": [
+      "’ll demonstrate knowledge",
+      "’ll demonstrate",
+      "demonstrates knowledge",
+      "demonstrates"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3715,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Stack View",
+    "aliases": [
+      "Stack",
+      "Stack Views"
+    ],
+    "category": "software",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "building and running",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3848,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "array element",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3847,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "conditional and arrange",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3845,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Calculate",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.384,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "including",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3832,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Shape",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3832,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "control",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.383,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Slider",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3827,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "structure XCode",
+    "aliases": [],
+    "category": "tool",
+    "relevance_score": 0.3826,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Language Usage",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3822,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "impacts",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3817,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Property Wrapper to control",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3813,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "outcome",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3805,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "predict",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3804,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Color",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.38,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "identifier",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.38,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "variables",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3797,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Views using Text",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3794,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "manipulate arrays",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3791,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "results",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3788,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "imperative and declarative programming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3778,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "flow of execution",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3775,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "imperative programming",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3771,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "trademarks of Certiport",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.377,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create and evaluate structures",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3769,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "running",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3768,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": ".frame",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3765,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Domains",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3759,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "arrange Views inside",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3759,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "foregroundColor",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3759,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "properties",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3753,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "hierarchy produced",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3753,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Language",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.375,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Assess a visual",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.375,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "mind",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3739,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "font",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3733,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "manipulate",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3727,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Define methods",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3725,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "key computing",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3724,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "run-time errors",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3723,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create Container",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3721,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "run-time",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3718,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "demonstrate",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3715,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Security challenges",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3715,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "array methods",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3713,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Differentiate",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.371,
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0007",
+      "chunk_0008",
+      "chunk_0009",
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "ZStack",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3709,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "type",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3709,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Demonstrate how to control",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3708,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "modify",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3704,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "View hierarchy",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3697,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Summarize",
+    "aliases": [
+      "Summarize the design"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3691,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Views",
+    "aliases": [
+      "Content Views"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3645,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "identifier rules",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3697,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create an instance",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.369,
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "impact",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3685,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "structure",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3677,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "regions",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3676,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3673,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Explain",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3673,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Write",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3671,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Certiport logo",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3668,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "padding",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3668,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "resizable",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3668,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Continued",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3663,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "modify an array element",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3662,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "configure",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.366,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "basic",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3655,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "syntax and run-time errors",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3647,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "View Building",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3645,
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "compromised",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3644,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "’ll",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3642,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "initialize an array",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3638,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "solid foundation",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3635,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Declare",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3629,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "ethical",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3619,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "typing Debugging",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3615,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Objective Domains",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3613,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "impact of computing",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3607,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Calculate the results",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3596,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "demonstrate knowledge of key computing",
+    "aliases": [
+      "demonstrates knowledge of key",
+      "demonstrate knowledge",
+      "knowledge of key computing"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Views inside",
+    "aliases": [
+      "inside"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3514,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "casing building",
+    "aliases": [
+      "casing building and running"
+    ],
+    "category": "other",
+    "relevance_score": 0.3534,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "hierarchy",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3576,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "socioeconomic",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3573,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Security",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3571,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "messages",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.357,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "call",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3568,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "appearance",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3566,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Implement Modifiers",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3563,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Property Wrapper",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3554,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Create Container Views",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3548,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Explain the View",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3536,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "concepts and a solid",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3534,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "error messages",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3524,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "frame",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3518,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate array properties",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3512,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "countries and regions",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3512,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "TextField",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3507,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "element",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3507,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "ethical and socioeconomic",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3558,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Modifiers",
+    "aliases": [
+      "Modifiers including",
+      "Implement Modifiers including"
+    ],
+    "category": "software",
+    "relevance_score": 0.3393,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "protected",
+    "aliases": [
+      "protected and compromised",
+      "data can be protected"
+    ],
+    "category": "software",
+    "relevance_score": 0.3505,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "key",
+    "aliases": [
+      "knowledge of key"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3499,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "imperative and declarative",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3463,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Differentiate between imperative",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3431,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate the execution",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3489,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Apply type inference appearance",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3482,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Content Views using Text",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3479,
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "SOLID",
+    "aliases": [
+      "solid"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3479,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "knowledge of the impact",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3479,
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Explain the View hierarchy",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3477,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "sensitive data",
+    "aliases": [
+      "sensitive"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3426,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "modify an array",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3468,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "appearance of a View",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3458,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Spacer",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3458,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Import",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3438,
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "flow",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3418,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Legal",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3411,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "argument",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.34,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "structure",
+    "aliases": [
+      "structures",
+      "instance of a structure"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3677,
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003",
+      "chunk_0004",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "camelCase",
+    "aliases": [
+      "camel casing building"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Property",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3394,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Container",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3393,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "limited",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3389,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "VStack",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3388,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "typing",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3387,
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "type inference",
+    "aliases": [
+      "type inference appearance",
+      "Apply type inference"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3384,
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "control flow",
+    "aliases": [
+      "control the flow"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Summarize how sensitive data",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3372,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "basic file",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3364,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "execution",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3361,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "rules",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.336,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "file types",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3357,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Wrapper",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3355,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "@State Property Wrapper",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3354,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "constants and variables",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3349,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "countries",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3346,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "syntax and runtime",
+    "aliases": [
+      "syntax and run-time"
+    ],
+    "category": "concept",
+    "relevance_score": 0.0,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "explicit typing Debugging",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3333,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "argument labels",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3333,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "declarative",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3331,
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate array",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3327,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "types but not limited",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3316,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "analyze and predict loop",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3304,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "data types",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3288,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "casing",
+    "aliases": [
+      "camel"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3288,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Container Views",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3286,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "cultures while exploring",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.3267,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Declare the properties",
+    "aliases": [],
+    "category": "other",
+    "relevance_score": 0.326,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "loop",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3253,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "interpret",
+    "aliases": [
+      "Interpret",
+      "interpret the outcome",
+      "Interpret error",
+      "Interpret error messages"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3231,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "ethical and socioeconomic impacts",
+    "aliases": [
+      "legal, ethical and socioeconomic impacts",
+      "socioeconomic impacts"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3235,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "basic file types",
+    "aliases": [
+      "Differentiate between basic",
+      "Differentiate between basic file"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3098,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "loop structures",
+    "aliases": [
+      "predict loop",
+      "predict loop structures"
+    ],
+    "category": "concept",
+    "relevance_score": 0.3093,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "constants",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3237,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "syntax errors",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3228,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "HStack",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.322,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "parameters",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3219,
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "imported",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3197,
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Toggle",
+    "aliases": [],
+    "category": "software",
+    "relevance_score": 0.3192,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate constants and variables",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3187,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "returns",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3169,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate structures",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3145,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "syntax",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3118,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Differentiate between constants",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3104,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "society",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.31,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "index",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.308,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "properties of a structure",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3077,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "Differentiate between syntax",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3006,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "explicit typing",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.3002,
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "camel casing",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2981,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "State Property Wrapper",
+    "aliases": [
+      "State",
+      "State Property"
+    ],
+    "category": "software",
+    "relevance_score": 0.2977,
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "cycle",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2967,
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "evaluate constants",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2927,
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "cultures",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2907,
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "naming syntax",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2874,
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "element using its index",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2829,
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "statistical"
+  },
+  {
+    "term": "parameters and returns",
+    "aliases": [],
+    "category": "concept",
+    "relevance_score": 0.2815,
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "statistical"
+  }
+]

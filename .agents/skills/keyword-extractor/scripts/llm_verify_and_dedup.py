@@ -82,15 +82,15 @@ def load_env(repo_root: Path):
 
 
 def create_openai_client() -> OpenAI:
-    """Tạo OpenAI client, ưu tiên OPENAI_BASE_URL nếu có (Ollama compat)."""
+    """Tạo OpenAI client với timeout 60s, ưu tiên OPENAI_BASE_URL nếu có (Ollama compat)."""
     api_key = os.environ.get("OPENAI_API_KEY", "ollama")
     base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
     if base_url:
-        return OpenAI(api_key=api_key, base_url=base_url)
+        return OpenAI(api_key=api_key, base_url=base_url, timeout=60.0)
     if not api_key or api_key == "ollama":
         print("[ERROR] OPENAI_API_KEY hoặc OPENAI_BASE_URL chưa cấu hình.", file=sys.stderr)
         sys.exit(1)
-    return OpenAI(api_key=api_key)
+    return OpenAI(api_key=api_key, timeout=60.0)
 
 
 def load_work_dir(args, repo_root: Path) -> Path:
@@ -256,12 +256,13 @@ def parse_omission_json(raw: str) -> list[dict]:
 
 
 def build_current_terms_str(verified: list[dict]) -> str:
-    """Tạo chuỗi danh sách term hiện có (gồm cả aliases) để nhét vào prompt."""
-    lines = []
+    """Tạo chuỗi danh sách term hiện có dạng compact để tối ưu kích thước prompt."""
+    terms_list = []
     for v in verified:
-        aliases_str = f" (aliases: {', '.join(v['aliases'])})" if v.get("aliases") else ""
-        lines.append(f"- {v['term']}{aliases_str}")
-    return "\n".join(lines)
+        terms_list.append(v["term"])
+        if v.get("aliases"):
+            terms_list.extend(v["aliases"])
+    return ", ".join(terms_list)
 
 
 def omission_check_chunk(
@@ -427,8 +428,16 @@ def main():
 
     # ── Phase A: Dedup ────────────────────────────────────────────────────────
     print(f"\n=== Phase A: Dedup & Canonicalize ({n_before_dedup} candidates) ===", flush=True)
-    verified = dedup_candidates(client, candidates, model=args.model, batch_size=args.dedup_batch)
-    print(f"  → {len(verified)} canonical terms sau dedup", flush=True)
+    canonical_cache_path = work_dir / "candidates_canonical.json"
+    if canonical_cache_path.is_file():
+        with open(canonical_cache_path, encoding="utf-8") as f:
+            verified = json.load(f)
+        print(f"  [CACHE] Đã load {len(verified)} canonical terms từ candidates_canonical.json", flush=True)
+    else:
+        verified = dedup_candidates(client, candidates, model=args.model, batch_size=args.dedup_batch)
+        with open(canonical_cache_path, "w", encoding="utf-8") as f:
+            json.dump(verified, f, ensure_ascii=False, indent=2)
+        print(f"  → {len(verified)} canonical terms sau dedup (đã lưu cache)", flush=True)
 
     # ── Phase B: Omission Check ───────────────────────────────────────────────
     print(f"\n=== Phase B: Omission Check (max {args.max_rounds} rounds) ===", flush=True)
