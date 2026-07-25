@@ -506,7 +506,7 @@
   {
     "code": "CIO-CONTROL_FLOW-DESCRIBE_EXECUTION_ORDER_OF",
     "name": "Describe Execution Order of if-else in Swift",
-    "description_vi": "Người học có khả năng mô tả thứ tự thực thi của câu lệnh if-else trong Swift dựa trên điều kiện Boolean: nếu điều kiện đúng thì thực thi khối if, nếu sai thì chuyển sang else if hoặc else, và chỉ một ",
+    "description_vi": "Người học có khả năng mô tả thứ tự thực thi của câu lệnh if-else trong Swift dựa trên điều kiện Boolean: nếu điều kiện đúng thì thực thi khối if, nếu sai thì chuyển sang else if hoặc else, và chỉ một",
     "bloom_level": "Understand",
     "knowledge_dimension": "Procedural",
     "parent_ulo_code": "ULO-CONTROL_FLOW-01",
@@ -965,7 +965,7 @@
   {
     "code": "CIO-VIEW_CONCEPT-MODEL_VIEW_AS_SWIFTUI",
     "name": "Model View as SwiftUI Struct",
-    "description_vi": "Người học có khả năng mô hình hóa một view trong SwiftUI bằng cách định nghĩa struct tuân thủ protocol View, khai báo các thuộc tính @State, @Binding, @ObservedObject, và triển khai computed property ",
+    "description_vi": "Người học có khả năng mô hình hóa một view trong SwiftUI bằng cách định nghĩa struct tuân thủ protocol View, khai báo các thuộc tính @State, @Binding, @ObservedObject, và triển khai computed property",
     "bloom_level": "APPLY",
     "knowledge_dimension": "PROCEDURAL",
     "parent_ulo_code": "ULO-VIEW_CONCEPT-03",

@@ -15,7 +15,7 @@ ERROR_MESSAGES_CONCEPT	Interpreting Error Messages	Kỹ năng đọc và hiểu 
 RETURN_VALUES_AND_SCOPE	Return Values and Scope	Hiểu cách một hàm trả về giá trị và phạm vi của biến.	IDE_NAVIGATION	return values, scope, outcomes, calculations		{}
 ARRAY_OPERATIONS	Array Operations	Thực hiện các thao tác cơ bản trên mảng: truy cập phần tử qua chỉ số (index), lấy độ dài, và duyệt qua các phần tử.	ARRAYS	array, index, access, iteration	SDF	"{""icon"": ""th""}"
 LOCAL_VIEW_STATE	Local View State	Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.	STATE_MANAGEMENT	state, @State, local state, ephemeral state	HCI, SDF	"{""icon"": ""dot-circle""}"
-STATE_PROPERTY_WRAPPER	State Property Wrapper	Theo dõi trạng thái bằng property wrapper.	STATE_MANAGEMENT	state		
+STATE_PROPERTY_WRAPPER	State Property Wrapper	Theo dõi trạng thái bằng property wrapper.	STATE_MANAGEMENT,DATA_BINDING	state		
 WHILE_LOOP	While Loop	Nắm vững cú pháp và cách sử dụng vòng lặp while để lặp lại một khối mã khi một điều kiện cho trước vẫn còn đúng.	ITERATION_LOOPS	while loop, iteration, looping, condition	SDF	"{""icon"": ""sync""}"
 PROJECT_ASSETS_MANAGEMENT	Project Assets Management	Quản lý tài nguyên hình ảnh, màu sắc trong IDE.	IDE_NAVIGATION	assets		
 SYNTAX_VS_RUNTIME_ERRORS	Syntax vs Runtime Errors	Phân biệt các loại lỗi trong quá trình dev.	ERROR_MESSAGES,DEBUGGING_TECHNIQUES	error		

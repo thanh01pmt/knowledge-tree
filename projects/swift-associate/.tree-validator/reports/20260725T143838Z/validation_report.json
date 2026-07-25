@@ -1,0 +1,454 @@
+{
+  "generated_at": "2026-07-25T14:38:38.714753+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 47,
+    "errors": 32,
+    "warnings": 15,
+    "by_rule": {
+      "EMPTY_REQUIRED_FIELD": 2,
+      "CODE_FORMAT": 4,
+      "EMPTY_PARENT_REF": 4,
+      "BROKEN_REFERENCE": 12,
+      "LO_BROKEN_PARENT_REF": 2,
+      "LO_TYPE_UNKNOWN": 6,
+      "LO_CONCEPT_NOT_IN_PROJECT": 12,
+      "CIO_INSUFFICIENT_SIO": 4,
+      "ORPHAN_NODE": 1
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 32,
+        "WARNING": 14
+      },
+      "topics": {
+        "ERROR": 0,
+        "WARNING": 1
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 9,
+      "categories": 12,
+      "topics": 16,
+      "concepts": 42,
+      "learning_objectives": 443
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_REQUIRED_FIELD",
+      "level": "learning_objectives",
+      "code": "TextField(\"Enter name\", text: $name)",
+      "message": "Cột 'name' bị rỗng.",
+      "field": "name"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_REQUIRED_FIELD",
+      "level": "learning_objectives",
+      "code": "Toggle(\"Enable\", isOn: $isOn)",
+      "message": "Cột 'name' bị rỗng.",
+      "field": "name"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "TextField(\"Enter name\", text: $name)",
+      "message": "Code 'TextField(\"Enter name\", text: $name)' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": ".onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }",
+      "message": "Code '.onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "Toggle(\"Enable\", isOn: $isOn)",
+      "message": "Code 'Toggle(\"Enable\", isOn: $isOn)' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": ".onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }",
+      "message": "Code '.onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-BIND_STATE_TEXTFIELD_ONCHANGE",
+      "message": "Cột 'concept_codes' rỗng — node không có cha.",
+      "field": "concept_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "learning_objectives",
+      "code": "TextField(\"Enter name\", text: $name)",
+      "message": "Cột 'concept_codes' rỗng — node không có cha.",
+      "field": "concept_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": ".onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }",
+      "message": "'PROCEDURAL' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROCEDURAL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-BIND_STATE_TOGGLE_ONCHANGE",
+      "message": "Cột 'concept_codes' rỗng — node không có cha.",
+      "field": "concept_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "learning_objectives",
+      "code": "Toggle(\"Enable\", isOn: $isOn)",
+      "message": "Cột 'concept_codes' rỗng — node không có cha.",
+      "field": "concept_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": ".onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }",
+      "message": "'PROCEDURAL' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROCEDURAL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_LAYOUT_MODIFIERS",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_STYLE_INTERACTION_MODIFIERS",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_PADDING_BEFORE_BACKGROUND",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_FONT_BEFORE_FOREGROUND",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMBINE_LAYOUT_MODIFIERS",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMBINE_APPEARANCE_MODIFIERS",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_PADDING_AND_ALIGNMENT",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_FRAME_AND_SIZE",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_PADDING_BACKGROUND",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_FRAME_CLIPPED",
+      "message": "'UI_MODIFIERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_BROKEN_PARENT_REF",
+      "level": "learning_objectives",
+      "code": ".onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }",
+      "message": "parent_lo_code 'Apply' không tồn tại.",
+      "field": "parent_lo_code",
+      "ref": "Apply"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_BROKEN_PARENT_REF",
+      "level": "learning_objectives",
+      "code": ".onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }",
+      "message": "parent_lo_code 'Apply' không tồn tại.",
+      "field": "parent_lo_code",
+      "ref": "Apply"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_TYPE_UNKNOWN",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-BIND_STATE_TEXTFIELD_ONCHANGE",
+      "message": "lo_type='' không thuộc ['CONCEPTUAL_IMPL', 'SPECIFIC_IMPL', 'UNIVERSAL'].",
+      "field": "lo_type"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_TYPE_UNKNOWN",
+      "level": "learning_objectives",
+      "code": "TextField(\"Enter name\", text: $name)",
+      "message": "lo_type='' không thuộc ['CONCEPTUAL_IMPL', 'SPECIFIC_IMPL', 'UNIVERSAL'].",
+      "field": "lo_type"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_TYPE_UNKNOWN",
+      "level": "learning_objectives",
+      "code": ".onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }",
+      "message": "lo_type='STATE_PROPERTY_WRAPPER' không thuộc ['CONCEPTUAL_IMPL', 'SPECIFIC_IMPL', 'UNIVERSAL'].",
+      "field": "lo_type"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_TYPE_UNKNOWN",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-BIND_STATE_TOGGLE_ONCHANGE",
+      "message": "lo_type='' không thuộc ['CONCEPTUAL_IMPL', 'SPECIFIC_IMPL', 'UNIVERSAL'].",
+      "field": "lo_type"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_TYPE_UNKNOWN",
+      "level": "learning_objectives",
+      "code": "Toggle(\"Enable\", isOn: $isOn)",
+      "message": "lo_type='' không thuộc ['CONCEPTUAL_IMPL', 'SPECIFIC_IMPL', 'UNIVERSAL'].",
+      "field": "lo_type"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_TYPE_UNKNOWN",
+      "level": "learning_objectives",
+      "code": ".onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }",
+      "message": "lo_type='STATE_PROPERTY_WRAPPER' không thuộc ['CONCEPTUAL_IMPL', 'SPECIFIC_IMPL', 'UNIVERSAL'].",
+      "field": "lo_type"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": ".onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }",
+      "message": "concept_code 'PROCEDURAL' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROCEDURAL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": ".onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }",
+      "message": "concept_code 'PROCEDURAL' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROCEDURAL"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_LAYOUT_MODIFIERS",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_STYLE_INTERACTION_MODIFIERS",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_PADDING_BEFORE_BACKGROUND",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_FONT_BEFORE_FOREGROUND",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMBINE_LAYOUT_MODIFIERS",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMBINE_APPEARANCE_MODIFIERS",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_PADDING_AND_ALIGNMENT",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_FRAME_AND_SIZE",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_PADDING_BACKGROUND",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ORDER_FRAME_CLIPPED",
+      "message": "concept_code 'UI_MODIFIERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-STATE_PROPERTY_WRAPPER-BIND_STATE_UI_ELEMENT",
+      "message": "CIO 'Bind state to UI element and observe changes' (CIO-STATE_PROPERTY_WRAPPER-BIND_STATE_UI_ELEMENT) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARATIVE_UI_PARADIGM-DESCRIBE_DESIRED_STATE",
+      "message": "CIO 'Mô tả trạng thái mong muốn' (CIO-DECLARATIVE_UI_PARADIGM-DESCRIBE_DESIRED_STATE) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARATIVE_UI_PARADIGM-COMPARE_DECLARATIVE_IMPERATIVE",
+      "message": "CIO 'So sánh luồng điều khiển khai báo và mệnh lệnh' (CIO-DECLARATIVE_UI_PARADIGM-COMPARE_DECLARATIVE_IMPERATIVE) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARATIVE_UI_PARADIGM-BUILD_HIERARCHICAL_VIEW",
+      "message": "CIO 'Xây dựng cấu trúc view phân cấp' (CIO-DECLARATIVE_UI_PARADIGM-BUILD_HIERARCHICAL_VIEW) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "DATA_BINDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

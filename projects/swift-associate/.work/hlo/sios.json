@@ -1054,5 +1054,885 @@
     "bloom_level": "APPLY",
     "knowledge_dimension": "PROCEDURAL",
     "parent_cio_code": "CIO-RETURN_VALUES_AND_SCOPE-USE_RETURN_VALUE_AS"
+  },
+  {
+    "code": "SIO-SWIFT-ACCESS_ARRAY_ELEMENT_BY_INDEX",
+    "name": "Truy cập phần tử mảng bằng chỉ số cụ thể trong Swift",
+    "description_vi": "Người học có khả năng sử dụng cú pháp subscript array[index] trong Swift để truy cập phần tử tại vị trí xác định. Ví dụ: let first = numbers[0] lấy phần tử đầu tiên, let third = scores[2] lấy phần tử thứ ba.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-ACCESS_ARRAY_ELEMENT"
+  },
+  {
+    "code": "SIO-SWIFT-HANDLE_OUT_OF_BOUNDS_ACCESS",
+    "name": "Xử lý lỗi truy cập ngoài phạm vi mảng trong Swift",
+    "description_vi": "Người học có khả năng kiểm tra chỉ số hợp lệ trước khi truy cập phần tử mảng Swift để tránh lỗi runtime fatal error: index out of range. Ví dụ: if index < array.count { let value = array[index] } else { print(\"Index out of bounds\") }.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-ACCESS_ARRAY_ELEMENT"
+  },
+  {
+    "code": "SIO-SWIFT-DETERMINE_FIRST_AND_LAST_INDEX",
+    "name": "Xác định chỉ số của phần tử đầu tiên và cuối cùng trong mảng Swift",
+    "description_vi": "Người học có khả năng xác định chỉ số 0 cho phần tử đầu tiên và chỉ số array.count - 1 cho phần tử cuối cùng trong mảng Swift. Ví dụ: let lastIndex = names.count - 1; let lastName = names[lastIndex].",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-ZERO_BASED_INDEX"
+  },
+  {
+    "code": "SIO-SWIFT-CALCULATE_INDEX_FROM_LENGTH",
+    "name": "Tính toán chỉ số dựa trên độ dài mảng trong Swift",
+    "description_vi": "Người học có khả năng sử dụng thuộc tính count của mảng Swift để tính chỉ số cho các thao tác như lấy phần tử cuối hoặc phần tử ở vị trí tương đối. Ví dụ: let middleIndex = array.count / 2; let middleElement = array[middleIndex].",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-ZERO_BASED_INDEX"
+  },
+  {
+    "code": "SIO-SWIFT-TRAVERSE_ARRAY_WITH_FOR_IN_INDEX",
+    "name": "Duyệt mảng bằng vòng lặp for-in với chỉ số trong Swift",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp for index in 0..<array.count để duyệt tuần tự từng phần tử của mảng Swift và thực hiện thao tác trên mỗi phần tử. Ví dụ: for i in 0..<scores.count { print(\"Score \\(i): \\(scores[i])\") }.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-SEQUENTIAL_ARRAY_TRAVERSAL"
+  },
+  {
+    "code": "SIO-SWIFT-TRAVERSE_ARRAY_WITH_WHILE_INDEX",
+    "name": "Duyệt mảng bằng vòng lặp while với chỉ số trong Swift",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp while với biến chỉ số tăng dần để duyệt tuần tự mảng Swift. Ví dụ: var i = 0; while i < numbers.count { print(numbers[i]); i += 1 }.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-SEQUENTIAL_ARRAY_TRAVERSAL"
+  },
+  {
+    "code": "SIO-SWIFT-MODIFY_ARRAY_SUBSCRIPT",
+    "name": "Sửa đổi phần tử mảng Swift bằng subscript",
+    "description_vi": "Người học có khả năng sử dụng subscript array[index] = newValue để gán giá trị mới cho phần tử tại chỉ số xác định trong mảng Swift. Ví dụ: var numbers = [1,2,3]; numbers[1] = 10 sẽ thay đổi phần tử thứ hai thành 10.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-MODIFY_ARRAY_ELEMENT"
+  },
+  {
+    "code": "SIO-SWIFT-MODIFY_ARRAY_CONDITIONAL",
+    "name": "Sửa đổi phần tử mảng Swift có điều kiện",
+    "description_vi": "Người học có khả năng kết hợp subscript với câu lệnh if để chỉ sửa đổi phần tử khi thỏa mãn điều kiện trong mảng Swift. Ví dụ: if numbers[0] > 0 { numbers[0] = 0 } sẽ chỉ gán 0 nếu phần tử đầu tiên lớn hơn 0.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAY_OPERATIONS-MODIFY_ARRAY_ELEMENT"
+  },
+  {
+    "code": "SIO-SWIFT-STATE_SYNC_UI",
+    "name": "Đồng bộ giao diện với @State trong SwiftUI",
+    "description_vi": "Người học có khả năng khai báo một thuộc tính @State trong SwiftUI view và thay đổi giá trị của nó để thấy giao diện tự động cập nhật. Ví dụ: @State private var count = 0; Text(\"Count: \\(count)\") sẽ hiển thị giá trị count và khi count thay đổi, Text tự động cập nhật.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-LOCAL_STATE_SYNC_ROLE"
+  },
+  {
+    "code": "SIO-SWIFT-STATE_CHANGE_TRACKING",
+    "name": "Theo dõi sự thay đổi của @State trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng .onChange modifier trong SwiftUI để theo dõi và phản ứng khi giá trị @State thay đổi. Ví dụ: .onChange(of: count) { newValue in print(\"Count changed to \\(newValue)\") } sẽ in ra mỗi khi count thay đổi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-LOCAL_STATE_SYNC_ROLE"
+  },
+  {
+    "code": "SIO-SWIFT-STATE_CONTROL_VISIBILITY",
+    "name": "Điều khiển hiển thị/ẩn view SwiftUI bằng @State",
+    "description_vi": "Người học có khả năng sử dụng @State trong SwiftUI để điều khiển thuộc tính .opacity() hoặc .hidden() của view. Ví dụ: @State private var isVisible = true; Text(\"Hello\").opacity(isVisible ? 1 : 0) sẽ ẩn/hiện text khi isVisible thay đổi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-CONTROL_UI_PROPERTIES"
+  },
+  {
+    "code": "SIO-SWIFT-STATE_CONTROL_COLOR",
+    "name": "Điều khiển màu sắc view SwiftUI bằng @State",
+    "description_vi": "Người học có khả năng sử dụng @State trong SwiftUI để điều khiển thuộc tính .foregroundColor() của view. Ví dụ: @State private var isActive = false; Text(\"Status\").foregroundColor(isActive ? .green : .red) sẽ đổi màu chữ dựa trên isActive.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-CONTROL_UI_PROPERTIES"
+  },
+  {
+    "code": "SIO-SWIFT-UPDATE_STATE_WITH_BUTTON_ACTION",
+    "name": "Cập nhật trạng thái Swift @State bằng Button action",
+    "description_vi": "Người học có khả năng cập nhật biến @State trong SwiftUI bằng cách gán giá trị mới bên trong closure của Button. Ví dụ: `self.count += 1` trong `Button(\"Tăng\") { self.count += 1 }` làm giao diện tự động cập nhật. Kỹ năng này giúp xử lý các tương tác đơn giản như tăng/giảm số lượng, bật/tắt trạng thái.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-UPDATE_LOCAL_STATE"
+  },
+  {
+    "code": "SIO-SWIFT-UPDATE_STATE_WITH_TEXTFIELD_BINDING",
+    "name": "Cập nhật trạng thái Swift @State qua TextField binding",
+    "description_vi": "Người học có khả năng cập nhật biến @State trong SwiftUI bằng cách sử dụng binding với TextField. Ví dụ: `TextField(\"Nhập tên\", text: $name)` cho phép người dùng nhập liệu và state `name` tự động thay đổi, giao diện phản ánh ngay. Kỹ năng này áp dụng cho các trường nhập liệu, tìm kiếm, hoặc form nhập dữ liệu.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-UPDATE_LOCAL_STATE"
+  },
+  {
+    "code": "SIO-SWIFT-TRACE_STATE_INIT_AND_DISAPPEAR",
+    "name": "Theo dõi vòng đời Swift @State qua onAppear và onDisappear",
+    "description_vi": "Người học có khả năng theo dõi vòng đời của biến @State trong SwiftUI bằng cách sử dụng modifiers onAppear và onDisappear. Ví dụ: in ra giá trị khởi tạo trong onAppear và in ra khi view biến mất trong onDisappear để thấy state được tạo và hủy. Kỹ năng này giúp debug và hiểu khi nào state được khởi tạo lại.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-TRACE_LOCAL_STATE_LIFECYCLE"
+  },
+  {
+    "code": "SIO-SWIFT-TRACE_STATE_ACROSS_NAVIGATION",
+    "name": "Theo dõi vòng đời Swift @State khi điều hướng giữa các view",
+    "description_vi": "Người học có khả năng theo dõi vòng đời của biến @State trong SwiftUI khi view bị push và pop trong NavigationStack. Ví dụ: quan sát state được khởi tạo lại khi quay lại view trước đó, hoặc giữ nguyên nếu view được giữ trong bộ nhớ. Kỹ năng này giúp quản lý state chính xác trong luồng điều hướng phức tạp.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-TRACE_LOCAL_STATE_LIFECYCLE"
+  },
+  {
+    "code": "SIO-SWIFT-DETERMINE_STATE_SCOPE_PARENT_CHILD",
+    "name": "Xác định phạm vi truy cập Swift @State giữa view cha và con",
+    "description_vi": "Người học có khả năng xác định rằng biến @State trong SwiftUI chỉ có thể truy cập trực tiếp trong view khai báo nó. Để truyền cho view con, cần sử dụng @Binding. Ví dụ: `@State private var count = 0` trong ContentView không thể đọc/ghi trực tiếp trong ChildView mà phải qua binding. Kỹ năng này giúp thiết kế kiến trúc state đúng đắn.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-DETERMINE_LOCAL_STATE_SCOPE"
+  },
+  {
+    "code": "SIO-SWIFT-DETERMINE_STATE_SCOPE_NESTED_VIEWS",
+    "name": "Xác định phạm vi Swift @State trong các view lồng nhau cùng struct",
+    "description_vi": "Người học có khả năng xác định phạm vi của biến @State khi view con được khai báo trong cùng struct với view cha. Ví dụ: nếu ChildView được định nghĩa là struct riêng, state của cha không tự động có sẵn; cần truyền qua tham số hoặc dùng @Binding. Kỹ năng này giúp tránh lỗi phạm vi và tổ chức state hợp lý.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOCAL_VIEW_STATE-DETERMINE_LOCAL_STATE_SCOPE"
+  },
+  {
+    "code": "SIO-SWIFT-USE_STATE_FOR_RERENDER_OBSERVATION",
+    "name": "Use @State to observe re-render in SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng @State trong SwiftUI để khai báo biến trạng thái và quan sát cách view tự động render lại khi giá trị thay đổi, ví dụ: @State private var count = 0; Button(\"Tap\") { count += 1 }.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-STATE_TRIGGERED_RERENDER"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_STATE_RERENDER_FLOW",
+    "name": "Analyze re-render flow when @State changes in SwiftUI",
+    "description_vi": "Người học có khả năng phân tích luồng re-render bằng cách in ra console hoặc sử dụng debug để thấy body được gọi lại khi @State thay đổi, ví dụ: print(\"Body called\") trong body.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-STATE_TRIGGERED_RERENDER"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_STATE_VS_REGULAR_VARIABLE",
+    "name": "Compare @State with regular variable in SwiftUI for decoupling",
+    "description_vi": "Người học có khả năng so sánh @State với biến thường (let/var) trong SwiftUI, chỉ ra rằng @State tách rời dữ liệu khỏi view, cho phép view không cần quản lý bộ nhớ, ví dụ: @State private var name = \"Alice\" vs let name = \"Alice\" (không thể thay đổi).",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-STATE_WRAPPER_DECOUPLING"
+  },
+  {
+    "code": "SIO-SWIFT-APPLY_STATE_FOR_FORM_DATA_DECOUPLING",
+    "name": "Apply @State to decouple form data from view in SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng @State để quản lý dữ liệu form (text field) mà không làm view phụ thuộc trực tiếp vào dữ liệu, ví dụ: @State private var username = \"\"; TextField(\"Username\", text: $username).",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-STATE_WRAPPER_DECOUPLING"
+  },
+  {
+    "code": "SIO-SWIFT-INITIALIZE_STATE_WITH_DEFAULT_AND_UPDATE_VIA_BUTTON",
+    "name": "Initialize @State with default value and update via button in SwiftUI",
+    "description_vi": "Người học có khả năng khởi tạo @State với giá trị mặc định (ví dụ: @State private var counter = 0) và cập nhật nó thông qua hành động button (counter += 1) để thay đổi giao diện.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-INITIALIZE_UPDATE_MUTABLE_STATE"
+  },
+  {
+    "code": "SIO-SWIFT-UPDATE_STATE_WITH_SLIDER_INTERACTION",
+    "name": "Update @State based on slider interaction in SwiftUI",
+    "description_vi": "Người học có khả năng khởi tạo @State cho giá trị slider và cập nhật khi người dùng kéo slider, ví dụ: @State private var value = 0.5; Slider(value: $value).",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-INITIALIZE_UPDATE_MUTABLE_STATE"
+  },
+  {
+    "code": "SIO-SWIFT-BIND_STATE_TEXTFIELD_ONCHANGE",
+    "name": "Bind @State to TextField and observe changes with onChange in SwiftUI",
+    "description_vi": "Người học có khả năng gắn biến @State vào TextField thông qua $binding và theo dõi mỗi lần thay đổi bằng modifier .onChange(of:) trong SwiftUI. Ví dụ: @State private var name = \"\" TextField(\"Enter name\", text: $name)     .onChange(of: name) { newValue in print(\"Name changed to \\(newValue)\") }",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-BIND_STATE_UI_ELEMENT"
+  },
+  {
+    "code": "SIO-SWIFT-BIND_STATE_TOGGLE_ONCHANGE",
+    "name": "Bind @State to Toggle and observe changes with onChange in SwiftUI",
+    "description_vi": "Người học có khả năng gắn biến @State Bool vào Toggle thông qua $binding và theo dõi thay đổi bằng .onChange(of:) trong SwiftUI. Ví dụ: @State private var isOn = false Toggle(\"Enable\", isOn: $isOn)     .onChange(of: isOn) { newValue in print(\"Toggle is now \\(newValue ? \"ON\" : \"OFF\")\") }",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-BIND_STATE_UI_ELEMENT"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_STATE_BINDING_OWNERSHIP",
+    "name": "Compare @State ownership and @Binding sharing semantics in SwiftUI",
+    "description_vi": "Người học có khả năng so sánh ngữ nghĩa sở hữu của @State (view sở hữu dữ liệu) và chia sẻ của @Binding (view con nhận tham chiếu) trong SwiftUI. Ví dụ: ParentView dùng @State private var count = 0 và truyền $count cho ChildView qua @Binding var count: Int; khi ChildView thay đổi count, ParentView cập nhật.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-OWNERSHIP_SHARING_SEMANTICS"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_STATEOBJECT_OBSERVEDOBJECT_OWNERSHIP",
+    "name": "Compare @StateObject ownership and @ObservedObject sharing semantics in SwiftUI",
+    "description_vi": "Người học có khả năng so sánh ngữ nghĩa sở hữu của @StateObject (view tạo và sở hữu ObservableObject) và chia sẻ của @ObservedObject (view nhận đối tượng từ bên ngoài) trong SwiftUI. Ví dụ: ParentView dùng @StateObject var model = MyModel() và truyền model cho ChildView qua @ObservedObject var model: MyModel; khi model thay đổi, cả hai view cập nhật.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-OWNERSHIP_SHARING_SEMANTICS"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_STATE_VS_STATEOBJECT_WRAPPER",
+    "name": "Evaluate between @State and @StateObject based on data source and view hierarchy in SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá và chọn @State cho dữ liệu value type đơn giản (ví dụ: String, Int) và @StateObject cho reference type phức tạp (ví dụ: class ObservableObject) dựa trên nguồn dữ liệu và cấu trúc phân cấp view trong SwiftUI. Ví dụ: dùng @State cho local toggle, @StateObject cho model dùng chung nhiều view.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-EVALUATE_APPROPRIATE_WRAPPER"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_BINDING_VS_OBSERVEDOBJECT_WRAPPER",
+    "name": "Evaluate between @Binding and @ObservedObject for data sharing across views in SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá và chọn @Binding khi cần truyền quyền kiểm soát một giá trị đơn lẻ xuống view con, và @ObservedObject khi cần chia sẻ toàn bộ đối tượng ObservableObject giữa nhiều view trong SwiftUI. Ví dụ: dùng @Binding cho TextField value, dùng @ObservedObject cho model chứa nhiều thuộc tính.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-EVALUATE_APPROPRIATE_WRAPPER"
+  },
+  {
+    "code": "SIO-SWIFT-WRITE_WHILE_LOOP_BASIC",
+    "name": "Write a basic while loop in Swift",
+    "description_vi": "Người học có khả năng viết một vòng lặp while trong Swift với cú pháp `while condition { }`, sử dụng một biến đếm và điều kiện boolean để lặp lại khối lệnh cho đến khi điều kiện trở thành false. Ví dụ: `var count = 0; while count < 5 { print(count); count += 1 }`.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-CONDITION_CONTROLLED_LOOP"
+  },
+  {
+    "code": "SIO-SWIFT-IDENTIFY_WHILE_LOOP_STRUCTURE",
+    "name": "Identify the structure of a while loop in Swift code",
+    "description_vi": "Người học có khả năng nhận diện cấu trúc vòng lặp while trong đoạn code Swift, phân biệt phần điều kiện và thân vòng lặp, và xác định khi nào vòng lặp sẽ kết thúc dựa trên điều kiện. Ví dụ: trong đoạn code `while x > 0 { x -= 1 }`, người học chỉ ra điều kiện là `x > 0` và vòng lặp dừng khi x <= 0.",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-CONDITION_CONTROLLED_LOOP"
+  },
+  {
+    "code": "SIO-SWIFT-IMPLEMENT_CONDITION_FIRST_WHILE",
+    "name": "Implement a condition-first while loop in Swift",
+    "description_vi": "Người học có khả năng viết vòng lặp while trong Swift với điều kiện được kiểm tra trước khi thực thi thân vòng lặp, đảm bảo thân vòng lặp có thể không được thực thi lần nào nếu điều kiện ban đầu là false. Ví dụ: `var input = \"\"; while input.isEmpty { input = readLine() ?? \"\" }` sẽ lặp cho đến khi người dùng nhập dữ liệu.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-CONDITION_FIRST_REPETITION"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_WHILE_AND_REPEAT_WHILE",
+    "name": "Compare while and repeat-while loops in Swift",
+    "description_vi": "Người học có khả năng so sánh vòng lặp while (kiểm tra điều kiện trước) với vòng lặp repeat-while (kiểm tra điều kiện sau) trong Swift, giải thích sự khác biệt về số lần thực thi tối thiểu. Ví dụ: `while false { print(\"never\") }` không in gì, trong khi `repeat { print(\"once\") } while false` in một lần.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-CONDITION_FIRST_REPETITION"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_WHILE_LOOP_TERMINATION",
+    "name": "Analyze while loop termination condition in Swift",
+    "description_vi": "Người học có khả năng phân tích điều kiện kết thúc của vòng lặp while trong Swift, xác định biểu thức điều kiện và cách nó chuyển từ true sang false, đồng thời phát hiện các vòng lặp vô hạn do điều kiện luôn đúng. Ví dụ: `while true { }` là vòng lặp vô hạn, cần có `break` hoặc thay đổi biến trong thân vòng lặp.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-LOOP_TERMINATION_CONDITION"
+  },
+  {
+    "code": "SIO-SWIFT-PREVENT_INFINITE_LOOP_WHILE",
+    "name": "Prevent infinite loops in Swift while loops",
+    "description_vi": "Người học có khả năng áp dụng các kỹ thuật để tránh vòng lặp vô hạn trong Swift, như đảm bảo điều kiện có thể thay đổi trong thân vòng lặp, sử dụng câu lệnh `break` để thoát sớm, hoặc giới hạn số lần lặp. Ví dụ: `var i = 0; while i < 10 { if i == 5 { break }; i += 1 }` kết thúc sớm khi i=5.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-LOOP_TERMINATION_CONDITION"
+  },
+  {
+    "code": "SIO-SWIFT-DYNAMIC_CONDITION_WITH_USER_INPUT",
+    "name": "Swift while loop with dynamic condition based on user input",
+    "description_vi": "Người học có khả năng viết vòng lặp while trong Swift với biến điều khiển được cập nhật dựa trên đầu vào người dùng. Ví dụ: sử dụng readLine() để đọc số nguyên và cập nhật biến sum cho đến khi tổng vượt quá 100, minh họa số lần lặp không xác định trước.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-DYNAMIC_CONDITION_REPETITION"
+  },
+  {
+    "code": "SIO-SWIFT-DYNAMIC_CONDITION_WITH_STATE_CHANGE",
+    "name": "Swift while loop with dynamic condition based on mutable state",
+    "description_vi": "Người học có khả năng viết vòng lặp while trong Swift với biến điều khiển thay đổi theo trạng thái của đối tượng. Ví dụ: while game.isRunning { game.update() } trong đó game là một class có thuộc tính isRunning được cập nhật trong thân lặp, cho phép lặp đến khi điều kiện thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-DYNAMIC_CONDITION_REPETITION"
+  },
+  {
+    "code": "SIO-SWIFT-SENTINEL_WITH_CONSOLE_INPUT",
+    "name": "Swift while loop with sentinel value from console input",
+    "description_vi": "Người học có khả năng viết vòng lặp while trong Swift sử dụng sentinel value để kết thúc lặp khi nhập từ bàn phím. Ví dụ: while let input = readLine(), input != \"exit\" { print(\"Bạn nhập: \\(input)\") } minh họa mẫu sentinel-controlled repetition với giá trị đặc biệt \"exit\".",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-SENTINEL_CONTROLLED_REPETITION"
+  },
+  {
+    "code": "SIO-SWIFT-SENTINEL_WITH_FILE_READING",
+    "name": "Swift while loop with sentinel value from file reading",
+    "description_vi": "Người học có khả năng viết vòng lặp while trong Swift đọc từ file cho đến khi gặp sentinel line. Ví dụ: while let line = try? fileHandle.readLine(), line != \"END\" { process(line) } sử dụng FileHandle hoặc InputStream, dừng khi gặp dòng kết thúc đặc biệt.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-WHILE_LOOP-SENTINEL_CONTROLLED_REPETITION"
+  },
+  {
+    "code": "SIO-SWIFT-CLASSIFY_ASSET_CATALOG_TYPES",
+    "name": "Swift asset type categorization in Xcode Asset Catalog",
+    "description_vi": "Người học có khả năng phân loại các loại tài nguyên trong Asset Catalog của Xcode bằng Swift: image set, color set, data set, symbol set. Ví dụ: sử dụng Image(\"icon\") cho image set, Color(\"brandColor\") cho color set, và Bundle.main.url(forResource: \"data\", withExtension: \"json\") cho data set.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_TYPE_CATEGORIZATION"
+  },
+  {
+    "code": "SIO-SWIFT-REFERENCE_ASSET_IN_SWIFTUI",
+    "name": "SwiftUI asset reference using @ImageResource and Color",
+    "description_vi": "Người học có khả năng tham chiếu tài nguyên trong SwiftUI bằng cách sử dụng các API cụ thể: @ImageResource cho hình ảnh, Color(assetName:) cho màu sắc, và Image(systemName:) cho SF Symbols. Ví dụ: Image(.logo) với @ImageResource(\"logo\") hoặc Color(\"accentColor\") từ Asset Catalog.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_TYPE_CATEGORIZATION"
+  },
+  {
+    "code": "SIO-SWIFT-CREATE_FOLDER_IN_ASSET_CATALOG",
+    "name": "Create folder groups in Swift Asset Catalog for hierarchical organization",
+    "description_vi": "Người học có khả năng tạo các thư mục (folder) trong Swift Asset Catalog (Assets.xcassets) để nhóm tài nguyên theo loại hoặc mục đích. Ví dụ: tạo thư mục 'Icons' và 'Backgrounds' trong Asset Catalog, sau đó kéo thả các tệp hình ảnh vào đúng thư mục. Khi tham chiếu trong SwiftUI, chỉ cần dùng Image(\"tên_tài_nguyên\") mà không cần đường dẫn thư mục.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_CATALOG_HIERARCHICAL"
+  },
+  {
+    "code": "SIO-SWIFT-ORGANIZE_ASSETS_BY_SCREEN",
+    "name": "Organize Swift assets by screen or feature using subfolders in Asset Catalog",
+    "description_vi": "Người học có khả năng tổ chức tài nguyên trong Swift Asset Catalog theo từng màn hình hoặc tính năng bằng cách tạo cấu trúc thư mục con. Ví dụ: tạo thư mục 'HomeScreen' chứa 'home_banner.png' và 'ProfileScreen' chứa 'avatar_placeholder.png'. Khi tham chiếu trong SwiftUI, dùng Image(\"home_banner\") hoặc Image(\"avatar_placeholder\") – Swift tự động tìm trong toàn bộ Asset Catalog.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_CATALOG_HIERARCHICAL"
+  },
+  {
+    "code": "SIO-SWIFT-ADD_IMAGE_ASSET_AND_REFERENCE",
+    "name": "Add image asset to Swift Asset Catalog and reference in SwiftUI",
+    "description_vi": "Người học có khả năng thêm một tệp hình ảnh (PNG, JPEG) vào Swift Asset Catalog bằng cách kéo thả vào Assets.xcassets, đặt tên duy nhất (ví dụ: 'logo'). Sau đó, trong SwiftUI code, tham chiếu tài nguyên đó bằng Image(\"logo\") và sử dụng trong view như .resizable().scaledToFit(). Đảm bảo tên tài nguyên khớp chính xác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_ADDITION_REFERENCE"
+  },
+  {
+    "code": "SIO-SWIFT-ADD_DATA_ASSET_AND_REFERENCE",
+    "name": "Add data asset to Swift Asset Catalog and reference in Swift code",
+    "description_vi": "Người học có khả năng thêm tệp dữ liệu (ví dụ: JSON, plist) vào Swift Asset Catalog bằng cách tạo Data Set trong Assets.xcassets và đặt tên (ví dụ: 'config'). Trong Swift, sử dụng NSDataAsset(name: \"config\") để lấy dữ liệu, sau đó decode bằng JSONDecoder. Ví dụ: guard let asset = NSDataAsset(name: \"config\") else { return }; let data = asset.data.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_ADDITION_REFERENCE"
+  },
+  {
+    "code": "SIO-SWIFT-DEFINE_COLOR_SET_IN_ASSET_CATALOG",
+    "name": "Define a Color Set in Swift Asset Catalog with light and dark appearance",
+    "description_vi": "Người học có khả năng tạo một Color Set trong Swift Asset Catalog bằng cách nhấn '+' và chọn 'Color Set', đặt tên (ví dụ: 'PrimaryColor'). Trong Inspector, thiết lập giá trị màu cho Any Appearance (light) và Dark Appearance (dark) bằng RGB hoặc hex. Ví dụ: light: #FF5733, dark: #C70039. Điều này cho phép SwiftUI tự động chọn màu phù hợp với chế độ giao diện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-COLOR_ASSET_DEFINITION"
+  },
+  {
+    "code": "SIO-SWIFT-USE_COLOR_ASSET_IN_VIEW",
+    "name": "Use a Color asset from Swift Asset Catalog in SwiftUI views",
+    "description_vi": "Người học có khả năng tham chiếu một Color Set đã định nghĩa trong Swift Asset Catalog bằng cách sử dụng Color(\"tên_màu\") trong SwiftUI. Ví dụ: Text(\"Hello\").foregroundColor(Color(\"PrimaryColor\")) hoặc .background(Color(\"SecondaryColor\")). Đảm bảo tên màu khớp chính xác với tên trong Asset Catalog, và màu sẽ tự động thích ứng với light/dark mode.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PROJECT_ASSETS_MANAGEMENT-COLOR_ASSET_DEFINITION"
+  },
+  {
+    "code": "SIO-SWIFT-DISTINGUISH_SYNTAX_RUNTIME_BY_ERROR_MESSAGE",
+    "name": "Phân biệt lỗi cú pháp Swift và lỗi runtime Swift dựa trên thông báo lỗi",
+    "description_vi": "Người học có khả năng phân biệt lỗi cú pháp Swift (syntax error) và lỗi runtime Swift (runtime error) dựa trên thông báo lỗi từ trình biên dịch hoặc runtime. Ví dụ: nhận biết lỗi 'Missing return in a function expected to return 'Int'' là lỗi cú pháp, còn 'Fatal error: Index out of range' là lỗi runtime.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-DISTINGUISH_SYNTAX_RUNTIME"
+  },
+  {
+    "code": "SIO-SWIFT-IDENTIFY_ERROR_TYPE_IN_SWIFT_CODE",
+    "name": "Xác định loại lỗi từ đoạn code Swift cụ thể",
+    "description_vi": "Người học có khả năng xác định loại lỗi (cú pháp hay runtime) từ một đoạn code Swift cho trước, chỉ ra dòng lỗi và giải thích lý do. Ví dụ: code thiếu dấu ngoặc đóng là lỗi cú pháp, code truy cập phần tử ngoài phạm vi mảng là lỗi runtime.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-DISTINGUISH_SYNTAX_RUNTIME"
+  },
+  {
+    "code": "SIO-SWIFT-EXPLAIN_SYNTAX_ERROR_CAUSE_WITH_CODE",
+    "name": "Giải thích nguyên nhân lỗi cú pháp Swift bằng code mẫu",
+    "description_vi": "Người học có khả năng giải thích nguyên nhân gây ra lỗi cú pháp Swift (ví dụ: thiếu dấu hai chấm trong dictionary, sai tên biến) bằng cách viết code mẫu và chỉ ra nguyên nhân cụ thể. Ví dụ: let dict = [\"a\": 1 \"b\": 2] thiếu dấu phẩy gây lỗi cú pháp.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-SYNTAX_RUNTIME_CAUSES"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_RUNTIME_ERROR_ROOT_CAUSE",
+    "name": "Phân tích nguyên nhân gốc rễ của lỗi runtime Swift",
+    "description_vi": "Người học có khả năng phân tích một đoạn code Swift có chứa lỗi runtime, xác định nguyên nhân gốc rễ (root cause) và phân loại lỗi. Ví dụ: force unwrap optional nil gây lỗi runtime, nguyên nhân là giá trị nil không được xử lý.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-SYNTAX_RUNTIME_CAUSES"
+  },
+  {
+    "code": "SIO-SWIFT-CLASSIFY_ERROR_BY_DETECTION_TIME",
+    "name": "Phân loại lỗi Swift dựa trên thời điểm phát hiện (compile-time vs runtime)",
+    "description_vi": "Người học có khả năng phân loại các lỗi Swift thành lỗi biên dịch (compile-time error) hoặc lỗi runtime (runtime error) dựa trên thời điểm phát hiện. Ví dụ: lỗi thiếu kiểu dữ liệu là compile-time, lỗi chia cho 0 là runtime.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-CLASSIFY_ERROR_DETECTION"
+  },
+  {
+    "code": "SIO-SWIFT-USE_XCODE_TO_DETECT_ERROR_TYPE",
+    "name": "Sử dụng Xcode để kiểm tra và phân loại lỗi Swift",
+    "description_vi": "Người học có khả năng sử dụng Xcode để chạy thử code Swift, quan sát lỗi hiện ra ở compile time (dưới dạng warning/error) hay runtime (crash), từ đó phân loại lỗi. Ví dụ: build project thấy lỗi 'Type 'X' does not conform to protocol' là compile-time, chạy app bị crash do index out of range là runtime.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-CLASSIFY_ERROR_DETECTION"
+  },
+  {
+    "code": "SIO-SWIFT-DISTINGUISH_SYNTAX_VS_RUNTIME_ERRORS",
+    "name": "Phân biệt lỗi cú pháp và lỗi runtime trong Swift dựa trên dấu hiệu mã nguồn",
+    "description_vi": "Người học có khả năng phân tích một đoạn mã Swift để xác định loại lỗi dựa trên dấu hiệu cú pháp (ví dụ: thiếu dấu ngoặc, sai từ khóa) hoặc dấu hiệu runtime (ví dụ: truy cập chỉ số ngoài phạm vi mảng, force unwrap nil). Ví dụ: đoạn mã 'let arr = [1,2,3]; print(arr[5])' là lỗi runtime do index out of range.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-IDENTIFY_ERROR_TYPE"
+  },
+  {
+    "code": "SIO-SWIFT-IDENTIFY_RUNTIME_ERROR_FROM_CRASH_LOG",
+    "name": "Xác định lỗi runtime trong Swift từ thông báo crash log",
+    "description_vi": "Người học có khả năng đọc crash log của ứng dụng Swift để xác định lỗi runtime như index out of range, nil unwrapping, hay memory access violation. Ví dụ: crash log chứa 'Fatal error: Index out of range' cho biết lỗi truy cập mảng ngoài phạm vi.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-IDENTIFY_ERROR_TYPE"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_COMPILER_ERROR_MESSAGE",
+    "name": "Phân tích thông báo lỗi trình biên dịch Swift để phân loại lỗi cú pháp",
+    "description_vi": "Người học có khả năng đọc thông báo lỗi từ trình biên dịch Swift (ví dụ: 'Expected declaration' hoặc 'Use of unresolved identifier') và xác định đó là lỗi cú pháp. Ví dụ: lỗi 'Consecutive statements on a line must be separated by ';'' chỉ ra thiếu dấu chấm phẩy.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-ANALYZE_ERROR_MESSAGES"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_RUNTIME_ERROR_MESSAGE",
+    "name": "Phân tích thông báo lỗi runtime trong Swift để phân loại lỗi runtime",
+    "description_vi": "Người học có khả năng đọc thông báo lỗi runtime từ Swift (ví dụ: 'Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value') và xác định đó là lỗi runtime. Ví dụ: lỗi force unwrap nil khi optional không có giá trị.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-ANALYZE_ERROR_MESSAGES"
+  },
+  {
+    "code": "SIO-SWIFT-IDENTIFY_CLASS_DECLARATION_SYNTAX",
+    "name": "Nhận diện cú pháp khai báo class trong Swift",
+    "description_vi": "Người học có khả năng nhận diện cú pháp khai báo một class trong Swift, bao gồm từ khóa 'class', tên class, và dấu ngoặc nhọn. Ví dụ: 'class MyClass { var name: String }' là khai báo class hợp lệ.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-IDENTIFY_REFERENCE_SYNTAX"
+  },
+  {
+    "code": "SIO-SWIFT-IDENTIFY_REFERENCE_VARIABLE_DECLARATION",
+    "name": "Nhận diện cú pháp khai báo biến kiểu tham chiếu trong Swift",
+    "description_vi": "Người học có khả năng nhận diện cú pháp khai báo biến với kiểu dữ liệu là class, bao gồm việc sử dụng toán tử gán và khởi tạo đối tượng. Ví dụ: 'let obj = MyClass()' là khai báo biến tham chiếu đến instance của class.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-IDENTIFY_REFERENCE_SYNTAX"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_REFERENCE_VALUE_ASSIGNMENT",
+    "name": "So sánh hành vi gán biến kiểu tham chiếu và kiểu giá trị trong Swift",
+    "description_vi": "Người học có khả năng so sánh hành vi gán biến giữa kiểu tham chiếu (class) và kiểu giá trị (struct) trong Swift. Ví dụ: khi gán một instance của class cho hai biến, cả hai cùng tham chiếu đến một đối tượng; ngược lại, struct tạo bản sao độc lập. Code: let obj1 = MyClass(); let obj2 = obj1; obj2.property = 10 // ảnh hưởng đến obj1. Với struct: var s1 = MyStruct(); var s2 = s1; s2.property = 10 // s1 không thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-COMPARE_REFERENCE_VALUE"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_REFERENCE_VALUE_PARAMETER_PASSING",
+    "name": "So sánh hành vi truyền tham số kiểu tham chiếu và kiểu giá trị trong Swift",
+    "description_vi": "Người học có khả năng so sánh hành vi truyền tham số cho hàm giữa kiểu tham chiếu (class) và kiểu giá trị (struct) trong Swift. Ví dụ: khi truyền một instance class vào hàm, hàm có thể thay đổi thuộc tính của đối tượng gốc; với struct, hàm chỉ thay đổi bản sao cục bộ. Code: func update(_ obj: MyClass) { obj.value = 5 }; let c = MyClass(); update(c); print(c.value) // 5. Với struct: func update(_ s: MyStruct) { s.value = 5 } // không thay đổi bên ngoài.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-COMPARE_REFERENCE_VALUE"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_REFERENCE_IMPACT_MEMORY_SHARING",
+    "name": "Phân tích tác động của tham chiếu đến bộ nhớ khi nhiều biến cùng trỏ đến một instance class trong Swift",
+    "description_vi": "Người học có khả năng phân tích tác động của tham chiếu đến bộ nhớ khi tạo nhiều biến cùng trỏ đến một instance class trong Swift. Ví dụ: khi gán cùng một instance cho nhiều biến, tất cả đều tham chiếu đến cùng một vùng nhớ, dẫn đến thay đổi qua một biến ảnh hưởng đến tất cả. Code: let a = MyClass(); let b = a; a.value = 10; print(b.value) // 10. Điều này tiết kiệm bộ nhớ nhưng cần cẩn thận với side effects.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-ANALYZE_REFERENCE_IMPACT"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_REFERENCE_IMPACT_PERFORMANCE",
+    "name": "Phân tích tác động của tham chiếu đến hiệu năng khi truyền tham số class so với struct trong Swift",
+    "description_vi": "Người học có khả năng phân tích tác động của tham chiếu đến hiệu năng khi truyền tham số là class instance so với struct trong Swift. Ví dụ: truyền class instance chỉ sao chép địa chỉ (8 byte) nhanh hơn sao chép toàn bộ struct lớn. Code: func process(_ obj: MyLargeClass) { ... } // nhanh; func process(_ s: MyLargeStruct) { ... } // chậm hơn nếu struct lớn. Tuy nhiên, class có overhead quản lý bộ nhớ heap.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-ANALYZE_REFERENCE_IMPACT"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARE_REFERENCE_NULL_WITH_INITIALIZER",
+    "name": "Khai báo biến tham chiếu kiểu class với khởi tạo đối tượng bằng initializer trong Swift",
+    "description_vi": "Người học có khả năng khai báo một biến tham chiếu kiểu class và khởi tạo đối tượng bằng cách gọi initializer trong Swift. Ví dụ: let person = Person(name: \"Alice\", age: 30) tạo một instance mới và gán tham chiếu cho biến person. Biến person lưu địa chỉ của đối tượng trên heap.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-DECLARE_REFERENCE_NULL"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARE_REFERENCE_NULL_OPTIONAL_UNWRAPPING",
+    "name": "Khai báo biến tham chiếu kiểu class với optional và unwrapping trong Swift",
+    "description_vi": "Người học có khả năng khai báo biến tham chiếu kiểu class dưới dạng optional và khởi tạo đối tượng thông qua unwrapping trong Swift. Ví dụ: var car: Car? = Car(model: \"Tesla\") khai báo optional; sau đó sử dụng if let unwrappedCar = car { ... } để truy cập an toàn. Biến optional có thể là nil nếu chưa khởi tạo.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-DECLARE_REFERENCE_NULL"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARE_OPTIONAL_REFERENCE_NIL",
+    "name": "Khai báo biến tham chiếu Optional trong Swift với giá trị nil và gán đối tượng sau",
+    "description_vi": "Người học có khả năng khai báo một biến tham chiếu kiểu class trong Swift với giá trị nil bằng cách sử dụng Optional (ví dụ: var myObject: MyClass? = nil). Sau đó, người học có thể gán một đối tượng mới cho biến đó khi cần, ví dụ: myObject = MyClass().",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-DECLARE_REFERENCE_NULL_2"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARE_IMPLICITLY_UNWRAPPED_OPTIONAL_NIL",
+    "name": "Khai báo biến tham chiếu Implicitly Unwrapped Optional trong Swift với giá trị nil và gán đối tượng sau",
+    "description_vi": "Người học có khả năng khai báo một biến tham chiếu kiểu class trong Swift với giá trị nil bằng cách sử dụng Implicitly Unwrapped Optional (ví dụ: var myObject: MyClass! = nil). Sau đó, người học có thể gán một đối tượng mới cho biến đó, ví dụ: myObject = MyClass(), và truy cập trực tiếp mà không cần unwrap.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-REFERENCE_TYPE_DECLARATION-DECLARE_REFERENCE_NULL_2"
+  },
+  {
+    "code": "SIO-SWIFT-IMPLICIT_ANIMATION_WITH_DOT_ANIMATION",
+    "name": "Viết code SwiftUI sử dụng animation ngầm định với .animation() để tự động kích hoạt khi trạng thái thay đổi",
+    "description_vi": "Người học có khả năng viết code SwiftUI sử dụng modifier .animation() để tạo hiệu ứng ngầm định, ví dụ: Text(\"Hello\").animation(.default, value: isActive) giúp tự động animate khi isActive thay đổi. Người học giải thích được rằng animation ngầm định được kích hoạt tự động bởi sự thay đổi trạng thái.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-DISTINGUISH_TIME_CONTROL"
+  },
+  {
+    "code": "SIO-SWIFT-EXPLICIT_ANIMATION_WITH_WITHANIMATION",
+    "name": "Viết code SwiftUI sử dụng animation tường minh với withAnimation {} để kiểm soát thời điểm kích hoạt",
+    "description_vi": "Người học có khả năng viết code SwiftUI sử dụng hàm withAnimation {} để tạo hiệu ứng tường minh, ví dụ: withAnimation(.easeInOut) { isActive.toggle() } giúp animate chỉ khi gọi hàm. Người học giải thích được rằng animation tường minh yêu cầu gọi withAnimation một cách rõ ràng.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-DISTINGUISH_TIME_CONTROL"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_ANIMATION_TIME_CONTROL",
+    "name": "So sánh mức độ kiểm soát thời gian giữa animation ngầm định và tường minh trong SwiftUI bằng cách viết code",
+    "description_vi": "Người học có khả năng viết code SwiftUI để so sánh mức độ kiểm soát thời gian: sử dụng .animation() chỉ cho phép tùy chỉnh animation curve và duration ở mức tổng thể, trong khi withAnimation cho phép kiểm soát chi tiết từng animation riêng lẻ. Ví dụ: .animation(.easeInOut(duration: 2), value: scale) vs withAnimation(.spring(response: 0.5)) { ... }.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-DISTINGUISH_TIME_CONTROL_2"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_ANIMATION_DETAIL_CONTROL",
+    "name": "Phân tích sự khác biệt về chi tiết animation giữa implicit và explicit trong SwiftUI bằng cách sử dụng nhiều modifier",
+    "description_vi": "Người học có khả năng viết code SwiftUI để phân tích sự khác biệt về chi tiết: animation ngầm định áp dụng cùng một animation cho tất cả các thay đổi trong cùng một view, trong khi animation tường minh cho phép áp dụng các animation khác nhau cho từng thay đổi. Ví dụ: với implicit, .animation(.default, value: isActive) ảnh hưởng đến tất cả thuộc tính phụ thuộc isActive; với explicit, withAnimation(.easeIn) { a.toggle() } và withAnimation(.spring) { b.toggle() }.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-DISTINGUISH_TIME_CONTROL_2"
+  },
+  {
+    "code": "SIO-SWIFT-APPLY_IMPLICIT_ANIMATION_WITH_MODIFIER",
+    "name": "Áp dụng implicit animation trong Swift bằng modifier .animation() trên view",
+    "description_vi": "Người học có khả năng sử dụng modifier `.animation(.easeInOut(duration: 0.5), value: scale)` trong SwiftUI để tự động tạo hiệu ứng chuyển tiếp khi thuộc tính `scale` thay đổi. Modifier này gắn bộ mô tả animation vào view, giúp mọi thay đổi trạng thái liên quan đều được animate mượt mà mà không cần viết code animation thủ công.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-WRAP_STATE_CHANGES"
+  },
+  {
+    "code": "SIO-SWIFT-APPLY_IMPLICIT_ANIMATION_WITH_VALUE",
+    "name": "Áp dụng implicit animation trong Swift bằng modifier .animation() với tham số value",
+    "description_vi": "Người học có khả năng sử dụng modifier `.animation(.spring(response: 0.3, dampingFraction: 0.6), value: isActive)` trong SwiftUI để chỉ áp dụng animation khi một state cụ thể thay đổi. Tham số `value` giúp kiểm soát chính xác state nào kích hoạt animation, tránh animate không mong muốn cho các state khác.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-WRAP_STATE_CHANGES"
+  },
+  {
+    "code": "SIO-SWIFT-APPLY_IMPLICIT_ANIMATION_WITH_WITHANIMATION",
+    "name": "Áp dụng implicit animation trong Swift bằng cách bao bọc thay đổi state trong withAnimation",
+    "description_vi": "Người học có khả năng sử dụng `withAnimation(.easeInOut(duration: 0.5)) { isExpanded.toggle() }` trong SwiftUI để bao bọc các thay đổi trạng thái. Tất cả các view phụ thuộc vào state đó sẽ được animate mượt mà mà không cần modifier `.animation()` riêng lẻ.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-WRAP_STATE_CHANGES_2"
+  },
+  {
+    "code": "SIO-SWIFT-APPLY_IMPLICIT_ANIMATION_WITH_COMPLETION",
+    "name": "Áp dụng implicit animation trong Swift bằng withAnimation có completion handler",
+    "description_vi": "Người học có khả năng sử dụng `withAnimation(.spring(response: 0.4)) { isVisible = true } completion: { print(\"Animation kết thúc\") }` trong SwiftUI để thực hiện hành động sau khi animation hoàn tất. Completion handler cho phép xử lý logic tiếp theo, như cập nhật UI hoặc kích hoạt animation khác.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-WRAP_STATE_CHANGES_2"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_IMPLICIT_EXPLICIT_PERFORMANCE",
+    "name": "So sánh hiệu suất giữa implicit và explicit animation trong Swift bằng cách đo thời gian render",
+    "description_vi": "Người học có khả năng viết code SwiftUI benchmark sử dụng `CFAbsoluteTimeGetCurrent()` để đo thời gian render của implicit animation (dùng `.animation()`) so với explicit animation (dùng `withAnimation` + `Animatable`). Kết quả giúp đánh giá ảnh hưởng đến hiệu suất và lựa chọn phương pháp phù hợp.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-ANALYZE_PERFORMANCE_REUSABILITY"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_REUSABILITY_IMPLICIT_EXPLICIT",
+    "name": "Đánh giá khả năng tái sử dụng của implicit và explicit animation trong Swift bằng cách thiết kế component linh hoạt",
+    "description_vi": "Người học có khả năng thiết kế một custom SwiftUI view có thể chuyển đổi giữa implicit animation (dùng modifier `.animation()`) và explicit animation (dùng `withAnimation` trong view model). Component này cho thấy mức độ tái sử dụng và kiểm soát của từng phương pháp, giúp đưa ra quyết định thiết kế phù hợp.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-ANALYZE_PERFORMANCE_REUSABILITY"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_PERFORMANCE_IMPLICIT_VS_EXPLICIT",
+    "name": "Phân tích hiệu suất animation ngầm định và tường minh trong SwiftUI",
+    "description_vi": "Người học có khả năng phân tích hiệu suất của animation ngầm định (sử dụng .animation modifier) và tường minh (sử dụng withAnimation) trong SwiftUI. Ví dụ: so sánh số lần render lại view khi thay đổi state bằng cách thêm print vào body và quan sát sự khác biệt giữa .animation(.default) và withAnimation { }.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-ANALYZE_PERFORMANCE_REUSABILITY_2"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_REUSABILITY_EXPLICIT_ANIMATION",
+    "name": "Phân tích khả năng tái sử dụng của animation tường minh trong Swift",
+    "description_vi": "Người học có khả năng phân tích khả năng tái sử dụng của animation tường minh bằng cách tạo các hàm animation riêng biệt trong Swift. Ví dụ: định nghĩa một hàm customAnimation() trả về Animation và áp dụng cho nhiều view khác nhau thông qua withAnimation(customAnimation()) { ... }.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-ANALYZE_PERFORMANCE_REUSABILITY_2"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_PERFORMANCE_ANIMATION_CHOICE",
+    "name": "Đánh giá lựa chọn animation SwiftUI dựa trên yêu cầu hiệu suất",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn giữa animation ngầm định (sử dụng .animation modifier) và tường minh (sử dụng withAnimation) trong SwiftUI dựa trên yêu cầu hiệu suất. Ví dụ: quyết định dùng .animation(.easeInOut) cho thay đổi đơn giản như opacity và withAnimation(.spring()) cho thay đổi phức tạp như thay đổi kích thước nhiều view.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-EVALUATE_CUSTOMIZABILITY_UX"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_COMPLEXITY_ANIMATION_CHOICE",
+    "name": "Đánh giá lựa chọn animation SwiftUI dựa trên độ phức tạp",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn loại animation SwiftUI phù hợp dựa trên độ phức tạp của animation. Ví dụ: sử dụng animation ngầm định .animation(.default) cho hiệu ứng fade in/out đơn giản và tường minh withAnimation(.interpolatingSpring(stiffness: 100, damping: 10)) cho animation nhiều bước hoặc có timing tùy chỉnh.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-EVALUATE_CUSTOMIZABILITY_UX"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_CUSTOMIZABILITY_EXPLICIT_ANIMATION",
+    "name": "Đánh giá khả năng tùy chỉnh của animation tường minh trong SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn animation tường minh (sử dụng withAnimation với các tùy chọn như .speed, .delay, .repeatCount) trong SwiftUI để đạt được mức độ tùy chỉnh cao. Ví dụ: tạo animation phức tạp với nhiều giai đoạn bằng cách lồng nhiều withAnimation khác nhau hoặc kết hợp với DispatchQueue.main.asyncAfter.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-EVALUATE_CUSTOMIZABILITY_UX_2"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_UX_IMPLICIT_ANIMATION",
+    "name": "Đánh giá trải nghiệm người dùng với animation ngầm định trong SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn animation ngầm định (sử dụng .animation modifier) trong SwiftUI để tối ưu trải nghiệm người dùng cho các tương tác đơn giản. Ví dụ: thêm hiệu ứng mượt mà khi thay đổi kích thước view bằng .animation(.easeInOut(duration: 0.3)) và so sánh với việc không có animation để thấy sự khác biệt về UX.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-EVALUATE_CUSTOMIZABILITY_UX_2"
+  },
+  {
+    "code": "SIO-SWIFT-USE_STATE_PROPERTY_WRAPPER",
+    "name": "Sử dụng @State property wrapper trong SwiftUI để gắn trạng thái cục bộ",
+    "description_vi": "Người học có khả năng sử dụng @State property wrapper trong SwiftUI để khai báo trạng thái cục bộ cho view, ví dụ: @State private var count = 0, và khi thay đổi count, SwiftUI tự động cập nhật UI.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-ATTACH_STATE_VIEW"
+  },
+  {
+    "code": "SIO-SWIFT-USE_BINDING_PROPERTY_WRAPPER",
+    "name": "Sử dụng @Binding trong SwiftUI để gắn trạng thái từ view cha vào view con",
+    "description_vi": "Người học có khả năng sử dụng @Binding trong SwiftUI để tạo liên kết hai chiều giữa view cha và view con, cho phép view con thay đổi trạng thái của view cha, ví dụ: @Binding var isOn: Bool.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-ATTACH_STATE_VIEW"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_STATE_MANAGEMENT_DECLARATIVE_VS_IMPERATIVE",
+    "name": "Phân tích quản lý trạng thái tập trung trong SwiftUI so với UIKit imperative",
+    "description_vi": "Người học có khả năng phân tích sự khác biệt giữa quản lý trạng thái tập trung trong SwiftUI (ví dụ: @State, @ObservedObject) và quản lý trạng thái phân tán trong UIKit (ví dụ: cập nhật UILabel.text thủ công), chỉ ra lợi ích về maintainability.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-ANALYZE_REUSABILITY_MAINTAINABILITY"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_AUTOMATIC_UI_UPDATE_VS_MANUAL",
+    "name": "Phân tích cơ chế tự động cập nhật UI trong SwiftUI so với cập nhật thủ công trong UIKit",
+    "description_vi": "Người học có khả năng phân tích cơ chế tự động cập nhật UI của SwiftUI khi trạng thái thay đổi (ví dụ: thay đổi @State tự động render lại view) so với UIKit yêu cầu gọi reloadData() hoặc cập nhật từng thành phần, đánh giá tác động đến maintainability.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-ANALYZE_REUSABILITY_MAINTAINABILITY"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_COMPONENT_REUSABILITY_SWIFTUI_VS_UIKIT",
+    "name": "Phân tích khả năng tái sử dụng component SwiftUI so với UIView trong UIKit",
+    "description_vi": "Người học có khả năng phân tích khả năng tái sử dụng của các component SwiftUI (ví dụ: custom View với @State) so với UIView trong UIKit (ví dụ: subclass UIView), chỉ ra tính module và dễ bảo trì của SwiftUI.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-ANALYZE_REUSABILITY_MAINTAINABILITY_2"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE_SIDE_EFFECT_DECLARATIVE_VS_IMPERATIVE",
+    "name": "Phân tích tác động của side-effect trong imperative code so với declarative SwiftUI",
+    "description_vi": "Người học có khả năng phân tích cách SwiftUI giảm thiểu side-effect nhờ tính declarative (ví dụ: view là hàm của state) so với imperative code dễ gây side-effect (ví dụ: thay đổi biến toàn cục), đánh giá ảnh hưởng đến maintainability.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-ANALYZE_REUSABILITY_MAINTAINABILITY_2"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_RERENDER_PERFORMANCE",
+    "name": "Đánh giá hiệu suất re-render trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng Instruments (Time Profiler) hoặc debug view hierarchy trong Xcode để phát hiện các re-render không cần thiết trong SwiftUI. Ví dụ: khi @State thay đổi, toàn bộ body được đánh giá lại; người học có thể nhận biết và đề xuất tối ưu bằng cách sử dụng @ViewBuilder hoặc EquatableView.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-EVALUATE_PERFORMANCE"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_DECLARATIVE_IMPERATIVE_PERFORMANCE",
+    "name": "So sánh hiệu suất SwiftUI và UIKit",
+    "description_vi": "Người học có khả năng xây dựng cùng một giao diện (ví dụ: danh sách 1000 item) bằng SwiftUI và UIKit, sau đó đo thời gian render và bộ nhớ sử dụng. Ví dụ: sử dụng DispatchTime để đo thời gian hoàn thành render, từ đó đưa ra nhận xét về hiệu suất của từng mô hình.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-EVALUATE_PERFORMANCE"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE_SCALABILITY_WITH_COMPONENTS",
+    "name": "Đánh giá khả năng mở rộng SwiftUI qua component hóa",
+    "description_vi": "Người học có khả năng phân tích một ứng dụng SwiftUI đơn giản và tách nó thành các view nhỏ, có thể tái sử dụng (ví dụ: tách một màn hình profile thành ProfileHeader, ProfileInfo, ProfileActions). Sau đó, người học đánh giá mức độ dễ dàng thêm tính năng mới mà không ảnh hưởng đến code hiện có.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-EVALUATE_SCALABILITY"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_SCALABILITY_SWIFTUI_UIKIT",
+    "name": "So sánh khả năng mở rộng SwiftUI và UIKit",
+    "description_vi": "Người học có khả năng thực hiện thêm một tính năng mới (ví dụ: thêm màn hình cài đặt) vào cùng một ứng dụng được viết bằng SwiftUI và UIKit, sau đó so sánh số dòng code cần thay đổi, mức độ ảnh hưởng đến các module khác, và thời gian phát triển. Ví dụ: trong SwiftUI chỉ cần thêm một NavigationLink và view mới, trong UIKit cần sửa storyboard, view controller, và delegate.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-EVALUATE_SCALABILITY"
+  },
+  {
+    "code": "SIO-SWIFT-CLASSIFY_LAYOUT_MODIFIERS",
+    "name": "Phân loại UI Modifier bố cục trong SwiftUI",
+    "description_vi": "Người học có khả năng liệt kê các modifier như .padding(), .frame(), .offset(), .position() và phân loại chúng vào nhóm bố cục. Ví dụ: sử dụng .padding(10) để tạo khoảng cách xung quanh view, .frame(width: 100, height: 50) để đặt kích thước cố định.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-LIST_AND_CLASSIFY"
+  },
+  {
+    "code": "SIO-SWIFT-CLASSIFY_STYLE_INTERACTION_MODIFIERS",
+    "name": "Phân loại UI Modifier kiểu dáng và tương tác trong SwiftUI",
+    "description_vi": "Người học có khả năng liệt kê các modifier như .background(), .foregroundColor(), .font(), .onTapGesture(), .gesture() và phân loại chúng vào nhóm kiểu dáng hoặc tương tác. Ví dụ: .background(Color.blue) để đặt màu nền, .onTapGesture { print(\"Tapped\") } để xử lý sự kiện chạm.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-LIST_AND_CLASSIFY"
+  },
+  {
+    "code": "SIO-SWIFT-ORDER_PADDING_BEFORE_BACKGROUND",
+    "name": "Thứ tự padding trước background trong SwiftUI",
+    "description_vi": "Người học có khả năng giải thích và áp dụng thứ tự modifier .padding() trước .background() trong SwiftUI để tạo khoảng cách xung quanh nội dung trước khi tô màu nền. Ví dụ: Text(\"Hello\").padding().background(Color.yellow) cho kết quả khác với Text(\"Hello\").background(Color.yellow).padding().",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-ORDER_AFFECTS_DISPLAY"
+  },
+  {
+    "code": "SIO-SWIFT-ORDER_FONT_BEFORE_FOREGROUND",
+    "name": "Thứ tự font trước foregroundColor trong SwiftUI",
+    "description_vi": "Người học có khả năng giải thích và áp dụng thứ tự modifier .font() trước .foregroundColor() trong SwiftUI để thay đổi kích thước chữ trước khi áp dụng màu. Ví dụ: Text(\"Swift\").font(.largeTitle).foregroundColor(.blue) khác với Text(\"Swift\").foregroundColor(.blue).font(.largeTitle) do thứ tự ảnh hưởng đến cách màu được áp dụng lên font đã thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-ORDER_AFFECTS_DISPLAY"
+  },
+  {
+    "code": "SIO-SWIFT-COMBINE_LAYOUT_MODIFIERS",
+    "name": "Kết hợp modifier layout trong SwiftUI",
+    "description_vi": "Người học có khả năng kết hợp các modifier như .padding(), .frame(), và .background() trong SwiftUI để tạo hiệu ứng bố cục tổng hợp. Ví dụ: Text(\"Hello\").padding(20).frame(width: 200, height: 100).background(Color.gray.opacity(0.3)) tạo một vùng chứa có khoảng cách, kích thước cố định và nền mờ.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-COMBINE_MODIFIERS"
+  },
+  {
+    "code": "SIO-SWIFT-COMBINE_APPEARANCE_MODIFIERS",
+    "name": "Kết hợp modifier appearance trong SwiftUI",
+    "description_vi": "Người học có khả năng kết hợp các modifier như .font(), .foregroundColor(), và .bold() trong SwiftUI để tạo hiệu ứng văn bản tổng hợp. Ví dụ: Text(\"SwiftUI\").font(.title).foregroundColor(.blue).bold() tạo chữ tiêu đề màu xanh và in đậm.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-COMBINE_MODIFIERS"
+  },
+  {
+    "code": "SIO-SWIFT-SELECT_PADDING_AND_ALIGNMENT",
+    "name": "Lựa chọn modifier padding và alignment trong SwiftUI",
+    "description_vi": "Người học có khả năng lựa chọn và áp dụng các modifier như .padding(), .alignmentGuide(), và Spacer() trong SwiftUI để đạt được khoảng cách và căn chỉnh mong muốn. Ví dụ: HStack { Text(\"Left\").padding(.trailing, 20); Spacer(); Text(\"Right\") } tạo khoảng cách giữa hai văn bản và căn phải.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-SELECT_BY_LAYOUT"
+  },
+  {
+    "code": "SIO-SWIFT-SELECT_FRAME_AND_SIZE",
+    "name": "Lựa chọn modifier frame và fixedSize trong SwiftUI",
+    "description_vi": "Người học có khả năng lựa chọn và áp dụng các modifier như .frame(), .fixedSize(), và .layoutPriority() trong SwiftUI để kiểm soát kích thước và sắp xếp các thành phần. Ví dụ: Text(\"Long text\").frame(width: 100).fixedSize(horizontal: true, vertical: false) giữ nguyên chiều rộng nhưng cho phép mở rộng chiều cao.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-SELECT_BY_LAYOUT"
+  },
+  {
+    "code": "SIO-SWIFT-ORDER_PADDING_BACKGROUND",
+    "name": "Sắp xếp padding và background để kiểm soát vùng chứa background",
+    "description_vi": "Người học có khả năng sắp xếp thứ tự modifier .padding() và .background() trong SwiftUI để kiểm soát vùng chứa background. Ví dụ: đặt .padding() trước .background() sẽ tạo background bao quanh vùng padding, trong khi đặt .background() trước .padding() chỉ tô màu vùng nội dung gốc.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-ORDER_FOR_EFFECT"
+  },
+  {
+    "code": "SIO-SWIFT-ORDER_FRAME_CLIPPED",
+    "name": "Sắp xếp frame và clipped để kiểm soát hiển thị nội dung vượt quá khung",
+    "description_vi": "Người học có khả năng sắp xếp thứ tự modifier .frame() và .clipped() trong SwiftUI để kiểm soát hiển thị nội dung vượt quá khung. Ví dụ: đặt .frame() trước .clipped() sẽ giới hạn kích thước view và cắt bỏ phần thừa, trong khi đặt .clipped() trước .frame() có thể không ảnh hưởng đến kích thước.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS-ORDER_FOR_EFFECT"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARE_STATE_WITH_AT_STATE",
+    "name": "Khai báo trạng thái mong muốn với @State trong SwiftUI",
+    "description_vi": "Người học có khả năng khai báo một thuộc tính @State trong SwiftUI để mô tả trạng thái mong muốn của giao diện, ví dụ: @State private var isOn = false, và framework tự động cập nhật UI khi isOn thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-DESCRIBE_DESIRED_STATE"
+  },
+  {
+    "code": "SIO-SWIFT-SHARE_STATE_WITH_AT_BINDING",
+    "name": "Chia sẻ trạng thái mong muốn với @Binding trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng @Binding trong SwiftUI để chia sẻ trạng thái mong muốn giữa view cha và view con, ví dụ: Toggle(isOn: $isOn), cho thấy framework đồng bộ UI khi trạng thái thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-DESCRIBE_DESIRED_STATE"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_UIKIT_VS_SWIFTUI_COUNTER",
+    "name": "So sánh luồng điều khiển giữa UIKit và SwiftUI qua ví dụ bộ đếm",
+    "description_vi": "Người học có khả năng so sánh luồng điều khiển giữa UIKit (mệnh lệnh) và SwiftUI (khai báo) bằng cách viết cùng một bộ đếm: trong UIKit, lập trình viên gọi label.text = ... và tăng biến; trong SwiftUI, khai báo @State var count = 0 và Text(\"\\(count)\"), framework tự cập nhật.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-COMPARE_DECLARATIVE_IMPERATIVE"
+  },
+  {
+    "code": "SIO-SWIFT-COMPARE_UI_UPDATE_MECHANISM",
+    "name": "So sánh cơ chế cập nhật UI giữa UIKit và SwiftUI",
+    "description_vi": "Người học có khả năng so sánh cơ chế cập nhật UI: trong UIKit, lập trình viên phải gọi reloadData() hoặc setNeedsDisplay(); trong SwiftUI, framework tự động cập nhật view khi @State, @ObservedObject thay đổi, thể hiện luồng điều khiển khai báo.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-COMPARE_DECLARATIVE_IMPERATIVE"
+  },
+  {
+    "code": "SIO-SWIFT-BUILD_HIERARCHY_WITH_VSTACK_HSTACK",
+    "name": "Xây dựng cấu trúc view phân cấp với VStack và HStack trong SwiftUI",
+    "description_vi": "Người học có khả năng xây dựng cấu trúc view phân cấp trong SwiftUI bằng cách lồng VStack và HStack, ví dụ: VStack { HStack { Text(\"A\"); Text(\"B\") }; Text(\"C\") }, tạo cây view cha-con.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-BUILD_HIERARCHICAL_VIEW"
+  },
+  {
+    "code": "SIO-SWIFT-BUILD_HIERARCHY_WITH_LIST_NAVIGATIONLINK",
+    "name": "Xây dựng cấu trúc view phân cấp với List và NavigationLink trong SwiftUI",
+    "description_vi": "Người học có khả năng xây dựng cấu trúc view phân cấp trong SwiftUI bằng cách kết hợp List và NavigationLink, ví dụ: List { ForEach(items) { item in NavigationLink(destination: DetailView(item: item)) { Text(item.name) } } }, tạo cây view điều hướng.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-BUILD_HIERARCHICAL_VIEW"
   }
 ]
