@@ -51,6 +51,18 @@ def load_env(repo_root: Path):
                     os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 
+def create_openai_client() -> OpenAI:
+    """Tạo OpenAI client, ưu tiên OPENAI_BASE_URL nếu có (Ollama compat)."""
+    api_key = os.environ.get("OPENAI_API_KEY", "ollama")
+    base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
+    if base_url:
+        return OpenAI(api_key=api_key, base_url=base_url)
+    if not api_key or api_key == "ollama":
+        print("[ERROR] OPENAI_API_KEY hoặc OPENAI_BASE_URL chưa cấu hình.", file=sys.stderr)
+        sys.exit(1)
+    return OpenAI(api_key=api_key)
+
+
 def load_work_dir(args, repo_root: Path) -> Path:
     if args.work_dir:
         return Path(args.work_dir)
@@ -93,13 +105,15 @@ def main():
     parser.add_argument("--work-dir", help="Override .work/kw/ path")
     parser.add_argument("--threshold", type=float, default=0.25,
                         help="Cosine threshold (default: 0.25 — lỏng, ưu tiên recall)")
-    parser.add_argument("--embed-model", default="text-embedding-3-small",
-                        help="OpenAI embedding model (default: text-embedding-3-small)")
+    parser.add_argument("--embed-model", default=None,
+                        help="Embedding model (default: ATE_EMBED_MODEL env hoặc nomic-embed-text:latest)")
     parser.add_argument("--target-context", help="Override target_context từ config.json")
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path(__file__).parent)
     load_env(repo_root)
+    if not args.embed_model:
+        args.embed_model = os.environ.get("ATE_EMBED_MODEL", "nomic-embed-text:latest")
     work_dir = load_work_dir(args, repo_root)
 
     # Load config
@@ -165,12 +179,7 @@ def main():
     all_candidates = list(merged.values())
     print(f"[*] Union sau dedup surface-level: {len(all_candidates)} candidates")
 
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    if not api_key:
-        print("[ERROR] OPENAI_API_KEY không tìm thấy.", file=sys.stderr)
-        sys.exit(1)
-
-    client = OpenAI(api_key=api_key)
+    client = create_openai_client()
 
     # Embed target_context
     print(f"[*] Embedding target_context: '{target_context}' ...")

@@ -1,1 +1,930 @@
-[]
+[
+  {
+    "term": "App Development with Swift Associate",
+    "term_normalized": "app development with swift associate",
+    "category": "other",
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Swift",
+    "term_normalized": "swift",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "SwiftUI",
+    "term_normalized": "swiftui",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0007",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Objective Domains",
+    "term_normalized": "objective domains",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "certification",
+    "term_normalized": "certification",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "computing concepts",
+    "term_normalized": "computing concepts",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "programming",
+    "term_normalized": "programming",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "app development",
+    "term_normalized": "app development",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0000",
+      "chunk_0001",
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "apps",
+    "term_normalized": "apps",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0000"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "design cycle",
+    "term_normalized": "design cycle",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "functions",
+    "term_normalized": "functions",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "argument labels",
+    "term_normalized": "argument labels",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "parameters",
+    "term_normalized": "parameters",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Brainstorm",
+    "term_normalized": "brainstorm",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "plan",
+    "term_normalized": "plan",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "prototype",
+    "term_normalized": "prototype",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "evaluate",
+    "term_normalized": "evaluate",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0001",
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "returns",
+    "term_normalized": "returns",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "sensitive data",
+    "term_normalized": "sensitive data",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "operators",
+    "term_normalized": "operators",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "structures",
+    "term_normalized": "structures",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "properties",
+    "term_normalized": "properties",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "methods",
+    "term_normalized": "methods",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "security challenges",
+    "term_normalized": "security challenges",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "personal and application information",
+    "term_normalized": "personal and application information",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "visual design",
+    "term_normalized": "visual design",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "accessibility",
+    "term_normalized": "accessibility",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002",
+      "chunk_0003"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "legal, ethical and socioeconomic impacts",
+    "term_normalized": "legal, ethical and socioeconomic impacts",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0002"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "instance",
+    "term_normalized": "instance",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "structure",
+    "term_normalized": "structure",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0004"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "XCode",
+    "term_normalized": "xcode",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0003",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Project Navigation",
+    "term_normalized": "project navigation",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0003"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "basic file types",
+    "term_normalized": "basic file types",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "asset",
+    "term_normalized": "asset",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "imported",
+    "term_normalized": "imported",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0004"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "project",
+    "term_normalized": "project",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0004",
+      "chunk_0005"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "assets",
+    "term_normalized": "assets",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Import",
+    "term_normalized": "import",
+    "category": "action",
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "actions",
+    "term_normalized": "actions",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "configure",
+    "term_normalized": "configure",
+    "category": "action",
+    "source_chunks": [
+      "chunk_0005"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "user interface",
+    "term_normalized": "user interface",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0005",
+      "chunk_0006"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Associate",
+    "term_normalized": "associate",
+    "category": "other",
+    "source_chunks": [
+      "chunk_0006",
+      "chunk_0007"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Swift Language Usage",
+    "term_normalized": "swift language usage",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "View Building",
+    "term_normalized": "view building",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "arrays",
+    "term_normalized": "arrays",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0007",
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "imperative",
+    "term_normalized": "imperative",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "declarative",
+    "term_normalized": "declarative",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0007"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "imperative programming",
+    "term_normalized": "imperative programming",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "declarative programming",
+    "term_normalized": "declarative programming",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Content Views",
+    "term_normalized": "content views",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Text",
+    "term_normalized": "text",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Image",
+    "term_normalized": "image",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Shape",
+    "term_normalized": "shape",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0008"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "array element",
+    "term_normalized": "array element",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "index",
+    "term_normalized": "index",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0008",
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Color",
+    "term_normalized": "color",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "array properties",
+    "term_normalized": "array properties",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "array methods",
+    "term_normalized": "array methods",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Modifiers",
+    "term_normalized": "modifiers",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": ".padding",
+    "term_normalized": ".padding",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": ".background",
+    "term_normalized": ".background",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": ".frame",
+    "term_normalized": ".frame",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": ".foregroundColor",
+    "term_normalized": ".foregroundcolor",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": ".font",
+    "term_normalized": ".font",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": ".resizable",
+    "term_normalized": ".resizable",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "flow of execution",
+    "term_normalized": "flow of execution",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "loop structures",
+    "term_normalized": "loop structures",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "conditional statements",
+    "term_normalized": "conditional statements",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "constants",
+    "term_normalized": "constants",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "variables",
+    "term_normalized": "variables",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "data types",
+    "term_normalized": "data types",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Container Views",
+    "term_normalized": "container views",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "HStack",
+    "term_normalized": "hstack",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "VStack",
+    "term_normalized": "vstack",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "ZStack",
+    "term_normalized": "zstack",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Spacer",
+    "term_normalized": "spacer",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Views",
+    "term_normalized": "views",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Stack Views",
+    "term_normalized": "stack views",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "View hierarchy",
+    "term_normalized": "view hierarchy",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Interactive Views",
+    "term_normalized": "interactive views",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Button",
+    "term_normalized": "button",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "TextField",
+    "term_normalized": "textfield",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Slider",
+    "term_normalized": "slider",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Toggle",
+    "term_normalized": "toggle",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "@State Property Wrapper",
+    "term_normalized": "@state property wrapper",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0009",
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "type inference",
+    "term_normalized": "type inference",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "explicit typing",
+    "term_normalized": "explicit typing",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0010",
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "View",
+    "term_normalized": "view",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0010"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "debugging",
+    "term_normalized": "debugging",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "camel casing",
+    "term_normalized": "camel casing",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Swift identifier rules",
+    "term_normalized": "swift identifier rules",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "naming syntax",
+    "term_normalized": "naming syntax",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "syntax errors",
+    "term_normalized": "syntax errors",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "run-time errors",
+    "term_normalized": "run-time errors",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "error messages",
+    "term_normalized": "error messages",
+    "category": "concept",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Certiport",
+    "term_normalized": "certiport",
+    "category": "other",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Certiport logo",
+    "term_normalized": "certiport logo",
+    "category": "other",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "Apple",
+    "term_normalized": "apple",
+    "category": "other",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  },
+  {
+    "term": "app",
+    "term_normalized": "app",
+    "category": "software",
+    "source_chunks": [
+      "chunk_0011"
+    ],
+    "first_extraction_method": "llm"
+  }
+]

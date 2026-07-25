@@ -66,6 +66,18 @@ def load_env(repo_root: Path):
                     os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 
+def create_openai_client() -> OpenAI:
+    """Tạo OpenAI client, ưu tiên OPENAI_BASE_URL nếu có (Ollama compat)."""
+    api_key = os.environ.get("OPENAI_API_KEY", "ollama")
+    base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
+    if base_url:
+        return OpenAI(api_key=api_key, base_url=base_url)
+    if not api_key or api_key == "ollama":
+        print("[ERROR] OPENAI_API_KEY hoặc OPENAI_BASE_URL chưa cấu hình.", file=sys.stderr)
+        sys.exit(1)
+    return OpenAI(api_key=api_key)
+
+
 def load_work_dir(args, repo_root: Path) -> Path:
     if args.work_dir:
         return Path(args.work_dir)
@@ -90,14 +102,44 @@ QUAN TRỌNG:
 - KHÔNG lọc theo mức độ quan trọng hay tần suất.
 - KHÔNG chỉ lấy những thứ "nổi bật nhất" — liệt kê KỂ CẢ thuật ngữ chỉ xuất hiện 1 lần.
 - Bao gồm: tên chip, tên thư viện, giao thức, viết tắt kỹ thuật, tên API, tên hàm/lệnh nếu liên quan chủ đề.
-- Giữ nguyên viết hoa/viết thường như trong văn bản gốc."""
+- Giữ nguyên viết hoa/viết thường như trong văn bản gốc.
+
+TRẢ LỜI BUỘC PHẢI LÀ JSON HOÀN CHỈNH theo đúng schema sau (không thêm text giải thích):
+{"chunk_id": "<id>", "terms": [{"term": "<thuật ngữ>", "category": "<hardware|software|protocol|concept|tool|other>"}]}"""
+
+
+def parse_llm_json(raw: str, chunk_id: str) -> list[dict]:
+    """Parse JSON response từ LLM, hỗ trợ cả response gệ lệch kiểu ```json...```."""
+    import re
+    text = raw.strip()
+    # Strip markdown code fence nếu có
+    fence_match = re.search(r'```(?:json)?\s*([\s\S]*?)```', text)
+    if fence_match:
+        text = fence_match.group(1).strip()
+    # Tìm JSON object
+    obj_match = re.search(r'\{[\s\S]*\}', text)
+    if not obj_match:
+        return []
+    try:
+        data = json.loads(obj_match.group(0))
+        terms_raw = data.get("terms", [])
+        return [
+            {
+                "term": t.get("term", "").strip(),
+                "category": t.get("category", "other"),
+            }
+            for t in terms_raw
+            if isinstance(t, dict) and t.get("term", "").strip()
+        ]
+    except json.JSONDecodeError:
+        return []
 
 
 def extract_terms_for_chunk(
     client: OpenAI,
     chunk: dict,
     target_context: str,
-    model: str = "gpt-4o-mini",
+    model: str = "deepseek-v4-flash:cloud",
 ) -> list[dict]:
     """Gọi LLM để trích xuất term từ 1 chunk. Trả về list dict."""
 
@@ -110,30 +152,28 @@ Ngữ cảnh heading: {chunk.get('heading_trail', '(không có)')}
 {chunk['text']}
 ---
 
-Liệt kê MỌI thuật ngữ liên quan đến chủ đề mục tiêu có trong đoạn văn trên."""
+Hãy trả về JSON với chunk_id="{chunk['chunk_id']}" và tất cả thuật ngữ liên quan."""
 
     try:
-        completion = client.beta.chat.completions.parse(
+        completion = client.chat.completions.create(
             model=model,
             messages=[
                 {"role": "system", "content": SYSTEM_PROMPT},
                 {"role": "user", "content": user_prompt},
             ],
-            response_format=ChunkCandidates,
+            response_format={"type": "json_object"},
             temperature=0.1,
         )
-        result = completion.choices[0].message.parsed
-        if result is None:
-            return []
+        raw = completion.choices[0].message.content or ""
+        terms = parse_llm_json(raw, chunk["chunk_id"])
         return [
             {
-                "term": t.term.strip(),
-                "category": t.category,
+                "term": t["term"],
+                "category": t["category"],
                 "source_chunks": [chunk["chunk_id"]],
                 "first_extraction_method": "llm",
             }
-            for t in result.terms
-            if t.term.strip()
+            for t in terms
         ]
     except Exception as e:
         print(f"  [WARN] chunk {chunk['chunk_id']}: {e}", file=sys.stderr)
@@ -146,12 +186,15 @@ def main():
     parser = argparse.ArgumentParser(description="LLM candidate generation for ATE pipeline")
     parser.add_argument("--project", help="Project slug")
     parser.add_argument("--work-dir", help="Override .work/kw/ path")
-    parser.add_argument("--model", default="gpt-4o-mini", help="OpenAI model (default: gpt-4o-mini)")
+    parser.add_argument("--model", default=None, help="LLM model (default: ATE_MODEL env hoặc deepseek-v4-flash:cloud)")
     parser.add_argument("--target-context", help="Override target_context từ config.json")
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path(__file__).parent)
     load_env(repo_root)
+    # Resolve model: CLI arg > ATE_MODEL env > fallback
+    if not args.model:
+        args.model = os.environ.get("ATE_MODEL", "deepseek-v4-flash:cloud")
     work_dir = load_work_dir(args, repo_root)
 
     # Load chunks
@@ -174,12 +217,7 @@ def main():
         print("[ERROR] Cần cung cấp --target-context hoặc chạy scaffold-keywords trước.", file=sys.stderr)
         sys.exit(1)
 
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    if not api_key:
-        print("[ERROR] OPENAI_API_KEY không tìm thấy. Thêm vào .env hoặc export.", file=sys.stderr)
-        sys.exit(1)
-
-    client = OpenAI(api_key=api_key)
+    client = create_openai_client()
 
     print(f"[*] LLM candidate gen: {len(chunks)} chunks, target='{target_context}', model={args.model}")
 

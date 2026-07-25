@@ -81,6 +81,18 @@ def load_env(repo_root: Path):
                     os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 
+def create_openai_client() -> OpenAI:
+    """Tạo OpenAI client, ưu tiên OPENAI_BASE_URL nếu có (Ollama compat)."""
+    api_key = os.environ.get("OPENAI_API_KEY", "ollama")
+    base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
+    if base_url:
+        return OpenAI(api_key=api_key, base_url=base_url)
+    if not api_key or api_key == "ollama":
+        print("[ERROR] OPENAI_API_KEY hoặc OPENAI_BASE_URL chưa cấu hình.", file=sys.stderr)
+        sys.exit(1)
+    return OpenAI(api_key=api_key)
+
+
 def load_work_dir(args, repo_root: Path) -> Path:
     if args.work_dir:
         return Path(args.work_dir)
@@ -96,7 +108,6 @@ def load_work_dir(args, repo_root: Path) -> Path:
     return repo_root / ".work" / "kw"
 
 
-# ─── Phase A: Dedup ───────────────────────────────────────────────────────────
 
 DEDUP_SYSTEM = """Bạn là chuyên gia chuẩn hóa thuật ngữ kỹ thuật.
 Nhóm các biến thể/alias của cùng một thuật ngữ thành một canonical form.
@@ -105,7 +116,27 @@ Quy tắc:
 - Chọn dạng CANONICAL phổ biến/đúng nhất (VD: "ESP32-S3" không phải "esp32s3")
 - KHÔNG gộp các thuật ngữ khác nghĩa dù embedding gần nhau (VD: "I2C" và "SPI" là khác nhau)
 - Mỗi term trong input phải xuất hiện ĐÚNG MỘT LẦN trong output (là canonical HOẶC alias)
-- Nếu term hoàn toàn độc lập, tạo group riêng với aliases = []"""
+- Nếu term hoàn toàn độc lập, tạo group riêng với aliases = []
+
+TRẢ LỜI BUỘC PHẢI LÀ JSON theo đúng schema (không thêm text giải thích):
+{"groups": [{"canonical": "<term>", "aliases": ["<alias1>"], "category": "<hardware|software|protocol|concept|tool|other>"}]}"""
+
+
+def parse_dedup_json(raw: str) -> list[dict]:
+    """Parse JSON dedup response, hỗ trợ cả response gệ lệch."""
+    import re
+    text = raw.strip()
+    fence = re.search(r'```(?:json)?\s*([\s\S]*?)```', text)
+    if fence:
+        text = fence.group(1).strip()
+    obj = re.search(r'\{[\s\S]*\}', text)
+    if not obj:
+        return []
+    try:
+        data = json.loads(obj.group(0))
+        return data.get("groups", [])
+    except json.JSONDecodeError:
+        return []
 
 
 def dedup_candidates(client: OpenAI, candidates: list[dict], model: str, batch_size: int = 80) -> list[dict]:
@@ -116,33 +147,39 @@ def dedup_candidates(client: OpenAI, candidates: list[dict], model: str, batch_s
     # Map term → candidate để giữ metadata
     term_to_meta: dict[str, dict] = {c["term"].lower().strip(): c for c in candidates}
 
-    print(f"  [A] Dedup {len(terms)} terms theo batch_size={batch_size} ...")
+    total_batches = (len(terms) + batch_size - 1) // batch_size
+    print(f"  [A] Dedup {len(terms)} terms theo batch_size={batch_size} ({total_batches} batches) ...", flush=True)
 
     for batch_start in range(0, len(terms), batch_size):
+        batch_num = (batch_start // batch_size) + 1
         batch_terms = terms[batch_start:batch_start + batch_size]
+        print(f"    Batch [{batch_num}/{total_batches}] ({len(batch_terms)} terms) đang xử lý...", flush=True)
         term_list_str = "\n".join(f"- {t}" for t in batch_terms)
         user_prompt = f"Danh sách thuật ngữ cần nhóm:\n{term_list_str}"
 
         try:
-            completion = client.beta.chat.completions.parse(
+            completion = client.chat.completions.create(
                 model=model,
                 messages=[
                     {"role": "system", "content": DEDUP_SYSTEM},
                     {"role": "user", "content": user_prompt},
                 ],
-                response_format=DedupResponse,
+                response_format={"type": "json_object"},
                 temperature=0.0,
             )
-            result = completion.choices[0].message.parsed
-            if result is None:
-                continue
+            raw = completion.choices[0].message.content or ""
+            groups = parse_dedup_json(raw)
 
-            for g in result.groups:
-                canonical_key = g.canonical.lower().strip()
+            for g in groups:
+                canonical = g.get("canonical", "").strip()
+                if not canonical:
+                    continue
+                aliases = [a for a in g.get("aliases", []) if isinstance(a, str)]
+                canonical_key = canonical.lower().strip()
                 meta = term_to_meta.get(canonical_key, {})
                 # Merge source_chunks từ tất cả aliases
                 all_source_chunks = list(meta.get("source_chunks", []))
-                for alias in g.aliases:
+                for alias in aliases:
                     alias_meta = term_to_meta.get(alias.lower().strip(), {})
                     for sc in alias_meta.get("source_chunks", []):
                         if sc not in all_source_chunks:
@@ -150,16 +187,16 @@ def dedup_candidates(client: OpenAI, candidates: list[dict], model: str, batch_s
 
                 # first_extraction_method: ưu tiên "statistical" nếu có alias từ statistical
                 method = meta.get("first_extraction_method", "llm")
-                for alias in g.aliases:
+                for alias in aliases:
                     alias_meta = term_to_meta.get(alias.lower().strip(), {})
                     if alias_meta.get("first_extraction_method") == "statistical":
                         method = "statistical"
                         break
 
                 all_groups.append({
-                    "term": g.canonical,
-                    "aliases": g.aliases,
-                    "category": g.category or meta.get("category", "other"),
+                    "term": canonical,
+                    "aliases": aliases,
+                    "category": g.get("category") or meta.get("category", "other"),
                     "relevance_score": meta.get("relevance_score", 0.0),
                     "source_chunks": all_source_chunks,
                     "first_extraction_method": method,
@@ -182,7 +219,7 @@ def dedup_candidates(client: OpenAI, candidates: list[dict], model: str, batch_s
     return all_groups
 
 
-# ─── Phase B: Omission Check ─────────────────────────────────────────────────
+# ─── Phase B: Omission Check ───────────────────────────────────────────────────────────
 
 OMISSION_SYSTEM = """Bạn là người kiểm tra độ đầy đủ của danh sách thuật ngữ chuyên ngành.
 Nhiệm vụ DUY NHẤT: Tìm các thuật ngữ liên quan đến chủ đề mục tiêu TRONG ĐOẠN VĂN mà CHƯA CÓ trong danh sách hiện tại.
@@ -190,8 +227,32 @@ Nhiệm vụ DUY NHẤT: Tìm các thuật ngữ liên quan đến chủ đề m
 QUAN TRỌNG:
 - Chỉ thêm term thực sự LIÊN QUAN đến chủ đề mục tiêu
 - KHÔNG thêm lại những gì đã có trong danh sách (kể cả alias)
-- Nếu không tìm thấy gì mới, trả về new_terms = []
-- Kiểm tra kỹ CẢ aliases, đừng thêm alias của term đã có"""
+- Nếu không tìm thấy gì mới, trả về new_terms rỗng
+- Kiểm tra kỹ CẢ aliases, đừng thêm alias của term đã có
+
+TRẢ LỜI BUỘC PHẢI LÀ JSON theo đúng schema (không thêm text giải thích):
+{"new_terms": [{"term": "<thuật ngữ mới>", "category": "<hardware|software|protocol|concept|tool|other>"}]}"""
+
+
+def parse_omission_json(raw: str) -> list[dict]:
+    """Parse JSON omission response."""
+    import re
+    text = raw.strip()
+    fence = re.search(r'```(?:json)?\s*([\s\S]*?)```', text)
+    if fence:
+        text = fence.group(1).strip()
+    obj = re.search(r'\{[\s\S]*\}', text)
+    if not obj:
+        return []
+    try:
+        data = json.loads(obj.group(0))
+        return [
+            {"term": t.get("term", "").strip(), "category": t.get("category", "other")}
+            for t in data.get("new_terms", [])
+            if isinstance(t, dict) and t.get("term", "").strip()
+        ]
+    except json.JSONDecodeError:
+        return []
 
 
 def build_current_terms_str(verified: list[dict]) -> str:
@@ -221,36 +282,35 @@ def omission_check_chunk(
 Danh sách thuật ngữ ĐÃ CÓ (bao gồm cả aliases):
 {current_terms_str}
 
-Có thuật ngữ nào liên quan đến chủ đề mục tiêu trong đoạn văn trên mà CHƯA có trong danh sách không?"""
+Hãy trả về JSON với các thuật ngữ chưa có trong danh sách (hoặc new_terms rỗng nếu không có)."""
 
     try:
-        completion = client.beta.chat.completions.parse(
+        completion = client.chat.completions.create(
             model=model,
             messages=[
                 {"role": "system", "content": OMISSION_SYSTEM},
                 {"role": "user", "content": user_prompt},
             ],
-            response_format=OmissionResponse,
+            response_format={"type": "json_object"},
             temperature=0.0,
         )
-        result = completion.choices[0].message.parsed
-        if result is None or not result.new_terms:
-            return []
+        raw = completion.choices[0].message.content or ""
+        new_items = parse_omission_json(raw)
         return [
             {
-                "term": t.term.strip(),
+                "term": t["term"],
                 "aliases": [],
-                "category": t.category,
+                "category": t["category"],
                 "relevance_score": 0.0,
                 "source_chunks": [chunk["chunk_id"]],
                 "first_extraction_method": "omission_check",
             }
-            for t in result.new_terms
-            if t.term.strip()
+            for t in new_items
         ]
     except Exception as e:
         print(f"    [WARN] omission chunk {chunk['chunk_id']}: {e}", file=sys.stderr)
         return []
+
 
 
 # ─── Report ───────────────────────────────────────────────────────────────────
@@ -324,14 +384,16 @@ def main():
     parser = argparse.ArgumentParser(description="LLM verify, dedup, and omission-check")
     parser.add_argument("--project", help="Project slug")
     parser.add_argument("--work-dir", help="Override .work/kw/ path")
-    parser.add_argument("--model", default="gpt-4o-mini", help="OpenAI model")
+    parser.add_argument("--model", default=None, help="LLM model (default: ATE_MODEL env hoặc deepseek-v4-flash:cloud)")
     parser.add_argument("--max-rounds", type=int, default=2, help="Max omission-check rounds (default: 2)")
-    parser.add_argument("--dedup-batch", type=int, default=80, help="Dedup batch size (default: 80)")
+    parser.add_argument("--dedup-batch", type=int, default=30, help="Dedup batch size (default: 30)")
     parser.add_argument("--target-context", help="Override target_context")
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path(__file__).parent)
     load_env(repo_root)
+    if not args.model:
+        args.model = os.environ.get("ATE_MODEL", "deepseek-v4-flash:cloud")
     work_dir = load_work_dir(args, repo_root)
 
     # Load data
@@ -360,34 +422,30 @@ def main():
     with open(chunks_path, encoding="utf-8") as f:
         chunks = json.load(f)
 
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    if not api_key:
-        print("[ERROR] OPENAI_API_KEY không tìm thấy.", file=sys.stderr)
-        sys.exit(1)
-
-    client = OpenAI(api_key=api_key)
+    client = create_openai_client()
     n_before_dedup = len(candidates)
 
     # ── Phase A: Dedup ────────────────────────────────────────────────────────
-    print(f"\n=== Phase A: Dedup & Canonicalize ({n_before_dedup} candidates) ===")
+    print(f"\n=== Phase A: Dedup & Canonicalize ({n_before_dedup} candidates) ===", flush=True)
     verified = dedup_candidates(client, candidates, model=args.model, batch_size=args.dedup_batch)
-    print(f"  → {len(verified)} canonical terms sau dedup")
+    print(f"  → {len(verified)} canonical terms sau dedup", flush=True)
 
     # ── Phase B: Omission Check ───────────────────────────────────────────────
-    print(f"\n=== Phase B: Omission Check (max {args.max_rounds} rounds) ===")
+    print(f"\n=== Phase B: Omission Check (max {args.max_rounds} rounds) ===", flush=True)
     omission_rounds = []
 
     for round_num in range(1, args.max_rounds + 1):
-        print(f"\n  Round {round_num}/{args.max_rounds}:")
+        print(f"\n  Round {round_num}/{args.max_rounds}:", flush=True)
         current_terms_str = build_current_terms_str(verified)
         round_new_terms: list[dict] = []
 
         for i, chunk in enumerate(chunks):
+            print(f"    [Round {round_num}] Đang check chunk_{i:04d} ({chunk['chunk_id']})...", flush=True)
             new_terms = omission_check_chunk(
                 client, chunk, target_context, current_terms_str, model=args.model
             )
             if new_terms:
-                print(f"    chunk_{i:04d}: +{len(new_terms)} terms: {[t['term'] for t in new_terms]}")
+                print(f"      ↳ +{len(new_terms)} terms mới: {[t['term'] for t in new_terms]}", flush=True)
                 # Merge vào verified ngay để vòng tiếp theo thấy
                 verified.extend(new_terms)
                 round_new_terms.extend(new_terms)
@@ -396,10 +454,10 @@ def main():
 
         delta = len(round_new_terms)
         omission_rounds.append({"round": round_num, "delta": delta, "new_terms": round_new_terms})
-        print(f"  Round {round_num}: +{delta} terms")
+        print(f"  Round {round_num}: +{delta} terms", flush=True)
 
         if delta == 0:
-            print(f"  → Không có term mới. Dừng sớm sau round {round_num}.")
+            print(f"  → Không có term mới. Dừng sớm sau round {round_num}.", flush=True)
             break
 
     # ── Ghi output ────────────────────────────────────────────────────────────

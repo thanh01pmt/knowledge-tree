@@ -1,9 +1,10 @@
 # Candidates Filtered — Apple App Development with Swift Associate
 
-**Threshold:** 0.25 | **Total:** 416 / 416 candidates
+**Threshold:** 0.25 | **Total:** 429 / 429 candidates
 
 | Term | Category | Score | Method | Chunks |
 |------|----------|-------|--------|--------|
+| App Development with Swift Associate | other | 0.971 | llm | chunk_0000 |
 | SWIFT Associate App Development | unknown | 0.941 | statistical | chunk_0006 |
 | Development with Swift Associate | unknown | 0.925 | statistical | chunk_0000, chunk_0007 |
 | SWIFT Associate App | unknown | 0.889 | statistical | chunk_0006 |
@@ -103,6 +104,5 @@
 | apply Interactive Views | unknown | 0.433 | statistical | chunk_0009 |
 | actions | unknown | 0.432 | statistical | chunk_0005 |
 | Usage | unknown | 0.432 | statistical | chunk_0001, chunk_0007 |
-| Create and evaluate | unknown | 0.431 | statistical | chunk_0002 |
 
-*... và 316 term khác (xem candidates_filtered.json)*
+*... và 329 term khác (xem candidates_filtered.json)*
