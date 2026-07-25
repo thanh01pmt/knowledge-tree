@@ -62,7 +62,7 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
         ("subjects.tsv", "subjects", ["field_codes"]),
         ("categories.tsv", "categories", ["subject_codes", "field_codes"]),
         ("topics.tsv", "topics", ["category_codes", "subject_codes", "field_codes"]),
-        ("concepts.tsv", "concepts", ["topic_codes", "category_codes", "subject_codes", "field_codes"]),
+        ("concepts.tsv", "concepts", ["topic_codes", "category_codes", "subject_codes", "field_codes", "prerequisite_concept_codes"]),
         ("learning-objectives.tsv", "learning_objectives", ["concept_codes", "topic_codes", "category_codes", "subject_codes", "field_codes"]),
         ("lo_prerequisites.tsv", "learning_objective_prerequisites", [])
     ]
@@ -90,7 +90,9 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
                     continue
                 payload = {
                     "learning_objective_code": target_code,
-                    "prerequisite_lo_code": prereq_code
+                    "prerequisite_lo_code": prereq_code,
+                    "rationale": r.get("rationale", "").strip(),
+                    "source_layer": r.get("source_layer", "L3-LLM").strip() or "L3-LLM",
                 }
                 # Thử upsert bằng cặp key (yêu cầu bảng Supabase setup đúng primary key)
                 supabase.table(table_name).upsert(payload).execute()
@@ -99,9 +101,16 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             continue
 
         # For normal tables
-        # Retrieve existing code -> id mapping from Supabase table
-        existing_data = supabase.table(table_name).select("id, code").execute()
-        code_to_id = {r["code"]: r["id"] for r in existing_data.data if r.get("code")}
+        # Retrieve existing code -> id mapping from Supabase table (paginate — PostgREST default 1000)
+        all_existing = []
+        offset = 0
+        while True:
+            page = supabase.table(table_name).select("id, code").range(offset, offset + 999).execute()
+            all_existing.extend(page.data)
+            if len(page.data) < 1000:
+                break
+            offset += 1000
+        code_to_id = {r["code"]: r["id"] for r in all_existing if r.get("code")}
 
         # Đối với learning_objectives: sắp xếp theo thứ tự phụ thuộc parent_lo_code (UNIVERSAL -> CONCEPTUAL_IMPL -> SPECIFIC_IMPL)
         if table_name == "learning_objectives":
