@@ -26,13 +26,58 @@
    - Mọi câu từ mô tả ULO/CIO/Concept phải được viết tự nhiên, mạch lạc, không find-and-replace thô ráp.
 9. **Sạch sẽ Thư mục Root**:
    - Không để lại script Python rác tại thư mục gốc workspace. All automation scripts belong inside `.agents/skills/`.
-10. **Ràng buộc Phê duyệt Đồng bộ DB / Cloud (Explicit Confirmation Required for DB Sync)**:
-    - **CẤM TUYỆT ĐỐI** tự động thực thi lệnh đồng bộ `/sync-supabase` hoặc đẩy dữ liệu lên cơ sở dữ liệu/nền tảng lưu trữ nếu **chưa nhận được sự đồng ý và phê duyệt trực tiếp từ người dùng**.
-11. **Cấm Viết Script Bypass để Lách Luật Validation (No Metric Gaming / Fallback Bypasses)**:
-    - Khi script pipeline hoặc mô hình LLM bị lỗi (như lỗi parse JSON, validation error), Agent **BẮT BUỘC BÁO CÁO LỖI GỐC (Root Error)** cho người dùng để thảo luận phương án xử lý.
-    - **CẤM TUYỆT ĐỐI** viết các script ngắn/tạm bợ (dummy fallback) nhằm tạo dữ liệu thu gọn/rác chỉ để ép bài test (`validate_tree.py`, `audit_coverage.py`) báo `[PASS] 0 lỗi`.
-12. **Bảo tồn & Minh bạch Dữ liệu (Data Preservation & Transparency)**:
-    - Khi có sự sai lệch hoặc xung đột giữa dữ liệu mới và bản lưu trữ/backup trước đó, Agent phải chủ động giải thích nguyên nhân gốc rễ và xin ý kiến người dùng trước khi ghi đè hoặc phục hồi dữ liệu.
+
+
+## Ràng buộc Vận hành (Operational Constraints & Gates)
+
+> Cross-cutting rules áp dụng cho mọi skill và workflow trong Knowledge Tree.
+
+### §1 Context Gate
+Trước bất kỳ workflow nào **ghi** artifact dự án (như `/map-taxonomy`, `/build-tree`):
+- Đọc PDF/Syllabus trong `projects/<project>/context/`.
+- Luôn dùng `.agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv` làm chân lý. CÓ THỂ đề xuất thêm mã mới vào Master Tree nhưng **tuyệt đối không tự ý ghi** — phải thông qua phê duyệt của Human.
+- **BẮT BUỘC Tra cứu Master Tree trước (Search First):** Trước khi đề xuất bất kỳ Concept mới nào trong `/map-taxonomy`, PHẢI tra cứu toàn bộ danh sách Concepts trong Bảng 5 của `mlo-knowlege-tree.tsv`. Chỉ được tạo `[NEW NODE PROPOSAL]` khi kết quả tìm kiếm **hoàn toàn trống**. Tuyệt đối không thêm tiền tố giả mạo (`C_`, `_NEW`, v.v.).
+
+### §2 Mock-Mode Prohibition
+⛔ Never run scripts with `--mock` or bypass actual execution.
+
+### §3 Final Artifacts
+Output cuối của mỗi project là đúng 6 file TSV đã validate trong `projects/<project>/output/`:
+`fields.tsv` · `subjects.tsv` · `categories.tsv` · `topics.tsv` · `concepts.tsv` · `learning-objectives.tsv`
+
+File trung gian (mapping plan, context audit...) lưu trong `projects/<project>/.work/`.
+
+### §4 Approval Gate
+Trước khi ghi TSV cuối (chạy `/build-tree`), **BẮT BUỘC** trình `mapping-plan.md` cho người dùng duyệt. Không ghi TSV nếu chưa có phê duyệt rõ ràng.
+
+### §5 Security Boundary
+- Đọc master data từ `.agents/skills/taxonomy-mapper/resources/`.
+- Đọc project data từ `projects/<project>/context/`.
+- Chỉ ghi vào `projects/<project>/output/*.tsv` và `projects/<project>/.work/`. (Sửa `resources/` chỉ khi được User cho phép rõ ràng.)
+- Active project được theo dõi trong `status.yaml`.
+
+### §6 Reverse Coverage Gate
+Sau khi tạo xong `learning-objectives.tsv`, BẮT BUỘC chạy `/audit-coverage` (hoặc `audit_coverage.py`) để đối chiếu ngược với tài liệu nguồn trong `projects/<project>/context/`.
+- Đảm bảo 100% mục syllabus có ít nhất 1 LO đảm nhiệm.
+- Xuất báo cáo `coverage_report.md` với các gap phát hiện được.
+
+### §7 Master Tree Integrity Gate
+Trước khi `/map-taxonomy` hoặc `/build-tree` đọc từ Master Tree, `/validate-master-tree` (hoặc `validate_master_tree.py`) phải đã PASS kể từ lần cuối tree bị sửa đổi.
+
+### §8 Phê duyệt Đồng bộ DB / Cloud
+**CẤM TUYỆT ĐỐI** tự động thực thi `/sync-supabase` hoặc đẩy dữ liệu lên DB/Cloud nếu **chưa nhận được phê duyệt trực tiếp từ người dùng**. Bao gồm cả thao tác "restore" — không chỉ cập nhật mới.
+
+### §9 Cấm Script Bypass Validation (No Metric Gaming)
+Khi script hoặc LLM bị lỗi, **BẮT BUỘC BÁO CÁO LỖI GỐC** cho người dùng để thảo luận phương án.
+**CẤM TUYỆT ĐỐI** viết script tạm bợ (dummy fallback) chỉ để ép `validate_tree.py` / `audit_coverage.py` báo `[PASS] 0 lỗi`. Script PASS ≠ dữ liệu đạt chất lượng sư phạm.
+
+### §10 Bảo tồn & Minh bạch Dữ liệu
+Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trước đó, Agent phải:
+1. **Dừng ngay** — không ghi đè.
+2. **Giải thích nguyên nhân gốc rễ** cho người dùng.
+3. **Xin phê duyệt** trước khi ghi đè hoặc phục hồi dữ liệu.
+
+
 
 
 ## Workflow Index
