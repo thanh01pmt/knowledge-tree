@@ -102,17 +102,57 @@ Dựa vào bối cảnh DAG trên, hãy suy luận và trích xuất danh sách 
 """
 
     print(f"[*] Đang phân tích đồ thị tiền đề (Model: {model})...")
-    completion = client.beta.chat.completions.parse(
+
+    user_prompt_with_schema = user_prompt + """
+
+Trả về JSON theo đúng định dạng sau (KHÔNG thêm text ngoài JSON):
+{
+  "links": [
+    {
+      "learning_objective_code": "ULO-...",
+      "prerequisite_lo_code": "ULO-...",
+      "rationale": "Lý do ngắn gọn"
+    }
+  ]
+}
+"""
+
+    completion = client.chat.completions.create(
         model=model,
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
-            {"role": "user", "content": user_prompt},
+            {"role": "user", "content": user_prompt_with_schema},
         ],
-        response_format=PrerequisiteBatch,
+        response_format={"type": "json_object"},
         temperature=0.1,
     )
-    result = completion.choices[0].message.parsed
-    return [link.model_dump() for link in result.links] if result else []
+    raw = completion.choices[0].message.content or ""
+
+    # Robust JSON parsing
+    import re as _re
+    raw = raw.strip()
+    if raw.startswith("```"):
+        raw = _re.sub(r"```(?:json)?\n?", "", raw).strip("` \n")
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError:
+        m = _re.search(r'\{[\s\S]*\}', raw)
+        data = json.loads(m.group()) if m else {}
+
+    links = data.get("links", [])
+    result = []
+    for link in links:
+        lo_code = link.get("learning_objective_code", "").strip()
+        pre_code = link.get("prerequisite_lo_code", "").strip()
+        rationale = link.get("rationale", "").strip()
+        if lo_code and pre_code:
+            result.append({
+                "learning_objective_code": lo_code,
+                "prerequisite_lo_code": pre_code,
+                "rationale": rationale,
+            })
+    return result
+
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
