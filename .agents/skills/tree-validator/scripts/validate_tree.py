@@ -352,51 +352,54 @@ def check_orphans(level_name, own_codes_set, referenced_codes_set):
 
 def check_lo_parent_and_cycles(lo_rows, lo_codes_set):
     issues = []
-    parent_map = {(r.get("code") or "").strip(): (r.get("parent_lo_code") or "").strip() for r in lo_rows}
+    parent_map = {(r.get("code") or "").strip(): split_codes(r.get("parent_lo_code", "")) for r in lo_rows}
 
-    for code, parent in parent_map.items():
-        if not parent or parent == NULL_TOKEN:
+    for code, parents in parent_map.items():
+        if not parents:
             continue
-        if parent == code:
-            issues.append(Issue("ERROR", "LO_SELF_REFERENCE", "learning_objectives", code,
-                                 "parent_lo_code trỏ về chính nó.", field="parent_lo_code", ref=parent))
-        elif parent not in lo_codes_set:
-            issues.append(Issue("ERROR", "LO_BROKEN_PARENT_REF", "learning_objectives", code,
-                                 f"parent_lo_code '{parent}' không tồn tại.", field="parent_lo_code", ref=parent))
+        for parent in parents:
+            if parent == NULL_TOKEN:
+                continue
+            if parent == code:
+                issues.append(Issue("ERROR", "LO_SELF_REFERENCE", "learning_objectives", code,
+                                     "parent_lo_code trỏ về chính nó.", field="parent_lo_code", ref=parent))
+            elif parent not in lo_codes_set:
+                issues.append(Issue("ERROR", "LO_BROKEN_PARENT_REF", "learning_objectives", code,
+                                     f"parent_lo_code '{parent}' không tồn tại.", field="parent_lo_code", ref=parent))
 
-    state = {}
+    state = {} # 0: unvisited, 1: visiting, 2: fully visited
     reported = set()
 
-    def walk(start):
-        path = []
-        cur = start
-        while True:
-            if state.get(cur) == 1:
-                return
-            if cur in path:
-                idx = path.index(cur)
-                cycle_nodes = path[idx:]
-                for n in cycle_nodes:
-                    if n not in reported:
-                        reported.add(n)
-                        issues.append(Issue("ERROR", "LO_CYCLE", "learning_objectives", n,
-                                             "Nằm trong chu trình parent_lo_code: "
-                                             + " -> ".join(cycle_nodes + [cycle_nodes[0]]),
-                                             field="parent_lo_code"))
-                for n in cycle_nodes:
-                    state[n] = 1
-                return
-            path.append(cur)
-            nxt = parent_map.get(cur, "")
-            if not nxt or nxt == NULL_TOKEN or nxt not in lo_codes_set or nxt == cur:
-                for n in path:
-                    state[n] = 1
-                return
-            cur = nxt
+    def walk(cur, path):
+        if state.get(cur) == 1:
+            idx = path.index(cur)
+            cycle_nodes = path[idx:]
+            for n in cycle_nodes:
+                if n not in reported:
+                    reported.add(n)
+                    issues.append(Issue("ERROR", "LO_CYCLE", "learning_objectives", n,
+                                         "Nằm trong chu trình parent_lo_code: "
+                                         + " -> ".join(cycle_nodes + [cycle_nodes[0]]),
+                                         field="parent_lo_code"))
+            return
+        if state.get(cur) == 2:
+            return
+
+        state[cur] = 1
+        path.append(cur)
+
+        parents = parent_map.get(cur, [])
+        for nxt in parents:
+            if nxt and nxt != NULL_TOKEN and nxt in lo_codes_set and nxt != cur:
+                walk(nxt, path)
+        
+        path.pop()
+        state[cur] = 2
 
     for code in lo_codes_set:
         if code not in state:
-            walk(code)
+            walk(code, [])
+            
     return issues
 
 

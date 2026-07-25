@@ -64,3 +64,97 @@ Thực hiện phân rã các chủ đề trong Syllabus thành các bản ghi d�
 | `ULO-DEBUGGING` | Understand Debugging | Khái niệm tìm và sửa lỗi phần mềm. | `UNIVERSAL` | `NULL` | Cần tìm: *Debugging, Testing* |
 | `CIO-SWIFT-ERRORS` | Differentiate Error Types | Phân biệt lỗi cú pháp và lỗi runtime trong Xcode. | `CONCEPTUAL_IMPL` | `ULO-DEBUGGING` | Cần tìm: *Errors, Exceptions* |
 | `SIO-SWIFT-INTERPRET`| Interpret Error Messages | Đọc hiểu log và thông báo lỗi. | `SPECIFIC_IMPL` | `CIO-SWIFT-ERRORS` | Cần tìm: *Debugging* |
+
+
+## ATE Keywords
+
+> Trích xuất bằng ATE Pipeline từ: `Apple App Development with Swift Associate`
+> Thời điểm: 2026-07-25 12:09
+> File đầy đủ: `keywords.tsv` (xem `output/keywords.tsv`)
+
+**Tổng cộng: 326 thuật ngữ đã vét cạn và kiểm tra omission.**
+
+| Term | Aliases | Category | Method |
+|------|---------|----------|--------|
+| App Development with Swift Associate | SWIFT Associate App Development, Development with Swift Associate, SWIFT Associate App, App Development with Swift, Swift Associate, Associate App Development, Swift Associate Swift, Development with Swift, interface WITH SWIFT Associate, Associate Swift, Associate App, Swift Associate Objective, App Development, Swift Associate certification, Swift Associate certification demonstrates, Swift Associate Swift Language, exploring app development, Earning the App Development, Associate Swift Language, Associate Swift Language Usage | software | statistical |
+| Swift Associate | Associate, Associate certification, Associate certification demonstrates, Swift Associate Objective Domains | concept | statistical |
+| Swift | programming with Swift, Apply Swift, Planning and Design Swift, interface WITH SWIFT, user interface WITH SWIFT, Design Swift, Swift and SwiftUI, Design Swift Language | software | statistical |
+| App | apps, application, running an app, exploring app, computing and apps, cultures while exploring app | software | statistical |
+| Swift Language | Swift Language Usage, Design Swift Language Usage | software | statistical |
+| SwiftUI | Building with SwiftUI, View Building with SwiftUI, SwiftUI are trademarks | software | statistical |
+| Earning the App | Domains Earning the App | concept | statistical |
+| Apple | Apple Inc., trademarks of Apple Inc., trademarks of Apple | other | statistical |
+| Swift identifier rules | Swift identifier, Apply Swift identifier, Apply Swift identifier rules | concept | statistical |
+| Development |  | concept | statistical |
+| Associate Certification | Associate certification demonstrates knowledge, Associate Objective Domains Earning, Associate Objective Domains, Earning | concept | statistical |
+| application information | Sharing personal and application, personal and application, personal and application information | concept | statistical |
+| project |  | concept | statistical |
+| Project Navigation | XCode Project Navigation, structure XCode Project Navigation | software | statistical |
+| Inc. |  | other | statistical |
+| program |  | concept | statistical |
+| XCode Project |  | software | statistical |
+| programming |  | concept | statistical |
+| apps on society |  | concept | statistical |
+| Apply |  | concept | statistical |
+| foundation in programming |  | concept | statistical |
+| Create |  | concept | statistical |
+| Implement |  | concept | statistical |
+| user |  | concept | statistical |
+| produced by a program |  | concept | statistical |
+| areas of the user |  | concept | statistical |
+| Create and manipulate |  | concept | statistical |
+| concepts |  | concept | statistical |
+| user interface |  | concept | statistical |
+| asset |  | concept | statistical |
+| Navigation |  | concept | statistical |
+| Select |  | concept | statistical |
+| solid foundation in programming |  | concept | statistical |
+| interface |  | concept | statistical |
+| Planning and Design | Planning, plan | concept | statistical |
+| visual design with accessibility | visual design, design with accessibility, accessibility in mind | concept | statistical |
+| Apply Interactive Views | apply Interactive, apply Interactive Views including | concept | statistical |
+| apply Interactive Views | Interactive Views including, Interactive | concept | statistical |
+| actions |  | concept | statistical |
+| Usage |  | concept | statistical |
+| Create and evaluate | Create Content, Create and manipulate arrays | concept | statistical |
+| statements |  | concept | statistical |
+| recognize |  | concept | statistical |
+| Sharing |  | concept | statistical |
+| structure XCode Project |  | tool | statistical |
+| Apply type |  | concept | statistical |
+| computing |  | concept | statistical |
+| Design |  | concept | statistical |
+| Objective |  | concept | statistical |
+| background | .background | software | statistical |
+| assets |  | concept | statistical |
+| Button |  | software | statistical |
+| data |  | concept | statistical |
+| accessibility |  | concept | statistical |
+| prototype |  | concept | statistical |
+| Views statements |  | software | statistical |
+| Xcode |  | tool | statistical |
+| conditional |  | software | statistical |
+| methods |  | software | statistical |
+| recognize available assets |  | software | statistical |
+| Select the appropriate actions |  | software | statistical |
+| initialize |  | software | statistical |
+| Content |  | concept | statistical |
+| Building |  | concept | statistical |
+| Create Content Views |  | software | statistical |
+| Identify |  | concept | statistical |
+| Image |  | software | statistical |
+| computing concepts |  | concept | statistical |
+| Create and interpret |  | concept | statistical |
+| areas |  | concept | statistical |
+| design cycle |  | concept | statistical |
+| Views inside of Stack | inside of Stack Views, inside of Stack | software | statistical |
+| Text |  | software | statistical |
+| Define |  | concept | statistical |
+| logo are registered trademarks | logo are registered | other | statistical |
+| Assess |  | concept | statistical |
+| Interactive Views |  | software | statistical |
+| Summarize the design cycle |  | concept | statistical |
+| certification | certification demonstrates | concept | statistical |
+| operators |  | concept | statistical |
+
+*... và 246 term khác (xem keywords.tsv)*

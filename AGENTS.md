@@ -7,7 +7,9 @@
    - **Phép thử Marr 2-Ngôn-ngữ cho CIO (Representation-Independent)**: Tầng Algorithmic (CIO) BẮT BUỘC phải độc lập với biểu diễn cú pháp. Trước khi duyệt một CIO, **BẮT BUỘC map thử mô tả CIO sang $\ge 2$ ngôn ngữ/công cụ khác nhau**. Nếu mô tả chỉ khớp tự nhiên với 1 ngôn ngữ (ví dụ ép thứ tự từ khóa token-order của Python/Swift), CIO đó đã bị giáng cấp xuống Implementational trá hình $\rightarrow$ BẮT BUỘC viết lại thành thủ tục trung tính hoặc giáng xuống SIO.
    - **SIOs (`lo_type: SPECIFIC_IMPL`)**: **TẦNG DUY NHẤT CHỨA CÔNG NGHỆ CỤ THỂ**.
 2. **Quy tắc Đặt mã SIO & Đối chiếu Mẫu Đa Công nghệ (SIO Cross-Referencing Rules)**:
-   - **Định dạng mã SIO**: `SIO-<TECH_PREFIX>-<FEATURE_SLUG>` (dạng `UPPER_SNAKE_CASE`).
+   - **Định dạng mã CIO và SIO (Semantic Slugs)**:
+     - **CIO**: `CIO-<CONCEPT_CODE>-<SEMANTIC_SLUG>` (dạng `UPPER_SNAKE_CASE`, ngắn gọn 2-4 từ tiếng Anh).
+     - **SIO**: `SIO-<TECH_PREFIX>-<SPECIFIC_FEATURE_SLUG>` (dạng `UPPER_SNAKE_CASE`, thể hiện rõ yếu tố đặc thù phân biệt).
    - **Đối chiếu Mẫu SIO Đa Công nghệ**: Do tầng Concept/ULO/CIO là 100% Trung tính và dùng chung, khi xây dựng SIO cho một công nghệ mới (ví dụ: Swift), Agent **CẦN TRA CỨU & ĐỐI CHIẾU** các SIO đã có ở các cây công nghệ khác (như JS, Python) nằm cùng mã CIO/Concept để nhân bản mẫu mã và đổi tên/nội dung tương đương cho công nghệ mới.
 3. **Mô hình Quan hệ N:N (Many-to-Many Relationships)**:
    - Quan hệ **Concept $\leftrightarrow$ ULO $\leftrightarrow$ CIO $\leftrightarrow$ SIO** là N:N. Phân tách danh sách mã bằng dấu phẩy trong `concept_codes` và `parent_lo_code`.

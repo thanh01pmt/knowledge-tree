@@ -1,0 +1,185 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "computing",
+      "type": "conceptual",
+      "definition": "The use of computers and software."
+    },
+    {
+      "id": "node_2",
+      "label": "apps",
+      "type": "factual",
+      "definition": "Applications, software programs designed for end users."
+    },
+    {
+      "id": "node_3",
+      "label": "society",
+      "type": "conceptual",
+      "definition": "A community of people."
+    },
+    {
+      "id": "node_4",
+      "label": "economies",
+      "type": "conceptual",
+      "definition": "Systems of production, distribution, and consumption."
+    },
+    {
+      "id": "node_5",
+      "label": "cultures",
+      "type": "conceptual",
+      "definition": "Shared beliefs, customs, and practices."
+    },
+    {
+      "id": "node_6",
+      "label": "app development",
+      "type": "conceptual",
+      "definition": "The process of creating software applications."
+    },
+    {
+      "id": "node_7",
+      "label": "impact",
+      "type": "conceptual",
+      "definition": "The effect or influence of something."
+    },
+    {
+      "id": "node_8",
+      "label": "Planning",
+      "type": "procedural",
+      "definition": "The process of making plans for something."
+    },
+    {
+      "id": "node_9",
+      "label": "Design",
+      "type": "procedural",
+      "definition": "The process of creating a plan or convention for the construction of an object."
+    },
+    {
+      "id": "node_10",
+      "label": "Swift Language",
+      "type": "factual",
+      "definition": "Apple's programming language for iOS, macOS, and other platforms."
+    },
+    {
+      "id": "node_11",
+      "label": "Usage",
+      "type": "conceptual",
+      "definition": "The action of using something or the fact of being used."
+    },
+    {
+      "id": "node_12",
+      "label": "Summarize",
+      "type": "action",
+      "definition": "To give a brief statement of the main points."
+    },
+    {
+      "id": "node_13",
+      "label": "design cycle",
+      "type": "procedural",
+      "definition": "A process of designing involving steps like brainstorm, plan, prototype, evaluate."
+    },
+    {
+      "id": "node_14",
+      "label": "Brainstorm",
+      "type": "action",
+      "definition": "To generate ideas through spontaneous group discussion."
+    },
+    {
+      "id": "node_15",
+      "label": "plan",
+      "type": "action",
+      "definition": "To decide on and arrange in advance."
+    },
+    {
+      "id": "node_16",
+      "label": "prototype",
+      "type": "action",
+      "definition": "To create a preliminary model of something."
+    },
+    {
+      "id": "node_17",
+      "label": "evaluate",
+      "type": "action",
+      "definition": "To assess or determine the value, quality, or significance of something."
+    },
+    {
+      "id": "node_18",
+      "label": "Write",
+      "type": "action",
+      "definition": "To compose code or text."
+    },
+    {
+      "id": "node_19",
+      "label": "call",
+      "type": "action",
+      "definition": "To invoke a function or method."
+    },
+    {
+      "id": "node_20",
+      "label": "execution",
+      "type": "conceptual",
+      "definition": "The process of running a program or function."
+    },
+    {
+      "id": "node_21",
+      "label": "functions",
+      "type": "conceptual",
+      "definition": "Self-contained modules of code that perform a specific task."
+    },
+    {
+      "id": "node_22",
+      "label": "use",
+      "type": "conceptual",
+      "definition": "The act of employing something for a purpose."
+    },
+    {
+      "id": "node_23",
+      "label": "argument labels",
+      "type": "conceptual",
+      "definition": "Labels used in function calls in Swift to identify parameters."
+    },
+    {
+      "id": "node_24",
+      "label": "parameters",
+      "type": "conceptual",
+      "definition": "Variables that are passed into a function."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_12",
+      "target": "node_13",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_18",
+      "target": "node_21",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_19",
+      "target": "node_21",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_20",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_23",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_24",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_22",
+      "relation": "acts_on"
+    }
+  ]
+}

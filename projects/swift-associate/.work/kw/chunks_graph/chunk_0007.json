@@ -1,0 +1,98 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "App Development",
+      "type": "conceptual",
+      "definition": "The process of creating software applications."
+    },
+    {
+      "id": "node_2",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "A programming language developed by Apple."
+    },
+    {
+      "id": "node_3",
+      "label": "Associate",
+      "type": "conceptual",
+      "definition": "A level of certification or proficiency in app development."
+    },
+    {
+      "id": "node_4",
+      "label": "Swift Language Usage",
+      "type": "conceptual",
+      "definition": "The usage and application of the Swift programming language."
+    },
+    {
+      "id": "node_5",
+      "label": "View Building",
+      "type": "conceptual",
+      "definition": "The process of constructing user interface views."
+    },
+    {
+      "id": "node_6",
+      "label": "SwiftUI",
+      "type": "factual",
+      "definition": "A framework for building user interfaces on Apple platforms."
+    },
+    {
+      "id": "node_7",
+      "label": "Create",
+      "type": "action",
+      "definition": "To bring something into existence."
+    },
+    {
+      "id": "node_8",
+      "label": "manipulate",
+      "type": "action",
+      "definition": "To handle or control, especially in a skillful manner."
+    },
+    {
+      "id": "node_9",
+      "label": "arrays",
+      "type": "conceptual",
+      "definition": "A data structure that stores a collection of elements."
+    },
+    {
+      "id": "node_10",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "To recognize or ascertain what makes something different."
+    },
+    {
+      "id": "node_11",
+      "label": "imperative",
+      "type": "conceptual",
+      "definition": "A programming paradigm that uses statements to change a program's state."
+    },
+    {
+      "id": "node_12",
+      "label": "declarative",
+      "type": "conceptual",
+      "definition": "A programming paradigm that expresses the logic of a computation without describing its control flow."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_7",
+      "target": "node_9",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_9",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_10",
+      "target": "node_11",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_10",
+      "target": "node_12",
+      "relation": "acts_on"
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+VIEW_CONCEPT	Khái Niệm View	Đơn vị cơ bản xây dựng giao diện người dùng, đại diện cho một phần tử trên màn hình.	UI_CONTROLS	view, building block, user interface		{}
+DATA_TYPES	Kiểu Dữ Liệu	Các loại dữ liệu cơ bản như số nguyên, chuỗi, logic, và cách khai báo kiểu tường minh hoặc suy luận kiểu.	PRIMITIVE_TYPES	Int, String, Bool, data types, explicit typing, type inference		{}
+CONTROL_FLOW	Luồng Điều Khiển	Thứ tự thực thi các câu lệnh trong chương trình, bao gồm rẽ nhánh và lặp.	CONDITIONAL_LOGIC	flow of execution, control flow, execution order		{}
+TYPE_SYSTEM	Hệ Thống Kiểu	Cơ chế xác định và kiểm tra kiểu dữ liệu trong ngôn ngữ lập trình, bao gồm suy luận kiểu và khai báo tường minh.	PRIMITIVE_TYPES	type inference, explicit typing, type system, static typing		{}
+VISUAL_DESIGN	Thiết Kế Trực Quan	Thiết kế thẩm mỹ và chức năng của giao diện người dùng, bao gồm bố cục, màu sắc và kiểu chữ.	IDE_NAVIGATION	visual design, layout, colors, typography		{}
+SECURITY_CHALLENGES	Thách Thức Bảo Mật	Các vấn đề liên quan đến bảo vệ dữ liệu và hệ thống khỏi các mối đe dọa.	IDE_NAVIGATION	security, data protection, threats		{}
+DEBUGGING	Gỡ Lỗi	Quá trình xác định và loại bỏ lỗi khỏi phần mềm.	DEBUGGING_TECHNIQUES	debugging, error removal, troubleshooting		{}
+OBJECT_INSTANTIATION	Object Instantiation	Hiểu quá trình tạo một đối tượng (thể hiện/instance) từ một lớp bằng cách sử dụng hàm khởi tạo (constructor).	IDE_NAVIGATION	object, instance, constructor, new, structure, stored properties		{}
+EVENT_HANDLERS_CONCEPT	Events and Event Handling	Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).	IDE_NAVIGATION	events, event handler, listener, callback, actions, operations		{}
+OBJECT_PROPERTIES	Object Properties/Attributes	Hiểu rằng các đối tượng trong một môi trường lập trình có các thuộc tính (properties) có thể truy cập và thay đổi được (ví dụ: object.x, object.color).	IDE_NAVIGATION	properties, attributes, state, object, variables, type		{}
+SYNTAX_ERRORS	Syntax Errors	Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.	DEBUGGING_TECHNIQUES	syntax error, compiler error, parsing error, grammar rules		{}
+RUNTIME_ERRORS	Runtime Errors	Nhận biết các lỗi xảy ra trong quá trình chương trình đang chạy, ví dụ như chia cho zero hoặc truy cập vào một phần tử không tồn tại của mảng.	DEBUGGING_TECHNIQUES	runtime error, exception, crash, execution		{}
+ERROR_MESSAGES_CONCEPT	Interpreting Error Messages	Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.	DEBUGGING_TECHNIQUES	error handling, exceptions, debugging, log analysis, compiler, runtime, indicate		{}
+RETURN_VALUES_AND_SCOPE	Return Values and Scope	Hiểu cách một hàm trả về giá trị và phạm vi của biến.	IDE_NAVIGATION	return values, scope, outcomes, calculations		{}

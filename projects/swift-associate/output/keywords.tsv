@@ -1,0 +1,327 @@
+term	aliases	relevance_score	source_chunks	first_extraction_method	category
+App Development with Swift Associate	SWIFT Associate App Development|Development with Swift Associate|SWIFT Associate App|App Development with Swift|Swift Associate|Associate App Development|Swift Associate Swift|Development with Swift|interface WITH SWIFT Associate|Associate Swift|Associate App|Swift Associate Objective|App Development|Swift Associate certification|Swift Associate certification demonstrates|Swift Associate Swift Language|exploring app development|Earning the App Development|Associate Swift Language|Associate Swift Language Usage	0.9705	chunk_0000|chunk_0006|chunk_0007|chunk_0001	statistical	software
+Swift Associate	Associate|Associate certification|Associate certification demonstrates|Swift Associate Objective Domains	0.8522	chunk_0000|chunk_0006|chunk_0007	statistical	concept
+Swift	programming with Swift|Apply Swift|Planning and Design Swift|interface WITH SWIFT|user interface WITH SWIFT|Design Swift|Swift and SwiftUI|Design Swift Language	0.7238	chunk_0000|chunk_0001|chunk_0006|chunk_0007|chunk_0011	statistical	software
+App	apps|application|running an app|exploring app|computing and apps|cultures while exploring app	0.6686	chunk_0000|chunk_0001|chunk_0006|chunk_0007|chunk_0011|chunk_0002	statistical	software
+Swift Language	Swift Language Usage|Design Swift Language Usage	0.6585	chunk_0001|chunk_0007	statistical	software
+SwiftUI	Building with SwiftUI|View Building with SwiftUI|SwiftUI are trademarks	0.6386	chunk_0000|chunk_0007|chunk_0011	statistical	software
+Earning the App	Domains Earning the App	0.6356	chunk_0000	statistical	concept
+Apple	Apple Inc.|trademarks of Apple Inc.|trademarks of Apple	0.5958	chunk_0011	statistical	other
+Swift identifier rules	Swift identifier|Apply Swift identifier|Apply Swift identifier rules	0.5771	chunk_0011	statistical	concept
+Development		0.5665	chunk_0000|chunk_0001|chunk_0006|chunk_0007	statistical	concept
+Associate Certification	Associate certification demonstrates knowledge|Associate Objective Domains Earning|Associate Objective Domains|Earning	0.5437	chunk_0000	statistical	concept
+application information	Sharing personal and application|personal and application|personal and application information	0.5353	chunk_0002	statistical	concept
+project		0.5305	chunk_0003|chunk_0004|chunk_0005	statistical	concept
+Project Navigation	XCode Project Navigation|structure XCode Project Navigation	0.5058	chunk_0003	statistical	software
+Inc.		0.5028	chunk_0011	statistical	other
+program		0.4954	chunk_0009	statistical	concept
+XCode Project		0.4905	chunk_0003	statistical	software
+programming		0.4893	chunk_0000|chunk_0008	statistical	concept
+apps on society		0.4871	chunk_0000|chunk_0001	statistical	concept
+Apply		0.4834	chunk_0009|chunk_0010|chunk_0011	statistical	concept
+foundation in programming		0.4636	chunk_0000	statistical	concept
+Create		0.4612	chunk_0002|chunk_0003|chunk_0007|chunk_0008|chunk_0009	statistical	concept
+Implement		0.4585	chunk_0009	statistical	concept
+user		0.4564	chunk_0005|chunk_0006	statistical	concept
+produced by a program		0.4525	chunk_0009	statistical	concept
+areas of the user		0.4502	chunk_0005|chunk_0006	statistical	concept
+Create and manipulate		0.45	chunk_0007|chunk_0008	statistical	concept
+concepts		0.4467	chunk_0000	statistical	concept
+user interface		0.4448	chunk_0005|chunk_0006	statistical	concept
+asset		0.4426	chunk_0004|chunk_0005	statistical	concept
+Navigation		0.4403	chunk_0003	statistical	concept
+Select		0.4385	chunk_0005	statistical	concept
+solid foundation in programming		0.4377	chunk_0000	statistical	concept
+interface		0.4373	chunk_0005|chunk_0006	statistical	concept
+Planning and Design	Planning|plan	0.4344	chunk_0001|chunk_0002	statistical	concept
+visual design with accessibility	visual design|design with accessibility|accessibility in mind	0.434	chunk_0002|chunk_0003	statistical	concept
+Apply Interactive Views	apply Interactive|apply Interactive Views including	0.4329	chunk_0009	statistical	concept
+apply Interactive Views	Interactive Views including|Interactive	0.4329	chunk_0009	statistical	concept
+actions		0.4321	chunk_0005	statistical	concept
+Usage		0.4319	chunk_0001|chunk_0007	statistical	concept
+Create and evaluate	Create Content|Create and manipulate arrays	0.4312	chunk_0002|chunk_0008|chunk_0007	statistical	concept
+statements		0.4302	chunk_0009	statistical	concept
+recognize		0.4292	chunk_0004	statistical	concept
+Sharing		0.4287	chunk_0002	statistical	concept
+structure XCode Project		0.4286	chunk_0003	statistical	tool
+Apply type		0.4272	chunk_0010	statistical	concept
+computing		0.4258	chunk_0000|chunk_0001	statistical	concept
+Design		0.4254	chunk_0001|chunk_0002|chunk_0003	statistical	concept
+Objective		0.425	chunk_0000	statistical	concept
+background	.background	0.4228	chunk_0009	statistical	software
+assets		0.4187	chunk_0004|chunk_0005	statistical	concept
+Button		0.418	chunk_0009|chunk_0010	statistical	software
+data		0.4168	chunk_0002|chunk_0009|chunk_0010	statistical	concept
+accessibility		0.4164	chunk_0002|chunk_0003	statistical	concept
+prototype		0.4162	chunk_0001|chunk_0002	statistical	concept
+Views statements		0.4162	chunk_0009	statistical	software
+Xcode		0.4153	chunk_0003|chunk_0011	statistical	tool
+conditional		0.415	chunk_0009	statistical	software
+methods		0.414	chunk_0002|chunk_0003|chunk_0009	statistical	software
+recognize available assets		0.4134	chunk_0004	statistical	software
+Select the appropriate actions		0.4122	chunk_0005	statistical	software
+initialize		0.4121	chunk_0002|chunk_0008	statistical	software
+Content		0.4119	chunk_0008	statistical	concept
+Building		0.4105	chunk_0007|chunk_0011	statistical	concept
+Create Content Views		0.4096	chunk_0008	statistical	software
+Identify		0.4091	chunk_0008|chunk_0009	statistical	concept
+Image		0.4091	chunk_0008	statistical	software
+computing concepts		0.409	chunk_0000	statistical	concept
+Create and interpret		0.4089	chunk_0009	statistical	concept
+areas		0.4078	chunk_0005|chunk_0006	statistical	concept
+design cycle		0.4067	chunk_0001	statistical	concept
+Views inside of Stack	inside of Stack Views|inside of Stack	0.4062	chunk_0009	statistical	software
+Text		0.4055	chunk_0008	statistical	software
+Define		0.4053	chunk_0002|chunk_0003	statistical	concept
+logo are registered trademarks	logo are registered	0.4052	chunk_0011	statistical	other
+Assess		0.4044	chunk_0002|chunk_0003	statistical	concept
+Interactive Views		0.4043	chunk_0009	statistical	software
+Summarize the design cycle		0.4043	chunk_0001	statistical	concept
+certification	certification demonstrates	0.4036	chunk_0000	statistical	concept
+operators		0.4032	chunk_0002	statistical	concept
+functions		0.4027	chunk_0001	statistical	concept
+.foregroundColor		0.4025	chunk_0009	llm	software
+visual		0.4021	chunk_0002|chunk_0003	statistical	concept
+key computing concepts		0.402	chunk_0000	statistical	concept
+logo		0.402	chunk_0011	statistical	concept
+Stack Views statements		0.4017	chunk_0009	statistical	software
+actions to configure		0.4017	chunk_0005	statistical	concept
+error		0.4015	chunk_0011	statistical	concept
+registered		0.4012	chunk_0011	statistical	concept
+asset has been imported		0.4012	chunk_0004	statistical	concept
+arrange	arrange Views	0.4007	chunk_0009	statistical	concept
+Assess a visual design		0.4003	chunk_0002|chunk_0003	statistical	concept
+.resizable	resizable and their results	0.3999	chunk_0009	statistical	software
+file		0.3998	chunk_0004	statistical	concept
+Brainstorm		0.3997	chunk_0001|chunk_0002	statistical	concept
+exploring		0.3995	chunk_0000|chunk_0001	statistical	concept
+personal		0.3988	chunk_0002	statistical	concept
+instance		0.3986	chunk_0003|chunk_0004	statistical	concept
+information		0.396	chunk_0002	statistical	concept
+conditional statements		0.3957	chunk_0009	llm	concept
+array		0.3951	chunk_0008|chunk_0009	statistical	concept
+Objective Domains Earning		0.3948	chunk_0000	statistical	concept
+analyze		0.3944	chunk_0009	statistical	concept
+Domains Earning		0.3932	chunk_0000	statistical	other
+Sharing personal		0.393	chunk_0002	statistical	concept
+.padding		0.3926	chunk_0009	llm	software
+naming		0.3925	chunk_0011	statistical	concept
+.font		0.3918	chunk_0009	llm	software
+labels		0.3915	chunk_0001|chunk_0002	statistical	concept
+declarative programming		0.3903	chunk_0008	statistical	concept
+imperative		0.3893	chunk_0007|chunk_0008	statistical	concept
+inference		0.3893	chunk_0010	statistical	concept
+knowledge		0.389	chunk_0000	statistical	concept
+configure different areas		0.388	chunk_0005	statistical	concept
+analyze and predict		0.3872	chunk_0009	statistical	concept
+arrays		0.3871	chunk_0007|chunk_0008	statistical	concept
+View		0.3868	chunk_0007|chunk_0009|chunk_0010	statistical	concept
+Wrapper to control		0.3868	chunk_0009|chunk_0010	statistical	concept
+conditional and arrange Views		0.3868	chunk_0009	statistical	concept
+errors		0.3863	chunk_0011	statistical	concept
+Debugging		0.386	chunk_0011	statistical	concept
+array properties		0.3859	chunk_0009	statistical	concept
+challenges		0.3854	chunk_0002	statistical	concept
+certification demonstrates knowledge		0.3853	chunk_0000	statistical	concept
+explicit		0.385	chunk_0010|chunk_0011	statistical	concept
+foundation		0.3849	chunk_0000	statistical	concept
+building and running		0.3848	chunk_0011	statistical	concept
+array element		0.3847	chunk_0008|chunk_0009	statistical	concept
+conditional and arrange		0.3845	chunk_0009	statistical	concept
+Calculate		0.384	chunk_0002	statistical	concept
+including		0.3832	chunk_0009	statistical	other
+Shape		0.3832	chunk_0008	statistical	software
+control		0.383	chunk_0009|chunk_0010	statistical	concept
+Slider		0.3827	chunk_0009|chunk_0010	statistical	software
+structure XCode		0.3826	chunk_0003	statistical	tool
+Language Usage		0.3822	chunk_0001|chunk_0007	statistical	concept
+impacts		0.3817	chunk_0002	statistical	other
+Property Wrapper to control		0.3813	chunk_0009|chunk_0010	statistical	software
+outcome		0.3805	chunk_0009	statistical	other
+predict		0.3804	chunk_0009	statistical	concept
+Color		0.38	chunk_0009	statistical	software
+identifier		0.38	chunk_0011	statistical	concept
+variables		0.3797	chunk_0009|chunk_0010	statistical	concept
+Certiport	the Certiport|Certiport and the Certiport	0.3794	chunk_0011	statistical	other
+Certiport	Certiport logo are registered|registered trademarks of Certiport	0.3794	chunk_0011	statistical	other
+Views using Text		0.3794	chunk_0008	statistical	software
+manipulate arrays		0.3791	chunk_0007|chunk_0008	statistical	concept
+results		0.3788	chunk_0002|chunk_0009	statistical	other
+imperative and declarative programming		0.3778	chunk_0008	statistical	concept
+flow of execution		0.3775	chunk_0009	statistical	concept
+imperative programming		0.3771	chunk_0008	llm	concept
+trademarks of Certiport		0.377	chunk_0011	statistical	other
+Create and evaluate structures		0.3769	chunk_0002	statistical	other
+running		0.3768	chunk_0011	statistical	concept
+.frame		0.3765	chunk_0009	llm	software
+Domains		0.3759	chunk_0000	statistical	concept
+arrange Views inside		0.3759	chunk_0009	statistical	software
+foregroundColor		0.3759	chunk_0009	statistical	software
+properties		0.3753	chunk_0002|chunk_0009	statistical	concept
+hierarchy produced		0.3753	chunk_0009	statistical	concept
+Language		0.375	chunk_0001|chunk_0007	statistical	concept
+Assess a visual		0.375	chunk_0002|chunk_0003	statistical	other
+mind		0.3739	chunk_0002|chunk_0003	statistical	concept
+font		0.3733	chunk_0009	statistical	software
+manipulate		0.3727	chunk_0007|chunk_0008	statistical	other
+Define methods		0.3725	chunk_0002|chunk_0003	statistical	other
+key computing		0.3724	chunk_0000	statistical	other
+run-time errors		0.3723	chunk_0011	statistical	concept
+Create Container		0.3721	chunk_0009	statistical	other
+run-time		0.3718	chunk_0011	statistical	concept
+demonstrate	’ll demonstrate knowledge|’ll demonstrate|demonstrates knowledge|demonstrates	0.3715	chunk_0000|chunk_0009	statistical	concept
+demonstrate		0.3715	chunk_0000|chunk_0009	statistical	other
+Security challenges		0.3715	chunk_0002	statistical	concept
+array methods		0.3713	chunk_0009	llm	software
+Differentiate		0.371	chunk_0004|chunk_0007|chunk_0008|chunk_0009|chunk_0010|chunk_0011	statistical	other
+ZStack		0.3709	chunk_0009	statistical	software
+type		0.3709	chunk_0010	statistical	concept
+Demonstrate how to control		0.3708	chunk_0009	statistical	other
+modify		0.3704	chunk_0008|chunk_0009	statistical	other
+view hierarchy	View hierarchy produced	0.3697	chunk_0009	statistical	concept
+View hierarchy		0.3697	chunk_0009	statistical	software
+identifier rules		0.3697	chunk_0011	statistical	concept
+Summarize	Summarize the design	0.3691	chunk_0001|chunk_0002	statistical	concept
+Create an instance		0.369	chunk_0003	statistical	concept
+impact		0.3685	chunk_0000|chunk_0001	statistical	concept
+structure		0.3677	chunk_0002|chunk_0003|chunk_0004	statistical	concept
+structure	structures|instance of a structure	0.3677	chunk_0002|chunk_0003|chunk_0004|chunk_0009	statistical	concept
+regions		0.3676	chunk_0011	statistical	concept
+evaluate		0.3673	chunk_0001|chunk_0002|chunk_0009	statistical	concept
+Explain		0.3673	chunk_0009	statistical	concept
+Write		0.3671	chunk_0001	statistical	concept
+Certiport logo		0.3668	chunk_0011	statistical	other
+padding		0.3668	chunk_0009	statistical	concept
+resizable		0.3668	chunk_0009	statistical	concept
+Continued		0.3663	chunk_0007	statistical	other
+modify an array element		0.3662	chunk_0008|chunk_0009	statistical	concept
+configure		0.366	chunk_0005	statistical	concept
+basic		0.3655	chunk_0004	statistical	concept
+syntax and run-time errors		0.3647	chunk_0011	statistical	concept
+Views	Content Views	0.3645	chunk_0008|chunk_0009	statistical	concept
+View Building		0.3645	chunk_0007	statistical	concept
+compromised		0.3644	chunk_0002	statistical	concept
+’ll		0.3642	chunk_0000	statistical	other
+initialize an array		0.3638	chunk_0008	statistical	concept
+solid foundation		0.3635	chunk_0000	statistical	concept
+Declare		0.3629	chunk_0002|chunk_0008|chunk_0009	statistical	concept
+ethical		0.3619	chunk_0002	statistical	concept
+typing Debugging		0.3615	chunk_0011	statistical	concept
+Objective Domains	Associate Objective	0.3613	chunk_0000	statistical	concept
+Objective Domains		0.3613	chunk_0000	statistical	concept
+impact of computing		0.3607	chunk_0000|chunk_0001	statistical	concept
+Calculate the results		0.3596	chunk_0002	statistical	concept
+hierarchy		0.3576	chunk_0009	statistical	concept
+socioeconomic		0.3573	chunk_0002	statistical	concept
+Security		0.3571	chunk_0002	statistical	concept
+messages		0.357	chunk_0011	statistical	concept
+call		0.3568	chunk_0001	statistical	concept
+appearance		0.3566	chunk_0010	statistical	concept
+Implement Modifiers		0.3563	chunk_0009	statistical	software
+ethical and socioeconomic		0.3558	chunk_0002	statistical	concept
+Property Wrapper		0.3554	chunk_0009|chunk_0010	statistical	software
+Create Container Views		0.3548	chunk_0009	statistical	software
+Explain the View		0.3536	chunk_0009	statistical	software
+casing building	casing building and running	0.3534	chunk_0011	statistical	other
+concepts and a solid		0.3534	chunk_0000	statistical	concept
+error messages		0.3524	chunk_0011	statistical	concept
+frame		0.3518	chunk_0009	statistical	concept
+Views inside	inside	0.3514	chunk_0009	statistical	concept
+evaluate array properties		0.3512	chunk_0009	statistical	concept
+countries and regions		0.3512	chunk_0011	statistical	concept
+TextField		0.3507	chunk_0009|chunk_0010	statistical	software
+element		0.3507	chunk_0008|chunk_0009	statistical	concept
+protected	protected and compromised|data can be protected	0.3505	chunk_0002	statistical	software
+key	knowledge of key	0.3499	chunk_0000	statistical	concept
+evaluate the execution		0.3489	chunk_0001	statistical	concept
+Apply type inference appearance		0.3482	chunk_0010	statistical	concept
+Content Views using Text		0.3479	chunk_0008	statistical	software
+SOLID	solid	0.3479	chunk_0000	statistical	concept
+knowledge of the impact		0.3479	chunk_0000	statistical	concept
+Explain the View hierarchy		0.3477	chunk_0009	statistical	concept
+modify an array		0.3468	chunk_0008|chunk_0009	statistical	concept
+imperative and declarative		0.3463	chunk_0007|chunk_0008	statistical	concept
+appearance of a View		0.3458	chunk_0010	statistical	concept
+Spacer		0.3458	chunk_0009	statistical	software
+Import		0.3438	chunk_0005	statistical	software
+Differentiate between imperative		0.3431	chunk_0007|chunk_0008	statistical	concept
+sensitive data	sensitive	0.3426	chunk_0002	statistical	concept
+flow		0.3418	chunk_0009	statistical	concept
+Legal		0.3411	chunk_0002	statistical	other
+argument		0.34	chunk_0001|chunk_0002	statistical	concept
+Property		0.3394	chunk_0009|chunk_0010	statistical	concept
+Modifiers	Modifiers including|Implement Modifiers including	0.3393	chunk_0009	statistical	software
+Container		0.3393	chunk_0009	statistical	software
+limited		0.3389	chunk_0009|chunk_0010	statistical	other
+VStack		0.3388	chunk_0009	statistical	software
+typing		0.3387	chunk_0010|chunk_0011	statistical	concept
+type inference	type inference appearance|Apply type inference	0.3384	chunk_0010	statistical	concept
+Summarize how sensitive data		0.3372	chunk_0002	statistical	other
+basic file		0.3364	chunk_0004	statistical	other
+execution		0.3361	chunk_0001|chunk_0009	statistical	concept
+rules		0.336	chunk_0011	statistical	concept
+file types		0.3357	chunk_0004	statistical	concept
+Wrapper		0.3355	chunk_0009|chunk_0010	statistical	concept
+@State Property Wrapper		0.3354	chunk_0009|chunk_0010	llm	software
+constants and variables		0.3349	chunk_0009|chunk_0010	statistical	concept
+countries		0.3346	chunk_0011	statistical	other
+explicit typing Debugging		0.3333	chunk_0011	statistical	concept
+argument labels		0.3333	chunk_0001|chunk_0002	statistical	software
+declarative		0.3331	chunk_0007|chunk_0008	statistical	concept
+evaluate array		0.3327	chunk_0009	statistical	concept
+types but not limited		0.3316	chunk_0009|chunk_0010	statistical	other
+analyze and predict loop		0.3304	chunk_0009	statistical	other
+data types		0.3288	chunk_0009|chunk_0010	statistical	concept
+casing	camel	0.3288	chunk_0011	statistical	concept
+Container Views		0.3286	chunk_0009	statistical	software
+cultures while exploring		0.3267	chunk_0000|chunk_0001	statistical	other
+Declare the properties		0.326	chunk_0002	statistical	other
+loop		0.3253	chunk_0009	statistical	concept
+constants		0.3237	chunk_0009|chunk_0010	statistical	concept
+ethical and socioeconomic impacts	legal, ethical and socioeconomic impacts|socioeconomic impacts	0.3235	chunk_0002	statistical	concept
+interpret	Interpret|interpret the outcome|Interpret error|Interpret error messages	0.3231	chunk_0009|chunk_0011	statistical	concept
+syntax errors		0.3228	chunk_0011	llm	concept
+HStack		0.322	chunk_0009	statistical	software
+parameters		0.3219	chunk_0001|chunk_0002	statistical	concept
+imported		0.3197	chunk_0004	statistical	software
+Toggle		0.3192	chunk_0009|chunk_0010	statistical	software
+evaluate constants and variables		0.3187	chunk_0009	statistical	concept
+returns		0.3169	chunk_0002	statistical	concept
+evaluate structures		0.3145	chunk_0002	statistical	concept
+syntax		0.3118	chunk_0011	statistical	concept
+Differentiate between constants		0.3104	chunk_0009|chunk_0010	statistical	concept
+society		0.31	chunk_0000|chunk_0001	statistical	concept
+basic file types	Differentiate between basic|Differentiate between basic file	0.3098	chunk_0004	statistical	concept
+loop structures	predict loop|predict loop structures	0.3093	chunk_0009	statistical	concept
+index		0.308	chunk_0008|chunk_0009	statistical	concept
+properties of a structure		0.3077	chunk_0002	statistical	concept
+Differentiate between syntax		0.3006	chunk_0011	statistical	concept
+explicit typing		0.3002	chunk_0010|chunk_0011	statistical	concept
+camel casing		0.2981	chunk_0011	statistical	concept
+State Property Wrapper	State|State Property	0.2977	chunk_0009|chunk_0010	statistical	software
+cycle		0.2967	chunk_0001	statistical	concept
+evaluate constants		0.2927	chunk_0009	statistical	concept
+cultures		0.2907	chunk_0000|chunk_0001	statistical	concept
+naming syntax		0.2874	chunk_0011	statistical	concept
+element using its index		0.2829	chunk_0008|chunk_0009	statistical	concept
+parameters and returns		0.2815	chunk_0002	statistical	concept
+trademark	registered trademarks|trademarks	0.0	chunk_0011	statistical	other
+function execution	execution of functions	0.0	chunk_0001	statistical	concept
+initialize properties	Initialize the properties	0.0	chunk_0002	statistical	concept
+conditional outcome	outcome of conditional	0.0	chunk_0009	statistical	concept
+Stack View	Stack|Stack Views	0.0	chunk_0009	statistical	software
+demonstrate knowledge of key computing	demonstrates knowledge of key|demonstrate knowledge|knowledge of key computing	0.0	chunk_0000	statistical	concept
+camelCase	camel casing building	0.0	chunk_0011	statistical	concept
+control flow	control the flow	0.0	chunk_0009	statistical	concept
+syntax and runtime	syntax and run-time	0.0	chunk_0011	statistical	concept
+economies		0.0	chunk_0000	omission_check	concept
+cultures		0.0	chunk_0000	omission_check	concept
+data types		0.0	chunk_0010	omission_check	concept
+Assess a visual design with accessibility in mind		0.0	chunk_0003	omission_check	concept
+Define methods		0.0	chunk_0003	omission_check	concept
+Create an instance of a structure		0.0	chunk_0003	omission_check	concept
+Use an instance of a structure		0.0	chunk_0003	omission_check	concept
+Differentiate between imperative and declarative programming		0.0	chunk_0008	omission_check	concept
+Declare and/or initialize an array with values		0.0	chunk_0008	omission_check	concept
+Create Content Views using Text, Image, Shape		0.0	chunk_0008	omission_check	concept
+Identify and/or modify an array element using its index		0.0	chunk_0008	omission_check	concept

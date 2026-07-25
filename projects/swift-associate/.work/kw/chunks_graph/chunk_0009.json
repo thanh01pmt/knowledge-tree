@@ -1,0 +1,601 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language for iOS, macOS, and other platforms."
+    },
+    {
+      "id": "node_2",
+      "label": "Array",
+      "type": "conceptual",
+      "definition": "A collection of elements stored at contiguous memory locations."
+    },
+    {
+      "id": "node_3",
+      "label": "Array Element",
+      "type": "conceptual",
+      "definition": "An individual item within an array."
+    },
+    {
+      "id": "node_4",
+      "label": "Index",
+      "type": "conceptual",
+      "definition": "A numerical value that identifies the position of an element in an array."
+    },
+    {
+      "id": "node_5",
+      "label": "Array Properties",
+      "type": "conceptual",
+      "definition": "Attributes of an array such as count, isEmpty, etc."
+    },
+    {
+      "id": "node_6",
+      "label": "Array Methods",
+      "type": "conceptual",
+      "definition": "Functions that can be performed on an array, such as append, remove, etc."
+    },
+    {
+      "id": "node_7",
+      "label": "Modifiers",
+      "type": "conceptual",
+      "definition": "Functions that modify the appearance or behavior of a view in SwiftUI."
+    },
+    {
+      "id": "node_8",
+      "label": "Padding",
+      "type": "conceptual",
+      "definition": "A modifier that adds space around a view."
+    },
+    {
+      "id": "node_9",
+      "label": "Background",
+      "type": "conceptual",
+      "definition": "A modifier that sets the background of a view."
+    },
+    {
+      "id": "node_10",
+      "label": "Frame",
+      "type": "conceptual",
+      "definition": "A modifier that sets the size and position of a view."
+    },
+    {
+      "id": "node_11",
+      "label": "ForegroundColor",
+      "type": "conceptual",
+      "definition": "A modifier that sets the foreground color of a view."
+    },
+    {
+      "id": "node_12",
+      "label": "Font",
+      "type": "conceptual",
+      "definition": "A modifier that sets the font of text in a view."
+    },
+    {
+      "id": "node_13",
+      "label": "Resizable",
+      "type": "conceptual",
+      "definition": "A modifier that allows an image to be resized."
+    },
+    {
+      "id": "node_14",
+      "label": "Container Views",
+      "type": "conceptual",
+      "definition": "Views that contain and arrange other views, such as HStack, VStack, ZStack."
+    },
+    {
+      "id": "node_15",
+      "label": "HStack",
+      "type": "conceptual",
+      "definition": "A container view that arranges its children in a horizontal line."
+    },
+    {
+      "id": "node_16",
+      "label": "VStack",
+      "type": "conceptual",
+      "definition": "A container view that arranges its children in a vertical line."
+    },
+    {
+      "id": "node_17",
+      "label": "ZStack",
+      "type": "conceptual",
+      "definition": "A container view that overlays its children on top of each other."
+    },
+    {
+      "id": "node_18",
+      "label": "Spacer",
+      "type": "conceptual",
+      "definition": "A flexible space that expands to fill available space in a stack."
+    },
+    {
+      "id": "node_19",
+      "label": "Stack Views",
+      "type": "conceptual",
+      "definition": "Container views that arrange child views linearly, such as HStack and VStack."
+    },
+    {
+      "id": "node_20",
+      "label": "View Hierarchy",
+      "type": "conceptual",
+      "definition": "The tree-like structure of views in a SwiftUI application."
+    },
+    {
+      "id": "node_21",
+      "label": "Interactive Views",
+      "type": "conceptual",
+      "definition": "Views that respond to user interaction, such as Button, TextField, Slider, Toggle."
+    },
+    {
+      "id": "node_22",
+      "label": "Button",
+      "type": "conceptual",
+      "definition": "A control that performs an action when tapped."
+    },
+    {
+      "id": "node_23",
+      "label": "TextField",
+      "type": "conceptual",
+      "definition": "A control that displays an editable text interface."
+    },
+    {
+      "id": "node_24",
+      "label": "Slider",
+      "type": "conceptual",
+      "definition": "A control for selecting a value from a continuous range."
+    },
+    {
+      "id": "node_25",
+      "label": "Toggle",
+      "type": "conceptual",
+      "definition": "A control that switches between on and off states."
+    },
+    {
+      "id": "node_26",
+      "label": "@State Property Wrapper",
+      "type": "conceptual",
+      "definition": "A property wrapper that manages mutable state in a SwiftUI view."
+    },
+    {
+      "id": "node_27",
+      "label": "Constants",
+      "type": "conceptual",
+      "definition": "Values that cannot be changed after declaration."
+    },
+    {
+      "id": "node_28",
+      "label": "Variables",
+      "type": "conceptual",
+      "definition": "Values that can be changed after declaration."
+    },
+    {
+      "id": "node_29",
+      "label": "Data Types",
+      "type": "conceptual",
+      "definition": "Categories of data such as Int, String, Bool, etc."
+    },
+    {
+      "id": "node_30",
+      "label": "Loop Structures",
+      "type": "conceptual",
+      "definition": "Control flow constructs that repeat a block of code, such as for-in, while."
+    },
+    {
+      "id": "node_31",
+      "label": "Conditional Statements",
+      "type": "conceptual",
+      "definition": "Control flow constructs that execute code based on conditions, such as if, switch."
+    },
+    {
+      "id": "node_32",
+      "label": "Flow of Execution",
+      "type": "conceptual",
+      "definition": "The order in which statements are executed in a program."
+    },
+    {
+      "id": "node_33",
+      "label": "Color",
+      "type": "conceptual",
+      "definition": "A type representing a color in SwiftUI."
+    },
+    {
+      "id": "node_34",
+      "label": "View",
+      "type": "conceptual",
+      "definition": "A basic building block of a user interface in SwiftUI."
+    },
+    {
+      "id": "node_35",
+      "label": "Identify",
+      "type": "action",
+      "definition": "To recognize or point out."
+    },
+    {
+      "id": "node_36",
+      "label": "Modify",
+      "type": "action",
+      "definition": "To change or alter."
+    },
+    {
+      "id": "node_37",
+      "label": "Use",
+      "type": "action",
+      "definition": "To employ for a purpose."
+    },
+    {
+      "id": "node_38",
+      "label": "Evaluate",
+      "type": "action",
+      "definition": "To assess or determine the value."
+    },
+    {
+      "id": "node_39",
+      "label": "Implement",
+      "type": "action",
+      "definition": "To put into effect or execute."
+    },
+    {
+      "id": "node_40",
+      "label": "Demonstrate",
+      "type": "action",
+      "definition": "To show or prove."
+    },
+    {
+      "id": "node_41",
+      "label": "Create",
+      "type": "action",
+      "definition": "To bring into existence."
+    },
+    {
+      "id": "node_42",
+      "label": "Analyze",
+      "type": "action",
+      "definition": "To examine in detail."
+    },
+    {
+      "id": "node_43",
+      "label": "Predict",
+      "type": "action",
+      "definition": "To forecast or estimate."
+    },
+    {
+      "id": "node_44",
+      "label": "Interpret",
+      "type": "action",
+      "definition": "To explain the meaning of."
+    },
+    {
+      "id": "node_45",
+      "label": "Declare",
+      "type": "action",
+      "definition": "To state or announce."
+    },
+    {
+      "id": "node_46",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "To distinguish between."
+    },
+    {
+      "id": "node_47",
+      "label": "Explain",
+      "type": "action",
+      "definition": "To make clear or understandable."
+    },
+    {
+      "id": "node_48",
+      "label": "Apply",
+      "type": "action",
+      "definition": "To put into practice."
+    },
+    {
+      "id": "node_49",
+      "label": "Arrange",
+      "type": "action",
+      "definition": "To put in a specific order."
+    },
+    {
+      "id": "node_50",
+      "label": "Control",
+      "type": "action",
+      "definition": "To direct or manage."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_35",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_36",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_37",
+      "target": "node_5",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_37",
+      "target": "node_6",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_38",
+      "target": "node_5",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_38",
+      "target": "node_6",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_39",
+      "target": "node_7",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_40",
+      "target": "node_32",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_50",
+      "target": "node_32",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_41",
+      "target": "node_30",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_42",
+      "target": "node_30",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_43",
+      "target": "node_30",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_41",
+      "target": "node_31",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_44",
+      "target": "node_31",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_45",
+      "target": "node_27",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_45",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_38",
+      "target": "node_27",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_38",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_46",
+      "target": "node_27",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_46",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_41",
+      "target": "node_14",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_49",
+      "target": "node_34",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_47",
+      "target": "node_20",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_41",
+      "target": "node_21",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_48",
+      "target": "node_21",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_37",
+      "target": "node_26",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_7",
+      "target": "node_8",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_7",
+      "target": "node_9",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_7",
+      "target": "node_10",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_7",
+      "target": "node_11",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_7",
+      "target": "node_12",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_7",
+      "target": "node_13",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_14",
+      "target": "node_15",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_14",
+      "target": "node_16",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_14",
+      "target": "node_17",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_14",
+      "target": "node_18",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_21",
+      "target": "node_22",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_21",
+      "target": "node_23",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_21",
+      "target": "node_24",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_21",
+      "target": "node_25",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_32",
+      "target": "node_30",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_32",
+      "target": "node_31",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_2",
+      "target": "node_3",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_3",
+      "target": "node_4",
+      "relation": "related_to"
+    },
+    {
+      "source": "node_20",
+      "target": "node_34",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_15",
+      "target": "node_19",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_16",
+      "target": "node_19",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_19",
+      "target": "node_14",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_22",
+      "target": "node_21",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_23",
+      "target": "node_21",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_24",
+      "target": "node_21",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_25",
+      "target": "node_21",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_21",
+      "target": "node_34",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_14",
+      "target": "node_34",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_18",
+      "target": "node_34",
+      "relation": "is_a"
+    },
+    {
+      "source": "node_2",
+      "target": "node_29",
+      "relation": "related_to"
+    },
+    {
+      "source": "node_33",
+      "target": "node_29",
+      "relation": "related_to"
+    },
+    {
+      "source": "node_27",
+      "target": "node_29",
+      "relation": "related_to"
+    },
+    {
+      "source": "node_28",
+      "target": "node_29",
+      "relation": "related_to"
+    }
+  ]
+}

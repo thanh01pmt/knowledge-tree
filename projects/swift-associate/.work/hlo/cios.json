@@ -1,0 +1,1046 @@
+[
+  {
+    "code": "CIO-ARRAY_OPERATIONS-ACCESS_ARRAY_ELEMENT",
+    "name": "Truy cập phần tử mảng bằng chỉ số",
+    "description_vi": "Người học có khả năng nhận diện và tái tạo mẫu truy cập phần tử mảng thông qua chỉ số (index) – sử dụng cặp ngoặc vuông và chỉ số để lấy giá trị tại vị trí xác định.",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "Factual Knowledge",
+    "parent_ulo_code": "ULO-ARRAY_OPERATIONS-01",
+    "marr_test_note": "Thử với Python (array[0]) và JavaScript (arr[0]): cả hai đều dùng cú pháp ngoặc vuông với chỉ số. Mô tả khớp với cả hai ngôn ngữ, không phụ thuộc cú pháp đặc thù."
+  },
+  {
+    "code": "CIO-ARRAY_OPERATIONS-ZERO_BASED_INDEX",
+    "name": "Hiểu chỉ số bắt đầu từ 0",
+    "description_vi": "Người học có khả năng giải thích ý nghĩa của chỉ số bắt đầu từ 0 trong mảng: phần tử đầu tiên có chỉ số 0, phần tử cuối có chỉ số (độ dài - 1), và áp dụng để xác định vị trí phần tử.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-ARRAY_OPERATIONS-02",
+    "marr_test_note": "Thử với Python (list[0] là phần tử đầu) và C (arr[0] là phần tử đầu): cả hai đều zero-based. Mô tả không gắn với cú pháp cụ thể, chỉ nói về khái niệm chỉ số."
+  },
+  {
+    "code": "CIO-ARRAY_OPERATIONS-SEQUENTIAL_ARRAY_TRAVERSAL",
+    "name": "Duyệt mảng tuần tự",
+    "description_vi": "Người học có khả năng áp dụng mẫu duyệt mảng tuần tự: lặp qua từng phần tử bằng cách tăng dần chỉ số từ 0 đến độ dài - 1, và thực hiện thao tác trên mỗi phần tử.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-ARRAY_OPERATIONS-03",
+    "marr_test_note": "Thử với Python (for i in range(len(arr)): print(arr[i])) và JavaScript (for let i=0; i<arr.length; i++): cả hai đều dùng vòng lặp với chỉ số tăng dần. Mô tả trung tính, không nhắc đến từ khóa for hay range."
+  },
+  {
+    "code": "CIO-ARRAY_OPERATIONS-MODIFY_ARRAY_ELEMENT",
+    "name": "Sửa đổi phần tử mảng",
+    "description_vi": "Người học có khả năng áp dụng mẫu sửa đổi giá trị phần tử mảng: gán giá trị mới cho phần tử tại một chỉ số xác định, có thể kết hợp với điều kiện để chỉ sửa đổi khi thỏa mãn.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-ARRAY_OPERATIONS-03",
+    "marr_test_note": "Thử với Python (arr[0] = 10) và JavaScript (arr[0] = 10): cả hai đều dùng phép gán với chỉ số. Mô tả không chứa từ khóa gán cụ thể, chỉ nói gán giá trị mới."
+  },
+  {
+    "code": "CIO-LOCAL_VIEW_STATE-LOCAL_STATE_SYNC_ROLE",
+    "name": "Vai trò của trạng thái cục bộ trong đồng bộ giao diện",
+    "description_vi": "Người học có khả năng giải thích mục đích của trạng thái cục bộ: lưu trữ dữ liệu thay đổi theo thời gian trong phạm vi một view/component, và khi dữ liệu thay đổi, giao diện tự động cập nhật tương ứng.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-LOCAL_VIEW_STATE-01",
+    "marr_test_note": "Thử với SwiftUI (@State) và React (useState): cả hai đều có khái niệm state cục bộ, khi state thay đổi thì view re-render. Mô tả không dùng tên framework hay cú pháp."
+  },
+  {
+    "code": "CIO-LOCAL_VIEW_STATE-CONTROL_UI_PROPERTIES",
+    "name": "Điều khiển thuộc tính giao diện bằng trạng thái cục bộ",
+    "description_vi": "Người học có khả năng áp dụng trạng thái cục bộ để điều khiển các thuộc tính giao diện như hiển thị/ẩn, màu sắc, nội dung văn bản – gắn giá trị state vào thuộc tính và thay đổi state để kích hoạt cập nhật.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOCAL_VIEW_STATE-02",
+    "marr_test_note": "Thử với SwiftUI (Text(showText ? Hello : ) và React ({showText && <p>Hello</p>}): cả hai đều dùng state boolean để điều khiển hiển thị. Mô tả không nhắc đến cú pháp ternary hay toán tử &&."
+  },
+  {
+    "code": "CIO-LOCAL_VIEW_STATE-UPDATE_LOCAL_STATE",
+    "name": "Cập nhật trạng thái cục bộ từ tương tác người dùng",
+    "description_vi": "Người học có khả năng áp dụng mẫu cập nhật trạng thái cục bộ khi có sự kiện từ người dùng (ví dụ: nhấn nút, nhập liệu) – gán giá trị mới cho state và giao diện tự động phản ánh thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOCAL_VIEW_STATE-02",
+    "marr_test_note": "Thử với SwiftUI (Button(action: { count += 1 })) và React (onClick={() => setCount(count+1)}): cả hai đều gán giá trị mới cho state khi có sự kiện. Mô tả không dùng tên hàm hay toán tử."
+  },
+  {
+    "code": "CIO-LOCAL_VIEW_STATE-TRACE_LOCAL_STATE_LIFECYCLE",
+    "name": "Trace local state lifecycle",
+    "description_vi": "Người học có khả năng theo dõi vòng đời của một biến trạng thái cục bộ từ lúc khởi tạo đến khi bị hủy trong một hệ thống phân cấp view.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-LOCAL_VIEW_STATE-03",
+    "marr_test_note": "Marr 2-language test: SwiftUI @State được khởi tạo khi view xuất hiện và hủy khi view biến mất; React useState được khởi tạo khi component mount và hủy khi unmount. Mô tả 'khởi tạo đến hủy' khớp cả hai, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-LOCAL_VIEW_STATE-DETERMINE_LOCAL_STATE_SCOPE",
+    "name": "Determine local state scope",
+    "description_vi": "Người học có khả năng xác định phạm vi truy cập và khả năng hiển thị của một biến trạng thái cục bộ trong các view lồng nhau.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-LOCAL_VIEW_STATE-03",
+    "marr_test_note": "Marr 2-language test: SwiftUI @State chỉ có thể truy cập trong view khai báo, không chia sẻ với view con; React useState chỉ có hiệu lực trong function component đó. Mô tả 'phạm vi truy cập trong view lồng nhau' khớp cả hai."
+  },
+  {
+    "code": "CIO-STATE_PROPERTY_WRAPPER-STATE_TRIGGERED_RERENDER",
+    "name": "Explain state-triggered re-rendering",
+    "description_vi": "Người học có khả năng giải thích cách một biến trạng thái kích hoạt việc render lại giao diện khi giá trị của nó thay đổi.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-01",
+    "marr_test_note": "Marr 2-language test: SwiftUI @State thay đổi gây re-render view; React useState thay đổi gây re-render component. Cả hai đều dùng cơ chế theo dõi thay đổi và cập nhật UI. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-STATE_PROPERTY_WRAPPER-STATE_WRAPPER_DECOUPLING",
+    "name": "Describe state wrapper decoupling role",
+    "description_vi": "Người học có khả năng mô tả vai trò của một wrapper trạng thái trong việc tách rời dữ liệu khỏi logic render của view.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-01",
+    "marr_test_note": "Marr 2-language test: SwiftUI @State tách dữ liệu khỏi view struct; React useState tách dữ liệu khỏi JSX. Cả hai đều cung cấp cơ chế quản lý trạng thái nội bộ mà không làm ô nhiễm view. Mô tả khớp."
+  },
+  {
+    "code": "CIO-STATE_PROPERTY_WRAPPER-INITIALIZE_UPDATE_MUTABLE_STATE",
+    "name": "Initialize and update mutable state",
+    "description_vi": "Người học có khả năng khởi tạo một biến trạng thái có thể thay đổi với giá trị mặc định và cập nhật nó để phản hồi tương tác người dùng.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-02",
+    "marr_test_note": "Marr 2-language test: SwiftUI @State var count = 0; Button action: count += 1. React const [count, setCount] = useState(0); onClick: setCount(count+1). Cả hai đều khởi tạo và cập nhật. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-STATE_PROPERTY_WRAPPER-BIND_STATE_UI_ELEMENT",
+    "name": "Bind state to UI element and observe changes",
+    "description_vi": "Người học có khả năng gắn một biến trạng thái vào giá trị của phần tử giao diện và theo dõi thay đổi thông qua callback.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-02",
+    "marr_test_note": "Marr 2-language test: SwiftUI TextField($text) với binding; React <input value={text} onChange={e=>setText(e.target.value)}>. Cả hai đều gắn state vào UI và dùng callback để cập nhật. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-STATE_PROPERTY_WRAPPER-OWNERSHIP_SHARING_SEMANTICS",
+    "name": "Compare ownership and sharing semantics of state wrappers",
+    "description_vi": "Người học có khả năng so sánh ngữ nghĩa sở hữu và chia sẻ giữa các wrapper quản lý trạng thái khác nhau.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-03",
+    "marr_test_note": "Marr 2-language test: SwiftUI @State (local), @Binding (shared reference), @ObservedObject (external), @StateObject (owned). React useState (local), useRef (mutable ref), useContext (shared), useReducer. Cả hai đều có khái niệm ownership và sharing. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-STATE_PROPERTY_WRAPPER-EVALUATE_APPROPRIATE_WRAPPER",
+    "name": "Evaluate appropriate wrapper based on data source and view hierarchy",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn wrapper phù hợp dựa trên nguồn dữ liệu và cấu trúc phân cấp view.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-03",
+    "marr_test_note": "Marr 2-language test: SwiftUI chọn @State cho local, @Binding cho parent-child, @ObservedObject cho external. React chọn useState cho local, useRef cho mutable ref, useContext cho shared. Cả hai đều dựa trên nguồn dữ liệu và hệ thống phân cấp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-WHILE_LOOP-CONDITION_CONTROLLED_LOOP",
+    "name": "Recognize condition-controlled loop pattern",
+    "description_vi": "Người học có khả năng nhận diện cấu trúc của một vòng lặp điều khiển bằng điều kiện, lặp lại một khối lệnh cho đến khi điều kiện boolean trở thành false.",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "Factual",
+    "parent_ulo_code": "ULO-WHILE_LOOP-01",
+    "marr_test_note": "Marr 2-language test: while (condition) { } trong C/Java/Swift; while condition: trong Python. Cả hai đều có từ khóa while, điều kiện và thân lặp. Mô tả 'cấu trúc vòng lặp điều khiển bằng điều kiện' khớp cả hai."
+  },
+  {
+    "code": "CIO-WHILE_LOOP-CONDITION_FIRST_REPETITION",
+    "name": "Condition-first repetition pattern",
+    "description_vi": "Người học có khả năng áp dụng mẫu lặp kiểm tra điều kiện trước khi thực thi khối lệnh, trong đó điều kiện được đánh giá lại sau mỗi lần lặp và vòng lặp kết thúc khi điều kiện trở thành sai.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-WHILE_LOOP-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (while condition:) và C (while(condition)). Cả hai đều dùng cấu trúc kiểm tra điều kiện trước thân lặp, không phụ thuộc cú pháp cụ thể. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-WHILE_LOOP-LOOP_TERMINATION_CONDITION",
+    "name": "Loop termination via condition falsification",
+    "description_vi": "Người học có khả năng phân tích cách một vòng lặp dừng lại khi biểu thức điều kiện chuyển từ true sang false, bao gồm các tình huống điều kiện luôn đúng dẫn đến vòng lặp vô hạn và cách tránh bằng cách thay đổi biến điều khiển trong thân lặp.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-WHILE_LOOP-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Java (while(condition){...}) và JavaScript (while(condition){...}). Cả hai đều dùng cơ chế đánh giá điều kiện trước mỗi lần lặp. Mô tả không chứa từ khóa cú pháp."
+  },
+  {
+    "code": "CIO-WHILE_LOOP-DYNAMIC_CONDITION_REPETITION",
+    "name": "Dynamic condition repetition with mutable control variable",
+    "description_vi": "Người học có khả năng áp dụng mẫu lặp sử dụng một biến điều khiển được cập nhật trong thân lặp dựa trên dữ liệu đầu vào hoặc trạng thái thay đổi, cho phép số lần lặp không xác định trước và phụ thuộc vào điều kiện động.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-WHILE_LOOP-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (while user_input != 'quit':) và C (while(scanf(...) != EOF)). Cả hai đều dùng biến thay đổi trong thân lặp để kiểm soát điều kiện. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-WHILE_LOOP-SENTINEL_CONTROLLED_REPETITION",
+    "name": "Sentinel-controlled repetition pattern",
+    "description_vi": "Người học có khả năng áp dụng mẫu lặp dùng giá trị sentinel (giá trị kết thúc đặc biệt) để dừng vòng lặp, trong đó điều kiện kiểm tra xem đầu vào có bằng sentinel hay không và thân lặp xử lý dữ liệu trước khi đọc giá trị tiếp theo.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-WHILE_LOOP-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Java (while(!input.equals('exit'))) và JavaScript (while(input !== 'quit')). Cả hai đều dùng sentinel để kiểm soát vòng lặp. Mô tả không phụ thuộc cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_TYPE_CATEGORIZATION",
+    "name": "Asset type categorization pattern",
+    "description_vi": "Người học có khả năng nhận diện và phân loại các loại tài nguyên dự án dựa trên mục đích sử dụng: tài nguyên hình ảnh (ảnh bitmap, vector), tài nguyên màu sắc (bảng màu, gradient), tài nguyên biểu tượng (icon, glyph), và tài nguyên chữ (font, typeface).",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "Factual",
+    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-01",
+    "marr_test_note": "Test 2 môi trường: Xcode (Asset Catalog) và Android Studio (res/). Cả hai đều có các thư mục riêng cho image, color, icon, font. Mô tả trung tính, không gắn tên công nghệ."
+  },
+  {
+    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_CATALOG_HIERARCHICAL",
+    "name": "Asset catalog hierarchical organization pattern",
+    "description_vi": "Người học có khả năng giải thích cách tài nguyên được tổ chức theo cấu trúc phân cấp trong một thư mục đặc biệt, nơi mỗi tài nguyên có tên duy nhất và có thể được nhóm theo loại hoặc mục đích, đồng thời tuân theo quy tắc đặt tên nhất quán để tránh xung đột.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-02",
+    "marr_test_note": "Test 2 môi trường: Xcode (Assets.xcassets) và Android (res/ với các thư mục con drawable, values). Cả hai đều dùng cấu trúc thư mục và quy tắc đặt tên. Mô tả không chứa tên IDE cụ thể."
+  },
+  {
+    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-ASSET_ADDITION_REFERENCE",
+    "name": "Asset addition and reference pattern",
+    "description_vi": "Người học có khả năng áp dụng quy trình thêm tài nguyên mới vào dự án bằng cách đặt tệp vào đúng thư mục tài nguyên, sau đó tham chiếu tài nguyên đó trong mã nguồn thông qua tên định danh (không bao gồm đường dẫn tuyệt đối) để sử dụng trong giao diện.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
+    "marr_test_note": "Test 2 môi trường: Xcode (thêm ảnh vào Assets.xcassets, dùng Image('ten')) và Android (thêm ảnh vào res/drawable, dùng @drawable/ten). Cả hai đều dùng tên định danh. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-COLOR_ASSET_DEFINITION",
+    "name": "Color asset definition and usage pattern",
+    "description_vi": "Người học có khả năng áp dụng quy trình tạo tài nguyên màu sắc bằng cách định nghĩa một bộ màu với các giá trị (RGB, hex, hoặc tên) trong hệ thống quản lý tài nguyên, sau đó tham chiếu màu đó qua tên trong mã nguồn để thiết lập màu nền, màu chữ, hoặc các thuộc tính giao diện khác.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
+    "marr_test_note": "Test 2 môi trường: Xcode (Color asset trong Assets.xcassets, dùng Color('ten')) và Android (màu trong res/values/colors.xml, dùng @color/ten). Cả hai đều dùng tên định danh. Mô tả không chứa cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-DISTINGUISH_SYNTAX_RUNTIME",
+    "name": "Phân biệt lỗi cú pháp và lỗi runtime dựa trên định nghĩa",
+    "description_vi": "Người học có khả năng nhận diện và phân biệt định nghĩa của lỗi cú pháp (sai quy tắc ngôn ngữ) và lỗi runtime (xảy ra khi chạy chương trình) từ các mô tả cho trước.",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "Factual",
+    "parent_ulo_code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-01",
+    "marr_test_note": "Marr 2-Language Test: Mô tả này có thể ánh xạ sang Python (syntax error: missing colon, runtime error: division by zero) và JavaScript (syntax error: missing parenthesis, runtime error: TypeError). Cả hai đều dùng cùng khái niệm định nghĩa, không phụ thuộc cú pháp cụ thể. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-SYNTAX_RUNTIME_CAUSES",
+    "name": "Giải thích nguyên nhân gây ra lỗi cú pháp và lỗi runtime",
+    "description_vi": "Người học có khả năng giải thích nguyên nhân hình thành lỗi cú pháp (do vi phạm cấu trúc ngôn ngữ) và lỗi runtime (do điều kiện không hợp lệ khi thực thi) bằng cách sử dụng các ví dụ cụ thể.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-02",
+    "marr_test_note": "Marr 2-Language Test: Mô tả này có thể minh họa bằng Python (IndentationError là syntax, ZeroDivisionError là runtime) và Java (missing semicolon là syntax, ArrayIndexOutOfBoundsException là runtime). Cả hai đều dùng khái niệm nguyên nhân chung. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-CLASSIFY_ERROR_DETECTION",
+    "name": "Phân loại ví dụ lỗi dựa trên thời điểm phát hiện",
+    "description_vi": "Người học có khả năng phân loại các đoạn mã lỗi thành lỗi cú pháp (phát hiện khi biên dịch/parse) hoặc lỗi runtime (phát hiện khi chạy) dựa trên thời điểm xảy ra lỗi.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-02",
+    "marr_test_note": "Marr 2-Language Test: Trong Python, lỗi thiếu dấu hai chấm là syntax (phát hiện trước khi chạy), lỗi chia cho 0 là runtime. Trong JavaScript, lỗi thiếu dấu ngoặc là syntax, lỗi truy cập thuộc tính undefined là runtime. Cả hai đều dùng tiêu chí thời điểm phát hiện. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-IDENTIFY_ERROR_TYPE",
+    "name": "Xác định loại lỗi từ mã nguồn dựa trên dấu hiệu nhận biết",
+    "description_vi": "Người học có khả năng phân tích một đoạn mã nguồn để xác định đó là lỗi cú pháp (dựa vào dấu hiệu như thiếu dấu ngoặc, sai từ khóa) hay lỗi runtime (dựa vào dấu hiệu như truy cập chỉ số ngoài phạm vi, chia cho 0).",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
+    "marr_test_note": "Marr 2-Language Test: Trong Python, dấu hiệu thiếu dấu hai chấm sau def là syntax; truy cập list index out of range là runtime. Trong Java, thiếu dấu chấm phẩy là syntax; NullPointerException là runtime. Cả hai đều dùng dấu hiệu chung. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-ANALYZE_ERROR_MESSAGES",
+    "name": "Phân tích thông báo lỗi để phân loại lỗi",
+    "description_vi": "Người học có khả năng đọc và phân tích thông báo lỗi từ trình biên dịch hoặc runtime để xác định loại lỗi (syntax error hay runtime error) dựa trên nội dung và ngữ cảnh thông báo.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
+    "marr_test_note": "Marr 2-Language Test: Thông báo lỗi syntax trong Python thường có dạng 'SyntaxError: invalid syntax' còn runtime là 'ZeroDivisionError: division by zero'. Trong JavaScript, syntax error là 'SyntaxError: Unexpected token' còn runtime là 'TypeError: Cannot read property of undefined'. Cả hai đều dùng cách phân tích thông báo. Hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-IDENTIFY_REFERENCE_SYNTAX",
+    "name": "Nhận diện cú pháp khai báo kiểu tham chiếu",
+    "description_vi": "Người học có khả năng nhận diện cú pháp khai báo biến với kiểu dữ liệu tham chiếu (ví dụ: sử dụng từ khóa tạo đối tượng, cấp phát bộ nhớ) từ các đoạn mã cho trước.",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "Factual",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-01",
+    "marr_test_note": "Marr 2-Language Test: Trong Java, khai báo kiểu tham chiếu dùng 'new' (ví dụ: String s = new String()). Trong Python, mọi biến đều là tham chiếu, nhưng khai báo đơn giản (ví dụ: s = 'hello') không có từ khóa đặc biệt. Tuy nhiên, mô tả tập trung vào nhận diện cú pháp tạo đối tượng, có thể áp dụng cho cả hai (Python dùng constructor như list()). Hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-COMPARE_REFERENCE_VALUE",
+    "name": "So sánh hành vi gán và sao chép giữa kiểu tham chiếu và kiểu giá trị",
+    "description_vi": "Người học có khả năng so sánh cách thức gán và sao chép dữ liệu: kiểu giá trị tạo bản sao độc lập, kiểu tham chiếu chia sẻ cùng một đối tượng, từ đó giải thích sự khác biệt trong kết quả khi thay đổi biến.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-02",
+    "marr_test_note": "Marr 2-Language Test: Trong JavaScript, kiểu giá trị (number, string) được sao chép, kiểu tham chiếu (object) được tham chiếu. Trong Python, int là giá trị, list là tham chiếu. Cả hai đều có hành vi tương tự. Hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-ANALYZE_REFERENCE_IMPACT",
+    "name": "Phân tích tác động của tham chiếu đến bộ nhớ và hiệu năng",
+    "description_vi": "Người học có khả năng phân tích cách kiểu tham chiếu lưu trữ địa chỉ bộ nhớ thay vì giá trị trực tiếp, dẫn đến chia sẻ dữ liệu và ảnh hưởng đến hiệu năng khi truyền tham số hoặc sao chép.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-02",
+    "marr_test_note": "Marr 2-Language Test: Trong Java, tham chiếu đến đối tượng được truyền theo giá trị (tham chiếu). Trong C#, struct là value type, class là reference type. Cả hai đều dùng khái niệm địa chỉ bộ nhớ. Hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-DECLARE_REFERENCE_NULL",
+    "name": "Khai báo biến tham chiếu với khởi tạo đối tượng",
+    "description_vi": "Người học có khả năng khai báo một biến để lưu trữ tham chiếu đến một thể hiện của kiểu tham chiếu bằng cách gọi hàm tạo và gán kết quả cho biến.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Java: MyClass obj = new MyClass(); Swift: let obj = MyClass() (class). Cả hai đều dùng pattern: gọi hàm tạo và gán cho biến. Không phụ thuộc cú pháp cụ thể (từ khóa new hay không). Hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-DECLARE_REFERENCE_NULL_2",
+    "name": "Khai báo biến tham chiếu với giá trị null hoặc nil",
+    "description_vi": "Người học có khả năng khai báo một biến tham chiếu mà chưa gán đối tượng ngay lập tức, sử dụng giá trị đặc biệt đại diện cho không có tham chiếu (null/nil) và sau đó gán đối tượng khi cần.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Java: MyClass obj = null; sau đó obj = new MyClass(); Swift: var obj: MyClass? = nil; sau đó obj = MyClass(). Pattern: khai báo biến với giá trị rỗng, sau đó gán đối tượng. Không phụ thuộc từ khóa null/nil cụ thể. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-DISTINGUISH_TIME_CONTROL",
+    "name": "Phân biệt dựa trên cơ chế kích hoạt",
+    "description_vi": "Người học có khả năng phân biệt animation ngầm định và tường minh dựa trên cách chúng được kích hoạt: ngầm định tự động kích hoạt khi trạng thái thay đổi, tường minh yêu cầu gọi một hàm hoặc khối lệnh cụ thể.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-01",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI: implicit dùng .animation(), explicit dùng withAnimation; CSS: implicit dùng transition, explicit dùng @keyframes + animation-name. Pattern: tự động vs chủ động kích hoạt. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-DISTINGUISH_TIME_CONTROL_2",
+    "name": "Phân biệt dựa trên mức độ kiểm soát thời gian và chi tiết",
+    "description_vi": "Người học có khả năng phân biệt animation ngầm định và tường minh dựa trên mức độ kiểm soát: ngầm định chỉ cho phép tùy chỉnh thời gian và hiệu ứng ở mức tổng thể, tường minh cho phép kiểm soát chi tiết từng giai đoạn (keyframe) và hành vi phức tạp.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-01",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI: implicit chỉ có .animation(.easeInOut), explicit có thể dùng withAnimation kết hợp keyframe; CSS: transition chỉ có duration/delay, animation có keyframes. Pattern: kiểm soát tổng thể vs chi tiết. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-WRAP_STATE_CHANGES",
+    "name": "Áp dụng implicit animation bằng cách gắn bộ mô tả animation vào view",
+    "description_vi": "Người học có khả năng gắn một bộ mô tả animation (ví dụ: thời gian, hiệu ứng) vào một view để tự động tạo chuyển tiếp mượt mà khi các thuộc tính của view thay đổi do trạng thái thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-02",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI: Text(...).animation(.default); CSS: div { transition: all 0.3s; }. Pattern: khai báo animation trên view, tự động kích hoạt khi thuộc tính thay đổi. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-WRAP_STATE_CHANGES_2",
+    "name": "Áp dụng implicit animation bằng cách bao bọc thay đổi trạng thái trong ngữ cảnh animation",
+    "description_vi": "Người học có khả năng bao bọc các thay đổi trạng thái trong một ngữ cảnh animation (ví dụ: khối lệnh) để tất cả các thay đổi thuộc tính phụ thuộc vào trạng thái đó đều được chuyển tiếp mượt mà.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-02",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI: withAnimation { state.toggle() } (thực chất là explicit nhưng có thể coi là implicit? Cần cẩn thận: withAnimation là explicit. Tuy nhiên, pattern bao bọc thay đổi trong một khối animation cũng có thể là implicit nếu framework tự động. Ví dụ: trong Flutter, AnimatedContainer tự động animate khi properties thay đổi. Hoặc trong CSS, thay đổi class kích hoạt transition. Pattern: thay đổi trạng thái trong một phạm vi được đánh dấu animation. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-ANALYZE_PERFORMANCE_REUSABILITY",
+    "name": "Phân tích ưu nhược điểm dựa trên mức độ kiểm soát và độ phức tạp",
+    "description_vi": "Người học có khả năng phân tích ưu điểm (dễ sử dụng, tự động) và nhược điểm (thiếu kiểm soát chi tiết) của animation ngầm định so với animation tường minh, và ngược lại, dựa trên các tiêu chí như mức độ kiểm soát, độ phức tạp khi triển khai, và khả năng tùy chỉnh.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-03",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI và CSS đều có thể áp dụng phân tích này. Pattern: so sánh dựa trên tiêu chí chung (kiểm soát, phức tạp). Không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-ANALYZE_PERFORMANCE_REUSABILITY_2",
+    "name": "Phân tích ưu nhược điểm dựa trên hiệu suất và khả năng tái sử dụng",
+    "description_vi": "Người học có khả năng phân tích ưu nhược điểm của animation ngầm định và tường minh dựa trên hiệu suất (ngầm định thường tối ưu hơn cho các thay đổi đơn giản) và khả năng tái sử dụng (tường minh dễ đóng gói thành các animation phức tạp có thể dùng lại).",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-03",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI: implicit animation dùng hệ thống tối ưu, explicit có thể tạo custom animation; CSS: transition nhẹ hơn animation. Pattern: so sánh dựa trên hiệu suất và tái sử dụng. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-EVALUATE_CUSTOMIZABILITY_UX",
+    "name": "Đánh giá lựa chọn dựa trên yêu cầu về hiệu suất và độ phức tạp",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn giữa animation ngầm định và tường minh dựa trên yêu cầu về hiệu suất (ngầm định cho thay đổi đơn giản, tường minh cho thay đổi phức tạp) và độ phức tạp của animation (số lượng thuộc tính thay đổi, cần keyframe hay không).",
+    "bloom_level": "Evaluate",
+    "knowledge_dimension": "Metacognitive Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-04",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI và CSS đều có thể áp dụng tiêu chí này. Pattern: cân nhắc hiệu suất và độ phức tạp. Không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-EVALUATE_CUSTOMIZABILITY_UX_2",
+    "name": "Đánh giá lựa chọn dựa trên khả năng tùy chỉnh và trải nghiệm người dùng",
+    "description_vi": "Người học có khả năng đánh giá và lựa chọn giữa animation ngầm định và tường minh dựa trên mức độ tùy chỉnh cần thiết (tường minh cho phép kiểm soát chi tiết từng giai đoạn) và trải nghiệm người dùng mong muốn (ngầm định cho chuyển tiếp mượt mà tự nhiên, tường minh cho hiệu ứng đặc biệt).",
+    "bloom_level": "Evaluate",
+    "knowledge_dimension": "Metacognitive Knowledge",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-04",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI và CSS đều có thể áp dụng. Pattern: cân nhắc tùy chỉnh và UX. Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-DESCRIBE_DESIRED_STATE",
+    "name": "Mô tả trạng thái mong muốn",
+    "description_vi": "Người học có khả năng mô tả nguyên lý cốt lõi của giao diện khai báo: thay vì chỉ định các bước thay đổi UI, người phát triển khai báo trạng thái mong muốn và để framework tự động đồng bộ UI với trạng thái đó.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-01",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI dùng @State và body để render lại khi state thay đổi; React dùng useState và JSX để re-render. Cả hai đều mô tả UI là hàm của state, không phải các bước thao tác DOM. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-COMPARE_DECLARATIVE_IMPERATIVE",
+    "name": "So sánh luồng điều khiển khai báo và mệnh lệnh",
+    "description_vi": "Người học có khả năng so sánh luồng điều khiển giữa mô hình khai báo (khai báo cấu trúc view, framework quyết định thời điểm cập nhật) và mô hình mệnh lệnh (lập trình viên chỉ thị từng bước thay đổi UI).",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-01",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI khai báo VStack, HStack; React khai báo div, span. UIKit yêu cầu addSubview, setFrame; jQuery yêu cầu .append(), .css(). Cả hai declarative đều dùng cấu trúc tĩnh, imperative dùng lệnh tuần tự. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-BUILD_HIERARCHICAL_VIEW",
+    "name": "Xây dựng cấu trúc view phân cấp",
+    "description_vi": "Người học có khả năng xây dựng giao diện bằng cách lồng ghép các thành phần khai báo theo hệ thống phân cấp cha-con, tạo ra cây view hoàn chỉnh.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-02",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI dùng VStack { Text(...) }; React dùng <div><span>...</span></div>. Cả hai đều lồng các thành phần để tạo bố cục. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-ATTACH_STATE_VIEW",
+    "name": "Gắn trạng thái vào view",
+    "description_vi": "Người học có khả năng gắn trạng thái cục bộ vào view thông qua cơ chế khai báo (property wrapper, hook) để UI tự động cập nhật khi trạng thái thay đổi.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-02",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI dùng @State var count = 0; React dùng const [count, setCount] = useState(0). Cả hai đều khai báo state và binding để UI phản ứng. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-ANALYZE_REUSABILITY_MAINTAINABILITY",
+    "name": "Phân tích quản lý trạng thái",
+    "description_vi": "Người học có khả năng phân tích sự khác biệt trong quản lý trạng thái: declarative có trạng thái tập trung và UI là hàm của trạng thái; imperative có trạng thái phân tán và UI được cập nhật thủ công.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-03",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI thay đổi state tự động render lại; UIKit phải gọi reloadData. React state thay đổi tự động re-render; jQuery phải thao tác DOM. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-ANALYZE_REUSABILITY_MAINTAINABILITY_2",
+    "name": "Phân tích khả năng tái sử dụng và bảo trì",
+    "description_vi": "Người học có khả năng phân tích khả năng tái sử dụng và bảo trì: declarative dễ dàng tái sử dụng component nhờ tính module; imperative thường dễ gây side-effect và khó bảo trì hơn.",
+    "bloom_level": "Analyze",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-03",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI component có thể dùng lại; React component tái sử dụng. UIKit view khó tái sử dụng hơn do phải kế thừa và delegate. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-EVALUATE_PERFORMANCE",
+    "name": "Đánh giá hiệu suất",
+    "description_vi": "Người học có khả năng đánh giá mô hình khai báo dựa trên tiêu chí hiệu suất: declarative có thể gây re-render không cần thiết nếu không tối ưu; imperative kiểm soát tốt hơn nhưng dễ dư thừa code.",
+    "bloom_level": "Evaluate",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-04",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI có thể re-render toàn bộ view; React có shouldComponentUpdate. Imperative như UIKit chỉ cập nhật phần cần. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-DECLARATIVE_UI_PARADIGM-EVALUATE_SCALABILITY",
+    "name": "Đánh giá khả năng mở rộng",
+    "description_vi": "Người học có khả năng đánh giá mô hình khai báo dựa trên khả năng mở rộng: declarative dễ mở rộng nhờ tính module và tách biệt; imperative có thể phức tạp khi quy mô lớn.",
+    "bloom_level": "Evaluate",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-04",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI dễ thêm view mới; React dễ thêm component. UIKit có thể khó maintain khi nhiều màn hình. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-UI_MODIFIERS-LIST_AND_CLASSIFY",
+    "name": "Liệt kê và phân loại UI Modifier",
+    "description_vi": "Người học có khả năng liệt kê các UI Modifier phổ biến và phân loại chúng theo chức năng: bố cục (padding, frame), kiểu dáng (background, foregroundColor, font), tương tác (onTapGesture).",
+    "bloom_level": "Remember",
+    "knowledge_dimension": "Factual",
+    "parent_ulo_code": "ULO-UI_MODIFIERS_CONCEPT-01",
+    "marr_test_note": "Test 2 ngôn ngữ: SwiftUI dùng .padding(), .background(), .font(); React Native dùng style={{padding: 10, backgroundColor: 'red', fontSize: 16}}. Cả hai đều có khái niệm modifier/style để thay đổi thuộc tính. -> Hợp lệ."
+  },
+  {
+    "code": "CIO-UI_MODIFIERS-ORDER_AFFECTS_DISPLAY",
+    "name": "Thứ tự áp dụng modifier ảnh hưởng đến kết quả hiển thị",
+    "description_vi": "Người học có khả năng giải thích rằng thứ tự áp dụng các modifier lên một view ảnh hưởng đến kết quả cuối cùng, vì mỗi modifier thay đổi layout hoặc appearance dựa trên trạng thái hiện tại của view sau modifier trước đó.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-UI_MODIFIERS_CONCEPT-02",
+    "marr_test_note": "Marr 2-Language Test: Mô tả này khớp với SwiftUI (modifier chain: .padding().background() khác .background().padding()) và Flutter (wrapping widgets: Padding( child: Container(...)) khác Container( padding: ...)). Cả hai đều có khái niệm thứ tự ảnh hưởng đến kết quả. Không chứa cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-UI_MODIFIERS-COMBINE_MODIFIERS",
+    "name": "Kết hợp các modifier để tạo hiệu ứng tổng hợp",
+    "description_vi": "Người học có khả năng giải thích cách kết hợp nhiều modifier để tạo ra hiệu ứng hiển thị tổng hợp, trong đó mỗi modifier đóng góp một phần vào thuộc tính cuối cùng của view (ví dụ: kích thước, màu sắc, khoảng cách, hình dạng).",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-UI_MODIFIERS_CONCEPT-02",
+    "marr_test_note": "Marr 2-Language Test: Mô tả này khớp với SwiftUI (nhiều modifier như .font().foregroundColor().padding()) và React Native (style object với nhiều thuộc tính như fontSize, color, padding). Cả hai đều có khái niệm kết hợp các thuộc tính. Không chứa cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-UI_MODIFIERS-SELECT_BY_LAYOUT",
+    "name": "Lựa chọn modifier dựa trên yêu cầu bố cục",
+    "description_vi": "Người học có khả năng xác định các modifier cần thiết để đạt được bố cục mong muốn bằng cách phân tích yêu cầu về khoảng cách, căn chỉnh, kích thước và sắp xếp các thành phần.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-UI_MODIFIERS_CONCEPT-03",
+    "marr_test_note": "Marr 2-Language Test: Mô tả này khớp với SwiftUI (sử dụng HStack, VStack, padding, alignment) và Flutter (sử dụng Row, Column, Padding, Align). Cả hai đều có khái niệm lựa chọn widget/modifier dựa trên bố cục. Không chứa cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-UI_MODIFIERS-ORDER_FOR_EFFECT",
+    "name": "Sắp xếp thứ tự modifier để đạt hiệu quả mong muốn",
+    "description_vi": "Người học có khả năng sắp xếp các modifier theo thứ tự logic để tránh xung đột và đạt được kết quả chính xác, dựa trên hiểu biết về cách mỗi modifier tương tác với trạng thái hiện tại của view.",
+    "bloom_level": "Apply",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-UI_MODIFIERS_CONCEPT-03",
+    "marr_test_note": "Marr 2-Language Test: Mô tả này khớp với SwiftUI (thứ tự modifier ảnh hưởng đến layout) và CSS (thứ tự khai báo thuộc tính không ảnh hưởng nhưng thứ tự lớp và specificity ảnh hưởng). Cả hai đều có khái niệm thứ tự ảnh hưởng đến kết quả. Không chứa cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-CONTROL_FLOW-DISTINGUISH_SEQUENCE_BRANCH_AND",
+    "name": "Distinguish Sequence, Branch, and Loop in Swift",
+    "description_vi": "Người học có khả năng phân biệt ba cấu trúc luồng điều khiển cơ bản trong Swift: tuần tự (các câu lệnh thực thi lần lượt), rẽ nhánh (if-else, switch) và lặp (for-in, while, repeat-while) bằng cách viế",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-CONTROL_FLOW-01",
+    "marr_test_note": "Auto-generated from CIO-CONTROL_FLOW-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-CONTROL_FLOW-DESCRIBE_EXECUTION_ORDER_OF",
+    "name": "Describe Execution Order of if-else in Swift",
+    "description_vi": "Người học có khả năng mô tả thứ tự thực thi của câu lệnh if-else trong Swift dựa trên điều kiện Boolean: nếu điều kiện đúng thì thực thi khối if, nếu sai thì chuyển sang else if hoặc else, và chỉ một ",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-CONTROL_FLOW-01",
+    "marr_test_note": "Auto-generated from CIO-CONTROL_FLOW-01-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-CONTROL_FLOW-TRACE_VARIABLE_VALUES_THROUGH",
+    "name": "Trace Variable Values Through if-else Branches in Swift",
+    "description_vi": "Người học có khả năng theo dõi (trace) sự thay đổi giá trị của các biến và thứ tự thực thi các câu lệnh qua các nhánh if-else trong Swift, ví dụ: sử dụng print() hoặc debugger để quan sát giá trị biến",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-CONTROL_FLOW-02",
+    "marr_test_note": "Auto-generated from CIO-CONTROL_FLOW-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-CONTROL_FLOW-TRACE_EXECUTION_PATH_OF",
+    "name": "Trace execution path of if-else in Swift",
+    "description_vi": "Người học có khả năng xác định đường đi thực thi của câu lệnh if-else trong Swift dựa trên giá trị đầu vào cụ thể.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-CONTROL_FLOW-02",
+    "marr_test_note": "Auto-generated from CIO-CONTROL_FLOW-02-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-CONTROL_FLOW-CHECK_EXHAUSTIVENESS_OF_SWITCH",
+    "name": "Check exhaustiveness of switch cases in Swift",
+    "description_vi": "Người học có khả năng kiểm tra tính đầy đủ của các nhánh trong câu lệnh switch Swift, đảm bảo tất cả các giá trị có thể đều được xử lý hoặc có default case.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-CONTROL_FLOW-03",
+    "marr_test_note": "Auto-generated from CIO-CONTROL_FLOW-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-CONTROL_FLOW-DETECT_INFINITE_LOOP_IN",
+    "name": "Detect infinite loop in Swift",
+    "description_vi": "Người học có khả năng phát hiện vòng lặp vô hạn trong Swift do điều kiện dừng không bao giờ đạt được, ví dụ như while true không có break hoặc điều kiện không thay đổi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-CONTROL_FLOW-03",
+    "marr_test_note": "Auto-generated from CIO-CONTROL_FLOW-03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DATA_TYPES-CLASSIFY_INTEGER_VALUES_TO",
+    "name": "Classify Integer Values to Int Type",
+    "description_vi": "Người học có khả năng phân loại giá trị số nguyên (ví dụ: 42, -7) vào kiểu Int trong Swift, sử dụng type inference hoặc khai báo tường minh let x: Int = 42, và nhận biết các biến thể Int8, Int16, Int3",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-DATA_TYPES-01",
+    "marr_test_note": "Auto-generated from CIO-DATA_TYPES-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DATA_TYPES-COMPARE_MEMORY_SIZE_OF",
+    "name": "Compare Memory Size of Integer Types",
+    "description_vi": "Người học có khả năng so sánh kích thước bộ nhớ và phạm vi giá trị giữa Int8 (1 byte, -128..127), Int16 (2 byte), Int32 (4 byte), Int64 (8 byte) trong Swift, sử dụng MemoryLayout.size(ofValue:) hoặc M",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-DATA_TYPES-02",
+    "marr_test_note": "Auto-generated from CIO-DATA_TYPES-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DATA_TYPES-CHOOSE_SWIFT_DATA_TYPE",
+    "name": "Choose Swift Data Type Based on Value Range",
+    "description_vi": "Người học có khả năng lựa chọn kiểu dữ liệu Swift (Int, Double, Bool, String) phù hợp cho một biến dựa trên phạm vi giá trị cần lưu trữ, ví dụ: sử dụng Int cho số nguyên trong phạm vi -2^63..2^63-1, D",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DATA_TYPES-03",
+    "marr_test_note": "Auto-generated from CIO-DATA_TYPES-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DATA_TYPES-CONVERT_DATA_TYPES_USING",
+    "name": "Convert Data Types Using Swift Initializers",
+    "description_vi": "Người học có khả năng thực hiện chuyển đổi kiểu dữ liệu trong Swift bằng cách sử dụng các initializer như Int(), Double(), String(), Bool(), ví dụ: chuyển đổi String sang Int bằng Int(\"123\") hoặc Doub",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DATA_TYPES-03",
+    "marr_test_note": "Auto-generated from CIO-DATA_TYPES-03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DEBUGGING-EXECUTE_SEQUENTIAL_DEBUGGING_PROCESS",
+    "name": "Execute Sequential Debugging Process on Swift Code in Xcode",
+    "description_vi": "Người học có khả năng thực hiện quy trình gỡ lỗi tuần tự gồm tái tạo lỗi, cô lập nguyên nhân, sửa lỗi và kiểm tra lại trên mã nguồn Swift sử dụng Xcode.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-DEBUGGING-01",
+    "marr_test_note": "Auto-generated from CIO-DEBUGGING-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DEBUGGING-SET_CONDITIONAL_BREAKPOINT_IN",
+    "name": "Set Conditional Breakpoint in Xcode to Inspect Swift Variable State",
+    "description_vi": "Người học có khả năng thiết lập điểm dừng có điều kiện (conditional breakpoint) trong Xcode tại vị trí nghi ngờ trong luồng thực thi Swift, với điều kiện dựa trên giá trị biến hoặc biểu thức.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-DEBUGGING-02",
+    "marr_test_note": "Auto-generated from CIO-DEBUGGING_02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DEBUGGING-USE_PRINT_WITH_LEVEL",
+    "name": "Sử dụng hàm print với tiền tố cấp độ để ghi log trong Swift",
+    "description_vi": "Người học có khả năng chèn câu lệnh `print(\"DEBUG: ...\")` hoặc `print(\"INFO: ...\")` trong mã nguồn Swift để ghi nhật ký theo dõi hành vi chương trình với các cấp độ khác nhau.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DEBUGGING-02",
+    "marr_test_note": "Auto-generated from CIO-DEBUGGING_02-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DEBUGGING-USE_STEP_INTO_AND",
+    "name": "Sử dụng lệnh Step Over trong Xcode debugger để thực thi từng dòng Swift",
+    "description_vi": "Người học có khả năng sử dụng nút Step Over (F6) trong Xcode debugger để thực thi từng dòng lệnh Swift, quan sát luồng điều khiển và giá trị biến thay đổi.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DEBUGGING-02",
+    "marr_test_note": "Auto-generated from CIO-DEBUGGING_02-03. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DEBUGGING-INSERT_PRINT_AT_MIDPOINT",
+    "name": "Chèn câu lệnh print tại điểm giữa mã Swift để loại trừ nhị phân",
+    "description_vi": "Người học có khả năng chèn câu lệnh `print(\"Checkpoint A\")` hoặc breakpoint tại vị trí chia đôi mã nguồn Swift, sau đó chạy chương trình để xác định nửa chứa lỗi, áp dụng phương pháp loại trừ nhị phân",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DEBUGGING-03",
+    "marr_test_note": "Auto-generated from CIO-DEBUGGING_03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-DEBUGGING-USE_5_WHYS_ON",
+    "name": "Đặt chuỗi câu hỏi Tại sao dựa trên log Swift để truy vết nguyên nhân gốc rễ",
+    "description_vi": "Người học có khả năng đặt liên tiếp câu hỏi 'Tại sao?' dựa trên các dòng log Swift (ví dụ: từ `print` hoặc `os_log`) để đi từ triệu chứng lỗi bề mặt đến nguyên nhân gốc rễ.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DEBUGGING-03",
+    "marr_test_note": "Auto-generated from CIO-DEBUGGING_03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-EVENT_HANDLERS_CONCEPT-IMPLEMENT_EVENT_DRIVEN_PATTERN",
+    "name": "Implement event-driven pattern in Swift using @IBAction and UIControl events",
+    "description_vi": "Người học có khả năng triển khai mô hình lập trình hướng sự kiện trong Swift bằng cách sử dụng @IBAction để kết nối giao diện người dùng với mã xử lý sự kiện từ UIControl.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-EVENT_HANDLERS_CONCEPT-01",
+    "marr_test_note": "Auto-generated from CIO-EVENT_HANDLERS_CONCEPT-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-EVENT_HANDLERS_CONCEPT-TRACE_EVENT_FLOW_FROM",
+    "name": "Trace event flow from user action to handler invocation in Swift using UIApplication and UIResponder chain",
+    "description_vi": "Người học có khả năng theo dõi luồng sự kiện từ hành động người dùng đến khi gọi hàm xử lý trong Swift bằng cách sử dụng UIApplication và chuỗi UIResponder.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-EVENT_HANDLERS_CONCEPT-01",
+    "marr_test_note": "Auto-generated from CIO-EVENT_HANDLERS_CONCEPT-01-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-EVENT_HANDLERS_CONCEPT-REGISTER_CALLBACK_TO_UIBUTTONS",
+    "name": "Register callback to UIButton's touchUpInside event in Swift using addTarget(_:action:for:)",
+    "description_vi": "Người học có khả năng gắn một hàm xử lý (callback) vào sự kiện touchUpInside của UIButton trong Swift bằng phương thức addTarget(_:action:for:).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-EVENT_HANDLERS_CONCEPT-02",
+    "marr_test_note": "Auto-generated from CIO-EVENT_HANDLERS_CONCEPT-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-EVENT_HANDLERS_CONCEPT-ANALYZE_EVENT_PROPAGATION_IN",
+    "name": "Analyze event propagation in UIKit using hitTest(_:with:) and touchesBegan(_:with:) to prevent propagation",
+    "description_vi": "Người học có khả năng phân tích cơ chế lan truyền sự kiện trong UIKit bằng cách sử dụng hitTest(_:with:) và touchesBegan(_:with:) để ngăn chặn sự kiện lan truyền qua các view con.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-EVENT_HANDLERS_CONCEPT-03",
+    "marr_test_note": "Auto-generated from CIO-EVENT_HANDLERS_CONCEPT-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-EVENT_HANDLERS_CONCEPT-HANDLE_MULTIPLE_EVENTS_TOUCHDOWN",
+    "name": "Handle multiple events (touchDown, touchUpInside) on a single UIButton in Swift using separate @IBAction methods",
+    "description_vi": "Người học có khả năng xử lý nhiều sự kiện khác nhau (touchDown, touchUpInside) trên cùng một UIButton trong Swift bằng cách tạo các phương thức @IBAction riêng biệt cho mỗi sự kiện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-EVENT_HANDLERS_CONCEPT-03",
+    "marr_test_note": "Auto-generated from CIO-EVENT_HANDLERS_CONCEPT-03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_INSTANTIATION-DESCRIBE_STRUCT_MEMBERWISE_INITIALIZATION",
+    "name": "Mô tả quy trình cấp phát bộ nhớ và khởi tạo đối tượng class trong Swift",
+    "description_vi": "Người học có khả năng mô tả tuần tự các bước: cấp phát vùng nhớ cho instance của class Swift, gọi hàm khởi tạo `init`, và giải phóng bộ nhớ qua `deinit`.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-OBJECT_INSTANTIATION-01",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_INSTANTIATION_01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_INSTANTIATION-ANALYZE_HOW_INITIALIZER_PARAMETERS",
+    "name": "Analyze How Initializer Parameters Affect Object State in Swift",
+    "description_vi": "Người học có khả năng phân tích cách các tham số truyền vào hàm tạo (init) trong Swift ảnh hưởng đến trạng thái ban đầu của đối tượng, bao gồm việc gán giá trị cho thuộc tính và xác định các giá trị m",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_INSTANTIATION-01",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_INSTANTIATION_01-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_INSTANTIATION-CALL_A_SWIFT_CLASS",
+    "name": "Call a Swift Class Initializer with Appropriate Arguments",
+    "description_vi": "Người học có khả năng sử dụng cú pháp gọi hàm tạo (init) của một lớp Swift, truyền các đối số cần thiết theo đúng thứ tự và nhãn để khởi tạo đối tượng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_INSTANTIATION-02",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_INSTANTIATION_02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_INSTANTIATION-CREATE_A_SWIFT_OBJECT",
+    "name": "Create a Swift Object Using a No-Argument Initializer",
+    "description_vi": "Người học có khả năng tạo đối tượng của một lớp Swift bằng cách gọi hàm tạo không tham số, khi lớp đó có init() được định nghĩa hoặc kế thừa.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_INSTANTIATION-02",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_INSTANTIATION_02-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_INSTANTIATION-COMPARE_DIRECT_INITIALIZATION_VIA",
+    "name": "Compare Direct Initialization via Swift Initializer vs. Static Factory Method",
+    "description_vi": "Người học có khả năng so sánh sự khác biệt giữa việc tạo đối tượng trực tiếp qua hàm tạo (init) và việc sử dụng phương thức factory tĩnh (static method) trong Swift, bao gồm khả năng kiểm soát quá trì",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_INSTANTIATION-03",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_INSTANTIATION_03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_INSTANTIATION-ANALYZE_HOW_DEPENDENCY_INJECTION",
+    "name": "Analyze How Dependency Injection in Swift Enables Object Creation Without Knowing Dependency Details",
+    "description_vi": "Người học có khả năng phân tích cách dependency injection (tiêm phụ thuộc) trong Swift cho phép tạo đối tượng mà không cần biết chi tiết khởi tạo của các dependency, thông qua việc truyền dependency t",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_INSTANTIATION-03",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_INSTANTIATION_03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-IDENTIFY_PROPERTY_AS_KEY",
+    "name": "Identify Property as Key-Value Pair Using Swift Syntax",
+    "description_vi": "Người học có khả năng sử dụng cú pháp khai báo thuộc tính trong Swift (var/let) để xác định cặp tên-giá trị trong struct hoặc class, ví dụ: struct Person { var name: String; let id: Int }.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-01",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_PROPERTIES-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-APPLY_PROPERTY_OBSERVERS_TO",
+    "name": "Apply Property Observers to Manage State Changes in Swift",
+    "description_vi": "Người học có khả năng áp dụng property observers (willSet/didSet) trong Swift để theo dõi và phản ứng khi trạng thái của stored property thay đổi, ví dụ: var score: Int = 0 { willSet { print(\"About to",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-02",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_PROPERTIES-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-ACCESS_AND_UPDATE_STORED",
+    "name": "Access and Update Stored Property via Instance in Swift",
+    "description_vi": "Người học có khả năng truy xuất và thay đổi giá trị của stored property trong Swift thông qua instance, sử dụng cú pháp dấu chấm, ví dụ: person.name = \"Alice\"; let n = person.name.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-03",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_PROPERTIES-03-1. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-DEFINE_CUSTOM_GETTER_AND",
+    "name": "Define Custom Getter and Setter for Computed Property in Swift",
+    "description_vi": "Người học có khả năng định nghĩa getter và setter tùy chỉnh trong Swift cho computed property để kiểm soát việc đọc và ghi, ví dụ: var radius: Double { get { ... } set { ... } }.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-03",
+    "marr_test_note": "Auto-generated from CIO-OBJECT_PROPERTIES-03-2. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-IDENTIFY_RETURN_STATEMENT_SYNTAX",
+    "name": "Identify Return Statement Syntax in Swift Functions",
+    "description_vi": "Người học có khả năng nhận diện cú pháp return trong Swift để kết thúc hàm và trả về giá trị, bao gồm return với giá trị, return void (hoặc không return), và implicit return cho single-expression func",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-01",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-01-1. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-DISTINGUISH_LOCAL_AND_GLOBAL",
+    "name": "Distinguish local and global variables in Swift based on declaration position",
+    "description_vi": "Người học có khả năng phân biệt biến cục bộ và biến toàn cục trong Swift dựa trên vị trí khai báo: biến khai báo bên ngoài hàm/class là toàn cục, biến khai báo bên trong hàm hoặc khối lệnh là cục bộ.",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-01",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-01-2. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-EXPLAIN_LOCAL_VARIABLE_SCOPE",
+    "name": "Explain local variable scope and return value mechanism in Swift functions",
+    "description_vi": "Người học có khả năng giải thích cách biến cục bộ trong hàm Swift chỉ tồn tại trong phạm vi hàm và giá trị trả về được sao chép ra ngoài thông qua câu lệnh return, đồng thời phân biệt giữa biến cục bộ",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-02",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-02-1. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-DESCRIBE_VARIABLE_ACCESS_RULES",
+    "name": "Describe variable access rules based on scope in Swift",
+    "description_vi": "Người học có khả năng mô tả quy tắc truy cập biến trong Swift: biến toàn cục có thể truy cập từ mọi nơi trong module, biến cục bộ chỉ truy cập được trong khối lệnh (block) nơi nó được khai báo, và biế",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-02",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-02-2. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-WRITE_A_SWIFT_FUNCTION",
+    "name": "Write a Swift function that uses local variables and returns a value",
+    "description_vi": "Người học có khả năng viết hàm Swift nhận tham số đầu vào, khai báo biến cục bộ bằng let hoặc var, thực hiện tính toán, và trả về kết quả bằng câu lệnh return, đồng thời quản lý phạm vi biến trong hàm",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-03",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-03-1. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-DESIGN_A_SWIFT_FUNCTION",
+    "name": "Design a Swift function using both global and local variables with controlled data flow",
+    "description_vi": "Người học có khả năng thiết kế hàm Swift sử dụng biến toàn cục (khai báo ngoài hàm) để lưu trạng thái và biến cục bộ để tính toán tạm thời, trả về kết quả qua return, đồng thời kiểm soát việc thay đổi",
+    "bloom_level": "Understand",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-03",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-03-2. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-RETURN_VALUES_AND_SCOPE-USE_RETURN_VALUE_AS",
+    "name": "Use Return Value as Direct Argument in Swift",
+    "description_vi": "Người học có khả năng sử dụng giá trị trả về từ một hàm Swift làm đối số trực tiếp cho một hàm khác, đồng thời quản lý phạm vi của biến trung gian (nếu có) bằng cách sử dụng hằng số hoặc biến cục bộ t",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-RETURN_VALUES_AND_SCOPE-03",
+    "marr_test_note": "Auto-generated from CIO-RETURN_VALUES_AND_SCOPE-03-3. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-SECURITY_CHALLENGES-CLASSIFY_SECURITY_CHALLENGES_IN",
+    "name": "Classify security challenges in Swift apps by origin (network, input, code)",
+    "description_vi": "Người học có khả năng phân loại các thách thức bảo mật trong ứng dụng Swift dựa trên nguồn gốc: tấn công mạng (man-in-the-middle), lỗ hổng đầu vào (SQL injection qua Swift), và lỗ hổng code (race cond",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-SECURITY_CHALLENGES-01",
+    "marr_test_note": "Auto-generated from CIO-SECURITY_CHALLENGES-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-SECURITY_CHALLENGES-USE_SWIFT_SPECIFIC_CHECKLIST",
+    "name": "Use Swift-specific checklist to identify SQL injection in Swift code",
+    "description_vi": "Người học có khả năng sử dụng danh sách dấu hiệu nhận biết (ví dụ: sử dụng chuỗi nội suy trong câu lệnh SQL, thiếu parameterized queries) để xác định lỗ hổng SQL injection trong code Swift sử dụng SQL",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-SECURITY_CHALLENGES-01",
+    "marr_test_note": "Auto-generated from CIO-SECURITY_CHALLENGES-01-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-SECURITY_CHALLENGES-ANALYZE_IMPACT_OF_SWIFT",
+    "name": "Analyze impact of Swift data leakage on confidentiality and integrity",
+    "description_vi": "Người học có khả năng phân tích cách một thách thức bảo mật (rò rỉ dữ liệu qua UserDefaults không mã hóa) trong ứng dụng Swift ảnh hưởng đến tính bảo mật (confidentiality) và tính toàn vẹn (integrity)",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-SECURITY_CHALLENGES-02",
+    "marr_test_note": "Auto-generated from CIO-SECURITY_CHALLENGES-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-SECURITY_CHALLENGES-EVALUATE_SEVERITY_OF_SECURITY",
+    "name": "Evaluate Severity of Security Impact Using Predefined Criteria in Swift",
+    "description_vi": "Người học có khả năng đánh giá mức độ nghiêm trọng của tác động từ một thách thức bảo mật trong ứng dụng Swift dựa trên các tiêu chí định trước như mức độ ảnh hưởng đến dữ liệu, khả năng khai thác, và",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-SECURITY_CHALLENGES-02",
+    "marr_test_note": "Auto-generated from CIO-SECURITY_CHALLENGES-02-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-SECURITY_CHALLENGES-APPLY_5_WHYS_TECHNIQUE",
+    "name": "Apply 5 Whys Technique to Identify Root Cause of Swift Security Incident",
+    "description_vi": "Người học có khả năng áp dụng kỹ thuật 5 Whys để truy vết nguyên nhân gốc rễ của một sự cố bảo mật xảy ra trong ứng dụng Swift, từ đó xác định điểm yếu trong code.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-SECURITY_CHALLENGES-03",
+    "marr_test_note": "Auto-generated from CIO-SECURITY_CHALLENGES-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-SECURITY_CHALLENGES-CONSTRUCT_CAUSE_EFFECT_CHAIN",
+    "name": "Construct Cause-Effect Chain from Swift Security Incident",
+    "description_vi": "Người học có khả năng xây dựng chuỗi nguyên nhân-hậu quả từ một sự cố bảo mật thực tế trong ứng dụng Swift, xác định các bước trung gian và điểm quyết định dẫn đến hậu quả.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-SECURITY_CHALLENGES-03",
+    "marr_test_note": "Auto-generated from CIO-SECURITY_CHALLENGES-03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-TYPE_SYSTEM-CLASSIFY_SWIFT_DATA_TYPES",
+    "name": "Classify Swift data types by storage and range",
+    "description_vi": "Người học có khả năng phân loại các kiểu dữ liệu cơ bản trong Swift (Int, Double, String, Bool) dựa trên đặc điểm lưu trữ (kích thước bộ nhớ, có dấu/không dấu) và phạm vi giá trị.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-TYPE_SYSTEM-01",
+    "marr_test_note": "Auto-generated from CIO-TYPE_SYSTEM-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-TYPE_SYSTEM-IDENTIFY_STATIC_TYPING_IN",
+    "name": "Identify static typing in Swift via type annotation and inference",
+    "description_vi": "Người học có khả năng nhận diện đặc điểm kiểu tĩnh trong Swift khi sử dụng type annotation (let x: Int) và type inference (let x = 5), biết rằng kiểu được kiểm tra tại thời điểm biên dịch.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-TYPE_SYSTEM-01",
+    "marr_test_note": "Auto-generated from CIO-TYPE_SYSTEM-01-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-TYPE_SYSTEM-ANALYZE_CONTRAST_IN_SWIFTUI",
+    "name": "Phân tích quá trình kiểm tra kiểu tĩnh trong Swift",
+    "description_vi": "Người học có khả năng phân tích cách Swift thực hiện kiểm tra kiểu tĩnh tại thời điểm biên dịch, bao gồm việc xác định các lỗi kiểu như type mismatch, missing conformance, và sử dụng type inference.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-TYPE_SYSTEM-02",
+    "marr_test_note": "Auto-generated from CIO-TYPE_SYSTEM-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-TYPE_SYSTEM-APPLY_SWIFT_TYPE_INFERENCE",
+    "name": "Áp dụng suy luận kiểu Swift để xác định kiểu biểu thức",
+    "description_vi": "Người học có khả năng áp dụng cơ chế suy luận kiểu của Swift để xác định kiểu của một biểu thức dựa trên kiểu của các toán hạng và ngữ cảnh, ví dụ: let x = 42 suy ra Int.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-TYPE_SYSTEM-02",
+    "marr_test_note": "Auto-generated from CIO-TYPE_SYSTEM-02-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-TYPE_SYSTEM-ANALYZE_CONTRAST_IN_SWIFTUI_2",
+    "name": "Phân tích thông báo lỗi kiểu Swift để tìm nguyên nhân",
+    "description_vi": "Người học có khả năng phân tích thông báo lỗi kiểu do Swift phát ra, xác định vị trí và kiểu dữ liệu không tương thích, từ đó tìm ra nguyên nhân gốc rễ như sai kiểu, thiếu conformance, hoặc lỗi option",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-TYPE_SYSTEM-03",
+    "marr_test_note": "Auto-generated from CIO-TYPE_SYSTEM-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-TYPE_SYSTEM-SIMULATE_SWIFT_TYPE_FLOW",
+    "name": "Mô phỏng luồng kiểu Swift để phát hiện lỗi",
+    "description_vi": "Người học có khả năng mô phỏng luồng kiểu qua các phép gán và gọi hàm trong Swift, ghi nhận kiểu đầu vào và đầu ra để xác định vị trí xảy ra lỗi kiểu.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-TYPE_SYSTEM-03",
+    "marr_test_note": "Auto-generated from CIO-TYPE_SYSTEM-03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VIEW_CONCEPT-CLASSIFY_SWIFTUI_VIEW_COMPONENTS",
+    "name": "Classify SwiftUI View Components",
+    "description_vi": "Người học có khả năng phân loại các thành phần giao diện trong SwiftUI dựa trên tiêu chí view, ví dụ: Text, Image, Button là view cơ bản; VStack, HStack, ZStack là container view; sử dụng protocol Vie",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VIEW_CONCEPT-01",
+    "marr_test_note": "Auto-generated from CIO-VIEW_CONCEPT-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VIEW_CONCEPT-ANALYZE_TAP_INTERACTION_FLOW",
+    "name": "Analyze Tap Interaction Flow in SwiftUI",
+    "description_vi": "Người học có khả năng phân tích luồng tương tác khi người dùng chạm vào Button trong SwiftUI: từ sự kiện tap, hệ thống gọi closure được gán qua tham số action của Button, cập nhật trạng thái @State nế",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VIEW_CONCEPT-02",
+    "marr_test_note": "Auto-generated from CIO-VIEW_CONCEPT-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VIEW_CONCEPT-MODEL_VIEW_AS_SWIFTUI",
+    "name": "Model View as SwiftUI Struct",
+    "description_vi": "Người học có khả năng mô hình hóa một view trong SwiftUI bằng cách định nghĩa struct tuân thủ protocol View, khai báo các thuộc tính @State, @Binding, @ObservedObject, và triển khai computed property ",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VIEW_CONCEPT-03",
+    "marr_test_note": "Auto-generated from CIO-VIEW_CONCEPT-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-ANALYZE_CONTRAST_IN_SWIFTUI",
+    "name": "Phân tích tương phản trong giao diện SwiftUI",
+    "description_vi": "Người học có khả năng phân tích tác động của nguyên tắc tương phản (màu sắc, kích thước, hình dạng) đến khả năng đọc và thu hút sự chú ý trong giao diện người dùng được xây dựng bằng SwiftUI.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-01",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-01-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-APPLY_SYMMETRIC_BALANCE_IN",
+    "name": "Apply symmetric balance in SwiftUI layout",
+    "description_vi": "Người học có khả năng sử dụng các modifier SwiftUI như .frame, .padding, .offset để tạo bố cục cân bằng đối xứng, phân bố trọng lượng thị giác đồng đều giữa các thành phần.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-01",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-01-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-USE_GOLDEN_RATIO_GRID",
+    "name": "Use golden ratio grid in SwiftUI with LazyVGrid",
+    "description_vi": "Người học có khả năng tạo bố cục lưới trong SwiftUI bằng cách sử dụng LazyVGrid với các cột có kích thước theo tỷ lệ vàng (1:1.618) để đạt được sự hài hòa thị giác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-02",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-02-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-GROUP_RELATED_ELEMENTS_IN",
+    "name": "Group related elements in SwiftUI using containers and spacing",
+    "description_vi": "Người học có khả năng sử dụng SwiftUI Group, VStack, HStack với spacing phù hợp để nhóm các thành phần giao diện có cùng chức năng hoặc nội dung, áp dụng nguyên tắc gần nhau.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-02",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-02-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-ANALYZE_COLOR_PALETTE_PSYCHOLOGY",
+    "name": "Analyze color palette psychology in SwiftUI",
+    "description_vi": "Người học có khả năng phân tích bảng màu được định nghĩa bằng SwiftUI Color dựa trên ý nghĩa tâm lý và văn hóa, đánh giá hiệu quả truyền tải thông điệp của từng màu trong bố cục.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-03",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-03-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-EVALUATE_WHITESPACE_IMPACT_ON",
+    "name": "Evaluate whitespace impact on readability in SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá hiệu quả của khoảng trắng trong bố cục SwiftUI bằng cách đo lường khoảng cách giữa các khối nội dung, mật độ thông tin, và tác động đến khả năng đọc và tập trung.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-03",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-03-02. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-APPLY_VISUAL_EVALUATION_CRITERIA",
+    "name": "Apply visual evaluation criteria to analyze SwiftUI layout",
+    "description_vi": "Người học có khả năng áp dụng các tiêu chí đánh giá trực quan (cân bằng, tương phản, nhất quán) để phân tích bố cục SwiftUI trong ứng dụng iOS.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-04",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-04-01. Verify Marr 2-language test independently."
+  },
+  {
+    "code": "CIO-VISUAL_DESIGN-COMPARE_SWIFTUI_DESIGN_AGAINST",
+    "name": "Compare SwiftUI design against proximity principle",
+    "description_vi": "Người học có khả năng so sánh thiết kế giao diện SwiftUI với nguyên tắc thiết kế proximity (gần nhau) để xác định điểm mạnh và điểm yếu trong việc nhóm các thành phần liên quan.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_ulo_code": "ULO-VISUAL_DESIGN-04",
+    "marr_test_note": "Auto-generated from CIO-VISUAL_DESIGN-04-02. Verify Marr 2-language test independently."
+  }
+]

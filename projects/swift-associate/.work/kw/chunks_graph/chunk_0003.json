@@ -1,0 +1,128 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Assess",
+      "type": "action",
+      "definition": "To evaluate or judge the quality or importance of something."
+    },
+    {
+      "id": "node_2",
+      "label": "visual design",
+      "type": "conceptual",
+      "definition": "The aesthetic and functional design of a user interface, including layout, colors, and typography."
+    },
+    {
+      "id": "node_3",
+      "label": "accessibility",
+      "type": "conceptual",
+      "definition": "Design principles and practices that ensure usability for people with disabilities."
+    },
+    {
+      "id": "node_4",
+      "label": "Define",
+      "type": "action",
+      "definition": "To state or describe exactly the nature, scope, or meaning of something."
+    },
+    {
+      "id": "node_5",
+      "label": "methods",
+      "type": "conceptual",
+      "definition": "Functions that are defined within a type (e.g., a structure or class) in Swift."
+    },
+    {
+      "id": "node_6",
+      "label": "Create",
+      "type": "action",
+      "definition": "To bring something into existence, such as an instance of a type."
+    },
+    {
+      "id": "node_7",
+      "label": "instance of a structure",
+      "type": "conceptual",
+      "definition": "A specific object created from a structure type, containing its own set of stored properties."
+    },
+    {
+      "id": "node_8",
+      "label": "XCode Project Navigation",
+      "type": "factual",
+      "definition": "The navigation pane in Xcode used to browse and manage project files and resources."
+    },
+    {
+      "id": "node_9",
+      "label": "Use",
+      "type": "action",
+      "definition": "To employ or utilize something for a specific purpose."
+    },
+    {
+      "id": "node_10",
+      "label": "Swift Language Usage",
+      "type": "conceptual",
+      "definition": "The practical application of Swift programming language features, syntax, and best practices."
+    },
+    {
+      "id": "node_11",
+      "label": "Planning and Design",
+      "type": "procedural",
+      "definition": "The process of planning and designing software solutions, including requirements analysis and architecture."
+    },
+    {
+      "id": "node_12",
+      "label": "Structure",
+      "type": "conceptual",
+      "definition": "A Swift value type that can encapsulate properties and methods, used to model data."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_1",
+      "target": "node_2",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_1",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_4",
+      "target": "node_5",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_6",
+      "target": "node_7",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_9",
+      "target": "node_7",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_11",
+      "target": "node_10",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_10",
+      "target": "node_12",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_10",
+      "target": "node_5",
+      "relation": "has_part"
+    },
+    {
+      "source": "node_12",
+      "target": "node_7",
+      "relation": "has_instance"
+    },
+    {
+      "source": "node_12",
+      "target": "node_5",
+      "relation": "has_part"
+    }
+  ]
+}

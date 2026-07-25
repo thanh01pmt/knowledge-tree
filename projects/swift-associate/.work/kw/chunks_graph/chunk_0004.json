@@ -1,0 +1,111 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Use",
+      "type": "action",
+      "definition": "To employ or utilize something."
+    },
+    {
+      "id": "node_2",
+      "label": "instance",
+      "type": "conceptual",
+      "definition": "A specific occurrence of a structure or class."
+    },
+    {
+      "id": "node_3",
+      "label": "structure",
+      "type": "conceptual",
+      "definition": "A Swift structure type, a value type."
+    },
+    {
+      "id": "node_4",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "To distinguish between different items."
+    },
+    {
+      "id": "node_5",
+      "label": "basic file types",
+      "type": "conceptual",
+      "definition": "Common file types used in Swift projects, such as .swift, .xib, .storyboard."
+    },
+    {
+      "id": "node_6",
+      "label": "asset",
+      "type": "conceptual",
+      "definition": "A resource file in Xcode, such as images, sounds, or data."
+    },
+    {
+      "id": "node_7",
+      "label": "import",
+      "type": "action",
+      "definition": "To bring an asset into the project."
+    },
+    {
+      "id": "node_8",
+      "label": "recognize",
+      "type": "action",
+      "definition": "To identify or understand something."
+    },
+    {
+      "id": "node_9",
+      "label": "available assets",
+      "type": "conceptual",
+      "definition": "Assets that are present and can be used in the project."
+    },
+    {
+      "id": "node_10",
+      "label": "project",
+      "type": "conceptual",
+      "definition": "An Xcode project containing source files and resources."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_1",
+      "target": "node_2",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_1",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_4",
+      "target": "node_5",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_7",
+      "target": "node_6",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_9",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_1",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_10",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_1",
+      "target": "node_6",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_1",
+      "target": "node_10",
+      "relation": "acts_on"
+    }
+  ]
+}

@@ -1,16 +1,43 @@
 code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
-USER_CENTERED_DESIGN	User-Centered Design Process	Hiểu quy trình thiết kế lấy người dùng làm trung tâm, nhấn mạnh việc thấu hiểu và đáp ứng nhu cầu của người dùng ở mọi giai đoạn.	USER_RESEARCH	UCD, user-centered, design thinking	HCI	"{""icon"": ""user-check""}"
-DIGITAL_IDENTITY	Digital Identity Management	Hiểu khái niệm về danh tính số và cách quản lý hình ảnh cá nhân và chuyên nghiệp trên các nền tảng trực tuyến.	PRIVACY_SETTINGS	digital identity, online profile, reputation	SEP	"{""icon"": ""id-card""}"
-PRIMITIVE_TYPE_DECLARATION	Declaring Primitive Types	Nắm vững cú pháp khai báo biến với các kiểu dữ liệu nguyên thủy (int, bool, float) trong một ngôn ngữ lập trình cụ thể.	PRIMITIVE_TYPES	declaration, primitive types, int, boolean	SDF	"{""icon"": ""tag""}"
-FOR_LOOP	For Loop	Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.	ITERATION_LOOPS	for loop, iteration, looping, repetition	SDF	"{""icon"": ""redo""}"
-SYNTAX_VS_RUNTIME_ERRORS	Syntax vs Runtime Errors	Phân biệt các loại lỗi trong quá trình dev.	ERROR_MESSAGES, DEBUGGING_TECHNIQUES	error		
-TWO_WAY_BINDING	Two-Way Data Binding	Sử dụng cơ chế như @Binding (ký hiệu $) để tạo một liên kết tham chiếu hai chiều, cho phép một View con vừa đọc vừa ghi vào trạng thái của View cha.	DATA_BINDING	binding, @Binding, two-way binding	HCI, SDF	"{""icon"": ""link""}"
+VIEW_CONCEPT	Khái Niệm View	Đơn vị cơ bản xây dựng giao diện người dùng, đại diện cho một phần tử trên màn hình.	UI_CONTROLS	view, building block, user interface		{}
+DATA_TYPES	Kiểu Dữ Liệu	Các loại dữ liệu cơ bản như số nguyên, chuỗi, logic, và cách khai báo kiểu tường minh hoặc suy luận kiểu.	PRIMITIVE_TYPES	Int, String, Bool, data types, explicit typing, type inference		{}
+CONTROL_FLOW	Luồng Điều Khiển	Thứ tự thực thi các câu lệnh trong chương trình, bao gồm rẽ nhánh và lặp.	CONDITIONAL_LOGIC	flow of execution, control flow, execution order		{}
+TYPE_SYSTEM	Hệ Thống Kiểu	Cơ chế xác định và kiểm tra kiểu dữ liệu trong ngôn ngữ lập trình, bao gồm suy luận kiểu và khai báo tường minh.	PRIMITIVE_TYPES	type inference, explicit typing, type system, static typing		{}
+VISUAL_DESIGN	Thiết Kế Trực Quan	Thiết kế thẩm mỹ và chức năng của giao diện người dùng, bao gồm bố cục, màu sắc và kiểu chữ.	IDE_NAVIGATION	visual design, layout, colors, typography		{}
+SECURITY_CHALLENGES	Thách Thức Bảo Mật	Các vấn đề liên quan đến bảo vệ dữ liệu và hệ thống khỏi các mối đe dọa.	IDE_NAVIGATION	security, data protection, threats		{}
+DEBUGGING	Gỡ Lỗi	Quá trình xác định và loại bỏ lỗi khỏi phần mềm.	DEBUGGING_TECHNIQUES	debugging, error removal, troubleshooting		{}
+OBJECT_INSTANTIATION	Object Instantiation	Hiểu quá trình tạo một đối tượng (thể hiện/instance) từ một lớp bằng cách sử dụng hàm khởi tạo (constructor).	IDE_NAVIGATION	object, instance, constructor, new, structure, stored properties		{}
+EVENT_HANDLERS_CONCEPT	Events and Event Handling	Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).	IDE_NAVIGATION	events, event handler, listener, callback, actions, operations		{}
+OBJECT_PROPERTIES	Object Properties/Attributes	Hiểu rằng các đối tượng trong một môi trường lập trình có các thuộc tính (properties) có thể truy cập và thay đổi được (ví dụ: object.x, object.color).	IDE_NAVIGATION	properties, attributes, state, object, variables, type		{}
+SYNTAX_ERRORS	Syntax Errors	Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.	DEBUGGING_TECHNIQUES	syntax error, compiler error, parsing error, grammar rules		{}
+RUNTIME_ERRORS	Runtime Errors	Nhận biết các lỗi xảy ra trong quá trình chương trình đang chạy, ví dụ như chia cho zero hoặc truy cập vào một phần tử không tồn tại của mảng.	DEBUGGING_TECHNIQUES	runtime error, exception, crash, execution		{}
+ERROR_MESSAGES_CONCEPT	Interpreting Error Messages	Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.	DEBUGGING_TECHNIQUES	error handling, exceptions, debugging, log analysis, compiler, runtime, indicate		{}
+RETURN_VALUES_AND_SCOPE	Return Values and Scope	Hiểu cách một hàm trả về giá trị và phạm vi của biến.	IDE_NAVIGATION	return values, scope, outcomes, calculations		{}
+ARRAY_OPERATIONS	Array Operations	Thực hiện các thao tác cơ bản trên mảng: truy cập phần tử qua chỉ số (index), lấy độ dài, và duyệt qua các phần tử.	ARRAYS	array, index, access, iteration	SDF	"{""icon"": ""th""}"
+LOCAL_VIEW_STATE	Local View State	Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.	STATE_MANAGEMENT	state, @State, local state, ephemeral state	HCI, SDF	"{""icon"": ""dot-circle""}"
 STATE_PROPERTY_WRAPPER	State Property Wrapper	Theo dõi trạng thái bằng property wrapper.	STATE_MANAGEMENT	state		
-REFERENCE_TYPE_DECLARATION	Declaring Reference Types	Nắm vững cú pháp khai báo biến với các kiểu dữ liệu tham chiếu (String, Array, Object) và hiểu cách chúng được lưu trữ trong bộ nhớ.	REFERENCE_TYPES	declaration, reference types, string, object	SDF	"{""icon"": ""link""}"
-IF_ELSE_STATEMENT	If-Else Statement	Nắm vững cú pháp và logic của câu lệnh if-else để thực hiện một trong hai khối mã dựa trên một điều kiện logic.	CONDITIONAL_LOGIC	if-else, conditional statement, selection	SDF	"{""icon"": ""code-branch""}"
 WHILE_LOOP	While Loop	Nắm vững cú pháp và cách sử dụng vòng lặp while để lặp lại một khối mã khi một điều kiện cho trước vẫn còn đúng.	ITERATION_LOOPS	while loop, iteration, looping, condition	SDF	"{""icon"": ""sync""}"
 PROJECT_ASSETS_MANAGEMENT	Project Assets Management	Quản lý tài nguyên hình ảnh, màu sắc trong IDE.	IDE_NAVIGATION	assets		
-LOCAL_VIEW_STATE	Local View State	Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.	STATE_MANAGEMENT	state, @State, local state, ephemeral state	HCI, SDF	"{""icon"": ""dot-circle""}"
-ARRAY_OPERATIONS	Array Operations	Thực hiện các thao tác cơ bản trên mảng: truy cập phần tử qua chỉ số (index), lấy độ dài, và duyệt qua các phần tử.	ARRAYS	array, index, access, iteration	SDF	"{""icon"": ""th""}"
-SWITCH_CASE	Switch-Case Statement	Sử dụng câu lệnh switch để lựa chọn thực thi một trong nhiều khối mã dựa trên giá trị của một biến hoặc biểu thức.	CONDITIONAL_LOGIC	switch-case, selection, multi-way branching	SDF	"{""icon"": ""list-ul""}"
+SYNTAX_VS_RUNTIME_ERRORS	Syntax vs Runtime Errors	Phân biệt các loại lỗi trong quá trình dev.	ERROR_MESSAGES,DEBUGGING_TECHNIQUES	error		
+REFERENCE_TYPE_DECLARATION	Declaring Reference Types	Nắm vững cú pháp khai báo biến với các kiểu dữ liệu tham chiếu (String, Array, Object) và hiểu cách chúng được lưu trữ trong bộ nhớ.	REFERENCE_TYPES	declaration, reference types, string, object	SDF	"{""icon"": ""link""}"
+IMPLICIT_EXPLICIT_ANIMATION	Implicit vs. Explicit Animation	Phân biệt và áp dụng hiệu ứng chuyển động ngầm định (gắn vào View) và tường minh (kích hoạt tại một thời điểm cụ thể).	UI_ANIMATION	implicit, explicit, animation, withAnimation	GIT, HCI	"{""icon"": ""magic""}"
 DECLARATIVE_UI_PARADIGM	Declarative UI Paradigm	Xây dựng giao diện kiểu khai báo.	UI_CONTROLS	declarative		
+UI_MODIFIERS_CONCEPT	UI Modifiers	Áp dụng các hàm thay đổi giao diện.	UI_MODIFIERS	modifier		
+DESIGN_CYCLE	Chu Kỳ Thiết Kế	Các bước lặp trong quá trình thiết kế: động não, lập kế hoạch, tạo mẫu, thử nghiệm và đánh giá.	USER_RESEARCH	design cycle, prototype, brainstorm, iteration		{}
+SENSITIVE_DATA	Dữ Liệu Nhạy Cảm	Thông tin cá nhân và bí mật cần được bảo vệ theo yêu cầu pháp lý và đạo đức.	PRIVACY_SETTINGS	sensitive data, privacy, personal information, protection		{}
+ACCESSIBILITY	Khả Năng Tiếp Cận	Thiết kế và triển khai giao diện có thể sử dụng được bởi người dùng khuyết tật.	UI_CONTROLS	accessibility, a11y, inclusive design, VoiceOver		{}
+IMPERATIVE_PROGRAMMING	Lập Trình Mệnh Lệnh	Phong cách lập trình dựa trên chuỗi câu lệnh mô tả cách thực hiện công việc.	CONDITIONAL_LOGIC	imperative programming, state, control flow, mutable		{}
+FUNCTIONS_AND_PROCEDURES	Hàm và Thủ Tục	Đơn vị tái sử dụng mã nguồn với tham số đầu vào, giá trị trả về và phạm vi cục bộ.	FIRST_CLASS_FUNCTIONS	function, procedure, parameter, return value, scope		{}
+OPERATORS	Toán Tử	Ký hiệu thực hiện phép tính số học, so sánh và logic trên các toán hạng.	PRIMITIVE_TYPES	operator, arithmetic, comparison, logical, expression		{}
+STRUCTURE_TYPE	Kiểu Cấu Trúc	Kiểu dữ liệu tổng hợp nhóm các thuộc tính liên quan, được truyền theo giá trị.	REFERENCE_TYPES	struct, structure type, value type, properties		{}
+ARRAYS	Mảng	Cấu trúc dữ liệu tuần tự lưu nhiều phần tử cùng kiểu, truy cập qua chỉ số.	ARRAYS	array, index, element, sequential, collection		{}
+LOOP_STRUCTURES	Cấu Trúc Vòng Lặp	Cú pháp điều khiển lặp: for-in, while, repeat-while với điều kiện dừng.	ITERATION_LOOPS	loop, for-in, while, iteration, loop termination		{}
+CONDITIONAL_STATEMENTS	Câu Lệnh Điều Kiện	Cú pháp rẽ nhánh if-else và switch để kiểm tra điều kiện và thực thi nhánh phù hợp.	CONDITIONAL_LOGIC	if, else, switch, condition, branch, conditional		{}
+VARIABLES_AND_CONSTANTS	Biến và Hằng	Khai báo và sử dụng biến (var) và hằng (let) để lưu trữ giá trị trong bộ nhớ.	PRIMITIVE_TYPES	variable, constant, var, let, declaration, assignment		{}
+NAMING_CONVENTIONS	Quy Ước Đặt Tên	Chuẩn đặt tên cho biến, hàm, kiểu: camelCase, PascalCase và tính mô tả.	IDE_NAVIGATION	naming convention, camelCase, PascalCase, readable code		{}
+CONTAINER_VIEWS	Container View	View tổng hợp chứa các view con và kiểm soát bố cục (VStack, HStack, ZStack, List).	UI_CONTROLS	container view, VStack, HStack, ZStack, List, layout		{}
+VIEW_HIERARCHY	Phân Cấp View	Cấu trúc cây của các view lồng nhau xác định thứ tự render và truyền sự kiện.	UI_CONTROLS	view hierarchy, parent view, child view, tree, rendering		{}
+UI_CONTROLS	Điều Khiển Giao Diện	Các thành phần tương tác cơ bản: Button, TextField, Toggle, Slider.	UI_CONTROLS	UI controls, Button, TextField, Toggle, interaction		{}
+LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS	Tác Động Pháp Lý Đạo Đức Kinh Tế Xã Hội	Cân nhắc pháp lý, đạo đức và tác động xã hội trong phát triển phần mềm.	PRIVACY_SETTINGS	legal, ethical, socioeconomic, privacy, intellectual property		{}
+SHAPE	Hình Dạng	Vẽ và tổ hợp các hình dạng hình học bằng giao thức Shape trong SwiftUI.	UI_CONTROLS	Shape, Path, Circle, Rectangle, Boolean operations		{}
+COLOR	Màu Sắc	Nguyên lý và ứng dụng màu sắc trong thiết kế giao diện người dùng.	UI_MODIFIERS	color, HEX, RGB, palette, SwiftUI Color		{}

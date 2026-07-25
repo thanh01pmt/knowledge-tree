@@ -1,0 +1,1794 @@
+{
+  "nodes": [
+    {
+      "id": "use",
+      "label": "Use",
+      "type": "action",
+      "definition": "To employ or utilize something for a specific purpose."
+    },
+    {
+      "id": "instance",
+      "label": "instance",
+      "type": "conceptual",
+      "definition": "A specific occurrence of a structure or class."
+    },
+    {
+      "id": "structure",
+      "label": "structure",
+      "type": "conceptual",
+      "definition": "A Swift value type that can encapsulate properties and methods, used to model data."
+    },
+    {
+      "id": "differentiate",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "To recognize or ascertain what makes something different."
+    },
+    {
+      "id": "basic-file-types",
+      "label": "basic file types",
+      "type": "conceptual",
+      "definition": "Common file types used in Swift projects, such as .swift, .xib, .storyboard."
+    },
+    {
+      "id": "asset",
+      "label": "asset",
+      "type": "conceptual",
+      "definition": "A resource file such as images, sounds, or data used in a project."
+    },
+    {
+      "id": "import",
+      "label": "import",
+      "type": "action",
+      "definition": "The action of bringing an asset into a project."
+    },
+    {
+      "id": "recognize",
+      "label": "recognize",
+      "type": "action",
+      "definition": "To identify or understand something."
+    },
+    {
+      "id": "available-assets",
+      "label": "available assets",
+      "type": "conceptual",
+      "definition": "Assets that are present and can be used in the project."
+    },
+    {
+      "id": "project",
+      "label": "project",
+      "type": "conceptual",
+      "definition": "A collection of source code and resources that make up an application."
+    },
+    {
+      "id": "create",
+      "label": "Create",
+      "type": "action",
+      "definition": "To bring something into existence, such as an instance of a type."
+    },
+    {
+      "id": "manipulate",
+      "label": "manipulate",
+      "type": "action",
+      "definition": "To handle or control, especially in a skillful manner."
+    },
+    {
+      "id": "array",
+      "label": "Array",
+      "type": "conceptual",
+      "definition": "A collection of elements stored at contiguous memory locations."
+    },
+    {
+      "id": "imperative-programming",
+      "label": "imperative programming",
+      "type": "conceptual",
+      "definition": "A programming paradigm using statements that change state."
+    },
+    {
+      "id": "declarative-programming",
+      "label": "declarative programming",
+      "type": "conceptual",
+      "definition": "A programming paradigm expressing logic without control flow."
+    },
+    {
+      "id": "declare",
+      "label": "Declare",
+      "type": "action",
+      "definition": "To state or define a variable or array."
+    },
+    {
+      "id": "initialize",
+      "label": "initialize",
+      "type": "action",
+      "definition": "To set an initial value for a variable or array."
+    },
+    {
+      "id": "values",
+      "label": "values",
+      "type": "conceptual",
+      "definition": "Data items stored in an array."
+    },
+    {
+      "id": "identify",
+      "label": "Identify",
+      "type": "action",
+      "definition": "To recognize or determine something."
+    },
+    {
+      "id": "modify",
+      "label": "modify",
+      "type": "action",
+      "definition": "To change or alter something."
+    },
+    {
+      "id": "array-element",
+      "label": "array element",
+      "type": "conceptual",
+      "definition": "An individual item within an array."
+    },
+    {
+      "id": "index",
+      "label": "index",
+      "type": "conceptual",
+      "definition": "A numerical value that identifies the position of an element in an array."
+    },
+    {
+      "id": "content-views",
+      "label": "Content Views",
+      "type": "conceptual",
+      "definition": "UI components that display content in SwiftUI."
+    },
+    {
+      "id": "text",
+      "label": "Text",
+      "type": "factual",
+      "definition": "A SwiftUI view that displays text."
+    },
+    {
+      "id": "image",
+      "label": "Image",
+      "type": "factual",
+      "definition": "A SwiftUI view that displays an image."
+    },
+    {
+      "id": "shape",
+      "label": "Shape",
+      "type": "conceptual",
+      "definition": "A protocol for drawing shapes in SwiftUI."
+    },
+    {
+      "id": "swift",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language for iOS, macOS, and other platforms."
+    },
+    {
+      "id": "array-properties",
+      "label": "Array Properties",
+      "type": "conceptual",
+      "definition": "Attributes of an array such as count, isEmpty, etc."
+    },
+    {
+      "id": "array-methods",
+      "label": "Array Methods",
+      "type": "conceptual",
+      "definition": "Functions that can be performed on an array, such as append, remove, etc."
+    },
+    {
+      "id": "modifiers",
+      "label": "Modifiers",
+      "type": "conceptual",
+      "definition": "Functions that modify the appearance or behavior of a view in SwiftUI."
+    },
+    {
+      "id": "padding",
+      "label": "Padding",
+      "type": "conceptual",
+      "definition": "A modifier that adds space around a view."
+    },
+    {
+      "id": "background",
+      "label": "Background",
+      "type": "conceptual",
+      "definition": "A modifier that sets the background of a view."
+    },
+    {
+      "id": "frame",
+      "label": "Frame",
+      "type": "conceptual",
+      "definition": "A modifier that sets the size and position of a view."
+    },
+    {
+      "id": "foregroundcolor",
+      "label": "ForegroundColor",
+      "type": "conceptual",
+      "definition": "A modifier that sets the foreground color of a view."
+    },
+    {
+      "id": "font",
+      "label": "Font",
+      "type": "conceptual",
+      "definition": "A modifier that sets the font of text in a view."
+    },
+    {
+      "id": "resizable",
+      "label": "Resizable",
+      "type": "conceptual",
+      "definition": "A modifier that allows an image to be resized."
+    },
+    {
+      "id": "container-views",
+      "label": "Container Views",
+      "type": "conceptual",
+      "definition": "Views that contain and arrange other views, such as HStack, VStack, ZStack."
+    },
+    {
+      "id": "hstack",
+      "label": "HStack",
+      "type": "conceptual",
+      "definition": "A container view that arranges its children in a horizontal line."
+    },
+    {
+      "id": "vstack",
+      "label": "VStack",
+      "type": "conceptual",
+      "definition": "A container view that arranges its children in a vertical line."
+    },
+    {
+      "id": "zstack",
+      "label": "ZStack",
+      "type": "conceptual",
+      "definition": "A container view that overlays its children on top of each other."
+    },
+    {
+      "id": "spacer",
+      "label": "Spacer",
+      "type": "conceptual",
+      "definition": "A flexible space that expands to fill available space in a stack."
+    },
+    {
+      "id": "stack-views",
+      "label": "Stack Views",
+      "type": "conceptual",
+      "definition": "Container views that arrange child views linearly, such as HStack and VStack."
+    },
+    {
+      "id": "view-hierarchy",
+      "label": "View Hierarchy",
+      "type": "conceptual",
+      "definition": "The tree-like structure of views in a SwiftUI application."
+    },
+    {
+      "id": "interactive-views",
+      "label": "Interactive Views",
+      "type": "conceptual",
+      "definition": "Views that respond to user interaction, such as Button, TextField, Slider, Toggle."
+    },
+    {
+      "id": "button",
+      "label": "Button",
+      "type": "conceptual",
+      "definition": "A control that performs an action when tapped."
+    },
+    {
+      "id": "textfield",
+      "label": "TextField",
+      "type": "conceptual",
+      "definition": "A control that displays an editable text interface."
+    },
+    {
+      "id": "slider",
+      "label": "Slider",
+      "type": "conceptual",
+      "definition": "A control for selecting a value from a continuous range."
+    },
+    {
+      "id": "toggle",
+      "label": "Toggle",
+      "type": "conceptual",
+      "definition": "A control that switches between on and off states."
+    },
+    {
+      "id": "state-property-wrapper",
+      "label": "@State Property Wrapper",
+      "type": "conceptual",
+      "definition": "A SwiftUI property wrapper that allows a view to update when its state changes."
+    },
+    {
+      "id": "constants",
+      "label": "Constants",
+      "type": "conceptual",
+      "definition": "Values that cannot be changed after initialization."
+    },
+    {
+      "id": "variables",
+      "label": "Variables",
+      "type": "conceptual",
+      "definition": "Values that can be changed after initialization."
+    },
+    {
+      "id": "data-types",
+      "label": "Data Types",
+      "type": "conceptual",
+      "definition": "Categories of data such as Int, String, Bool, etc."
+    },
+    {
+      "id": "loop-structures",
+      "label": "Loop Structures",
+      "type": "conceptual",
+      "definition": "Control flow constructs that repeat a block of code, such as for-in, while."
+    },
+    {
+      "id": "conditional-statements",
+      "label": "Conditional Statements",
+      "type": "conceptual",
+      "definition": "Control flow constructs that execute code based on conditions, such as if, switch."
+    },
+    {
+      "id": "flow-of-execution",
+      "label": "Flow of Execution",
+      "type": "conceptual",
+      "definition": "The order in which statements are executed in a program."
+    },
+    {
+      "id": "color",
+      "label": "Color",
+      "type": "conceptual",
+      "definition": "A type representing a color in SwiftUI."
+    },
+    {
+      "id": "view",
+      "label": "View",
+      "type": "conceptual",
+      "definition": "A fundamental building block of a user interface in SwiftUI."
+    },
+    {
+      "id": "evaluate",
+      "label": "Evaluate",
+      "type": "action",
+      "definition": "To assess or determine the value, quality, or significance of something."
+    },
+    {
+      "id": "implement",
+      "label": "Implement",
+      "type": "action",
+      "definition": "To put into effect or execute."
+    },
+    {
+      "id": "demonstrate",
+      "label": "Demonstrate",
+      "type": "action",
+      "definition": "To show or prove."
+    },
+    {
+      "id": "analyze",
+      "label": "Analyze",
+      "type": "action",
+      "definition": "To examine in detail."
+    },
+    {
+      "id": "predict",
+      "label": "Predict",
+      "type": "action",
+      "definition": "To forecast or estimate."
+    },
+    {
+      "id": "interpret",
+      "label": "Interpret",
+      "type": "action",
+      "definition": "The act of explaining or understanding the meaning of something."
+    },
+    {
+      "id": "explain",
+      "label": "Explain",
+      "type": "action",
+      "definition": "To make clear or understandable."
+    },
+    {
+      "id": "apply",
+      "label": "Apply",
+      "type": "action",
+      "definition": "The act of putting something into operation or practice."
+    },
+    {
+      "id": "arrange",
+      "label": "Arrange",
+      "type": "action",
+      "definition": "To put in a specific order."
+    },
+    {
+      "id": "control",
+      "label": "Control",
+      "type": "action",
+      "definition": "To manage or influence the behavior or appearance."
+    },
+    {
+      "id": "planning-and-design",
+      "label": "Planning and Design",
+      "type": "procedural",
+      "definition": "The process of planning and designing software solutions, including requirements analysis and architecture."
+    },
+    {
+      "id": "select",
+      "label": "Select",
+      "type": "action",
+      "definition": "The action of choosing appropriate actions from a set."
+    },
+    {
+      "id": "actions",
+      "label": "actions",
+      "type": "conceptual",
+      "definition": "Operations or functions that can be performed on or within the user interface."
+    },
+    {
+      "id": "configure",
+      "label": "configure",
+      "type": "action",
+      "definition": "The action of setting up or adjusting the properties of the user interface."
+    },
+    {
+      "id": "user-interface",
+      "label": "user interface",
+      "type": "conceptual",
+      "definition": "The visual and interactive components of an application."
+    },
+    {
+      "id": "swift-language-usage",
+      "label": "Swift Language Usage",
+      "type": "conceptual",
+      "definition": "The practical application of Swift programming language features, syntax, and best practices."
+    },
+    {
+      "id": "accessibility",
+      "label": "Accessibility",
+      "type": "conceptual",
+      "definition": "Design principles and practices that ensure usability for people with disabilities."
+    },
+    {
+      "id": "argument-labels",
+      "label": "Argument labels",
+      "type": "conceptual",
+      "definition": "Labels used in function calls in Swift to identify parameters."
+    },
+    {
+      "id": "assess",
+      "label": "Assess",
+      "type": "action",
+      "definition": "To evaluate or judge the quality or importance of something."
+    },
+    {
+      "id": "brainstorm",
+      "label": "Brainstorm",
+      "type": "action",
+      "definition": "To generate ideas through spontaneous group discussion."
+    },
+    {
+      "id": "calculate",
+      "label": "Calculate",
+      "type": "action",
+      "definition": "To determine mathematically."
+    },
+    {
+      "id": "compromise",
+      "label": "Compromise",
+      "type": "conceptual",
+      "definition": "The state of being exposed to risk or vulnerability."
+    },
+    {
+      "id": "define",
+      "label": "Define",
+      "type": "action",
+      "definition": "To state or describe exactly the nature, scope, or meaning of something."
+    },
+    {
+      "id": "design",
+      "label": "Design",
+      "type": "procedural",
+      "definition": "The process of creating a plan or convention for the construction of an object."
+    },
+    {
+      "id": "language-usage",
+      "label": "Language usage",
+      "type": "conceptual",
+      "definition": "The way a programming language is used."
+    },
+    {
+      "id": "legal-ethical-and-socioeconomic-impacts",
+      "label": "Legal, ethical and socioeconomic impacts",
+      "type": "conceptual",
+      "definition": "The effects related to law, ethics, and society."
+    },
+    {
+      "id": "methods",
+      "label": "Methods",
+      "type": "conceptual",
+      "definition": "Functions that are defined within a type (e.g., a structure or class) in Swift."
+    },
+    {
+      "id": "operators",
+      "label": "Operators",
+      "type": "conceptual",
+      "definition": "Symbols that perform operations on values."
+    },
+    {
+      "id": "parameters",
+      "label": "Parameters",
+      "type": "conceptual",
+      "definition": "Variables that are passed into a function."
+    },
+    {
+      "id": "plan",
+      "label": "Plan",
+      "type": "action",
+      "definition": "To decide on and arrange in advance."
+    },
+    {
+      "id": "planning",
+      "label": "Planning",
+      "type": "procedural",
+      "definition": "The process of making plans for something."
+    },
+    {
+      "id": "properties",
+      "label": "Properties",
+      "type": "conceptual",
+      "definition": "Variables associated with a type."
+    },
+    {
+      "id": "protection",
+      "label": "Protection",
+      "type": "conceptual",
+      "definition": "The act of keeping something safe."
+    },
+    {
+      "id": "prototype",
+      "label": "Prototype",
+      "type": "action",
+      "definition": "To create a preliminary model of something."
+    },
+    {
+      "id": "results",
+      "label": "Results",
+      "type": "conceptual",
+      "definition": "Outcomes of calculations."
+    },
+    {
+      "id": "returns",
+      "label": "Returns",
+      "type": "conceptual",
+      "definition": "Values output by a function."
+    },
+    {
+      "id": "security-challenges",
+      "label": "Security challenges",
+      "type": "conceptual",
+      "definition": "Issues related to protecting data."
+    },
+    {
+      "id": "sensitive-data",
+      "label": "Sensitive data",
+      "type": "conceptual",
+      "definition": "Information that must be protected."
+    },
+    {
+      "id": "sharing-personal-and-application-information",
+      "label": "Sharing personal and application information",
+      "type": "conceptual",
+      "definition": "The act of distributing private data."
+    },
+    {
+      "id": "summarize",
+      "label": "Summarize",
+      "type": "action",
+      "definition": "To give a brief statement of the main points."
+    },
+    {
+      "id": "visual-design",
+      "label": "Visual design",
+      "type": "conceptual",
+      "definition": "The aesthetic and functional design of a user interface, including layout, colors, and typography."
+    },
+    {
+      "id": "instance-of-a-structure",
+      "label": "instance of a structure",
+      "type": "conceptual",
+      "definition": "A specific object created from a structure type, containing its own set of stored properties."
+    },
+    {
+      "id": "xcode-project-navigation",
+      "label": "XCode Project Navigation",
+      "type": "factual",
+      "definition": "The navigation pane in Xcode used to browse and manage project files and resources."
+    },
+    {
+      "id": "app-development-with-swift-associate",
+      "label": "App Development with Swift Associate",
+      "type": "factual",
+      "definition": "A certification that demonstrates knowledge of key computing concepts and programming with Swift and SwiftUI."
+    },
+    {
+      "id": "swiftui",
+      "label": "SwiftUI",
+      "type": "factual",
+      "definition": "A framework by Apple for building user interfaces across all Apple platforms."
+    },
+    {
+      "id": "key-computing-concepts",
+      "label": "key computing concepts",
+      "type": "conceptual",
+      "definition": "Fundamental ideas in computing such as variables, loops, and data structures."
+    },
+    {
+      "id": "foundation-in-programming",
+      "label": "foundation in programming",
+      "type": "conceptual",
+      "definition": "Basic understanding of programming principles and practices."
+    },
+    {
+      "id": "impact-of-computing-and-apps-on-society-economies-and-cultures",
+      "label": "impact of computing and apps on society, economies, and cultures",
+      "type": "conceptual",
+      "definition": "The broader effects of technology on social, economic, and cultural aspects."
+    },
+    {
+      "id": "app-development",
+      "label": "app development",
+      "type": "conceptual",
+      "definition": "The process of creating software applications for mobile or desktop devices."
+    },
+    {
+      "id": "earning",
+      "label": "Earning",
+      "type": "action",
+      "definition": "The act of obtaining a certification or credential."
+    },
+    {
+      "id": "demonstrates",
+      "label": "demonstrates",
+      "type": "action",
+      "definition": "To show or prove knowledge or skill."
+    },
+    {
+      "id": "exploring",
+      "label": "exploring",
+      "type": "action",
+      "definition": "To investigate or examine a topic or activity."
+    },
+    {
+      "id": "computing",
+      "label": "computing",
+      "type": "conceptual",
+      "definition": "The use of computers and software."
+    },
+    {
+      "id": "apps",
+      "label": "apps",
+      "type": "factual",
+      "definition": "Applications, software programs designed for end users."
+    },
+    {
+      "id": "society",
+      "label": "society",
+      "type": "conceptual",
+      "definition": "A community of people."
+    },
+    {
+      "id": "economies",
+      "label": "economies",
+      "type": "conceptual",
+      "definition": "Systems of production, distribution, and consumption."
+    },
+    {
+      "id": "cultures",
+      "label": "cultures",
+      "type": "conceptual",
+      "definition": "Shared beliefs, customs, and practices."
+    },
+    {
+      "id": "impact",
+      "label": "impact",
+      "type": "conceptual",
+      "definition": "The effect or influence of something."
+    },
+    {
+      "id": "swift-language",
+      "label": "Swift Language",
+      "type": "factual",
+      "definition": "Apple's programming language for iOS, macOS, and other platforms."
+    },
+    {
+      "id": "usage",
+      "label": "Usage",
+      "type": "conceptual",
+      "definition": "The action of using something or the fact of being used."
+    },
+    {
+      "id": "design-cycle",
+      "label": "design cycle",
+      "type": "procedural",
+      "definition": "A process of designing involving steps like brainstorm, plan, prototype, evaluate."
+    },
+    {
+      "id": "write",
+      "label": "Write",
+      "type": "action",
+      "definition": "To compose code or text."
+    },
+    {
+      "id": "call",
+      "label": "call",
+      "type": "action",
+      "definition": "To invoke a function or method."
+    },
+    {
+      "id": "execution",
+      "label": "execution",
+      "type": "conceptual",
+      "definition": "The process of running a program or function."
+    },
+    {
+      "id": "functions",
+      "label": "functions",
+      "type": "conceptual",
+      "definition": "Self-contained modules of code that perform a specific task."
+    },
+    {
+      "id": "appearance",
+      "label": "appearance",
+      "type": "conceptual",
+      "definition": "The visual attributes of a view."
+    },
+    {
+      "id": "type-inference",
+      "label": "type inference",
+      "type": "conceptual",
+      "definition": "The ability of the compiler to deduce the type of an expression automatically."
+    },
+    {
+      "id": "explicit-typing",
+      "label": "explicit typing",
+      "type": "conceptual",
+      "definition": "The practice of explicitly declaring the type of a variable or expression."
+    },
+    {
+      "id": "user-interface-areas",
+      "label": "User Interface Areas",
+      "type": "conceptual",
+      "definition": "Different sections of the user interface."
+    },
+    {
+      "id": "associate",
+      "label": "Associate",
+      "type": "action",
+      "definition": "A level of certification or proficiency in app development."
+    },
+    {
+      "id": "view-building",
+      "label": "View Building",
+      "type": "conceptual",
+      "definition": "The process of constructing user interface views."
+    },
+    {
+      "id": "arrays",
+      "label": "arrays",
+      "type": "conceptual",
+      "definition": "A data structure that stores a collection of elements."
+    },
+    {
+      "id": "imperative",
+      "label": "imperative",
+      "type": "conceptual",
+      "definition": "A programming paradigm that uses statements to change a program's state."
+    },
+    {
+      "id": "declarative",
+      "label": "declarative",
+      "type": "conceptual",
+      "definition": "A programming paradigm that expresses the logic of a computation without describing its control flow."
+    },
+    {
+      "id": "debugging",
+      "label": "Debugging",
+      "type": "procedural",
+      "definition": "The process of identifying and removing errors from software."
+    },
+    {
+      "id": "naming-syntax",
+      "label": "naming syntax",
+      "type": "conceptual",
+      "definition": "The syntax rules for naming identifiers in Swift."
+    },
+    {
+      "id": "camel-casing",
+      "label": "camel casing",
+      "type": "conceptual",
+      "definition": "A naming convention where the first letter of each word is capitalized except the first word."
+    },
+    {
+      "id": "swift-identifier-rules",
+      "label": "Swift identifier rules",
+      "type": "conceptual",
+      "definition": "The rules for valid identifiers in Swift, such as starting with a letter or underscore."
+    },
+    {
+      "id": "syntax-errors",
+      "label": "syntax errors",
+      "type": "conceptual",
+      "definition": "Errors that occur when the code violates the grammar rules of the programming language."
+    },
+    {
+      "id": "run-time-errors",
+      "label": "run-time errors",
+      "type": "conceptual",
+      "definition": "Errors that occur during the execution of a program."
+    },
+    {
+      "id": "error-messages",
+      "label": "error messages",
+      "type": "conceptual",
+      "definition": "Messages displayed by the compiler or runtime to indicate errors."
+    },
+    {
+      "id": "build",
+      "label": "Build",
+      "type": "action",
+      "definition": "The act of compiling and constructing an application."
+    },
+    {
+      "id": "run",
+      "label": "Run",
+      "type": "action",
+      "definition": "The act of executing an application."
+    },
+    {
+      "id": "app",
+      "label": "App",
+      "type": "conceptual",
+      "definition": "A software application."
+    },
+    {
+      "id": "xcode",
+      "label": "Xcode",
+      "type": "factual",
+      "definition": "Apple's integrated development environment (IDE) for macOS."
+    },
+    {
+      "id": "apple",
+      "label": "Apple",
+      "type": "factual",
+      "definition": "The technology company that develops Swift, Xcode, and SwiftUI."
+    },
+    {
+      "id": "certiport",
+      "label": "Certiport",
+      "type": "factual",
+      "definition": "A company that provides certification exams, including for Swift."
+    }
+  ],
+  "edges": [
+    {
+      "source": "use",
+      "target": "instance",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "basic-file-types",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "import",
+      "target": "asset",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "recognize",
+      "target": "available-assets",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "recognize",
+      "target": "use",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "recognize",
+      "target": "project",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "asset",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "use",
+      "target": "project",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "array",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "manipulate",
+      "target": "array",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "imperative-programming",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "declarative-programming",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "declare",
+      "target": "array",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "initialize",
+      "target": "array",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "initialize",
+      "target": "values",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "identify",
+      "target": "array-element",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "modify",
+      "target": "array-element",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "identify",
+      "target": "index",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "modify",
+      "target": "index",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "content-views",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "text",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "image",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "shape",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "array-properties",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "array-methods",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "array-properties",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "array-methods",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "implement",
+      "target": "modifiers",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "demonstrate",
+      "target": "flow-of-execution",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "control",
+      "target": "flow-of-execution",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "loop-structures",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "analyze",
+      "target": "loop-structures",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "predict",
+      "target": "loop-structures",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "conditional-statements",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "interpret",
+      "target": "conditional-statements",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "declare",
+      "target": "constants",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "declare",
+      "target": "variables",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "constants",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "variables",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "constants",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "differentiate",
+      "target": "variables",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "create",
+      "target": "container-views",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "arrange",
+      "target": "view",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "explain",
+      "target": "view-hierarchy",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "interactive-views",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "apply",
+      "target": "interactive-views",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "state-property-wrapper",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "modifiers",
+      "target": "padding",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "modifiers",
+      "target": "background",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "modifiers",
+      "target": "frame",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "modifiers",
+      "target": "foregroundcolor",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "modifiers",
+      "target": "font",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "modifiers",
+      "target": "resizable",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "container-views",
+      "target": "hstack",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "container-views",
+      "target": "vstack",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "container-views",
+      "target": "zstack",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "container-views",
+      "target": "spacer",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "interactive-views",
+      "target": "button",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "interactive-views",
+      "target": "textfield",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "interactive-views",
+      "target": "slider",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "interactive-views",
+      "target": "toggle",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "flow-of-execution",
+      "target": "loop-structures",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "flow-of-execution",
+      "target": "conditional-statements",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "array",
+      "target": "array-element",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "array-element",
+      "target": "index",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "view-hierarchy",
+      "target": "view",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "hstack",
+      "target": "stack-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "vstack",
+      "target": "stack-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "stack-views",
+      "target": "container-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "button",
+      "target": "interactive-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "textfield",
+      "target": "interactive-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "slider",
+      "target": "interactive-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "toggle",
+      "target": "interactive-views",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "interactive-views",
+      "target": "view",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "container-views",
+      "target": "view",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "spacer",
+      "target": "view",
+      "relation": "is_a",
+      "weight": 1
+    },
+    {
+      "source": "array",
+      "target": "data-types",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "color",
+      "target": "data-types",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "constants",
+      "target": "data-types",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "variables",
+      "target": "data-types",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "select",
+      "target": "actions",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "configure",
+      "target": "user-interface",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "actions",
+      "target": "configure",
+      "relation": "used_for",
+      "weight": 1
+    },
+    {
+      "source": "asset",
+      "target": "project",
+      "relation": "part_of",
+      "weight": 1
+    },
+    {
+      "source": "planning-and-design",
+      "target": "swift-language-usage",
+      "relation": "applies_to",
+      "weight": 1
+    },
+    {
+      "source": "swift",
+      "target": "swift-language-usage",
+      "relation": "part_of",
+      "weight": 1
+    },
+    {
+      "source": "user-interface",
+      "target": "project",
+      "relation": "part_of",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "argument-labels",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "evaluate",
+      "target": "parameters",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "evaluate",
+      "target": "returns",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "sensitive-data",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "protection",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "compromise",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "sharing-personal-and-application-information",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "security-challenges",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "legal-ethical-and-socioeconomic-impacts",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "assess",
+      "target": "visual-design",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "assess",
+      "target": "accessibility",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "calculate",
+      "target": "results",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "calculate",
+      "target": "operators",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "declare",
+      "target": "properties",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "declare",
+      "target": "structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "initialize",
+      "target": "properties",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "initialize",
+      "target": "structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "define",
+      "target": "methods",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "planning",
+      "target": "language-usage",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "design",
+      "target": "language-usage",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "swift",
+      "target": "language-usage",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "instance-of-a-structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "instance-of-a-structure",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "planning-and-design",
+      "target": "swift-language-usage",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "swift-language-usage",
+      "target": "structure",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "swift-language-usage",
+      "target": "methods",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "structure",
+      "target": "instance-of-a-structure",
+      "relation": "has_instance",
+      "weight": 1
+    },
+    {
+      "source": "structure",
+      "target": "methods",
+      "relation": "has_part",
+      "weight": 1
+    },
+    {
+      "source": "earning",
+      "target": "app-development-with-swift-associate",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "demonstrates",
+      "target": "key-computing-concepts",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "demonstrates",
+      "target": "foundation-in-programming",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "exploring",
+      "target": "app-development",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "swift",
+      "target": "app-development",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "swiftui",
+      "target": "app-development",
+      "relation": "related_to",
+      "weight": 1
+    },
+    {
+      "source": "summarize",
+      "target": "design-cycle",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "write",
+      "target": "functions",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "call",
+      "target": "functions",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "execution",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "evaluate",
+      "target": "use",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "control",
+      "target": "appearance",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "control",
+      "target": "view",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "apply",
+      "target": "type-inference",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "apply",
+      "target": "appearance",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "apply",
+      "target": "view",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "explicit-typing",
+      "relation": "acts_on",
+      "weight": 2
+    },
+    {
+      "source": "planning",
+      "target": "swift",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "design",
+      "target": "swift",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "appearance",
+      "target": "view",
+      "relation": "property_of",
+      "weight": 1
+    },
+    {
+      "source": "associate",
+      "target": "user-interface-areas",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "associate",
+      "target": "swift",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "associate",
+      "target": "app-development",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "app-development",
+      "target": "swift",
+      "relation": "uses",
+      "weight": 1
+    },
+    {
+      "source": "create",
+      "target": "arrays",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "manipulate",
+      "target": "arrays",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "imperative",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "declarative",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "naming-syntax",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "use",
+      "target": "camel-casing",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "syntax-errors",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "differentiate",
+      "target": "run-time-errors",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "apply",
+      "target": "swift-identifier-rules",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "interpret",
+      "target": "error-messages",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "build",
+      "target": "app",
+      "relation": "acts_on",
+      "weight": 1
+    },
+    {
+      "source": "run",
+      "target": "app",
+      "relation": "acts_on",
+      "weight": 1
+    }
+  ]
+}

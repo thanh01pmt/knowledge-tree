@@ -14,3 +14,4 @@ UI_MODIFIERS	UI Modifiers	Áp dụng các bộ điều chỉnh (modifiers) để
 IDE_NAVIGATION	IDE Navigation	Điều hướng và quản lý cấu trúc file, assets trong dự án.	DEVELOPMENT_ENVIRONMENT	IDE, file, assets		
 ARRAYS	Arrays	Khám phá cấu trúc dữ liệu mảng: khai báo, truy cập phần tử qua chỉ số (index), và các thao tác cơ bản.	DATA_STRUCTURES_BASIC	array, index, data structure, collection	SDF, AL	"{""icon"": ""th""}"
 UI_CONTROLS	Basic UI Controls	Sử dụng các control cơ bản để hiển thị thông tin (Text, Image) và nhận tương tác từ người dùng (Button, TextField, Picker).	UI_BUILDING_BLOCKS	Text, Image, Button, TextField, Picker, Toggle	HCI	"{""icon"": ""keyboard""}"
+UI_ANIMATION	UI Animation & Transitions	Áp dụng các hiệu ứng chuyển động và chuyển tiếp để làm cho các thay đổi giao diện trở nên mượt mà và trực quan hơn.	INTERACTION_EFFECTS	animation, transition, motion, effects	GIT, HCI	"{""icon"": ""film""}"

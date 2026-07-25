@@ -1,0 +1,1010 @@
+[
+  {
+    "code": "SIO-SWIFT-DESIGN-CYCLE-IDENTIFY-PHASES",
+    "name": "Identify design cycle phases in Swift project planning",
+    "description_vi": "Người học có khả năng xác định các giai đoạn của chu kỳ thiết kế (Brainstorm, Plan, Create, Evaluate) khi lập kế hoạch cho một dự án Swift, bao gồm việc sử dụng Xcode để tạo project và cấu trúc thư mục.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DESIGN_CYCLE-01"
+  },
+  {
+    "code": "SIO-SWIFT-DESIGN-CYCLE-MAP-ACTIVITIES",
+    "name": "Map design cycle activities to Swift development tasks",
+    "description_vi": "Người học có khả năng ánh xạ các hoạt động của từng giai đoạn chu kỳ thiết kế (ví dụ: động não ý tưởng, lập kế hoạch cấu trúc, tạo mã Swift, đánh giá kết quả) vào các tác vụ cụ thể trong quá trình phát triển ứng dụng Swift.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DESIGN_CYCLE-01"
+  },
+  {
+    "code": "SIO-SWIFT-DESIGN-CYCLE-PLAN-PROJECT",
+    "name": "Plan a Swift project using the design cycle",
+    "description_vi": "Người học có khả năng lập kế hoạch phát triển một ứng dụng Swift bằng cách áp dụng tuần tự các giai đoạn của chu kỳ thiết kế, từ động não ý tưởng đến tạo prototype và đánh giá.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DESIGN_CYCLE-02"
+  },
+  {
+    "code": "SIO-SWIFT-DESIGN-CYCLE-CREATE-PROTOTYPE",
+    "name": "Create a SwiftUI prototype following the design cycle",
+    "description_vi": "Người học có khả năng tạo một prototype ứng dụng SwiftUI bằng cách thực hiện các bước trong chu kỳ thiết kế, bao gồm việc sử dụng Xcode để xây dựng giao diện và viết mã Swift.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DESIGN_CYCLE-02"
+  },
+  {
+    "code": "SIO-SWIFT-SENSITIVE-DATA-IDENTIFY",
+    "name": "Identify sensitive data in a Swift app scenario",
+    "description_vi": "Người học có khả năng phân tích một tình huống phát triển ứng dụng Swift để xác định loại dữ liệu nhạy cảm (ví dụ: thông tin cá nhân, mật khẩu, token) và giải thích lý do cần bảo vệ chúng bằng các API Swift như Keychain hoặc UserDefaults.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SENSITIVE_DATA-01"
+  },
+  {
+    "code": "SIO-SWIFT-SENSITIVE-DATA-JUSTIFY",
+    "name": "Justify protection measures for sensitive data in Swift",
+    "description_vi": "Người học có khả năng đề xuất và biện minh các biện pháp bảo vệ dữ liệu nhạy cảm trong ứng dụng Swift, chẳng hạn như sử dụng @State và @Binding để kiểm soát quyền truy cập, hoặc lưu trữ an toàn bằng Keychain Services.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SENSITIVE_DATA-01"
+  },
+  {
+    "code": "SIO-SWIFT-SECURE-DATA-ENCRYPTION",
+    "name": "Mã hóa dữ liệu nhạy cảm trong Swift",
+    "description_vi": "Người học có khả năng áp dụng nguyên tắc mã hóa dữ liệu nhạy cảm bằng cách sử dụng lớp `CryptoKit` trong Swift để mã hóa và giải mã dữ liệu trước khi lưu trữ hoặc truyền tải.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SENSITIVE_DATA-02"
+  },
+  {
+    "code": "SIO-SWIFT-SECURE-KEYCHAIN-ACCESS",
+    "name": "Kiểm soát truy cập dữ liệu nhạy cảm bằng Keychain",
+    "description_vi": "Người học có khả năng áp dụng nguyên tắc kiểm soát truy cập bằng cách sử dụng `Keychain Services` trong Swift để lưu trữ và truy xuất dữ liệu nhạy cảm (ví dụ: mật khẩu, token) một cách an toàn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SENSITIVE_DATA-02"
+  },
+  {
+    "code": "SIO-SWIFT-WCAG-CONTRAST-EVALUATION",
+    "name": "Đánh giá độ tương phản màu sắc theo WCAG trong SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá mức độ tuân thủ WCAG về độ tương phản màu sắc bằng cách sử dụng các giá trị `Color` trong SwiftUI và tính toán tỷ lệ tương phản dựa trên độ sáng tương đối.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ACCESSIBILITY-01"
+  },
+  {
+    "code": "SIO-SWIFT-WCAG-VOICEOVER-SUPPORT",
+    "name": "Đánh giá hỗ trợ VoiceOver trong giao diện SwiftUI",
+    "description_vi": "Người học có khả năng đánh giá mức độ tuân thủ WCAG về hỗ trợ VoiceOver bằng cách kiểm tra các modifier `accessibilityLabel`, `accessibilityHint`, và `accessibilityTraits` trong SwiftUI.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ACCESSIBILITY-01"
+  },
+  {
+    "code": "SIO-SWIFT-ACCESSIBILITY-MISSING-LABEL",
+    "name": "Phân tích giao diện SwiftUI để xác định thiếu nhãn tiếp cận",
+    "description_vi": "Người học có khả năng phân tích giao diện SwiftUI để xác định các thành phần thiếu `accessibilityLabel` hoặc `accessibilityHint`, dẫn đến không tuân thủ nguyên tắc tiếp cận WCAG.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ACCESSIBILITY-02"
+  },
+  {
+    "code": "SIO-SWIFT-ACCESSIBILITY-TOUCH-TARGET",
+    "name": "Phân tích kích thước vùng chạm trong SwiftUI để xác định vi phạm WCAG",
+    "description_vi": "Người học có khả năng phân tích giao diện SwiftUI để xác định các thành phần có kích thước vùng chạm nhỏ hơn 44x44 điểm, vi phạm nguyên tắc tiếp cận WCAG về kích thước mục tiêu tối thiểu.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ACCESSIBILITY-02"
+  },
+  {
+    "code": "SIO-SWIFT-ORG-ASSET-FOLDER",
+    "name": "Tổ chức Asset Catalog theo cấu trúc thư mục trong Xcode",
+    "description_vi": "Người học có khả năng sử dụng Xcode Project Navigator để tạo cấu trúc thư mục phân cấp trong Asset Catalog, nhằm tổ chức các tài nguyên Swift (hình ảnh, màu sắc, biểu tượng) theo nhóm chức năng hoặc màn hình.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-ORG-ASSET-REFERENCE",
+    "name": "Tham chiếu tài nguyên từ Asset Catalog bằng tên định danh trong Swift",
+    "description_vi": "Người học có khả năng tham chiếu chính xác một tài nguyên (ví dụ: Image, Color) từ Asset Catalog trong mã Swift bằng cách sử dụng tên định danh duy nhất, dựa trên cấu trúc thư mục đã tổ chức.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-NAMED-CAMELCASE",
+    "name": "Áp dụng quy ước camelCase cho tên tài nguyên trong Swift",
+    "description_vi": "Người học có khả năng đặt tên cho các asset (hình ảnh, màu sắc, biểu tượng) trong Asset Catalog của dự án Swift theo quy ước camelCase, đảm bảo tính nhất quán và tránh xung đột định danh.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-NAMED-UNIQUE-ID",
+    "name": "Tạo định danh duy nhất cho tài nguyên trong Swift project",
+    "description_vi": "Người học có khả năng tạo và sử dụng các định danh duy nhất (ví dụ: tên file, tên asset set) trong Asset Catalog của dự án Swift, tuân theo quy tắc đặt tên của Swift (không chứa ký tự đặc biệt, bắt đầu bằng chữ cái) để đảm bảo tham chiếu chính xác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-CLASSIFY-ASSET-TYPE",
+    "name": "Phân loại tài nguyên theo loại trong Asset Catalog của Swift",
+    "description_vi": "Người học có khả năng phân loại các tài nguyên trong Asset Catalog của dự án Swift dựa trên loại (Image Set, Color Set, Symbol, Data Set) và mục đích sử dụng (giao diện, biểu tượng, dữ liệu) để tổ chức hợp lý.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-01-01"
+  },
+  {
+    "code": "SIO-SWIFT-CLASSIFY-ASSET-PURPOSE",
+    "name": "Phân loại tài nguyên theo mục đích sử dụng trong Swift project",
+    "description_vi": "Người học có khả năng phân loại các tài nguyên (hình ảnh, màu sắc, font chữ) trong dự án Swift dựa trên mục đích sử dụng (ví dụ: icon cho tab bar, background cho màn hình chính, màu chủ đề) và đặt chúng vào các thư mục con tương ứng trong Asset Catalog.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-01-01"
+  },
+  {
+    "code": "SIO-SWIFT-ASSET-IDENTIFY-PROPERTIES",
+    "name": "Identify asset properties in Swift Asset Catalog",
+    "description_vi": "Người học có khả năng sử dụng Xcode để kiểm tra thuộc tính (kích thước, độ phân giải, định dạng) của tài nguyên trong Swift Asset Catalog và xác định tên định danh phù hợp để tham chiếu trong code Swift.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-01-02"
+  },
+  {
+    "code": "SIO-SWIFT-ASSET-IDENTIFY-FORMAT",
+    "name": "Identify file format of assets in Swift project",
+    "description_vi": "Người học có khả năng nhận diện định dạng tệp (PNG, JPEG, PDF, SVG) của tài nguyên trong Swift Asset Catalog và giải thích cách SwiftUI sử dụng các định dạng đó để hiển thị hình ảnh.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-01-02"
+  },
+  {
+    "code": "SIO-SWIFT-ASSET-ADD-IMAGE",
+    "name": "Add image asset to Swift project and reference by identifier",
+    "description_vi": "Người học có khả năng thực hiện quy trình thêm tệp hình ảnh vào Swift Asset Catalog trong Xcode, đặt tên định danh, và tham chiếu tài nguyên đó trong code SwiftUI bằng cách sử dụng tên định danh trong Image() initializer.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-ASSET-ADD-COLOR",
+    "name": "Add color asset to Swift project and reference by identifier",
+    "description_vi": "Người học có khả năng thực hiện quy trình thêm màu sắc vào Swift Asset Catalog trong Xcode, đặt tên định danh, và tham chiếu tài nguyên màu đó trong code SwiftUI bằng cách sử dụng tên định danh trong Color() initializer.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-ASSET-USE-IMAGE",
+    "name": "Use image asset from catalog to build SwiftUI interface",
+    "description_vi": "Người học có khả năng áp dụng tài nguyên hình ảnh từ Swift Asset Catalog để xây dựng giao diện SwiftUI bằng cách sử dụng Image view với tên định danh, kết hợp các modifier như .resizable(), .scaledToFit(), .frame() để điều chỉnh hiển thị.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-ASSET-USE-COLOR",
+    "name": "Use color asset from catalog to build SwiftUI interface",
+    "description_vi": "Người học có khả năng áp dụng tài nguyên màu sắc từ Swift Asset Catalog để xây dựng giao diện SwiftUI bằng cách sử dụng Color view với tên định danh, áp dụng cho các modifier như .foregroundColor(), .background() để tạo giao diện nhất quán.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-PAM-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-TRACE-VARIABLE-CHANGES",
+    "name": "Theo dõi sự thay đổi giá trị biến trong Swift",
+    "description_vi": "Người học có khả năng theo dõi sự thay đổi giá trị của các biến Swift khi thực thi tuần tự các câu lệnh gán và tính toán, sử dụng câu lệnh print() hoặc debugger để ghi lại trạng thái tại từng bước.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMP_STATE-01"
+  },
+  {
+    "code": "SIO-SWIFT-PREDICT-OUTPUT",
+    "name": "Dự đoán kết quả đầu ra từ thay đổi trạng thái",
+    "description_vi": "Người học có khả năng dự đoán kết quả đầu ra của một chương trình Swift dựa trên sự thay đổi trạng thái của các biến (var/let) trong quá trình thực thi tuần tự, bao gồm các phép gán và biểu thức số học.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMP_STATE-01"
+  },
+  {
+    "code": "SIO-SWIFT-DETERMINE-EXECUTION-ORDER",
+    "name": "Xác định thứ tự thực thi câu lệnh trong Swift",
+    "description_vi": "Người học có khả năng xác định thứ tự thực thi các câu lệnh trong một đoạn mã Swift có chứa cấu trúc điều kiện if-else và vòng lặp for-in, while, bằng cách phân tích luồng điều khiển.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMP_STATE-02"
+  },
+  {
+    "code": "SIO-SWIFT-TRACE-CONTROL-FLOW",
+    "name": "Phân tích luồng thực thi hàm Swift",
+    "description_vi": "Người học có khả năng phân tích luồng thực thi của một hàm Swift bằng cách theo dõi thứ tự các lệnh gọi hàm, giá trị tham số truyền vào và giá trị trả về, sử dụng câu lệnh return và print().",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-IMP_STATE-02"
+  },
+  {
+    "code": "SIO-SWIFT-DECOMPOSE-TASK",
+    "name": "Phân rã tác vụ thành các hàm Swift",
+    "description_vi": "Người học có khả năng phân rã một tác vụ phức tạp thành các bước con và đóng gói mỗi bước thành một hàm Swift riêng biệt, sử dụng từ khóa func, tham số và giá trị trả về để tổ chức mã nguồn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-FUNC_DECOMP-01"
+  },
+  {
+    "code": "SIO-SWIFT-IMPLEMENT-FUNCTION-DECOMPOSITION",
+    "name": "Đóng gói xử lý lặp lại thành hàm Swift",
+    "description_vi": "Người học có khả năng đóng gói các bước xử lý lặp lại trong một tác vụ thành các hàm Swift có tham số đầu vào và giá trị trả về, nhằm tái sử dụng mã và giảm độ phức tạp của chương trình.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-FUNC_DECOMP-01"
+  },
+  {
+    "code": "SIO-SWIFT-DEFINE-FUNCTION-PARAMETERS",
+    "name": "Khai báo hàm với tham số đầu vào trong Swift",
+    "description_vi": "Người học có khả năng khai báo một hàm Swift với các tham số đầu vào (bao gồm tên tham số nội bộ và nhãn đối số) dựa trên yêu cầu bài toán, sử dụng cú pháp func functionName(parameterName: Type) -> ReturnType.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-FUNC_PARAM-01"
+  },
+  {
+    "code": "SIO-SWIFT-PASS-ARGUMENTS",
+    "name": "Truyền đối số khi gọi hàm trong Swift",
+    "description_vi": "Người học có khả năng gọi một hàm Swift đã được khai báo với tham số, truyền các đối số tương ứng (bao gồm nhãn đối số nếu có) và sử dụng kết quả trả về hoặc thực thi hành động từ lời gọi hàm.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-FUNC_PARAM-01"
+  },
+  {
+    "code": "SIO-SWIFT-ASSIGN-RETURN-VALUE",
+    "name": "Gán giá trị trả về của hàm Swift cho biến",
+    "description_vi": "Người học có khả năng gán giá trị trả về của một hàm Swift (ví dụ: let result = add(a: 5, b: 3)) cho một hằng hoặc biến, sử dụng kiểu dữ liệu phù hợp và tận dụng tính năng suy luận kiểu (type inference) của Swift.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-FUNC_RETURN-01"
+  },
+  {
+    "code": "SIO-SWIFT-COMBINE-RETURN-VALUES",
+    "name": "Kết hợp giá trị trả về từ nhiều hàm Swift trong biểu thức",
+    "description_vi": "Người học có khả năng sử dụng trực tiếp giá trị trả về của nhiều hàm Swift trong cùng một biểu thức (ví dụ: let total = add(a: 1, b: 2) + multiply(a: 3, b: 4)) để tính toán kết quả phức tạp, áp dụng đúng thứ tự ưu tiên toán tử.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-FUNC_RETURN-01"
+  },
+  {
+    "code": "SIO-SWIFT-BUILD-COMPARISON-EXPRESSION",
+    "name": "Xây dựng biểu thức so sánh kết hợp toán tử số học trong Swift",
+    "description_vi": "Người học có khả năng xây dựng biểu thức điều kiện trong Swift bằng cách kết hợp các toán tử số học (+, -, *, /, %) và toán tử so sánh (==, !=, >, <, >=, <=) để tạo ra giá trị Bool, ví dụ: (score + bonus) >= 100.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-OP_EXPR-01"
+  },
+  {
+    "code": "SIO-SWIFT-USE-COMPARISON-IN-CONDITION",
+    "name": "Sử dụng biểu thức so sánh phức tạp trong cấu trúc điều kiện Swift",
+    "description_vi": "Người học có khả năng sử dụng biểu thức điều kiện phức tạp (kết hợp toán tử số học và so sánh) trong câu lệnh if, guard, hoặc switch của Swift để điều khiển luồng thực thi, ví dụ: if (total * 2) > 100 { ... }.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-OP_EXPR-01"
+  },
+  {
+    "code": "SIO-SWIFT-USE-PARENTHESES-PRECEDENCE",
+    "name": "Sử dụng dấu ngoặc đơn để kiểm soát thứ tự ưu tiên toán tử trong Swift",
+    "description_vi": "Người học có khả năng sử dụng dấu ngoặc đơn trong biểu thức Swift để thay đổi thứ tự ưu tiên mặc định của các toán tử số học, so sánh và logic, nhằm đạt được kết quả tính toán mong muốn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-OP_PRECEDENCE-01"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE-PARENTHESIZED-EXPRESSION",
+    "name": "Tính toán kết quả biểu thức Swift có dấu ngoặc đơn",
+    "description_vi": "Người học có khả năng tính toán chính xác giá trị của một biểu thức Swift có chứa nhiều toán tử và dấu ngoặc đơn, áp dụng đúng thứ tự ưu tiên do dấu ngoặc quy định.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-OP_PRECEDENCE-01"
+  },
+  {
+    "code": "SIO-SWIFT-COMBINE-LOGICAL-OPERATORS",
+    "name": "Kết hợp điều kiện bằng toán tử logic &&, ||, ! trong Swift",
+    "description_vi": "Người học có khả năng sử dụng các toán tử logic AND (&&), OR (||) và NOT (!) trong Swift để kết hợp nhiều biểu thức boolean thành một điều kiện phức tạp, phục vụ cho cấu trúc rẽ nhánh hoặc vòng lặp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-OP_LOGICAL-01"
+  },
+  {
+    "code": "SIO-SWIFT-EVALUATE-LOGICAL-EXPRESSION",
+    "name": "Đánh giá kết quả biểu thức logic Swift với nhiều toán tử",
+    "description_vi": "Người học có khả năng xác định giá trị boolean cuối cùng của một biểu thức logic Swift chứa nhiều toán tử &&, ||, ! và dấu ngoặc đơn, dựa trên thứ tự ưu tiên và quy tắc short-circuit.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-OP_LOGICAL-01"
+  },
+  {
+    "code": "SIO-SWIFT-DEFINE-STRUCT-PROPERTIES",
+    "name": "Khai báo struct Swift với các thuộc tính phù hợp",
+    "description_vi": "Người học có khả năng khai báo một struct trong Swift, xác định và định nghĩa các thuộc tính (properties) với kiểu dữ liệu phù hợp để mô hình hóa một thực thể dữ liệu cụ thể (ví dụ: sản phẩm, người dùng, sự kiện).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STRUCTURE_TYPE-01"
+  },
+  {
+    "code": "SIO-SWIFT-IDENTIFY-PROPERTY-TYPES",
+    "name": "Xác định kiểu dữ liệu và tên thuộc tính cho struct Swift",
+    "description_vi": "Người học có khả năng phân tích mô tả một thực thể và xác định các thuộc tính cần thiết cùng kiểu dữ liệu Swift tương ứng (Int, String, Double, Bool, v.v.) để xây dựng struct phù hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STRUCTURE_TYPE-01"
+  },
+  {
+    "code": "SIO-SWIFT-STRUCT-DECLARATION",
+    "name": "Khai báo cấu trúc với thuộc tính trong Swift",
+    "description_vi": "Người học có khả năng sử dụng từ khóa struct trong Swift để khai báo một cấu trúc dữ liệu, bao gồm các thuộc tính với kiểu dữ liệu cụ thể (ví dụ: String, Int) và quy tắc đặt tên camelCase.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STRUCTURE_TYPE-02"
+  },
+  {
+    "code": "SIO-SWIFT-STRUCT-METHODS",
+    "name": "Thêm phương thức vào cấu trúc trong Swift",
+    "description_vi": "Người học có khả năng định nghĩa các phương thức (hành vi) bên trong một struct trong Swift, sử dụng cú pháp func và truy cập các thuộc tính của struct thông qua self.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STRUCTURE_TYPE-02"
+  },
+  {
+    "code": "SIO-SWIFT-ONE-TO-MANY-ARRAY",
+    "name": "Biểu diễn mối quan hệ một-nhiều bằng mảng trong Swift",
+    "description_vi": "Người học có khả năng sử dụng mảng (Array) trong Swift để biểu diễn mối quan hệ một-nhiều giữa các thực thể, ví dụ: một struct Author chứa mảng các struct Book.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STRUCTURE_TYPE-03"
+  },
+  {
+    "code": "SIO-SWIFT-COMPOSITION-STRUCT",
+    "name": "Biểu diễn mối quan hệ chứa bằng cấu trúc lồng nhau trong Swift",
+    "description_vi": "Người học có khả năng sử dụng struct lồng nhau trong Swift để biểu diễn mối quan hệ chứa (composition), ví dụ: struct Address bên trong struct Person.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STRUCTURE_TYPE-03"
+  },
+  {
+    "code": "SIO-SWIFT-FOR-IN-LOOP",
+    "name": "Duyệt mảng bằng vòng lặp for-in trong Swift",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp for-in trong Swift để duyệt qua từng phần tử của một mảng và thực hiện thao tác (ví dụ: in ra, tính tổng) trên mỗi phần tử.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAYS-01"
+  },
+  {
+    "code": "SIO-SWIFT-FOREACH-METHOD",
+    "name": "Duyệt mảng bằng phương thức forEach trong Swift",
+    "description_vi": "Người học có khả năng sử dụng phương thức forEach của mảng trong Swift để duyệt qua từng phần tử và thực thi một closure trên mỗi phần tử.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAYS-01"
+  },
+  {
+    "code": "SIO-SWIFT-INSERT-ELEMENT-AT-END",
+    "name": "Chèn phần tử vào cuối mảng bằng append",
+    "description_vi": "Người học có khả năng sử dụng phương thức `append(_:)` của mảng trong Swift để thêm một phần tử mới vào cuối mảng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAYS-02"
+  },
+  {
+    "code": "SIO-SWIFT-INSERT-ELEMENT-AT-INDEX",
+    "name": "Chèn phần tử vào vị trí chỉ định bằng insert(at:)",
+    "description_vi": "Người học có khả năng sử dụng phương thức `insert(_:at:)` của mảng trong Swift để chèn một phần tử mới vào vị trí chỉ mục xác định, đồng thời xử lý lỗi chỉ mục ngoài phạm vi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAYS-02"
+  },
+  {
+    "code": "SIO-SWIFT-REMOVE-ELEMENT-BY-INDEX",
+    "name": "Xóa phần tử theo chỉ mục bằng remove(at:)",
+    "description_vi": "Người học có khả năng sử dụng phương thức `remove(at:)` của mảng trong Swift để xóa phần tử tại một chỉ mục cụ thể và trả về phần tử đã xóa.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAYS-03"
+  },
+  {
+    "code": "SIO-SWIFT-REMOVE-ELEMENT-BY-CONDITION",
+    "name": "Xóa phần tử thỏa điều kiện bằng removeAll(where:)",
+    "description_vi": "Người học có khả năng sử dụng phương thức `removeAll(where:)` của mảng trong Swift để xóa tất cả các phần tử thỏa mãn một điều kiện boolean cho trước.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ARRAYS-03"
+  },
+  {
+    "code": "SIO-SWIFT-FOR-LOOP-CLOSED-RANGE",
+    "name": "Lặp với số lần xác định bằng for-in và closed range",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp `for-in` với toán tử range đóng (`...`) trong Swift để lặp một khối lệnh với số lần xác định trước.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOOPS-01"
+  },
+  {
+    "code": "SIO-SWIFT-FOR-LOOP-STRIDE",
+    "name": "Lặp với bước nhảy xác định bằng stride",
+    "description_vi": "Người học có khả năng sử dụng hàm `stride(from:to:by:)` hoặc `stride(from:through:by:)` trong Swift để lặp với số lần xác định trước và bước nhảy tùy chỉnh.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOOPS-01"
+  },
+  {
+    "code": "SIO-SWIFT-LOOPS-02-01",
+    "name": "Sử dụng vòng lặp while với điều kiện dừng trong Swift",
+    "description_vi": "Người học có khả năng sử dụng cú pháp `while condition { }` trong Swift để lặp lại một khối lệnh cho đến khi điều kiện boolean trở thành false, kiểm soát luồng thực thi dựa trên trạng thái thay đổi của biến hoặc biểu thức.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOOPS-02"
+  },
+  {
+    "code": "SIO-SWIFT-LOOPS-02-02",
+    "name": "Sử dụng vòng lặp repeat-while với điều kiện dừng trong Swift",
+    "description_vi": "Người học có khả năng sử dụng cú pháp `repeat { } while condition` trong Swift để đảm bảo khối lệnh được thực thi ít nhất một lần trước khi kiểm tra điều kiện dừng, phù hợp cho các tình huống cần thực hiện hành động trước khi đánh giá điều kiện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOOPS-02"
+  },
+  {
+    "code": "SIO-SWIFT-LOOPS-03-01",
+    "name": "Tích lũy kết quả bằng vòng lặp for-in trong Swift",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp `for element in array { }` trong Swift kết hợp với biến accumulator (ví dụ: `var sum = 0`) để duyệt mảng và tích lũy kết quả như tính tổng, đếm số lượng, hoặc nối chuỗi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOOPS-03"
+  },
+  {
+    "code": "SIO-SWIFT-LOOPS-03-02",
+    "name": "Tích lũy kết quả bằng vòng lặp while với chỉ số trong Swift",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp `while index < array.count { }` trong Swift kết hợp với biến chỉ số và biến accumulator để duyệt mảng và tích lũy kết quả (ví dụ: đếm số phần tử thỏa mãn điều kiện), kiểm soát điều kiện dừng và cập nhật chỉ số thủ công.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LOOPS-03"
+  },
+  {
+    "code": "SIO-SWIFT-CONDITIONAL-01-01",
+    "name": "Phân luồng thực thi bằng if-else trong Swift",
+    "description_vi": "Người học có khả năng sử dụng cấu trúc `if condition { } else { }` trong Swift để phân luồng thực thi dựa trên kết quả đúng/sai của một biểu thức boolean, bao gồm cả các mệnh đề `else if` để xử lý nhiều điều kiện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONDITIONAL-01"
+  },
+  {
+    "code": "SIO-SWIFT-CONDITIONAL-01-02",
+    "name": "Phân luồng thực thi bằng switch trong Swift",
+    "description_vi": "Người học có khả năng sử dụng câu lệnh `switch value { case pattern: }` trong Swift để phân luồng thực thi dựa trên nhiều giá trị có thể có của một biểu thức, bao gồm xử lý các trường hợp mặc định (`default`) và các mẫu phức tạp như khoảng giá trị hoặc tuple.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONDITIONAL-01"
+  },
+  {
+    "code": "SIO-SWIFT-CONDITIONAL-COMBINE-01",
+    "name": "Kết hợp điều kiện với toán tử && và || trong câu lệnh if",
+    "description_vi": "Người học có khả năng viết câu lệnh if trong Swift sử dụng toán tử logic && (AND) và || (OR) để kết hợp nhiều biểu thức điều kiện, tạo ra logic rẽ nhánh phức tạp dựa trên nhiều yếu tố đầu vào.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONDITIONAL-02"
+  },
+  {
+    "code": "SIO-SWIFT-CONDITIONAL-COMBINE-02",
+    "name": "Sử dụng toán tử phủ định ! và kết hợp với else if để xử lý nhiều trường hợp",
+    "description_vi": "Người học có khả năng áp dụng toán tử phủ định ! trong Swift để đảo ngược điều kiện, đồng thời kết hợp nhiều mệnh đề else if để xây dựng cấu trúc rẽ nhánh phức tạp, xử lý các tình huống loại trừ lẫn nhau.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONDITIONAL-02"
+  },
+  {
+    "code": "SIO-SWIFT-VARIABLE-DECLARE-01",
+    "name": "Khai báo biến với type annotation và hằng số với let",
+    "description_vi": "Người học có khả năng khai báo biến (var) và hằng số (let) trong Swift, sử dụng type annotation để chỉ định kiểu dữ liệu rõ ràng (ví dụ: Int, String, Double), đảm bảo tuân thủ quy tắc đặt tên camelCase.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-VARIABLES-01"
+  },
+  {
+    "code": "SIO-SWIFT-VARIABLE-DECLARE-02",
+    "name": "Khai báo biến với type inference và giá trị khởi tạo",
+    "description_vi": "Người học có khả năng khai báo biến (var) trong Swift bằng cách sử dụng type inference, cho phép trình biên dịch suy luận kiểu dữ liệu từ giá trị khởi tạo, đồng thời tuân thủ quy tắc đặt tên camelCase.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-VARIABLES-01"
+  },
+  {
+    "code": "SIO-SWIFT-VARIABLE-ASSIGN-01",
+    "name": "Gán giá trị ban đầu và cập nhật biến bằng phép gán thông thường",
+    "description_vi": "Người học có khả năng gán giá trị ban đầu cho biến var trong Swift bằng toán tử =, sau đó cập nhật giá trị của biến đó bằng các phép gán mới, sử dụng đúng cú pháp và kiểu dữ liệu tương thích.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-VARIABLES-02"
+  },
+  {
+    "code": "SIO-SWIFT-VARIABLE-ASSIGN-02",
+    "name": "Cập nhật biến bằng toán tử gán kết hợp (+=, -=, *=, /=)",
+    "description_vi": "Người học có khả năng sử dụng các toán tử gán kết hợp trong Swift (ví dụ: +=, -=, *=, /=) để thay đổi giá trị của biến dựa trên giá trị hiện tại, giúp viết code ngắn gọn và rõ ràng hơn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-VARIABLES-02"
+  },
+  {
+    "code": "SIO-SWIFT-NAMING-01-01",
+    "name": "Áp dụng camelCase cho biến và hằng số",
+    "description_vi": "Người học có khả năng sử dụng quy ước camelCase để đặt tên biến và hằng số trong mã Swift, đảm bảo tuân thủ phong cách đặt tên chuẩn của ngôn ngữ.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-NAMING-01"
+  },
+  {
+    "code": "SIO-SWIFT-NAMING-01-02",
+    "name": "Áp dụng PascalCase cho kiểu dữ liệu",
+    "description_vi": "Người học có khả năng sử dụng quy ước PascalCase để đặt tên cho các kiểu dữ liệu (struct, class, enum) trong Swift, phân biệt rõ ràng với biến và hằng số.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-NAMING-01"
+  },
+  {
+    "code": "SIO-SWIFT-NAMING-02-01",
+    "name": "Phân biệt biến/hằng và kiểu dữ liệu bằng quy ước đặt tên",
+    "description_vi": "Người học có khả năng áp dụng quy ước camelCase (cho biến/hằng) và PascalCase (cho kiểu dữ liệu) để phân loại các định danh trong mã Swift, từ đó nhận diện đúng loại của từng định danh.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-NAMING-02"
+  },
+  {
+    "code": "SIO-SWIFT-NAMING-02-02",
+    "name": "Phân biệt hàm/phương thức và kiểu dữ liệu bằng quy ước đặt tên",
+    "description_vi": "Người học có khả năng áp dụng quy ước camelCase (cho hàm/phương thức) và PascalCase (cho kiểu dữ liệu) để phân biệt các định danh trong mã Swift, xác định đúng vai trò của từng thành phần.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-NAMING-02"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARATIVE_UI_PARADIGM-03-01-01",
+    "name": "So sánh cách mô tả giao diện giữa SwiftUI và UIKit",
+    "description_vi": "Người học có khả năng so sánh cách xây dựng giao diện 'Hello World' bằng SwiftUI (khai báo) và UIKit (mệnh lệnh) để chỉ ra sự khác biệt về cú pháp, luồng điều khiển và cách quản lý trạng thái.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-DECLARATIVE_UI_PARADIGM-03-01-02",
+    "name": "Phân tích đoạn mã SwiftUI và UIKit để xác định cách mô tả bố cục",
+    "description_vi": "Người học có khả năng phân tích các đoạn mã SwiftUI và UIKit tương ứng để xác định cách mô tả bố cục, thành phần giao diện và sự khác biệt trong cách tiếp cận khai báo so với mệnh lệnh.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-STATE-MANAGEMENT-COMPARISON",
+    "name": "Phân biệt quản lý trạng thái khai báo và mệnh lệnh trong Swift",
+    "description_vi": "Người học có khả năng phân tích sự khác biệt giữa quản lý trạng thái bằng @State trong SwiftUI (khai báo) và biến instance trong UIKit (mệnh lệnh) để xác định cách giao diện phản ứng với thay đổi dữ liệu.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-CHOOSE-STATE-PARADIGM",
+    "name": "Áp dụng lựa chọn mô hình quản lý trạng thái phù hợp trong Swift",
+    "description_vi": "Người học có khả năng áp dụng kiến thức về sự khác biệt giữa khai báo và mệnh lệnh để chọn phương pháp quản lý trạng thái thích hợp (ví dụ: @State vs. biến toàn cục) cho một tình huống cụ thể trong SwiftUI.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-STATIC-UI-DECLARATION",
+    "name": "Xây dựng giao diện tĩnh bằng khai báo trong SwiftUI",
+    "description_vi": "Người học có khả năng xây dựng giao diện người dùng tĩnh bằng cách khai báo cấu trúc phân cấp các view SwiftUI (VStack, HStack, Text, Image) với các modifier như .font(), .foregroundColor(), .padding() mà không sử dụng trạng thái động.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-STATIC-UI-COMPOSITION",
+    "name": "Tổ chức các view tĩnh trong container SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng các container view SwiftUI (VStack, HStack, ZStack) để sắp xếp và căn chỉnh các view tĩnh (Text, Image, Shape) nhằm tạo bố cục giao diện hoàn chỉnh mà không có tương tác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-REACTIVE-UI-STATE",
+    "name": "Xây dựng giao diện phản ứng với @State trong SwiftUI",
+    "description_vi": "Người học có khả năng xây dựng giao diện SwiftUI thay đổi theo trạng thái bằng cách khai báo @State property wrapper và liên kết nó với các view (Text, TextField, Toggle) để giao diện tự động cập nhật khi trạng thái thay đổi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-REACTIVE-UI-BINDING",
+    "name": "Sử dụng binding để đồng bộ trạng thái giữa các view trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng toán tử $ để tạo binding từ @State, truyền binding vào các control SwiftUI (Slider, Toggle, TextField) để đồng bộ trạng thái hai chiều giữa view cha và view con.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-DECLARATIVE_UI_PARADIGM-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-MODIFY-APPEARANCE-COLOR-FONT",
+    "name": "Áp dụng modifier màu sắc và phông chữ trong SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng các modifier SwiftUI như .foregroundColor(), .font(), .background() lên các View (Text, Image, Button) để thay đổi kiểu dáng giao diện, bao gồm thiết lập màu chữ, màu nền và kiểu phông chữ.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS_CONCEPT-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-MODIFY-APPEARANCE-SHAPE-SIZE",
+    "name": "Áp dụng modifier kích thước và hình dạng trong SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng các modifier SwiftUI như .frame(), .cornerRadius(), .clipShape(), .shadow() lên các View để thay đổi kích thước, bo góc, cắt hình và đổ bóng cho thành phần giao diện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS_CONCEPT-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-LAYOUT-PADDING-ALIGNMENT",
+    "name": "Áp dụng modifier padding và căn chỉnh trong SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng các modifier SwiftUI như .padding(), .alignmentGuide(), .multilineTextAlignment() để tạo khoảng đệm xung quanh View và căn chỉnh nội dung bên trong View.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS_CONCEPT-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-LAYOUT-FRAME-OFFSET",
+    "name": "Áp dụng modifier frame và offset trong SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng các modifier SwiftUI như .frame(width:height:alignment:), .offset(x:y:), .position() để thiết lập kích thước cố định và dịch chuyển vị trí của View trong bố cục.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_MODIFIERS_CONCEPT-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-CONTAINER-SPACER",
+    "name": "Sử dụng Spacer để phân chia không gian trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng Spacer trong VStack, HStack hoặc ZStack của SwiftUI để đẩy các View con ra xa nhau, chiếm không gian linh hoạt và phân chia bố cục thành các vùng có kích thước co giãn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONTAINER_VIEWS-01"
+  },
+  {
+    "code": "SIO-SWIFT-CONTAINER-STACK-ALIGNMENT",
+    "name": "Sử dụng VStack/HStack với alignment và spacing trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng VStack và HStack trong SwiftUI với các tham số alignment và spacing để sắp xếp các View con theo chiều dọc hoặc ngang, đồng thời kiểm soát căn chỉnh và khoảng cách giữa chúng nhằm phân chia không gian bố cục.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONTAINER_VIEWS-01"
+  },
+  {
+    "code": "SIO-SWIFT-ARRANGE-CHILDREN-AUTOSIZING",
+    "name": "Sắp xếp view con theo hướng với kích thước tự động",
+    "description_vi": "Người học có khả năng sử dụng HStack và VStack trong SwiftUI để sắp xếp các view con theo hướng ngang hoặc dọc, cho phép kích thước tự động dựa trên nội dung và modifier như .frame() để kiểm soát khoảng cách.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONTAINER_VIEWS-02"
+  },
+  {
+    "code": "SIO-SWIFT-CONTROL-SPACING-AUTOSIZING",
+    "name": "Kiểm soát khoảng cách và kích thước tự động trong container",
+    "description_vi": "Người học có khả năng áp dụng modifier .frame() kết hợp với Spacer trong SwiftUI để kiểm soát khoảng cách giữa các view con và cho phép chúng tự động co giãn theo không gian có sẵn trong HStack hoặc VStack.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONTAINER_VIEWS-02"
+  },
+  {
+    "code": "SIO-SWIFT-NEST-CONTAINERS-ADAPTIVE",
+    "name": "Lồng container để tạo bố cục thích ứng",
+    "description_vi": "Người học có khả năng kết hợp HStack, VStack và ZStack lồng nhau trong SwiftUI để tạo bố cục phức tạp, đảm bảo các phần tử tự động co giãn và thích ứng với kích thước màn hình khác nhau.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONTAINER_VIEWS-03"
+  },
+  {
+    "code": "SIO-SWIFT-LAYOUT-PRIORITY-NESTING",
+    "name": "Sử dụng layoutPriority trong container lồng nhau",
+    "description_vi": "Người học có khả năng sử dụng modifier .layoutPriority() trong SwiftUI để kiểm soát tỷ lệ phân bổ không gian giữa các view con khi lồng nhiều container, giúp bố cục phức tạp hiển thị đúng tỷ lệ mong muốn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-CONTAINER_VIEWS-03"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE-RENDERING-ORDER",
+    "name": "Phân tích thứ tự vẽ dựa trên cấu trúc phân cấp",
+    "description_vi": "Người học có khả năng phân tích thứ tự vẽ (rendering order) của các view trong SwiftUI dựa trên cấu trúc phân cấp: view cha được vẽ trước, view con được vẽ chồng lên trên, và thứ tự khai báo trong ZStack ảnh hưởng đến lớp hiển thị.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-VIEW_HIERARCHY-01"
+  },
+  {
+    "code": "SIO-SWIFT-ZSTACK-ORDERING",
+    "name": "Giải thích thứ tự vẽ trong ZStack",
+    "description_vi": "Người học có khả năng giải thích cách ZStack trong SwiftUI ảnh hưởng đến thứ tự vẽ dựa trên thứ tự khai báo của các view con: view khai báo sau sẽ được vẽ chồng lên view khai báo trước, tạo hiệu ứng lớp (layer).",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "parent_cio_code": "CIO-VIEW_HIERARCHY-01"
+  },
+  {
+    "code": "SIO-SWIFT-HIT-TESTING-EXPLANATION",
+    "name": "Giải thích cơ chế hit-testing trong SwiftUI",
+    "description_vi": "Người học có khả năng giải thích cách SwiftUI thực hiện hit-testing để xác định view nào nhận sự kiện touch, dựa trên thứ tự phân cấp view và vùng chứa.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "parent_cio_code": "CIO-VIEW_HIERARCHY-02"
+  },
+  {
+    "code": "SIO-SWIFT-HIT-TESTING-PREDICTION",
+    "name": "Dự đoán view nhận sự kiện dựa trên hit-testing",
+    "description_vi": "Người học có khả năng áp dụng quy tắc hit-testing của SwiftUI để dự đoán view nào sẽ nhận được sự kiện touch khi có nhiều view chồng lên nhau trong cùng một vùng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-VIEW_HIERARCHY-02"
+  },
+  {
+    "code": "SIO-SWIFT-ATTACH-TAP-GESTURE",
+    "name": "Gắn hành động tap vào Button bằng .onTapGesture",
+    "description_vi": "Người học có khả năng sử dụng modifier .onTapGesture trong SwiftUI để gắn một closure hành động vào Button, kích hoạt khi người dùng chạm vào.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_CONTROLS-01"
+  },
+  {
+    "code": "SIO-SWIFT-ATTACH-SLIDER-ACTION",
+    "name": "Gắn hành động thay đổi giá trị vào Slider",
+    "description_vi": "Người học có khả năng sử dụng tham số onEditingChanged hoặc onChange trong SwiftUI để gắn hành động vào Slider, phản ứng khi người dùng thay đổi giá trị.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_CONTROLS-01"
+  },
+  {
+    "code": "SIO-SWIFT-TEXTFIELD-STATE-BINDING",
+    "name": "Liên kết TextField với @State để thu thập dữ liệu",
+    "description_vi": "Người học có khả năng sử dụng @State property wrapper và binding ($) trong SwiftUI để liên kết TextField với một biến trạng thái, cho phép thu thập và cập nhật dữ liệu người dùng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_CONTROLS-02"
+  },
+  {
+    "code": "SIO-SWIFT-SLIDER-STATE-UPDATE",
+    "name": "Cập nhật state từ Slider trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng Slider với @State và binding để điều chỉnh giá trị liên tục, đồng thời cập nhật giao diện dựa trên giá trị đó.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_CONTROLS-02"
+  },
+  {
+    "code": "SIO-SWIFT-SET-MULTIPLE-CONTROLS-1",
+    "name": "Thiết lập Button và Toggle với action handlers riêng biệt trong SwiftUI",
+    "description_vi": "Người học có khả năng thiết lập hai control SwiftUI (Button và Toggle) trên cùng một giao diện, mỗi control gắn một action handler riêng biệt sử dụng closure hoặc hàm để xử lý sự kiện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_CONTROLS-03"
+  },
+  {
+    "code": "SIO-SWIFT-SET-MULTIPLE-CONTROLS-2",
+    "name": "Thiết lập TextField và Slider với binding và action trong SwiftUI",
+    "description_vi": "Người học có khả năng thiết lập control TextField và Slider trong SwiftUI, sử dụng @State để binding dữ liệu và gắn action handler (onEditingChanged, onCommit cho TextField; onEditingChanged cho Slider) để phản ứng khi người dùng tương tác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-UI_CONTROLS-03"
+  },
+  {
+    "code": "SIO-SWIFT-REACTIVE-STATE-BINDING-1",
+    "name": "Khai báo @State property và sử dụng $binding để liên kết với control SwiftUI",
+    "description_vi": "Người học có khả năng khai báo một biến @State trong SwiftUI, sau đó sử dụng cú pháp $ (binding) để liên kết biến đó với một control (ví dụ: TextField, Toggle) nhằm tạo luồng dữ liệu hai chiều phản ứng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-01"
+  },
+  {
+    "code": "SIO-SWIFT-REACTIVE-STATE-BINDING-2",
+    "name": "Tạo binding từ @State để truyền xuống child view trong SwiftUI",
+    "description_vi": "Người học có khả năng tạo một Binding từ biến @State trong view cha và truyền nó xuống view con thông qua tham số @Binding, cho phép view con đọc và ghi giá trị trạng thái một cách phản ứng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-STATE_PROPERTY_WRAPPER-01"
+  },
+  {
+    "code": "SIO-SWIFT-SYNTAX-ERROR-ANALYSIS-1",
+    "name": "Xác định lỗi cú pháp do thiếu dấu ngoặc hoặc sai quy tắc đặt tên trong Swift",
+    "description_vi": "Người học có khả năng phân tích đoạn mã Swift để xác định vị trí và nguyên nhân lỗi cú pháp như thiếu dấu ngoặc đơn, ngoặc nhọn, hoặc vi phạm quy tắc đặt tên camelCase (ví dụ: sử dụng ký tự đặc biệt hoặc bắt đầu bằng số).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_ERRORS-01"
+  },
+  {
+    "code": "SIO-SWIFT-SYNTAX-ERROR-ANALYSIS-2",
+    "name": "Phân tích mã Swift để tìm lỗi thiếu dấu hai chấm trong dictionary hoặc sai cú pháp closure",
+    "description_vi": "Người học có khả năng phân tích mã nguồn Swift để phát hiện lỗi cú pháp như thiếu dấu hai chấm (:) trong dictionary literal, hoặc cú pháp closure không đúng (ví dụ: thiếu từ khóa 'in' hoặc dấu ngoặc nhọn không khớp).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SYNTAX_ERRORS-01"
+  },
+  {
+    "code": "SIO-SWIFT-RUNTIME-ERROR-DIAGNOSIS-1",
+    "name": "Sử dụng Xcode Debugger để phân tích trạng thái biến Swift tại thời điểm lỗi runtime",
+    "description_vi": "Người học có khả năng sử dụng Xcode debugger (breakpoint, LLDB) để kiểm tra giá trị của các biến Swift (Int, String, Optional, Array) tại thời điểm chương trình gặp lỗi runtime, từ đó xác định nguyên nhân gây lỗi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-RUNTIME_ERRORS-01"
+  },
+  {
+    "code": "SIO-SWIFT-RUNTIME-ERROR-DIAGNOSIS-2",
+    "name": "Áp dụng kỹ thuật in giá trị và breakpoint để theo dõi luồng thực thi Swift",
+    "description_vi": "Người học có khả năng áp dụng kỹ thuật in giá trị (print) và đặt breakpoint trong Xcode để theo dõi luồng thực thi của chương trình Swift, phát hiện bất thường (ví dụ: vòng lặp vô hạn, giá trị nil) dẫn đến lỗi runtime.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-RUNTIME_ERRORS-01"
+  },
+  {
+    "code": "SIO-SWIFT-ERROR-MESSAGE-STRUCTURE-1",
+    "name": "Phân tích cấu trúc thông báo lỗi Swift để xác định loại lỗi và vị trí",
+    "description_vi": "Người học có khả năng phân tích cấu trúc thông báo lỗi Swift (bao gồm loại lỗi như 'Fatal error', mô tả chi tiết, tên file và số dòng) để xác định loại lỗi và vị trí xảy ra trong mã nguồn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ERROR_MESSAGES_CONCEPT-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-ERROR-MESSAGE-STRUCTURE-2",
+    "name": "Giải thích ý nghĩa các thành phần trong thông báo lỗi Swift điển hình",
+    "description_vi": "Người học có khả năng giải thích ý nghĩa của các thành phần trong thông báo lỗi Swift như 'Unexpectedly found nil while unwrapping an Optional value', 'Index out of range', và 'Thread 1: signal SIGABRT' dựa trên cấu trúc thông báo.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ERROR_MESSAGES_CONCEPT-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-ERROR-CAUSE-INFERENCE-1",
+    "name": "Suy luận nguyên nhân lỗi 'Unexpectedly found nil' từ thông báo và ngữ cảnh mã Swift",
+    "description_vi": "Người học có khả năng suy luận nguyên nhân gốc rễ của lỗi 'Thread 1: Fatal error: Unexpectedly found nil while unwrapping an Optional value' dựa trên thông báo lỗi và ngữ cảnh mã Swift (ví dụ: force unwrapping, optional binding không đúng).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ERROR_MESSAGES_CONCEPT-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-ERROR-CAUSE-INFERENCE-2",
+    "name": "Phân tích lỗi 'Index out of range' để xác định vị trí truy cập mảng không hợp lệ trong Swift",
+    "description_vi": "Người học có khả năng phân tích thông báo lỗi 'Index out of range' trong Swift để xác định chỉ số mảng không hợp lệ, từ đó suy luận nguyên nhân (ví dụ: vòng lặp sai, thiếu kiểm tra biên) và đề xuất cách sửa.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ERROR_MESSAGES_CONCEPT-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-ERROR_DIFF_SYNTAX_RUNTIME",
+    "name": "Phân biệt lỗi cú pháp và lỗi runtime trong Swift dựa trên thông báo lỗi",
+    "description_vi": "Người học có khả năng áp dụng kiến thức về lỗi cú pháp và lỗi runtime trong Swift để phân biệt loại lỗi khi đọc thông báo lỗi từ Xcode, dựa trên các từ khóa như 'Expected declaration' (cú pháp) hay 'Fatal error' (runtime).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ERROR_MESSAGES_CONCEPT-02-03"
+  },
+  {
+    "code": "SIO-SWIFT-ERROR_DIFF_LOGIC",
+    "name": "Phân biệt lỗi logic với lỗi cú pháp và runtime trong Swift",
+    "description_vi": "Người học có khả năng áp dụng kiến thức về lỗi logic trong Swift để phân biệt lỗi logic (không có thông báo lỗi nhưng kết quả sai) với lỗi cú pháp và runtime, bằng cách phân tích hành vi chương trình và so sánh với kết quả mong đợi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-ERROR_MESSAGES_CONCEPT-02-03"
+  },
+  {
+    "code": "SIO-SWIFT-IMPACT_CLASSIFY_LEGAL",
+    "name": "Phân loại tác động pháp lý của ứng dụng Swift",
+    "description_vi": "Người học có khả năng áp dụng khung phân loại tác động công nghệ để phân loại một tác động cụ thể (ví dụ: thu thập dữ liệu người dùng không được phép) vào nhóm pháp lý, dựa trên các quy định như GDPR và luật bảo vệ dữ liệu trong bối cảnh phát triển ứng dụng Swift.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS-01-01"
+  },
+  {
+    "code": "SIO-SWIFT-IMPACT_CLASSIFY_ETHICAL",
+    "name": "Phân loại tác động đạo đức và kinh tế xã hội của ứng dụng Swift",
+    "description_vi": "Người học có khả năng áp dụng khung phân loại tác động công nghệ để phân loại một tác động (ví dụ: thiên vị thuật toán trong ứng dụng Swift) vào nhóm đạo đức hoặc kinh tế xã hội, bằng cách xem xét các nguyên tắc công bằng và tác động đến cộng đồng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS-01-01"
+  },
+  {
+    "code": "SIO-SWIFT-VIEWPOINT_COMPARE_LEGAL_VS_ETHICAL",
+    "name": "So sánh quan điểm pháp lý và đạo đức về quyền riêng tư trong ứng dụng Swift",
+    "description_vi": "Người học có khả năng áp dụng các tiêu chí so sánh để đối chiếu quan điểm pháp lý (tuân thủ luật) và quan điểm đạo đức (trách nhiệm với người dùng) về cùng một vấn đề, chẳng hạn như thu thập dữ liệu vị trí trong ứng dụng Swift, và xác định điểm tương đồng và khác biệt.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS-01-02"
+  },
+  {
+    "code": "SIO-SWIFT-VIEWPOINT_COMPARE_SOCIOECONOMIC",
+    "name": "So sánh quan điểm kinh tế xã hội và đạo đức về tác động của ứng dụng Swift đến việc làm",
+    "description_vi": "Người học có khả năng áp dụng các tiêu chí so sánh để đối chiếu quan điểm kinh tế xã hội (tạo việc làm, tăng năng suất) và quan điểm đạo đức (công bằng, không phân biệt) về tác động của ứng dụng Swift đến thị trường lao động, và giải thích sự khác biệt.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS-01-02"
+  },
+  {
+    "code": "SIO-SWIFT-ETHICAL-ISSUE-CORE-LOCATION",
+    "name": "Nhận diện vấn đề đạo đức về quyền riêng tư khi sử dụng Core Location trong Swift",
+    "description_vi": "Người học có khả năng áp dụng nguyên tắc đạo đức để nhận diện vấn đề quyền riêng tư tiềm ẩn khi thiết kế ứng dụng Swift sử dụng framework Core Location, bao gồm việc xác định trường hợp yêu cầu quyền truy cập vị trí không cần thiết hoặc thiếu minh bạch.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS-01-03"
+  },
+  {
+    "code": "SIO-SWIFT-ETHICAL-ISSUE-PERMISSIONS",
+    "name": "Nhận diện vấn đề đạo đức về quyền truy cập tài nguyên nhạy cảm trong ứng dụng Swift",
+    "description_vi": "Người học có khả năng áp dụng nguyên tắc đạo đức để nhận diện vấn đề tiềm ẩn khi ứng dụng Swift yêu cầu quyền truy cập vào camera, microphone hoặc thư viện ảnh mà không có lý do chính đáng, từ đó đánh giá tính minh bạch và sự đồng thuận của người dùng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS-01-03"
+  },
+  {
+    "code": "SIO-SWIFT-SHAPE-PROTOCOL-PATH",
+    "name": "Triển khai giao thức Shape bằng phương thức path(in:) trong SwiftUI",
+    "description_vi": "Người học có khả năng triển khai giao thức Shape trong SwiftUI bằng cách định nghĩa phương thức path(in:) để tạo đường dẫn (path) tùy chỉnh, sử dụng các lệnh vẽ như move(to:), addLine(to:), addArc(...) để xây dựng hình dạng mong muốn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SHAPE-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-SHAPE-PROTOCOL-ANIMATABLE",
+    "name": "Triển khai giao thức Shape với thuộc tính animatableData trong SwiftUI",
+    "description_vi": "Người học có khả năng triển khai giao thức Shape trong SwiftUI kèm theo thuộc tính animatableData để hỗ trợ hoạt ảnh mượt mà cho hình dạng tùy chỉnh, bằng cách khai báo biến @State hoặc @Binding và sử dụng modifier .animation().",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SHAPE-03-01"
+  },
+  {
+    "code": "SIO-SWIFT-SHAPE-PARAMETER-SIZE",
+    "name": "Điều chỉnh kích thước hình dạng bằng tham số CGFloat trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng tham số đầu vào kiểu CGFloat để điều chỉnh kích thước và tỷ lệ của một hình dạng tùy chỉnh trong SwiftUI, bằng cách truyền giá trị vào phương thức path(in:) và áp dụng các phép tính toán học như nhân, chia để thay đổi kích thước.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SHAPE-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-SHAPE-PARAMETER-POSITION",
+    "name": "Điều chỉnh vị trí hình dạng bằng tham số CGPoint trong SwiftUI",
+    "description_vi": "Người học có khả năng sử dụng tham số đầu vào kiểu CGPoint để điều chỉnh vị trí của hình dạng trong không gian tọa độ SwiftUI, bằng cách dịch chuyển các điểm của đường dẫn (path) dựa trên giá trị offset được truyền vào.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SHAPE-03-02"
+  },
+  {
+    "code": "SIO-SWIFT-COMBINE-SHAPES-STACK",
+    "name": "Kết hợp hình dạng bằng ZStack trong SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng SwiftUI ZStack để xếp chồng nhiều hình dạng (Circle, Rectangle, RoundedRectangle) nhằm tạo ra một hình dạng phức tạp mới, đồng thời điều chỉnh thứ tự và căn chỉnh các hình dạng con.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SHAPE-03-03"
+  },
+  {
+    "code": "SIO-SWIFT-COMBINE-SHAPES-OVERLAY",
+    "name": "Kết hợp hình dạng bằng overlay modifier trong SwiftUI",
+    "description_vi": "Người học có khả năng áp dụng SwiftUI overlay modifier để chồng một hình dạng lên trên một hình dạng khác, sử dụng các tham số alignment và padding để kiểm soát vị trí tương đối giữa các hình dạng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-SHAPE-03-03"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE-HSL-COMPONENTS",
+    "name": "Phân tích thành phần HSL bằng UIColor trong Swift",
+    "description_vi": "Người học có khả năng sử dụng phương thức getHue(_:saturation:brightness:alpha:) của UIColor trong Swift để tách một màu cụ thể thành các thành phần Hue, Saturation, Brightness, từ đó phân tích giá trị số của từng thành phần.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-COLOR-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-ANALYZE-HSV-MODIFIERS",
+    "name": "Phân tích ảnh hưởng thành phần màu bằng SwiftUI Color modifier",
+    "description_vi": "Người học có khả năng áp dụng các modifier .hueRotation(_:), .saturation(_:), .brightness(_:) của SwiftUI Color để thay đổi từng thành phần HSL/HSV trên một màu gốc, sau đó quan sát và mô tả sự thay đổi trực quan trên giao diện.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-COLOR-02-01"
+  },
+  {
+    "code": "SIO-SWIFT-EXPLAIN-COLOR-INTERACTION-HSL",
+    "name": "Giải thích tương tác thành phần màu bằng SwiftUI Color và Slider",
+    "description_vi": "Người học có khả năng sử dụng SwiftUI Slider kết hợp với @State để điều chỉnh giá trị Hue, Saturation, Brightness của một Color, đồng thời giải thích bằng lời hoặc viết cách mỗi thành phần ảnh hưởng đến màu hiển thị cuối cùng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-COLOR-02-02"
+  },
+  {
+    "code": "SIO-SWIFT-EXPLAIN-COLOR-INTERACTION-COMPARISON",
+    "name": "Giải thích tương tác thành phần màu qua so sánh SwiftUI Color",
+    "description_vi": "Người học có khả năng tạo hai SwiftUI Color với cùng một Hue nhưng khác Saturation và Brightness, sau đó so sánh trực quan và giải thích sự khác biệt về độ đậm nhạt và độ sáng dựa trên các thành phần HSL.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "parent_cio_code": "CIO-COLOR-02-02"
+  }
+]

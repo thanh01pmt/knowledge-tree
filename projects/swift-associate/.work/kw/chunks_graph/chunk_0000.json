@@ -1,0 +1,96 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "App Development with Swift Associate",
+      "type": "factual",
+      "definition": "A certification that demonstrates knowledge of key computing concepts and programming with Swift and SwiftUI."
+    },
+    {
+      "id": "node_2",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language used for app development."
+    },
+    {
+      "id": "node_3",
+      "label": "SwiftUI",
+      "type": "factual",
+      "definition": "Apple's framework for building user interfaces across all Apple platforms."
+    },
+    {
+      "id": "node_4",
+      "label": "key computing concepts",
+      "type": "conceptual",
+      "definition": "Fundamental ideas in computing such as variables, loops, and data structures."
+    },
+    {
+      "id": "node_5",
+      "label": "foundation in programming",
+      "type": "conceptual",
+      "definition": "Basic understanding of programming principles and practices."
+    },
+    {
+      "id": "node_6",
+      "label": "impact of computing and apps on society, economies, and cultures",
+      "type": "conceptual",
+      "definition": "The broader effects of technology on social, economic, and cultural aspects."
+    },
+    {
+      "id": "node_7",
+      "label": "app development",
+      "type": "conceptual",
+      "definition": "The process of creating software applications for mobile or desktop devices."
+    },
+    {
+      "id": "node_8",
+      "label": "Earning",
+      "type": "action",
+      "definition": "The act of obtaining a certification or credential."
+    },
+    {
+      "id": "node_9",
+      "label": "demonstrates",
+      "type": "action",
+      "definition": "To show or prove knowledge or skill."
+    },
+    {
+      "id": "node_10",
+      "label": "exploring",
+      "type": "action",
+      "definition": "To investigate or examine a topic or activity."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_8",
+      "target": "node_1",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_9",
+      "target": "node_4",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_9",
+      "target": "node_5",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_10",
+      "target": "node_7",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_2",
+      "target": "node_7",
+      "relation": "related_to"
+    },
+    {
+      "source": "node_3",
+      "target": "node_7",
+      "relation": "related_to"
+    }
+  ]
+}

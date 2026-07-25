@@ -1,0 +1,183 @@
+{
+  "nodes": [
+    {
+      "id": "action_create",
+      "label": "Create",
+      "type": "action",
+      "definition": "To produce or make something."
+    },
+    {
+      "id": "action_manipulate",
+      "label": "manipulate",
+      "type": "action",
+      "definition": "To handle or change something."
+    },
+    {
+      "id": "conceptual_array",
+      "label": "Array",
+      "type": "conceptual",
+      "definition": "A data structure that stores a collection of elements."
+    },
+    {
+      "id": "action_differentiate",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "To distinguish between two or more things."
+    },
+    {
+      "id": "conceptual_imperative",
+      "label": "imperative programming",
+      "type": "conceptual",
+      "definition": "A programming paradigm using statements that change state."
+    },
+    {
+      "id": "conceptual_declarative",
+      "label": "declarative programming",
+      "type": "conceptual",
+      "definition": "A programming paradigm expressing logic without control flow."
+    },
+    {
+      "id": "action_declare",
+      "label": "Declare",
+      "type": "action",
+      "definition": "To state or define a variable or array."
+    },
+    {
+      "id": "action_initialize",
+      "label": "initialize",
+      "type": "action",
+      "definition": "To set an initial value for a variable or array."
+    },
+    {
+      "id": "conceptual_values",
+      "label": "values",
+      "type": "conceptual",
+      "definition": "Data items stored in an array."
+    },
+    {
+      "id": "action_identify",
+      "label": "Identify",
+      "type": "action",
+      "definition": "To recognize or determine something."
+    },
+    {
+      "id": "action_modify",
+      "label": "modify",
+      "type": "action",
+      "definition": "To change or alter something."
+    },
+    {
+      "id": "conceptual_array_element",
+      "label": "array element",
+      "type": "conceptual",
+      "definition": "An individual item within an array."
+    },
+    {
+      "id": "conceptual_index",
+      "label": "index",
+      "type": "conceptual",
+      "definition": "A numerical position indicator for array elements."
+    },
+    {
+      "id": "conceptual_content_views",
+      "label": "Content Views",
+      "type": "conceptual",
+      "definition": "UI components that display content in SwiftUI."
+    },
+    {
+      "id": "factual_text",
+      "label": "Text",
+      "type": "factual",
+      "definition": "A SwiftUI view that displays text."
+    },
+    {
+      "id": "factual_image",
+      "label": "Image",
+      "type": "factual",
+      "definition": "A SwiftUI view that displays an image."
+    },
+    {
+      "id": "conceptual_shape",
+      "label": "Shape",
+      "type": "conceptual",
+      "definition": "A protocol for drawing shapes in SwiftUI."
+    }
+  ],
+  "edges": [
+    {
+      "source": "action_create",
+      "target": "conceptual_array",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_manipulate",
+      "target": "conceptual_array",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_differentiate",
+      "target": "conceptual_imperative",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_differentiate",
+      "target": "conceptual_declarative",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_declare",
+      "target": "conceptual_array",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_initialize",
+      "target": "conceptual_array",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_initialize",
+      "target": "conceptual_values",
+      "relation": "uses"
+    },
+    {
+      "source": "action_identify",
+      "target": "conceptual_array_element",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_modify",
+      "target": "conceptual_array_element",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_identify",
+      "target": "conceptual_index",
+      "relation": "uses"
+    },
+    {
+      "source": "action_modify",
+      "target": "conceptual_index",
+      "relation": "uses"
+    },
+    {
+      "source": "action_create",
+      "target": "conceptual_content_views",
+      "relation": "acts_on"
+    },
+    {
+      "source": "action_create",
+      "target": "factual_text",
+      "relation": "uses"
+    },
+    {
+      "source": "action_create",
+      "target": "factual_image",
+      "relation": "uses"
+    },
+    {
+      "source": "action_create",
+      "target": "conceptual_shape",
+      "relation": "uses"
+    }
+  ]
+}

@@ -1,0 +1,997 @@
+{
+  "generated_at": "2026-07-25T12:19:12.903267+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 128,
+    "errors": 36,
+    "warnings": 92,
+    "by_rule": {
+      "CODE_FORMAT": 54,
+      "EMPTY_PARENT_REF": 36,
+      "LO_CONCEPT_UNCOVERED": 11,
+      "ORPHAN_NODE": 26,
+      "INCONSISTENT_LINE_ENDINGS": 1
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 0,
+        "WARNING": 54
+      },
+      "concepts": {
+        "ERROR": 36,
+        "WARNING": 22
+      },
+      "topics": {
+        "ERROR": 0,
+        "WARNING": 15
+      },
+      "_file": {
+        "ERROR": 0,
+        "WARNING": 1
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 9,
+      "categories": 11,
+      "topics": 15,
+      "concepts": 36,
+      "learning_objectives": 217
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-define-function-parameters",
+      "message": "Code 'SIO-SWIFT-define-function-parameters' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-pass-arguments",
+      "message": "Code 'SIO-SWIFT-pass-arguments' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-assign-return-value",
+      "message": "Code 'SIO-SWIFT-assign-return-value' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-combine-return-values",
+      "message": "Code 'SIO-SWIFT-combine-return-values' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-build-comparison-expression",
+      "message": "Code 'SIO-SWIFT-build-comparison-expression' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-use-comparison-in-condition",
+      "message": "Code 'SIO-SWIFT-use-comparison-in-condition' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-use-parentheses-precedence",
+      "message": "Code 'SIO-SWIFT-use-parentheses-precedence' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-evaluate-parenthesized-expression",
+      "message": "Code 'SIO-SWIFT-evaluate-parenthesized-expression' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-combine-logical-operators",
+      "message": "Code 'SIO-SWIFT-combine-logical-operators' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-evaluate-logical-expression",
+      "message": "Code 'SIO-SWIFT-evaluate-logical-expression' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-define-struct-properties",
+      "message": "Code 'SIO-SWIFT-define-struct-properties' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-identify-property-types",
+      "message": "Code 'SIO-SWIFT-identify-property-types' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-insert-element-at-end",
+      "message": "Code 'SIO-SWIFT-insert-element-at-end' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-insert-element-at-index",
+      "message": "Code 'SIO-SWIFT-insert-element-at-index' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-remove-element-by-index",
+      "message": "Code 'SIO-SWIFT-remove-element-by-index' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-remove-element-by-condition",
+      "message": "Code 'SIO-SWIFT-remove-element-by-condition' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-for-loop-closed-range",
+      "message": "Code 'SIO-SWIFT-for-loop-closed-range' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-for-loop-stride",
+      "message": "Code 'SIO-SWIFT-for-loop-stride' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-state-management-comparison",
+      "message": "Code 'SIO-SWIFT-state-management-comparison' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-choose-state-paradigm",
+      "message": "Code 'SIO-SWIFT-choose-state-paradigm' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-static-ui-declaration",
+      "message": "Code 'SIO-SWIFT-static-ui-declaration' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-static-ui-composition",
+      "message": "Code 'SIO-SWIFT-static-ui-composition' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-reactive-ui-state",
+      "message": "Code 'SIO-SWIFT-reactive-ui-state' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-reactive-ui-binding",
+      "message": "Code 'SIO-SWIFT-reactive-ui-binding' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-arrange-children-autosizing",
+      "message": "Code 'SIO-SWIFT-arrange-children-autosizing' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-control-spacing-autosizing",
+      "message": "Code 'SIO-SWIFT-control-spacing-autosizing' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-nest-containers-adaptive",
+      "message": "Code 'SIO-SWIFT-nest-containers-adaptive' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-layout-priority-nesting",
+      "message": "Code 'SIO-SWIFT-layout-priority-nesting' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-analyze-rendering-order",
+      "message": "Code 'SIO-SWIFT-analyze-rendering-order' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-zstack-ordering",
+      "message": "Code 'SIO-SWIFT-zstack-ordering' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-hit-testing-explanation",
+      "message": "Code 'SIO-SWIFT-hit-testing-explanation' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-hit-testing-prediction",
+      "message": "Code 'SIO-SWIFT-hit-testing-prediction' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-attach-tap-gesture",
+      "message": "Code 'SIO-SWIFT-attach-tap-gesture' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-attach-slider-action",
+      "message": "Code 'SIO-SWIFT-attach-slider-action' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-textfield-state-binding",
+      "message": "Code 'SIO-SWIFT-textfield-state-binding' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-slider-state-update",
+      "message": "Code 'SIO-SWIFT-slider-state-update' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-set-multiple-controls-1",
+      "message": "Code 'SIO-SWIFT-set-multiple-controls-1' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-set-multiple-controls-2",
+      "message": "Code 'SIO-SWIFT-set-multiple-controls-2' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-reactive-state-binding-1",
+      "message": "Code 'SIO-SWIFT-reactive-state-binding-1' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-reactive-state-binding-2",
+      "message": "Code 'SIO-SWIFT-reactive-state-binding-2' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-syntax-error-analysis-1",
+      "message": "Code 'SIO-SWIFT-syntax-error-analysis-1' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-syntax-error-analysis-2",
+      "message": "Code 'SIO-SWIFT-syntax-error-analysis-2' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-runtime-error-diagnosis-1",
+      "message": "Code 'SIO-SWIFT-runtime-error-diagnosis-1' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-runtime-error-diagnosis-2",
+      "message": "Code 'SIO-SWIFT-runtime-error-diagnosis-2' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-error-message-structure-1",
+      "message": "Code 'SIO-SWIFT-error-message-structure-1' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-error-message-structure-2",
+      "message": "Code 'SIO-SWIFT-error-message-structure-2' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-error-cause-inference-1",
+      "message": "Code 'SIO-SWIFT-error-cause-inference-1' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-error-cause-inference-2",
+      "message": "Code 'SIO-SWIFT-error-cause-inference-2' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-combine-shapes-stack",
+      "message": "Code 'SIO-SWIFT-combine-shapes-stack' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-combine-shapes-overlay",
+      "message": "Code 'SIO-SWIFT-combine-shapes-overlay' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-analyze-hsl-components",
+      "message": "Code 'SIO-SWIFT-analyze-hsl-components' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-analyze-hsv-modifiers",
+      "message": "Code 'SIO-SWIFT-analyze-hsv-modifiers' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-explain-color-interaction-hsl",
+      "message": "Code 'SIO-SWIFT-explain-color-interaction-hsl' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CODE_FORMAT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-explain-color-interaction-comparison",
+      "message": "Code 'SIO-SWIFT-explain-color-interaction-comparison' không khớp định dạng ^[A-Z0-9_-]+$."
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "UI_CONTROLS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "VIEW_CONCEPT",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "VIEW_HIERARCHY",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "CONTAINER_VIEWS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "STRUCTURE_TYPE",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "VARIABLES_AND_CONSTANTS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "DATA_TYPES",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "LOOP_STRUCTURES",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "CONTROL_FLOW",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "CONDITIONAL_STATEMENTS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "FUNCTIONS_AND_PROCEDURES",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "ARRAYS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "TYPE_SYSTEM",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "IMPERATIVE_PROGRAMMING",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "SHAPE",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "COLOR",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "ACCESSIBILITY",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "VISUAL_DESIGN",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "OPERATORS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "SECURITY_CHALLENGES",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "SENSITIVE_DATA",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "DESIGN_CYCLE",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "NAMING_CONVENTIONS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "DEBUGGING",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "UI_MODIFIERS_CONCEPT",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "PROJECT_ASSETS_MANAGEMENT",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "STATE_PROPERTY_WRAPPER",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "EVENT_HANDLERS_CONCEPT",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "DECLARATIVE_UI_PARADIGM",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "SYNTAX_ERRORS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "RUNTIME_ERRORS",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "ERROR_MESSAGES_CONCEPT",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "EMPTY_PARENT_REF",
+      "level": "concepts",
+      "code": "RETURN_VALUES_AND_SCOPE",
+      "message": "Cột 'topic_codes' rỗng — node không có cha.",
+      "field": "topic_codes"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "VIEW_CONCEPT",
+      "message": "Concept 'Khái Niệm View' (VIEW_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DATA_TYPES",
+      "message": "Concept 'Kiểu Dữ Liệu' (DATA_TYPES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "CONTROL_FLOW",
+      "message": "Concept 'Luồng Điều Khiển' (CONTROL_FLOW) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "TYPE_SYSTEM",
+      "message": "Concept 'Hệ Thống Kiểu' (TYPE_SYSTEM) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "VISUAL_DESIGN",
+      "message": "Concept 'Thiết Kế Trực Quan' (VISUAL_DESIGN) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "SECURITY_CHALLENGES",
+      "message": "Concept 'Thách Thức Bảo Mật' (SECURITY_CHALLENGES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DEBUGGING",
+      "message": "Concept 'Gỡ Lỗi' (DEBUGGING) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Concept 'Object Instantiation' (OBJECT_INSTANTIATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "EVENT_HANDLERS_CONCEPT",
+      "message": "Concept 'Events and Event Handling' (EVENT_HANDLERS_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Concept 'Object Properties/Attributes' (OBJECT_PROPERTIES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "RETURN_VALUES_AND_SCOPE",
+      "message": "Concept 'Return Values and Scope' (RETURN_VALUES_AND_SCOPE) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ARRAYS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "CONDITIONAL_LOGIC",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "DATA_BINDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "DEBUGGING_TECHNIQUES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ERROR_MESSAGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "FIRST_CLASS_FUNCTIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "IDE_NAVIGATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ITERATION_LOOPS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "PRIMITIVE_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "PRIVACY_SETTINGS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "REFERENCE_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "STATE_MANAGEMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "UI_CONTROLS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "UI_MODIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "USER_RESEARCH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CONTROL_FLOW",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DEBUGGING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EVENT_HANDLERS_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RETURN_VALUES_AND_SCOPE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SECURITY_CHALLENGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TYPE_SYSTEM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIEW_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VISUAL_DESIGN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "INCONSISTENT_LINE_ENDINGS",
+      "level": "_file",
+      "code": "concepts.tsv",
+      "message": "File dùng line-ending LF, khác đa số các file khác (CRLF)."
+    }
+  ]
+}

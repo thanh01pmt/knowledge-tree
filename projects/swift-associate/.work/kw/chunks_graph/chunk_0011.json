@@ -1,0 +1,183 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Planning and Design",
+      "type": "procedural",
+      "definition": "The process of planning and designing software."
+    },
+    {
+      "id": "node_2",
+      "label": "Swift Language Usage",
+      "type": "conceptual",
+      "definition": "The usage of the Swift programming language."
+    },
+    {
+      "id": "node_3",
+      "label": "Debugging",
+      "type": "procedural",
+      "definition": "The process of identifying and removing errors from software."
+    },
+    {
+      "id": "node_4",
+      "label": "explicit typing",
+      "type": "conceptual",
+      "definition": "The practice of explicitly declaring the type of a variable or constant."
+    },
+    {
+      "id": "node_5",
+      "label": "naming syntax",
+      "type": "conceptual",
+      "definition": "The syntax rules for naming identifiers in Swift."
+    },
+    {
+      "id": "node_6",
+      "label": "camel casing",
+      "type": "conceptual",
+      "definition": "A naming convention where the first letter of each word is capitalized except the first word."
+    },
+    {
+      "id": "node_7",
+      "label": "Swift identifier rules",
+      "type": "conceptual",
+      "definition": "The rules for valid identifiers in Swift, such as starting with a letter or underscore."
+    },
+    {
+      "id": "node_8",
+      "label": "syntax errors",
+      "type": "conceptual",
+      "definition": "Errors that occur when the code violates the grammar rules of the programming language."
+    },
+    {
+      "id": "node_9",
+      "label": "run-time errors",
+      "type": "conceptual",
+      "definition": "Errors that occur during the execution of a program."
+    },
+    {
+      "id": "node_10",
+      "label": "error messages",
+      "type": "conceptual",
+      "definition": "Messages displayed by the compiler or runtime to indicate errors."
+    },
+    {
+      "id": "node_11",
+      "label": "Build",
+      "type": "action",
+      "definition": "The act of compiling and constructing an application."
+    },
+    {
+      "id": "node_12",
+      "label": "Run",
+      "type": "action",
+      "definition": "The act of executing an application."
+    },
+    {
+      "id": "node_13",
+      "label": "App",
+      "type": "conceptual",
+      "definition": "A software application."
+    },
+    {
+      "id": "node_14",
+      "label": "Use",
+      "type": "action",
+      "definition": "The act of employing or utilizing something."
+    },
+    {
+      "id": "node_15",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "The act of distinguishing between two or more things."
+    },
+    {
+      "id": "node_16",
+      "label": "Apply",
+      "type": "action",
+      "definition": "The act of putting something into operation or practice."
+    },
+    {
+      "id": "node_17",
+      "label": "Interpret",
+      "type": "action",
+      "definition": "The act of explaining or understanding the meaning of something."
+    },
+    {
+      "id": "node_18",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language for iOS, macOS, and other platforms."
+    },
+    {
+      "id": "node_19",
+      "label": "Xcode",
+      "type": "factual",
+      "definition": "Apple's integrated development environment (IDE) for macOS."
+    },
+    {
+      "id": "node_20",
+      "label": "Apple",
+      "type": "factual",
+      "definition": "The technology company that develops Swift, Xcode, and SwiftUI."
+    },
+    {
+      "id": "node_21",
+      "label": "SwiftUI",
+      "type": "factual",
+      "definition": "A framework by Apple for building user interfaces across all Apple platforms."
+    },
+    {
+      "id": "node_22",
+      "label": "Certiport",
+      "type": "factual",
+      "definition": "A company that provides certification exams, including for Swift."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_14",
+      "target": "node_4",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_14",
+      "target": "node_5",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_14",
+      "target": "node_6",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_15",
+      "target": "node_8",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_15",
+      "target": "node_9",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_16",
+      "target": "node_7",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_10",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_11",
+      "target": "node_13",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_12",
+      "target": "node_13",
+      "relation": "acts_on"
+    }
+  ]
+}

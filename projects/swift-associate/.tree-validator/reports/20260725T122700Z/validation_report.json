@@ -1,0 +1,290 @@
+{
+  "generated_at": "2026-07-25T12:27:00.439936+00:00",
+  "summary": {
+    "status": "PASS",
+    "total_issues": 33,
+    "errors": 0,
+    "warnings": 33,
+    "by_rule": {
+      "LO_CONCEPT_UNCOVERED": 11,
+      "ORPHAN_NODE": 20,
+      "INCONSISTENT_LINE_ENDINGS": 2
+    },
+    "by_level": {
+      "concepts": {
+        "ERROR": 0,
+        "WARNING": 22
+      },
+      "topics": {
+        "ERROR": 0,
+        "WARNING": 9
+      },
+      "_file": {
+        "ERROR": 0,
+        "WARNING": 2
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 9,
+      "categories": 11,
+      "topics": 15,
+      "concepts": 36,
+      "learning_objectives": 217
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "VIEW_CONCEPT",
+      "message": "Concept 'Khái Niệm View' (VIEW_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DATA_TYPES",
+      "message": "Concept 'Kiểu Dữ Liệu' (DATA_TYPES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "CONTROL_FLOW",
+      "message": "Concept 'Luồng Điều Khiển' (CONTROL_FLOW) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "TYPE_SYSTEM",
+      "message": "Concept 'Hệ Thống Kiểu' (TYPE_SYSTEM) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "VISUAL_DESIGN",
+      "message": "Concept 'Thiết Kế Trực Quan' (VISUAL_DESIGN) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "SECURITY_CHALLENGES",
+      "message": "Concept 'Thách Thức Bảo Mật' (SECURITY_CHALLENGES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DEBUGGING",
+      "message": "Concept 'Gỡ Lỗi' (DEBUGGING) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Concept 'Object Instantiation' (OBJECT_INSTANTIATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "EVENT_HANDLERS_CONCEPT",
+      "message": "Concept 'Events and Event Handling' (EVENT_HANDLERS_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Concept 'Object Properties/Attributes' (OBJECT_PROPERTIES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "RETURN_VALUES_AND_SCOPE",
+      "message": "Concept 'Return Values and Scope' (RETURN_VALUES_AND_SCOPE) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ARRAYS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "DATA_BINDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ERROR_MESSAGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "FIRST_CLASS_FUNCTIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "ITERATION_LOOPS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "REFERENCE_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "STATE_MANAGEMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "UI_MODIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "topics",
+      "code": "USER_RESEARCH",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CONTROL_FLOW",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DATA_TYPES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DEBUGGING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EVENT_HANDLERS_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RETURN_VALUES_AND_SCOPE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SECURITY_CHALLENGES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TYPE_SYSTEM",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIEW_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VISUAL_DESIGN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "INCONSISTENT_LINE_ENDINGS",
+      "level": "_file",
+      "code": "concepts.tsv",
+      "message": "File dùng line-ending LF, khác đa số các file khác (CRLF)."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "INCONSISTENT_LINE_ENDINGS",
+      "level": "_file",
+      "code": "learning-objectives.tsv",
+      "message": "File dùng line-ending LF, khác đa số các file khác (CRLF)."
+    }
+  ]
+}

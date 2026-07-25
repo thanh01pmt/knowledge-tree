@@ -1,0 +1,117 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language for iOS, macOS, and other platforms."
+    },
+    {
+      "id": "node_2",
+      "label": "Planning and Design",
+      "type": "procedural",
+      "definition": "The phase of software development involving planning and designing the architecture and user experience."
+    },
+    {
+      "id": "node_3",
+      "label": "asset",
+      "type": "conceptual",
+      "definition": "A resource file such as images, sounds, or data used in a project."
+    },
+    {
+      "id": "node_4",
+      "label": "project",
+      "type": "conceptual",
+      "definition": "A collection of source code and resources that make up an application."
+    },
+    {
+      "id": "node_5",
+      "label": "Import",
+      "type": "action",
+      "definition": "The action of bringing an asset into a project."
+    },
+    {
+      "id": "node_6",
+      "label": "use",
+      "type": "action",
+      "definition": "The action of utilizing an asset within a project."
+    },
+    {
+      "id": "node_7",
+      "label": "Select",
+      "type": "action",
+      "definition": "The action of choosing appropriate actions from a set."
+    },
+    {
+      "id": "node_8",
+      "label": "actions",
+      "type": "conceptual",
+      "definition": "Operations or functions that can be performed on or within the user interface."
+    },
+    {
+      "id": "node_9",
+      "label": "configure",
+      "type": "action",
+      "definition": "The action of setting up or adjusting the properties of the user interface."
+    },
+    {
+      "id": "node_10",
+      "label": "user interface",
+      "type": "conceptual",
+      "definition": "The visual and interactive components of an application."
+    },
+    {
+      "id": "node_11",
+      "label": "Swift Language Usage",
+      "type": "conceptual",
+      "definition": "The practice of using the Swift programming language in development."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_5",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_6",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_7",
+      "target": "node_8",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_9",
+      "target": "node_10",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_9",
+      "relation": "used_for"
+    },
+    {
+      "source": "node_3",
+      "target": "node_4",
+      "relation": "part_of"
+    },
+    {
+      "source": "node_2",
+      "target": "node_11",
+      "relation": "applies_to"
+    },
+    {
+      "source": "node_1",
+      "target": "node_11",
+      "relation": "part_of"
+    },
+    {
+      "source": "node_10",
+      "target": "node_4",
+      "relation": "part_of"
+    }
+  ]
+}

@@ -1,0 +1,196 @@
+CPU_ARCHITECTURE: CPU Architecture
+FETCH_DECODE_EXECUTE: Fetch-Decode-Execute Cycle
+MEMORY_TYPES: Memory Types
+CACHE_HIERARCHY: Cache Hierarchy
+HDD_VS_SSD: HDD vs. SSD
+IO_METHODS_POLLING_INTERRUPT: I/O Methods: Polling vs. Interrupt
+DMA_CONCEPT: Direct Memory Access (DMA)
+PROCESS_VS_THREAD: Process vs. Thread
+SCHEDULING_ALGORITHMS: CPU Scheduling Algorithms
+VIRTUAL_MEMORY: Virtual Memory Concept
+FILE_ALLOCATION: File Allocation Methods
+TROUBLESHOOTING_METHODOLOGY_CONCEPT: Systematic Troubleshooting
+ERROR_MESSAGES_CONCEPT: Interpreting Error Messages
+ARDUINO_BASICS: Arduino Basics
+RASPBERRY_PI_BASICS: Raspberry Pi Basics
+DIGITAL_ANALOG_IO: Digital vs. Analog I/O Pins
+PWM: Pulse Width Modulation (PWM)
+TEMP_HUMIDITY_SENSORS: Reading Temp/Humidity Sensors
+LIGHT_MOTION_SENSORS: Reading Light/Motion Sensors
+MOTOR_CONTROL: DC Motor and Servo Control
+ROUTERS_SWITCHES_CONCEPT: Routers and Switches
+PHYSICAL_MEDIA_CONCEPT: Physical Media & Wireless
+NETWORK_TOPOLOGIES_CONCEPT: Network Topologies
+ABSTRACTION_LAYERS: Layers of Abstraction
+PROBLEM_DECOMPOSITION: Problem Decomposition
+CREATIONAL_PATTERNS: Creational Design Patterns
+STRUCTURAL_PATTERNS: Structural Design Patterns
+BEHAVIORAL_PATTERNS: Behavioral Design Patterns
+AGILE_PRINCIPLES: Agile Principles
+SCRUM_ROLES_EVENTS: Scrum Roles and Events
+VERSION_CONTROL_WORKFLOW: Version Control Workflow
+FRONTEND_FRAMEWORKS: Frontend Frameworks/Libraries
+BACKEND_FRAMEWORKS: Backend Frameworks
+RELATIONAL_VS_NONRELATIONAL: Relational vs. NoSQL Databases
+DATA_EXPLORATION_EDA: Exploratory Data Analysis (EDA)
+DATA_CLEANING_TECHNIQUES: Data Cleaning Techniques
+CHART_TYPES: Choosing Appropriate Chart Types
+CLOUD_MODELS_IAAS_PAAS_SAAS: Cloud Service Models
+CLOUD_DEPLOYMENT_MODELS: Cloud Deployment Models
+VIRTUALIZATION: Virtualization Concept
+MAPREDUCE_CONCEPT: MapReduce Concept
+CAP_THEOREM: CAP Theorem
+REGRESSION_CLASSIFICATION: Regression vs. Classification
+CLUSTERING_ALGORITHMS: Clustering Algorithms
+NEURAL_NETWORKS_BASICS: Neural Networks Basics
+AI_HISTORY_MILESTONES: History and Milestones of AI
+TYPES_OF_AI: Types of AI: Narrow vs. General
+REINFORCEMENT_LEARNING_BASICS: Reinforcement Learning Basics
+AI_BIAS: Bias in AI
+ALGORITHMIC_BIAS_SOCIETY: Algorithmic Bias in Society
+IOT_PROTOCOLS_MQTT_CONCEPT: IoT Messaging Protocols (MQTT)
+IOT_SECURITY_THREATS: Common IoT Security Threats
+IOT_SAFETY_RISKS: IoT Safety Risks
+RENDERING_PIPELINE: Graphics Rendering Pipeline
+SIMULATION_MODELING: Simulation Modeling
+2D_3D_TRANSFORMATIONS_MATH: 2D/3D Geometric Transformations
+USER_CENTERED_DESIGN: User-Centered Design Process
+PERSONAS_AND_SCENARIOS: Personas and Scenarios
+AFFORDANCES_SIGNIFIERS: Affordances and Signifiers
+FEEDBACK_AND_RESPONSE: Feedback and System Response
+DIGITAL_IDENTITY: Digital Identity Management
+INFORMATION_CREDIBILITY: Assessing Information Credibility
+DIGITAL_FOOTPRINT: Digital Footprint
+CYBERBULLYING: Cyberbullying and Response
+COPYRIGHT_CREATIVE_COMMONS: Copyright & Creative Commons
+DIGITAL_DIVIDE: The Digital Divide
+LAYER_BLEND_MODES: Layer Blending Modes
+ADJUSTMENT_LAYERS: Non-Destructive Adjustment Layers
+LAYER_MASKING: Layer Masking
+IMAGE_WARPING: Mesh and Liquify Warping
+IMAGE_RETOUCHING: Image Retouching Techniques
+IMAGE_COMPOSITING: Image Compositing
+QR_CODE_GENERATION: QR Code Generation
+STROKE_PROPERTIES: Advanced Stroke Properties
+SHAPE_BUILDING: Shape Building
+OBJECT_PROPERTIES: Object Properties/Attributes
+EVENT_BASED_PROGRAMMING: Event-Based Programming Model
+LIGHTING_AND_SHADOWS: Lighting and Shadows
+MATERIAL_AND_TEXTURE: Material and Texture Mapping
+KEYFRAME_ANIMATION: Keyframe Animation
+BOOLEAN_OPERATIONS_3D: 3D Boolean Operations
+MESH_EXTRUSION: Mesh Extrusion
+POLYGON_MESH: Polygonal Mesh (Vertex, Edge, Face)
+TRANSFORMATION_OPERATIONS: 2D Transformation Operations
+COLOR_THEORY: Color Theory
+COMPOSITION_PRINCIPLES: Composition Principles
+BASIC_MECHANISMS_CONCEPT: Basic Mechanisms
+BASIC_ELECTRONIC_COMPONENTS_CONCEPT: Basic Electronic Components
+CIRCUIT_PRINCIPLES_CONCEPT: Basic Circuit Principles
+OSI_MODEL: The OSI Model
+TCP_IP_MODEL: The TCP/IP Model
+IPV4_VS_IPV6: IPv4 vs. IPv6
+SUBNETTING: Subnetting
+GREEDY_ALGORITHMS: Greedy Algorithms
+DIVIDE_CONQUER: Divide and Conquer
+DYNAMIC_PROGRAMMING: Dynamic Programming
+BIG_O_NOTATION: Big O Notation
+LINEAR_BINARY_SEARCH: Linear vs. Binary Search
+BUBBLE_INSERTION_SORT: Bubble Sort & Insertion Sort
+TRUTH_TABLES: Truth Tables
+LOGIC_GATES: Logic Gates (AND, OR, NOT)
+PRIMITIVE_TYPE_DECLARATION: Declaring Primitive Types
+REFERENCE_TYPE_DECLARATION: Declaring Reference Types
+IF_ELSE_STATEMENT: If-Else Statement
+SWITCH_CASE: Switch-Case Statement
+FOR_LOOP: For Loop
+WHILE_LOOP: While Loop
+ARRAY_OPERATIONS: Array Operations
+LIST_OPERATIONS: List Operations
+UNIT_TESTING: Unit Testing
+BREAKPOINTS: Using Breakpoints
+HTML_STRUCTURE: HTML Document Structure
+CSS_SELECTORS: CSS Selectors
+DOM_MANIPULATION: DOM Manipulation
+SQL_SELECT: SQL SELECT Statement
+SQL_JOIN: SQL JOINs
+STACK_OPERATIONS: Stack Operations (Push/Pop)
+QUEUE_OPERATIONS: Queue Operations (Enqueue/Dequeue)
+AI_VS_ML: AI vs. ML vs. Deep Learning
+USER_PERSONAS: Creating User Personas
+USABILITY_TESTING: Usability Testing
+PASSWORD_STRENGTH_CONCEPT: Strong Passwords
+PHISHING_IDENTIFICATION: Identifying Phishing Attempts
+LOGIC_ERRORS: Logical Errors
+SYNTAX_ERRORS: Syntax Errors
+RUNTIME_ERRORS: Runtime Errors
+API_INTEGRATION: API Integration
+REST_PRINCIPLES: REST Architectural Principles
+DATABASE_NORMALIZATION: Database Normalization
+STATISTICAL_MEASURES: Basic Statistical Measures
+PROBABILITY_BASICS: Basic Probability
+DATA_DISTRIBUTIONS: Basic Data Distributions
+CLASS_DEFINITION: Class Definition
+OBJECT_INSTANTIATION: Object Instantiation
+INHERITANCE_SYNTAX: Inheritance Syntax
+METHOD_OVERRIDING: Method Overriding
+ACCESS_MODIFIERS: Access Modifiers
+STATIC_MEMBERS_CONCEPT: Static Members
+FIRST_CLASS_FUNCTIONS_CONCEPT: First-Class & Higher-Order Functions
+IMMUTABILITY_CONCEPT: Immutability and Pure Functions
+EVENT_HANDLERS_CONCEPT: Events and Event Handling
+ASYNCHRONOUS_PROG_CONCEPT: Asynchronous Programming
+SHARED_EDITING_ETIQUETTE: Etiquette for Collaborative Editing
+TCP_HANDSHAKE: TCP Three-Way Handshake
+HTTP_METHODS: HTTP Methods (GET, POST)
+DNS_LOOKUP: DNS Lookup Process
+TWO_FACTOR_AUTH: Two-Factor Authentication (2FA)
+MALWARE_TYPES_CONCEPT: Malware Types
+WIREFRAMING: Wireframing
+PROTOTYPING: Prototyping
+SCREEN_READERS: Screen Readers
+WCAG_PRINCIPLES: WCAG Principles (POUR)
+NETIQUETTE: Netiquette (Online Etiquette)
+COLLABORATIVE_PLATFORMS: Collaborative Platforms
+LOCAL_VIEW_STATE: Local View State
+TWO_WAY_BINDING: Two-Way Data Binding
+SHARED_OBSERVABLE_STATE: Shared Observable State
+PUBLISHER_SUBSCRIBER_MODEL: Publisher-Subscriber Model for UI
+MVVM_PATTERN: MVVM Architectural Pattern
+TAP_GESTURE: Tap Gesture
+DRAG_GESTURE: Drag Gesture
+IMPLICIT_EXPLICIT_ANIMATION: Implicit vs. Explicit Animation
+VIEW_TRANSITIONS: View Transitions
+MAP_INTEGRATION: Map Integration
+LOCATION_SERVICES_API: Location Services API
+MEDIA_PICKER_API: Media Picker API
+LOCAL_NOTIFICATION_API: Local Notification API
+APP_EXTENSION_MODEL: App Extension Model
+KEY_VALUE_PERSISTENCE: Key-Value Persistence
+CORE_DATA_ORM: Core Data (ORM)
+JSON_SERIALIZATION: JSON Serialization/Deserialization
+GAME_LOOP: Game Loop
+COLLISION_DETECTION: Collision Detection
+PHYSICS_CONSTRAINTS_CONCEPT: Physics Constraints
+LEVEL_LAYOUT: Level Layout Design
+LEADERBOARD_SYSTEM: Leaderboard/Scoring System
+PROJECT_ASSETS_MANAGEMENT: Project Assets Management
+DECLARATIVE_UI_PARADIGM: Declarative UI Paradigm
+UI_MODIFIERS_CONCEPT: UI Modifiers
+STATE_PROPERTY_WRAPPER: State Property Wrapper
+SYNTAX_VS_RUNTIME_ERRORS: Syntax vs Runtime Errors
+INTERNET_FUNDAMENTALS: Internet Architecture & Protocols
+HTTP_PROTOCOL: HTTP Protocol & Specification
+DOMAIN_NAME_SYSTEM: Domain Name System (DNS)
+WEB_HOSTING: Web Hosting & Infrastructure
+WEB_BROWSER_ENGINES: Web Browser Architecture & Engines
+UI_BOX_MODEL_LAYOUT: UI Box Model Layout System
+FLEXBOX_GRID_LAYOUT: Flexible & Grid Layout Systems
+RESPONSIVE_DESIGN: Responsive Web Design Principles
+PACKAGE_MANAGEMENT: Package & Dependency Management
+MODULE_BUNDLERS: Module Bundlers & Build Tools
+CODE_LINTING_FORMATTING: Code Formatting & Static Analysis
+VCS_HOSTING: Version Control Hosting Platforms
+AUTOMATED_TESTING_TOOLS: Automated Testing Frameworks & Tools
+CROSS_ORIGIN_SECURITY: Cross-Origin Security & Policies
+WEB_AUTHENTICATION_STRATEGIES: Web Authentication & Authorization

@@ -1,0 +1,15 @@
+  [WARN] Batch 0: Invalid \escape: line 100 column 147 (char 6161)
+Traceback (most recent call last):
+  File "/Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/.agents/skills/learning-objective-generator/scripts/llm_generate_hierarchical_lo.py", line 610, in generate_cios
+    result_json = json.loads(raw_content)
+                  ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tonypham/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tonypham/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/decoder.py", line 338, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/tonypham/.local/share/uv/python/cpython-3.12.12-macos-aarch64-none/lib/python3.12/json/decoder.py", line 354, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Invalid \escape: line 100 column 147 (char 6161)

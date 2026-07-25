@@ -1,0 +1,307 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Accessibility",
+      "type": "conceptual",
+      "definition": "The design of products for people with disabilities."
+    },
+    {
+      "id": "node_2",
+      "label": "Argument labels",
+      "type": "conceptual",
+      "definition": "Labels used in function calls in Swift."
+    },
+    {
+      "id": "node_3",
+      "label": "Assess",
+      "type": "action",
+      "definition": "To evaluate or estimate the nature, ability, or quality."
+    },
+    {
+      "id": "node_4",
+      "label": "Brainstorm",
+      "type": "action",
+      "definition": "To generate ideas through spontaneous discussion."
+    },
+    {
+      "id": "node_5",
+      "label": "Calculate",
+      "type": "action",
+      "definition": "To determine mathematically."
+    },
+    {
+      "id": "node_6",
+      "label": "Compromise",
+      "type": "conceptual",
+      "definition": "The state of being exposed to risk or vulnerability."
+    },
+    {
+      "id": "node_7",
+      "label": "Create",
+      "type": "action",
+      "definition": "To bring something into existence."
+    },
+    {
+      "id": "node_8",
+      "label": "Declare",
+      "type": "action",
+      "definition": "To state formally or explicitly."
+    },
+    {
+      "id": "node_9",
+      "label": "Define",
+      "type": "action",
+      "definition": "To state the meaning of something."
+    },
+    {
+      "id": "node_10",
+      "label": "Design",
+      "type": "procedural",
+      "definition": "The process of creating a plan or convention for construction."
+    },
+    {
+      "id": "node_11",
+      "label": "Evaluate",
+      "type": "action",
+      "definition": "To judge the value or quality."
+    },
+    {
+      "id": "node_12",
+      "label": "Initialize",
+      "type": "action",
+      "definition": "To set initial values."
+    },
+    {
+      "id": "node_13",
+      "label": "Language usage",
+      "type": "conceptual",
+      "definition": "The way a programming language is used."
+    },
+    {
+      "id": "node_14",
+      "label": "Legal, ethical and socioeconomic impacts",
+      "type": "conceptual",
+      "definition": "The effects related to law, ethics, and society."
+    },
+    {
+      "id": "node_15",
+      "label": "Methods",
+      "type": "conceptual",
+      "definition": "Functions defined within a type."
+    },
+    {
+      "id": "node_16",
+      "label": "Operators",
+      "type": "conceptual",
+      "definition": "Symbols that perform operations on values."
+    },
+    {
+      "id": "node_17",
+      "label": "Parameters",
+      "type": "conceptual",
+      "definition": "Inputs to a function."
+    },
+    {
+      "id": "node_18",
+      "label": "Plan",
+      "type": "action",
+      "definition": "To decide on a course of action."
+    },
+    {
+      "id": "node_19",
+      "label": "Planning",
+      "type": "procedural",
+      "definition": "The process of making plans."
+    },
+    {
+      "id": "node_20",
+      "label": "Properties",
+      "type": "conceptual",
+      "definition": "Variables associated with a type."
+    },
+    {
+      "id": "node_21",
+      "label": "Protection",
+      "type": "conceptual",
+      "definition": "The act of keeping something safe."
+    },
+    {
+      "id": "node_22",
+      "label": "Prototype",
+      "type": "action",
+      "definition": "To create a preliminary model."
+    },
+    {
+      "id": "node_23",
+      "label": "Results",
+      "type": "conceptual",
+      "definition": "Outcomes of calculations."
+    },
+    {
+      "id": "node_24",
+      "label": "Returns",
+      "type": "conceptual",
+      "definition": "Values output by a function."
+    },
+    {
+      "id": "node_25",
+      "label": "Security challenges",
+      "type": "conceptual",
+      "definition": "Issues related to protecting data."
+    },
+    {
+      "id": "node_26",
+      "label": "Sensitive data",
+      "type": "conceptual",
+      "definition": "Information that must be protected."
+    },
+    {
+      "id": "node_27",
+      "label": "Sharing personal and application information",
+      "type": "conceptual",
+      "definition": "The act of distributing private data."
+    },
+    {
+      "id": "node_28",
+      "label": "Structure",
+      "type": "conceptual",
+      "definition": "A Swift type that groups related data."
+    },
+    {
+      "id": "node_29",
+      "label": "Summarize",
+      "type": "action",
+      "definition": "To give a brief statement of main points."
+    },
+    {
+      "id": "node_30",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language."
+    },
+    {
+      "id": "node_31",
+      "label": "Visual design",
+      "type": "conceptual",
+      "definition": "The aesthetic aspect of a user interface."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_11",
+      "target": "node_2",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_11",
+      "target": "node_17",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_11",
+      "target": "node_24",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_29",
+      "target": "node_26",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_29",
+      "target": "node_21",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_29",
+      "target": "node_6",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_29",
+      "target": "node_27",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_29",
+      "target": "node_25",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_29",
+      "target": "node_14",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_3",
+      "target": "node_31",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_3",
+      "target": "node_1",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_5",
+      "target": "node_23",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_5",
+      "target": "node_16",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_7",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_11",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_20",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_8",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_12",
+      "target": "node_20",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_12",
+      "target": "node_28",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_9",
+      "target": "node_15",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_19",
+      "target": "node_13",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_10",
+      "target": "node_13",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_30",
+      "target": "node_13",
+      "relation": "related_to"
+    }
+  ]
+}

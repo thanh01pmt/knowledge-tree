@@ -1,0 +1,37 @@
+code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
+UI_CONTROLS	Các Thành Phần Tương Tác	Các thành phần giao diện cho phép người dùng tương tác, như nút bấm, trường văn bản, thanh trượt và công tắc.	UI_CONTROLS	Button, TextField, Slider, Toggle, interactive views, controls		{}
+VIEW_CONCEPT	Khái Niệm View	Đơn vị cơ bản xây dựng giao diện người dùng, đại diện cho một phần tử trên màn hình.	UI_CONTROLS	view, building block, user interface		{}
+VIEW_HIERARCHY	Phân Cấp View	Cấu trúc cây của các view trong ứng dụng, xác định mối quan hệ cha-con giữa chúng.	UI_CONTROLS	view hierarchy, tree structure, parent-child		{}
+CONTAINER_VIEWS	Các View Chứa	Các view dùng để chứa và sắp xếp các view con, như các stack ngang, dọc, chồng và khoảng trống linh hoạt.	UI_CONTROLS	HStack, VStack, ZStack, Spacer, container, stack views		{}
+STRUCTURE_TYPE	Kiểu Cấu Trúc	Một kiểu dữ liệu giá trị có thể đóng gói các thuộc tính và phương thức, dùng để mô hình hóa dữ liệu.	PRIMITIVE_TYPES	structure, value type, properties, methods		{}
+VARIABLES_AND_CONSTANTS	Biến và Hằng Số	Các giá trị có thể thay đổi (biến) và không thể thay đổi (hằng số) sau khi khởi tạo.	PRIMITIVE_TYPES	variables, constants, initialization, mutability		{}
+DATA_TYPES	Kiểu Dữ Liệu	Các loại dữ liệu cơ bản như số nguyên, chuỗi, logic, và cách khai báo kiểu tường minh hoặc suy luận kiểu.	PRIMITIVE_TYPES	Int, String, Bool, data types, explicit typing, type inference		{}
+LOOP_STRUCTURES	Cấu Trúc Lặp	Các cấu trúc điều khiển cho phép lặp lại một khối mã, như vòng lặp for và while.	CONDITIONAL_LOGIC	for loop, while loop, iteration, repetition		{}
+CONTROL_FLOW	Luồng Điều Khiển	Thứ tự thực thi các câu lệnh trong chương trình, bao gồm rẽ nhánh và lặp.	CONDITIONAL_LOGIC	flow of execution, control flow, execution order		{}
+CONDITIONAL_STATEMENTS	Câu Lệnh Điều Kiện	Các cấu trúc điều khiển thực thi mã dựa trên điều kiện, như if và switch.	CONDITIONAL_LOGIC	if, switch, conditional, selection		{}
+FUNCTIONS_AND_PROCEDURES	Hàm và Phương Thức	Các khối mã tự chứa thực hiện một tác vụ cụ thể, có thể nhận tham số và trả về giá trị.	IDE_NAVIGATION	functions, methods, parameters, argument labels, return values		{}
+ARRAYS	Mảng	Cấu trúc dữ liệu lưu trữ một tập hợp các phần tử có cùng kiểu, truy cập qua chỉ số.	PRIMITIVE_TYPES	array, element, index, count, append, remove, collection		{}
+TYPE_SYSTEM	Hệ Thống Kiểu	Cơ chế xác định và kiểm tra kiểu dữ liệu trong ngôn ngữ lập trình, bao gồm suy luận kiểu và khai báo tường minh.	PRIMITIVE_TYPES	type inference, explicit typing, type system, static typing		{}
+IMPERATIVE_PROGRAMMING	Lập Trình Mệnh Lệnh	Mô hình lập trình sử dụng các câu lệnh để thay đổi trạng thái chương trình.	IDE_NAVIGATION	imperative, statements, state change		{}
+SHAPE	Hình Dạng	Một giao thức hoặc kiểu dùng để vẽ các hình dạng đồ họa.	UI_CONTROLS	shape, drawing, path		{}
+COLOR	Màu Sắc	Một kiểu dữ liệu biểu diễn màu sắc trong giao diện.	UI_CONTROLS	color, RGB, hex		{}
+ACCESSIBILITY	Khả Năng Tiếp Cận	Các nguyên tắc và thực hành thiết kế đảm bảo khả năng sử dụng cho người khuyết tật.	IDE_NAVIGATION	accessibility, inclusive design, disability		{}
+VISUAL_DESIGN	Thiết Kế Trực Quan	Thiết kế thẩm mỹ và chức năng của giao diện người dùng, bao gồm bố cục, màu sắc và kiểu chữ.	IDE_NAVIGATION	visual design, layout, colors, typography		{}
+LEGAL_ETHICAL_SOCIOECONOMIC_IMPACTS	Tác Động Pháp Lý, Đạo Đức và Kinh Tế Xã Hội	Các ảnh hưởng của công nghệ đến pháp luật, đạo đức, xã hội, kinh tế và văn hóa.	PRIVACY_SETTINGS	legal, ethical, socioeconomic, impact, society, culture		{}
+OPERATORS	Toán Tử	Các ký hiệu thực hiện phép toán trên giá trị, như cộng, trừ, so sánh.	IDE_NAVIGATION	operators, arithmetic, comparison, logical		{}
+SECURITY_CHALLENGES	Thách Thức Bảo Mật	Các vấn đề liên quan đến bảo vệ dữ liệu và hệ thống khỏi các mối đe dọa.	IDE_NAVIGATION	security, data protection, threats		{}
+SENSITIVE_DATA	Dữ Liệu Nhạy Cảm	Thông tin cần được bảo vệ khỏi truy cập trái phép, bao gồm dữ liệu cá nhân và ứng dụng.	PRIMITIVE_TYPES	sensitive data, personal information, privacy		{}
+DESIGN_CYCLE	Chu Kỳ Thiết Kế	Quy trình thiết kế bao gồm các bước như động não, lập kế hoạch, tạo mẫu và đánh giá.	IDE_NAVIGATION	design cycle, brainstorm, prototype, evaluate		{}
+NAMING_CONVENTIONS	Quy Ước Đặt Tên	Các quy tắc và phong cách đặt tên cho định danh trong lập trình, như camelCase.	IDE_NAVIGATION	naming conventions, camelCase, identifier		{}
+DEBUGGING	Gỡ Lỗi	Quá trình xác định và loại bỏ lỗi khỏi phần mềm.	DEBUGGING_TECHNIQUES	debugging, error removal, troubleshooting		{}
+UI_MODIFIERS_CONCEPT	UI Modifiers	Áp dụng các hàm thay đổi giao diện.	UI_CONTROLS	modifier, functions, appearance, behavior, padding, background, frame, foregroundColor, font, resizable		{}
+PROJECT_ASSETS_MANAGEMENT	Project Assets Management	Quản lý tài nguyên hình ảnh, màu sắc trong IDE.	IDE_NAVIGATION	assets, images, sounds, data, resource file		{}
+OBJECT_INSTANTIATION	Object Instantiation	Hiểu quá trình tạo một đối tượng (thể hiện/instance) từ một lớp bằng cách sử dụng hàm khởi tạo (constructor).	IDE_NAVIGATION	object, instance, constructor, new, structure, stored properties		{}
+STATE_PROPERTY_WRAPPER	State Property Wrapper	Theo dõi trạng thái bằng property wrapper.	IDE_NAVIGATION	state, update, view, change		{}
+EVENT_HANDLERS_CONCEPT	Events and Event Handling	Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).	IDE_NAVIGATION	events, event handler, listener, callback, actions, operations		{}
+OBJECT_PROPERTIES	Object Properties/Attributes	Hiểu rằng các đối tượng trong một môi trường lập trình có các thuộc tính (properties) có thể truy cập và thay đổi được (ví dụ: object.x, object.color).	IDE_NAVIGATION	properties, attributes, state, object, variables, type		{}
+DECLARATIVE_UI_PARADIGM	Declarative UI Paradigm	Xây dựng giao diện kiểu khai báo.	UI_CONTROLS	declarative, programming paradigm, logic, control flow		{}
+SYNTAX_ERRORS	Syntax Errors	Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.	DEBUGGING_TECHNIQUES	syntax error, compiler error, parsing error, grammar rules		{}
+RUNTIME_ERRORS	Runtime Errors	Nhận biết các lỗi xảy ra trong quá trình chương trình đang chạy, ví dụ như chia cho zero hoặc truy cập vào một phần tử không tồn tại của mảng.	DEBUGGING_TECHNIQUES	runtime error, exception, crash, execution		{}
+ERROR_MESSAGES_CONCEPT	Interpreting Error Messages	Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.	DEBUGGING_TECHNIQUES	error handling, exceptions, debugging, log analysis, compiler, runtime, indicate		{}
+RETURN_VALUES_AND_SCOPE	Return Values and Scope	Hiểu cách một hàm trả về giá trị và phạm vi của biến.	IDE_NAVIGATION	return values, scope, outcomes, calculations		{}

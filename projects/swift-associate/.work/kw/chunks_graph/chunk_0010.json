@@ -1,0 +1,180 @@
+{
+  "nodes": [
+    {
+      "id": "node_1",
+      "label": "Planning",
+      "type": "action",
+      "definition": "The cognitive process of planning."
+    },
+    {
+      "id": "node_2",
+      "label": "Design",
+      "type": "action",
+      "definition": "The cognitive process of designing."
+    },
+    {
+      "id": "node_3",
+      "label": "Swift",
+      "type": "factual",
+      "definition": "Apple's programming language."
+    },
+    {
+      "id": "node_4",
+      "label": "data types",
+      "type": "conceptual",
+      "definition": "Categories of data such as integers, strings, etc."
+    },
+    {
+      "id": "node_5",
+      "label": "Button",
+      "type": "factual",
+      "definition": "A UI control that triggers an action."
+    },
+    {
+      "id": "node_6",
+      "label": "TextField",
+      "type": "factual",
+      "definition": "A UI control for text input."
+    },
+    {
+      "id": "node_7",
+      "label": "Slider",
+      "type": "factual",
+      "definition": "A UI control for selecting a value from a range."
+    },
+    {
+      "id": "node_8",
+      "label": "Toggle",
+      "type": "factual",
+      "definition": "A UI control for switching between two states."
+    },
+    {
+      "id": "node_9",
+      "label": "constants",
+      "type": "conceptual",
+      "definition": "Values that cannot be changed after initialization."
+    },
+    {
+      "id": "node_10",
+      "label": "variables",
+      "type": "conceptual",
+      "definition": "Values that can be changed after initialization."
+    },
+    {
+      "id": "node_11",
+      "label": "Differentiate",
+      "type": "action",
+      "definition": "To distinguish between two or more items."
+    },
+    {
+      "id": "node_12",
+      "label": "@State Property Wrapper",
+      "type": "conceptual",
+      "definition": "A SwiftUI property wrapper that allows a view to update when its state changes."
+    },
+    {
+      "id": "node_13",
+      "label": "Use",
+      "type": "action",
+      "definition": "To employ or utilize something."
+    },
+    {
+      "id": "node_14",
+      "label": "control",
+      "type": "action",
+      "definition": "To manage or influence the behavior or appearance."
+    },
+    {
+      "id": "node_15",
+      "label": "appearance",
+      "type": "conceptual",
+      "definition": "The visual attributes of a view."
+    },
+    {
+      "id": "node_16",
+      "label": "View",
+      "type": "conceptual",
+      "definition": "A fundamental building block of a user interface in SwiftUI."
+    },
+    {
+      "id": "node_17",
+      "label": "Apply",
+      "type": "action",
+      "definition": "To put into operation or use."
+    },
+    {
+      "id": "node_18",
+      "label": "type inference",
+      "type": "conceptual",
+      "definition": "The ability of the compiler to deduce the type of an expression automatically."
+    },
+    {
+      "id": "node_19",
+      "label": "explicit typing",
+      "type": "conceptual",
+      "definition": "The practice of explicitly declaring the type of a variable or expression."
+    }
+  ],
+  "edges": [
+    {
+      "source": "node_11",
+      "target": "node_9",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_11",
+      "target": "node_10",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_13",
+      "target": "node_12",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_14",
+      "target": "node_15",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_14",
+      "target": "node_16",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_18",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_15",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_17",
+      "target": "node_16",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_13",
+      "target": "node_19",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_1",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_2",
+      "target": "node_3",
+      "relation": "acts_on"
+    },
+    {
+      "source": "node_15",
+      "target": "node_16",
+      "relation": "property_of"
+    }
+  ]
+}
