@@ -518,7 +518,9 @@ def main():
             concepts.append(row)
     print(f"[*] Load {len(concepts)} concepts.")
 
-    client = get_client()
+    # Chỉ init LLM client khi cần (Bước 2 không reuse, hoặc Bước 5 verify)
+    needs_llm = (not args.reuse_concept_dag) or (not args.no_verify)
+    client = get_client() if needs_llm else None
 
     # ── Bước 1: Domain Partitioning ──
     print("\n[Bước 1] Domain Partitioning...")
