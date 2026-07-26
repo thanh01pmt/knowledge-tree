@@ -9,17 +9,16 @@ services:
     restart: unless-stopped
     ports:
       - "8888:8000"
+    env_file:
+      - .env
     environment:
       - FASTMCP_TRANSPORT=http
       - FASTMCP_HOST=0.0.0.0
       - FASTMCP_PORT=8000
-      # Pass Supabase environment variables if configured
-      - SUPABASE_URL=${SUPABASE_URL:-}
-      - SUPABASE_KEY=${SUPABASE_KEY:-}
-      # LLM env vars for map_prerequisites (default: local Ollama on Docker bridge)
-      - OPENAI_API_KEY=${OPENAI_API_KEY:-ollama}
-      - OPENAI_BASE_URL=${OPENAI_BASE_URL:-http://172.17.0.1:11434/v1}
-      - OPENAI_MODEL=${OPENAI_MODEL:-deepseek-v4-flash:cloud}
+      # LLM: use SAAS_OLLAMA_CLOUD_API_KEY from .env as OPENAI_API_KEY fallback
+      - OPENAI_API_KEY=${SAAS_OLLAMA_CLOUD_API_KEY:-ollama}
+      - OPENAI_BASE_URL=http://172.17.0.1:11434/v1
+      - OPENAI_MODEL=deepseek-v4-flash:cloud
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 15s
