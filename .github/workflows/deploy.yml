@@ -28,8 +28,18 @@ jobs:
             # Navigate to project directory
             cd /home/ubuntu/knowledge-tree
             
-            # Pull latest changes from the triggered branch
+            # Ensure git repo exists (clone if missing)
+            if [ ! -d .git ]; then
+              echo "⚠️ No .git found — cloning fresh..."
+              cd /home/ubuntu
+              rm -rf knowledge-tree
+              git clone https://github.com/thanh01pmt/knowledge-tree.git
+              cd knowledge-tree
+            fi
+            
+            # Fetch and reset to latest
             git fetch --all
+            git checkout ${{ github.ref_name }}
             git reset --hard origin/${{ github.ref_name }}
             
             # Rebuild image without cache, then restart container
@@ -37,7 +47,7 @@ jobs:
             docker compose up -d
             
             # Verify container health
-            sleep 3
+            sleep 5
             curl -s http://localhost:8888/health
             
             echo "✅ Deployment Completed Successfully!"
