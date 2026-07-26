@@ -32,8 +32,8 @@ jobs:
             git fetch --all
             git reset --hard origin/${{ github.ref_name }}
             
-            # Rebuild and restart docker container
-            docker compose up -d --build
+            # Rebuild and restart docker container (no-cache to ensure code changes picked up)
+            docker compose up -d --build --no-cache
             
             # Verify container health
             sleep 3
