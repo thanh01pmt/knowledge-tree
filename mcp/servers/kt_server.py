@@ -109,3 +109,35 @@ def scaffold_project(project_name: str) -> str:
     cmd = [sys.executable, str(script_path), "--project", project_name, "--repo-root", str(ROOT_DIR)]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
     return res.stdout or res.stderr
+
+@kt_mcp.tool
+def map_prerequisites(project_name: str, dry_run: bool = False, no_verify: bool = False,
+                      reuse_concept_dag: bool = False) -> str:
+    """
+    Sinh DAG tiền đề (prerequisite) giữa các Learning Objectives theo phương pháp 4-Bước ADR-0005:
+    Domain Partitioning → Concept DAG per-domain (LLM) → ULO Derivation → LLM Verify (phép thử ngược).
+    
+    Output: lo_prerequisites.tsv (có source_layer, justification, counterfactual_test)
+            concepts.tsv (thêm cột prerequisite_concept_codes)
+            .work/concept_dag.tsv (concept-level DAG audit trail)
+    
+    Args:
+        project_name: Tên dự án (ví dụ: 'swift-associate')
+        dry_run: Nếu True, in candidate DAG ra stdout, không ghi TSV
+        no_verify: Nếu True, bỏ Bước 5 (LLM verify — chỉ chạy Bước 1+2+4)
+        reuse_concept_dag: Nếu True, dùng .work/concept_dag.tsv có sẵn, skip Bước 2 (tiết kiệm LLM calls)
+    """
+    script_path = SKILLS_DIR / "learning-objective-generator" / "scripts" / "llm_map_prerequisites.py"
+    if not script_path.exists():
+        return f"Error: Cannot find llm_map_prerequisites.py at {script_path}"
+    
+    cmd = [sys.executable, str(script_path), "--project", project_name]
+    if dry_run:
+        cmd.append("--dry-run")
+    if no_verify:
+        cmd.append("--no-verify")
+    if reuse_concept_dag:
+        cmd.append("--reuse-concept-dag")
+    
+    res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
+    return res.stdout or res.stderr

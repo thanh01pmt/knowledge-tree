@@ -101,7 +101,7 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 | `/generate-ulos`       | @tree-assembler   | Phase A: Sinh ULOs từ concepts, Bloom ưu tiên Evaluate/Create — **điểm duyệt**                 |
 | `/generate-cios`       | @tree-assembler   | Phase B: Sinh CIOs với Marr 2-Language Test per-CIO — **điểm duyệt**                           |
 | `/generate-sios`       | @tree-assembler   | Phase C: Sinh SIOs (tech-specific) + merge → `learning-objectives.tsv`                          |
-| `/map-prerequisites`   | @tree-assembler   | Phase E: Sinh `lo_prerequisites.tsv` từ file LO và bối cảnh Curriculum DAG                     |
+| `/map-prerequisites`   | @tree-assembler   | Phase E (ADR-0005): 4-Bước — Domain Partitioning → Concept DAG (LLM) → ULO Derivation → LLM Verify → `lo_prerequisites.tsv` + `concepts.tsv(prerequisite_concept_codes)` |
 | `/detect-gaps`         | @tree-validator   | Run `detect_gaps.py` to find 3 gap types: missing LO coverage, shallow CIOs, master candidates |
 | `/validate-tree`       | @tree-validator   | Run `validate_tree.py` for structural referential integrity                                    |
 | `/audit-coverage`      | @tree-validator   | Run `audit_coverage.py` to cross-reference LO output against source PDF                        |
@@ -138,7 +138,7 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 
 ## @tree-assembler
 
-- Goal: (1) Build 5 taxonomy TSVs from approved mapping-plan. (2) Generate learning-objectives.tsv via /generate-los after build-tree. (3) Sync to Supabase via /sync-supabase.
+- Goal: (1) Build 5 taxonomy TSVs from approved mapping-plan. (2) Generate learning-objectives.tsv via /generate-los after build-tree. (3) Map prerequisites via `/map-prerequisites` (ADR-0005: 4-Bước Domain Partitioning → Concept DAG → ULO Derivation → LLM Verify). (4) Sync to Supabase via /sync-supabase.
 - Skill: `tree-assembler`, `learning-objective-generator`, `supabase-sync`
 
 ## @tree-validator

@@ -69,24 +69,40 @@ def get_client():
         return OpenAI(api_key=api_key, base_url=base_url)
 
 def llm_json(client, model, system, user, temperature=0.1):
-    """Gọi LLM trả JSON. Parse robust."""
-    completion = client.chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": system},
-            {"role": "user", "content": user},
-        ],
-        response_format={"type": "json_object"},
-        temperature=temperature,
-    )
-    raw = (completion.choices[0].message.content or "").strip()
+    """Gọi LLM trả JSON. Parse robust — không crash, return {} nếu fail."""
+    try:
+        completion = client.chat.completions.create(
+            model=model,
+            messages=[
+                {"role": "system", "content": system},
+                {"role": "user", "content": user},
+            ],
+            response_format={"type": "json_object"},
+            temperature=temperature,
+        )
+        raw = (completion.choices[0].message.content or "").strip()
+    except Exception as e:
+        print(f"  [WARN] LLM call failed: {e}")
+        return {}
     if raw.startswith("```"):
         raw = re.sub(r"```(?:json)?\n?", "", raw).strip("` \n")
     try:
         return json.loads(raw)
     except json.JSONDecodeError:
         m = re.search(r'\{[\s\S]*\}', raw)
-        return json.loads(m.group()) if m else {}
+        if m:
+            try:
+                return json.loads(m.group())
+            except json.JSONDecodeError:
+                # Fallback: try fixing common issues (trailing commas, unquoted keys)
+                try:
+                    fixed = re.sub(r',\s*([}\]])', r'\1', m.group())  # trailing comma
+                    return json.loads(fixed)
+                except json.JSONDecodeError:
+                    print(f"  [WARN] JSON parse failed, returning empty. Raw snippet: {m.group()[:200]}")
+                    return {}
+        print(f"  [WARN] No JSON found in response, returning empty. Raw: {raw[:200]}")
+        return {}
 
 # ─── Bloom ordering (giữ từ ADR-0004 L1) ───────────────────────────────────
 BLOOM_ORDER = {
@@ -470,6 +486,7 @@ def main():
     parser.add_argument("--model", default="deepseek-v4-flash:cloud", help="LLM model")
     parser.add_argument("--dry-run", action="store_true", help="In candidate DAG, không ghi TSV")
     parser.add_argument("--no-verify", action="store_true", help="Bỏ Bước 5 (verify)")
+    parser.add_argument("--reuse-concept-dag", action="store_true", help="Dùng concept_dag.tsv có sẵn, skip Bước 2")
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path.cwd())
@@ -510,19 +527,26 @@ def main():
     print(f"  → {len(by_topic)} topics, {len(topics_with_multiple)} có ≥2 concepts (sẽ chạy LLM)")
 
     # ── Bước 2: Concept-Level DAG per-domain ──
-    print("\n[Bước 2] Concept-Level DAG per-domain (LLM)...")
-    concept_dag = derive_concept_dag(client, args.model, by_topic)
-    print(f"  → {len(concept_dag)} concept-level links (trước verify)")
-
-    # Lưu concept_dag.tsv vào .work
-    work_dir.mkdir(parents=True, exist_ok=True)
     concept_dag_path = work_dir / "concept_dag.tsv"
-    with open(concept_dag_path, "w", newline="", encoding="utf-8") as f:
-        w = csv.DictWriter(f, fieldnames=["topic_code", "prereq_concept", "target_concept", "justification", "counterfactual_test", "confidence_runs"], delimiter="\t")
-        w.writeheader()
-        for l in concept_dag:
-            w.writerow({k: l.get(k, "") for k in ["topic_code","prereq_concept","target_concept","justification","counterfactual_test","confidence_runs"]})
-    print(f"  → Lưu {concept_dag_path.relative_to(repo_root)}")
+    if args.reuse_concept_dag and concept_dag_path.is_file():
+        print("\n[Bước 2] SKIP — reuse concept_dag.tsv có sẵn")
+        concept_dag = []
+        with open(concept_dag_path, encoding="utf-8") as f:
+            for row in csv.DictReader(f, delimiter="\t"):
+                concept_dag.append(row)
+        print(f"  → Load {len(concept_dag)} concept-level links từ cache")
+    else:
+        print("\n[Bước 2] Concept-Level DAG per-domain (LLM)...")
+        concept_dag = derive_concept_dag(client, args.model, by_topic)
+        print(f"  → {len(concept_dag)} concept-level links (trước verify)")
+        # Lưu concept_dag.tsv vào .work
+        work_dir.mkdir(parents=True, exist_ok=True)
+        with open(concept_dag_path, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=["topic_code", "prereq_concept", "target_concept", "justification", "counterfactual_test", "confidence_runs"], delimiter="\t")
+            w.writeheader()
+            for l in concept_dag:
+                w.writerow({k: l.get(k, "") for k in ["topic_code","prereq_concept","target_concept","justification","counterfactual_test","confidence_runs"]})
+        print(f"  → Lưu {concept_dag_path.relative_to(repo_root)}")
 
     # ── Bước 4: ULO-Level Derivation ──
     print("\n[Bước 4] ULO-Level Derivation (deterministic từ concept DAG)...")
