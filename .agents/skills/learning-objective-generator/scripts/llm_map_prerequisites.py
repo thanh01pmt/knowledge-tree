@@ -307,13 +307,19 @@ Bạn nhận được 1 link: A là tiền đề của B.
 Câu hỏi kiểm tra: "Sinh viên đã hiểu mọi concept TRỪ A. Có thể hiểu/làm được B không?"
 
 Quy tắc:
-- "NO" = A là prereq BẮT BUỘC (giữ link). Sinh viên thiếu A thì KHÔNG THỂ hiểu B.
-- "YES" = A KHÔNG phải prereq bắt buộc (drop link). Sinh viên vẫn hiểu B mà không cần A.
+- "NO" = A là prereq BẮT BUỘC (giữ link). Sinh viên thiếu A thì KHÔNG THỂ hiểu/làm B.
+- "YES" = A KHÔNG phải prereq (drop link). Sinh viên vẫn hiểu/làm B mà không cần A.
 - "PARTIAL" = A giúp hiểu B nhưng không bắt buộc → drop.
 
-CẨN TRỌNG với justification mô tả sai:
-- Đọc kỹ name + description của A và B. Nếu justification nói "B sử dụng A" nhưng description của B không hề nhắc đến A hay khái niệm của A → verdict = "YES" (justification bịa).
-- Ví dụ: A="Object Properties" (thuộc tính đối tượng), B="Visual Design" (cân bằng, tương phản). Nếu justification nói "Visual design sử dụng object properties" nhưng description của B chỉ nói về cân bằng/tương phản → drop.
+QUAN TRỌNG — đừng quá khắt khe:
+- KHÔNG yêu cầu description của B phải nhắc đích danh A. Description thường viết ngắn, không liệt kê mọi nền tảng.
+- Ví dụ: B="Container views" description chỉ nói "sắp xếp view con". KHÔNG nhắc "view" đích danh, nhưng RÕ RÀNG cần hiểu View trước. → verdict NO (giữ).
+- Phép thử thật: "Sinh viên chưa học A, có THỰC SỰ hiểu/làm được B không?" — dùng kiến thức sư phạm, không match keyword trong description.
+- Nếu A là khái niệm nền tảng hiển nhiên (VD: View → Container Views, Data Types → Variables) → verdict NO.
+
+CẢNH BÁO justification bịa:
+- Đọc name + description. Nếu justification nói "B sử dụng A" nhưng A và B hoàn toàn khác domain/không liên quan thực sự → verdict YES.
+- Ví dụ: A="Object Properties" (thuộc tính đối tượng), B="Visual Design" (cân bằng, tương phản). → verdict YES (drop, justification bịa).
 
 Trả về JSON:
 {"verdict": "NO" | "YES" | "PARTIAL", "reason": "lý do ngắn 1 câu"}
