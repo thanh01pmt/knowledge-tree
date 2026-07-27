@@ -1,16 +1,21 @@
 #!/usr/bin/env python3
 """
 Multi-MCP Hub Entrypoint for Knowledge Tree System
+
+Package renamed from mcp/ to kt_mcp/ to avoid namespace collision with the
+`mcp` PyPI SDK (a dependency of fastmcp). The old layout caused:
+  - `from mcp.main import hub` in server.py to fail (mcp resolved to site-packages)
+  - `packages = ["mcp"]` in pyproject.toml to shadow the MCP SDK at build time
 """
 import os
 import sys
 from pathlib import Path
 
-# Add project root to sys.path
-MCP_DIR = Path(__file__).parent.resolve()
-ROOT_DIR = MCP_DIR.parent
-if str(MCP_DIR) not in sys.path:
-    sys.path.insert(0, str(MCP_DIR))
+# Add package dir and repo root to sys.path
+PKG_DIR = Path(__file__).parent.resolve()
+ROOT_DIR = PKG_DIR.parent
+if str(PKG_DIR) not in sys.path:
+    sys.path.insert(0, str(PKG_DIR))
 if str(ROOT_DIR) not in sys.path:
     sys.path.insert(0, str(ROOT_DIR))
 
@@ -33,8 +38,7 @@ hub.mount(sys_mcp, namespace="sys")
 async def health_check(request: Request) -> JSONResponse:
     return JSONResponse({
         "status": "healthy",
-        "service": "Multi-MCP Hub Server",
-        "version": "0.2.0",
+        "service": "KnowledgeTree MCP Hub",
         "mounted_servers": ["kt", "sys"]
     })
 
@@ -43,7 +47,7 @@ if __name__ == "__main__":
     transport = os.getenv("FASTMCP_TRANSPORT", "stdio").lower()
     host = os.getenv("FASTMCP_HOST", "0.0.0.0")
     port = int(os.getenv("FASTMCP_PORT", "8000"))
-    
+
     if transport in ("http", "sse", "streamable-http"):
         print(f"🚀 Running Multi-MCP Hub Server via {transport.upper()} on {host}:{port}")
         hub.run(transport="http", host=host, port=port)

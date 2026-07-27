@@ -59,8 +59,12 @@ def get_project_status(project_name: str) -> str:
     Đọc thông tin trạng thái dự án hiện tại từ status.yaml ở repo root.
 
     Args:
-        project_name: Tên dự án (chỉ dùng để tham chiếu, status.yaml ở repo root)
+        project_name: Tên dự án (slug, chỉ để tham chiếu — status.yaml ở repo root)
     """
+    try:
+        _validate_slug(project_name)
+    except ValueError as e:
+        return f"❌ Error: {e}"
     status_file = ROOT_DIR / "status.yaml"
     if status_file.exists():
         return status_file.read_text(encoding="utf-8")
@@ -71,12 +75,18 @@ def guide_workflow(step_name: str, project_name: str) -> str:
     """
     Cung cấp hướng dẫn quy trình từng bước cho Agent theo chuẩn Pipeline.
     """
+    # Sanitize project_name to prevent prompt injection in generated text.
+    try:
+        _validate_slug(project_name)
+        safe_name = project_name
+    except ValueError:
+        safe_name = "<invalid-project-name>"
     guides = {
-        "init": f"Thao tác khởi tạo dự án '{project_name}'. Hãy gọi tool 'kt_scaffold_project(project_name=\"{project_name}\")'.",
-        "context-audit": f"Đọc toàn bộ tài liệu nguồn trong projects/{project_name}/context/ và trích xuất danh sách chủ đề tri thức.",
-        "map-taxonomy": f"Đối chiếu danh sách chủ đề với Master Knowledge Tree trong .agents/skills/taxonomy-mapper/resources/ và tạo file mapping-plan.md tại projects/{project_name}/.work/.",
-        "build-tree": f"Dựa trên mapping-plan.md đã duyệt, xây dựng 6 file TSV đầu ra trong projects/{project_name}/output/.",
-        "validate-tree": f"Gọi tool 'kt_validate_tree(project_name=\"{project_name}\")' để kiểm tra tính hợp lệ và tự động khắc phục các lỗi tham chiếu.",
-        "sync-supabase": f"Gọi tool 'kt_sync_supabase(project_name=\"{project_name}\")' để đồng bộ dữ liệu TSV lên cơ sở dữ liệu Supabase Cloud."
+        "init": f"Thao tác khởi tạo dự án '{safe_name}'. Hãy gọi tool 'kt_scaffold_project(project_name=\"{safe_name}\")'.",
+        "context-audit": f"Đọc toàn bộ tài liệu nguồn trong projects/{safe_name}/context/ và trích xuất danh sách chủ đề tri thức.",
+        "map-taxonomy": f"Đối chiếu danh sách chủ đề với Master Knowledge Tree trong .agents/skills/taxonomy-mapper/resources/ và tạo file mapping-plan.md tại projects/{safe_name}/.work/.",
+        "build-tree": f"Dựa trên mapping-plan.md đã duyệt, xây dựng 6 file TSV đầu ra trong projects/{safe_name}/output/.",
+        "validate-tree": f"Gọi tool 'kt_validate_tree(project_name=\"{safe_name}\")' để kiểm tra tính hợp lệ và tự động khắc phục các lỗi tham chiếu.",
+        "sync-supabase": f"Gọi tool 'kt_sync_supabase(project_name=\"{safe_name}\")' để đồng bộ dữ liệu TSV lên cơ sở dữ liệu Supabase Cloud."
     }
     return guides.get(step_name, f"Không tìm thấy hướng dẫn cho bước '{step_name}'. Các bước khả thi: {list(guides.keys())}")

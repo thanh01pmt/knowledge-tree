@@ -21,6 +21,11 @@ RUN uv pip install --system -e .
 # Copy project files
 COPY . .
 
+# Create non-root user and switch to it (security: avoid running as root)
+RUN groupadd -r appuser && useradd -r -g appuser -d /app appuser && \
+    chown -R appuser:appuser /app
+USER appuser
+
 # Environment variables for FastMCP HTTP transport
 ENV FASTMCP_TRANSPORT=http
 ENV FASTMCP_HOST=0.0.0.0
@@ -29,4 +34,4 @@ ENV PYTHONUNBUFFERED=1
 
 EXPOSE 8000
 
-CMD ["python", "mcp/main.py"]
+CMD ["python", "kt_mcp/main.py"]

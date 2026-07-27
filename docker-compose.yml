@@ -22,6 +22,7 @@ services:
       # Supabase: bắt buộc phải có trong .env (không còn hardcoded fallback)
       - SUPABASE_URL=${SUPABASE_URL}
       - SERVICE_ROLE_KEY=${SERVICE_ROLE_KEY}
+    user: "1000:1000"
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 15s

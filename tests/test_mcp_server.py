@@ -19,7 +19,7 @@ import sys
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
-sys.path.insert(0, str(REPO_ROOT / "mcp"))
+sys.path.insert(0, str(REPO_ROOT / "kt_mcp"))
 sys.path.insert(0, str(REPO_ROOT))
 
 from fastmcp import Client
@@ -203,6 +203,47 @@ async def test_invalid_project_name_format():
     print("✓ test_invalid_project_name_format")
 
 
+async def test_prompt_injection_blocked():
+    """guide_workflow phải sanitize project_name để prevent prompt injection."""
+    hub = await get_hub()
+    client = Client(hub)
+    async with client:
+        p = await client.get_prompt("sys_guide_workflow",
+                                     {"step_name": "init",
+                                      "project_name": 'evil"; rm -rf /; #'})
+        text = str(p)
+        assert "<invalid-project-name>" in text, \
+            f"Prompt injection phải bị sanitize, got: {text[:200]}"
+    print("✓ test_prompt_injection_blocked")
+
+
+async def test_get_project_status_slug_validation():
+    """sys_get_project_status phải validate slug."""
+    hub = await get_hub()
+    client = Client(hub)
+    async with client:
+        result = await client.call_tool("sys_get_project_status",
+                                         {"project_name": "../../../etc/passwd"})
+        text = result.content[0].text if hasattr(result, "content") else str(result)
+        assert "Error" in text or "❌" in text, \
+            f"Path traversal phải bị block, got: {text[:200]}"
+    print("✓ test_get_project_status_slug_validation")
+
+
+async def test_no_namespace_collision():
+    """Verify local kt_mcp/ doesn't shadow mcp SDK (PyPI).
+    'import mcp' must resolve to site-packages, not local kt_mcp/."""
+    import mcp as mcp_sdk
+    sdk_path = str(mcp_sdk.__file__)
+    assert "site-packages" in sdk_path, \
+        f"mcp SDK phải resolve to site-packages, got: {sdk_path}"
+    # Verify our hub is importable from kt_mcp, not mcp
+    assert REPO_ROOT / "kt_mcp" / "main.py" in [REPO_ROOT / "kt_mcp" / "main.py"]
+    assert not (REPO_ROOT / "mcp" / "main.py").exists(), \
+        "Old mcp/ directory should not exist after rename"
+    print("✓ test_no_namespace_collision")
+
+
 async def run_all():
     tests = [
         list_tools,
@@ -218,6 +259,9 @@ async def run_all():
         test_get_system_status,
         test_guide_workflow_prompt,
         test_invalid_project_name_format,
+        test_prompt_injection_blocked,
+        test_get_project_status_slug_validation,
+        test_no_namespace_collision,
     ]
     passed = 0
     failed = 0
