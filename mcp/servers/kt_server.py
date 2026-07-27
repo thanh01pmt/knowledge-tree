@@ -46,8 +46,8 @@ def validate_tree(project_name: str, fix: bool = False) -> str:
 @kt_mcp.tool
 def detect_gaps(project_name: str) -> str:
     """
-    Phát hiện 3 dạng lỗ hổng tri thức: Missing LO coverage, Shallow CIOs, và Master Candidates.
-    
+    Phát hiện 4 dạng lỗ hổng tri thức: Missing LO coverage (A), Shallow CIOs (B), Master Candidates (C), và Marr test violations (D).
+
     Args:
         project_name: Tên dự án (ví dụ: 'roadmap_sh_graphql')
     """
@@ -128,7 +128,7 @@ def map_prerequisites(project_name: str, dry_run: bool = False, no_verify: bool 
     Args:
         project_name: Tên dự án (ví dụ: 'swift-associate')
         dry_run: Nếu True, in candidate DAG ra stdout, không ghi TSV
-        no_verify: Nếu True, bỏ Bước 5 (LLM verify — chỉ chạy Bước 1+2+4)
+        no_verify: Nếu True, bỏ Bước 4 (LLM verify — chỉ chạy Bước 1+2+3)
         reuse_concept_dag: Nếu True, dùng .work/concept_dag.tsv có sẵn, skip Bước 2 (tiết kiệm LLM calls)
     """
     script_path = SKILLS_DIR / "learning-objective-generator" / "scripts" / "llm_map_prerequisites.py"

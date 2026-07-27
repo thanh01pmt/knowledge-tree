@@ -19,6 +19,9 @@ services:
       - OPENAI_API_KEY=${SAAS_OLLAMA_CLOUD_API_KEY:-ollama}
       - OPENAI_BASE_URL=http://172.17.0.1:11434/v1
       - OPENAI_MODEL=deepseek-v4-flash:cloud
+      # Supabase: bắt buộc phải có trong .env (không còn hardcoded fallback)
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SERVICE_ROLE_KEY=${SERVICE_ROLE_KEY}
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
       interval: 15s
