@@ -131,12 +131,15 @@ def batch_embed(
     model: str = "text-embedding-3-small",
     batch_size: int = 100,
 ) -> list[list[float]]:
-    all_embeddings = []
-    for i in range(0, len(texts), batch_size):
-        batch = texts[i : i + batch_size]
-        response = client.embeddings.create(input=batch, model=model)
-        all_embeddings.extend([item.embedding for item in response.data])
-    return all_embeddings
+    """Embed texts in batches with retry + error handling.
+    Raises LLMCallError on failure."""
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parent
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import llm_embed as _llm_embed
+    return _llm_embed(client, texts, model=model, batch_size=batch_size)
 
 
 # ─── Load keywords ────────────────────────────────────────────────────────────
@@ -311,6 +314,8 @@ def escalate_keywords_to_concepts(
             )
             result = completion.choices[0].message.parsed
             if result is None:
+                print(f"    [WARN] Batch {batch_start}: LLM returned None (parsed=False)",
+                      file=sys.stderr)
                 continue
 
             for cg in result.concepts:
@@ -323,7 +328,20 @@ def escalate_keywords_to_concepts(
                 })
 
         except Exception as e:
-            print(f"    [WARN] Abstraction batch {batch_start}: {e}", file=sys.stderr)
+            # Classify error — retryable vs fatal
+            import sys as _sys
+            from pathlib import Path as _Path
+            _skill_scripts = _Path(__file__).resolve().parent
+            if str(_skill_scripts) not in _sys.path:
+                _sys.path.insert(0, str(_skill_scripts))
+            from llm_call import _classify_error
+            error_type, retryable = _classify_error(e)
+            print(f"    [FAIL] Abstraction batch {batch_start}: [{error_type}] {e}",
+                  file=sys.stderr)
+            if not retryable:
+                # Fatal error (auth, model_not_found) — abort entire pipeline
+                print(f"    [FATAL] Non-retryable error — aborting abstraction.", file=sys.stderr)
+                raise
 
     # Dedup nhẹ bằng concept_name_lower
     seen: set[str] = set()

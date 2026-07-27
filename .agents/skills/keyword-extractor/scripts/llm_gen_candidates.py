@@ -154,30 +154,33 @@ Ngữ cảnh heading: {chunk.get('heading_trail', '(không có)')}
 
 Hãy trả về JSON với chunk_id="{chunk['chunk_id']}" và tất cả thuật ngữ liên quan."""
 
+    # Import shared LLM helper
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parent
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import llm_chat_json as _llm_chat_json, LLMCallError as _LLMCallError
+
     try:
-        completion = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": SYSTEM_PROMPT},
-                {"role": "user", "content": user_prompt},
-            ],
-            response_format={"type": "json_object"},
-            temperature=0.1,
+        result = _llm_chat_json(
+            client, model, SYSTEM_PROMPT, user_prompt,
+            temperature=0.1, max_retries=3
         )
-        raw = completion.choices[0].message.content or ""
-        terms = parse_llm_json(raw, chunk["chunk_id"])
-        return [
-            {
-                "term": t["term"],
-                "category": t["category"],
+        terms = []
+        for t in result.get("terms", []):
+            terms.append({
+                "term": t.get("term", ""),
+                "category": t.get("category", "other"),
                 "source_chunks": [chunk["chunk_id"]],
                 "first_extraction_method": "llm",
-            }
-            for t in terms
-        ]
-    except Exception as e:
-        print(f"  [WARN] chunk {chunk['chunk_id']}: {e}", file=sys.stderr)
-        return []
+            })
+        return terms
+    except _LLMCallError as e:
+        # Surface the error — caller can track failures and decide whether to abort
+        print(f"  [FAIL] chunk {chunk['chunk_id']}: {e}", file=sys.stderr)
+        # Re-raise so caller knows this is an LLM failure, not an empty result
+        raise
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────

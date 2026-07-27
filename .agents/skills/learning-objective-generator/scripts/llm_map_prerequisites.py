@@ -69,40 +69,16 @@ def get_client():
         return OpenAI(api_key=api_key, base_url=base_url)
 
 def llm_json(client, model, system, user, temperature=0.1):
-    """Gọi LLM trả JSON. Parse robust — không crash, return {} nếu fail."""
-    try:
-        completion = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": system},
-                {"role": "user", "content": user},
-            ],
-            response_format={"type": "json_object"},
-            temperature=temperature,
-        )
-        raw = (completion.choices[0].message.content or "").strip()
-    except Exception as e:
-        print(f"  [WARN] LLM call failed: {e}")
-        return {}
-    if raw.startswith("```"):
-        raw = re.sub(r"```(?:json)?\n?", "", raw).strip("` \n")
-    try:
-        return json.loads(raw)
-    except json.JSONDecodeError:
-        m = re.search(r'\{[\s\S]*\}', raw)
-        if m:
-            try:
-                return json.loads(m.group())
-            except json.JSONDecodeError:
-                # Fallback: try fixing common issues (trailing commas, unquoted keys)
-                try:
-                    fixed = re.sub(r',\s*([}\]])', r'\1', m.group())  # trailing comma
-                    return json.loads(fixed)
-                except json.JSONDecodeError:
-                    print(f"  [WARN] JSON parse failed, returning empty. Raw snippet: {m.group()[:200]}")
-                    return {}
-        print(f"  [WARN] No JSON found in response, returning empty. Raw: {raw[:200]}")
-        return {}
+    """Gọi LLM trả JSON với retry + error classification.
+    Raises LLMCallError on failure — caller must handle (fail-fast)."""
+    # Import shared helper from keyword-extractor skill
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parents[1].parent / "keyword-extractor" / "scripts"
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import llm_chat_json as _llm_chat_json, LLMCallError as _LLMCallError
+    return _llm_chat_json(client, model, system, user, temperature=temperature)
 
 # ─── Bloom ordering (giữ từ ADR-0004 L1) ───────────────────────────────────
 BLOOM_ORDER = {
@@ -168,8 +144,9 @@ Quy tắc counterfactual_test:
   - "YES" = A không phải prereq (sẽ bị drop)
 """
 
-def build_concept_dag_per_topic(client, model, topic_code: str, concepts: list[dict]) -> list[dict]:
-    """Gọi LLM build DAG cho 1 topic."""
+def build_concept_dag_per_topic(client, model, topic_code: str, concepts: list[dict]) -> tuple[list[dict], dict]:
+    """Gọi LLM build DAG cho 1 topic.
+    Returns (links, failure_dict). failure_dict is None on success."""
     concept_lines = []
     for c in concepts:
         concept_lines.append(
@@ -187,7 +164,20 @@ HƯỚNG DẪN: Hãy tích cực tìm các quan hệ tiên đề thật sự. Tr
 
 Nhớ: chỉ link khi THỰC SỰ bắt buộc (sinh viên chưa học A thì KHÔNG THỂ hiểu/làm B), nhưng đừng skip link chỉ vì "có thể học song song".
 """
-    data = llm_json(client, model, STEP2_SYSTEM, user_prompt, temperature=0.2)
+    # Import LLMCallError for error handling
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parents[1].parent / "keyword-extractor" / "scripts"
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import LLMCallError
+
+    try:
+        data = llm_json(client, model, STEP2_SYSTEM, user_prompt, temperature=0.2)
+    except LLMCallError as e:
+        print(f"  [FAIL] Topic {topic_code}: {e}", file=sys.stderr)
+        return [], {"topic_code": topic_code, "error": str(e), "error_type": e.error_type}
+
     valid_codes = {c["code"] for c in concepts}
     links = []
     for lk in data.get("links", []):
@@ -203,13 +193,16 @@ Nhớ: chỉ link khi THỰC SỰ bắt buộc (sinh viên chưa học A thì KH
                 "justification": just,
                 "counterfactual_test": test,
             })
-    return links
+    return links, None
 
-def derive_concept_dag(client, model, by_topic: dict[str, list[dict]], runs: int = 2) -> list[dict]:
+def derive_concept_dag(client, model, by_topic: dict[str, list[dict]], runs: int = 2) -> tuple[list[dict], list[dict]]:
     """Bước 2: chạy LLM cho từng topic, gộp kết quả qua N runs (union).
-    Link được giữ nếu xuất hiện ở ≥ ceil(runs/2) runs (majority vote)."""
+    Link được giữ nếu xuất hiện ở ≥ ceil(runs/2) runs (majority vote).
+    Returns (final_links, failures). failures is a list of {topic_code, error} dicts."""
     from collections import Counter
     all_runs = []  # list of dict[(pre,tgt)] -> link
+    all_failures = []  # track LLM failures across runs
+
     for run_idx in range(runs):
         print(f"  --- Run {run_idx+1}/{runs} ---")
         run_links = {}
@@ -217,7 +210,11 @@ def derive_concept_dag(client, model, by_topic: dict[str, list[dict]], runs: int
             if len(concepts) < 2:
                 continue
             print(f"  [B2] Topic {topic_code} ({len(concepts)} concepts)...", end=" ", flush=True)
-            links = build_concept_dag_per_topic(client, model, topic_code, concepts)
+            links, failure = build_concept_dag_per_topic(client, model, topic_code, concepts)
+            if failure:
+                all_failures.append({**failure, "run": run_idx + 1})
+                print(f"FAIL ({failure['error_type']})")
+                continue
             new_count = 0
             for l in links:
                 key = (l["prereq_concept"], l["target_concept"])
@@ -226,6 +223,7 @@ def derive_concept_dag(client, model, by_topic: dict[str, list[dict]], runs: int
                     new_count += 1
             print(f"{len(links)} links ({new_count} new)")
         all_runs.append(run_links)
+
     # Majority vote: giữ link nếu xuất hiện ở >= ceil(runs/2) runs
     threshold = (runs + 1) // 2  # runs=2 → 1 (union), runs=3 → 2 (majority)
     link_counter = Counter()
@@ -240,7 +238,7 @@ def derive_concept_dag(client, model, by_topic: dict[str, list[dict]], runs: int
             l = link_data[key]
             l["confidence_runs"] = f"{cnt}/{runs}"
             final_links.append(l)
-    return final_links
+    return final_links, all_failures
 
 # =====================================================================
 # Bước 3 — ULO-Level Derivation (Deterministic)
@@ -342,7 +340,7 @@ Trả về JSON:
 """
 
 def verify_link(client, model, lo_map: dict, link: dict) -> str:
-    """Trả về verdict NO/YES/PARTIAL."""
+    """Trả về verdict NO/YES/PARTIAL. On LLM failure, returns 'PARTIAL — LLM error'."""
     pre = lo_map.get(link["prerequisite_lo_code"], {})
     tgt = lo_map.get(link["learning_objective_code"], {})
     user_prompt = f"""Link đang xét:
@@ -363,7 +361,11 @@ Justification đã có: {link.get('justification','')}
 Câu hỏi: "Sinh viên đã hiểu mọi concept TRỪ A. Có thể hiểu/làm được B không?"
 Hãy đọc kỹ description của A và B. Nếu justification mô tả sai nội dung B (không khớp description) → verdict YES (drop).
 """
-    data = llm_json(client, model, STEP5_SYSTEM, user_prompt, temperature=0.0)
+    try:
+        data = llm_json(client, model, STEP5_SYSTEM, user_prompt, temperature=0.0)
+    except Exception as e:
+        # LLM verify failed — conservatively keep the link but mark as unverified
+        return f"PARTIAL — LLM verify failed: {e}"
     verdict = (data.get("verdict") or "").upper().strip()
     reason = (data.get("reason") or "").strip()
     if verdict not in ("NO", "YES", "PARTIAL"):
@@ -539,8 +541,27 @@ def main():
         print(f"  → Load {len(concept_dag)} concept-level links từ cache")
     else:
         print("\n[Bước 2] Concept-Level DAG per-domain (LLM)...")
-        concept_dag = derive_concept_dag(client, args.model, by_topic)
+        concept_dag, llm_failures = derive_concept_dag(client, args.model, by_topic)
         print(f"  → {len(concept_dag)} concept-level links (trước verify)")
+
+        # Fail-fast: if ALL topics failed LLM, abort before writing empty TSV
+        # (§10 Bảo tồn & Minh bạch Dữ liệu — không ghi đè dữ liệu tốt bằng rỗng)
+        if llm_failures:
+            # Write audit trail
+            work_dir.mkdir(parents=True, exist_ok=True)
+            failures_path = work_dir / "llm_failures.json"
+            with open(failures_path, "w", encoding="utf-8") as f:
+                json.dump(llm_failures, f, ensure_ascii=False, indent=2)
+            print(f"  [⚠️] {len(llm_failures)} topic-run(s) failed LLM call → {failures_path.relative_to(repo_root)}",
+                  file=sys.stderr)
+            # Check if ALL topics failed (no links at all)
+            if not concept_dag:
+                print(f"\n[❌ FATAL] Tất cả topic LLM call thất bại. ABORT — không ghi TSV rỗng.",
+                      file=sys.stderr)
+                print(f"  Kiểm tra: API key, model name, network, rate limit.",
+                      file=sys.stderr)
+                sys.exit(1)
+
         # Lưu concept_dag.tsv vào .work
         work_dir.mkdir(parents=True, exist_ok=True)
         with open(concept_dag_path, "w", newline="", encoding="utf-8") as f:

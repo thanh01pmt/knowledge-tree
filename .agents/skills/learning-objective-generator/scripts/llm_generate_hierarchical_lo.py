@@ -28,6 +28,56 @@ import sys
 from datetime import datetime
 from pathlib import Path
 
+# ─── Shared LLM error handling ────────────────────────────────────────────────
+# Import from keyword-extractor skill (sibling directory)
+_SKILL_SCRIPTS = Path(__file__).resolve().parents[1].parent / "keyword-extractor" / "scripts"
+if str(_SKILL_SCRIPTS) not in sys.path:
+    sys.path.insert(0, str(_SKILL_SCRIPTS))
+try:
+    from llm_call import llm_chat_json as _llm_chat_json, LLMCallError as _LLMCallError
+    _HAS_LLM_CALL = True
+except ImportError:
+    _HAS_LLM_CALL = False
+
+# Global tracker for LLM failures across all phases — written to audit trail
+_LLM_FAILURES: list[dict] = []
+
+
+def _safe_llm_json(client, model, system, user, temperature=0.2, batch_label=""):
+    """Call LLM with retry. On failure, track in _LLM_FAILURES and return {}.
+    Caller must check _LLM_FAILURES before writing final output."""
+    if _HAS_LLM_CALL:
+        try:
+            return _llm_chat_json(client, model, system, user, temperature=temperature)
+        except _LLMCallError as e:
+            _LLM_FAILURES.append({
+                "batch": batch_label,
+                "error": str(e),
+                "error_type": e.error_type,
+            })
+            print(f"  [FAIL] {batch_label}: {e}", file=sys.stderr)
+            return {}
+    else:
+        # Fallback: direct call without retry (legacy behavior)
+        try:
+            completion = client.chat.completions.create(
+                model=model,
+                messages=[
+                    {"role": "system", "content": system},
+                    {"role": "user", "content": user},
+                ],
+                response_format={"type": "json_object"},
+                temperature=temperature,
+            )
+            raw = completion.choices[0].message.content or ""
+            if raw.startswith("```"):
+                raw = re.sub(r"```(?:json)?\n?", "", raw).strip("` \n")
+            return json.loads(raw)
+        except Exception as e:
+            _LLM_FAILURES.append({"batch": batch_label, "error": str(e), "error_type": "unknown"})
+            print(f"  [FAIL] {batch_label}: {e}", file=sys.stderr)
+            return {}
+
 try:
     from openai import OpenAI
     from pydantic import BaseModel, Field
@@ -602,34 +652,14 @@ def generate_cios(
         )
 
         try:
-            completion = client.chat.completions.create(
-                model=model,
-                messages=[
-                    {"role": "system", "content": CIO_SYSTEM},
-                    {"role": "user", "content": user_prompt},
-                ],
-                response_format={"type": "json_object"},
-                temperature=0.2,
+            result_json = _safe_llm_json(
+                client, model, CIO_SYSTEM, user_prompt,
+                temperature=0.2, batch_label=f"CIO batch {i+1}-{min(i+batch_size, len(ulos))}"
             )
-            raw_content = completion.choices[0].message.content
-            if raw_content.startswith("```json"):
-                raw_content = raw_content.strip("` \n")
-                if raw_content.startswith("json"):
-                    raw_content = raw_content[4:].strip()
-            elif raw_content.startswith("```"):
-                raw_content = raw_content.strip("` \n")
-            
-            try:
-                result_json = json.loads(raw_content)
-            except json.JSONDecodeError:
-                # Tránh lỗi Invalid \escape
-                clean_content = raw_content.replace("\\", "\\\\")
-                result_json = json.loads(clean_content)
-            batch_cios = result_json.get("cios", [])
+            batch_cios = result_json.get("cios", []) if result_json else []
             if batch_cios:
                 # Validate parent codes — surface hallucinations instead of
-                # silently rebinding to batch[0] (which corrupted hierarchy
-                # without audit trail, violating §10 Bảo tồn & Minh bạch).
+                # silently rebinding to batch[0] (§10 Bảo tồn & Minh bạch).
                 valid_ulo_codes = {u["code"] for u in ulos}
                 for c in batch_cios:
                     if c.get("parent_ulo_code") not in valid_ulo_codes:
@@ -642,6 +672,8 @@ def generate_cios(
                               file=sys.stderr)
                 all_cios.extend(batch_cios)
                 print(f"  Batch {i+1}-{min(i+batch_size, len(ulos))}: +{len(batch_cios)} CIOs")
+            elif not result_json:
+                print(f"  Batch {i+1}: [SKIPPED] LLM call failed — no CIOs generated", file=sys.stderr)
         except Exception as e:
             print(f"  [WARN] Batch {i}: {e}", file=sys.stderr)
             import traceback
@@ -650,6 +682,15 @@ def generate_cios(
     out_path = hlo_dir / "cios.json"
     with open(out_path, "w", encoding="utf-8") as f:
         json.dump(all_cios, f, ensure_ascii=False, indent=2)
+
+    # Write LLM failure audit trail (§10 Bảo tồn & Minh bạch)
+    if _LLM_FAILURES:
+        failures_path = hlo_dir / "llm_failures.json"
+        with open(failures_path, "w", encoding="utf-8") as f:
+            json.dump(_LLM_FAILURES, f, ensure_ascii=False, indent=2)
+        print(f"\n[⚠️] {len(_LLM_FAILURES)} LLM call(s) failed during CIO generation", file=sys.stderr)
+        print(f"  Audit trail: {failures_path}", file=sys.stderr)
+        print(f"  CIO count may be INCOMPLETE — review before /generate-sios", file=sys.stderr)
 
     _write_cio_preview(hlo_dir / "cios_preview.md", all_cios, ulos)
 

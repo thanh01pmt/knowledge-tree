@@ -89,13 +89,15 @@ def cosine_similarity(a: list[float], b: list[float]) -> float:
 
 
 def batch_embed(client: OpenAI, texts: list[str], model: str = "text-embedding-3-small", batch_size: int = 100) -> list[list[float]]:
-    """Embed texts in batches. Returns list of embedding vectors."""
-    all_embeddings = []
-    for i in range(0, len(texts), batch_size):
-        batch = texts[i:i + batch_size]
-        response = client.embeddings.create(input=batch, model=model)
-        all_embeddings.extend([item.embedding for item in response.data])
-    return all_embeddings
+    """Embed texts in batches. Returns list of embedding vectors.
+    Raises LLMCallError on failure (does NOT return partial results)."""
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parent
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import llm_embed as _llm_embed
+    return _llm_embed(client, texts, model=model, batch_size=batch_size)
 
 
 # ─── Main ─────────────────────────────────────────────────────────────────────
@@ -184,17 +186,25 @@ def main():
 
     # Embed target_context
     print(f"[*] Embedding target_context: '{target_context}' ...")
-    target_emb = client.embeddings.create(
-        input=[target_context], model=args.embed_model
-    ).data[0].embedding
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parent
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import llm_embed_single as _llm_embed_single, LLMCallError as _LLMCallError
+    try:
+        target_emb = _llm_embed_single(client, target_context, model=args.embed_model)
+    except _LLMCallError as e:
+        print(f"[FATAL] Embedding target_context failed: {e}", file=sys.stderr)
+        sys.exit(1)
 
     # Batch embed tất cả candidates
     terms_to_embed = [c["term"] for c in all_candidates]
     print(f"[*] Embedding {len(terms_to_embed)} candidates (batch) ...")
     try:
         embeddings = batch_embed(client, terms_to_embed, model=args.embed_model)
-    except Exception as e:
-        print(f"[ERROR] Embedding failed: {e}", file=sys.stderr)
+    except _LLMCallError as e:
+        print(f"[FATAL] Embedding candidates failed: {e}", file=sys.stderr)
         sys.exit(1)
 
     # Tính cosine similarity + filter

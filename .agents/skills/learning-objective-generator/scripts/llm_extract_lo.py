@@ -372,16 +372,36 @@ QUY TẮC ĐỘ PHỦ
 
     print(f"[*] Đang gửi dữ liệu lên LLM (technology: {technology})...")
     model = os.getenv("LO_EXTRACT_MODEL", "gpt-4o-2024-08-06")
-    completion = client.beta.chat.completions.parse(
-        model=model,
-        messages=[
-            {"role": "system", "content": system_prompt},
-            {"role": "user", "content": f"Tài liệu Syllabus ({technology}):\n{text_content}"}
-        ],
-        response_format=LOExtractionResponse,
-    )
+    try:
+        completion = client.beta.chat.completions.parse(
+            model=model,
+            messages=[
+                {"role": "system", "content": system_prompt},
+                {"role": "user", "content": f"Tài liệu Syllabus ({technology}):\n{text_content}"}
+            ],
+            response_format=LOExtractionResponse,
+        )
+    except Exception as e:
+        # Classify error for clear user feedback
+        import sys as _sys
+        from pathlib import Path as _Path
+        _skill_scripts = _Path(__file__).resolve().parents[1].parent / "keyword-extractor" / "scripts"
+        if str(_skill_scripts) not in _sys.path:
+            _sys.path.insert(0, str(_skill_scripts))
+        from llm_call import _classify_error
+        error_type, retryable = _classify_error(e)
+        print(f"\n[❌ FATAL] LLM call failed: [{error_type}] {e}", file=sys.stderr)
+        if retryable:
+            print(f"  Retryable error — check network/rate limit and try again.", file=sys.stderr)
+        else:
+            print(f"  Non-retryable error — check API key, model name '{model}'.", file=sys.stderr)
+        sys.exit(1)
 
     result = completion.choices[0].message.parsed
+    if result is None:
+        print(f"\n[❌ FATAL] LLM returned None (parse failed). Check model '{model}' supports structured output.",
+              file=sys.stderr)
+        sys.exit(1)
     los = result.learning_objectives
     print(f"[*] LLM trích xuất {len(los)} Learning Objectives.")
 

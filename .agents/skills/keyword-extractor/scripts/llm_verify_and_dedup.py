@@ -272,7 +272,8 @@ def omission_check_chunk(
     current_terms_str: str,
     model: str,
 ) -> list[dict]:
-    """Kiểm tra 1 chunk — trả về danh sách term mới (nếu có)."""
+    """Kiểm tra 1 chunk — trả về danh sách term mới (nếu có).
+    Raises LLMCallError on fatal errors; returns [] on empty result."""
     user_prompt = f"""Chủ đề mục tiêu: "{target_context}"
 
 Đoạn văn (heading: {chunk.get('heading_trail', '?')}):
@@ -285,32 +286,33 @@ Danh sách thuật ngữ ĐÃ CÓ (bao gồm cả aliases):
 
 Hãy trả về JSON với các thuật ngữ chưa có trong danh sách (hoặc new_terms rỗng nếu không có)."""
 
+    # Import shared LLM helper
+    import sys as _sys
+    from pathlib import Path as _Path
+    _skill_scripts = _Path(__file__).resolve().parent
+    if str(_skill_scripts) not in _sys.path:
+        _sys.path.insert(0, str(_skill_scripts))
+    from llm_call import llm_chat_json as _llm_chat_json, LLMCallError as _LLMCallError
+
     try:
-        completion = client.chat.completions.create(
-            model=model,
-            messages=[
-                {"role": "system", "content": OMISSION_SYSTEM},
-                {"role": "user", "content": user_prompt},
-            ],
-            response_format={"type": "json_object"},
-            temperature=0.0,
-        )
-        raw = completion.choices[0].message.content or ""
-        new_items = parse_omission_json(raw)
-        return [
-            {
-                "term": t["term"],
+        data = _llm_chat_json(client, model, OMISSION_SYSTEM, user_prompt, temperature=0.0)
+    except _LLMCallError as e:
+        # Surface error — caller can track and decide whether to continue
+        print(f"    [FAIL] omission chunk {chunk['chunk_id']}: {e}", file=sys.stderr)
+        raise
+
+    new_items = []
+    for t in data.get("new_terms", []):
+        if isinstance(t, dict) and t.get("term", "").strip():
+            new_items.append({
+                "term": t.get("term", "").strip(),
                 "aliases": [],
-                "category": t["category"],
+                "category": t.get("category", "other"),
                 "relevance_score": 0.0,
                 "source_chunks": [chunk["chunk_id"]],
                 "first_extraction_method": "omission_check",
-            }
-            for t in new_items
-        ]
-    except Exception as e:
-        print(f"    [WARN] omission chunk {chunk['chunk_id']}: {e}", file=sys.stderr)
-        return []
+            })
+    return new_items
 
 
 

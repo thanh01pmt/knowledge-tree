@@ -36,7 +36,8 @@ def _validate_project_name(project_name: str) -> str:
 def _run_script(script_path: Path, project_name: str, extra_args: list = None,
                 timeout: int = 300) -> str:
     """Run a skill script with validation, timeout, and error handling.
-    Default timeout 300s (5 min) prevents hung subprocesses."""
+    Default timeout 300s (5 min) prevents hung subprocesses.
+    Returns a string that includes exit code prefix for error propagation."""
     try:
         _validate_project_name(project_name)
     except ValueError as e:
@@ -46,7 +47,17 @@ def _run_script(script_path: Path, project_name: str, extra_args: list = None,
     cmd = [sys.executable, str(script_path), "--project", project_name] + (extra_args or [])
     try:
         res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR), timeout=timeout)
-        return res.stdout or res.stderr
+        output = res.stdout or res.stderr
+        # Propagate exit code so caller (LLM agent) knows if the tool failed.
+        # Non-zero exit = script failed (e.g., LLM call error, validation error).
+        if res.returncode != 0:
+            stderr_tail = res.stderr.strip().split("\n")[-3:] if res.stderr else []
+            stderr_summary = "\n".join(stderr_tail)
+            return (f"❌ Script exited with code {res.returncode} (FAILED).\n"
+                    f"--- stdout ---\n{output}\n"
+                    f"--- stderr (last lines) ---\n{stderr_summary}\n"
+                    f"⚠️ Output may be INCOMPLETE or CORRUPTED — do not trust TSV files written by this run.")
+        return output
     except subprocess.TimeoutExpired:
         return f"❌ Error: {script_path.name} timed out after {timeout}s for project '{project_name}'."
 
