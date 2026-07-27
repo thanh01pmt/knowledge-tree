@@ -2,6 +2,7 @@
 """
 Sub-MCP Server: System Status & Resources (sys)
 """
+import re
 from pathlib import Path
 from fastmcp import FastMCP
 
@@ -11,6 +12,19 @@ SKILLS_DIR = ROOT_DIR / ".agents" / "skills"
 
 sys_mcp = FastMCP("SystemOps")
 
+# Safe project slug for resource URIs (prevents path traversal via resource read).
+SAFE_SLUG_RE = re.compile(r'^[a-zA-Z0-9][a-zA-Z0-9_-]*$')
+
+
+def _validate_slug(slug: str) -> str:
+    """Validate a slug used in resource URIs to prevent path traversal."""
+    if not slug or not SAFE_SLUG_RE.match(slug):
+        raise ValueError(f"Invalid slug '{slug}'")
+    if ".." in slug or "/" in slug or "\\" in slug:
+        raise ValueError(f"Slug '{slug}' contains path traversal characters.")
+    return slug
+
+
 @sys_mcp.tool
 def get_system_status() -> str:
     """Trả về thông tin trạng thái hoạt động của hệ thống Knowledge Tree."""
@@ -19,17 +33,34 @@ def get_system_status() -> str:
         return f"=== STATUS.YAML ===\n{status_file.read_text(encoding='utf-8')}"
     return "Status file not found."
 
-@sys_mcp.resource("skills://{skill_name}")
+@sys_mcp.tool
 def get_skill_doc(skill_name: str) -> str:
-    """Đọc tài liệu hướng dẫn SKILL.md của một skill trong dự án."""
+    """
+    Đọc tài liệu hướng dẫn SKILL.md của một skill trong dự án.
+
+    Args:
+        skill_name: Tên skill (ví dụ: 'tree-validator', 'taxonomy-mapper')
+    """
+    try:
+        _validate_slug(skill_name)
+    except ValueError as e:
+        return f"❌ Error: {e}"
     skill_file = SKILLS_DIR / skill_name / "SKILL.md"
+    # Defense-in-depth: verify resolved path stays inside SKILLS_DIR
+    if not skill_file.resolve().is_relative_to(SKILLS_DIR.resolve()):
+        return f"❌ Error: Resolved skill path escapes skills directory."
     if skill_file.exists():
         return skill_file.read_text(encoding="utf-8")
     return f"Skill '{skill_name}' không tồn tại tại {skill_file}"
 
-@sys_mcp.resource("project://{project_name}/status")
+@sys_mcp.tool
 def get_project_status(project_name: str) -> str:
-    """Đọc thông tin trạng thái dự án hiện tại từ status.yaml ở repo root."""
+    """
+    Đọc thông tin trạng thái dự án hiện tại từ status.yaml ở repo root.
+
+    Args:
+        project_name: Tên dự án (chỉ dùng để tham chiếu, status.yaml ở repo root)
+    """
     status_file = ROOT_DIR / "status.yaml"
     if status_file.exists():
         return status_file.read_text(encoding="utf-8")

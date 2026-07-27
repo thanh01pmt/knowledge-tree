@@ -54,8 +54,19 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 ### 5. `kt_scaffold_project`
 * **Mô tả**: Khởi tạo cấu trúc thư mục dự án mới (`projects/<project_name>/`) với đầy đủ các thư mục con `context/`, `.work/`, `.tree-validator/`, `output/` và file header TSV chuẩn.
 * **Tham số**:
-  - `project_name` (`str`, bắt buộc): Tên dự án mới cần khởi tạo.
+  - `project_name` (`str`, bắt buộc): Tên dự án mới (slug dạng kebab-case/snake_case, chỉ gồm chữ thường, số, gạch ngang/gạch dưới).
 * **Kết quả trả về**: Thông báo tạo cấu trúc thư mục thành công.
+
+---
+
+### 6. `kt_map_prerequisites`
+* **Mô tả**: Sinh DAG tiền đề (prerequisite) giữa các Learning Objectives theo phương pháp 4-Bước ADR-0005: Domain Partitioning → Concept DAG per-domain (LLM) → ULO Derivation → LLM Verify (phép thử ngược).
+* **Tham số**:
+  - `project_name` (`str`, bắt buộc): Tên slug dự án.
+  - `dry_run` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, in candidate DAG ra stdout, không ghi TSV.
+  - `no_verify` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, bỏ Bước 4 (LLM verify).
+  - `reuse_concept_dag` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, dùng `.work/concept_dag.tsv` có sẵn, skip Bước 2.
+* **Kết quả trả về**: `lo_prerequisites.tsv`, `concepts.tsv` (thêm cột `prerequisite_concept_codes`), `.work/concept_dag.tsv`.
 
 ---
 
@@ -85,5 +96,8 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 Ngoài `kt`, Hub còn chứa sub-server **`sys` (SystemOps)**:
 - `sys_get_system_status`: Đọc file `status.yaml` để biết trạng thái tổng thể toàn repo.
-- `skills://{skill_name}` (Resource): Đọc tài liệu hướng dẫn kỹ năng `SKILL.md`.
+- `sys_get_skill_doc`: Đọc tài liệu hướng dẫn `SKILL.md` của một skill (thay thế resource `skills://` cũ).
+- `sys_get_project_status`: Đọc thông tin trạng thái dự án từ `status.yaml` (thay thế resource `project://status` cũ).
 - `guide_workflow` (Prompt): Cung cấp hướng dẫn quy trình từng bước cho Agent.
+
+> **Lưu ý bảo mật**: Tất cả tool nhận `project_name` đều validate slug (chỉ chấp nhận chữ thường, số, gạch ngang, gạch dưới) để ngăn path traversal. Các subprocess gọi script có timeout (120s-1800s tùy tool) để tránh hung process.

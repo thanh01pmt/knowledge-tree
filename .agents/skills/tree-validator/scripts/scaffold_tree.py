@@ -5,6 +5,8 @@ scaffold_tree.py — Tạo cấu trúc thư mục và file TSV trống cho proje
 
 import argparse
 import csv
+import re
+import sys
 from pathlib import Path
 
 HEADERS = {
@@ -15,6 +17,26 @@ HEADERS = {
     "concepts.tsv": ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"],
     "learning-objectives.tsv": ["code", "name", "description", "lo_type", "parent_lo_code", "concept_codes", "bloom_level", "knowledge_dimension", "assessment_approach"]
 }
+
+# Safe project slug: lowercase letters, digits, hyphens, underscores only.
+# Prevents path traversal (../, /, ..) and command injection.
+SAFE_SLUG_RE = re.compile(r'^[a-z0-9][a-z0-9_-]*$')
+
+
+def validate_slug(slug: str) -> str:
+    """Validate project slug against path traversal and unsafe characters.
+    Returns the slug if safe, raises ValueError otherwise."""
+    if not slug:
+        raise ValueError("Project slug cannot be empty.")
+    if not SAFE_SLUG_RE.match(slug):
+        raise ValueError(
+            f"Invalid project slug '{slug}'. "
+            "Only lowercase letters, digits, hyphens, and underscores are allowed "
+            "(must start with a letter or digit). No path separators or '..'."
+        )
+    if ".." in slug or "/" in slug or "\\" in slug:
+        raise ValueError(f"Project slug '{slug}' contains path traversal characters.")
+    return slug
 
 def find_repo_root(start: Path) -> Path:
     cur = start.resolve()
@@ -53,8 +75,20 @@ def main():
     args = parser.parse_args()
 
     slug = args.project
+    try:
+        validate_slug(slug)
+    except ValueError as e:
+        print(f"❌ Error: {e}")
+        sys.exit(1)
     repo_root = find_repo_root(Path.cwd())
     project_dir = repo_root / "projects" / slug
+
+    # Defense-in-depth: verify resolved path stays inside repo
+    project_dir_resolved = project_dir.resolve()
+    repo_root_resolved = repo_root.resolve()
+    if not project_dir_resolved.is_relative_to(repo_root_resolved):
+        print(f"❌ Error: Resolved project path escapes repository root.")
+        sys.exit(1)
     
     project_dir.mkdir(parents=True, exist_ok=True)
     (project_dir / "context").mkdir(exist_ok=True)
