@@ -85,23 +85,35 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             rows = list(reader)
 
         if table_name == "learning_objective_prerequisites":
-            synced_count = 0
+            # Batch upsert (chunk of 200) to avoid per-row round-trip latency
+            # and reduce risk of partial sync on large prerequisite graphs.
+            batch_payloads = []
+            skipped = 0
             for r in rows:
                 target_code = r.get("learning_objective_code", "").strip()
                 prereq_code = r.get("prerequisite_lo_code", "").strip()
                 if not target_code or not prereq_code:
+                    skipped += 1
                     continue
-                payload = {
+                batch_payloads.append({
                     "learning_objective_code": target_code,
                     "prerequisite_lo_code": prereq_code,
                     "rationale": r.get("rationale", "").strip(),
                     "source_layer": r.get("source_layer", "L3-LLM").strip() or "L3-LLM",
-                }
+                })
+                if len(batch_payloads) >= 200:
+                    supabase.table(table_name).upsert(
+                        batch_payloads,
+                        on_conflict="learning_objective_code,prerequisite_lo_code"
+                    ).execute()
+                    batch_payloads = []
+            if batch_payloads:
                 supabase.table(table_name).upsert(
-                    payload, on_conflict="learning_objective_code,prerequisite_lo_code"
+                    batch_payloads,
+                    on_conflict="learning_objective_code,prerequisite_lo_code"
                 ).execute()
-                synced_count += 1
-            print(f"  • {table_name:<20}: {synced_count} synced (Upserted)")
+            synced_count = len(rows) - skipped
+            print(f"  • {table_name:<20}: {synced_count} synced (Upserted in batches of 200, {skipped} skipped)")
             continue
 
         # For normal tables

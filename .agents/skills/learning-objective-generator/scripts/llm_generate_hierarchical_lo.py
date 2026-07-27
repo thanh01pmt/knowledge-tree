@@ -627,11 +627,19 @@ def generate_cios(
                 result_json = json.loads(clean_content)
             batch_cios = result_json.get("cios", [])
             if batch_cios:
-                # Validate parent codes
+                # Validate parent codes — surface hallucinations instead of
+                # silently rebinding to batch[0] (which corrupted hierarchy
+                # without audit trail, violating §10 Bảo tồn & Minh bạch).
                 valid_ulo_codes = {u["code"] for u in ulos}
                 for c in batch_cios:
-                    if c["parent_ulo_code"] not in valid_ulo_codes:
+                    if c.get("parent_ulo_code") not in valid_ulo_codes:
+                        original = c.get("parent_ulo_code", "")
                         c["parent_ulo_code"] = batch[0]["code"]  # fallback
+                        c["_parent_fallback"] = original  # audit trail
+                        print(f"  [WARN] CIO {c.get('code','?')} hallucinated parent "
+                              f"'{original}' → rebound to '{batch[0]['code']}' "
+                              f"(REVIEW NEEDED — fix in cios.json before /generate-sios)",
+                              file=sys.stderr)
                 all_cios.extend(batch_cios)
                 print(f"  Batch {i+1}-{min(i+batch_size, len(ulos))}: +{len(batch_cios)} CIOs")
         except Exception as e:

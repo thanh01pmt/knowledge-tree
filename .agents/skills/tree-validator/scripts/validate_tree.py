@@ -70,6 +70,7 @@ RULE_DESCRIPTIONS = {
     "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
     "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
     "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_HIERARCHY_VIOLATION": "Vi phạm Tri-Level [T6]: CIO phải là con của ULO, SIO phải là con của CIO",
     "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
     "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
     "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
@@ -409,6 +410,9 @@ def check_lo_parent_and_cycles(lo_rows, lo_codes_set):
 
 def check_lo_type_rules(lo_rows):
     issues = []
+    # Build code -> lo_type map for parent type lookup (N:N aware)
+    code_to_type = {(r.get("code") or "").strip(): (r.get("lo_type") or "").strip()
+                     for r in lo_rows if (r.get("code") or "").strip()}
     for r in lo_rows:
         code = (r.get("code") or "").strip()
         lo_type = (r.get("lo_type") or "").strip()
@@ -427,6 +431,30 @@ def check_lo_type_rules(lo_rows):
             issues.append(Issue("ERROR", "LO_TYPE_PARENT_MISMATCH", "learning_objectives", code,
                                  f"lo_type={lo_type} nhưng parent_lo_code=NULL (cần có parent).",
                                  field="parent_lo_code"))
+
+        # T6 hierarchy semantics: CIO parent must be ULO, SIO parent must be CIO.
+        # N:N aware: each comma-separated parent must be of the allowed type.
+        if not is_null_parent and lo_type in ("CONCEPTUAL_IMPL", "SPECIFIC_IMPL"):
+            parents = split_codes(parent)
+            for p in parents:
+                if p == NULL_TOKEN:
+                    continue
+                p_type = code_to_type.get(p)
+                if not p_type:
+                    # Broken ref is reported elsewhere; skip here to avoid duplicate noise.
+                    continue
+                if lo_type == "CONCEPTUAL_IMPL" and p_type != "UNIVERSAL":
+                    issues.append(Issue(
+                        "ERROR", "LO_HIERARCHY_VIOLATION", "learning_objectives", code,
+                        f"CIO '{code}' có parent '{p}' là lo_type={p_type} (phải là UNIVERSAL). "
+                        f"Vi phạm Tri-Level Hypothesis [T6]: CIO phải là con của ULO.",
+                        field="parent_lo_code", ref=p))
+                if lo_type == "SPECIFIC_IMPL" and p_type != "CONCEPTUAL_IMPL":
+                    issues.append(Issue(
+                        "ERROR", "LO_HIERARCHY_VIOLATION", "learning_objectives", code,
+                        f"SIO '{code}' có parent '{p}' là lo_type={p_type} (phải là CONCEPTUAL_IMPL). "
+                        f"Vi phạm Tri-Level Hypothesis [T6]: SIO phải là con của CIO.",
+                        field="parent_lo_code", ref=p))
     return issues
 
 
@@ -478,7 +506,8 @@ def check_concept_lo_coverage(concept_rows, lo_rows):
 
 def check_cio_sio_depth(lo_rows, min_sios: int = 2):
     """WARNING if a CIO has fewer than min_sios SPECIFIC_IMPL children.
-    Each CIO should have at least 2 SIOs to ensure adequate instructional depth."""
+    Each CIO should have at least 2 SIOs to ensure adequate instructional depth.
+    N:N aware: a SIO with comma-separated parents counts toward each parent CIO."""
     issues = []
     cios = {r["code"]: r for r in lo_rows if r.get("lo_type") == "CONCEPTUAL_IMPL" and r.get("code")}
     if not cios:
@@ -487,9 +516,10 @@ def check_cio_sio_depth(lo_rows, min_sios: int = 2):
     cio_sio_count: dict[str, int] = {c: 0 for c in cios}
     for r in lo_rows:
         if r.get("lo_type") == "SPECIFIC_IMPL":
-            parent = (r.get("parent_lo_code") or "").strip()
-            if parent in cio_sio_count:
-                cio_sio_count[parent] += 1
+            # N:N: split comma-separated parents so multi-parent SIOs count for each CIO.
+            for parent in split_codes(r.get("parent_lo_code", "")):
+                if parent in cio_sio_count:
+                    cio_sio_count[parent] += 1
 
     for cio_code, count in cio_sio_count.items():
         if count < min_sios:

@@ -131,15 +131,17 @@ def detect_concept_without_lo(
 # ─── Gap B: CIOs with fewer than 2 SIOs ──────────────────────────────────────
 
 def detect_shallow_cios(project_los: list[dict], min_sios: int = 2) -> list[dict]:
-    """Return CIOs with fewer than min_sios SIO children."""
+    """Return CIOs with fewer than min_sios SIO children.
+    N:N aware: a SIO with comma-separated parents counts toward each parent CIO."""
     cios = {r["code"]: r for r in project_los if r.get("lo_type") == "CONCEPTUAL_IMPL" and r.get("code")}
     sios = [r for r in project_los if r.get("lo_type") == "SPECIFIC_IMPL"]
 
     cio_sio_count: dict[str, int] = {c: 0 for c in cios}
     for sio in sios:
-        parent = (sio.get("parent_lo_code") or "").strip()
-        if parent in cio_sio_count:
-            cio_sio_count[parent] += 1
+        # N:N: split comma-separated parents so multi-parent SIOs count for each CIO.
+        for parent in split_codes(sio.get("parent_lo_code", "")):
+            if parent in cio_sio_count:
+                cio_sio_count[parent] += 1
 
     shallow = []
     for cio_code, count in cio_sio_count.items():
@@ -154,12 +156,26 @@ def detect_shallow_cios(project_los: list[dict], min_sios: int = 2) -> list[dict
 
 
 # ─── Gap D: CIOs violating Marr's Representation-Independent test ─────────────
-
+#
+# TECH_KEYWORDS: concrete language/framework/brand names that MUST NOT appear
+# in a CIO (which is supposed to be language-neutral per T6). Matched as whole
+# words, case-insensitive. Ambiguous tokens (e.g. "spring" the season, "r" the
+# letter) are intentionally omitted to avoid false positives.
 TECH_KEYWORDS = {
-    "python", "swift", "javascript", "typescript", "java", "golang", "rust", "ruby", "php",
-    "docker", "kubernetes", "c++", "cpp", "c#", "csharp",
-    "def", "func", "struct", "interface", "trait", "decorator", "annotation",
-    "malloc", "free", "undefined", "cout", "printf"
+    # languages
+    "python", "swift", "javascript", "typescript", "java", "golang", "rust",
+    "ruby", "php", "kotlin", "scala", "perl", "lua", "haskell", "dart",
+    "c++", "cpp", "c#", "csharp", "objective-c", "objc",
+    # frameworks / libraries
+    "react", "vue", "vue.js", "angular", "svelte", "solidjs", "solid js",
+    "django", "flask", "express", "rails", "laravel", "nextjs", "next.js",
+    "nuxt", "gatsby", "tailwind", "bootstrap",
+    # platforms / vendors
+    "arduino", "raspberry pi", "esp32", "esp8266", "node.js", "nodejs",
+    "docker", "kubernetes", "k8s",
+    # specific syntax tokens (unambiguous)
+    "codable", "getelementbyid", "innerhtml", "console.log",
+    "printf", "scanf", "std::", "malloc",
 }
 
 SYNTAX_PATTERNS = [
@@ -171,6 +187,15 @@ SYNTAX_PATTERNS = [
     (r'\bfn\s+\w+', "syntax: fn function"),
     (r'\bimport\s+\w+', "syntax: import statement"),
     (r'\bfrom\s+\w+\s+import\b', "syntax: from ... import"),
+    (r'\bconsole\.log\b', "syntax: console.log"),
+    (r'\bstd::', "syntax: std:: namespace"),
+    (r'\bmalloc\s*\(', "syntax: malloc call"),
+    (r'\bprintf\s*\(', "syntax: printf call"),
+    (r'\bawait\s+\w+', "syntax: await expression"),
+    (r'\basync\s+function\b', "syntax: async function"),
+    (r'=>\s*\{', "syntax: arrow function body"),
+    (r'\bpublic\s+static\s+void\s+main\b', "syntax: Java main"),
+    (r'\bprintln!\s*\(', "syntax: Rust println! macro"),
 ]
 
 def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:
@@ -181,11 +206,10 @@ def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:
         text = (cio.get("name", "") + " " + cio.get("description", "")).lower()
         found_kw = []
         for kw in TECH_KEYWORDS:
-            if kw in ("c++", "cpp", "c#", "csharp"):
-                continue  # Handled by SYNTAX_PATTERNS
+            # Use word-boundary regex for reliable matching (handles c++, c#, etc.)
             if re.search(r'\b' + re.escape(kw) + r'\b', text):
                 found_kw.append(kw)
-        
+
         for pattern, label in SYNTAX_PATTERNS:
             if re.search(pattern, text):
                 if label not in found_kw:

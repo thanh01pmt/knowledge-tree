@@ -79,7 +79,7 @@
       "name": "Physical Computing and Robotics",
       "description": "Tập trung vào việc lập trình các hệ thống tương tác với thế giới vật lý thông qua cảm biến, cơ cấu chấp hành và vi điều khiển, làm nền tảng cho Robotics và các thiết bị nhúng.",
       "field_codes": "CSN, MET",
-      "keywords": "robotics, Arduino, sensors, embedded systems",
+      "keywords": "robotics, sensors, embedded systems, microcontrollers",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"robot\"}"
     },
@@ -142,7 +142,7 @@
       "name": "Web Development",
       "description": "Bao gồm các công nghệ, kiến trúc và kỹ thuật để xây dựng các ứng dụng web hiện đại và tương tác, từ giao diện người dùng (frontend) đến logic máy chủ (backend).",
       "field_codes": "ASE, HCC",
-      "keywords": "HTML, CSS, JavaScript, backend, frontend, API",
+      "keywords": "markup language, styling, scripting, backend, frontend, API",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"globe\"}"
     },
@@ -306,7 +306,7 @@
       "name": "Microcontrollers & Embedded Systems",
       "description": "Lập trình cho các vi điều khiển và hệ thống nhúng, tập trung vào các nền tảng phổ biến và các ràng buộc về tài nguyên và thời gian thực.",
       "subject_codes": "PHYSICAL_COMPUTING",
-      "keywords": "Arduino, Raspberry Pi, embedded, real-time",
+      "keywords": "microcontroller, embedded, real-time, SBC",
       "cs2023_ka_mapping": "SPD, AR",
       "metadata": "{\"icon\": \"microchip\"}"
     },
@@ -520,9 +520,9 @@
     {
       "code": "FRONTEND_DEV",
       "name": "Frontend Development",
-      "description": "Tập trung vào việc xây dựng phần giao diện người dùng của ứng dụng web, sử dụng các công nghệ cốt lõi là HTML, CSS và JavaScript.",
+      "description": "Tập trung vào việc xây dựng phần giao diện người dùng của ứng dụng web, sử dụng các công nghệ cốt lõi: ngôn ngữ đánh dấu, ngôn ngữ tạo kiểu và ngôn ngữ kịch bản client-side.",
       "subject_codes": "WEB_DEV",
-      "keywords": "HTML, CSS, JavaScript, client-side, UI",
+      "keywords": "markup, styling, client-side scripting, UI, DOM",
       "cs2023_ka_mapping": "SPD, HCI",
       "metadata": "{\"icon\": \"browser\"}"
     },
@@ -538,9 +538,9 @@
     {
       "code": "WEB_FRAMEWORKS",
       "name": "Web Frameworks",
-      "description": "Hướng dẫn cách sử dụng các framework phổ biến (ví dụ: React, Django) để tăng tốc và chuẩn hóa quá trình phát triển ứng dụng web.",
+      "description": "Hướng dẫn cách sử dụng các framework phổ biến để tăng tốc và chuẩn hóa quá trình phát triển ứng dụng web.",
       "subject_codes": "WEB_DEV",
-      "keywords": "frameworks, React, Angular, Vue, Django, Express",
+      "keywords": "web framework, frontend framework, backend framework, MVC, API scaffolding",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"cubes\"}"
     },
@@ -936,7 +936,7 @@
       "name": "Game Engine Scripting",
       "description": "Kỹ năng lập trình đặc thù trong các Game Engine (như Roblox Studio, Unity), tập trung vào kiến trúc hướng sự kiện, thao tác với API của Engine và quản lý vòng đời của các đối tượng trong game.",
       "subject_codes": "GAME_DEV",
-      "keywords": "lua, event handling, API, scripting, client-server replication",
+      "keywords": "scripting language, event handling, API, game scripting, client-server replication",
       "cs2023_ka_mapping": "PDC, PL",
       "metadata": "{\"icon\": \"scroll\"}"
     },
@@ -1044,9 +1044,9 @@
     {
       "code": "MCU_PLATFORMS",
       "name": "Microcontroller Platforms",
-      "description": "Giới thiệu và làm việc với các nền tảng vi điều khiển phổ biến như Arduino, Raspberry Pi, ESP32.",
+      "description": "Giới thiệu và làm việc với các nền tảng vi điều khiển và máy tính đơn bo (SBC) phổ biến trong hệ thống nhúng.",
       "category_codes": "MICROCONTROLLERS",
-      "keywords": "Arduino, Raspberry Pi, ESP32, microcontrollers",
+      "keywords": "microcontroller, SBC, embedded platform, real-time, IoT",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"microchip\"}"
     },
@@ -1511,19 +1511,19 @@
     },
     {
       "code": "JAVASCRIPT_DOM",
-      "name": "JavaScript and the DOM",
-      "description": "Hướng dẫn lập trình phía client bằng JavaScript và cách sử dụng Mô hình Đối tượng Tài liệu (DOM) để tương tác và thay đổi nội dung trang web một cách linh hoạt.",
+      "name": "Client-Side Scripting and the DOM",
+      "description": "Hướng dẫn lập trình phía client và cách sử dụng Mô hình Đối tượng Tài liệu (DOM) để tương tác và thay đổi nội dung trang web một cách linh hoạt.",
       "category_codes": "FRONTEND_DEV",
-      "keywords": "JavaScript, DOM, event handling, client-side scripting",
+      "keywords": "client-side scripting, DOM, event handling, dynamic UI",
       "cs2023_ka_mapping": "SPD, FPL",
       "metadata": "{\"icon\": \"js\"}"
     },
     {
       "code": "SERVER_SIDE_LOGIC",
       "name": "Server-Side Logic",
-      "description": "Xây dựng logic ứng dụng chạy trên máy chủ bằng các ngôn ngữ như Python, Node.js, Java để xử lý yêu cầu, truy cập dữ liệu và thực hiện các nghiệp vụ.",
+      "description": "Xây dựng logic ứng dụng chạy trên máy chủ để xử lý yêu cầu, truy cập dữ liệu và thực hiện các nghiệp vụ.",
       "category_codes": "BACKEND_DEV",
-      "keywords": "backend, server-side, Node.js, Python, business logic",
+      "keywords": "backend, server-side, business logic, request handling, API server",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"server\"}"
     },
@@ -1980,9 +1980,9 @@
     {
       "code": "STRUCTURED_DATA_STORAGE",
       "name": "Structured On-Device Storage",
-      "description": "Sử dụng các framework cơ sở dữ liệu như Core Data hoặc ghi/đọc file để quản lý các tập dữ liệu có cấu trúc trên thiết bị.",
+      "description": "Sử dụng các framework cơ sở dữ liệu hoặc ghi/đọc file để quản lý các tập dữ liệu có cấu trúc trên thiết bị.",
       "category_codes": "APP_PERSISTENCE",
-      "keywords": "Core Data, FileManager, Codable, on-device database",
+      "keywords": "on-device database, file I/O, persistence framework, object serialization, Core Data",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"database\"}"
     },
@@ -2007,9 +2007,9 @@
     {
       "code": "PHYSICS_CONSTRAINTS",
       "name": "Physics Constraints & Joints",
-      "description": "Sử dụng các khớp nối vật lý (Constraints) như bản lề (Hinge), lò xo (Spring), động cơ (Motor) để tạo ra các cơ cấu chuyển động cơ học (xe, cửa, bẫy) trong game.",
+      "description": "Sử dụng các khớp nối vật lý (Constraints) như bản lề (Hinge), lò xo (mechanical spring), động cơ (Motor) để tạo ra các cơ cấu chuyển động cơ học (xe, cửa, bẫy) trong game.",
       "category_codes": "GAME_PHYSICS",
-      "keywords": "constraints, hinge, motor, spring, joints, mechanics",
+      "keywords": "constraints, hinge joint, motor joint, spring joint, mechanics",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"link\"}"
     },
@@ -2179,19 +2179,19 @@
     },
     {
       "code": "ARDUINO_BASICS",
-      "name": "Arduino Basics",
-      "description": "Nắm vững cấu trúc cơ bản của một chương trình Arduino (sketch) với hai hàm chính là setup() (chạy một lần) và loop() (chạy lặp lại).",
+      "name": "Microcontroller Sketch Structure",
+      "description": "Nắm vững cấu trúc cơ bản của một chương trình vi điều khiển (sketch) với hai hàm chính là khởi tạo (chạy một lần) và vòng lặp chính (chạy lặp lại).",
       "topic_codes": "MCU_PLATFORMS",
-      "keywords": "Arduino, sketch, setup, loop",
+      "keywords": "microcontroller, sketch, setup, loop, embedded",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"code\"}"
     },
     {
       "code": "RASPBERRY_PI_BASICS",
-      "name": "Raspberry Pi Basics",
-      "description": "Nhận biết Raspberry Pi như một máy tính đơn bo (SBC) và hiểu cách tương tác với hệ điều hành Raspbian (nay là Raspberry Pi OS).",
+      "name": "Single-Board Computer Basics",
+      "description": "Nhận biết máy tính đơn bo (SBC) như một nền tảng tính toán đầy đủ và hiểu cách tương tác với hệ điều hành đi kèm.",
       "topic_codes": "MCU_PLATFORMS",
-      "keywords": "Raspberry Pi, SBC, Raspbian, Linux",
+      "keywords": "SBC, single-board computer, embedded OS, embedded Linux",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"raspberry-pi\"}"
     },
@@ -2342,27 +2342,27 @@
     {
       "code": "FRONTEND_FRAMEWORKS",
       "name": "Frontend Frameworks/Libraries",
-      "description": "Hiểu vai trò của các thư viện/framework như React, Vue, Angular trong việc xây dựng các giao diện người dùng tương tác và có cấu trúc.",
+      "description": "Hiểu vai trò của các thư viện/framework frontend trong việc xây dựng các giao diện người dùng tương tác và có cấu trúc.",
       "topic_codes": "HTML_CSS",
-      "keywords": "Angular, React, SPA, Solid JS, Svelte, Vue, Vue.js, frameworks",
+      "keywords": "frontend framework, SPA, component-based UI, reactive UI, declarative UI",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"react\"}"
     },
     {
       "code": "BACKEND_FRAMEWORKS",
       "name": "Backend Frameworks",
-      "description": "Hiểu vai trò của các framework như Django (Python), Express (Node.js) trong việc tăng tốc xây dựng logic và API phía máy chủ.",
+      "description": "Hiểu vai trò của các framework backend trong việc tăng tốc xây dựng logic và API phía máy chủ.",
       "topic_codes": "SERVER_SIDE_LOGIC",
-      "keywords": "frameworks, Django, Express, Spring, backend",
+      "keywords": "backend framework, web framework, MVC, API scaffolding",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"server\"}"
     },
     {
       "code": "RELATIONAL_VS_NONRELATIONAL",
-      "name": "Relational vs. NoSQL Databases",
-      "description": "So sánh sự khác biệt cơ bản giữa cơ sở dữ liệu quan hệ (SQL) và không quan hệ (NoSQL) về mô hình dữ liệu, tính nhất quán và khả năng mở rộng.",
+      "name": "Relational vs. Non-Relational Databases",
+      "description": "So sánh sự khác biệt cơ bản giữa cơ sở dữ liệu quan hệ và không quan hệ về mô hình dữ liệu, tính nhất quán và khả năng mở rộng.",
       "topic_codes": "RELATIONAL_DB",
-      "keywords": "SQL vs NoSQL, relational, non-relational",
+      "keywords": "relational database, non-relational database, schema, consistency, scalability",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"database\"}"
     },
@@ -3061,46 +3061,46 @@
     },
     {
       "code": "HTML_STRUCTURE",
-      "name": "HTML Document Structure",
-      "description": "Nắm vững cấu trúc cơ bản của một tài liệu HTML với các thẻ <html>, <head>, và <body>.",
+      "name": "Markup Document Structure",
+      "description": "Nắm vững cấu trúc cơ bản của một tài liệu đánh dấu (markup) với các phần tử lồng nhau: phần gốc, phần đầu (metadata) và phần thân (nội dung).",
       "topic_codes": "HTML_CSS",
-      "keywords": "HTML, document structure, head, body",
+      "keywords": "markup language, document structure, document tree, head, body",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"file-alt\"}"
     },
     {
       "code": "CSS_SELECTORS",
-      "name": "CSS Selectors",
-      "description": "Sử dụng các bộ chọn CSS (theo thẻ, lớp, ID) để nhắm mục tiêu và áp dụng kiểu cho các phần tử HTML cụ thể.",
+      "name": "Style Selectors",
+      "description": "Sử dụng các bộ chọn theo thẻ, lớp và ID để nhắm mục tiêu và áp dụng kiểu dáng cho các phần tử cụ thể trong tài liệu đánh dấu.",
       "topic_codes": "HTML_CSS",
-      "keywords": "CSS, selectors, class, ID, styling",
+      "keywords": "selector, style rule, class selector, ID selector, styling",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"mouse-pointer\"}"
     },
     {
       "code": "DOM_MANIPULATION",
-      "name": "DOM Manipulation",
-      "description": "Sử dụng JavaScript để truy cập và thay đổi động nội dung, cấu trúc và kiểu dáng của một trang web đang chạy thông qua DOM API.",
+      "name": "Document Object Model Manipulation",
+      "description": "Sử dụng Document Object Model (DOM) API để truy cập và thay đổi động nội dung, cấu trúc và kiểu dáng của một tài liệu đang chạy.",
       "topic_codes": "JAVASCRIPT_DOM",
-      "keywords": "DOM, JavaScript, getElementById, innerHTML",
+      "keywords": "DOM, DOM API, document tree, dynamic update, script-driven DOM",
       "cs2023_ka_mapping": "SPD",
       "metadata": "{\"icon\": \"hand-sparkles\"}"
     },
     {
       "code": "SQL_SELECT",
-      "name": "SQL SELECT Statement",
-      "description": "Nắm vững cú pháp của câu lệnh SELECT để truy vấn và lấy dữ liệu từ một hoặc nhiều cột trong một bảng.",
+      "name": "Data Query Statement",
+      "description": "Nắm vững cú pháp của câu lệnh truy vấn dữ liệu để lấy dữ liệu từ một hoặc nhiều cột trong một bảng quan hệ.",
       "topic_codes": "SQL_QUERIES",
-      "keywords": "SQL, SELECT, FROM, WHERE",
+      "keywords": "query language, SELECT, FROM, WHERE, projection",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"search\"}"
     },
     {
       "code": "SQL_JOIN",
-      "name": "SQL JOINs",
-      "description": "Sử dụng các loại JOIN (INNER, LEFT, RIGHT) để kết hợp các hàng từ hai hoặc nhiều bảng dựa trên một cột liên quan.",
+      "name": "Table Join Operations",
+      "description": "Sử dụng các phép kết (join) để kết hợp các hàng từ hai hoặc nhiều bảng dựa trên một cột liên quan.",
       "topic_codes": "SQL_QUERIES",
-      "keywords": "SQL, JOIN, INNER JOIN, LEFT JOIN",
+      "keywords": "join, INNER JOIN, LEFT JOIN, table join, relational algebra",
       "cs2023_ka_mapping": "DM",
       "metadata": "{\"icon\": \"link\"}"
     },
@@ -3413,9 +3413,9 @@
     {
       "code": "SCREEN_READERS",
       "name": "Screen Readers",
-      "description": "Hiểu cách trình đọc màn hình hoạt động và tầm quan trọng của việc viết mã HTML ngữ nghĩa để hỗ trợ người dùng khiếm thị.",
+      "description": "Hiểu cách trình đọc màn hình hoạt động và tầm quan trọng của việc viết mã đánh dấu ngữ nghĩa (semantic markup) để hỗ trợ người dùng khiếm thị.",
       "topic_codes": "ASSISTIVE_TECH",
-      "keywords": "screen reader, accessibility, a11y, semantic HTML",
+      "keywords": "screen reader, accessibility, a11y, semantic markup, assistive technology",
       "cs2023_ka_mapping": "HCI, SEP",
       "metadata": "{\"icon\": \"blind\"}"
     },
@@ -3593,9 +3593,9 @@
     {
       "code": "JSON_SERIALIZATION",
       "name": "JSON Serialization/Deserialization",
-      "description": "Sử dụng cơ chế Codable để mã hóa (serialize) các đối tượng Swift thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng.",
+      "description": "Hiểu cơ chế mã hóa (serialize) đối tượng thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng trong bộ nhớ.",
       "topic_codes": "STRUCTURED_DATA_STORAGE",
-      "keywords": "JSON, Codable, serialization, deserialization, Encoder, Decoder",
+      "keywords": "JSON, serialization, deserialization, encoder, decoder, data interchange",
       "cs2023_ka_mapping": "AL, SE",
       "metadata": "{\"icon\": \"file-code\"}"
     },
@@ -3622,7 +3622,7 @@
       "name": "Physics Constraints",
       "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
       "topic_codes": "PHYSICS_CONSTRAINTS",
-      "keywords": "constraints, hinge, spring, joints",
+      "keywords": "constraints, hinge joint, spring joint, joints, mechanical linkage",
       "cs2023_ka_mapping": "GIT",
       "metadata": "{\"icon\": \"link\"}"
     },
@@ -3728,9 +3728,9 @@
     {
       "code": "WEB_BROWSER_ENGINES",
       "name": "Web Browser Architecture & Engines",
-      "description": "Kiến trúc trình duyệt web và cơ chế render.",
+      "description": "Kiến trúc trình duyệt web và cơ chế render: DOM tree, style tree, reflow và repaint.",
       "topic_codes": "HTML_CSS",
-      "keywords": "DOM tree, CSSOM, reflow, repaint",
+      "keywords": "browser engine, DOM tree, CSSOM, reflow, repaint, rendering pipeline",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
     },
@@ -3746,9 +3746,9 @@
     {
       "code": "FLEXBOX_GRID_LAYOUT",
       "name": "Flexible & Grid Layout Systems",
-      "description": "Hệ thống dàn trang linh hoạt và dạng lưới.",
+      "description": "Hệ thống dàn trang linh hoạt (theo trục chính/chéo) và dạng lưới (2 chiều).",
       "topic_codes": "GRID_LAYOUT",
-      "keywords": "flexbox, css grid, alignment",
+      "keywords": "flex layout, grid layout, alignment, main axis, cross axis",
       "cs2023_ka_mapping": "",
       "metadata": "{\"icon\": \"code\"}"
     },

@@ -1,8 +1,15 @@
 #!/usr/bin/env python3
 """validate_master_tree.py — referential integrity + cross-level collision +
-"level-skip" checks for the Master Knowledge Tree itself."""
+"level-skip" checks for the Master Knowledge Tree itself.
+
+Also enforces T6 (Technology-Agnostic Neutrality) on Fields/Subjects/Categories/
+Topics/Concepts: name + description + keywords MUST NOT contain concrete
+technology/language names (Python, Swift, React, ...). SIO-specific content
+belongs only in project-level SPECIFIC_IMPL rows, never in the Master Tree.
+"""
 
 import argparse
+import re
 import sys
 from pathlib import Path
 
@@ -13,6 +20,49 @@ SECTIONS = {
     "Bảng 4": "topics",
     "Bảng 5": "concepts",
 }
+
+# T6 — concrete tech tokens forbidden in Master Tree (any tier).
+# Matched as whole words (case-insensitive). Brand/platform names only;
+# generic terms like "web", "database", "embedded" are allowed.
+# IMPORTANT: tokens are pre-escaped for regex; matching uses word boundaries
+# and is case-insensitive. Tokens that would match common English words
+# (e.g. "spring" the season, "r" the letter) are intentionally OMITTED to
+# avoid false positives — those are too ambiguous without context.
+TECH_TOKENS = [
+    # languages
+    r"python", r"swift", r"javascript", r"typescript", r"java\b", r"golang", r"rust",
+    r"ruby", r"php", r"kotlin", r"scala", r"perl", r"lua", r"haskell", r"dart",
+    r"c\+\+", r"cpp", r"c#", r"csharp", r"objective-?c", r"objc",
+    # frameworks / libraries (specific brand names only)
+    r"react\b", r"vue\.js", r"vue\b", r"angular", r"svelte", r"solidjs", r"solid js",
+    r"django", r"flask", r"express\b", r"rails\b", r"laravel",
+    r"nextjs", r"next\.js", r"nuxt", r"gatsby", r"tailwind", r"bootstrap",
+    # platforms / vendors
+    r"arduino", r"raspberry pi", r"esp32", r"esp8266", r"node\.js", r"nodejs",
+    r"docker", r"kubernetes", r"k8s",
+    # specific syntax tokens (unambiguous)
+    r"codable", r"getelementbyid", r"innerhtml", r"console\.log",
+    r"printf", r"scanf", r"std::", r"malloc",
+]
+
+TECH_RE = re.compile(
+    r"\b(?:%s)\b" % "|".join(TECH_TOKENS),
+    re.IGNORECASE,
+)
+
+
+def find_t6_violations(tables):
+    """Return list of (level, code, field, token) for any Master Tree row
+    whose name/description/keywords contains a concrete technology token."""
+    violations = []
+    for lvl in ("fields", "subjects", "categories", "topics", "concepts"):
+        for row in tables.get(lvl, []):
+            code = (row.get("code") or "").strip()
+            for field in ("name", "description", "keywords"):
+                val = (row.get(field) or "")
+                for m in TECH_RE.finditer(val):
+                    violations.append((lvl, code, field, m.group(0)))
+    return violations
 
 
 def find_repo_root(start: Path) -> Path:
@@ -107,8 +157,19 @@ def main():
 
     print(f"Checking {tsv_path}:")
     print(f"❌ {len(errors)} error(s), ⚠️ {len(warnings)} warning(s)")
+
+    # T6 neutrality audit (always runs — independent of referential errors)
+    t6_violations = find_t6_violations(tables)
+    if t6_violations:
+        print(f"🚫 {len(t6_violations)} T6 neutrality violation(s):")
+        for lvl, code, field, token in t6_violations:
+            msg = f"  • [T6_VIOLATION] {lvl}/{code}: '{token}' appears in {field}"
+            print(msg)
+            errors.append(msg)
+
     for e in errors:
-        print(f"  • {e}")
+        if not e.startswith("  •"):
+            print(f"  • {e}")
     for w in warnings:
         print(f"  • {w}")
     sys.exit(1 if errors else 0)

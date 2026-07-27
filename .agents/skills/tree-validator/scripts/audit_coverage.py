@@ -166,14 +166,30 @@ def audit_project_coverage(slug: str, repo_root: Path):
 
     for sec in sections:
         keywords = [w.lower() for w in re.findall(r"\b[a-zA-Z]{3,}\b", sec["title"])]
-        stop_words = {"and", "the", "for", "with", "use", "using", "create", "summarize", "assess", "differentiate", "select", "appropriate", "actions", "when", "how", "are"}
+        # Expanded stop words: function words + Bloom verbs that would cause
+        # false-positive coverage matches if treated as content keywords.
+        stop_words = {
+            "and", "the", "for", "with", "use", "using", "create", "summarize",
+            "assess", "differentiate", "select", "appropriate", "actions", "when",
+            "how", "are", "from", "that", "this", "will", "have", "not", "but",
+            "can", "its", "also", "into", "such", "each", "than", "more", "over",
+            # Bloom verbs (would inflate coverage if matched)
+            "describe", "identify", "explain", "compare", "implement", "design",
+            "build", "develop", "understand", "apply", "analyze", "evaluate",
+            "construct", "demonstrate", "recognize", "distinguish", "classify",
+            "predict", "trace", "define", "outline", "discuss", "interpret",
+            # Generic pedagogical glue
+            "concept", "concepts", "basic", "basics", "fundamentals", "introduction",
+            "overview", "topic", "module", "chapter", "section", "unit",
+        }
         keywords = [k for k in keywords if k not in stop_words]
 
         matches = []
         if keywords:
             min_matches = min(2, len(keywords))
             for idx, text in enumerate(lo_full_text):
-                matched_count = sum(1 for kw in keywords if kw in text)
+                # Word-boundary match to avoid 'internet' matching 'intern' etc.
+                matched_count = sum(1 for kw in keywords if re.search(r"\b" + re.escape(kw) + r"\b", text))
                 if matched_count >= min_matches:
                     matches.append(los[idx]["code"])
 

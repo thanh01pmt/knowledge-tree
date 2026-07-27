@@ -9,6 +9,7 @@ Hỗ trợ lọc theo cấp độ (level) và mã cha (parent).
 import argparse
 import json
 import re
+import unicodedata
 from pathlib import Path
 
 
@@ -23,19 +24,39 @@ def find_repo_root(start: Path) -> Path:
     return start.resolve()
 
 
+def strip_diacritics(text: str) -> str:
+    """Normalize Vietnamese/Unicode diacritics to ASCII base for tolerant matching.
+    E.g. 'Đồ thị' -> 'Do thi'. Keeps the original-folded equivalence class so
+    that queries with or without accents match data with or without accents."""
+    if not text:
+        return ""
+    nfkd = unicodedata.normalize("NFKD", text)
+    return "".join(c for c in nfkd if not unicodedata.combining(c))
+
+
 def normalize_text(text):
     if not text:
         return ""
-    return text.lower().strip()
+    return strip_diacritics(text).lower().strip()
+
+
+def word_boundary_match(needle: str, haystack: str) -> bool:
+    """Whole-word match using word boundaries. Avoids 'SQL' matching 'SQLITE'
+    or 'C' matching every word containing 'c'."""
+    if not needle or not haystack:
+        return False
+    pattern = r"\b" + re.escape(needle) + r"\b"
+    return re.search(pattern, haystack) is not None
+
 
 def calculate_score(query, code, name, keywords, description=""):
     """Tính điểm khớp đơn giản:
     - Khớp chính xác code: 100
     - Khớp chính xác name: 90
-    - Từ khóa nằm trong keywords: 80
-    - Chứa trong name: 50
-    - Chứa trong keywords: 30
-    - Chứa trong description: 20
+    - Từ khóa nằm trong keywords (word-boundary): 80
+    - Chứa trong name (word-boundary): 50
+    - Chứa trong keywords (word-boundary): 30
+    - Chứa trong description (word-boundary): 20
     """
     q = normalize_text(query)
     c = normalize_text(code)
@@ -50,20 +71,28 @@ def calculate_score(query, code, name, keywords, description=""):
         return 100
     if q == n:
         return 90
-    if q in k.split(','):
+    # keyword exact match (word-boundary on comma-separated list)
+    if any(word_boundary_match(q, kw.strip()) for kw in k.split(",")):
         return 80
-    if q in n:
+    if word_boundary_match(q, n):
         return 50
-    if q in k:
+    if word_boundary_match(q, k):
         return 30
-    if q in d:
+    if word_boundary_match(q, d):
         return 20
 
-    # Thử tách từ
+    # Thử tách từ — multi-word query: count how many query words appear in
+    # name/keywords/description with word boundaries.
     q_words = q.split()
-    matched_words = sum(1 for w in q_words if w in n or w in k or w in d)
-    if matched_words > 0:
-        return matched_words * 10
+    if len(q_words) > 1:
+        matched_words = 0
+        for w in q_words:
+            if (word_boundary_match(w, n)
+                    or word_boundary_match(w, k)
+                    or word_boundary_match(w, d)):
+                matched_words += 1
+        if matched_words > 0:
+            return matched_words * 10
 
     return 0
 
