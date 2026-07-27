@@ -43,7 +43,7 @@ def guide_workflow(step_name: str, project_name: str) -> str:
     guides = {
         "init": f"Thao tác khởi tạo dự án '{project_name}'. Hãy gọi tool 'kt_scaffold_project(project_name=\"{project_name}\")'.",
         "context-audit": f"Đọc toàn bộ tài liệu nguồn trong projects/{project_name}/context/ và trích xuất danh sách chủ đề tri thức.",
-        "map-taxonomy": f"Đối chiếu danh sách chủ đề với Master Knowledge Tree trong general-context/ và tạo file mapping-plan.md tại projects/{project_name}/.work/.",
+        "map-taxonomy": f"Đối chiếu danh sách chủ đề với Master Knowledge Tree trong .agents/skills/taxonomy-mapper/resources/ và tạo file mapping-plan.md tại projects/{project_name}/.work/.",
         "build-tree": f"Dựa trên mapping-plan.md đã duyệt, xây dựng 6 file TSV đầu ra trong projects/{project_name}/output/.",
         "validate-tree": f"Gọi tool 'kt_validate_tree(project_name=\"{project_name}\")' để kiểm tra tính hợp lệ và tự động khắc phục các lỗi tham chiếu.",
         "sync-supabase": f"Gọi tool 'kt_sync_supabase(project_name=\"{project_name}\")' để đồng bộ dữ liệu TSV lên cơ sở dữ liệu Supabase Cloud."

@@ -135,14 +135,21 @@ def sanitize_parent_refs(result: dict, levels: list):
                 dropped.append((level_name, code, row.get(parent_field, "")))
                 del rows_dict[code]
 
+    # NOTE: clean() may delete rows, so recompute level_codes for the cleaned
+    # level after each call. Otherwise later clean() calls would validate parent
+    # refs against a stale snapshot that still contains deleted codes.
     if result.get("subjects"):
         clean(result["subjects"], "field_codes", "fields", "subjects")
+        level_codes["subjects"] = set(result["subjects"].keys())
     if result.get("categories"):
         clean(result["categories"], "subject_codes", "subjects", "categories")
+        level_codes["categories"] = set(result["categories"].keys())
     if result.get("topics"):
         clean(result["topics"], "category_codes", "categories", "topics")
+        level_codes["topics"] = set(result["topics"].keys())
     if result.get("concepts"):
         clean(result["concepts"], "topic_codes", "topics", "concepts")
+        level_codes["concepts"] = set(result["concepts"].keys())
 
     if dropped:
         print("⚠️  Rows dropped for lacking any valid parent (fix the Master Tree or mapping-plan):")
@@ -217,6 +224,11 @@ def main():
         # Also allow topics/categories to be explicitly targeted
         non_concept = target_codes - concept_codes
         print(f"[*] Tìm thấy {len(concept_codes)} concept codes, {len(non_concept)} codes cấp khác trong mapping-plan.")
+        # Cảnh báo các code trông giống concept code nhưng không có trong Master Tree
+        # (ví dụ: NEW NODE PROPOSAL) để người dùng thêm thủ công.
+        unknown = [c for c in target_codes if c not in code_to_lvl and '_' in c and c == c.upper()]
+        if unknown:
+            print(f"⚠️  {len(unknown)} codes không tìm thấy trong Master Tree (cần thêm thủ công): {unknown[:10]}")
     else:
         lo_tsv = out_dir / "learning-objectives.tsv"
         print(f"[*] Mode: lo-tsv — đọc concept codes từ {lo_tsv.name} (backward-compatible)")

@@ -8,13 +8,16 @@ description: Inventory, read, interpret, and summarize every resource in the act
 > **Goal:** You are the `@context-analyzer`. Read all source materials provided by the teacher (e.g. syllabus PDF, exam guide) in `projects/<project>/context/`, extract the core topics and knowledge domains, and write a summary.
 
 ## Inputs
+
 - Active project name (from `status.yaml`)
 - Any files inside `projects/<project>/context/`
 
 ## Outputs
+
 - `.work/context-audit.md` inside the project's folder.
 
 ## Process
+
 1. Locate the context resources for the current active project in `projects/<project>/context/`.
 2. Inventory all files (PDF, DOCX, etc.).
 3. Extract the text using appropriate tools or scripts.
@@ -24,5 +27,16 @@ description: Inventory, read, interpret, and summarize every resource in the act
    - **SIO (Specific Implementation Objective):** The granular, actionable, testable skill.
 5. Create a `context-audit.md` in `projects/<project>/.work/` that lists the domains AND their detailed ULO/CIO/SIO breakdowns. This ensures the intent is fully fleshed out before any Master Tree mapping is attempted.
 
+## ATE Keyword Integration
+
+Nếu `projects/<project>/context/keywords.tsv` tồn tại (được tạo bởi `/finalize-keywords` trong ATE pipeline), agent PHẢI:
+
+1. Đọc danh sách thuật ngữ từ `keywords.tsv`.
+2. Tích hợp vào `context-audit.md` dưới section **`## ATE Keywords`** — liệt kê các thuật ngữ đã vét cạn, nhóm theo domain/chủ đề tương ứng.
+3. Dùng danh sách keyword làm hint bổ sung khi phân tích domain breakdown (không thay thế việc đọc PDF/syllabus gốc).
+
+> Nếu `keywords.tsv` không tồn tại, bỏ qua bước này — context-audit vẫn hoạt động bình thường chỉ từ PDF/syllabus.
+
 ## Handoff
+
 Once `context-audit.md` is written, you are done. The `@taxonomy-mapper` will use your output to map these domains into the formal Knowledge Tree.

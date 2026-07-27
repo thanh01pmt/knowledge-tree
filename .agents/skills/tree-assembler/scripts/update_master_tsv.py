@@ -35,21 +35,33 @@ def update_master_tsv(tsv_path):
             if tables[k] >= idx:
                 tables[k] += 1
                 
+    def code_exists(code):
+        """Idempotency guard: True if a row with this code is already present."""
+        return any(line.split("\t", 1)[0].strip() == code for line in lines)
+
     # Add DEVELOPMENT_ENVIRONMENT to categories
-    insert_before('topics', 'DEVELOPMENT_ENVIRONMENT\tDevelopment Environment & Tools\tKỹ năng sử dụng môi trường phát triển tích hợp (IDE), quản lý file, assets, và điều hướng dự án.\tSW_LIFECYCLE\tIDE, tools\t\t{"icon": "tools"}')
-    
+    if not code_exists('DEVELOPMENT_ENVIRONMENT'):
+        insert_before('topics', 'DEVELOPMENT_ENVIRONMENT\tDevelopment Environment & Tools\tKỹ năng sử dụng môi trường phát triển tích hợp (IDE), quản lý file, assets, và điều hướng dự án.\tSW_LIFECYCLE\tIDE, tools\t\t{"icon": "tools"}')
+
     # Add IDE_NAVIGATION to topics
-    insert_before('concepts', 'IDE_NAVIGATION\tIDE Navigation\tĐiều hướng và quản lý cấu trúc file, assets trong dự án.\tDEVELOPMENT_ENVIRONMENT\tIDE, file, assets\t\t')
-    
+    if not code_exists('IDE_NAVIGATION'):
+        insert_before('concepts', 'IDE_NAVIGATION\tIDE Navigation\tĐiều hướng và quản lý cấu trúc file, assets trong dự án.\tDEVELOPMENT_ENVIRONMENT\tIDE, file, assets\t\t')
+
     # Add DEBUGGING_TECHNIQUES to topics
-    insert_before('concepts', 'DEBUGGING_TECHNIQUES\tDebugging Techniques\tKỹ thuật và công cụ dùng để gỡ lỗi.\tTESTING_DEBUGGING\tdebug\t\t')
-    
+    if not code_exists('DEBUGGING_TECHNIQUES'):
+        insert_before('concepts', 'DEBUGGING_TECHNIQUES\tDebugging Techniques\tKỹ thuật và công cụ dùng để gỡ lỗi.\tTESTING_DEBUGGING\tdebug\t\t')
+
     # Add Concepts (End of file is fine for concepts)
-    lines.append('PROJECT_ASSETS_MANAGEMENT\tProject Assets Management\tQuản lý tài nguyên hình ảnh, màu sắc trong IDE.\tIDE_NAVIGATION\tassets\t\t\n')
-    lines.append('DECLARATIVE_UI_PARADIGM\tDeclarative UI Paradigm\tXây dựng giao diện kiểu khai báo.\tUI_CONTROLS\tdeclarative\t\t\n')
-    lines.append('UI_MODIFIERS\tUI Modifiers\tÁp dụng các hàm thay đổi giao diện.\tUI_MODIFIERS\tmodifier\t\t\n')
-    lines.append('STATE_PROPERTY_WRAPPER\tState Property Wrapper\tTheo dõi trạng thái bằng property wrapper.\tLOCAL_VIEW_STATE\tstate\t\t\n')
-    lines.append('SYNTAX_VS_RUNTIME_ERRORS\tSyntax vs Runtime Errors\tPhân biệt các loại lỗi trong quá trình dev.\tERROR_MESSAGES,DEBUGGING_TECHNIQUES\terror\t\t\n')
+    if not code_exists('PROJECT_ASSETS_MANAGEMENT'):
+        lines.append('PROJECT_ASSETS_MANAGEMENT\tProject Assets Management\tQuản lý tài nguyên hình ảnh, màu sắc trong IDE.\tIDE_NAVIGATION\tassets\t\t\n')
+    if not code_exists('DECLARATIVE_UI_PARADIGM'):
+        lines.append('DECLARATIVE_UI_PARADIGM\tDeclarative UI Paradigm\tXây dựng giao diện kiểu khai báo.\tUI_CONTROLS\tdeclarative\t\t\n')
+    if not code_exists('UI_MODIFIERS'):
+        lines.append('UI_MODIFIERS\tUI Modifiers\tÁp dụng các hàm thay đổi giao diện.\tUI_MODIFIERS\tmodifier\t\t\n')
+    if not code_exists('STATE_PROPERTY_WRAPPER'):
+        lines.append('STATE_PROPERTY_WRAPPER\tState Property Wrapper\tTheo dõi trạng thái bằng property wrapper.\tLOCAL_VIEW_STATE\tstate\t\t\n')
+    if not code_exists('SYNTAX_VS_RUNTIME_ERRORS'):
+        lines.append('SYNTAX_VS_RUNTIME_ERRORS\tSyntax vs Runtime Errors\tPhân biệt các loại lỗi trong quá trình dev.\tERROR_MESSAGES,DEBUGGING_TECHNIQUES\terror\t\t\n')
     
     with open(tsv_path, 'w', encoding='utf-8') as f:
         f.writelines(lines)

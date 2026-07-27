@@ -2,8 +2,14 @@
 """
 tree_diff.py — Compare Staging Knowledge Tree (general-context/) vs Master Knowledge Tree (.agents/skills/...)
 Outputs structural diff across Fields, Subjects, Categories, Topics, and Concepts.
+
+NOTE: This script compares the STAGING working copy (general-context/mlo-knowlege-tree.tsv)
+against the OFFICIAL master tree (.agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv).
+It does NOT diff per-project TSVs in projects/<project>/output/. The --project flag is accepted
+for workflow-contract compatibility but is currently unused.
 """
 
+import argparse
 import sys
 import json
 import shutil
@@ -163,4 +169,28 @@ def diff_trees():
     print(f"📄 Diff report saved to: {DIFF_REPORT_PATH}")
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(
+        description="Compare staging Knowledge Tree vs the official master tree."
+    )
+    parser.add_argument(
+        "--project", type=str, default=None,
+        help="Project slug (reserved for workflow-contract compatibility; unused — "
+             "this script diffs staging vs official master, not project TSVs)."
+    )
+    parser.add_argument(
+        "--staging", type=str, default=None,
+        help="Override path to the staging TSV (default: general-context/mlo-knowlege-tree.tsv)."
+    )
+    parser.add_argument(
+        "--master", type=str, default=None,
+        help="Override path to the official master TSV "
+             "(default: .agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv)."
+    )
+    args = parser.parse_args()
+
+    if args.staging:
+        STAGING_TSV_PATH = Path(args.staging)
+    if args.master:
+        MASTER_TSV_PATH = Path(args.master)
+
     diff_trees()

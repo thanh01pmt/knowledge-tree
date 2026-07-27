@@ -11,23 +11,38 @@ import json
 import re
 from pathlib import Path
 
+
+def find_repo_root(start: Path) -> Path:
+    cur = start.resolve()
+    for _ in range(20):
+        if (cur / ".agents").is_dir():
+            return cur
+        if cur.parent == cur:
+            break
+        cur = cur.parent
+    return start.resolve()
+
+
 def normalize_text(text):
     if not text:
         return ""
     return text.lower().strip()
 
-def calculate_score(query, code, name, keywords):
-    """Tính điểm khớp đơn giản: 
+def calculate_score(query, code, name, keywords, description=""):
+    """Tính điểm khớp đơn giản:
     - Khớp chính xác code: 100
     - Khớp chính xác name: 90
     - Từ khóa nằm trong keywords: 80
     - Chứa trong name: 50
+    - Chứa trong keywords: 30
+    - Chứa trong description: 20
     """
     q = normalize_text(query)
     c = normalize_text(code)
     n = normalize_text(name)
     k = normalize_text(keywords)
-    
+    d = normalize_text(description)
+
     if not q:
         return 1
 
@@ -41,13 +56,15 @@ def calculate_score(query, code, name, keywords):
         return 50
     if q in k:
         return 30
-        
+    if q in d:
+        return 20
+
     # Thử tách từ
     q_words = q.split()
-    matched_words = sum(1 for w in q_words if w in n or w in k)
+    matched_words = sum(1 for w in q_words if w in n or w in k or w in d)
     if matched_words > 0:
         return matched_words * 10
-        
+
     return 0
 
 def get_parent_field(level):
@@ -61,12 +78,13 @@ def get_parent_field(level):
     return mapping.get(level)
 
 def main():
+    repo_root = find_repo_root(Path.cwd())
     parser = argparse.ArgumentParser(description="Tìm kiếm node trong Master Tree.")
     parser.add_argument("--query", type=str, default="", help="Từ khóa tìm kiếm (tên, mã, keyword).")
     parser.add_argument("--level", type=str, choices=["fields", "subjects", "categories", "topics", "concepts"], help="Giới hạn tìm kiếm ở 1 cấp độ cụ thể.")
     parser.add_argument("--parent", type=str, default="", help="Mã của node cha (để lọc dạng Top-Down).")
     parser.add_argument("--limit", type=int, default=5, help="Số kết quả trả về tối đa.")
-    parser.add_argument("--tree-file", type=str, default=".agents/skills/taxonomy-mapper/resources/master_tree.json")
+    parser.add_argument("--tree-file", type=str, default=str(repo_root / ".agents/skills/taxonomy-mapper/resources/master_tree.json"))
     args = parser.parse_args()
 
     tree_path = Path(args.tree_file).resolve()
@@ -98,8 +116,9 @@ def main():
             code = row.get("code", "")
             name = row.get("name", "")
             keywords = row.get("keywords", "")
-            
-            score = calculate_score(args.query, code, name, keywords)
+            description = row.get("description", "")
+
+            score = calculate_score(args.query, code, name, keywords, description)
             
             if score > 0 or not args.query:
                 results.append({

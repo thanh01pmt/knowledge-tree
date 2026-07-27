@@ -3,7 +3,7 @@
 validate_tree.py — Kiểm tra & (tuỳ chọn) tự sửa lỗi Knowledge Tree
 
 Cây: fields > subjects > categories > topics > concepts > learning-objectives
-(N:N qua cột "<parent>_codes"; learning-objectives có thêm parent_lo_code N:1
+(N:N qua cột "<parent>_codes"; learning-objectives có thêm parent_lo_code N:N
 và lo_type).
 
 Chế độ chạy
@@ -53,6 +53,7 @@ ALL_LEVELS = LEVELS + [LO_LEVEL]
 CODE_FORMAT_RE = re.compile(r'^[A-Z0-9_\-]+$')
 ALLOWED_LO_TYPES = {"UNIVERSAL", "CONCEPTUAL_IMPL", "SPECIFIC_IMPL"}
 ALLOWED_KNOWLEDGE_DIMENSIONS = {"FACTUAL", "CONCEPTUAL", "PROCEDURAL", "METACOGNITIVE", "", "NULL"}
+ALLOWED_BLOOM_LEVELS = {"REMEMBER", "UNDERSTAND", "APPLY", "ANALYZE", "EVALUATE", "CREATE", ""}
 NULL_TOKEN = "NULL"
 
 SAFE_FIX_RULES = {"DUPLICATE_REF_IN_CELL", "SEPARATOR_FORMAT"}
@@ -78,6 +79,9 @@ RULE_DESCRIPTIONS = {
     "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
     "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
     "MISSING_FILE": "Không tìm thấy file dữ liệu",
+    "LO_DESCRIPTION_PREFIX": "Mô tả LO không bắt đầu bằng 'Người học có khả năng'",
+    "LO_INVALID_KNOWLEDGE_DIMENSION": "knowledge_dimension không thuộc tập giá trị cho phép",
+    "LO_INVALID_BLOOM_LEVEL": "bloom_level không thuộc tập giá trị cho phép",
 }
 
 
@@ -498,6 +502,46 @@ def check_cio_sio_depth(lo_rows, min_sios: int = 2):
     return issues
 
 
+def check_lo_description_prefix(lo_rows):
+    """WARNING if LO description does not start with the mandated prefix."""
+    PREFIX = "Người học có khả năng"
+    issues = []
+    for r in lo_rows:
+        code = (r.get("code") or "").strip()
+        desc = (r.get("description") or "").strip()
+        if desc and not desc.startswith(PREFIX):
+            issues.append(Issue("WARNING", "LO_DESCRIPTION_PREFIX", "learning_objectives", code,
+                                 f"Mô tả không bắt đầu bằng '{PREFIX}...'.",
+                                 field="description"))
+    return issues
+
+
+def check_lo_knowledge_dimension(lo_rows):
+    """WARNING if knowledge_dimension column value is not in ALLOWED_KNOWLEDGE_DIMENSIONS."""
+    issues = []
+    for r in lo_rows:
+        code = (r.get("code") or "").strip()
+        kd = (r.get("knowledge_dimension") or "").strip()
+        if kd and kd not in ALLOWED_KNOWLEDGE_DIMENSIONS:
+            issues.append(Issue("WARNING", "LO_INVALID_KNOWLEDGE_DIMENSION", "learning_objectives", code,
+                                 f"knowledge_dimension='{kd}' không thuộc {sorted(ALLOWED_KNOWLEDGE_DIMENSIONS)}.",
+                                 field="knowledge_dimension"))
+    return issues
+
+
+def check_lo_bloom_level(lo_rows):
+    """WARNING if bloom_level column value is not in ALLOWED_BLOOM_LEVELS."""
+    issues = []
+    for r in lo_rows:
+        code = (r.get("code") or "").strip()
+        bl = (r.get("bloom_level") or "").strip()
+        if bl and bl not in ALLOWED_BLOOM_LEVELS:
+            issues.append(Issue("WARNING", "LO_INVALID_BLOOM_LEVEL", "learning_objectives", code,
+                                 f"bloom_level='{bl}' không thuộc {sorted(ALLOWED_BLOOM_LEVELS)}.",
+                                 field="bloom_level"))
+    return issues
+
+
 def check_line_endings(data_dir: Path, filenames):
     issues = []
     styles = {}
@@ -573,6 +617,9 @@ def run_checks(data_dir: Path, tables, code_sets):
     issues += check_lo_concept_codes(lo_rows, code_sets.get("concepts", set()))
     issues += check_concept_lo_coverage(tables.get("concepts", []), lo_rows)
     issues += check_cio_sio_depth(lo_rows, min_sios=2)
+    issues += check_lo_description_prefix(lo_rows)
+    issues += check_lo_knowledge_dimension(lo_rows)
+    issues += check_lo_bloom_level(lo_rows)
 
     for i in range(len(ALL_LEVELS) - 1):
         parent_lvl, child_lvl = ALL_LEVELS[i], ALL_LEVELS[i + 1]

@@ -32,12 +32,14 @@ def validate_tree(project_name: str, fix: bool = False) -> str:
         cmd.append("--fix")
         
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
-    
-    report_path = ROOT_DIR / "projects" / project_name / ".tree-validator" / "report" / "validation_report.md"
+
+    reports_dir = ROOT_DIR / "projects" / project_name / ".tree-validator" / "reports"
     report_content = ""
-    if report_path.exists():
-        report_content = "\n\n--- BÁO CÁO CHI TIẾT ---\n" + report_path.read_text(encoding="utf-8")
-        
+    if reports_dir.is_dir():
+        candidates = sorted(reports_dir.glob("*/validation_report.md"), reverse=True)
+        if candidates:
+            report_content = "\n\n--- BÁO CÁO CHI TIẾT ---\n" + candidates[0].read_text(encoding="utf-8")
+
     output = res.stdout or res.stderr
     return f"Status Code: {res.returncode}\n{output}{report_content}"
 
@@ -53,13 +55,15 @@ def detect_gaps(project_name: str) -> str:
     if not script_path.exists():
         return f"Error: Cannot find detect_gaps.py at {script_path}"
         
-    cmd = [sys.executable, str(script_path), "--project", project_name, "--repo-root", str(ROOT_DIR)]
+    cmd = [sys.executable, str(script_path), "--project", project_name]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
-    
-    report_path = ROOT_DIR / "projects" / project_name / ".tree-validator" / "gap_analysis_report.md"
-    if report_path.exists():
-        return report_path.read_text(encoding="utf-8")
-        
+
+    reports_dir = ROOT_DIR / "projects" / project_name / ".tree-validator" / "reports"
+    if reports_dir.is_dir():
+        candidates = sorted(reports_dir.glob("*/gap_report.md"), reverse=True)
+        if candidates:
+            return candidates[0].read_text(encoding="utf-8")
+
     return res.stdout or res.stderr
 
 @kt_mcp.tool
@@ -74,7 +78,7 @@ def audit_coverage(project_name: str) -> str:
     if not script_path.exists():
         return f"Error: Cannot find audit_coverage.py at {script_path}"
         
-    cmd = [sys.executable, str(script_path), "--project", project_name, "--repo-root", str(ROOT_DIR)]
+    cmd = [sys.executable, str(script_path), "--project", project_name]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
     return res.stdout or res.stderr
 
@@ -90,7 +94,7 @@ def sync_supabase(project_name: str) -> str:
     if not script_path.exists():
         return f"Error: Cannot find sync_to_supabase.py at {script_path}"
         
-    cmd = [sys.executable, str(script_path), "--project", project_name, "--repo-root", str(ROOT_DIR)]
+    cmd = [sys.executable, str(script_path), "--project", project_name]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
     return res.stdout or res.stderr
 
@@ -106,7 +110,7 @@ def scaffold_project(project_name: str) -> str:
     if not script_path.exists():
         return f"Error: Cannot find scaffold_tree.py at {script_path}"
         
-    cmd = [sys.executable, str(script_path), "--project", project_name, "--repo-root", str(ROOT_DIR)]
+    cmd = [sys.executable, str(script_path), project_name]
     res = subprocess.run(cmd, capture_output=True, text=True, cwd=str(ROOT_DIR))
     return res.stdout or res.stderr
 

@@ -8,6 +8,7 @@ description: Run this workflow to assemble the final project TSV files based on 
 
 **Command:** `/build-tree`
 **Owner:** `@tree-assembler`
+**Script:** `.agents/skills/tree-assembler/scripts/assemble_project.py`
 
 ## Contract
 
@@ -18,4 +19,3 @@ description: Run this workflow to assemble the final project TSV files based on 
 5. Ensure referential integrity (children must have parents at every level).
 6. Run `/validate-tree` to confirm no BROKEN_REFERENCE or ORPHAN errors exist.
 7. After this workflow completes, run `/generate-los` to generate `learning-objectives.tsv` grounded in the concepts just built.
-

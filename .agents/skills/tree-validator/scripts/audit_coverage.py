@@ -322,7 +322,10 @@ def main():
     slug = args.project
     if not slug:
         st = load_status(repo_root)
-        slug = st.get("active_project", "swift-associate")
+        slug = st.get("active_project")
+        if not slug:
+            print("❌ Error: Không tìm thấy active_project trong status.yaml. Dùng --project để chỉ định.")
+            sys.exit(1)
 
     audit_project_coverage(slug, repo_root)
 

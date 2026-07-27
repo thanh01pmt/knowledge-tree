@@ -213,12 +213,6 @@ def fix_tsv(tsv_path: Path):
                     row_dict["topic_codes"] = CONCEPT_EXPLICIT_TOPIC[original_code]
                 elif original_code in CONCEPT_RENAME:
                     row_dict["topic_codes"] = original_code
-                else:
-                    tc_refs = row_dict.get("topic_codes", "")
-                    tc_refs = tc_refs.replace("GRAPHIC_DESIGN_PRINCIPLES", "GRAPHIC_DESIGN_PRINCIPLES")
-                    tc_refs = tc_refs.replace("DIGITAL_INTERACTION", "DIGITAL_INTERACTION")
-                    tc_refs = tc_refs.replace("COLLABORATION_TOOLS", "COLLABORATION_TOOLS")
-                    row_dict["topic_codes"] = tc_refs
 
             new_line = "\t".join([row_dict.get(h, "") for h in headers])
             new_lines.append(new_line)

@@ -8,7 +8,8 @@ Output: .work/kw/candidates_filtered.json
 
 Logic:
 - Union 2 candidate lists (statistical + LLM), dedup by term_normalized
-- Embed target_context + từng term candidate bằng OpenAI text-embedding-3-small
+- Embed target_context + từng term candidate bằng embedding model
+  (default: nomic-embed-text:latest qua Ollama, cấu hình qua env ATE_EMBED_MODEL)
 - Giữ lại theo cosine similarity >= threshold (default 0.25 — lỏng, ưu tiên recall)
 - Precision được xử lý ở bước sau (llm_verify_and_dedup)
 - Batch embed để giảm số API calls

@@ -189,6 +189,8 @@ def merge_nodes_to_staging(nodes_to_add: dict):
         print(f"🏷️ Staging version bumped to: {new_stg_ver}")
 
 def main():
+    print("⚠️  CẢNH BÁO: Script này hiện chứa package frontend hardcode.")
+    print("   Chỉ chạy cho dự án frontend. Các roadmap khác cần cập nhật script.")
     # Clean N:N Package: Reuse existing Categories & Topics, insert only pure Concepts!
     clean_nn_package = {
         "category_updates": [

@@ -15,6 +15,17 @@ SECTIONS = {
 }
 
 
+def find_repo_root(start: Path) -> Path:
+    cur = start.resolve()
+    for _ in range(20):
+        if (cur / ".agents").is_dir():
+            return cur
+        if cur.parent == cur:
+            break
+        cur = cur.parent
+    return start.resolve()
+
+
 def parse(tsv_path: Path):
     tables = {v: [] for v in SECTIONS.values()}
     section, headers = None, []
@@ -42,8 +53,9 @@ def split(v):
 
 
 def main():
+    repo_root = find_repo_root(Path.cwd())
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tsv", default="general-context/mlo-knowlege-tree.tsv")
+    ap.add_argument("--tsv", default=str(repo_root / "general-context/mlo-knowlege-tree.tsv"))
     args = ap.parse_args()
     tsv_path = Path(args.tsv)
     if not tsv_path.is_file():

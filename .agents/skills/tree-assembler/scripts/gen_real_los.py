@@ -827,9 +827,12 @@ if __name__ == "__main__":
 
     with open(output_tsv, "w", encoding="utf-8", newline="") as f:
         writer = csv.writer(f, delimiter="\t")
-        writer.writerow(["code", "name", "description", "lo_type", "parent_lo_code", "concept_codes"])
+        writer.writerow(["code", "name", "description", "lo_type", "parent_lo_code", "concept_codes", "bloom_level", "knowledge_dimension", "assessment_approach"])
         for r in los:
-            writer.writerow(r)
+            # Pad short rows so the 3 trailing columns (bloom_level,
+            # knowledge_dimension, assessment_approach) always exist.
+            row = list(r) + [""] * (9 - len(r)) if len(r) < 9 else list(r)
+            writer.writerow(row)
 
     # Summary
     ulos = sum(1 for r in los if r[3] == "UNIVERSAL")

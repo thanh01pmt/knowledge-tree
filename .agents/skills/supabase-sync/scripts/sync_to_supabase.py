@@ -45,8 +45,11 @@ def load_env(repo_root: Path):
 def sync_project_to_supabase(slug: str, repo_root: Path):
     load_env(repo_root)
 
-    url = os.environ.get("SUPABASE_URL", "https://spvcvdfcojesfcwpiowu.supabase.co")
-    service_key = os.environ.get("SERVICE_ROLE_KEY", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNwdmN2ZGZjb2plc2Zjd3Bpb3d1Iiwicm9sZSI6InNlcnZpY2Vfcm9sZSIsImlhdCI6MTc0OTc0MzU0MSwiZXhwIjoyMDY1MzE5NTQxfQ.y5GfwXxJzGVTswqyU4eM_FJgOTArpAq_GR5pK-crl0Q")
+    url = os.environ.get("SUPABASE_URL")
+    service_key = os.environ.get("SERVICE_ROLE_KEY")
+    if not url or not service_key:
+        print("❌ Error: SUPABASE_URL và SERVICE_ROLE_KEY phải được set trong .env hoặc environment variables.")
+        sys.exit(1)
 
     supabase = create_client(url, service_key)
 
@@ -94,8 +97,9 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
                     "rationale": r.get("rationale", "").strip(),
                     "source_layer": r.get("source_layer", "L3-LLM").strip() or "L3-LLM",
                 }
-                # Thử upsert bằng cặp key (yêu cầu bảng Supabase setup đúng primary key)
-                supabase.table(table_name).upsert(payload).execute()
+                supabase.table(table_name).upsert(
+                    payload, on_conflict="learning_objective_code,prerequisite_lo_code"
+                ).execute()
                 synced_count += 1
             print(f"  • {table_name:<20}: {synced_count} synced (Upserted)")
             continue
@@ -142,10 +146,12 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
                 payload["lo_type"] = r.get("lo_type", "UNIVERSAL").strip()
                 p_code = r.get("parent_lo_code", "").strip()
                 payload["parent_lo_code"] = p_code if p_code and p_code.upper() != "NULL" else None
-                if "knowledge_dimension_code" in r and r.get("knowledge_dimension_code", "").strip():
-                    payload["knowledge_dimension_code"] = r["knowledge_dimension_code"].strip()
-                if "suggested_bloom_levels" in r and r.get("suggested_bloom_levels", "").strip():
-                    payload["suggested_bloom_levels"] = [v.strip() for v in r["suggested_bloom_levels"].replace(";", ",").split(",") if v.strip()]
+                if r.get("bloom_level", "").strip():
+                    payload["bloom_level"] = r["bloom_level"].strip()
+                if r.get("knowledge_dimension", "").strip():
+                    payload["knowledge_dimension"] = r["knowledge_dimension"].strip()
+                if r.get("assessment_approach", "").strip():
+                    payload["assessment_approach"] = r["assessment_approach"].strip()
 
             if code in code_to_id:
                 payload["id"] = code_to_id[code]

@@ -263,14 +263,22 @@ def load_master_ulos() -> dict[str, list[dict]]:
     return master_ulos
 
 def append_master_ulos(ulos: list[dict]):
-    """Appends new Master ULOs to the master TSV."""
-    file_exists = MASTER_ULO_PATH.is_file()
+    """Appends new Master ULOs to the master TSV (requires explicit user approval)."""
+    master_path = MASTER_ULO_PATH
+    print(f"\n⚠️  {len(ulos)} ULO mới sẽ được thêm vào {master_path}")
+    print("   (AGENTS.md §5: Sửa resources/ chỉ khi được User cho phép rõ ràng)")
+    confirm = input("   Tiếp tục? [y/N]: ").strip().lower()
+    if confirm != 'y':
+        print("   ⏭️  Bỏ qua ghi master ULO bank.")
+        return
+
+    file_exists = master_path.is_file()
     fieldnames = ["code", "name", "description", "lo_type", "parent_lo_code",
                   "concept_codes", "bloom_level", "knowledge_dimension"]
     
-    with open(MASTER_ULO_PATH, "a", encoding="utf-8", newline="") as f:
+    with open(master_path, "a", encoding="utf-8", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t")
-        if not file_exists or MASTER_ULO_PATH.stat().st_size == 0:
+        if not file_exists or master_path.stat().st_size == 0:
             writer.writeheader()
         
         for u in ulos:
@@ -344,7 +352,8 @@ QUAN TRỌNG: Bạn PHẢI trả về ĐÚNG ĐỊNH DẠNG JSON. TUYỆT ĐỐI
 def generate_master_ulos_for_missing_concepts(
     client: OpenAI,
     missing_concepts: list[dict],
-    model: str
+    model: str,
+    no_master_append: bool = False,
 ) -> list[dict]:
     print(f"[*] Phân tích và sinh Master ULOs cho {len(missing_concepts)} concept mới...")
     new_master_ulos = []
@@ -389,8 +398,10 @@ def generate_master_ulos_for_missing_concepts(
             print(f"  [ERROR] Master Generation Failed for batch {i}: {e}")
             
     # Save back to master
-    if new_master_ulos:
+    if new_master_ulos and not no_master_append:
         append_master_ulos(new_master_ulos)
+    elif new_master_ulos and no_master_append:
+        print(f"  ⏭️  --no-master-append: bỏ qua ghi {len(new_master_ulos)} ULO vào master bank.")
     return new_master_ulos
 
 
@@ -403,6 +414,7 @@ def filter_ulos(
     model: str,
     work_dir: Path,
     hlo_dir: Path,
+    no_master_append: bool = False,
 ) -> list[dict]:
     # 1. Load Master ULOs
     master_ulos_db = load_master_ulos()
@@ -415,7 +427,7 @@ def filter_ulos(
             
     # 3. Generate Master ULOs for missing ones
     if missing_concepts:
-        new_ulos = generate_master_ulos_for_missing_concepts(client, missing_concepts, model)
+        new_ulos = generate_master_ulos_for_missing_concepts(client, missing_concepts, model, no_master_append)
         # Reload DB to get the newly appended ULOs
         master_ulos_db = load_master_ulos()
         
@@ -869,10 +881,13 @@ def main():
     parser.add_argument("--technology", help="Override technology detection")
     parser.add_argument("--model", default="gpt-4o", help="OpenAI model (default: gpt-4o)")
     parser.add_argument("--batch-size", type=int, default=10)
+    parser.add_argument("--no-master-append", action="store_true",
+                        help="Skip appending new ULOs to master ULO bank (resources/)")
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path(__file__).parent)
     load_env(repo_root)
+    os.chdir(repo_root)  # Anchor relative paths (e.g. MASTER_ULO_PATH) to repo root
 
     # Resolve project
     slug = args.project
@@ -908,7 +923,8 @@ def main():
         classified_phrases = load_classified_phrases(out_dir)
         ulos = filter_ulos(
             client, concepts, syllabus, classified_phrases,
-            assessment_matrix_text, args.model, work_dir, hlo_dir
+            assessment_matrix_text, args.model, work_dir, hlo_dir,
+            no_master_append=args.no_master_append,
         )
         if args.phase != "all":
             return

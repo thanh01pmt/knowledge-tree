@@ -2,6 +2,19 @@ import os
 import csv
 import json
 import argparse
+from pathlib import Path
+
+
+def find_repo_root(start: Path) -> Path:
+    cur = start.resolve()
+    for _ in range(20):
+        if (cur / ".agents").is_dir():
+            return cur
+        if cur.parent == cur:
+            break
+        cur = cur.parent
+    return start.resolve()
+
 
 def parse_master_tsv(tsv_path):
     """Parses the multi-table Master TSV into a dictionary of lists."""
@@ -45,8 +58,9 @@ def parse_master_tsv(tsv_path):
         if not current_level:
             continue
 
-        # Skip empty lines or descriptions
-        if not line or line.startswith('Đây là') or line.startswith('Mỗi') or line.startswith('Các'):
+        # Skip empty lines or section description lines. Keep this list in sync
+        # with validate_master_tree.py so both parsers skip the same lines.
+        if not line or line.startswith(("Đây là", "Mỗi Field", "Các Subject", "Các Category", "Các Topic", "Các Concept")):
             continue
 
         parts = line.split('\t')
@@ -67,9 +81,10 @@ def parse_master_tsv(tsv_path):
     return data
 
 def main():
+    repo_root = find_repo_root(Path.cwd())
     parser = argparse.ArgumentParser(description="Parse Master TSV into JSON")
-    parser.add_argument('--input', type=str, default=".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv")
-    parser.add_argument('--output', type=str, default=".agents/skills/taxonomy-mapper/resources/master_tree.json")
+    parser.add_argument('--input', type=str, default=str(repo_root / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"))
+    parser.add_argument('--output', type=str, default=str(repo_root / ".agents/skills/taxonomy-mapper/resources/master_tree.json"))
     args = parser.parse_args()
 
     os.makedirs(os.path.dirname(args.output), exist_ok=True)

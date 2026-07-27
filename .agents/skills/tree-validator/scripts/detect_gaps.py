@@ -158,8 +158,8 @@ def detect_shallow_cios(project_los: list[dict], min_sios: int = 2) -> list[dict
 TECH_KEYWORDS = {
     "python", "swift", "javascript", "typescript", "java", "golang", "rust", "ruby", "php",
     "docker", "kubernetes", "c++", "cpp", "c#", "csharp",
-    "def", "func", "struct", "import", "class", "interface", "trait", "decorator", "annotation",
-    "lambda", "async", "await", "malloc", "free", "nil", "null", "undefined", "cout", "printf"
+    "def", "func", "struct", "interface", "trait", "decorator", "annotation",
+    "malloc", "free", "undefined", "cout", "printf"
 }
 
 SYNTAX_PATTERNS = [

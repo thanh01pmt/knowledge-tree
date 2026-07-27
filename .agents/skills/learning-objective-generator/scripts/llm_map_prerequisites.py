@@ -6,9 +6,9 @@ Domain-Partitioned Concept DAG + LLM Verify.
 4 Bước:
   Bước 1 — Domain Partitioning (deterministic): chia concepts theo topic
   Bước 2 — Concept-Level DAG per-domain (LLM có constraint justification)
-  Bước 4 — ULO-Level Derivation (deterministic từ concept DAG + L1 Bloom)
-  Bước 5 — Phép thử ngược (LLM verify từng link → drop false positives)
-  Bước 6 — Export TSV cho Human Review
+  Bước 3 — ULO-Level Derivation (deterministic từ concept DAG + L1 Bloom)
+  Bước 4 — Phép thử ngược (LLM verify từng link → drop false positives)
+  (Export TSV cho Human Review)
 
 Outputs:
   output/lo_prerequisites.tsv  (có source_layer, justification, counterfactual_test)
@@ -243,7 +243,7 @@ def derive_concept_dag(client, model, by_topic: dict[str, list[dict]], runs: int
     return final_links
 
 # =====================================================================
-# Bước 4 — ULO-Level Derivation (Deterministic)
+# Bước 3 — ULO-Level Derivation (Deterministic)
 # =====================================================================
 def derive_layer1_bloom(los: list[dict]) -> list[dict]:
     """L1-BLOOM: CIO trong cùng ULO + SIO trong cùng CIO, theo bloom level."""
@@ -283,7 +283,7 @@ def derive_layer1_bloom(los: list[dict]) -> list[dict]:
     return links
 
 def derive_ulo_from_concept_dag(concept_dag: list[dict], ulos: list[dict]) -> list[dict]:
-    """Bước 4: concept DAG → ULO DAG. ULO representative = bloom thấp nhất."""
+    """Bước 3: concept DAG → ULO DAG. ULO representative = bloom thấp nhất."""
     concept_to_ulos = defaultdict(list)
     for u in ulos:
         for c in (u.get("concept_codes") or "").split(","):
@@ -315,7 +315,7 @@ def derive_ulo_from_concept_dag(concept_dag: list[dict], ulos: list[dict]) -> li
     return links
 
 # =====================================================================
-# Bước 5 — Phép thử ngược (LLM verify từng link)
+# Bước 4 — Phép thử ngược (LLM verify từng link)
 # =====================================================================
 STEP5_SYSTEM = """Bạn là một evaluator xác minh tính hợp lệ của liên kết tiền đề (prerequisite).
 
@@ -377,9 +377,9 @@ Hãy đọc kỹ description của A và B. Nếu justification mô tả sai n�
     return f"{verdict} — {reason}"
 
 def verify_links_batch(client, model, lo_map: dict, links: list[dict]) -> list[dict]:
-    """Bước 5: verify từng link (chỉ L4-CONCEPT-DAG, L1 đã chắc chắn)."""
+    """Bước 4: verify từng link (chỉ L4-CONCEPT-DAG, L1 đã chắc chắn)."""
     to_verify = [l for l in links if l["source_layer"] == "L4-CONCEPT-DAG"]
-    print(f"\n[Bước 5] Verify {len(to_verify)} links L4-CONCEPT-DAG...")
+    print(f"\n[Bước 4] Verify {len(to_verify)} links L4-CONCEPT-DAG...")
     kept = []
     dropped = []
     for i, l in enumerate(to_verify):
@@ -485,7 +485,7 @@ def main():
     parser.add_argument("--project", help="Project slug")
     parser.add_argument("--model", default="deepseek-v4-flash:cloud", help="LLM model")
     parser.add_argument("--dry-run", action="store_true", help="In candidate DAG, không ghi TSV")
-    parser.add_argument("--no-verify", action="store_true", help="Bỏ Bước 5 (verify)")
+    parser.add_argument("--no-verify", action="store_true", help="Bỏ Bước 4 (verify)")
     parser.add_argument("--reuse-concept-dag", action="store_true", help="Dùng concept_dag.tsv có sẵn, skip Bước 2")
     args = parser.parse_args()
 
@@ -518,7 +518,7 @@ def main():
             concepts.append(row)
     print(f"[*] Load {len(concepts)} concepts.")
 
-    # Chỉ init LLM client khi cần (Bước 2 không reuse, hoặc Bước 5 verify)
+    # Chỉ init LLM client khi cần (Bước 2 không reuse, hoặc Bước 4 verify)
     needs_llm = (not args.reuse_concept_dag) or (not args.no_verify)
     client = get_client() if needs_llm else None
 
@@ -550,20 +550,20 @@ def main():
                 w.writerow({k: l.get(k, "") for k in ["topic_code","prereq_concept","target_concept","justification","counterfactual_test","confidence_runs"]})
         print(f"  → Lưu {concept_dag_path.relative_to(repo_root)}")
 
-    # ── Bước 4: ULO-Level Derivation ──
-    print("\n[Bước 4] ULO-Level Derivation (deterministic từ concept DAG)...")
+    # ── Bước 3: ULO-Level Derivation ──
+    print("\n[Bước 3] ULO-Level Derivation (deterministic từ concept DAG)...")
     l1_links = derive_layer1_bloom(los)
     l4_links = derive_ulo_from_concept_dag(concept_dag, ulos)
     print(f"  L1-BLOOM: {len(l1_links)} links")
     print(f"  L4-CONCEPT-DAG: {len(l4_links)} links")
     all_links = l1_links + l4_links
 
-    # ── Bước 5: Phép thử ngược (LLM verify) ──
+    # ── Bước 4: Phép thử ngược (LLM verify) ──
     dropped_verify = []
     if not args.no_verify:
         all_links, dropped_verify = verify_links_batch(client, args.model, lo_map, all_links)
     else:
-        print("\n[Bước 5] SKIP (--no-verify)")
+        print("\n[Bước 4] SKIP (--no-verify)")
 
     # ── Cycle break ──
     print("\n[Cycle] Kahn topological...")
