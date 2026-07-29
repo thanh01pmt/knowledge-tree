@@ -83,6 +83,14 @@ RULE_DESCRIPTIONS = {
     "LO_DESCRIPTION_PREFIX": "Mô tả LO không bắt đầu bằng 'Người học có khả năng'",
     "LO_INVALID_KNOWLEDGE_DIMENSION": "knowledge_dimension không thuộc tập giá trị cho phép",
     "LO_INVALID_BLOOM_LEVEL": "bloom_level không thuộc tập giá trị cho phép",
+    "LO_MISSING_ASSESSMENT_APPROACH": "ULO/CIO thiếu assessment_approach (Rule 7: đánh giá trực tiếp bắt buộc)",
+    "LO_UNUSUAL_BLOOM_KD_COMBO": "Kết hợp Bloom Level + Knowledge Dimension ít phổ biến sư phạm",
+    "MISSING_SEQUENCE_ORDER": "Thiếu cột sequence_order (Doc Chương 2.4: bảng N:N cần thứ tự sư phạm)",
+    "LO_PREREQ_MISSING_COLUMNS": "lo_prerequisites.tsv thiếu cột bắt buộc",
+    "LO_PREREQ_BROKEN_TARGET": "learning_objective_code trong prerequisites không tồn tại",
+    "LO_PREREQ_BROKEN_PREREQ": "prerequisite_lo_code trong prerequisites không tồn tại",
+    "LO_PREREQ_SELF_REF": "LO không thể là prerequisite của chính nó",
+    "LO_PREREQ_READ_FAILED": "Lỗi đọc lo_prerequisites.tsv",
 }
 
 
@@ -572,6 +580,117 @@ def check_lo_bloom_level(lo_rows):
     return issues
 
 
+def check_lo_assessment_approach(lo_rows):
+    """WARNING if ULO/CIO lacks assessment_approach (Rule 7: Direct Assessment Coverage).
+    ULO and CIO MUST have non-empty assessment_approach with at least 1 item."""
+    issues = []
+    for r in lo_rows:
+        code = (r.get("code") or "").strip()
+        lo_type = (r.get("lo_type") or "").strip()
+        if lo_type not in ("UNIVERSAL", "CONCEPTUAL_IMPL"):
+            continue
+        approach = (r.get("assessment_approach") or "").strip()
+        if not approach:
+            issues.append(Issue("WARNING", "LO_MISSING_ASSESSMENT_APPROACH", "learning_objectives", code,
+                                 f"lo_type={lo_type} thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+                                 field="assessment_approach"))
+        else:
+            # Check if approach contains at least one item (comma-separated)
+            items = [a.strip() for a in approach.replace(";", ",").split(",") if a.strip()]
+            if not items:
+                issues.append(Issue("WARNING", "LO_EMPTY_ASSESSMENT_APPROACH", "learning_objectives", code,
+                                     f"lo_type={lo_type} assessment_approach rỗng sau khi parse.",
+                                     field="assessment_approach"))
+    return issues
+
+
+def check_bloom_knowledge_dimension_validity(lo_rows):
+    """WARNING if Bloom Level × Knowledge Dimension combination is pedagogically unusual.
+    Based on Anderson & Krathwohl (2001) - some combinations are rare/questionable."""
+    # Pedagogically unusual combinations (warn but don't error)
+    UNUSUAL_COMBOS = {
+        ("REMEMBER", "METACOGNITIVE"),
+        ("REMEMBER", "PROCEDURAL"),  # Remembering procedures is odd - usually Understand/Apply
+        ("UNDERSTAND", "METACOGNITIVE"),  # Metacognitive usually higher order
+        ("CREATE", "FACTUAL"),  # Creating factual knowledge is contradictory
+    }
+    issues = []
+    for r in lo_rows:
+        code = (r.get("code") or "").strip()
+        bl = (r.get("bloom_level") or "").strip().upper()
+        kd = (r.get("knowledge_dimension") or "").strip().upper()
+        if bl and kd and (bl, kd) in UNUSUAL_COMBOS:
+            issues.append(Issue("WARNING", "LO_UNUSUAL_BLOOM_KD_COMBO", "learning_objectives", code,
+                                 f"Kết hợp bloom_level={bl} + knowledge_dimension={kd} ít phổ biến sư phạm (Anderson & Krathwohl).",
+                                 field="bloom_level,knowledge_dimension"))
+    return issues
+
+
+def check_sequence_order_column(data_dir: Path):
+    """Check that all 5 taxonomy TSVs have sequence_order column (Doc Chương 2.4)."""
+    issues = []
+    taxonomy_files = [
+        ("fields", "fields.tsv"),
+        ("subjects", "subjects.tsv"),
+        ("categories", "categories.tsv"),
+        ("topics", "topics.tsv"),
+        ("concepts", "concepts.tsv"),
+    ]
+    for level_name, filename in taxonomy_files:
+        path = data_dir / filename
+        if not path.exists():
+            continue
+        try:
+            with open(path, encoding="utf-8") as f:
+                header = f.readline().strip().split("\t")
+            if "sequence_order" not in header:
+                issues.append(Issue("ERROR", "MISSING_SEQUENCE_ORDER", level_name, "-",
+                                     f"File {filename} thiếu cột 'sequence_order' (Doc Chương 2.4: tất cả bảng N:N cần sequence_order).",
+                                     field="sequence_order"))
+        except Exception as e:
+            issues.append(Issue("WARNING", "SEQUENCE_ORDER_CHECK_FAILED", level_name, "-",
+                                 f"Không thể đọc header {filename}: {e}"))
+    return issues
+
+
+def check_lo_prerequisites_referential(data_dir: Path, lo_codes: set):
+    """Validate referential integrity of lo_prerequisites.tsv (Doc Chương 2.4)."""
+    issues = []
+    path = data_dir / "lo_prerequisites.tsv"
+    if not path.exists():
+        return issues  # Not an error if file doesn't exist yet
+    try:
+        with open(path, encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            if reader.fieldnames is None:
+                return issues
+            required_cols = {"learning_objective_code", "prerequisite_lo_code"}
+            if not required_cols.issubset(set(reader.fieldnames or [])):
+                issues.append(Issue("ERROR", "LO_PREREQ_MISSING_COLUMNS", "learning_objective_prerequisites", "-",
+                                     f"Thiếu cột bắt buộc: {required_cols - set(reader.fieldnames or [])}"))
+                return issues
+            for row in reader:
+                target = (row.get("learning_objective_code") or "").strip()
+                prereq = (row.get("prerequisite_lo_code") or "").strip()
+                if not target or not prereq:
+                    issues.append(Issue("WARNING", "LO_PREREQ_EMPTY_CODE", "learning_objective_prerequisites", target or prereq,
+                                         "learning_objective_code hoặc prerequisite_lo_code rỗng."))
+                    continue
+                if target not in lo_codes:
+                    issues.append(Issue("ERROR", "LO_PREREQ_BROKEN_TARGET", "learning_objective_prerequisites", target,
+                                         f"learning_objective_code '{target}' không tồn tại trong learning-objectives.tsv"))
+                if prereq not in lo_codes:
+                    issues.append(Issue("ERROR", "LO_PREREQ_BROKEN_PREREQ", "learning_objective_prerequisites", prereq,
+                                         f"prerequisite_lo_code '{prereq}' không tồn tại trong learning-objectives.tsv"))
+                if target == prereq:
+                    issues.append(Issue("ERROR", "LO_PREREQ_SELF_REF", "learning_objective_prerequisites", target,
+                                         "LO không thể là prerequisite của chính nó."))
+    except Exception as e:
+        issues.append(Issue("ERROR", "LO_PREREQ_READ_FAILED", "learning_objective_prerequisites", "-",
+                             f"Lỗi đọc lo_prerequisites.tsv: {e}"))
+    return issues
+
+
 def check_line_endings(data_dir: Path, filenames):
     issues = []
     styles = {}
@@ -650,6 +769,11 @@ def run_checks(data_dir: Path, tables, code_sets):
     issues += check_lo_description_prefix(lo_rows)
     issues += check_lo_knowledge_dimension(lo_rows)
     issues += check_lo_bloom_level(lo_rows)
+    issues += check_lo_assessment_approach(lo_rows)
+    issues += check_bloom_knowledge_dimension_validity(lo_rows)
+
+    issues += check_sequence_order_column(data_dir)
+    issues += check_lo_prerequisites_referential(data_dir, code_sets[LO_LEVEL["name"]])
 
     for i in range(len(ALL_LEVELS) - 1):
         parent_lvl, child_lvl = ALL_LEVELS[i], ALL_LEVELS[i + 1]
@@ -839,8 +963,8 @@ def render_markdown(issues, tables, generated_at):
             lines += ["", "| Tầng | Code | Cột | Chi tiết |", "|---|---|---|---|"]
             for i in items[:200]:
                 lines.append(f"| {i.level} | `{i.code}` | {i.field or '-'} | {i.message} |")
-            if len(items) > 200:
-                lines.append(f"| ... | ... | ... | (+{len(items) - 200} dòng nữa) |")
+            if len(group) > 200:
+                lines.append(f"| ... | ... | ... | (+{len(group) - 200} dòng nữa) |")
             lines.append("")
     return "\n".join(lines)
 

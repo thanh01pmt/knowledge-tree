@@ -967,6 +967,11 @@ def main():
     assessment_matrix_text = load_assessment_matrix(repo_root)
     print(f"[*] Project: {slug} | Technology: {technology} | Phase: {args.phase}")
 
+    # Define paths upfront so they're available in all phase blocks
+    ulo_path = hlo_dir / "ulos.json"
+    cio_path = hlo_dir / "cios.json"
+    sio_path = hlo_dir / "sios.json"
+
     if args.phase in ("ulos", "all"):
         syllabus = load_syllabus(work_dir)
         classified_phrases = load_classified_phrases(out_dir)
@@ -979,7 +984,6 @@ def main():
             return
 
     if args.phase in ("cios", "all"):
-        ulo_path = hlo_dir / "ulos.json"
         if not ulo_path.is_file():
             print("[ERROR] ulos.json không tìm thấy. Chạy --phase ulos trước.", file=sys.stderr)
             sys.exit(1)
@@ -990,7 +994,6 @@ def main():
             return
 
     if args.phase in ("sios", "all"):
-        cio_path = hlo_dir / "cios.json"
         if not cio_path.is_file():
             print("[ERROR] cios.json không tìm thấy. Chạy --phase cios trước.", file=sys.stderr)
             sys.exit(1)

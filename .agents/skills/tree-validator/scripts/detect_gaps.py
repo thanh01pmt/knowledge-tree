@@ -224,6 +224,61 @@ def detect_non_neutral_cios(project_los: list[dict]) -> list[dict]:
     return violations
 
 
+def detect_marr_test_note_quality(project_los: list[dict]) -> list[dict]:
+    """Check CIOs for Marr 2-Language Test note quality (Gap E).
+    Each CIO must have a marr_test_note mentioning ≥2 distinct languages."""
+    # Common programming language names to detect in marr_test_note
+    LANGUAGE_PATTERNS = [
+        r'\bpython\b', r'\bswift\b', r'\bjavascript\b', r'\btypescript\b', r'\bjava\b',
+        r'\bgolang\b', r'\bgo\b', r'\brust\b', r'\bruby\b', r'\bphp\b', r'\bkotlin\b',
+        r'\bscala\b', r'\bperl\b', r'\blua\b', r'\bhaskell\b', r'\bdart\b',
+        r'\bc\+\+\b', r'\bcpp\b', r'\bc#\b', r'\bcsharp\b', r'\bobjective-c\b', r'\bobjc\b',
+        r'\bc\b(?![a-z])',  # C language (not followed by letter)
+    ]
+    
+    LANGUAGE_RE = re.compile('|'.join(LANGUAGE_PATTERNS), re.IGNORECASE)
+    
+    cios = [r for r in project_los if r.get("lo_type") == "CONCEPTUAL_IMPL"]
+    issues = []
+    for cio in cios:
+        note = (cio.get("marr_test_note") or "").strip()
+        code = cio.get("code", "")
+        name = cio.get("name", "")
+        
+        if not note:
+            issues.append({
+                "code": code,
+                "name": name,
+                "issue": "MISSING_MARR_NOTE",
+                "detail": "CIO thiếu trường marr_test_note (bắt buộc theo Marr 2-Language Test [T6])"
+            })
+            continue
+        
+        # Find language mentions in the note
+        found_langs = set()
+        for match in LANGUAGE_RE.finditer(note):
+            found_langs.add(match.group(0).lower())
+        
+        # Normalize some aliases
+        lang_map = {
+            'go': 'golang',
+            'c++': 'cpp',
+            'c#': 'csharp',
+            'objc': 'objective-c',
+            'c': 'c',
+        }
+        normalized_langs = {lang_map.get(l, l) for l in found_langs}
+        
+        if len(normalized_langs) < 2:
+            issues.append({
+                "code": code,
+                "name": name,
+                "issue": "INSUFFICIENT_LANGUAGES_IN_MARR_NOTE",
+                "detail": f"marr_test_note chỉ nhắc đến {len(normalized_langs)} ngôn ngữ ({', '.join(normalized_langs) if normalized_langs else 'không có'}), cần ≥ 2. Note: {note[:100]}"
+            })
+    return issues
+
+
 # ─── Gap C: Master Tree Candidates ───────────────────────────────────────────
 
 def detect_master_candidates(
@@ -261,6 +316,7 @@ def render_report(
     gap_a: list[dict],
     gap_b: list[dict],
     gap_d: list[dict],
+    gap_e: list[dict],  # New: Gap E - Marr Test Note Quality
     gap_c: list[dict],
     min_score: float,
 ) -> str:
@@ -340,6 +396,30 @@ def render_report(
         lines.append("**→ Action:** Viết lại mô tả/tên CIO thành khái niệm/thủ tục trung tính 100% độc lập ngôn ngữ, hoặc chuyển xuống tầng SIO.")
     else:
         lines += ["✅ **Tất cả CIOs đều đạt Phép thử Marr (100% Trung tính).**", ""]
+
+    lines += [
+        "---",
+        "",
+        "## Gap E — Marr Test Note Quality (`MARR_NOTE_QUALITY`)",
+        "",
+        "> CIO có marr_test_note nhưng note không đủ chất lượng (thiếu note, hoặc nhắc < 2 ngôn ngữ).",
+        "> Theo T6: CIO bắt buộc phải pass Marr 2-Language Test — note phải chứng minh mapping ≥ 2 ngôn ngữ.",
+        "",
+    ]
+
+    if gap_e:
+        lines += [
+            f"**{len(gap_e)} CIO(s) có vấn đề với marr_test_note:**",
+            "",
+            "| CIO Code | CIO Name | Issue | Detail |",
+            "|---|---|---|---|",
+        ]
+        for g in gap_e:
+            lines.append(f"| `{g['code']}` | {g['name']} | {g['issue']} | {g['detail'][:120]} |")
+        lines.append("")
+        lines.append("**→ Action:** Bổ sung/sửa marr_test_note để nhắc rõ ràng ≥ 2 ngôn ngữ khác nhau (ví dụ: 'Áp dụng được cho Python vì... và Swift vì...').")
+    else:
+        lines += ["✅ **Tất cả CIOs đều có marr_test_note đạt chuẩn (≥ 2 ngôn ngữ).**", ""]
 
     lines += [
         "---",
@@ -428,6 +508,7 @@ def main():
     gap_a = detect_concept_without_lo(project_concepts, project_los)
     gap_b = detect_shallow_cios(project_los, min_sios=2)
     gap_d = detect_non_neutral_cios(project_los)
+    gap_e = detect_marr_test_note_quality(project_los)  # New: Marr test note quality
     gap_c = detect_master_candidates(
         master_concepts, project_concept_codes, syllabus_text,
         min_score=args.min_score, top_n=args.top_n
@@ -440,6 +521,7 @@ def main():
     status_a = "❌" if gap_a else "✅"
     status_b = "⚠️ " if gap_b else "✅"
     status_d = "❌" if gap_d else "✅"
+    status_e = "⚠️ " if gap_e else "✅"
     status_c = "ℹ️ " if gap_c else "✅"
     print(f"  {status_a} Gap A (Concepts without LO):       {len(gap_a)}")
     if gap_a:
@@ -453,6 +535,10 @@ def main():
     if gap_d:
         for g in gap_d:
             print(f"       • {g['code']}: contains {', '.join(g['keywords'])}")
+    print(f"  {status_e} Gap E (Marr Test Note Quality):    {len(gap_e)}")
+    if gap_e:
+        for g in gap_e:
+            print(f"       • {g['code']}: {g['issue']} - {g['detail'][:80]}")
     print(f"  {status_c} Gap C (Master Candidates):         {len(gap_c)}")
 
     if gap_c:
@@ -463,7 +549,7 @@ def main():
     print(f"{'='*54}")
 
     # Write reports
-    report_content = render_report(slug, gap_a, gap_b, gap_d, gap_c, args.min_score)
+    report_content = render_report(slug, gap_a, gap_b, gap_d, gap_e, gap_c, args.min_score)
     stamp = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
     report_dir = project_dir / ".tree-validator" / "reports" / stamp
     report_dir.mkdir(parents=True, exist_ok=True)
