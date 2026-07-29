@@ -1,7 +1,7 @@
 # Báo cáo Đối chiếu Ngược Độ Phủ Syllabus (Reverse Coverage Audit)
 
 - **Dự án:** `swift-associate`
-- **Thời gian kiểm tra:** 2026-07-29T17:19:50.310790+00:00
+- **Thời gian kiểm tra:** 2026-07-29T16:30:58.587520+00:00
 - **Tổng số mục Syllabus:** 43
 - **Số mục đã phủ trong LO:** 1
 - **Số mục còn thiếu (Gaps):** 42

@@ -90,3 +90,72 @@ def guide_workflow(step_name: str, project_name: str) -> str:
         "sync-supabase": f"Gọi tool 'kt_sync_supabase(project_name=\"{safe_name}\")' để đồng bộ dữ liệu TSV lên cơ sở dữ liệu Supabase Cloud."
     }
     return guides.get(step_name, f"Không tìm thấy hướng dẫn cho bước '{step_name}'. Các bước khả thi: {list(guides.keys())}")
+
+
+# ─── HITL Artifact Resources (Read-Only) ──────────────────────────────────────
+
+# These resources expose intermediate files that require human review at HITL checkpoints.
+# URI pattern: project://{project_name}/work/{artifact_name}
+
+HITL_ARTIFACTS = {
+    "verify-report": ".work/kw/verify-report.md",                    # Checkpoint 1: ATE term verification
+    "concept-escalation": ".work/kw/concept_escalation.md",          # Checkpoint 2: New concept proposals (Gap D)
+    "context-audit": ".work/context-audit.md",                       # Checkpoint 3: Domain/syllabus analysis
+    "mapping-plan": ".work/mapping-plan.md",                         # Checkpoint 4: Taxonomy mapping proposal
+    "ulos-preview": ".work/hlo/ulos_preview.md",                     # Checkpoint 5: ULO review
+    "cios-preview": ".work/hlo/cios_preview.md",                     # Checkpoint 6: CIO Marr Test review
+    "validation-report": ".tree-validator/reports/latest/validation_report.md",  # Checkpoint 7: Post-validation
+    "coverage-report": ".tree-validator/reports/latest/coverage_report.md",      # Coverage audit
+    "gap-report": ".tree-validator/reports/latest/gap_report.md",                # Gap detection
+}
+
+
+def _get_latest_report_dir(project_name: str) -> Path | None:
+    """Find the latest timestamped report directory for a project."""
+    reports_dir = ROOT_DIR / "projects" / project_name / ".tree-validator" / "reports"
+    if not reports_dir.is_dir():
+        return None
+    candidates = sorted(reports_dir.iterdir(), reverse=True)
+    return candidates[0] if candidates else None
+
+
+for artifact_name, artifact_path_template in HITL_ARTIFACTS.items():
+    # Capture variables in closure
+    name = artifact_name
+    template = artifact_path_template
+
+    if "latest" in template:
+        # Dynamic path: resolve latest timestamped directory at read time
+        @sys_mcp.resource(f"project://{{project_name}}/work/{name}")
+        def _make_latest_resource(project_name: str, _name=name, _template=template):
+            try:
+                _validate_slug(project_name)
+            except ValueError as e:
+                return f"❌ Error: {e}"
+            latest_dir = _get_latest_report_dir(project_name)
+            if not latest_dir:
+                return f"❌ No validation reports found for project '{project_name}'."
+            # Resolve the actual file path
+            if "validation_report" in _template:
+                target = latest_dir / "validation_report.md"
+            elif "coverage_report" in _template:
+                target = latest_dir / "coverage_report.md"
+            elif "gap_report" in _template:
+                target = latest_dir / "gap_report.md"
+            else:
+                target = latest_dir / "validation_report.md"
+            if target.is_file():
+                return target.read_text(encoding="utf-8")
+            return f"❌ Report file not found: {target}"
+    else:
+        # Static path under project/.work/
+        @sys_mcp.resource(f"project://{{project_name}}/work/{name}")
+        def _make_static_resource(project_name: str, _name=name, _template=template):
+            try:
+                _validate_slug(project_name)
+            except ValueError as e:
+                return f"❌ Error: {e}"
+            target = ROOT_DIR / "projects" / project_name / _template
+            if target.is_file():
+                return target.read_text(encoding="utf-8")
+            return f"❌ Artifact not found: {target} (run the corresponding pipeline step first)"

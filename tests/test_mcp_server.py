@@ -39,8 +39,22 @@ async def list_tools():
         tools = await client.list_tools()
         tool_names = {t.name for t in tools}
     expected = {
+        # Core validation & sync (pre-existing)
         "kt_validate_tree", "kt_detect_gaps", "kt_audit_coverage",
         "kt_sync_supabase", "kt_scaffold_project", "kt_map_prerequisites",
+        # Phase 1 additions
+        "kt_validate_master_tree", "kt_build_taxonomy",
+        # Phase 2: ATE Pipeline
+        "kt_scaffold_keywords", "kt_extract_terms", "kt_verify_terms",
+        "kt_finalize_keywords", "kt_escalate_concepts",
+        # Phase 3: Hierarchical LO Generation
+        "kt_generate_ulos", "kt_generate_cios", "kt_generate_sios", "kt_merge_los",
+        # Phase 5: Roadmap Aligner
+        "kt_crawl_roadmap", "kt_init_staging_tree", "kt_apply_staging_plan",
+        "kt_diff_staging", "kt_sync_master_back",
+        # Phase 6: Workflow Orchestration
+        "kt_run_pipeline_step", "kt_get_pipeline_status",
+        # System tools
         "sys_get_system_status", "sys_get_skill_doc", "sys_get_project_status",
     }
     missing = expected - tool_names
