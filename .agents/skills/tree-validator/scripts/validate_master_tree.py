@@ -13,13 +13,12 @@ import re
 import sys
 from pathlib import Path
 
-SECTIONS = {
-    "Bảng 1": "fields",
-    "Bảng 2": "subjects",
-    "Bảng 3": "categories",
-    "Bảng 4": "topics",
-    "Bảng 5": "concepts",
-}
+# Import shared parser
+from master_tree_parser import (
+    parse_master_tsv,
+    SECTIONS,
+    find_repo_root,
+)
 
 # T6 — concrete tech tokens forbidden in Master Tree (any tier).
 # Matched as whole words (case-insensitive). Brand/platform names only;
@@ -65,39 +64,6 @@ def find_t6_violations(tables):
     return violations
 
 
-def find_repo_root(start: Path) -> Path:
-    cur = start.resolve()
-    for _ in range(20):
-        if (cur / ".agents").is_dir():
-            return cur
-        if cur.parent == cur:
-            break
-        cur = cur.parent
-    return start.resolve()
-
-
-def parse(tsv_path: Path):
-    tables = {v: [] for v in SECTIONS.values()}
-    section, headers = None, []
-    for line in tsv_path.read_text(encoding="utf-8").splitlines():
-        s = line.strip()
-        if not s:
-            continue
-        hit = next((k for k in SECTIONS if s.startswith(k)), None)
-        if hit:
-            section, headers = SECTIONS[hit], []
-            continue
-        if not section or s.startswith(("Đây là", "Mỗi Field", "Các Subject", "Các Category", "Các Topic", "Các Concept")):
-            continue
-        parts = line.rstrip("\n").split("\t")
-        if parts[0] == "code":
-            headers = [h.strip() for h in parts]
-            continue
-        if headers and parts[0].strip():
-            tables[section].append(dict(zip(headers, parts)))
-    return tables
-
-
 def split(v):
     return [c.strip() for c in (v or "").replace(";", ",").replace("|", ",").split(",") if c.strip()]
 
@@ -112,7 +78,7 @@ def main():
         print(f"❌ File not found: {tsv_path}")
         sys.exit(1)
 
-    tables = parse(tsv_path)
+    tables = parse_master_tsv(tsv_path)
 
     order = ["fields", "subjects", "categories", "topics", "concepts"]
     parent_field = {

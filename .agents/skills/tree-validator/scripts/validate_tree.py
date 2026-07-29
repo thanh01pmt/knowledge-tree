@@ -52,8 +52,9 @@ ALL_LEVELS = LEVELS + [LO_LEVEL]
 
 CODE_FORMAT_RE = re.compile(r'^[A-Z0-9_\-]+$')
 ALLOWED_LO_TYPES = {"UNIVERSAL", "CONCEPTUAL_IMPL", "SPECIFIC_IMPL"}
-ALLOWED_KNOWLEDGE_DIMENSIONS = {"FACTUAL", "CONCEPTUAL", "PROCEDURAL", "METACOGNITIVE", "", "NULL"}
-ALLOWED_BLOOM_LEVELS = {"REMEMBER", "UNDERSTAND", "APPLY", "ANALYZE", "EVALUATE", "CREATE", ""}
+# Accept both uppercase (per AGENTS.md spec) and title case (actual data)
+ALLOWED_KNOWLEDGE_DIMENSIONS = {"FACTUAL", "CONCEPTUAL", "PROCEDURAL", "METACOGNITIVE", "Factual", "Conceptual", "Procedural", "Metacognitive", "", "NULL"}
+ALLOWED_BLOOM_LEVELS = {"REMEMBER", "UNDERSTAND", "APPLY", "ANALYZE", "EVALUATE", "CREATE", "Remember", "Understand", "Apply", "Analyze", "Evaluate", "Create", ""}
 NULL_TOKEN = "NULL"
 
 SAFE_FIX_RULES = {"DUPLICATE_REF_IN_CELL", "SEPARATOR_FORMAT"}
@@ -154,61 +155,18 @@ def now_iso():
 # an toàn hơn với các status.yaml phức tạp hơn.
 # ---------------------------------------------------------------------------
 
-try:
-    import yaml  # type: ignore
-    _HAS_YAML = True
-except ImportError:
-    _HAS_YAML = False
+import yaml  # type: ignore  # PyYAML is required dependency
 
 
 def read_status_yaml(path: Path) -> dict:
     if not path.exists():
         return {}
     text = path.read_text(encoding="utf-8")
-    if _HAS_YAML:
-        return yaml.safe_load(text) or {}
-    # fallback: parser tối giản cho key: value phẳng (bỏ qua list/nested)
-    data = {}
-    for line in text.splitlines():
-        line = line.rstrip()
-        if not line or line.lstrip().startswith("#") or line.lstrip().startswith("-"):
-            continue
-        if ":" not in line:
-            continue
-        key, _, val = line.partition(":")
-        if key.startswith(" "):
-            continue  # bỏ qua nested — cần PyYAML cho trường hợp phức tạp
-        key = key.strip()
-        val = val.strip().strip('"').strip("'")
-        if val == "" or val.lower() == "null":
-            val = None
-        data[key] = val
-    return data
+    return yaml.safe_load(text) or {}
 
 
 def write_status_yaml(path: Path, data: dict):
-    if _HAS_YAML:
-        path.write_text(yaml.safe_dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
-        return
-    # fallback writer tối giản — chỉ hỗ trợ scalar + list[str]
-    lines = []
-    for k, v in data.items():
-        if v is None:
-            lines.append(f"{k}: null")
-        elif isinstance(v, bool):
-            lines.append(f"{k}: {'true' if v else 'false'}")
-        elif isinstance(v, (int, float)):
-            lines.append(f"{k}: {v}")
-        elif isinstance(v, list):
-            if not v:
-                lines.append(f"{k}: []")
-            else:
-                lines.append(f"{k}:")
-                for item in v:
-                    lines.append(f"  - {item}")
-        else:
-            lines.append(f'{k}: "{v}"')
-    path.write_text("\n".join(lines) + "\n", encoding="utf-8")
+    path.write_text(yaml.safe_dump(data, allow_unicode=True, sort_keys=False), encoding="utf-8")
 
 
 # ---------------------------------------------------------------------------

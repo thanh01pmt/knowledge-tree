@@ -1,0 +1,1174 @@
+{
+  "generated_at": "2026-07-29T15:12:32.373980+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 154,
+    "errors": 61,
+    "warnings": 93,
+    "by_rule": {
+      "LO_CONCEPT_UNCOVERED": 35,
+      "LO_MISSING_ASSESSMENT_APPROACH": 23,
+      "LO_PREREQ_BROKEN_TARGET": 30,
+      "LO_PREREQ_BROKEN_PREREQ": 31,
+      "ORPHAN_NODE": 35
+    },
+    "by_level": {
+      "concepts": {
+        "ERROR": 0,
+        "WARNING": 70
+      },
+      "learning_objectives": {
+        "ERROR": 0,
+        "WARNING": 23
+      },
+      "learning_objective_prerequisites": {
+        "ERROR": 61,
+        "WARNING": 0
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 10,
+      "categories": 19,
+      "topics": 30,
+      "concepts": 44,
+      "learning_objectives": 49
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_HIERARCHY_VIOLATION": "Vi phạm Tri-Level [T6]: CIO phải là con của ULO, SIO phải là con của CIO",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu",
+    "LO_DESCRIPTION_PREFIX": "Mô tả LO không bắt đầu bằng 'Người học có khả năng'",
+    "LO_INVALID_KNOWLEDGE_DIMENSION": "knowledge_dimension không thuộc tập giá trị cho phép",
+    "LO_INVALID_BLOOM_LEVEL": "bloom_level không thuộc tập giá trị cho phép",
+    "LO_MISSING_ASSESSMENT_APPROACH": "ULO/CIO thiếu assessment_approach (Rule 7: đánh giá trực tiếp bắt buộc)",
+    "LO_UNUSUAL_BLOOM_KD_COMBO": "Kết hợp Bloom Level + Knowledge Dimension ít phổ biến sư phạm",
+    "MISSING_SEQUENCE_ORDER": "Thiếu cột sequence_order (Doc Chương 2.4: bảng N:N cần thứ tự sư phạm)",
+    "LO_PREREQ_MISSING_COLUMNS": "lo_prerequisites.tsv thiếu cột bắt buộc",
+    "LO_PREREQ_BROKEN_TARGET": "learning_objective_code trong prerequisites không tồn tại",
+    "LO_PREREQ_BROKEN_PREREQ": "prerequisite_lo_code trong prerequisites không tồn tại",
+    "LO_PREREQ_SELF_REF": "LO không thể là prerequisite của chính nó",
+    "LO_PREREQ_READ_FAILED": "Lỗi đọc lo_prerequisites.tsv"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "IF_ELSE_STATEMENT",
+      "message": "Concept 'If-Else Statement' (IF_ELSE_STATEMENT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "PRIMITIVE_TYPE_DECLARATION",
+      "message": "Concept 'Declaring Primitive Types' (PRIMITIVE_TYPE_DECLARATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DIGITAL_FOOTPRINT",
+      "message": "Concept 'Digital Footprint' (DIGITAL_FOOTPRINT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "VIEW_TRANSITIONS",
+      "message": "Concept 'View Transitions' (VIEW_TRANSITIONS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "RUNTIME_ERRORS",
+      "message": "Concept 'Runtime Errors' (RUNTIME_ERRORS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "WCAG_PRINCIPLES",
+      "message": "Concept 'WCAG Principles (POUR)' (WCAG_PRINCIPLES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "ALGORITHMIC_BIAS_SOCIETY",
+      "message": "Concept 'Algorithmic Bias in Society' (ALGORITHMIC_BIAS_SOCIETY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "PHISHING_IDENTIFICATION",
+      "message": "Concept 'Identifying Phishing Attempts' (PHISHING_IDENTIFICATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "FOR_LOOP",
+      "message": "Concept 'For Loop' (FOR_LOOP) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "WIREFRAMING",
+      "message": "Concept 'Wireframing' (WIREFRAMING) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "LOGIC_ERRORS",
+      "message": "Concept 'Logical Errors' (LOGIC_ERRORS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "MALWARE_TYPES_CONCEPT",
+      "message": "Concept 'Malware Types' (MALWARE_TYPES_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "IMPLICIT_EXPLICIT_ANIMATION",
+      "message": "Concept 'Implicit vs. Explicit Animation' (IMPLICIT_EXPLICIT_ANIMATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "UI_BOX_MODEL_LAYOUT",
+      "message": "Concept 'UI Box Model Layout System' (UI_BOX_MODEL_LAYOUT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "SWITCH_CASE",
+      "message": "Concept 'Switch-Case Statement' (SWITCH_CASE) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "SCREEN_READERS",
+      "message": "Concept 'Screen Readers' (SCREEN_READERS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "LOCAL_VIEW_STATE",
+      "message": "Concept 'Local View State' (LOCAL_VIEW_STATE) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Concept 'Object Instantiation' (OBJECT_INSTANTIATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "CLASS_DEFINITION",
+      "message": "Concept 'Class Definition' (CLASS_DEFINITION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "REFERENCE_TYPE_DECLARATION",
+      "message": "Concept 'Declaring Reference Types' (REFERENCE_TYPE_DECLARATION) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "USER_CENTERED_DESIGN",
+      "message": "Concept 'User-Centered Design Process' (USER_CENTERED_DESIGN) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "AI_BIAS",
+      "message": "Concept 'Bias in AI' (AI_BIAS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "SYNTAX_ERRORS",
+      "message": "Concept 'Syntax Errors' (SYNTAX_ERRORS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "PASSWORD_STRENGTH_CONCEPT",
+      "message": "Concept 'Strong Passwords' (PASSWORD_STRENGTH_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "PROTOTYPING",
+      "message": "Concept 'Prototyping' (PROTOTYPING) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "BREAKPOINTS",
+      "message": "Concept 'Using Breakpoints' (BREAKPOINTS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Concept 'Object Properties/Attributes' (OBJECT_PROPERTIES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "COMPOSITION_PRINCIPLES",
+      "message": "Concept 'Composition Principles' (COMPOSITION_PRINCIPLES) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "EVENT_BASED_PROGRAMMING",
+      "message": "Concept 'Event-Based Programming Model' (EVENT_BASED_PROGRAMMING) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "TWO_WAY_BINDING",
+      "message": "Concept 'Two-Way Data Binding' (TWO_WAY_BINDING) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DIGITAL_IDENTITY",
+      "message": "Concept 'Digital Identity Management' (DIGITAL_IDENTITY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "FLEXBOX_GRID_LAYOUT",
+      "message": "Concept 'Flexible & Grid Layout Systems' (FLEXBOX_GRID_LAYOUT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "CROSS_ORIGIN_SECURITY",
+      "message": "Concept 'Cross-Origin Security & Policies' (CROSS_ORIGIN_SECURITY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "COLOR_THEORY",
+      "message": "Concept 'Color Theory' (COLOR_THEORY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "message": "Concept 'First-Class & Higher-Order Functions' (FIRST_CLASS_FUNCTIONS_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-PROJECT_ASSETS_MANAGEMENT-01",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-ARRAY_OPERATIONS-03",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-WHILE_LOOP-03",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-DECLARATIVE_UI_PARADIGM-03",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-UI_MODIFIERS_CONCEPT-03",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-EVENT_HANDLERS_CONCEPT-02",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-STATE_PROPERTY_WRAPPER-02",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "ULO-ERROR_MESSAGES_CONCEPT-02",
+      "message": "lo_type=UNIVERSAL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-01",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-01",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-02",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-ARRAY_OPERATIONS-03-01",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-ARRAY_OPERATIONS-03-02",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-WHILE_LOOP-03-01",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-WHILE_LOOP-03-02",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARATIVE_UI_PARADIGM-03",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-UI_MODIFIERS_CONCEPT-03",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-EVENT_HANDLERS_CONCEPT-02",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-STATE_PROPERTY_WRAPPER-02",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-03",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_MISSING_ASSESSMENT_APPROACH",
+      "level": "learning_objectives",
+      "code": "CIO-ERROR_MESSAGES_CONCEPT-02",
+      "message": "lo_type=CONCEPTUAL_IMPL thiếu assessment_approach (Rule 7: Direct Assessment Coverage).",
+      "field": "assessment_approach"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-WHILE_LOOP-LOOP_TERMINATION_CONDITION",
+      "message": "learning_objective_code 'CIO-WHILE_LOOP-LOOP_TERMINATION_CONDITION' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-WHILE_LOOP-CONDITION_FIRST_REPETITION",
+      "message": "prerequisite_lo_code 'CIO-WHILE_LOOP-CONDITION_FIRST_REPETITION' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-CONTROL_FLOW-TRACE_EXECUTION_PATH_OF",
+      "message": "learning_objective_code 'CIO-CONTROL_FLOW-TRACE_EXECUTION_PATH_OF' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-CONTROL_FLOW-TRACE_VARIABLE_VALUES_THROUGH",
+      "message": "prerequisite_lo_code 'CIO-CONTROL_FLOW-TRACE_VARIABLE_VALUES_THROUGH' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-DEBUGGING-SET_CONDITIONAL_BREAKPOINT_IN",
+      "message": "learning_objective_code 'CIO-DEBUGGING-SET_CONDITIONAL_BREAKPOINT_IN' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-DEBUGGING-USE_STEP_INTO_AND",
+      "message": "prerequisite_lo_code 'CIO-DEBUGGING-USE_STEP_INTO_AND' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-EVENT_HANDLERS_CONCEPT-ANALYZE_EVENT_PROPAGATION_IN",
+      "message": "learning_objective_code 'CIO-EVENT_HANDLERS_CONCEPT-ANALYZE_EVENT_PROPAGATION_IN' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-EVENT_HANDLERS_CONCEPT-HANDLE_MULTIPLE_EVENTS_TOUCHDOWN",
+      "message": "prerequisite_lo_code 'CIO-EVENT_HANDLERS_CONCEPT-HANDLE_MULTIPLE_EVENTS_TOUCHDOWN' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-OBJECT_INSTANTIATION-ANALYZE_HOW_INITIALIZER_PARAMETERS",
+      "message": "learning_objective_code 'CIO-OBJECT_INSTANTIATION-ANALYZE_HOW_INITIALIZER_PARAMETERS' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-OBJECT_INSTANTIATION-DESCRIBE_STRUCT_MEMBERWISE_INITIALIZATION",
+      "message": "prerequisite_lo_code 'CIO-OBJECT_INSTANTIATION-DESCRIBE_STRUCT_MEMBERWISE_INITIALIZATION' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-RETURN_VALUES_AND_SCOPE-IDENTIFY_RETURN_STATEMENT_SYNTAX",
+      "message": "learning_objective_code 'CIO-RETURN_VALUES_AND_SCOPE-IDENTIFY_RETURN_STATEMENT_SYNTAX' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-RETURN_VALUES_AND_SCOPE-DISTINGUISH_LOCAL_AND_GLOBAL",
+      "message": "prerequisite_lo_code 'CIO-RETURN_VALUES_AND_SCOPE-DISTINGUISH_LOCAL_AND_GLOBAL' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-RETURN_VALUES_AND_SCOPE-USE_RETURN_VALUE_AS",
+      "message": "learning_objective_code 'CIO-RETURN_VALUES_AND_SCOPE-USE_RETURN_VALUE_AS' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-RETURN_VALUES_AND_SCOPE-DESIGN_A_SWIFT_FUNCTION",
+      "message": "prerequisite_lo_code 'CIO-RETURN_VALUES_AND_SCOPE-DESIGN_A_SWIFT_FUNCTION' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-VISUAL_DESIGN-EVALUATE_WHITESPACE_IMPACT_ON",
+      "message": "learning_objective_code 'CIO-VISUAL_DESIGN-EVALUATE_WHITESPACE_IMPACT_ON' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "CIO-VISUAL_DESIGN-ANALYZE_COLOR_PALETTE_PSYCHOLOGY",
+      "message": "prerequisite_lo_code 'CIO-VISUAL_DESIGN-ANALYZE_COLOR_PALETTE_PSYCHOLOGY' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "SIO-SWIFT-WRITE_WHILE_LOOP_BASIC",
+      "message": "learning_objective_code 'SIO-SWIFT-WRITE_WHILE_LOOP_BASIC' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "SIO-SWIFT-IDENTIFY_WHILE_LOOP_STRUCTURE",
+      "message": "prerequisite_lo_code 'SIO-SWIFT-IDENTIFY_WHILE_LOOP_STRUCTURE' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "SIO-SWIFT-IMPLEMENT_CONDITION_FIRST_WHILE",
+      "message": "learning_objective_code 'SIO-SWIFT-IMPLEMENT_CONDITION_FIRST_WHILE' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "SIO-SWIFT-COMPARE_WHILE_AND_REPEAT_WHILE",
+      "message": "prerequisite_lo_code 'SIO-SWIFT-COMPARE_WHILE_AND_REPEAT_WHILE' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "SIO-SWIFT-ANALYZE_WHILE_LOOP_TERMINATION",
+      "message": "learning_objective_code 'SIO-SWIFT-ANALYZE_WHILE_LOOP_TERMINATION' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "SIO-SWIFT-PREVENT_INFINITE_LOOP_WHILE",
+      "message": "prerequisite_lo_code 'SIO-SWIFT-PREVENT_INFINITE_LOOP_WHILE' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-DECLARATIVE_UI_PARADIGM-01",
+      "message": "learning_objective_code 'ULO-DECLARATIVE_UI_PARADIGM-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_CONCEPT-01",
+      "message": "prerequisite_lo_code 'ULO-VIEW_CONCEPT-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-ACCESSIBILITY-04",
+      "message": "learning_objective_code 'ULO-ACCESSIBILITY-04' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_CONCEPT-01",
+      "message": "prerequisite_lo_code 'ULO-VIEW_CONCEPT-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-CONTAINER_VIEWS-03",
+      "message": "learning_objective_code 'ULO-CONTAINER_VIEWS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_CONCEPT-01",
+      "message": "prerequisite_lo_code 'ULO-VIEW_CONCEPT-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_HIERARCHY-02",
+      "message": "learning_objective_code 'ULO-VIEW_HIERARCHY-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_CONCEPT-01",
+      "message": "prerequisite_lo_code 'ULO-VIEW_CONCEPT-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-UI_CONTROLS-03",
+      "message": "learning_objective_code 'ULO-UI_CONTROLS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_CONCEPT-01",
+      "message": "prerequisite_lo_code 'ULO-VIEW_CONCEPT-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-SHAPE-03",
+      "message": "learning_objective_code 'ULO-SHAPE-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_CONCEPT-01",
+      "message": "prerequisite_lo_code 'ULO-VIEW_CONCEPT-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-CONTAINER_VIEWS-03",
+      "message": "learning_objective_code 'ULO-CONTAINER_VIEWS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-DECLARATIVE_UI_PARADIGM-01",
+      "message": "prerequisite_lo_code 'ULO-DECLARATIVE_UI_PARADIGM-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-CONTAINER_VIEWS-03",
+      "message": "learning_objective_code 'ULO-CONTAINER_VIEWS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VIEW_HIERARCHY-02",
+      "message": "prerequisite_lo_code 'ULO-VIEW_HIERARCHY-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-TYPE_SYSTEM-01",
+      "message": "learning_objective_code 'ULO-TYPE_SYSTEM-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-DATA_TYPES-01",
+      "message": "prerequisite_lo_code 'ULO-DATA_TYPES-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-VARIABLES_AND_CONSTANTS-03",
+      "message": "learning_objective_code 'ULO-VARIABLES_AND_CONSTANTS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-DATA_TYPES-01",
+      "message": "prerequisite_lo_code 'ULO-DATA_TYPES-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-OPERATORS-03",
+      "message": "learning_objective_code 'ULO-OPERATORS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-DATA_TYPES-01",
+      "message": "prerequisite_lo_code 'ULO-DATA_TYPES-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-CONTROL_FLOW-01",
+      "message": "learning_objective_code 'ULO-CONTROL_FLOW-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-IMPERATIVE_PROGRAMMING-02",
+      "message": "prerequisite_lo_code 'ULO-IMPERATIVE_PROGRAMMING-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-CONDITIONAL_STATEMENTS-03",
+      "message": "learning_objective_code 'ULO-CONDITIONAL_STATEMENTS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-CONTROL_FLOW-01",
+      "message": "prerequisite_lo_code 'ULO-CONTROL_FLOW-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-RUNTIME_ERRORS-02",
+      "message": "prerequisite_lo_code 'ULO-RUNTIME_ERRORS-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-02",
+      "message": "learning_objective_code 'ULO-SYNTAX_VS_RUNTIME_ERRORS-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-SYNTAX_ERRORS-02",
+      "message": "prerequisite_lo_code 'ULO-SYNTAX_ERRORS-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-02",
+      "message": "learning_objective_code 'ULO-SYNTAX_VS_RUNTIME_ERRORS-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-RUNTIME_ERRORS-02",
+      "message": "prerequisite_lo_code 'ULO-RUNTIME_ERRORS-02' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-ARRAY_OPERATIONS-01",
+      "message": "learning_objective_code 'ULO-ARRAY_OPERATIONS-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-ARRAYS-03",
+      "message": "prerequisite_lo_code 'ULO-ARRAYS-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-LOCAL_VIEW_STATE-03",
+      "message": "learning_objective_code 'ULO-LOCAL_VIEW_STATE-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-STATE_PROPERTY_WRAPPER-01",
+      "message": "prerequisite_lo_code 'ULO-STATE_PROPERTY_WRAPPER-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-STRUCTURE_TYPE-03",
+      "message": "learning_objective_code 'ULO-STRUCTURE_TYPE-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-REFERENCE_TYPE_DECLARATION-03",
+      "message": "prerequisite_lo_code 'ULO-REFERENCE_TYPE_DECLARATION-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_TARGET",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-WHILE_LOOP-01",
+      "message": "learning_objective_code 'ULO-WHILE_LOOP-01' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_PREREQ_BROKEN_PREREQ",
+      "level": "learning_objective_prerequisites",
+      "code": "ULO-LOOP_STRUCTURES-03",
+      "message": "prerequisite_lo_code 'ULO-LOOP_STRUCTURES-03' không tồn tại trong learning-objectives.tsv"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "AI_BIAS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ALGORITHMIC_BIAS_SOCIETY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "BREAKPOINTS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CLASS_DEFINITION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COLOR_THEORY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COMPOSITION_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "CROSS_ORIGIN_SECURITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_FOOTPRINT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DIGITAL_IDENTITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "EVENT_BASED_PROGRAMMING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FLEXBOX_GRID_LAYOUT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "FOR_LOOP",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IF_ELSE_STATEMENT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "IMPLICIT_EXPLICIT_ANIMATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOCAL_VIEW_STATE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LOGIC_ERRORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "MALWARE_TYPES_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_INSTANTIATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "OBJECT_PROPERTIES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PASSWORD_STRENGTH_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PHISHING_IDENTIFICATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PRIMITIVE_TYPE_DECLARATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "PROTOTYPING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "REFERENCE_TYPE_DECLARATION",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "RUNTIME_ERRORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SCREEN_READERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SWITCH_CASE",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "SYNTAX_ERRORS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TWO_WAY_BINDING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "UI_BOX_MODEL_LAYOUT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "USER_CENTERED_DESIGN",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VIEW_TRANSITIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WCAG_PRINCIPLES",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "WIREFRAMING",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

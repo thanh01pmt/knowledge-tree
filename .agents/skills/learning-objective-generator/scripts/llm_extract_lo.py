@@ -80,14 +80,11 @@ def find_repo_root(start: Path) -> Path:
 
 def load_status(repo_root: Path) -> dict:
     status_file = repo_root / "status.yaml"
-    res = {}
-    if status_file.is_file():
-        with open(status_file, "r", encoding="utf-8") as f:
-            for line in f:
-                if ":" in line and not line.strip().startswith("#"):
-                    k, v = line.split(":", 1)
-                    res[k.strip()] = v.strip().strip("'\"")
-    return res
+    if not status_file.is_file():
+        return {}
+    import yaml  # type: ignore
+    with open(status_file, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
 
 
 def load_env(repo_root: Path):

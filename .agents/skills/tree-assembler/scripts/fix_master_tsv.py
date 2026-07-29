@@ -5,8 +5,8 @@ import sys
 from pathlib import Path
 
 repo_root = Path(__file__).resolve().parent.parent.parent.parent.parent
-sys.path.append(str(repo_root / ".agents/skills/taxonomy-mapper/scripts"))
-from parse_master_tree import parse_master_tsv
+sys.path.append(str(repo_root / ".agents/skills/tree-validator/scripts"))
+from master_tree_parser import parse_master_tsv
 
 
 def fix_tsv(tsv_path: Path):

@@ -27,11 +27,13 @@ Pipeline 3 phase:
 
 import argparse
 import csv
+import hashlib
 import json
 import math
 import os
 import re
 import sys
+import time
 from datetime import datetime
 from pathlib import Path
 
@@ -409,7 +411,7 @@ def match_against_master(
     to_embed_texts: list[str] = []
 
     for i, text in enumerate(ref_texts):
-        key = text[:200]  # truncate key
+        key = hashlib.sha256(text.encode()).hexdigest()[:32]
         if key in cache:
             ref_embeddings.append(cache[key])
         else:
@@ -422,7 +424,8 @@ def match_against_master(
         new_embeddings = batch_embed(client, to_embed_texts, model=embed_model)
         for idx, emb in zip(to_embed_indices, new_embeddings):
             ref_embeddings[idx] = emb
-            cache[ref_texts[idx][:200]] = emb
+            key = hashlib.sha256(ref_texts[idx].encode()).hexdigest()[:32]
+            cache[key] = emb
 
         # Update cache
         cache_path.parent.mkdir(parents=True, exist_ok=True)

@@ -33,14 +33,11 @@ def find_repo_root(start: Path) -> Path:
 
 def load_status(repo_root: Path) -> dict:
     status_file = repo_root / "status.yaml"
-    res = {}
-    if status_file.is_file():
-        with open(status_file, "r", encoding="utf-8") as f:
-            for line in f:
-                if ":" in line and not line.strip().startswith("#"):
-                    k, v = line.split(":", 1)
-                    res[k.strip()] = v.strip().strip("'\"")
-    return res
+    if not status_file.is_file():
+        return {}
+    import yaml  # type: ignore
+    with open(status_file, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
 
 
 def extract_codes_from_mapping_plan(plan_path: Path) -> set:
@@ -121,19 +118,34 @@ def collect_ancestors(code: str, code_to_lvl: dict, code_to_row: dict, result: d
 
 
 def sanitize_parent_refs(result: dict, levels: list):
-    """Trim cross-level parent references to only valid codes at each level."""
+    """Trim cross-level parent references to only valid codes at each level.
+    Per AGENTS.md §10: emit warnings for data issues instead of silent drops."""
     level_codes = {lvl: set(result.get(lvl, {}).keys()) for lvl in levels}
     dropped = []
+    warnings = []
 
     def clean(rows_dict, parent_field, parent_lvl, level_name):
         for code, row in list(rows_dict.items()):
-            valid = [c.strip() for c in row.get(parent_field, "").replace(";", ",").split(",")
-                     if c.strip() in level_codes[parent_lvl]]
+            raw_val = row.get(parent_field, "")
+            all_parts = [c.strip() for c in raw_val.replace(";", ",").split(",") if c.strip()]
+            valid = [c for c in all_parts if c in level_codes[parent_lvl]]
+            invalid = [c for c in all_parts if c not in level_codes[parent_lvl]]
+            
             if valid:
                 row[parent_field] = ", ".join(valid)
             else:
-                dropped.append((level_name, code, row.get(parent_field, "")))
+                # No valid parents - this row will be dropped
+                dropped.append((level_name, code, raw_val))
                 del rows_dict[code]
+            
+            if invalid:
+                warnings.append({
+                    "level": level_name,
+                    "code": code,
+                    "field": parent_field,
+                    "invalid_refs": invalid,
+                    "message": f"{level_name}/{code} has invalid parent refs in {parent_field}: {invalid} (not in {parent_lvl})"
+                })
 
     # NOTE: clean() may delete rows, so recompute level_codes for the cleaned
     # level after each call. Otherwise later clean() calls would validate parent
@@ -151,18 +163,25 @@ def sanitize_parent_refs(result: dict, levels: list):
         clean(result["concepts"], "topic_codes", "topics", "concepts")
         level_codes["concepts"] = set(result["concepts"].keys())
 
+    # Emit warnings for invalid refs (per AGENTS.md §10)
+    if warnings:
+        print("⚠️  Parent reference warnings (invalid refs kept but flagged):")
+        for w in warnings:
+            print(f"   • {w['level']}/{w['code']}: {w['message']}")
+    
+    # Emit dropped rows warning (these are actually removed)
     if dropped:
-        print("⚠️  Rows dropped for lacking any valid parent (fix the Master Tree or mapping-plan):")
+        print("⚠️  Rows DROPPED for lacking ANY valid parent (fix Master Tree or mapping-plan):")
         for level_name, code, raw in dropped:
             print(f"   • {level_name}/{code} (had: '{raw}')")
 
 
 HEADERS_MAP = {
-    "fields":     ["code", "name", "description", "display_order", "keywords", "cs2023_ka_mapping", "metadata"],
-    "subjects":   ["code", "name", "description", "field_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "categories": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "topics":     ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "concepts":   ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"],
+    "fields":     ["code", "name", "description", "display_order", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "subjects":   ["code", "name", "description", "field_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "categories": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "topics":     ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "concepts":   ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
 }
 
 

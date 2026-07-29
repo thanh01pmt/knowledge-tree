@@ -45,14 +45,12 @@ def load_env(repo_root: Path):
                     os.environ.setdefault(k.strip(), v.strip().strip("'\""))
 
 def load_status(repo_root: Path) -> dict:
-    res = {}
     sf = repo_root / "status.yaml"
-    if sf.is_file():
-        for line in sf.read_text(encoding="utf-8").splitlines():
-            if ":" in line and not line.strip().startswith("#"):
-                k, v = line.split(":", 1)
-                res[k.strip()] = v.strip().strip("'\"")
-    return res
+    if not sf.is_file():
+        return {}
+    import yaml  # type: ignore
+    with open(sf, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
 
 def get_client():
     from openai import OpenAI

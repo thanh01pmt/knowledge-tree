@@ -116,22 +116,30 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             print(f"  • {table_name:<20}: {synced_count} synced (Upserted in batches of 200, {skipped} skipped)")
             continue
 
-        # For normal tables
-        # Retrieve existing code -> id mapping from Supabase table (paginate — PostgREST default 1000)
-        all_existing = []
-        offset = 0
-        while True:
-            page = supabase.table(table_name).select("id, code").range(offset, offset + 999).execute()
-            all_existing.extend(page.data)
-            if len(page.data) < 1000:
-                break
-            offset += 1000
-        code_to_id = {r["code"]: r["id"] for r in all_existing if r.get("code")}
-
+        # For normal tables - OPTIMIZED: fetch only codes we need using 'in' query
+        # Collect all codes from the TSV first
+        tsv_codes = [r.get("code", "").strip() for r in rows if r.get("code", "").strip()]
+        
         # Đối với learning_objectives: sắp xếp theo thứ tự phụ thuộc parent_lo_code (UNIVERSAL -> CONCEPTUAL_IMPL -> SPECIFIC_IMPL)
         if table_name == "learning_objectives":
             type_priority = {"UNIVERSAL": 0, "CONCEPTUAL_IMPL": 1, "SPECIFIC_IMPL": 2}
             rows.sort(key=lambda x: type_priority.get(x.get("lo_type", "UNIVERSAL").strip(), 99))
+
+        # Fetch existing records for ONLY the codes we have in TSV (batched for PostgREST limits)
+        code_to_id = {}
+        if tsv_codes:
+            # PostgREST has a limit on 'in' query size (~1000 items per query)
+            # Batch the codes to avoid URL length limits
+            BATCH_SIZE = 500
+            for i in range(0, len(tsv_codes), BATCH_SIZE):
+                batch_codes = tsv_codes[i:i + BATCH_SIZE]
+                try:
+                    page = supabase.table(table_name).select("id, code").in_("code", batch_codes).execute()
+                    for r in page.data:
+                        if r.get("code"):
+                            code_to_id[r["code"]] = r["id"]
+                except Exception as e:
+                    print(f"  ⚠️ Warning: Failed to fetch existing codes for {table_name} batch {i//BATCH_SIZE}: {e}", file=sys.stderr)
 
         synced_count = 0
         updated_count = 0
@@ -184,14 +192,11 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
 
 def load_status(repo_root: Path) -> dict:
     status_file = repo_root / "status.yaml"
-    res = {}
-    if status_file.is_file():
-        with open(status_file, "r", encoding="utf-8") as f:
-            for line in f:
-                if ":" in line and not line.strip().startswith("#"):
-                    k, v = line.split(":", 1)
-                    res[k.strip()] = v.strip().strip("'\"")
-    return res
+    if not status_file.is_file():
+        return {}
+    import yaml  # type: ignore
+    with open(status_file, "r", encoding="utf-8") as f:
+        return yaml.safe_load(f) or {}
 
 def main():
     parser = argparse.ArgumentParser(description="Sync project TSV files to Supabase database with dependency ordering")
