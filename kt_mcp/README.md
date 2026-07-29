@@ -1,6 +1,6 @@
 # 🌳 Knowledge Tree MCP Hub Documentation
 
-Tài liệu này tổng hợp chi tiết về bộ công cụ **Knowledge Tree MCP Sub-Server (`kt`)** và hệ thống Multi-MCP Hub trong thư mục `mcp/`.
+Tài liệu này tổng hợp chi tiết về bộ công cụ **Knowledge Tree MCP Sub-Server (`kt`)** và hệ thống Multi-MCP Hub trong thư mục `kt_mcp/`.
 
 ---
 
@@ -13,10 +13,12 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 ---
 
-## 🛠️ Danh Sách Công Cụ (Tools) Của `kt` Server
+## 🛠️ Danh Sách Công Cụ (Tools) Của `kt` Server (27 Tools)
+
+### Validation & Audit (5 tools)
 
 ### 1. `kt_validate_tree`
-* **Mô tả**: Kiểm tra tính toàn vẹn tham chiếu (referential integrity) giữa 6 tầng dữ liệu (`fields` $\rightarrow$ `subjects` $\rightarrow$ `categories` $\rightarrow$ `topics` $\rightarrow$ `concepts` $\rightarrow$ `learning-objectives`).
+* **Mô tả**: Kiểm tra tính toàn vẹn tham chiếu (referential integrity) giữa 6 tầng dữ liệu (`fields` → `subjects` → `categories` → `topics` → `concepts` → `learning-objectives`).
 * **Tham số (Arguments)**:
   - `project_name` (`str`, bắt buộc): Tên slug dự án (ví dụ: `"roadmap_sh_graphql"`, `"swift-associate"`).
   - `fix` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, tự động chuẩn hoá các cell lỗi format an toàn (`DUPLICATE_REF_IN_CELL`, `SEPARATOR_FORMAT`) và sinh báo cáo đề xuất sửa lỗi (`proposed_fixes.md`).
@@ -59,14 +61,171 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 ---
 
-### 6. `kt_map_prerequisites`
-* **Mô tả**: Sinh DAG tiền đề (prerequisite) giữa các Learning Objectives theo phương pháp 4-Bước ADR-0005: Domain Partitioning → Concept DAG per-domain (LLM) → ULO Derivation → LLM Verify (phép thử ngược).
-* **Tham số**:
-  - `project_name` (`str`, bắt buộc): Tên slug dự án.
-  - `dry_run` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, in candidate DAG ra stdout, không ghi TSV.
-  - `no_verify` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, bỏ Bước 4 (LLM verify).
-  - `reuse_concept_dag` (`bool`, tùy chọn, mặc định `False`): Nếu `True`, dùng `.work/concept_dag.tsv` có sẵn, skip Bước 2.
-* **Kết quả trả về**: `lo_prerequisites.tsv`, `concepts.tsv` (thêm cột `prerequisite_concept_codes`), `.work/concept_dag.tsv`.
+### Hierarchical LO Generation Pipeline (6 tools)
+
+### 6. `kt_build_taxonomy`
+* **Mô tả**: Build 5 taxonomy TSV files từ approved mapping plan.
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 7. `kt_generate_ulos`
+* **Mô tả**: Phase A — Generate ULOs (Bloom Evaluate/Create, tech-agnostic) → `ulos_preview.md` (HITL checkpoint)
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 8. `kt_generate_cios`
+* **Mô tả**: Phase B — Generate CIOs + Marr 2-Language Test → `cios_preview.md` (HITL checkpoint)
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 9. `kt_generate_sios`
+* **Mô tả**: Phase C — Generate tech-specific SIOs
+* **Tham số**: `project_name` (`str`, bắt buộc), `technology` (`str`, tùy chọn, ví dụ: `"Swift / SwiftUI"`)
+
+---
+
+### 10. `kt_merge_los`
+* **Mô tả**: Merge ULO+CIO+SIO → `learning-objectives.tsv`
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 11. `kt_map_prerequisites`
+* **Mô tả**: Phase E (ADR-0005) — 4-step prerequisite mapping → `lo_prerequisites.tsv` + updated `concepts.tsv`
+* **Tham số**: `project_name` (`str`, bắt buộc), `dry_run` (`bool`), `no_verify` (`bool`), `reuse_concept_dag` (`bool`)
+
+---
+
+### Context & Taxonomy (2 tools)
+
+### 12. `kt_context_audit`
+* **Mô tả**: Phân tích syllabus + ATE keywords → `.work/context-audit.md`
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 13. `kt_map_taxonomy`
+* **Mô tả**: Cross-reference syllabus with Master Tree → `.work/mapping-plan.md` (HITL checkpoint)
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### ATE Pipeline (5 tools)
+
+### 14. `kt_scaffold_keywords`
+* **Mô tả**: Tạo workspace ATE keyword extraction
+* **Tham số**: `topic` (`str`, bắt buộc), `source_path` (`str`, bắt buộc), `project_name` (`str`, tùy chọn)
+
+---
+
+### 15. `kt_extract_terms`
+* **Mô tả**: YAKE + LLM candidate generation → embedding filter → candidates
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 16. `kt_verify_terms`
+* **Mô tả**: LLM dedup + omission check loop → `verify-report.md` (HITL checkpoint)
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 17. `kt_finalize_keywords`
+* **Mô tả**: Export `keywords.tsv` + inject into context audit
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 18. `kt_escalate_concepts`
+* **Mô tả**: Keywords → neutral concepts + Master Tree match → concept candidates (Gap D)
+* **Tham số**: `project_name` (`str`, bắt buộc), `match_threshold` (`float`, tùy chọn)
+
+---
+
+### Roadmap Aligner (5 tools)
+
+### 19. `kt_crawl_roadmap`
+* **Mô tả**: Scaffold project + crawl roadmap.sh graph JSON
+* **Tham số**: `url` (`str`, bắt buộc), `project_name` (`str`, tùy chọn)
+
+---
+
+### 20. `kt_init_staging_tree`
+* **Mô tả**: Initialize staging tree from roadmap DAG
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 21. `kt_apply_staging_plan`
+* **Mô tả**: Apply approved staging changes to local project
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 22. `kt_diff_staging`
+* **Mô tả**: Diff staging tree against Master Tree
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### 23. `kt_sync_master_back`
+* **Mô tả**: Push approved changes to Master Tree (Gate §8 protected — HITL required)
+* **Tham số**: `project_name` (`str`, bắt buộc)
+
+---
+
+### Workflow Orchestration (2 tools)
+
+### 24. `kt_run_pipeline_step`
+* **Mô tả**: Execute a single pipeline step with status tracking
+* **Tham số**: `project_name` (`str`), `step_name` (`str`), `params` (`object`)
+
+---
+
+### 25. `kt_get_pipeline_status`
+* **Mô tả**: Get current pipeline execution status
+* **Tham số**: `project_name` (`str`)
+
+---
+
+### System Introspection (2 tools - `sys` server)
+
+### 26. `sys_get_system_status`
+* **Mô tả**: Read `status.yaml` for overall repo state
+* **Tham số**: none
+
+---
+
+### 27. `sys_get_skill_metadata`
+* **Mô tả**: Read SKILL.md for a specific skill
+* **Tham số**: `skill_name` (`str`, bắt buộc)
+
+---
+
+## 📋 HITL Resources (9 Resource Templates — `sys` server)
+
+| Resource URI Template | Artifact Description |
+|---|---|
+| `project://sys/{project}/work/context-audit` | Context audit markdown (Checkpoint 3) |
+| `project://sys/{project}/work/mapping-plan` | Taxonomy mapping plan (Checkpoint 4) |
+| `project://sys/{project}/work/hlo/ulos_preview` | ULOs preview table (Checkpoint 5) |
+| `project://sys/{project}/work/hlo/cios_preview` | CIOs preview + Marr Test (Checkpoint 6) |
+| `project://sys/{project}/work/hlo/sios_preview` | SIOs preview |
+| `project://sys/{project}/work/concept_escalation` | Concept escalation report (Gap D) |
+| `project://sys/{project}/work/verify-report` | ATE keyword verification report (Checkpoint 1) |
+| `project://sys/{project}/work/gap_report` | Gap detection report |
+| `project://sys/{project}/work/coverage_audit` | Coverage audit report |
+
+---
+
+## 💬 Prompt (1 prompt — `sys` server)
+
+### `guide_workflow`
+* **Mô tả**: Cung cấp hướng dẫn quy trình từng bước cho Agent (slash command workflow guidance).
+* **Tham số**: `step` (`str`, tùy chọn) — tên bước cụ thể để xem hướng dẫn chi tiết.
 
 ---
 
@@ -82,7 +241,7 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
         "--with", "fastmcp>=3.0.0",
         "--with", "supabase>=2.0.0",
         "--with", "pandas>=2.0.0",
-        "mcp/main.py"
+        "kt_mcp/main.py"
       ],
       "cwd": "${workspaceFolder}"
     }
@@ -96,8 +255,9 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 Ngoài `kt`, Hub còn chứa sub-server **`sys` (SystemOps)**:
 - `sys_get_system_status`: Đọc file `status.yaml` để biết trạng thái tổng thể toàn repo.
-- `sys_get_skill_doc`: Đọc tài liệu hướng dẫn `SKILL.md` của một skill (thay thế resource `skills://` cũ).
+- `sys_get_skill_metadata`: Đọc tài liệu hướng dẫn `SKILL.md` của một skill (thay thế resource `skills://` cũ).
 - `sys_get_project_status`: Đọc thông tin trạng thái dự án từ `status.yaml` (thay thế resource `project://status` cũ).
 - `guide_workflow` (Prompt): Cung cấp hướng dẫn quy trình từng bước cho Agent.
+- **9 HITL Resource Templates**: `project://sys/{project}/work/{artifact}`
 
 > **Lưu ý bảo mật**: Tất cả tool nhận `project_name` đều validate slug (chỉ chấp nhận chữ thường, số, gạch ngang, gạch dưới) để ngăn path traversal. Các subprocess gọi script có timeout (120s-1800s tùy tool) để tránh hung process.
