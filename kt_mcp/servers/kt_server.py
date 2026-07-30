@@ -372,6 +372,98 @@ def query_master_tree(
 
 
 @kt_mcp.tool
+def query_master_tree_semantic(
+    query: str,
+    level: str = "",
+    limit: int = 10,
+    threshold: float = 0.3,
+    include_keywords: bool = True,
+    include_description: bool = True
+) -> str:
+    """
+    Tìm kiếm ngữ nghĩa (semantic search) Master Knowledge Tree dùng embedding vector.
+    
+    Args:
+        query: Câu truy vấn ngôn ngữ tự nhiên (VD: "làm sao để tối ưu thuật toán sắp xếp").
+        level: Giới hạn cấp độ. Rỗng = search tất cả 5 cấp + learning_objectives. Chọn: "fields", "subjects", "categories", "topics", "concepts", "learning_objectives".
+        limit: Số kết quả tối đa (mặc định 10, max 50).
+        threshold: Ngưỡng cosine similarity (0.0-1.0, mặc định 0.3).
+        include_keywords: Trả về cột keywords.
+        include_description: Trả về cột description.
+    
+    Returns:
+        JSON string: { "results": [ {level, code, name, keywords?, description?, similarity}, ... ], "total": N }
+    """
+    import json
+    import numpy as np
+    from pathlib import Path
+    
+    # Validate
+    if limit > 50:
+        limit = 50
+    if limit < 1:
+        limit = 1
+    if threshold < 0.0 or threshold > 1.0:
+        return json.dumps({"error": "threshold must be 0.0-1.0"}, ensure_ascii=False)
+    
+    valid_levels = {"fields", "subjects", "categories", "topics", "concepts", "learning_objectives", ""}
+    if level and level not in valid_levels:
+        return json.dumps({"error": f"Invalid level: {level}. Valid: {list(valid_levels)}"}, ensure_ascii=False)
+    
+    # Load embeddings file
+    emb_path = SKILLS_DIR / "taxonomy-mapper" / "resources" / "master_tree_embeddings.json"
+    if not emb_path.exists():
+        return json.dumps({"error": "master_tree_embeddings.json not found. Run generate_embeddings.py first."}, ensure_ascii=False)
+    
+    try:
+        with open(emb_path, 'r', encoding='utf-8') as f:
+            emb_data = json.load(f)
+    except Exception as e:
+        return json.dumps({"error": f"Failed to load embeddings: {e}"}, ensure_ascii=False)
+    
+    # Load sentence transformer model (cached)
+    try:
+        from sentence_transformers import SentenceTransformer
+        model = SentenceTransformer('all-MiniLM-L6-v2')
+    except Exception as e:
+        return json.dumps({"error": f"Failed to load sentence-transformers: {e}. Install: pip install sentence-transformers"}, ensure_ascii=False)
+    
+    # Encode query
+    query_emb = model.encode(query, convert_to_numpy=True, normalize_embeddings=True)
+    
+    # Filter nodes by level
+    nodes = emb_data.get('nodes', [])
+    if level:
+        nodes = [n for n in nodes if n.get('level') == level]
+    
+    # Compute cosine similarity (embeddings already normalized)
+    results = []
+    for node in nodes:
+        emb = node.get('embedding')
+        if not emb:
+            continue
+        sim = float(np.dot(query_emb, emb))
+        if sim >= threshold:
+            res = {
+                "level": node.get("level"),
+                "code": node.get("code"),
+                "name": node.get("name"),
+                "similarity": round(sim, 4)
+            }
+            if include_keywords:
+                res["keywords"] = node.get("keywords", "")
+            if include_description:
+                res["description"] = node.get("description", "")
+            results.append(res)
+    
+    # Sort by similarity descending
+    results.sort(key=lambda x: x["similarity"], reverse=True)
+    results = results[:limit]
+    
+    return json.dumps({"results": results, "total": len(results)}, ensure_ascii=False)
+
+
+@kt_mcp.tool
 def build_taxonomy(project_name: str, source: str = "mapping-plan") -> str:
     """
     Xây dựng 5 file TSV phân loại (fields, subjects, categories, topics, concepts) từ mapping-plan.md đã duyệt.

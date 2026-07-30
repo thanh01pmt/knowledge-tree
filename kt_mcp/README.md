@@ -13,7 +13,7 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 ---
 
-## 🛠️ Danh Sách Công Cụ (Tools) Của `kt` Server (28 Tools)
+## 🛠️ Danh Sách Công Cụ (Tools) Của `kt` Server (29 Tools)
 
 ### Validation & Audit (5 tools)
 
@@ -71,6 +71,17 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
   - `include_keywords` (`bool`, tùy chọn, mặc định `true`): Trả về cột keywords.
   - `include_description` (`bool`, tùy chọn, mặc định `true`): Trả về cột description.
 * **Kết quả**: JSON `{ "results": [{level, code, name, keywords?, description?, score}, ...], "total": N }`
+
+---
+
+### 7. `kt_query_master_tree_semantic`
+* **Mô tả**: Tìm kiếm ngữ nghĩa (semantic search) trên Master Knowledge Tree dùng sentence-transformers (MiniLM-L6-v2). Hiểu ngữ cảnh, đồng nghĩa, đa ngôn ngữ (EN/VI). Thích hợp cho truy vấn tự nhiên như "thuật toán tìm kiếm nhị phân", "kiến trúc CPU", "cách sắp xếp mảng".
+* **Tham số**:
+  - `query` (`str`, bắt buộc): Câu truy vấn tự nhiên (tiếng Anh hoặc tiếng Việt).
+  - `level` (`str`, tùy chọn): `"fields"` \| `"subjects"` \| `"categories"` \| `"topics"` \| `"concepts"` \| `"learning_objectives"` \| `""` (tất cả).
+  - `limit` (`int`, tùy chọn, mặc định `10`, max `50`): Số kết quả tối đa.
+  - `threshold` (`float`, tùy chọn, mặc định `0.35`): Ngưỡng cosine similarity (0.0-1.0). Thấp hơn = nhiều kết quả hơn.
+* **Kết quả**: JSON `{ "results": [{level, code, name, keywords, description, similarity}, ...], "total": N }`
 
 ---
 
