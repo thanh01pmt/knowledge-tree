@@ -75,7 +75,7 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 ---
 
 ### 7. `kt_query_master_tree_semantic`
-* **Mô tả**: Tìm kiếm ngữ nghĩa (semantic search) trên Master Knowledge Tree dùng sentence-transformers (MiniLM-L6-v2). Hiểu ngữ cảnh, đồng nghĩa, đa ngôn ngữ (EN/VI). Thích hợp cho truy vấn tự nhiên như "thuật toán tìm kiếm nhị phân", "kiến trúc CPU", "cách sắp xếp mảng".
+* **Mô tả**: Tìm kiếm ngữ nghĩa (semantic search) trên Master Knowledge Tree dùng **Ollama (nomic-embed-text, 768-dim)**. Hiểu ngữ cảnh, đồng nghĩa, đa ngôn ngữ (EN/VI). Thích hợp cho truy vấn tự nhiên như "thuật toán tìm kiếm nhị phân", "kiến trúc CPU", "cách sắp xếp mảng". Model chạy local trên VM qua Ollama container (không phụ thuộc HF Hub).
 * **Tham số**:
   - `query` (`str`, bắt buộc): Câu truy vấn tự nhiên (tiếng Anh hoặc tiếng Việt).
   - `level` (`str`, tùy chọn): `"fields"` \| `"subjects"` \| `"categories"` \| `"topics"` \| `"concepts"` \| `"learning_objectives"` \| `""` (tất cả).

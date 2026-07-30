@@ -20,7 +20,7 @@ Hệ thống xây dựng và tự động hóa Khung tri thức (Knowledge Tree)
 - **Concepts**: 44 concepts (9 có LOs, 35 tái dùng từ Master Tree)
 - **Validation**: ✅ PASS (0 errors, 93 orphan warnings từ Master Tree reuse — dự kiến)
 - **Coverage Audit**: ⚠️ 2.33% syllabus coverage (9/43 syllabus items có LO phủ — gap: các concept syllabus không nằm trong scope project này)
-- **MCP Integration**: ✅ Hoàn tất (27 tools + 9 HITL resources + 1 workflow prompt)
+- **MCP Integration**: ✅ Hoàn tất (29 tools + 9 HITL resources + 1 workflow prompt)
 - **Pipeline Phase**: Hoàn tất Phase 4 (Validation & Release) — sẵn sàng `/sync-supabase` với phê duyệt HITL
 
 **Trạng Thái Master Tree**: ✅ Đã validated (v2.2, collision-free, referential integrity PASS)
@@ -215,7 +215,7 @@ flowchart TD
 
 > **Legacy:** `/generate-los` (1-shot, no Marr Test, no HITL) — deprecated, use 3-phase pipeline above.
 
-### MCP Tools (27 tools, 9 HITL resources, 1 prompt)
+### MCP Tools (29 tools, 9 HITL resources, 1 prompt)
 | Tool / Resource | Server | Description |
 |---|---|---|
 | `kt_validate_tree`, `kt_detect_gaps`, `kt_audit_coverage`, `kt_sync_supabase`, `kt_scaffold_project` | `kt` | Project validation, gap detection, coverage audit, DB sync |
