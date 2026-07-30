@@ -421,10 +421,10 @@ def query_master_tree_semantic(
     except Exception as e:
         return json.dumps({"error": f"Failed to load embeddings: {e}"}, ensure_ascii=False)
     
-    # Load sentence transformer model (cached)
+    # Load sentence transformer model (cached) - must match embedding generation model
     try:
         from sentence_transformers import SentenceTransformer
-        model = SentenceTransformer('all-MiniLM-L6-v2')
+        model = SentenceTransformer('paraphrase-multilingual-MiniLM-L12-v2')
     except Exception as e:
         return json.dumps({"error": f"Failed to load sentence-transformers: {e}. Install: pip install sentence-transformers"}, ensure_ascii=False)
     
