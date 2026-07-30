@@ -143,7 +143,7 @@ knowledge-tree/
 - **Concepts**: 44 concepts (9 with LOs, 35 from Master Tree reuse)
 - **Validation**: ✅ PASS (0 errors, 93 orphan warnings from Master Tree reuse - expected)
 - **Coverage Audit**: ⚠️ 2.33% syllabus coverage (9/43 syllabus items covered by LOs — gap: syllabus concepts not in this project's scope)
-- **MCP Integration**: ✅ Complete (27 tools + 9 HITL resources + 1 workflow prompt)
+- **MCP Integration**: ✅ Complete (29 tools + 9 HITL resources + 1 workflow prompt)
 - **Pipeline Phase**: Complete through Phase 4 (Validation & Release) — ready for `/sync-supabase` with HITL approval
 
 **Master Tree Status**: ✅ Validated (v2.2, collision-free, referential integrity PASS)
@@ -213,7 +213,7 @@ flowchart TD
 | `/audit-coverage` | `@tree-validator` | ❌ | Perform Reverse Coverage Audit against source syllabus |
 | `/sync-supabase` | `@tree-assembler` | ❌ | Synchronize 6 validated TSV files to Supabase Cloud DB (Gate §8: HITL required) |
 
-### MCP Tools (27 tools, 9 HITL resources, 1 prompt)
+### MCP Tools (29 tools, 9 HITL resources, 1 prompt)
 | Tool / Resource | Server | Description |
 |---|---|---|
 | `kt_validate_tree`, `kt_detect_gaps`, `kt_audit_coverage`, `kt_sync_supabase`, `kt_scaffold_project` | `kt` | Project validation, gap detection, coverage audit, DB sync |
