@@ -13,7 +13,7 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 ---
 
-## 🛠️ Danh Sách Công Cụ (Tools) Của `kt` Server (27 Tools)
+## 🛠️ Danh Sách Công Cụ (Tools) Của `kt` Server (28 Tools)
 
 ### Validation & Audit (5 tools)
 
@@ -58,6 +58,19 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 * **Tham số**:
   - `project_name` (`str`, bắt buộc): Tên dự án mới (slug dạng kebab-case/snake_case, chỉ gồm chữ thường, số, gạch ngang/gạch dưới).
 * **Kết quả trả về**: Thông báo tạo cấu trúc thư mục thành công.
+
+---
+
+### 6. `kt_query_master_tree`
+* **Mô tả**: Tìm kiếm/filter Master Knowledge Tree (mlo-knowlege-tree.tsv) — fuzzy search, level filter, parent filter.
+* **Tham số**:
+  - `query` (`str`, tùy chọn, mặc định `""`): Từ khóa tìm kiếm (tên, mã, keywords, description).
+  - `level` (`str`, tùy chọn): `"fields"` \| `"subjects"` \| `"categories"` \| `"topics"` \| `"concepts"` \| `""` (tất cả).
+  - `parent` (`str`, tùy chọn): Mã node cha để lọc top-down.
+  - `limit` (`int`, tùy chọn, mặc định `20`, max `100`): Số kết quả tối đa.
+  - `include_keywords` (`bool`, tùy chọn, mặc định `true`): Trả về cột keywords.
+  - `include_description` (`bool`, tùy chọn, mặc định `true`): Trả về cột description.
+* **Kết quả**: JSON `{ "results": [{level, code, name, keywords?, description?, score}, ...], "total": N }`
 
 ---
 

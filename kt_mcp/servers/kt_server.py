@@ -228,6 +228,150 @@ def validate_master_tree() -> str:
 
 
 @kt_mcp.tool
+def query_master_tree(
+    query: str = "",
+    level: str = "",
+    parent: str = "",
+    limit: int = 20,
+    include_keywords: bool = True,
+    include_description: bool = True
+) -> str:
+    """
+    Tìm kiếm/filter Master Knowledge Tree (mlo-knowlege-tree.tsv) qua MCP.
+    
+    Args:
+        query: Từ khóa tìm kiếm mờ (tên, mã, keywords, description). Rỗng = trả về tất cả (theo limit).
+        level: Giới hạn cấp độ. Rỗng = search tất cả 5 cấp. Chọn: "fields", "subjects", "categories", "topics", "concepts".
+        parent: Lọc theo mã node cha (ví dụ: "PROGRAMMING_FUNDAMENTALS").
+        limit: Số kết quả tối đa (mặc định 20, max 100).
+        include_keywords: Trả về cột keywords.
+        include_description: Trả về cột description.
+    
+    Returns:
+        JSON string: { "results": [ {level, code, name, keywords?, description?, score}, ... ], "total": N }
+    """
+    import json
+    import re
+    import unicodedata
+    from pathlib import Path
+    
+    # Validate limit
+    if limit > 100:
+        limit = 100
+    if limit < 1:
+        limit = 1
+    
+    # Validate level
+    valid_levels = {"fields", "subjects", "categories", "topics", "concepts", ""}
+    if level and level not in valid_levels:
+        return json.dumps({"error": f"Invalid level: {level}. Valid: {list(valid_levels)}"}, ensure_ascii=False)
+    
+    # Load master_tree.json
+    tree_path = SKILLS_DIR / "taxonomy-mapper" / "resources" / "master_tree.json"
+    if not tree_path.exists():
+        return json.dumps({"error": "master_tree.json not found. Run parse_master_tree.py first."}, ensure_ascii=False)
+    
+    try:
+        with open(tree_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+    except Exception as e:
+        return json.dumps({"error": f"Failed to load master_tree.json: {e}"}, ensure_ascii=False)
+    
+    # Scoring logic (reused from query_master_tree.py)
+    def strip_diacritics(text: str) -> str:
+        if not text:
+            return ""
+        nfkd = unicodedata.normalize("NFKD", text)
+        return "".join(c for c in nfkd if not unicodedata.combining(c))
+    
+    def normalize_text(text):
+        return strip_diacritics(text).lower().strip()
+    
+    def word_boundary_match(needle: str, haystack: str) -> bool:
+        if not needle or not haystack:
+            return False
+        pattern = r"\b" + re.escape(needle) + r"\b"
+        return re.search(pattern, haystack) is not None
+    
+    def calculate_score(q, code, name, keywords, description=""):
+        q = normalize_text(q)
+        c = normalize_text(code)
+        n = normalize_text(name)
+        k = normalize_text(keywords)
+        d = normalize_text(description)
+        if not q:
+            return 1
+        if q == c:
+            return 100
+        if q == n:
+            return 90
+        # keyword exact match (word-boundary on comma-separated list)
+        if any(word_boundary_match(q, kw.strip()) for kw in k.split(",")):
+            return 80
+        if word_boundary_match(q, n):
+            return 50
+        if word_boundary_match(q, k):
+            return 30
+        if word_boundary_match(q, d):
+            return 20
+        # multi-word query: count matched words
+        q_words = q.split()
+        if len(q_words) > 1:
+            matched_words = 0
+            for w in q_words:
+                if (word_boundary_match(w, n)
+                        or word_boundary_match(w, k)
+                        or word_boundary_match(w, d)):
+                    matched_words += 1
+            if matched_words > 0:
+                return matched_words * 10
+        return 0
+    
+    def get_parent_field(lvl):
+        return {
+            'subjects': 'field_codes',
+            'categories': 'subject_codes',
+            'topics': 'category_codes',
+            'concepts': 'topic_codes'
+        }.get(lvl)
+    
+    levels_to_search = [level] if level else ["fields", "subjects", "categories", "topics", "concepts"]
+    results = []
+    
+    for lvl in levels_to_search:
+        rows = data.get(lvl, [])
+        parent_field = get_parent_field(lvl)
+        for row in rows:
+            # Filter by parent
+            if parent and parent_field:
+                parents_str = row.get(parent_field, "")
+                if parent not in [p.strip() for p in parents_str.replace(";", ",").replace("|", ",").split(",")]:
+                    continue
+            elif parent and not parent_field:  # Fields don't have parents
+                continue
+            
+            code = row.get("code", "")
+            name = row.get("name", "")
+            keywords = row.get("keywords", "")
+            description = row.get("description", "")
+            
+            score = calculate_score(query, code, name, keywords, description)
+            if score > 0 or not query:
+                res = {"level": lvl, "code": code, "name": name, "score": score}
+                if include_keywords:
+                    res["keywords"] = keywords
+                if include_description:
+                    res["description"] = description
+                results.append(res)
+    
+    # Sort by score descending
+    results.sort(key=lambda x: x["score"], reverse=True)
+    results = results[:limit]
+    
+    return json.dumps({"results": results, "total": len(results)}, ensure_ascii=False)
+
+
+@kt_mcp.tool
 def build_taxonomy(project_name: str, source: str = "mapping-plan") -> str:
     """
     Xây dựng 5 file TSV phân loại (fields, subjects, categories, topics, concepts) từ mapping-plan.md đã duyệt.
