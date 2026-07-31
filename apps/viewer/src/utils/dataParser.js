@@ -7,6 +7,9 @@ export function parseKnowledgeTree(rawData) {
   const links = [];
   const linksBySource = {};
   
+  const fieldHues = [200, 140, 30, 280, 0, 320, 60, 100, 250]; // Distinct hues for fields
+  let fieldIndex = 0;
+  
   const processItems = (items, level, parentKeys) => {
     if (!items) return;
     
@@ -22,6 +25,10 @@ export function parseKnowledgeTree(rawData) {
       };
       nodes.push(node);
       
+      if (level === 'field') {
+        node.hue = fieldHues[fieldIndex++ % fieldHues.length];
+      }
+      
       // Create links from parents
       if (parentKeys) {
         parentKeys.forEach(parentKey => {
@@ -30,6 +37,12 @@ export function parseKnowledgeTree(rawData) {
             const parentCodes = item[parentKey].split(',').map(code => code.trim());
             parentCodes.forEach(parentCode => {
               if (parentCode) {
+                // Kế thừa màu từ cha
+                const parentNode = nodes.find(n => n.id === parentCode);
+                if (parentNode && node.hue === undefined) {
+                  node.hue = parentNode.hue;
+                }
+
                 links.push({
                   source: parentCode,
                   target: item.code
@@ -53,6 +66,7 @@ export function parseKnowledgeTree(rawData) {
   processItems(rawData.subjects, 'subject', ['field_codes']);
   processItems(rawData.categories, 'category', ['subject_codes']);
   processItems(rawData.topics, 'topic', ['category_codes']);
+  processItems(rawData.concepts, 'concept', ['topic_codes']);
   
   // 2. Calculate linkCount for node sizing
   links.forEach(link => {

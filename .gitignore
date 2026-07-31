@@ -10,6 +10,7 @@ __pycache__/
 supabase/
 refs/
 docs/
+node_modules/
 
 
 

@@ -1,33 +1,46 @@
 import { useState, useMemo } from 'react';
 import KnowledgeTree3D from './components/KnowledgeTree3D';
+import ControlPanel from './components/ControlPanel';
 import { parseKnowledgeTree } from './utils/dataParser';
 import rawTreeData from './data/master_tree.json';
 import './App.css';
 
 function App() {
   const [selectedNode, setSelectedNode] = useState(null);
+  const [searchedNodeId, setSearchedNodeId] = useState(null);
+  const [filters, setFilters] = useState({ showLabels: true, hideConcepts: true });
+  const [simulationConfig, setSimulationConfig] = useState({ charge: -200, linkDistance: 80 });
 
   // Parse data once
   const { graphData, linksBySource } = useMemo(() => {
     return parseKnowledgeTree(rawTreeData);
   }, []);
 
+  const handleNodeSearch = node => {
+    setSearchedNodeId(node.id);
+    setSelectedNode(node);
+  };
+
   return (
-    <div className="app-container">
-      {/* Top Header / Search Bar Placeholder */}
-      <header className="app-header">
-        <h1>Knowledge Tree Viewer</h1>
-        <div className="search-bar-placeholder">
-          🔍 Search...
-        </div>
-      </header>
+    <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
+      <ControlPanel 
+        nodes={graphData.nodes} 
+        onNodeSearch={handleNodeSearch}
+        filters={filters}
+        setFilters={setFilters}
+        simulationConfig={simulationConfig}
+        setSimulationConfig={setSimulationConfig}
+      />
 
       {/* Main 3D Graph */}
-      <div className="graph-container">
+      <div className="flex-1 relative h-full w-full">
         <KnowledgeTree3D 
           graphData={graphData} 
           linksBySource={linksBySource} 
-          onNodeSelect={setSelectedNode} 
+          onNodeSelect={setSelectedNode}
+          searchedNodeId={searchedNodeId}
+          filters={filters}
+          simulationConfig={simulationConfig}
         />
       </div>
 
