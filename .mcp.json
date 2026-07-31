@@ -9,7 +9,7 @@
         "--with", "pandas>=2.0.0",
         "kt_mcp/main.py"
       ],
-      "cwd": "${workspaceFolder}"
+      "cwd": "${workspaceFolder}/services/python-api"
     }
   }
 }
