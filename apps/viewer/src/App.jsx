@@ -34,7 +34,7 @@ const DEFAULT_LEVEL_CONFIG = {
 function App() {
   const [selectedNode, setSelectedNode] = useState(null);
   const [searchedNodeId, setSearchedNodeId] = useState(null);
-  const [filters, setFilters] = useState({ showLabels: true, hideConcepts: true });
+  const [filters, setFilters] = useState({ showLabels: true, maxLevel: 'topic' });
   const [visualConfig, setVisualConfig] = useState(() => {
     const saved = localStorage.getItem('kt_visualConfig');
     return saved ? JSON.parse(saved) : DEFAULT_VISUAL_CONFIG;

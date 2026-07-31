@@ -245,17 +245,20 @@ export default function ControlPanel({
               <div className="bg-[#2a2f36] rounded-md p-3 flex flex-col gap-4 border border-slate-800">
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs text-slate-300">Hide Concepts (Anti-Hairball)</span>
-                    <Info className="w-3.5 h-3.5 text-slate-500 cursor-help" title="Ẩn các node con cấp thấp nhất để đồ thị thoáng hơn" />
+                    <span className="text-xs text-slate-300">Max Render Level</span>
+                    <Info className="w-3.5 h-3.5 text-slate-500 cursor-help" title="Lọc các node theo cấp độ sâu nhất được hiển thị trên đồ thị" />
                   </div>
-                  <button 
-                    role="switch"
-                    aria-checked={filters.hideConcepts}
-                    onClick={() => setFilters({...filters, hideConcepts: !filters.hideConcepts})}
-                    className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors focus:outline-none ${filters.hideConcepts ? 'bg-slate-400' : 'bg-slate-600'}`}
+                  <select 
+                    value={filters.maxLevel || 'topic'}
+                    onChange={(e) => setFilters({...filters, maxLevel: e.target.value})}
+                    className="bg-[#1f242b] border border-slate-700 text-slate-300 text-xs rounded px-2 py-1 outline-none focus:border-slate-500"
                   >
-                    <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${filters.hideConcepts ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
-                  </button>
+                    <option value="field">1. Field (Ngành)</option>
+                    <option value="subject">2. Subject (Môn)</option>
+                    <option value="category">3. Category (Danh mục)</option>
+                    <option value="topic">4. Topic (Chủ đề)</option>
+                    <option value="concept">5. Concept (Khái niệm)</option>
+                  </select>
                 </div>
               </div>
             </div>

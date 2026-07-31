@@ -37,7 +37,7 @@ function getGlowTexture() {
   return glowTextureCache;
 }
 
-export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, onNodeSelect, searchedNodeId, filters = { showLabels: true, hideConcepts: true }, visualConfig, levelConfig, selectedNode }) {
+export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, onNodeSelect, searchedNodeId, filters = { showLabels: true, maxLevel: 'topic' }, visualConfig, levelConfig, selectedNode }) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
   const [highlightLinks, setHighlightLinks] = useState(new Set());
@@ -190,19 +190,26 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
   const visibleGraphData = useMemo(() => {
     if (!graphData) return { nodes: [], links: [] };
 
-    // If hideConcepts is false, just return everything!
-    if (!filters.hideConcepts) return graphData;
+    const maxLevel = filters.maxLevel || 'topic';
+    const levelOrder = ['field', 'subject', 'category', 'topic', 'concept'];
+    const maxIndex = levelOrder.indexOf(maxLevel) !== -1 ? levelOrder.indexOf(maxLevel) : 3;
+
+    // Nếu maxLevel là concept (cấp thấp nhất), hiển thị toàn bộ đồ thị
+    if (maxIndex === levelOrder.length - 1) return graphData;
 
     const visibleNodesSet = new Set();
     
-    // Add default visible nodes
+    // Add default visible nodes up to maxLevel
     graphData.nodes.forEach(node => {
-      if (['field', 'subject', 'category', 'topic'].includes(node.level)) {
+      const nodeIndex = levelOrder.indexOf(node.level);
+      // Fallback: nếu node không có level chuẩn, vẫn cho hiển thị nếu maxLevel = concept, 
+      // hoặc mặc định ẩn đi nếu không rõ level. Ở đây ta ưu tiên ẩn các node lỗi level.
+      if (nodeIndex !== -1 && nodeIndex <= maxIndex) {
         visibleNodesSet.add(node.id);
       }
     });
     
-    // Add children of expanded nodes
+    // Add children of expanded nodes (allow drill-down beyond maxLevel)
     expandedNodes.forEach(nodeId => {
       const children = linksBySource[nodeId] || [];
       children.forEach(childId => visibleNodesSet.add(childId));
@@ -220,7 +227,7 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     });
     
     return { nodes: filteredNodes, links: filteredLinks };
-  }, [graphData, expandedNodes, linksBySource, filters.hideConcepts]);
+  }, [graphData, expandedNodes, linksBySource, filters.maxLevel]);
 
   // Configure physics
   useEffect(() => {
