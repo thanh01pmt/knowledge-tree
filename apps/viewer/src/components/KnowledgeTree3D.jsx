@@ -16,6 +16,27 @@ const shapeGeometries = {
 // Compute bounding spheres once for label offset calculation
 Object.values(shapeGeometries).forEach(g => g.computeBoundingSphere());
 
+// Create soft glow texture once for reuse
+let glowTextureCache = null;
+function getGlowTexture() {
+  if (glowTextureCache) return glowTextureCache;
+  const canvas = document.createElement('canvas');
+  canvas.width = 64;
+  canvas.height = 64;
+  const context = canvas.getContext('2d');
+  
+  const gradient = context.createRadialGradient(32, 32, 0, 32, 32, 32);
+  gradient.addColorStop(0, 'rgba(255, 255, 255, 1)');
+  gradient.addColorStop(0.3, 'rgba(255, 255, 255, 0.8)');
+  gradient.addColorStop(1, 'rgba(255, 255, 255, 0)');
+  
+  context.fillStyle = gradient;
+  context.fillRect(0, 0, 64, 64);
+  
+  glowTextureCache = new THREE.CanvasTexture(canvas);
+  return glowTextureCache;
+}
+
 export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, onNodeSelect, searchedNodeId, filters = { showLabels: true, hideConcepts: true }, visualConfig, levelConfig, selectedNode }) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
@@ -279,10 +300,69 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
         setIsTransforming(true);
         setHoveredNode(null);
         
+        // 1. Tính trọng tâm (Centroid) của cụm node được highlight
+        const neighborhoodNodes = Array.from(newHighlightNodes)
+          .map(id => graphData.nodes.find(n => n.id === id))
+          .filter(Boolean);
+        
+        let cx = 0, cy = 0, cz = 0;
+        neighborhoodNodes.forEach(n => {
+          cx += (n.x || 0); cy += (n.y || 0); cz += (n.z || 0);
+        });
+        const len = neighborhoodNodes.length;
+        if (len > 0) { cx /= len; cy /= len; cz /= len; }
+
+        // 2. Vector hướng mọc (từ Node chính đến Trọng tâm)
+        let dx = cx - node.x;
+        let dy = cy - node.y;
+        let dz = cz - node.z;
+        let dirLen = Math.hypot(dx, dy, dz);
+
+        let camDirX, camDirY, camDirZ;
+        const ox = node.x, oy = node.y, oz = node.z;
+        const outLen = Math.hypot(ox, oy, oz) || 1;
+
+        if (dirLen < 0.1 || len <= 1) {
+           // Cụm quá nhỏ, dùng luôn hướng Outward từ gốc tọa độ
+           camDirX = ox / outLen; camDirY = oy / outLen; camDirZ = oz / outLen;
+        } else {
+           dx /= dirLen; dy /= dirLen; dz /= dirLen; // Chuẩn hóa Dir
+
+           // Trực giao hóa Gram-Schmidt: Cam = Outward - Dir * (Outward . Dir)
+           const dot = ox * dx + oy * dy + oz * dz;
+           camDirX = ox - dot * dx;
+           camDirY = oy - dot * dy;
+           camDirZ = oz - dot * dz;
+
+           let camLen = Math.hypot(camDirX, camDirY, camDirZ);
+           
+           if (camLen < 0.1) {
+              // Trường hợp hiếm: Cụm mọc thẳng hàng với tia Outward
+              // Tạo một vector vuông góc bất kỳ để nhìn từ bên hông
+              const nx = ox / outLen, ny = oy / outLen, nz = oz / outLen;
+              if (Math.abs(nx) < 0.9) {
+                  camDirX = 0; camDirY = nz; camDirZ = -ny;
+              } else {
+                  camDirX = -nz; camDirY = 0; camDirZ = nx;
+              }
+              camLen = Math.hypot(camDirX, camDirY, camDirZ);
+           }
+           
+           camDirX /= camLen; camDirY /= camLen; camDirZ /= camLen;
+           
+           // Luôn giữ camera ở nửa bán cầu hướng ra ngoài
+           if (camDirX * ox + camDirY * oy + camDirZ * oz < 0) {
+               camDirX = -camDirX; camDirY = -camDirY; camDirZ = -camDirZ;
+           }
+        }
+        
         const distance = 500;
-        const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
         fgRef.current.cameraPosition(
-          { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+          { 
+            x: node.x + camDirX * distance, 
+            y: node.y + camDirY * distance, 
+            z: node.z + camDirZ * distance 
+          },
           node, // lookAt exactly at the selected node
           1500  // transition time
         );
@@ -386,30 +466,54 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     
     let radius = baseRadius * scale; // approximate radius for label offset
         
-        if (!isTextOnly) {
-          const shapeKey = config ? config.shape : 'sphere';
-          const geometry = shapeGeometries[shapeKey] || shapeGeometries['sphere'];
-          
-          const nodeOpacity = config ? config.opacity : 1.0;
-          const isFaded = highlightNodes.size > 0 && !highlightNodes.has(node.id);
-          
-          const material = new THREE.MeshLambertMaterial({ 
-            color: getNodeColor(node),
-            transparent: nodeOpacity < 1.0 || isFaded,
-            opacity: isFaded ? (nodeOpacity * 0.1) : nodeOpacity
-          });
-          const mesh = new THREE.Mesh(geometry, material);
-          
-          mesh.scale.set(scale, scale, scale);
-          group.add(mesh);
-          
-          if (geometry.boundingSphere) {
-             radius = geometry.boundingSphere.radius * scale;
-          }
-        } else {
-          radius = 1; // minimal offset if no shape
-        }
+    const isFocused = focusedNodeId === node.id;
+    const color = getNodeColor(node);
 
+    if (!isTextOnly) {
+      const shapeKey = config ? config.shape : 'sphere';
+      const geometry = shapeGeometries[shapeKey] || shapeGeometries['sphere'];
+      
+      const nodeOpacity = config ? config.opacity : 1.0;
+      const isFaded = highlightNodes.size > 0 && !highlightNodes.has(node.id);
+      
+      const material = new THREE.MeshLambertMaterial({ 
+        color: color,
+        transparent: nodeOpacity < 1.0 || isFaded,
+        opacity: isFaded ? (nodeOpacity * 0.1) : nodeOpacity
+      });
+      const mesh = new THREE.Mesh(geometry, material);
+      
+      mesh.scale.set(scale, scale, scale);
+      group.add(mesh);
+
+      // Hiệu ứng Glow cho Node đang được chọn
+      if (isFocused) {
+        const glowMaterial = new THREE.SpriteMaterial({
+          map: getGlowTexture(),
+          color: color,
+          transparent: true,
+          opacity: 0.7,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false
+        });
+        const glowSprite = new THREE.Sprite(glowMaterial);
+        // Phóng to Sprite lên để tạo viền halo mềm
+        glowSprite.scale.set(scale * 3.5, scale * 3.5, 1);
+        group.add(glowSprite);
+      }
+      
+      if (geometry.boundingSphere) {
+         radius = geometry.boundingSphere.radius * scale;
+      }
+    } else {
+      radius = 1; // minimal offset if no shape
+    }
+
+    // Add PointLight for environmental glow effect on nearby nodes
+    if (isFocused) {
+       const light = new THREE.PointLight(color, 200, 150); // color, intensity, distance
+       group.add(light);
+    }
         // 2. Check expansion state
         const hasChildren = linksBySource[node.id] && linksBySource[node.id].length > 0;
         const isExpanded = expandedNodes.has(node.id);
