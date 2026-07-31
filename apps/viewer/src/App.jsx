@@ -1,6 +1,7 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo, useEffect, useCallback } from 'react';
 import KnowledgeTree3D from './components/KnowledgeTree3D';
 import ControlPanel from './components/ControlPanel';
+import NodeDetailsPanel from './components/NodeDetailsPanel';
 import { parseKnowledgeTree } from './utils/dataParser';
 import rawTreeData from './data/master_tree.json';
 import './App.css';
@@ -61,14 +62,45 @@ function App() {
   };
 
   // Parse data once
-  const { graphData, linksBySource } = useMemo(() => {
+  const { graphData, linksBySource, linksByTarget } = useMemo(() => {
     return parseKnowledgeTree(rawTreeData);
   }, []);
 
-  const handleNodeSearch = node => {
-    setSearchedNodeId(node.id);
+  const [history, setHistory] = useState([]);
+  const [historyIndex, setHistoryIndex] = useState(-1);
+
+  const handleNodeSelect = useCallback((node, isHistoryNavigation = false) => {
+    if (!node) {
+      setSelectedNode(null);
+      return;
+    }
+    
+    if (!isHistoryNavigation) {
+      setHistory(prev => {
+        const newHistory = prev.slice(0, historyIndex + 1);
+        newHistory.push(node);
+        return newHistory;
+      });
+      setHistoryIndex(prev => prev + 1);
+    }
+    
     setSelectedNode(node);
-  };
+  }, [historyIndex]);
+
+  const handleNavigateHistory = useCallback((direction) => {
+    if (direction === 'back' && historyIndex > 0) {
+      setHistoryIndex(historyIndex - 1);
+      handleNodeSelect(history[historyIndex - 1], true);
+    } else if (direction === 'forward' && historyIndex < history.length - 1) {
+      setHistoryIndex(historyIndex + 1);
+      handleNodeSelect(history[historyIndex + 1], true);
+    }
+  }, [history, historyIndex, handleNodeSelect]);
+
+  const handleNodeSearch = useCallback(node => {
+    setSearchedNodeId(node.id);
+    handleNodeSelect(node);
+  }, [handleNodeSelect]);
 
   return (
     <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
@@ -85,38 +117,32 @@ function App() {
       />
 
       {/* Main 3D Graph */}
-      <div className="flex-1 relative h-full w-full">
+      <div className="flex-1 min-w-0 relative h-full w-full">
         <KnowledgeTree3D 
           graphData={graphData} 
           linksBySource={linksBySource} 
-          onNodeSelect={setSelectedNode}
+          linksByTarget={linksByTarget}
+          onNodeSelect={handleNodeSelect}
           searchedNodeId={searchedNodeId}
           filters={filters}
           visualConfig={visualConfig}
           levelConfig={levelConfig}
+          selectedNode={selectedNode}
         />
       </div>
 
       {/* Side Panel */}
-      {selectedNode && (
-        <aside className="side-panel slide-in">
-          <h2>{selectedNode.name}</h2>
-          <span className="badge">{selectedNode.level.toUpperCase()}</span>
-          <p>{selectedNode.description}</p>
-          
-          {selectedNode.level === 'concept' ? (
-            <div className="outcomes">
-              <h3>Learning Outcomes</h3>
-              <p>Fetching ULO, CIO, SIO...</p>
-              {/* Future: fetch from Supabase here */}
-            </div>
-          ) : (
-            <div className="instructions">
-              <p>Explore child nodes or select a specific concept to see detailed learning outcomes.</p>
-            </div>
-          )}
-        </aside>
-      )}
+      {/* Side Panel */}
+      <NodeDetailsPanel
+        selectedNode={selectedNode}
+        onNodeSelect={handleNodeSelect}
+        graphData={graphData}
+        linksBySource={linksBySource}
+        linksByTarget={linksByTarget}
+        history={history}
+        historyIndex={historyIndex}
+        onNavigateHistory={handleNavigateHistory}
+      />
     </div>
   );
 }

@@ -16,13 +16,16 @@ const shapeGeometries = {
 // Compute bounding spheres once for label offset calculation
 Object.values(shapeGeometries).forEach(g => g.computeBoundingSphere());
 
-export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect, searchedNodeId, filters = { showLabels: true, hideConcepts: true }, visualConfig, levelConfig }) {
+export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, onNodeSelect, searchedNodeId, filters = { showLabels: true, hideConcepts: true }, visualConfig, levelConfig, selectedNode }) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
   const [highlightLinks, setHighlightLinks] = useState(new Set());
   const [expandedNodes, setExpandedNodes] = useState(new Set());
   const [isPlaying, setIsPlaying] = useState(true);
   const [isPanMode, setIsPanMode] = useState(false);
+  const [hoveredNode, setHoveredNode] = useState(null);
+  const [focusedNodeId, setFocusedNodeId] = useState(null);
+  const [isTransforming, setIsTransforming] = useState(false);
   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
   const containerRef = useRef();
   const lastClickTime = useRef({});
@@ -112,19 +115,25 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
   // Canvas Actions
   const handleZoomIn = useCallback(() => {
     if (!fgRef.current) return;
+    setIsTransforming(true);
     const pos = fgRef.current.cameraPosition();
     fgRef.current.cameraPosition({ x: pos.x * 0.8, y: pos.y * 0.8, z: pos.z * 0.8 }, null, 300);
+    setTimeout(() => setIsTransforming(false), 350);
   }, []);
 
   const handleZoomOut = useCallback(() => {
     if (!fgRef.current) return;
+    setIsTransforming(true);
     const pos = fgRef.current.cameraPosition();
     fgRef.current.cameraPosition({ x: pos.x * 1.2, y: pos.y * 1.2, z: pos.z * 1.2 }, null, 300);
+    setTimeout(() => setIsTransforming(false), 350);
   }, []);
 
   const handleZoomFit = useCallback(() => {
     if (!fgRef.current) return;
+    setIsTransforming(true);
     fgRef.current.zoomToFit(400);
+    setTimeout(() => setIsTransforming(false), 450);
   }, []);
 
   const handleTogglePlay = useCallback(() => {
@@ -220,6 +229,70 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
     }
   }, [visualConfig]);
 
+  const focusOnNode = useCallback((node) => {
+    setFocusedNodeId(node.id);
+    
+    const newHighlightNodes = new Set();
+    const newHighlightLinks = new Set();
+    
+    newHighlightNodes.add(node.id);
+
+    // 1. Ancestors
+    let currentIds = [node.id];
+    while (currentIds.length > 0) {
+      const nextIds = [];
+      currentIds.forEach(id => {
+        const parents = linksByTarget[id] || [];
+        parents.forEach(p => {
+          if (!newHighlightNodes.has(p)) {
+            newHighlightNodes.add(p);
+            newHighlightLinks.add(`${p}-${id}`);
+            nextIds.push(p);
+          }
+        });
+      });
+      currentIds = nextIds;
+    }
+
+    // 2. Children
+    const children = linksBySource[node.id] || [];
+    children.forEach(c => {
+      newHighlightNodes.add(c);
+      newHighlightLinks.add(`${node.id}-${c}`);
+    });
+
+    // 3. Siblings
+    const parents = linksByTarget[node.id] || [];
+    parents.forEach(p => {
+      const siblings = linksBySource[p] || [];
+      siblings.forEach(s => {
+        newHighlightNodes.add(s);
+        newHighlightLinks.add(`${p}-${s}`);
+      });
+    });
+
+    setHighlightNodes(newHighlightNodes);
+    setHighlightLinks(newHighlightLinks);
+    
+    // Camera Focus
+    if (fgRef.current) {
+        setIsTransforming(true);
+        setHoveredNode(null);
+        
+        const distance = 500;
+        const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
+        fgRef.current.cameraPosition(
+          { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
+          node, // lookAt exactly at the selected node
+          1500  // transition time
+        );
+
+        setTimeout(() => {
+          setIsTransforming(false);
+        }, 1550);
+    }
+  }, [linksBySource, linksByTarget, graphData.nodes]);
+
   const handleNodeClick = useCallback(node => {
     const now = Date.now();
     const lastTime = lastClickTime.current[node.id] || 0;
@@ -234,65 +307,42 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
         else next.add(node.id);
         return next;
       });
-      // Do not clear highlight on double click to keep context
       return; 
     }
-
-    // Single click logic
-    const newHighlightNodes = new Set();
-    const newHighlightLinks = new Set();
-    
-    newHighlightNodes.add(node.id);
-
-    // BFS to find all descendants
-    const traverseChildren = (currentNodeId) => {
-      const childrenIds = linksBySource[currentNodeId] || [];
-      
-      childrenIds.forEach(childId => {
-        newHighlightLinks.add(`${currentNodeId}-${childId}`);
-        if (!newHighlightNodes.has(childId)) {
-          newHighlightNodes.add(childId);
-          traverseChildren(childId);
-        }
-      });
-    };
-
-    traverseChildren(node.id);
-
-    setHighlightNodes(newHighlightNodes);
-    setHighlightLinks(newHighlightLinks);
-    
-    // Focus camera
-    const distance = 250;
-    const distRatio = 1 + distance/Math.hypot(node.x, node.y, node.z);
-    fgRef.current.cameraPosition(
-      { x: node.x * distRatio, y: node.y * distRatio, z: node.z * distRatio },
-      node, // lookAt
-      2000  // ms transition
-    );
 
     if (onNodeSelect) {
       onNodeSelect(node);
     }
-  }, [linksBySource, onNodeSelect]);
+  }, [onNodeSelect]);
+
+  // Sync external selectedNode with 3D Graph logic
+  useEffect(() => {
+    if (selectedNode && selectedNode.id !== focusedNodeId) {
+      focusOnNode(selectedNode);
+    } else if (!selectedNode && focusedNodeId) {
+      setFocusedNodeId(null);
+      setHighlightNodes(new Set());
+      setHighlightLinks(new Set());
+    }
+  }, [selectedNode, focusedNodeId, focusOnNode]);
 
   // Effect to handle search
   useEffect(() => {
     if (searchedNodeId && graphData) {
       const node = graphData.nodes.find(n => n.id === searchedNodeId);
       if (node) {
-        // Expand its parents to ensure it's visible
-        // In a real DAG this requires a parent pointer, but for now we just trigger click
-        handleNodeClick(node);
+        if (onNodeSelect) onNodeSelect(node);
       }
     }
-  }, [searchedNodeId, graphData, handleNodeClick]);
+  }, [searchedNodeId, graphData, onNodeSelect]);
 
   const handleBackgroundClick = useCallback(() => {
-    setHighlightNodes(new Set());
-    setHighlightLinks(new Set());
     if (onNodeSelect) onNodeSelect(null);
   }, [onNodeSelect]);
+
+  const handleNodeHover = useCallback((node) => {
+    setHoveredNode(node || null);
+  }, []);
 
   // Color logic
   const getNodeColor = useCallback(node => {
@@ -323,29 +373,18 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
     return highlightNodes.has(node.id) ? `hsl(${hue}, 100%, 75%)` : 'rgba(255,255,255,0.05)';
   }, [highlightNodes, visualConfig]);
 
-  return (
-    <div className="relative w-full h-full overflow-hidden" ref={containerRef}>
-      <ForceGraph3D
-        ref={fgRef}
-        width={dimensions.width}
-        height={dimensions.height}
-        controlType="orbit"
-        graphData={visibleGraphData}
-      
-      // Override default node rendering completely
-      nodeThreeObjectExtend={false}
-      nodeThreeObject={node => {
-        const group = new THREE.Group();
-        const config = levelConfig ? levelConfig[node.level] || levelConfig['concept'] : null;
-        
-        // 1. Create Mesh (Geometry) if not text-only
-        const isTextOnly = config && config.shape === 'none';
-        
-        const baseRadius = { field: 8, subject: 5, category: 3, topic: 3, concept: 1 }[node.level] || 1;
-        const sizeMultiplier = visualConfig ? visualConfig.nodeSizeMultiplier : 1.0;
-        const scale = baseRadius * (1 + ((node.linkCount || 0) * 0.03)) * sizeMultiplier;
-        
-        let radius = baseRadius * scale; // approximate radius for label offset
+  const nodeThreeObject = useCallback(node => {
+    const group = new THREE.Group();
+    const config = levelConfig ? levelConfig[node.level] || levelConfig['concept'] : null;
+    
+    // 1. Create Mesh (Geometry) if not text-only
+    const isTextOnly = config && config.shape === 'none';
+    
+    const baseRadius = { field: 8, subject: 5, category: 3, topic: 3, concept: 1 }[node.level] || 1;
+    const sizeMultiplier = visualConfig ? visualConfig.nodeSizeMultiplier : 1.0;
+    const scale = baseRadius * (1 + ((node.linkCount || 0) * 0.03)) * sizeMultiplier;
+    
+    let radius = baseRadius * scale; // approximate radius for label offset
         
         if (!isTextOnly) {
           const shapeKey = config ? config.shape : 'sphere';
@@ -380,14 +419,14 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
         let yOffset = radius + 2;
         
         // Label logic
-        const isSelected = highlightNodes.has(node.id);
+        const isSelected = focusedNodeId === node.id;
         const hasHighlight = highlightNodes.size > 0;
         const showUnselected = visualConfig ? visualConfig.showUnselectedLabels : false;
         
         // If text-only, always show label because there's no node mesh!
         const shouldShowLabel = isTextOnly || (filters.showLabels && (
            (showLevels.includes(node.level) || node.level === 'concept') &&
-           (!hasHighlight || isSelected || showUnselected)
+           (!hasHighlight || highlightNodes.has(node.id) || showUnselected)
         ));
         
         if (shouldShowLabel) {
@@ -427,42 +466,87 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
            group.add(indicator);
         }
 
-        return group;
-      }}
+    return group;
+  }, [levelConfig, visualConfig, highlightNodes, focusedNodeId, expandedNodes, filters.showLabels, linksBySource, getNodeColor]);
+
+  const linkColor = useCallback(link => {
+    const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+    const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+    const linkId = `${sourceId}-${targetId}`;
+    
+    const opacity = visualConfig ? visualConfig.linkOpacity : 0.3;
+    
+    if (highlightLinks.size === 0) return `rgba(255,255,255,${opacity})`;
+    return highlightLinks.has(linkId) ? '#ffaa00' : 'rgba(255,255,255, 0.01)';
+  }, [visualConfig, highlightLinks]);
+
+  const linkWidth = useCallback(link => {
+    const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+    const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+    const linkId = `${sourceId}-${targetId}`;
+    
+    const width = visualConfig ? visualConfig.linkWidth : 0.5;
+    return highlightLinks.has(linkId) ? width * 3 : width;
+  }, [visualConfig, highlightLinks]);
+
+  const linkDirectionalParticles = useCallback(link => {
+    if (visualConfig && !visualConfig.showParticles) return 0;
+    const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
+    const targetId = typeof link.target === 'object' ? link.target.id : link.target;
+    const linkId = `${sourceId}-${targetId}`;
+    return highlightLinks.has(linkId) ? 4 : 1;
+  }, [visualConfig, highlightLinks]);
+
+  return (
+    <div className="relative w-full h-full overflow-hidden" ref={containerRef}>
+      <ForceGraph3D
+        ref={fgRef}
+        width={dimensions.width}
+        height={dimensions.height}
+        controlType="orbit"
+        graphData={visibleGraphData}
       
-      linkColor={link => {
-        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-        const linkId = `${sourceId}-${targetId}`;
-        
-        const opacity = visualConfig ? visualConfig.linkOpacity : 0.3;
-        
-        if (highlightLinks.size === 0) return `rgba(255,255,255,${opacity})`;
-        return highlightLinks.has(linkId) ? '#ffaa00' : 'rgba(255,255,255, 0.01)';
-      }}
-      linkWidth={link => {
-        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-        const linkId = `${sourceId}-${targetId}`;
-        
-        const width = visualConfig ? visualConfig.linkWidth : 0.5;
-        return highlightLinks.has(linkId) ? width * 3 : width;
-      }}
-      
-      linkDirectionalParticles={link => {
-        if (visualConfig && !visualConfig.showParticles) return 0;
-        const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
-        const targetId = typeof link.target === 'object' ? link.target.id : link.target;
-        const linkId = `${sourceId}-${targetId}`;
-        return highlightLinks.has(linkId) ? 4 : 1;
-      }}
+      nodeThreeObjectExtend={false}
+      nodeThreeObject={nodeThreeObject}
+      linkColor={linkColor}
+      linkWidth={linkWidth}
+      linkDirectionalParticles={linkDirectionalParticles}
       linkDirectionalParticleWidth={2}
       
+      enablePointerInteraction={!isTransforming}
       onNodeClick={handleNodeClick}
+      onNodeHover={handleNodeHover}
       onBackgroundClick={handleBackgroundClick}
       
       backgroundColor="#0f172a" // Slate 900
     />
+
+      {/* Hover Preview Tooltip */}
+      {hoveredNode && (
+        <div 
+          className="absolute z-50 pointer-events-none bg-[#1e2227]/95 backdrop-blur shadow-2xl border border-slate-700 rounded-lg p-3 transition-opacity duration-200"
+          style={{
+            bottom: '24px',
+            left: '24px',
+            maxWidth: '300px'
+          }}
+        >
+          <div className="flex items-center gap-2 mb-1">
+            <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 text-[9px] font-bold uppercase tracking-wider">
+              {hoveredNode.level}
+            </span>
+          </div>
+          <h4 className="text-slate-100 font-semibold text-sm line-clamp-2 leading-tight">
+            {hoveredNode.name}
+          </h4>
+          {hoveredNode.description && (
+            <p className="text-slate-400 text-xs mt-1 line-clamp-2">
+              {hoveredNode.description}
+            </p>
+          )}
+        </div>
+      )}
+
       {/* Canvas Toolbars */}
       <div className="absolute top-4 left-4 flex flex-col gap-3 z-10 pointer-events-none">
         
