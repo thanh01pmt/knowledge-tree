@@ -6,6 +6,7 @@ export function parseKnowledgeTree(rawData) {
   const nodes = [];
   const links = [];
   const linksBySource = {};
+  const linksByTarget = {};
   
   const fieldHues = [200, 140, 30, 280, 0, 320, 60, 100, 250]; // Distinct hues for fields
   let fieldIndex = 0;
@@ -53,6 +54,12 @@ export function parseKnowledgeTree(rawData) {
                   linksBySource[parentCode] = [];
                 }
                 linksBySource[parentCode].push(item.code);
+                
+                // Build reverse adjacency list (children to parent)
+                if (!linksByTarget[item.code]) {
+                  linksByTarget[item.code] = [];
+                }
+                linksByTarget[item.code].push(parentCode);
               }
             });
           }
@@ -79,6 +86,7 @@ export function parseKnowledgeTree(rawData) {
 
   return { 
     graphData: { nodes, links },
-    linksBySource
+    linksBySource,
+    linksByTarget
   };
 }

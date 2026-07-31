@@ -12,7 +12,7 @@ export default function ControlPanel({
   setLevelConfig,
   onReset
 }) {
-  const [activeTab, setActiveTab] = useState('points');
+  const [activeTab, setActiveTab] = useState('elements');
   const [selectedLevel, setSelectedLevel] = useState('field');
   const [searchTerm, setSearchTerm] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
@@ -36,8 +36,26 @@ export default function ControlPanel({
         setShowSuggestions(false);
       }
     };
+    
+    const handleFocusSearch = () => {
+      setIsCollapsed(false);
+      setActiveTab('points');
+      if (searchRef.current) {
+        const input = searchRef.current.querySelector('input');
+        if (input) {
+          // Delay focus slightly to allow state update to render
+          setTimeout(() => input.focus(), 100);
+        }
+      }
+    };
+
     document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener('focus-search', handleFocusSearch);
+    
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener('focus-search', handleFocusSearch);
+    };
   }, []);
 
   const handleSelect = (node) => {
@@ -89,22 +107,16 @@ export default function ControlPanel({
       {/* Tabs */}
       <div className="flex px-4 border-b border-slate-800 flex-shrink-0">
         <button 
-          className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-widest border-b-2 transition-colors ${activeTab === 'points' ? 'border-slate-300 text-slate-200' : 'border-transparent text-slate-500 hover:text-slate-400'}`}
-          onClick={() => setActiveTab('points')}
+          className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-widest border-b-2 transition-colors ${activeTab === 'elements' ? 'border-slate-300 text-slate-200' : 'border-transparent text-slate-500 hover:text-slate-400'}`}
+          onClick={() => setActiveTab('elements')}
         >
-          Points
+          Elements
         </button>
         <button 
           className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-widest border-b-2 transition-colors ${activeTab === 'levels' ? 'border-slate-300 text-slate-200' : 'border-transparent text-slate-500 hover:text-slate-400'}`}
           onClick={() => setActiveTab('levels')}
         >
           Levels
-        </button>
-        <button 
-          className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-widest border-b-2 transition-colors ${activeTab === 'links' ? 'border-slate-300 text-slate-200' : 'border-transparent text-slate-500 hover:text-slate-400'}`}
-          onClick={() => setActiveTab('links')}
-        >
-          Links
         </button>
         <button 
           className={`px-3 py-2 text-[11px] font-semibold uppercase tracking-widest border-b-2 transition-colors ${activeTab === 'simulation' ? 'border-slate-300 text-slate-200' : 'border-transparent text-slate-500 hover:text-slate-400'}`}
@@ -116,7 +128,7 @@ export default function ControlPanel({
 
       {/* Content */}
       <div className="flex-1 overflow-y-auto p-4 custom-scrollbar">
-        {activeTab === 'points' && (
+        {activeTab === 'elements' && (
           <div className="flex flex-col gap-6">
             
             {/* Search Section */}
@@ -248,6 +260,60 @@ export default function ControlPanel({
               </div>
             </div>
 
+            {/* Link Appearance */}
+            <div className="flex flex-col gap-2">
+              <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-1">Link Appearance</div>
+              <div className="bg-[#2a2f36] rounded-md p-3 flex flex-col gap-5 border border-slate-800">
+                
+                {/* Link Opacity */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-slate-300 tracking-wider">Link Opacity</span>
+                    <span className="text-xs text-slate-400 font-mono">{visualConfig.linkOpacity}</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    min="0" max="1" step="0.05"
+                    value={visualConfig.linkOpacity}
+                    onChange={(e) => setVisualConfig({...visualConfig, linkOpacity: parseFloat(e.target.value)})}
+                    className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-400"
+                  />
+                </div>
+
+                {/* Link Width */}
+                <div className="flex flex-col gap-2">
+                  <div className="flex justify-between items-center">
+                    <span className="text-xs text-slate-300 tracking-wider">Link Width</span>
+                    <span className="text-xs text-slate-400 font-mono">{visualConfig.linkWidth}</span>
+                  </div>
+                  <input 
+                    type="range" 
+                    min="0.1" max="5" step="0.1"
+                    value={visualConfig.linkWidth}
+                    onChange={(e) => setVisualConfig({...visualConfig, linkWidth: parseFloat(e.target.value)})}
+                    className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-400"
+                  />
+                </div>
+                
+                {/* Particles */}
+                <div className="flex items-center justify-between pt-2 border-t border-slate-700">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-300">Directional Particles</span>
+                    <Info className="w-3.5 h-3.5 text-slate-500 cursor-help" title="Hiển thị luồng hạt di chuyển (Có thể giảm FPS)" />
+                  </div>
+                  <button 
+                    role="switch"
+                    aria-checked={visualConfig.showParticles}
+                    onClick={() => setVisualConfig({...visualConfig, showParticles: !visualConfig.showParticles})}
+                    className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors focus:outline-none ${visualConfig.showParticles ? 'bg-slate-400' : 'bg-slate-600'}`}
+                  >
+                    <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${visualConfig.showParticles ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
+                  </button>
+                </div>
+                
+              </div>
+            </div>
+
           </div>
         )}
         
@@ -376,63 +442,6 @@ export default function ControlPanel({
               </div>
             </div>
             
-          </div>
-        )}
-        
-        {activeTab === 'links' && (
-          <div className="flex flex-col gap-6">
-            <div className="flex flex-col gap-2">
-              <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest mb-1">Link Appearance</div>
-              <div className="bg-[#2a2f36] rounded-md p-3 flex flex-col gap-5 border border-slate-800">
-                
-                {/* Link Opacity */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-slate-300 tracking-wider">Link Opacity</span>
-                    <span className="text-xs text-slate-400 font-mono">{visualConfig.linkOpacity}</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0" max="1" step="0.05"
-                    value={visualConfig.linkOpacity}
-                    onChange={(e) => setVisualConfig({...visualConfig, linkOpacity: parseFloat(e.target.value)})}
-                    className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-400"
-                  />
-                </div>
-
-                {/* Link Width */}
-                <div className="flex flex-col gap-2">
-                  <div className="flex justify-between items-center">
-                    <span className="text-xs text-slate-300 tracking-wider">Link Width</span>
-                    <span className="text-xs text-slate-400 font-mono">{visualConfig.linkWidth}</span>
-                  </div>
-                  <input 
-                    type="range" 
-                    min="0.1" max="5" step="0.1"
-                    value={visualConfig.linkWidth}
-                    onChange={(e) => setVisualConfig({...visualConfig, linkWidth: parseFloat(e.target.value)})}
-                    className="w-full h-1.5 bg-slate-700 rounded-lg appearance-none cursor-pointer accent-slate-400"
-                  />
-                </div>
-                
-                {/* Particles */}
-                <div className="flex items-center justify-between pt-2 border-t border-slate-700">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs text-slate-300">Directional Particles</span>
-                    <Info className="w-3.5 h-3.5 text-slate-500 cursor-help" title="Hiển thị luồng hạt di chuyển (Có thể giảm FPS)" />
-                  </div>
-                  <button 
-                    role="switch"
-                    aria-checked={visualConfig.showParticles}
-                    onClick={() => setVisualConfig({...visualConfig, showParticles: !visualConfig.showParticles})}
-                    className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors focus:outline-none ${visualConfig.showParticles ? 'bg-slate-400' : 'bg-slate-600'}`}
-                  >
-                    <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${visualConfig.showParticles ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
-                  </button>
-                </div>
-                
-              </div>
-            </div>
           </div>
         )}
 
