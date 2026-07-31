@@ -3,19 +3,19 @@ import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
 import * as THREE from 'three';
 
-// Static geometries for performance
-const geometries = {
-  field: new THREE.IcosahedronGeometry(8, 1),
-  subject: new THREE.DodecahedronGeometry(5, 0),
-  category: new THREE.OctahedronGeometry(3, 0),
-  topic: new THREE.BoxGeometry(3, 3, 3),
-  concept: new THREE.SphereGeometry(1, 8, 8)
+// Static geometries for performance (normalized to ~radius 1)
+const shapeGeometries = {
+  sphere: new THREE.SphereGeometry(1, 16, 16),
+  box: new THREE.BoxGeometry(1.5, 1.5, 1.5),
+  tetrahedron: new THREE.TetrahedronGeometry(1.2, 0),
+  cylinder: new THREE.CylinderGeometry(0.8, 0.8, 2, 16),
+  dodecahedron: new THREE.DodecahedronGeometry(1.2, 0)
 };
 
 // Compute bounding spheres once for label offset calculation
-Object.values(geometries).forEach(g => g.computeBoundingSphere());
+Object.values(shapeGeometries).forEach(g => g.computeBoundingSphere());
 
-export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect, searchedNodeId, filters = { showLabels: true, hideConcepts: true }, simulationConfig }) {
+export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect, searchedNodeId, filters = { showLabels: true, hideConcepts: true }, visualConfig, levelConfig }) {
   const fgRef = useRef();
   
   const [highlightNodes, setHighlightNodes] = useState(new Set());
@@ -61,13 +61,18 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
 
   // Configure physics
   useEffect(() => {
-    if (fgRef.current && simulationConfig) {
+    if (fgRef.current && visualConfig) {
       try {
         const chargeForce = fgRef.current.d3Force('charge');
-        if (chargeForce) chargeForce.strength(simulationConfig.charge || -200);
+        if (chargeForce) chargeForce.strength(visualConfig.charge || -200);
         
         const linkForce = fgRef.current.d3Force('link');
-        if (linkForce) linkForce.distance(simulationConfig.linkDistance || 80);
+        if (linkForce) linkForce.distance(visualConfig.linkDistance || 80);
+        
+        const centerForce = fgRef.current.d3Force('center');
+        if (centerForce && visualConfig.centerGravity !== undefined) {
+           centerForce.strength(visualConfig.centerGravity);
+        }
         
         // Only reheat if simulation is already running
         // Using setTimeout defers it safely after initial mount
@@ -80,7 +85,7 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
         console.warn("Physics config error:", e);
       }
     }
-  }, [simulationConfig]);
+  }, [visualConfig]);
 
   const handleNodeClick = useCallback(node => {
     const now = Date.now();
@@ -158,7 +163,16 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
 
   // Color logic
   const getNodeColor = useCallback(node => {
-    const hue = node.hue !== undefined ? node.hue : 200;
+    let hue = node.hue !== undefined ? node.hue : 200;
+    
+    // Coloring strategy
+    if (visualConfig && visualConfig.coloringStrategy === 'connections') {
+       // node.linkCount is calculated in dataParser
+       const maxLinks = 15;
+       const ratio = Math.min((node.linkCount || 0) / maxLinks, 1);
+       // Cold to hot (blue 240 -> red 0)
+       hue = 240 - (ratio * 240);
+    }
     
     const levelStyles = {
       'field': `hsl(${hue}, 100%, 55%)`,
@@ -169,12 +183,12 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
     };
 
     if (highlightNodes.size === 0) {
-      if (node.metadata && node.metadata.color) return node.metadata.color;
+      if (node.metadata && node.metadata.color && (!visualConfig || visualConfig.coloringStrategy === 'hierarchy')) return node.metadata.color;
       return levelStyles[node.level] || '#ffffff';
     }
     
     return highlightNodes.has(node.id) ? `hsl(${hue}, 100%, 75%)` : 'rgba(255,255,255,0.05)';
-  }, [highlightNodes]);
+  }, [highlightNodes, visualConfig]);
 
   return (
     <ForceGraph3D
@@ -185,46 +199,79 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
       nodeThreeObjectExtend={false}
       nodeThreeObject={node => {
         const group = new THREE.Group();
+        const config = levelConfig ? levelConfig[node.level] || levelConfig['concept'] : null;
         
-        // 1. Create Mesh (Geometry)
-        const geometry = geometries[node.level] || geometries['concept'];
-        const material = new THREE.MeshLambertMaterial({ 
-          color: getNodeColor(node),
-          transparent: true,
-          opacity: highlightNodes.size > 0 && !highlightNodes.has(node.id) ? 0.1 : 0.95
-        });
-        const mesh = new THREE.Mesh(geometry, material);
+        // 1. Create Mesh (Geometry) if not text-only
+        const isTextOnly = config && config.shape === 'none';
         
-        // Scale mesh slightly based on connections to show "weight"
-        const scale = 1 + ((node.linkCount || 0) * 0.03);
-        mesh.scale.set(scale, scale, scale);
-        group.add(mesh);
+        const baseRadius = { field: 8, subject: 5, category: 3, topic: 3, concept: 1 }[node.level] || 1;
+        const sizeMultiplier = visualConfig ? visualConfig.nodeSizeMultiplier : 1.0;
+        const scale = baseRadius * (1 + ((node.linkCount || 0) * 0.03)) * sizeMultiplier;
+        
+        let radius = baseRadius * scale; // approximate radius for label offset
+        
+        if (!isTextOnly) {
+          const shapeKey = config ? config.shape : 'sphere';
+          const geometry = shapeGeometries[shapeKey] || shapeGeometries['sphere'];
+          
+          const nodeOpacity = config ? config.opacity : 1.0;
+          const isFaded = highlightNodes.size > 0 && !highlightNodes.has(node.id);
+          
+          const material = new THREE.MeshLambertMaterial({ 
+            color: getNodeColor(node),
+            transparent: nodeOpacity < 1.0 || isFaded,
+            opacity: isFaded ? (nodeOpacity * 0.1) : nodeOpacity
+          });
+          const mesh = new THREE.Mesh(geometry, material);
+          
+          mesh.scale.set(scale, scale, scale);
+          group.add(mesh);
+          
+          if (geometry.boundingSphere) {
+             radius = geometry.boundingSphere.radius * scale;
+          }
+        } else {
+          radius = 1; // minimal offset if no shape
+        }
 
         // 2. Check expansion state
         const hasChildren = linksBySource[node.id] && linksBySource[node.id].length > 0;
         const isExpanded = expandedNodes.has(node.id);
-        const radius = geometry.boundingSphere.radius * scale;
         
         // 3. Create Sprite Text Label
         const showLevels = ['field', 'subject', 'category', 'topic'];
         let yOffset = radius + 2;
         
-        if (filters.showLabels && (showLevels.includes(node.level) || (node.level === 'concept' && highlightNodes.has(node.id)))) {
+        // Label logic
+        const isSelected = highlightNodes.has(node.id);
+        const hasHighlight = highlightNodes.size > 0;
+        const showUnselected = visualConfig ? visualConfig.showUnselectedLabels : false;
+        
+        // If text-only, always show label because there's no node mesh!
+        const shouldShowLabel = isTextOnly || (filters.showLabels && (
+           (showLevels.includes(node.level) || node.level === 'concept') &&
+           (!hasHighlight || isSelected || showUnselected)
+        ));
+        
+        if (shouldShowLabel) {
           const sprite = new SpriteText(node.name);
-          sprite.color = 'rgba(255,255,255,0.9)';
           
-          const textHeights = {
-            'field': 7,
-            'subject': 5,
-            'category': 4,
-            'topic': 2.5,
-            'concept': 1.5
-          };
-          sprite.textHeight = textHeights[node.level] || 2;
+          // Apply Text Config
+          const defaultColor = config ? config.textColor : 'rgba(255,255,255,0.9)';
+          sprite.color = hasHighlight && !isSelected ? 'rgba(255,255,255,0.3)' : defaultColor;
+          sprite.fontWeight = config && config.textWeight === 'bold' ? 'bold' : 'normal';
           
-          yOffset = radius + sprite.textHeight / 2 + 1;
+          const textHeights = { 'field': 7, 'subject': 5, 'category': 4, 'topic': 2.5, 'concept': 1.5 };
+          sprite.textHeight = config ? config.textHeight : (textHeights[node.level] || 2);
+          
+          // If text-only, center the text on the node coordinates instead of floating above
+          if (isTextOnly) {
+             yOffset = 0;
+          } else {
+             yOffset = radius + sprite.textHeight / 2 + 1;
+          }
+          
           sprite.position.y = yOffset;
-          
           group.add(sprite);
         }
         
@@ -251,21 +298,26 @@ export default function KnowledgeTree3D({ graphData, linksBySource, onNodeSelect
         const targetId = typeof link.target === 'object' ? link.target.id : link.target;
         const linkId = `${sourceId}-${targetId}`;
         
-        if (highlightLinks.size === 0) return 'rgba(255,255,255,0.3)';
+        const opacity = visualConfig ? visualConfig.linkOpacity : 0.3;
+        
+        if (highlightLinks.size === 0) return `rgba(255,255,255,${opacity})`;
         return highlightLinks.has(linkId) ? '#ffaa00' : 'rgba(255,255,255, 0.01)';
       }}
       linkWidth={link => {
         const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
         const targetId = typeof link.target === 'object' ? link.target.id : link.target;
         const linkId = `${sourceId}-${targetId}`;
-        return highlightLinks.has(linkId) ? 2 : 0.5;
+        
+        const width = visualConfig ? visualConfig.linkWidth : 0.5;
+        return highlightLinks.has(linkId) ? width * 3 : width;
       }}
       
       linkDirectionalParticles={link => {
+        if (visualConfig && !visualConfig.showParticles) return 0;
         const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
         const targetId = typeof link.target === 'object' ? link.target.id : link.target;
         const linkId = `${sourceId}-${targetId}`;
-        return highlightLinks.has(linkId) ? 4 : 0;
+        return highlightLinks.has(linkId) ? 4 : 1;
       }}
       linkDirectionalParticleWidth={2}
       

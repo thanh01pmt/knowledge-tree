@@ -1,15 +1,64 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import KnowledgeTree3D from './components/KnowledgeTree3D';
 import ControlPanel from './components/ControlPanel';
 import { parseKnowledgeTree } from './utils/dataParser';
 import rawTreeData from './data/master_tree.json';
 import './App.css';
 
+const DEFAULT_VISUAL_CONFIG = { 
+  // Points
+  nodeSizeMultiplier: 3.0,
+  coloringStrategy: 'hierarchy', 
+  showUnselectedLabels: false,
+  
+  // Links
+  linkOpacity: 0.75,
+  linkWidth: 0.5,
+  showParticles: false,
+  
+  // Simulation
+  charge: -80, 
+  linkDistance: 15,
+  centerGravity: 0.5
+};
+
+const DEFAULT_LEVEL_CONFIG = {
+  field: { textHeight: 15, textColor: '#f6fa00', textWeight: 'bold', shape: 'dodecahedron', opacity: 1.0 },
+  subject: { textHeight: 12, textColor: '#8cba36', textWeight: 'normal', shape: 'box', opacity: 0.9 },
+  category: { textHeight: 7, textColor: '#cccccc', textWeight: 'normal', shape: 'box', opacity: 0.8 },
+  topic: { textHeight: 5, textColor: '#aaaaaa', textWeight: 'normal', shape: 'tetrahedron', opacity: 0.7 },
+  concept: { textHeight: 3, textColor: '#888888', textWeight: 'normal', shape: 'sphere', opacity: 0.6 },
+};
+
 function App() {
   const [selectedNode, setSelectedNode] = useState(null);
   const [searchedNodeId, setSearchedNodeId] = useState(null);
   const [filters, setFilters] = useState({ showLabels: true, hideConcepts: true });
-  const [simulationConfig, setSimulationConfig] = useState({ charge: -200, linkDistance: 80 });
+  const [visualConfig, setVisualConfig] = useState(() => {
+    const saved = localStorage.getItem('kt_visualConfig');
+    return saved ? JSON.parse(saved) : DEFAULT_VISUAL_CONFIG;
+  });
+
+  const [levelConfig, setLevelConfig] = useState(() => {
+    const saved = localStorage.getItem('kt_levelConfig');
+    return saved ? JSON.parse(saved) : DEFAULT_LEVEL_CONFIG;
+  });
+
+  // Save to local storage whenever config changes
+  useEffect(() => {
+    localStorage.setItem('kt_visualConfig', JSON.stringify(visualConfig));
+  }, [visualConfig]);
+
+  useEffect(() => {
+    localStorage.setItem('kt_levelConfig', JSON.stringify(levelConfig));
+  }, [levelConfig]);
+
+  const resetConfigs = () => {
+    setVisualConfig(DEFAULT_VISUAL_CONFIG);
+    setLevelConfig(DEFAULT_LEVEL_CONFIG);
+    localStorage.removeItem('kt_visualConfig');
+    localStorage.removeItem('kt_levelConfig');
+  };
 
   // Parse data once
   const { graphData, linksBySource } = useMemo(() => {
@@ -28,8 +77,11 @@ function App() {
         onNodeSearch={handleNodeSearch}
         filters={filters}
         setFilters={setFilters}
-        simulationConfig={simulationConfig}
-        setSimulationConfig={setSimulationConfig}
+        visualConfig={visualConfig}
+        setVisualConfig={setVisualConfig}
+        levelConfig={levelConfig}
+        setLevelConfig={setLevelConfig}
+        onReset={resetConfigs}
       />
 
       {/* Main 3D Graph */}
@@ -40,7 +92,8 @@ function App() {
           onNodeSelect={setSelectedNode}
           searchedNodeId={searchedNodeId}
           filters={filters}
-          simulationConfig={simulationConfig}
+          visualConfig={visualConfig}
+          levelConfig={levelConfig}
         />
       </div>
 
