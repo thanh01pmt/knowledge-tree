@@ -36,7 +36,13 @@ export function parseKnowledgeTree(rawData) {
       
       // Process Prerequisites (if available)
       if (item.prerequisite_concept_codes) {
-        const prereqCodes = item.prerequisite_concept_codes.split(',').map(code => code.trim()).filter(Boolean);
+        let prereqCodes = [];
+        if (Array.isArray(item.prerequisite_concept_codes)) {
+          prereqCodes = item.prerequisite_concept_codes;
+        } else if (typeof item.prerequisite_concept_codes === 'string') {
+          prereqCodes = item.prerequisite_concept_codes.split(',').map(code => code.trim());
+        }
+        prereqCodes = prereqCodes.filter(Boolean);
         prereqCodes.forEach(prereqCode => {
           // Source = Prerequisite (A must be learned before B) -> A is source, B is target
           if (!prereqLinksBySource[prereqCode]) prereqLinksBySource[prereqCode] = [];
@@ -51,8 +57,13 @@ export function parseKnowledgeTree(rawData) {
       if (parentKeys) {
         parentKeys.forEach(parentKey => {
           if (item[parentKey]) {
-            // parentKey might be a comma-separated string like "CSN, MET"
-            const parentCodes = item[parentKey].split(',').map(code => code.trim());
+            // parentKey might be an array or a comma-separated string
+            let parentCodes = [];
+            if (Array.isArray(item[parentKey])) {
+               parentCodes = item[parentKey];
+            } else if (typeof item[parentKey] === 'string') {
+               parentCodes = item[parentKey].split(',').map(code => code.trim());
+            }
             parentCodes.forEach(parentCode => {
               if (parentCode) {
                 // Kế thừa màu từ cha

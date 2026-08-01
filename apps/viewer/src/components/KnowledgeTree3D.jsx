@@ -662,6 +662,11 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     return highlightLinks.has(linkId) ? 4 : 1;
   }, [visualConfig, highlightLinks]);
 
+  const finalGraphData = useMemo(() => ({
+    nodes: visibleGraphData.nodes,
+    links: [...visibleGraphData.links, ...visiblePrereqLinks]
+  }), [visibleGraphData, visiblePrereqLinks]);
+
   return (
     <div className="relative w-full h-full overflow-hidden" ref={containerRef}>
       <ForceGraph3D
@@ -669,10 +674,7 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
         width={dimensions.width}
         height={dimensions.height}
         controlType="orbit"
-        graphData={{
-           nodes: visibleGraphData.nodes,
-           links: [...visibleGraphData.links, ...visiblePrereqLinks]
-        }}
+        graphData={finalGraphData}
       
       nodeThreeObjectExtend={false}
       nodeThreeObject={nodeThreeObject}

@@ -71,7 +71,14 @@ function App() {
       try {
         // Fallback to local supabase functions URL for testing if env is missing
         const apiUrl = import.meta.env.VITE_SUPABASE_FUNCTIONS_URL || 'http://127.0.0.1:54321/functions/v1';
-        const response = await fetch(`${apiUrl}/get-knowledge-tree`);
+        const anonKey = import.meta.env.VITE_SUPABASE_ANON_KEY || '';
+        
+        const headers = {};
+        if (anonKey) {
+          headers['Authorization'] = `Bearer ${anonKey}`;
+        }
+        
+        const response = await fetch(`${apiUrl}/get-knowledge-tree`, { headers });
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
