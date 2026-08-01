@@ -381,15 +381,7 @@ export default function KnowledgeTree3D({
       newHighlightLinks.add(`${node.id}-${c}`);
     });
 
-    // 3. Siblings
-    const parents = linksByTarget[node.id] || [];
-    parents.forEach(p => {
-      const siblings = linksBySource[p] || [];
-      siblings.forEach(s => {
-        newHighlightNodes.add(s);
-        newHighlightLinks.add(`${p}-${s}`);
-      });
-    });
+    // 3. Siblings (Removed to reduce visual clutter when focusing on a specific path)
 
     setHighlightNodes(newHighlightNodes);
     setHighlightLinks(newHighlightLinks);
@@ -455,7 +447,13 @@ export default function KnowledgeTree3D({
            }
         }
         
-        const distance = 500;
+        let maxDist = 100;
+        neighborhoodNodes.forEach(n => {
+           const d = Math.hypot((n.x||0) - node.x, (n.y||0) - node.y, (n.z||0) - node.z);
+           if (d > maxDist) maxDist = d;
+        });
+        const distance = Math.max(300, maxDist * 1.5); // Add margin
+
         fgRef.current.cameraPosition(
           { 
             x: node.x + camDirX * distance, 
@@ -670,18 +668,19 @@ export default function KnowledgeTree3D({
           group.add(sprite);
         }
         
-        // Add Expand Indicator (+) or (-)
-        if (hasChildren && !isExpanded) {
+        const isFaded = hasHighlight && !highlightNodes.has(node.id);
+
+        if (hasChildren && !isExpanded && !isFaded) {
            const indicator = new SpriteText('(+)');
            indicator.color = '#38bdf8'; // light blue
            indicator.textHeight = 4.5;
            indicator.position.y = yOffset + 5;
            group.add(indicator);
-        } else if (hasChildren && isExpanded) {
+        } else if (hasChildren && isExpanded && !isFaded) {
            const indicator = new SpriteText('(-)');
-           indicator.color = '#94a3b8'; // slate
-           indicator.textHeight = 3.5;
-           indicator.position.y = yOffset + 4;
+           indicator.color = '#ef4444'; // red
+           indicator.textHeight = 4.5;
+           indicator.position.y = yOffset + 5;
            group.add(indicator);
         }
 
@@ -719,6 +718,9 @@ export default function KnowledgeTree3D({
     const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
     const targetId = typeof link.target === 'object' ? link.target.id : link.target;
     const linkId = `${sourceId}-${targetId}`;
+    
+    if (highlightLinks.size > 0 && !highlightLinks.has(linkId)) return 0;
+    
     return highlightLinks.has(linkId) ? 4 : 1;
   }, [visualConfig?.showParticles, highlightLinks]);
 

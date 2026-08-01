@@ -23,9 +23,9 @@ from fastmcp import FastMCP
 from starlette.requests import Request
 from starlette.responses import JSONResponse
 
-from servers.kt_server import kt_mcp
-from servers.system_server import sys_mcp
-from servers.research_server import research_mcp
+from kt_mcp.servers.kt_server import kt_mcp
+from kt_mcp.servers.system_server import sys_mcp
+from kt_mcp.servers.research_server import research_mcp
 
 # 1. Main Hub Instance
 hub = FastMCP("KnowledgeTreeHub")
