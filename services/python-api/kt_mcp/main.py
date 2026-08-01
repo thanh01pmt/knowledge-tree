@@ -25,6 +25,7 @@ from starlette.responses import JSONResponse
 
 from servers.kt_server import kt_mcp
 from servers.system_server import sys_mcp
+from servers.research_server import research_mcp
 
 # 1. Main Hub Instance
 hub = FastMCP("KnowledgeTreeHub")
@@ -32,6 +33,7 @@ hub = FastMCP("KnowledgeTreeHub")
 # 2. Mount Sub-MCP Servers with Namespaces
 hub.mount(kt_mcp, namespace="kt")
 hub.mount(sys_mcp, namespace="sys")
+hub.mount(research_mcp, namespace="research")
 
 # 3. Custom Health Endpoint
 @hub.custom_route("/health", methods=["GET"])
@@ -39,7 +41,7 @@ async def health_check(request: Request) -> JSONResponse:
     return JSONResponse({
         "status": "healthy",
         "service": "KnowledgeTree MCP Hub",
-        "mounted_servers": ["kt", "sys"]
+        "mounted_servers": ["kt", "sys", "research"]
     })
 
 # 4. Entrypoint
