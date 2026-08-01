@@ -229,6 +229,22 @@ Sub-server **`kt`** đóng vai trò là lõi xử lý tự động hoá toàn b�
 
 ---
 
+### Autonomous Research (2 tools - `research` server)
+
+### 28. `research_audit_curriculum`
+* **Mô tả**: Kích hoạt **Tier 1 (Curriculum Audit)**. Cross-reference Master Tree với các framework chuẩn (NGSS, ACM) để tìm ra các lỗ hổng nền tảng (Foundational Gaps).
+* **Tham số**: `framework` (`str`, tùy chọn, mặc định `"ACM CS2023"`)
+* **Kết quả**: Trả về báo cáo Foundational Gaps Report.
+
+---
+
+### 29. `research_watch_trends`
+* **Mô tả**: Kích hoạt **Tier 2 (Trend Watcher)**. Quét các nguồn dữ liệu mạng ngầm và deep tech để tìm kiếm các xu hướng học máy / công nghệ mới (emerging tech).
+* **Tham số**: `query` (`str`, tùy chọn, mặc định `"emerging technologies in STEM education"`)
+* **Kết quả**: Trả về danh sách Hàng đợi nghiên cứu (`research_queue.json`).
+
+---
+
 ## 📋 HITL Resources (9 Resource Templates — `sys` server)
 
 | Resource URI Template | Artifact Description |

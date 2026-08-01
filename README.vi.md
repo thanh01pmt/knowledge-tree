@@ -210,6 +210,8 @@ flowchart TD
 | `/detect-gaps` | `@tree-validator` | ❌ | Detect Missing LOs, Shallow CIOs, and Master Candidates |
 | `/validate-tree` | `@tree-validator` | ❌ | Enforce 100% Referential Integrity PASS → `.tree-validator/reports/` |
 | `/validate-master-tree` | `@tree-validator` | ❌ | Enforce Referential Integrity & Collision checks for Master Tree TSVs |
+| `/audit-curriculum` | `@knowledge-researcher` | ✅ | **Tier 1**: Cross-reference Master Tree với chuẩn STEM (NGSS, ACM) tìm lỗ hổng |
+| `/watch-trends` | `@knowledge-researcher` | ✅ | **Tier 2**: Quét deep web tìm emerging tech, tự động chấm điểm & đưa vào Queue |
 | `/audit-coverage` | `@tree-validator` | ❌ | Perform Reverse Coverage Audit against source syllabus |
 | `/sync-supabase` | `@tree-assembler` | ❌ | Synchronize 6 validated TSV files to Supabase Cloud DB (Gate §8: HITL required) |
 
@@ -224,6 +226,7 @@ flowchart TD
 | `kt_scaffold_keywords`, `kt_extract_terms`, `kt_verify_terms`, `kt_finalize_keywords`, `kt_escalate_concepts` | `kt` | ATE Pipeline (5 tools) |
 | `kt_crawl_roadmap`, `kt_init_staging_tree`, `kt_apply_staging_plan`, `kt_diff_staging`, `kt_sync_master_back` | `kt` | Roadmap Aligner (5 tools, `kt_sync_master_back` Gate §8 protected) |
 | `kt_run_pipeline_step`, `kt_get_pipeline_status` | `kt` | Workflow orchestration |
+| `research_audit_curriculum`, `research_watch_trends` | `research` | Autonomous 2-Tier Knowledge Researcher (Curriculum Audit & Trend Watcher) |
 | `sys_get_system_status`, `sys_get_skill_metadata` | `sys` | System & skill introspection |
 | `project://sys/{project}/work/{artifact}` (9 templates) | `sys` | HITL artifact resources (context-audit, mapping-plan, ulos_preview, cios_preview, etc.) |
 | `guide_workflow` | `sys` | Workflow guidance prompt |
@@ -238,6 +241,7 @@ Dự án tích hợp sẵn một **FastMCP v3 Multi-Server Hub** tại thư mụ
 - **Entrypoint**: [`kt_mcp/main.py`](file:///Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/kt_mcp/main.py)
 - **Danh sách Sub-Servers**:
   - `kt`: Công cụ Knowledge Tree (`kt_validate_tree`, `kt_detect_gaps`, `kt_audit_coverage`, `kt_sync_supabase`, `kt_scaffold_project`, `kt_build_taxonomy`, `kt_generate_ulos`, `kt_generate_cios`, `kt_generate_sios`, `kt_merge_los`, `kt_map_prerequisites`, `kt_context_audit`, `kt_map_taxonomy`, `kt_scaffold_keywords`, `kt_extract_terms`, `kt_verify_terms`, `kt_finalize_keywords`, `kt_escalate_concepts`, `kt_crawl_roadmap`, `kt_init_staging_tree`, `kt_apply_staging_plan`, `kt_diff_staging`, `kt_sync_master_back`, `kt_run_pipeline_step`, `kt_get_pipeline_status`, `kt_query_master_tree`, `kt_query_master_tree_semantic`)
+  - `research`: AI Khám phá (`research_audit_curriculum`, `research_watch_trends`)
   - `sys`: Công cụ hệ thống & tài nguyên (`sys_get_system_status`, `sys_get_skill_metadata`, `guide_workflow`, 9 HITL resource templates)
 
 ### Khởi Chạy Nhanh (Local)

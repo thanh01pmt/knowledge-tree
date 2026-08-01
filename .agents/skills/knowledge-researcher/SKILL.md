@@ -24,6 +24,7 @@ Trigger commands:
 - **Crawl4AI**: For reading full HTML content of technical blogs or documentation.
 - **Context7**: For verifying library documentation specifics.
 - **education-agent-skills**: Sử dụng thư viện ngoài cho `coverage-audit`, `curriculum-crosswalk`, và `learning-target-authoring-guide`.
+- **KnowledgeResearcher (kt_mcp)**: MCP nội bộ cung cấp sẵn các Native Tools `audit_curriculum` và `watch_trends` để chạy các pipeline dưới nền thay vì phải gọi lệnh Terminal thủ công.
 
 ---
 
@@ -47,11 +48,11 @@ Trigger commands:
 ## 🔄 Execution Pipeline
 
 **Tầng 1 (Curriculum Audit):**
-1. Run `scripts/audit_curriculum.py` để chạy skill Crosswalk.
+1. Có thể dùng FastMCP Tool `audit_curriculum` hoặc chạy `scripts/audit_curriculum.py` để chạy skill Crosswalk.
 2. Trình duyệt file `foundational_gaps.md` cho User.
 3. Nhận phê duyệt, tự động chạy loop `/research-trend` cho các gap cốt lõi.
 
 **Tầng 2 (Trend Watcher):**
-1. Run `scripts/auto_stem_discovery.py` định kỳ để quét và cập nhật `research_queue.json`.
+1. Có thể dùng FastMCP Tool `watch_trends` hoặc chạy `scripts/auto_stem_discovery.py` định kỳ để quét và cập nhật `research_queue.json`.
 2. Lấy 1 chủ đề ưu tiên cao nhất, chạy `auto_researcher.py`.
 3. Sinh báo cáo Diff và yêu cầu User phê duyệt trước khi đi tiếp.
