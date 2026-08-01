@@ -1,9 +1,9 @@
 import React, { useMemo, useEffect } from 'react';
-import { ChevronRight, ArrowLeft, ArrowRight, ChevronLeft, LayoutGrid, Layers, Hexagon, Circle, Square, Minus, Map, Hash } from 'lucide-react';
+import { ChevronRight, ArrowLeft, ArrowRight, ChevronLeft, LayoutGrid, Layers, Hexagon, Circle, Square, Minus, Map as MapIcon, Hash } from 'lucide-react';
 
 const LevelIcon = ({ level, className }) => {
   switch(level) {
-    case 'field': return <Map className={className} />;
+    case 'field': return <MapIcon className={className} />;
     case 'subject': return <Layers className={className} />;
     case 'category': return <LayoutGrid className={className} />;
     case 'topic': return <Hexagon className={className} />;
@@ -23,12 +23,20 @@ export default function NodeDetailsPanel({
   historyIndex,
   onNavigateHistory
 }) {
+  // Fast O(1) node lookup map
+  const nodeMap = useMemo(() => {
+    if (!graphData || !graphData.nodes) return new Map();
+    const map = new Map();
+    graphData.nodes.forEach(n => map.set(n.id, n));
+    return map;
+  }, [graphData]);
+
   const breadcrumbs = useMemo(() => {
     if (!selectedNode) return [];
     const path = [];
     let currentId = selectedNode.id;
     while (currentId) {
-      const node = graphData.nodes.find(n => n.id === currentId);
+      const node = nodeMap.get(currentId);
       if (node) {
         path.unshift(node);
         const parents = linksByTarget[currentId] || [];
@@ -38,7 +46,7 @@ export default function NodeDetailsPanel({
       }
     }
     return path;
-  }, [selectedNode, linksByTarget, graphData.nodes]);
+  }, [selectedNode, linksByTarget, nodeMap]);
 
   const { prevSibling, nextSibling } = useMemo(() => {
     if (!selectedNode) return { prevSibling: null, nextSibling: null };
@@ -54,20 +62,20 @@ export default function NodeDetailsPanel({
     
     const parentId = parents[0];
     const siblingIds = linksBySource[parentId] || [];
-    const siblings = siblingIds.map(id => graphData.nodes.find(n => n.id === id)).filter(Boolean);
+    const siblings = siblingIds.map(id => nodeMap.get(id)).filter(Boolean);
     
     const idx = siblings.findIndex(n => n.id === selectedNode.id);
     return {
       prevSibling: idx > 0 ? siblings[idx - 1] : null,
       nextSibling: idx < siblings.length - 1 ? siblings[idx + 1] : null
     };
-  }, [selectedNode, linksByTarget, linksBySource, graphData.nodes]);
+  }, [selectedNode, linksByTarget, linksBySource, graphData.nodes, nodeMap]);
 
   const children = useMemo(() => {
     if (!selectedNode) return [];
     const childIds = linksBySource[selectedNode.id] || [];
-    return childIds.map(id => graphData.nodes.find(n => n.id === id)).filter(Boolean);
-  }, [selectedNode, linksBySource, graphData.nodes]);
+    return childIds.map(id => nodeMap.get(id)).filter(Boolean);
+  }, [selectedNode, linksBySource, nodeMap]);
 
   useEffect(() => {
     if (!selectedNode) return;

@@ -1,12 +1,14 @@
 /**
  * Parses the raw master_tree.json into { nodes, links } for 3d-force-graph.
  * Calculates linkCount (degree) for node sizing.
+ * Optimized with Map lookups (O(N) total complexity).
  */
 export function parseKnowledgeTree(rawData) {
   const nodes = [];
   const links = [];
   const linksBySource = {};
   const linksByTarget = {};
+  const nodeMap = new Map();
   
   const fieldHues = [200, 140, 30, 280, 0, 320, 60, 100, 250]; // Distinct hues for fields
   let fieldIndex = 0;
@@ -26,9 +28,10 @@ export function parseKnowledgeTree(rawData) {
         level: level,
         metadata: item.metadata ? (typeof item.metadata === 'string' ? JSON.parse(item.metadata) : item.metadata) : {},
         cs2023_ka: item.cs2023_ka_mapping || null,
-        linkCount: 0 // Will calculate later
+        linkCount: 0
       };
       nodes.push(node);
+      nodeMap.set(item.code, node);
       
       if (level === 'field') {
         node.hue = fieldHues[fieldIndex++ % fieldHues.length];
@@ -44,7 +47,6 @@ export function parseKnowledgeTree(rawData) {
         }
         prereqCodes = prereqCodes.filter(Boolean);
         prereqCodes.forEach(prereqCode => {
-          // Source = Prerequisite (A must be learned before B) -> A is source, B is target
           if (!prereqLinksBySource[prereqCode]) prereqLinksBySource[prereqCode] = [];
           prereqLinksBySource[prereqCode].push(item.code);
           
@@ -57,7 +59,6 @@ export function parseKnowledgeTree(rawData) {
       if (parentKeys) {
         parentKeys.forEach(parentKey => {
           if (item[parentKey]) {
-            // parentKey might be an array or a comma-separated string
             let parentCodes = [];
             if (Array.isArray(item[parentKey])) {
                parentCodes = item[parentKey];
@@ -66,8 +67,8 @@ export function parseKnowledgeTree(rawData) {
             }
             parentCodes.forEach(parentCode => {
               if (parentCode) {
-                // Kế thừa màu từ cha
-                const parentNode = nodes.find(n => n.id === parentCode);
+                // Kế thừa màu từ cha - dùng Map O(1)
+                const parentNode = nodeMap.get(parentCode);
                 if (parentNode && node.hue === undefined) {
                   node.hue = parentNode.hue;
                 }
@@ -105,10 +106,10 @@ export function parseKnowledgeTree(rawData) {
   processItems(rawData.learning_objectives, 'learning_objective', ['concept_codes']);
   processItems(rawData.keywords, 'keyword', ['concept_codes']);
   
-  // 2. Calculate linkCount for node sizing
+  // 2. Calculate linkCount for node sizing using Map O(1)
   links.forEach(link => {
-    const sourceNode = nodes.find(n => n.id === link.source);
-    const targetNode = nodes.find(n => n.id === link.target);
+    const sourceNode = nodeMap.get(link.source);
+    const targetNode = nodeMap.get(link.target);
     
     if (sourceNode) sourceNode.linkCount = (sourceNode.linkCount || 0) + 1;
     if (targetNode) targetNode.linkCount = (targetNode.linkCount || 0) + 1;
@@ -119,6 +120,7 @@ export function parseKnowledgeTree(rawData) {
     linksBySource,
     linksByTarget,
     prereqLinksBySource,
-    prereqLinksByTarget
+    prereqLinksByTarget,
+    nodeMap
   };
 }

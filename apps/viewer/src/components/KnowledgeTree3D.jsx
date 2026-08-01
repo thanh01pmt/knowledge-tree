@@ -182,9 +182,9 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     link.click();
   }, []);
 
-  const handleSearchClick = () => {
+  const handleSearchClick = useCallback(() => {
     document.dispatchEvent(new CustomEvent('focus-search'));
-  };
+  }, []);
 
   // Calculate visible nodes to avoid "hairball"
   const visibleGraphData = useMemo(() => {
@@ -282,8 +282,6 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
            centerForce.strength(visualConfig.centerGravity);
         }
         
-        // Only reheat if simulation is already running
-        // Using setTimeout defers it safely after initial mount
         setTimeout(() => {
           if (fgRef.current) {
             fgRef.current.d3ReheatSimulation();
@@ -293,7 +291,7 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
         console.warn("Physics config error:", e);
       }
     }
-  }, [visualConfig]);
+  }, [visualConfig?.charge, visualConfig?.linkDistance, visualConfig?.centerGravity]);
 
   const focusOnNode = useCallback((node) => {
     setFocusedNodeId(node.id);
@@ -449,17 +447,7 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
       setHighlightNodes(new Set());
       setHighlightLinks(new Set());
     }
-  }, [selectedNode, focusedNodeId, focusOnNode]);
-
-  // Effect to handle search
-  useEffect(() => {
-    if (searchedNodeId && graphData) {
-      const node = graphData.nodes.find(n => n.id === searchedNodeId);
-      if (node) {
-        if (onNodeSelect) onNodeSelect(node);
-      }
-    }
-  }, [searchedNodeId, graphData, onNodeSelect]);
+  }, [selectedNode]); // Fix H3: avoid dependency loop
 
   const handleBackgroundClick = useCallback(() => {
     if (onNodeSelect) onNodeSelect(null);
@@ -515,6 +503,16 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
   }, [highlightNodes, visualConfig]);
 
   const nodeThreeObject = useCallback(node => {
+    // Memory leak prevention: dispose previous object resources if re-creating
+    if (node.__threeObj) {
+      node.__threeObj.traverse(child => {
+        if (child.material) {
+          if (Array.isArray(child.material)) child.material.forEach(m => m.dispose());
+          else child.material.dispose();
+        }
+      });
+    }
+
     const group = new THREE.Group();
     const config = levelConfig ? levelConfig[node.level] || levelConfig['concept'] : null;
     
@@ -634,7 +632,10 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     return group;
   }, [levelConfig, visualConfig, highlightNodes, focusedNodeId, expandedNodes, filters.showLabels, linksBySource, getNodeColor]);
 
-  const linkColor = useCallback(link => {
+  const getLinkColor = useCallback(link => {
+    if (link.type === 'prereq_forward') return '#22c55e'; // Green (Unlocks)
+    if (link.type === 'prereq_backward') return '#ef4444'; // Red (Requires)
+    
     const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
     const targetId = typeof link.target === 'object' ? link.target.id : link.target;
     const linkId = `${sourceId}-${targetId}`;
@@ -643,24 +644,33 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     
     if (highlightLinks.size === 0) return `rgba(255,255,255,${opacity})`;
     return highlightLinks.has(linkId) ? '#ffaa00' : 'rgba(255,255,255, 0.01)';
-  }, [visualConfig, highlightLinks]);
+  }, [visualConfig?.linkOpacity, highlightLinks]);
 
-  const linkWidth = useCallback(link => {
+  const getLinkWidth = useCallback(link => {
+    if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 1.5;
+    
     const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
     const targetId = typeof link.target === 'object' ? link.target.id : link.target;
     const linkId = `${sourceId}-${targetId}`;
     
     const width = visualConfig ? visualConfig.linkWidth : 0.5;
     return highlightLinks.has(linkId) ? width * 3 : width;
-  }, [visualConfig, highlightLinks]);
+  }, [visualConfig?.linkWidth, highlightLinks]);
 
-  const linkDirectionalParticles = useCallback(link => {
+  const getLinkDirectionalParticles = useCallback(link => {
+    if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 4;
     if (visualConfig && !visualConfig.showParticles) return 0;
     const sourceId = typeof link.source === 'object' ? link.source.id : link.source;
     const targetId = typeof link.target === 'object' ? link.target.id : link.target;
     const linkId = `${sourceId}-${targetId}`;
     return highlightLinks.has(linkId) ? 4 : 1;
-  }, [visualConfig, highlightLinks]);
+  }, [visualConfig?.showParticles, highlightLinks]);
+
+  const getLinkDirectionalParticleColor = useCallback(link => {
+    if (link.type === 'prereq_forward') return '#4ade80';
+    if (link.type === 'prereq_backward') return '#f87171';
+    return '#ffffff';
+  }, []);
 
   const finalGraphData = useMemo(() => ({
     nodes: visibleGraphData.nodes,
@@ -678,25 +688,11 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
       
       nodeThreeObjectExtend={false}
       nodeThreeObject={nodeThreeObject}
-      linkColor={(link) => {
-        if (link.type === 'prereq_forward') return '#22c55e'; // Green (Unlocks)
-        if (link.type === 'prereq_backward') return '#ef4444'; // Red (Requires)
-        return linkColor(link);
-      }}
-      linkWidth={(link) => {
-        if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 1.5;
-        return linkWidth(link);
-      }}
-      linkDirectionalParticles={(link) => {
-        if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 4;
-        return linkDirectionalParticles(link);
-      }}
+      linkColor={getLinkColor}
+      linkWidth={getLinkWidth}
+      linkDirectionalParticles={getLinkDirectionalParticles}
       linkDirectionalParticleWidth={2}
-      linkDirectionalParticleColor={(link) => {
-        if (link.type === 'prereq_forward') return '#4ade80';
-        if (link.type === 'prereq_backward') return '#f87171';
-        return '#ffffff';
-      }}
+      linkDirectionalParticleColor={getLinkDirectionalParticleColor}
       
       enablePointerInteraction={!isTransforming}
       onNodeClick={handleNodeClick}

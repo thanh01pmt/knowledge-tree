@@ -1,4 +1,4 @@
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import KnowledgeTree3D from './components/KnowledgeTree3D';
 import ControlPanel from './components/ControlPanel';
 import NodeDetailsPanel from './components/NodeDetailsPanel';
@@ -102,6 +102,8 @@ function App() {
 
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
+  const historyIndexRef = useRef(-1);
+  historyIndexRef.current = historyIndex;
 
   const handleNodeSelect = useCallback((node, isHistoryNavigation = false) => {
     if (!node) {
@@ -110,26 +112,41 @@ function App() {
     }
     
     if (!isHistoryNavigation) {
+      const currIdx = historyIndexRef.current;
       setHistory(prev => {
-        const newHistory = prev.slice(0, historyIndex + 1);
+        const newHistory = prev.slice(0, currIdx + 1);
         newHistory.push(node);
         return newHistory;
       });
-      setHistoryIndex(prev => prev + 1);
+      setHistoryIndex(currIdx + 1);
     }
     
     setSelectedNode(node);
-  }, [historyIndex]);
+  }, []);
 
   const handleNavigateHistory = useCallback((direction) => {
-    if (direction === 'back' && historyIndex > 0) {
-      setHistoryIndex(historyIndex - 1);
-      handleNodeSelect(history[historyIndex - 1], true);
-    } else if (direction === 'forward' && historyIndex < history.length - 1) {
-      setHistoryIndex(historyIndex + 1);
-      handleNodeSelect(history[historyIndex + 1], true);
-    }
-  }, [history, historyIndex, handleNodeSelect]);
+    setHistoryIndex(prevIdx => {
+      if (direction === 'back' && prevIdx > 0) {
+        const newIdx = prevIdx - 1;
+        setHistory(h => {
+          if (h[newIdx]) setSelectedNode(h[newIdx]);
+          return h;
+        });
+        return newIdx;
+      } else if (direction === 'forward') {
+        setHistory(h => {
+          if (prevIdx < h.length - 1) {
+            const newIdx = prevIdx + 1;
+            if (h[newIdx]) setSelectedNode(h[newIdx]);
+            return h;
+          }
+          return h;
+        });
+        return Math.min(prevIdx + 1, history.length - 1);
+      }
+      return prevIdx;
+    });
+  }, [history.length]);
 
   const handleNodeSearch = useCallback(node => {
     setSearchedNodeId(node.id);
@@ -175,7 +192,6 @@ function App() {
         />
       </div>
 
-      {/* Side Panel */}
       {/* Side Panel */}
       <NodeDetailsPanel
         selectedNode={selectedNode}

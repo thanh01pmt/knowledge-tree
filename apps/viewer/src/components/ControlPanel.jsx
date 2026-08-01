@@ -39,7 +39,7 @@ export default function ControlPanel({
     
     const handleFocusSearch = () => {
       setIsCollapsed(false);
-      setActiveTab('points');
+      setActiveTab('elements');
       if (searchRef.current) {
         const input = searchRef.current.querySelector('input');
         if (input) {
