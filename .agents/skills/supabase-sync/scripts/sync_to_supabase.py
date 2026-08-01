@@ -66,6 +66,7 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
         ("categories.tsv", "categories", ["subject_codes", "field_codes"]),
         ("topics.tsv", "topics", ["category_codes", "subject_codes", "field_codes"]),
         ("concepts.tsv", "concepts", ["topic_codes", "category_codes", "subject_codes", "field_codes", "prerequisite_concept_codes"]),
+        ("keywords.tsv", "keywords", ["concept_codes"]),
         ("learning-objectives.tsv", "learning_objectives", ["concept_codes", "topic_codes", "category_codes", "subject_codes", "field_codes"]),
         ("lo_prerequisites.tsv", "learning_objective_prerequisites", [])
     ]

@@ -75,6 +75,7 @@ export function parseKnowledgeTree(rawData) {
   processItems(rawData.topics, 'topic', ['category_codes']);
   processItems(rawData.concepts, 'concept', ['topic_codes']);
   processItems(rawData.learning_objectives, 'learning_objective', ['concept_codes']);
+  processItems(rawData.keywords, 'keyword', ['concept_codes']);
   
   // 2. Calculate linkCount for node sizing
   links.forEach(link => {

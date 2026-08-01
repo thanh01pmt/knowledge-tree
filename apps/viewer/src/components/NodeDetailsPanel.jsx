@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react';
-import { ChevronRight, ArrowLeft, ArrowRight, ChevronLeft, LayoutGrid, Layers, Hexagon, Circle, Square, Minus, Map } from 'lucide-react';
+import { ChevronRight, ArrowLeft, ArrowRight, ChevronLeft, LayoutGrid, Layers, Hexagon, Circle, Square, Minus, Map, Hash } from 'lucide-react';
 
 const LevelIcon = ({ level, className }) => {
   switch(level) {
@@ -8,6 +8,7 @@ const LevelIcon = ({ level, className }) => {
     case 'category': return <LayoutGrid className={className} />;
     case 'topic': return <Hexagon className={className} />;
     case 'concept': return <Circle className={className} />;
+    case 'keyword': return <Hash className={className} />;
     default: return <Square className={className} />;
   }
 };

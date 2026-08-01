@@ -3,7 +3,6 @@ import KnowledgeTree3D from './components/KnowledgeTree3D';
 import ControlPanel from './components/ControlPanel';
 import NodeDetailsPanel from './components/NodeDetailsPanel';
 import { parseKnowledgeTree } from './utils/dataParser';
-import rawTreeData from './data/master_tree.json';
 import './App.css';
 
 const DEFAULT_VISUAL_CONFIG = { 
@@ -30,6 +29,7 @@ const DEFAULT_LEVEL_CONFIG = {
   topic: { textHeight: 5, textColor: '#aaaaaa', textWeight: 'normal', shape: 'tetrahedron', opacity: 0.7 },
   concept: { textHeight: 3, textColor: '#888888', textWeight: 'normal', shape: 'sphere', opacity: 0.6 },
   learning_objective: { textHeight: 2, textColor: '#44bbff', textWeight: 'normal', shape: 'sphere', opacity: 0.4 },
+  keyword: { textHeight: 2, textColor: '#ff44aa', textWeight: 'normal', shape: 'star', opacity: 0.8 },
 };
 
 function App() {
@@ -62,10 +62,36 @@ function App() {
     localStorage.removeItem('kt_levelConfig');
   };
 
-  // Parse data once
-  const { graphData, linksBySource, linksByTarget } = useMemo(() => {
-    return parseKnowledgeTree(rawTreeData);
+  const [rawTreeData, setRawTreeData] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchData() {
+      try {
+        // Fallback to local supabase functions URL for testing if env is missing
+        const apiUrl = import.meta.env.VITE_SUPABASE_FUNCTIONS_URL || 'http://127.0.0.1:54321/functions/v1';
+        const response = await fetch(`${apiUrl}/get-knowledge-tree`);
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+        const data = await response.json();
+        setRawTreeData(data);
+      } catch (err) {
+        console.error("Error fetching knowledge tree:", err);
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    }
+    fetchData();
   }, []);
+
+  // Parse data once it's loaded
+  const { graphData, linksBySource, linksByTarget } = useMemo(() => {
+    if (!rawTreeData) return { graphData: { nodes: [], links: [] }, linksBySource: {}, linksByTarget: {} };
+    return parseKnowledgeTree(rawTreeData);
+  }, [rawTreeData]);
 
   const [history, setHistory] = useState([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -102,6 +128,14 @@ function App() {
     setSearchedNodeId(node.id);
     handleNodeSelect(node);
   }, [handleNodeSelect]);
+
+  if (loading) {
+    return <div className="flex h-screen w-screen items-center justify-center bg-[#0f172a] text-slate-200">Loading Knowledge Tree from Supabase...</div>;
+  }
+
+  if (error) {
+    return <div className="flex h-screen w-screen items-center justify-center bg-[#0f172a] text-red-400">Error loading data: {error}</div>;
+  }
 
   return (
     <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
