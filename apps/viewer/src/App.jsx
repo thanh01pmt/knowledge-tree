@@ -35,7 +35,7 @@ const DEFAULT_LEVEL_CONFIG = {
 function App() {
   const [selectedNode, setSelectedNode] = useState(null);
   const [searchedNodeId, setSearchedNodeId] = useState(null);
-  const [filters, setFilters] = useState({ showLabels: true, maxLevel: 'topic' });
+  const [filters, setFilters] = useState({ showLabels: true, maxLevel: 'topic', showPrerequisites: false });
   const [visualConfig, setVisualConfig] = useState(() => {
     const saved = localStorage.getItem('kt_visualConfig');
     return saved ? JSON.parse(saved) : DEFAULT_VISUAL_CONFIG;
@@ -88,8 +88,8 @@ function App() {
   }, []);
 
   // Parse data once it's loaded
-  const { graphData, linksBySource, linksByTarget } = useMemo(() => {
-    if (!rawTreeData) return { graphData: { nodes: [], links: [] }, linksBySource: {}, linksByTarget: {} };
+  const { graphData, linksBySource, linksByTarget, prereqLinksBySource, prereqLinksByTarget } = useMemo(() => {
+    if (!rawTreeData) return { graphData: { nodes: [], links: [] }, linksBySource: {}, linksByTarget: {}, prereqLinksBySource: {}, prereqLinksByTarget: {} };
     return parseKnowledgeTree(rawTreeData);
   }, [rawTreeData]);
 
@@ -157,6 +157,8 @@ function App() {
           graphData={graphData} 
           linksBySource={linksBySource} 
           linksByTarget={linksByTarget}
+          prereqLinksBySource={prereqLinksBySource}
+          prereqLinksByTarget={prereqLinksByTarget}
           onNodeSelect={handleNodeSelect}
           searchedNodeId={searchedNodeId}
           filters={filters}

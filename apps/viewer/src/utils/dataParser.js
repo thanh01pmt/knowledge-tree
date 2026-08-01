@@ -11,6 +11,9 @@ export function parseKnowledgeTree(rawData) {
   const fieldHues = [200, 140, 30, 280, 0, 320, 60, 100, 250]; // Distinct hues for fields
   let fieldIndex = 0;
   
+  const prereqLinksBySource = {};
+  const prereqLinksByTarget = {};
+
   const processItems = (items, level, parentKeys) => {
     if (!items) return;
     
@@ -21,13 +24,27 @@ export function parseKnowledgeTree(rawData) {
         name: item.name,
         description: item.description,
         level: level,
-        metadata: item.metadata ? JSON.parse(item.metadata) : {},
+        metadata: item.metadata ? (typeof item.metadata === 'string' ? JSON.parse(item.metadata) : item.metadata) : {},
+        cs2023_ka: item.cs2023_ka_mapping || null,
         linkCount: 0 // Will calculate later
       };
       nodes.push(node);
       
       if (level === 'field') {
         node.hue = fieldHues[fieldIndex++ % fieldHues.length];
+      }
+      
+      // Process Prerequisites (if available)
+      if (item.prerequisite_concept_codes) {
+        const prereqCodes = item.prerequisite_concept_codes.split(',').map(code => code.trim()).filter(Boolean);
+        prereqCodes.forEach(prereqCode => {
+          // Source = Prerequisite (A must be learned before B) -> A is source, B is target
+          if (!prereqLinksBySource[prereqCode]) prereqLinksBySource[prereqCode] = [];
+          prereqLinksBySource[prereqCode].push(item.code);
+          
+          if (!prereqLinksByTarget[item.code]) prereqLinksByTarget[item.code] = [];
+          prereqLinksByTarget[item.code].push(prereqCode);
+        });
       }
       
       // Create links from parents
@@ -89,6 +106,8 @@ export function parseKnowledgeTree(rawData) {
   return { 
     graphData: { nodes, links },
     linksBySource,
-    linksByTarget
+    linksByTarget,
+    prereqLinksBySource,
+    prereqLinksByTarget
   };
 }

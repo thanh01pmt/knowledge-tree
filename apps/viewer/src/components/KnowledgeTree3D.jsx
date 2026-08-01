@@ -37,7 +37,7 @@ function getGlowTexture() {
   return glowTextureCache;
 }
 
-export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, onNodeSelect, searchedNodeId, filters = { showLabels: true, maxLevel: 'topic' }, visualConfig, levelConfig, selectedNode }) {
+export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, prereqLinksBySource = {}, prereqLinksByTarget = {}, onNodeSelect, searchedNodeId, filters = { showLabels: true, maxLevel: 'topic', showPrerequisites: false }, visualConfig, levelConfig, selectedNode }) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
   const [highlightLinks, setHighlightLinks] = useState(new Set());
@@ -228,6 +228,44 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     
     return { nodes: filteredNodes, links: filteredLinks };
   }, [graphData, expandedNodes, linksBySource, filters.maxLevel]);
+
+  // Handle Prerequisite DAG links to overlay on the graph
+  const visiblePrereqLinks = useMemo(() => {
+    if (!filters.showPrerequisites || !focusedNodeId) return [];
+    
+    // We only show prerequisite lines leading to or from the focused node
+    const prereqLinks = [];
+    const actualNodesSet = new Set(visibleGraphData.nodes.map(n => n.id));
+    
+    const tracePrereqs = (startId, linksDict, isForward) => {
+      let currentIds = [startId];
+      const visited = new Set([startId]);
+      
+      while (currentIds.length > 0) {
+        const nextIds = [];
+        currentIds.forEach(id => {
+          const neighbors = linksDict[id] || [];
+          neighbors.forEach(nId => {
+            if (actualNodesSet.has(nId) && !visited.has(nId)) {
+              visited.add(nId);
+              nextIds.push(nId);
+              if (isForward) {
+                 prereqLinks.push({ source: id, target: nId, type: 'prereq_forward' });
+              } else {
+                 prereqLinks.push({ source: nId, target: id, type: 'prereq_backward' });
+              }
+            }
+          });
+        });
+        currentIds = nextIds;
+      }
+    };
+
+    tracePrereqs(focusedNodeId, prereqLinksBySource, true); // Things that depend ON focusedNode (forward)
+    tracePrereqs(focusedNodeId, prereqLinksByTarget, false); // Things that focusedNode depends ON (backward)
+
+    return prereqLinks;
+  }, [filters.showPrerequisites, focusedNodeId, prereqLinksBySource, prereqLinksByTarget, visibleGraphData.nodes]);
 
   // Configure physics
   useEffect(() => {
@@ -452,6 +490,22 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
       'concept': `hsl(${hue}, 40%, 25%)`
     };
 
+    if (visualConfig && visualConfig.coloringStrategy === 'cs2023') {
+       if (node.cs2023_ka) {
+          const kaStr = String(node.cs2023_ka);
+          let hash = 0;
+          for (let i = 0; i < kaStr.length; i++) {
+             hash = kaStr.charCodeAt(i) + ((hash << 5) - hash);
+          }
+          const kaHue = Math.abs(hash) % 360;
+          
+          if (highlightNodes.size === 0) return `hsl(${kaHue}, 80%, 55%)`;
+          return highlightNodes.has(node.id) ? `hsl(${kaHue}, 100%, 75%)` : 'rgba(255,255,255,0.05)';
+       } else {
+          return highlightNodes.size > 0 && !highlightNodes.has(node.id) ? 'rgba(255,255,255,0.05)' : '#475569';
+       }
+    }
+
     if (highlightNodes.size === 0) {
       if (node.metadata && node.metadata.color && (!visualConfig || visualConfig.coloringStrategy === 'hierarchy')) return node.metadata.color;
       return levelStyles[node.level] || '#ffffff';
@@ -615,14 +669,32 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
         width={dimensions.width}
         height={dimensions.height}
         controlType="orbit"
-        graphData={visibleGraphData}
+        graphData={{
+           nodes: visibleGraphData.nodes,
+           links: [...visibleGraphData.links, ...visiblePrereqLinks]
+        }}
       
       nodeThreeObjectExtend={false}
       nodeThreeObject={nodeThreeObject}
-      linkColor={linkColor}
-      linkWidth={linkWidth}
-      linkDirectionalParticles={linkDirectionalParticles}
+      linkColor={(link) => {
+        if (link.type === 'prereq_forward') return '#22c55e'; // Green (Unlocks)
+        if (link.type === 'prereq_backward') return '#ef4444'; // Red (Requires)
+        return linkColor(link);
+      }}
+      linkWidth={(link) => {
+        if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 1.5;
+        return linkWidth(link);
+      }}
+      linkDirectionalParticles={(link) => {
+        if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 4;
+        return linkDirectionalParticles(link);
+      }}
       linkDirectionalParticleWidth={2}
+      linkDirectionalParticleColor={(link) => {
+        if (link.type === 'prereq_forward') return '#4ade80';
+        if (link.type === 'prereq_backward') return '#f87171';
+        return '#ffffff';
+      }}
       
       enablePointerInteraction={!isTransforming}
       onNodeClick={handleNodeClick}

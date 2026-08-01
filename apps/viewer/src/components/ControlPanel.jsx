@@ -179,6 +179,7 @@ export default function ControlPanel({
                   >
                     <option value="hierarchy">Hierarchy (Levels)</option>
                     <option value="connections">Connections Count</option>
+                    <option value="cs2023">CS2023 Standard Overlay</option>
                   </select>
                 </div>
               </div>
@@ -259,6 +260,21 @@ export default function ControlPanel({
                     <option value="topic">4. Topic (Chủ đề)</option>
                     <option value="concept">5. Concept (Khái niệm)</option>
                   </select>
+                </div>
+                
+                <div className="flex items-center justify-between pt-2 border-t border-slate-700">
+                  <div className="flex items-center gap-2">
+                    <span className="text-xs text-slate-300">Show Prerequisites</span>
+                    <Info className="w-3.5 h-3.5 text-slate-500 cursor-help" title="Hiển thị chuỗi điều kiện tiên quyết khi click vào Concept (Màu đỏ: Phải học trước, Màu xanh: Học sau)" />
+                  </div>
+                  <button 
+                    role="switch"
+                    aria-checked={filters.showPrerequisites}
+                    onClick={() => setFilters({...filters, showPrerequisites: !filters.showPrerequisites})}
+                    className={`relative inline-flex h-4 w-7 items-center rounded-full transition-colors focus:outline-none ${filters.showPrerequisites ? 'bg-slate-400' : 'bg-slate-600'}`}
+                  >
+                    <span className={`inline-block h-3 w-3 transform rounded-full bg-white transition-transform ${filters.showPrerequisites ? 'translate-x-3.5' : 'translate-x-0.5'}`} />
+                  </button>
                 </div>
               </div>
             </div>
