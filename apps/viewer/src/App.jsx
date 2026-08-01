@@ -29,6 +29,7 @@ const DEFAULT_LEVEL_CONFIG = {
   category: { textHeight: 7, textColor: '#cccccc', textWeight: 'normal', shape: 'box', opacity: 0.8 },
   topic: { textHeight: 5, textColor: '#aaaaaa', textWeight: 'normal', shape: 'tetrahedron', opacity: 0.7 },
   concept: { textHeight: 3, textColor: '#888888', textWeight: 'normal', shape: 'sphere', opacity: 0.6 },
+  learning_objective: { textHeight: 2, textColor: '#44bbff', textWeight: 'normal', shape: 'sphere', opacity: 0.4 },
 };
 
 function App() {
