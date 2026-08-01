@@ -250,11 +250,8 @@ export default function KnowledgeTree3D({
     }
 
     const maxLevel = filters.maxLevel || 'topic';
-    const levelOrder = ['field', 'subject', 'category', 'topic', 'concept'];
+    const levelOrder = ['field', 'subject', 'category', 'topic', 'concept', 'learning_objective'];
     const maxIndex = levelOrder.indexOf(maxLevel) !== -1 ? levelOrder.indexOf(maxLevel) : 3;
-
-    // Nếu maxLevel là concept (cấp thấp nhất), hiển thị toàn bộ đồ thị
-    if (maxIndex === levelOrder.length - 1) return graphData;
 
     const visibleNodesSet = new Set();
     
@@ -677,14 +674,14 @@ export default function KnowledgeTree3D({
         if (hasChildren && !isExpanded) {
            const indicator = new SpriteText('(+)');
            indicator.color = '#38bdf8'; // light blue
-           indicator.textHeight = 2;
-           indicator.position.y = yOffset + 2.5;
+           indicator.textHeight = 4.5;
+           indicator.position.y = yOffset + 5;
            group.add(indicator);
         } else if (hasChildren && isExpanded) {
            const indicator = new SpriteText('(-)');
            indicator.color = '#94a3b8'; // slate
-           indicator.textHeight = 1.5;
-           indicator.position.y = yOffset + 2.5;
+           indicator.textHeight = 3.5;
+           indicator.position.y = yOffset + 4;
            group.add(indicator);
         }
 

@@ -57,7 +57,15 @@ export function parseKnowledgeTree(rawData) {
       
       // Create links from parents
       if (parentKeys) {
-        parentKeys.forEach(parentKey => {
+        let activeKeys = parentKeys;
+        
+        // Custom logic for Learning Objectives to prevent flat-star shapes
+        // If an LO has a parent_lo_code, only link to the parent LO, NOT the concept.
+        if (level === 'learning_objective' && item.parent_lo_code) {
+            activeKeys = ['parent_lo_code'];
+        }
+
+        activeKeys.forEach(parentKey => {
           if (item[parentKey]) {
             let parentCodes = [];
             if (Array.isArray(item[parentKey])) {
@@ -103,7 +111,7 @@ export function parseKnowledgeTree(rawData) {
   processItems(rawData.categories, 'category', ['subject_codes']);
   processItems(rawData.topics, 'topic', ['category_codes']);
   processItems(rawData.concepts, 'concept', ['topic_codes']);
-  processItems(rawData.learning_objectives, 'learning_objective', ['concept_codes']);
+  processItems(rawData.learning_objectives, 'learning_objective', ['concept_codes', 'parent_lo_code']);
   processItems(rawData.keywords, 'keyword', ['concept_codes']);
   
   // 2. Calculate linkCount for node sizing using Map O(1)
