@@ -32,7 +32,7 @@ description: Tự động nghiên cứu xu hướng công nghệ bằng last30da
 ### Giai đoạn 3: Mapping & Gap Detection (Đối chiếu Master Tree)
 
 5. **Lọc và Tái sử dụng (N:N Reuse)**:
-   - Đối chiếu danh sách Concept mới với Master Tree hiện tại (`.agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv`).
+   - Đối chiếu danh sách Concept mới với Master Tree hiện tại (`services/python-api/general-context/mlo-knowlege-tree.tsv`).
    - Loại bỏ trùng lặp. Nếu khái niệm mới có thể ghép vào Category/Topic hiện tại, thực hiện ghép N:N.
    - Những khái niệm thực sự mới (Gap D) sẽ được chuẩn bị để đưa vào Staging.
 6. **Kiểm tra Trung tính & Cú pháp Danh từ**:

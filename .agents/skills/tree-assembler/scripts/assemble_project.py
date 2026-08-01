@@ -263,8 +263,35 @@ def main():
 
     sanitize_parent_refs(result, levels)
 
-    print(f"\n[*] Building taxonomy TSVs for project '{slug}'...")
+    print(f"[*] Building taxonomy TSVs for project '{slug}'...")
     write_tsvs(result, out_dir, levels)
+
+    # ── Post-processing: enrich concepts missing cs2023_ka_mapping / metadata ──
+    concepts_tsv = out_dir / "concepts.tsv"
+    if concepts_tsv.is_file():
+        enriched = 0
+        rows = []
+        with open(concepts_tsv, encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            fieldnames = reader.fieldnames
+            for row in reader:
+                code = row.get("code", "").strip()
+                if code and (not row.get("cs2023_ka_mapping", "").strip() or not row.get("metadata", "").strip()):
+                    # Lookup in Master Tree
+                    master_row = code_to_row.get(code, {})
+                    if not row.get("cs2023_ka_mapping", "").strip():
+                        row["cs2023_ka_mapping"] = master_row.get("cs2023_ka_mapping", "")
+                    if not row.get("metadata", "").strip():
+                        row["metadata"] = master_row.get("metadata", "{}")
+                    enriched += 1
+                rows.append(row)
+        if enriched:
+            with open(concepts_tsv, "w", newline="", encoding="utf-8") as f:
+                writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", extrasaction="ignore")
+                writer.writeheader()
+                writer.writerows(rows)
+            print(f"  ✓ Enriched {enriched} concepts with cs2023_ka_mapping/metadata from Master Tree")
+
     print(f"\n[✓] Taxonomy assembled for '{slug}'!")
     print("[→] Tiếp theo: chạy /generate-los để sinh learning-objectives.tsv.")
 

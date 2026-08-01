@@ -21,10 +21,10 @@ except ImportError:
     sys.exit(1)
 
 class Concept(BaseModel):
-    code: str = Field(description="Mã Concept (UPPER_SNAKE_CASE, ví dụ DATABASE_ORM)")
-    name: str = Field(description="Tên khái niệm (Trung tính 100%)")
-    description: str = Field(description="Định nghĩa khái quát (Trung tính 100%)")
-    keywords: str = Field(description="Các từ khóa liên quan, cách nhau bằng dấu phẩy")
+    code: str = Field(description="Ma Concept (UPPER_SNAKE_CASE, vi du DATABASE_ORM)")
+    name: str = Field(description="Ten khai niem (Trung tinh 100%)")
+    description: str = Field(description="Dinh nghia khai quat (Trung tinh 100%)")
+    keywords: str = Field(description="Cac tu khoa lien quan, cach nhau bang dau phay")
 
 class ConceptList(BaseModel):
     concepts: List[Concept]
@@ -46,23 +46,22 @@ def get_client() -> AsyncOpenAI:
     return AsyncOpenAI(api_key=api_key, timeout=120.0)
 
 def load_master_data(repo_root: Path):
-    """Đọc master_tree.json để lấy danh sách domain cấp cao (fields, subjects, categories, topics) VÀ danh sách Concepts."""
+    """Doc master_tree.json de lay danh sach domain cap cao VA danh sach Concepts + lookup."""
     master_file = repo_root / ".agents" / "skills" / "taxonomy-mapper" / "resources" / "master_tree.json"
     if not master_file.exists():
-        return "", "[]"
+        return "", "[]", {}
     try:
         with open(master_file, "r", encoding="utf-8") as f:
             master = json.load(f)
         
-        # Load high-level domains
         names = set()
         for level in ["fields", "subjects", "categories", "topics"]:
             for item in master.get(level, []):
                 if "name" in item:
                     names.add(item["name"])
         
-        # Load master concepts
         master_concepts = []
+        master_lookup = {}
         for c in master.get("concepts", []):
             master_concepts.append({
                 "code": c.get("code", ""),
@@ -70,54 +69,57 @@ def load_master_data(repo_root: Path):
                 "description": c.get("description", ""),
                 "keywords": c.get("keywords", "")
             })
+            master_lookup[c.get("code", "")] = {
+                "cs2023_ka_mapping": c.get("cs2023_ka_mapping", ""),
+                "metadata": c.get("metadata", "{}"),
+            }
             
-        return ", ".join(sorted(names)), json.dumps(master_concepts, ensure_ascii=False)
+        return ", ".join(sorted(names)), json.dumps(master_concepts, ensure_ascii=False), master_lookup
     except Exception as e:
-        print(f"[WARN] Lỗi đọc master_tree.json: {e}")
-        return "", "[]"
+        print(f"[WARN] Loi doc master_tree.json: {e}")
+        return "", "[]", {}
 
 async def evaluate_concepts(client: AsyncOpenAI, candidates: list, domain_names: str, master_concepts_str: str) -> list:
-    """Gửi danh sách ứng viên cho LLM để lọc trung tính."""
-    
-    prompt = f"""Bạn là một chuyên gia thiết kế Ontology Sư phạm (Pedagogical Ontology).
-Dưới đây là danh sách các Khái niệm (Nodes) được trích xuất từ tài liệu.
+    """Gui danh sach ung vien cho LLM de loc trung tinh."""
+    prompt = f"""Ban la mot chuyen gia thiet ke Ontology Su pham (Pedagogical Ontology).
+Duoi day la danh sach cac Khai niem (Nodes) duoc trich xuat tu tai lieu.
 
-Quy tắc TỐI THƯỢNG 1 (Technology-Agnostic): BẮT BUỘC khái niệm phải 100% TRUNG TÍNH. 
-KHÔNG ĐƯỢC CHỨA tên công nghệ, ngôn ngữ lập trình, hay framework cụ thể (như Swift, Python, Docker, SwiftUI).
-Ví dụ: "View" thì được chấp nhận, "SwiftUI View" thì bị loại bỏ. "Protocol" thì được, "Swift Protocol" thì loại.
+Quy tac TOI THUONG 1 (Technology-Agnostic): BAT BUOC khai niem phai 100% TRUNG TINH.
+KHONG DUOC CHUA ten cong nghe, ngon ngu lap trinh, hay framework cu the (nhu Swift, Python, Docker, SwiftUI).
+Vi du: "View" thi duoc chap nhan, "SwiftUI View" thi bi loai bo. "Protocol" thi duoc, "Swift Protocol" thi loai.
 
-Quy tắc TỐI THƯỢNG 2 (Scope Resolution): Concept là cấp độ chi tiết (hạt nhân). 
-KHÔNG ĐƯỢC tạo ra các Concept có tên hoặc phạm vi (scope) trùng lặp với các Domain cấp cao (Fields, Subjects, Categories, Topics) đã có trong Master Tree.
-Danh sách các Domain cấp cao (cấm trùng lặp):
+Quy tac TOI THUONG 2 (Scope Resolution): Concept la cap do chi tiet (hat nhan).
+KHONG DUOC tao ra cac Concept co ten hoac pham vi (scope) trung lap voi cac Domain cap cao (Fields, Subjects, Categories, Topics) da co trong Master Tree.
+Danh sach cac Domain cap cao (cam trung lap):
 [{domain_names}]
 
-Quy tắc TỐI THƯỢNG 3 (Pedagogical Depth & Clustering): Khái niệm BẮT BUỘC phải có ĐỘ SÂU SƯ PHẠM.
-- CHẤP NHẬN: Các nguyên lý, cấu trúc dữ liệu, mô hình, cơ chế cốt lõi.
-- GỘP (CLUSTERING): Nếu có nhiều ứng viên là các thành phần nhỏ của cùng một họ (Ví dụ: Button, Slider, TextField, Toggle), KHÔNG ĐƯỢC tạo từng Concept riêng lẻ cho mỗi cái. Hãy GỘP chúng lại thành một Concept lớn (Ví dụ: `INTERACTIVE_COMPONENTS` hoặc `UI_CONTROLS`) và đẩy các từ khóa con vào 'keywords'.
-- LOẠI BỎ (REJECT): Các danh từ chung chung, các bước thực hành quá nhỏ không có lý thuyết.
+Quy tac TOI THUONG 3 (Pedagogical Depth & Clustering): Khai niem BAT BUOC phai co DO SAU SU PHAM.
+- CHAP NHAN: Cac nguyen ly, cau truc du lieu, mo hinh, co che cot loi.
+- GOP (CLUSTERING): Neu co nhieu ung vien la cac thanh phan nho cua cung mot ho, KHONG DUOC tao tung Concept rieng le cho moi cai. Hay GOP chung lai thanh mot Concept lon va day cac tu khoa con vao 'keywords'.
+- LOAI BO (REJECT): Cac danh tu chung chung, cac buoc thuc hanh qua nho khong co ly thuyet.
 
-Quy tắc TỐI THƯỢNG 4 (Entity Resolution - Ưu tiên Master Tree):
-Dưới đây là danh sách các Master Concepts ĐÃ TỒN TẠI trong hệ thống (dạng JSON):
+Quy tac TOI THUONG 4 (Entity Resolution - Uu tien Master Tree):
+Duoi day la danh sach cac Master Concepts DA TON TAI trong he thong (dang JSON):
 {master_concepts_str}
 
-Trước khi sinh ra một Concept mới, BẮT BUỘC phải đối chiếu ý nghĩa của nó với Danh sách Master Concepts ở trên. 
-- Nếu khái niệm ứng viên có ý nghĩa tương đương, HOẶC là tập con nằm trọn trong phạm vi của một Master Concept (Ví dụ: Asset thuộc về PROJECT_ASSETS_MANAGEMENT), bạn BẮT BUỘC phải TÁI SỬ DỤNG nguyên xi 'code', 'name', và 'description' của Master Concept đó. ĐỐI VỚI TRƯỜNG 'keywords', bạn phải NỐI (merge) các keywords cũ đang có trong Master Concept với các keywords mới trích xuất được.
-- CHỈ tạo Concept mới (dạng UPPER_SNAKE_CASE) khi hoàn toàn không có Master Concept nào phù hợp. Tuyệt đối không tạo mới nếu có thể ép nó vào làm tập con.
+Truoc khi sinh ra mot Concept moi, BAT BUOC phai doi chieu y nghia cua no voi Danh sach Master Concepts o tren.
+- Neu khai niem ung vien co y nghia tuong duong, HOAC la tap con nam tron trong pham vi cua mot Master Concept, ban BAT BUOC phai TAI SU DUNG nguyen xi 'code', 'name', va 'description' cua Master Concept do. DOI VOI TRUONG 'keywords', ban phai NOI (merge) cac keywords cu dang co trong Master Concept voi cac keywords moi trich xuat duoc.
+- CHI tao Concept moi (dang UPPER_SNAKE_CASE) khi hoan toan khong co Master Concept nao phu hop. Tuyet doi khong tao moi neu co the ep no vao lam tap con.
 
-Quy tắc TỐI THƯỢNG 5 (Ngôn ngữ):
-TẤT CẢ 'name' và 'description' của Concept MỚI BẮT BUỘC phải được viết bằng TIẾNG VIỆT (văn phong học thuật, chuẩn mực).
+Quy tac TOI THUONG 5 (Ngon ngu):
+TAT CA 'name' va 'description' cua Concept MOI BAT BUOC phai duoc viet bang TIENG VIET (van phong hoc thuat, chuan muc).
 
-Nhiệm vụ:
-1. Lọc và gộp các khái niệm đảm bảo Trung tính (Quy tắc 1), Chi tiết (Quy tắc 2), và Sư phạm/Clustering (Quy tắc 3).
-2. Tái sử dụng Master Concept tối đa (Quy tắc 4). Nếu tạo mới, sinh ra 'code' UPPER_SNAKE_CASE.
-3. Đảm bảo ngôn ngữ TIẾNG VIỆT (Quy tắc 5).
-4. Gom các từ khóa gốc vào trường 'keywords' (phân tách bằng dấu phẩy).
+Nhiem vu:
+1. Loc va gop cac khai niem dam bao Trung tinh (Quy tac 1), Chi tiet (Quy tac 2), va Su pham/Clustering (Quy tac 3).
+2. Tai su dung Master Concept toi da (Quy tac 4). Neu tao moi, sinh ra 'code' UPPER_SNAKE_CASE.
+3. Dam bao ngon ngu TIENG VIET (Quy tac 5).
+4. Gom cac tu khoa goc vao truong 'keywords' (phan tach bang dau phay).
 
-Danh sách ứng viên:
+Danh sach ung vien:
 {json.dumps(candidates, ensure_ascii=False, indent=2)}
 
-Trả về dữ liệu dưới định dạng JSON tuân thủ schema quy định.
-Schema JSON mẫu:
+Tra ve du lieu duoi dinh dang JSON tuan thu schema quy dinh.
+Schema JSON mau:
 {{
   "concepts": [
     {{"code": "...", "name": "...", "description": "...", "keywords": "..."}}
@@ -125,7 +127,7 @@ Schema JSON mẫu:
 }}
 """
 
-    print("[PROCESS] Đang gọi LLM để đánh giá sự trung tính và chống trùng lặp domain...")
+    print("[PROCESS] Dang goi LLM de danh gia su trung tinh va chong trung lap domain...")
     try:
         response = await client.chat.completions.create(
             model=os.environ.get("LLM_MODEL", "deepseek-v4-flash:cloud"),
@@ -139,19 +141,19 @@ Schema JSON mẫu:
         content = response.choices[0].message.content
         data = json.loads(content)
         if "concepts" not in data:
-            print("[WARN] Dữ liệu trả về không chứa mảng 'concepts'.")
+            print("[WARN] Du lieu tra ve khong chua mang 'concepts'.")
             return []
         
         validated = ConceptList.model_validate(data)
         return validated.concepts
     except Exception as e:
-        print(f"[ERROR] Quá trình LLM thất bại: {e}")
+        print(f"[ERROR] Qua trinh LLM that bai: {e}")
         return []
 
 async def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--project", required=True, help="Tên project (slug)")
-    parser.add_argument("--top-n", type=int, default=100, help="Số lượng Node có kết nối cao nhất để đánh giá")
+    parser.add_argument("--project", required=True, help="Ten project (slug)")
+    parser.add_argument("--top-n", type=int, default=100, help="So luong Node co ket noi cao nhat de danh gia")
     args = parser.parse_args()
 
     repo_root = Path.cwd().resolve()
@@ -170,56 +172,49 @@ async def main():
     concepts_file = out_dir / "concepts.tsv"
     
     if not graph_file.exists():
-        print(f"[ERROR] Không tìm thấy đồ thị: {graph_file}", file=sys.stderr)
+        print(f"[ERROR] Khong tim thay do thi: {graph_file}", file=sys.stderr)
         sys.exit(1)
         
     try:
         with open(graph_file, "r", encoding="utf-8") as f:
             graph_data = json.load(f)
     except Exception as e:
-        print(f"[ERROR] Không thể đọc {graph_file}: {e}")
+        print(f"[ERROR] Khong the doc {graph_file}: {e}")
         sys.exit(1)
         
-    # Chỉ lấy các Node có type là "conceptual" hoặc "procedural" để đưa lên làm Concept
-    # Bỏ qua "factual" (quá vụn vặt), "action" (động từ), và "metacognitive"
     allowed_types = {"conceptual", "procedural"}
     nodes = {n["id"]: n for n in graph_data.get("nodes", []) if n.get("type") in allowed_types}
     edges = graph_data.get("edges", [])
     
-    print(f"[INFO] Tổng số Conceptual/Procedural Nodes hợp lệ trong Graph: {len(nodes)}")
+    print(f"[INFO] Tong so Conceptual/Procedural Nodes hop le trong Graph: {len(nodes)}")
     if not nodes:
-        print("[WARN] Không có Node (conceptual/procedural) nào để xử lý.")
+        print("[WARN] Khong co Node (conceptual/procedural) nao de xu ly.")
         sys.exit(0)
 
-    # Tính Degree (Số lượng kết nối) cho mỗi Node
     degree = defaultdict(int)
     for e in edges:
         degree[e["source"]] += e.get("weight", 1)
         degree[e["target"]] += e.get("weight", 1)
         
-    # Sắp xếp Nodes theo Degree giảm dần
     sorted_nodes = sorted(nodes.values(), key=lambda x: degree[x["id"]], reverse=True)
-    
-    # Lấy Top N
     top_candidates = sorted_nodes[:args.top_n]
-    print(f"[INFO] Tổng số Nodes trong Graph: {len(nodes)}")
-    print(f"[INFO] Lấy Top {len(top_candidates)} Nodes có độ liên kết cao nhất làm ứng viên Concept.")
+    print(f"[INFO] Tong so Nodes trong Graph: {len(nodes)}")
+    print(f"[INFO] Lay Top {len(top_candidates)} Nodes co do lien ket cao nhat lam ung vien Concept.")
     
-    # Chuẩn bị dữ liệu gửi LLM
     llm_payload = [
         {"id": n["id"], "label": n["label"], "definition": n["definition"]}
         for n in top_candidates
     ]
     
-    domain_names, master_concepts_str = load_master_data(repo_root)
+    domain_names, master_concepts_str, master_lookup = load_master_data(repo_root)
     client = get_client()
     approved_concepts = await evaluate_concepts(client, llm_payload, domain_names, master_concepts_str)
     
     if not approved_concepts:
-        print("[WARN] LLM không trả về Concept nào hợp lệ.")
+        print("[WARN] LLM khong tra ve Concept nao hop le.")
         sys.exit(0)
         
-    print(f"[SUCCESS] LLM đã duyệt và trả về {len(approved_concepts)} Concepts trung tính.")
+    print(f"[SUCCESS] LLM da duyet va tra ve {len(approved_concepts)} Concepts trung tinh.")
     
     # Ghi ra TSV
     headers = ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"]
@@ -229,18 +224,20 @@ async def main():
         writer.writerow(headers)
         
         for c in approved_concepts:
+            # Lookup cs2023_ka_mapping and metadata from Master Tree if available
+            master_info = master_lookup.get(c.code, {})
             row = [
                 c.code,
                 c.name,
                 c.description,
-                "", # topic_codes (trống)
+                "", # topic_codes (trong)
                 c.keywords,
-                "", # cs2023_ka_mapping (trống)
-                "{}" # metadata (trống)
+                master_info.get("cs2023_ka_mapping", ""), # tu Master Tree neu co
+                master_info.get("metadata", "{}"),         # tu Master Tree neu co
             ]
             writer.writerow(row)
             
-    print(f"[SUCCESS] Đã lưu vào {concepts_file.relative_to(repo_root)}")
+    print(f"[SUCCESS] Da luu vao {concepts_file.relative_to(repo_root)}")
 
 if __name__ == "__main__":
     asyncio.run(main())

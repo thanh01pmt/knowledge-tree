@@ -4,7 +4,7 @@ description: Run this workflow to crawl external roadmaps (e.g. roadmap.sh), sca
 
 # Workflow: Crawl Roadmap & Project Alignment Pipeline
 
-> **Rule:** Khi crawl dữ liệu từ bất kỳ nguồn bên ngoài nào (như `roadmap.sh`), hệ thống sẽ **khởi tạo 1 project độc lập** trong `projects/<project_name>`, triển khai đầy đủ quy trình xây dựng & kiểm định 6 bảng TSV cho project đó trước, sau đó mới đề xuất merge node mới vào `general-context/mlo-knowlege-tree.tsv`.
+> **Rule:** Khi crawl dữ liệu từ bất kỳ nguồn bên ngoài nào (như `roadmap.sh`), hệ thống sẽ **khởi tạo 1 project độc lập** trong `projects/<project_name>`, triển khai đầy đủ quy trình xây dựng & kiểm định 6 bảng TSV cho project đó trước, sau đó mới đề xuất merge node mới vào `general-context/mlo-knowlege-tree.tsv` (staging working copy, do roadmap-aligner tạo).
 
 **Command:** `/crawl-roadmap <URL> [project_name]`  
 **Owner:** `@roadmap-aligner` & `@tree-assembler`
@@ -72,7 +72,7 @@ description: Run this workflow to crawl external roadmaps (e.g. roadmap.sh), sca
     ```bash
     python3 .agents/skills/roadmap-aligner/scripts/tree_diff.py --project <project_name>
     ```
-    *So sánh 6 bảng TSV của project với `general-context/mlo-knowlege-tree.tsv`.*
+    *So sánh 6 bảng TSV của project với `general-context/mlo-knowlege-tree.tsv` (staging working copy).*
 11. **Lập Đề xuất Merge (N:N Reuse Topology)**:
     - Báo cáo chi tiết các Fields, Subjects, Categories, Topics, Concepts, và LOs mới được phát hiện từ project.
     - Áp dụng nguyên tắc N:N Reuse: Ưu tiên gắn ghép vào Category/Topic hiện có thay vì tạo Category/Topic trùng lặp.

@@ -27,9 +27,9 @@ python3 .agents/skills/tree-validator/scripts/validate_tree.py --project <slug>
 | `BROKEN_REFERENCE` | ERROR | Child references parent code that doesn't exist |
 | `ORPHAN_NODE` | WARNING | Node not referenced by any child (expected for Master Tree reuse) |
 | `DUPLICATE_CODE` | ERROR | Duplicate code within same TSV |
-| `MISSING_REQUIRED_FIELD` | ERROR | Required column empty |
+| `EMPTY_REQUIRED_FIELD` | ERROR | Required column empty |
 | `LO_CONCEPT_UNCOVERED` | WARNING | Concept in concepts.tsv has no LO referencing it |
-| `LO_MISSING_ASSESSMENT` | WARNING | ULO/CIO missing `assessment_approach` (Rule 7) |
+| `LO_MISSING_ASSESSMENT_APPROACH` | WARNING | ULO/CIO missing `assessment_approach` (Rule 7) |
 
 ## Expected Output
 

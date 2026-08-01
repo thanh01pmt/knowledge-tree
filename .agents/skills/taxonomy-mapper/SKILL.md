@@ -67,6 +67,13 @@ Với `[NEW NODE PROPOSAL]`: ghi đủ `UPPER_SNAKE_CASE` code (noun phrase), Na
 
 Không ghi bất kỳ project TSV nào. Đề xuất `mapping-plan.md` cho người dùng duyệt, rồi chạy `/build-tree`.
 
+## Scripts
+
+- `extract_document_hierarchy.py` — Extract cấu trúc phân cấp từ tài liệu nguồn (PDF/MD/TXT/DOCX), LLM classify mỗi node vào tầng Master Tree. Output: `structured_hints.json`.
+- `semantic_search_master.py` — Semantic search Master Tree bằng embeddings. Dùng `master_tree_embeddings.json` để tìm top-k concept/topic/category gần nhất cho mỗi syllabus item.
+- `detect_master_gaps.py` — Phát hiện syllabus domains không có trong Master Tree. Output: `master_gap_report.md`.
+- `parse_master_tree.py` — Parse Master TSV → JSON (dùng shared `master_tree_parser.py`).
+
 ## Rules
 
 - `match_confidence >= 0.80` → trust & use directly (no re-derivation)

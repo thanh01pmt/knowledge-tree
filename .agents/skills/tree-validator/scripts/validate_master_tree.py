@@ -71,7 +71,7 @@ def split(v):
 def main():
     repo_root = find_repo_root(Path.cwd())
     ap = argparse.ArgumentParser()
-    ap.add_argument("--tsv", default=str(repo_root / "general-context/mlo-knowlege-tree.tsv"))
+    ap.add_argument("--tsv", default=str(repo_root / "services/python-api/general-context/mlo-knowlege-tree.tsv"))
     args = ap.parse_args()
     tsv_path = Path(args.tsv)
     if not tsv_path.is_file():

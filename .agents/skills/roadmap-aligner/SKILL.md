@@ -31,7 +31,7 @@ To protect the official skill resource from unverified edits, all enrichment wor
    ```bash
    python3 .agents/skills/roadmap-aligner/scripts/tree_diff.py
    ```
-   *Generates `.work/tree_diff_report.md` showing added, modified, and removed nodes across all 5 tables.*
+   *Generates `.work/tree_diff_report.md` showing added, modified, and removed nodes between staging and master. Note: `--project` flag is accepted for workflow compatibility but currently diffs staging vs master, not per-project TSVs.*
 
 4. **Reverse Sync back to Official Master (Sync-back on User Approval):**
    ```bash

@@ -22,9 +22,11 @@ repo-root/
 │   └── skills/tree-validator/scripts/
 │       ├── validate_tree.py            # Kiểm tra toàn vẹn tham chiếu
 │       ├── audit_coverage.py           # Kiểm tra đối chiếu ngược độ phủ syllabus
-│       ├── detect_gaps.py              # Phát hiện 4 loại gap (A, B, C, D)
+│       ├── detect_gaps.py              # Phát hiện 5 loại gap (A, B, C, D, E)
 │       ├── validate_master_tree.py     # Kiểm tra Master Tree integrity
-│       └── scaffold_tree.py            # Khởi tạo project structure + TSV headers
+│       ├── scaffold_tree.py            # Khởi tạo project structure + TSV headers
+│       ├── master_tree_parser.py       # Shared parser cho Master Tree TSV
+│       └── fix_swift_cio_neutrality.py # Fix T6 violations (Swift-specific)
 └── status.yaml                          # active_project + trạng thái lần chạy gần nhất
 ```
 
@@ -56,5 +58,5 @@ Cây Tri thức hỗ trợ quan hệ **N:N (Đa - Đa)** trên cả 5 tầng (h�
    - **BẮT BUỘC phải PASS** trước khi `/map-taxonomy` hoặc `/build-tree` đọc từ Master Tree (Gate §7).
 
 5. **Khởi tạo Project (`/init`)**:
-   - Chạy `python3 .agents/skills/tree-validator/scripts/scaffold_tree.py --project <slug>`
+   - Chạy `python3 .agents/skills/tree-validator/scripts/scaffold_tree.py <slug>`
    - Scaffold cấu trúc thư mục project và 6 file TSV với header chuẩn. Cập nhật `status.yaml`.

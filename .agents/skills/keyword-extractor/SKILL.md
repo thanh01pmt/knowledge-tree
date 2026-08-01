@@ -47,7 +47,7 @@ Pipeline này kết hợp cả hai track, filter domain-relevance rồi mới de
 | `.work/kw/candidates_filtered.md`      | Preview markdown cho agent xem nhanh                     |
 | `.work/kw/keywords_verified.json`      | Sau dedup + omission-check                               |
 | `.work/kw/verify-report.md`            | **Điểm duyệt người**: trước/sau, delta từ omission-check |
-| `output/keywords.tsv`                  | Output cuối (5 cột)                                      |
+| `output/keywords.tsv`                  | Output cuối (6 cột: term, aliases, relevance_score, source_chunks, first_extraction_method, category)                                      |
 | `output/keywords.json`                 | Output cuối dạng JSON                                    |
 
 ---

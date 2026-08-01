@@ -225,5 +225,5 @@ def fix_tsv(tsv_path: Path):
 
 
 if __name__ == "__main__":
-    target = Path(sys.argv[1]) if len(sys.argv) > 1 else repo_root / "general-context/mlo-knowlege-tree.tsv"
+    target = Path(sys.argv[1]) if len(sys.argv) > 1 else repo_root / "services/python-api/general-context/mlo-knowlege-tree.tsv"
     fix_tsv(target)

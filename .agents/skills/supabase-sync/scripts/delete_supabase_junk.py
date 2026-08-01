@@ -21,10 +21,10 @@ if env_path.is_file():
                 os.environ[k] = v
 
 SUPABASE_URL = os.getenv("SUPABASE_URL")
-SERVICE_ROLE_KEY = os.getenv("SUPABASE_SECRET_KEY")  # Use secret key for admin operations
+SERVICE_ROLE_KEY = os.getenv("SERVICE_ROLE_KEY")  # Use service role key for admin operations
 
 if not SUPABASE_URL or not SERVICE_ROLE_KEY:
-    print("❌ Thiếu SUPABASE_URL hoặc SUPABASE_SECRET_KEY trong .env")
+    print("❌ Thiếu SUPABASE_URL hoặc SERVICE_ROLE_KEY trong .env")
     sys.exit(1)
 
 # Danh sách 788 items cần xóa (từ check_master_sync output)

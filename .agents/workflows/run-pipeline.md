@@ -133,6 +133,6 @@ _(Phải PASS 100% không có lỗi tham chiếu)._
     ```bash
     /sync-supabase
     ```
-    _(Đồng bộ 7 bảng theo đúng thứ tự Top-down, không bẻ gãy khóa ngoại)._
+    _(Đồng bộ 8 bảng theo đúng thứ tự Top-down, không bẻ gãy khóa ngoại)._
 
 > **Hoàn tất Pipeline!** 🎉

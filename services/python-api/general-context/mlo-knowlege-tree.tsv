@@ -441,7 +441,6 @@ COLLISION_DETECTION	Collision Detection	Cơ chế phát hiện khi hai vật th�
 PHYSICS_CONSTRAINTS_CONCEPT	Physics Constraints	Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.	PHYSICS_CONSTRAINTS	constraints, hinge, spring, joints	GIT	{"icon": "link"}
 LEVEL_LAYOUT	Level Layout Design	Kỹ thuật sắp đặt không gian, chướng ngại vật và đường đi để tạo ra dòng chảy (flow) và độ khó hợp lý cho người chơi.	GAME_ENV_BUILDING	level design, layout, map design	HCI	{"icon": "map"}
 LEADERBOARD_SYSTEM	Leaderboard/Scoring System	Cấu trúc dữ liệu và logic để theo dõi, cập nhật và hiển thị điểm số hoặc thành tích của người chơi trong thời gian thực.	GAMEPLAY_MECHANICS	leaderboard, scoring, stats	SDF	{"icon": "trophy"}
-PROPOSITIONAL_LOGIC	Propositional Logic	Logic and boolean operators.	MATHEMATICAL_LOGIC	logic, boolean		
 SET_THEORY	Set Theory	Sets, subsets, operations.	SET_AND_RELATION_THEORY	sets, unions		
 COMBINATORICS	Combinatorics	Permutations, combinations, counting.	DISCRETE_COMBINATORICS	counting		
 GRAPH_MODELS	Graph Models	Vertices, edges, traversal concepts.	GRAPH_THEORY	graphs, trees		

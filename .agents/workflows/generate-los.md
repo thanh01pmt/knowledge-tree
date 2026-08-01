@@ -7,7 +7,7 @@ description: Run this workflow to generate hierarchical Learning Objectives (ULO
 > **Phased Approach**: ULOs (Phase A) → CIOs with Marr Test (Phase B) → SIOs + Merge (Phase C). Each phase has a Human-in-the-Loop checkpoint.
 
 **Commands:** `/generate-ulos` → `/generate-cios` → `/generate-sios` → `/map-prerequisites`
-**Owner:** `@tree-assembler`
+**Owner:** `@learning-objective-generator`
 
 ## Prerequisites
 
@@ -38,6 +38,7 @@ python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarc
 - [ ] Bloom level: Evaluate / Create priority?
 - [ ] Coverage: all key concepts have ULOs?
 - [ ] Count: reasonable (not too many trivial ULOs)?
+- [ ] **Assessment approach** phù hợp với Bloom level? (ULO ưu tiên project/essay/presentation)
 
 ✅ Approve → proceed to `/generate-cios`
 
@@ -91,7 +92,7 @@ python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarc
 └── sios.json
 
 output/
-└── learning-objectives.tsv  ← final 8-column TSV
+└── learning-objectives.tsv  ← final 9-column TSV (code, name, description, lo_type, parent_lo_code, concept_codes, bloom_level, knowledge_dimension, assessment_approach)
 ```
 
 ---
@@ -102,8 +103,8 @@ output/
 
 **Script:**
 ```bash
-python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarchical_lo.py \
-  --phase prerequisites --project <slug>
+python3 .agents/skills/learning-objective-generator/scripts/llm_map_prerequisites.py \
+  --project <slug>
 ```
 
 **Output:**

@@ -11,8 +11,6 @@ description: Auto-research agent to crawl tech trends via last30days, Exa, and C
 
 ## 🛠️ Triggers & Usage
 
-## 🛠️ Triggers & Usage
-
 Trigger commands:
 - `/research-trend "<Topic>"`: Nghiên cứu sâu thủ công 1 chủ đề.
 - `/audit-curriculum`: Kích hoạt **Tầng 1 (Curriculum Audit)**. Thu thập khung chuẩn STEM (NGSS, ACM) và dùng skill Crosswalk để so sánh với Master Tree, tìm khoảng trống nền tảng.
@@ -51,6 +49,8 @@ Trigger commands:
 1. Có thể dùng FastMCP Tool `audit_curriculum` hoặc chạy `scripts/audit_curriculum.py` để chạy skill Crosswalk.
 2. Trình duyệt file `foundational_gaps.md` cho User.
 3. Nhận phê duyệt, tự động chạy loop `/research-trend` cho các gap cốt lõi.
+
+> ⚠️ **Note:** Các script `auto_stem_discovery.py`, `auto_researcher.py`, `audit_curriculum.py` hiện là **simulation stubs** — chúng in placeholder messages và ghi file mẫu thay vì gọi API thật (last30days, Exa, Crawl4AI, Context7). Cần implement real logic trước khi dùng trong production pipeline.
 
 **Tầng 2 (Trend Watcher):**
 1. Có thể dùng FastMCP Tool `watch_trends` hoặc chạy `scripts/auto_stem_discovery.py` định kỳ để quét và cập nhật `research_queue.json`.

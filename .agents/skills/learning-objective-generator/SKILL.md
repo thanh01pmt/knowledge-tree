@@ -56,6 +56,32 @@ File `learning-objectives.tsv` gồm **9 cột** (tab-separated):
 
 - `projects/<project>/output/learning-objectives.tsv`
 
+## Cải tiến Học thuật (Phiên bản hiện tại)
+
+### P0 — `assessment_approach` được LLM sinh trực tiếp
+- Pydantic models (ULO, CIO, SIO) đều có field `assessment_approach` bắt buộc
+- LLM được prompt chọn phương pháp đánh giá phù hợp với Bloom level + Knowledge Dimension
+- ULO ưu tiên `project`, `essay`, `presentation` (relational understanding — Skemp T4)
+- CIO ưu tiên `code-review`, `quiz`, `project` (algorithmic understanding)
+- SIO ưu tiên `code-review`, `debugging-exercise`, `quiz` (instrumental understanding)
+- Đáp ứng §7 (Skemp T4, Perkins T8): mỗi ULO/CIO có ≥1 phương pháp đánh giá trực tiếp
+
+### P1 — Bloom Verb Validation Matrix
+- Resource file: `resources/bloom_verbs.tsv` (6 Bloom levels × allowed verbs)
+- Phase Merge tự động kiểm tra động từ đầu tiên trong description có thuộc Bloom level đã khai báo không
+- Cảnh báo ghi vào `.work/hlo/bloom_verb_warnings.json` — không block, chỉ warning
+- Phát hiện misalignment: "explain" declared as EVALUATE, "design" declared as REMEMBER, v.v.
+
+### P2 — Inter-rater Reliability cho CIO Generation
+- Mỗi batch CIO chạy **2 lượt LLM độc lập** (temperature 0.2 và 0.3)
+- Union + dedup by code — giảm hallucination, tăng coverage
+- Pattern tương tự ADR-0005 (Concept DAG majority vote)
+
+### P3 — Backward Design (Evidence-First)
+- Prompt ULO_SYSTEM thêm bước: "Trước khi viết ULO, hãy tự hỏi: Người học sẽ chứng minh năng lực này bằng cách nào?"
+- Evidence quyết định assessment_approach và Bloom level
+- Đảo chiều: Concept → Desired Evidence → ULO (thay vì Concept → ULO → assessment sau)
+
 ## Scripts
 
 ### Primary: `llm_generate_hierarchical_lo.py` (Hierarchical 4-Phase)
@@ -66,8 +92,8 @@ Script chính, sinh LO theo 3 tầng riêng biệt rồi merge. Mỗi phase tư�
 | ------------ | ------------------------- | ------------------------------------------------------------------------------------ |
 | **A** — ULOs | `/generate-ulos`          | Sinh Universal LOs từ concepts. Bloom ưu tiên Evaluate/Create. **Điểm duyệt người.** |
 | **B** — CIOs | `/generate-cios`          | Sinh Conceptual Impl LOs với **Marr 2-Language Test** per-CIO. **Điểm duyệt người.** |
-| **C** — SIOs | `/generate-sios`          | Sinh Specific Impl LOs (tech-specific) + merge ra `learning-objectives.tsv`          |
-| **merge**    | _(tự động trong Phase C)_ | Gộp ULO + CIO + SIO thành file TSV cuối                                              |
+| **C** — SIOs | `/generate-sios`          | Sinh Specific Impl LOs (tech-specific)                                                |
+| **merge**    | `--phase merge` (riêng)   | Gộp ULO + CIO + SIO thành file TSV cuối                                              |
 
 ```bash
 # Phase A: Sinh ULOs
@@ -76,8 +102,11 @@ python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarc
 # Phase B: Sinh CIOs (kèm Marr Test)
 python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarchical_lo.py --project <slug> --phase cios
 
-# Phase C: Sinh SIOs + merge
+# Phase C: Sinh SIOs
 python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarchical_lo.py --project <slug> --phase sios
+
+# Merge: Gộp ULO + CIO + SIO thành file TSV cuối
+python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarchical_lo.py --project <slug> --phase merge
 ```
 
 ### `llm_map_prerequisites.py` (Phase E — ADR-0005)

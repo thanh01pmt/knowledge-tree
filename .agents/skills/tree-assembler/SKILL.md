@@ -6,14 +6,14 @@ description: Build the 6 final TSV project files by applying the approved mappin
 # Tree Assembler
 
 > **Goal:** You are the `@tree-assembler`. Your job has two phases:
-> 1. **Build taxonomy** (fields → concepts) from an approved `mapping-plan.md` (or staging tree `general-context/mlo-knowlege-tree.tsv`).
+> 1. **Build taxonomy** (fields → concepts) from an approved `mapping-plan.md` (reads from `master_tree.json` in skill resources).
 > 2. **Sync** the validated TSV files to Supabase via `/sync-supabase`.
 >
 > ⚠️ `learning-objectives.tsv` is generated separately via the `/generate-los` workflow using the `learning-objective-generator` skill. It MUST be generated AFTER the taxonomy TSVs are built, so that valid concept codes can be used for grounding.
 
 ## Inputs
 - `.work/mapping-plan.md` (Must be explicitly approved by the user)
-- `.agents/skills/taxonomy-mapper/resources/master_tree.json` (or staging copy `general-context/mlo-knowlege-tree.tsv`)
+- `.agents/skills/taxonomy-mapper/resources/master_tree.json` (parsed from `services/python-api/general-context/mlo-knowlege-tree.tsv`)
 - The existing output TSV files in `projects/<project>/output/`
 
 ## Outputs
@@ -27,12 +27,16 @@ description: Build the 6 final TSV project files by applying the approved mappin
 ## Process & N:N Topology Rules
 1. Verify the teacher/user has approved the mapping plan.
 2. Extract the exact list of `code`s needed for each taxonomy level from `mapping-plan.md`.
-3. Look up those codes in `master_tree.json` (or staging TSV) to get all columns (`name`, `description`, `keywords`, `cs2023_ka_mapping`, `metadata`).
+3. Look up those codes in `master_tree.json` to get all columns (`name`, `description`, `keywords`, `cs2023_ka_mapping`, `metadata`).
 4. **N:N Multi-Parent Support:** Preserve all comma-separated parent codes (`field_codes`, `subject_codes`, `category_codes`, `topic_codes`).
 5. Write the rows to the 5 taxonomy TSV files.
 6. Ensure referential integrity at every level (children must have parents).
+7. **Post-processing:** Automatically enrich any concepts missing `cs2023_ka_mapping` or `metadata` from Master Tree lookup.
 
 ## Scripts
 - `assemble_project.py --project <slug> --source mapping-plan` → builds taxonomy from mapping-plan (**recommended**).
 - `assemble_project.py --project <slug> --source lo-tsv` → builds taxonomy from LO concept_codes (backward-compat).
 - `gen_real_los.py --project <slug>` → **Reference implementation only** for `swift-associate`. Use `llm_extract_lo.py` for new projects.
+- `fix_master_tsv.py` → Fix structural issues in Master Tree TSV.
+- `fix_t6_violations.py` → Fix T6 neutrality violations in Master Tree.
+- `update_master_tsv.py` → Update Master Tree TSV from external data.

@@ -630,7 +630,7 @@ def main():
         project_concepts_tsv = Path("/nonexistent")
 
     master_tsv_path = Path(args.master_tsv) if args.master_tsv else (
-        repo_root / "general-context" / "mlo-knowlege-tree.tsv"
+        repo_root / "services" / "python-api" / "general-context" / "mlo-knowlege-tree.tsv"
     )
     embed_cache_path = work_dir / "master_embed_cache.json"
     out_dir.mkdir(parents=True, exist_ok=True)
@@ -669,7 +669,8 @@ def main():
         print("[ERROR] OPENAI_API_KEY không tìm thấy.", file=sys.stderr)
         sys.exit(1)
 
-    client = OpenAI(api_key=api_key)
+    base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
+    client = OpenAI(api_key=api_key, base_url=base_url) if base_url else OpenAI(api_key=api_key)
 
     # ── Phase 1: Abstraction ──────────────────────────────────────────────────
     print(f"\n=== Phase 1: LLM Abstraction ({len(keywords)} keywords → concepts) ===")

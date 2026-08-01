@@ -2,25 +2,26 @@
 
 ## Mục đích
 
-Phát hiện 4 loại gap trong Knowledge Tree của project hiện tại:
+Phát hiện 5 loại gap trong Knowledge Tree của project hiện tại:
 
 | Gap   | Ký hiệu                  | Ý nghĩa                                                                               |
 | ----- | ------------------------ | ------------------------------------------------------------------------------------- |
 | **A** | `CONCEPT_WITHOUT_LO`     | Concept trong `concepts.tsv` chưa có LO nào trỏ đến                                   |
 | **B** | `CIO_SHALLOW`            | CIO có < 2 SIO con — phân rã chưa đủ sâu                                              |
 | **D** | `MARR_TEST_VIOLATED_CIO` | CIO chứa từ khóa cú pháp/công nghệ vi phạm Phép thử Marr (không độc lập cú pháp)      |
+| **E** | `MARR_NOTE_QUALITY`      | CIO thiếu `marr_test_note` hoặc note chỉ nhắc 1 ngôn ngữ                               |
 | **C** | `MASTER_CANDIDATE`       | Concept từ `master_tree.json` liên quan đến syllabus nhưng chưa được chọn vào project |
 
 ## Khi nào dùng
 
-- Sau khi `/generate-los` hoàn thành, trước khi `/sync-supabase`
+- Sau khi `/generate-sios` (hoặc `/generate-los` legacy) hoàn thành, trước khi `/sync-supabase`
 - Khi muốn kiểm tra độ đầy đủ của Learning Objectives
 - Khi thêm concept mới vào project và muốn đảm bảo coverage
 
 ## Prerequisites
 
 - `projects/<project>/output/concepts.tsv` — phải tồn tại (chạy `/build-tree` trước)
-- `projects/<project>/output/learning-objectives.tsv` — phải tồn tại (chạy `/generate-los` trước)
+- `projects/<project>/output/learning-objectives.tsv` — phải tồn tại (chạy `/generate-sios` hoặc `/generate-los` trước)
 
 ## Skill
 

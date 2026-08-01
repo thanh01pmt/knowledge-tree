@@ -478,6 +478,16 @@ Việc tuân thủ một bộ nguyên tắc chung là yếu tố sống còn đ�
 
 6. **Nguyên tắc #6: Đảm bảo Coverage Đánh giá Trực tiếp cho CIO/ULO [T4, T8]**
     * **Hành động:** Đảm bảo mỗi ULO/CIO đều có các câu hỏi đánh giá khái niệm/mô hình trực tiếp, không dựa 100% vào việc suy luận từ các bài tập SIO con.
+    * **Cơ chế tự động (Pipeline v2.3+):** LLM pipeline (`llm_generate_hierarchical_lo.py`) hiện sinh trực tiếp cột `assessment_approach` cho mọi LO (ULO/CIO/SIO) thông qua Pydantic models. ULO ưu tiên `project`/`essay`/`presentation` (relational understanding), CIO ưu tiên `code-review`/`quiz`/`project` (algorithmic understanding), SIO ưu tiên `code-review`/`debugging-exercise`/`quiz` (instrumental understanding). Điều này operationalizes ràng buộc coverage ở tầng sinh LO, không chỉ ở tầng kiểm tra sau.
+
+7. **Nguyên tắc #7: Kiểm định Bloom Verb Alignment (Pipeline v2.3+)**
+    * **Hành động:** Phase Merge tự động kiểm tra động từ đầu tiên trong mô tả LO có thuộc Bloom level đã khai báo không, dựa trên `bloom_verbs.tsv` (6 Bloom levels × allowed verbs). Cảnh báo ghi vào `.work/hlo/bloom_verb_warnings.json` — phát hiện misalignment như "explain" declared as EVALUATE.
+
+8. **Nguyên tắc #8: Inter-rater Reliability cho CIO Generation (Pipeline v2.3+)**
+    * **Hành động:** Mỗi batch CIO chạy 2 lượt LLM độc lập (temperature 0.2 và 0.3), union + dedup by code. Pattern tương tự ADR-0005 (Concept DAG majority vote), giảm hallucination ở tầng Algorithmic quan trọng nhất.
+
+9. **Nguyên tắc #9: Backward Design — Evidence First (Pipeline v2.3+)**
+    * **Hành động:** Prompt ULO generation thêm bước: "Người học sẽ chứng minh năng lực này bằng cách nào?" trước khi viết ULO. Evidence quyết định assessment_approach và Bloom level — đảo chiều Concept → Desired Evidence → ULO.
 
 ---
 

@@ -86,8 +86,8 @@ def find_repo_root(start: Path) -> Path:
 
 
 def get_default_master_tsv_path() -> Path:
-    """Return the default Master TSV path."""
-    return find_repo_root(Path.cwd()) / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
+    """Return the default Master TSV path (source of truth)."""
+    return find_repo_root(Path.cwd()) / "services/python-api/general-context/mlo-knowlege-tree.tsv"
 
 
 if __name__ == "__main__":

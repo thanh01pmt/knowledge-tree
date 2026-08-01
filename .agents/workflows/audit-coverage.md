@@ -33,8 +33,7 @@ python3 .agents/skills/tree-validator/scripts/audit_coverage.py --project <slug>
 
 ```
 projects/<project>/.tree-validator/reports/<timestamp>/
-├── coverage_report.md      # Human-readable with gap table
-└── coverage_report.json    # Machine-readable
+└── coverage_report.md      # Human-readable with gap table
 
 projects/<project>/.work/
 └── coverage_audit.md       # Copy for quick access

@@ -26,5 +26,7 @@ description: Đồng bộ dữ liệu 6 file TSV của dự án (fields, subject
    `sync_to_supabase.py` uses `.upsert()` / `.insert()` exclusively. It **does NOT** execute `.delete()` on records that are removed from local TSV files. This behavior is intentional to prevent accidental cascade deletion of student progress tracking and historical mastery metrics (`student_mastery`). If a record must be purged from Supabase, it must be deleted via explicit SQL migration or direct admin database query.
 
 ## Scripts
-- `.agents/skills/supabase-sync/scripts/sync_to_supabase.py`
-- `.agents/skills/supabase-sync/scripts/check_master_sync.py`: Tool for auditing and pulling Master TSV data from Supabase.
+- `.agents/skills/supabase-sync/scripts/sync_to_supabase.py` — Sync project TSVs to Supabase
+- `.agents/skills/supabase-sync/scripts/check_master_sync.py` — Audit and pull Master TSV data from Supabase
+- `.agents/skills/supabase-sync/scripts/sync_master_to_supabase.py` — Sync Master Tree TSV to Supabase (one-way: TSV → DB)
+- `.agents/skills/supabase-sync/scripts/delete_supabase_junk.py` — One-time cleanup tool (788 hardcoded junk items)

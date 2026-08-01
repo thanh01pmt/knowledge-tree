@@ -12,8 +12,8 @@ description: Abstraction từ keywords công nghệ-cụ thể lên concepts tru
 ## Prerequisites
 
 - `output/keywords.tsv` tồn tại (chạy `/finalize-keywords` trước)
-- `general-context/mlo-knowlege-tree.tsv` có trong repo (Master Tree)
-- `OPENAI_API_KEY` trong `.env`
+- `services/python-api/general-context/mlo-knowlege-tree.tsv` có trong repo (Master Tree)
+- `OPENAI_API_KEY` trong `.env` (hoặc `SAAS_OLLAMA_CLOUD_API_KEY` cho Ollama Cloud)
 
 ## Tại sao cần bước này
 

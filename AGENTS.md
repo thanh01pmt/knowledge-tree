@@ -15,7 +15,7 @@
    - Quan hệ **Concept $\leftrightarrow$ ULO $\leftrightarrow$ CIO $\leftrightarrow$ SIO** là N:N. Phân tách danh sách mã bằng dấu phẩy trong `concept_codes` và `parent_lo_code`.
 4. **Tiền tố Câu Mô tả LO Chuẩn hóa**:
    - 100% câu mô tả trong `learning-objectives.tsv` BẮT BUỘC bắt đầu bằng: **`"Người học có khả năng ..."`**.
-5. **Quy mô & Độ phủ Tri thức Cạn kiệt ($\ge 80 - 160$ LOs)**:
+5. **Quy mô & Độ phủ Tri thức Cạn kiệt ($\ge 80 - 160$ LOs, hoặc cao hơn tùy độ phủ syllabus)**:
    - Trích xuất cạn kệt 100% nội dung `context/*.json` và `context/*.pdf` với quy mô trung bình **$\ge 80 - 160$ LOs**.
    - Bắt buộc phải **PASS cả 2 script**: `validate_tree.py` (`[PASS] 0 lỗi`) và `audit_coverage.py` (`Coverage Score ≥ 95%`).
 6. **Phân định 2 Trục Bloom & Khuyến khích Bloom Cấp cao ở ULO (Anderson & Krathwohl [T1])**:
@@ -23,7 +23,7 @@
    - Khi nội dung cho phép, chủ động chọn động từ cấp **Evaluate / Create** cho tầng ULO để tránh "lực hút tự nhiên" (natural pull) kéo tất cả LOs về Understand/Apply.
 7. **Ràng buộc Coverage Đánh giá Trực tiếp cho CIO/ULO (Skemp [T4], Perkins & Salomon [T8])**:
    - Tách biệt "biết cách làm" (SIO - Instrumental) và "hiểu tại sao" (ULO/CIO - Relational). Không giả định suy luận ngây thơ 100% SIO $\rightarrow$ CIO/ULO.
-   - Mỗi ULO/CIO BẮT BUỘC phải có $\ge N$ câu hỏi/hoạt động đánh giá trực tiếp để đảm bảo tính hợp lệ suy luận (Inferential Validity) và tránh rủi ro Far Transfer thấp.
+   - Mỗi ULO/CIO BẮT BUỘC phải có $\ge 1$ câu hỏi/hoạt động đánh giá trực tiếp (ghi trong cột `assessment_approach`) để đảm bảo tính hợp lệ suy luận (Inferential Validity) và tránh rủi ro Far Transfer thấp.
 8. **Cấm Dùng Script thế chuỗi regex cơ học (No Dumb Find-and-Replace)**:
    - Mọi câu từ mô tả ULO/CIO/Concept phải được viết tự nhiên, mạch lạc, không find-and-replace thô ráp.
 9. **Sạch sẽ Thư mục Root**:
@@ -37,7 +37,7 @@
 ### §1 Context Gate
 Trước bất kỳ workflow nào **ghi** artifact dự án (như `/map-taxonomy`, `/build-tree`):
 - Đọc PDF/Syllabus trong `projects/<project>/context/`.
-- Luôn dùng `.agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv` làm chân lý. CÓ THỂ đề xuất thêm mã mới vào Master Tree nhưng **tuyệt đối không tự ý ghi** — phải thông qua phê duyệt của Human.
+- Luôn dùng `services/python-api/general-context/mlo-knowlege-tree.tsv` làm chân lý. CÓ THỂ đề xuất thêm mã mới vào Master Tree nhưng **tuyệt đối không tự ý ghi** — phải thông qua phê duyệt của Human.
 - **BẮT BUỘC Tra cứu Master Tree trước (Search First):** Trước khi đề xuất bất kỳ Concept mới nào trong `/map-taxonomy`, PHẢI tra cứu toàn bộ danh sách Concepts trong Bảng 5 của `mlo-knowlege-tree.tsv`. Chỉ được tạo `[NEW NODE PROPOSAL]` khi kết quả tìm kiếm **hoàn toàn trống**. Tuyệt đối không thêm tiền tố giả mạo (`C_`, `_NEW`, v.v.).
 
 ### §2 Mock-Mode Prohibition
@@ -86,7 +86,7 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 
 | Command                | Owner             | Primary result                                                                                 |
 | ---------------------- | ----------------- | ---------------------------------------------------------------------------------------------- |
-| `/run-pipeline`        | coordinator       | **Full End-to-End Workflow** with 5 explicit Human-in-the-loop (HITL) review checkpoints       |
+| `/run-pipeline`        | coordinator       | **Full End-to-End Workflow** with 7 explicit Human-in-the-loop (HITL) review checkpoints       |
 | `/init <project>`      | scaffolder        | Scaffold project TSV files (updates status.yaml)                                               |
 | `/set-project`         | coordinator       | Update active_project in status.yaml                                                           |
 | `/scaffold-keywords <target> --source <path>` | scaffolder | Tạo `.work/kw/`, chunk tài liệu nguồn (PDF/MD/TXT)                              |
@@ -100,13 +100,14 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 | `/generate-los`        | @tree-assembler   | Generate `learning-objectives.tsv` via LLM, 1-shot (legacy/fast path)                          |
 | `/generate-ulos`       | @tree-assembler   | Phase A: Sinh ULOs từ concepts, Bloom ưu tiên Evaluate/Create — **điểm duyệt**                 |
 | `/generate-cios`       | @tree-assembler   | Phase B: Sinh CIOs với Marr 2-Language Test per-CIO — **điểm duyệt**                           |
-| `/generate-sios`       | @tree-assembler   | Phase C: Sinh SIOs (tech-specific) + merge → `learning-objectives.tsv`                          |
+| `/generate-sios`       | @tree-assembler   | Phase C: Sinh SIOs (tech-specific). Sau đó chạy `--phase merge` riêng → `learning-objectives.tsv` |
 | `/map-prerequisites`   | @tree-assembler   | Phase E (ADR-0005): 4-Bước — Domain Partitioning → Concept DAG (LLM) → ULO Derivation → LLM Verify → `lo_prerequisites.tsv` + `concepts.tsv(prerequisite_concept_codes)` |
-| `/detect-gaps`         | @tree-validator   | Run `detect_gaps.py` to find 3 gap types: missing LO coverage, shallow CIOs, master candidates |
+| `/detect-gaps`         | @tree-validator   | Run `detect_gaps.py` to find 5 gap types: missing LO coverage, shallow CIOs, Marr violations, master candidates |
 | `/validate-tree`       | @tree-validator   | Run `validate_tree.py` for structural referential integrity                                    |
 | `/audit-coverage`      | @tree-validator   | Run `audit_coverage.py` to cross-reference LO output against source PDF                        |
 | `/sync-supabase`       | @tree-assembler   | Run `sync_to_supabase.py` to push TSVs into Supabase Cloud DB                                  |
 | `/crawl-roadmap <url>` | @roadmap-aligner  | Scaffold project in `projects/`, run standard pipeline, and propose merge to General Context   |
+| `/research-trend "<topic>"` | @knowledge-researcher | Autonomous deep research on emerging tech trends, extract concepts, propose Master Tree updates |
 | `/validate-master-tree`| @tree-validator   | Run `validate_master_tree.py` for Master Tree referential integrity and collision detection   |
 
 ## scaffolder
@@ -126,9 +127,14 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 
 ## @taxonomy-mapper
 
-- Goal: Map the extracted domains to exact codes in `KnowledgeTree v2.2.tsv`.
+- Goal: Map the extracted domains to exact codes in `services/python-api/general-context/mlo-knowlege-tree.tsv`.
 - Handover: `.work/mapping-plan.md`
 - Skill: `taxonomy-mapper`
+
+## @knowledge-researcher
+
+- Goal: Autonomous deep research on emerging tech trends via last30days, Exa, Crawl4AI. Extract standard-compliant Concepts and Keywords, propose updates to the Knowledge Tree through a Staging Diff Report.
+- Skill: `knowledge-researcher`
 
 ## @roadmap-aligner
 
@@ -138,7 +144,7 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 
 ## @tree-assembler
 
-- Goal: (1) Build 5 taxonomy TSVs from approved mapping-plan. (2) Generate learning-objectives.tsv via /generate-los after build-tree. (3) Map prerequisites via `/map-prerequisites` (ADR-0005: 4-Bước Domain Partitioning → Concept DAG → ULO Derivation → LLM Verify). (4) Sync to Supabase via /sync-supabase.
+- Goal: (1) Build 5 taxonomy TSVs from approved mapping-plan. (2) Generate learning-objectives.tsv via hierarchical pipeline (`/generate-ulos` → `/generate-cios` → `/generate-sios`) after build-tree. (3) Map prerequisites via `/map-prerequisites` (ADR-0005: 4-Bước Domain Partitioning → Concept DAG → ULO Derivation → LLM Verify). (4) Sync to Supabase via /sync-supabase.
 - Skill: `tree-assembler`, `learning-objective-generator`, `supabase-sync`
 
 ## @tree-validator

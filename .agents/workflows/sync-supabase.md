@@ -26,31 +26,35 @@ python3 .agents/skills/supabase-sync/scripts/sync_to_supabase.py --project <slug
 ## Sync Order (Dependency-Aware)
 
 | Order | Table | Foreign Keys |
-|---|---|---|
+|-------|-------|-------------|
 | 1 | `fields` | — |
 | 2 | `subjects` | `field_codes` |
 | 3 | `categories` | `subject_codes` |
 | 4 | `topics` | `category_codes` |
-| 5 | `concepts` | `topic_codes` |
-| 6 | `learning_objectives` | `concept_codes`, `parent_lo_code` |
+| 5 | `concepts` | `topic_codes`, `prerequisite_concept_codes` |
+| 6 | `keywords` | `concept_codes` |
+| 7 | `learning_objectives` | `concept_codes`, `parent_lo_code` |
+| 8 | `learning_objective_prerequisites` | `learning_objective_code`, `prerequisite_lo_code` |
 
 **Mechanism**: Upsert by `code` (PK). Existing `id` preserved on update.
 
 ## Expected Output
 
 ```
-📊 Supabase Sync Report — swift-associate
+📊 Supabase Sync Report — <project>
 ┌──────────────────────┬───────┬─────────┬──────────┐
 │ Table                │ Total │ Updated │ Inserted │
 ├──────────────────────┼───────┼─────────┼──────────┤
-│ fields               │ 2     │ 0       │ 2        │
-│ subjects             │ 3     │ 0       │ 3        │
-│ categories           │ 8     │ 0       │ 8        │
-│ topics               │ 15    │ 0       │ 15       │
-│ concepts             │ 44    │ 0       │ 44       │
-│ learning_objectives  │ 49    │ 0       │ 49       │
+│ fields               │ N     │ 0       │ N        │
+│ subjects             │ N     │ 0       │ N        │
+│ categories           │ N     │ 0       │ N        │
+│ topics               │ N     │ 0       │ N        │
+│ concepts             │ N     │ 0       │ N        │
+│ keywords             │ N     │ 0       │ N        │
+│ learning_objectives  │ N     │ 0       │ N        │
+│ lo_prerequisites     │ N     │ 0       │ N        │
 └──────────────────────┴───────┴─────────┴──────────┘
-✅ Sync complete — 121 records processed
+✅ Sync complete — N records processed
 ```
 
 ## Gate §8 — Security Boundary

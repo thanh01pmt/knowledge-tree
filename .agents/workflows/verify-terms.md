@@ -13,7 +13,7 @@ description: Dedup biến thể + vòng lặp omission-check (tối đa 2 vòng)
 
 - `.work/kw/candidates_filtered.json` tồn tại (chạy `/extract-terms` trước)
 - `.work/kw/chunks.json` tồn tại
-- `OPENAI_API_KEY` trong `.env`
+- `OPENAI_API_KEY` trong `.env` (hoặc `SAAS_OLLAMA_CLOUD_API_KEY` cho Ollama Cloud)
 
 ## Contract
 

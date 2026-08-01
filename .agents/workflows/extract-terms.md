@@ -12,7 +12,7 @@ description: Chạy pipeline trích xuất candidate — YAKE statistical + LLM 
 ## Prerequisites
 
 - `.work/kw/chunks.json` tồn tại (chạy `/scaffold-keywords` trước)
-- `OPENAI_API_KEY` trong `.env`
+- `OPENAI_API_KEY` trong `.env` (hoặc `SAAS_OLLAMA_CLOUD_API_KEY` cho Ollama Cloud)
 - Dependencies: `pip install yake openai pydantic`
 
 ## Contract

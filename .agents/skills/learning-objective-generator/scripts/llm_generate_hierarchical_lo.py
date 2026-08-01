@@ -112,6 +112,12 @@ class ULO(BaseModel):
         "Danh sách concept codes hợp lệ từ concepts.tsv của project. "
         "CHỈ dùng codes đã được cung cấp, không tự bịa."
     ))
+    assessment_approach: str = Field(description=(
+        "Phương pháp đánh giá trực tiếp cho ULO này. "
+        "VD: 'project', 'quiz', 'code-review', 'essay', 'presentation', 'peer-review'. "
+        "BẮT BUỘC chọn phương pháp phù hợp với Bloom level và Knowledge Dimension. "
+        "ULO cần đánh giá relational understanding (Skemp T4) — ưu tiên 'project', 'essay', 'presentation'."
+    ))
 
 
 class ULOBatch(BaseModel):
@@ -138,6 +144,12 @@ class CIO(BaseModel):
     ))
     bloom_level: str = Field(description="APPLY | ANALYZE | EVALUATE — CIO thường ở Apply/Analyze")
     knowledge_dimension: str = Field(description="CONCEPTUAL | PROCEDURAL | METACOGNITIVE")
+    assessment_approach: str = Field(description=(
+        "Phương pháp đánh giá trực tiếp cho CIO này. "
+        "VD: 'quiz', 'code-review', 'project', 'peer-review', 'presentation'. "
+        "BẮT BUỘC chọn phương pháp phù hợp với Bloom level và Knowledge Dimension. "
+        "CIO cần đánh giá algorithmic understanding — ưu tiên 'code-review', 'quiz', 'project'."
+    ))
 
 
 class CIOBatch(BaseModel):
@@ -160,6 +172,11 @@ class SIO(BaseModel):
     parent_cio_code: str = Field(description="Code CIO cha (phải là CIO code tồn tại trong input)")
     bloom_level: str = Field(description="APPLY | CREATE — SIO thường ở Apply")
     knowledge_dimension: str = Field(description="PROCEDURAL")
+    assessment_approach: str = Field(description=(
+        "Phương pháp đánh giá trực tiếp cho SIO này. "
+        "VD: 'code-review', 'quiz', 'project', 'debugging-exercise'. "
+        "SIO cần đánh giá instrumental understanding — ưu tiên 'code-review', 'debugging-exercise', 'quiz'."
+    ))
 
 
 class SIOBatch(BaseModel):
@@ -395,6 +412,11 @@ Nguyên tắc:
    - KHÔNG ép mỗi Concept phải có 3 ULO hay đủ 6 bậc Bloom.
    - Nếu một Concept quá hiển nhiên, 1 ULO là đủ.
    - Chỉ sinh thêm ULO mới nếu thực sự cần thiết để hoàn thiện lộ trình sư phạm cho Concept đó.
+7. [BACKWARD DESIGN — Evidence First] Trước khi viết ULO, hãy tự hỏi:
+   "Người học sẽ chứng minh năng lực này bằng cách nào?" (What evidence will show mastery?)
+   Câu trả lời quyết định assessment_approach và Bloom level phù hợp.
+   VD: Nếu bằng chứng là "thiết kế một giải pháp" → assessment_approach="project", Bloom=CREATE.
+   Nếu bằng chứng là "giải thích sự khác biệt" → assessment_approach="quiz", Bloom=ANALYZE.
    
 QUAN TRỌNG: Bạn PHẢI trả về ĐÚNG ĐỊNH DẠNG JSON. TUYỆT ĐỐI KHÔNG giải thích, KHÔNG có markdown, KHÔNG bắt đầu bằng 'Dưới đây là...'. CHỈ TRẢ VỀ JSON."""
 
@@ -621,6 +643,7 @@ def generate_cios(
     )
 
     print(f"[B] Generating CIOs for {len(ulos)} ULOs (batch_size={batch_size}) ...")
+    print(f"    [Inter-rater: 2 independent passes + union]")
 
     for i in range(0, len(ulos), batch_size):
         batch = ulos[i : i + batch_size]
@@ -651,33 +674,57 @@ def generate_cios(
             "}"
         )
 
+        # Inter-rater reliability: 2 independent passes + union
+        pass1_cios = []
+        pass2_cios = []
+        
+        # Pass 1 (temperature=0.2)
         try:
             result_json = _safe_llm_json(
                 client, model, CIO_SYSTEM, user_prompt,
-                temperature=0.2, batch_label=f"CIO batch {i+1}-{min(i+batch_size, len(ulos))}"
+                temperature=0.2, batch_label=f"CIO batch {i+1}-{min(i+batch_size, len(ulos))} pass1"
             )
-            batch_cios = result_json.get("cios", []) if result_json else []
-            if batch_cios:
-                # Validate parent codes — surface hallucinations instead of
-                # silently rebinding to batch[0] (§10 Bảo tồn & Minh bạch).
-                valid_ulo_codes = {u["code"] for u in ulos}
-                for c in batch_cios:
-                    if c.get("parent_ulo_code") not in valid_ulo_codes:
-                        original = c.get("parent_ulo_code", "")
-                        c["parent_ulo_code"] = batch[0]["code"]  # fallback
-                        c["_parent_fallback"] = original  # audit trail
-                        print(f"  [WARN] CIO {c.get('code','?')} hallucinated parent "
-                              f"'{original}' → rebound to '{batch[0]['code']}' "
-                              f"(REVIEW NEEDED — fix in cios.json before /generate-sios)",
-                              file=sys.stderr)
-                all_cios.extend(batch_cios)
-                print(f"  Batch {i+1}-{min(i+batch_size, len(ulos))}: +{len(batch_cios)} CIOs")
-            elif not result_json:
-                print(f"  Batch {i+1}: [SKIPPED] LLM call failed — no CIOs generated", file=sys.stderr)
+            pass1_cios = result_json.get("cios", []) if result_json else []
         except Exception as e:
-            print(f"  [WARN] Batch {i}: {e}", file=sys.stderr)
-            import traceback
-            traceback.print_exc(file=sys.stderr)
+            print(f"  [WARN] Pass 1 batch {i}: {e}", file=sys.stderr)
+
+        # Pass 2 (temperature=0.3 — slightly different to encourage diversity)
+        try:
+            result_json = _safe_llm_json(
+                client, model, CIO_SYSTEM, user_prompt,
+                temperature=0.3, batch_label=f"CIO batch {i+1}-{min(i+batch_size, len(ulos))} pass2"
+            )
+            pass2_cios = result_json.get("cios", []) if result_json else []
+        except Exception as e:
+            print(f"  [WARN] Pass 2 batch {i}: {e}", file=sys.stderr)
+
+        # Union: merge both passes, dedup by code
+        seen_codes = set()
+        batch_cios = []
+        for c in pass1_cios + pass2_cios:
+            code = c.get("code", "")
+            if code and code not in seen_codes:
+                seen_codes.add(code)
+                batch_cios.append(c)
+        
+        if batch_cios:
+            # Validate parent codes — surface hallucinations instead of
+            # silently rebinding to batch[0] (§10 Bảo tồn & Minh bạch).
+            valid_ulo_codes = {u["code"] for u in ulos}
+            for c in batch_cios:
+                if c.get("parent_ulo_code") not in valid_ulo_codes:
+                    original = c.get("parent_ulo_code", "")
+                    c["parent_ulo_code"] = batch[0]["code"]  # fallback
+                    c["_parent_fallback"] = original  # audit trail
+                    print(f"  [WARN] CIO {c.get('code','?')} hallucinated parent "
+                          f"'{original}' → rebound to '{batch[0]['code']}' "
+                          f"(REVIEW NEEDED — fix in cios.json before /generate-sios)",
+                          file=sys.stderr)
+            all_cios.extend(batch_cios)
+            print(f"  Batch {i+1}-{min(i+batch_size, len(ulos))}: "
+                  f"pass1={len(pass1_cios)} + pass2={len(pass2_cios)} → union={len(batch_cios)} CIOs")
+        else:
+            print(f"  Batch {i+1}: [SKIPPED] Both passes failed — no CIOs generated", file=sys.stderr)
 
     out_path = hlo_dir / "cios.json"
     with open(out_path, "w", encoding="utf-8") as f:
@@ -840,6 +887,68 @@ def generate_sios(
     return all_sios
 
 
+# ─── Bloom Verb Validation ────────────────────────────────────────────────────
+
+BLOOM_VERBS_PATH = Path(".agents/skills/learning-objective-generator/resources/bloom_verbs.tsv")
+
+def load_bloom_verbs() -> dict[str, set[str]]:
+    """Load Bloom verb matrix from resource file."""
+    verbs = {}
+    if not BLOOM_VERBS_PATH.is_file():
+        return verbs
+    try:
+        with open(BLOOM_VERBS_PATH, "r", encoding="utf-8") as f:
+            reader = csv.DictReader(f, delimiter="\t")
+            for row in reader:
+                level = row.get("bloom_level", "").strip()
+                allowed = row.get("allowed_verbs", "").strip()
+                if level and allowed:
+                    verbs[level] = {v.strip().lower() for v in allowed.split(",") if v.strip()}
+    except Exception as e:
+        print(f"[WARNING] Could not load bloom_verbs.tsv: {e}")
+    return verbs
+
+
+def validate_bloom_verb(description: str, declared_bloom: str, bloom_verbs: dict[str, set[str]]) -> list[str]:
+    """Check if the first verb in description matches the declared Bloom level.
+    Returns list of warnings (empty = pass).
+    Supports both English and Vietnamese verbs."""
+    if not bloom_verbs or declared_bloom not in bloom_verbs:
+        return []
+    # Extract verb from description (word(s) after "Người học có khả năng" or first word)
+    desc_lower = description.lower()
+    for prefix in ["người học có khả năng", "người học có thể"]:
+        if prefix in desc_lower:
+            desc_lower = desc_lower.split(prefix, 1)[1].strip()
+            break
+    words = desc_lower.split()
+    if not words:
+        return []
+    
+    # Try first word, then first two words (for Vietnamese compound verbs like "thiết kế", "giải thích")
+    candidates = [words[0].strip(".,;:!?")]
+    if len(words) >= 2:
+        candidates.append(f"{words[0]} {words[1]}".strip(".,;:!?"))
+    
+    allowed = bloom_verbs.get(declared_bloom, set())
+    for candidate in candidates:
+        if candidate in allowed:
+            return []  # Found a match
+    
+    # Not found — check if it belongs to a different Bloom level
+    suggestions = []
+    for level, verbs in bloom_verbs.items():
+        for candidate in candidates:
+            if candidate in verbs:
+                suggestions.append(level)
+                break
+    
+    if suggestions:
+        return [f"Verb '{candidates[0]}' declared as {declared_bloom} but belongs to {suggestions}"]
+    else:
+        return [f"Verb '{candidates[0]}' not found in any Bloom level (declared: {declared_bloom})"]
+
+
 # ─── Phase D: Merge → TSV ────────────────────────────────────────────────────
 
 def merge_to_tsv(
@@ -852,6 +961,8 @@ def merge_to_tsv(
     """Merge ULO + CIO + SIO vào learning-objectives.tsv."""
     valid_concept_codes = {c["code"] for c in concepts}
     rows = []
+    bloom_verbs = load_bloom_verbs()
+    bloom_warnings = []
 
     # ULOs
     ulo_concept_map = {} # Maps ULO code to its concept_codes_str
@@ -860,10 +971,18 @@ def merge_to_tsv(
             c for c in u.get("concept_codes", []) if c in valid_concept_codes
         )
         ulo_concept_map[u["code"]] = concept_codes_str
+        
+        # Bloom verb validation
+        desc = u.get("description", u.get("description_vi", ""))
+        warnings = validate_bloom_verb(desc, u.get("bloom_level", ""), bloom_verbs)
+        for w in warnings:
+            bloom_warnings.append(f"ULO {u['code']}: {w}")
+            print(f"  [BLOOM-WARN] ULO {u['code']}: {w}", file=sys.stderr)
+        
         rows.append({
             "code": u["code"],
             "name": u["name"],
-            "description": u.get("description", u.get("description_vi", "")),
+            "description": desc,
             "lo_type": "UNIVERSAL",
             "parent_lo_code": "",
             "concept_codes": concept_codes_str,
@@ -879,10 +998,17 @@ def merge_to_tsv(
         inherited_concept_codes = ulo_concept_map.get(parent_ulo, "")
         cio_concept_map[c["code"]] = inherited_concept_codes
         
+        # Bloom verb validation
+        desc = c.get("description", c.get("description_vi", ""))
+        warnings = validate_bloom_verb(desc, c.get("bloom_level", ""), bloom_verbs)
+        for w in warnings:
+            bloom_warnings.append(f"CIO {c['code']}: {w}")
+            print(f"  [BLOOM-WARN] CIO {c['code']}: {w}", file=sys.stderr)
+        
         rows.append({
             "code": c["code"],
             "name": c["name"],
-            "description": c.get("description", c.get("description_vi", "")),
+            "description": desc,
             "lo_type": "CONCEPTUAL_IMPL",
             "parent_lo_code": parent_ulo,
             "concept_codes": inherited_concept_codes,
@@ -896,10 +1022,17 @@ def merge_to_tsv(
         parent_cio = s.get("parent_cio_code", "")
         inherited_concept_codes = cio_concept_map.get(parent_cio, "")
         
+        # Bloom verb validation
+        desc = s.get("description", s.get("description_vi", ""))
+        warnings = validate_bloom_verb(desc, s.get("bloom_level", ""), bloom_verbs)
+        for w in warnings:
+            bloom_warnings.append(f"SIO {s['code']}: {w}")
+            print(f"  [BLOOM-WARN] SIO {s['code']}: {w}", file=sys.stderr)
+        
         rows.append({
             "code": s["code"],
             "name": s["name"],
-            "description": s.get("description", s.get("description_vi", "")),
+            "description": desc,
             "lo_type": "SPECIFIC_IMPL",
             "parent_lo_code": parent_cio,
             "concept_codes": inherited_concept_codes,
@@ -916,6 +1049,13 @@ def merge_to_tsv(
         writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", extrasaction="ignore")
         writer.writeheader()
         writer.writerows(rows)
+
+    if bloom_warnings:
+        warnings_path = out_tsv.parent / ".work" / "hlo" / "bloom_verb_warnings.json"
+        warnings_path.parent.mkdir(parents=True, exist_ok=True)
+        with open(warnings_path, "w", encoding="utf-8") as f:
+            json.dump(bloom_warnings, f, ensure_ascii=False, indent=2)
+        print(f"\n[⚠️] {len(bloom_warnings)} Bloom verb warning(s) — see {warnings_path}", file=sys.stderr)
 
     return len(rows)
 

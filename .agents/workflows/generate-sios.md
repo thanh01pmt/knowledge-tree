@@ -36,7 +36,7 @@ python3 .agents/skills/learning-objective-generator/scripts/llm_generate_hierarc
   --phase merge --project <slug>
 ```
 
-Ghi toàn bộ ULO+CIO+SIO vào `output/learning-objectives.tsv` (8 cột: code, name, description, lo_type, parent_lo_code, concept_codes, bloom_level, knowledge_dimension).
+Ghi toàn bộ ULO+CIO+SIO vào `output/learning-objectives.tsv` (9 cột: code, name, description, lo_type, parent_lo_code, concept_codes, bloom_level, knowledge_dimension, assessment_approach).
 
 ## Expected Output
 
