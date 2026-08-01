@@ -9,7 +9,7 @@ from fastmcp import FastMCP
 
 # Paths
 SERVER_DIR = Path(__file__).parent.resolve()
-ROOT_DIR = SERVER_DIR.parent.parent.parent.parent # Navigate to knowledge-tree root
+ROOT_DIR = SERVER_DIR.parent.parent.parent.parent.parent # Navigate to knowledge-tree root
 SKILLS_DIR = ROOT_DIR / ".agents" / "skills"
 
 research_mcp = FastMCP("KnowledgeResearcher")

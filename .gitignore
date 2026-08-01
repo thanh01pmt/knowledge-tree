@@ -12,5 +12,13 @@ refs/
 docs/
 node_modules/
 
+# Generated/work files
+.work/
+*.db
+*.log
+*.backup
+*.bak
+.marr-t6-backup
+
 
 
