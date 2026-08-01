@@ -1,5 +1,5 @@
 import React, { useMemo, useEffect } from 'react';
-import { ChevronRight, ArrowLeft, ArrowRight, ChevronLeft, LayoutGrid, Layers, Hexagon, Circle, Square, Minus, Map as MapIcon, Hash } from 'lucide-react';
+import { ChevronRight, ArrowLeft, ArrowRight, ChevronLeft, LayoutGrid, Layers, Hexagon, Circle, Square, Minus, Map as MapIcon, Hash, Target } from 'lucide-react';
 
 const LevelIcon = ({ level, className }) => {
   switch(level) {
@@ -21,7 +21,9 @@ export default function NodeDetailsPanel({
   linksByTarget,
   history,
   historyIndex,
-  onNavigateHistory
+  onNavigateHistory,
+  isolatedNodeId,
+  setIsolatedNodeId
 }) {
   // Fast O(1) node lookup map
   const nodeMap = useMemo(() => {
@@ -116,8 +118,10 @@ export default function NodeDetailsPanel({
   const canGoBack = historyIndex > 0;
   const canGoForward = historyIndex < history.length - 1;
 
+  const isIsolated = isolatedNodeId === selectedNode.id;
+
   return (
-    <div className="h-full w-[360px] bg-[#1a1d21] border-l border-slate-800 flex flex-col text-slate-300 z-10 transition-all duration-300 flex-shrink-0 shadow-2xl relative">
+    <div className="h-[60vh] md:h-full w-full md:w-[360px] bg-[#1a1d21] border-t md:border-t-0 md:border-l border-slate-800 flex flex-col text-slate-300 z-20 transition-all duration-300 flex-shrink-0 shadow-2xl fixed md:relative bottom-0 right-0">
       <div className="flex items-center justify-between p-3 border-b border-slate-800 bg-[#1e2227] flex-shrink-0">
         <div className="flex items-center gap-1">
           <button 
@@ -135,13 +139,30 @@ export default function NodeDetailsPanel({
             <ArrowRight className="w-4 h-4" />
           </button>
         </div>
-        
-        <button 
-          onClick={() => onNodeSelect(null)}
-          className="text-slate-500 hover:text-slate-300 p-1.5 rounded-md hover:bg-slate-700 transition-colors text-xs font-semibold uppercase tracking-wider"
-        >
-          Close
-        </button>
+
+        <div className="flex items-center gap-2">
+          {setIsolatedNodeId && (
+            <button 
+              onClick={() => setIsolatedNodeId(isIsolated ? null : selectedNode.id)}
+              className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold border transition-all ${
+                isIsolated 
+                  ? 'bg-amber-500/20 border-amber-500/40 text-amber-300' 
+                  : 'bg-slate-800 border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-600'
+              }`}
+              title={isIsolated ? "Show Full Tree" : "Isolate Subtree (Hide other branches)"}
+            >
+              <Target className="w-3.5 h-3.5" />
+              {isIsolated ? "Reset View" : "Isolate"}
+            </button>
+          )}
+
+          <button 
+            onClick={() => onNodeSelect(null)}
+            className="text-slate-500 hover:text-slate-300 p-1.5 rounded-md hover:bg-slate-700 transition-colors text-xs font-semibold uppercase tracking-wider"
+          >
+            Close
+          </button>
+        </div>
       </div>
 
       <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">

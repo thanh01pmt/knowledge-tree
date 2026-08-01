@@ -1,5 +1,5 @@
 import React, { useState, useMemo, useEffect, useRef } from 'react';
-import { Search, Info, Settings2, Share2, PanelLeftClose, PanelLeftOpen, RotateCcw } from 'lucide-react';
+import { Search, Info, Settings2, Share2, PanelLeftClose, PanelLeftOpen, RotateCcw, BarChart3 } from 'lucide-react';
 
 export default function ControlPanel({ 
   nodes, 
@@ -10,7 +10,9 @@ export default function ControlPanel({
   setVisualConfig,
   levelConfig,
   setLevelConfig,
-  onReset
+  onReset,
+  onSearchMatchesChange,
+  onOpenDashboard
 }) {
   const [activeTab, setActiveTab] = useState('elements');
   const [selectedLevel, setSelectedLevel] = useState('field');
@@ -18,6 +20,21 @@ export default function ControlPanel({
   const [showSuggestions, setShowSuggestions] = useState(false);
   const [isCollapsed, setIsCollapsed] = useState(false);
   const searchRef = useRef();
+
+  const matchingNodeIds = useMemo(() => {
+    if (!searchTerm || searchTerm.trim().length < 2) return new Set();
+    const term = searchTerm.toLowerCase();
+    const matches = nodes
+      .filter(n => n.name.toLowerCase().includes(term) || (n.description && n.description.toLowerCase().includes(term)))
+      .map(n => n.id);
+    return new Set(matches);
+  }, [searchTerm, nodes]);
+
+  useEffect(() => {
+    if (onSearchMatchesChange) {
+      onSearchMatchesChange(matchingNodeIds);
+    }
+  }, [matchingNodeIds, onSearchMatchesChange]);
 
   const suggestions = useMemo(() => {
     if (!searchTerm || searchTerm.length < 2) return [];
@@ -87,6 +104,15 @@ export default function ControlPanel({
           <h2 className="text-[11px] font-semibold text-slate-400 uppercase tracking-widest">Graph Configuration</h2>
         </div>
         <div className="flex items-center gap-1">
+          {onOpenDashboard && (
+            <button 
+              onClick={onOpenDashboard}
+              className="text-slate-500 hover:text-blue-400 p-1.5 rounded-md hover:bg-slate-800 transition-colors"
+              title="Curriculum Analytics Dashboard"
+            >
+              <BarChart3 className="w-4 h-4" />
+            </button>
+          )}
           <button 
             onClick={onReset}
             className="text-slate-500 hover:text-slate-300 p-1.5 rounded-md hover:bg-slate-800 transition-colors"

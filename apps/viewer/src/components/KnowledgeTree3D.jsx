@@ -37,7 +37,21 @@ function getGlowTexture() {
   return glowTextureCache;
 }
 
-export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarget, prereqLinksBySource = {}, prereqLinksByTarget = {}, onNodeSelect, searchedNodeId, filters = { showLabels: true, maxLevel: 'topic', showPrerequisites: false }, visualConfig, levelConfig, selectedNode }) {
+export default function KnowledgeTree3D({ 
+  graphData, 
+  linksBySource, 
+  linksByTarget, 
+  prereqLinksBySource = {}, 
+  prereqLinksByTarget = {}, 
+  onNodeSelect, 
+  searchedNodeId, 
+  filters = { showLabels: true, maxLevel: 'topic', showPrerequisites: false }, 
+  visualConfig, 
+  levelConfig, 
+  selectedNode,
+  isolatedNodeId = null,
+  searchMatchingIds = null
+}) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
   const [highlightLinks, setHighlightLinks] = useState(new Set());
@@ -50,6 +64,17 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
   const containerRef = useRef();
   const lastClickTime = useRef({});
+
+  // Multi-node live search highlight effect (S3)
+  useEffect(() => {
+    if (searchMatchingIds && searchMatchingIds.size > 0 && !selectedNode) {
+      setHighlightNodes(new Set(searchMatchingIds));
+      setHighlightLinks(new Set());
+    } else if (searchMatchingIds && searchMatchingIds.size === 0 && !selectedNode && highlightNodes.size > 0) {
+      setHighlightNodes(new Set());
+      setHighlightLinks(new Set());
+    }
+  }, [searchMatchingIds, selectedNode]);
   
   // Update dimensions when container resizes (e.g. sidebar toggles)
   useEffect(() => {
@@ -186,9 +211,43 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     document.dispatchEvent(new CustomEvent('focus-search'));
   }, []);
 
-  // Calculate visible nodes to avoid "hairball"
+  // Calculate visible nodes to avoid "hairball" or apply isolation mode
   const visibleGraphData = useMemo(() => {
     if (!graphData) return { nodes: [], links: [] };
+
+    // Subtree Isolation Mode (S1)
+    if (isolatedNodeId) {
+      const isoSet = new Set([isolatedNodeId]);
+      let queue = [isolatedNodeId];
+
+      // Collect all descendants
+      while (queue.length > 0) {
+        const nextQueue = [];
+        queue.forEach(id => {
+          const children = linksBySource[id] || [];
+          children.forEach(childId => {
+            if (!isoSet.has(childId)) {
+              isoSet.add(childId);
+              nextQueue.push(childId);
+            }
+          });
+        });
+        queue = nextQueue;
+      }
+
+      // Collect immediate parents for context
+      const parents = linksByTarget[isolatedNodeId] || [];
+      parents.forEach(pId => isoSet.add(pId));
+
+      const isoNodes = graphData.nodes.filter(n => isoSet.has(n.id));
+      const isoLinks = graphData.links.filter(l => {
+        const sourceId = typeof l.source === 'object' ? l.source.id : l.source;
+        const targetId = typeof l.target === 'object' ? l.target.id : l.target;
+        return isoSet.has(sourceId) && isoSet.has(targetId);
+      });
+
+      return { nodes: isoNodes, links: isoLinks };
+    }
 
     const maxLevel = filters.maxLevel || 'topic';
     const levelOrder = ['field', 'subject', 'category', 'topic', 'concept'];
@@ -227,7 +286,7 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     });
     
     return { nodes: filteredNodes, links: filteredLinks };
-  }, [graphData, expandedNodes, linksBySource, filters.maxLevel]);
+  }, [graphData, expandedNodes, linksBySource, linksByTarget, filters.maxLevel, isolatedNodeId]);
 
   // Handle Prerequisite DAG links to overlay on the graph
   const visiblePrereqLinks = useMemo(() => {

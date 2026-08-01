@@ -2,6 +2,8 @@ import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import KnowledgeTree3D from './components/KnowledgeTree3D';
 import ControlPanel from './components/ControlPanel';
 import NodeDetailsPanel from './components/NodeDetailsPanel';
+import DashboardModal from './components/DashboardModal';
+import OnboardingTour from './components/OnboardingTour';
 import { parseKnowledgeTree } from './utils/dataParser';
 import './App.css';
 
@@ -211,8 +213,20 @@ function App() {
     );
   }
 
+  const [isolatedNodeId, setIsolatedNodeId] = useState(null);
+  const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
+  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
+
   return (
     <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
+      <OnboardingTour />
+      
+      <DashboardModal 
+        isOpen={isDashboardOpen} 
+        onClose={() => setIsDashboardOpen(false)} 
+        graphData={graphData} 
+      />
+
       <ControlPanel 
         nodes={graphData.nodes} 
         onNodeSearch={handleNodeSearch}
@@ -223,6 +237,8 @@ function App() {
         levelConfig={levelConfig}
         setLevelConfig={setLevelConfig}
         onReset={resetConfigs}
+        onSearchMatchesChange={setSearchMatchingIds}
+        onOpenDashboard={() => setIsDashboardOpen(true)}
       />
 
       {/* Main 3D Graph */}
@@ -239,6 +255,8 @@ function App() {
           visualConfig={visualConfig}
           levelConfig={levelConfig}
           selectedNode={selectedNode}
+          isolatedNodeId={isolatedNodeId}
+          searchMatchingIds={searchMatchingIds}
         />
       </div>
 
@@ -252,6 +270,8 @@ function App() {
         history={history}
         historyIndex={historyIndex}
         onNavigateHistory={handleNavigateHistory}
+        isolatedNodeId={isolatedNodeId}
+        setIsolatedNodeId={setIsolatedNodeId}
       />
     </div>
   );
