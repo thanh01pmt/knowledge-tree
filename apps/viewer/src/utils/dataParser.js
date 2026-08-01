@@ -26,7 +26,14 @@ export function parseKnowledgeTree(rawData) {
         name: item.name,
         description: item.description,
         level: level,
-        metadata: item.metadata ? (typeof item.metadata === 'string' ? JSON.parse(item.metadata) : item.metadata) : {},
+        metadata: (() => {
+          if (!item.metadata) return {};
+          if (typeof item.metadata !== 'string') return item.metadata;
+          try { return JSON.parse(item.metadata); } catch (e) {
+            console.warn(`Invalid JSON metadata for ${item.code}:`, item.metadata);
+            return { _raw: item.metadata };
+          }
+        })(),
         cs2023_ka: item.cs2023_ka_mapping || null,
         linkCount: 0
       };
