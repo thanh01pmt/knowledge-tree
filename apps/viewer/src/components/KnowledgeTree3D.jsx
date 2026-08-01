@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
 import * as THREE from 'three';
-import { Maximize, Plus, Minus, Play, Pause, Network, Search, Camera, Hand, Rotate3d } from 'lucide-react';
+import { Maximize, Plus, Minus, Play, Pause, Network, Search, Camera, Hand, Rotate3d, HelpCircle, X } from 'lucide-react';
 
 // Static geometries for performance (normalized to ~radius 1)
 const shapeGeometries = {
@@ -677,6 +677,8 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
     links: [...visibleGraphData.links, ...visiblePrereqLinks]
   }), [visibleGraphData, visiblePrereqLinks]);
 
+  const [showHelpModal, setShowHelpModal] = useState(false);
+
   return (
     <div className="relative w-full h-full overflow-hidden" ref={containerRef}>
       <ForceGraph3D
@@ -716,6 +718,11 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
             <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 text-[9px] font-bold uppercase tracking-wider">
               {hoveredNode.level}
             </span>
+            {hoveredNode.cs2023_ka && (
+              <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[9px] font-bold uppercase">
+                {hoveredNode.cs2023_ka}
+              </span>
+            )}
           </div>
           <h4 className="text-slate-100 font-semibold text-sm line-clamp-2 leading-tight">
             {hoveredNode.name}
@@ -727,6 +734,37 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
           )}
         </div>
       )}
+
+      {/* Legend Badge (Bottom Right) */}
+      <div className="absolute bottom-4 right-4 z-10 bg-[#1e2227]/80 backdrop-blur-md border border-slate-700/60 rounded-lg p-3 shadow-xl max-w-xs text-xs pointer-events-auto">
+        <div className="text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1.5">
+          Color Strategy: {visualConfig?.coloringStrategy || 'hierarchy'}
+        </div>
+        {visualConfig?.coloringStrategy === 'cs2023' ? (
+          <div className="flex flex-col gap-1 text-[11px] text-slate-300">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-purple-400 inline-block" />
+              <span>Color mapped to CS2023 Knowledge Area</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-600 inline-block" />
+              <span>Unmapped concept</span>
+            </div>
+          </div>
+        ) : visualConfig?.coloringStrategy === 'connections' ? (
+          <div className="flex items-center gap-2 text-[11px] text-slate-300">
+            <div className="h-2 flex-1 rounded bg-gradient-to-r from-blue-500 via-yellow-400 to-red-500" />
+            <span>Low → High degree</span>
+          </div>
+        ) : (
+          <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-slate-400">
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-cyan-400" /> Field</span>
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500" /> Subject</span>
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-600" /> Category</span>
+            <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-slate-500" /> Topic</span>
+          </div>
+        )}
+      </div>
 
       {/* Canvas Toolbars */}
       <div className="absolute top-4 left-4 flex flex-col gap-3 z-10 pointer-events-none">
@@ -758,12 +796,65 @@ export default function KnowledgeTree3D({ graphData, linksBySource, linksByTarge
           <button onClick={handleSearchClick} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Search Node">
             <Search className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={handleScreenshot} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors flex items-center justify-center" title="Take Screenshot">
+          <button onClick={handleScreenshot} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Take Screenshot">
             <Camera className="w-4 h-4" strokeWidth={2} />
           </button>
+          <button onClick={() => setShowHelpModal(true)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors flex items-center justify-center" title="Keyboard Shortcuts & Controls Help">
+            <HelpCircle className="w-4 h-4" strokeWidth={2} />
+          </button>
         </div>
-
       </div>
+
+      {/* Keyboard Shortcuts & Help Modal */}
+      {showHelpModal && (
+        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-[#1e2227] border border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl relative text-slate-200">
+            <button 
+              onClick={() => setShowHelpModal(false)}
+              className="absolute top-4 right-4 p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-white">
+              <HelpCircle className="w-5 h-5 text-blue-400" />
+              Controls & Shortcuts Guide
+            </h3>
+            
+            <div className="space-y-4 text-xs">
+              <div>
+                <h4 className="font-semibold text-blue-400 uppercase tracking-wider text-[10px] mb-2">3D Camera Navigation</h4>
+                <div className="grid grid-cols-2 gap-2 bg-[#252930] p-3 rounded-lg border border-slate-800">
+                  <div><span className="font-semibold text-slate-300">Left Click + Drag:</span> Orbit / Rotate</div>
+                  <div><span className="font-semibold text-slate-300">Right Click / 2-Finger:</span> Pan Camera</div>
+                  <div><span className="font-semibold text-slate-300">Scroll / Pinch:</span> Zoom In/Out</div>
+                  <div><span className="font-semibold text-slate-300">Double Click Node:</span> Expand/Collapse</div>
+                </div>
+              </div>
+
+              <div>
+                <h4 className="font-semibold text-purple-400 uppercase tracking-wider text-[10px] mb-2">Keyboard Shortcuts (When Node Selected)</h4>
+                <div className="grid grid-cols-2 gap-2 bg-[#252930] p-3 rounded-lg border border-slate-800 font-mono">
+                  <div><span className="text-slate-300 font-sans">↑ Arrow Up:</span> Go to Parent</div>
+                  <div><span className="text-slate-300 font-sans">↓ Arrow Down:</span> Go to First Child</div>
+                  <div><span className="text-slate-300 font-sans">← Arrow Left:</span> Previous Sibling</div>
+                  <div><span className="text-slate-300 font-sans">→ Arrow Right:</span> Next Sibling</div>
+                </div>
+              </div>
+
+              <div className="p-3 bg-blue-500/10 border border-blue-500/20 rounded-lg text-blue-300 text-[11px] leading-relaxed">
+                💡 <strong>Tip:</strong> Toggle <em>Show Prerequisites</em> in the Control Panel to visualize unlock dependencies (Green = Unlocks next, Red = Requires prior knowledge).
+              </div>
+            </div>
+
+            <button 
+              onClick={() => setShowHelpModal(false)}
+              className="w-full mt-5 py-2 bg-blue-600 hover:bg-blue-500 text-white font-medium text-xs rounded-lg transition-colors"
+            >
+              Got it
+            </button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

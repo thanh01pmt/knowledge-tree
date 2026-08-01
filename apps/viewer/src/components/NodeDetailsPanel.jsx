@@ -182,15 +182,43 @@ export default function NodeDetailsPanel({
             </div>
           </div>
 
-          <div className="flex items-center gap-2">
+          <div className="flex flex-wrap items-center gap-2">
             <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-widest">
               <LevelIcon level={selectedNode.level} className="w-3.5 h-3.5" />
               {selectedNode.level}
             </div>
+
+            {selectedNode.cs2023_ka && (
+              <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-purple-500/10 border border-purple-500/20 text-purple-300 text-xs font-semibold">
+                <span>CS2023:</span>
+                <span className="text-purple-400 font-bold">{selectedNode.cs2023_ka}</span>
+              </div>
+            )}
+
+            {selectedNode.metadata?.lo_type && (
+              <div className="inline-flex items-center px-2 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-wider">
+                {selectedNode.metadata.lo_type}
+              </div>
+            )}
           </div>
 
+          {/* Extended Metadata Attributes */}
+          {selectedNode.metadata && Object.keys(selectedNode.metadata).length > 0 && (
+            <div className="grid grid-cols-2 gap-2 bg-[#23272e] p-3 rounded-xl border border-slate-800 text-xs">
+              {Object.entries(selectedNode.metadata).map(([key, val]) => {
+                if (key === 'color' || key === 'lo_type') return null; // skip color and lo_type since rendered elsewhere
+                return (
+                  <div key={key} className="flex flex-col">
+                    <span className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">{key.replace(/_/g, ' ')}</span>
+                    <span className="text-slate-300 font-medium truncate">{typeof val === 'object' ? JSON.stringify(val) : String(val)}</span>
+                  </div>
+                );
+              })}
+            </div>
+          )}
+
           {selectedNode.description && (
-            <p className="text-sm text-slate-400 leading-relaxed mt-2 bg-[#2a2f36]/50 p-4 rounded-xl border border-slate-800/80">
+            <p className="text-sm text-slate-400 leading-relaxed mt-1 bg-[#2a2f36]/50 p-4 rounded-xl border border-slate-800/80">
               {selectedNode.description}
             </p>
           )}

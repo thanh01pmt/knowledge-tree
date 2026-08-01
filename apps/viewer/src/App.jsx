@@ -148,17 +148,67 @@ function App() {
     });
   }, [history.length]);
 
+  // Sync URL query param with selectedNode
+  useEffect(() => {
+    if (loading || !graphData.nodes.length) return;
+
+    // Read initial node from URL on load
+    const params = new URLSearchParams(window.location.search);
+    const initialNodeId = params.get('node');
+
+    if (initialNodeId && !selectedNode) {
+      const initialNode = graphData.nodes.find(n => n.id === initialNodeId);
+      if (initialNode) {
+        setSelectedNode(initialNode);
+      }
+    }
+  }, [loading, graphData.nodes]);
+
+  // Update URL whenever selectedNode changes
+  useEffect(() => {
+    if (loading) return;
+    const url = new URL(window.location.href);
+    if (selectedNode) {
+      url.searchParams.set('node', selectedNode.id);
+    } else {
+      url.searchParams.delete('node');
+    }
+    window.history.replaceState(null, '', url.pathname + url.search);
+  }, [selectedNode, loading]);
+
   const handleNodeSearch = useCallback(node => {
     setSearchedNodeId(node.id);
     handleNodeSelect(node);
   }, [handleNodeSelect]);
 
   if (loading) {
-    return <div className="flex h-screen w-screen items-center justify-center bg-[#0f172a] text-slate-200">Loading Knowledge Tree from Supabase...</div>;
+    return (
+      <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#0f172a] text-slate-200">
+        <div className="relative flex items-center justify-center mb-6">
+          <div className="w-16 h-16 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin" />
+          <div className="absolute w-8 h-8 rounded-full bg-blue-500/10 backdrop-blur border border-blue-400/30 animate-pulse" />
+        </div>
+        <h2 className="text-lg font-bold text-slate-100 tracking-wide mb-1">Knowledge Tree</h2>
+        <p className="text-xs text-slate-400 animate-pulse">Loading curriculum graph from Supabase Cloud...</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className="flex h-screen w-screen items-center justify-center bg-[#0f172a] text-red-400">Error loading data: {error}</div>;
+    return (
+      <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#0f172a] text-red-400 p-6 text-center">
+        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 max-w-md">
+          <h3 className="font-bold text-base text-red-300 mb-2">Connection Error</h3>
+          <p className="text-xs text-red-400 leading-relaxed mb-4">{error}</p>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-semibold transition-colors"
+          >
+            Retry Connection
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
