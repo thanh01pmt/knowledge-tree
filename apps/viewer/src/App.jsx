@@ -64,6 +64,10 @@ function App() {
     localStorage.removeItem('kt_levelConfig');
   };
 
+  const [isolatedNodeId, setIsolatedNodeId] = useState(null);
+  const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
+  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
+
   const [rawTreeData, setRawTreeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -212,10 +216,6 @@ function App() {
       </div>
     );
   }
-
-  const [isolatedNodeId, setIsolatedNodeId] = useState(null);
-  const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
-  const [isDashboardOpen, setIsDashboardOpen] = useState(false);
 
   return (
     <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
