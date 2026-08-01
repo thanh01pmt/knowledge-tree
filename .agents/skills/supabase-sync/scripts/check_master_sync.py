@@ -80,9 +80,9 @@ def main():
 
     load_env(repo_root)
     url = os.environ.get("SUPABASE_URL")
-    service_key = os.environ.get("SERVICE_ROLE_KEY")
+    service_key = os.environ.get("SUPABASE_SECRET_KEY")  # Use secret key for admin operations
     if not url or not service_key:
-        print("❌ Error: SUPABASE_URL và SERVICE_ROLE_KEY phải được set trong .env")
+        print("❌ Error: SUPABASE_URL và SUPABASE_SECRET_KEY phải được set trong .env")
         sys.exit(1)
 
     supabase = create_client(url, service_key)
