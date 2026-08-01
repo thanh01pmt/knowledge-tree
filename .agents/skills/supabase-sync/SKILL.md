@@ -27,3 +27,4 @@ description: Đồng bộ dữ liệu 6 file TSV của dự án (fields, subject
 
 ## Scripts
 - `.agents/skills/supabase-sync/scripts/sync_to_supabase.py`
+- `.agents/skills/supabase-sync/scripts/check_master_sync.py`: Tool for auditing and pulling Master TSV data from Supabase.

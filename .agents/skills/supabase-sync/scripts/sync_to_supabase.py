@@ -150,28 +150,43 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             if not code:
                 continue
 
-            payload = {
-                "code": code,
-                "name": r.get("name", "").strip(),
-                "description": r.get("description", "").strip(),
-                "organization_code": "DEFAULT_ORG"
-            }
+            payload = {"organization_code": "DEFAULT_ORG"}
+            
+            for k, v in r.items():
+                if not k:
+                    continue
+                k = k.strip()
+                if k in array_fields:
+                    continue
+                
+                val = v.strip() if v else ""
+                
+                if val == "":
+                    if k in ["name", "description"]:
+                        payload[k] = ""
+                    # Ignore other empty fields (like metadata, keywords, bloom_level) to avoid DB type errors
+                    continue
+                
+                payload[k] = val
+
+            payload["code"] = code
 
             for af in array_fields:
                 if af in r:
-                    vals = [v.strip() for v in r[af].replace(";", ",").split(",") if v.strip()]
-                    payload[af] = vals
+                    val_str = r[af].strip()
+                    if val_str:
+                        vals = [v.strip() for v in val_str.replace(";", ",").split(",") if v.strip()]
+                        payload[af] = vals
+                    else:
+                        payload[af] = []
 
             if table_name == "learning_objectives":
-                payload["lo_type"] = r.get("lo_type", "UNIVERSAL").strip()
+                payload["lo_type"] = r.get("lo_type", "UNIVERSAL").strip() or "UNIVERSAL"
                 p_code = r.get("parent_lo_code", "").strip()
-                payload["parent_lo_code"] = p_code if p_code and p_code.upper() != "NULL" else None
-                if r.get("bloom_level", "").strip():
-                    payload["bloom_level"] = r["bloom_level"].strip()
-                if r.get("knowledge_dimension", "").strip():
-                    payload["knowledge_dimension"] = r["knowledge_dimension"].strip()
-                if r.get("assessment_approach", "").strip():
-                    payload["assessment_approach"] = r["assessment_approach"].strip()
+                if p_code and p_code.upper() != "NULL":
+                    payload["parent_lo_code"] = p_code
+                elif "parent_lo_code" in payload:
+                    del payload["parent_lo_code"]
 
             if code in code_to_id:
                 payload["id"] = code_to_id[code]
