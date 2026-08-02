@@ -1,122 +1,882 @@
 [
   {
-    "code": "ULO-PROJECT_ASSETS_MANAGEMENT-01",
-    "name": "Nhận biết các loại tài nguyên trong dự án",
-    "description": "Người học có khả năng kể tên và phân loại các tài nguyên như hình ảnh, màu sắc, biểu tượng, font chữ được quản lý trong IDE.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-IF_ELSE_STATEMENT-01",
+    "name": "Phân tích điều kiện logic trong cấu trúc rẽ nhánh",
+    "description_vi": "Người học có khả năng phân tích một bài toán có hai nhánh và xác định điều kiện logic để thực thi đúng nhánh.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
     "concept_codes": [
-      "PROJECT_ASSETS_MANAGEMENT"
-    ],
-    "bloom_level": "Remember",
-    "knowledge_dimension": "Factual"
+      "IF_ELSE_STATEMENT"
+    ]
   },
   {
-    "code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
-    "name": "Thêm và sử dụng tài nguyên trong dự án",
-    "description": "Người học có khả năng thêm tài nguyên mới (hình ảnh, màu sắc) vào dự án và tham chiếu chúng trong mã nguồn để xây dựng giao diện.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-IF_ELSE_STATEMENT-02",
+    "name": "Áp dụng cấu trúc if-else vào tình huống ra quyết định",
+    "description_vi": "Người học có khả năng áp dụng cấu trúc if-else để giải quyết các tình huống ra quyết định đơn giản trong chương trình.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
     "concept_codes": [
-      "PROJECT_ASSETS_MANAGEMENT"
-    ],
-    "bloom_level": "Apply",
-    "knowledge_dimension": "Procedural"
+      "IF_ELSE_STATEMENT"
+    ]
   },
   {
-    "code": "ULO-ARRAY_OPERATIONS-03",
-    "name": "Apply array traversal and modification",
-    "description": "Người học có khả năng áp dụng các thao tác trên mảng để duyệt và sửa đổi phần tử.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-PRIMITIVE_TYPE_DECLARATION-01",
+    "name": "Giải thích sự khác biệt giữa các kiểu dữ liệu nguyên thủy",
+    "description_vi": "Người học có khả năng giải thích sự khác biệt giữa các kiểu dữ liệu nguyên thủy và cách chúng lưu trữ giá trị.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
     "concept_codes": [
-      "ARRAY_OPERATIONS"
-    ],
-    "bloom_level": "Apply",
-    "knowledge_dimension": "Procedural"
+      "PRIMITIVE_TYPE_DECLARATION"
+    ]
   },
   {
-    "code": "ULO-WHILE_LOOP-03",
-    "name": "Apply while loops for dynamic repetition",
-    "description": "Người học có khả năng áp dụng vòng lặp while để thực hiện các tác vụ lặp với điều kiện động.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-PRIMITIVE_TYPE_DECLARATION-02",
+    "name": "Khai báo biến với kiểu dữ liệu phù hợp",
+    "description_vi": "Người học có khả năng khai báo biến với kiểu dữ liệu phù hợp dựa trên yêu cầu của bài toán.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
     "concept_codes": [
-      "WHILE_LOOP"
-    ],
-    "bloom_level": "Apply",
-    "knowledge_dimension": "Procedural"
+      "PRIMITIVE_TYPE_DECLARATION"
+    ]
   },
   {
-    "code": "ULO-DECLARATIVE_UI_PARADIGM-03",
-    "name": "Phân tích sự khác biệt giữa khai báo và mệnh lệnh",
-    "description": "Người học có khả năng phân tích sự khác biệt giữa mô hình khai báo và mệnh lệnh trong các tình huống cụ thể, chỉ ra ưu nhược điểm.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-DIGITAL_FOOTPRINT-01",
+    "name": "Đánh giá tác động lâu dài của dấu chân số",
+    "description_vi": "Người học có khả năng đánh giá tác động lâu dài của các hoạt động trực tuyến đến danh tiếng và quyền riêng tư cá nhân.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
     "concept_codes": [
-      "DECLARATIVE_UI_PARADIGM"
-    ],
-    "bloom_level": "Analyze",
-    "knowledge_dimension": "Conceptual"
+      "DIGITAL_FOOTPRINT"
+    ]
   },
   {
-    "code": "ULO-UI_MODIFIERS_CONCEPT-03",
-    "name": "Áp dụng UI Modifier để xây dựng giao diện",
-    "description": "Người học có khả năng sử dụng các UI Modifier một cách phù hợp để tạo ra bố cục và kiểu dáng mong muốn cho giao diện người dùng.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-DIGITAL_FOOTPRINT-02",
+    "name": "Phân tích hành vi trực tuyến để nhận diện rủi ro",
+    "description_vi": "Người học có khả năng phân tích các hành vi trực tuyến để nhận diện những dấu chân số có thể gây rủi ro.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
     "concept_codes": [
-      "UI_MODIFIERS_CONCEPT"
-    ],
-    "bloom_level": "Apply",
-    "knowledge_dimension": "Procedural"
+      "DIGITAL_FOOTPRINT"
+    ]
   },
   {
-    "code": "ULO-EVENT_HANDLERS_CONCEPT-02",
-    "name": "Gắn event handler vào thành phần giao diện",
-    "description": "Người học có khả năng đăng ký một hàm xử lý sự kiện (event handler) cho các tương tác như nhấn nút, gõ phím, hoặc cử chỉ trên UI element.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-VIEW_TRANSITIONS-01",
+    "name": "Mô tả các hiệu ứng chuyển tiếp view phổ biến",
+    "description_vi": "Người học có khả năng mô tả các hiệu ứng chuyển tiếp view phổ biến và mục đích sử dụng của chúng.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "FACTUAL",
     "concept_codes": [
-      "EVENT_HANDLERS_CONCEPT"
-    ],
-    "bloom_level": "Apply",
-    "knowledge_dimension": "Procedural"
+      "VIEW_TRANSITIONS"
+    ]
   },
   {
-    "code": "ULO-STATE_PROPERTY_WRAPPER-02",
-    "name": "Sử dụng @State để theo dõi và cập nhật trạng thái",
-    "description": "Người học có khả năng khai báo biến @State trong view, gán giá trị và cập nhật nó để thay đổi giao diện tương ứng.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-VIEW_TRANSITIONS-02",
+    "name": "Lựa chọn hiệu ứng chuyển tiếp phù hợp cho trải nghiệm người dùng",
+    "description_vi": "Người học có khả năng lựa chọn hiệu ứng chuyển tiếp phù hợp để cải thiện trải nghiệm người dùng trong một ứng dụng.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "CONCEPTUAL",
     "concept_codes": [
-      "STATE_PROPERTY_WRAPPER"
-    ],
-    "bloom_level": "Apply",
-    "knowledge_dimension": "Procedural"
+      "VIEW_TRANSITIONS"
+    ]
   },
   {
-    "code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
-    "name": "Analyze code to classify errors",
-    "description": "Người học có khả năng phân tích mã nguồn để xác định và phân loại lỗi cú pháp hoặc runtime.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-RUNTIME_ERRORS-01",
+    "name": "Xác định các loại lỗi runtime thường gặp",
+    "description_vi": "Người học có khả năng xác định các loại lỗi runtime thường gặp và nguyên nhân gây ra chúng.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "FACTUAL",
     "concept_codes": [
-      "SYNTAX_VS_RUNTIME_ERRORS"
-    ],
-    "bloom_level": "Analyze",
-    "knowledge_dimension": "Procedural"
+      "RUNTIME_ERRORS"
+    ]
   },
   {
-    "code": "ULO-ERROR_MESSAGES_CONCEPT-02",
-    "name": "Giải thích thông báo lỗi",
-    "description": "Người học có khả năng giải thích ý nghĩa của thông báo lỗi trong ngữ cảnh chương trình đang chạy.",
-    "lo_type": "UNIVERSAL",
-    "parent_lo_code": "",
+    "code": "ULO-RUNTIME_ERRORS-02",
+    "name": "Áp dụng kỹ thuật xử lý lỗi runtime",
+    "description_vi": "Người học có khả năng áp dụng kỹ thuật xử lý lỗi để ngăn chặn hoặc phục hồi từ các lỗi runtime.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
     "concept_codes": [
-      "ERROR_MESSAGES_CONCEPT"
-    ],
-    "bloom_level": "Understand",
-    "knowledge_dimension": "Conceptual"
+      "RUNTIME_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-WCAG_PRINCIPLES-01",
+    "name": "Giải thích nguyên tắc POUR",
+    "description_vi": "Người học có khả năng giải thích bốn nguyên tắc POUR (Perceivable, Operable, Understandable, Robust) của WCAG và ý nghĩa của từng nguyên tắc trong việc đảm bảo khả năng tiếp cận nội dung số.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "WCAG_PRINCIPLES"
+    ]
+  },
+  {
+    "code": "ULO-WCAG_PRINCIPLES-02",
+    "name": "Áp dụng nguyên tắc POUR để đánh giá",
+    "description_vi": "Người học có khả năng áp dụng các nguyên tắc POUR để đánh giá một giao diện người dùng hiện có, xác định các rào cản về khả năng tiếp cận và đề xuất cải tiến phù hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "WCAG_PRINCIPLES"
+    ]
+  },
+  {
+    "code": "ULO-ALGORITHMIC_BIAS_SOCIETY-01",
+    "name": "Phân tích nguồn gốc thành kiến thuật toán",
+    "description_vi": "Người học có khả năng phân tích các yếu tố dẫn đến thành kiến trong thuật toán, bao gồm dữ liệu huấn luyện, thiết kế mô hình và bối cảnh xã hội, từ đó nhận diện cách thuật toán có thể khuếch đại bất bình đẳng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "ALGORITHMIC_BIAS_SOCIETY"
+    ]
+  },
+  {
+    "code": "ULO-ALGORITHMIC_BIAS_SOCIETY-02",
+    "name": "Đánh giá tác động xã hội của thành kiến thuật toán",
+    "description_vi": "Người học có khả năng đánh giá tác động tiềm ẩn của thành kiến thuật toán đối với các nhóm xã hội khác nhau và đề xuất các biện pháp giảm thiểu rủi ro trong quy trình phát triển hệ thống.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "ALGORITHMIC_BIAS_SOCIETY"
+    ]
+  },
+  {
+    "code": "ULO-PHISHING_IDENTIFICATION-01",
+    "name": "Nhận diện dấu hiệu lừa đảo cơ bản",
+    "description_vi": "Người học có khả năng nhận diện các dấu hiệu cảnh báo phổ biến của email hoặc tin nhắn lừa đảo, bao gồm lỗi chính tả, địa chỉ người gửi đáng ngờ, URL lạ và yêu cầu thông tin nhạy cảm.",
+    "bloom_level": "REMEMBER",
+    "knowledge_dimension": "FACTUAL",
+    "concept_codes": [
+      "PHISHING_IDENTIFICATION"
+    ]
+  },
+  {
+    "code": "ULO-PHISHING_IDENTIFICATION-02",
+    "name": "Áp dụng quy trình xác minh an toàn",
+    "description_vi": "Người học có khả năng áp dụng quy trình xác minh an toàn để kiểm tra tính xác thực của một thông điệp điện tử, bao gồm kiểm tra URL, phân tích nội dung và sử dụng công cụ hỗ trợ trước khi tương tác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "PHISHING_IDENTIFICATION"
+    ]
+  },
+  {
+    "code": "ULO-FOR_LOOP-01",
+    "name": "Hiểu cơ chế hoạt động của vòng lặp for",
+    "description_vi": "Người học có khả năng giải thích cách vòng lặp for thực thi lặp lại một khối lệnh dựa trên một biến đếm hoặc một tập hợp các phần tử, bao gồm khởi tạo, điều kiện và bước nhảy.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "FOR_LOOP"
+    ]
+  },
+  {
+    "code": "ULO-FOR_LOOP-02",
+    "name": "Sử dụng vòng lặp for để giải quyết bài toán lặp",
+    "description_vi": "Người học có khả năng sử dụng vòng lặp for để viết mã giải quyết các bài toán yêu cầu lặp lại một số lần xác định, như duyệt mảng, tính tổng dãy số hoặc tạo mẫu in ấn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "FOR_LOOP"
+    ]
+  },
+  {
+    "code": "ULO-WIREFRAMING-01",
+    "name": "Hiểu vai trò của wireframe trong thiết kế",
+    "description_vi": "Người học có khả năng giải thích mục đích và vai trò của wireframe trong quy trình thiết kế giao diện, bao gồm việc xác định cấu trúc, bố cục và luồng thông tin mà không tập trung vào chi tiết thẩm mỹ.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "WIREFRAMING"
+    ]
+  },
+  {
+    "code": "ULO-WIREFRAMING-02",
+    "name": "Tạo wireframe cho một trang web hoặc ứng dụng",
+    "description_vi": "Người học có khả năng tạo wireframe cho một trang web hoặc ứng dụng dựa trên yêu cầu chức năng, sử dụng các ký hiệu phác thảo để thể hiện bố cục, vùng nội dung và các thành phần tương tác chính.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "WIREFRAMING"
+    ]
+  },
+  {
+    "code": "ULO-LOGIC_ERRORS-01",
+    "name": "Nhận biết lỗi logic",
+    "description_vi": "Người học có khả năng nhận biết các lỗi logic trong mã nguồn khi chương trình chạy không đúng kết quả mong đợi nhưng không có lỗi cú pháp hay runtime.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "LOGIC_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-LOGIC_ERRORS-02",
+    "name": "Phân tích nguyên nhân lỗi logic",
+    "description_js": "Người học có khả năng phân tích luồng thực thi và giá trị biến để xác định nguyên nhân gây ra lỗi logic trong chương trình.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "LOGIC_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-LOGIC_ERRORS-03",
+    "name": "Sửa lỗi logic",
+    "description_vi": "Người học có khả năng sửa lỗi logic bằng cách điều chỉnh điều kiện, vòng lặp hoặc thứ tự thực thi để đạt được kết quả mong đợi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "LOGIC_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-MALWARE_TYPES_CONCEPT-01",
+    "name": "Phân biệt các loại malware",
+    "description_vi": "Người học có khả năng phân biệt các loại phần mềm độc hại phổ biến như virus, worm, ransomware dựa trên đặc điểm lây lan và tác hại.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "MALWARE_TYPES_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-MALWARE_TYPES_CONCEPT-02",
+    "name": "So sánh cơ chế hoạt động của malware",
+    "description_vi": "Người học có khả năng so sánh cơ chế hoạt động và mức độ nguy hiểm giữa các loại malware để đưa ra biện pháp phòng chống phù hợp.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "MALWARE_TYPES_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-01",
+    "name": "Phân biệt animation ngầm định và tường minh",
+    "description_vi": "Người học có khả năng phân biệt giữa hiệu ứng chuyển động ngầm định (gắn liền với thay đổi trạng thái của view) và tường minh (kích hoạt tại một thời điểm cụ thể).",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "IMPLICIT_EXPLICIT_ANIMATION"
+    ]
+  },
+  {
+    "code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-02",
+    "name": "Áp dụng animation phù hợp",
+    "description_vi": "Người học có khả năng áp dụng đúng loại animation (ngầm định hoặc tường minh) cho từng tình huống giao diện người dùng dựa trên yêu cầu về thời điểm và điều khiển chuyển động.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "IMPLICIT_EXPLICIT_ANIMATION"
+    ]
+  },
+  {
+    "code": "ULO-UI_BOX_MODEL_LAYOUT-01",
+    "name": "Hiểu mô hình khung khối UI",
+    "description_vi": "Người học có khả năng hiểu mô hình bố cục khung khối UI trừu tượng bao gồm các thành phần margin, border, padding và nội dung.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "UI_BOX_MODEL_LAYOUT"
+    ]
+  },
+  {
+    "code": "ULO-UI_BOX_MODEL_LAYOUT-02",
+    "name": "Tính toán kích thước khối UI",
+    "description_vi": "Người học có khả năng tính toán kích thước tổng thể của một khối UI dựa trên các giá trị margin, border, padding và kích thước nội dung.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "UI_BOX_MODEL_LAYOUT"
+    ]
+  },
+  {
+    "code": "ULO-UI_BOX_MODEL_LAYOUT-03",
+    "name": "Phân tích bố cục UI",
+    "description_vi": "Người học có khả năng phân tích bố cục UI hiện có để xác định nguyên nhân gây ra khoảng cách hoặc chồng lấn giữa các phần tử dựa trên mô hình khung khối.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "UI_BOX_MODEL_LAYOUT"
+    ]
+  },
+  {
+    "code": "ULO-SWITCH_CASE-01",
+    "name": "Sử dụng cấu trúc rẽ nhánh đa hướng",
+    "description_vi": "Người học có khả năng sử dụng cấu trúc điều khiển rẽ nhánh dựa trên giá trị của một biểu thức để thực thi các khối mã tương ứng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "SWITCH_CASE"
+    ]
+  },
+  {
+    "code": "ULO-SWITCH_CASE-02",
+    "name": "Phân tích hành vi của cấu trúc rẽ nhánh",
+    "description_vi": "Người học có khả năng phân tích hành vi của cấu trúc rẽ nhánh đa hướng, bao gồm việc xử lý các trường hợp mặc định và rơi qua (fall-through).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "SWITCH_CASE"
+    ]
+  },
+  {
+    "code": "ULO-SCREEN_READERS-01",
+    "name": "Giải thích cách trình đọc màn hình hoạt động",
+    "description_vi": "Người học có khả năng giải thích cách trình đọc màn hình diễn giải nội dung trang web dựa trên cấu trúc đánh dấu ngữ nghĩa.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "SCREEN_READERS"
+    ]
+  },
+  {
+    "code": "ULO-SCREEN_READERS-02",
+    "name": "Áp dụng đánh dấu ngữ nghĩa để cải thiện khả năng truy cập",
+    "description_vi": "Người học có khả năng sử dụng các phần tử đánh dấu ngữ nghĩa để cấu trúc nội dung, giúp trình đọc màn hình truyền tải thông tin chính xác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "SCREEN_READERS"
+    ]
+  },
+  {
+    "code": "ULO-LOCAL_VIEW_STATE-01",
+    "name": "Giải thích khái niệm trạng thái cục bộ của view",
+    "description_vi": "Người học có khả năng giải thích khái niệm trạng thái cục bộ của view và vòng đời của nó (tạo, cập nhật, hủy).",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "LOCAL_VIEW_STATE"
+    ]
+  },
+  {
+    "code": "ULO-LOCAL_VIEW_STATE-02",
+    "name": "Sử dụng cơ chế quản lý trạng thái cục bộ",
+    "description_vi": "Người học có khả năng sử dụng cơ chế quản lý trạng thái cục bộ để lưu trữ và cập nhật dữ liệu tạm thời trong một view duy nhất.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "LOCAL_VIEW_STATE"
+    ]
+  },
+  {
+    "code": "ULO-OBJECT_INSTANTIATION-01",
+    "name": "Mô tả quá trình tạo đối tượng từ lớp",
+    "description_vi": "Người học có khả năng mô tả quá trình tạo một đối tượng từ lớp thông qua hàm khởi tạo.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "OBJECT_INSTANTIATION"
+    ]
+  },
+  {
+    "code": "ULO-OBJECT_INSTANTIATION-02",
+    "name": "Tạo đối tượng bằng cách gọi hàm khởi tạo",
+    "description_vi": "Người học có khả năng tạo các đối tượng từ một lớp bằng cách gọi hàm khởi tạo với các tham số phù hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "OBJECT_INSTANTIATION"
+    ]
+  },
+  {
+    "code": "ULO-CLASS_DEFINITION-01",
+    "name": "Giải thích cấu trúc của một lớp",
+    "description_vi": "Người học có khả năng giải thích cấu trúc của một lớp bao gồm thuộc tính và phương thức.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "CLASS_DEFINITION"
+    ]
+  },
+  {
+    "code": "ULO-CLASS_DEFINITION-02",
+    "name": "Định nghĩa một lớp với thuộc tính và phương thức",
+    "description_vi": "Người học có khả năng định nghĩa một lớp với các thuộc tính và phương thức cơ bản.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "CLASS_DEFINITION"
+    ]
+  },
+  {
+    "code": "ULO-CLASS_DEFINITION-03",
+    "name": "Thiết kế lớp mô hình hóa đối tượng thực tế",
+    "description_vi": "Người học có khả năng thiết kế một lớp mới để mô hình hóa một đối tượng trong thế giới thực, bao gồm các thuộc tính và hành vi phù hợp.",
+    "bloom_level": "CREATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "CLASS_DEFINITION"
+    ]
+  },
+  {
+    "code": "ULO-REFERENCE_TYPE_DECLARATION-01",
+    "name": "Phân biệt kiểu tham chiếu và kiểu giá trị",
+    "description_vi": "Người học có khả năng phân biệt giữa kiểu dữ liệu tham chiếu và kiểu dữ liệu giá trị.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "REFERENCE_TYPE_DECLARATION"
+    ]
+  },
+  {
+    "code": "ULO-REFERENCE_TYPE_DECLARATION-02",
+    "name": "Khai báo biến với kiểu tham chiếu",
+    "description_vi": "Người học có khả năng khai báo biến với các kiểu dữ liệu tham chiếu (như chuỗi, mảng, đối tượng) và gán giá trị cho chúng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "REFERENCE_TYPE_DECLARATION"
+    ]
+  },
+  {
+    "code": "ULO-USER_CENTERED_DESIGN-01",
+    "name": "Giải thích quy trình UCD",
+    "description_vi": "Người học có khả năng giải thích các giai đoạn chính của quy trình thiết kế lấy người dùng làm trung tâm và mục đích của từng giai đoạn.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "USER_CENTERED_DESIGN"
+    ]
+  },
+  {
+    "code": "ULO-USER_CENTERED_DESIGN-02",
+    "name": "Áp dụng phương pháp thu thập thông tin người dùng",
+    "description_vi": "Người học có khả năng áp dụng các phương pháp thu thập thông tin người dùng (phỏng vấn, khảo sát, quan sát) để xác định nhu cầu và vấn đề của người dùng trong một bối cảnh cụ thể.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "USER_CENTERED_DESIGN"
+    ]
+  },
+  {
+    "code": "ULO-USER_CENTERED_DESIGN-03",
+    "name": "Đánh giá sản phẩm theo UCD",
+    "description_vi": "Người học có khả năng đánh giá một sản phẩm hoặc dịch vụ hiện có dựa trên mức độ đáp ứng nhu cầu người dùng và đề xuất cải tiến theo quy trình UCD.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "USER_CENTERED_DESIGN"
+    ]
+  },
+  {
+    "code": "ULO-AI_BIAS-01",
+    "name": "Phân biệt các loại thiên vị trong AI",
+    "description_vi": "Người học có khả năng phân biệt các loại thiên vị phổ biến trong dữ liệu huấn luyện và trong thiết kế thuật toán.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "AI_BIAS"
+    ]
+  },
+  {
+    "code": "ULO-AI_BIAS-02",
+    "name": "Phân tích nguồn gốc thiên vị trong hệ thống AI",
+    "description_vi": "Người học có khả năng phân tích một hệ thống AI cụ thể để xác định các nguồn gốc tiềm ẩn của thiên vị và tác động của chúng đến kết quả đầu ra.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "AI_BIAS"
+    ]
+  },
+  {
+    "code": "ULO-AI_BIAS-03",
+    "name": "Đánh giá chiến lược giảm thiểu thiên vị",
+    "description_vi": "Người học có khả năng đánh giá các chiến lược giảm thiểu thiên vị và đề xuất phương án phù hợp cho một tình huống thực tế.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "AI_BIAS"
+    ]
+  },
+  {
+    "code": "ULO-SYNTAX_ERRORS-01",
+    "name": "Nhận biết lỗi cú pháp phổ biến",
+    "description_vi": "Người học có khả năng nhận biết các lỗi cú pháp phổ biến trong mã nguồn dựa trên thông báo lỗi từ trình biên dịch hoặc trình thông dịch.",
+    "bloom_level": "REMEMBER",
+    "knowledge_dimension": "FACTUAL",
+    "concept_codes": [
+      "SYNTAX_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-SYNTAX_ERRORS-02",
+    "name": "Sửa lỗi cú pháp trong mã nguồn",
+    "description_vi": "Người học có khả năng sửa chữa các lỗi cú pháp trong một đoạn mã cho trước bằng cách xác định và điều chỉnh các vi phạm quy tắc cú pháp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "SYNTAX_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-SYNTAX_ERRORS-03",
+    "name": "Phân tích nguyên nhân lỗi cú pháp phức tạp",
+    "description_vi": "Người học có khả năng phân tích nguyên nhân gốc rễ của một lỗi cú pháp phức tạp (ví dụ: lỗi do thiếu dấu ngoặc, sai thứ tự câu lệnh) và đề xuất cách khắc phục.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "SYNTAX_ERRORS"
+    ]
+  },
+  {
+    "code": "ULO-PASSWORD_STRENGTH_CONCEPT-01",
+    "name": "Liệt kê tiêu chí mật khẩu mạnh",
+    "description_vi": "Người học có khả năng liệt kê các tiêu chí chính để tạo mật khẩu mạnh (độ dài, độ phức tạp, tính ngẫu nhiên, không dùng thông tin cá nhân).",
+    "bloom_level": "REMEMBER",
+    "knowledge_dimension": "FACTUAL",
+    "concept_codes": [
+      "PASSWORD_STRENGTH_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-PASSWORD_STRENGTH_CONCEPT-02",
+    "name": "Tạo mật khẩu mạnh",
+    "description_vi": "Người học có khả năng áp dụng các tiêu chí để tạo một mật khẩu mạnh đáp ứng yêu cầu bảo mật cho một hệ thống cụ thể.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "PASSWORD_STRENGTH_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-PASSWORD_STRENGTH_CONCEPT-03",
+    "name": "Đánh giá độ mạnh của mật khẩu",
+    "description_vi": "Người học có khả năng đánh giá độ mạnh của một mật khẩu cho trước dựa trên các tiêu chí và xác định điểm yếu tiềm ẩn.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "PASSWORD_STRENGTH_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-PROTOTYPING-01",
+    "name": "Phân biệt mức độ chi tiết của prototype",
+    "description_vi": "Người học có khả năng phân biệt các mức độ chi tiết của prototype (thấp, trung bình, cao) và mục đích sử dụng của từng loại.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "PROTOTYPING"
+    ]
+  },
+  {
+    "code": "ULO-PROTOTYPING-02",
+    "name": "Tạo prototype tương tác",
+    "description_vi": "Người học có khả năng tạo ra một prototype tương tác ở mức độ chi tiết phù hợp để kiểm tra một chức năng cụ thể của sản phẩm.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "PROTOTYPING"
+    ]
+  },
+  {
+    "code": "ULO-PROTOTYPING-03",
+    "name": "Đánh giá và cải tiến prototype",
+    "description_vi": "Người học có khả năng đánh giá kết quả thử nghiệm prototype và đề xuất cải tiến dựa trên phản hồi của người dùng.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "PROTOTYPING"
+    ]
+  },
+  {
+    "code": "ULO-BREAKPOINTS-01",
+    "name": "Thiết lập điểm dừng cơ bản",
+    "description_vi": "Người học có khả năng thiết lập các điểm dừng (breakpoints) tại các dòng mã cụ thể để tạm dừng thực thi chương trình và kiểm tra trạng thái hiện tại.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "BREAKPOINTS"
+    ]
+  },
+  {
+    "code": "ULO-BREAKPOINTS-02",
+    "name": "Sử dụng điểm dừng có điều kiện",
+    "description_vi": "Người học có khả năng thiết lập các điểm dừng có điều kiện (conditional breakpoints) để tạm dừng chương trình chỉ khi một biểu thức logic được thỏa mãn, từ đó phân tích hành vi trong các tình huống cụ thể.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "BREAKPOINTS"
+    ]
+  },
+  {
+    "code": "ULO-BREAKPOINTS-03",
+    "name": "Phân tích luồng thực thi qua điểm dừng",
+    "description_vi": "Người học có khả năng sử dụng các điểm dừng kết hợp với các bước thực thi (step over, step into, step out) để phân tích luồng thực thi của chương trình và xác định nguyên nhân gây lỗi.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "BREAKPOINTS"
+    ]
+  },
+  {
+    "code": "ULO-OBJECT_PROPERTIES-01",
+    "name": "Xác định và truy cập thuộc tính đối tượng",
+    "description_vi": "Người học có khả năng xác định các thuộc tính (properties) của một đối tượng và truy cập giá trị của chúng thông qua cú pháp phù hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "OBJECT_PROPERTIES"
+    ]
+  },
+  {
+    "code": "ULO-OBJECT_PROPERTIES-02",
+    "name": "Phân biệt thuộc tính và phương thức",
+    "description_vi": "Người học có khả năng phân biệt giữa thuộc tính (properties) và phương thức (methods) của một đối tượng, giải thích vai trò của từng loại trong việc mô tả trạng thái và hành vi.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "OBJECT_PROPERTIES"
+    ]
+  },
+  {
+    "code": "ULO-OBJECT_PROPERTIES-03",
+    "name": "Sửa đổi giá trị thuộc tính đối tượng",
+    "description_vi": "Người học có khả năng thay đổi giá trị của một thuộc tính đối tượng và quan sát ảnh hưởng của sự thay đổi đó đến hành vi của chương trình.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "OBJECT_PROPERTIES"
+    ]
+  },
+  {
+    "code": "ULO-COMPOSITION_PRINCIPLES-01",
+    "name": "Áp dụng quy tắc một phần ba",
+    "description_vi": "Người học có khả năng áp dụng quy tắc một phần ba (rule of thirds) để bố trí các yếu tố trong một thiết kế nhằm tạo ra bố cục hài hòa và thu hút thị giác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "COMPOSITION_PRINCIPLES"
+    ]
+  },
+  {
+    "code": "ULO-COMPOSITION_PRINCIPLES-02",
+    "name": "Phân tích đường dẫn thị giác trong bố cục",
+    "description_vi": "Người học có khả năng phân tích một bố cục hiện có để xác định đường dẫn thị giác (visual path) mà mắt người xem thường đi theo, từ đó đánh giá hiệu quả truyền tải thông điệp.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "COMPOSITION_PRINCIPLES"
+    ]
+  },
+  {
+    "code": "ULO-COMPOSITION_PRINCIPLES-03",
+    "name": "Đánh giá sự cân bằng trong thiết kế",
+    "description_vi": "Người học có khả năng đánh giá mức độ cân bằng (balance) của một bố cục dựa trên sự phân bố trọng lượng thị giác giữa các yếu tố, và đề xuất điều chỉnh để cải thiện sự hài hòa.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "COMPOSITION_PRINCIPLES"
+    ]
+  },
+  {
+    "code": "ULO-EVENT_BASED_PROGRAMMING-01",
+    "name": "Xác định các sự kiện trong hệ thống",
+    "description_vi": "Người học có khả năng xác định các loại sự kiện (events) có thể xảy ra trong một hệ thống tương tác, chẳng hạn như sự kiện từ người dùng hoặc từ hệ thống.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "EVENT_BASED_PROGRAMMING"
+    ]
+  },
+  {
+    "code": "ULO-EVENT_BASED_PROGRAMMING-02",
+    "name": "Viết trình xử lý sự kiện",
+    "description_vi": "Người học có khả năng viết các trình xử lý sự kiện (event handlers) để phản hồi khi một sự kiện cụ thể xảy ra, điều khiển luồng thực thi của chương trình dựa trên tương tác.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "EVENT_BASED_PROGRAMMING"
+    ]
+  },
+  {
+    "code": "ULO-EVENT_BASED_PROGRAMMING-03",
+    "name": "Phân tích luồng chương trình với nhiều sự kiện",
+    "description_vi": "Người học có khả năng phân tích luồng thực thi của một chương trình khi có nhiều sự kiện xảy ra đồng thời hoặc tuần tự, xác định thứ tự xử lý và tác động qua lại giữa các trình xử lý.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "EVENT_BASED_PROGRAMMING"
+    ]
+  },
+  {
+    "code": "ULO-TWO_WAY_BINDING-01",
+    "name": "Thiết lập liên kết hai chiều giữa dữ liệu và giao diện",
+    "description_vi": "Người học có khả năng thiết lập một liên kết hai chiều (two-way binding) giữa một nguồn dữ liệu và một thành phần giao diện, đảm bảo mọi thay đổi từ một phía được tự động đồng bộ sang phía kia.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "TWO_WAY_BINDING"
+    ]
+  },
+  {
+    "code": "ULO-TWO_WAY_BINDING-02",
+    "name": "Phân biệt liên kết một chiều và hai chiều",
+    "description_vi": "Người học có khả năng phân tích sự khác biệt giữa liên kết một chiều (one-way binding) và liên kết hai chiều (two-way binding), giải thích ưu và nhược điểm của từng cơ chế trong các tình huống cụ thể.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "TWO_WAY_BINDING"
+    ]
+  },
+  {
+    "code": "ULO-TWO_WAY_BINDING-03",
+    "name": "Đánh giá tác động của liên kết hai chiều đến hiệu suất",
+    "description_vi": "Người học có khả năng đánh giá tác động của việc sử dụng liên kết hai chiều đến hiệu suất của ứng dụng, bao gồm chi phí đồng bộ và khả năng gây ra các vòng lặp cập nhật không mong muốn.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "TWO_WAY_BINDING"
+    ]
+  },
+  {
+    "code": "ULO-DIGITAL_IDENTITY-01",
+    "name": "Giải thích danh tính số",
+    "description_vi": "Người học có khả năng giải thích khái niệm danh tính số và các thành phần cấu thành nó (hồ sơ cá nhân, hành vi trực tuyến, dấu chân số).",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "DIGITAL_IDENTITY"
+    ]
+  },
+  {
+    "code": "ULO-DIGITAL_IDENTITY-02",
+    "name": "Phân tích tác động quản lý danh tính số",
+    "description_vi": "Người học có khả năng phân tích tác động của việc quản lý danh tính số đối với cơ hội nghề nghiệp và uy tín cá nhân trong môi trường trực tuyến.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "DIGITAL_IDENTITY"
+    ]
+  },
+  {
+    "code": "ULO-DIGITAL_IDENTITY-03",
+    "name": "Đánh giá chiến lược quản lý hình ảnh cá nhân",
+    "description_vi": "Người học có khả năng đánh giá các chiến lược quản lý hình ảnh cá nhân trên các nền tảng khác nhau dựa trên nguyên tắc bảo mật và chuyên nghiệp.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "DIGITAL_IDENTITY"
+    ]
+  },
+  {
+    "code": "ULO-FLEXBOX_GRID_LAYOUT-01",
+    "name": "Mô tả sự khác biệt giữa flex và grid",
+    "description_vi": "Người học có khả năng mô tả sự khác biệt giữa hệ thống dàn trang một chiều (flex) và hai chiều (grid) trong thiết kế giao diện.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "FLEXBOX_GRID_LAYOUT"
+    ]
+  },
+  {
+    "code": "ULO-FLEXBOX_GRID_LAYOUT-02",
+    "name": "Áp dụng thuộc tính dàn trang linh hoạt",
+    "description_vi": "Người học có khả năng áp dụng các thuộc tính điều chỉnh trục chính, trục chéo và phân bố không gian để tạo bố cục linh hoạt.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "FLEXBOX_GRID_LAYOUT"
+    ]
+  },
+  {
+    "code": "ULO-FLEXBOX_GRID_LAYOUT-03",
+    "name": "Thiết kế bố cục phức tạp kết hợp flex và grid",
+    "description_vi": "Người học có khả năng thiết kế một bố cục trang web phức tạp sử dụng kết hợp cả hai hệ thống dàn trang để đáp ứng các yêu cầu về responsive.",
+    "bloom_level": "CREATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "FLEXBOX_GRID_LAYOUT"
+    ]
+  },
+  {
+    "code": "ULO-CROSS_ORIGIN_SECURITY-01",
+    "name": "Giải thích cơ chế bảo mật cross-origin",
+    "description_vi": "Người học có khả năng giải thích cơ chế bảo mật cross-origin và lý do tại sao các trình duyệt hạn chế truy cập tài nguyên giữa các nguồn gốc khác nhau.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "CROSS_ORIGIN_SECURITY"
+    ]
+  },
+  {
+    "code": "ULO-CROSS_ORIGIN_SECURITY-02",
+    "name": "Áp dụng chính sách CORS",
+    "description_vi": "Người học có khả năng áp dụng các chính sách CORS để cho phép hoặc từ chối truy cập tài nguyên từ các nguồn gốc khác một cách an toàn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "CROSS_ORIGIN_SECURITY"
+    ]
+  },
+  {
+    "code": "ULO-CROSS_ORIGIN_SECURITY-03",
+    "name": "Đánh giá rủi ro bảo mật cross-origin",
+    "description_vi": "Người học có khả năng đánh giá rủi ro bảo mật khi cho phép truy cập cross-origin và đề xuất các biện pháp giảm thiểu.",
+    "bloom_level": "EVALUATE",
+    "knowledge_dimension": "METACOGNITIVE",
+    "concept_codes": [
+      "CROSS_ORIGIN_SECURITY"
+    ]
+  },
+  {
+    "code": "ULO-COLOR_THEORY-01",
+    "name": "Mô tả các mô hình màu cơ bản",
+    "description_vi": "Người học có khả năng mô tả các mô hình màu cơ bản (RGB, CMYK, HSV) và ứng dụng của chúng trong các ngữ cảnh khác nhau.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "COLOR_THEORY"
+    ]
+  },
+  {
+    "code": "ULO-COLOR_THEORY-02",
+    "name": "Áp dụng nguyên tắc phối màu",
+    "description_vi": "Người học có khả năng áp dụng các nguyên tắc phối màu (tương phản, tương đồng, bổ túc) để tạo bảng màu hài hòa cho thiết kế.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "COLOR_THEORY"
+    ]
+  },
+  {
+    "code": "ULO-COLOR_THEORY-03",
+    "name": "Phân tích tác động tâm lý của màu sắc",
+    "description_vi": "Người học có khả năng phân tích tác động tâm lý của màu sắc trong thiết kế giao diện và đưa ra lựa chọn màu phù hợp với mục tiêu truyền thông.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "COLOR_THEORY"
+    ]
+  },
+  {
+    "code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-01",
+    "name": "Giải thích hàm là công dân hạng nhất",
+    "description_vi": "Người học có khả năng giải thích khái niệm hàm là công dân hạng nhất và ý nghĩa của việc hàm có thể được gán cho biến, truyền làm đối số hoặc trả về từ hàm khác.",
+    "bloom_level": "UNDERSTAND",
+    "knowledge_dimension": "CONCEPTUAL",
+    "concept_codes": [
+      "FIRST_CLASS_FUNCTIONS_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-02",
+    "name": "Áp dụng hàm bậc cao để xử lý dữ liệu",
+    "description_vi": "Người học có khả năng áp dụng hàm bậc cao để xử lý dữ liệu (ví dụ: lọc, biến đổi, gộp) mà không cần vòng lặp thủ công.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "FIRST_CLASS_FUNCTIONS_CONCEPT"
+    ]
+  },
+  {
+    "code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-03",
+    "name": "Xây dựng hàm bậc cao tùy chỉnh",
+    "description_vi": "Người học có khả năng xây dựng các hàm bậc cao tùy chỉnh nhận hàm làm đối số để tạo ra các hành vi linh hoạt và tái sử dụng.",
+    "bloom_level": "CREATE",
+    "knowledge_dimension": "PROCEDURAL",
+    "concept_codes": [
+      "FIRST_CLASS_FUNCTIONS_CONCEPT"
+    ]
   }
 ]

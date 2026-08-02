@@ -23,6 +23,17 @@ sys.path.insert(0, str(Path(__file__).parent))
 from base_collector import ResearchMetadata, ResearchStatus, discover_pending_items, ResearchSource
 
 
+def git_commit_push(message: str):
+    """Commit and push changes to git."""
+    try:
+        subprocess.run(["git", "add", "-A"], check=True, capture_output=True)
+        subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True)
+        subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True)
+        print(f"✅ Git commit & push: {message}")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ Git commit/push failed: {e}")
+
+
 class ResearchProcessor:
     """Phase 2: Process pending research items → create projects → run pipeline"""
     
@@ -478,6 +489,11 @@ def main():
     summary_file.write_text(json.dumps(results, indent=2, ensure_ascii=False), encoding='utf-8')
     
     print(f"\n📄 Summary saved: {summary_file}")
+    
+    # Git commit & push if projects were created
+    projects_created = results.get("projects_created", 0)
+    if projects_created > 0:
+        git_commit_push(f"feat(processor): {projects_created} projects created from research gaps")
     
     # Exit code
     failed = any(not r.get("success", False) for r in results.get("pipeline_results", []))

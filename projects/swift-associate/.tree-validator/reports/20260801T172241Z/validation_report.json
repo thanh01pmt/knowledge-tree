@@ -1,0 +1,266 @@
+{
+  "generated_at": "2026-08-01T17:22:41.672285+00:00",
+  "summary": {
+    "status": "PASS",
+    "total_issues": 29,
+    "errors": 0,
+    "warnings": 29,
+    "by_rule": {
+      "CIO_INSUFFICIENT_SIO": 28,
+      "LO_DESCRIPTION_PREFIX": 1
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 0,
+        "WARNING": 29
+      }
+    },
+    "node_counts": {
+      "fields": 4,
+      "subjects": 10,
+      "categories": 19,
+      "topics": 30,
+      "concepts": 44,
+      "learning_objectives": 547
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_HIERARCHY_VIOLATION": "Vi phạm Tri-Level [T6]: CIO phải là con của ULO, SIO phải là con của CIO",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu",
+    "LO_DESCRIPTION_PREFIX": "Mô tả LO không bắt đầu bằng 'Người học có khả năng'",
+    "LO_INVALID_KNOWLEDGE_DIMENSION": "knowledge_dimension không thuộc tập giá trị cho phép",
+    "LO_INVALID_BLOOM_LEVEL": "bloom_level không thuộc tập giá trị cho phép",
+    "LO_MISSING_ASSESSMENT_APPROACH": "ULO/CIO thiếu assessment_approach (Rule 7: đánh giá trực tiếp bắt buộc)",
+    "LO_UNUSUAL_BLOOM_KD_COMBO": "Kết hợp Bloom Level + Knowledge Dimension ít phổ biến sư phạm",
+    "MISSING_SEQUENCE_ORDER": "Thiếu cột sequence_order (Doc Chương 2.4: bảng N:N cần thứ tự sư phạm)",
+    "LO_PREREQ_MISSING_COLUMNS": "lo_prerequisites.tsv thiếu cột bắt buộc",
+    "LO_PREREQ_BROKEN_TARGET": "learning_objective_code trong prerequisites không tồn tại",
+    "LO_PREREQ_BROKEN_PREREQ": "prerequisite_lo_code trong prerequisites không tồn tại",
+    "LO_PREREQ_SELF_REF": "LO không thể là prerequisite của chính nó",
+    "LO_PREREQ_READ_FAILED": "Lỗi đọc lo_prerequisites.tsv"
+  },
+  "issues": [
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-01-DUP2",
+      "message": "CIO 'So sánh dựa trên vector lây nhiễm và hành vi sau lây nhiễm (malware, worm, ransomware, security, virus)' (CIO-MALWARE_TYPES_CONCEPT-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-02-DUP2",
+      "message": "CIO 'Phân loại theo mục tiêu tấn công và mức độ ảnh hưởng (malware, worm, ransomware, security, virus)' (CIO-MALWARE_TYPES_CONCEPT-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-01",
+      "message": "CIO 'Sử dụng cấu trúc rẽ nhánh dựa trên giá trị của biểu thức (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-01) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-02",
+      "message": "CIO 'Sử dụng cấu trúc rẽ nhánh với trường hợp mặc định và nhiều giá trị (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-02) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-03",
+      "message": "CIO 'Phân tích hành vi fall-through và break (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-03) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-04",
+      "message": "CIO 'Phân tích xử lý trường hợp không khớp (default) (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-04) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-AI_BIAS-01-DUP2",
+      "message": "CIO 'So sánh chiến lược giảm thiểu thiên vị theo tiêu chí (training data, fairness, AI bias, ethics)' (CIO-AI_BIAS-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-AI_BIAS-02-DUP2",
+      "message": "CIO 'Đề xuất chiến lược dựa trên phân tích bối cảnh (training data, fairness, AI bias, ethics)' (CIO-AI_BIAS-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-02",
+      "message": "CIO 'Nhận diện lỗi cú pháp qua mẫu cấu trúc (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-02) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-03",
+      "message": "CIO 'Xác định vị trí lỗi dựa trên thông báo lỗi (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-03) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-04",
+      "message": "CIO 'Sửa lỗi cú pháp bằng cách điều chỉnh cấu trúc (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-04) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-05",
+      "message": "CIO 'Áp dụng quy trình sửa lỗi từng bước (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-05) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-06",
+      "message": "CIO 'Phân tích nguyên nhân gốc rễ của lỗi cú pháp phức tạp (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-06) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-07",
+      "message": "CIO 'So sánh lỗi cú pháp với lỗi logic để xác định bản chất (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-07) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-01",
+      "message": "CIO 'Đồng bộ hóa dữ liệu giữa nguồn và giao diện theo cả hai hướng (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-01) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-02",
+      "message": "CIO 'Khai báo liên kết hai chiều giữa thuộc tính và biến (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-02) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-03",
+      "message": "CIO 'So sánh luồng dữ liệu một chiều và hai chiều (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-03) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-04",
+      "message": "CIO 'Xác định tác động của liên kết hai chiều đến hiệu suất (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-04) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-01-DUP2",
+      "message": "CIO 'Phân tích overhead của đồng bộ dữ liệu hai chiều (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-02-DUP2",
+      "message": "CIO 'So sánh chi phí cập nhật giữa binding một chiều và hai chiều (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-01-DUP2",
+      "message": "CIO 'Cấu hình quy tắc cho phép truy cập dựa trên nguồn gốc (security, same-origin, cross-origin, CORS)' (CIO-CROSS_ORIGIN_SECURITY-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-02-DUP2",
+      "message": "CIO 'Kiểm tra nguồn gốc yêu cầu và áp dụng chính sách động (security, same-origin, cross-origin, CORS)' (CIO-CROSS_ORIGIN_SECURITY-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01",
+      "message": "CIO 'Mô tả đặc điểm của hàm như một giá trị có thể gán, truyền và trả về (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-02",
+      "message": "CIO 'So sánh hàm với các kiểu dữ liệu khác về khả năng thao tác (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-02) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-03",
+      "message": "CIO 'Sử dụng hàm nhận hàm khác làm đối số để thực hiện thao tác trên từng phần tử (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-03) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-04",
+      "message": "CIO 'Xây dựng pipeline xử lý dữ liệu bằng cách kết hợp các hàm biến đổi (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-04) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-05",
+      "message": "CIO 'Tạo hàm bao bọc nhận một hàm và trả về hàm mới với hành vi mở rộng (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-05) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-06",
+      "message": "CIO 'Thiết kế hàm nhận hàm xử lý và áp dụng nó trong một ngữ cảnh cụ thể (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-06) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_DESCRIPTION_PREFIX",
+      "level": "learning_objectives",
+      "code": "ULO-LOGIC_ERRORS-02",
+      "message": "Mô tả không bắt đầu bằng 'Người học có khả năng...'.",
+      "field": "description"
+    }
+  ]
+}

@@ -1,61 +1,63 @@
 # Báo cáo Đối chiếu Ngược Độ Phủ Syllabus (Reverse Coverage Audit)
 
 - **Dự án:** `swift-associate`
-- **Thời gian kiểm tra:** 2026-08-02T02:01:16.836702+00:00
+- **Thời gian kiểm tra:** 2026-08-01T14:13:47.496867+00:00
 - **Tổng số mục Syllabus:** 43
-- **Số mục đã phủ trong LO:** 43
-- **Số mục còn thiếu (Gaps):** 0
-- **Độ phủ Syllabus (Coverage Score):** **100.0%**
-- **Trạng thái:** ✅ PASS
+- **Số mục đã phủ trong LO:** 15
+- **Số mục còn thiếu (Gaps):** 28
+- **Độ phủ Syllabus (Coverage Score):** **34.88%**
+- **Trạng thái:** ⚠️ WARN / FAIL
 
 ## Bảng đối chiếu đầy đủ (Syllabus vs Learning Objectives)
 | Domain | Mã Syllabus | Nội dung Syllabus | LOs phụ trách |
 |---|---|---|---|
-| Planning and Design | `1.1` | Summarize the design cycle | `ULO-WIREFRAMING-01`, `ULO-WIREFRAMING-02`, `ULO-USER_CENTERED_DESIGN-01`, `ULO-USER_CENTERED_DESIGN-02` |
-| Planning and Design | `1.1.1` | Brainstorm, plan, prototype, evaluate | `ULO-WIREFRAMING-01`, `ULO-WIREFRAMING-02`, `ULO-USER_CENTERED_DESIGN-01`, `ULO-USER_CENTERED_DESIGN-02` |
-| Planning and Design | `1.2` | Summarize how sensitive data can be protected and | `ULO-DIGITAL_FOOTPRINT-01`, `ULO-DIGITAL_FOOTPRINT-02`, `ULO-PASSWORD_STRENGTH_CONCEPT-01`, `ULO-PASSWORD_STRENGTH_CONCEPT-02` |
-| compromised | `1.2.1` | Sharing personal and application information | `ULO-DIGITAL_FOOTPRINT-01`, `ULO-DIGITAL_FOOTPRINT-02`, `ULO-DIGITAL_IDENTITY-01`, `ULO-DIGITAL_IDENTITY-02` |
-| compromised | `1.2.2` | Security challenges | `ULO-PHISHING_IDENTIFICATION-01`, `ULO-PHISHING_IDENTIFICATION-02`, `ULO-MALWARE_TYPES_CONCEPT-01`, `ULO-MALWARE_TYPES_CONCEPT-02` |
-| compromised | `1.2.3` | Legal, ethical and socioeconomic impacts | `ULO-ALGORITHMIC_BIAS_SOCIETY-01`, `ULO-ALGORITHMIC_BIAS_SOCIETY-02`, `ULO-AI_BIAS-01`, `ULO-AI_BIAS-02` |
-| compromised | `1.3` | Assess a visual design with accessibility in mind | `ULO-WCAG_PRINCIPLES-01`, `ULO-WCAG_PRINCIPLES-02`, `ULO-SCREEN_READERS-01`, `ULO-SCREEN_READERS-02` |
-| XCode Project Navigation | `2.1` | Differentiate between basic file types | `ULO-PROJECT_ASSETS_MANAGEMENT-01`, `ULO-PROJECT_ASSETS_MANAGEMENT-03`, `CIO-PROJECT_ASSETS_MANAGEMENT-01`, `CIO-PROJECT_ASSETS_MANAGEMENT-03-01` |
-| XCode Project Navigation | `2.2` | After an asset has been imported, recognize available | `ULO-PROJECT_ASSETS_MANAGEMENT-01`, `ULO-PROJECT_ASSETS_MANAGEMENT-03`, `CIO-PROJECT_ASSETS_MANAGEMENT-01`, `CIO-PROJECT_ASSETS_MANAGEMENT-03-01` |
+| Planning and Design | `1.1` | Summarize the design cycle | `ULO-USER_CENTERED_DESIGN-01`, `ULO-USER_CENTERED_DESIGN-02`, `ULO-USER_CENTERED_DESIGN-03`, `CIO-USER_CENTERED_DESIGN-01` |
+| Planning and Design | `1.1.1` | Brainstorm, plan, prototype, evaluate | `ULO-USER_CENTERED_DESIGN-01`, `ULO-USER_CENTERED_DESIGN-02`, `ULO-USER_CENTERED_DESIGN-03`, `CIO-USER_CENTERED_DESIGN-01` |
+| compromised | `1.2.1` | Sharing personal and application information | `ULO-DIGITAL_FOOTPRINT-01`, `ULO-DIGITAL_FOOTPRINT-02`, `CIO-DIGITAL_FOOTPRINT-01`, `CIO-DIGITAL_FOOTPRINT-02` |
 | assets and how they are used in a project | `2.3` | Import and/or use an asset | `ULO-PROJECT_ASSETS_MANAGEMENT-01`, `ULO-PROJECT_ASSETS_MANAGEMENT-03`, `CIO-PROJECT_ASSETS_MANAGEMENT-01`, `CIO-PROJECT_ASSETS_MANAGEMENT-03-01` |
-| assets and how they are used in a project | `2.4` | Select the appropriate actions to configure | `ULO-PROJECT_ASSETS_MANAGEMENT-01`, `ULO-PROJECT_ASSETS_MANAGEMENT-03`, `CIO-PROJECT_ASSETS_MANAGEMENT-01`, `CIO-PROJECT_ASSETS_MANAGEMENT-03-01` |
-| Swift Language Usage | `3.1` | Write, call and/or evaluate the execution of functions | `ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-01`, `ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-02`, `ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-03`, `CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01` |
-| Swift Language Usage | `3.1.1` | Evaluate the use of argument labels, parameters | `ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-01`, `ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-02`, `ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-03`, `CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01` |
-| and returns | `3.2` | Calculate the results when using various operators | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `CIO-PRIMITIVE_TYPE_DECLARATION-01`, `CIO-PRIMITIVE_TYPE_DECLARATION-02` |
-| and returns | `3.3` | Create and evaluate structures | `ULO-WHILE_LOOP-03`, `ULO-FOR_LOOP-01`, `ULO-FOR_LOOP-02`, `ULO-OBJECT_INSTANTIATION-01` |
-| and returns | `3.3.1` | Declare the properties of a structure | `ULO-ARRAY_OPERATIONS-03`, `ULO-OBJECT_INSTANTIATION-01`, `ULO-OBJECT_INSTANTIATION-02`, `ULO-CLASS_DEFINITION-01` |
-| and returns | `3.3.2` | Initialize the properties of a structure | `ULO-ARRAY_OPERATIONS-03`, `ULO-OBJECT_INSTANTIATION-01`, `ULO-OBJECT_INSTANTIATION-02`, `ULO-CLASS_DEFINITION-01` |
-| and returns | `3.3.3` | Define methods | `ULO-ARRAY_OPERATIONS-03`, `ULO-CLASS_DEFINITION-01`, `ULO-CLASS_DEFINITION-02`, `ULO-CLASS_DEFINITION-03` |
-| and returns | `3.3.4` | Create an instance of a structure | `ULO-OBJECT_INSTANTIATION-01`, `ULO-OBJECT_INSTANTIATION-02`, `ULO-OBJECT_PROPERTIES-01`, `ULO-OBJECT_PROPERTIES-02` |
-| and returns | `3.3.5` | Use an instance of a structure | `ULO-OBJECT_INSTANTIATION-01`, `ULO-OBJECT_INSTANTIATION-02`, `ULO-OBJECT_PROPERTIES-01`, `ULO-OBJECT_PROPERTIES-02` |
-| Swift Language Usage | `3.4` | Create and manipulate arrays | `ULO-ARRAY_OPERATIONS-03`, `CIO-ARRAY_OPERATIONS-03-01`, `CIO-ARRAY_OPERATIONS-03-02`, `SIO-SWIFT-ITERATE_ARRAY_FOR_IN` |
-| Swift Language Usage | `3.4.1` | Declare and/or initialize an array with values | `ULO-ARRAY_OPERATIONS-03`, `CIO-ARRAY_OPERATIONS-03-01`, `CIO-ARRAY_OPERATIONS-03-02`, `SIO-SWIFT-ITERATE_ARRAY_FOR_IN` |
+| and returns | `3.3.3` | Define methods | `ULO-CLASS_DEFINITION-01`, `ULO-CLASS_DEFINITION-02`, `ULO-CLASS_DEFINITION-03`, `ULO-OBJECT_PROPERTIES-02` |
 | Swift Language Usage | `3.4.2` | Identify and/or modify an array element using its index | `ULO-ARRAY_OPERATIONS-03`, `CIO-ARRAY_OPERATIONS-03-01`, `CIO-ARRAY_OPERATIONS-03-02`, `SIO-SWIFT-ITERATE_ARRAY_FOR_IN` |
-| Swift Language Usage | `3.4.3` | Use and/or evaluate array properties and/or methods | `ULO-ARRAY_OPERATIONS-03`, `ULO-CLASS_DEFINITION-01`, `ULO-CLASS_DEFINITION-02`, `ULO-CLASS_DEFINITION-03` |
-| Swift Language Usage | `3.5` | Demonstrate how to control the flow of execution | `ULO-WHILE_LOOP-03`, `ULO-IF_ELSE_STATEMENT-01`, `ULO-IF_ELSE_STATEMENT-02`, `ULO-FOR_LOOP-01` |
-| Swift Language Usage | `3.5.1` | Create, analyze and predict loop structures | `ULO-WHILE_LOOP-03`, `ULO-FOR_LOOP-01`, `ULO-FOR_LOOP-02`, `CIO-WHILE_LOOP-03-01` |
-| and their results | `3.5.2` | Create and interpret the outcome of conditional | `ULO-IF_ELSE_STATEMENT-01`, `ULO-IF_ELSE_STATEMENT-02`, `ULO-SWITCH_CASE-01`, `ULO-SWITCH_CASE-02` |
-| statements | `3.6` | Declare and/or evaluate constants and variables of | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `ULO-REFERENCE_TYPE_DECLARATION-01`, `ULO-REFERENCE_TYPE_DECLARATION-02` |
-| different data types | `3.6.1` | Differentiate between constants and variables | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `ULO-REFERENCE_TYPE_DECLARATION-01`, `ULO-REFERENCE_TYPE_DECLARATION-02` |
-| different data types | `3.6.2` | Apply type inference | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `CIO-PRIMITIVE_TYPE_DECLARATION-01`, `CIO-PRIMITIVE_TYPE_DECLARATION-02` |
-| different data types | `3.6.3` | Use explicit typing | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `CIO-PRIMITIVE_TYPE_DECLARATION-01`, `CIO-PRIMITIVE_TYPE_DECLARATION-02` |
-| different data types | `3.7` | . Use the appropriate naming syntax | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `CIO-PRIMITIVE_TYPE_DECLARATION-01`, `CIO-PRIMITIVE_TYPE_DECLARATION-02` |
-| different data types | `3.7` | .1. Use appropriate camel casing | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `CIO-PRIMITIVE_TYPE_DECLARATION-01`, `CIO-PRIMITIVE_TYPE_DECLARATION-02` |
-| different data types | `3.7` | .2. Apply Swift identifier rules | `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `CIO-PRIMITIVE_TYPE_DECLARATION-01`, `CIO-PRIMITIVE_TYPE_DECLARATION-02` |
+| Swift Language Usage | `3.4.3` | Use and/or evaluate array properties and/or methods | `ULO-OBJECT_PROPERTIES-02`, `SIO-SWIFT-DEFINE_CLASS_PROPERTIES` |
+| different data types | `3.6.2` | Apply type inference | `SIO-SWIFT-MAP_VALUE_TO_TYPE` |
+| different data types | `3.7` | .2. Apply Swift identifier rules | `SIO-SWIFT-TRANSFORM_WITH_RULESET` |
 | View Building with SwiftUI | `4.1` | Differentiate between imperative and declarative | `ULO-DECLARATIVE_UI_PARADIGM-03`, `CIO-DECLARATIVE_UI_PARADIGM-03`, `SIO-SWIFT-DIFFERENTIATE_DECLARATIVE_IMPERATIVE`, `SIO-SWIFT-CONVERT_UIKIT_TO_SWIFTUI` |
-| programming | `4.2` | Create Content Views using Text, Image, Shape, | `ULO-DECLARATIVE_UI_PARADIGM-03`, `ULO-UI_MODIFIERS_CONCEPT-03`, `CIO-DECLARATIVE_UI_PARADIGM-03`, `CIO-UI_MODIFIERS_CONCEPT-03` |
-| and/or Color | `4.3` | Implement Modifiers including, but not limited to, | `ULO-UI_MODIFIERS_CONCEPT-03`, `CIO-UI_MODIFIERS_CONCEPT-03`, `SIO-SWIFT-APPLY_MODIFIER_CHAIN_TEXT`, `SIO-SWIFT-APPLY_MODIFIER_CHAIN_IMAGE` |
-| and .resizable | `4.4` | Create Container Views (HStack, VStack, ZStack, Spacer) | `ULO-UI_BOX_MODEL_LAYOUT-01`, `ULO-UI_BOX_MODEL_LAYOUT-02`, `ULO-UI_BOX_MODEL_LAYOUT-03`, `ULO-FLEXBOX_GRID_LAYOUT-01` |
-| and arrange Views inside of Stack Views | `4.5` | Explain the View hierarchy produced by a program | `ULO-DECLARATIVE_UI_PARADIGM-03`, `ULO-UI_BOX_MODEL_LAYOUT-01`, `ULO-UI_BOX_MODEL_LAYOUT-02`, `ULO-UI_BOX_MODEL_LAYOUT-03` |
-| and arrange Views inside of Stack Views | `4.6` | Create and/or apply Interactive Views including, | `ULO-UI_MODIFIERS_CONCEPT-03`, `ULO-EVENT_HANDLERS_CONCEPT-02`, `CIO-UI_MODIFIERS_CONCEPT-03`, `CIO-EVENT_HANDLERS_CONCEPT-02` |
-| but not limited to, Button, TextField, Slider, and Toggle | `4.7` | . Use @State Property Wrapper to control the | `ULO-STATE_PROPERTY_WRAPPER-02`, `ULO-LOCAL_VIEW_STATE-01`, `ULO-LOCAL_VIEW_STATE-02`, `ULO-OBJECT_PROPERTIES-01` |
-| Debugging | `5.1` | Differentiate between syntax and run-time errors when | `ULO-SYNTAX_VS_RUNTIME_ERRORS-03`, `ULO-PRIMITIVE_TYPE_DECLARATION-01`, `ULO-PRIMITIVE_TYPE_DECLARATION-02`, `ULO-RUNTIME_ERRORS-01` |
-| building and running an app | `5.2` | Interpret error messages | `ULO-ERROR_MESSAGES_CONCEPT-02`, `CIO-ERROR_MESSAGES_CONCEPT-02`, `SIO-SWIFT-READ_ERROR_MESSAGE_TYPE`, `SIO-SWIFT-LOCATE_ERROR_CAUSE` |
+| programming | `4.2` | Create Content Views using Text, Image, Shape, | `SIO-SWIFT-TEXT_SHAPE_WIREFRAME`, `SIO-SWIFT-CREATE_3X3_GRID_WITH_GRID` |
+| and .resizable | `4.4` | Create Container Views (HStack, VStack, ZStack, Spacer) | `SIO-SWIFT-CALCULATE_STACK_SIZE`, `SIO-SWIFT-ANALYZE_SPACING_COLLAPSE`, `SIO-SWIFT-SIMULATE_3X3_GRID_WITH_STACKS`, `SIO-SWIFT-CREATE_VISUAL_PATH_WITH_HIERARCHY` |
+| and arrange Views inside of Stack Views | `4.5` | Explain the View hierarchy produced by a program | `SIO-SWIFT-CREATE_3X3_GRID_WITH_GRID`, `SIO-SWIFT-OFFSET_VIEW_FROM_CENTER`, `SIO-SWIFT-USE_ZSTACK_ALIGNMENT_FOR_OFF_CENTER`, `SIO-SWIFT-CREATE_VISUAL_PATH_WITH_HIERARCHY` |
+| but not limited to, Button, TextField, Slider, and Toggle | `4.7` | . Use @State Property Wrapper to control the | `ULO-STATE_PROPERTY_WRAPPER-02`, `CIO-STATE_PROPERTY_WRAPPER-02`, `SIO-SWIFT-DECLARE_STATE_PROPERTY`, `SIO-SWIFT-UPDATE_STATE_VIA_INTERACTION` |
+| Debugging | `5.1` | Differentiate between syntax and run-time errors when | `ULO-SYNTAX_VS_RUNTIME_ERRORS-03`, `ULO-SYNTAX_ERRORS-01`, `ULO-SYNTAX_ERRORS-02`, `ULO-SYNTAX_ERRORS-03` |
 
-🎉 **Tất cả các mục trong Syllabus gốc đều đã được phủ đầy đủ 100%!**
+## ❌ Chi tiết các mục thiếu (Missing / Gap Items)
+| Domain | Mã | Nội dung Syllabus |
+|---|---|---|
+| Planning and Design | `1.2` | Summarize how sensitive data can be protected and |
+| compromised | `1.2.2` | Security challenges |
+| compromised | `1.2.3` | Legal, ethical and socioeconomic impacts |
+| compromised | `1.3` | Assess a visual design with accessibility in mind |
+| XCode Project Navigation | `2.1` | Differentiate between basic file types |
+| XCode Project Navigation | `2.2` | After an asset has been imported, recognize available |
+| assets and how they are used in a project | `2.4` | Select the appropriate actions to configure |
+| Swift Language Usage | `3.1` | Write, call and/or evaluate the execution of functions |
+| Swift Language Usage | `3.1.1` | Evaluate the use of argument labels, parameters |
+| and returns | `3.2` | Calculate the results when using various operators |
+| and returns | `3.3` | Create and evaluate structures |
+| and returns | `3.3.1` | Declare the properties of a structure |
+| and returns | `3.3.2` | Initialize the properties of a structure |
+| and returns | `3.3.4` | Create an instance of a structure |
+| and returns | `3.3.5` | Use an instance of a structure |
+| Swift Language Usage | `3.4` | Create and manipulate arrays |
+| Swift Language Usage | `3.4.1` | Declare and/or initialize an array with values |
+| Swift Language Usage | `3.5` | Demonstrate how to control the flow of execution |
+| Swift Language Usage | `3.5.1` | Create, analyze and predict loop structures |
+| and their results | `3.5.2` | Create and interpret the outcome of conditional |
+| statements | `3.6` | Declare and/or evaluate constants and variables of |
+| different data types | `3.6.1` | Differentiate between constants and variables |
+| different data types | `3.6.3` | Use explicit typing |
+| different data types | `3.7` | . Use the appropriate naming syntax |
+| different data types | `3.7` | .1. Use appropriate camel casing |
+| and/or Color | `4.3` | Implement Modifiers including, but not limited to, |
+| and arrange Views inside of Stack Views | `4.6` | Create and/or apply Interactive Views including, |
+| building and running an app | `5.2` | Interpret error messages |
 
 ---
 

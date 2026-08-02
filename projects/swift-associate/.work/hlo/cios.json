@@ -1,119 +1,1352 @@
 [
   {
-    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-01",
-    "name": "Phân loại tài nguyên dự án theo loại",
-    "description_vi": "Người học có khả năng phân loại các tệp tài nguyên (hình ảnh, màu sắc, biểu tượng, font chữ) dựa trên thuộc tính loại (type) của chúng trong cấu trúc dự án.",
-    "bloom_level": "UNDERSTAND",
-    "knowledge_dimension": "CONCEPTUAL",
-    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-01",
-    "marr_test_note": "Marr test: Mô tả này khớp với cả Swift (Asset Catalog phân loại theo loại) và JavaScript (thư mục assets phân loại theo loại file). Cả hai đều dùng khái niệm 'loại tài nguyên' mà không phụ thuộc cú pháp cụ thể."
-  },
-  {
-    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-01",
-    "name": "Thêm tài nguyên vào cấu trúc dự án",
-    "description_vi": "Người học có khả năng thêm một tệp tài nguyên mới (hình ảnh, màu sắc) vào cấu trúc thư mục hoặc danh mục tài nguyên của dự án, đảm bảo tài nguyên có tên định danh duy nhất.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
-    "marr_test_note": "Marr test: Swift: thêm file vào Assets.xcassets; JavaScript: thêm file vào thư mục images/. Cả hai đều có bước đặt tên và đưa vào đúng vị trí. Mô tả trung tính, không gắn cú pháp."
-  },
-  {
-    "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-02",
-    "name": "Tham chiếu tài nguyên bằng tên định danh",
-    "description_vi": "Người học có khả năng tham chiếu một tài nguyên đã thêm vào dự án thông qua tên định danh của nó trong mã nguồn để sử dụng trong giao diện.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
-    "marr_test_note": "Marr test: Swift: Image('ten_hinh'); JavaScript: <img src='ten_hinh.png'>. Cả hai đều dùng tên file/asset để tham chiếu. Mô tả không chứa cú pháp cụ thể."
-  },
-  {
-    "code": "CIO-ARRAY_OPERATIONS-03-01",
-    "name": "Duyệt mảng và truy cập từng phần tử",
-    "description_vi": "Người học có khả năng duyệt qua từng phần tử của mảng, truy cập giá trị và chỉ số (nếu cần) để thực hiện một thao tác trên mỗi phần tử.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-ARRAY_OPERATIONS-03",
-    "marr_test_note": "Marr test: Swift: for (index, value) in array.enumerated(); JavaScript: array.forEach((value, index) => ...). Cả hai đều có pattern lặp với chỉ số và giá trị. Mô tả trung tính."
-  },
-  {
-    "code": "CIO-ARRAY_OPERATIONS-03-02",
-    "name": "Sửa đổi mảng tại chỗ dựa trên điều kiện",
-    "description_vi": "Người học có khả năng thay đổi giá trị của các phần tử trong mảng dựa trên một điều kiện kiểm tra, bằng cách gán lại giá trị mới cho phần tử tại chỉ số tương ứng.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-ARRAY_OPERATIONS-03",
-    "marr_test_note": "Marr test: Swift: array[index] = newValue; JavaScript: array[index] = newValue. Cả hai đều dùng chỉ số để gán. Mô tả không chứa cú pháp cụ thể."
-  },
-  {
-    "code": "CIO-WHILE_LOOP-03-01",
-    "name": "Lặp với điều kiện kiểm tra trước",
-    "description_vi": "Người học có khả năng lặp lại một khối lệnh cho đến khi một điều kiện động (phụ thuộc vào dữ liệu hoặc trạng thái) trở thành sai, với điều kiện được kiểm tra trước mỗi lần lặp.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-WHILE_LOOP-03",
-    "marr_test_note": "Marr test: Swift: while condition { }; JavaScript: while (condition) { }. Cả hai đều có cấu trúc kiểm tra điều kiện trước. Mô tả trung tính."
-  },
-  {
-    "code": "CIO-WHILE_LOOP-03-02",
-    "name": "Lặp với điều kiện phụ thuộc đầu vào",
-    "description_vi": "Người học có khả năng xây dựng vòng lặp while mà điều kiện lặp phụ thuộc vào giá trị đầu vào hoặc kết quả tính toán trong thân vòng lặp, cho phép số lần lặp không xác định trước.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-WHILE_LOOP-03",
-    "marr_test_note": "Marr test: Swift: while userInput != 'quit' { ... }; JavaScript: while (data.length > 0) { ... }. Cả hai đều dùng điều kiện động. Mô tả không gắn cú pháp."
-  },
-  {
-    "code": "CIO-DECLARATIVE_UI_PARADIGM-03",
-    "name": "So sánh khai báo và mệnh lệnh trong xây dựng giao diện",
-    "description_vi": "Người học có khả năng phân tích sự khác biệt giữa hai cách tiếp cận: khai báo (mô tả trạng thái giao diện mong muốn) và mệnh lệnh (liệt kê các bước thay đổi giao diện), chỉ ra ưu nhược điểm của mỗi cách.",
+    "code": "CIO-IF_ELSE_STATEMENT-01",
+    "name": "Phân tích điều kiện đơn",
+    "description_vi": "Phân tích một bài toán thành hai nhánh dựa trên một biểu thức logic đơn giản (so sánh, kiểm tra giá trị).",
     "bloom_level": "ANALYZE",
-    "knowledge_dimension": "CONCEPTUAL",
-    "parent_ulo_code": "ULO-DECLARATIVE_UI_PARADIGM-03",
-    "marr_test_note": "Marr test: SwiftUI (declarative) vs UIKit (imperative); React (declarative) vs jQuery (imperative). Cả hai cặp đều thể hiện cùng pattern: mô tả what vs how. Mô tả trung tính."
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-IF_ELSE_STATEMENT-01",
+    "marr_test_note": "Khớp với Python (if x > 0: ... else: ...) và JavaScript (if (x > 0) { ... } else { ... })"
   },
   {
-    "code": "CIO-UI_MODIFIERS_CONCEPT-03",
-    "name": "Áp dụng modifier theo chuỗi để tạo kiểu giao diện",
-    "description_vi": "Người học có khả năng áp dụng một chuỗi các modifier lên một thành phần giao diện, mỗi modifier thay đổi một thuộc tính (kích thước, màu sắc, căn chỉnh) và trả về thành phần đã biến đổi.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-UI_MODIFIERS_CONCEPT-03",
-    "marr_test_note": "Marr test: SwiftUI: Text('Hello').font(.title).padding(); Flutter: Container(decoration: BoxDecoration(...)); CSS: .class { font-size: 20px; padding: 10px; }. Cả ba đều dùng pattern modifier chain hoặc thuộc tính. Mô tả trung tính."
-  },
-  {
-    "code": "CIO-EVENT_HANDLERS_CONCEPT-02",
-    "name": "Gắn hàm xử lý sự kiện tương tác",
-    "description_vi": "Người học có khả năng đăng ký một hàm (callback) để được thực thi khi một sự kiện tương tác cụ thể (nhấn, gõ phím, cử chỉ) xảy ra trên một thành phần giao diện.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-EVENT_HANDLERS_CONCEPT-02",
-    "marr_test_note": "Marr test: SwiftUI: .onTapGesture { ... }; JavaScript: element.addEventListener('click', handler). Cả hai đều gắn callback vào sự kiện. Mô tả trung tính."
-  },
-  {
-    "code": "CIO-STATE_PROPERTY_WRAPPER-02",
-    "name": "Khai báo và cập nhật biến trạng thái có giám sát",
-    "description_vi": "Người học có khả năng khai báo một biến trạng thái với giá trị khởi tạo, và cập nhật giá trị của biến đó để kích hoạt việc render lại giao diện tự động.",
-    "bloom_level": "APPLY",
-    "knowledge_dimension": "PROCEDURAL",
-    "parent_ulo_code": "ULO-STATE_PROPERTY_WRAPPER-02",
-    "marr_test_note": "Marr test: SwiftUI: @State var count = 0; count += 1; React: const [count, setCount] = useState(0); setCount(count+1). Cả hai đều có biến đặc biệt khi thay đổi sẽ cập nhật UI. Mô tả trung tính."
-  },
-  {
-    "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-03",
-    "name": "Phân loại lỗi dựa trên thời điểm phát hiện",
-    "description_vi": "Người học có khả năng phân tích mã nguồn để xác định lỗi thuộc loại cú pháp (vi phạm quy tắc ngôn ngữ, phát hiện khi biên dịch) hay runtime (xảy ra khi thực thi chương trình).",
+    "code": "CIO-IF_ELSE_STATEMENT-02",
+    "name": "Phân tích điều kiện kết hợp",
+    "description_vi": "Phân tích bài toán với điều kiện kết hợp nhiều mệnh đề logic (AND, OR) để xác định nhánh thực thi.",
     "bloom_level": "ANALYZE",
-    "knowledge_dimension": "CONCEPTUAL",
-    "parent_ulo_code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
-    "marr_test_note": "Marr test: Swift: lỗi cú pháp như thiếu dấu ngoặc (compile-time), runtime như index out of range; JavaScript: SyntaxError (parse-time), TypeError (runtime). Cả hai đều phân loại dựa trên thời điểm. Mô tả trung tính."
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-IF_ELSE_STATEMENT-01",
+    "marr_test_note": "Khớp với Python (if a and b: ...) và JavaScript (if (a && b) { ... })"
   },
   {
-    "code": "CIO-ERROR_MESSAGES_CONCEPT-02",
-    "name": "Giải thích thông báo lỗi dựa trên cấu trúc",
-    "description_vi": "Người học có khả năng đọc thông báo lỗi, xác định loại lỗi, nguyên nhân gốc rễ và vị trí xảy ra lỗi dựa trên các từ khóa và ngữ cảnh được cung cấp trong thông báo.",
-    "bloom_level": "UNDERSTAND",
-    "knowledge_dimension": "CONCEPTUAL",
-    "parent_ulo_code": "ULO-ERROR_MESSAGES_CONCEPT-02",
-    "marr_test_note": "Marr test: Swift: 'Fatal error: Index out of range' -> hiểu là truy cập mảng ngoài phạm vi; JavaScript: 'Cannot read property x of undefined' -> hiểu là đối tượng undefined. Cả hai đều phân tích cấu trúc thông báo. Mô tả trung tính."
+    "code": "CIO-IF_ELSE_STATEMENT-03",
+    "name": "Áp dụng rẽ nhánh cơ bản",
+    "description_vi": "Áp dụng pattern rẽ nhánh để xử lý quyết định dựa trên một giá trị đầu vào (ví dụ: kiểm tra điểm số, tuổi tác).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-IF_ELSE_STATEMENT-02",
+    "marr_test_note": "Khớp với Python (if score >= 60: pass else: fail) và JavaScript (if (score >= 60) { pass } else { fail })"
+  },
+  {
+    "code": "CIO-IF_ELSE_STATEMENT-04",
+    "name": "Áp dụng rẽ nhánh lồng nhau",
+    "description_vi": "Áp dụng pattern rẽ nhánh lồng nhau để xử lý các quyết định nhiều mức (ví dụ: phân loại học lực theo điểm).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-IF_ELSE_STATEMENT-02",
+    "marr_test_note": "Khớp với Python (if a: if b: ...) và JavaScript (if (a) { if (b) { ... } })"
+  },
+  {
+    "code": "CIO-PRIMITIVE_TYPE_DECLARATION-01",
+    "name": "Phân tích kiểu dữ liệu từ giá trị",
+    "description_vi": "Phân tích một giá trị cụ thể để xác định kiểu dữ liệu nguyên thủy phù hợp dựa trên đặc điểm (số nguyên, số thực, ký tự, logic).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PRIMITIVE_TYPE_DECLARATION-01",
+    "marr_test_note": "Khớp với Python (type(5) → int, type(5.0) → float) và JavaScript (typeof 5 → 'number', typeof 'a' → 'string')"
+  },
+  {
+    "code": "CIO-PRIMITIVE_TYPE_DECLARATION-02",
+    "name": "So sánh đặc điểm lưu trữ kiểu",
+    "description_vi": "So sánh cách lưu trữ và phạm vi giá trị của các kiểu dữ liệu nguyên thủy khác nhau (ví dụ: số nguyên vs số thực, ký tự vs chuỗi).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PRIMITIVE_TYPE_DECLARATION-01",
+    "marr_test_note": "Khớp với Python (int vs float precision) và JavaScript (Number vs BigInt)"
+  },
+  {
+    "code": "CIO-PRIMITIVE_TYPE_DECLARATION-03",
+    "name": "Chọn kiểu dữ liệu theo yêu cầu",
+    "description_vi": "Áp dụng quy tắc chọn kiểu dữ liệu dựa trên yêu cầu lưu trữ (số đếm, số thập phân, chuỗi, boolean) để khai báo biến.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PRIMITIVE_TYPE_DECLARATION-02",
+    "marr_test_note": "Khớp với Python (count = 10, price = 9.99, name = 'Alice', is_active = True) và JavaScript (let count = 10; let price = 9.99; let name = 'Alice'; let isActive = true;)"
+  },
+  {
+    "code": "CIO-PRIMITIVE_TYPE_DECLARATION-04",
+    "name": "Khai báo biến phù hợp bài toán",
+    "description_vi": "Áp dụng pattern khai báo biến với kiểu dữ liệu phù hợp cho một bài toán cụ thể (ví dụ: tính tổng, lưu tên, kiểm tra trạng thái).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PRIMITIVE_TYPE_DECLARATION-02",
+    "marr_test_note": "Khớp với Python (total = 0, username = '') và JavaScript (let total = 0; let username = '';)"
+  },
+  {
+    "code": "CIO-DIGITAL_FOOTPRINT-01",
+    "name": "Phân tích dấu chân số từ hoạt động",
+    "description_vi": "Phân tích một tập hợp các hoạt động trực tuyến (bài đăng, tìm kiếm, tương tác) để xác định các dấu chân số tiềm ẩn và tác động lâu dài.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_FOOTPRINT-01",
+    "marr_test_note": "Khớp với Python (dùng pandas phân tích log) và JavaScript (dùng array methods phân tích dữ liệu từ API)"
+  },
+  {
+    "code": "CIO-DIGITAL_FOOTPRINT-02",
+    "name": "Đánh giá mức độ ảnh hưởng",
+    "description_vi": "Đánh giá mức độ ảnh hưởng của một dấu chân số dựa trên thời gian tồn tại, phạm vi lan truyền và khả năng kiểm soát.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_FOOTPRINT-01",
+    "marr_test_note": "Khớp với Python (tính toán chỉ số rủi ro) và JavaScript (xử lý dữ liệu thời gian thực)"
+  },
+  {
+    "code": "CIO-DIGITAL_FOOTPRINT-03",
+    "name": "Nhận diện rủi ro từ hành vi",
+    "description_vi": "Phân tích một hành vi trực tuyến cụ thể (chia sẻ thông tin, đăng nhập công khai) để nhận diện các dấu hiệu rủi ro về quyền riêng tư.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_FOOTPRINT-02",
+    "marr_test_note": "Khớp với Python (dùng regex kiểm tra nội dung) và JavaScript (kiểm tra chuỗi với includes)"
+  },
+  {
+    "code": "CIO-DIGITAL_FOOTPRINT-04",
+    "name": "So sánh mức độ nguy hiểm",
+    "description_vi": "So sánh các hành vi trực tuyến khác nhau để xác định hành vi nào tạo ra dấu chân số nguy hiểm hơn dựa trên tiêu chí định trước.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_FOOTPRINT-02",
+    "marr_test_note": "Khớp với Python (sắp xếp danh sách theo điểm rủi ro) và JavaScript (sort với comparator)"
+  },
+  {
+    "code": "CIO-VIEW_TRANSITIONS-01",
+    "name": "Phân loại hiệu ứng chuyển tiếp",
+    "description_vi": "Phân loại các hiệu ứng chuyển tiếp view dựa trên mục đích sử dụng (dẫn dắt người dùng, nhấn mạnh thay đổi, tạo cảm giác liên tục).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-VIEW_TRANSITIONS-01",
+    "marr_test_note": "Khớp với CSS transitions (opacity, transform) và Web Animations API (element.animate)"
+  },
+  {
+    "code": "CIO-VIEW_TRANSITIONS-02",
+    "name": "Phân tích tác động UX",
+    "description_vi": "Phân tích tác động của một hiệu ứng chuyển tiếp đến trải nghiệm người dùng (tốc độ, tính mượt mà, sự chú ý).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-VIEW_TRANSITIONS-01",
+    "marr_test_note": "Khớp với CSS (transition-duration) và JavaScript (requestAnimationFrame)"
+  },
+  {
+    "code": "CIO-VIEW_TRANSITIONS-03",
+    "name": "Lựa chọn hiệu ứng theo ngữ cảnh",
+    "description_vi": "Áp dụng tiêu chí lựa chọn hiệu ứng chuyển tiếp dựa trên ngữ cảnh (chuyển trang, hiển thị thông báo) và mục tiêu UX (tự nhiên, nhanh, thu hút).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-VIEW_TRANSITIONS-02",
+    "marr_test_note": "Khớp với CSS (transition property) và JavaScript (classList toggle với animation)"
+  },
+  {
+    "code": "CIO-VIEW_TRANSITIONS-04",
+    "name": "Tạo chuyển tiếp liên tục",
+    "description_vi": "Áp dụng pattern chuyển tiếp phù hợp để cải thiện tính liên tục giữa các view (ví dụ: fade in/out, slide) nhằm giảm gián đoạn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-VIEW_TRANSITIONS-02",
+    "marr_test_note": "Khớp với CSS (animation) và JavaScript (Web Animations API)"
+  },
+  {
+    "code": "CIO-RUNTIME_ERRORS-01",
+    "name": "Phân loại lỗi runtime dựa trên nguyên nhân gốc",
+    "description_vi": "Phân loại các lỗi xảy ra trong quá trình thực thi chương trình dựa trên nguyên nhân như lỗi truy cập bộ nhớ, lỗi kiểu dữ liệu, lỗi chia cho 0, lỗi tham chiếu null, v.v.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-RUNTIME_ERRORS-01",
+    "marr_test_note": "Test với Python (TypeError, ZeroDivisionError) và Java (NullPointerException, ArithmeticException): cả hai đều có khái niệm tương tự, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-RUNTIME_ERRORS-02",
+    "name": "Nhận diện dấu hiệu lỗi runtime từ thông báo lỗi",
+    "description_vi": "Nhận diện loại lỗi runtime dựa trên thông báo lỗi và stack trace, xác định dòng mã gây lỗi và nguyên nhân.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RUNTIME_ERRORS-01",
+    "marr_test_note": "Test với Python traceback và Java stack trace: cả hai đều có cấu trúc tương tự (tên lỗi, dòng, stack), không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-RUNTIME_ERRORS-03",
+    "name": "Sử dụng cơ chế bắt và xử lý ngoại lệ",
+    "description_vi": "Sử dụng cấu trúc để bắt các ngoại lệ và thực hiện hành động phục hồi hoặc thông báo lỗi, đảm bảo chương trình không bị dừng đột ngột.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RUNTIME_ERRORS-02",
+    "marr_test_note": "Test với Java (try-catch) và Python (try-except): cả hai đều có cấu trúc tương tự, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-RUNTIME_ERRORS-04",
+    "name": "Kiểm tra điều kiện trước khi thực thi để ngăn lỗi",
+    "description_vi": "Kiểm tra các điều kiện tiên quyết (ví dụ: kiểm tra null, kiểm tra phạm vi, kiểm tra kiểu dữ liệu) trước khi thực hiện thao tác có thể gây lỗi runtime.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-RUNTIME_ERRORS-02",
+    "marr_test_note": "Test với Java (if (x != null)) và Python (if x is not None): cả hai đều dùng điều kiện kiểm tra, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-WCAG_PRINCIPLES-01",
+    "name": "Phân tích bốn nguyên tắc POUR và ý nghĩa của chúng trong thiết kế giao diện",
+    "description_vi": "Phân tích từng nguyên tắc Perceivable, Operable, Understandable, Robust và giải thích cách chúng đảm bảo khả năng tiếp cận cho người dùng khuyết tật.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-WCAG_PRINCIPLES-01",
+    "marr_test_note": "Test với HTML (alt text, role) và CSS (contrast, focus): cả hai đều có khái niệm tương ứng, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-WCAG_PRINCIPLES-02",
+    "name": "Đánh giá giao diện dựa trên tiêu chí Perceivable",
+    "description_vi": "Kiểm tra xem nội dung có thể nhận biết được bằng nhiều giác quan không, ví dụ: văn bản thay thế cho hình ảnh, độ tương phản màu, phụ đề cho video.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-WCAG_PRINCIPLES-02",
+    "marr_test_note": "Test với web (HTML alt, CSS contrast) và ứng dụng di động (native accessibility APIs): cả hai đều có khái niệm tương tự, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-WCAG_PRINCIPLES-03",
+    "name": "Đánh giá giao diện dựa trên tiêu chí Operable",
+    "description_vi": "Kiểm tra xem tất cả chức năng có thể thao tác bằng bàn phím, không yêu cầu thao tác phức tạp, và có đủ thời gian để hoàn thành tác vụ.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-WCAG_PRINCIPLES-02",
+    "marr_test_note": "Test với web (tabindex, keyboard events) và desktop app (keyboard shortcuts, focus management): cả hai đều có khái niệm tương tự, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-ALGORITHMIC_BIAS_SOCIETY-01",
+    "name": "Phân tích thành kiến từ dữ liệu huấn luyện",
+    "description_vi": "Xác định các yếu tố trong dữ liệu (mất cân bằng, thiếu đại diện, nhiễu) dẫn đến kết quả thiên vị trong thuật toán học máy.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-ALGORITHMIC_BIAS_SOCIETY-01",
+    "marr_test_note": "Test với Python (pandas, scikit-learn) và R (caret, dplyr): cả hai đều có khái niệm về dữ liệu mất cân bằng, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-ALGORITHMIC_BIAS_SOCIETY-02",
+    "name": "Phân tích thành kiến từ quyết định thiết kế thuật toán",
+    "description_vi": "Xác định cách các lựa chọn về đặc trưng, trọng số, hàm mục tiêu hoặc quy trình tối ưu có thể gây thiên vị cho một nhóm cụ thể.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-ALGORITHMIC_BIAS_SOCIETY-01",
+    "marr_test_note": "Test với Python (scikit-learn, TensorFlow) và Java (Weka, Deeplearning4j): cả hai đều có khái niệm về feature selection, loss function, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-ALGORITHMIC_BIAS_SOCIETY-03",
+    "name": "Phân tích tác động của thành kiến thuật toán đến các nhóm xã hội",
+    "description_vi": "Đánh giá cách một thuật toán thiên vị ảnh hưởng đến cơ hội, quyền lợi của các nhóm dựa trên chủng tộc, giới tính, độ tuổi, hoặc tình trạng kinh tế xã hội.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-ALGORITHMIC_BIAS_SOCIETY-02",
+    "marr_test_note": "Test với báo cáo tác động xã hội (AI Now, AlgorithmWatch) và nghiên cứu điển hình (COMPAS, Amazon hiring): cả hai đều phân tích tác động, không phụ thuộc ngôn ngữ lập trình."
+  },
+  {
+    "code": "CIO-PHISHING_IDENTIFICATION-01",
+    "name": "Phân tích các đặc điểm của email lừa đảo dựa trên nội dung và ngữ cảnh",
+    "description_vi": "Xác định các dấu hiệu như địa chỉ người gửi giả mạo, ngôn ngữ khẩn cấp, yêu cầu thông tin cá nhân, lỗi chính tả, và URL đáng ngờ.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PHISHING_IDENTIFICATION-01",
+    "marr_test_note": "Test với email (Gmail, Outlook) và tin nhắn SMS (iMessage, WhatsApp): cả hai đều có các dấu hiệu tương tự, không phụ thuộc nền tảng."
+  },
+  {
+    "code": "CIO-PHISHING_IDENTIFICATION-02",
+    "name": "Thực hiện quy trình xác minh thông điệp qua nhiều kênh",
+    "description_vi": "Kiểm tra tính xác thực bằng cách liên hệ trực tiếp qua kênh chính thức, kiểm tra URL bằng cách di chuột, không nhấp vào liên kết, và xác minh thông tin với tổ chức liên quan.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PHISHING_IDENTIFICATION-02",
+    "marr_test_note": "Test với email (kiểm tra header, domain) và tin nhắn SMS (kiểm tra số điện thoại, liên hệ trực tiếp): cả hai đều có quy trình tương tự, không phụ thuộc công nghệ."
+  },
+  {
+    "code": "CIO-FOR_LOOP-01",
+    "name": "Phân tích cấu trúc lặp với biến đếm",
+    "description_vi": "Phân tích cách một cấu trúc lặp sử dụng biến đếm để kiểm soát số lần lặp: xác định giá trị khởi tạo, điều kiện tiếp tục, và bước cập nhật; dự đoán số lần lặp và giá trị biến sau mỗi vòng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-FOR_LOOP-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (for i in range(0,5,1)) và JavaScript (for(let i=0;i<5;i++)) đều có cùng pattern: khởi tạo, điều kiện, cập nhật. Mô tả không dùng từ khóa cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-FOR_LOOP-02",
+    "name": "Áp dụng lặp với bước nhảy tùy chỉnh",
+    "description_vi": "Áp dụng cấu trúc lặp có biến đếm với bước nhảy không cố định (ví dụ: tăng 2, giảm dần) để giải quyết bài toán yêu cầu lặp theo một chuỗi số cụ thể.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-FOR_LOOP-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (for i in range(10,0,-2)) và JavaScript (for(let i=10;i>0;i-=2)) đều hỗ trợ bước nhảy tùy chỉnh. Mô tả không đề cập đến cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-FOR_LOOP-03",
+    "name": "Áp dụng lặp để duyệt tập hợp",
+    "description_vi": "Áp dụng cấu trúc lặp để duyệt qua từng phần tử trong một tập hợp (mảng, danh sách) và thực hiện thao tác trên mỗi phần tử, sử dụng chỉ số hoặc giá trị trực tiếp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-FOR_LOOP-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (for item in list) và JavaScript (for(let i=0;i<arr.length;i++)) đều có pattern duyệt tập hợp. Mô tả không dùng từ khóa cú pháp."
+  },
+  {
+    "code": "CIO-FOR_LOOP-04",
+    "name": "Áp dụng lặp lồng để xử lý ma trận",
+    "description_vi": "Áp dụng cấu trúc lặp lồng nhau (lặp bên trong lặp) để duyệt qua các cấu trúc hai chiều như ma trận, bảng, hoặc tạo tổ hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-FOR_LOOP-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (for i in range(n): for j in range(m)) và JavaScript (for(let i=0;i<n;i++){for(let j=0;j<m;j++)}) đều có pattern lặp lồng. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-WIREFRAMING-01",
+    "name": "Phân tích mục đích của wireframe trong quy trình thiết kế",
+    "description_vi": "Phân tích vai trò của wireframe như một công cụ trực quan hóa cấu trúc và chức năng trước khi thiết kế chi tiết, giúp tập trung vào bố cục, luồng thông tin và tương tác mà không bị ảnh hưởng bởi màu sắc hay hình ảnh.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-WIREFRAMING-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Không phụ thuộc ngôn ngữ lập trình. Mô tả pattern chung về wireframing, có thể áp dụng trong bất kỳ công cụ nào (giấy, Figma, Balsamiq)."
+  },
+  {
+    "code": "CIO-WIREFRAMING-02",
+    "name": "Áp dụng kỹ thuật phân chia bố cục bằng khung lưới",
+    "description_vi": "Áp dụng kỹ thuật sử dụng khung lưới (grid) để phân chia không gian wireframe thành các vùng chức năng (header, nội dung, sidebar, footer) dựa trên yêu cầu về thứ bậc thông tin.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-WIREFRAMING-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Không phụ thuộc ngôn ngữ lập trình. Pattern phân chia bố cục bằng lưới có thể dùng trong bất kỳ công cụ wireframe nào."
+  },
+  {
+    "code": "CIO-WIREFRAMING-03",
+    "name": "Áp dụng ký hiệu tiêu chuẩn cho các thành phần tương tác",
+    "description_vi": "Áp dụng các ký hiệu hình khối tiêu chuẩn (hình chữ nhật cho nút, hình tròn cho ảnh đại diện, đường kẻ cho văn bản) để biểu diễn các thành phần giao diện trong wireframe, đảm bảo tính nhất quán và dễ hiểu.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-WIREFRAMING-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Không phụ thuộc ngôn ngữ lập trình. Pattern ký hiệu phổ biến trong wireframing (ví dụ: UX/UI convention)."
+  },
+  {
+    "code": "CIO-LOGIC_ERRORS-01",
+    "name": "Phân tích sự khác biệt giữa kết quả mong đợi và thực tế",
+    "description_vi": "Phân tích sự khác biệt giữa kết quả đầu ra mong đợi và đầu ra thực tế của chương trình để xác định vị trí có khả năng xảy ra lỗi logic, dựa trên việc so sánh hành vi của chương trình với đặc tả.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOGIC_ERRORS-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Python và JavaScript đều có thể áp dụng pattern so sánh output. Mô tả không dùng cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-LOGIC_ERRORS-02",
+    "name": "Nhận diện lỗi logic qua kiểm tra điều kiện biên",
+    "description_vi": "Nhận diện lỗi logic bằng cách kiểm tra các điều kiện biên (giá trị đầu, cuối, rỗng, đặc biệt) của biến hoặc cấu trúc điều khiển, so sánh với hành vi mong đợi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOGIC_ERRORS-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Python và JavaScript đều có khái niệm điều kiện biên. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-LOGIC_ERRORS-03",
+    "name": "Truy vết luồng thực thi để xác định nguyên nhân lỗi",
+    "description_vi": "Truy vết luồng thực thi của chương trình bằng cách mô phỏng từng bước với các giá trị đầu vào cụ thể, ghi lại trạng thái biến và điều kiện để xác định điểm mà logic sai lệch.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOGIC_ERRORS-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python và JavaScript đều có thể thực hiện truy vết thủ công. Mô tả không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-LOGIC_ERRORS-04",
+    "name": "Phân tích điều kiện và vòng lặp để tìm lỗi logic",
+    "description_vi": "Phân tích các biểu thức điều kiện và cấu trúc lặp trong chương trình để xác định nguyên nhân gây ra kết quả sai, như điều kiện sai hướng, vòng lặp vô hạn, hoặc thiếu cập nhật biến.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-LOGIC_ERRORS-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python và JavaScript đều có điều kiện và vòng lặp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-LOGIC_ERRORS-05",
+    "name": "Điều chỉnh điều kiện để sửa lỗi logic",
+    "description_vi": "Điều chỉnh biểu thức điều kiện (ví dụ: thay đổi dấu so sánh, thêm/bỏ toán tử logic) để đảm bảo chương trình rẽ nhánh đúng theo yêu cầu.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOGIC_ERRORS-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (if x > 5) và JavaScript (if (x > 5)) đều có pattern điều chỉnh điều kiện. Mô tả không dùng cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-LOGIC_ERRORS-06",
+    "name": "Thay đổi thứ tự thực thi để sửa lỗi logic",
+    "description_vi": "Thay đổi thứ tự các câu lệnh hoặc khối lệnh trong chương trình để đảm bảo các bước xử lý diễn ra đúng trình tự logic, ví dụ: tính toán trước khi so sánh.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural Knowledge",
+    "parent_ulo_code": "ULO-LOGIC_ERRORS-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Python và JavaScript đều có thể sắp xếp lại thứ tự câu lệnh. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-MALWARE_TYPES_CONCEPT-01",
+    "name": "Phân biệt malware dựa trên cơ chế lây lan",
+    "description_vi": "Phân biệt các loại malware dựa trên cơ chế lây lan: tự nhân bản qua mạng (worm), lây nhiễm qua file chủ (virus), hoặc lây qua thiết bị di động (trojan).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-MALWARE_TYPES_CONCEPT-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Không phụ thuộc ngôn ngữ lập trình. Pattern phân loại dựa trên cơ chế lây lan là phổ biến trong an ninh mạng."
+  },
+  {
+    "code": "CIO-MALWARE_TYPES_CONCEPT-02",
+    "name": "Phân biệt malware dựa trên mục tiêu tấn công",
+    "description_vi": "Phân biệt các loại malware dựa trên mục tiêu: mã hóa dữ liệu đòi tiền chuộc (ransomware), đánh cắp thông tin (spyware), hoặc gây hại hệ thống (worm).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual Knowledge",
+    "parent_ulo_code": "ULO-MALWARE_TYPES_CONCEPT-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Không phụ thuộc ngôn ngữ lập trình. Pattern phân loại dựa trên mục tiêu là phổ biến."
+  },
+  {
+    "code": "CIO-MALWARE_TYPES_CONCEPT-01",
+    "name": "So sánh dựa trên vector lây nhiễm và hành vi sau lây nhiễm",
+    "description_vi": "So sánh các loại phần mềm độc hại bằng cách phân tích con đường lây nhiễm ban đầu (ví dụ: qua email, mạng, thiết bị lưu trữ) và các hành động thực hiện sau khi xâm nhập (ví dụ: tự nhân bản, đánh cắp dữ liệu, mã hóa tệp).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-MALWARE_TYPES_CONCEPT-02",
+    "marr_test_note": "Test với Python (mô tả bằng class và thuộc tính) và JavaScript (mô tả bằng object): pattern so sánh dựa trên vector và hành vi hoàn toàn trung tính, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-MALWARE_TYPES_CONCEPT-02",
+    "name": "Phân loại theo mục tiêu tấn công và mức độ ảnh hưởng",
+    "description_vi": "Phân loại phần mềm độc hại dựa trên mục tiêu chính (ví dụ: phá hủy hệ thống, gián điệp, tống tiền) và mức độ ảnh hưởng đến người dùng hoặc tổ chức (ví dụ: mất dữ liệu, gián đoạn dịch vụ, thiệt hại tài chính).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-MALWARE_TYPES_CONCEPT-02",
+    "marr_test_note": "Test với Python (dùng dictionary để phân loại) và Java (dùng enum): pattern phân loại theo mục tiêu và mức độ ảnh hưởng không gắn với cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-01",
+    "name": "Phân biệt dựa trên nguồn gốc thay đổi trạng thái",
+    "description_vi": "Phân biệt animation ngầm định và tường minh bằng cách xác định xem sự thay đổi trạng thái được kích hoạt tự động bởi framework (ngầm định) hay do lập trình viên chỉ định rõ ràng (tường minh).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-01",
+    "marr_test_note": "Test với SwiftUI (implicit animation modifier) và Flutter (explicit AnimationController): pattern phân biệt dựa trên nguồn gốc kích hoạt phù hợp với cả hai."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-02",
+    "name": "Phân biệt dựa trên mức độ kiểm soát và tùy chỉnh",
+    "description_vi": "Phân biệt animation ngầm định và tường minh bằng cách đánh giá mức độ kiểm soát mà lập trình viên có: ngầm định cho phép framework tự quyết định thời gian và đường cong, tường minh cho phép kiểm soát từng khung hình và hiệu ứng phức tạp.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-01",
+    "marr_test_note": "Test với CSS (transition vs @keyframes) và Android (ViewPropertyAnimator vs ObjectAnimator): pattern về mức độ kiểm soát hoàn toàn trung tính."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-03",
+    "name": "Lựa chọn dựa trên tính chất thay đổi thuộc tính",
+    "description_vi": "Lựa chọn loại animation (ngầm định hay tường minh) dựa trên tính chất của thuộc tính được thay đổi: các thuộc tính đơn giản (ví dụ: opacity, position) thường phù hợp với ngầm định, trong khi các thuộc tính phức tạp hoặc chuỗi thay đổi cần tường minh.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-02",
+    "marr_test_note": "Test với CSS (transition cho opacity) và JavaScript (requestAnimationFrame cho chuỗi phức tạp): pattern lựa chọn dựa trên tính chất thuộc tính không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-IMPLICIT_EXPLICIT_ANIMATION-04",
+    "name": "Lựa chọn dựa trên yêu cầu về hiệu suất và tùy chỉnh",
+    "description_vi": "Lựa chọn loại animation dựa trên yêu cầu về hiệu suất (ngầm định thường tối ưu hơn) và mức độ tùy chỉnh cần thiết (tường minh cho phép kiểm soát chi tiết hơn).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-IMPLICIT_EXPLICIT_ANIMATION-02",
+    "marr_test_note": "Test với Flutter (AnimatedContainer vs AnimationController) và iOS (UIView.animate vs CAKeyframeAnimation): pattern lựa chọn dựa trên hiệu suất và tùy chỉnh trung tính."
+  },
+  {
+    "code": "CIO-UI_BOX_MODEL_LAYOUT-01",
+    "name": "Phân tích ảnh hưởng của từng thành phần đến kích thước tổng thể",
+    "description_vi": "Phân tích cách mỗi thành phần (margin, border, padding, content) đóng góp vào kích thước tổng thể của một khối UI, bao gồm cả sự khác biệt khi áp dụng các chế độ box-sizing khác nhau.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-UI_BOX_MODEL_LAYOUT-01",
+    "marr_test_note": "Test với CSS (box-sizing property) và SwiftUI (padding, border modifiers): pattern phân tích ảnh hưởng của từng thành phần hoàn toàn trung tính."
+  },
+  {
+    "code": "CIO-UI_BOX_MODEL_LAYOUT-02",
+    "name": "So sánh các chế độ box-sizing",
+    "description_vi": "So sánh hai chế độ box-sizing: content-box (kích thước chỉ bao gồm content) và border-box (kích thước bao gồm content, padding, border) để hiểu sự khác biệt trong cách tính kích thước.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-UI_BOX_MODEL_LAYOUT-01",
+    "marr_test_note": "Test với CSS (box-sizing) và Android (layout_width vs padding): pattern so sánh chế độ box-sizing không gắn với cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-UI_BOX_MODEL_LAYOUT-03",
+    "name": "Tính toán kích thước dựa trên công thức cộng dồn",
+    "description_vi": "Tính toán kích thước tổng thể của một khối UI bằng cách cộng dồn các giá trị margin, border, padding và content theo thứ tự, áp dụng cho chế độ content-box.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-UI_BOX_MODEL_LAYOUT-02",
+    "marr_test_note": "Test với CSS (tính toán thủ công) và JavaScript (tính toán với getComputedStyle): pattern cộng dồn trung tính, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-UI_BOX_MODEL_LAYOUT-04",
+    "name": "Tính toán kích thước với chế độ border-box",
+    "description_vi": "Tính toán kích thước tổng thể của một khối UI khi sử dụng chế độ border-box, trong đó kích thước đã bao gồm content, padding và border, và margin được tính riêng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-UI_BOX_MODEL_LAYOUT-02",
+    "marr_test_note": "Test với CSS (box-sizing: border-box) và Flutter (Container với padding): pattern tính toán với border-box trung tính."
+  },
+  {
+    "code": "CIO-UI_BOX_MODEL_LAYOUT-05",
+    "name": "Phân tích nguyên nhân khoảng cách bất thường do margin collapsing",
+    "description_vi": "Phân tích bố cục UI để xác định nguyên nhân gây ra khoảng cách bất thường giữa các khối, dựa trên hiện tượng margin collapsing (các margin dọc của khối liền kề bị gộp lại).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-UI_BOX_MODEL_LAYOUT-03",
+    "marr_test_note": "Test với CSS (margin collapsing) và HTML (không có cú pháp đặc biệt): pattern phân tích margin collapsing trung tính."
+  },
+  {
+    "code": "CIO-UI_BOX_MODEL_LAYOUT-06",
+    "name": "Phân tích sự chồng lấn do không tính border/padding",
+    "description_vi": "Phân tích bố cục UI để xác định nguyên nhân gây ra sự chồng lấn hoặc tràn nội dung, dựa trên việc không tính đúng border và padding vào kích thước tổng thể (thường gặp khi dùng content-box).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-UI_BOX_MODEL_LAYOUT-03",
+    "marr_test_note": "Test với CSS (overflow) và SwiftUI (clipped): pattern phân tích chồng lấn trung tính."
+  },
+  {
+    "code": "CIO-SWITCH_CASE-01",
+    "name": "Sử dụng cấu trúc rẽ nhánh dựa trên giá trị của biểu thức",
+    "description_vi": "Sử dụng cấu trúc rẽ nhánh đa hướng để thực thi các khối lệnh khác nhau dựa trên giá trị của một biểu thức, với mỗi giá trị tương ứng một nhánh xử lý.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SWITCH_CASE-01",
+    "marr_test_note": "Test với Python (if-elif-else) và JavaScript (switch-case): pattern rẽ nhánh dựa trên giá trị biểu thức phù hợp với cả hai."
+  },
+  {
+    "code": "CIO-SWITCH_CASE-02",
+    "name": "Sử dụng cấu trúc rẽ nhánh với trường hợp mặc định và nhiều giá trị",
+    "description_vi": "Sử dụng cấu trúc rẽ nhánh đa hướng kết hợp với trường hợp mặc định (default) để xử lý các giá trị không được liệt kê, và cho phép gộp nhiều giá trị vào cùng một nhánh xử lý.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SWITCH_CASE-01",
+    "marr_test_note": "Test với C# (switch với default và case gộp) và Python (if-elif-else với else): pattern trung tính."
+  },
+  {
+    "code": "CIO-SWITCH_CASE-03",
+    "name": "Phân tích hành vi fall-through và break",
+    "description_vi": "Phân tích hành vi của cấu trúc rẽ nhánh đa hướng khi không có lệnh break, dẫn đến việc thực thi tiếp các nhánh sau (fall-through), và cách sử dụng break để dừng lại.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SWITCH_CASE-02",
+    "marr_test_note": "Test với C (switch không break) và JavaScript (switch có break): pattern fall-through trung tính."
+  },
+  {
+    "code": "CIO-SWITCH_CASE-04",
+    "name": "Phân tích xử lý trường hợp không khớp (default)",
+    "description_vi": "Phân tích cách cấu trúc rẽ nhánh đa hướng xử lý các giá trị không khớp với bất kỳ nhánh nào, thông qua trường hợp mặc định (default) và hành vi khi không có default.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SWITCH_CASE-02",
+    "marr_test_note": "Test với Java (switch default) và Python (else trong if-elif-else): pattern xử lý trường hợp không khớp trung tính."
+  },
+  {
+    "code": "CIO-CLASS_DEFINITION-01",
+    "name": "Xác định thuộc tính và hành vi cốt lõi",
+    "description_vi": "Phân tích một đối tượng trong thế giới thực để trích xuất các thuộc tính (trạng thái) và hành vi (phương thức) cần thiết cho mô hình hóa, sau đó ánh xạ chúng thành cấu trúc lớp.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-CLASS_DEFINITION-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (class với __init__ và methods) và JavaScript (class với constructor và methods) đều yêu cầu xác định thuộc tính và phương thức. Mô tả không chứa cú pháp riêng của ngôn ngữ nào → hợp lệ."
+  },
+  {
+    "code": "CIO-CLASS_DEFINITION-02",
+    "name": "Tổ chức đóng gói và trách nhiệm",
+    "description_vi": "Thiết kế lớp với các thuộc tính và phương thức được nhóm hợp lý, đảm bảo tính đóng gói (che giấu thông tin) và mỗi lớp có một trách nhiệm rõ ràng trong hệ thống.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-CLASS_DEFINITION-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (dùng dấu gạch dưới cho private) và Java (dùng private/public) đều có khái niệm đóng gói. Mô tả chỉ nói 'che giấu thông tin' không gắn cú pháp → hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-01",
+    "name": "So sánh hành vi lưu trữ và truyền dữ liệu",
+    "description_vi": "Phân tích sự khác biệt giữa kiểu giá trị (lưu trữ trực tiếp dữ liệu) và kiểu tham chiếu (lưu trữ địa chỉ đến vùng nhớ) khi gán, truyền tham số và so sánh.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (int là giá trị, list là tham chiếu) và JavaScript (number là giá trị, object là tham chiếu) đều có hành vi tương tự. Mô tả không dùng từ khóa 'let' hay 'var' → hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-02",
+    "name": "Khởi tạo biến tham chiếu bằng gán đối tượng",
+    "description_vi": "Tạo một biến và gán cho nó một đối tượng hoặc cấu trúc dữ liệu phức hợp (ví dụ: mảng, từ điển, đối tượng tùy chỉnh) để biến đó tham chiếu đến vùng nhớ chứa dữ liệu.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (my_list = [1,2]) và JavaScript (let myArray = [1,2]) đều gán tham chiếu. Mô tả không nói 'let' hay 'var' → hợp lệ."
+  },
+  {
+    "code": "CIO-REFERENCE_TYPE_DECLARATION-03",
+    "name": "Truy cập và thay đổi dữ liệu qua tham chiếu",
+    "description_vi": "Sử dụng biến tham chiếu để đọc hoặc sửa đổi dữ liệu bên trong đối tượng được tham chiếu, đồng thời nhận biết rằng mọi thay đổi đều ảnh hưởng đến tất cả các tham chiếu cùng trỏ đến đối tượng đó.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-REFERENCE_TYPE_DECLARATION-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Python (my_list[0] = 10) và JavaScript (myArray[0] = 10) đều thay đổi qua tham chiếu. Mô tả không dùng cú pháp cụ thể → hợp lệ."
+  },
+  {
+    "code": "CIO-USER_CENTERED_DESIGN-01",
+    "name": "Phân tích trình tự và mối quan hệ giữa các giai đoạn UCD",
+    "description_vi": "Xác định các giai đoạn chính của quy trình thiết kế lấy người dùng làm trung tâm (nghiên cứu, thiết kế, đánh giá, lặp lại) và phân tích cách chúng tương tác và phụ thuộc lẫn nhau.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-USER_CENTERED_DESIGN-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Mô tả có thể áp dụng cho quy trình thiết kế sản phẩm số (web, app) và phi số (dịch vụ). Không chứa thuật ngữ công nghệ → hợp lệ."
+  },
+  {
+    "code": "CIO-USER_CENTERED_DESIGN-02",
+    "name": "Lựa chọn phương pháp thu thập thông tin người dùng phù hợp",
+    "description_vi": "Đánh giá bối cảnh và mục tiêu nghiên cứu để chọn phương pháp thu thập dữ liệu (phỏng vấn, khảo sát, quan sát, thử nghiệm) phù hợp nhất nhằm hiểu nhu cầu và hành vi người dùng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-USER_CENTERED_DESIGN-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Phương pháp này độc lập với công nghệ; có thể thực hiện trong dự án web (JavaScript) hoặc ứng dụng di động (Swift). Mô tả không gắn cú pháp → hợp lệ."
+  },
+  {
+    "code": "CIO-USER_CENTERED_DESIGN-03",
+    "name": "Đánh giá sản phẩm dựa trên tiêu chí UCD",
+    "description_vi": "Xác định các tiêu chí đánh giá mức độ đáp ứng nhu cầu người dùng (tính hữu dụng, khả năng sử dụng, sự hài lòng) và áp dụng chúng để phân tích điểm mạnh, điểm yếu của một sản phẩm hiện có.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-USER_CENTERED_DESIGN-03",
+    "marr_test_note": "Test 2 ngôn ngữ: Tiêu chí UCD có thể áp dụng cho bất kỳ sản phẩm số nào (web, app) và không phụ thuộc ngôn ngữ lập trình. Mô tả trung tính → hợp lệ."
+  },
+  {
+    "code": "CIO-AI_BIAS-01",
+    "name": "Phân loại thiên vị theo giai đoạn phát triển AI",
+    "description_vi": "Phân biệt các loại thiên vị dựa trên nguồn gốc: thiên vị dữ liệu (do mẫu không đại diện, gán nhãn sai), thiên vị thuật toán (do lựa chọn mô hình, đặc trưng) và thiên vị triển khai (do cách sử dụng hệ thống).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-AI_BIAS-01",
+    "marr_test_note": "Test 2 ngôn ngữ: Khái niệm này độc lập với ngôn ngữ lập trình; có thể minh họa bằng Python (scikit-learn) hoặc R (caret). Mô tả không chứa cú pháp → hợp lệ."
+  },
+  {
+    "code": "CIO-AI_BIAS-02",
+    "name": "Xác định điểm tiềm ẩn thiên vị trong pipeline AI",
+    "description_vi": "Phân tích từng bước trong quy trình phát triển hệ thống AI (thu thập dữ liệu, tiền xử lý, huấn luyện, đánh giá, triển khai) để xác định các điểm có thể phát sinh hoặc khuếch đại thiên vị.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-AI_BIAS-02",
+    "marr_test_note": "Test 2 ngôn ngữ: Pipeline có thể triển khai bằng Python (pandas, sklearn) hoặc Java (Weka). Mô tả không dùng tên thư viện → hợp lệ."
+  },
+  {
+    "code": "CIO-AI_BIAS-01",
+    "name": "So sánh chiến lược giảm thiểu thiên vị theo tiêu chí",
+    "description_vi": "So sánh các chiến lược giảm thiểu thiên vị dựa trên các tiêu chí như hiệu quả, chi phí, khả năng triển khai và tác động phụ, từ đó xác định chiến lược phù hợp nhất cho một bối cảnh cụ thể.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-AI_BIAS-03",
+    "marr_test_note": "Test với Python và JavaScript: Mô tả chỉ nói về so sánh chiến lược dựa trên tiêu chí, không dùng từ khóa ngôn ngữ. Cả hai ngôn ngữ đều có thể thực hiện so sánh logic tương tự. Hợp lệ."
+  },
+  {
+    "code": "CIO-AI_BIAS-02",
+    "name": "Đề xuất chiến lược dựa trên phân tích bối cảnh",
+    "description_vi": "Phân tích bối cảnh sử dụng hệ thống AI (nguồn dữ liệu, mục đích, nhóm người dùng) để đề xuất chiến lược giảm thiểu thiên vị phù hợp, bao gồm các bước thu thập thông tin, đánh giá rủi ro và lựa chọn phương án.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-AI_BIAS-03",
+    "marr_test_note": "Test với Python và JavaScript: Mô tả tập trung vào quy trình phân tích bối cảnh và đề xuất, không phụ thuộc cú pháp ngôn ngữ. Cả hai đều có thể thực hiện. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-01",
+    "name": "Phân loại lỗi cú pháp dựa trên thông báo lỗi",
+    "description_vi": "Phân loại các lỗi cú pháp phổ biến (thiếu dấu ngoặc, sai tên biến, thiếu dấu chấm phẩy, v.v.) dựa trên cấu trúc thông báo lỗi từ trình biên dịch hoặc thông dịch, bao gồm vị trí và mô tả lỗi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-01",
+    "marr_test_note": "Test với Python và JavaScript: Cả hai đều có thông báo lỗi cú pháp với vị trí và mô tả. Mô tả không dùng từ khóa ngôn ngữ cụ thể. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-02",
+    "name": "Nhận diện lỗi cú pháp qua mẫu cấu trúc",
+    "description_vi": "Nhận diện lỗi cú pháp bằng cách so sánh cấu trúc mã nguồn với các mẫu cú pháp chuẩn (ví dụ: cặp dấu ngoặc, thứ tự từ khóa, định dạng khối lệnh) mà không phụ thuộc vào ngôn ngữ cụ thể.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-01",
+    "marr_test_note": "Test với Python và JavaScript: Mô tả dùng khái niệm mẫu cấu trúc chung, không gắn với cú pháp riêng. Cả hai đều có thể áp dụng. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-03",
+    "name": "Xác định vị trí lỗi dựa trên thông báo lỗi",
+    "description_vi": "Xác định chính xác dòng và cột chứa lỗi cú pháp từ thông báo lỗi, sau đó kiểm tra mã nguồn xung quanh vị trí đó để tìm nguyên nhân.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-01",
+    "marr_test_note": "Test với Python và JavaScript: Cả hai đều cung cấp thông báo lỗi với dòng/cột. Mô tả không dùng từ khóa ngôn ngữ. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-04",
+    "name": "Sửa lỗi cú pháp bằng cách điều chỉnh cấu trúc",
+    "description_vi": "Sửa lỗi cú pháp bằng cách thêm, xóa hoặc thay đổi các ký tự hoặc từ khóa trong mã nguồn để khớp với cấu trúc cú pháp chuẩn, dựa trên phân tích thông báo lỗi và kiến thức về quy tắc ngôn ngữ.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-02",
+    "marr_test_note": "Test với Python và JavaScript: Mô tả chung về điều chỉnh cấu trúc, không dùng từ khóa cụ thể. Cả hai đều có thể thực hiện. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-05",
+    "name": "Áp dụng quy trình sửa lỗi từng bước",
+    "description_vi": "Áp dụng quy trình sửa lỗi cú pháp gồm: đọc thông báo lỗi, xác định vị trí, phân tích nguyên nhân, thực hiện sửa chữa và kiểm tra lại.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-02",
+    "marr_test_note": "Test với Python và JavaScript: Quy trình này độc lập với ngôn ngữ. Cả hai đều có thể áp dụng. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-06",
+    "name": "Phân tích nguyên nhân gốc rễ của lỗi cú pháp phức tạp",
+    "description_vi": "Phân tích lỗi cú pháp phức tạp (ví dụ: lỗi do thiếu dấu ngoặc lồng nhau, sai thứ tự khai báo) bằng cách truy vết cấu trúc mã nguồn, xác định mối quan hệ giữa các phần tử và tìm ra nguyên nhân sâu xa.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-03",
+    "marr_test_note": "Test với Python và JavaScript: Mô tả về truy vết cấu trúc, không dùng từ khóa ngôn ngữ. Cả hai đều có lỗi lồng nhau. Hợp lệ."
+  },
+  {
+    "code": "CIO-SYNTAX_ERRORS-07",
+    "name": "So sánh lỗi cú pháp với lỗi logic để xác định bản chất",
+    "description_vi": "Phân biệt lỗi cú pháp phức tạp với lỗi logic bằng cách kiểm tra xem mã có tuân thủ cấu trúc ngôn ngữ hay không, từ đó xác định nguyên nhân là do cú pháp hay do logic.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-SYNTAX_ERRORS-03",
+    "marr_test_note": "Test với Python và JavaScript: Khái niệm lỗi cú pháp và lỗi logic tồn tại ở cả hai. Mô tả không dùng từ khóa. Hợp lệ."
+  },
+  {
+    "code": "CIO-PASSWORD_STRENGTH_CONCEPT-01",
+    "name": "Liệt kê tiêu chí mật khẩu mạnh theo danh mục",
+    "description_vi": "Liệt kê các tiêu chí tạo mật khẩu mạnh theo các danh mục: độ dài tối thiểu, sự đa dạng ký tự (chữ hoa, chữ thường, số, ký tự đặc biệt), tính ngẫu nhiên và không dựa trên thông tin cá nhân.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Factual",
+    "parent_ulo_code": "ULO-PASSWORD_STRENGTH_CONCEPT-01",
+    "marr_test_note": "Test với Python và JavaScript: Tiêu chí này độc lập với ngôn ngữ lập trình. Cả hai đều có thể kiểm tra mật khẩu. Hợp lệ."
+  },
+  {
+    "code": "CIO-PASSWORD_STRENGTH_CONCEPT-02",
+    "name": "Phân loại tiêu chí theo mức độ ưu tiên",
+    "description_vi": "Phân loại các tiêu chí mật khẩu mạnh thành ưu tiên cao (độ dài, tính ngẫu nhiên) và ưu tiên thấp (sử dụng ký tự đặc biệt) dựa trên tác động bảo mật thực tế.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PASSWORD_STRENGTH_CONCEPT-01",
+    "marr_test_note": "Test với Python và JavaScript: Phân loại này dựa trên kiến thức bảo mật chung, không phụ thuộc ngôn ngữ. Hợp lệ."
+  },
+  {
+    "code": "CIO-PASSWORD_STRENGTH_CONCEPT-03",
+    "name": "Tạo mật khẩu mạnh bằng phương pháp kết hợp ngẫu nhiên",
+    "description_vi": "Tạo mật khẩu mạnh bằng cách kết hợp ngẫu nhiên các ký tự từ các nhóm khác nhau (chữ hoa, chữ thường, số, ký tự đặc biệt) với độ dài tối thiểu, đảm bảo không chứa thông tin cá nhân.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PASSWORD_STRENGTH_CONCEPT-02",
+    "marr_test_note": "Test với Python và JavaScript: Phương pháp tạo mật khẩu ngẫu nhiên có thể thực hiện bằng bất kỳ ngôn ngữ nào. Mô tả không dùng từ khóa. Hợp lệ."
+  },
+  {
+    "code": "CIO-PASSWORD_STRENGTH_CONCEPT-04",
+    "name": "Áp dụng quy tắc biến đổi từ cụm từ dễ nhớ",
+    "description_vi": "Tạo mật khẩu mạnh bằng cách lấy một cụm từ dễ nhớ, sau đó biến đổi bằng cách thay thế ký tự, thêm số và ký tự đặc biệt, đồng thời đảm bảo độ dài đủ lớn.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PASSWORD_STRENGTH_CONCEPT-02",
+    "marr_test_note": "Test với Python và JavaScript: Quy tắc biến đổi cụm từ độc lập với ngôn ngữ. Cả hai đều có thể thực hiện. Hợp lệ."
+  },
+  {
+    "code": "CIO-PASSWORD_STRENGTH_CONCEPT-05",
+    "name": "Đánh giá độ mạnh mật khẩu dựa trên thang điểm",
+    "description_vi": "Đánh giá độ mạnh của mật khẩu bằng cách chấm điểm dựa trên các tiêu chí: độ dài, sự đa dạng ký tự, tính ngẫu nhiên, và mức độ phổ biến, sau đó xếp loại (yếu, trung bình, mạnh).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PASSWORD_STRENGTH_CONCEPT-03",
+    "marr_test_note": "Test với Python và JavaScript: Hệ thống chấm điểm có thể triển khai bằng bất kỳ ngôn ngữ nào. Mô tả không dùng từ khóa. Hợp lệ."
+  },
+  {
+    "code": "CIO-PASSWORD_STRENGTH_CONCEPT-06",
+    "name": "So sánh mật khẩu với danh sách mật khẩu yếu phổ biến",
+    "description_vi": "Đánh giá độ mạnh mật khẩu bằng cách so sánh với danh sách các mật khẩu yếu phổ biến và các mẫu dễ đoán (ví dụ: chuỗi liên tiếp, lặp lại).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PASSWORD_STRENGTH_CONCEPT-03",
+    "marr_test_note": "Test với Python và JavaScript: So sánh với danh sách là thao tác độc lập ngôn ngữ. Hợp lệ."
+  },
+  {
+    "code": "CIO-PROTOTYPING-01",
+    "name": "Phân biệt mức độ chi tiết prototype dựa trên mục đích",
+    "description_vi": "Phân biệt các mức độ chi tiết của prototype (thấp, trung bình, cao) dựa trên mục đích sử dụng: thấp để kiểm tra ý tưởng nhanh, trung bình để thử nghiệm luồng, cao để kiểm tra tương tác chi tiết.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PROTOTYPING-01",
+    "marr_test_note": "Test với Python và JavaScript: Khái niệm prototype độc lập với ngôn ngữ lập trình. Mô tả không dùng từ khóa. Hợp lệ."
+  },
+  {
+    "code": "CIO-PROTOTYPING-02",
+    "name": "So sánh đặc điểm của các mức độ chi tiết prototype",
+    "description_vi": "So sánh các mức độ chi tiết prototype dựa trên các đặc điểm: độ chính xác hình thức, mức độ tương tác, thời gian tạo, và thông tin thu được từ thử nghiệm.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-PROTOTYPING-01",
+    "marr_test_note": "Test với Python và JavaScript: So sánh đặc điểm không phụ thuộc ngôn ngữ. Hợp lệ."
+  },
+  {
+    "code": "CIO-PROTOTYPING-02-01",
+    "name": "Xây dựng luồng tương tác giữa các màn hình",
+    "description_vi": "Thiết lập các kết nối giữa các màn hình hoặc trạng thái để mô phỏng luồng người dùng, sử dụng các vùng chạm hoặc nút bấm để chuyển đổi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PROTOTYPING-02",
+    "marr_test_note": "Test với Figma (prototype mode) và Adobe XD (wire): cả hai đều có khái niệm 'kết nối màn hình' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-PROTOTYPING-02-02",
+    "name": "Mô phỏng phản hồi của giao diện khi người dùng tương tác",
+    "description_vi": "Thêm các hiệu ứng chuyển tiếp hoặc thay đổi trạng thái (ví dụ: hiển thị/ẩn, thay đổi màu) để phản hồi lại hành động của người dùng, nhằm kiểm tra tính trực quan.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-PROTOTYPING-02",
+    "marr_test_note": "Test với Figma (interaction triggers) và ProtoPie (states): cả hai đều có khái niệm 'phản hồi tương tác' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-PROTOTYPING-03-01",
+    "name": "Phân tích phản hồi người dùng để xác định vấn đề",
+    "description_vi": "Thu thập và phân loại các nhận xét từ người dùng thử nghiệm, xác định các điểm khó khăn hoặc hiểu lầm trong luồng tương tác.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-PROTOTYPING-03",
+    "marr_test_note": "Test với quy trình UX (bất kỳ công cụ nào) và phương pháp heuristic evaluation: cả hai đều dùng khái niệm 'phân tích phản hồi' không phụ thuộc công cụ. Hợp lệ."
+  },
+  {
+    "code": "CIO-PROTOTYPING-03-02",
+    "name": "Điều chỉnh prototype dựa trên tiêu chí đánh giá",
+    "description_vi": "Sửa đổi các yếu tố giao diện hoặc luồng dựa trên các vấn đề đã xác định, ưu tiên các thay đổi theo mức độ ảnh hưởng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-PROTOTYPING-03",
+    "marr_test_note": "Test với Figma (chỉnh sửa prototype) và Axure (điều chỉnh logic): cả hai đều có khái niệm 'cải tiến dựa trên đánh giá' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-BREAKPOINTS-01-01",
+    "name": "Đặt điểm dừng tại vị trí nghi ngờ lỗi",
+    "description_vi": "Xác định dòng mã có khả năng gây lỗi và chèn điểm dừng để tạm dừng thực thi tại dòng đó.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-BREAKPOINTS-01",
+    "marr_test_note": "Test với Python (pdb: break <line>) và JavaScript (debugger; hoặc Chrome DevTools): cả hai đều có khái niệm 'set breakpoint at line' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-BREAKPOINTS-01-02",
+    "name": "Kích hoạt và vô hiệu hóa điểm dừng",
+    "description_vi": "Bật/tắt điểm dừng mà không xóa chúng, để kiểm soát khi nào chương trình dừng.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-BREAKPOINTS-01",
+    "marr_test_note": "Test với VS Code (toggle breakpoint) và PyCharm (enable/disable breakpoint): cả hai đều có khái niệm 'bật/tắt điểm dừng' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-BREAKPOINTS-02-01",
+    "name": "Thiết lập điểm dừng chỉ khi biểu thức điều kiện đúng",
+    "description_vi": "Gán một biểu thức logic cho điểm dừng để chỉ tạm dừng khi điều kiện thỏa mãn, giúp lọc các lần lặp hoặc giá trị cụ thể.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-BREAKPOINTS-02",
+    "marr_test_note": "Test với JavaScript (conditional breakpoint trong Chrome DevTools) và Python (pdb: break if <condition>): cả hai đều có khái niệm 'điểm dừng có điều kiện' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-BREAKPOINTS-02-02",
+    "name": "Sử dụng điểm dừng đếm số lần",
+    "description_vi": "Thiết lập điểm dừng chỉ kích hoạt sau một số lần nhất định (hit count), hữu ích khi debug vòng lặp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-BREAKPOINTS-02",
+    "marr_test_note": "Test với VS Code (hit count condition) và GDB (ignore count): cả hai đều có khái niệm 'điểm dừng đếm lần' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-BREAKPOINTS-03-01",
+    "name": "Theo dõi luồng thực thi bằng các bước đơn",
+    "description_vi": "Sử dụng các lệnh step into, step over, step out để di chuyển qua từng dòng hoặc hàm, quan sát sự thay đổi trạng thái.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-BREAKPOINTS-03",
+    "marr_test_note": "Test với GDB (step, next, finish) và Chrome DevTools (step into, step over, step out): cả hai đều có khái niệm 'bước thực thi' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-BREAKPOINTS-03-02",
+    "name": "Phân tích call stack để xác định đường đi của chương trình",
+    "description_vi": "Xem xét ngăn xếp lời gọi tại điểm dừng để hiểu hàm nào đã được gọi và thứ tự.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-BREAKPOINTS-03",
+    "marr_test_note": "Test với Python (traceback) và Java (stack trace trong IDE): cả hai đều có khái niệm 'call stack' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-01-01",
+    "name": "Truy cập thuộc tính bằng tên",
+    "description_vi": "Sử dụng tên thuộc tính để lấy giá trị từ đối tượng, thông qua cú pháp dấu chấm hoặc dấu ngoặc.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-01",
+    "marr_test_note": "Test với JavaScript (obj.prop hoặc obj['prop']) và Python (obj.prop hoặc getattr): cả hai đều có khái niệm 'truy cập thuộc tính bằng tên' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-01-02",
+    "name": "Kiểm tra sự tồn tại của thuộc tính",
+    "description_vi": "Xác định xem một thuộc tính có tồn tại trong đối tượng hay không trước khi truy cập, để tránh lỗi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-01",
+    "marr_test_note": "Test với JavaScript (hasOwnProperty, in) và Python (hasattr): cả hai đều có khái niệm 'kiểm tra tồn tại thuộc tính' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-02-01",
+    "name": "Phân loại thành phần của đối tượng dựa trên hành vi",
+    "description_vi": "Xác định một thành phần là thuộc tính (lưu trữ dữ liệu) hay phương thức (thực hiện hành động) dựa trên cách nó được định nghĩa và sử dụng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-02",
+    "marr_test_note": "Test với Java (field vs method) và Python (attribute vs method): cả hai đều có khái niệm 'phân biệt thuộc tính và phương thức' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-02-02",
+    "name": "So sánh cách gọi thuộc tính và phương thức",
+    "description_vi": "Phân biệt cú pháp gọi: thuộc tính không có dấu ngoặc, phương thức có dấu ngoặc (có thể có đối số).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-02",
+    "marr_test_note": "Test với JavaScript (obj.prop vs obj.method()) và C# (obj.Property vs obj.Method()): cả hai đều có khái niệm 'cú pháp gọi khác nhau' không phụ thuộc cú pháp cụ thể. Hợp lệ."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-03-01",
+    "name": "Gán giá trị mới cho thuộc tính",
+    "description_vi": "Thay đổi giá trị của một thuộc tính bằng phép gán, sử dụng tên thuộc tính và giá trị mới.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-03",
+    "marr_test_note": "Test với JavaScript (obj.prop = value) và Python (obj.prop = value): cả hai đều có khái niệm 'gán giá trị cho thuộc tính' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-OBJECT_PROPERTIES-03-02",
+    "name": "Cập nhật thuộc tính dựa trên giá trị hiện tại",
+    "description_vi": "Thay đổi giá trị thuộc tính bằng cách tham chiếu đến giá trị cũ, ví dụ tăng biến đếm.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-OBJECT_PROPERTIES-03",
+    "marr_test_note": "Test với JavaScript (obj.count += 1) và Python (obj.count += 1): cả hai đều có khái niệm 'cập nhật dựa trên giá trị hiện tại' không phụ thuộc cú pháp. Hợp lệ."
+  },
+  {
+    "code": "CIO-COMPOSITION_PRINCIPLES-01",
+    "name": "Phân chia lưới 3x3 và đặt yếu tố chính",
+    "description_vi": "Phân chia không gian bố cục thành 9 phần bằng nhau bằng hai đường kẻ ngang và hai đường kẻ dọc, sau đó đặt các yếu tố quan trọng tại các giao điểm hoặc dọc theo các đường này để tạo điểm nhấn tự nhiên.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-COMPOSITION_PRINCIPLES-01",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) Trong nhiếp ảnh: 'Đặt chủ thể tại giao điểm của lưới 3x3' – khớp. (2) Trong thiết kế UI: 'Căn chỉnh nút CTA tại giao điểm lưới 3x3' – khớp. Mô tả trung tính, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-COMPOSITION_PRINCIPLES-02",
+    "name": "Tạo điểm nhấn bằng cách đặt chủ thể lệch tâm",
+    "description_vi": "Đặt yếu tố chính lệch khỏi trung tâm, dựa trên các đường lưới một phần ba, để tạo sự căng thẳng thị giác và hướng sự chú ý của người xem.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-COMPOSITION_PRINCIPLES-01",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) Trong hội họa: 'Vẽ nhân vật chính lệch sang bên trái theo quy tắc một phần ba' – khớp. (2) Trong thiết kế web: 'Đặt logo ở góc trên bên trái, cách lề 1/3' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-COMPOSITION_PRINCIPLES-03",
+    "name": "Phân tích đường dẫn thị giác từ điểm vào đến điểm kết thúc",
+    "description_vi": "Xác định thứ tự các yếu tố trong bố cục mà mắt người xem có xu hướng di chuyển, từ điểm vào tự nhiên (thường là góc trên bên trái) đến điểm kết thúc, dựa trên sự sắp xếp kích thước, màu sắc và hướng của các yếu tố.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-COMPOSITION_PRINCIPLES-02",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) Trong thiết kế đồ họa: 'Phân tích luồng mắt từ tiêu đề đến hình ảnh chính' – khớp. (2) Trong lập trình giao diện: 'Xác định thứ tự focus của các phần tử' – khớp. Mô tả trung tính, không phụ thuộc cú pháp."
+  },
+  {
+    "code": "CIO-COMPOSITION_PRINCIPLES-04",
+    "name": "Nhận diện đường dẫn thị giác dựa trên độ tương phản và kích thước",
+    "description_vi": "Phân tích bố cục hiện có để xác định đường dẫn thị giác bằng cách đánh giá các yếu tố có độ tương phản cao, kích thước lớn hoặc hướng dẫn tự nhiên (ví dụ: đường chéo, đường cong) mà mắt người xem có thể đi theo.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-COMPOSITION_PRINCIPLES-02",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) Trong nhiếp ảnh: 'Xác định đường dẫn mắt từ ánh sáng mạnh đến chủ thể' – khớp. (2) Trong thiết kế web: 'Phân tích luồng đọc từ banner đến nút kêu gọi hành động' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-COMPOSITION_PRINCIPLES-05",
+    "name": "Đánh giá cân bằng đối xứng và bất đối xứng",
+    "description_vi": "So sánh sự phân bố trọng lượng thị giác giữa các yếu tố ở hai bên trục trung tâm, xác định xem bố cục có cân bằng đối xứng (các yếu tố tương tự nhau) hay bất đối xứng (các yếu tố khác nhau nhưng tạo cảm giác cân bằng).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-COMPOSITION_PRINCIPLES-03",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) Trong thiết kế đồ họa: 'Đánh giá cân bằng giữa khối văn bản và hình ảnh' – khớp. (2) Trong bố cục trang in: 'So sánh trọng lượng thị giác của tiêu đề và footer' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-COMPOSITION_PRINCIPLES-06",
+    "name": "Phân tích cân bằng dựa trên màu sắc và kích thước",
+    "description_vi": "Đánh giá mức độ cân bằng của bố cục bằng cách xem xét sự phân bố của các yếu tố có màu sắc đậm/nhạt, kích thước lớn/nhỏ, và khoảng cách đến trung tâm, từ đó xác định vùng nào có trọng lượng thị giác cao hơn.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-COMPOSITION_PRINCIPLES-03",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) Trong hội họa: 'Phân tích sự cân bằng giữa mảng màu đỏ lớn và các chi tiết nhỏ' – khớp. (2) Trong thiết kế UI: 'Đánh giá cân bằng giữa thanh điều hướng tối màu và vùng nội dung sáng' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-EVENT_BASED_PROGRAMMING-01",
+    "name": "Liệt kê các sự kiện từ tương tác người dùng và hệ thống",
+    "description_vi": "Xác định tất cả các sự kiện có thể xảy ra trong một hệ thống tương tác, bao gồm sự kiện từ người dùng (nhấp chuột, gõ phím, di chuyển chuột) và sự kiện từ hệ thống (tải trang, thay đổi kích thước, hết thời gian), dựa trên các hành động và trạng thái của hệ thống.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-EVENT_BASED_PROGRAMMING-01",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Xác định sự kiện click, keydown, load' – khớp. (2) Python (GUI): 'Xác định sự kiện button press, key press, window resize' – khớp. Mô tả trung tính, không dùng cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-EVENT_BASED_PROGRAMMING-02",
+    "name": "Phân loại sự kiện theo nguồn gốc và thời điểm",
+    "description_vi": "Phân loại các sự kiện thành nhóm dựa trên nguồn gốc (người dùng, hệ thống, chương trình) và thời điểm xảy ra (tức thời, tuần tự, định kỳ) để hiểu cách chúng tương tác trong luồng chương trình.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-EVENT_BASED_PROGRAMMING-01",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Phân biệt sự kiện click (người dùng) và load (hệ thống)' – khớp. (2) C#: 'Phân biệt sự kiện button click và form load' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-EVENT_BASED_PROGRAMMING-03",
+    "name": "Đăng ký hàm xử lý cho một sự kiện cụ thể",
+    "description_vi": "Gắn một hàm (callback) vào một sự kiện xác định, sao cho khi sự kiện đó xảy ra, hàm sẽ được thực thi, thường thông qua cơ chế lắng nghe hoặc gán trực tiếp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-EVENT_BASED_PROGRAMMING-02",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Gán hàm cho sự kiện click bằng addEventListener' – khớp. (2) Python (tkinter): 'Gán hàm cho sự kiện button click bằng command' – khớp. Mô tả trung tính, không dùng cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-EVENT_BASED_PROGRAMMING-04",
+    "name": "Viết hàm xử lý sự kiện với tham số sự kiện",
+    "description_vi": "Định nghĩa một hàm nhận đối tượng sự kiện làm tham số, trong đó chứa thông tin chi tiết về sự kiện (ví dụ: tọa độ chuột, phím được nhấn), và sử dụng thông tin đó để thực hiện hành động phù hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-EVENT_BASED_PROGRAMMING-02",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Hàm xử lý click nhận event object để lấy tọa độ' – khớp. (2) Java Swing: 'Hàm actionPerformed nhận ActionEvent' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-EVENT_BASED_PROGRAMMING-05",
+    "name": "Phân tích thứ tự thực thi khi nhiều sự kiện xảy ra đồng thời",
+    "description_vi": "Xác định thứ tự các hàm xử lý được gọi khi nhiều sự kiện xảy ra gần như cùng lúc, dựa trên cơ chế hàng đợi sự kiện, ưu tiên sự kiện và mối quan hệ giữa các sự kiện (ví dụ: sự kiện cha-con).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-EVENT_BASED_PROGRAMMING-03",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Phân tích thứ tự click và focus khi nhấp vào input' – khớp. (2) C#: 'Phân tích thứ tự sự kiện MouseDown và Click' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-EVENT_BASED_PROGRAMMING-06",
+    "name": "Dự đoán luồng thực thi khi có sự kiện lồng nhau",
+    "description_vi": "Phân tích kịch bản trong đó một sự kiện kích hoạt một sự kiện khác (ví dụ: nhấp nút gây ra thay đổi kích thước), và dự đoán thứ tự các hàm xử lý được thực thi, bao gồm cả việc dừng lan truyền sự kiện nếu có.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-EVENT_BASED_PROGRAMMING-03",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Dự đoán thứ tự khi click vào phần tử con gây ra sự kiện cha' – khớp. (2) Python (PyQt): 'Dự đoán thứ tự khi nút bấm kích hoạt sự kiện thay đổi kích thước' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-TWO_WAY_BINDING-01",
+    "name": "Đồng bộ hóa dữ liệu giữa nguồn và giao diện theo cả hai hướng",
+    "description_vi": "Thiết lập một kết nối giữa một biến dữ liệu và một phần tử giao diện sao cho khi dữ liệu thay đổi, giao diện tự động cập nhật, và khi người dùng thay đổi giao diện, dữ liệu cũng tự động cập nhật.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-TWO_WAY_BINDING-01",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript (Vue): 'Sử dụng v-model để liên kết input với data' – khớp. (2) Angular: 'Sử dụng [(ngModel)] để liên kết hai chiều' – khớp. Mô tả trung tính, không dùng cú pháp cụ thể."
+  },
+  {
+    "code": "CIO-TWO_WAY_BINDING-02",
+    "name": "Khai báo liên kết hai chiều giữa thuộc tính và biến",
+    "description_vi": "Xác định cặp biến dữ liệu và thuộc tính giao diện (ví dụ: giá trị của ô nhập liệu) và thiết lập cơ chế đồng bộ hai chiều, thường thông qua một cú pháp khai báo hoặc hàm thiết lập.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-TWO_WAY_BINDING-01",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript (React): 'Sử dụng state và onChange để tạo two-way binding' – khớp. (2) Dart (Flutter): 'Sử dụng TextEditingController để liên kết' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-TWO_WAY_BINDING-03",
+    "name": "So sánh luồng dữ liệu một chiều và hai chiều",
+    "description_vi": "Phân tích sự khác biệt giữa liên kết một chiều (dữ liệu → giao diện) và liên kết hai chiều (dữ liệu ↔ giao diện) dựa trên hướng cập nhật, số lượng điểm kiểm soát và độ phức tạp khi debug.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-TWO_WAY_BINDING-02",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'So sánh one-way binding (state → view) và two-way binding (state ↔ view)' – khớp. (2) C# (WPF): 'So sánh Mode=OneWay và Mode=TwoWay' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-TWO_WAY_BINDING-04",
+    "name": "Xác định tác động của liên kết hai chiều đến hiệu suất",
+    "description_vi": "Đánh giá ảnh hưởng của việc sử dụng liên kết hai chiều đến hiệu suất ứng dụng, bao gồm số lần cập nhật không cần thiết, vòng lặp vô hạn và chi phí đồng bộ, dựa trên tần suất thay đổi dữ liệu và kích thước giao diện.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-TWO_WAY_BINDING-03",
+    "marr_test_note": "Test 2 ngôn ngữ: (1) JavaScript: 'Phân tích hiệu suất khi dùng v-model với nhiều input' – khớp. (2) Angular: 'Đánh giá tác động của two-way binding đến change detection' – khớp. Mô tả trung tính."
+  },
+  {
+    "code": "CIO-TWO_WAY_BINDING-01",
+    "name": "Phân tích overhead của đồng bộ dữ liệu hai chiều",
+    "description_vi": "Phân tích chi phí tính toán và bộ nhớ phát sinh khi đồng bộ dữ liệu giữa model và view theo cả hai hướng, bao gồm số lần cập nhật, vòng lặp phản hồi và tác động đến hiệu suất tổng thể.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-TWO_WAY_BINDING-03",
+    "marr_test_note": "Test với JavaScript (Vue.js) và Python (Tkinter): mô tả 'đồng bộ dữ liệu hai chiều' khớp với cả hai khi triển khai observer pattern hoặc property binding."
+  },
+  {
+    "code": "CIO-TWO_WAY_BINDING-02",
+    "name": "So sánh chi phí cập nhật giữa binding một chiều và hai chiều",
+    "description_vi": "So sánh số lần gọi hàm cập nhật, độ trễ phản hồi và tài nguyên tiêu thụ khi sử dụng liên kết một chiều so với hai chiều trong cùng một tình huống.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-TWO_WAY_BINDING-03",
+    "marr_test_note": "Test với JavaScript (React) và Dart (Flutter): mô tả 'so sánh chi phí cập nhật' khớp với cả hai khi phân tích setState vs. two-way binding."
+  },
+  {
+    "code": "CIO-DIGITAL_IDENTITY-01",
+    "name": "Mô hình hóa các thành phần của danh tính số",
+    "description_vi": "Xây dựng mô hình trừu tượng bao gồm các thành phần cấu thành danh tính số như thông tin nhân khẩu học, hành vi trực tuyến, tài khoản và dấu chân số.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_IDENTITY-01",
+    "marr_test_note": "Test với UML và sơ đồ ER: mô tả 'mô hình hóa các thành phần' khớp với cả hai khi biểu diễn thực thể và quan hệ."
+  },
+  {
+    "code": "CIO-DIGITAL_IDENTITY-02",
+    "name": "Phân loại các loại thông tin trong danh tính số",
+    "description_vi": "Phân loại thông tin cá nhân thành các nhóm như thông tin công khai, riêng tư, nhạy cảm và ẩn danh dựa trên mức độ tiết lộ và rủi ro.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_IDENTITY-01",
+    "marr_test_note": "Test với bảng phân loại và sơ đồ Venn: mô tả 'phân loại thông tin' khớp với cả hai khi sử dụng tiêu chí phân nhóm."
+  },
+  {
+    "code": "CIO-DIGITAL_IDENTITY-03",
+    "name": "Phân tích mối quan hệ giữa quản lý danh tính và cơ hội nghề nghiệp",
+    "description_vi": "Phân tích cách quản lý danh tính số (nhất quán, chuyên nghiệp) ảnh hưởng đến cơ hội việc làm, mạng lưới quan hệ và uy tín cá nhân.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_IDENTITY-02",
+    "marr_test_note": "Test với nghiên cứu tình huống và phân tích SWOT: mô tả 'phân tích mối quan hệ' khớp với cả hai khi xem xét yếu tố ảnh hưởng."
+  },
+  {
+    "code": "CIO-DIGITAL_IDENTITY-04",
+    "name": "Đánh giá rủi ro từ việc quản lý danh tính không nhất quán",
+    "description_vi": "Đánh giá các rủi ro tiềm ẩn như mất uy tín, lộ thông tin nhạy cảm khi danh tính số được quản lý không đồng bộ giữa các nền tảng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-DIGITAL_IDENTITY-02",
+    "marr_test_note": "Test với ma trận rủi ro và kịch bản giả định: mô tả 'đánh giá rủi ro' khớp với cả hai khi sử dụng khung phân tích."
+  },
+  {
+    "code": "CIO-DIGITAL_IDENTITY-05",
+    "name": "So sánh các chiến lược quản lý hình ảnh trên các nền tảng",
+    "description_vi": "So sánh các chiến lược như đồng nhất hóa, phân mảnh có chủ đích hoặc ẩn danh dựa trên mục tiêu cá nhân và đặc điểm từng nền tảng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-DIGITAL_IDENTITY-03",
+    "marr_test_note": "Test với bảng so sánh và lược đồ tư duy: mô tả 'so sánh chiến lược' khớp với cả hai khi liệt kê tiêu chí."
+  },
+  {
+    "code": "CIO-DIGITAL_IDENTITY-06",
+    "name": "Phân tích hiệu quả của chiến lược dựa trên mục tiêu",
+    "description_vi": "Phân tích mức độ đạt được mục tiêu (ví dụ: xây dựng thương hiệu cá nhân, bảo vệ quyền riêng tư) khi áp dụng một chiến lược quản lý hình ảnh cụ thể.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-DIGITAL_IDENTITY-03",
+    "marr_test_note": "Test với khung logic và chỉ số KPI: mô tả 'phân tích hiệu quả' khớp với cả hai khi đo lường kết quả."
+  },
+  {
+    "code": "CIO-FLEXBOX_GRID_LAYOUT-01",
+    "name": "Phân biệt hệ thống bố cục một chiều và hai chiều",
+    "description_vi": "Phân biệt đặc điểm của hệ thống bố cục chỉ sắp xếp theo một hướng (trục chính) so với hệ thống cho phép sắp xếp đồng thời theo cả hàng và cột.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-FLEXBOX_GRID_LAYOUT-01",
+    "marr_test_note": "Test với CSS (Flexbox vs Grid) và SwiftUI (HStack/VStack vs LazyVGrid): mô tả 'một chiều và hai chiều' khớp với cả hai."
+  },
+  {
+    "code": "CIO-FLEXBOX_GRID_LAYOUT-02",
+    "name": "Xác định trường hợp sử dụng phù hợp cho mỗi hệ thống",
+    "description_vi": "Xác định tình huống nào nên dùng hệ thống một chiều (ví dụ: thanh điều hướng, danh sách) và tình huống nào nên dùng hệ thống hai chiều (ví dụ: lưới sản phẩm, gallery).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FLEXBOX_GRID_LAYOUT-01",
+    "marr_test_note": "Test với CSS và JavaFX: mô tả 'trường hợp sử dụng' khớp với cả hai khi phân tích layout yêu cầu."
+  },
+  {
+    "code": "CIO-FLEXBOX_GRID_LAYOUT-03",
+    "name": "Sử dụng các thuộc tính điều chỉnh trục chính và trục chéo",
+    "description_vi": "Áp dụng các thuộc tính để căn chỉnh, phân bố không gian và thay đổi thứ tự các phần tử con dọc theo trục chính và trục chéo trong hệ thống một chiều.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FLEXBOX_GRID_LAYOUT-02",
+    "marr_test_note": "Test với CSS (justify-content, align-items) và Flutter (MainAxisAlignment, CrossAxisAlignment): mô tả khớp với cả hai."
+  },
+  {
+    "code": "CIO-FLEXBOX_GRID_LAYOUT-04",
+    "name": "Phân bố không gian giữa các phần tử con",
+    "description_vi": "Sử dụng các kỹ thuật phân bố không gian như co giãn, co lại, tỷ lệ và khoảng cách đều để sắp xếp các phần tử con trong một container linh hoạt.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FLEXBOX_GRID_LAYOUT-02",
+    "marr_test_note": "Test với CSS (flex-grow, flex-shrink) và Android XML (layout_weight): mô tả 'phân bố không gian' khớp với cả hai."
+  },
+  {
+    "code": "CIO-FLEXBOX_GRID_LAYOUT-05",
+    "name": "Kết hợp hệ thống một chiều và hai chiều trong cùng một bố cục",
+    "description_vi": "Thiết kế bố cục bằng cách lồng ghép các container một chiều bên trong container hai chiều hoặc ngược lại để đạt được cấu trúc phức tạp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FLEXBOX_GRID_LAYOUT-03",
+    "marr_test_note": "Test với CSS (flex trong grid) và SwiftUI (VStack trong LazyVGrid): mô tả 'kết hợp lồng nhau' khớp với cả hai."
+  },
+  {
+    "code": "CIO-FLEXBOX_GRID_LAYOUT-06",
+    "name": "Phân tích cấu trúc lồng nhau để đạt được bố cục mong muốn",
+    "description_vi": "Phân tích bố cục mục tiêu thành các vùng con, xác định vùng nào cần một chiều và vùng nào cần hai chiều, sau đó xây dựng cây container tương ứng.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Metacognitive",
+    "parent_ulo_code": "ULO-FLEXBOX_GRID_LAYOUT-03",
+    "marr_test_note": "Test với sơ đồ cây và wireframe: mô tả 'phân tích cấu trúc lồng nhau' khớp với cả hai khi phân rã layout."
+  },
+  {
+    "code": "CIO-CROSS_ORIGIN_SECURITY-01",
+    "name": "Mô tả cơ chế hạn chế truy cập giữa các nguồn gốc khác nhau",
+    "description_vi": "Mô tả cách trình duyệt ngăn chặn các yêu cầu từ một nguồn gốc (origin) đến tài nguyên của nguồn gốc khác dựa trên chính sách cùng nguồn gốc (same-origin policy).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-CROSS_ORIGIN_SECURITY-01",
+    "marr_test_note": "Test với JavaScript (fetch) và Python (requests với CORS header): mô tả 'hạn chế truy cập cross-origin' khớp với cả hai khi giải thích hành vi."
+  },
+  {
+    "code": "CIO-CROSS_ORIGIN_SECURITY-02",
+    "name": "Phân tích lý do bảo mật đằng sau chính sách cùng nguồn gốc",
+    "description_vi": "Phân tích các mối đe dọa bảo mật như CSRF, XSS mà chính sách cùng nguồn gốc ngăn chặn, và giải thích tại sao việc hạn chế truy cập cross-origin là cần thiết.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-CROSS_ORIGIN_SECURITY-01",
+    "marr_test_note": "Test với kịch bản tấn công và sơ đồ luồng: mô tả 'phân tích lý do bảo mật' khớp với cả hai khi mô phỏng tấn công."
+  },
+  {
+    "code": "CIO-CROSS_ORIGIN_SECURITY-01",
+    "name": "Cấu hình quy tắc cho phép truy cập dựa trên nguồn gốc",
+    "description_vi": "Thiết lập danh sách các nguồn gốc được phép và gắn thông tin này vào phản hồi để trình duyệt quyết định có cho phép truy cập tài nguyên hay không.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-CROSS_ORIGIN_SECURITY-02",
+    "marr_test_note": "Test với JavaScript (fetch API) và Python (Flask): cả hai đều dùng header Access-Control-Allow-Origin; mô tả trung tính về 'gắn thông tin vào phản hồi' khớp cả hai."
+  },
+  {
+    "code": "CIO-CROSS_ORIGIN_SECURITY-02",
+    "name": "Kiểm tra nguồn gốc yêu cầu và áp dụng chính sách động",
+    "description_vi": "Đọc giá trị nguồn gốc từ yêu cầu, so sánh với danh sách cho phép hoặc áp dụng logic động (ví dụ: mirror nguồn gốc) để quyết định cấp quyền.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-CROSS_ORIGIN_SECURITY-02",
+    "marr_test_note": "Test với JavaScript (Express) và Python (Django): cả hai đều có middleware đọc Origin header; mô tả 'so sánh với danh sách' khớp cả hai."
+  },
+  {
+    "code": "CIO-CROSS_ORIGIN_SECURITY-03",
+    "name": "Phân tích ma trận rủi ro dựa trên độ nhạy tài nguyên và mức độ tin cậy nguồn gốc",
+    "description_vi": "Xác định mức độ nhạy cảm của tài nguyên (public, internal, private) và mức độ tin cậy của nguồn gốc yêu cầu, sau đó đánh giá rủi ro tiềm ẩn khi cho phép truy cập.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-CROSS_ORIGIN_SECURITY-03",
+    "marr_test_note": "Test với JavaScript (browser) và Python (server): cả hai đều có khái niệm phân loại tài nguyên; mô tả 'ma trận rủi ro' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-CROSS_ORIGIN_SECURITY-04",
+    "name": "So sánh kịch bản tấn công tiềm ẩn khi cấu hình CORS quá rộng",
+    "description_vi": "Đối chiếu các kịch bản tấn công (CSRF, XSS, đánh cắp dữ liệu) với mức độ mở của chính sách CORS để xác định điểm yếu và đề xuất giới hạn.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-CROSS_ORIGIN_SECURITY-03",
+    "marr_test_note": "Test với JavaScript (fetch) và Python (requests): cả hai đều có khái niệm tấn công cross-origin; mô tả 'so sánh kịch bản' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-COLOR_THEORY-01",
+    "name": "Phân loại mô hình màu theo không gian màu và ứng dụng",
+    "description_vi": "Phân biệt các mô hình màu dựa trên cách biểu diễn màu (cộng tính, trừ tính, trực giác) và xác định lĩnh vực sử dụng phù hợp (màn hình, in ấn, thiết kế đồ họa).",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-COLOR_THEORY-01",
+    "marr_test_note": "Test với CSS (RGB/HSL) và Python (PIL): cả hai đều có khái niệm không gian màu; mô tả 'phân loại theo cách biểu diễn' khớp cả hai."
+  },
+  {
+    "code": "CIO-COLOR_THEORY-02",
+    "name": "So sánh đặc điểm của các mô hình màu phổ biến",
+    "description_vi": "Đối chiếu ưu nhược điểm của các mô hình màu (RGB, CMYK, HSV) về dải màu, tính trực quan và hiệu quả trong các ngữ cảnh khác nhau.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-COLOR_THEORY-01",
+    "marr_test_note": "Test với CSS (hsl) và Python (colorsys): cả hai đều có chuyển đổi giữa các mô hình; mô tả 'so sánh đặc điểm' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-COLOR_THEORY-03",
+    "name": "Lựa chọn màu sắc dựa trên vòng tròn màu và quy tắc hài hòa",
+    "description_vi": "Xác định vị trí các màu trên vòng tròn màu, áp dụng quy tắc (tương đồng, bổ túc, bộ ba) để tạo bảng màu cân bằng và có chủ đích.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-COLOR_THEORY-02",
+    "marr_test_note": "Test với CSS (color) và Python (matplotlib): cả hai đều có khái niệm vòng tròn màu; mô tả 'áp dụng quy tắc hài hòa' khớp cả hai."
+  },
+  {
+    "code": "CIO-COLOR_THEORY-04",
+    "name": "Xây dựng bảng màu bằng cách kết hợp các màu theo tỷ lệ và độ tương phản",
+    "description_vi": "Chọn màu chủ đạo, màu nhấn và màu nền dựa trên độ tương phản (WCAG) và tỷ lệ sử dụng (60-30-10) để đảm bảo khả năng đọc và thẩm mỹ.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-COLOR_THEORY-02",
+    "marr_test_note": "Test với CSS (contrast ratio) và Python (PIL): cả hai đều có tính toán độ tương phản; mô tả 'kết hợp theo tỷ lệ' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-COLOR_THEORY-05",
+    "name": "Đánh giá cảm xúc gợi lên từ màu sắc dựa trên bối cảnh văn hóa và ngữ cảnh sử dụng",
+    "description_vi": "Phân tích ý nghĩa biểu tượng của màu sắc trong các nền văn hóa khác nhau và đối chiếu với mục tiêu thiết kế (thương hiệu, cảm xúc người dùng) để đưa ra lựa chọn phù hợp.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-COLOR_THEORY-03",
+    "marr_test_note": "Test với CSS (color) và Python (data visualization): cả hai đều có khái niệm ý nghĩa màu sắc; mô tả 'phân tích cảm xúc dựa trên bối cảnh' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-COLOR_THEORY-06",
+    "name": "So sánh hiệu ứng của các bảng màu khác nhau lên hành vi người dùng",
+    "description_vi": "Đối chiếu các bảng màu (ấm, lạnh, đơn sắc) với các chỉ số tương tác (tỷ lệ nhấp, thời gian ở lại) để xác định tác động tâm lý và đề xuất cải tiến.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-COLOR_THEORY-03",
+    "marr_test_note": "Test với CSS (color scheme) và Python (A/B testing): cả hai đều có khái niệm so sánh hiệu ứng; mô tả 'so sánh bảng màu với chỉ số' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01",
+    "name": "Mô tả đặc điểm của hàm như một giá trị có thể gán, truyền và trả về",
+    "description_vi": "Liệt kê các thao tác cho phép trên hàm (gán cho biến, truyền làm đối số, trả về từ hàm khác) và giải thích ý nghĩa của việc hàm là công dân hạng nhất.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-01",
+    "marr_test_note": "Test với JavaScript (function expression) và Python (lambda): cả hai đều cho phép gán hàm cho biến; mô tả 'gán, truyền, trả về' khớp cả hai."
+  },
+  {
+    "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-02",
+    "name": "So sánh hàm với các kiểu dữ liệu khác về khả năng thao tác",
+    "description_vi": "Đối chiếu cách hàm có thể được thao tác (gán, truyền, trả về) với cách thao tác trên số, chuỗi, mảng để làm rõ tính nhất quán của ngôn ngữ.",
+    "bloom_level": "ANALYZE",
+    "knowledge_dimension": "Conceptual",
+    "parent_ulo_code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-01",
+    "marr_test_note": "Test với JavaScript (typeof) và Python (callable): cả hai đều có khái niệm kiểu dữ liệu; mô tả 'so sánh với kiểu khác' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-03",
+    "name": "Sử dụng hàm nhận hàm khác làm đối số để thực hiện thao tác trên từng phần tử",
+    "description_vi": "Áp dụng hàm bậc cao (map, filter, reduce) bằng cách truyền một hàm xử lý vào hàm duyệt tập dữ liệu, giúp tách biệt logic lặp và logic biến đổi.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-02",
+    "marr_test_note": "Test với JavaScript (Array.map) và Python (map function): cả hai đều có hàm map nhận callback; mô tả 'truyền hàm xử lý vào hàm duyệt' khớp cả hai."
+  },
+  {
+    "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-04",
+    "name": "Xây dựng pipeline xử lý dữ liệu bằng cách kết hợp các hàm biến đổi",
+    "description_vi": "Tạo chuỗi các hàm bậc cao nối tiếp nhau, mỗi hàm nhận đầu ra của hàm trước, để thực hiện nhiều bước xử lý (lọc, biến đổi, gộp) một cách khai báo.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-02",
+    "marr_test_note": "Test với JavaScript (method chaining) và Python (function composition): cả hai đều có khái niệm pipeline; mô tả 'kết hợp các hàm nối tiếp' trừu tượng khớp cả hai."
+  },
+  {
+    "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-05",
+    "name": "Tạo hàm bao bọc nhận một hàm và trả về hàm mới với hành vi mở rộng",
+    "description_vi": "Xây dựng hàm bậc cao nhận một hàm xử lý, thêm logic trước/sau (logging, kiểm tra, biến đổi) và trả về hàm mới có hành vi kết hợp.",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-03",
+    "marr_test_note": "Test với JavaScript (decorator pattern) và Python (decorator): cả hai đều có khái niệm wrapper; mô tả 'thêm logic trước/sau' khớp cả hai."
+  },
+  {
+    "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-06",
+    "name": "Thiết kế hàm nhận hàm xử lý và áp dụng nó trong một ngữ cảnh cụ thể",
+    "description_vi": "Xây dựng hàm bậc cao tùy chỉnh nhận một hàm callback và một tập dữ liệu, sau đó áp dụng callback lên từng phần tử theo một chiến lược (tuần tự, song song, có điều kiện).",
+    "bloom_level": "APPLY",
+    "knowledge_dimension": "Procedural",
+    "parent_ulo_code": "ULO-FIRST_CLASS_FUNCTIONS_CONCEPT-03",
+    "marr_test_note": "Test với JavaScript (forEach) và Python (map): cả hai đều có khái niệm áp dụng callback; mô tả 'áp dụng callback theo chiến lược' trừu tượng khớp cả hai."
   }
 ]

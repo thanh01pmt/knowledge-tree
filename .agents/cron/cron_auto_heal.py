@@ -58,8 +58,19 @@ def suggest_fix(term: str) -> str:
             return suggestion
     return "TECHNOLOGY_AGNOSTIC_EQUIVALENT"
 
+
+def git_commit_push(message: str):
+    """Commit and push changes to git."""
+    try:
+        subprocess.run(["git", "add", "-A"], check=True, capture_output=True)
+        subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True)
+        subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True)
+        print(f"✅ Git commit & push: {message}")
+    except subprocess.CalledProcessError as e:
+        print(f"⚠️ Git commit/push failed: {e}")
+
+
 def main():
-    print(f"[{datetime.datetime.now()}] Starting Auto-Heal Cron...")
     
     validate_script = Path(".agents/skills/tree-validator/scripts/validate_master_tree.py")
     
@@ -84,6 +95,9 @@ def main():
         else:
             content = "# INBOX - Automated Notifications\n"
         inbox_path.write_text(content + healthy_entry, encoding="utf-8")
+        
+        # Git commit & push
+        git_commit_push(f"chore(auto-heal): Master Tree healthy check {timestamp}")
         
     except subprocess.CalledProcessError as e:
         print("❌ Master Tree validation failed. Anomalies detected!")
@@ -137,6 +151,9 @@ def main():
         inbox_path.write_text(content + entry, encoding="utf-8")
         
         print(f"📝 Detailed report written to {inbox_path}")
+        
+        # Git commit & push
+        git_commit_push(f"fix(auto-heal): Master Tree validation report {timestamp}")
         
         # Run LLM Auto-Heal Protocol
         auto_heal_script = Path(".agents/skills/tree-validator/scripts/llm_auto_heal_master_tree.py")
