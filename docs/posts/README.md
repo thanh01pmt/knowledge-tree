@@ -57,9 +57,14 @@ Chào mừng bạn đến với bộ sưu tập các bài viết phân tích chu
 * **Chủ đề:** K-12 STEM Education, NGSS 3D Learning, CSTA K-12, GDPT 2018 Việt Nam, Engineering Design Cycle.
 * **Tóm tắt:** Phân tích cấu trúc khung chuẩn STEM NGSS 3D Learning, sự tích hợp giữa NGSS SEPs và CSTA K-12, hai quy trình Khám phá Khoa học / Thiết kế Kỹ thuật và đối chiếu với 3 hình thức STEM trong GDPT 2018 Việt Nam.
 * **Link:** [`k12_stem_frameworks_ngss_gdpt2018.md`](./k12_stem_frameworks_ngss_gdpt2018.md)
-
 ---
 
+### 9. [Giao Thoa STEAM: Chữ 'A' (Arts) Trong Đồ Họa, Tư Duy Thiết Kế Và Nghệ Thuật Thuật Toán](./steam_arts_design_thinking_generative_art.md)
+* **Chủ đề:** STEAM Education, Arts in STEM, Design Thinking, Generative Art, Creative Coding, WCAG Accessibility.
+* **Tóm tắt:** Phân tích vị trí của nhánh Arts trong mô hình STEAM, bao gồm 5 bước Tư duy Thiết kế (Design Thinking HCD), Thẩm mỹ Đồ họa (Color/Typography/Grid), Nghệ thuật Thuật toán (Generative Art / Perlin Noise) và Thiết kế Tiếp cận Hòa nhập (Inclusive UX / WCAG).
+* **Link:** [`steam_arts_design_thinking_generative_art.md`](./steam_arts_design_thinking_generative_art.md)
+
+---
 Tất cả các bài viết trong series đều đi kèm **Sơ đồ Mermaid rendered trực quan**, **Mã nguồn/Khái niệm 100% Trung tính T6** và **Link dẫn chứng tham chiếu từ các tổ chức hàn lâm uy tín** (ACM, IEEE, NIST, Stanford, MIT, CSTA, College Board).
 
 Mọi góp ý và thảo luận xin vui lòng gửi về repository chính thức của dự án **Knowledge Tree**.

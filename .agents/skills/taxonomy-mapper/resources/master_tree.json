@@ -5440,6 +5440,76 @@
       ],
       "keywords": "crosscutting concepts, cause and effect, systems and models, energy and matter, NGSS",
       "metadata": "{\"ngss_dimension\": \"CCC\", \"csta_strand\": \"AP-1\", \"csta_level\": \"1A,1B,2,3A\", \"gdpt2018\": \"KHTN-Toan\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "DESIGN_THINKING_PROCESS",
+      "name": "Design Thinking & Human-Centered Innovation",
+      "description": "Quy trình tư duy thiết kế tuần hoàn: Thấu cảm (Empathize), Xác định góc nhìn (Define), Sáng tạo ý tưởng (Ideate), Dựng mẫu thử (Prototype) và Kiểm thử (Test).",
+      "parent_or_relation": "USER_RESEARCH, WIREFRAMING_PROTOTYPING",
+      "parent_codes": [
+        "USER_RESEARCH",
+        "WIREFRAMING_PROTOTYPING"
+      ],
+      "keywords": "design thinking, human-centered design, empathize, ideate, prototyping",
+      "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"AP-3\", \"csta_level\": \"1B,2,3A,3B\", \"spiral_bloom\": \"Understand->Create\"}"
+    },
+    {
+      "code": "COLOR_THEORY_AND_PALETTE_DESIGN",
+      "name": "Color Theory and Digital Palette Systems",
+      "description": "Nguyên lý lý thuyết màu sắc, vòng tròn màu, không gian màu kỹ thuật số (RGB/CMYK/HSV) và thiết kế hệ thống phối màu tương phản.",
+      "parent_or_relation": "GRAPHIC_DESIGN_PRINCIPLES",
+      "parent_codes": [
+        "GRAPHIC_DESIGN_PRINCIPLES"
+      ],
+      "keywords": "color theory, color palette, RGB, CMYK, contrast, color harmony",
+      "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"AP-1\", \"csta_level\": \"1B,2,3A\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "TYPOGRAPHY_AND_VISUAL_HIERARCHY",
+      "name": "Typography and Visual Hierarchy Systems",
+      "description": "Nguyên lý lựa chọn kiểu chữ, đo lường khoảng cách (Kerning, Leading, Tracking) và xây dựng hệ thống phân cấp thị giác.",
+      "parent_or_relation": "GRAPHIC_DESIGN_PRINCIPLES",
+      "parent_codes": [
+        "GRAPHIC_DESIGN_PRINCIPLES"
+      ],
+      "keywords": "typography, kerning, leading, tracking, visual hierarchy, font system",
+      "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"AP-1\", \"csta_level\": \"2,3A\", \"spiral_bloom\": \"Apply->Analyze\"}"
+    },
+    {
+      "code": "LAYOUT_GRID_AND_COMPOSITION_RULES",
+      "name": "Layout Grid and Compositional Rules",
+      "description": "Các quy tắc bố cục thị giác, hệ thống lưới (Grid System), tỷ lệ vàng, quy tắc một phần ba và sự cân bằng thị giác trong thiết kế.",
+      "parent_or_relation": "WIREFRAMING_PROTOTYPING, GRAPHIC_DESIGN_PRINCIPLES",
+      "parent_codes": [
+        "WIREFRAMING_PROTOTYPING",
+        "GRAPHIC_DESIGN_PRINCIPLES"
+      ],
+      "keywords": "layout grid, composition, rule of thirds, golden ratio, visual balance",
+      "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"AP-1\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "ALGORITHMIC_GENERATIVE_ART",
+      "name": "Algorithmic and Generative Art",
+      "description": "Phương pháp sáng tạo nghệ thuật bằng thuật toán, hàm toán học, nhiễu Perlin/Simplex và hình học phân mảnh (Fractals).",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION, 3D_ANIMATION_PRINCIPLES",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION",
+        "3D_ANIMATION_PRINCIPLES"
+      ],
+      "keywords": "generative art, creative coding, Perlin noise, algorithmic art, fractals",
+      "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"AP-3\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "INCLUSIVE_DESIGN_ACCESSIBILITY_WCAG",
+      "name": "Inclusive Design and Accessibility Standards",
+      "description": "Nguyên tắc thiết kế tiếp cận hòa nhập theo chuẩn WCAG (POUR: Nhận biết, Vận hành, Hiểu, Bền vững) cho mọi người dùng.",
+      "parent_or_relation": "ASSISTIVE_TECH, UI_UX_HEURISTICS",
+      "parent_codes": [
+        "ASSISTIVE_TECH",
+        "UI_UX_HEURISTICS"
+      ],
+      "keywords": "inclusive design, WCAG, accessibility, POUR principles, contrast ratio",
+      "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"IC-2\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
     }
   ]
 }
