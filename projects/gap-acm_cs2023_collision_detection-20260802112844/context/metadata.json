@@ -1,0 +1,20 @@
+{
+  "id": "acm_cs2023-collision-detection-20260802102635-6af96c25",
+  "source": "standards",
+  "title": "Standards Gap: ACM_CS2023 - Collision Detection",
+  "context_path": ".work/research/standards/acm_cs2023-collision-detection-20260802102635-6af96c25",
+  "priority": "high",
+  "status": "processing",
+  "created_at": "2026-08-02T10:26:35.855167+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "framework": "ACM_CS2023",
+    "theme": "Collision Detection",
+    "band": "Secondary",
+    "gap_type": "missing_concept",
+    "crosswalk_dir": "/opt/data/my-projects/knowledge-tree/.work/research/standards/crosswalk_acm_cs2023_20260802_102635",
+    "description": "Collision Detection: unique_to_reference"
+  }
+}

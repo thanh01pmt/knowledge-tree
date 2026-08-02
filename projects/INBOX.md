@@ -555,3 +555,133 @@
 ### [AUTO_HEAL] 2026-08-02 10:27 — Master Tree Healthy
 - **Status**: ✅ PASS (0 errors, 0 T6 violations)
 - **Action**: None required
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_netiquette_(online_etiquette)-20260802112842 created from acm_cs2023-netiquette-(online-etiquette)-20260802102635-cfadfda6 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_leaderboard/scoring_system-20260802112842 created from acm_cs2023-leaderboard-scoring-system-20260802102635-2c8bf5f4 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collision_detection-20260802112842 created from acm_cs2023-collision-detection-20260802102635-7874e3ac - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_leaderboard/scoring_system-20260802112842 created from acm_cs2023-leaderboard-scoring-system-20260802102635-42779b9e - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collision_detection-20260802112842 created from acm_cs2023-collision-detection-20260802102635-8e961acb - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_basic_circuit_principles-20260802112842 created from acm_cs2023-basic-circuit-principles-20260802102635-04d8bb6c - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_immutability_and_pure_functions-20260802112843 created from acm_cs2023-immutability-and-pure-functio-20260802102635-bf13bcbb - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_dc_motor_and_servo_control-20260802112843 created from acm_cs2023-dc-motor-and-servo-control-20260802102635-2c20ca1c - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_dc_motor_and_servo_control-20260802112843 created from acm_cs2023-dc-motor-and-servo-control-20260802102635-3d857254 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_leaderboard/scoring_system-20260802112843 created from acm_cs2023-leaderboard-scoring-system-20260802102635-cb3e7c12 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802112843 created from acm_cs2023-bubble-sort-&-insertion-sort-20260802102635-9c91845e - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_the_digital_divide-20260802112843 created from acm_cs2023-the-digital-divide-20260802102635-cb6dd5f9 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802112843 created from acm_cs2023-bubble-sort-&-insertion-sort-20260802102635-cd2e4808 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_wcag_principles_(pour)-20260802112843 created from acm_cs2023-wcag-principles-(pour)-20260802102635-8630fb84 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_physics_constraints-20260802112843 created from acm_cs2023-physics-constraints-20260802102635-2685c7d1 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_json_serialization/deserialization-20260802112843 created from acm_cs2023-json-serialization-deserializ-20260802102635-b5c08452 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_array_operations-20260802112843 created from acm_cs2023-array-operations-20260802102635-dddb81e1 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_malware_types-20260802112843 created from acm_cs2023-malware-types-20260802102635-ed667e5a - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_the_digital_divide-20260802112843 created from acm_cs2023-the-digital-divide-20260802102635-ce9fdb72 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_physics_constraints-20260802112843 created from acm_cs2023-physics-constraints-20260802102635-cb5e1c36 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_immutability_and_pure_functions-20260802112843 created from acm_cs2023-immutability-and-pure-functio-20260802102635-6d6f8546 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_database_normalization-20260802112843 created from acm_cs2023-database-normalization-20260802102635-b4685025 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_immutability_and_pure_functions-20260802112843 created from acm_cs2023-immutability-and-pure-functio-20260802102635-43470788 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collaborative_platforms-20260802112843 created from acm_cs2023-collaborative-platforms-20260802102635-d389c4f2 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_level_layout_design-20260802112843 created from acm_cs2023-level-layout-design-20260802102635-0b2d3ce5 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_the_digital_divide-20260802112844 created from acm_cs2023-the-digital-divide-20260802102635-20752483 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_malware_types-20260802112844 created from acm_cs2023-malware-types-20260802102635-086f2094 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_dc_motor_and_servo_control-20260802112844 created from acm_cs2023-dc-motor-and-servo-control-20260802102635-be323f34 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_wcag_principles_(pour)-20260802112844 created from acm_cs2023-wcag-principles-(pour)-20260802102635-9d9c3d3a - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_basic_circuit_principles-20260802112844 created from acm_cs2023-basic-circuit-principles-20260802102635-b60320c0 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collaborative_platforms-20260802112844 created from acm_cs2023-collaborative-platforms-20260802102635-9de6adde - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_mvvm_architectural_pattern-20260802112844 created from acm_cs2023-mvvm-architectural-pattern-20260802102635-815c25d1 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802112844 created from acm_cs2023-bubble-sort-&-insertion-sort-20260802102635-e1ebee45 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_basic_statistical_measures-20260802112844 created from acm_cs2023-basic-statistical-measures-20260802102635-6deb8b14 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_json_serialization/deserialization-20260802112844 created from acm_cs2023-json-serialization-deserializ-20260802102635-9daaf416 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_array_operations-20260802112844 created from acm_cs2023-array-operations-20260802102635-44d5c556 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_array_operations-20260802112844 created from acm_cs2023-array-operations-20260802102635-c939adf1 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_database_normalization-20260802112844 created from acm_cs2023-database-normalization-20260802102635-b7e06557 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802112844 created from acm_cs2023-bubble-sort-&-insertion-sort-20260802102635-32f2830d - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_netiquette_(online_etiquette)-20260802112844 created from acm_cs2023-netiquette-(online-etiquette)-20260802102635-c50db2a3 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collision_detection-20260802112844 created from acm_cs2023-collision-detection-20260802102635-6af96c25 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_wcag_principles_(pour)-20260802112845 created from acm_cs2023-wcag-principles-(pour)-20260802102635-442e79d2 - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_dc_motor_and_servo_control-20260802112845 created from acm_cs2023-dc-motor-and-servo-control-20260802102635-4a416b53 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_array_operations-20260802112845 created from acm_cs2023-array-operations-20260802102635-d3dda292 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collaborative_platforms-20260802112845 created from acm_cs2023-collaborative-platforms-20260802102635-aea93ee7 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_mvvm_architectural_pattern-20260802112845 created from acm_cs2023-mvvm-architectural-pattern-20260802102635-9639ddd2 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_level_layout_design-20260802112845 created from acm_cs2023-level-layout-design-20260802102635-e8c8c894 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_basic_statistical_measures-20260802112845 created from acm_cs2023-basic-statistical-measures-20260802102635-fe487da8 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_basic_circuit_principles-20260802112845 created from acm_cs2023-basic-circuit-principles-20260802102635-63c4805d - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_malware_types-20260802112845 created from acm_cs2023-malware-types-20260802102635-4755af7b - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_immutability_and_pure_functions-20260802112845 created from acm_cs2023-immutability-and-pure-functio-20260802102635-f4402ba7 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_collision_detection-20260802112845 created from acm_cs2023-collision-detection-20260802102635-6457e80b - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_malware_types-20260802112845 created from acm_cs2023-malware-types-20260802102635-a60dad6f - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_netiquette_(online_etiquette)-20260802112845 created from acm_cs2023-netiquette-(online-etiquette)-20260802102635-1f2a1cbb - Pipeline: FAILED
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_malware_types-20260802112845 created from acm_cs2023-malware-types-20260802102635-1662903d - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [STANDARDS] Project gap-acm_cs2023_mvvm_architectural_pattern-20260802112845 created from acm_cs2023-mvvm-architectural-pattern-20260802102635-cd9f760d - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [TRENDS] Project gap-uk_national_curriculum_computing_updates_2024_-20260802112845 created from trend-uk-national-curriculum-computing-u-20260802102726-e1cf627a - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [TRENDS] Project gap-uk_national_curriculum_computing_updates_2024_-20260802112845 created from trend-uk-national-curriculum-computing-u-20260802102727-018df55e - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [TRENDS] Project gap-australian_digital_technologies_curriculum_upd-20260802112845 created from trend-australian-digital-technologies-cu-20260802102727-dedb6c13 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [TRENDS] Project gap-csta_k-12_cs_standards_updates_2024_2025-20260802112846 created from trend-csta-k-12-cs-standards-updates-202-20260802102726-6b4b0a06 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [TRENDS] Project gap-csta_k-12_cs_standards_updates_2024_2025-20260802112846 created from trend-csta-k-12-cs-standards-updates-202-20260802102727-74d37cb7 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [ACADEMIC] Project gap-general-computing-20260802112846 created from test_syllabus-20260802111536-437e4e1f - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [ACADEMIC] Project gap-general-computing-20260802112846 created from test_syllabus-20260802103035-c6fe6dd2 - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [ACADEMIC] Project gap-general-computing-20260802112846 created from test_syllabus-20260802104535-a5722b2b - Pipeline: SUCCESS
+
+## [2026-08-02 11:28] [ACADEMIC] Project gap-general-computing-20260802112846 created from test_syllabus-20260802110036-68fd48e7 - Pipeline: SUCCESS

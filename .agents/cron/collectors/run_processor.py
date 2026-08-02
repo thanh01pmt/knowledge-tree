@@ -18,6 +18,23 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Any, Optional
 
+# Load environment variables (same pattern as other scripts)
+ENV_FILE = Path.home() / ".hermes" / ".env"
+env_vars = {}
+if ENV_FILE.exists():
+    for line in ENV_FILE.read_text().splitlines():
+        if "=" in line and not line.startswith("#"):
+            k, v = line.split("=", 1)
+            env_vars[k.strip()] = v.strip()
+
+# Also load project .env
+PROJ_ENV = Path(__file__).resolve().parents[3] / ".env"
+if PROJ_ENV.exists():
+    for line in PROJ_ENV.read_text().splitlines():
+        if "=" in line and not line.startswith("#"):
+            k, v = line.split("=", 1)
+            env_vars[k.strip()] = v.strip()
+
 # Add parent to path for imports
 sys.path.insert(0, str(Path(__file__).parent))
 from base_collector import ResearchMetadata, ResearchStatus, discover_pending_items, ResearchSource
@@ -147,18 +164,46 @@ OUTPUT FORMAT: JSON array of gap objects only. No extra text.
         
         # Call LLM via available interface
         try:
-            # Try to call the model via the available interface
-            # Use a simple HTTP call or direct model invocation
-            import subprocess
-            result = subprocess.run([
-                sys.executable, "-c", 
-                f"import json, os; os.environ['PYTHONIOENCODING']='utf-8'; "
-                f"from hermes_tools import terminal; "
-                f"print('LLM_CALL:{prompt[:200]}...')"
-            ], capture_output=True, text=True, timeout=60, cwd=str(self.repo_root))
+            # Use OpenAI-compatible API (points to Ollama Cloud)
+            import requests
+            import json
             
-            # For now, use fallback since we can't easily call LLM from subprocess
-            return self._fallback_gap_analysis(research_item)
+            openai_base = env_vars.get("OPENAI_BASE_URL", "http://127.0.0.1:11434/v1")
+            openai_key = env_vars.get("OPENAI_API_KEY", "ollama")
+            model = env_vars.get("ATE_MODEL", "deepseek-v4-flash:cloud")
+            
+            response = requests.post(
+                f"{openai_base}/chat/completions",
+                headers={
+                    "Authorization": f"Bearer {openai_key}",
+                    "Content-Type": "application/json"
+                },
+                json={
+                    "model": model,
+                    "messages": [
+                        {"role": "system", "content": "You are a Knowledge Tree Architect. Output only valid JSON array of gap objects."},
+                        {"role": "user", "content": prompt}
+                    ],
+                    "temperature": 0.2,
+                    "max_tokens": 4000
+                },
+                timeout=120
+            )
+            
+            if response.status_code == 200:
+                result = response.json()
+                content = result["choices"][0]["message"]["content"].strip()
+                # Parse JSON from response
+                try:
+                    gaps = json.loads(content)
+                    if isinstance(gaps, list) and len(gaps) > 0:
+                        print(f"  ✅ LLM gap analysis: {len(gaps)} gaps identified")
+                        return gaps
+                except json.JSONDecodeError:
+                    print(f"  ⚠️ LLM returned non-JSON, using fallback")
+            else:
+                print(f"  ⚠️ LLM API error: {response.status_code} - {response.text}")
+                
         except Exception as e:
             print(f"  ⚠️ LLM analysis failed: {e}")
         

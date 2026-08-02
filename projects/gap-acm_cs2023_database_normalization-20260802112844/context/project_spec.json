@@ -1,0 +1,17 @@
+{
+  "project_slug": "gap-acm_cs2023_database_normalization-20260802112844",
+  "source_research": "acm_cs2023-database-normalization-20260802102635-b7e06557",
+  "source_type": "standards",
+  "gap_analysis": {
+    "gap_type": "missing_concept",
+    "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+    "suggested_name": "ACM CS2023 Database Normalization Concepts",
+    "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+    "cs2023_ka": "SPD,AI,SEP",
+    "parent_suggestion": "CAT-EMERGING_TECH",
+    "confidence": 70,
+    "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+  },
+  "created_at": "2026-08-02T11:28:44.786895+00:00",
+  "status": "scaffolded"
+}

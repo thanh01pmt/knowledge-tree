@@ -1,0 +1,17 @@
+{
+  "project_slug": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802112844",
+  "source_research": "acm_cs2023-bubble-sort-&-insertion-sort-20260802102635-32f2830d",
+  "source_type": "standards",
+  "gap_analysis": {
+    "gap_type": "missing_concept",
+    "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+    "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+    "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+    "cs2023_ka": "SPD,AI,SEP",
+    "parent_suggestion": "CAT-EMERGING_TECH",
+    "confidence": 70,
+    "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+  },
+  "created_at": "2026-08-02T11:28:44.852702+00:00",
+  "status": "scaffolded"
+}

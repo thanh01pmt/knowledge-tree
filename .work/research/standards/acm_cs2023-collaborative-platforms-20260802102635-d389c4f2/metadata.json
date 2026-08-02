@@ -4,10 +4,10 @@
   "title": "Standards Gap: ACM_CS2023 - Collaborative Platforms",
   "context_path": ".work/research/standards/acm_cs2023-collaborative-platforms-20260802102635-d389c4f2",
   "priority": "high",
-  "status": "pending",
+  "status": "processed",
   "created_at": "2026-08-02T10:26:35.852204+00:00",
-  "processed_at": null,
-  "project_slug": null,
+  "processed_at": "2026-08-02T11:28:43.994762+00:00",
+  "project_slug": "gap-acm_cs2023_collaborative_platforms-20260802112843",
   "error_message": null,
   "extra": {
     "framework": "ACM_CS2023",
