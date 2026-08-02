@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-08-02T09:57:55.150051+00:00",
+  "processed": 2,
+  "projects_created": 2,
+  "pipeline_results": [
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802095755",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802095755",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802095751-a798aede",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802095752-f0ca20c7",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    }
+  ]
+}

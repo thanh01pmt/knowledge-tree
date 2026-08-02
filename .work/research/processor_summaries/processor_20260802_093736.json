@@ -1,0 +1,57 @@
+{
+  "timestamp": "2026-08-02T09:37:36.269414+00:00",
+  "processed": 2,
+  "projects_created": 2,
+  "pipeline_results": [
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802093736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802093736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802093213-c2509fe3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802093213-777da162",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    }
+  ]
+}

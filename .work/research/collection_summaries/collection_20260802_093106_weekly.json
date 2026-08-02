@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-08-02T09:31:05.982819+00:00",
+  "schedule": "weekly",
+  "sources": [
+    "standards"
+  ],
+  "results": {
+    "standards": {
+      "source": "standards",
+      "collected": 0,
+      "pending": 0,
+      "items": [],
+      "timestamp": "2026-08-02T09:31:06.070720+00:00"
+    }
+  }
+}

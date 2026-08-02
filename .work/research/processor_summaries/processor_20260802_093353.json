@@ -1,0 +1,55 @@
+{
+  "timestamp": "2026-08-02T09:33:53.540633+00:00",
+  "processed": 2,
+  "projects_created": 2,
+  "pipeline_results": [
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802093353",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "Pipeline script not found: /opt/data/my-projects/knowledge-tree/.agents/skills/knowledge-researcher/scripts/run_autonomous_pipeline.py"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802093353",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "Pipeline script not found: /opt/data/my-projects/knowledge-tree/.agents/skills/knowledge-researcher/scripts/run_autonomous_pipeline.py"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802093213-0d393971",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802093213-35296393",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    }
+  ]
+}

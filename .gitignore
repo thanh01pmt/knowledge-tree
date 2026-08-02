@@ -13,7 +13,7 @@ docs/
 node_modules/
 
 # Generated/work files
-.work/
+# .work/  # Allow tracking research data
 *.db
 *.log
 *.backup

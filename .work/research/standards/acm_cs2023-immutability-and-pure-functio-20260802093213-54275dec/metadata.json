@@ -1,0 +1,20 @@
+{
+  "id": "acm_cs2023-immutability-and-pure-functio-20260802093213-54275dec",
+  "source": "standards",
+  "title": "Standards Gap: ACM_CS2023 - Immutability and Pure Functions",
+  "context_path": ".work/research/standards/acm_cs2023-immutability-and-pure-functio-20260802093213-54275dec",
+  "priority": "high",
+  "status": "pending",
+  "created_at": "2026-08-02T09:32:13.039001+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "framework": "ACM_CS2023",
+    "theme": "Immutability and Pure Functions",
+    "band": "Secondary",
+    "gap_type": "missing_concept",
+    "crosswalk_dir": "/opt/data/my-projects/knowledge-tree/.work/research/standards/crosswalk_acm_cs2023_20260802_093212",
+    "description": "Immutability and Pure Functions: unique_to_reference"
+  }
+}

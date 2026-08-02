@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-08-02T09:43:03.698555+00:00",
+  "processed": 3,
+  "projects_created": 3,
+  "pipeline_results": [
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802094303",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802094303",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802094303",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "acm_cs2023-malware-types-20260802093213-4fd20f30",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802093213-083d6c20",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802093213-13447110",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    }
+  ]
+}

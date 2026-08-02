@@ -1,0 +1,81 @@
+{
+  "timestamp": "2026-08-02T09:43:14.090179+00:00",
+  "processed": 3,
+  "projects_created": 3,
+  "pipeline_results": [
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802094314",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802094314",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802094314",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802093310-f2c71f38",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802093311-eafe6c6b",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802093310-cf229891",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    }
+  ]
+}
