@@ -45,10 +45,10 @@ description: Run this workflow to execute the entire Knowledge Tree pipeline aut
 3. On success: `mapping-plan-approved.md` is created. Use THIS file for the next step.
 
 ## Step 4: Build Tree
+Since `assemble_project.py` reads from `mapping-plan.md` by default, we must rename the approved plan first.
 ```bash
-python3 .agents/skills/tree-assembler/scripts/build_tree.py \
-  --project <slug> \
-  --plan projects/<slug>/.work/mapping-plan-approved.md
+mv projects/<slug>/.work/mapping-plan-approved.md projects/<slug>/.work/mapping-plan.md
+python3 .agents/skills/tree-assembler/scripts/assemble_project.py --project <slug>
 ```
 
 ## Step 5: Generate ULOs + Judge Checkpoint
@@ -60,10 +60,10 @@ python3 .agents/skills/tree-assembler/scripts/build_tree.py \
 2. **Judge checkpoint** — evaluate ULO quality:
    ```bash
    python3 .agents/skills/taxonomy-mapper/scripts/agent_as_judge.py \
-     --artifact projects/<slug>/.work/phase_ulos.json \
+     --artifact projects/<slug>/.work/hlo/ulos.json \
      --stage ulo
    ```
-3. If Judge rejects: read feedback, fix `phase_ulos.json`, re-run judge (max 3 retries).
+3. If Judge rejects: read feedback, fix `hlo/ulos.json`, re-run judge (max 3 retries).
 
 ## Step 6: Generate CIOs + Judge Checkpoint
 1. Generate CIOs:
@@ -74,10 +74,10 @@ python3 .agents/skills/tree-assembler/scripts/build_tree.py \
 2. **Judge checkpoint** — evaluate CIO quality (Marr 2-Language Test):
    ```bash
    python3 .agents/skills/taxonomy-mapper/scripts/agent_as_judge.py \
-     --artifact projects/<slug>/.work/phase_cios.json \
+     --artifact projects/<slug>/.work/hlo/cios.json \
      --stage cio
    ```
-3. If Judge rejects: read feedback, fix `phase_cios.json`, re-run judge (max 3 retries).
+3. If Judge rejects: read feedback, fix `hlo/cios.json`, re-run judge (max 3 retries).
 
 ## Step 7: Generate SIOs + Merge
 SIOs are technology-specific (T6 does NOT apply), so no Judge checkpoint needed.
