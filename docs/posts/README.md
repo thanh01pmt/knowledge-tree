@@ -62,7 +62,12 @@ Chào mừng bạn đến với bộ sưu tập các bài viết phân tích chu
 ### 9. [Giao Thoa STEAM: Chữ 'A' (Arts) Trong Đồ Họa, Tư Duy Thiết Kế Và Nghệ Thuật Thuật Toán](./steam_arts_design_thinking_generative_art.md)
 * **Chủ đề:** STEAM Education, Arts in STEM, Design Thinking, Generative Art, Creative Coding, WCAG Accessibility.
 * **Tóm tắt:** Phân tích vị trí của nhánh Arts trong mô hình STEAM, bao gồm 5 bước Tư duy Thiết kế (Design Thinking HCD), Thẩm mỹ Đồ họa (Color/Typography/Grid), Nghệ thuật Thuật toán (Generative Art / Perlin Noise) và Thiết kế Tiếp cận Hòa nhập (Inclusive UX / WCAG).
-* **Link:** [`steam_arts_design_thinking_generative_art.md`](./steam_arts_design_thinking_generative_art.md)
+---
+
+### 10. [Các Biên Giới Mới Trong Khoa Học Máy Tính: Điện Toán Mô Phỏng Sinh Học, Kiểm Chứng Hình Thức Và Hệ Thống Tự Chủ](./frontier_computer_science_domains_2026.md)
+* **Chủ đề:** Bio-Inspired Computing, Neuromorphic Chips, Formal Verification, Speech & NLP, Autonomous Drones, Sensor Fusion.
+* **Tóm tắt:** Phân tích 4 biên giới mới của CS năm 2026: Chip nơ-ron vi mạch (Spiking Neurons SNNs), Kiểm chứng phần mềm hình thức (Model Checking & Type Safety), Xử lý Tiếng nói STT/TTS & Cú pháp NLP, cùng Hệ thống Tự chủ Tự điều hướng Hợp nhất Đa Cảm biến (LiDAR/Kalman Filter).
+* **Link:** [`frontier_computer_science_domains_2026.md`](./frontier_computer_science_domains_2026.md)
 
 ---
 Tất cả các bài viết trong series đều đi kèm **Sơ đồ Mermaid rendered trực quan**, **Mã nguồn/Khái niệm 100% Trung tính T6** và **Link dẫn chứng tham chiếu từ các tổ chức hàn lâm uy tín** (ACM, IEEE, NIST, Stanford, MIT, CSTA, College Board).

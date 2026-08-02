@@ -5510,6 +5510,126 @@
       ],
       "keywords": "inclusive design, WCAG, accessibility, POUR principles, contrast ratio",
       "metadata": "{\"steam_domain\": \"Arts\", \"csta_strand\": \"IC-2\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "NEUROMORPHIC_COMPUTING_SPIKING_NEURONS",
+      "name": "Neuromorphic Computing and Spiking Neurons",
+      "description": "Nguyên lý điện toán mô phỏng mạng thần kinh sinh học với mô hình nơ-ron xung (Spiking Neural Networks) và xử lý dựa trên sự kiện.",
+      "parent_or_relation": "EDGE_AI_PROCESSING, GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING",
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "neuromorphic computing, spiking neural networks, SNN, event-based processing, bio-inspired",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "SWARM_INTELLIGENCE_OPTIMIZATION",
+      "name": "Swarm Intelligence and Collective Behavior",
+      "description": "Giải thuật tối ưu hóa dựa trên trí tuệ bầy đàn trong tự nhiên (Ant Colony, Particle Swarm Optimization) áp dụng cho hệ thống tự chủ.",
+      "parent_or_relation": "ALGO_STRATEGIES, SUPERVISED_LEARNING",
+      "parent_codes": [
+        "ALGO_STRATEGIES",
+        "SUPERVISED_LEARNING"
+      ],
+      "keywords": "swarm intelligence, PSO, ant colony optimization, collective behavior",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "FORMAL_PROGRAM_VERIFICATION",
+      "name": "Formal Program Verification and Model Checking",
+      "description": "Phương pháp chứng minh tính đúng đắn toán học của phần mềm bằng lý thuyết hình thức, kiểm tra mô hình (Model Checking) và chứng minh định lý.",
+      "parent_or_relation": "UNIT_INTEGRATION_TESTING, DEBUGGING_TECH",
+      "parent_codes": [
+        "UNIT_INTEGRATION_TESTING",
+        "DEBUGGING_TECH"
+      ],
+      "keywords": "formal verification, model checking, theorem proving, program correctness",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "TYPE_SYSTEMS_AND_SAFETY",
+      "name": "Type Systems and Type Safety Theory",
+      "description": "Lý thuyết kiểu dữ liệu, kiểm tra kiểu tĩnh và động (Static vs. Dynamic Typing), suy luận kiểu (Type Inference) và tính an toàn của hệ thống kiểu.",
+      "parent_or_relation": "PRIMITIVE_TYPES, REFERENCE_TYPES",
+      "parent_codes": [
+        "PRIMITIVE_TYPES",
+        "REFERENCE_TYPES"
+      ],
+      "keywords": "type systems, static typing, dynamic typing, type safety, type inference",
+      "metadata": "{\"csta_strand\": \"AP-2\", \"csta_level\": \"2,3A,3B\", \"ap_csp\": \"AAP-1\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "STATIC_PROGRAM_ANALYSIS",
+      "name": "Static Program Analysis and Abstract Interpretation",
+      "description": "Phương pháp phân tích tĩnh mã nguồn không cần thực thi để phát hiện lỗi logic, bộ nhớ và rủi ro an toàn phần mềm.",
+      "parent_or_relation": "DEBUGGING_TECH, UNIT_INTEGRATION_TESTING",
+      "parent_codes": [
+        "DEBUGGING_TECH",
+        "UNIT_INTEGRATION_TESTING"
+      ],
+      "keywords": "static program analysis, AST parsing, code linting, abstract interpretation",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Analyze\"}"
+    },
+    {
+      "code": "COMPUTER_VISION_FEATURE_EXTRACTION",
+      "name": "Computer Vision Feature Extraction and Segmentation",
+      "description": "Kỹ thuật trích xuất đặc trưng hình ảnh (Edge Detection, Corner Detection) và phân đoạn hình ảnh ngữ nghĩa (Semantic Segmentation).",
+      "parent_or_relation": "RASTER_GRAPHICS_CONCEPTS, GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "RASTER_GRAPHICS_CONCEPTS",
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "computer vision, feature extraction, edge detection, semantic segmentation",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "SPEECH_RECOGNITION_AND_SYNTHESIS",
+      "name": "Speech Recognition and Acoustic Synthesis",
+      "description": "Nguyên lý chuyển đổi tiếng nói thành văn bản (Speech-to-Text) và tổng hợp tiếng nói (Text-to-Speech) dựa trên mô hình hóa phổ âm thanh.",
+      "parent_or_relation": "DIGITAL_SIGNAL_PROCESSING_TOPIC, GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "DIGITAL_SIGNAL_PROCESSING_TOPIC",
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "speech recognition, STT, TTS, acoustic modeling, Mel-spectrogram",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "NATURAL_LANGUAGE_PARSING",
+      "name": "Natural Language Parsing and Machine Translation",
+      "description": "Kỹ thuật phân tích cú pháp ngôn ngữ tự nhiên (Syntactic Parsing), gắn nhãn từ loại và chuyển đổi ngôn ngữ dựa trên mô hình ngữ nghĩa.",
+      "parent_or_relation": "GENERATIVE_AI_MODELS, ALGO_STRATEGIES",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS",
+        "ALGO_STRATEGIES"
+      ],
+      "keywords": "natural language parsing, NLP, POS tagging, machine translation, syntax tree",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "MULTI_SENSOR_FUSION_ALGORITHMS",
+      "name": "Multi-Sensor Fusion and State Estimation",
+      "description": "Giải thuật hợp nhất dữ liệu từ nhiều cảm biến (LiDAR, Radar, Camera, IMU) bằng bộ lọc Kalman để ước lượng trạng thái môi trường.",
+      "parent_or_relation": "SENSOR_TYPES, ROBOTIC_NAVIGATION_AND_PLANNING",
+      "parent_codes": [
+        "SENSOR_TYPES",
+        "ROBOTIC_NAVIGATION_AND_PLANNING"
+      ],
+      "keywords": "sensor fusion, Kalman filter, LiDAR, IMU, state estimation",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "AUTONOMOUS_DRONE_NAVIGATION",
+      "name": "Autonomous Vehicle and Drone Navigation",
+      "description": "Hệ thống tự điều hướng, tránh chướng ngại vật thời gian thực và tự chủ di chuyển cho phương tiện tự lái và thiết bị bay không người lái.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING, ACTUATOR_CONTROL",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING",
+        "ACTUATOR_CONTROL"
+      ],
+      "keywords": "autonomous navigation, drone control, self-driving, obstacle avoidance",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
     }
   ]
 }
