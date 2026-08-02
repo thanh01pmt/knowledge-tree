@@ -1,0 +1,105 @@
+{
+  "source": "/Users/tonypham/MEGA/WebApp/content-gen/knowledge-tree/projects/swift-associate/context/Apple Associate - Objective Domains_0125.pdf",
+  "source_type": "pdf",
+  "total_nodes": 12,
+  "hierarchy": [
+    {
+      "text": "App Development",
+      "source_ref": "p.1",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": []
+    },
+    {
+      "text": "with Swift",
+      "source_ref": "p.1",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": []
+    },
+    {
+      "text": "Associate",
+      "source_ref": "p.1",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": []
+    },
+    {
+      "text": "Objective Domains",
+      "source_ref": "p.1",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": [
+        {
+          "text": "impact of computing and apps on society, economies, and cultures while exploring app development.",
+          "source_ref": "p.1",
+          "assigned_level": "concept",
+          "confidence": 0.5,
+          "reasoning": "",
+          "children": []
+        },
+        {
+          "text": "Planning and DesignSwift Language Usage",
+          "source_ref": "p.1",
+          "assigned_level": "concept",
+          "confidence": 0.5,
+          "reasoning": "",
+          "children": []
+        },
+        {
+          "text": "XCode Project Navigation",
+          "source_ref": "p.1",
+          "assigned_level": "concept",
+          "confidence": 0.5,
+          "reasoning": "",
+          "children": []
+        }
+      ]
+    },
+    {
+      "text": "App Development",
+      "source_ref": "p.2",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": []
+    },
+    {
+      "text": "with Swift",
+      "source_ref": "p.2",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": []
+    },
+    {
+      "text": "Associate",
+      "source_ref": "p.2",
+      "assigned_level": "concept",
+      "confidence": 0.5,
+      "reasoning": "",
+      "children": [
+        {
+          "text": "Swift Language Usage (Continued) View Building with SwiftUI",
+          "source_ref": "p.2",
+          "assigned_level": "concept",
+          "confidence": 0.5,
+          "reasoning": "",
+          "children": []
+        },
+        {
+          "text": "Debugging",
+          "source_ref": "p.2",
+          "assigned_level": "concept",
+          "confidence": 0.5,
+          "reasoning": "",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

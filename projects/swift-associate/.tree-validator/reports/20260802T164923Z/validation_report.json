@@ -1,0 +1,3780 @@
+{
+  "generated_at": "2026-08-02T16:49:23.394491+00:00",
+  "summary": {
+    "status": "FAIL",
+    "total_issues": 423,
+    "errors": 374,
+    "warnings": 49,
+    "by_rule": {
+      "BROKEN_REFERENCE": 187,
+      "LO_CONCEPT_NOT_IN_PROJECT": 187,
+      "LO_CONCEPT_UNCOVERED": 10,
+      "CIO_INSUFFICIENT_SIO": 28,
+      "LO_DESCRIPTION_PREFIX": 1,
+      "ORPHAN_NODE": 10
+    },
+    "by_level": {
+      "learning_objectives": {
+        "ERROR": 374,
+        "WARNING": 29
+      },
+      "concepts": {
+        "ERROR": 0,
+        "WARNING": 20
+      }
+    },
+    "node_counts": {
+      "fields": 5,
+      "subjects": 12,
+      "categories": 25,
+      "topics": 36,
+      "concepts": 39,
+      "learning_objectives": 547
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_HIERARCHY_VIOLATION": "Vi phạm Tri-Level [T6]: CIO phải là con của ULO, SIO phải là con của CIO",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu",
+    "LO_DESCRIPTION_PREFIX": "Mô tả LO không bắt đầu bằng 'Người học có khả năng'",
+    "LO_INVALID_KNOWLEDGE_DIMENSION": "knowledge_dimension không thuộc tập giá trị cho phép",
+    "LO_INVALID_BLOOM_LEVEL": "bloom_level không thuộc tập giá trị cho phép",
+    "LO_MISSING_ASSESSMENT_APPROACH": "ULO/CIO thiếu assessment_approach (Rule 7: đánh giá trực tiếp bắt buộc)",
+    "LO_UNUSUAL_BLOOM_KD_COMBO": "Kết hợp Bloom Level + Knowledge Dimension ít phổ biến sư phạm",
+    "MISSING_SEQUENCE_ORDER": "Thiếu cột sequence_order (Doc Chương 2.4: bảng N:N cần thứ tự sư phạm)",
+    "LO_PREREQ_MISSING_COLUMNS": "lo_prerequisites.tsv thiếu cột bắt buộc",
+    "LO_PREREQ_BROKEN_TARGET": "learning_objective_code trong prerequisites không tồn tại",
+    "LO_PREREQ_BROKEN_PREREQ": "prerequisite_lo_code trong prerequisites không tồn tại",
+    "LO_PREREQ_SELF_REF": "LO không thể là prerequisite của chính nó",
+    "LO_PREREQ_READ_FAILED": "Lỗi đọc lo_prerequisites.tsv"
+  },
+  "issues": [
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROJECT_ASSETS_MANAGEMENT-01",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DECLARATIVE_UI_PARADIGM-03",
+      "message": "'DECLARATIVE_UI_PARADIGM' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-UI_MODIFIERS_CONCEPT-03",
+      "message": "'UI_MODIFIERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-EVENT_HANDLERS_CONCEPT-02",
+      "message": "'EVENT_HANDLERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-STATE_PROPERTY_WRAPPER-02",
+      "message": "'STATE_PROPERTY_WRAPPER' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
+      "message": "'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-VIEW_TRANSITIONS-01",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-VIEW_TRANSITIONS-02",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-MALWARE_TYPES_CONCEPT-01",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-MALWARE_TYPES_CONCEPT-02",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-UI_BOX_MODEL_LAYOUT-01",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-UI_BOX_MODEL_LAYOUT-02",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-UI_BOX_MODEL_LAYOUT-03",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-SCREEN_READERS-01",
+      "message": "'SCREEN_READERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SCREEN_READERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-SCREEN_READERS-02",
+      "message": "'SCREEN_READERS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SCREEN_READERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PASSWORD_STRENGTH_CONCEPT-01",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PASSWORD_STRENGTH_CONCEPT-02",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PASSWORD_STRENGTH_CONCEPT-03",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROTOTYPING-01",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROTOTYPING-02",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-PROTOTYPING-03",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DIGITAL_IDENTITY-01",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DIGITAL_IDENTITY-02",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-DIGITAL_IDENTITY-03",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-FLEXBOX_GRID_LAYOUT-01",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-FLEXBOX_GRID_LAYOUT-02",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-FLEXBOX_GRID_LAYOUT-03",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-CROSS_ORIGIN_SECURITY-01",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-CROSS_ORIGIN_SECURITY-02",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "ULO-CROSS_ORIGIN_SECURITY-03",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-01",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-01",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-02",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARATIVE_UI_PARADIGM-03",
+      "message": "'DECLARATIVE_UI_PARADIGM' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_MODIFIERS_CONCEPT-03",
+      "message": "'UI_MODIFIERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-EVENT_HANDLERS_CONCEPT-02",
+      "message": "'EVENT_HANDLERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-STATE_PROPERTY_WRAPPER-02",
+      "message": "'STATE_PROPERTY_WRAPPER' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-03",
+      "message": "'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-01",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-02",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-03",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-04",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-01",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-02",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-01-DUP2",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-02-DUP2",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-01",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-02",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-03",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-04",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-05",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-06",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-01",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-02",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-03",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-04",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-05",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-06",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-01",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-02",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-02-01",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-02-02",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-03-01",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-03-02",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-01",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-02",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-03",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-04",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-05",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-06",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-01",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-02",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-03",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-04",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-05",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-06",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-01",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-02",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-01-DUP2",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-02-DUP2",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-03",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-04",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_ASSET_BY_TYPE",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-IDENTIFY_ASSET_TYPE_BY_EXTENSION",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADD_IMAGE_TO_ASSET_CATALOG",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADD_COLOR_SET_TO_ASSET_CATALOG",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-REFERENCE_IMAGE_BY_NAME",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-REFERENCE_COLOR_BY_NAME",
+      "message": "'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DIFFERENTIATE_DECLARATIVE_IMPERATIVE",
+      "message": "'DECLARATIVE_UI_PARADIGM' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONVERT_UIKIT_TO_SWIFTUI",
+      "message": "'DECLARATIVE_UI_PARADIGM' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-APPLY_MODIFIER_CHAIN_TEXT",
+      "message": "'UI_MODIFIERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-APPLY_MODIFIER_CHAIN_IMAGE",
+      "message": "'UI_MODIFIERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ATTACH_ACTION_TO_BUTTON",
+      "message": "'EVENT_HANDLERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ATTACH_ACTION_TO_TOGGLE",
+      "message": "'EVENT_HANDLERS_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DECLARE_STATE_PROPERTY",
+      "message": "'STATE_PROPERTY_WRAPPER' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-UPDATE_STATE_VIA_INTERACTION",
+      "message": "'STATE_PROPERTY_WRAPPER' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DIFFERENTIATE_SYNTAX_RUNTIME",
+      "message": "'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_ERROR_FROM_CODE",
+      "message": "'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_TRANSITION_PURPOSE",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_TRANSITION_TYPE",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_TRANSITION_SPEED",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_TRANSITION_SMOOTHNESS",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_TRANSITION_FOR_NAVIGATION",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_TRANSITION_FOR_ALERT",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CREATE_FADE_TRANSITION",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CREATE_SLIDE_TRANSITION",
+      "message": "'VIEW_TRANSITIONS' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SIMULATE_WORM_SPREAD",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_WORM_VIRUS",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_MALWARE_BY_TARGET",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SIMULATE_RANSOMWARE_ENCRYPTION",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_INFECTION_VECTOR_EMAIL",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE_POST_INFECTION_BEHAVIOR",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_MALWARE_BY_IMPACT",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SCORE_MALWARE_SEVERITY",
+      "message": "'MALWARE_TYPES_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_PADDING_EFFECT",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_BORDER_EFFECT",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_CONTENT_BOX",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_BORDER_BOX",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_ACCUMULATED_SIZE",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_STACK_SIZE",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_BORDER_BOX_FRAME",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_FIXED_SIZE",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_SPACING_COLLAPSE",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_NESTED_PADDING",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_OVERLAP_PADDING",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_OVERLAP_BORDER",
+      "message": "'UI_BOX_MODEL_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LIST_CRITERIA_BY_CATEGORY",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CATEGORIZE_CRITERIA_WITH_ENUM",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PRIORITIZE_CRITERIA_WITH_DICTIONARY",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PRIORITIZE_WITH_ENUM_COMPARABLE",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-GENERATE_RANDOM_PASSWORD",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-GENERATE_PASSWORD_WITH_REQUIRED_TYPES",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRANSFORM_PASSPHRASE",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRANSFORM_WITH_RULESET",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SCORE_PASSWORD",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SCORE_WITH_WEIGHTED_CRITERIA",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_WITH_COMMON_PASSWORDS",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_WITH_PATTERNS",
+      "message": "'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DISTINGUISH_PROTOTYPE_FIDELITY_PURPOSE",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_PROTOTYPE_FIDELITY_BY_GOAL",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_PROTOTYPE_FIDELITY_FEATURES",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONTRAST_PROTOTYPE_FIDELITY_UX",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-BUILD_INTERACTION_FLOW",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONNECT_VIEWS_WITH_BINDING",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SIMULATE_UI_FEEDBACK",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADD_STATE_CHANGES_WITH_ANIMATION",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_USER_FEEDBACK",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-IDENTIFY_UX_ISSUES_FROM_FEEDBACK",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADJUST_PROTOTYPE_BASED_ON_CRITERIA",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PRIORITIZE_CHANGES_IN_PROTOTYPE",
+      "message": "'PROTOTYPING' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-MODEL_DIGITAL_IDENTITY",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ENUM_IDENTITY_COMPONENTS",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_IDENTITY_INFO",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SWITCH_IDENTITY_CLASSIFICATION",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_CAREER_OPPORTUNITY",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CORRELATION_ANALYSIS",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-RISK_ASSESSMENT_ENUM",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-INCONSISTENCY_DETECTION",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRATEGY_COMPARISON_PROTOCOL",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRATEGY_ITERATION",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EFFECTIVENESS_SCORE",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-GOAL_MAPPING",
+      "message": "'DIGITAL_IDENTITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DISTINGUISH_1D_2D_LAYOUT",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_1D_2D_BEHAVIOR",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_LAYOUT_FOR_NAV",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_LAYOUT_FOR_GRID",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ALIGN_ITEMS_HSTACK",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONFIGURE_GRID_ALIGNMENT",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DISTRIBUTE_SPACE_HSTACK",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-USE_FRAME_FOR_SIZING",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-NEST_HSTACK_IN_GRID",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-NEST_VSTACK_IN_HGRID",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_NESTED_LAYOUT",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DECOMPOSE_COMPLEX_LAYOUT",
+      "message": "'FLEXBOX_GRID_LAYOUT' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DESCRIBE_SAME_ORIGIN_POLICY",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EXPLAIN_CORS_BLOCKING",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_CSRF_THREAT",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_XSS_THREAT",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONFIGURE_CORS_HEADERS",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SET_ALLOWED_ORIGINS",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-VALIDATE_ORIGIN_HEADER",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-APPLY_DYNAMIC_CORS",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ASSESS_RESOURCE_SENSITIVITY",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EVALUATE_TRUST_LEVEL",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_ATTACK_SCENARIOS",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "BROKEN_REFERENCE",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_OVERLY_PERMISSIVE_CORS",
+      "message": "'CROSS_ORIGIN_SECURITY' không tồn tại trong bảng cha.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PROJECT_ASSETS_MANAGEMENT-01",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PROJECT_ASSETS_MANAGEMENT-03",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-DECLARATIVE_UI_PARADIGM-03",
+      "message": "concept_code 'DECLARATIVE_UI_PARADIGM' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-UI_MODIFIERS_CONCEPT-03",
+      "message": "concept_code 'UI_MODIFIERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-EVENT_HANDLERS_CONCEPT-02",
+      "message": "concept_code 'EVENT_HANDLERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-STATE_PROPERTY_WRAPPER-02",
+      "message": "concept_code 'STATE_PROPERTY_WRAPPER' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-SYNTAX_VS_RUNTIME_ERRORS-03",
+      "message": "concept_code 'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-VIEW_TRANSITIONS-01",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-VIEW_TRANSITIONS-02",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-MALWARE_TYPES_CONCEPT-01",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-MALWARE_TYPES_CONCEPT-02",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-UI_BOX_MODEL_LAYOUT-01",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-UI_BOX_MODEL_LAYOUT-02",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-UI_BOX_MODEL_LAYOUT-03",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-SCREEN_READERS-01",
+      "message": "concept_code 'SCREEN_READERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SCREEN_READERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-SCREEN_READERS-02",
+      "message": "concept_code 'SCREEN_READERS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SCREEN_READERS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PASSWORD_STRENGTH_CONCEPT-01",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PASSWORD_STRENGTH_CONCEPT-02",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PASSWORD_STRENGTH_CONCEPT-03",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PROTOTYPING-01",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PROTOTYPING-02",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-PROTOTYPING-03",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-DIGITAL_IDENTITY-01",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-DIGITAL_IDENTITY-02",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-DIGITAL_IDENTITY-03",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-FLEXBOX_GRID_LAYOUT-01",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-FLEXBOX_GRID_LAYOUT-02",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-FLEXBOX_GRID_LAYOUT-03",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-CROSS_ORIGIN_SECURITY-01",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-CROSS_ORIGIN_SECURITY-02",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "ULO-CROSS_ORIGIN_SECURITY-03",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-01",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-01",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROJECT_ASSETS_MANAGEMENT-03-02",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DECLARATIVE_UI_PARADIGM-03",
+      "message": "concept_code 'DECLARATIVE_UI_PARADIGM' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_MODIFIERS_CONCEPT-03",
+      "message": "concept_code 'UI_MODIFIERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-EVENT_HANDLERS_CONCEPT-02",
+      "message": "concept_code 'EVENT_HANDLERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-STATE_PROPERTY_WRAPPER-02",
+      "message": "concept_code 'STATE_PROPERTY_WRAPPER' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_VS_RUNTIME_ERRORS-03",
+      "message": "concept_code 'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-01",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-02",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-03",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-VIEW_TRANSITIONS-04",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-01",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-02",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-01-DUP2",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-02-DUP2",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-01",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-02",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-03",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-04",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-05",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-UI_BOX_MODEL_LAYOUT-06",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-01",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-02",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-03",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-04",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-05",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PASSWORD_STRENGTH_CONCEPT-06",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-01",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-02",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-02-01",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-02-02",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-03-01",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-PROTOTYPING-03-02",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-01",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-02",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-03",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-04",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-05",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-DIGITAL_IDENTITY-06",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-01",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-02",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-03",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-04",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-05",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-FLEXBOX_GRID_LAYOUT-06",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-01",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-02",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-01-DUP2",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-02-DUP2",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-03",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-04",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_ASSET_BY_TYPE",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-IDENTIFY_ASSET_TYPE_BY_EXTENSION",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADD_IMAGE_TO_ASSET_CATALOG",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADD_COLOR_SET_TO_ASSET_CATALOG",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-REFERENCE_IMAGE_BY_NAME",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-REFERENCE_COLOR_BY_NAME",
+      "message": "concept_code 'PROJECT_ASSETS_MANAGEMENT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROJECT_ASSETS_MANAGEMENT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DIFFERENTIATE_DECLARATIVE_IMPERATIVE",
+      "message": "concept_code 'DECLARATIVE_UI_PARADIGM' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONVERT_UIKIT_TO_SWIFTUI",
+      "message": "concept_code 'DECLARATIVE_UI_PARADIGM' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DECLARATIVE_UI_PARADIGM"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-APPLY_MODIFIER_CHAIN_TEXT",
+      "message": "concept_code 'UI_MODIFIERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-APPLY_MODIFIER_CHAIN_IMAGE",
+      "message": "concept_code 'UI_MODIFIERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_MODIFIERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ATTACH_ACTION_TO_BUTTON",
+      "message": "concept_code 'EVENT_HANDLERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ATTACH_ACTION_TO_TOGGLE",
+      "message": "concept_code 'EVENT_HANDLERS_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "EVENT_HANDLERS_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DECLARE_STATE_PROPERTY",
+      "message": "concept_code 'STATE_PROPERTY_WRAPPER' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-UPDATE_STATE_VIA_INTERACTION",
+      "message": "concept_code 'STATE_PROPERTY_WRAPPER' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "STATE_PROPERTY_WRAPPER"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DIFFERENTIATE_SYNTAX_RUNTIME",
+      "message": "concept_code 'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_ERROR_FROM_CODE",
+      "message": "concept_code 'SYNTAX_VS_RUNTIME_ERRORS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "SYNTAX_VS_RUNTIME_ERRORS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_TRANSITION_PURPOSE",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_TRANSITION_TYPE",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_TRANSITION_SPEED",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_TRANSITION_SMOOTHNESS",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_TRANSITION_FOR_NAVIGATION",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_TRANSITION_FOR_ALERT",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CREATE_FADE_TRANSITION",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CREATE_SLIDE_TRANSITION",
+      "message": "concept_code 'VIEW_TRANSITIONS' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "VIEW_TRANSITIONS"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SIMULATE_WORM_SPREAD",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_WORM_VIRUS",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_MALWARE_BY_TARGET",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SIMULATE_RANSOMWARE_ENCRYPTION",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_INFECTION_VECTOR_EMAIL",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRACE_POST_INFECTION_BEHAVIOR",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_MALWARE_BY_IMPACT",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SCORE_MALWARE_SEVERITY",
+      "message": "concept_code 'MALWARE_TYPES_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "MALWARE_TYPES_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_PADDING_EFFECT",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_BORDER_EFFECT",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_CONTENT_BOX",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_BORDER_BOX",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_ACCUMULATED_SIZE",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_STACK_SIZE",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_BORDER_BOX_FRAME",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CALCULATE_FIXED_SIZE",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_SPACING_COLLAPSE",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_NESTED_PADDING",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_OVERLAP_PADDING",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_OVERLAP_BORDER",
+      "message": "concept_code 'UI_BOX_MODEL_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "UI_BOX_MODEL_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-LIST_CRITERIA_BY_CATEGORY",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CATEGORIZE_CRITERIA_WITH_ENUM",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PRIORITIZE_CRITERIA_WITH_DICTIONARY",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PRIORITIZE_WITH_ENUM_COMPARABLE",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-GENERATE_RANDOM_PASSWORD",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-GENERATE_PASSWORD_WITH_REQUIRED_TYPES",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRANSFORM_PASSPHRASE",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-TRANSFORM_WITH_RULESET",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SCORE_PASSWORD",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SCORE_WITH_WEIGHTED_CRITERIA",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_WITH_COMMON_PASSWORDS",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_WITH_PATTERNS",
+      "message": "concept_code 'PASSWORD_STRENGTH_CONCEPT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PASSWORD_STRENGTH_CONCEPT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DISTINGUISH_PROTOTYPE_FIDELITY_PURPOSE",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_PROTOTYPE_FIDELITY_BY_GOAL",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_PROTOTYPE_FIDELITY_FEATURES",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONTRAST_PROTOTYPE_FIDELITY_UX",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-BUILD_INTERACTION_FLOW",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONNECT_VIEWS_WITH_BINDING",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SIMULATE_UI_FEEDBACK",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADD_STATE_CHANGES_WITH_ANIMATION",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_USER_FEEDBACK",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-IDENTIFY_UX_ISSUES_FROM_FEEDBACK",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ADJUST_PROTOTYPE_BASED_ON_CRITERIA",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-PRIORITIZE_CHANGES_IN_PROTOTYPE",
+      "message": "concept_code 'PROTOTYPING' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "PROTOTYPING"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-MODEL_DIGITAL_IDENTITY",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ENUM_IDENTITY_COMPONENTS",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CLASSIFY_IDENTITY_INFO",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SWITCH_IDENTITY_CLASSIFICATION",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_CAREER_OPPORTUNITY",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CORRELATION_ANALYSIS",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-RISK_ASSESSMENT_ENUM",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-INCONSISTENCY_DETECTION",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRATEGY_COMPARISON_PROTOCOL",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-STRATEGY_ITERATION",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EFFECTIVENESS_SCORE",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-GOAL_MAPPING",
+      "message": "concept_code 'DIGITAL_IDENTITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "DIGITAL_IDENTITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DISTINGUISH_1D_2D_LAYOUT",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_1D_2D_BEHAVIOR",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_LAYOUT_FOR_NAV",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SELECT_LAYOUT_FOR_GRID",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ALIGN_ITEMS_HSTACK",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONFIGURE_GRID_ALIGNMENT",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DISTRIBUTE_SPACE_HSTACK",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-USE_FRAME_FOR_SIZING",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-NEST_HSTACK_IN_GRID",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-NEST_VSTACK_IN_HGRID",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_NESTED_LAYOUT",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DECOMPOSE_COMPLEX_LAYOUT",
+      "message": "concept_code 'FLEXBOX_GRID_LAYOUT' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "FLEXBOX_GRID_LAYOUT"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-DESCRIBE_SAME_ORIGIN_POLICY",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EXPLAIN_CORS_BLOCKING",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_CSRF_THREAT",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_XSS_THREAT",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-CONFIGURE_CORS_HEADERS",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-SET_ALLOWED_ORIGINS",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-VALIDATE_ORIGIN_HEADER",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-APPLY_DYNAMIC_CORS",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ASSESS_RESOURCE_SENSITIVITY",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-EVALUATE_TRUST_LEVEL",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-COMPARE_ATTACK_SCENARIOS",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "ERROR",
+      "rule_id": "LO_CONCEPT_NOT_IN_PROJECT",
+      "level": "learning_objectives",
+      "code": "SIO-SWIFT-ANALYZE_OVERLY_PERMISSIVE_CORS",
+      "message": "concept_code 'CROSS_ORIGIN_SECURITY' không tồn tại trong concepts.tsv của project.",
+      "field": "concept_codes",
+      "ref": "CROSS_ORIGIN_SECURITY"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "LIST_OPERATIONS",
+      "message": "Concept 'List Operations' (LIST_OPERATIONS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "COPYRIGHT_CREATIVE_COMMONS",
+      "message": "Concept 'Copyright & Creative Commons' (COPYRIGHT_CREATIVE_COMMONS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "DESIGN_THINKING_PROCESS",
+      "message": "Concept 'Design Thinking & Human-Centered Innovation' (DESIGN_THINKING_PROCESS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "ASYNCHRONOUS_PROG_CONCEPT",
+      "message": "Concept 'Asynchronous Programming' (ASYNCHRONOUS_PROG_CONCEPT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "INHERITANCE_SYNTAX",
+      "message": "Concept 'Inheritance Syntax' (INHERITANCE_SYNTAX) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "LEVEL_LAYOUT",
+      "message": "Concept 'Level Layout Design' (LEVEL_LAYOUT) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "ACCESS_MODIFIERS",
+      "message": "Concept 'Access Modifiers' (ACCESS_MODIFIERS) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "TYPOGRAPHY_AND_VISUAL_HIERARCHY",
+      "message": "Concept 'Typography and Visual Hierarchy Systems' (TYPOGRAPHY_AND_VISUAL_HIERARCHY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "VERSION_CONTROL_WORKFLOW",
+      "message": "Concept 'Version Control Workflow' (VERSION_CONTROL_WORKFLOW) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_CONCEPT_UNCOVERED",
+      "level": "concepts",
+      "code": "INFORMATION_CREDIBILITY",
+      "message": "Concept 'Assessing Information Credibility' (INFORMATION_CREDIBILITY) không có LO nào trỏ đến trong learning-objectives.tsv."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-01-DUP2",
+      "message": "CIO 'So sánh dựa trên vector lây nhiễm và hành vi sau lây nhiễm (malware, worm, ransomware, security, virus)' (CIO-MALWARE_TYPES_CONCEPT-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-MALWARE_TYPES_CONCEPT-02-DUP2",
+      "message": "CIO 'Phân loại theo mục tiêu tấn công và mức độ ảnh hưởng (malware, worm, ransomware, security, virus)' (CIO-MALWARE_TYPES_CONCEPT-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-01",
+      "message": "CIO 'Sử dụng cấu trúc rẽ nhánh dựa trên giá trị của biểu thức (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-01) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-02",
+      "message": "CIO 'Sử dụng cấu trúc rẽ nhánh với trường hợp mặc định và nhiều giá trị (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-02) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-03",
+      "message": "CIO 'Phân tích hành vi fall-through và break (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-03) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SWITCH_CASE-04",
+      "message": "CIO 'Phân tích xử lý trường hợp không khớp (default) (branching, switch-case, multi-way, selection)' (CIO-SWITCH_CASE-04) chỉ có 1 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-AI_BIAS-01-DUP2",
+      "message": "CIO 'So sánh chiến lược giảm thiểu thiên vị theo tiêu chí (training data, fairness, AI bias, ethics)' (CIO-AI_BIAS-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-AI_BIAS-02-DUP2",
+      "message": "CIO 'Đề xuất chiến lược dựa trên phân tích bối cảnh (training data, fairness, AI bias, ethics)' (CIO-AI_BIAS-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-02",
+      "message": "CIO 'Nhận diện lỗi cú pháp qua mẫu cấu trúc (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-02) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-03",
+      "message": "CIO 'Xác định vị trí lỗi dựa trên thông báo lỗi (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-03) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-04",
+      "message": "CIO 'Sửa lỗi cú pháp bằng cách điều chỉnh cấu trúc (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-04) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-05",
+      "message": "CIO 'Áp dụng quy trình sửa lỗi từng bước (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-05) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-06",
+      "message": "CIO 'Phân tích nguyên nhân gốc rễ của lỗi cú pháp phức tạp (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-06) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-SYNTAX_ERRORS-07",
+      "message": "CIO 'So sánh lỗi cú pháp với lỗi logic để xác định bản chất (compiler error, syntax error, parsing)' (CIO-SYNTAX_ERRORS-07) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-01",
+      "message": "CIO 'Đồng bộ hóa dữ liệu giữa nguồn và giao diện theo cả hai hướng (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-01) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-02",
+      "message": "CIO 'Khai báo liên kết hai chiều giữa thuộc tính và biến (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-02) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-03",
+      "message": "CIO 'So sánh luồng dữ liệu một chiều và hai chiều (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-03) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-04",
+      "message": "CIO 'Xác định tác động của liên kết hai chiều đến hiệu suất (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-04) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-01-DUP2",
+      "message": "CIO 'Phân tích overhead của đồng bộ dữ liệu hai chiều (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-TWO_WAY_BINDING-02-DUP2",
+      "message": "CIO 'So sánh chi phí cập nhật giữa binding một chiều và hai chiều (two-way binding, data binding, sync)' (CIO-TWO_WAY_BINDING-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-01-DUP2",
+      "message": "CIO 'Cấu hình quy tắc cho phép truy cập dựa trên nguồn gốc (security, same-origin, cross-origin, CORS)' (CIO-CROSS_ORIGIN_SECURITY-01-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-CROSS_ORIGIN_SECURITY-02-DUP2",
+      "message": "CIO 'Kiểm tra nguồn gốc yêu cầu và áp dụng chính sách động (security, same-origin, cross-origin, CORS)' (CIO-CROSS_ORIGIN_SECURITY-02-DUP2) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01",
+      "message": "CIO 'Mô tả đặc điểm của hàm như một giá trị có thể gán, truyền và trả về (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-01) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-02",
+      "message": "CIO 'So sánh hàm với các kiểu dữ liệu khác về khả năng thao tác (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-02) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-03",
+      "message": "CIO 'Sử dụng hàm nhận hàm khác làm đối số để thực hiện thao tác trên từng phần tử (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-03) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-04",
+      "message": "CIO 'Xây dựng pipeline xử lý dữ liệu bằng cách kết hợp các hàm biến đổi (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-04) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-05",
+      "message": "CIO 'Tạo hàm bao bọc nhận một hàm và trả về hàm mới với hành vi mở rộng (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-05) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "CIO_INSUFFICIENT_SIO",
+      "level": "learning_objectives",
+      "code": "CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-06",
+      "message": "CIO 'Thiết kế hàm nhận hàm xử lý và áp dụng nó trong một ngữ cảnh cụ thể (lambda, closure, higher-order function, first-class)' (CIO-FIRST_CLASS_FUNCTIONS_CONCEPT-06) chỉ có 0 SIO con (yêu cầu ≥ 2). Phân rã chưa đủ chi tiết thực hành."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "LO_DESCRIPTION_PREFIX",
+      "level": "learning_objectives",
+      "code": "ULO-LOGIC_ERRORS-02",
+      "message": "Mô tả không bắt đầu bằng 'Người học có khả năng...'.",
+      "field": "description"
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ACCESS_MODIFIERS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "ASYNCHRONOUS_PROG_CONCEPT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "COPYRIGHT_CREATIVE_COMMONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "DESIGN_THINKING_PROCESS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "INFORMATION_CREDIBILITY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "INHERITANCE_SYNTAX",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LEVEL_LAYOUT",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "LIST_OPERATIONS",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "TYPOGRAPHY_AND_VISUAL_HIERARCHY",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    },
+    {
+      "severity": "WARNING",
+      "rule_id": "ORPHAN_NODE",
+      "level": "concepts",
+      "code": "VERSION_CONTROL_WORKFLOW",
+      "message": "Không có node nào ở tầng dưới tham chiếu tới node này."
+    }
+  ]
+}

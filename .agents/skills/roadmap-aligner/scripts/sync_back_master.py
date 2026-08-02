@@ -38,6 +38,15 @@ def parse_tsv_to_master_json(tsv_path: Path) -> dict:
         "concepts": []
     }
 
+    # Map section to parent key name in TSV
+    parent_key_map = {
+        "fields": None,
+        "subjects": "field_codes",
+        "categories": "subject_codes",
+        "topics": "category_codes",
+        "concepts": "topic_codes",
+    }
+
     current_section = None
     with open(tsv_path, "r", encoding="utf-8") as f:
         for line in f:
@@ -74,9 +83,13 @@ def parse_tsv_to_master_json(tsv_path: Path) -> dict:
                     "name": name,
                     "description": desc
                 }
-                if len(parts) > 3:
+                if len(parts) > 3 and current_section:
                     raw_parents = parts[3].strip()
                     item["parent_or_relation"] = raw_parents
+                    parent_key = parent_key_map.get(current_section)
+                    if parent_key:
+                        item[parent_key] = [p.strip() for p in raw_parents.split(",") if p.strip()]
+                    # Also keep parent_codes for backward compat
                     item["parent_codes"] = [p.strip() for p in raw_parents.split(",") if p.strip()]
                 if len(parts) > 4:
                     item["keywords"] = parts[4].strip()

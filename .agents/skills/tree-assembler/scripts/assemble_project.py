@@ -111,7 +111,11 @@ def collect_ancestors(code: str, code_to_lvl: dict, code_to_row: dict, result: d
 
     pkey = parent_keys.get(actual_lvl)
     if pkey and row.get(pkey):
-        p_codes = [c.strip() for c in row[pkey].replace(";", ",").split(",") if c.strip()]
+        pval = row[pkey]
+        if isinstance(pval, list):
+            p_codes = [c.strip() for c in pval if c.strip()]
+        else:
+            p_codes = [c.strip() for c in pval.replace(";", ",").split(",") if c.strip()]
         for pc in p_codes:
             if pc in code_to_lvl:
                 collect_ancestors(pc, code_to_lvl, code_to_row, result)
@@ -127,7 +131,10 @@ def sanitize_parent_refs(result: dict, levels: list):
     def clean(rows_dict, parent_field, parent_lvl, level_name):
         for code, row in list(rows_dict.items()):
             raw_val = row.get(parent_field, "")
-            all_parts = [c.strip() for c in raw_val.replace(";", ",").split(",") if c.strip()]
+            if isinstance(raw_val, list):
+                all_parts = [c.strip() for c in raw_val if c.strip()]
+            else:
+                all_parts = [c.strip() for c in raw_val.replace(";", ",").split(",") if c.strip()]
             valid = [c for c in all_parts if c in level_codes[parent_lvl]]
             invalid = [c for c in all_parts if c not in level_codes[parent_lvl]]
             
