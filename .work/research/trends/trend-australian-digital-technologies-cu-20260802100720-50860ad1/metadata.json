@@ -1,0 +1,22 @@
+{
+  "id": "trend-australian-digital-technologies-cu-20260802100720-50860ad1",
+  "source": "trends",
+  "title": "Trend: Australian Digital Technologies Curriculum updates 2024 2025",
+  "context_path": ".work/research/trends/trend-australian-digital-technologies-cu-20260802100720-50860ad1",
+  "priority": "high",
+  "status": "pending",
+  "created_at": "2026-08-02T10:07:20.088227+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "topic": "Australian Digital Technologies Curriculum updates 2024 2025",
+    "source": "framework_monitor",
+    "priority_score": 8.7,
+    "foundation_score": 5,
+    "trend_velocity": 8,
+    "educational_fit": 9,
+    "evidence": "Monitor AU_DIGITECH for new standards versions",
+    "crosswalk_dir": "/opt/data/my-projects/knowledge-tree/.work/research/trends/crosswalk_australian-digital-technologies-curriculum-updates_20260802_100720"
+  }
+}

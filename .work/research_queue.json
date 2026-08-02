@@ -169,6 +169,19 @@
     "status": "pending"
   },
   {
+    "topic": "8. Microsoft Office Standard 2024",
+    "source": "last30days",
+    "query": "digital literacy standards 2024",
+    "evidence": "- URL: [https://www.reddit.com/r/pricedrops/comments/1v2rude/microsoft_office_standard_2024_1_device_license_6/](https://www.reddit.com/r/pricedrops/comments/1v2rude/microsoft_office_standard_2024_1_d",
+    "discovered_at": "2026-08-02T10:07:11.359043",
+    "foundation_score": 5,
+    "trend_velocity": 7,
+    "educational_fit": 8,
+    "gap_bonus": 2,
+    "priority_score": 8.2,
+    "status": "pending"
+  },
+  {
     "topic": "1. Xiaomi-Robotics-1",
     "source": "last30days",
     "query": "robotics education curriculum",
@@ -630,19 +643,6 @@
     "educational_fit": 5,
     "gap_bonus": -1,
     "priority_score": 6.0,
-    "status": "pending"
-  },
-  {
-    "topic": "1. Quantum computing roundup: Still more technologies making waves",
-    "source": "last30days",
-    "query": "quantum computing education K-12",
-    "evidence": "- URL: [https://arstechnica.com/science/2026/07/quantum-computing-roundup-still-more-technologies-making-waves/](https://arstechnica.com/science/2026/07/quantum-computing-roundup-still-more-technologi",
-    "discovered_at": "2026-08-02T00:40:35.606682",
-    "foundation_score": 8,
-    "trend_velocity": 5,
-    "educational_fit": 5,
-    "gap_bonus": -1,
-    "priority_score": 5.5,
     "status": "pending"
   }
 ]
