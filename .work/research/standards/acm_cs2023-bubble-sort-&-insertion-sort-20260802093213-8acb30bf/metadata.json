@@ -4,10 +4,10 @@
   "title": "Standards Gap: ACM_CS2023 - Bubble Sort & Insertion Sort",
   "context_path": ".work/research/standards/acm_cs2023-bubble-sort-&-insertion-sort-20260802093213-8acb30bf",
   "priority": "high",
-  "status": "pending",
+  "status": "processed",
   "created_at": "2026-08-02T09:32:13.021715+00:00",
-  "processed_at": null,
-  "project_slug": null,
+  "processed_at": "2026-08-02T10:07:29.919869+00:00",
+  "project_slug": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100729",
   "error_message": null,
   "extra": {
     "framework": "ACM_CS2023",

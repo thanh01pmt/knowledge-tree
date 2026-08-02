@@ -1,0 +1,4233 @@
+{
+  "timestamp": "2026-08-02T10:07:22.056162+00:00",
+  "processed": 176,
+  "projects_created": 176,
+  "pipeline_results": [
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_physics_constraints-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_PHYSICS_CONSTRAINTS",
+        "suggested_name": "ACM CS2023 Physics Constraints Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Physics Constraints: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100722",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_database_normalization-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+        "suggested_name": "ACM CS2023 Database Normalization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_json_serialization/deserialization-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+        "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_physics_constraints-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_PHYSICS_CONSTRAINTS",
+        "suggested_name": "ACM CS2023 Physics Constraints Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Physics Constraints: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_json_serialization/deserialization-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+        "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_json_serialization/deserialization-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+        "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_level_layout_design-20260802100723",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN",
+        "suggested_name": "ACM CS2023 Level Layout Design Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Level Layout Design: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100724",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_level_layout_design-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN",
+        "suggested_name": "ACM CS2023 Level Layout Design Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Level Layout Design: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_statistical_measures-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES",
+        "suggested_name": "ACM CS2023 Basic Statistical Measures Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Statistical Measures: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_level_layout_design-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN",
+        "suggested_name": "ACM CS2023 Level Layout Design Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Level Layout Design: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100725",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_level_layout_design-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN",
+        "suggested_name": "ACM CS2023 Level Layout Design Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Level Layout Design: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100726",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_statistical_measures-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES",
+        "suggested_name": "ACM CS2023 Basic Statistical Measures Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Statistical Measures: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_physics_constraints-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_PHYSICS_CONSTRAINTS",
+        "suggested_name": "ACM CS2023 Physics Constraints Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Physics Constraints: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_physics_constraints-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_PHYSICS_CONSTRAINTS",
+        "suggested_name": "ACM CS2023 Physics Constraints Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Physics Constraints: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_statistical_measures-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES",
+        "suggested_name": "ACM CS2023 Basic Statistical Measures Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Statistical Measures: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100727",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_database_normalization-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+        "suggested_name": "ACM CS2023 Database Normalization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_level_layout_design-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN",
+        "suggested_name": "ACM CS2023 Level Layout Design Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Level Layout Design: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100728",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_database_normalization-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+        "suggested_name": "ACM CS2023 Database Normalization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100729",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_json_serialization/deserialization-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+        "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_physics_constraints-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_PHYSICS_CONSTRAINTS",
+        "suggested_name": "ACM CS2023 Physics Constraints Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Physics Constraints: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100730",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_statistical_measures-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES",
+        "suggested_name": "ACM CS2023 Basic Statistical Measures Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Statistical Measures: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100731",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_statistical_measures-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES",
+        "suggested_name": "ACM CS2023 Basic Statistical Measures Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Statistical Measures: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_bubble_sort_&_insertion_sort-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT",
+        "suggested_name": "ACM CS2023 Bubble Sort & Insertion Sort Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Bubble Sort & Insertion Sort: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100732",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collision_detection-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLISION_DETECTION",
+        "suggested_name": "ACM CS2023 Collision Detection Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collision Detection: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_database_normalization-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+        "suggested_name": "ACM CS2023 Database Normalization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN",
+        "suggested_name": "ACM CS2023 MVVM Architectural Pattern Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: MVVM Architectural Pattern: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_dc_motor_and_servo_control-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL",
+        "suggested_name": "ACM CS2023 DC Motor and Servo Control Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: DC Motor and Servo Control: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_database_normalization-20260802100733",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+        "suggested_name": "ACM CS2023 Database Normalization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_array_operations-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_ARRAY_OPERATIONS",
+        "suggested_name": "ACM CS2023 Array Operations Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Array Operations: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_physics_constraints-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_PHYSICS_CONSTRAINTS",
+        "suggested_name": "ACM CS2023 Physics Constraints Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Physics Constraints: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_circuit_principles-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES",
+        "suggested_name": "ACM CS2023 Basic Circuit Principles Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Circuit Principles: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_netiquette_(online_etiquette)-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)",
+        "suggested_name": "ACM CS2023 Netiquette (Online Etiquette) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Netiquette (Online Etiquette): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_json_serialization/deserialization-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+        "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_database_normalization-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_DATABASE_NORMALIZATION",
+        "suggested_name": "ACM CS2023 Database Normalization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Database Normalization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_immutability_and_pure_functions-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS",
+        "suggested_name": "ACM CS2023 Immutability and Pure Functions Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Immutability and Pure Functions: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_leaderboard/scoring_system-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM",
+        "suggested_name": "ACM CS2023 Leaderboard/Scoring System Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Leaderboard/Scoring System: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_level_layout_design-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN",
+        "suggested_name": "ACM CS2023 Level Layout Design Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Level Layout Design: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_malware_types-20260802100734",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_MALWARE_TYPES",
+        "suggested_name": "ACM CS2023 Malware Types Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Malware Types: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_basic_statistical_measures-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES",
+        "suggested_name": "ACM CS2023 Basic Statistical Measures Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Basic Statistical Measures: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_wcag_principles_(pour)-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)",
+        "suggested_name": "ACM CS2023 WCAG Principles (POUR) Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: WCAG Principles (POUR): unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_the_digital_divide-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_THE_DIGITAL_DIVIDE",
+        "suggested_name": "ACM CS2023 The Digital Divide Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: The Digital Divide: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_json_serialization/deserialization-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+        "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "error": "No pipeline script available",
+        "success": false
+      }
+    },
+    {
+      "project": "gap-acm_cs2023_collaborative_platforms-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+        "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+        "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+        "cs2023_ka": "SPD,AI,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 70,
+        "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-australian_digital_technologies_curriculum_upd-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD",
+        "suggested_name": "Australian Digital Technologies Curriculum updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor AU_DIGITECH for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802100735",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802100736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-uk_national_curriculum_computing_updates_2024_-20260802100736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_",
+        "suggested_name": "UK National Curriculum Computing updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor UK_COMPUTING for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-australian_digital_technologies_curriculum_upd-20260802100736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD",
+        "suggested_name": "Australian Digital Technologies Curriculum updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor AU_DIGITECH for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-australian_digital_technologies_curriculum_upd-20260802100736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD",
+        "suggested_name": "Australian Digital Technologies Curriculum updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor AU_DIGITECH for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802100736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-australian_digital_technologies_curriculum_upd-20260802100736",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD",
+        "suggested_name": "Australian Digital Technologies Curriculum updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor AU_DIGITECH for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    },
+    {
+      "project": "gap-general-computing-20260802100736",
+      "gap": {
+        "gap_type": "missing_topic",
+        "suggested_code": "TOP-GENERAL-COMPUTING",
+        "suggested_name": "General-Computing Topic",
+        "suggested_description": "Academic syllabus coverage for general-computing",
+        "cs2023_ka": "SDF,FPL,SE",
+        "parent_suggestion": "CAT-COMPUTING_FOUNDATIONS",
+        "confidence": 80,
+        "rationale": "Identified from academic syllabus: test_syllabus.md"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    },
+    {
+      "project": "gap-general-computing-20260802100736",
+      "gap": {
+        "gap_type": "missing_topic",
+        "suggested_code": "TOP-GENERAL-COMPUTING",
+        "suggested_name": "General-Computing Topic",
+        "suggested_description": "Academic syllabus coverage for general-computing",
+        "cs2023_ka": "SDF,FPL,SE",
+        "parent_suggestion": "CAT-COMPUTING_FOUNDATIONS",
+        "confidence": 80,
+        "rationale": "Identified from academic syllabus: test_syllabus.md"
+      },
+      "result": {
+        "success": true,
+        "output": "Found 6 TSV files"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802100626-70a40f92",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100524-1a782f46",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100626-86d2b2ba",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100626-198b464a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802100626-3eaa889a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100626-94984365",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-physics-constraints-20260802100626-1fe1c437",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_PHYSICS_CONSTRAINTS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100524-c445ad5e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100626-e486ec0e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802100626-9eedcdfd",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802100524-8806bed7",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-database-normalization-20260802100524-a5873c75",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DATABASE_NORMALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-json-serialization-deserializ-20260802093213-1b0407d2",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-physics-constraints-20260802093213-23c7d9f4",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_PHYSICS_CONSTRAINTS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802093213-f029e811",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-json-serialization-deserializ-20260802100626-fed8da4a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-json-serialization-deserializ-20260802093213-50ed915b",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802100524-099990b0",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802100524-c216bbfc",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100524-38acc8b6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802100524-ce31cc2e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802100524-c0f5a47e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-level-layout-design-20260802100524-6dcc5f41",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802100626-852a6f3a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802100524-0bc29327",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100524-df4a451a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802100626-5edf36b8",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100524-3a496e1a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802093213-9b813cbf",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100524-bd804918",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802100626-a5284f2a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100626-a1065064",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802093213-3a7b4843",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100626-4363dd1a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802093213-7f977024",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-level-layout-design-20260802100626-105a7b58",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-statistical-measures-20260802100626-963f0e3c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100524-555a9ed7",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100626-76d58240",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802093213-c096f1cc",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802100626-a9204fe3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100626-a208616d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802100524-d31033a1",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100524-c3e05950",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-level-layout-design-20260802093213-e72e37f3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100626-b645604a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100626-d09fa596",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100626-8bf2580e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802100626-2c7c0436",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100626-af3689f3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100524-04372d8d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802093213-acf4f406",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802093213-0cd1acf7",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802093213-5b6de012",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802100524-0521a96d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802093213-24816a9d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100626-a9c72a6c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-level-layout-design-20260802093213-5302e12b",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802093213-efb0c9be",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100524-5f389351",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100524-cd3feba6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802093213-4d9c41e2",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802093213-233b303a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802100524-9d303549",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-statistical-measures-20260802100524-5ab8c16f",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-physics-constraints-20260802100626-c3c3e24d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_PHYSICS_CONSTRAINTS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-physics-constraints-20260802100524-5ba6d19f",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_PHYSICS_CONSTRAINTS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802093213-d2d7f3a9",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802093213-acf571b5",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802100524-3eb2c271",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-statistical-measures-20260802093213-a4a915f6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100626-1ff3fd4e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802093213-ddf872b4",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802093213-fc54fde6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100524-8c14db23",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100524-75ed94ce",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802093213-ac706d24",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-database-normalization-20260802100626-1c62746c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DATABASE_NORMALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-level-layout-design-20260802100626-9c6f434e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802093213-418f6406",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802100626-fd7d9845",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100626-d34dc900",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100626-e8062d74",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802093213-566bb179",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100524-0823d170",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802100626-a86c41f5",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100626-b0ae3b98",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802100524-17fc1e9b",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802100524-274127fc",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802093213-69a02b97",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802100626-2677dcb4",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-database-normalization-20260802093213-c5db854c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DATABASE_NORMALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802100626-3bb8faf4",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802093213-8acb30bf",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802100626-f3ebb92f",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802100626-7f629a64",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100626-09748bb0",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-json-serialization-deserializ-20260802100524-21f317b3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-physics-constraints-20260802093213-3cc09799",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_PHYSICS_CONSTRAINTS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100524-3441c0b0",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100524-6e783ea8",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100626-c5b332f6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802100626-d8ca2af6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802100524-6c66726c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802093213-dc087ad6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100626-40d6b76f",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802100524-46e04461",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802100524-0090b428",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802093213-543fe427",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100524-854b22ad",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802093213-54275dec",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100626-79626083",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802100626-b30d8bcc",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100626-9391c3f5",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-statistical-measures-20260802100626-5415463d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802093213-d2e999c4",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802100524-d61fe48c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100626-ffffd155",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802100626-e7ca295d",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802093213-5a165689",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100524-d6cf5717",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-statistical-measures-20260802093213-363e06a4",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802100524-f8f32caf",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802100626-b6df9294",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100524-c252c992",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802093213-008a6aea",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802093213-189058be",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802100524-8a9f192e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-bubble-sort-&-insertion-sort-20260802100524-fab80a94",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BUBBLE_SORT_&_INSERTION_SORT"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802093213-763888d9",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802100524-39f3a407",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802093213-0a8dcd67",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802100626-9a38a6f0",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802093213-d60e7b16",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802100524-2045b493",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collision-detection-20260802100524-f99ae870",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLISION_DETECTION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-database-normalization-20260802093213-bb229fea",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DATABASE_NORMALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100524-5b534374",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802093213-673fcf03",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-mvvm-architectural-pattern-20260802100626-14790dde",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MVVM_ARCHITECTURAL_PATTERN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-dc-motor-and-servo-control-20260802100524-9c419013",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DC_MOTOR_AND_SERVO_CONTROL"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802100524-d4e4bceb",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-database-normalization-20260802100524-dd32c3fb",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DATABASE_NORMALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-array-operations-20260802093213-b7f458cc",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_ARRAY_OPERATIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-physics-constraints-20260802100524-f1698078",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_PHYSICS_CONSTRAINTS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-circuit-principles-20260802100524-2ad5bb7e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_CIRCUIT_PRINCIPLES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100626-11f87344",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-netiquette-(online-etiquette)-20260802100626-81b52f74",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_NETIQUETTE_(ONLINE_ETIQUETTE)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-json-serialization-deserializ-20260802100626-f75a8fe3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-database-normalization-20260802100626-e0411957",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_DATABASE_NORMALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-immutability-and-pure-functio-20260802100626-d34b9a6f",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_IMMUTABILITY_AND_PURE_FUNCTIONS"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-leaderboard-scoring-system-20260802093213-e2d1287e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEADERBOARD/SCORING_SYSTEM"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-level-layout-design-20260802100524-d8019c72",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_LEVEL_LAYOUT_DESIGN"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-malware-types-20260802100524-41476872",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_MALWARE_TYPES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-basic-statistical-measures-20260802100524-ea7399d9",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_BASIC_STATISTICAL_MEASURES"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-wcag-principles-(pour)-20260802093213-e17b3615",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_WCAG_PRINCIPLES_(POUR)"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-the-digital-divide-20260802093213-00323096",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_THE_DIGITAL_DIVIDE"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-json-serialization-deserializ-20260802100524-3f3694e6",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION"
+      ]
+    },
+    {
+      "research_id": "acm_cs2023-collaborative-platforms-20260802093213-130c05ee",
+      "gaps_found": 1,
+      "projects": [
+        "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802100720-3deb4f0b",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802100720-addaf87a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802100719-d9fc6239",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802095752-3beee47f",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802100719-ea0e7fa9",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-australian-digital-technologies-cu-20260802100720-50860ad1",
+      "gaps_found": 1,
+      "projects": [
+        "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802095611-7d26e45e",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802095611-13f8238b",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802095611-5fa36d38",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802095752-63708f8c",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-uk-national-curriculum-computing-u-20260802095611-dca36d12",
+      "gaps_found": 1,
+      "projects": [
+        "CON-UK_NATIONAL_CURRICULUM_COMPUTING_UPDATES_2024_"
+      ]
+    },
+    {
+      "research_id": "trend-australian-digital-technologies-cu-20260802093310-131b6dcd",
+      "gaps_found": 1,
+      "projects": [
+        "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD"
+      ]
+    },
+    {
+      "research_id": "trend-australian-digital-technologies-cu-20260802095611-358586b3",
+      "gaps_found": 1,
+      "projects": [
+        "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD"
+      ]
+    },
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802093310-4cc10c6a",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    },
+    {
+      "research_id": "trend-australian-digital-technologies-cu-20260802095752-b74ab1da",
+      "gaps_found": 1,
+      "projects": [
+        "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD"
+      ]
+    },
+    {
+      "research_id": "test_syllabus-20260802100431-21cb1c6b",
+      "gaps_found": 1,
+      "projects": [
+        "TOP-GENERAL-COMPUTING"
+      ]
+    },
+    {
+      "research_id": "test_syllabus-20260802100624-424b7c3f",
+      "gaps_found": 1,
+      "projects": [
+        "TOP-GENERAL-COMPUTING"
+      ]
+    }
+  ]
+}

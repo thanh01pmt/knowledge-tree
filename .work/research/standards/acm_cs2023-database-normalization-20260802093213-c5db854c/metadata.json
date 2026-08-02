@@ -4,10 +4,10 @@
   "title": "Standards Gap: ACM_CS2023 - Database Normalization",
   "context_path": ".work/research/standards/acm_cs2023-database-normalization-20260802093213-c5db854c",
   "priority": "high",
-  "status": "pending",
+  "status": "processed",
   "created_at": "2026-08-02T09:32:13.028293+00:00",
-  "processed_at": null,
-  "project_slug": null,
+  "processed_at": "2026-08-02T10:07:29.748926+00:00",
+  "project_slug": "gap-acm_cs2023_database_normalization-20260802100729",
   "error_message": null,
   "extra": {
     "framework": "ACM_CS2023",

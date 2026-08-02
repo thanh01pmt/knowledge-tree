@@ -1,0 +1,17 @@
+{
+  "project_slug": "gap-acm_cs2023_json_serialization/deserialization-20260802100723",
+  "source_research": "acm_cs2023-json-serialization-deserializ-20260802093213-50ed915b",
+  "source_type": "standards",
+  "gap_analysis": {
+    "gap_type": "missing_concept",
+    "suggested_code": "CON-ACM_CS2023_JSON_SERIALIZATION/DESERIALIZATION",
+    "suggested_name": "ACM CS2023 JSON Serialization/Deserialization Concepts",
+    "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: JSON Serialization/Deserialization: unique_to_reference",
+    "cs2023_ka": "SPD,AI,SEP",
+    "parent_suggestion": "CAT-EMERGING_TECH",
+    "confidence": 70,
+    "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+  },
+  "created_at": "2026-08-02T10:07:23.511293+00:00",
+  "status": "scaffolded"
+}

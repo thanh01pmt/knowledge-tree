@@ -4,10 +4,10 @@
   "title": "Standards Gap: ACM_CS2023 - MVVM Architectural Pattern",
   "context_path": ".work/research/standards/acm_cs2023-mvvm-architectural-pattern-20260802093213-189058be",
   "priority": "high",
-  "status": "pending",
+  "status": "processed",
   "created_at": "2026-08-02T09:32:13.025571+00:00",
-  "processed_at": null,
-  "project_slug": null,
+  "processed_at": "2026-08-02T10:07:32.654920+00:00",
+  "project_slug": "gap-acm_cs2023_mvvm_architectural_pattern-20260802100732",
   "error_message": null,
   "extra": {
     "framework": "ACM_CS2023",

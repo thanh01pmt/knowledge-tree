@@ -4,10 +4,10 @@
   "title": "Standards Gap: ACM_CS2023 - Level Layout Design",
   "context_path": ".work/research/standards/acm_cs2023-level-layout-design-20260802100524-d8019c72",
   "priority": "high",
-  "status": "pending",
+  "status": "processed",
   "created_at": "2026-08-02T10:05:24.281233+00:00",
-  "processed_at": null,
-  "project_slug": null,
+  "processed_at": "2026-08-02T10:07:34.935793+00:00",
+  "project_slug": "gap-acm_cs2023_level_layout_design-20260802100734",
   "error_message": null,
   "extra": {
     "framework": "ACM_CS2023",

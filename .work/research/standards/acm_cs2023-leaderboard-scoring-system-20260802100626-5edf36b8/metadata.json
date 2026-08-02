@@ -4,10 +4,10 @@
   "title": "Standards Gap: ACM_CS2023 - Leaderboard/Scoring System",
   "context_path": ".work/research/standards/acm_cs2023-leaderboard-scoring-system-20260802100626-5edf36b8",
   "priority": "high",
-  "status": "pending",
+  "status": "processed",
   "created_at": "2026-08-02T10:06:26.176830+00:00",
-  "processed_at": null,
-  "project_slug": null,
+  "processed_at": "2026-08-02T10:07:24.382058+00:00",
+  "project_slug": "gap-acm_cs2023_leaderboard/scoring_system-20260802100724",
   "error_message": null,
   "extra": {
     "framework": "ACM_CS2023",

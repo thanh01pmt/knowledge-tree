@@ -1,0 +1,19 @@
+{
+  "id": "test_syllabus-20260802100624-424b7c3f",
+  "source": "academic",
+  "title": "Academic: test_syllabus",
+  "context_path": ".work/research/academic/test_syllabus-20260802100624-424b7c3f",
+  "priority": "medium",
+  "status": "processing",
+  "created_at": "2026-08-02T10:06:24.243396+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "original_file": "test_syllabus.md",
+    "file_type": ".md",
+    "domain": "general-computing",
+    "raw_file": "raw.md",
+    "content_length": 90
+  }
+}

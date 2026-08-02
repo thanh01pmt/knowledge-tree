@@ -1,0 +1,17 @@
+{
+  "project_slug": "gap-acm_cs2023_collaborative_platforms-20260802100733",
+  "source_research": "acm_cs2023-collaborative-platforms-20260802100626-9a38a6f0",
+  "source_type": "standards",
+  "gap_analysis": {
+    "gap_type": "missing_concept",
+    "suggested_code": "CON-ACM_CS2023_COLLABORATIVE_PLATFORMS",
+    "suggested_name": "ACM CS2023 Collaborative Platforms Concepts",
+    "suggested_description": "Concepts from ACM_CS2023 framework gap analysis: Collaborative Platforms: unique_to_reference",
+    "cs2023_ka": "SPD,AI,SEP",
+    "parent_suggestion": "CAT-EMERGING_TECH",
+    "confidence": 70,
+    "rationale": "Identified via ACM_CS2023 crosswalk gap analysis"
+  },
+  "created_at": "2026-08-02T10:07:33.124858+00:00",
+  "status": "scaffolded"
+}
