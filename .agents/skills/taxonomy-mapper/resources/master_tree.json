@@ -4975,6 +4975,94 @@
       ],
       "keywords": "threat modeling, STRIDE, risk assessment, vulnerability scanning",
       "metadata": "{\"icon\": \"bug\"}"
+    },
+    {
+      "code": "MODEL_CONTEXT_PROTOCOL_STANDARD",
+      "name": "Model Context Protocol Standard",
+      "description": "Giao thức chuẩn hóa định danh và cung cấp bối cảnh dữ liệu, công cụ thực thi cho các tác nhân AI tự chủ mà không phụ thuộc vào từng nền tảng cụ thể.",
+      "parent_or_relation": "AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "MCP, protocol, tool invocation, data context, agent interface",
+      "metadata": "{\"icon\": \"plug\"}"
+    },
+    {
+      "code": "DURABLE_AGENT_STATE_MANAGEMENT",
+      "name": "Durable Agent State Management",
+      "description": "Cơ chế duy trì và phân tách trạng thái có cấu trúc (task status, milestones) và phi cấu trúc (rationale logs) cho phép Agent phục hồi sau gián đoạn.",
+      "parent_or_relation": "AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "agent state, durability, state persistence, structured state",
+      "metadata": "{\"icon\": \"save\"}"
+    },
+    {
+      "code": "GRAPH_BASED_AGENTIC_WORKFLOW",
+      "name": "Graph-Based Agentic Workflow",
+      "description": "Mô hình điều khiển luồng công việc dạng đồ thị tuần hoàn cho phép tái lập kế hoạch, phản tư và phản hồi vòng kín trong quá trình thực thi tác vụ.",
+      "parent_or_relation": "AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "graph workflow, cyclic execution, re-planning, feedback loop",
+      "metadata": "{\"icon\": \"sitemap\"}"
+    },
+    {
+      "code": "KNOWLEDGE_GRAPH_RETRIEVAL_AUGMENTATION",
+      "name": "Knowledge Graph-Augmented Retrieval",
+      "description": "Kỹ thuật RAG nâng cao kết hợp Đồ thị Tri thức (Knowledge Graph) với không gian vector để giải quyết các truy vấn ngữ cảnh đa bước (multi-hop reasoning).",
+      "parent_or_relation": "GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "GraphRAG, knowledge graph, multi-hop reasoning, vector search",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "HYBRID_VECTOR_SPARSE_SEARCH",
+      "name": "Hybrid Vector and Sparse Search",
+      "description": "Phương pháp kết hợp truy xuất ngữ nghĩa không gian vector với tìm kiếm từ khóa thưa (BM25/sparse) nhằm nâng cao độ chính xác truy xuất tri thức.",
+      "parent_or_relation": "GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "hybrid search, vector search, sparse keyword, BM25, dense retrieval",
+      "metadata": "{\"icon\": \"search\"}"
+    },
+    {
+      "code": "COMPUTE_IN_MEMORY_ACCELERATION",
+      "name": "Compute-in-Memory Edge Acceleration",
+      "description": "Nguyên lý tính toán trực tiếp trên phần tử bộ nhớ (SRAM/RRAM) nhằm đạt hiệu suất năng lượng tối đa cho suy luận AI tại thiết bị biên.",
+      "parent_or_relation": "EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "compute in memory, CIM, SRAM, RRAM, edge acceleration",
+      "metadata": "{\"icon\": \"memory\"}"
+    },
+    {
+      "code": "TINY_MLOPS_LIFECYCLE_MANAGEMENT",
+      "name": "TinyMLOps Fleet Lifecycle Management",
+      "description": "Quy trình quản lý vòng đời, giám sát hiệu năng và cập nhật mô hình học máy tự động trên hệ thống hàng triệu thiết bị biên nhúng.",
+      "parent_or_relation": "EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "TinyMLOps, fleet management, model monitoring, edge deployment",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "SMALL_LANGUAGE_MODEL_OPTIMIZATION",
+      "name": "Small Language Model Edge Optimization",
+      "description": "Kỹ thuật tối ưu hóa và thực thi các mô hình ngôn ngữ thu nhỏ trên vi điều khiển và phần cứng tài nguyên cực kỳ hạn chế.",
+      "parent_or_relation": "EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "SLM, small language model, edge optimization, microcontroller LLM",
+      "metadata": "{\"icon\": \"microchip\"}"
     }
   ]
 }

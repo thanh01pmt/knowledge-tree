@@ -1,7 +1,7 @@
 {
-  "current_version": "v2.5.0",
-  "base_master_version": "v2.5.0",
-  "last_updated": "2026-08-02T21:50:56.631378",
+  "current_version": "v2.6.0",
+  "base_master_version": "v2.6.0",
+  "last_updated": "2026-08-02T21:54:36.622059",
   "versions": [
     {
       "version": "v2.2.0-staging.0",
@@ -52,6 +52,11 @@
       "version": "v2.5.0",
       "timestamp": "2026-08-02T21:50:56.631389",
       "description": "Approved reverse sync from general-context staging to official Master Knowledge Tree v2.5.0"
+    },
+    {
+      "version": "v2.6.0",
+      "timestamp": "2026-08-02T21:54:36.622071",
+      "description": "Approved reverse sync from general-context staging to official Master Knowledge Tree v2.6.0"
     }
   ]
 }
