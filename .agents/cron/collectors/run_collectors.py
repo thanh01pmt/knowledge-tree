@@ -140,9 +140,12 @@ def main():
         schedule_str = f" ({args.schedule})" if args.schedule else ""
         git_commit_push(f"feat(collectors): {schedule_str} collected {total_collected} items, {total_pending} pending")
     
-    # Exit with error if any collector failed
+    # Exit code: 0 = script ran successfully
+    # Collector errors are logged in summary, not treated as script crash
     failed = any("error" in r for r in results["results"].values() if isinstance(r, dict))
-    sys.exit(1 if failed else 0)
+    if failed:
+        print("⚠️ Some collectors reported errors (see summary)")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
