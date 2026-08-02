@@ -1,0 +1,18 @@
+{
+  "timestamp": "2026-08-02T13:00:37.293472+00:00",
+  "schedule": "15m",
+  "sources": [
+    "academic"
+  ],
+  "results": {
+    "academic": {
+      "source": "academic",
+      "collected": 1,
+      "pending": 1,
+      "items": [
+        "test_syllabus-18a60216"
+      ],
+      "timestamp": "2026-08-02T13:00:37.294679+00:00"
+    }
+  }
+}
