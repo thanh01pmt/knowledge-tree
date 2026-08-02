@@ -314,7 +314,7 @@
         "ASE",
         "HCC"
       ],
-      "keywords": "native, mobile development, iOS, Android, native mobile languageUI, UIKit, Jetpack Compose",
+      "keywords": "native, mobile development, platform UI, mobile frameworks",
       "metadata": "{\"icon\": \"mobile-alt\"}"
     },
     {
@@ -1579,9 +1579,10 @@
       "code": "BOOLEAN_ALGEBRA",
       "name": "Boolean Algebra and Logic Gates",
       "description": "Đại số Boolean và mối liên hệ với các cổng logic, nền tảng của mạch số và biểu thức điều kiện trong lập trình.",
-      "parent_or_relation": "LOGIC_BOOLEAN",
+      "parent_or_relation": "LOGIC_BOOLEAN,BINARY_SYSTEM",
       "parent_codes": [
-        "LOGIC_BOOLEAN"
+        "LOGIC_BOOLEAN",
+        "BINARY_SYSTEM"
       ],
       "keywords": "boolean algebra, logic gates, AND, OR, NOT",
       "metadata": "{\"icon\": \"gate-open\"}"
@@ -1767,9 +1768,10 @@
       "code": "ENCAPSULATION_ABSTRACTION",
       "name": "Encapsulation and Abstraction",
       "description": "Tìm hiểu cách đóng gói dữ liệu để bảo vệ trạng thái của đối tượng và cách tạo ra các giao diện trừu tượng để che giấu sự phức tạp bên trong.",
-      "parent_or_relation": "OOP",
+      "parent_or_relation": "OOP,ABSTRACTION_DECOMP",
       "parent_codes": [
-        "OOP"
+        "OOP",
+        "ABSTRACTION_DECOMP"
       ],
       "keywords": "encapsulation, abstraction, data hiding, access modifiers",
       "metadata": "{\"icon\": \"box-archive\"}"
@@ -1822,9 +1824,10 @@
       "code": "ASYNCHRONOUS_PROG",
       "name": "Asynchronous Programming",
       "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
-      "parent_or_relation": "EVENT_DRIVEN_PROG",
+      "parent_or_relation": "EVENT_DRIVEN_PROG,PARALLEL_DIST_ALGO",
       "parent_codes": [
-        "EVENT_DRIVEN_PROG"
+        "EVENT_DRIVEN_PROG",
+        "PARALLEL_DIST_ALGO"
       ],
       "keywords": "async, await, promises, callbacks, non-blocking",
       "metadata": "{\"icon\": \"hourglass-start\"}"
@@ -1877,16 +1880,17 @@
       "code": "HTML_CSS",
       "name": "HTML and CSS Fundamentals",
       "description": "Cung cấp kiến thức nền tảng về Ngôn ngữ Đánh dấu Siêu văn bản (HTML) để cấu trúc nội dung và Cascading Style Sheets (CSS) để định dạng giao diện web.",
-      "parent_or_relation": "FRONTEND_DEV",
+      "parent_or_relation": "FRONTEND_DEV,WEB_FRAMEWORKS",
       "parent_codes": [
-        "FRONTEND_DEV"
+        "FRONTEND_DEV",
+        "WEB_FRAMEWORKS"
       ],
       "keywords": "HTML, CSS, selectors, box model, semantic HTML",
       "metadata": "{\"icon\": \"file-code\"}"
     },
     {
-      "code": "JAVASCRIPT_DOM",
-      "name": "client-side scripting and the DOM",
+      "code": "DOM_MANIPULATION_TOPIC",
+      "name": "DOM & Web Interactivity",
       "description": "Hướng dẫn lập trình phía client bằng client-side scripting và cách sử dụng Mô hình Đối tượng Tài liệu (DOM) để tương tác và thay đổi nội dung trang web một cách linh hoạt.",
       "parent_or_relation": "FRONTEND_DEV",
       "parent_codes": [
@@ -1899,9 +1903,10 @@
       "code": "SERVER_SIDE_LOGIC",
       "name": "Server-Side Logic",
       "description": "Xây dựng logic ứng dụng chạy trên máy chủ bằng các server-side scripting language để xử lý yêu cầu, truy cập dữ liệu và thực hiện các nghiệp vụ.",
-      "parent_or_relation": "BACKEND_DEV",
+      "parent_or_relation": "BACKEND_DEV,WEB_FRAMEWORKS",
       "parent_codes": [
-        "BACKEND_DEV"
+        "BACKEND_DEV",
+        "WEB_FRAMEWORKS"
       ],
       "keywords": "backend, server-side, server-side scripting language, general-purpose language, business logic",
       "metadata": "{\"icon\": \"server\"}"
@@ -1999,9 +2004,11 @@
       "code": "SUPERVISED_LEARNING",
       "name": "Supervised Learning",
       "description": "Giới thiệu các mô hình học có giám sát, nơi thuật toán học từ dữ liệu đã được gán nhãn, bao gồm các bài toán Hồi quy (Regression) và Phân loại (Classification).",
-      "parent_or_relation": "ML_MODELS",
+      "parent_or_relation": "ML_MODELS,AI_CONCEPTS,AI_ETHICS_BIAS",
       "parent_codes": [
-        "ML_MODELS"
+        "ML_MODELS",
+        "AI_CONCEPTS",
+        "AI_ETHICS_BIAS"
       ],
       "keywords": "supervised learning, regression, classification, labeled data",
       "metadata": "{\"icon\": \"tag\"}"
@@ -2010,9 +2017,10 @@
       "code": "UNSUPERVISED_LEARNING",
       "name": "Unsupervised Learning",
       "description": "Giới thiệu các mô hình học không giám sát, nơi thuật toán tự khám phá cấu trúc trong dữ liệu chưa được gán nhãn, bao gồm Phân cụm (Clustering).",
-      "parent_or_relation": "ML_MODELS",
+      "parent_or_relation": "ML_MODELS,AI_CONCEPTS",
       "parent_codes": [
-        "ML_MODELS"
+        "ML_MODELS",
+        "AI_CONCEPTS"
       ],
       "keywords": "unsupervised learning, clustering, K-Means, unlabeled data",
       "metadata": "{\"icon\": \"shapes\"}"
@@ -2032,9 +2040,10 @@
       "code": "IOT_DEVICES_SENSORS",
       "name": "IoT Devices and Sensors",
       "description": "Giới thiệu các loại thiết bị và cảm biến phổ biến trong hệ sinh thái IoT, và cách chúng thu thập dữ liệu từ thế giới thực.",
-      "parent_or_relation": "IOT_ECOSYSTEM",
+      "parent_or_relation": "IOT_ECOSYSTEM,INTERACTION_DEVICES",
       "parent_codes": [
-        "IOT_ECOSYSTEM"
+        "IOT_ECOSYSTEM",
+        "INTERACTION_DEVICES"
       ],
       "keywords": "IoT devices, sensors, wearables, smart home",
       "metadata": "{\"icon\": \"broadcast-tower\"}"
@@ -2054,9 +2063,10 @@
       "code": "IOT_PROTOCOLS_MQTT",
       "name": "IoT Messaging Protocols (MQTT)",
       "description": "Tập trung vào giao thức truyền tin MQTT, một tiêu chuẩn phổ biến cho các thiết bị IoT do tính nhẹ và hiệu quả.",
-      "parent_or_relation": "IOT_COMMUNICATION",
+      "parent_or_relation": "IOT_COMMUNICATION,IOT_SECURITY_SAFETY",
       "parent_codes": [
-        "IOT_COMMUNICATION"
+        "IOT_COMMUNICATION",
+        "IOT_SECURITY_SAFETY"
       ],
       "keywords": "MQTT, publish-subscribe, IoT protocols, messaging",
       "metadata": "{\"icon\": \"envelope-open-text\"}"
@@ -2065,10 +2075,11 @@
       "code": "UI_UX_HEURISTICS",
       "name": "Usability Heuristics",
       "description": "Nghiên cứu các nguyên tắc vàng (heuristics) về thiết kế giao diện người dùng để đảm bảo tính khả dụng, dễ học và hiệu quả.",
-      "parent_or_relation": "HCI_PRINCIPLES, UI_UX_PROCESS",
+      "parent_or_relation": "HCI_PRINCIPLES,UI_UX_PROCESS,INTERACTION_DEVICES",
       "parent_codes": [
         "HCI_PRINCIPLES",
-        "UI_UX_PROCESS"
+        "UI_UX_PROCESS",
+        "INTERACTION_DEVICES"
       ],
       "keywords": "usability, heuristics, Nielsen's heuristics, user-friendly",
       "metadata": "{\"icon\": \"check-circle\"}"
@@ -2121,9 +2132,11 @@
       "code": "DIGITAL_INTERACTION",
       "name": "Digital Interaction and Etiquette",
       "description": "Phát triển các kỹ năng và quy tắc ứng xử (netiquette) khi giao tiếp và tương tác chuyên nghiệp trong môi trường số, từ email đến các nền tảng cộng tác.",
-      "parent_or_relation": "DIGITAL_INTERACTION_CAT",
+      "parent_or_relation": "DIGITAL_INTERACTION_CAT,DIGITAL_WELLBEING,SOCIETAL_IMPACT",
       "parent_codes": [
-        "DIGITAL_INTERACTION_CAT"
+        "DIGITAL_INTERACTION_CAT",
+        "DIGITAL_WELLBEING",
+        "SOCIETAL_IMPACT"
       ],
       "keywords": "netiquette, digital communication, etiquette",
       "metadata": "{\"icon\": \"comments\"}"
@@ -2132,9 +2145,10 @@
       "code": "COLLABORATION_TOOLS",
       "name": "Digital Collaboration Tools",
       "description": "Hướng dẫn sử dụng hiệu quả các công cụ và nền tảng kỹ thuật số để làm việc nhóm, quản lý dự án và hợp tác từ xa (ví dụ: Trello, Slack, Google Workspace).",
-      "parent_or_relation": "COLLABORATION_TOOLS_CAT",
+      "parent_or_relation": "COLLABORATION_TOOLS_CAT,IP_COPYRIGHT",
       "parent_codes": [
-        "COLLABORATION_TOOLS_CAT"
+        "COLLABORATION_TOOLS_CAT",
+        "IP_COPYRIGHT"
       ],
       "keywords": "collaboration, teamwork, project management tools",
       "metadata": "{\"icon\": \"users-cog\"}"
@@ -2464,9 +2478,12 @@
       "code": "STRUCTURED_DATA_STORAGE",
       "name": "Structured On-Device Storage",
       "description": "Sử dụng các framework cơ sở dữ liệu hoặc ghi/đọc file để quản lý các tập dữ liệu có cấu trúc trên thiết bị.",
-      "parent_or_relation": "APP_PERSISTENCE",
+      "parent_or_relation": "APP_PERSISTENCE,DATA_ENCODING,DATA_COLLECTION,BIG_DATA_TECH",
       "parent_codes": [
-        "APP_PERSISTENCE"
+        "APP_PERSISTENCE",
+        "DATA_ENCODING",
+        "DATA_COLLECTION",
+        "BIG_DATA_TECH"
       ],
       "keywords": "on-device orm, file manager, serialization, on-device database",
       "metadata": "{\"icon\": \"database\"}"
@@ -2530,9 +2547,10 @@
       "code": "AI_ASSISTED_CODING",
       "name": "AI-Assisted Coding",
       "description": "Kỹ năng sử dụng các công cụ Trí tuệ nhân tạo (như ChatGPT, Copilot, Locofy) để sinh mã nguồn, chuyển đổi thiết kế sang code và hỗ trợ gỡ lỗi.",
-      "parent_or_relation": "AI_APPLICATIONS",
+      "parent_or_relation": "AI_APPLICATIONS,AI_ETHICS_BIAS",
       "parent_codes": [
-        "AI_APPLICATIONS"
+        "AI_APPLICATIONS",
+        "AI_ETHICS_BIAS"
       ],
       "keywords": "AI coding, generative AI, copilot, design-to-code",
       "metadata": "{\"icon\": \"robot\"}"
@@ -2563,9 +2581,10 @@
       "code": "DISCRETE_COMBINATORICS",
       "name": "Discrete Combinatorics",
       "description": "Counting and combinatorics.",
-      "parent_or_relation": "DISCRETE_STRUCTURES",
+      "parent_or_relation": "DISCRETE_STRUCTURES,STATISTICS_PROBABILITY",
       "parent_codes": [
-        "DISCRETE_STRUCTURES"
+        "DISCRETE_STRUCTURES",
+        "STATISTICS_PROBABILITY"
       ],
       "keywords": "counting, permutations",
       "metadata": ""
@@ -2796,9 +2815,11 @@
       "code": "TEMP_HUMIDITY_SENSORS",
       "name": "Reading Temp/Humidity Sensors",
       "description": "Sử dụng thư viện để đọc dữ liệu từ các cảm biến nhiệt độ và độ ẩm kỹ thuật số phổ biến như DHT11 hoặc DHT22.",
-      "parent_or_relation": "SENSOR_TYPES",
+      "parent_or_relation": "SENSOR_TYPES,HW_IO,IOT_DEVICES_SENSORS",
       "parent_codes": [
-        "SENSOR_TYPES"
+        "SENSOR_TYPES",
+        "HW_IO",
+        "IOT_DEVICES_SENSORS"
       ],
       "keywords": "DHT11, temperature sensor, humidity sensor",
       "metadata": "{\"icon\": \"thermometer-half\"}"
@@ -2807,9 +2828,11 @@
       "code": "LIGHT_MOTION_SENSORS",
       "name": "Reading Light/Motion Sensors",
       "description": "Sử dụng cảm biến quang trở (LDR) để đo cường độ ánh sáng và cảm biến hồng ngoại thụ động (PIR) để phát hiện chuyển động.",
-      "parent_or_relation": "SENSOR_TYPES",
+      "parent_or_relation": "SENSOR_TYPES,HW_IO,IOT_DEVICES_SENSORS",
       "parent_codes": [
-        "SENSOR_TYPES"
+        "SENSOR_TYPES",
+        "HW_IO",
+        "IOT_DEVICES_SENSORS"
       ],
       "keywords": "LDR, photoresistor, PIR sensor, motion detection",
       "metadata": "{\"icon\": \"lightbulb\"}"
@@ -2818,9 +2841,13 @@
       "code": "MOTOR_CONTROL",
       "name": "DC Motor and Servo Control",
       "description": "Phân biệt và điều khiển hai loại động cơ phổ biến: động cơ DC (điều khiển tốc độ) và động cơ Servo (điều khiển vị trí/góc).",
-      "parent_or_relation": "ACTUATOR_CONTROL",
+      "parent_or_relation": "ACTUATOR_CONTROL,EMBEDDED_SYSTEMS,ROBOT_KINEMATICS,ROBOT_CONTROL,HW_IO",
       "parent_codes": [
-        "ACTUATOR_CONTROL"
+        "ACTUATOR_CONTROL",
+        "EMBEDDED_SYSTEMS",
+        "ROBOT_KINEMATICS",
+        "ROBOT_CONTROL",
+        "HW_IO"
       ],
       "keywords": "DC motor, servo motor, actuator control",
       "metadata": "{\"icon\": \"fan\"}"
@@ -3027,9 +3054,10 @@
       "code": "CLOUD_DEPLOYMENT_MODELS",
       "name": "Cloud Deployment Models",
       "description": "Phân biệt các mô hình triển khai đám mây: Public, Private, và Hybrid Cloud.",
-      "parent_or_relation": "APP_DEPLOYMENT",
+      "parent_or_relation": "APP_DEPLOYMENT,EDGE_FOG_CLOUD",
       "parent_codes": [
-        "APP_DEPLOYMENT"
+        "APP_DEPLOYMENT",
+        "EDGE_FOG_CLOUD"
       ],
       "keywords": "public cloud, private cloud, hybrid cloud",
       "metadata": "{\"icon\": \"cloud-upload-alt\"}"
@@ -3159,9 +3187,10 @@
       "code": "IOT_PROTOCOLS_MQTT_CONCEPT",
       "name": "IoT Messaging Protocols (MQTT)",
       "description": "Hiểu nguyên lý hoạt động của giao thức MQTT theo mô hình publish-subscribe, được thiết kế cho các thiết bị IoT.",
-      "parent_or_relation": "IOT_PROTOCOLS_MQTT",
+      "parent_or_relation": "IOT_PROTOCOLS_MQTT,ENCRYPTION_PROTOCOLS",
       "parent_codes": [
-        "IOT_PROTOCOLS_MQTT"
+        "IOT_PROTOCOLS_MQTT",
+        "ENCRYPTION_PROTOCOLS"
       ],
       "keywords": "MQTT, publish-subscribe, IoT protocols",
       "metadata": "{\"icon\": \"envelope-open-text\"}"
@@ -3170,9 +3199,10 @@
       "code": "IOT_SECURITY_THREATS",
       "name": "Common IoT Security Threats",
       "description": "Nhận biết các mối đe dọa bảo mật đặc thù cho thiết bị IoT, như tấn công vào firmware, mật khẩu mặc định yếu, và các giao thức không an toàn.",
-      "parent_or_relation": "NETWORK_ATTACKS",
+      "parent_or_relation": "NETWORK_ATTACKS,FIREWALLS_IDS",
       "parent_codes": [
-        "NETWORK_ATTACKS"
+        "NETWORK_ATTACKS",
+        "FIREWALLS_IDS"
       ],
       "keywords": "IoT security, firmware, botnet",
       "metadata": "{\"icon\": \"shield-virus\"}"
@@ -3192,9 +3222,10 @@
       "code": "RENDERING_PIPELINE",
       "name": "Graphics Rendering Pipeline",
       "description": "Hiểu các giai đoạn chính trong quy trình kết xuất đồ họa, từ mô hình 3D đến các pixel cuối cùng trên màn hình.",
-      "parent_or_relation": "RENDERING_CONCEPTS",
+      "parent_or_relation": "RENDERING_CONCEPTS,RENDERING",
       "parent_codes": [
-        "RENDERING_CONCEPTS"
+        "RENDERING_CONCEPTS",
+        "RENDERING"
       ],
       "keywords": "rendering pipeline, vertex shader, fragment shader",
       "metadata": "{\"icon\": \"stream\"}"
@@ -3247,9 +3278,11 @@
       "code": "AFFORDANCES_SIGNIFIERS",
       "name": "Affordances and Signifiers",
       "description": "Phân biệt khái niệm \"khả năng\" (affordances - những gì một đối tượng có thể làm) và \"dấu hiệu\" (signifiers - gợi ý trực quan về cách sử dụng).",
-      "parent_or_relation": "UI_UX_HEURISTICS",
+      "parent_or_relation": "UI_UX_HEURISTICS,UI_CONTROLS,DECLARATIVE_UI_MODEL",
       "parent_codes": [
-        "UI_UX_HEURISTICS"
+        "UI_UX_HEURISTICS",
+        "UI_CONTROLS",
+        "DECLARATIVE_UI_MODEL"
       ],
       "keywords": "affordance, signifier, discoverability",
       "metadata": "{\"icon\": \"lightbulb-on\"}"
@@ -3390,9 +3423,11 @@
       "code": "IMAGE_COMPOSITING",
       "name": "Image Compositing",
       "description": "Kỹ thuật kết hợp nhiều hình ảnh khác nhau để tạo thành một tác phẩm duy nhất, liền mạch, thường sử dụng layer mask và blending modes.",
-      "parent_or_relation": "RASTER_GRAPHICS_CONCEPTS",
+      "parent_or_relation": "RASTER_GRAPHICS_CONCEPTS,HIERARCHICAL_NAVIGATION,MODAL_PRESENTATION",
       "parent_codes": [
-        "RASTER_GRAPHICS_CONCEPTS"
+        "RASTER_GRAPHICS_CONCEPTS",
+        "HIERARCHICAL_NAVIGATION",
+        "MODAL_PRESENTATION"
       ],
       "keywords": "compositing, photomontage, image combination",
       "metadata": "{\"icon\": \"images\"}"
@@ -3678,9 +3713,11 @@
       "code": "LINEAR_BINARY_SEARCH",
       "name": "Linear vs. Binary Search",
       "description": "So sánh độ phức tạp (O(n) vs O(log n)) và điều kiện áp dụng (mảng bất kỳ vs mảng đã sắp xếp) của hai thuật toán tìm kiếm cơ bản.",
-      "parent_or_relation": "SEARCH_SORT_ALGO",
+      "parent_or_relation": "SEARCH_SORT_ALGO,TREE_STRUCTURES,TREES_HEAPS",
       "parent_codes": [
-        "SEARCH_SORT_ALGO"
+        "SEARCH_SORT_ALGO",
+        "TREE_STRUCTURES",
+        "TREES_HEAPS"
       ],
       "keywords": "linear search, binary search, search algorithm",
       "metadata": "{\"icon\": \"search\"}"
@@ -3722,9 +3759,14 @@
       "code": "PRIMITIVE_TYPE_DECLARATION",
       "name": "Declaring Primitive Types",
       "description": "Nắm vững cú pháp khai báo biến với các kiểu dữ liệu nguyên thủy (int, bool, float) trong một ngôn ngữ lập trình cụ thể.",
-      "parent_or_relation": "PRIMITIVE_TYPES",
+      "parent_or_relation": "PRIMITIVE_TYPES,VAR_CONSTANTS,ARITHMETIC_OPS,COMPARISON_LOGICAL_OPS,FUNC_SYNTAX,RETURN_VALUES",
       "parent_codes": [
-        "PRIMITIVE_TYPES"
+        "PRIMITIVE_TYPES",
+        "VAR_CONSTANTS",
+        "ARITHMETIC_OPS",
+        "COMPARISON_LOGICAL_OPS",
+        "FUNC_SYNTAX",
+        "RETURN_VALUES"
       ],
       "keywords": "declaration, primitive types, int, boolean",
       "metadata": "{\"icon\": \"tag\"}"
@@ -3733,9 +3775,10 @@
       "code": "REFERENCE_TYPE_DECLARATION",
       "name": "Declaring Reference Types",
       "description": "Nắm vững cú pháp khai báo biến với các kiểu dữ liệu tham chiếu (String, Array, Object) và hiểu cách chúng được lưu trữ trong bộ nhớ.",
-      "parent_or_relation": "REFERENCE_TYPES",
+      "parent_or_relation": "REFERENCE_TYPES,VAR_CONSTANTS",
       "parent_codes": [
-        "REFERENCE_TYPES"
+        "REFERENCE_TYPES",
+        "VAR_CONSTANTS"
       ],
       "keywords": "declaration, reference types, string, object",
       "metadata": "{\"icon\": \"link\"}"
@@ -3854,9 +3897,9 @@
       "code": "DOM_MANIPULATION",
       "name": "DOM Manipulation",
       "description": "Sử dụng client-side scripting để truy cập và thay đổi động nội dung, cấu trúc và kiểu dáng của một trang web đang chạy thông qua DOM API.",
-      "parent_or_relation": "JAVASCRIPT_DOM",
+      "parent_or_relation": "DOM_MANIPULATION_TOPIC",
       "parent_codes": [
-        "JAVASCRIPT_DOM"
+        "DOM_MANIPULATION_TOPIC"
       ],
       "keywords": "DOM, client-side scripting, element query, element content mutation",
       "metadata": "{\"icon\": \"hand-sparkles\"}"
@@ -3909,9 +3952,10 @@
       "code": "AI_VS_ML",
       "name": "AI vs. ML vs. Deep Learning",
       "description": "Phân biệt rõ ràng mối quan hệ và sự khác biệt giữa các thuật ngữ: Trí tuệ Nhân tạo, Học máy, và Học sâu.",
-      "parent_or_relation": "SUPERVISED_LEARNING",
+      "parent_or_relation": "SUPERVISED_LEARNING,AI_ASSISTED_CODING",
       "parent_codes": [
-        "SUPERVISED_LEARNING"
+        "SUPERVISED_LEARNING",
+        "AI_ASSISTED_CODING"
       ],
       "keywords": "AI, ML, Deep Learning, definitions",
       "metadata": "{\"icon\": \"project-diagram\"}"
@@ -4019,9 +4063,10 @@
       "code": "DATABASE_NORMALIZATION",
       "name": "Database Normalization",
       "description": "Hiểu quá trình tổ chức các cột và bảng trong cơ sở dữ liệu quan hệ để giảm thiểu sự dư thừa dữ liệu và cải thiện tính toàn vẹn.",
-      "parent_or_relation": "RELATIONAL_DB",
+      "parent_or_relation": "RELATIONAL_DB,TRANSACTION_MANAGEMENT",
       "parent_codes": [
-        "RELATIONAL_DB"
+        "RELATIONAL_DB",
+        "TRANSACTION_MANAGEMENT"
       ],
       "keywords": "normalization, 1NF, 2NF, 3NF, database design",
       "metadata": "{\"icon\": \"columns\"}"
@@ -4405,9 +4450,10 @@
       "code": "MAP_INTEGRATION",
       "name": "Map Integration",
       "description": "Tích hợp và hiển thị một bản đồ tương tác trong ứng dụng, điều khiển vùng hiển thị và thêm các điểm đánh dấu (annotations).",
-      "parent_or_relation": "GEOSPATIAL_SERVICES",
+      "parent_or_relation": "GEOSPATIAL_SERVICES,HASH_TABLES",
       "parent_codes": [
-        "GEOSPATIAL_SERVICES"
+        "GEOSPATIAL_SERVICES",
+        "HASH_TABLES"
       ],
       "keywords": "MapKit, MapView, annotation",
       "metadata": "{\"icon\": \"map-marked-alt\"}"
@@ -4493,9 +4539,10 @@
       "code": "GAME_LOOP",
       "name": "Game Loop",
       "description": "Vòng lặp vô hạn duy trì trạng thái của trò chơi, xử lý đầu vào, cập nhật vật lý và vẽ lại hình ảnh (render) liên tục.",
-      "parent_or_relation": "GAMEPLAY_MECHANICS",
+      "parent_or_relation": "GAMEPLAY_MECHANICS,GAME_OBJ_SCRIPTING",
       "parent_codes": [
-        "GAMEPLAY_MECHANICS"
+        "GAMEPLAY_MECHANICS",
+        "GAME_OBJ_SCRIPTING"
       ],
       "keywords": "game loop, update loop, tick",
       "metadata": "{\"icon\": \"sync\"}"
@@ -4526,9 +4573,13 @@
       "code": "LEVEL_LAYOUT",
       "name": "Level Layout Design",
       "description": "Kỹ thuật sắp đặt không gian, chướng ngại vật và đường đi để tạo ra dòng chảy (flow) và độ khó hợp lý cho người chơi.",
-      "parent_or_relation": "GAME_ENV_BUILDING",
+      "parent_or_relation": "GAME_ENV_BUILDING,UI_MODIFIERS,STACK_LAYOUT,GRID_LAYOUT,ADAPTIVE_LAYOUT",
       "parent_codes": [
-        "GAME_ENV_BUILDING"
+        "GAME_ENV_BUILDING",
+        "UI_MODIFIERS",
+        "STACK_LAYOUT",
+        "GRID_LAYOUT",
+        "ADAPTIVE_LAYOUT"
       ],
       "keywords": "level design, layout, map design",
       "metadata": "{\"icon\": \"map\"}"
@@ -4581,9 +4632,11 @@
       "code": "GRAPH_MODELS",
       "name": "Graph Models",
       "description": "Vertices, edges, traversal concepts.",
-      "parent_or_relation": "GRAPH_THEORY",
+      "parent_or_relation": "GRAPH_THEORY,TREE_STRUCTURES,TREES_HEAPS",
       "parent_codes": [
-        "GRAPH_THEORY"
+        "GRAPH_THEORY",
+        "TREE_STRUCTURES",
+        "TREES_HEAPS"
       ],
       "keywords": "graphs, trees",
       "metadata": ""
