@@ -51,3 +51,5 @@
 ## [2026-08-02 09:43] [TRENDS] Project gap-uk_national_curriculum_computing_updates_2024_-20260802094314 created from trend-uk-national-curriculum-computing-u-20260802093311-eafe6c6b - Pipeline: SUCCESS
 
 ## [2026-08-02 09:43] [TRENDS] Project gap-csta_k-12_cs_standards_updates_2024_2025-20260802094314 created from trend-csta-k-12-cs-standards-updates-202-20260802093310-cf229891 - Pipeline: SUCCESS
+
+## [2026-08-02 09:54] [ACADEMIC] Project gap-general-computing-20260802095459 created from test_syllabus-20260802095444-02e743ce - Pipeline: SUCCESS
