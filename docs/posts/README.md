@@ -45,9 +45,14 @@ Chào mừng bạn đến với bộ sưu tập các bài viết phân tích chu
 * **Chủ đề:** Bruner Spiral Curriculum, CSTA K-12 CS Standards, AP CSP, IB CS, CS Unplugged.
 * **Tóm tắt:** Phương pháp thiết kế chương trình tin học xoắn ốc từ Phổ thông đến Tiền Đại học, giúp học sinh tiếp cận một khái niệm cốt lõi ở nhiều cấp độ nhận thức tăng dần mà không bị "khóa tuổi".
 * **Link:** [`bruner_spiral_curriculum_k12_preuniv_cs.md`](./bruner_spiral_curriculum_k12_preuniv_cs.md)
-
 ---
 
+### 7. [Khoa Học Máy Tính Liên Môn: Nhánh S-T-E-M Tích Hợp Cho Kỷ Nguyên Tính Toán Đa Ngành](./stem_interdisciplinary_cs_integration_2026.md)
+* **Chủ đề:** STEM Interdisciplinary, Computational Science, Mechatronics, Signal Processing (DSP), Information Theory, Post-Quantum DLT.
+* **Tóm tắt:** Phân tích vai trò của CS như một "Trục Điện toán Trung tâm" kết nối Sinh học Tính toán (Bioinformatics), CFD Vật lý, Điện toán Không gian XR, Cơ điện tử HIL, Xử lý Tín hiệu Số DSP và Đại số Tensor SVD.
+* **Link:** [`stem_interdisciplinary_cs_integration_2026.md`](./stem_interdisciplinary_cs_integration_2026.md)
+
+---
 ## 🎯 Hướng Dẫn Sử Dụng & Đóng Góp
 
 Tất cả các bài viết trong series đều đi kèm **Sơ đồ Mermaid rendered trực quan**, **Mã nguồn/Khái niệm 100% Trung tính T6** và **Link dẫn chứng tham chiếu từ các tổ chức hàn lâm uy tín** (ACM, IEEE, NIST, Stanford, MIT, CSTA, College Board).

@@ -2783,6 +2783,42 @@
       ],
       "keywords": "unplugged algorithms, block logic, event-driven blocks",
       "metadata": "{\"csta_strand\": \"AP-2\", \"csta_level\": \"1A,1B,2\"}"
+    },
+    {
+      "code": "COMPUTATIONAL_SCIENCE_SIMULATION",
+      "name": "Computational Science & Physical Simulation",
+      "description": "Mô hình hóa và mô phỏng các hiện tượng vật lý, sinh học, hóa học bằng các phương pháp tính toán và giải thuật số.",
+      "parent_or_relation": "COMPUTATIONAL_THINKING_PRIMITIVES, GEOMETRIC_MODELING",
+      "parent_codes": [
+        "COMPUTATIONAL_THINKING_PRIMITIVES",
+        "GEOMETRIC_MODELING"
+      ],
+      "keywords": "computational biology, bioinformatics, physics simulation, CFD, FEA",
+      "metadata": "{\"icon\": \"atom\"}"
+    },
+    {
+      "code": "DIGITAL_SIGNAL_PROCESSING_TOPIC",
+      "name": "Digital Signal Processing & Communication",
+      "description": "Nghiên cứu các thuật toán biến đổi, lọc và phân tích tín hiệu số trong thời gian thực.",
+      "parent_or_relation": "MEMORY_IO_SYSTEMS, ELECTRONIC_CIRCUITS",
+      "parent_codes": [
+        "MEMORY_IO_SYSTEMS",
+        "ELECTRONIC_CIRCUITS"
+      ],
+      "keywords": "DSP, Fourier transform, FFT, digital filtering, Nyquist sampling",
+      "metadata": "{\"icon\": \"wave-square\"}"
+    },
+    {
+      "code": "ADVANCED_MATH_OPTIMIZATION",
+      "name": "Advanced Mathematics & Optimization Theory",
+      "description": "Bao gồm đại số tuyến tính nâng cao, lý thuyết tối ưu hóa và lý thuyết thông tin cho AI và Đồ họa.",
+      "parent_or_relation": "STATISTICS_PROBABILITY, COMPUTATIONAL_THINKING_PRIMITIVES",
+      "parent_codes": [
+        "STATISTICS_PROBABILITY",
+        "COMPUTATIONAL_THINKING_PRIMITIVES"
+      ],
+      "keywords": "linear algebra, SVD, gradient descent, information entropy, optimization",
+      "metadata": "{\"icon\": \"calculator\"}"
     }
   ],
   "concepts": [
@@ -5236,6 +5272,138 @@
       ],
       "keywords": "probabilistic reasoning, deterministic logic, rule-based vs data-driven, XAI, explainable AI",
       "metadata": "{\"csta_strand\": \"AP-1\", \"csta_level\": \"2,3A,3B\", \"ap_csp\": \"AAP-2\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "BIOINFORMATICS_GENOMIC_ANALYSIS",
+      "name": "Bioinformatics and Genomic Sequence Analysis",
+      "description": "Phương pháp tính toán và thuật toán xử lý dữ liệu chuỗi sinh học (DNA/RNA) và mô hình hóa cấu trúc protein.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION"
+      ],
+      "keywords": "bioinformatics, DNA sequencing, protein folding, genomic analysis",
+      "metadata": "{\"csta_strand\": \"DA-2\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "PHYSICAL_FLUID_DYNAMICS_SIMULATION",
+      "name": "Computational Physics and Fluid Dynamics",
+      "description": "Mô hình hóa máy tính các hiện tượng động lực học chất lưu (CFD) và phân tích phần tử hữu hạn (FEA) trong kỹ thuật.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION"
+      ],
+      "keywords": "CFD, FEA, fluid dynamics, physical simulation, numerical methods",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "MOLECULAR_DYNAMICS_MODELING",
+      "name": "Molecular Dynamics and Materials Computing",
+      "description": "Mô hình hóa tương tác vi mô của phân tử và nguyên tử trong khoa học vật liệu và hóa học tính toán.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION"
+      ],
+      "keywords": "molecular dynamics, materials science, atomic simulation",
+      "metadata": "{\"csta_strand\": \"DA-2\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "DECENTRALIZED_LEDGER_CONSENSUS",
+      "name": "Decentralized Ledger Cryptographic Consensus",
+      "description": "Nguyên lý đồng thuận mã hóa (Proof of Work, Proof of Stake) và hạ tầng sổ cái phân tán bảo vệ tính toàn vẹn.",
+      "parent_or_relation": "ZERO_TRUST_SECURITY",
+      "parent_codes": [
+        "ZERO_TRUST_SECURITY"
+      ],
+      "keywords": "blockchain, consensus, Merkle tree, smart contract, DLT",
+      "metadata": "{\"csta_strand\": \"NI-1\", \"csta_level\": \"3A,3B\", \"ap_csp\": \"IOC-1\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "SPATIAL_COMPUTING_XR_MAPPING",
+      "name": "Spatial Computing and Extended Reality Mapping",
+      "description": "Kỹ thuật tái tạo không gian 3D, định vị mô phỏng thực tại mở rộng (XR/AR/VR) và tương tác không gian.",
+      "parent_or_relation": "3D_ANIMATION_PRINCIPLES",
+      "parent_codes": [
+        "3D_ANIMATION_PRINCIPLES"
+      ],
+      "keywords": "spatial computing, XR, AR, VR, NeRF, 3D reconstruction",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "MECHATRONICS_SYSTEMS_DIAGNOSTICS",
+      "name": "Mechatronics and Control Systems Diagnostics",
+      "description": "Quy trình chẩn đoán, tích hợp kiểm thử phần cứng vòng kín (Hardware-in-the-Loop) trong kỹ thuật cơ điện tử.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING"
+      ],
+      "keywords": "mechatronics, Hardware-in-the-Loop, HIL, control systems, diagnostics",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "FOURIER_TRANSFORM_SIGNAL_ANALYSIS",
+      "name": "Fourier Transform and Frequency Analysis",
+      "description": "Biến đổi Fourier (FFT/DFT) để phân tích tín hiệu từ miền thời gian sang miền tần số trong xử lý tín hiệu số.",
+      "parent_or_relation": "DIGITAL_SIGNAL_PROCESSING_TOPIC",
+      "parent_codes": [
+        "DIGITAL_SIGNAL_PROCESSING_TOPIC"
+      ],
+      "keywords": "Fourier transform, FFT, frequency domain, signal processing",
+      "metadata": "{\"csta_strand\": \"DA-2\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "DIGITAL_FILTERING_AND_SAMPLING",
+      "name": "Digital Filtering and Nyquist Sampling Theorem",
+      "description": "Định lý lấy mẫu Nyquist-Shannon và kỹ thuật thiết kế bộ lọc số (FIR/IIR) loại bỏ nhiễu tín hiệu.",
+      "parent_or_relation": "DIGITAL_SIGNAL_PROCESSING_TOPIC",
+      "parent_codes": [
+        "DIGITAL_SIGNAL_PROCESSING_TOPIC"
+      ],
+      "keywords": "Nyquist sampling, digital filter, FIR, IIR, signal filtering",
+      "metadata": "{\"csta_strand\": \"DA-2\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Apply->Analyze\"}"
+    },
+    {
+      "code": "SINGULAR_VALUE_DECOMPOSITION",
+      "name": "Singular Value Decomposition and Tensor Operations",
+      "description": "Phân tích giá trị đơn lẻ (SVD) và đại số tensor cho giảm chiều dữ liệu và tính toán mạng nơ-ron sâu.",
+      "parent_or_relation": "ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "SVD, matrix factorization, tensor operations, linear algebra",
+      "metadata": "{\"csta_strand\": \"DA-3\", \"csta_level\": \"3B\", \"ap_csp\": \"DAT-2\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "GRADIENT_DESCENT_OPTIMIZATION",
+      "name": "Gradient Descent and Convex Optimization",
+      "description": "Lý thuyết tối ưu hóa độ dốc (Gradient Descent) và phân tích bề mặt tổn thất (Loss Landscape) trong học máy.",
+      "parent_or_relation": "ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "gradient descent, convex optimization, loss landscape, backpropagation",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "INFORMATION_ENTROPY_METRICS",
+      "name": "Information Entropy and Mutual Information",
+      "description": "Đo lường độ không chắc chắn thông qua Entropy Shannon, Mutual Information và Kullback-Leibler Divergence.",
+      "parent_or_relation": "ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "Shannon entropy, mutual information, KL divergence, information theory",
+      "metadata": "{\"csta_strand\": \"DA-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "COMPUTATIONAL_GENETICS_MODELS",
+      "name": "Computational Genetics and Evolutionary Models",
+      "description": "Mô hình hóa sự tiến hóa và di truyền quần thể bằng các giải thuật di truyền và tính toán sinh học.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION"
+      ],
+      "keywords": "genetic algorithm, evolutionary model, computational genetics",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
     }
   ]
 }
