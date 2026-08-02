@@ -5750,6 +5750,126 @@
       ],
       "keywords": "carbon accounting, life cycle assessment, LCA, green computing, carbon footprint",
       "metadata": "{\"csta_strand\": \"IC-2\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "RADIATION_HARDENED_SPACE_COMPUTING",
+      "name": "Radiation-Hardened Space Computing Systems",
+      "description": "Nguyên lý thiết kế vi xử lý và phần mềm chịu bức xạ vũ trụ với kiến trúc dự phòng lỗi (Triple Modular Redundancy) cho tàu không gian.",
+      "parent_or_relation": "HW_CPU, EMBEDDED_SYSTEMS",
+      "parent_codes": [
+        "HW_CPU",
+        "EMBEDDED_SYSTEMS"
+      ],
+      "keywords": "radiation hardened, space computing, satellite avionics, fault tolerance, TMR",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "ORBITAL_MECHANICS_SATELLITE_MESH",
+      "name": "Orbital Mechanics and Inter-Satellite Mesh Networks",
+      "description": "Thuật toán xác định quỹ đạo vệ tinh và điều hướng mạng truyền thông liên kết laser giữa các chòm vệ tinh vệ tinh tầm thấp (LEO).",
+      "parent_or_relation": "TRANSPORT_PROTOCOLS, NETWORK_TOPOLOGIES",
+      "parent_codes": [
+        "TRANSPORT_PROTOCOLS",
+        "NETWORK_TOPOLOGIES"
+      ],
+      "keywords": "orbital mechanics, satellite mesh, inter-satellite laser, LEO constellation",
+      "metadata": "{\"csta_strand\": \"NI-1\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "NEURAL_SIGNAL_DECODING_BCI",
+      "name": "Neural Signal Decoding for Brain-Computer Interfaces",
+      "description": "Phương pháp xử lý và giải mã tín hiệu điện não đồ (EEG) hoặc tín hiệu nơ-ron xâm nhập để điều khiển thiết bị qua giao diện não-máy tính (BCI).",
+      "parent_or_relation": "DIGITAL_SIGNAL_PROCESSING_TOPIC, ASSISTIVE_TECH",
+      "parent_codes": [
+        "DIGITAL_SIGNAL_PROCESSING_TOPIC",
+        "ASSISTIVE_TECH"
+      ],
+      "keywords": "BCI, brain computer interface, neural decoding, EEG signal, neurotech",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "CLOSED_LOOP_NEUROSTIMULATION",
+      "name": "Closed-Loop Neurostimulation and Bio-Prosthetics",
+      "description": "Thuật toán kích thích thần kinh phản hồi vòng kín và điều khiển chi giả sinh học dựa trên giải mã ý định cử động thời gian thực.",
+      "parent_or_relation": "ACTUATOR_CONTROL, ASSISTIVE_TECH",
+      "parent_codes": [
+        "ACTUATOR_CONTROL",
+        "ASSISTIVE_TECH"
+      ],
+      "keywords": "neurostimulation, bio-prosthetics, closed loop, neural feedback, BCI",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Create\"}"
+    },
+    {
+      "code": "QUANTUM_KEY_DISTRIBUTION_QKD",
+      "name": "Quantum Key Distribution and BB84 Protocol",
+      "description": "Nguyên lý phân phối khóa bảo mật dựa trên cơ học lượng tử (QKD) và giao thức BB84 đảm bảo an toàn tuyệt đối trước nguy cơ nghe lén.",
+      "parent_or_relation": "QUANTUM_CIRCUITS_AND_GATES, ENCRYPTION_PROTOCOLS",
+      "parent_codes": [
+        "QUANTUM_CIRCUITS_AND_GATES",
+        "ENCRYPTION_PROTOCOLS"
+      ],
+      "keywords": "QKD, quantum key distribution, BB84, quantum cryptography, photon polarization",
+      "metadata": "{\"csta_strand\": \"NI-1\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "QUANTUM_REPEATER_NETWORKS",
+      "name": "Quantum Repeater Networks and Teleportation",
+      "description": "Thuật toán trạm lặp lượng tử và truyền tải trạng thái lượng tử (Quantum Teleportation) phục vụ hạ tầng Internet Lượng tử.",
+      "parent_or_relation": "QUANTUM_CIRCUITS_AND_GATES, NETWORK_TOPOLOGIES",
+      "parent_codes": [
+        "QUANTUM_CIRCUITS_AND_GATES",
+        "NETWORK_TOPOLOGIES"
+      ],
+      "keywords": "quantum repeater, quantum teleportation, quantum internet, entanglement distribution",
+      "metadata": "{\"csta_strand\": \"NI-1\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "MEDICAL_IMAGE_DICOM_SEGMENTATION",
+      "name": "Medical Image DICOM Segmentation and Analytics",
+      "description": "Thuật toán phân tích hình ảnh y tế (CT, MRI) chuẩn DICOM và phân đoạn tổn thương bằng các mô hình mạng nơ-ron chuyên dụng.",
+      "parent_or_relation": "RASTER_GRAPHICS_CONCEPTS, GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "RASTER_GRAPHICS_CONCEPTS",
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "medical image, DICOM, MRI segmentation, CT scan, medical AI",
+      "metadata": "{\"csta_strand\": \"DA-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Analyze\"}"
+    },
+    {
+      "code": "WEARABLE_PHYSIOLOGICAL_MONITORING",
+      "name": "Wearable Real-Time Physiological Signal Monitoring",
+      "description": "Thuật toán xử lý và phân tích thời gian thực các chỉ số sinh lý (điện tâm đồ ECG, nồng độ oxy SpO2) từ thiết bị đeo y tế.",
+      "parent_or_relation": "DIGITAL_SIGNAL_PROCESSING_TOPIC, IOT_PROTOCOLS_MQTT",
+      "parent_codes": [
+        "DIGITAL_SIGNAL_PROCESSING_TOPIC",
+        "IOT_PROTOCOLS_MQTT"
+      ],
+      "keywords": "physiological monitoring, ECG, SpO2, wearable medical, real-time health",
+      "metadata": "{\"csta_strand\": \"DA-2\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "ULTRA_LOW_LATENCY_HFT_ARCHITECTURE",
+      "name": "Ultra-Low Latency High-Frequency Trading Architecture",
+      "description": "Kiến trúc phần mềm và phần cứng FPGA/Kernel Bypass đạt độ trễ dưới vi giây (Sub-microsecond) phục vụ giao dịch tài chính tần số cao.",
+      "parent_or_relation": "ASYNCHRONOUS_PROG, HW_CPU",
+      "parent_codes": [
+        "ASYNCHRONOUS_PROG",
+        "HW_CPU"
+      ],
+      "keywords": "HFT, high frequency trading, ultra low latency, FPGA, kernel bypass, sub-microsecond",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "QUANTITATIVE_FINANCIAL_RISK_MODELING",
+      "name": "Quantitative Financial Risk Modeling and Monte Carlo",
+      "description": "Mô hình hóa rủi ro tài chính định lượng, mô phỏng Monte Carlo và định giá công cụ phái sinh trong kỹ thuật tài chính.",
+      "parent_or_relation": "ADVANCED_MATH_OPTIMIZATION, SUPERVISED_LEARNING",
+      "parent_codes": [
+        "ADVANCED_MATH_OPTIMIZATION",
+        "SUPERVISED_LEARNING"
+      ],
+      "keywords": "quantitative finance, Monte Carlo simulation, risk modeling, financial engineering",
+      "metadata": "{\"csta_strand\": \"DA-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Apply->Analyze\"}"
     }
   ]
 }

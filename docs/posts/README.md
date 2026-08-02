@@ -77,4 +77,11 @@ Chào mừng bạn đến với bộ sưu tập các bài viết phân tích chu
 
 ---
 
+### 12. [Điện Toán Deep Tech Biên Giới: Điện Toán Vũ Trụ, BCI Não-Máy Tính, Mạng Lượng Tử QKD Và HFT Fintech](./frontier_deep_tech_space_bci_qkd_fintech_2026.md)
+* **Chủ đề:** Space Systems Computing, Brain-Computer Interface (BCI), Quantum Key Distribution (QKD), Biomedical AI, High-Frequency Trading (HFT).
+* **Tóm tắt:** Phân tích 5 đột phá Deep Tech biên giới nhất của năm 2026: Vi xử lý kháng bức xạ vũ trụ & Avionics LEO, Giao diện Não-Máy tính (BCI EEG decoding), Bảo mật mạng lượng tử QKD BB84, Điện toán Y sinh DICOM & Kiến trúc giao dịch tài chính tần số cao sub-microsecond HFT.
+* **Link:** [`frontier_deep_tech_space_bci_qkd_fintech_2026.md`](./frontier_deep_tech_space_bci_qkd_fintech_2026.md)
+
+---
+
 Mọi góp ý và thảo luận xin vui lòng gửi về repository chính thức của dự án **Knowledge Tree**.
