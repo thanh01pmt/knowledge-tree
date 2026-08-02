@@ -164,13 +164,23 @@ OUTPUT FORMAT: JSON array of gap objects only. No extra text.
         
         # Call LLM via available interface
         try:
-            # Use OpenAI-compatible API (points to Ollama Cloud)
+            # Use OpenAI-compatible API - prefer Ollama Cloud if available
             import requests
             import json
             
-            openai_base = env_vars.get("OPENAI_BASE_URL", "http://127.0.0.1:11434/v1")
-            openai_key = env_vars.get("OPENAI_API_KEY", "ollama")
+            # Check for Ollama Cloud first (ATE_MODEL=deepseek-v4-flash:cloud)
             model = env_vars.get("ATE_MODEL", "deepseek-v4-flash:cloud")
+            openai_key = env_vars.get("SAAS_OLLAMA_CLOUD_API_KEY") or env_vars.get("OPENAI_API_KEY", "ollama")
+            
+            # Determine base URL: prefer cloud if API key available
+            if env_vars.get("SAAS_OLLAMA_CLOUD_API_KEY"):
+                # Ollama Cloud API endpoint
+                openai_base = "https://api.ollama.ai/v1"
+            else:
+                # Fallback to local Ollama
+                openai_base = env_vars.get("OPENAI_BASE_URL", "http://127.0.0.1:11434/v1")
+            
+            print(f"  🔄 Calling LLM: {model} via {openai_base}")
             
             response = requests.post(
                 f"{openai_base}/chat/completions",

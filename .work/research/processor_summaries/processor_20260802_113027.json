@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-08-02T11:30:27.002903+00:00",
+  "processed": 1,
+  "projects_created": 1,
+  "pipeline_results": [
+    {
+      "project": "gap-csta_k-12_cs_standards_updates_2024_2025-20260802113027",
+      "gap": {
+        "gap_type": "missing_concept",
+        "suggested_code": "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025",
+        "suggested_name": "CSTA K-12 CS Standards updates 2024 2025 Concepts",
+        "suggested_description": "Emerging concepts from trend research: Monitor CSTA for new standards versions",
+        "cs2023_ka": "AI,GIT,SEP",
+        "parent_suggestion": "CAT-EMERGING_TECH",
+        "confidence": 75,
+        "rationale": "Identified via trend discovery (score: 8.7)"
+      },
+      "result": {
+        "success": true,
+        "output": "Scaffold completed"
+      }
+    }
+  ],
+  "items": [
+    {
+      "research_id": "trend-csta-k-12-cs-standards-updates-202-20260802112945-1adb3349",
+      "gaps_found": 1,
+      "projects": [
+        "CON-CSTA_K-12_CS_STANDARDS_UPDATES_2024_2025"
+      ]
+    }
+  ]
+}
