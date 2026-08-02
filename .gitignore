@@ -10,6 +10,7 @@ __pycache__/
 supabase/
 refs/
 docs/
+!docs/posts/
 node_modules/
 
 # Generated/work files
