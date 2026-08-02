@@ -685,3 +685,7 @@
 ## [2026-08-02 11:28] [ACADEMIC] Project gap-general-computing-20260802112846 created from test_syllabus-20260802104535-a5722b2b - Pipeline: SUCCESS
 
 ## [2026-08-02 11:28] [ACADEMIC] Project gap-general-computing-20260802112846 created from test_syllabus-20260802110036-68fd48e7 - Pipeline: SUCCESS
+
+## [2026-08-02 11:29] [TRENDS] Project gap-csta_k-12_cs_standards_updates_2024_2025-20260802112951 created from trend-csta-k-12-cs-standards-updates-202-20260802112946-85fa9020 - Pipeline: SUCCESS
+
+## [2026-08-02 11:29] [TRENDS] Project gap-uk_national_curriculum_computing_updates_2024_-20260802112951 created from trend-uk-national-curriculum-computing-u-20260802112946-7f381982 - Pipeline: SUCCESS
