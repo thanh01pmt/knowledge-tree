@@ -1,6 +1,4 @@
-Bảng 1: Lĩnh vực (fields)						
-Đây là 6 lĩnh vực cấp cao nhất, phân chia toàn bộ không gian tri thức về điện toán.						
-						
+Bảng 1
 code	name	description	display_order	keywords	cs2023_ka_mapping	metadata
 CSN	Computing Systems and Networks	Bao gồm các nguyên tắc cơ bản, kiến trúc và sự tương tác của phần cứng, hệ điều hành và mạng máy tính. Lĩnh vực này đặt nền móng cho việc hiểu cách các chương trình được thực thi và cách dữ liệu được truyền đi, từ mức logic gate đến hạ tầng mạng toàn cầu.	10	hardware, architecture, operating systems, networks, infrastructure, protocols, systems	AR, OS, NC, SF, PDC	{"icon": "memory", "color": "#2980b9"}
 ASE	Algorithms and Software Engineering	Bao gồm tư duy thuật toán để giải quyết vấn đề và các quy trình kỹ thuật để xây dựng phần mềm quy mô lớn, đáng tin cậy. Lĩnh vực này bao quát từ thiết kế giải pháp có cấu trúc, các mô hình lập trình, đến toàn bộ vòng đời phát triển phần mềm.	20	algorithms, software engineering, programming, design patterns, testing, development lifecycle	AL, SDF, FPL, SE	{"icon": "code", "color": "#27ae60"}
@@ -8,10 +6,8 @@ DAI	Data and Information	Bao gồm toàn bộ vòng đời của dữ liệu: c�
 MET	Specialized Computing Methodologies	Bao gồm các lĩnh vực chuyên sâu và các phương pháp tính toán tiên tiến, nơi Khoa học Máy tính được ứng dụng để giải quyết các vấn đề phức tạp. Các lĩnh vực tiêu biểu bao gồm Trí tuệ Nhân tạo, Đồ họa Máy tính, Điện toán Hiệu năng cao và các nền tảng đặc thù.	40	AI, machine learning, graphics, simulation, distributed systems, IoT, robotics	AI, GIT, SPD, PDC	{"icon": "brain", "color": "#8e44ad"}
 HCC	Human-Centered Computing	Bao gồm các nguyên tắc và quy trình thiết kế, xây dựng và đánh giá các hệ thống công nghệ lấy con người làm trung tâm. Lĩnh vực này tập trung vào sự tương tác, trải nghiệm người dùng (UX), giao diện (UI), và đảm bảo khả năng tiếp cận cho mọi đối tượng.	50	HCI, UI, UX, interaction design, user experience, accessibility, usability	HCI	{"icon": "users", "color": "#c0392b"}
 IDC	Digital Society and Professional Practice	Bao gồm bối cảnh xã hội, đạo đức, pháp lý và các tác động của công nghệ. Lĩnh vực này trang bị các năng lực cần thiết để trở thành một công dân số và một nhà chuyên môn có trách nhiệm, hiểu rõ về quyền riêng tư, sở hữu trí tuệ và đạo đức nghề nghiệp.	60	ethics, society, professionalism, privacy, security policy, law, digital citizenship	SEP	{"icon": "shield-alt", "color": "#7f8c8d"}
-						
-Bảng 2: Chủ đề (subjects)						
-Mỗi Field được chia nhỏ thành các Subject chuyên biệt hơn. Lưu ý cột field_codes có thể chứa nhiều mã.						
-						
+
+Bảng 2
 code	name	description	field_codes	keywords	cs2023_ka_mapping	metadata
 CS_ARCHITECTURE	Computer Architecture & Organization	Nghiên cứu về thiết kế và tổ chức của các thành phần phần cứng máy tính, bao gồm CPU, hệ thống phân cấp bộ nhớ, và cách chúng tương tác để thực thi các chỉ lệnh.	CSN	CPU, memory hierarchy, digital logic, hardware	AR	{"icon": "microchip"}
 OPERATING_SYSTEMS	Operating Systems	Khám phá các nguyên tắc cốt lõi của hệ điều hành, bao gồm quản lý tiến trình, bộ nhớ, hệ thống tệp và cách HĐH cung cấp một lớp trừu tượng giữa phần cứng và ứng dụng.	CSN	OS, process management, virtual memory, concurrency	OS	{"icon": "cogs"}
@@ -36,13 +32,9 @@ DIGITAL_LITERACY	Digital Literacy and Collaboration	Bao gồm các kỹ năng s�
 DIGITAL_CITIZENSHIP	Digital Citizenship and Ethics	Bao gồm các quy tắc ứng xử, đạo đức, an toàn và trách nhiệm của một công dân trong xã hội số, nhấn mạnh đến quyền riêng tư, an ninh thông tin và tác động xã hội của công nghệ.	IDC	ethics, privacy, security, societal impact	SEP	{"icon": "user-shield"}
 NATIVE_APP_DEV	Native App Development	Bao gồm các công nghệ, kiến trúc và kỹ thuật để xây dựng các ứng dụng chạy trực tiếp trên hệ điều hành của một nền tảng cụ thể (iOS, Android, macOS), tận dụng tối đa các API và trải nghiệm người dùng gốc.	ASE, HCC	native, mobile development, iOS, Android, native mobile languageUI, UIKit, Jetpack Compose	SPD, HCI	{"icon": "mobile-alt"}
 GAME_DEV	Game Design and Development	Bao gồm quy trình thiết kế và phát triển trò chơi điện tử, từ cơ chế gameplay, thiết kế màn chơi (level design), vật lý trong game, đến lập trình kịch bản game và cân bằng trải nghiệm người chơi.	MET, ASE, HCC	game engine, level design, game physics, gameplay, game mechanics, user-generated content platform, game engine	SPD, GIT	{"icon": "gamepad"}
-						
-						
-						
 QUANTUM_SYSTEMS	Quantum Systems	Study of quantum computing hardware and algorithms.	CSN	quantum, superposition, entanglement		
-Bảng 3: Hạng mục (categories)						
-Các Subject được chia nhỏ hơn thành các Category cụ thể.						
-						
+
+Bảng 3
 code	name	description	subject_codes	keywords	cs2023_ka_mapping	metadata
 HARDWARE_COMPONENTS	Hardware Components & Organization	Khám phá các thành phần vật lý cốt lõi của máy tính như CPU, bộ nhớ, thiết bị lưu trữ, và cách chúng được tổ chức để tạo thành một hệ thống hoạt động.	CS_ARCHITECTURE	CPU, RAM, HDD, SSD, peripherals	AR	{"icon": "memory"}
 MEMORY_IO_SYSTEMS	Memory and I/O Systems	Nghiên cứu sâu về hệ thống phân cấp bộ nhớ và các cơ chế máy tính tương tác với thiết bị đầu vào/ra, bao gồm polling, interrupts và DMA.	CS_ARCHITECTURE	I/O, memory hierarchy, interrupts, DMA	AR, OS	{"icon": "exchange-alt"}
@@ -119,14 +111,9 @@ GAME_LEVEL_DESIGN	Level & Environment Design	Tập trung vào việc kiến tạ
 GAME_MECHANICS	Game Mechanics & Systems	Bao gồm việc thiết kế và triển khai các quy tắc cốt lõi của trò chơi: vòng lặp game (game loop), điều kiện thắng/thua, hệ thống tính điểm, quản lý vật phẩm và các tương tác logic quyết định trải nghiệm gameplay.	GAME_DEV	game loop, scoring system, inventory, power-ups, leaderstats, game rules	SDF, AL	{"icon": "cogs"}
 GAME_PHYSICS	Game Physics & Simulation	Nghiên cứu và ứng dụng các định luật vật lý vào môi trường ảo để tạo ra các chuyển động thực tế. Bao gồm xử lý va chạm, trọng lực, vận tốc và các ràng buộc cơ học (khớp nối, lò xo, động cơ).	GAME_DEV	constraints, collision detection, rigid body, velocity, gravity, raycasting	GIT/Rendering	{"icon": "atom"}
 GAME_SCRIPTING	Game Engine Scripting	Kỹ năng lập trình đặc thù trong các Game Engine (như user-generated content platform Studio, game engine), tập trung vào kiến trúc hướng sự kiện, thao tác với API của Engine và quản lý vòng đời của các đối tượng trong game.	GAME_DEV	scripting language, event handling, API, scripting, client-server replication	PDC, PL	{"icon": "scroll"}
-						
-						
-						
-						
 QUANTUM_MACHINE_LEARNING	Quantum Machine Learning	Intersection of quantum computing and artificial intelligence.	QUANTUM_SYSTEMS	qml, quantum algorithms, variational		
-Bảng 4: Chủ đề con (topics)						
-Đây là bảng phân rã các Categories thành các Topics cụ thể, tạo thành các khối kiến thức có thể giảng dạy.						
-						
+
+Bảng 4
 code	name	description	category_codes	keywords	cs2023_ka_mapping	metadata
 HW_CPU	Central Processing Unit (CPU)	Bao gồm kiến trúc, chu kỳ lệnh (fetch-decode-execute), và các thành phần cốt lõi của bộ xử lý trung tâm.	HARDWARE_COMPONENTS	CPU, ALU, CU, registers, instruction cycle	AR	{"icon": "microchip"}
 HW_MEMORY	Memory Hierarchy	Bao gồm các cấp bộ nhớ khác nhau như thanh ghi (registers), bộ nhớ đệm (cache), RAM và vai trò của chúng.	HARDWARE_COMPONENTS, MEMORY_IO_SYSTEMS	cache, RAM, registers, memory levels	AR	{"icon": "memory"}
@@ -249,21 +236,14 @@ PHYSICS_CONSTRAINTS	Physics Constraints & Joints	Sử dụng các khớp nối v
 GAME_OBJ_SCRIPTING	Game Object Scripting	Kỹ năng viết mã để thao tác trực tiếp với các đối tượng trong Game Engine (như Part, Model), bao gồm thay đổi thuộc tính, nhân bản (Cloning) và hủy (Destroy).	GAME_SCRIPTING	scripting, manipulation, clone, destroy, properties	SDF	{"icon": "cube"}
 APP_DEPLOYMENT	Application Deployment & Distribution	Quy trình đóng gói phần mềm thành sản phẩm cuối cùng (ví dụ: file .exe, publish lên Web/Store) để phân phối đến người dùng cuối.	DEVELOPMENT_PROCESS	deployment, packaging, pyinstaller, publishing, hosting	SE	{"icon": "box-open"}
 AI_ASSISTED_CODING	AI-Assisted Coding	Kỹ năng sử dụng các công cụ Trí tuệ nhân tạo (như ChatGPT, Copilot, Locofy) để sinh mã nguồn, chuyển đổi thiết kế sang code và hỗ trợ gỡ lỗi.	AI_APPLICATIONS	AI coding, generative AI, copilot, design-to-code	SE, AI	{"icon": "robot"}
-						
-						
-						
-						
-						
-						
 MATHEMATICAL_LOGIC	Mathematical Logic	Formal logic and reasoning.	DISCRETE_STRUCTURES	logic, propositions		
 SET_AND_RELATION_THEORY	Set and Relation Theory	Sets, relations, and functions.	DISCRETE_STRUCTURES	sets, relations		
 DISCRETE_COMBINATORICS	Discrete Combinatorics	Counting and combinatorics.	DISCRETE_STRUCTURES	counting, permutations		
 QUANTUM_MECHANICS_BASICS	Quantum Mechanics Basics	Core physics principles underlying quantum computing.	QUANTUM_MACHINE_LEARNING	qubits, superposition, entanglement		
 QUANTUM_CIRCUITS_AND_GATES	Quantum Circuits and Gates	Logic gates and circuits for quantum state manipulation.	QUANTUM_MACHINE_LEARNING	quantum gates, unitary, cirq, qiskit		
 HYBRID_QUANTUM_CLASSICAL_AI	Hybrid Quantum-Classical AI	AI systems combining classical and quantum processing.	QUANTUM_MACHINE_LEARNING	qnn, parameterized circuits, vqe		
-Bảng 5: Khái niệm (concepts)						
-Đây là bảng chi tiết hóa các Topics thành các Concepts nguyên tử, làm nền tảng để xây dựng các hoạt động dạy và học cụ thể.						
-						
+
+Bảng 5
 code	name	description	topic_codes	keywords	cs2023_ka_mapping	metadata
 CPU_ARCHITECTURE	CPU Architecture	Phân biệt kiến trúc von Neumann và Harvard, và vai trò của các khối chức năng chính là ALU và CU.	HW_CPU	von Neumann, Harvard, ALU, Control Unit	AR	{"icon": "microchip"}
 FETCH_DECODE_EXECUTE	Fetch-Decode-Execute Cycle	Mô tả chu trình lệnh cơ bản mà một CPU thực hiện để xử lý một chỉ lệnh: lấy lệnh, giải mã lệnh, và thực thi lệnh.	HW_CPU	instruction cycle, fetch, decode, execute	AR	{"icon": "sync-alt"}
@@ -449,3 +429,5 @@ QUANTUM_STATES_SUPERPOSITION	Quantum States and Superposition	Qubits, Dirac Nota
 QUANTUM_ENTANGLEMENT	Quantum Entanglement	Bell States, Spooky Action, Quantum Correlation.	QUANTUM_MECHANICS_BASICS	entanglement		
 QUANTUM_LOGIC_GATES	Quantum Logic Gates	Pauli-X/Y/Z, Hadamard, CNOT, Quantum Circuits.	QUANTUM_CIRCUITS_AND_GATES	gates, hadamard, cnot		
 PARAMETERIZED_QUANTUM_CIRCUITS	Parameterized Quantum Circuits	Quantum Neural Networks, VQE, Ansatz, Hybrid Training.	HYBRID_QUANTUM_CLASSICAL_AI	pqc, qnn, vqe		
+
+Bảng 6

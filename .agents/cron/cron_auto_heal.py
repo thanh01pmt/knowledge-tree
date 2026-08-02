@@ -24,9 +24,13 @@ def main():
         print(e.stderr)
         print("-----------------")
         print("👉 Next steps: Initiating Auto-Heal Protocol...")
-        # In a fully autonomous mode, this would trigger an agent to read the errors and fix them.
-        # For now, it logs the failure and notifies the human (or parent agent system) to intervene.
-        # This prevents invalid data from being synced to Supabase (Enforcing Gate §7).
+        auto_heal_script = Path(".agents/skills/tree-validator/scripts/llm_auto_heal_master_tree.py")
+        try:
+            subprocess.run([sys.executable, str(auto_heal_script)], check=True)
+            print("✅ Auto-Heal Protocol completed successfully.")
+        except subprocess.CalledProcessError:
+            print("❌ Auto-Heal Protocol failed to resolve all issues.")
+            sys.exit(1)
 
 if __name__ == "__main__":
     main()
