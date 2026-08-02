@@ -1,78 +1,75 @@
 #!/usr/bin/env python3
+"""
+cron_trend_research.py — Trend Research Cron (Updated)
+
+This cron now delegates to the full auto_stem_discovery.py implementation
+which manages a priority research queue with Foundation×Velocity×Fit scoring.
+After updating the queue, it runs CS2023 crosswalk for top trend topics.
+"""
+
 import os
 import sys
 import subprocess
 import datetime
 from pathlib import Path
-import re
-import json
-
-SEED_SCOPES = [
-    "AI Agent Frameworks",
-    "Frontend UI Libraries",
-    "Cloud Native Deployment",
-    "LLM Orchestration",
-    "Serverless Databases"
-]
-
-STATE_FILE = Path(".agents/cron/.trend_state.json")
-PROJECTS_DIR = Path("projects")
-
-def slugify(text):
-    text = text.lower()
-    text = re.sub(r'[^a-z0-9]', '-', text)
-    text = re.sub(r'-+', '-', text)
-    return text.strip('-')
-
-def get_next_topic():
-    if STATE_FILE.exists():
-        state = json.loads(STATE_FILE.read_text(encoding="utf-8"))
-        last_idx = state.get("last_index", -1)
-    else:
-        last_idx = -1
-        
-    next_idx = (last_idx + 1) % len(SEED_SCOPES)
-    topic = SEED_SCOPES[next_idx]
-    
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
-        json.dump({"last_index": next_idx, "last_topic": topic}, f)
-        
-    return topic
 
 def main():
-    topic = get_next_topic()
-    print(f"[{datetime.datetime.now()}] Starting Trend Research Cron for topic: {topic}")
+    print(f"[{datetime.datetime.now()}] Starting Trend Research Cron (delegating to auto_stem_discovery.py)...")
+
+    # Run the full trend discovery with queue management
+    discovery_script = Path(".agents/skills/knowledge-researcher/scripts/auto_stem_discovery.py")
     
-    timestamp = datetime.datetime.now().strftime("%Y%m%d%H%M%S")
-    base_slug = slugify(topic)
-    project_slug = f"trend-{base_slug}-{timestamp}"
-    
-    print(f"Scaffolding project: {project_slug}")
-    scaffold_script = Path(".agents/skills/tree-validator/scripts/scaffold_tree.py")
-    subprocess.run([sys.executable, str(scaffold_script), project_slug], check=True)
-    
-    context_dir = PROJECTS_DIR / project_slug / "context"
-    report_path = context_dir / "trend_report.md"
-    
-    print(f"Running last30days for topic: '{topic}'...")
-    # Using keyless for safety in automated environments.
-    last30days_cmd = [
-        sys.executable,
-        ".agents/skills/last30days/scripts/last30days.py",
-        topic,
-        "--web-backend", "keyless",
-        "--days", "30",
-        "--emit", "md",
-        "--output", str(report_path)
-    ]
+    if not discovery_script.exists():
+        print(f"❌ auto_stem_discovery.py not found at {discovery_script}")
+        sys.exit(1)
+
+    # Run with --deep to execute all trend queries
+    cmd = [sys.executable, str(discovery_script), "--deep", "--out-dir", ".work"]
     
     try:
-        # We run it and let it output to the report path
-        subprocess.run(last30days_cmd, check=True)
-        print(f"✅ Success! Trend report generated at {report_path}")
-        print(f"👉 Next steps: User must run `/set-project {project_slug}` then `/run-pipeline` to filter and extract standard concepts.")
-    except subprocess.CalledProcessError as e:
-        print(f"❌ Failed to run last30days: {e}")
+        result = subprocess.run(cmd, capture_output=True, text=True, timeout=600, cwd=str(Path.cwd()))
+        print(result.stdout)
+        if result.stderr:
+            print(result.stderr, file=sys.stderr)
+    except subprocess.TimeoutExpired:
+        print("❌ auto_stem_discovery.py timed out")
+        sys.exit(1)
+    except Exception as e:
+        print(f"❌ Failed to run auto_stem_discovery.py: {e}")
+        sys.exit(1)
+
+    # After queue update, run CS2023 crosswalk for top 3 topics
+    print(f"\n[*] Running CS2023 crosswalk for top 3 trend topics...")
+    crosswalk_script = Path(".agents/skills/knowledge-researcher/scripts/curriculum_crosswalk.py")
+    work_dir = Path(".work")
+    queue_file = work_dir / "research_queue.json"
+    
+    if crosswalk_script.exists() and queue_file.exists():
+        import json
+        try:
+            queue = json.loads(queue_file.read_text(encoding="utf-8"))
+            for item in queue[:3]:
+                topic = item['topic']
+                print(f"    Crosswalking: {topic}")
+                safe_slug = topic.lower().replace(" ", "-").replace("/", "-")[:50]
+                out_dir = work_dir / "crosswalk" / safe_slug
+                out_dir.mkdir(parents=True, exist_ok=True)
+                
+                try:
+                    subprocess.run([
+                        sys.executable, str(crosswalk_script),
+                        "--reference", "ACM_CS2023",
+                        "--compare", "NGSS", "CSTA", "UNESCO_ICT", "OECD_PISA",
+                        "--out-dir", str(out_dir)
+                    ], check=False, timeout=300, cwd=str(Path.cwd()))
+                except subprocess.TimeoutExpired:
+                    print(f"    ⚠️ Crosswalk timeout for {topic}")
+                except Exception as e:
+                    print(f"    ⚠️ Crosswalk error for {topic}: {e}")
+        except Exception as e:
+            print(f"    ⚠️ Failed to load queue for crosswalk: {e}")
+    else:
+        print(f"    ⚠️ Crosswalk script or queue not found, skipping")
 
 if __name__ == "__main__":
     main()

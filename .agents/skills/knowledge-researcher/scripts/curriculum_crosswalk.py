@@ -179,7 +179,7 @@ def create_band_tagged_framework(framework_key: str, master_concepts: List[Dict]
     }
 
 
-def run_crosswalk(reference_key: Optional[str] = None, comparison_keys: Optional[List[str]] = None, focus_bands: Optional[str] = None):
+def run_crosswalk(reference_key: Optional[str] = None, comparison_keys: Optional[List[str]] = None, focus_bands: Optional[str] = None, out_dir: Optional[Path] = None):
     """Run curriculum crosswalk skill via skill invocation."""
     
     # Load Master Tree concepts
@@ -217,13 +217,16 @@ def run_crosswalk(reference_key: Optional[str] = None, comparison_keys: Optional
             skill_input["plc_context"] = f"Crosswalk of {FRAMEWORKS[reference_key]['name']} against {len(comparison_frameworks)} frameworks for Master Tree alignment"
     
     # Save input for debugging
-    input_file = WORK_DIR / f"crosswalk_input_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
+    if out_dir is None:
+        out_dir = WORK_DIR
+    out_dir.mkdir(parents=True, exist_ok=True)
+    input_file = out_dir / f"crosswalk_input_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json"
     input_file.write_text(json.dumps(skill_input, indent=2, ensure_ascii=False))
     print(f"[*] Skill input saved: {input_file}")
     
     # Run via skill - this would invoke the curriculum-crosswalk skill
     # For now, generate the matrix directly using our logic
-    return generate_crosswalk_matrix(skill_input, WORK_DIR)
+    return generate_crosswalk_matrix(skill_input, out_dir)
 
 
 def generate_crosswalk_matrix(skill_input: Dict, out_dir: Path) -> Dict:
@@ -684,7 +687,8 @@ def main():
     outputs = run_crosswalk(
         reference_key=args.reference,
         comparison_keys=[k for k in args.compare if k != args.reference],
-        focus_bands=args.focus_bands
+        focus_bands=args.focus_bands,
+        out_dir=Path(args.out_dir)
     )
     
     print("\n[+] Crosswalk complete!")
