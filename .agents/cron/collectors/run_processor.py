@@ -495,9 +495,14 @@ def main():
     if projects_created > 0:
         git_commit_push(f"feat(processor): {projects_created} projects created from research gaps")
     
-    # Exit code
-    failed = any(not r.get("success", False) for r in results.get("pipeline_results", []))
-    sys.exit(1 if failed else 0)
+    # Exit code: 0 = script ran successfully (cron-friendly)
+    # Pipeline failures are logged in INBOX.md, not treated as script crash
+    failed_count = sum(1 for r in results.get("pipeline_results", []) if not r.get("success", False))
+    total_count = len(results.get("pipeline_results", []))
+    if failed_count > 0:
+        print(f"⚠️ {failed_count}/{total_count} pipelines failed (see INBOX.md)")
+    print(f"✅ Processor completed: {projects_created} projects created")
+    sys.exit(0)
 
 
 if __name__ == "__main__":
