@@ -22,7 +22,7 @@ from bs4 import BeautifulSoup
 # Root path configuration
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent.parent.parent.parent
-STAGING_TSV_PATH = PROJECT_ROOT / "general-context" / "mlo-knowlege-tree.tsv"
+STAGING_TSV_PATH = PROJECT_ROOT / "services" / "python-api" / "general-context" / "mlo-knowlege-tree.tsv"
 ORIGINAL_MASTER_TSV_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
 MASTER_TSV_PATH = STAGING_TSV_PATH if STAGING_TSV_PATH.exists() else ORIGINAL_MASTER_TSV_PATH
 DOTENV_PATH = PROJECT_ROOT / ".env"

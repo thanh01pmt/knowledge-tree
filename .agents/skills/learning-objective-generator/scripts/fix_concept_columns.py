@@ -15,10 +15,8 @@ def find_repo_root(start: Path) -> Path:
     return start.resolve()
 
 
-REPO_ROOT = find_repo_root(Path(__file__).resolve())
-CONCEPTS_TSV = REPO_ROOT / "projects" / "swift-associate" / "output" / "concepts.tsv"
+import argparse
 
-# CS2023 KA mappings for the 8 concepts created by ATE pipeline
 FIX_MAP = {
     "UI_MODIFIERS_CONCEPT": {
         "cs2023_ka_mapping": "HCI",
@@ -54,23 +52,38 @@ FIX_MAP = {
     },
 }
 
-rows = []
-with open(CONCEPTS_TSV, encoding="utf-8") as f:
-    reader = csv.DictReader(f, delimiter="\t")
-    fieldnames = reader.fieldnames
-    for row in reader:
-        code = row.get("code", "").strip()
-        if code in FIX_MAP:
-            fix = FIX_MAP[code]
-            if not row.get("cs2023_ka_mapping", "").strip():
-                row["cs2023_ka_mapping"] = fix["cs2023_ka_mapping"]
-            if not row.get("metadata", "").strip():
-                row["metadata"] = fix["metadata"]
-        rows.append(row)
+def main():
+    parser = argparse.ArgumentParser(description="Fix cs2023_ka_mapping and metadata")
+    parser.add_argument("--project", default="swift-associate", help="Project slug")
+    args = parser.parse_args()
 
-with open(CONCEPTS_TSV, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", extrasaction="ignore")
-    writer.writeheader()
-    writer.writerows(rows)
+    repo_root = find_repo_root(Path(__file__).resolve())
+    concepts_tsv = repo_root / "projects" / args.project / "output" / "concepts.tsv"
+    if not concepts_tsv.is_file():
+        print(f"⚠️ {concepts_tsv} not found, skipping...")
+        return
 
-print("[✓] Fixed cs2023_ka_mapping and metadata for 8 ATE-created concepts")
+    rows = []
+    with open(concepts_tsv, encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        fieldnames = reader.fieldnames
+        for row in reader:
+            code = row.get("code", "").strip()
+            if code in FIX_MAP:
+                fix = FIX_MAP[code]
+                if not row.get("cs2023_ka_mapping", "").strip():
+                    row["cs2023_ka_mapping"] = fix["cs2023_ka_mapping"]
+                if not row.get("metadata", "").strip():
+                    row["metadata"] = fix["metadata"]
+            rows.append(row)
+
+    with open(concepts_tsv, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"[✓] Fixed cs2023_ka_mapping and metadata for ATE-created concepts in {args.project}")
+
+
+if __name__ == "__main__":
+    main()

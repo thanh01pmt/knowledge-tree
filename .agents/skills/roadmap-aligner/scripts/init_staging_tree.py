@@ -21,7 +21,7 @@ def find_project_root(start: Path) -> Path:
 
 PROJECT_ROOT = find_project_root(SCRIPT_DIR)
 MASTER_TSV_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
-STAGING_DIR = PROJECT_ROOT / "general-context"
+STAGING_DIR = PROJECT_ROOT / "services" / "python-api" / "general-context"
 STAGING_TSV_PATH = STAGING_DIR / "mlo-knowlege-tree.tsv"
 VERSION_HISTORY_PATH = STAGING_DIR / "version_history.json"
 

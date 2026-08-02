@@ -73,14 +73,18 @@ def _read_artifact(path: Path) -> str:
         sys.exit(1)
 
 
-def _save_approved(artifact_path: Path, content: str) -> Path:
+def _save_approved(artifact_path: Path, content: str, overwrite: bool = False) -> Path:
     approved_path = artifact_path.parent / f"{artifact_path.stem}-approved{artifact_path.suffix}"
     approved_path.write_text(content, encoding="utf-8")
-    print(f"[SUCCESS] Agent-as-Judge approved. Saved to: {approved_path}")
+    if overwrite:
+        artifact_path.write_text(content, encoding="utf-8")
+        print(f"[SUCCESS] Agent-as-Judge approved & overwritten: {artifact_path}")
+    else:
+        print(f"[SUCCESS] Agent-as-Judge approved. Saved to: {approved_path}")
     return approved_path
 
 
-def evaluate_mapping_plan(client, model: str, artifact_path: Path):
+def evaluate_mapping_plan(client, model: str, artifact_path: Path, overwrite: bool = False):
     """Evaluate mapping-plan.md for T6 neutrality and structural validity."""
     print(f"\n{'='*60}")
     print(f"[JUDGE] Stage: MAPPING_PLAN")
@@ -133,10 +137,10 @@ If violations exist, fix them in corrected_content and explain in feedback."""
         print("[REJECTED] Mapping plan failed evaluation.", file=sys.stderr)
         sys.exit(1)
 
-    return _save_approved(artifact_path, corrected)
+    return _save_approved(artifact_path, corrected, overwrite=overwrite)
 
 
-def evaluate_ulos(client, model: str, artifact_path: Path, context_path: str = None):
+def evaluate_ulos(client, model: str, artifact_path: Path, context_path: str = None, overwrite: bool = False):
     """Evaluate generated ULOs for Bloom level distribution and T6 neutrality."""
     print(f"\n{'='*60}")
     print(f"[JUDGE] Stage: ULO EVALUATION")
@@ -188,10 +192,10 @@ Fix violations in corrected_content. Explain issues in feedback."""
         print("[REJECTED] ULOs failed evaluation.", file=sys.stderr)
         sys.exit(1)
 
-    return _save_approved(artifact_path, corrected)
+    return _save_approved(artifact_path, corrected, overwrite=overwrite)
 
 
-def evaluate_cios(client, model: str, artifact_path: Path):
+def evaluate_cios(client, model: str, artifact_path: Path, overwrite: bool = False):
     """Evaluate generated CIOs for Marr 2-Language Test compliance."""
     print(f"\n{'='*60}")
     print(f"[JUDGE] Stage: CIO EVALUATION (Marr Test)")
@@ -244,7 +248,7 @@ For Marr violations, rewrite the CIO to be procedurally neutral, or recommend de
         print("[REJECTED] CIOs failed Marr Test evaluation.", file=sys.stderr)
         sys.exit(1)
 
-    return _save_approved(artifact_path, corrected)
+    return _save_approved(artifact_path, corrected, overwrite=overwrite)
 
 
 def main():
@@ -265,6 +269,8 @@ def main():
                         help="Optional context file (e.g. concepts.tsv for ULO coverage check)")
     parser.add_argument("--model", default="gpt-4o",
                         help="OpenAI model (default: gpt-4o)")
+    parser.add_argument("--overwrite", action="store_true",
+                        help="Overwrite original artifact file with approved corrected content")
     args = parser.parse_args()
 
     api_key = os.environ.get("OPENAI_API_KEY", "")
@@ -278,11 +284,11 @@ def main():
     artifact_path = Path(args.artifact)
 
     if args.stage == "mapping_plan":
-        evaluate_mapping_plan(client, args.model, artifact_path)
+        evaluate_mapping_plan(client, args.model, artifact_path, overwrite=args.overwrite)
     elif args.stage == "ulo":
-        evaluate_ulos(client, args.model, artifact_path, args.context)
+        evaluate_ulos(client, args.model, artifact_path, args.context, overwrite=args.overwrite)
     elif args.stage == "cio":
-        evaluate_cios(client, args.model, artifact_path)
+        evaluate_cios(client, args.model, artifact_path, overwrite=args.overwrite)
 
 
 if __name__ == "__main__":

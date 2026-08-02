@@ -23,15 +23,15 @@ def load_master_sections(master_path):
     with open(master_path, "r", encoding="utf-8") as f:
         for line in f:
             line_str = line.strip()
-            if line_str.startswith("Bảng 1: Lĩnh vực"):
+            if line_str.startswith("Bảng 1"):
                 current_section = "fields"
-            elif line_str.startswith("Bảng 2: Chủ đề (subjects)"):
+            elif line_str.startswith("Bảng 2"):
                 current_section = "subjects"
-            elif line_str.startswith("Bảng 3: Hạng mục"):
+            elif line_str.startswith("Bảng 3"):
                 current_section = "categories"
-            elif line_str.startswith("Bảng 4: Chủ đề con"):
+            elif line_str.startswith("Bảng 4"):
                 current_section = "topics"
-            elif line_str.startswith("Bảng 5: Khái niệm"):
+            elif line_str.startswith("Bảng 5"):
                 current_section = "concepts"
                 
             if current_section:

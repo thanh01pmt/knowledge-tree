@@ -39,15 +39,13 @@ description: Run this workflow to execute the entire Knowledge Tree pipeline aut
    ```bash
    python3 .agents/skills/taxonomy-mapper/scripts/agent_as_judge.py \
      --artifact projects/<slug>/.work/mapping-plan.md \
-     --stage mapping_plan
-   ```
+     --stage mapping_plan --overwrite
 2. If the script exits with error, read the feedback, correct `mapping-plan.md`, and re-run (max 3 retries).
 3. On success: `mapping-plan-approved.md` is created. Use THIS file for the next step.
 
 ## Step 4: Build Tree
-Since `assemble_project.py` reads from `mapping-plan.md` by default, we must rename the approved plan first.
+Since `agent_as_judge.py` uses `--overwrite`, `mapping-plan.md` is updated directly.
 ```bash
-mv projects/<slug>/.work/mapping-plan-approved.md projects/<slug>/.work/mapping-plan.md
 python3 .agents/skills/tree-assembler/scripts/assemble_project.py --project <slug>
 ```
 
@@ -61,8 +59,7 @@ python3 .agents/skills/tree-assembler/scripts/assemble_project.py --project <slu
    ```bash
    python3 .agents/skills/taxonomy-mapper/scripts/agent_as_judge.py \
      --artifact projects/<slug>/.work/hlo/ulos.json \
-     --stage ulo
-   ```
+     --stage ulo --overwrite
 3. If Judge rejects: read feedback, fix `hlo/ulos.json`, re-run judge (max 3 retries).
 
 ## Step 6: Generate CIOs + Judge Checkpoint
@@ -75,8 +72,7 @@ python3 .agents/skills/tree-assembler/scripts/assemble_project.py --project <slu
    ```bash
    python3 .agents/skills/taxonomy-mapper/scripts/agent_as_judge.py \
      --artifact projects/<slug>/.work/hlo/cios.json \
-     --stage cio
-   ```
+     --stage cio --overwrite
 3. If Judge rejects: read feedback, fix `hlo/cios.json`, re-run judge (max 3 retries).
 
 ## Step 7: Generate SIOs + Merge

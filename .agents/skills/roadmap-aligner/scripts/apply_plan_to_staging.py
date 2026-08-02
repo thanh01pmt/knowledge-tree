@@ -27,8 +27,8 @@ def find_project_root(start: Path) -> Path:
 
 PROJECT_ROOT = find_project_root(SCRIPT_DIR)
 MASTER_TSV_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
-STAGING_TSV_PATH = PROJECT_ROOT / "general-context" / "mlo-knowlege-tree.tsv"
-VERSION_HISTORY_PATH = PROJECT_ROOT / "general-context" / "version_history.json"
+STAGING_TSV_PATH = PROJECT_ROOT / "services" / "python-api" / "general-context" / "mlo-knowlege-tree.tsv"
+VERSION_HISTORY_PATH = PROJECT_ROOT / "services" / "python-api" / "general-context" / "version_history.json"
 DEFAULT_PLAN_PATH = PROJECT_ROOT / ".work" / "frontend_knowledge_tree_plan.md"
 
 def reset_staging_from_master():

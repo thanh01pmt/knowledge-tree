@@ -19,7 +19,11 @@ Usage:
 import sys
 import os
 import time
-import schedule
+try:
+    import schedule
+except ImportError:
+    print("[ERROR] 'schedule' package is not installed. Please run: pip install schedule", file=sys.stderr)
+    sys.exit(1)
 import subprocess
 import threading
 import signal

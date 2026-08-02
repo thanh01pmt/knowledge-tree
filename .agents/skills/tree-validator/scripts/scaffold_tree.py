@@ -10,11 +10,11 @@ import sys
 from pathlib import Path
 
 HEADERS = {
-    "fields.tsv": ["code", "name", "description", "display_order", "keywords", "cs2023_ka_mapping", "metadata"],
-    "subjects.tsv": ["code", "name", "description", "field_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "categories.tsv": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "topics.tsv": ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata"],
-    "concepts.tsv": ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata"],
+    "fields.tsv": ["code", "name", "description", "display_order", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "subjects.tsv": ["code", "name", "description", "field_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "categories.tsv": ["code", "name", "description", "subject_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "topics.tsv": ["code", "name", "description", "category_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
+    "concepts.tsv": ["code", "name", "description", "topic_codes", "keywords", "cs2023_ka_mapping", "metadata", "sequence_order"],
     "learning-objectives.tsv": ["code", "name", "description", "lo_type", "parent_lo_code", "concept_codes", "bloom_level", "knowledge_dimension", "assessment_approach"]
 }
 

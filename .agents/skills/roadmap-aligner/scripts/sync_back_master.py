@@ -23,10 +23,10 @@ def find_project_root(start: Path) -> Path:
     return start.resolve().parent.parent.parent.parent
 
 PROJECT_ROOT = find_project_root(SCRIPT_DIR)
-STAGING_TSV_PATH = PROJECT_ROOT / "general-context" / "mlo-knowlege-tree.tsv"
+STAGING_TSV_PATH = PROJECT_ROOT / "services" / "python-api" / "general-context" / "mlo-knowlege-tree.tsv"
 MASTER_TSV_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/mlo-knowlege-tree.tsv"
 MASTER_JSON_PATH = PROJECT_ROOT / ".agents/skills/taxonomy-mapper/resources/master_tree.json"
-VERSION_HISTORY_PATH = PROJECT_ROOT / "general-context" / "version_history.json"
+VERSION_HISTORY_PATH = PROJECT_ROOT / "services" / "python-api" / "general-context" / "version_history.json"
 
 def parse_tsv_to_master_json(tsv_path: Path) -> dict:
     """Parse TSV file into JSON format expected by master_tree.json"""

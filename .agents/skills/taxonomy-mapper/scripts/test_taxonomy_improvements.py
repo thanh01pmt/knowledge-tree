@@ -9,7 +9,7 @@ import csv
 import re
 from pathlib import Path
 
-REPO_ROOT = Path("/opt/data/my-projects/knowledge-tree")
+REPO_ROOT = Path(__file__).resolve().parents[4]
 PASS = 0
 FAIL = 0
 

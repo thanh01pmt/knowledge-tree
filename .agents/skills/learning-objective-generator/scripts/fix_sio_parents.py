@@ -15,10 +15,8 @@ def find_repo_root(start: Path) -> Path:
     return start.resolve()
 
 
-REPO_ROOT = find_repo_root(Path(__file__).resolve())
-LO_TSV = REPO_ROOT / "projects" / "swift-associate" / "output" / "learning-objectives.tsv"
+import argparse
 
-# Map old SIO codes -> (parent_cio, concept_code)
 SIO_PARENT_MAP = {
     "SIO-SWIFT-CLASSIFY_ASSET_BY_TYPE": ("CIO-PROJECT_ASSETS_MANAGEMENT-01", "PROJECT_ASSETS_MANAGEMENT"),
     "SIO-SWIFT-IDENTIFY_ASSET_TYPE_BY_EXTENSION": ("CIO-PROJECT_ASSETS_MANAGEMENT-01", "PROJECT_ASSETS_MANAGEMENT"),
@@ -48,31 +46,44 @@ SIO_PARENT_MAP = {
     "SIO-SWIFT-LOCATE_ERROR_CAUSE": ("CIO-ERROR_MESSAGES_CONCEPT-02", "ERROR_MESSAGES_CONCEPT"),
 }
 
-# Read all rows
-rows = []
-with open(LO_TSV, encoding="utf-8") as f:
-    reader = csv.DictReader(f, delimiter="\t")
-    fieldnames = reader.fieldnames
-    for row in reader:
-        rows.append(row)
+def main():
+    parser = argparse.ArgumentParser(description="Fix SIO parent references")
+    parser.add_argument("--project", default="swift-associate", help="Project slug")
+    args = parser.parse_args()
 
-fixed_count = 0
-for row in rows:
-    code = row.get("code", "").strip()
-    if code in SIO_PARENT_MAP:
-        parent_cio, concept_code = SIO_PARENT_MAP[code]
-        old_parent = row.get("parent_lo_code", "").strip()
-        old_concept = row.get("concept_codes", "").strip()
-        if not old_parent or not old_concept:
-            row["parent_lo_code"] = parent_cio
-            row["concept_codes"] = concept_code
-            fixed_count += 1
-            print(f"  Fixed {code}: parent={old_parent}->{parent_cio}, concept={old_concept}->{concept_code}")
+    repo_root = find_repo_root(Path(__file__).resolve())
+    lo_tsv = repo_root / "projects" / args.project / "output" / "learning-objectives.tsv"
+    if not lo_tsv.is_file():
+        print(f"⚠️ {lo_tsv} not found, skipping...")
+        return
 
-# Write back
-with open(LO_TSV, "w", newline="", encoding="utf-8") as f:
-    writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", extrasaction="ignore")
-    writer.writeheader()
-    writer.writerows(rows)
+    rows = []
+    with open(lo_tsv, encoding="utf-8") as f:
+        reader = csv.DictReader(f, delimiter="\t")
+        fieldnames = reader.fieldnames
+        for row in reader:
+            rows.append(row)
 
-print(f"\n[✓] Fixed {fixed_count} SIOs")
+    fixed_count = 0
+    for row in rows:
+        code = row.get("code", "").strip()
+        if code in SIO_PARENT_MAP:
+            parent_cio, concept_code = SIO_PARENT_MAP[code]
+            old_parent = row.get("parent_lo_code", "")
+            old_concept = row.get("concept_codes", "")
+            if old_parent != parent_cio or old_concept != concept_code:
+                row["parent_lo_code"] = parent_cio
+                row["concept_codes"] = concept_code
+                fixed_count += 1
+                print(f"  Fixed {code}: parent={old_parent}->{parent_cio}, concept={old_concept}->{concept_code}")
+
+    with open(lo_tsv, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames, delimiter="\t", extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print(f"\n[✓] Fixed {fixed_count} SIOs in {args.project}")
+
+
+if __name__ == "__main__":
+    main()
