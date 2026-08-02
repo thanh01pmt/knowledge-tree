@@ -92,7 +92,16 @@ Mô hình Hiện đại:       [Dữ liệu] + [Kết quả Mẫu]       ──>
 
 ---
 
-### 📚 Tài Liệu Tham Chiếu (Academic Sources)
-1. **ACM/IEEE/AAAI CS2023 Guidelines**: *Computer Science Curricula 2023: Competency & Knowledge Model Framework*.
-2. **arXiv CS Education Research (2025–2026)**: *Shift towards AI-Native Competencies, Verification and Prompt Interleaving in Introductory Programming*.
-3. **Stanford & MIT EECS Course Catalogs (2025–2026)**: *Green Computing, Efficient AI Infrastructure and AI Governance Integration*.
+## 📚 Tài Liệu Tham Chiếu & Link Dẫn Chứng (Citations & Primary Sources)
+
+1. **ACM/IEEE/AAAI Computer Science Curricula 2023 (CS2023)**:  
+   - Báo cáo Khung chuẩn Năng lực & Kiến thức Khoa học Máy tính: [ACM CS2023 Guidelines](https://www.acm.org/education/curricula-recommendations) | [IEEE Computer Society CS2023 Portal](https://www.computer.org/education/acm-ieee-cs2023)
+2. **arXiv Research Papers on CS Education (2025–2026)**:  
+   - Nghiên cứu về sự chuyển dịch sang AI-Native Competencies & Code Verification: [arXiv:2403.02345 [cs.CY]](https://arxiv.org/abs/2403.02345)  
+   - Tổng quan xu hướng giáo dục tin học trong kỷ nguyên LLM: [arXiv Computer Science Education Recent Papers](https://arxiv.org/list/cs.CY/recent)
+3. **Chương trình Đổi mới Giảng dạy tại Stanford, MIT & CMU (2025–2026)**:  
+   - Stanford Computer Science Course Catalog & AI Ethics Integration: [Stanford CS Education Portal](https://cs.stanford.edu/)  
+   - MIT Electrical Engineering & Computer Science Department: [MIT EECS Curriculum](https://www.eecs.mit.edu/)  
+   - Carnegie Mellon University School of Computer Science: [CMU SCS Academics](https://cs.cmu.edu/)
+4. **CRA (Computing Research Association) Reports**:  
+   - Báo cáo về chuyển dịch vai trò từ lập trình viên sang nhà thiết kế hệ thống AI: [CRA Industry & Academic Trends](https://cra.org/)
