@@ -14,7 +14,6 @@ Usage:
 import sys
 import json
 import argparse
-import subprocess
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import List, Dict, Any
@@ -25,17 +24,6 @@ from base_collector import ResearchSource, discover_pending_items
 from academic_collector import AcademicCollector
 from standards_collector import StandardsCollector
 from trend_collector import TrendCollector
-
-
-def git_commit_push(message: str):
-    """Commit and push changes to git."""
-    try:
-        subprocess.run(["git", "add", "-A"], check=True, capture_output=True)
-        subprocess.run(["git", "commit", "-m", message], check=True, capture_output=True)
-        subprocess.run(["git", "push", "origin", "main"], check=True, capture_output=True)
-        print(f"✅ Git commit & push: {message}")
-    except subprocess.CalledProcessError as e:
-        print(f"⚠️ Git commit/push failed: {e}")
 
 
 def get_collector(source: ResearchSource, repo_root: Path):
@@ -134,11 +122,9 @@ def main():
     print(f"Total pending: {total_pending}")
     print(f"Schedule: {args.schedule or 'manual'}")
     
-    # Git commit & push if anything was collected
-    if total_collected > 0 or total_pending > 0:
-        timestamp = datetime.now().strftime("%Y-%m-%d %H:%M")
-        schedule_str = f" ({args.schedule})" if args.schedule else ""
-        git_commit_push(f"feat(collectors): {schedule_str} collected {total_collected} items, {total_pending} pending")
+    # Note: Collectors write to .work/research/ (not git-tracked)
+    # Git commit happens in Processor phase when projects are created
+    # and in Auto-Heal phase when INBOX.md is updated
     
     # Exit with error if any collector failed
     failed = any("error" in r for r in results["results"].values() if isinstance(r, dict))
