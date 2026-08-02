@@ -5189,6 +5189,53 @@
       ],
       "keywords": "AI ethics, algorithmic bias, fairness, responsible AI, training data bias",
       "metadata": "{\"csta_strand\": \"IC-1\", \"csta_level\": \"2,3A,3B\", \"ap_csp\": \"IOC-1\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+      "name": "AI Artifact Verification & Auditing",
+      "description": "Nguyên lý kiểm định, đánh giá phản biện và xác minh tính đúng đắn, an toàn của sản phẩm code/dữ liệu do các hệ thống AI sinh ra.",
+      "parent_or_relation": "AI_ASSISTED_CODING",
+      "parent_codes": [
+        "AI_ASSISTED_CODING"
+      ],
+      "keywords": "AI verification, code auditing, artifact evaluation, AI safety, prompt testing",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"ap_csp\": \"CRD-2\", \"spiral_bloom\": \"Evaluate->Create\"}"
+    },
+    {
+      "code": "SUSTAINABLE_COMPUTING_AND_EFFICIENT_AI",
+      "name": "Sustainable Computing & Green AI",
+      "description": "Nguyên lý điện toán bền vững, tối ưu hóa năng lượng tiêu thụ và đánh giá dấu chân cacbon của các hệ thống tính toán và mô hình AI quy mô lớn.",
+      "parent_or_relation": "STRUCTURED_DATA_STORAGE, EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "STRUCTURED_DATA_STORAGE",
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "sustainable computing, green AI, carbon footprint, energy-aware, resource efficiency",
+      "metadata": "{\"csta_strand\": \"IC-2\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "AI_GOVERNANCE_AND_RED_TEAMING",
+      "name": "AI Governance & Active Red-Teaming",
+      "description": "Quy trình quản trị AI, kiểm thử an toàn chủ động (Red-Teaming) và thiết lập hàng rào bảo vệ (Guardrails) cho hệ thống tự chủ.",
+      "parent_or_relation": "ZERO_TRUST_SECURITY, AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "ZERO_TRUST_SECURITY",
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "AI governance, red-teaming, guardrails, AI alignment, risk mitigation",
+      "metadata": "{\"csta_strand\": \"IC-1\", \"csta_level\": \"3B\", \"ap_csp\": \"IOC-1\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "PROBABILISTIC_VS_DETERMINISTIC_REASONING",
+      "name": "Probabilistic vs. Deterministic Reasoning",
+      "description": "Phân tích sự khác biệt tư duy giữa hệ thống suy luận xác định dựa trên luật (Rule-Based) và hệ thống suy luận xác suất dựa trên dữ liệu (Data-Driven / Explainable AI).",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS, GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS",
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "probabilistic reasoning, deterministic logic, rule-based vs data-driven, XAI, explainable AI",
+      "metadata": "{\"csta_strand\": \"AP-1\", \"csta_level\": \"2,3A,3B\", \"ap_csp\": \"AAP-2\", \"spiral_bloom\": \"Understand->Analyze\"}"
     }
   ]
 }
