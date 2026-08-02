@@ -51,9 +51,14 @@ Chào mừng bạn đến với bộ sưu tập các bài viết phân tích chu
 * **Chủ đề:** STEM Interdisciplinary, Computational Science, Mechatronics, Signal Processing (DSP), Information Theory, Post-Quantum DLT.
 * **Tóm tắt:** Phân tích vai trò của CS như một "Trục Điện toán Trung tâm" kết nối Sinh học Tính toán (Bioinformatics), CFD Vật lý, Điện toán Không gian XR, Cơ điện tử HIL, Xử lý Tín hiệu Số DSP và Đại số Tensor SVD.
 * **Link:** [`stem_interdisciplinary_cs_integration_2026.md`](./stem_interdisciplinary_cs_integration_2026.md)
+---
+
+### 8. [Khung Giáo Dục STEM K-12 Quốc Tế Và Chương Trình GDPT 2018](./k12_stem_frameworks_ngss_gdpt2018.md)
+* **Chủ đề:** K-12 STEM Education, NGSS 3D Learning, CSTA K-12, GDPT 2018 Việt Nam, Engineering Design Cycle.
+* **Tóm tắt:** Phân tích cấu trúc khung chuẩn STEM NGSS 3D Learning, sự tích hợp giữa NGSS SEPs và CSTA K-12, hai quy trình Khám phá Khoa học / Thiết kế Kỹ thuật và đối chiếu với 3 hình thức STEM trong GDPT 2018 Việt Nam.
+* **Link:** [`k12_stem_frameworks_ngss_gdpt2018.md`](./k12_stem_frameworks_ngss_gdpt2018.md)
 
 ---
-## 🎯 Hướng Dẫn Sử Dụng & Đóng Góp
 
 Tất cả các bài viết trong series đều đi kèm **Sơ đồ Mermaid rendered trực quan**, **Mã nguồn/Khái niệm 100% Trung tính T6** và **Link dẫn chứng tham chiếu từ các tổ chức hàn lâm uy tín** (ACM, IEEE, NIST, Stanford, MIT, CSTA, College Board).
 

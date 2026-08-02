@@ -5404,6 +5404,42 @@
       ],
       "keywords": "genetic algorithm, evolutionary model, computational genetics",
       "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "SCIENTIFIC_INQUIRY_METHOD",
+      "name": "Scientific Inquiry and Experimental Method",
+      "description": "Quy trình khám phá khoa học dựa trên đặt câu hỏi, xây dựng giả thuyết, thiết kế thử nghiệm, thu thập dữ liệu và kết luận.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION, PROBLEM_DECOMPOSITION_PATTERNS",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION",
+        "PROBLEM_DECOMPOSITION_PATTERNS"
+      ],
+      "keywords": "scientific inquiry, hypothesis, experimental method, data collection, NGSS",
+      "metadata": "{\"ngss_dimension\": \"SEP-1\", \"csta_strand\": \"DA-2\", \"csta_level\": \"1B,2,3A\", \"gdpt2018\": \"KHTN\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "ENGINEERING_DESIGN_CYCLE",
+      "name": "Engineering Design Cycle and Prototyping",
+      "description": "Quy trình thiết kế kỹ thuật tuần hoàn: Xác định bài toán, nghiên cứu ràng buộc, đề xuất giải pháp, chế tạo mẫu thử (Prototype), thử nghiệm và cải tiến.",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS, WIREFRAMING_PROTOTYPING",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS",
+        "WIREFRAMING_PROTOTYPING"
+      ],
+      "keywords": "engineering design, prototyping, iterative design, constraints, NGSS",
+      "metadata": "{\"ngss_dimension\": \"SEP-6\", \"csta_strand\": \"AP-3\", \"csta_level\": \"1B,2,3A,3B\", \"gdpt2018\": \"CongNghe\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "CROSSCUTTING_SCIENCE_CONCEPTS",
+      "name": "Crosscutting Concepts in Science and Systems",
+      "description": "Các khái niệm khoa học xuyên suốt: Mẫu hình (Patterns), Nguyên nhân - Kết quả (Cause & Effect), Quy mô (Scale), Năng lượng & Vật chất, Hệ thống & Mô hình.",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS, ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS",
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "crosscutting concepts, cause and effect, systems and models, energy and matter, NGSS",
+      "metadata": "{\"ngss_dimension\": \"CCC\", \"csta_strand\": \"AP-1\", \"csta_level\": \"1A,1B,2,3A\", \"gdpt2018\": \"KHTN-Toan\", \"spiral_bloom\": \"Understand->Analyze\"}"
     }
   ]
 }
