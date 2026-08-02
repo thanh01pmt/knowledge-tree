@@ -1,0 +1,20 @@
+{
+  "id": "acm_cs2023-array-operations-20260802102635-d3dda292",
+  "source": "standards",
+  "title": "Standards Gap: ACM_CS2023 - Array Operations",
+  "context_path": ".work/research/standards/acm_cs2023-array-operations-20260802102635-d3dda292",
+  "priority": "high",
+  "status": "pending",
+  "created_at": "2026-08-02T10:26:35.854757+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "framework": "ACM_CS2023",
+    "theme": "Array Operations",
+    "band": "Secondary",
+    "gap_type": "missing_concept",
+    "crosswalk_dir": "/opt/data/my-projects/knowledge-tree/.work/research/standards/crosswalk_acm_cs2023_20260802_102635",
+    "description": "Array Operations: unique_to_reference"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "id": "acm_cs2023-mvvm-architectural-pattern-20260802102635-815c25d1",
+  "source": "standards",
+  "title": "Standards Gap: ACM_CS2023 - MVVM Architectural Pattern",
+  "context_path": ".work/research/standards/acm_cs2023-mvvm-architectural-pattern-20260802102635-815c25d1",
+  "priority": "high",
+  "status": "pending",
+  "created_at": "2026-08-02T10:26:35.845656+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "framework": "ACM_CS2023",
+    "theme": "MVVM Architectural Pattern",
+    "band": "Secondary",
+    "gap_type": "missing_concept",
+    "crosswalk_dir": "/opt/data/my-projects/knowledge-tree/.work/research/standards/crosswalk_acm_cs2023_20260802_102635",
+    "description": "MVVM Architectural Pattern: unique_to_reference"
+  }
+}

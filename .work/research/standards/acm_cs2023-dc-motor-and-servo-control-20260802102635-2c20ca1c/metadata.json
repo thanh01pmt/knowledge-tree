@@ -1,0 +1,20 @@
+{
+  "id": "acm_cs2023-dc-motor-and-servo-control-20260802102635-2c20ca1c",
+  "source": "standards",
+  "title": "Standards Gap: ACM_CS2023 - DC Motor and Servo Control",
+  "context_path": ".work/research/standards/acm_cs2023-dc-motor-and-servo-control-20260802102635-2c20ca1c",
+  "priority": "high",
+  "status": "pending",
+  "created_at": "2026-08-02T10:26:35.860507+00:00",
+  "processed_at": null,
+  "project_slug": null,
+  "error_message": null,
+  "extra": {
+    "framework": "ACM_CS2023",
+    "theme": "DC Motor and Servo Control",
+    "band": "Secondary",
+    "gap_type": "missing_concept",
+    "crosswalk_dir": "/opt/data/my-projects/knowledge-tree/.work/research/standards/crosswalk_acm_cs2023_20260802_102635",
+    "description": "DC Motor and Servo Control: unique_to_reference"
+  }
+}
