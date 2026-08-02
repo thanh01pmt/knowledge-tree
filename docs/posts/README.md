@@ -68,8 +68,13 @@ Chào mừng bạn đến với bộ sưu tập các bài viết phân tích chu
 * **Chủ đề:** Bio-Inspired Computing, Neuromorphic Chips, Formal Verification, Speech & NLP, Autonomous Drones, Sensor Fusion.
 * **Tóm tắt:** Phân tích 4 biên giới mới của CS năm 2026: Chip nơ-ron vi mạch (Spiking Neurons SNNs), Kiểm chứng phần mềm hình thức (Model Checking & Type Safety), Xử lý Tiếng nói STT/TTS & Cú pháp NLP, cùng Hệ thống Tự chủ Tự điều hướng Hợp nhất Đa Cảm biến (LiDAR/Kalman Filter).
 * **Link:** [`frontier_computer_science_domains_2026.md`](./frontier_computer_science_domains_2026.md)
+---
+
+### 11. [Ứng Dụng Công Nghệ Biên: Bản Sao Số XR, Drone Tự Chủ Và Điện Toán Năng Lượng Sạch](./applied_frontier_tech_xr_drones_cleantech_2026.md)
+* **Chủ đề:** Digital Twins, Spatial Computing XR, Autonomous Drones, Swarm Robotics, Smart Grid, Green Computing.
+* **Tóm tắt:** Phân tích ứng dụng công nghệ giải quyết các bài toán vật lý thực tế: Bản sao Số (Digital Twins telemetry sync), Động lực học bay UAV & Điều khiển đội hình Drone tự chủ, cùng Điện toán Năng lượng Sạch (Smart Grid, BMS SoC/SoH & Carbon Accounting).
+* **Link:** [`applied_frontier_tech_xr_drones_cleantech_2026.md`](./applied_frontier_tech_xr_drones_cleantech_2026.md)
 
 ---
-Tất cả các bài viết trong series đều đi kèm **Sơ đồ Mermaid rendered trực quan**, **Mã nguồn/Khái niệm 100% Trung tính T6** và **Link dẫn chứng tham chiếu từ các tổ chức hàn lâm uy tín** (ACM, IEEE, NIST, Stanford, MIT, CSTA, College Board).
 
 Mọi góp ý và thảo luận xin vui lòng gửi về repository chính thức của dự án **Knowledge Tree**.

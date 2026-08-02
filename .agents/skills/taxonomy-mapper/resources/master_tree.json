@@ -5630,6 +5630,126 @@
       ],
       "keywords": "autonomous navigation, drone control, self-driving, obstacle avoidance",
       "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "DIGITAL_TWIN_SIMULATION",
+      "name": "Digital Twin Simulation and Telemetry Sync",
+      "description": "Mô hình bản sao số thời gian thực kết nối đồng bộ dữ liệu cảm biến IoT với mô phỏng dự báo trạng thái tài sản vật lý.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION, IOT_PROTOCOLS_MQTT",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION",
+        "IOT_PROTOCOLS_MQTT"
+      ],
+      "keywords": "digital twin, telemetry sync, physical asset simulation, predictive maintenance",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Evaluate\"}"
+    },
+    {
+      "code": "SPATIAL_AUDIO_AND_HAPTICS",
+      "name": "Spatial Audio and Haptic Perception",
+      "description": "Nguyên lý âm thanh không gian 3D và phản hồi lực tiếp xúc (Haptics) nâng cao trải nghiệm đắm chìm trong môi trường thực tế ảo.",
+      "parent_or_relation": "3D_ANIMATION_PRINCIPLES, UI_UX_HEURISTICS",
+      "parent_codes": [
+        "3D_ANIMATION_PRINCIPLES",
+        "UI_UX_HEURISTICS"
+      ],
+      "keywords": "spatial audio, haptics, tactile feedback, immersive VR",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "PHOTOGRAMMETRY_AND_POINT_CLOUD",
+      "name": "3D Photogrammetry and LiDAR Point Cloud Processing",
+      "description": "Kỹ thuật tái tạo mô hình 3D từ ảnh chụp đa góc (Photogrammetry) và xử lý đám mây điểm (Point Cloud) từ cảm biến LiDAR.",
+      "parent_or_relation": "POLYGONAL_MODELING, RASTER_GRAPHICS_CONCEPTS",
+      "parent_codes": [
+        "POLYGONAL_MODELING",
+        "RASTER_GRAPHICS_CONCEPTS"
+      ],
+      "keywords": "photogrammetry, point cloud, LiDAR, 3D reconstruction, remote sensing",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Apply->Analyze\"}"
+    },
+    {
+      "code": "UAV_FLIGHT_DYNAMICS_AND_CONTROL",
+      "name": "UAV Flight Dynamics and Attitude Control",
+      "description": "Nguyên lý động lực học bay (thay đổi góc nghiêng, hướng bay, lực đẩy) và điều khiển độ cao thời gian thực cho thiết bị bay không người lái.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING, ACTUATOR_CONTROL",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING",
+        "ACTUATOR_CONTROL"
+      ],
+      "keywords": "UAV flight dynamics, quadcopter control, attitude estimation, AHRS",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "SWARM_ROBOTICS_FORMATION_CONTROL",
+      "name": "Swarm Robotics and Decentralized Formation Control",
+      "description": "Giải thuật điều khiển đội hình phi tập trung và tránh va chạm cho quần thể drone hoặc hệ thống robot tự chủ nhiều thành phần.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING, ALGO_STRATEGIES",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING",
+        "ALGO_STRATEGIES"
+      ],
+      "keywords": "swarm robotics, formation control, multi-drone, decentralized routing",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "MARITIME_UNDERWATER_ROBOTICS",
+      "name": "Autonomous Underwater Robotics and Acoustic Sensing",
+      "description": "Kỹ thuật điều hướng robot thủy (AUV) và định vị bằng sóng âm thanh (Acoustic Navigation) trong môi trường dưới nước.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING, DIGITAL_SIGNAL_PROCESSING_TOPIC",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING",
+        "DIGITAL_SIGNAL_PROCESSING_TOPIC"
+      ],
+      "keywords": "AUV, underwater robotics, acoustic sensing, marine navigation",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "SMART_GRID_ENERGY_OPTIMIZATION",
+      "name": "Smart Grid Energy Optimization and Microgrid Balancing",
+      "description": "Thuật toán tối ưu hóa cân bằng tải điện năng thời gian thực và quản lý mạng lưới điện thông minh (Smart Grid/Microgrid).",
+      "parent_or_relation": "ALGO_STRATEGIES, ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "ALGO_STRATEGIES",
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "smart grid, microgrid, load balancing, energy optimization, demand response",
+      "metadata": "{\"csta_strand\": \"IC-2\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
+    },
+    {
+      "code": "RENEWABLE_ENERGY_FORECASTING",
+      "name": "Renewable Energy Production Forecasting",
+      "description": "Mô hình dự báo sản lượng năng lượng tái tạo (điện mặt trời, điện gió) dựa trên phân tích chuỗi thời gian và dữ liệu thời tiết.",
+      "parent_or_relation": "SUPERVISED_LEARNING, ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "SUPERVISED_LEARNING",
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "renewable energy, solar forecasting, wind forecasting, time series, yield prediction",
+      "metadata": "{\"csta_strand\": \"DA-3\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "BATTERY_MANAGEMENT_ALGORITHMS",
+      "name": "Battery Management System (BMS) Health Algorithms",
+      "description": "Thuật toán đánh giá trạng thái nạp (SoC) và độ thoái hóa (SoH) của pin lưu trữ năng lượng trong hệ thống điện toán xanh.",
+      "parent_or_relation": "SENSOR_TYPES, ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "SENSOR_TYPES",
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "BMS, battery management, State of Charge, SoC, State of Health, SoH, energy storage",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Understand->Apply\"}"
+    },
+    {
+      "code": "CARBON_FOOTPRINT_ACCOUNTING_SOFTWARE",
+      "name": "Carbon Accounting and Life-Cycle Assessment Software",
+      "description": "Phương pháp tính toán dấu chân carbon phần mềm và đánh giá vòng đời sản phẩm (LCA) phục vụ chiến lược điện toán bền vững.",
+      "parent_or_relation": "COMPUTATIONAL_SCIENCE_SIMULATION, ADVANCED_MATH_OPTIMIZATION",
+      "parent_codes": [
+        "COMPUTATIONAL_SCIENCE_SIMULATION",
+        "ADVANCED_MATH_OPTIMIZATION"
+      ],
+      "keywords": "carbon accounting, life cycle assessment, LCA, green computing, carbon footprint",
+      "metadata": "{\"csta_strand\": \"IC-2\", \"csta_level\": \"2,3A,3B\", \"spiral_bloom\": \"Understand->Evaluate\"}"
     }
   ]
 }
