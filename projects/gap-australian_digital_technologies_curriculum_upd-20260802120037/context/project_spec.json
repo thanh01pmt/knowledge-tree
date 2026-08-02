@@ -1,0 +1,17 @@
+{
+  "project_slug": "gap-australian_digital_technologies_curriculum_upd-20260802120037",
+  "source_research": "trend-australian-digital-technologies-cu-20260802112946-a477ce66",
+  "source_type": "trends",
+  "gap_analysis": {
+    "gap_type": "missing_concept",
+    "suggested_code": "CON-AUSTRALIAN_DIGITAL_TECHNOLOGIES_CURRICULUM_UPD",
+    "suggested_name": "Australian Digital Technologies Curriculum updates 2024 2025 Concepts",
+    "suggested_description": "Emerging concepts from trend research: Monitor AU_DIGITECH for new standards versions",
+    "cs2023_ka": "AI,GIT,SEP",
+    "parent_suggestion": "CAT-EMERGING_TECH",
+    "confidence": 75,
+    "rationale": "Identified via trend discovery (score: 8.7)"
+  },
+  "created_at": "2026-08-02T12:00:37.014800+00:00",
+  "status": "scaffolded"
+}
