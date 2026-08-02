@@ -340,6 +340,18 @@
       ],
       "keywords": "quantum, superposition, entanglement",
       "metadata": ""
+    },
+    {
+      "code": "COMPUTATIONAL_THINKING",
+      "name": "Computational Thinking & Problem Solving",
+      "description": "Nghiên cứu về các mô hình tư duy máy tính, kỹ thuật phân rã bài toán, nhận diện mẫu hình và thiết kế thuật toán không phụ thuộc ngôn ngữ lập trình.",
+      "parent_or_relation": "ASE, HCC",
+      "parent_codes": [
+        "ASE",
+        "HCC"
+      ],
+      "keywords": "computational thinking, problem decomposition, pattern recognition, abstraction, unplugged",
+      "metadata": "{\"csta_strand\": \"AP\", \"ap_csp\": \"CRD\", \"spiral_progression\": \"K12-PreUniv\"}"
     }
   ],
   "categories": [
@@ -1244,6 +1256,30 @@
       ],
       "keywords": "cybersecurity, Zero Trust, PKI, IAM, threat modeling, encryption",
       "metadata": "{\"icon\": \"shield-alt\"}"
+    },
+    {
+      "code": "COMPUTATIONAL_THINKING_PRIMITIVES",
+      "name": "Computational Thinking Primitives",
+      "description": "Bao gồm 4 trụ cột của tư duy máy tính: Phân rã bài toán, Nhận diện mẫu, Trừu tượng hóa và Khái niệm hóa thuật toán.",
+      "parent_or_relation": "COMPUTATIONAL_THINKING, COMP_THINKING",
+      "parent_codes": [
+        "COMPUTATIONAL_THINKING",
+        "COMP_THINKING"
+      ],
+      "keywords": "decomposition, pattern recognition, abstraction, algorithmic thinking",
+      "metadata": "{\"csta_strand\": \"AP\", \"csta_level\": \"1B,2,3A\"}"
+    },
+    {
+      "code": "UNPLUGGED_AND_VISUAL_PROGRAMMING",
+      "name": "Unplugged & Visual Algorithmic Models",
+      "description": "Nghiên cứu mô hình thuật toán không dùng máy tính (CS Unplugged) và tư duy lập trình khối trực quan làm bước đệm sang mã nguồn.",
+      "parent_or_relation": "COMPUTATIONAL_THINKING, PROG_FUNDAMENTALS",
+      "parent_codes": [
+        "COMPUTATIONAL_THINKING",
+        "PROG_FUNDAMENTALS"
+      ],
+      "keywords": "CS unplugged, visual programming, block-based logic, pseudo-code",
+      "metadata": "{\"csta_strand\": \"AP\", \"csta_level\": \"1A,1B,2\"}"
     }
   ],
   "topics": [
@@ -2725,6 +2761,28 @@
       ],
       "keywords": "Zero Trust, IAM, PKI, threat modeling",
       "metadata": "{\"icon\": \"lock\"}"
+    },
+    {
+      "code": "PROBLEM_DECOMPOSITION_PATTERNS",
+      "name": "Problem Decomposition & Pattern Recognition",
+      "description": "Các mô hình phân tích và chia nhỏ bài toán phức tạp thành các bài toán con và nhận diện cấu trúc lặp lại.",
+      "parent_or_relation": "COMPUTATIONAL_THINKING_PRIMITIVES",
+      "parent_codes": [
+        "COMPUTATIONAL_THINKING_PRIMITIVES"
+      ],
+      "keywords": "decomposition, sub-problems, pattern matching, modular thinking",
+      "metadata": "{\"csta_strand\": \"AP-1\", \"csta_level\": \"1B,2,3A\"}"
+    },
+    {
+      "code": "UNPLUGGED_ALGORITHMIC_CONCEPTS",
+      "name": "Unplugged Algorithmic Concepts & Block Logic",
+      "description": "Mô phỏng quy trình thuật toán thông qua trò chơi vận động vật lý và mô hình điều khiển khối trực quan.",
+      "parent_or_relation": "UNPLUGGED_AND_VISUAL_PROGRAMMING",
+      "parent_codes": [
+        "UNPLUGGED_AND_VISUAL_PROGRAMMING"
+      ],
+      "keywords": "unplugged algorithms, block logic, event-driven blocks",
+      "metadata": "{\"csta_strand\": \"AP-2\", \"csta_level\": \"1A,1B,2\"}"
     }
   ],
   "concepts": [
@@ -5063,6 +5121,74 @@
       ],
       "keywords": "SLM, small language model, edge optimization, microcontroller LLM",
       "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "PROBLEM_DECOMPOSITION_CONCEPT",
+      "name": "Problem Decomposition",
+      "description": "Kỹ thuật phân rã một vấn đề hoặc hệ thống phức tạp thành các thành phần con độc lập, nhỏ hơn để dễ dàng quản lý và giải quyết.",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS"
+      ],
+      "keywords": "problem decomposition, sub-problems, modularization, system breakdown",
+      "metadata": "{\"csta_strand\": \"AP-1\", \"csta_level\": \"1B,2,3A,3B\", \"ap_csp\": \"CRD-2\", \"spiral_bloom\": \"Remember->Create\"}"
+    },
+    {
+      "code": "PATTERN_RECOGNITION_CONCEPT",
+      "name": "Pattern Recognition in Computation",
+      "description": "Khả năng phát hiện các điểm tương đồng, xu hướng hoặc quy luật lặp lại giữa các bài toán để áp dụng lại giải pháp đã biết.",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS"
+      ],
+      "keywords": "pattern recognition, structural similarity, reusable logic, trend identification",
+      "metadata": "{\"csta_strand\": \"AP-1\", \"csta_level\": \"1B,2,3A\", \"ap_csp\": \"AAP-2\", \"spiral_bloom\": \"Understand->Analyze\"}"
+    },
+    {
+      "code": "UNPLUGGED_ALGORITHM_MIMICRY",
+      "name": "Unplugged Algorithmic Simulation",
+      "description": "Phương pháp mô phỏng và thực thi thuật toán thông qua các hoạt động vật lý, trò chơi thẻ bài và tương tác thực tế không dùng máy tính.",
+      "parent_or_relation": "UNPLUGGED_ALGORITHMIC_CONCEPTS",
+      "parent_codes": [
+        "UNPLUGGED_ALGORITHMIC_CONCEPTS"
+      ],
+      "keywords": "CS unplugged, algorithm simulation, physical computing unplugged, card games",
+      "metadata": "{\"csta_strand\": \"AP-2\", \"csta_level\": \"1A,1B,2\", \"spiral_bloom\": \"Remember->Apply\"}"
+    },
+    {
+      "code": "VISUAL_BLOCK_TO_CODE_TRANSITION",
+      "name": "Visual Block to Code Transition",
+      "description": "Quy trình chuyển đổi nhận thức từ lập trình kéo thả trực quan sang tư duy cú pháp mã nguồn chính thức.",
+      "parent_or_relation": "UNPLUGGED_ALGORITHMIC_CONCEPTS",
+      "parent_codes": [
+        "UNPLUGGED_ALGORITHMIC_CONCEPTS"
+      ],
+      "keywords": "block-to-text, visual programming transition, pseudo-code bridge",
+      "metadata": "{\"csta_strand\": \"AP-3\", \"csta_level\": \"2,3A\", \"ap_csp\": \"AAP-3\", \"spiral_bloom\": \"Apply->Create\"}"
+    },
+    {
+      "code": "DATA_LITERACY_DIKW_MODEL",
+      "name": "Data Literacy & DIKW Pyramid",
+      "description": "Mô hình tháp DIKW chuyển đổi từ Dữ liệu thô (Data) sang Thông tin (Information), Tri thức (Knowledge) và Trí tuệ (Wisdom).",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS, DATA_VIS_TOOLS",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS",
+        "DATA_VIS_TOOLS"
+      ],
+      "keywords": "DIKW pyramid, data literacy, data to information, knowledge transformation",
+      "metadata": "{\"csta_strand\": \"DA-1\", \"csta_level\": \"1B,2,3A\", \"ap_csp\": \"DAT-1\", \"spiral_bloom\": \"Understand->Evaluate\"}"
+    },
+    {
+      "code": "ETHICAL_AI_AND_BIAS_AWARENESS",
+      "name": "Ethical AI and Algorithmic Bias Awareness",
+      "description": "Nhận thức về tính công bằng, định kiến thuật toán trong dữ liệu huấn luyện và trách nhiệm đạo đức khi phát triển và sử dụng các hệ thống AI.",
+      "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS, AI_ASSISTED_CODING",
+      "parent_codes": [
+        "PROBLEM_DECOMPOSITION_PATTERNS",
+        "AI_ASSISTED_CODING"
+      ],
+      "keywords": "AI ethics, algorithmic bias, fairness, responsible AI, training data bias",
+      "metadata": "{\"csta_strand\": \"IC-1\", \"csta_level\": \"2,3A,3B\", \"ap_csp\": \"IOC-1\", \"spiral_bloom\": \"Understand->Evaluate\"}"
     }
   ]
 }
