@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-08-02T11:29:03.634244+00:00",
+  "schedule": "weekly",
+  "sources": [
+    "trends"
+  ],
+  "results": {
+    "trends": {
+      "source": "trends",
+      "collected": 5,
+      "pending": 5,
+      "items": [
+        "trend-csta-k-12-cs-standards-updates-202-20260802112945-1adb3349",
+        "trend-uk-national-curriculum-computing-u-20260802112946-7f381982",
+        "trend-australian-digital-technologies-cu-20260802112946-a477ce66",
+        "trend-csta-k-12-cs-standards-updates-202-20260802112946-85fa9020",
+        "trend-uk-national-curriculum-computing-u-20260802112946-f8da1ad1"
+      ],
+      "timestamp": "2026-08-02T11:29:46.334874+00:00"
+    }
+  }
+}
