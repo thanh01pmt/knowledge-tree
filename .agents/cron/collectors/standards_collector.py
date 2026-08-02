@@ -235,7 +235,7 @@ class StandardsCollector(BaseCollector):
         return '\n'.join(lines)
     
     def collect(self) -> List[ResearchMetadata]:
-        """Run crosswalk for all frameworks and create gap research items"""
+        """Run crosswalk for all frameworks and create ONE consolidated gap report."""
         new_items = []
         master_concepts = self._load_master_concepts()
         
@@ -245,8 +245,7 @@ class StandardsCollector(BaseCollector):
             print("  ⚠️ No Master Tree concepts loaded, skipping crosswalk")
             return new_items
         
-        # Run crosswalk for each framework (or just ACM_CS2023 as reference)
-        # For efficiency, run with ACM_CS2023 as reference vs all others
+        # Run crosswalk with ACM_CS2023 as reference
         reference_framework = "ACM_CS2023"
         crosswalk_dir = self._run_crosswalk(reference_framework)
         
@@ -263,50 +262,85 @@ class StandardsCollector(BaseCollector):
         
         print(f"  Found {len(gaps)} gaps from crosswalk")
         
-        for i, gap in enumerate(gaps):
-            # Generate item ID
-            framework = gap.get('framework', reference_framework)
-            theme = gap.get('theme', f'gap-{i}')
-            item_id = self._generate_item_id(f"{framework}-{theme}")
-            
-            if self.is_processed(item_id):
-                continue
-            
-            # Create item directory
-            item_dir = self._create_item_dir(item_id)
-            
-            # Generate context.md
-            context_md = self._generate_gap_context(gap, framework)
-            (item_dir / "context.md").write_text(context_md, encoding='utf-8')
-            
-            # Save crosswalk reference
-            (item_dir / "crosswalk_reference.txt").write_text(str(crosswalk_dir), encoding='utf-8')
-            
-            # Determine priority
-            priority = "high" if framework == "ACM_CS2023" else "medium"
-            
-            # Create metadata
-            metadata = ResearchMetadata(
-                id=item_id,
-                source=ResearchSource.STANDARDS,
-                title=f"Standards Gap: {framework} - {theme}",
-                context_path=str(item_dir.relative_to(self.repo_root)),
-                priority=priority,
-                status=ResearchStatus.PENDING,
-                extra={
-                    "framework": framework,
-                    "theme": gap.get('theme', ''),
-                    "band": gap.get('band', ''),
-                    "gap_type": "missing_concept",
-                    "crosswalk_dir": str(crosswalk_dir),
-                    "description": gap.get('description', '')[:200]
-                }
-            )
-            
-            self._save_metadata(metadata)
-            new_items.append(metadata)
-            
-            print(f"    Created gap item: {item_id}")
+        if not gaps:
+            print("  ✅ No gaps found — Master Tree is well-aligned")
+            return new_items
+        
+        # --- KEY FIX: Create ONE consolidated research item ---
+        item_id = self._generate_item_id(
+            f"{reference_framework}-crosswalk-report",
+            extra_key=reference_framework
+        )
+        
+        if self.is_processed(item_id):
+            print(f"  ⏭️ Report {item_id} already processed, skipping")
+            return new_items
+        
+        # Check if item dir already exists (idempotent)
+        item_dir = self.research_dir / item_id
+        if item_dir.exists():
+            print(f"  ⏭️ Report {item_id} already exists, skipping")
+            return new_items
+        
+        item_dir = self._create_item_dir(item_id)
+        
+        # Save ALL gaps as a single JSON file
+        (item_dir / "gaps.json").write_text(
+            json.dumps(gaps, indent=2, ensure_ascii=False), encoding='utf-8'
+        )
+        
+        # Generate a consolidated context.md
+        context_lines = [
+            f"# Standards Crosswalk Report: {reference_framework}",
+            f"",
+            f"**Date:** {datetime.now(timezone.utc).isoformat()}",
+            f"**Reference Framework:** {self.FRAMEWORKS[reference_framework]['name']}",
+            f"**Total Gaps Found:** {len(gaps)}",
+            f"**Crosswalk Directory:** {crosswalk_dir}",
+            f"",
+            f"---",
+            f"",
+            f"## Gap Summary",
+            f"",
+        ]
+        # Group gaps by theme for readability
+        themes = {}
+        for gap in gaps:
+            theme = gap.get('theme', 'General')
+            themes.setdefault(theme, []).append(gap)
+        
+        for theme, theme_gaps in sorted(themes.items()):
+            context_lines.append(f"### {theme} ({len(theme_gaps)} gaps)")
+            for g in theme_gaps:
+                context_lines.append(f"- {g.get('description', 'N/A')}")
+            context_lines.append("")
+        
+        (item_dir / "context.md").write_text('\n'.join(context_lines), encoding='utf-8')
+        
+        # Save crosswalk reference
+        (item_dir / "crosswalk_reference.txt").write_text(str(crosswalk_dir), encoding='utf-8')
+        
+        # Create metadata for the consolidated report
+        metadata = ResearchMetadata(
+            id=item_id,
+            source=ResearchSource.STANDARDS,
+            title=f"Standards Crosswalk Report: {reference_framework} ({len(gaps)} gaps)",
+            context_path=str(item_dir.relative_to(self.repo_root)),
+            priority="high",
+            status=ResearchStatus.PENDING,
+            extra={
+                "framework": reference_framework,
+                "total_gaps": len(gaps),
+                "gap_themes": list(themes.keys()),
+                "crosswalk_dir": str(crosswalk_dir),
+                "report_type": "consolidated"
+            }
+        )
+        
+        self._save_metadata(metadata)
+        new_items.append(metadata)
+        
+        print(f"  ✅ Created consolidated report: {item_id} ({len(gaps)} gaps)")
         
         return new_items
     

@@ -105,12 +105,15 @@ class BaseCollector(ABC):
         self.processed_log.write_text(json.dumps(list(self.processed_items)), encoding='utf-8')
     
     def _generate_item_id(self, title: str, extra_key: str = "") -> str:
-        """Generate unique ID from title + timestamp + extra key"""
-        content = f"{title}{extra_key}{datetime.now().isoformat()}"
+        """Generate deterministic ID from title + extra_key (content-addressable).
+        
+        The same title+extra_key will ALWAYS produce the same ID,
+        so re-running a collector won't create duplicate items.
+        """
+        content = f"{self.source.value}:{title}:{extra_key}"
         hash_suffix = hashlib.md5(content.encode()).hexdigest()[:8]
-        timestamp = datetime.now().strftime("%Y%m%d%H%M%S")
         base = title.lower().replace(" ", "-").replace("/", "-")[:40]
-        return f"{base}-{timestamp}-{hash_suffix}"
+        return f"{base}-{hash_suffix}"
     
     def _create_item_dir(self, item_id: str) -> Path:
         """Create directory structure for a research item"""

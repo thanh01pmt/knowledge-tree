@@ -217,53 +217,9 @@ OUTPUT FORMAT: JSON array of gap objects only. No extra text.
         except Exception as e:
             print(f"  ⚠️ LLM analysis failed: {e}")
         
-        # Fallback: create a basic gap from the research item
-        return self._fallback_gap_analysis(research_item)
-    
-    def _fallback_gap_analysis(self, research_item: ResearchMetadata) -> List[Dict[str, Any]]:
-        """Fallback gap analysis when LLM unavailable"""
-        gaps = []
-        
-        # Create a basic gap based on source
-        if research_item.source == ResearchSource.STANDARDS:
-            framework = research_item.extra.get('framework', 'UNKNOWN')
-            theme = research_item.extra.get('theme', 'GENERAL')
-            gaps.append({
-                "gap_type": "missing_concept",
-                "suggested_code": f"CON-{framework}_{theme}".replace(" ", "_").upper()[:50],
-                "suggested_name": f"{framework} {theme} Concepts".replace("_", " "),
-                "suggested_description": f"Concepts from {framework} framework gap analysis: {research_item.extra.get('description', '')[:100]}",
-                "cs2023_ka": "SPD,AI,SEP",
-                "parent_suggestion": "CAT-EMERGING_TECH",
-                "confidence": 70,
-                "rationale": f"Identified via {framework} crosswalk gap analysis"
-            })
-        elif research_item.source == ResearchSource.TRENDS:
-            topic = research_item.extra.get('topic', 'EMERGING_TREND')
-            gaps.append({
-                "gap_type": "missing_concept",
-                "suggested_code": f"CON-{topic.replace(' ', '_').upper()}"[:50],
-                "suggested_name": f"{topic} Concepts",
-                "suggested_description": f"Emerging concepts from trend research: {research_item.extra.get('evidence', '')[:100]}",
-                "cs2023_ka": "AI,GIT,SEP",
-                "parent_suggestion": "CAT-EMERGING_TECH",
-                "confidence": 75,
-                "rationale": f"Identified via trend discovery (score: {research_item.extra.get('priority_score', 0)})"
-            })
-        elif research_item.source == ResearchSource.ACADEMIC:
-            domain = research_item.extra.get('domain', 'GENERAL')
-            gaps.append({
-                "gap_type": "missing_topic",
-                "suggested_code": f"TOP-{domain.upper()}"[:50],
-                "suggested_name": f"{domain.replace('_', ' ').title()} Topic",
-                "suggested_description": f"Academic syllabus coverage for {domain}",
-                "cs2023_ka": "SDF,FPL,SE",
-                "parent_suggestion": "CAT-COMPUTING_FOUNDATIONS",
-                "confidence": 80,
-                "rationale": f"Identified from academic syllabus: {research_item.extra.get('original_file', '')}"
-            })
-        
-        return gaps
+        # LLM failed — do NOT fabricate gaps (§9: No Metric Gaming)
+        print(f"  ❌ LLM analysis failed — marking item as FAILED (no fallback)")
+        return []
     
     def _scaffold_project(self, gap: Dict[str, Any], research_item: ResearchMetadata) -> Optional[str]:
         """Scaffold a new project for the gap"""
@@ -317,8 +273,11 @@ See context.md and other files in this directory.
         return slug
     
     def _run_pipeline(self, slug: str) -> Dict[str, Any]:
-        """Run autonomous pipeline for a project by executing the 10-step workflow"""
-        # Check if project was scaffolded
+        """Run autonomous pipeline for an academic project.
+        
+        This delegates to the actual pipeline scripts. If the scripts
+        are not available or fail, it reports failure honestly.
+        """
         project_dir = self.repo_root / "projects" / slug
         context_dir = project_dir / "context"
         
@@ -328,7 +287,6 @@ See context.md and other files in this directory.
         # Update status.yaml with active project
         status_file = self.repo_root / "status.yaml"
         try:
-            import yaml
             if status_file.exists():
                 status = yaml.safe_load(status_file.read_text()) or {}
             else:
@@ -338,52 +296,61 @@ See context.md and other files in this directory.
         except Exception as e:
             print(f"  ⚠️ Failed to update status.yaml: {e}")
         
-        # Run the autonomous pipeline steps programmatically
-        # This is a simplified version - in production, this would call the actual scripts
-        try:
-            # Step 1: Context Audit
-            print(f"  Step 1: Context Audit for {slug}")
-            result = subprocess.run([
-                sys.executable, "-m", "hermes_tools",
-                "terminal", "--command",
-                f"python3 .agents/skills/project-context-loader/scripts/context_audit.py --project {slug}"
-            ], capture_output=True, text=True, timeout=300, cwd=str(self.repo_root))
-            
-            if result.returncode != 0:
-                # Try alternative approach - just run the workflow as a coordinated sequence
-                return self._run_pipeline_simple(slug)
-            
-            return {"success": True, "output": "Pipeline completed"}
-            
-        except Exception as e:
-            print(f"  ⚠️ Pipeline error: {e}")
-            # Fallback to simple pipeline
-            return self._run_pipeline_simple(slug)
-    
-    def _run_pipeline_simple(self, slug: str) -> Dict[str, Any]:
-        """Simple pipeline execution - scaffold + basic validation"""
-        project_dir = self.repo_root / "projects" / slug
-        
-        # Check if output directory exists with TSVs
-        output_dir = project_dir / "output"
-        if output_dir.exists():
-            tsv_files = list(output_dir.glob("*.tsv"))
-            if len(tsv_files) >= 5:  # fields, subjects, categories, topics, concepts
-                return {"success": True, "output": f"Found {len(tsv_files)} TSV files"}
-        
-        # Run scaffold if needed
-        scaffold_script = self.repo_root / ".agents" / "skills" / "tree-validator" / "scripts" / "scaffold_tree.py"
-        if scaffold_script.exists():
+        # Try running the assemble script as a first real step
+        assemble_script = self.repo_root / ".agents" / "skills" / "tree-assembler" / "scripts" / "assemble_project.py"
+        if assemble_script.exists():
             try:
-                result = subprocess.run([
-                    sys.executable, str(scaffold_script), slug
-                ], capture_output=True, text=True, timeout=60, cwd=str(self.repo_root))
+                result = subprocess.run(
+                    [sys.executable, str(assemble_script), "--project", slug],
+                    capture_output=True, text=True, timeout=300,
+                    cwd=str(self.repo_root)
+                )
                 if result.returncode == 0:
-                    return {"success": True, "output": "Scaffold completed"}
+                    print(f"  ✅ Pipeline assemble step succeeded for {slug}")
+                    return {"success": True, "output": result.stdout[-500:] if result.stdout else "OK"}
+                else:
+                    return {"error": f"Assemble failed: {result.stderr[-300:]}", "success": False}
+            except subprocess.TimeoutExpired:
+                return {"error": "Pipeline timed out", "success": False}
             except Exception as e:
-                return {"error": f"Scaffold failed: {e}", "success": False}
+                return {"error": str(e), "success": False}
         
-        return {"error": "No pipeline script available", "success": False}
+        # No pipeline script available — mark for Agent processing
+        return {"error": "Pipeline scripts not found — needs Agent execution", "success": False}
+    
+    def _write_staging_proposals(self, item: 'ResearchMetadata', gaps: List[Dict[str, Any]]):
+        """Write gaps to staging_proposals.tsv for Human review.
+        
+        Standards and Trends gaps are NOT projects — they are proposals
+        to add/modify nodes in the Master Tree. Human reviews and decides.
+        """
+        staging_file = self.repo_root / ".work" / "staging_proposals.tsv"
+        staging_file.parent.mkdir(parents=True, exist_ok=True)
+        
+        # Write header if new file
+        if not staging_file.exists():
+            header = "source\tresearch_id\tgap_type\tsuggested_code\tsuggested_name\tsuggested_description\tcs2023_ka\tparent_suggestion\tconfidence\trationale\tstatus\n"
+            staging_file.write_text(header, encoding='utf-8')
+        
+        # Append gaps
+        with open(staging_file, 'a', encoding='utf-8') as f:
+            for gap in gaps:
+                row = '\t'.join([
+                    item.source.value,
+                    item.id,
+                    gap.get('gap_type', ''),
+                    gap.get('suggested_code', ''),
+                    gap.get('suggested_name', ''),
+                    gap.get('suggested_description', ''),
+                    gap.get('cs2023_ka', ''),
+                    gap.get('parent_suggestion', ''),
+                    str(gap.get('confidence', 0)),
+                    gap.get('rationale', ''),
+                    'pending_review'
+                ])
+                f.write(row + '\n')
+        
+        print(f"  📋 Wrote {len(gaps)} proposals to staging_proposals.tsv")
     
     def _update_inbox(self, message: str):
         """Append message to INBOX.md"""
@@ -399,7 +366,12 @@ See context.md and other files in this directory.
         self.inbox_path.write_text(content, encoding='utf-8')
     
     def process(self, limit: int = None, source_filter: ResearchSource = None) -> Dict[str, Any]:
-        """Process pending research items"""
+        """Process pending research items.
+        
+        Routing logic:
+        - ACADEMIC: Has a full syllabus → scaffold project + run pipeline
+        - STANDARDS/TRENDS: Gap proposals → write to staging_proposals.tsv (Human reviews)
+        """
         print(f"\n{'='*60}")
         print(f"PROCESSOR: Scanning pending research items...")
         print(f"{'='*60}")
@@ -416,7 +388,8 @@ See context.md and other files in this directory.
         print(f"Found {len(pending)} pending items")
         
         if not pending:
-            return {"processed": 0, "projects_created": 0, "timestamp": datetime.now(timezone.utc).isoformat()}
+            return {"processed": 0, "projects_created": 0, "proposals_written": 0,
+                    "timestamp": datetime.now(timezone.utc).isoformat()}
         
         # Load Master Tree context
         master_context = self._load_master_tree_context()
@@ -425,7 +398,7 @@ See context.md and other files in this directory.
             "timestamp": datetime.now(timezone.utc).isoformat(),
             "processed": 0,
             "projects_created": 0,
-            "pipeline_results": [],
+            "proposals_written": 0,
             "items": []
         }
         
@@ -436,68 +409,87 @@ See context.md and other files in this directory.
             item.status = ResearchStatus.PROCESSING
             item.save(self.repo_root / item.context_path / "metadata.json")
             
-            # Analyze gaps with LLM
-            gaps = self._analyze_gaps_with_llm(item, master_context)
-            
-            if not gaps:
-                print(f"    No gaps identified")
-                item.status = ResearchStatus.SKIPPED
-                item.error_message = "No gaps identified"
-                item.save(self.repo_root / item.context_path / "metadata.json")
-                continue
-            
-            print(f"    Identified {len(gaps)} gap(s)")
-            
-            # Create project for each gap
-            for gap in gaps:
-                slug = self._scaffold_project(gap, item)
-                
-                if not slug:
-                    continue
-                
-                results["projects_created"] += 1
-                
-                # Run pipeline
-                pipeline_result = self._run_pipeline(slug)
-                results["pipeline_results"].append({
-                    "project": slug,
-                    "gap": gap,
-                    "result": pipeline_result
-                })
-                
-                # Update research item
-                item.status = ResearchStatus.PROCESSED
-                item.processed_at = datetime.now(timezone.utc).isoformat()
-                item.project_slug = slug
-                item.save(self.repo_root / item.context_path / "metadata.json")
-                
-                # Mark in collector's processed log
-                collector_processed_log = self.repo_root / ".work" / "research" / f"{item.source.value}_processed.json"
-                if collector_processed_log.exists():
-                    try:
-                        processed = set(json.loads(collector_processed_log.read_text()))
-                        processed.add(item.id)
-                        collector_processed_log.write_text(json.dumps(list(processed)))
-                    except:
-                        pass
-                
-                # Notify
-                tag = item.source.value.upper()
-                self._update_inbox(f"[{tag}] Project {slug} created from {item.id} - Pipeline: {'SUCCESS' if pipeline_result.get('success') else 'FAILED'}")
-                print(f"    ✅ Project {slug} created, pipeline {'succeeded' if pipeline_result.get('success') else 'failed'}")
+            # ── Route by source type ──
+            if item.source == ResearchSource.ACADEMIC:
+                # Academic items have a full syllabus → create project + run pipeline
+                result = self._process_academic(item, master_context)
+                if result.get("project_slug"):
+                    results["projects_created"] += 1
+                    tag = "ACADEMIC"
+                    self._update_inbox(
+                        f"[{tag}] Project {result['project_slug']} created from {item.id} "
+                        f"- Pipeline: {'SUCCESS' if result.get('success') else 'FAILED'}"
+                    )
+            else:
+                # Standards/Trends → analyze gaps and write to staging proposals
+                result = self._process_staging(item, master_context)
+                results["proposals_written"] += result.get("proposals_count", 0)
+                if result.get("proposals_count", 0) > 0:
+                    tag = item.source.value.upper()
+                    self._update_inbox(
+                        f"[{tag}] {result['proposals_count']} gap proposals written to "
+                        f"staging_proposals.tsv from {item.id}"
+                    )
             
             results["processed"] += 1
             results["items"].append({
                 "research_id": item.id,
-                "gaps_found": len(gaps),
-                "projects": [g.get("suggested_code", "") for g in gaps]
+                "source": item.source.value,
+                "result": result
             })
         
         print(f"\n{'='*60}")
-        print(f"PROCESSOR SUMMARY: {results['processed']} items, {results['projects_created']} projects")
+        print(f"PROCESSOR SUMMARY: {results['processed']} processed, "
+              f"{results['projects_created']} projects, "
+              f"{results['proposals_written']} staging proposals")
         print(f"{'='*60}")
         
         return results
+    
+    def _process_academic(self, item: 'ResearchMetadata', master_context: str) -> Dict[str, Any]:
+        """Process an academic item: scaffold project + run pipeline."""
+        # For academic items, use the research context directly as project context
+        slug = self._scaffold_project(
+            {"gap_type": "academic_syllabus",
+             "suggested_code": item.extra.get('domain', 'general-computing'),
+             "suggested_name": item.title,
+             "suggested_description": item.title},
+            item
+        )
+        if not slug:
+            item.status = ResearchStatus.FAILED
+            item.error_message = "Failed to scaffold project"
+            item.save(self.repo_root / item.context_path / "metadata.json")
+            return {"success": False, "error": "Scaffold failed"}
+        
+        pipeline_result = self._run_pipeline(slug)
+        
+        item.status = ResearchStatus.PROCESSED if pipeline_result.get("success") else ResearchStatus.FAILED
+        item.processed_at = datetime.now(timezone.utc).isoformat()
+        item.project_slug = slug
+        item.error_message = pipeline_result.get("error")
+        item.save(self.repo_root / item.context_path / "metadata.json")
+        
+        return {"success": pipeline_result.get("success", False), "project_slug": slug}
+    
+    def _process_staging(self, item: 'ResearchMetadata', master_context: str) -> Dict[str, Any]:
+        """Process standards/trends item: LLM analyzes gaps → staging_proposals.tsv."""
+        gaps = self._analyze_gaps_with_llm(item, master_context)
+        
+        if not gaps:
+            item.status = ResearchStatus.SKIPPED
+            item.error_message = "No gaps identified by LLM"
+            item.save(self.repo_root / item.context_path / "metadata.json")
+            return {"proposals_count": 0}
+        
+        # Write to staging file — Human will review
+        self._write_staging_proposals(item, gaps)
+        
+        item.status = ResearchStatus.PROCESSED
+        item.processed_at = datetime.now(timezone.utc).isoformat()
+        item.save(self.repo_root / item.context_path / "metadata.json")
+        
+        return {"proposals_count": len(gaps)}
 
 
 def main():
