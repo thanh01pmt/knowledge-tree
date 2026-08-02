@@ -1195,6 +1195,55 @@
       ],
       "keywords": "qml, quantum algorithms, variational",
       "metadata": ""
+    },
+    {
+      "code": "GENERATIVE_AND_AGENTIC_AI",
+      "name": "Generative & Agentic AI",
+      "description": "Nghiên cứu về các kiến trúc mô hình sinh, các kỹ thuật nhúng không gian vector và hệ thống tác nhân trí tuệ nhân tạo tự chủ có khả năng lập kế hoạch, sử dụng công cụ và hợp tác.",
+      "parent_or_relation": "AI_ML, SW_PARADIGMS",
+      "parent_codes": [
+        "AI_ML",
+        "SW_PARADIGMS"
+      ],
+      "keywords": "generative AI, LLM, agentic AI, RAG, vector embeddings, multi-agent",
+      "metadata": "{\"icon\": \"brain\"}"
+    },
+    {
+      "code": "AIOT_AND_EDGE_INTELLIGENCE",
+      "name": "AIoT & Edge Intelligence",
+      "description": "Nghiên cứu việc tích hợp trí tuệ nhân tạo vào hệ sinh thái Internet of Things, tập trung vào tối ưu hóa và thực thi mô hình suy luận tại thiết bị biên.",
+      "parent_or_relation": "IOT, AI_ML, PHYSICAL_COMPUTING",
+      "parent_codes": [
+        "IOT",
+        "AI_ML",
+        "PHYSICAL_COMPUTING"
+      ],
+      "keywords": "AIoT, edge AI, TinyML, model quantization, edge inference",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "ROBOTIC_SYSTEMS_AND_CONTROL",
+      "name": "Robotic Systems & Autonomous Control",
+      "description": "Bao gồm các nguyên lý về tự động hóa, điều khiển phản hồi vật lý, định vị không gian và hoạch định quỹ đạo di chuyển cho các hệ thống robot tự chủ.",
+      "parent_or_relation": "PHYSICAL_COMPUTING, AI_ML",
+      "parent_codes": [
+        "PHYSICAL_COMPUTING",
+        "AI_ML"
+      ],
+      "keywords": "robotics, SLAM, path planning, feedback control, kinematics",
+      "metadata": "{\"icon\": \"robot\"}"
+    },
+    {
+      "code": "CYBERSECURITY_AND_ZERO_TRUST",
+      "name": "Cybersecurity & Zero Trust Architecture",
+      "description": "Bao gồm các nguyên tắc bảo mật thông tin, kiến trúc an ninh không tin tưởng, hạ tầng mã hóa và quản lý truy cập để bảo vệ tài sản số.",
+      "parent_or_relation": "DIGITAL_CITIZENSHIP, NETWORKING",
+      "parent_codes": [
+        "DIGITAL_CITIZENSHIP",
+        "NETWORKING"
+      ],
+      "keywords": "cybersecurity, Zero Trust, PKI, IAM, threat modeling, encryption",
+      "metadata": "{\"icon\": \"shield-alt\"}"
     }
   ],
   "topics": [
@@ -2621,6 +2670,61 @@
       ],
       "keywords": "qnn, parameterized circuits, vqe",
       "metadata": ""
+    },
+    {
+      "code": "GENERATIVE_AI_MODELS",
+      "name": "Generative AI Models & Architecture",
+      "description": "Tập trung vào các kiến trúc mô hình sinh, mô hình ngôn ngữ lớn và kỹ thuật truy xuất tri thức ngoài.",
+      "parent_or_relation": "GENERATIVE_AND_AGENTIC_AI",
+      "parent_codes": [
+        "GENERATIVE_AND_AGENTIC_AI"
+      ],
+      "keywords": "Transformer, LLM, RAG, embeddings, attention",
+      "metadata": "{\"icon\": \"cogs\"}"
+    },
+    {
+      "code": "AGENTIC_AI_SYSTEMS",
+      "name": "Agentic AI Systems & Multi-Agent Orchestration",
+      "description": "Nghiên cứu các tác nhân AI tự chủ có khả năng lập kế hoạch, phản tư và phối hợp đa tác nhân.",
+      "parent_or_relation": "GENERATIVE_AND_AGENTIC_AI",
+      "parent_codes": [
+        "GENERATIVE_AND_AGENTIC_AI"
+      ],
+      "keywords": "AI agents, orchestration, multi-agent, planning, agent memory",
+      "metadata": "{\"icon\": \"network-wired\"}"
+    },
+    {
+      "code": "EDGE_AI_PROCESSING",
+      "name": "Edge AI & TinyML Processing",
+      "description": "Nghiên cứu các kỹ thuật nén, lượng hóa và thực thi mô hình suy luận AI trên phần cứng biên nhúng.",
+      "parent_or_relation": "AIOT_AND_EDGE_INTELLIGENCE",
+      "parent_codes": [
+        "AIOT_AND_EDGE_INTELLIGENCE"
+      ],
+      "keywords": "TinyML, quantization, edge processing, AIoT pipeline",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "ROBOTIC_NAVIGATION_AND_PLANNING",
+      "name": "Robotic Navigation, SLAM & Motion Control",
+      "description": "Bao gồm các thuật toán hoạch định đường đi, định vị bản đồ đồng thời và điều khiển động cơ vật lý.",
+      "parent_or_relation": "ROBOTIC_SYSTEMS_AND_CONTROL",
+      "parent_codes": [
+        "ROBOTIC_SYSTEMS_AND_CONTROL"
+      ],
+      "keywords": "SLAM, path planning, kinematics, motor control",
+      "metadata": "{\"icon\": \"compass\"}"
+    },
+    {
+      "code": "ZERO_TRUST_SECURITY",
+      "name": "Zero Trust & Identity Management",
+      "description": "Bao gồm kiến trúc an ninh Zero Trust, hạ tầng PKI và quy trình quản lý định danh truy cập.",
+      "parent_or_relation": "CYBERSECURITY_AND_ZERO_TRUST",
+      "parent_codes": [
+        "CYBERSECURITY_AND_ZERO_TRUST"
+      ],
+      "keywords": "Zero Trust, IAM, PKI, threat modeling",
+      "metadata": "{\"icon\": \"lock\"}"
     }
   ],
   "concepts": [
@@ -4684,6 +4788,193 @@
       ],
       "keywords": "pqc, qnn, vqe",
       "metadata": ""
+    },
+    {
+      "code": "TRANSFORMER_ARCHITECTURE",
+      "name": "Transformer Architecture",
+      "description": "Nguyên lý kiến trúc Transformer với cơ chế chú ý tự động (Self-Attention) và chú ý đa đầu (Multi-Head Attention) để xử lý chuỗi dữ liệu song song.",
+      "parent_or_relation": "GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "Transformer, self-attention, multi-head attention, encoder, decoder",
+      "metadata": "{\"icon\": \"project-diagram\"}"
+    },
+    {
+      "code": "LARGE_LANGUAGE_MODEL_CONCEPTS",
+      "name": "Large Language Model Principles",
+      "description": "Các nguyên lý cơ bản của mô hình ngôn ngữ lớn, bao gồm quy trình tiền huấn luyện (Pre-training), tinh chỉnh chỉ dẫn (Instruction Tuning) và tinh chỉnh tham số (Fine-tuning).",
+      "parent_or_relation": "GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "LLM, pre-training, fine-tuning, instruction tuning, prompt",
+      "metadata": "{\"icon\": \"brain\"}"
+    },
+    {
+      "code": "RETRIEVAL_AUGMENTED_GENERATION",
+      "name": "Retrieval-Augmented Generation",
+      "description": "Kỹ thuật RAG kết hợp mô hình sinh với hệ thống truy xuất cơ sở dữ liệu ngoài để bổ sung ngữ cảnh thực tế và giảm thiểu hiện tượng bịa đặt thông tin.",
+      "parent_or_relation": "GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "RAG, retrieval, vector search, context injection, grounding",
+      "metadata": "{\"icon\": \"search-plus\"}"
+    },
+    {
+      "code": "VECTOR_EMBEDDING_SEARCH",
+      "name": "Vector Embedding and Similarity Search",
+      "description": "Phương pháp biểu diễn văn bản hoặc đối tượng dưới dạng vector mật độ cao trong không gian đa chiều và tìm kiếm độ tương tự dựa trên khoảng cách không gian.",
+      "parent_or_relation": "GENERATIVE_AI_MODELS",
+      "parent_codes": [
+        "GENERATIVE_AI_MODELS"
+      ],
+      "keywords": "vector embedding, similarity search, cosine distance, vector index",
+      "metadata": "{\"icon\": \"database\"}"
+    },
+    {
+      "code": "AGENTIC_WORKFLOW_ORCHESTRATION",
+      "name": "Agentic Workflow Orchestration",
+      "description": "Kiến trúc điều phối tác vụ cho Agent tự chủ, bao gồm phân rã bài toán (Planning), chọn lựa công cụ thực thi (Tool Use) và tự phản tư đánh giá kết quả (Self-Reflection).",
+      "parent_or_relation": "AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "AI agent, planning, tool use, self-reflection, orchestration",
+      "metadata": "{\"icon\": \"tasks\"}"
+    },
+    {
+      "code": "MULTI_AGENT_COOPERATION",
+      "name": "Multi-Agent Cooperation Dynamics",
+      "description": "Nguyên lý tương tác, phân công vai trò chuyên biệt và giao tiếp thông điệp giữa nhiều tác nhân thông minh để hợp tác giải quyết các bài toán quy mô lớn.",
+      "parent_or_relation": "AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "multi-agent, role assignment, agent communication, collaboration",
+      "metadata": "{\"icon\": \"users-cog\"}"
+    },
+    {
+      "code": "AGENT_MEMORY_SYSTEMS",
+      "name": "Agent Memory Systems",
+      "description": "Cơ chế lưu trữ và quản lý bộ nhớ ngắn hạn (ngữ cảnh phiên làm việc) và bộ nhớ dài hạn (tri thức tích lũy) cho các tác nhân AI.",
+      "parent_or_relation": "AGENTIC_AI_SYSTEMS",
+      "parent_codes": [
+        "AGENTIC_AI_SYSTEMS"
+      ],
+      "keywords": "agent memory, short-term memory, long-term memory, conversation context",
+      "metadata": "{\"icon\": \"hdd\"}"
+    },
+    {
+      "code": "EDGE_MODEL_QUANTIZATION",
+      "name": "Edge Model Quantization and Compression",
+      "description": "Kỹ thuật nén và giảm độ chính xác số liệu của mô hình học máy (từ 32-bit xuống 8-bit hoặc 4-bit) để tối ưu dung lượng và tốc độ suy luận tại thiết bị biên.",
+      "parent_or_relation": "EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "quantization, model compression, edge AI, inference optimization",
+      "metadata": "{\"icon\": \"compress-alt\"}"
+    },
+    {
+      "code": "AIOT_DATA_PIPELINE",
+      "name": "AIoT Edge Data Pipeline",
+      "description": "Quy trình thu thập, tiền xử lý dữ liệu cảm biến thời gian thực và thực thi suy luận trực tiếp tại thiết bị nhúng trước khi truyền dữ liệu lên đám mây.",
+      "parent_or_relation": "EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "AIoT, data pipeline, edge inference, sensor data, real-time",
+      "metadata": "{\"icon\": \"stream\"}"
+    },
+    {
+      "code": "TINYML_INFERENCE",
+      "name": "TinyML Ultra-Low Power Inference",
+      "description": "Nguyên lý thiết kế và thực thi thuật toán học máy trên các thiết bị vi điều khiển công suất cực thấp với tài nguyên RAM/Bộ nhớ hạn chế.",
+      "parent_or_relation": "EDGE_AI_PROCESSING",
+      "parent_codes": [
+        "EDGE_AI_PROCESSING"
+      ],
+      "keywords": "TinyML, microcontroller, low power, embedded inference",
+      "metadata": "{\"icon\": \"microchip\"}"
+    },
+    {
+      "code": "ROBOTIC_PATH_PLANNING",
+      "name": "Robotic Path Planning Algorithms",
+      "description": "Các thuật toán hoạch định đường đi và di chuyển tối ưu cho robot trong môi trường chứa chướng ngại vật phức tạp.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING"
+      ],
+      "keywords": "path planning, trajectory, obstacle avoidance, motion planning",
+      "metadata": "{\"icon\": \"route\"}"
+    },
+    {
+      "code": "SIMULTANEOUS_LOCALIZATION_MAPPING",
+      "name": "Simultaneous Localization and Mapping",
+      "description": "Nguyên lý SLAM cho phép robot xây dựng bản đồ không gian xung quanh đồng thời tự xác định vị trí của chính mình trong không gian đó.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING"
+      ],
+      "keywords": "SLAM, localization, mapping, spatial perception, sensor fusion",
+      "metadata": "{\"icon\": \"map-marked-alt\"}"
+    },
+    {
+      "code": "ROBOTIC_ACTUATION_CONTROL",
+      "name": "Robotic Actuation and Feedback Control",
+      "description": "Nguyên lý điều khiển phản hồi vòng kín (PID, MPC) áp dụng cho các mô-tơ và cơ cấu chấp hành vật lý của hệ thống robot.",
+      "parent_or_relation": "ROBOTIC_NAVIGATION_AND_PLANNING",
+      "parent_codes": [
+        "ROBOTIC_NAVIGATION_AND_PLANNING"
+      ],
+      "keywords": "actuation, feedback control, PID, motor control, robotics",
+      "metadata": "{\"icon\": \"sliders-h\"}"
+    },
+    {
+      "code": "ZERO_TRUST_ARCHITECTURE",
+      "name": "Zero Trust Architecture Principles",
+      "description": "Nguyên tắc thiết kế an ninh mạng \"Không bao giờ tin tưởng, luôn kiểm tra\" với cơ chế xác thực liên tục và cấp quyền truy cập tối thiểu.",
+      "parent_or_relation": "ZERO_TRUST_SECURITY",
+      "parent_codes": [
+        "ZERO_TRUST_SECURITY"
+      ],
+      "keywords": "Zero Trust, continuous verification, least privilege, micro-segmentation",
+      "metadata": "{\"icon\": \"user-shield\"}"
+    },
+    {
+      "code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+      "name": "Identity and Access Management",
+      "description": "Nguyên lý quản lý định danh người dùng/thiết bị, xác thực đa yếu tố và kiểm soát truy cập dựa trên vai trò hoặc thuộc tính (RBAC/ABAC).",
+      "parent_or_relation": "ZERO_TRUST_SECURITY",
+      "parent_codes": [
+        "ZERO_TRUST_SECURITY"
+      ],
+      "keywords": "IAM, identity, authentication, authorization, RBAC, MFA",
+      "metadata": "{\"icon\": \"id-card\"}"
+    },
+    {
+      "code": "PUBLIC_KEY_INFRASTRUCTURE",
+      "name": "Public Key Infrastructure Principles",
+      "description": "Hạ tầng quản lý khóa công khai dựa trên mã hóa bất đối xứng, chứng thư số và cơ quan xác thực trung tâm để bảo đảm tính toàn vẹn và bảo mật.",
+      "parent_or_relation": "ZERO_TRUST_SECURITY",
+      "parent_codes": [
+        "ZERO_TRUST_SECURITY"
+      ],
+      "keywords": "PKI, asymmetric encryption, digital certificate, certificate authority",
+      "metadata": "{\"icon\": \"key\"}"
+    },
+    {
+      "code": "THREAT_MODELING_ASSESSMENT",
+      "name": "Threat Modeling and Security Assessment",
+      "description": "Quy trình phân tích, nhận diện các mối đe dọa an ninh mạng và đánh giá rủi ro đối với kiến trúc hệ thống phần mềm.",
+      "parent_or_relation": "ZERO_TRUST_SECURITY",
+      "parent_codes": [
+        "ZERO_TRUST_SECURITY"
+      ],
+      "keywords": "threat modeling, STRIDE, risk assessment, vulnerability scanning",
+      "metadata": "{\"icon\": \"bug\"}"
     }
   ]
 }
