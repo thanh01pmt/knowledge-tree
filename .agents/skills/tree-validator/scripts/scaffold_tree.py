@@ -106,6 +106,28 @@ def main():
         else:
             print(f"Skipped (exists): {filepath.relative_to(repo_root)}")
             
+    # Create project_meta.yaml
+    meta_path = project_dir / "project_meta.yaml"
+    if not meta_path.exists():
+        import datetime
+        now = datetime.datetime.utcnow().isoformat() + "Z"
+        # Determine type based on slug
+        proj_type = "cron_trend_research" if "trend" in slug else "cron_academic_alignment" if "academic" in slug else "standard_project"
+        meta_content = f"""type: "{proj_type}"
+status: 
+  generated: false
+  merged_to_master: false
+  synced_to_supabase: false
+timestamps:
+  created_at: {now}
+  merged_at: null
+  synced_at: null
+reports:
+  diff_changelog: "output/changelog.md"
+"""
+        meta_path.write_text(meta_content, encoding="utf-8")
+        print(f"Created: {meta_path.relative_to(repo_root)}")
+
     update_status_yaml(repo_root, slug)
     print(f"\nProject '{slug}' scaffolded successfully and set as active_project in status.yaml.")
 
