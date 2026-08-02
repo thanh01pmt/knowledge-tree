@@ -11,10 +11,10 @@ Do các lệnh `/schedule` được lưu trong bộ nhớ tạm của phiên IDE
 
 ### Cron 2: Academic Watcher (Mỗi 15 phút)
 ```text
-/schedule CronExpression="*/15 * * * *" Prompt="[Cron 2 - Academic Watcher] Thức dậy và chạy lệnh 'python3 .agents/cron/cron_academic_watcher.py'. Nếu script báo có file mới và đã dựng Project thành công, hãy cập nhật phần Pending Approvals trong file 'projects/INBOX.md' để nhắc Người dùng (Tony) chạy '/run-pipeline'. Cuối cùng, nếu có thay đổi, thực hiện 'git add .', 'git commit -m \"chore(cron): Scaffold new academic project\"' và 'git push origin main'."
+/schedule CronExpression="*/15 * * * *" Prompt="[Cron 2 - Academic Watcher] Thức dậy và chạy lệnh 'python3 .agents/cron/cron_academic_watcher.py'. Nếu script báo 'No new academic files found' thì không cần làm gì. Nếu script báo có file mới (stdout chứa 'Scaffolding project: <slug>'), hãy: (1) Ghi nhớ <slug> từ stdout, (2) Đọc file '.agents/workflows/run-autonomous-pipeline.md' để biết hướng dẫn, (3) Thực thi toàn bộ 10 bước trong workflow đó với <slug> vừa bắt được. Nếu bất kỳ bước nào thất bại sau 3 lần thử lại, ghi lỗi vào 'projects/INBOX.md' rồi commit+push."
 ```
 
 ### Cron 3: Trend Research (Sáng Chủ Nhật)
 ```text
-/schedule CronExpression="0 2 * * 0" Prompt="[Cron 3 - Trend Research] Thức dậy và chạy lệnh 'python3 .agents/cron/cron_trend_research.py'. Khi script chạy xong last30days và dựng Project mới, hãy cập nhật phần Pending Approvals trong file 'projects/INBOX.md' để Người dùng (Tony) vào duyệt và chạy '/run-pipeline'. Cuối cùng, thực hiện 'git add .', 'git commit -m \"chore(cron): Scaffold trend research project\"' và 'git push origin main'."
+/schedule CronExpression="0 2 * * 0" Prompt="[Cron 3 - Trend Research] Thức dậy và chạy lệnh 'python3 .agents/cron/cron_trend_research.py'. Nếu script tạo Project mới (stdout chứa 'Scaffolding project: <slug>'), hãy: (1) Ghi nhớ <slug> từ stdout, (2) Đọc file '.agents/workflows/run-autonomous-pipeline.md' để biết hướng dẫn, (3) Thực thi toàn bộ 10 bước trong workflow đó với <slug> vừa bắt được. Nếu bất kỳ bước nào thất bại sau 3 lần thử lại, ghi lỗi vào 'projects/INBOX.md' rồi commit+push."
 ```

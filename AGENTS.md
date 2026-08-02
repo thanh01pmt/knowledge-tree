@@ -50,8 +50,7 @@ Output cuối của mỗi project là đúng 6 file TSV đã validate trong `pro
 File trung gian (mapping plan, context audit...) lưu trong `projects/<project>/.work/`.
 
 ### §4 Approval Gate
-Trước khi ghi TSV cuối (chạy `/build-tree`), **BẮT BUỘC** trình `mapping-plan.md` cho người dùng duyệt. Không ghi TSV nếu chưa có phê duyệt rõ ràng.
-
+Trước khi ghi TSV cuối (chạy `/build-tree`), **BẮT BUỘC** trình `mapping-plan.md` cho người dùng duyệt (đối với chạy thủ công), HOẶC phải vượt qua sự kiểm duyệt khắt khe của hệ chuyên gia độc lập `agent_as_judge.py` (đối với luồng Cron tự động). Không ghi TSV nếu chưa có phê duyệt rõ ràng từ Người hoặc Agent-as-Judge.
 ### §5 Security Boundary
 - Đọc master data từ `.agents/skills/taxonomy-mapper/resources/`.
 - Đọc project data từ `projects/<project>/context/`.
@@ -87,6 +86,7 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 | Command                | Owner             | Primary result                                                                                 |
 | ---------------------- | ----------------- | ---------------------------------------------------------------------------------------------- |
 | `/run-pipeline`        | coordinator       | **Full End-to-End Workflow** with 7 explicit Human-in-the-loop (HITL) review checkpoints       |
+| `/run-autonomous-pipeline` | coordinator   | **Full End-to-End Workflow** with Agent-as-Judge replacing HITL — used by Agentic Crons        |
 | `/init <project>`      | scaffolder        | Scaffold project TSV files (updates status.yaml)                                               |
 | `/set-project`         | coordinator       | Update active_project in status.yaml                                                           |
 | `/scaffold-keywords <target> --source <path>` | scaffolder | Tạo `.work/kw/`, chunk tài liệu nguồn (PDF/MD/TXT)                              |
@@ -151,3 +151,8 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 
 - Goal: Run validation scripts (`validate_master_tree.py`, `validate_tree.py`) & reverse coverage audit (`audit_coverage.py`) to ensure 100% referential integrity and 100% syllabus coverage.
 - Skill: `tree-validator`
+
+## @agent-as-judge
+
+- Goal: Act as an independent semantic evaluator for automated pipelines (Crons). Critiques intermediate artifacts (like mapping-plan, ULOs, CIOs) for hallucinations, T6 violations, and syllabus coverage before allowing the pipeline to proceed to generation or DB sync.
+- Skill: `agent-as-judge` (Implemented via `agent_as_judge.py`)
