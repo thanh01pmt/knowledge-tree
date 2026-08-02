@@ -4,10 +4,10 @@
   "title": "Academic: test_syllabus",
   "context_path": ".work/research/academic/test_syllabus-20260802102229-d8bc969d",
   "priority": "medium",
-  "status": "processed",
+  "status": "processing",
   "created_at": "2026-08-02T10:22:29.372373+00:00",
-  "processed_at": "2026-08-02T10:22:33.534312+00:00",
-  "project_slug": "gap-general-computing-20260802102233",
+  "processed_at": null,
+  "project_slug": null,
   "error_message": null,
   "extra": {
     "original_file": "test_syllabus.md",
