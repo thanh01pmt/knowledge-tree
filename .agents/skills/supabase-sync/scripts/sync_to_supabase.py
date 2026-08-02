@@ -13,6 +13,7 @@ Thứ tự phụ thuộc (Top-Down Order):
 
 import argparse
 import csv
+import json
 import os
 import sys
 from pathlib import Path
@@ -22,6 +23,8 @@ os.environ.pop("NO_PROXY", None)
 os.environ.pop("no_proxy", None)
 
 from supabase import create_client
+import yaml
+
 
 def find_repo_root(start: Path) -> Path:
     cur = start.resolve()
@@ -33,14 +36,16 @@ def find_repo_root(start: Path) -> Path:
         cur = cur.parent
     return start.resolve()
 
+
 def load_env(repo_root: Path):
     env_path = repo_root / ".env"
     if env_path.is_file():
         with open(env_path, "r", encoding="utf-8") as f:
             for line in f:
                 if "=" in line and not line.strip().startswith("#"):
-                    k, v = line.split("=", 1)
-                    os.environ[k.strip()] = v.strip().strip("'\"")
+                    k, v = line.strip().split("=", 1)
+                    os.environ[k.strip()] = v.strip().strip("\"'")
+
 
 def sync_project_to_supabase(slug: str, repo_root: Path):
     load_env(repo_root)
@@ -86,8 +91,7 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             rows = list(reader)
 
         if table_name == "learning_objective_prerequisites":
-            # Batch upsert (chunk of 200) to avoid per-row round-trip latency
-            # and reduce risk of partial sync on large prerequisite graphs.
+            # Special handling for prerequisites
             batch_payloads = []
             skipped = 0
             for r in rows:
@@ -120,7 +124,7 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
         # For normal tables - OPTIMIZED: fetch only codes we need using 'in' query
         # Collect all codes from the TSV first
         tsv_codes = [r.get("code", "").strip() for r in rows if r.get("code", "").strip()]
-        
+
         # Đối với learning_objectives: sắp xếp theo thứ tự phụ thuộc parent_lo_code (UNIVERSAL -> CONCEPTUAL_IMPL -> SPECIFIC_IMPL)
         if table_name == "learning_objectives":
             type_priority = {"UNIVERSAL": 0, "CONCEPTUAL_IMPL": 1, "SPECIFIC_IMPL": 2}
@@ -151,53 +155,122 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
             if not code:
                 continue
 
-            payload = {"organization_code": "DEFAULT_ORG"}
-            
-            for k, v in r.items():
-                if not k:
-                    continue
-                k = k.strip()
-                if k in array_fields:
-                    continue
-                
-                val = v.strip() if v else ""
-                
-                if val == "":
-                    if k in ["name", "description"]:
-                        payload[k] = ""
-                    # Ignore other empty fields (like metadata, keywords, bloom_level) to avoid DB type errors
-                    continue
-                
-                payload[k] = val
-
-            payload["code"] = code
-
-            for af in array_fields:
-                if af in r:
-                    val_str = r[af].strip()
-                    if val_str:
-                        vals = [v.strip() for v in val_str.replace(";", ",").split(",") if v.strip()]
-                        payload[af] = vals
-                    else:
-                        payload[af] = []
-
             if table_name == "learning_objectives":
-                payload["lo_type"] = r.get("lo_type", "UNIVERSAL").strip() or "UNIVERSAL"
+                # Map TSV columns to Supabase schema (only for learning_objectives)
+                payload = {"organization_code": "DEFAULT_ORG"}
+                field_mapping = {
+                    "name": "name",
+                    "description": "description",
+                    "lo_type": "lo_type",
+                    "parent_lo_code": "parent_lo_code",
+                    "bloom_level": "bloom_level_codes",
+                    "knowledge_dimension": "context_codes",
+                    "assessment_approach": "metadata",
+                    "sequence_order": "metadata",
+                    "keywords": "keywords",
+                    "metadata": "metadata",
+                    "cs2023_ka_mapping": "cs2023_ka_mapping",
+                }
+
+                for tsv_col, sb_col in field_mapping.items():
+                    val = r.get(tsv_col, "").strip()
+                    if val and val != "":
+                        if sb_col == "metadata":
+                            existing = payload.get("metadata", "{}")
+                            try:
+                                meta = json.loads(existing) if existing else {}
+                            except:
+                                meta = {}
+                            if tsv_col == "assessment_approach":
+                                meta["assessment_approach"] = val
+                            elif tsv_col == "sequence_order":
+                                meta["sequence_order"] = val
+                            elif tsv_col == "metadata":
+                                try:
+                                    extra = json.loads(val)
+                                    meta.update(extra)
+                                except:
+                                    meta["extra"] = val
+                            payload["metadata"] = json.dumps(meta, ensure_ascii=False)
+                        elif sb_col in ["bloom_level_codes", "context_codes", "keywords"]:
+                            vals = [v.strip() for v in val.replace(";", ",").split(",") if v.strip()]
+                            payload[sb_col] = vals
+                        else:
+                            payload[sb_col] = val
+
+                # Handle array fields defined in config
+                for af in array_fields:
+                    if af in r:
+                        val_str = r[af].strip()
+                        if val_str:
+                            vals = [v.strip() for v in val_str.replace(";", ",").split(",") if v.strip()]
+                            payload[af] = vals
+                        else:
+                            payload[af] = []
+
+                # Ensure required fields
+                payload["code"] = code
+                if "lo_type" not in payload or not payload["lo_type"]:
+                    payload["lo_type"] = "UNIVERSAL"
+
+                # Handle parent_lo_code - only if valid and not NULL
                 p_code = r.get("parent_lo_code", "").strip()
                 if p_code and p_code.upper() != "NULL":
                     payload["parent_lo_code"] = p_code
                 elif "parent_lo_code" in payload:
                     del payload["parent_lo_code"]
 
-            if code in code_to_id:
-                payload["id"] = code_to_id[code]
-                supabase.table(table_name).upsert(payload).execute()
-                updated_count += 1
+            elif table_name == "keywords":
+                # Keywords table has minimal schema: code, name, description, metadata, concept_codes
+                payload = {
+                    "code": code,
+                    "name": r.get("name", "").strip(),
+                    "description": r.get("description", "").strip(),
+                }
+                # Handle metadata if present
+                meta_val = r.get("metadata", "").strip()
+                if meta_val:
+                    try:
+                        payload["metadata"] = json.loads(meta_val)
+                    except:
+                        payload["metadata"] = {"raw": meta_val}
+
+                # Handle concept_codes array
+                concept_codes = r.get("concept_codes", "").strip()
+                if concept_codes:
+                    payload["concept_codes"] = [c.strip() for c in concept_codes.replace(";", ",").split(",") if c.strip()]
+
             else:
-                res = supabase.table(table_name).insert(payload).execute()
-                if res.data:
-                    code_to_id[code] = res.data[0]["id"]
+                # For other tables (fields, subjects, categories, topics, concepts)
+                # Direct column mapping - only include columns that exist in both TSV and Supabase
+                payload = {}
+                direct_fields = [
+                    "name", "description", "keywords", "cs2023_ka_mapping", "metadata",
+                    "field_codes", "subject_codes", "category_codes", "topic_codes", "prerequisite_concept_codes"
+                ]
+                for col in direct_fields:
+                    val = r.get(col, "").strip()
+                    if val:
+                        if col in array_fields:
+                            vals = [v.strip() for v in val.replace(";", ",").split(",") if v.strip()]
+                            payload[col] = vals
+                        else:
+                            payload[col] = val
+
+                payload["code"] = code
+
+            try:
+                if code in code_to_id:
+                    supabase.table(table_name).update(payload).eq("code", code).execute()
+                    updated_count += 1
+                else:
+                    res = supabase.table(table_name).insert(payload).execute()
+                    if res.data:
+                        code_to_id[code] = res.data[0]["id"]
                     inserted_count += 1
+            except Exception as e:
+                print(f"  ⚠️  Failed to sync {table_name}/{code}: {e}", file=sys.stderr)
+
             synced_count += 1
 
         print(f"  • {table_name:<20}: {synced_count} synced (Updated {updated_count}, Inserted {inserted_count})")
@@ -206,29 +279,32 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
     print(f"🎉 DEPENDENCY-AWARE SYNC COMPLETED FOR '{slug}'!")
     print(f"==================================================")
 
+
 def load_status(repo_root: Path) -> dict:
     status_file = repo_root / "status.yaml"
-    if not status_file.is_file():
-        return {}
-    import yaml  # type: ignore
-    with open(status_file, "r", encoding="utf-8") as f:
-        return yaml.safe_load(f) or {}
+    if status_file.is_file():
+        with open(status_file, "r", encoding="utf-8") as f:
+            return yaml.safe_load(f) or {}
+    return {}
+
 
 def main():
     parser = argparse.ArgumentParser(description="Sync project TSV files to Supabase database with dependency ordering")
-    parser.add_argument("--project", type=str, help="Project slug")
+    parser.add_argument("--project", help="Project slug (default: from status.yaml)")
     args = parser.parse_args()
 
     repo_root = find_repo_root(Path.cwd())
+
     slug = args.project
     if not slug:
         status = load_status(repo_root)
         slug = status.get("active_project")
         if not slug:
-            print("❌ Error: No project specified and active_project not set in status.yaml")
+            print("❌ Error: Không có project. Truyền --project hoặc set active_project trong status.yaml.")
             sys.exit(1)
 
     sync_project_to_supabase(slug, repo_root)
+
 
 if __name__ == "__main__":
     main()
