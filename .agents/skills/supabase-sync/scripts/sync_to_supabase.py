@@ -268,12 +268,24 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
 
             try:
                 if code in code_to_id:
-                    supabase.table(table_name).update(payload).eq("code", code).execute()
-                    updated_count += 1
+                    # For keywords table, code_to_id[code] == code (no id column)
+                    # Only update if the table has an id column (i.e., not keywords)
+                    if table_name != "keywords":
+                        supabase.table(table_name).update(payload).eq("code", code).execute()
+                        updated_count += 1
+                    else:
+                        # Keywords table: upsert by code (update if exists, insert if not)
+                        # Since we know it exists (code in code_to_id), do update
+                        supabase.table(table_name).update(payload).eq("code", code).execute()
+                        updated_count += 1
                 else:
                     res = supabase.table(table_name).insert(payload).execute()
                     if res.data:
-                        code_to_id[code] = res.data[0]["id"]
+                        # For keywords table, there's no 'id' column
+                        if table_name != "keywords" and "id" in res.data[0]:
+                            code_to_id[code] = res.data[0]["id"]
+                        else:
+                            code_to_id[code] = code  # Use code as key for keywords
                     inserted_count += 1
             except Exception as e:
                 print(f"  ⚠️  Failed to sync {table_name}/{code}: {e}", file=sys.stderr)

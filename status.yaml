@@ -1,12 +1,5 @@
 active_project: swift-associate
-last_audit_at: '2026-08-01T14:14:45+00:00'
-last_audit_coverage: 100.0
-last_audit_report: projects/swift-associate/.tree-validator/reports/20260801T141445Z/coverage_report.md
-last_audit_status: PASS
-last_gap_report: projects/swift-associate/.tree-validator/reports/20260801T133821Z/gap_report.md
-last_report_path: projects/swift-associate/.tree-validator/reports/20260803T045216Z/validation_report.md
-last_validated_at: '2026-08-03T04:52:16.304528+00:00'
-last_validation_status: PASS
-pending_manual_fixes: 0
-pending_proposed_fixes: 0
-proposed_fixes_path: null
+projects:
+  global-keywords:
+    created_at: '2026-08-03T11:56:00Z'
+    status: active
