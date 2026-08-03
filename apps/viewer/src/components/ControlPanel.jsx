@@ -3,7 +3,7 @@ import {
   Search, Settings2, BarChart3, RotateCcw, PanelLeftClose, 
   SlidersHorizontal, Palette, Layers, Zap, Eye, EyeOff,
   Filter, ChevronDown, ChevronUp, Database, GitBranch,
-  Sparkles, HelpCircle, X, ChevronLeft, ChevronRight, Hash
+  Sparkles, HelpCircle, X, ChevronLeft, ChevronRight, Hash, Tag
 } from 'lucide-react';
 
 // Dynamic icon renderer for level-based icons
@@ -33,6 +33,22 @@ const LEVEL_LABELS = {
 };
 
 const LEVEL_ORDER = ['field', 'subject', 'category', 'topic', 'concept', 'learning_objective', 'keyword'];
+
+const Badge = ({ children, variant = 'slate', className = '' }) => {
+  const variants = {
+    cyan: 'bg-electric-cyan/20 text-electric-cyan border-electric-cyan/30',
+    amber: 'bg-electric-amber/20 text-electric-amber border-electric-amber/30',
+    magenta: 'bg-electric-magenta/20 text-electric-magenta border-electric-magenta/30',
+    green: 'bg-electric-green/20 text-electric-green border-electric-green/30',
+    slate: 'bg-space-700 text-text-secondary border-border-default',
+    purple: 'bg-electric-magenta/20 text-electric-magenta border-electric-magenta/30',
+  };
+  return (
+    <span className={`inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border ${variants[variant] || variants.slate} ${className}`}>
+      {children}
+    </span>
+  );
+};
 
 export default function ControlPanel({ 
   nodes, 
