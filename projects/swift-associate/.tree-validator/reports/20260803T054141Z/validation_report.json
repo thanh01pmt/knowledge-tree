@@ -1,0 +1,53 @@
+{
+  "generated_at": "2026-08-03T05:41:41.354730+00:00",
+  "summary": {
+    "status": "PASS",
+    "total_issues": 0,
+    "errors": 0,
+    "warnings": 0,
+    "by_rule": {},
+    "by_level": {},
+    "node_counts": {
+      "fields": 5,
+      "subjects": 12,
+      "categories": 25,
+      "topics": 36,
+      "concepts": 39,
+      "learning_objectives": 156
+    }
+  },
+  "rule_descriptions": {
+    "DUPLICATE_CODE": "Code bị trùng trong cùng 1 file",
+    "EMPTY_REQUIRED_FIELD": "Thiếu giá trị bắt buộc (code/name)",
+    "INVALID_METADATA_JSON": "Cột metadata không phải JSON hợp lệ",
+    "BROKEN_REFERENCE": "Tham chiếu tới code không tồn tại ở bảng cha",
+    "EMPTY_PARENT_REF": "Không có tham chiếu nào tới bảng cha (node lơ lửng)",
+    "DUPLICATE_REF_IN_CELL": "Cùng 1 code cha xuất hiện lặp lại trong 1 cell",
+    "LO_CYCLE": "Có chu trình (cycle) trong chuỗi parent_lo_code",
+    "LO_SELF_REFERENCE": "parent_lo_code trỏ về chính nó",
+    "LO_BROKEN_PARENT_REF": "parent_lo_code trỏ tới 1 LO không tồn tại",
+    "LO_TYPE_PARENT_MISMATCH": "lo_type=UNIVERSAL phải có parent_lo_code=NULL và ngược lại",
+    "LO_HIERARCHY_VIOLATION": "Vi phạm Tri-Level [T6]: CIO phải là con của ULO, SIO phải là con của CIO",
+    "LO_TYPE_UNKNOWN": "lo_type không nằm trong tập giá trị cho phép",
+    "LO_CONCEPT_NOT_IN_PROJECT": "concept_codes của LO chứa code không tồn tại trong concepts.tsv của project",
+    "LO_CONCEPT_UNCOVERED": "Concept trong concepts.tsv không được LO nào trỏ đến (thiếu coverage)",
+    "CIO_INSUFFICIENT_SIO": "CIO có ít hơn 2 SIO con — phân rã chưa đủ sâu theo mô hình sư phạm",
+    "ORPHAN_NODE": "Node không được node nào ở tầng dưới tham chiếu tới",
+    "CODE_FORMAT": "Code không khớp định dạng chuẩn ^[A-Z0-9_-]+$",
+    "SEPARATOR_FORMAT": "Cách phân tách code trong cell không chuẩn (thừa space / dùng ; hoặc |)",
+    "INCONSISTENT_LINE_ENDINGS": "File dùng line-ending khác với đa số các file còn lại",
+    "MISSING_FILE": "Không tìm thấy file dữ liệu",
+    "LO_DESCRIPTION_PREFIX": "Mô tả LO không bắt đầu bằng 'Người học có khả năng'",
+    "LO_INVALID_KNOWLEDGE_DIMENSION": "knowledge_dimension không thuộc tập giá trị cho phép",
+    "LO_INVALID_BLOOM_LEVEL": "bloom_level không thuộc tập giá trị cho phép",
+    "LO_MISSING_ASSESSMENT_APPROACH": "ULO/CIO thiếu assessment_approach (Rule 7: đánh giá trực tiếp bắt buộc)",
+    "LO_UNUSUAL_BLOOM_KD_COMBO": "Kết hợp Bloom Level + Knowledge Dimension ít phổ biến sư phạm",
+    "MISSING_SEQUENCE_ORDER": "Thiếu cột sequence_order (Doc Chương 2.4: bảng N:N cần thứ tự sư phạm)",
+    "LO_PREREQ_MISSING_COLUMNS": "lo_prerequisites.tsv thiếu cột bắt buộc",
+    "LO_PREREQ_BROKEN_TARGET": "learning_objective_code trong prerequisites không tồn tại",
+    "LO_PREREQ_BROKEN_PREREQ": "prerequisite_lo_code trong prerequisites không tồn tại",
+    "LO_PREREQ_SELF_REF": "LO không thể là prerequisite của chính nó",
+    "LO_PREREQ_READ_FAILED": "Lỗi đọc lo_prerequisites.tsv"
+  },
+  "issues": []
+}
