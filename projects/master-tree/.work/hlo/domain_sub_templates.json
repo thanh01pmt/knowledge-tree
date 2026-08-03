@@ -1,0 +1,586 @@
+{
+  "hardware": {
+    "cpu_architecture": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại các thành phần chính của CPU: ALU, Control Unit, registers, cache, bus hệ thống."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích chu kỳ fetch-decode-execute, pipeline, hazard (data/control/structural), branch prediction."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng phân tích cấu trúc CPU (von Neumann vs Harvard), chọn kiến trúc phù hợp cho embedded/high-performance."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng so sánh hiệu suất: CPI, IPC, clock speed, superscalar, out-of-order, speculative execution trade-offs."
+      ]
+    ],
+    "memory_hierarchy": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại cấu trúc bộ nhớ: L1/L2/L3 cache, RAM, virtual memory, TLB, page table."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích spatial/temporal locality, cache mapping (direct/set-assoc/fully), write-through vs write-back."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng tính AMAT, hit/miss rate, miss penalty; tối ưu code cache-friendly (loop tiling, blocking)."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng phân tích cache coherence (MESI), false sharing, NUMA, memory bandwidth bottleneck."
+      ]
+    ],
+    "storage": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhận diện HDD (platter, head, spindle, seek time), SSD (NAND flash, controller, wear leveling, TRIM)."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích sequential vs random access, latency, throughput, IOPS, endurance (TBW/DWPD)."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng lựa chọn HDD/SSD/NVMe cho workload: OS, database, video editing, archival."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng phân tích TCO, reliability (MTBF/AFR), performance per watt, RAID levels."
+      ]
+    ],
+    "io_peripheral": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại các giao thức I/O: USB, PCIe, SATA, GPIO, UART, SPI, I2C, interrupt vs polling."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích DMA, memory-mapped I/O, device driver model, interrupt handling, latency."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng cấu hình GPIO, đọc sensor, điều khiển actuator, implement UART/SPI/I2C driver."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng benchmark throughput, latency, CPU utilization của các I/O method (polling vs interrupt vs DMA)."
+      ]
+    ],
+    "embedded_hardware": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại MCU architecture (ARM Cortex-M, RISC-V), memory map, peripheral registers, clock tree, power modes."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích boot process, vector table, NVIC, systick, low-power modes, watchdog."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng lập trình bare-metal/RTOS: GPIO, timer, ADC, PWM, UART, SPI, I2C, DMA, interrupt."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng phân tích code size, RAM usage, power consumption, real-time determinism, WCET."
+      ]
+    ]
+  },
+  "networking": {
+    "protocol_design": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại TCP header (seq, ack, flags, window), UDP header, IP header, 3-way handshake, 4-way teardown."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích flow control (sliding window), congestion control (slow start, CUBIC/BBR), retransmission, SACK."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng implement TCP/UDP client/server, configure socket options, handle partial reads, timeouts."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng phân tích bufferbloat, head-of-line blocking, QUIC vs TCP, 0-RTT, connection migration."
+      ]
+    ],
+    "routing_addressing": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại IPv4/IPv6 addressing, CIDR, subnetting, VLSM, routing table, default gateway."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích longest prefix match, BGP path selection, OSPF areas, IS-IS, EIGRP metrics."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng cấu hình static route, OSPF/BGP, route redistribution, policy-based routing, VRF."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng phân tích convergence time, route flapping, loop prevention, RPKI/ROA validation."
+      ]
+    ],
+    "application_protocol": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại HTTP methods, status codes, headers, REST constraints, WebSocket frames, gRPC, GraphQL."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích idempotency, safety, caching (ETag, Cache-Control), HATEOAS, Richardson maturity."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng design REST API: resource naming, versioning, pagination, filtering, OpenAPI spec."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng benchmark latency, throughput, evaluate caching strategy, rate limiting, backward compatibility."
+      ]
+    ],
+    "network_security": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhận diện firewall types (packet-filter, stateful, NGFW), IDS/IPS, VPN (IPsec, SSL), TLS 1.2/1.3."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích zero trust, micro-segmentation, mTLS, certificate pinning, DDoS mitigation."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng cấu hình firewall rules, TLS certificates, mTLS, VPN, implement security headers (CSP, HSTS)."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng threat modeling (STRIDE), penetration testing, vulnerability assessment, compliance audit."
+      ]
+    ]
+  },
+  "programming": {
+    "control_flow": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại cú pháp if/else, switch, ternary operator, short-circuit evaluation, scope rules."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích control flow graph, basic blocks, dominance, loop nesting, cyclomatic complexity."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng viết conditional logic sạch: guard clauses, early returns, pattern matching, exhaustive matching."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng refactor nested conditionals, apply strategy pattern, evaluate branch prediction impact."
+      ]
+    ],
+    "loops_iteration": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại for/while/do-while, range-based for, iterator pattern, break/continue/else, loop invariants."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích loop invariant, variant, termination proof, tail recursion, generator/yield, lazy evaluation."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng implement algorithms: search, sort, traversal, DP, graph algorithms với proper loop structure."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng phân tích loop complexity, vectorization, unrolling, cache locality, parallelization (OpenMP, Threading)."
+      ]
+    ],
+    "functions": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại function signature, parameters (by value/ref/move), return types, overloading, default args, lambda."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích call stack, frame, calling convention, tail call optimization, closure capture, higher-order functions."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng design clean APIs: single responsibility, pure functions, composition, decorator, context manager."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng profile call overhead, inlining, recursion vs iteration, closure allocation, std::function overhead."
+      ]
+    ],
+    "oop_design": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại class/struct, inheritance, virtual/override/final, abstract, interface, constructor/destructor, rule of 5."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích LSP, encapsulation, invariant, composition over inheritance, CRTP, mixin, policy-based design."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng implement patterns: strategy, observer, factory, builder, visitor, pimpl, RAII, smart pointers."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng phân tích vtable overhead, object slicing, diamond problem, binary compatibility, ABI."
+      ]
+    ],
+    "concurrency": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại thread, mutex, condition_variable, atomic, future/promise, async, thread_local, memory_order."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích race condition, deadlock, livelock, ABA problem, lock-free, wait-free, linearizability."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng implement thread pool, producer-consumer, reader-writer lock, RCU, actor model, structured concurrency."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng benchmark contention, false sharing, scalability (Amdahl/Gustafson), verify with TSan/Helgrind."
+      ]
+    ],
+    "error_handling": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại exception hierarchy, try/catch/finally, RAII, noexcept, error codes, Result/Option types."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích exception safety (basic/strong/nothrow), stack unwinding, terminate, unexpected, error propagation."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng implement error handling strategy: typed errors, error contexts, recovery, logging, sentinel values."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng analyze exception overhead, zero-cost exceptions, error handling patterns across codebase."
+      ]
+    ]
+  },
+  "data": {
+    "relational_db": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại SQL DDL/DML/DCL, constraints (PK, FK, unique, check, not null), normalization 1NF-3NF/BCNF."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích ACID, isolation levels (read uncommitted → serializable), MVCC, locking, deadlock."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng design schema: ER diagram, indexing strategy (B-tree, hash, GIN, GiST), partitioning, sharding."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng analyze query plan (EXPLAIN), index usage, join algorithms, statistics, vacuum/analyze, bloat."
+      ]
+    ],
+    "sql_query": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại SELECT, JOIN (inner/left/right/full/cross), GROUP BY, HAVING, window functions, CTE, recursive queries."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích logical query processing order, predicate pushdown, join algorithms (nested loop, hash, merge), subquery vs join."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng write complex queries: lateral join, window functions, pivot/unpivot, JSON/XML processing, upsert."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng optimize slow queries: index design, covering index, partition pruning, parameter sniffing, plan caching."
+      ]
+    ],
+    "nosql": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng phân biệt document (MongoDB), key-value (Redis), wide-column (Cassandra), graph (Neo4j), search (Elasticsearch)."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích CAP theorem, eventual consistency, conflict resolution (CRDT, last-write-wins), partitioning, replication."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng model data cho NoSQL: denormalization, embedding vs referencing, TTL, TTL indexes, change streams."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng analyze consistency trade-offs, read/write latency, throughput, cost, vendor lock-in."
+      ]
+    ],
+    "data_pipeline": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại ETL vs ELT, batch vs streaming, message queue (Kafka, RabbitMQ), stream processing (Flink, Spark Streaming)."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích exactly-once, idempotency, watermarks, windowing (tumbling, sliding, session), state backend."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng build pipeline: source → transform → sink, schema evolution (Avro/Protobuf), data quality checks, CDC."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng benchmark throughput, latency, backpressure, data freshness, cost optimization, lineage tracking."
+      ]
+    ]
+  },
+  "ai_ml": {
+    "neural_networks": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại neuron: weights, bias, activation (ReLU, GELU, Swish), layer types (Linear, Conv, Pooling, Attention, Norm)."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích forward/backward pass, autograd, loss functions (CE, MSE, contrastive), optimizer (SGD, AdamW), scheduler."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng build model: PyTorch/TensorFlow/JAX, custom layers, mixed precision, gradient accumulation, DDP/FSDP."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng analyze vanishing/exploding gradient, overfitting, regularization (dropout, weight decay, label smoothing, Mixup)."
+      ]
+    ],
+    "transformer": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại self-attention (Q,K,V), multi-head, positional encoding (sinusoidal, RoPE, ALiBi), FFN, LayerNorm, residual."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích scaled dot-product attention, causal masking, flash attention, KV cache, RoPE extrapolation."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng fine-tune: LoRA/QLoRA, PEFT, instruction tuning, RLHF/DPO, RAG, function calling, agents."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng analyze scaling laws, compute-optimal, emergent abilities, hallucination, alignment, safety, efficiency."
+      ]
+    ],
+    "classical_ml": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng nhớ lại algorithms: linear/logistic regression, trees (CART, XGBoost, LightGBM, CatBoost), SVM, k-NN, clustering."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích bias-variance, regularization (L1/L2/elastic net), ensemble (bagging, boosting, stacking), feature importance."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng build pipeline: preprocessing, feature engineering, CV, hyperparameter tuning (Optuna), model registry, monitoring."
+      ],
+      [
+        "Analyze",
+        "Procedural",
+        "Người học có khả năng evaluate: ROC-AUC, PR-AUC, calibration, SHAP, permutation importance, drift detection, fairness."
+      ]
+    ],
+    "generative": [
+      [
+        "Remember",
+        "Factual",
+        "Người học có khả năng phân biệt GAN, VAE, Diffusion (DDPM, DDIM), Flow Matching, Autoregressive (PixelCNN, GPT), score-based."
+      ],
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích ELBO, reparameterization trick, denoising score matching, classifier-free guidance, distillation."
+      ],
+      [
+        "Apply",
+        "Procedural",
+        "Người học có khả năng use Stable Diffusion/SDXL/Flux: txt2img, img2img, inpainting, ControlNet, IP-Adapter, LoRA training."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng compare FID, CLIP score, IS, Precision/Recall, sample quality vs speed, controllability, memory."
+      ]
+    ]
+  },
+  "higher_order": {
+    "ethics_governance": [
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích AI ethics principles: fairness, accountability, transparency, privacy, human autonomy, societal impact."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng phân tích bias sources (data, algorithm, deployment), disparate impact, proxy discrimination, intersectionality."
+      ],
+      [
+        "Evaluate",
+        "Metacognitive",
+        "Người học có khả năng đánh giá model cards, datasheets, algorithmic impact assessment, regulatory compliance (EU AI Act, NIST AI RMF)."
+      ],
+      [
+        "Create",
+        "Metacognitive",
+        "Người học có khả năng design governance framework: ethics review board, model registry, audit trail, incident response, red teaming."
+      ]
+    ],
+    "design_thinking": [
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích 5 stages: Empathize (interviews, observation), Define (POV, HMW), Ideate (brainstorming, SCAMPER, 6-3-5), Prototype (low→high fidelity), Test (usability, A/B)."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng synthesize research: affinity mapping, empathy map, journey map, service blueprint, jobs-to-be-done, pain points."
+      ],
+      [
+        "Evaluate",
+        "Metacognitive",
+        "Người học có khả năng evaluate desirability (user needs), feasibility (technical), viability (business) using scoring matrix."
+      ],
+      [
+        "Create",
+        "Metacognitive",
+        "Người học có khả năng facilitate design sprint: problem framing, expert interviews, sketching, decision making, prototype, user testing."
+      ]
+    ],
+    "security_governance": [
+      [
+        "Understand",
+        "Conceptual",
+        "Người học có khả năng giải thích threat modeling (STRIDE, PASTA, OCTAVE), risk assessment (FAIR, NIST 800-30), security frameworks (NIST CSF, ISO 27001, SOC2)."
+      ],
+      [
+        "Analyze",
+        "Conceptual",
+        "Người học có khả năng build attack trees, data flow diagrams, identify trust boundaries, apply MITRE ATT&CK, calculate risk scores."
+      ],
+      [
+        "Evaluate",
+        "Metacognitive",
+        "Người học có khả năng prioritize mitigations: risk appetite, cost-benefit, defense in depth, zero trust, assume breach."
+      ],
+      [
+        "Create",
+        "Metacognitive",
+        "Người học có khả năng design security program: policies, standards, procedures, metrics (KRI/KPI), continuous monitoring, incident response."
+      ]
+    ]
+  }
+}

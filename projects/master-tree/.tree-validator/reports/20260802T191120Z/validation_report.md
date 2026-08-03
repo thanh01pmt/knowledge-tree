@@ -1,0 +1,29 @@
+# Báo cáo kiểm tra Knowledge Tree
+
+- **Thời gian chạy:** 2026-08-02T19:11:20.965222+00:00
+- **Kết quả:** ✅ PASS
+- **Tổng số issue:** 0 (0 lỗi, 0 cảnh báo)
+
+## Số lượng node theo tầng
+
+| Tầng | Số node |
+|---|---|
+| fields | 6 |
+| subjects | 25 |
+| categories | 82 |
+| topics | 137 |
+| concepts | 270 |
+| learning_objectives | 2532 |
+
+## Tổng hợp theo rule
+
+| Rule | Mô tả | Số lượng |
+|---|---|---|
+
+## ❌ Lỗi (ERROR) — cần sửa
+
+_Không có._
+
+## ⚠️ Cảnh báo (WARNING)
+
+_Không có._

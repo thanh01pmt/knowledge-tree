@@ -1,0 +1,376 @@
+{
+  "programming": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cú pháp, từ khóa và quy tắc cơ bản của {name} trong lập trình."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cơ chế thực thi, ngữ nghĩa và luồng dữ liệu của {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết mã sử dụng {name} để giải quyết bài toán lập trình cụ thể."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích lỗi logic, hiệu suất hoặc bảo mật liên quan đến {name}."
+    ]
+  ],
+  "networking": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại các giao thức, tiêu chuẩn và thuật ngữ cốt lõi của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cách thức truyền dữ liệu, định tuyến và thiết lập kết nối trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng cấu hình, kiểm tra và khắc phục sự cố liên quan đến {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích hiệu suất, độ tin cậy và bảo mật của {name}."
+    ]
+  ],
+  "hardware": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhận diện các thành phần, thanh ghi, bộ nhớ và tập lệnh của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích nguyên lý hoạt động, pipeline và tương tác phần cứng trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lập trình, cấu hình hoặc chẩn đoán sự cố phần cứng cho {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích hiệu suất, độ trễ, tiêu thụ năng lượng và trade-off thiết kế của {name}."
+    ]
+  ],
+  "algorithmic": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại định nghĩa, pseudocode và độ phức tạp của thuật toán {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cơ chế, invariant và điều kiện đúng đắn của thuật toán {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng triển khai thuật toán {name} để giải quyết bài toán tính toán cụ thể."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích độ phức tạp thời gian/không gian và tối ưu hóa {name}."
+    ]
+  ],
+  "data": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại mô hình dữ liệu, ngôn ngữ truy vấn và khái niệm cốt lõi của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích quy trình lưu trữ, truy xuất, biến đổi và quản trị dữ liệu trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng thiết kế schema, viết truy vấn và xây dựng pipeline dữ liệu cho {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng đánh giá chất lượng dữ liệu, hiệu năng truy vấn và tính nhất quán của {name}."
+    ]
+  ],
+  "ai_ml": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại kiến trúc mô hình, hàm mất mát, optimizer và hyperparameter của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cơ chế học tập, lan truyền ngược, hội tụ và regularization trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng huấn luyện, fine-tune và triển khai mô hình {name} trên dữ liệu thực tế."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng đánh giá bias, variance, generalization, fairness và interpretability của {name}."
+    ]
+  ],
+  "higher_order": [
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích nguyên tắc, khung làm việc và tiêu chí cốt lõi của {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích rủi ro, đánh đổi, stakeholders và hệ quả xã hội của {name}."
+    ],
+    [
+      "Evaluate",
+      "Metacognitive",
+      "Người học có khả năng đánh giá giải pháp, chính sách hoặc hệ thống dựa trên tiêu chí đạo đức, pháp lý, hiệu quả của {name}."
+    ],
+    [
+      "Create",
+      "Metacognitive",
+      "Người học có khả năng thiết kế khung đánh giá, chính sách quản trị hoặc quy trình đảm bảo chất lượng cho {name}."
+    ]
+  ],
+  "security": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhận diện các vector tấn công, lỗ hổng phổ biến và khái niệm cốt lõi của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cơ chế tấn công, phương pháp phòng thủ và mô hình mối đe dọa (STRIDE) cho {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng triển khai biện pháp bảo mật, hardening và monitoring cho {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng thực hiện threat modeling, penetration testing và đánh giá rủi ro cho {name}."
+    ]
+  ],
+  "quantum": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại nguyên lý lượng tử (superposition, entanglement), cổng lượng tử và mạch cơ bản của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích thuật toán lượng tử, quantum advantage và decoherence/error correction trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng mô phỏng mạch lượng tử, chạy thuật toán trên simulator/hardware cho {name}."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích fidelity, gate error, circuit depth và tối ưu hóa mạch cho {name}."
+    ]
+  ],
+  "ui_ux": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhận diện các pattern, component, guideline và heuristic của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích nguyên tắc thiết kế, mental model và accessibility requirements của {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng thiết kế wireframe, prototype và high-fidelity mockup áp dụng {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng thực hiện heuristic evaluation, usability testing và phân tích user journey cho {name}."
+    ]
+  ],
+  "web": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại tiêu chuẩn web, API, protocol và công nghệ cốt lõi của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích kiến trúc client-server, request-response lifecycle và state management trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng phát triển full-stack feature, REST/GraphQL API và deployment cho {name}."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng profiling performance (Core Web Vitals), security audit và scalability analysis cho {name}."
+    ]
+  ],
+  "graphics": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại pipeline rendering, shader stages, buffer types và math cơ bản (transform, projection) của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích rasterization, ray tracing, lighting model, PBR và texture mapping trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng triển khai shader, compute shader và rendering technique cho {name} với OpenGL/Vulkan/Metal."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích frame time, GPU utilization, visual artifacts và optimization trade-off cho {name}."
+    ]
+  ],
+  "game": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhận diện game loop, entity-component-system, physics engine và asset pipeline của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích gameplay mechanics, state machine, AI behavior tree và multiplayer networking trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement gameplay system, level design tooling và build pipeline cho {name} trong Unity/Unreal/Godot."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng profiling CPU/GPU, memory, draw call và optimize performance cho {name}."
+    ]
+  ],
+  "iot": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cảm biến, actuator, giao thức (MQTT, CoAP, LoRaWAN), edge gateway và power management của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích edge computing, data pipeline, device provisioning và OTA update trong {name}."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lập trình firmware, configure gateway và tích hợp cloud IoT platform cho {name}."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng benchmark latency, throughput, power consumption và reliability cho {name}."
+    ]
+  ],
+  "digital_citizenship": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại quyền, trách nhiệm, quy tắc ứng xử và khung pháp lý của {name} trong môi trường số."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích tác động của {name} đến quyền riêng tư, danh tiếng, an ninh và wellbeing cá nhân/tổ chức."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng thực hành digital hygiene, bảo vệ dữ liệu cá nhân và phản ứng trước incident cho {name}."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích ethical dilemma, misinformation spread và policy gap trong {name}."
+    ]
+  ],
+  "math_logic": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại định nghĩa, tiên đề, ký hiệu và định lý cơ bản của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích chứng minh, mô hình và ứng dụng của {name} trong khoa học máy tính."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng áp dụng {name} để giải quyết bài toán logic, tối ưu hóa hoặc verification."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích độ phức tạp tính toán, decidability và expressiveness của {name}."
+    ]
+  ],
+  "general": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại khái niệm, thuật ngữ và đặc điểm cốt lõi của {name}."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích ý nghĩa, bối cảnh và ứng dụng của {name} trong thực tiễn."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng áp dụng {name} để giải quyết vấn đề hoặc hoàn thành nhiệm vụ cụ thể."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích thành phần, mối quan hệ và đánh đổi trong {name}."
+    ]
+  ]
+}

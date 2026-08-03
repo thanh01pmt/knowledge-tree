@@ -1,0 +1,234 @@
+# Báo cáo kiểm tra Knowledge Tree
+
+- **Thời gian chạy:** 2026-08-03T00:07:43.083658+00:00
+- **Kết quả:** ❌ FAIL
+- **Tổng số issue:** 1620 (1620 lỗi, 0 cảnh báo)
+
+## Số lượng node theo tầng
+
+| Tầng | Số node |
+|---|---|
+| fields | 6 |
+| subjects | 25 |
+| categories | 82 |
+| topics | 137 |
+| concepts | 270 |
+| learning_objectives | 7560 |
+
+## Tổng hợp theo rule
+
+| Rule | Mô tả | Số lượng |
+|---|---|---|
+| `DUPLICATE_CODE` | Code bị trùng trong cùng 1 file | 1620 |
+
+## ❌ Lỗi (ERROR) — cần sửa
+
+### `DUPLICATE_CODE` (1620) — Code bị trùng trong cùng 1 file
+
+| Tầng | Code | Cột | Chi tiết |
+|---|---|---|---|
+| learning_objectives | `SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-USE_LIBRARY` | - | Code 'SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-BENCHMARK` | - | Code 'SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-2D_3D_TRANSFORMATIONS_MATH-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ABSTRACTION_LAYERS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ABSTRACTION_LAYERS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ABSTRACTION_LAYERS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ABSTRACTION_LAYERS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ABSTRACTION_LAYERS-USE_LIBRARY` | - | Code 'SIO-PYTHON-ABSTRACTION_LAYERS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ABSTRACTION_LAYERS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ABSTRACTION_LAYERS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ABSTRACTION_LAYERS-BENCHMARK` | - | Code 'SIO-PYTHON-ABSTRACTION_LAYERS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ABSTRACTION_LAYERS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ABSTRACTION_LAYERS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ACCESS_MODIFIERS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ACCESS_MODIFIERS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ACCESS_MODIFIERS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ACCESS_MODIFIERS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ACCESS_MODIFIERS-USE_LIBRARY` | - | Code 'SIO-PYTHON-ACCESS_MODIFIERS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ACCESS_MODIFIERS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ACCESS_MODIFIERS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ACCESS_MODIFIERS-BENCHMARK` | - | Code 'SIO-PYTHON-ACCESS_MODIFIERS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ACCESS_MODIFIERS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ACCESS_MODIFIERS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ADJUSTMENT_LAYERS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ADJUSTMENT_LAYERS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ADJUSTMENT_LAYERS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ADJUSTMENT_LAYERS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ADJUSTMENT_LAYERS-USE_LIBRARY` | - | Code 'SIO-PYTHON-ADJUSTMENT_LAYERS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ADJUSTMENT_LAYERS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ADJUSTMENT_LAYERS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ADJUSTMENT_LAYERS-BENCHMARK` | - | Code 'SIO-PYTHON-ADJUSTMENT_LAYERS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ADJUSTMENT_LAYERS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ADJUSTMENT_LAYERS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AFFORDANCES_SIGNIFIERS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AFFORDANCES_SIGNIFIERS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AFFORDANCES_SIGNIFIERS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AFFORDANCES_SIGNIFIERS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AFFORDANCES_SIGNIFIERS-USE_LIBRARY` | - | Code 'SIO-PYTHON-AFFORDANCES_SIGNIFIERS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AFFORDANCES_SIGNIFIERS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AFFORDANCES_SIGNIFIERS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AFFORDANCES_SIGNIFIERS-BENCHMARK` | - | Code 'SIO-PYTHON-AFFORDANCES_SIGNIFIERS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AFFORDANCES_SIGNIFIERS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AFFORDANCES_SIGNIFIERS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-USE_LIBRARY` | - | Code 'SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-BENCHMARK` | - | Code 'SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AGENTIC_WORKFLOW_ORCHESTRATION-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENT_MEMORY_SYSTEMS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AGENT_MEMORY_SYSTEMS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENT_MEMORY_SYSTEMS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AGENT_MEMORY_SYSTEMS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENT_MEMORY_SYSTEMS-USE_LIBRARY` | - | Code 'SIO-PYTHON-AGENT_MEMORY_SYSTEMS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENT_MEMORY_SYSTEMS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AGENT_MEMORY_SYSTEMS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENT_MEMORY_SYSTEMS-BENCHMARK` | - | Code 'SIO-PYTHON-AGENT_MEMORY_SYSTEMS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGENT_MEMORY_SYSTEMS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AGENT_MEMORY_SYSTEMS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGILE_PRINCIPLES-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AGILE_PRINCIPLES-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGILE_PRINCIPLES-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AGILE_PRINCIPLES-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGILE_PRINCIPLES-USE_LIBRARY` | - | Code 'SIO-PYTHON-AGILE_PRINCIPLES-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGILE_PRINCIPLES-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AGILE_PRINCIPLES-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGILE_PRINCIPLES-BENCHMARK` | - | Code 'SIO-PYTHON-AGILE_PRINCIPLES-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AGILE_PRINCIPLES-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AGILE_PRINCIPLES-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AIOT_DATA_PIPELINE-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AIOT_DATA_PIPELINE-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AIOT_DATA_PIPELINE-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AIOT_DATA_PIPELINE-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AIOT_DATA_PIPELINE-USE_LIBRARY` | - | Code 'SIO-PYTHON-AIOT_DATA_PIPELINE-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AIOT_DATA_PIPELINE-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AIOT_DATA_PIPELINE-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AIOT_DATA_PIPELINE-BENCHMARK` | - | Code 'SIO-PYTHON-AIOT_DATA_PIPELINE-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AIOT_DATA_PIPELINE-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AIOT_DATA_PIPELINE-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-BENCHMARK` | - | Code 'SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-EVALUATE_METRICS` | - | Code 'SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-EVALUATE_METRICS' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-A_B_TEST` | - | Code 'SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-A_B_TEST' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_BIAS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AI_BIAS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_BIAS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AI_BIAS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_BIAS-BENCHMARK` | - | Code 'SIO-PYTHON-AI_BIAS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_BIAS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AI_BIAS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_BIAS-EVALUATE_METRICS` | - | Code 'SIO-PYTHON-AI_BIAS-EVALUATE_METRICS' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_BIAS-A_B_TEST` | - | Code 'SIO-PYTHON-AI_BIAS-A_B_TEST' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-BENCHMARK` | - | Code 'SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-EVALUATE_METRICS` | - | Code 'SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-EVALUATE_METRICS' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-A_B_TEST` | - | Code 'SIO-PYTHON-AI_GOVERNANCE_AND_RED_TEAMING-A_B_TEST' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_HISTORY_MILESTONES-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AI_HISTORY_MILESTONES-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_HISTORY_MILESTONES-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AI_HISTORY_MILESTONES-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_HISTORY_MILESTONES-USE_LIBRARY` | - | Code 'SIO-PYTHON-AI_HISTORY_MILESTONES-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_HISTORY_MILESTONES-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AI_HISTORY_MILESTONES-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_HISTORY_MILESTONES-BENCHMARK` | - | Code 'SIO-PYTHON-AI_HISTORY_MILESTONES-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_HISTORY_MILESTONES-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AI_HISTORY_MILESTONES-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_VS_ML-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AI_VS_ML-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_VS_ML-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AI_VS_ML-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_VS_ML-USE_LIBRARY` | - | Code 'SIO-PYTHON-AI_VS_ML-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_VS_ML-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AI_VS_ML-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_VS_ML-BENCHMARK` | - | Code 'SIO-PYTHON-AI_VS_ML-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AI_VS_ML-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AI_VS_ML-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-BENCHMARK` | - | Code 'SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-EVALUATE_METRICS` | - | Code 'SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-EVALUATE_METRICS' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-A_B_TEST` | - | Code 'SIO-PYTHON-ALGORITHMIC_BIAS_SOCIETY-A_B_TEST' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-USE_LIBRARY` | - | Code 'SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-BENCHMARK` | - | Code 'SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ALGORITHMIC_GENERATIVE_ART-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-API_INTEGRATION-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-API_INTEGRATION-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-API_INTEGRATION-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-API_INTEGRATION-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-API_INTEGRATION-USE_LIBRARY` | - | Code 'SIO-PYTHON-API_INTEGRATION-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-API_INTEGRATION-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-API_INTEGRATION-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-API_INTEGRATION-BENCHMARK` | - | Code 'SIO-PYTHON-API_INTEGRATION-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-API_INTEGRATION-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-API_INTEGRATION-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-APP_EXTENSION_MODEL-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-APP_EXTENSION_MODEL-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-APP_EXTENSION_MODEL-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-APP_EXTENSION_MODEL-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-APP_EXTENSION_MODEL-USE_LIBRARY` | - | Code 'SIO-PYTHON-APP_EXTENSION_MODEL-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-APP_EXTENSION_MODEL-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-APP_EXTENSION_MODEL-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-APP_EXTENSION_MODEL-BENCHMARK` | - | Code 'SIO-PYTHON-APP_EXTENSION_MODEL-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-APP_EXTENSION_MODEL-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-APP_EXTENSION_MODEL-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARDUINO_BASICS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ARDUINO_BASICS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARDUINO_BASICS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ARDUINO_BASICS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARDUINO_BASICS-USE_LIBRARY` | - | Code 'SIO-PYTHON-ARDUINO_BASICS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARDUINO_BASICS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ARDUINO_BASICS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARDUINO_BASICS-BENCHMARK` | - | Code 'SIO-PYTHON-ARDUINO_BASICS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARDUINO_BASICS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ARDUINO_BASICS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARRAY_OPERATIONS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ARRAY_OPERATIONS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARRAY_OPERATIONS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ARRAY_OPERATIONS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARRAY_OPERATIONS-USE_LIBRARY` | - | Code 'SIO-PYTHON-ARRAY_OPERATIONS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARRAY_OPERATIONS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ARRAY_OPERATIONS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARRAY_OPERATIONS-BENCHMARK` | - | Code 'SIO-PYTHON-ARRAY_OPERATIONS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ARRAY_OPERATIONS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ARRAY_OPERATIONS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-USE_LIBRARY` | - | Code 'SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-BENCHMARK` | - | Code 'SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-ASYNCHRONOUS_PROG_CONCEPT-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-USE_LIBRARY` | - | Code 'SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-BENCHMARK` | - | Code 'SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-AUTONOMOUS_DRONE_NAVIGATION-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BACKEND_FRAMEWORKS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BACKEND_FRAMEWORKS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BACKEND_FRAMEWORKS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BACKEND_FRAMEWORKS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BACKEND_FRAMEWORKS-USE_LIBRARY` | - | Code 'SIO-PYTHON-BACKEND_FRAMEWORKS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BACKEND_FRAMEWORKS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BACKEND_FRAMEWORKS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BACKEND_FRAMEWORKS-BENCHMARK` | - | Code 'SIO-PYTHON-BACKEND_FRAMEWORKS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BACKEND_FRAMEWORKS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BACKEND_FRAMEWORKS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-USE_LIBRARY` | - | Code 'SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-BENCHMARK` | - | Code 'SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BASIC_ELECTRONIC_COMPONENTS_CONCEPT-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-USE_LIBRARY` | - | Code 'SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-BENCHMARK` | - | Code 'SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BASIC_MECHANISMS_CONCEPT-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-USE_LIBRARY` | - | Code 'SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-BENCHMARK` | - | Code 'SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BATTERY_MANAGEMENT_ALGORITHMS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BEHAVIORAL_PATTERNS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BEHAVIORAL_PATTERNS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BEHAVIORAL_PATTERNS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BEHAVIORAL_PATTERNS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BEHAVIORAL_PATTERNS-BENCHMARK` | - | Code 'SIO-PYTHON-BEHAVIORAL_PATTERNS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BEHAVIORAL_PATTERNS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BEHAVIORAL_PATTERNS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BEHAVIORAL_PATTERNS-EVALUATE_METRICS` | - | Code 'SIO-PYTHON-BEHAVIORAL_PATTERNS-EVALUATE_METRICS' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BEHAVIORAL_PATTERNS-A_B_TEST` | - | Code 'SIO-PYTHON-BEHAVIORAL_PATTERNS-A_B_TEST' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIG_O_NOTATION-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BIG_O_NOTATION-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIG_O_NOTATION-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BIG_O_NOTATION-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIG_O_NOTATION-USE_LIBRARY` | - | Code 'SIO-PYTHON-BIG_O_NOTATION-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIG_O_NOTATION-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BIG_O_NOTATION-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIG_O_NOTATION-BENCHMARK` | - | Code 'SIO-PYTHON-BIG_O_NOTATION-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIG_O_NOTATION-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BIG_O_NOTATION-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-USE_LIBRARY` | - | Code 'SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-BENCHMARK` | - | Code 'SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BIOINFORMATICS_GENOMIC_ANALYSIS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BOOLEAN_OPERATIONS_3D-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BOOLEAN_OPERATIONS_3D-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BOOLEAN_OPERATIONS_3D-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BOOLEAN_OPERATIONS_3D-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BOOLEAN_OPERATIONS_3D-USE_LIBRARY` | - | Code 'SIO-PYTHON-BOOLEAN_OPERATIONS_3D-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BOOLEAN_OPERATIONS_3D-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BOOLEAN_OPERATIONS_3D-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BOOLEAN_OPERATIONS_3D-BENCHMARK` | - | Code 'SIO-PYTHON-BOOLEAN_OPERATIONS_3D-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BOOLEAN_OPERATIONS_3D-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BOOLEAN_OPERATIONS_3D-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BREAKPOINTS-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BREAKPOINTS-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BREAKPOINTS-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BREAKPOINTS-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BREAKPOINTS-USE_LIBRARY` | - | Code 'SIO-PYTHON-BREAKPOINTS-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BREAKPOINTS-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BREAKPOINTS-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BREAKPOINTS-BENCHMARK` | - | Code 'SIO-PYTHON-BREAKPOINTS-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BREAKPOINTS-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BREAKPOINTS-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BUBBLE_INSERTION_SORT-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-BUBBLE_INSERTION_SORT-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BUBBLE_INSERTION_SORT-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-BUBBLE_INSERTION_SORT-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BUBBLE_INSERTION_SORT-USE_LIBRARY` | - | Code 'SIO-PYTHON-BUBBLE_INSERTION_SORT-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BUBBLE_INSERTION_SORT-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-BUBBLE_INSERTION_SORT-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BUBBLE_INSERTION_SORT-BENCHMARK` | - | Code 'SIO-PYTHON-BUBBLE_INSERTION_SORT-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-BUBBLE_INSERTION_SORT-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-BUBBLE_INSERTION_SORT-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CACHE_HIERARCHY-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-CACHE_HIERARCHY-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CACHE_HIERARCHY-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-CACHE_HIERARCHY-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CACHE_HIERARCHY-USE_LIBRARY` | - | Code 'SIO-PYTHON-CACHE_HIERARCHY-USE_LIBRARY' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CACHE_HIERARCHY-WRITE_SCRIPT` | - | Code 'SIO-PYTHON-CACHE_HIERARCHY-WRITE_SCRIPT' xuất hiện 2 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CACHE_HIERARCHY-BENCHMARK` | - | Code 'SIO-PYTHON-CACHE_HIERARCHY-BENCHMARK' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CACHE_HIERARCHY-DEBUG_ANALYZE` | - | Code 'SIO-PYTHON-CACHE_HIERARCHY-DEBUG_ANALYZE' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CAP_THEOREM-IMPLEMENT_SOLUTION` | - | Code 'SIO-PYTHON-CAP_THEOREM-IMPLEMENT_SOLUTION' xuất hiện 3 lần trong file. |
+| learning_objectives | `SIO-PYTHON-CAP_THEOREM-BUILD_PROTOTYPE` | - | Code 'SIO-PYTHON-CAP_THEOREM-BUILD_PROTOTYPE' xuất hiện 3 lần trong file. |
+| ... | ... | ... | (+1420 dòng nữa) |
+
+## ⚠️ Cảnh báo (WARNING)
+
+_Không có._

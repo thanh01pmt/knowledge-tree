@@ -135,14 +135,18 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
         if tsv_codes:
             # PostgREST has a limit on 'in' query size (~1000 items per query)
             # Batch the codes to avoid URL length limits
-            BATCH_SIZE = 500
+            BATCH_SIZE = 100  # Reduced from 500 to avoid PostgREST URL length limits
+            # Keywords table uses 'code' as primary key, not 'id'
+            select_fields = "code" if table_name == "keywords" else "id, code"
             for i in range(0, len(tsv_codes), BATCH_SIZE):
                 batch_codes = tsv_codes[i:i + BATCH_SIZE]
                 try:
-                    page = supabase.table(table_name).select("id, code").in_("code", batch_codes).execute()
+                    page = supabase.table(table_name).select(select_fields).in_("code", batch_codes).execute()
                     for r in page.data:
                         if r.get("code"):
-                            code_to_id[r["code"]] = r["id"]
+                            # For keywords table, use code as the key since there's no id
+                            key_value = r["code"] if table_name == "keywords" else r["id"]
+                            code_to_id[r["code"]] = key_value
                 except Exception as e:
                     print(f"  ⚠️ Warning: Failed to fetch existing codes for {table_name} batch {i//BATCH_SIZE}: {e}", file=sys.stderr)
 
@@ -156,69 +160,72 @@ def sync_project_to_supabase(slug: str, repo_root: Path):
                 continue
 
             if table_name == "learning_objectives":
-                # Map TSV columns to Supabase schema (only for learning_objectives)
+                # Map TSV columns to Supabase schema
                 payload = {"organization_code": "DEFAULT_ORG"}
-                field_mapping = {
-                    "name": "name",
-                    "description": "description",
-                    "lo_type": "lo_type",
-                    "parent_lo_code": "parent_lo_code",
+                
+                # Direct field mappings (string to string)
+                direct_fields = ["name", "description", "lo_type", "cs2023_ka_mapping"]
+                for field in direct_fields:
+                    val = r.get(field, "").strip()
+                    if val:
+                        payload[field] = val
+                
+                # code is required
+                payload["code"] = code
+                
+                # lo_type default
+                if not payload.get("lo_type"):
+                    payload["lo_type"] = "UNIVERSAL"
+                
+                # Array fields from TSV (comma/semicolon separated)
+                array_fields_map = {
                     "bloom_level": "bloom_level_codes",
                     "knowledge_dimension": "context_codes",
-                    "assessment_approach": "metadata",
-                    "sequence_order": "metadata",
                     "keywords": "keywords",
-                    "metadata": "metadata",
+                    "concept_codes": "concept_codes",
+                    "topic_codes": "topic_codes",
+                    "category_codes": "category_codes",
+                    "subject_codes": "subject_codes",
+                    "field_codes": "field_codes",
                     "cs2023_ka_mapping": "cs2023_ka_mapping",
                 }
-
-                for tsv_col, sb_col in field_mapping.items():
-                    val = r.get(tsv_col, "").strip()
-                    if val and val != "":
-                        if sb_col == "metadata":
-                            existing = payload.get("metadata", "{}")
-                            try:
-                                meta = json.loads(existing) if existing else {}
-                            except:
-                                meta = {}
-                            if tsv_col == "assessment_approach":
-                                meta["assessment_approach"] = val
-                            elif tsv_col == "sequence_order":
-                                meta["sequence_order"] = val
-                            elif tsv_col == "metadata":
-                                try:
-                                    extra = json.loads(val)
-                                    meta.update(extra)
-                                except:
-                                    meta["extra"] = val
-                            payload["metadata"] = json.dumps(meta, ensure_ascii=False)
-                        elif sb_col in ["bloom_level_codes", "context_codes", "keywords"]:
-                            vals = [v.strip() for v in val.replace(";", ",").split(",") if v.strip()]
-                            payload[sb_col] = vals
-                        else:
-                            payload[sb_col] = val
-
-                # Handle array fields defined in config
-                for af in array_fields:
-                    if af in r:
-                        val_str = r[af].strip()
-                        if val_str:
-                            vals = [v.strip() for v in val_str.replace(";", ",").split(",") if v.strip()]
-                            payload[af] = vals
-                        else:
-                            payload[af] = []
-
-                # Ensure required fields
-                payload["code"] = code
-                if "lo_type" not in payload or not payload["lo_type"]:
-                    payload["lo_type"] = "UNIVERSAL"
-
-                # Handle parent_lo_code - only if valid and not NULL
+                for tsv_field, sb_field in array_fields_map.items():
+                    val = r.get(tsv_field, "").strip()
+                    if val:
+                        vals = [v.strip() for v in val.replace(";", ",").split(",") if v.strip()]
+                        payload[sb_field] = vals
+                    else:
+                        payload[sb_field] = []
+                
+                # parent_lo_code (nullable)
                 p_code = r.get("parent_lo_code", "").strip()
                 if p_code and p_code.upper() != "NULL":
                     payload["parent_lo_code"] = p_code
-                elif "parent_lo_code" in payload:
-                    del payload["parent_lo_code"]
+                
+                # metadata as JSON object
+                meta = {}
+                assessment = r.get("assessment_approach", "").strip()
+                if assessment:
+                    meta["assessment_approach"] = assessment
+                sequence = r.get("sequence_order", "").strip()
+                if sequence:
+                    meta["sequence_order"] = sequence
+                meta_val = r.get("metadata", "").strip()
+                if meta_val:
+                    try:
+                        extra = json.loads(meta_val)
+                        meta.update(extra)
+                    except:
+                        meta["extra"] = meta_val
+                if meta:
+                    payload["metadata"] = meta
+                
+                # Ensure required array fields exist
+                for field in ["bloom_level_codes", "context_codes", "keywords", "concept_codes", 
+                              "topic_codes", "category_codes", "subject_codes", "field_codes", 
+                              "cs2023_ka_mapping"]:
+                    if field not in payload:
+                        payload[field] = []
 
             elif table_name == "keywords":
                 # Keywords table has minimal schema: code, name, description, metadata, concept_codes

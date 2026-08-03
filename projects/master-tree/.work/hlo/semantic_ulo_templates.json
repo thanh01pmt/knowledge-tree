@@ -1,0 +1,1256 @@
+{
+  "TCP_HANDSHAKE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại ba bước của quá trình bắt tay TCP (SYN, SYN-ACK, ACK) và vai trò của từng bước."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cơ chế thiết lập kết nối tin cậy qua TCP three-way handshake và tại sao cần 3 bước."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng phân tích luồng gói tin trong bắt tay TCP để chẩn đoán lỗi kết nối (timeout, reset, half-open)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng so sánh TCP three-way handshake với các cơ chế thiết lập kết nối khác (UDP connectionless, QUIC)."
+    ]
+  ],
+  "HTTP_METHODS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng liệt kê các phương thức HTTP phổ biến (GET, POST, PUT, DELETE, PATCH) và đặc điểm cơ bản."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích sự khác biệt giữa GET (idempotent, safe) và POST (non-idempotent, tạo tài nguyên)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lựa chọn phương thức HTTP phù hợp cho các thao tác CRUD trong thiết kế REST API."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích tính an toàn và idempotency của các phương thức HTTP trong thiết kế API."
+    ]
+  ],
+  "DNS_LOOKUP": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại các bước phân giải tên miền: recursive query, authoritative server, caching."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cơ chế phân giải DNS từ tên miền đến địa chỉ IP, bao gồm các loại record (A, AAAA, CNAME)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng sử dụng công cụ dig/nslookup để chẩn đoán sự cố phân giải DNS."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích hiệu suất DNS caching và ảnh hưởng của TTL đến độ trễ truy cập web."
+    ]
+  ],
+  "ROUTERS_SWITCHES_CONCEPT": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng phân biệt router (định tuyến giữa mạng, layer 3) và switch (chuyển mạch trong LAN, layer 2)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cách router sử dụng bảng định tuyến và switch sử dụng bảng địa chỉ MAC."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng thiết kế cấu trúc mạng cơ bản với router kết nối WAN và switch phân phối LAN."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng so sánh hiệu suất và trường hợp sử dụng của router vs switch vs layer 3 switch."
+    ]
+  ],
+  "SWITCH_CASE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cú pháp switch-case: switch expression, case values, default, break."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cách switch-case thực hiện multi-way branching so với if-else chain."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết switch-case xử lý nhiều giá trị rời rạc (enum, status code, command pattern)."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng so sánh hiệu suất và khả năng bảo trì của switch-case vs if-else vs dictionary dispatch."
+    ]
+  ],
+  "FILE_ALLOCATION": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại ba phương pháp cấp phát tệp: contiguous, linked, indexed."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích ưu/nhược điểm của từng phương pháp: fragmentation, truy cập tuần tự/ngẫu nhiên, overhead."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lựa chọn phương pháp cấp phát phù hợp cho hệ thống tệp cụ thể (FAT, NTFS, ext4)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích external/internal fragmentation và giải pháp (defragmentation, extent-based)."
+    ]
+  ],
+  "VIRTUAL_MEMORY": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại các khái niệm: virtual address, physical address, page, frame, page table, TLB."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cách bộ nhớ ảo cho phép không gian địa chỉ lớn hơn RAM vật lý qua paging/swapping."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng tính toán page offset, page number, và hiểu page fault handling flow."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích thrashing, working set model, và tối ưu replacement algorithm (LRU, Clock)."
+    ]
+  ],
+  "CACHE_HIERARCHY": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cấu trúc L1/L2/L3 cache: kích thước, latency, shared vs private."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích spatial/temporal locality và cách cache hierarchy tận dụng locality."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng tính toán hit rate, miss penalty, AMAT (Average Memory Access Time)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích cache coherence (MESI), false sharing, và tối ưu cache-friendly code."
+    ]
+  ],
+  "PROCESS_VS_THREAD": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng phân biệt process (địa chỉ riêng, PID, resources) và thread (shared memory, TID, stack riêng)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích context switch cost: process (TLB flush, page table) vs thread (register save)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lựa chọn multi-process vs multi-thread cho bài toán I/O-bound vs CPU-bound."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích race condition, deadlock, và synchronization (mutex, semaphore, monitor)."
+    ]
+  ],
+  "SCHEDULING_ALGORITHMS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại FCFS, SJF, Round Robin, Priority scheduling và metrics (waiting time, turnaround, response)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích trade-off giữa throughput, latency, fairness, starvation trong các thuật toán."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng mô phỏng scheduling và tính average waiting/turnaround time cho tập tiến trình cho trước."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích convoy effect (FCFS), starvation (SJF/Priority), quantum size impact (RR)."
+    ]
+  ],
+  "RELATIONAL_VS_NONRELATIONAL": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng phân biệt RDBMS (schema, ACID, SQL) và NoSQL (schema-less, BASE, various models)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích CAP theorem: consistency, availability, partition tolerance trade-off."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lựa chọn MongoDB/Cassandra/Redis vs PostgreSQL/MySQL cho use case cụ thể."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích eventual consistency, conflict resolution, và distributed transactions."
+    ]
+  ],
+  "DATABASE_NORMALIZATION": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại 1NF, 2NF, 3NF, BCNF và functional dependency, candidate key, primary key."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích mục đích normalization: loại bỏ redundancy, update anomaly, insertion/deletion anomaly."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng áp dụng normalization lên schema không chuẩn để đạt 3NF/BCNF."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng đánh giá denormalization trade-off: read performance vs write consistency."
+    ]
+  ],
+  "SQL_SELECT": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cú pháp SELECT: SELECT, FROM, WHERE, GROUP BY, HAVING, ORDER BY, LIMIT."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích logical query processing order: FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết truy vấn SELECT với filter, aggregation, sorting, pagination."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích execution plan (EXPLAIN) để tối ưu index và join order."
+    ]
+  ],
+  "SQL_JOIN": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng phân biệt INNER, LEFT, RIGHT, FULL, CROSS JOIN và cú pháp ON/USING."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích join algorithm: nested loop, hash join, merge join và khi nào dùng từng loại."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết truy vấn multi-table join để lấy dữ liệu liên quan (orders + customers + products)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích join performance: index trên join column, join order, predicate pushdown."
+    ]
+  ],
+  "NEURAL_NETWORKS_BASICS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cấu trúc neuron: weights, bias, activation function (ReLU, sigmoid, tanh), layer types."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích forward pass, backpropagation, gradient descent, loss function (MSE, cross-entropy)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng xây dựng MLP đơn giản cho classification/regression bằng PyTorch/TensorFlow/Keras."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích vanishing/exploding gradient, overfitting, regularization (dropout, weight decay)."
+    ]
+  ],
+  "TRANSFORMER_ARCHITECTURE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại self-attention, multi-head attention, positional encoding, feed-forward, layer norm."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích scaled dot-product attention: Q, K, V, attention scores, masking."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng sử dụng Hugging Face Transformers để fine-tune BERT/GPT cho downstream task."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích computational complexity O(n²d), memory, và các biến thể (sparse attention, linear attention)."
+    ]
+  ],
+  "LARGE_LANGUAGE_MODEL_CONCEPTS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại pretraining (next-token prediction), fine-tuning (instruction tuning, RLHF), tokenizer, context window."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích scaling laws, emergent abilities, in-context learning, chain-of-thought."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng prompt engineering: few-shot, CoT, RAG, function calling cho ứng dụng LLM."
+    ],
+    [
+      "Evaluate",
+      "Metacognitive",
+      "Người học có khả năng đánh giá hallucination, bias, safety, cost/latency trade-off khi triển khai LLM."
+    ]
+  ],
+  "VECTOR_EMBEDDING_SEARCH": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại embedding model, vector space, cosine similarity, dot product, ANN index (HNSW, IVF)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích semantic search vs keyword search, dense vs sparse retrieval, reranking."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng xây dựng RAG pipeline: chunking → embedding → vector DB (Chroma/Pinecone) → retrieval → generation."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng benchmark recall@k, latency, index size cho các ANN algorithm và embedding dimension."
+    ]
+  ],
+  "RETRIEVAL_AUGMENTED_GENERATION": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại RAG components: retriever (dense/sparse/hybrid), generator (LLM), knowledge base, chunking strategy."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích retrieval-augmented vs parametric knowledge, grounding, citation, hallucination reduction."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng triển khai end-to-end RAG với LangChain/LlamaIndex: document loading, splitting, embedding, querying."
+    ],
+    [
+      "Evaluate",
+      "Metacognitive",
+      "Người học có khả năng đánh giá retrieval quality (precision/recall), generation faithfulness, answer relevance."
+    ]
+  ],
+  "GENERATIVE_AI_MODELS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng phân biệt GAN, VAE, Diffusion, Autoregressive (PixelCNN, GPT) - architecture và training objective."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích diffusion process: forward (noise), reverse (denoise), score matching, classifier-free guidance."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng sử dụng Stable Diffusion/SDXL để text-to-image, img2img, inpainting, ControlNet."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng so sánh sample quality (FID, CLIP score), speed, controllability giữa các generative approach."
+    ]
+  ],
+  "CLUSTERING_ALGORITHMS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại K-means, Hierarchical, DBSCAN, Gaussian Mixture - centroid, linkage, density, probabilistic."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích khi nào dùng clustering: customer segmentation, anomaly detection, image compression."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng chạy clustering với scikit-learn, chọn K (elbow, silhouette), interpret clusters."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng đánh giá clustering quality: inertia, silhouette, Davies-Bouldin, adjusted Rand index."
+    ]
+  ],
+  "REINFORCEMENT_LEARNING_BASICS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại MDP: state, action, reward, policy, value function, discount factor, Bellman equation."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích exploration vs exploitation, on-policy vs off-policy, model-free vs model-based."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement Q-learning/DQN/PPO cho môi trường Gym (CartPole, Atari) với Stable Baselines3."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích convergence, sample efficiency, reward shaping, sim-to-real gap."
+    ]
+  ],
+  "OSI_MODEL": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại 7 tầng của mô hình OSI (Physical, Data Link, Network, Transport, Session, Presentation, Application) và chức năng chính của mỗi tầng."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích cách dữ liệu được đóng gói (encapsulation) và giải nén khi đi qua các tầng OSI từ sender đến receiver."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng ánh xạ các giao thức thực tế (Ethernet, IP, TCP, HTTP) vào đúng tầng OSI tương ứng."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng so sánh mô hình OSI 7 tầng với TCP/IP 4 tầng và phân tích ưu/nhược điểm của từng mô hình."
+    ]
+  ],
+  "IPV4_VS_IPV6": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại cấu trúc địa chỉ IPv4 (32-bit, dotted decimal) và IPv6 (128-bit, hex), cùng với các loại địa chỉ đặc biệt."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích lý do cần IPv6: exhaustion IPv4, header đơn giản hơn, hỗ trợ mobility, security built-in (IPsec)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng cấu hình dual-stack, tunneling (6to4, Teredo) và translation (NAT64) cho coexistence IPv4/IPv6."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích hiệu suất, security implications và migration strategy từ IPv4 sang IPv6."
+    ]
+  ],
+  "NETWORK_TOPOLOGIES_CONCEPT": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhận diện và vẽ sơ đồ các topology: Star, Bus, Ring, Mesh, Tree, Hybrid với đặc điểm kết nối."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích ưu/nhược điểm: Star (dễ manage, single point of failure hub), Mesh (redundancy cao, chi phí cao), Bus (đơn giản, collision)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng lựa chọn topology phù hợp cho mạng văn phòng, datacenter, ISP dựa trên yêu cầu redundancy, cost, scalability."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích fault tolerance, bandwidth utilization, và cost trade-off giữa các topology."
+    ]
+  ],
+  "TCP_IP_MODEL": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại 4 tầng TCP/IP (Link, Internet, Transport, Application) và protocol chính mỗi tầng."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích encapsulation process: Application data → TCP segment → IP packet → Ethernet frame."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng sử dụng netstat, ss, wireshark để inspect TCP/IP packet flow."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích MTU, fragmentation, path MTU discovery impact to performance."
+    ]
+  ],
+  "BGP_CONFIG": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại BGP attributes: AS_PATH, NEXT_HOP, LOCAL_PREF, MED, COMMUNITY."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích BGP path selection algorithm và policy-based routing."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng cấu hình eBGP/iBGP, route reflector, confederation trên router Cisco/Juniper."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích route leak, hijacking, và mitigation (RPKI, ROA)."
+    ]
+  ],
+  "FETCH_DECODE_EXECUTE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại 3 bước: Fetch (lấy instruction từ PC), Decode (giải mã opcode/operand), Execute (thực hiện ALU/memory/writeback)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích instruction cycle, pipeline stages (IF, ID, EX, MEM, WB), hazard types (data, control, structural)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng tính CPI, speedup từ pipeline, và hiểu branch prediction, forwarding, stall."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích superscalar, out-of-order execution, speculative execution trade-offs."
+    ]
+  ],
+  "GPU_ARCHITECTURE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại SIMT model, warp/wavefront, SM/CU, shared memory, register file, tensor cores."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích GPU vs CPU: throughput vs latency, massive parallelism, memory coalescing."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết CUDA/OpenCL kernel, optimize occupancy, shared memory usage, avoid bank conflicts."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích roofline model, occupancy, warp divergence, memory bandwidth utilization."
+    ]
+  ],
+  "RADIATION_HARDENED_SPACE_COMPUTING": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại radiation effects: TID, SEE (SEU, SEL, SET), displacement damage."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích mitigation: RHBD (by design), RHBP (by process), TMR, EDAC, scrubbing."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng chọn rad-hard components, design fault-tolerant architecture cho satellite/spacecraft."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích mission lifetime vs radiation environment, SWaP trade-offs."
+    ]
+  ],
+  "EXCEPTION_HANDLING": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại try-catch-finally, throw, checked vs unchecked exception, exception hierarchy."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích stack unwinding, finally execution guarantee, exception safety (basic, strong, nothrow)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement custom exception, exception chaining, resource management (try-with-resources/RAII)."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích exception performance cost, anti-patterns (swallowing, flow control), logging strategy."
+    ]
+  ],
+  "FUNC_SYNTAX": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại function signature: name, parameters, return type, body, calling convention."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích pass-by-value vs pass-by-reference, default parameters, overloading, recursion."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết function decompose problem, single responsibility, pure functions, higher-order functions."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích stack frame, tail call optimization, closure capture semantics."
+    ]
+  ],
+  "CLASS_DEFINITION": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại class syntax: fields, methods, constructors, destructors, access modifiers (public/private/protected)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích encapsulation, invariants, constructor chaining, initialization list, RAII."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng thiết kế class với proper encapsulation, rule of 3/5/0, move semantics, pimpl idiom."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích object layout, vtable, slicing, diamond problem, composition vs inheritance."
+    ]
+  ],
+  "INHERITANCE_SYNTAX": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại syntax: base class, derived class, virtual/override, abstract class, interface."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích Liskov Substitution Principle, dynamic dispatch, vtable, slicing, covariant return."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement polymorphism, template method pattern, strategy pattern, mixin."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích composition over inheritance, CRTP, multiple inheritance ambiguity."
+    ]
+  ],
+  "FIRST_CLASS_FUNCTIONS_CONCEPT": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại function as value: assign to variable, pass as argument, return from function, closure."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích lambda, capture modes (by value/reference), std::function, callable concept."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng dùng higher-order functions (map, filter, reduce), callback, strategy pattern with functions."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích closure lifetime, dangling reference, move capture, perfect forwarding."
+    ]
+  ],
+  "ASYNCHRONOUS_PROG_CONCEPT": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại async/await, Promise/Future, callback, event loop, thread pool, coroutine."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích concurrency vs parallelism, blocking vs non-blocking, race condition, deadlock."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng viết async code với proper error handling, cancellation, timeout, structured concurrency."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích context switching overhead, thread pool sizing, backpressure, structured concurrency."
+    ]
+  ],
+  "DYNAMIC_PROGRAMMING": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại optimal substructure, overlapping subproblems, memoization, tabulation, state definition."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích khi nào dùng DP vs greedy vs divide-conquer, top-down vs bottom-up trade-off."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement classic DP: knapsack, LCS, edit distance, coin change, longest increasing subsequence."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích time/space complexity, space optimization (rolling array), state compression."
+    ]
+  ],
+  "DIVIDE_CONQUER": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại pattern: divide, conquer, combine; merge sort, quick sort, binary search, Strassen matrix multiply."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích recurrence relation, Master Theorem, base case, recursion tree."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement divide-conquer algorithms và convert sang iterative nếu cần."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích T(n) = aT(n/b) + f(n), compare với DP/greedy."
+    ]
+  ],
+  "GREEDY_ALGORITHMS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại greedy choice property, optimal substructure; activity selection, Huffman, MST (Kruskal/Prim), Dijkstra."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích proof technique: exchange argument, stay ahead; khi nào greedy fails (knapsack 0/1)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement greedy algorithms với proper data structures (priority queue, disjoint set)."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng chứng minh correctness, analyze approximation ratio cho NP-hard problems."
+    ]
+  ],
+  "BIG_O_NOTATION": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại O, Ω, Θ, o, ω definitions; common complexities: O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích asymptotic analysis, dominant term, constant factors, best/average/worst case."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng tính complexity của nested loops, recursive algorithms, amortized analysis."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng compare algorithms, identify bottlenecks, apply complexity to system design."
+    ]
+  ],
+  "GRAPH_MODELS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại graph representations: adjacency matrix/list, edge list; directed/undirected, weighted/unweighted."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích BFS/DFS, shortest path (Dijkstra, Bellman-Ford, A*), MST, topological sort, SCC."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng model real-world problems as graphs: social network, routing, dependency resolution."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng phân tích complexity V+E, sparse vs dense, graph algorithm selection."
+    ]
+  ],
+  "PROPOSITIONAL_LOGIC": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại propositional variables, connectives (∧, ∨, ¬, →, ↔), truth tables, tautology, contradiction."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích logical equivalence (De Morgan, distributive, implication), normal forms (CNF, DNF), resolution."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng translate natural language to logic, build truth tables, use SAT solver (pycosat, Z3)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng analyze satisfiability (SAT), validity, model checking, proof systems (natural deduction)."
+    ]
+  ],
+  "BOOLEAN_ALGEBRA": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại Boolean laws: commutative, associative, distributive, absorption, complement, De Morgan."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích minimization: K-map, Quine-McCluskey, prime implicants, essential prime implicants."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng simplify logic circuits, implement combinational logic (adder, multiplexer, decoder)."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng analyze gate delay, hazard (static/dynamic), timing analysis, technology mapping."
+    ]
+  ],
+  "GRAPH_THEORY": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại definitions: vertex, edge, path, cycle, connected, tree, bipartite, planar, Euler/Hamilton path."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích theorems: Handshaking lemma, Euler formula, Four color theorem, Menger, Kuratowski."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng prove graph properties, construct graphs with given properties, apply to network design."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng analyze graph invariants, isomorphism, coloring, matching, flow algorithms."
+    ]
+  ],
+  "RENDERING_PIPELINE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại stages: Vertex Shader → Tessellation → Geometry Shader → Rasterization → Fragment Shader → Output Merger."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích vertex processing, primitive assembly, clipping, perspective divide, viewport transform, fragment shading."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng write vertex/fragment shaders (GLSL/HLSL), configure pipeline state (blend, depth, stencil, culling)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng analyze bottleneck: vertex-bound vs fragment-bound, overdraw, bandwidth, shader occupancy."
+    ]
+  ],
+  "RAY_TRACING": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại ray-object intersection (sphere, triangle, AABB), BVH, shadow rays, reflection/refraction, global illumination."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích rendering equation, BRDF, path tracing, Monte Carlo integration, importance sampling, denoising."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement ray tracer (CPU/GPU), BVH traversal, material system, use OptiX/DXR/Vulkan RT."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng benchmark rays/sec, analyze noise convergence, BVH quality, shader compilation time."
+    ]
+  ],
+  "SHADER_PROGRAMMING": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại shader types (vertex, fragment, compute, geometry, tessellation), GLSL/HLSL syntax, uniforms, attributes, varyings."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích parallel execution model, SIMD/SIMT, derivative functions (dFdx/dFdy), texture sampling, UBO/SSBO."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng write shaders for: lighting (Phong, PBR), post-processing, procedural generation, compute shaders."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng profile shader (GPU timers, NSight, RenderDoc), optimize ALU/TEX ratio, register pressure, occupancy."
+    ]
+  ],
+  "DATA_EXPLORATION_EDA": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại EDA steps: data cleaning, univariate/bivariate analysis, visualization (histogram, boxplot, scatter, correlation matrix)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích descriptive stats (mean, median, mode, std, skew, kurtosis), missing data patterns, outlier detection (IQR, Z-score)."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng perform EDA với pandas/seaborn/plotly: profiling, pairplot, missingno, sweetviz, ydata-profiling."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng identify data quality issues, feature relationships, distribution shifts, leakage risks."
+    ]
+  ],
+  "DESIGN_THINKING_PROCESS": [
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích 5 giai đoạn Design Thinking: Empathize (phỏng vấn, observation), Define (POV, HMW), Ideate (brainstorming, SCAMPER), Prototype (low-fi to high-fi), Test (usability testing, iteration)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích empathy map, journey map, service blueprint; identify pain points, opportunities, constraints."
+    ],
+    [
+      "Evaluate",
+      "Metacognitive",
+      "Người học có khả năng đánh giá solution desirability (user needs), feasibility (technical), viability (business) using design criteria."
+    ],
+    [
+      "Create",
+      "Metacognitive",
+      "Người học có khả năng thiết kế end-to-end design challenge: research plan, synthesis framework, ideation facilitation, prototype strategy."
+    ]
+  ],
+  "THREAT_MODELING_ASSESSMENT": [
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích STRIDE (Spoofing, Tampering, Repudiation, Information Disclosure, Denial of Service, Elevation of Privilege), attack trees, DREAD scoring."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng build threat model: system decomposition, trust boundaries, data flow diagrams, identify threats per STRIDE."
+    ],
+    [
+      "Evaluate",
+      "Metacognitive",
+      "Người học có khả năng prioritize threats (risk = likelihood × impact), recommend mitigations (avoid, transfer, mitigate, accept)."
+    ],
+    [
+      "Create",
+      "Metacognitive",
+      "Người học có khả năng design threat modeling process: integrate into SDLC, automate with tools (Microsoft Threat Modeling Tool, OWASP Threat Dragon)."
+    ]
+  ],
+  "AIOT_DATA_PIPELINE": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại IoT data pipeline: device → edge gateway → message broker (MQTT/Kafka) → stream processing → storage → analytics/ML."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích time-series data, downsampling, windowed aggregation, exactly-once semantics, schema evolution."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng build pipeline: ESP32 sensor → MQTT → Kafka → Flink/Spark Streaming → TimescaleDB/InfluxDB → Grafana."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng benchmark throughput, latency, data loss, cost; optimize partitioning, compression, retention."
+    ]
+  ],
+  "QUANTUM_KEY_DISTRIBUTION_QKD": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại BB84 protocol: qubit preparation (rectilinear/diagonal basis), measurement basis, sifting, error estimation, privacy amplification."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích no-cloning theorem, Eve detection (error rate > 25%), decoy states, measurement-device-independent QKD."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng simulate BB84 với Qiskit/QuTiP: prepare states, noisy channel, basis reconciliation, key rate calculation."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng analyze key rate vs distance, QBER, finite-key effects, side-channel attacks, satellite QKD."
+    ]
+  ],
+  "REST_PRINCIPLES": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại REST constraints: client-server, stateless, cacheable, uniform interface, layered system, code on demand."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích resource-oriented design, HATEOAS, Richardson Maturity Model, idempotency, safety."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng design REST API: resource naming, HTTP methods, status codes, versioning, pagination, filtering, OpenAPI/Swagger."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng evaluate API design: coupling, discoverability, caching strategy, rate limiting, backward compatibility."
+    ]
+  ],
+  "DIGITAL_FOOTPRINT": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại digital footprint types: active (posts, comments), passive (cookies, tracking, metadata), permanent vs ephemeral."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích data broker ecosystem, profiling, targeted advertising, identity theft, reputation impact."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng audit own footprint: Google search, haveibeenpwned, privacy settings, data deletion requests (GDPR Art.17)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng analyze privacy trade-offs: convenience vs surveillance, anonymity vs accountability, digital legacy."
+    ]
+  ],
+  "GAME_LOOP": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại game loop: fixed timestep vs variable timestep, update/render separation, interpolation, accumulator pattern."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích deterministic simulation, frame rate independence, input handling, physics step, networking sync."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement game loop trong Unity/Unreal/Godot/custom engine: time management, system ordering."
+    ],
+    [
+      "Analyze",
+      "Procedural",
+      "Người học có khả năng profile frame time, identify spike, optimize update/render budget, multithreaded job system."
+    ]
+  ],
+  "TRANSPORT_PROTOCOLS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng phân biệt TCP (reliable, ordered, connection-oriented, flow/congestion control) và UDP (unreliable, datagram, connectionless, low overhead)."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích TCP 3-way handshake, sliding window, slow start, congestion avoidance, fast retransmit/recovery, head-of-line blocking."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng chọn TCP/UDP cho use case: web/email (TCP), streaming/gaming/DNS (UDP), QUIC (TCP+TLS+HTTP/2 over UDP)."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng phân tích bufferbloat, BBR vs CUBIC, QUIC 0-RTT, connection migration, multipath TCP."
+    ]
+  ],
+  "APP_PROTOCOLS": [
+    [
+      "Remember",
+      "Factual",
+      "Người học có khả năng nhớ lại HTTP/1.1, HTTP/2 (multiplexing, header compression, server push), HTTP/3 (QUIC), WebSocket, gRPC, MQTT."
+    ],
+    [
+      "Understand",
+      "Conceptual",
+      "Người học có khả năng giải thích request/response vs streaming vs pub-sub, binary vs text framing, connection reuse."
+    ],
+    [
+      "Apply",
+      "Procedural",
+      "Người học có khả năng implement client/server: REST API, GraphQL, gRPC service, WebSocket real-time, MQTT broker."
+    ],
+    [
+      "Analyze",
+      "Conceptual",
+      "Người học có khả năng compare latency, throughput, complexity, browser support, firewall traversal cho các protocol."
+    ]
+  ]
+}
