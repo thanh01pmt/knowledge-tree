@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
 import * as THREE from 'three';
-import { Maximize, Plus, Minus, Play, Pause, Network, Search, Camera, Hand, Rotate3d, HelpCircle, X, Check } from 'lucide-react';
+import { Maximize, Plus, Minus, Play, Pause, Network, Search, Camera, Hand, Rotate3d, HelpCircle, X } from 'lucide-react';
 
 // Static geometries for performance (normalized to ~radius 1)
 const shapeGeometries = {
@@ -64,14 +64,6 @@ export default function KnowledgeTree3D({
   const [dimensions, setDimensions] = useState({ width: window.innerWidth, height: window.innerHeight });
   const containerRef = useRef();
   const lastClickTime = useRef({});
-  
-  // Screenshot options
-  const [showScreenshotOptions, setShowScreenshotOptions] = useState(false);
-  const [screenshotOptions, setScreenshotOptions] = useState({
-    backgroundColor: '#0f172a',
-    pixelRatio: 2,
-    transparent: false,
-  });
 
   // Multi-node live search highlight effect (S3)
   useEffect(() => {
@@ -205,51 +197,12 @@ export default function KnowledgeTree3D({
     fgRef.current.d3ReheatSimulation();
   }, []);
 
-  const handleScreenshot = useCallback((options = {}) => {
+  const handleScreenshot = useCallback(() => {
     if (!fgRef.current) return;
-    
-    const {
-      backgroundColor = '#0f172a', // Default slate 900
-      pixelRatio = 2, // High-DPI by default
-      includeUI = false,
-    } = options;
-    
-    const renderer = fgRef.current.renderer();
-    const canvas = renderer.domElement;
-    
-    // Store original background
-    const originalClearColor = renderer.getClearColor().clone();
-    const originalClearAlpha = renderer.getClearAlpha();
-    
-    // Set background for screenshot
-    renderer.setClearColor(backgroundColor, 1);
-    renderer.clear();
-    
-    // Re-render the scene with new background
-    fgRef.current.renderer().render(fgRef.current.scene(), fgRef.current.camera());
-    
-    // Create high-res canvas for export
-    const exportCanvas = document.createElement('canvas');
-    exportCanvas.width = canvas.width * pixelRatio;
-    exportCanvas.height = canvas.height * pixelRatio;
-    const exportCtx = exportCanvas.getContext('2d');
-    
-    // Fill background
-    exportCtx.fillStyle = backgroundColor;
-    exportCtx.fillRect(0, 0, exportCanvas.width, exportCanvas.height);
-    
-    // Draw the Three.js canvas scaled up
-    exportCtx.drawImage(canvas, 0, 0, exportCanvas.width, exportCanvas.height);
-    
-    // Restore original background
-    renderer.setClearColor(originalClearColor, originalClearAlpha);
-    fgRef.current.renderer().render(fgRef.current.scene(), fgRef.current.camera());
-    
-    // Download
-    const dataUrl = exportCanvas.toDataURL('image/png');
+    const canvas = fgRef.current.renderer().domElement;
+    const dataUrl = canvas.toDataURL('image/png');
     const link = document.createElement('a');
-    const timestamp = new Date().toISOString().slice(0, 19).replace(/:/g, '-');
-    link.download = `knowledge-tree-${timestamp}.png`;
+    link.download = 'knowledge-tree-snapshot.png';
     link.href = dataUrl;
     link.click();
   }, []);
@@ -901,7 +854,7 @@ export default function KnowledgeTree3D({
           <button onClick={handleSearchClick} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Search Node">
             <Search className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={() => setShowScreenshotOptions(!showScreenshotOptions)} className={`p-2 transition-colors border-b border-slate-700/50 flex items-center justify-center ${showScreenshotOptions ? 'text-blue-400 bg-slate-700' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`} title="Screenshot Options">
+          <button onClick={handleScreenshot} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Take Screenshot">
             <Camera className="w-4 h-4" strokeWidth={2} />
           </button>
           <button onClick={() => setShowHelpModal(true)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors flex items-center justify-center" title="Keyboard Shortcuts & Controls Help">
@@ -957,81 +910,6 @@ export default function KnowledgeTree3D({
             >
               Got it
             </button>
-          </div>
-        </div>
-      )}
-      {/* Screenshot Options Modal */}
-      {showScreenshotOptions && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#1e2227] border border-slate-700 rounded-2xl max-w-sm w-full p-6 shadow-2xl relative text-slate-200">
-            <button 
-              onClick={() => setShowScreenshotOptions(false)}
-              className="absolute top-4 right-4 p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
-            <h3 className="text-lg font-bold mb-4 flex items-center gap-2 text-white">
-              <Camera className="w-5 h-5 text-blue-400" />
-              Screenshot Options
-            </h3>
-            
-            <div className="space-y-4">
-              {/* Background Color */}
-              <div>
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 block">Background</label>
-                <div className="flex flex-wrap gap-2">
-                  {['#0f172a', '#1e2227', '#2a2f36', '#ffffff', '#000000', 'transparent'].map(color => (
-                    <button
-                      key={color}
-                      onClick={() => setScreenshotOptions(prev => ({ ...prev, backgroundColor: color, transparent: color === 'transparent' }))}
-                      className={`w-10 h-10 rounded-lg border-2 transition-all ${screenshotOptions.backgroundColor === color ? 'border-blue-400 scale-105 shadow-lg shadow-blue-500/25' : 'border-slate-700 hover:border-slate-500'} ${color === 'transparent' ? 'bg-gradient-to-br from-slate-800 to-slate-600 relative' : ''}`}
-                      style={{ backgroundColor: color === 'transparent' ? 'transparent' : color }}
-                      title={color === 'transparent' ? 'Transparent' : color}
-                    >
-                      {color === 'transparent' && (
-                        <svg className="w-full h-full" viewBox="0 0 10 10">
-                          <rect width="5" height="5" fill="#333"/>
-                          <rect x="5" y="5" width="5" height="5" fill="#333"/>
-                        </svg>
-                      )}
-                      {screenshotOptions.backgroundColor === color && <div className="absolute inset-0 flex items-center justify-center"><Check className="w-5 h-5 text-white drop-shadow" /></div>}
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Pixel Ratio */}
-              <div>
-                <label className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2 block">Resolution</label>
-                <div className="flex gap-2">
-                  {[1, 2, 3, 4].map(ratio => (
-                    <button
-                      key={ratio}
-                      onClick={() => setScreenshotOptions(prev => ({ ...prev, pixelRatio: ratio }))}
-                      className={`flex-1 py-2 px-3 rounded-lg text-sm font-medium transition-all ${screenshotOptions.pixelRatio === ratio ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25' : 'bg-slate-800 text-slate-300 hover:bg-slate-700'}`}
-                    >
-                      {ratio}x ({Math.round(dimensions.width * ratio)}×{Math.round(dimensions.height * ratio)})
-                    </button>
-                  ))}
-                </div>
-              </div>
-              
-              {/* Action Buttons */}
-              <div className="flex gap-2 pt-2">
-                <button
-                  onClick={() => handleScreenshot({ ...screenshotOptions, includeUI: false })}
-                  className="flex-1 py-2.5 px-4 bg-blue-600 hover:bg-blue-500 text-white font-medium rounded-lg transition-colors"
-                >
-                  Capture Canvas Only
-                </button>
-                <button
-                  onClick={() => handleScreenshot({ ...screenshotOptions, includeUI: true })}
-                  className="flex-1 py-2.5 px-4 bg-slate-700 hover:bg-slate-600 text-white font-medium rounded-lg transition-colors border border-slate-600"
-                >
-                  Capture with UI
-                </button>
-              </div>
-            </div>
           </div>
         </div>
       )}
