@@ -237,6 +237,33 @@ class PipelineOrchestrator:
             self._complete("step_5", resolved_sios=out)
         return success
 
+    def step_4_5_generate_prerequisites(self) -> bool:
+        """STEP 4.5: Generate prerequisite DAG from resolved LOs."""
+        if self._skip_or_run("step_4_5"):
+            return True
+
+        print("\n📋 STEP 4.5: Generating prerequisite DAG...")
+        matched_file = self._artifact("matched_cios", "matched_cios.json")
+        sios_file = self._artifact("resolved_sios", "resolved_sios.json")
+        inventory_file = self._artifact("inventory", "reuse_inventory.json")
+
+        if not (matched_file.exists() and sios_file.exists() and inventory_file.exists()):
+            print("⚠️  Missing inputs for prerequisites, skipping STEP 4.5")
+            return True
+
+        out = self.output_dir / "prerequisites.json"
+
+        success = self._run_script("generate_prerequisites.py", [
+            "--matched-cios", str(matched_file),
+            "--resolved-sios", str(sios_file),
+            "--reuse-inventory", str(inventory_file),
+            "--output", str(out),
+        ])
+
+        if success:
+            self._complete("step_4_5", prerequisites=out)
+        return success
+
     def step_6_agent_judge(self) -> bool:
         """STEP 6: Agent-as-Judge validation gate."""
         if self._skip_or_run("step_6"):
@@ -314,6 +341,37 @@ class PipelineOrchestrator:
             self._complete("step_8_5", code_snippets=out)
         return success
 
+    def step_8_6_generate_instruction(self) -> bool:
+        """STEP 8.6: Generate instruction markdown from SIOs + snippets."""
+        if self._skip_or_run("step_8_6"):
+            return True
+
+        print("\n📋 STEP 8.6: Generating instruction markdown...")
+        sios_file = self._artifact("resolved_sios", "resolved_sios.json")
+        snippets_file = self._artifact("code_snippets", "code_snippets.json")
+        prereqs_file = self._artifact("prerequisites", "prerequisites.json")
+
+        if not (sios_file.exists() and snippets_file.exists()):
+            print("⚠️  Missing inputs for instruction generation, skipping STEP 8.6")
+            return True
+
+        out_dir = self.output_dir / "instruction"
+
+        args = [
+            "--resolved-sios", str(sios_file),
+            "--code-snippets", str(snippets_file),
+            "--target-tech", self.target_tech,
+            "--output-dir", str(out_dir),
+        ]
+        if prereqs_file.exists():
+            args += ["--prerequisites", str(prereqs_file)]
+
+        success = self._run_script("generate_instruction.py", args)
+
+        if success:
+            self._complete("step_8_6", instruction_dir=out_dir)
+        return success
+
     def step_9_validate(self) -> bool:
         """STEP 9: Post-generation validation."""
         if self._skip_or_run("step_9"):
@@ -348,6 +406,30 @@ class PipelineOrchestrator:
         """
         resolved_file = self._artifact("resolved_concepts", "resolved_concepts.json")
         sios_file = self._artifact("resolved_sios", "resolved_sios.json")
+        prereqs_file = self._artifact("prerequisites", "prerequisites.json")
+
+        # Load prerequisite edges: {target_lo_code: [prereq_lo_codes]}
+        prereq_map = {}
+        if prereqs_file.exists():
+            with open(prereqs_file, 'r') as f:
+                prereqs_data = json.load(f)
+            for edge in prereqs_data.get("prerequisites", []):
+                target = edge.get("learning_objective_code", "")
+                prereq = edge.get("prerequisite_lo_code", "")
+                if target:
+                    prereq_map.setdefault(target, []).append(prereq)
+
+        # Load CIO -> concept mapping from matched_cios
+        cio_to_concept = {}
+        matched_file = self._artifact("matched_cios", "matched_cios.json")
+        if matched_file.exists():
+            with open(matched_file, 'r') as f:
+                matched_data = json.load(f)
+            for match in matched_data.get("matched_cios", []):
+                cio_code = match.get("cio_code", "")
+                concept = match.get("concept_code", "")
+                if cio_code and concept:
+                    cio_to_concept[cio_code] = concept
 
         milestones = []
         seen_concepts = set()
@@ -377,6 +459,36 @@ class PipelineOrchestrator:
                 "prerequisites": [],
                 "learning_objectives": [],
             })
+
+        # Attach concept-level prerequisites from prereq_map
+        # (a concept's milestone depends on concepts of its SIO prerequisites)
+        if prereq_map:
+            for milestone in milestones:
+                concept = milestone["concept_code"]
+                prereq_concepts = set()
+                for group in sios_data.get("resolved_sios", []):
+                    group_concept = group.get("concept_code", "")
+                    if group_concept != concept:
+                        continue
+                    sio_list = group.get("sios", [])
+                    if not sio_list and group.get("source_sio"):
+                        sio_list = [group["source_sio"]]
+                    for sio in sio_list:
+                        for prereq_lo in prereq_map.get(sio.get("code", ""), []):
+                            # Map prereq LO code back to its concept:
+                            # 1) direct CIO->concept from matched_cios
+                            # 2) fallback: scan other milestones' LOs
+                            mapped = cio_to_concept.get(prereq_lo)
+                            if mapped:
+                                # Skip self-dependency (SIO -> its own CIO -> same concept)
+                                if mapped != concept:
+                                    prereq_concepts.add(mapped)
+                                continue
+                            for other in milestones:
+                                for lo in other["learning_objectives"]:
+                                    if lo.get("code") == prereq_lo and other["concept_code"] != concept:
+                                        prereq_concepts.add(other["concept_code"])
+                milestone["prerequisites"] = sorted(prereq_concepts)
 
         # Attach LOs from resolved SIOs
         if sios_file.exists():
@@ -459,9 +571,11 @@ class PipelineOrchestrator:
             ("step_3", self.step_3_resolve_concepts),
             ("step_4", self.step_4_match_cios),
             ("step_5", self.step_5_resolve_sios),
+            ("step_4_5", self.step_4_5_generate_prerequisites),
             ("step_6", self.step_6_agent_judge),
             ("step_7", self.step_7_apply_staging),
             ("step_8_5", self.step_8_5_extract_snippets),
+            ("step_8_6", self.step_8_6_generate_instruction),
             ("step_9", self.step_9_validate),
         ]
 

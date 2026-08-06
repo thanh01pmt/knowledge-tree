@@ -45,6 +45,43 @@ def load_cios_from_projects(projects_dir: Path) -> dict:
     
     return cios
 
+def derive_ulos(matched_cios: list) -> list:
+    """Derive ULO (Universal Learning Objective) codes from matched CIOs.
+
+    Each matched concept gets a ULO at the UNIVERSAL tier:
+      - code: ULO-<CONCEPT>-01
+      - lo_type: UNIVERSAL
+      - concept_codes: [CONCEPT]
+      - parent_lo_code: (empty — ULO is the top of the derivation chain)
+    Deduplicates by concept so each concept yields exactly one ULO.
+    """
+    seen_concepts = set()
+    ulos = []
+
+    for match in matched_cios:
+        concept = match.get('concept_code', '')
+        if not concept or concept in seen_concepts:
+            continue
+        seen_concepts.add(concept)
+
+        ulos.append({
+            'code': f"ULO-{concept}-01",
+            'name': f"Understand {concept}",
+            'description': (
+                f"Người học có khả năng hiểu nguyên lý phổ quát của {concept} "
+                f"và vai trò của nó trong thiết kế giải pháp phần mềm."
+            ),
+            'lo_type': 'UNIVERSAL',
+            'parent_lo_code': '',
+            'concept_codes': [concept],
+            'bloom_level': 'UNDERSTAND',
+            'knowledge_dimension': 'CONCEPTUAL',
+            'assessment_approach': 'concept-check',
+        })
+
+    return ulos
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description='STEP 4: Match resolved concepts to CIOs')
@@ -115,14 +152,20 @@ def main():
     
     print(f"\n[*] Matched {len(matched_cios)} CIOs to resolved concepts")
     print(f"[*] Reused {len(set(reused_cios))} unique CIOs")
-    
+
+    # Derive ULOs from matched concepts (UNIVERSAL tier)
+    derived_ulos = derive_ulos(matched_cios)
+    print(f"[*] Derived {len(derived_ulos)} ULOs from matched concepts")
+
     # Save output
     output = {
         'matched_cios': matched_cios,
+        'derived_ulos': derived_ulos,
         'reused_cios': list(set(reused_cios)),
         'summary': {
             'total_matched': len(matched_cios),
             'unique_reused': len(set(reused_cios)),
+            'derived_ulo_count': len(derived_ulos),
             'source': 'local_projects'
         }
     }
