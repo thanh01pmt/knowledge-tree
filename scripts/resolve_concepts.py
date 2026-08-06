@@ -76,13 +76,25 @@ def load_embeddings(emb_path: Path) -> dict[str, Any]:
     return organized
 
 
-def embed_text(text: str, client, model: str = "paraphrase-multilingual-MiniLM-L12-v2") -> list[float]:
-    """Embed text using OpenAI-compatible API."""
+_ST_MODEL = None  # lazy-loaded SentenceTransformer singleton
+
+
+def embed_text(text: str, client=None, model: str = "paraphrase-multilingual-MiniLM-L12-v2") -> list[float]:
+    """Embed text using SentenceTransformer (must match embeddings file dim).
+
+    Uses the same model that generated master_tree_embeddings.json
+    (paraphrase-multilingual-MiniLM-L12-v2, 384-dim). Falls back to empty
+    list on failure so the caller can use keyword-overlap matching.
+    """
+    global _ST_MODEL
     try:
-        response = client.embeddings.create(input=text, model=model)
-        return response.data[0].embedding
+        if _ST_MODEL is None:
+            from sentence_transformers import SentenceTransformer
+            _ST_MODEL = SentenceTransformer(model)
+        emb = _ST_MODEL.encode(text, normalize_embeddings=True)
+        return emb.tolist()
     except Exception as e:
-        print(f"[ERROR] Embedding failed: {e}", file=sys.stderr)
+        print(f"[ERROR] Embedding failed ({e}), using keyword overlap fallback", file=sys.stderr)
         return []
 
 
@@ -187,7 +199,7 @@ def resolve_concepts(
     embeddings: dict,
     client,
     top_k: int = 3,
-    threshold: float = 0.80,
+    threshold: float = 0.55,
 ) -> dict:
     """Resolve keywords to concepts with multi-label matching."""
     
@@ -279,7 +291,10 @@ def main():
     parser.add_argument("--reuse-inventory", required=True, help="Reuse inventory JSON from STEP 0")
     parser.add_argument("--goal", required=True, help="User goal/learning objective")
     parser.add_argument("--top-k", type=int, default=3, help="Max concepts per keyword (default: 3)")
-    parser.add_argument("--threshold", type=float, default=0.80, help="Confidence threshold for REUSE (default: 0.80)")
+    parser.add_argument("--threshold", type=float, default=0.55,
+                       help="Confidence threshold for REUSE. Default 0.55 tuned for "
+                            "paraphrase-multilingual-MiniLM-L12-v2 (higher for OpenAI "
+                            "text-embedding-3-small)")
     parser.add_argument("--embeddings", help="Path to master_tree_embeddings.json (default: auto-detect)")
     parser.add_argument("--output", required=True, help="Output resolved concepts JSON")
     args = parser.parse_args()
@@ -302,15 +317,9 @@ def main():
     
     embeddings = load_embeddings(emb_path)
     
-    # Setup OpenAI client
-    api_key = os.environ.get("OPENAI_API_KEY", "")
-    if not api_key:
-        print("[ERROR] OPENAI_API_KEY not set", file=sys.stderr)
-        sys.exit(1)
-    
-    from openai import OpenAI
-    base_url = os.environ.get("OPENAI_BASE_URL", "").strip()
-    client = OpenAI(api_key=api_key, base_url=base_url) if base_url else OpenAI(api_key=api_key)
+    # Setup embedding engine (SentenceTransformer matches embeddings file dim)
+    # client param kept for signature compatibility; embed_text uses ST model.
+    client = None
     
     # Extract keywords list
     keywords_list = keywords_data.get("keywords", [])

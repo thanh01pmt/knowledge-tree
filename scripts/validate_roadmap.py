@@ -123,17 +123,24 @@ def validate_concept_completeness(roadmap: Dict, resolved_concepts: List[Dict]) 
                         concept_lo_counts[concept_code][type_key] += 1
     
     # Check concept completeness
-    incomplete_concepts = []
+    # Count UNIQUE incomplete concepts (a concept missing both ULO and CIO
+    # should count once, not twice)
+    incomplete_concepts = set()
+    incomplete_details = []
     for concept, counts in concept_lo_counts.items():
+        missing = []
         if counts['ULO'] == 0:
-            incomplete_concepts.append(f"{concept} missing ULO")
+            missing.append('ULO')
         if counts['CIO'] == 0:
-            incomplete_concepts.append(f"{concept} missing CIO")
+            missing.append('CIO')
         if counts['SIO'] == 0:
-            incomplete_concepts.append(f"{concept} missing SIO")
+            missing.append('SIO')
+        if missing:
+            incomplete_concepts.add(concept)
+            incomplete_details.append(f"{concept} missing {'/'.join(missing)}")
     
-    if incomplete_concepts:
-        issues.append(f"{len(incomplete_concepts)} incomplete concept chains: {incomplete_concepts[:5]}")
+    if incomplete_details:
+        issues.append(f"{len(incomplete_concepts)} incomplete concept chains: {incomplete_details[:5]}")
     
     # Check resolved concepts are in roadmap
     resolved_concept_codes = {c.get('concept_code') for c in resolved_concepts if c.get('concept_code')}
@@ -141,7 +148,9 @@ def validate_concept_completeness(roadmap: Dict, resolved_concepts: List[Dict]) 
     if missing_concepts:
         issues.append(f"{len(missing_concepts)} resolved concepts not in roadmap: {list(missing_concepts)[:5]}")
     
-    completeness = (len(roadmap_concepts) - len(incomplete_concepts)) / max(len(roadmap_concepts), 1)
+    # Completeness never negative: clamp to [0, 1]
+    complete_count = max(0, len(roadmap_concepts) - len(incomplete_concepts))
+    completeness = complete_count / max(len(roadmap_concepts), 1)
     
     return {
         'status': 'PASS' if completeness >= 0.9 else 'WARN',

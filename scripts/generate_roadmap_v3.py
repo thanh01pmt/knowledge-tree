@@ -352,7 +352,7 @@ class PipelineOrchestrator:
         milestones = []
         seen_concepts = set()
 
-        # From resolved concepts
+        # Collect concepts from resolved_concepts first
         if resolved_file.exists():
             with open(resolved_file, 'r') as f:
                 resolved = json.load(f)
@@ -360,11 +360,23 @@ class PipelineOrchestrator:
                 code = item.get("concept_code") or (item.get("matches") or [{}])[0].get("code")
                 if code and code not in seen_concepts:
                     seen_concepts.add(code)
-                    milestones.append({
-                        "concept_code": code,
-                        "prerequisites": [],
-                        "learning_objectives": [],
-                    })
+
+        # Collect concepts from resolved_sios (each group carries concept_code)
+        if sios_file.exists():
+            with open(sios_file, 'r') as f:
+                sios_data = json.load(f)
+            for group in sios_data.get("resolved_sios", []):
+                code = group.get("concept_code")
+                if code and code not in seen_concepts:
+                    seen_concepts.add(code)
+
+        # Build one milestone per concept
+        for concept in sorted(seen_concepts):
+            milestones.append({
+                "concept_code": concept,
+                "prerequisites": [],
+                "learning_objectives": [],
+            })
 
         # Attach LOs from resolved SIOs
         if sios_file.exists():
@@ -373,11 +385,31 @@ class PipelineOrchestrator:
 
             for milestone in milestones:
                 concept = milestone["concept_code"]
+                # Derive ULO/CIO codes from the concept (standard hierarchy)
+                # ULO-<CONCEPT>-01, CIO-<CONCEPT>-01
+                ulo_code = f"ULO-{concept}-01"
+                cio_code = f"CIO-{concept}-01"
+                milestone["learning_objectives"].append({
+                    "code": ulo_code,
+                    "lo_type": "UNIVERSAL",
+                    "name": f"Understand {concept}",
+                })
+                milestone["learning_objectives"].append({
+                    "code": cio_code,
+                    "lo_type": "CONCEPTUAL_IMPL",
+                    "name": f"Apply {concept} concepts",
+                })
+
                 for group in sios_data.get("resolved_sios", []):
-                    # Match by normalized CIO containing concept code
+                    # Match by concept_code field (exact) or normalized CIO containing it
+                    group_concept = group.get("concept_code", "")
                     normalized = group.get("normalized_cio", "")
-                    if concept in normalized:
-                        for sio in group.get("sios", []):
+                    if group_concept == concept or concept in normalized:
+                        # REUSE groups carry 'sios' list; ADAPT groups carry 'source_sio'
+                        sio_list = group.get("sios", [])
+                        if not sio_list and group.get("source_sio"):
+                            sio_list = [group["source_sio"]]
+                        for sio in sio_list:
                             milestone["learning_objectives"].append({
                                 "code": sio.get("code", ""),
                                 "lo_type": "SPECIFIC_IMPL",

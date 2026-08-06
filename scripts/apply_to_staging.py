@@ -22,6 +22,7 @@ Output:
 import os
 import sys
 import csv
+import json
 import argparse
 from pathlib import Path
 from typing import List, Dict
@@ -71,26 +72,100 @@ def validate_schema(rows: List[Dict], required_fields: List[str], lo_type: str) 
     return True
 
 
+def _map_lo_to_supabase(row: Dict) -> Dict:
+    """Map a TSV learning-objective row to the Supabase schema.
+
+    Supabase learning_objectives columns (from live schema):
+      code, name, description, lo_type, parent_lo_code,
+      bloom_level_codes[], context_codes[], keywords[],
+      concept_codes[], topic_codes[], category_codes[],
+      subject_codes[], field_codes[], cs2023_ka_mapping[],
+      metadata (JSONB), organization_code
+    """
+    payload = {"organization_code": "DEFAULT_ORG"}
+
+    # Direct string fields
+    for field in ("name", "description", "lo_type"):
+        val = row.get(field, "").strip()
+        if val:
+            payload[field] = val
+
+    # code is required
+    payload["code"] = row.get("code", "").strip()
+
+    # lo_type default
+    if not payload.get("lo_type"):
+        payload["lo_type"] = "UNIVERSAL"
+
+    # Array fields (TSV comma/semicolon separated -> Supabase arrays)
+    array_fields_map = {
+        "bloom_level": "bloom_level_codes",
+        "knowledge_dimension": "context_codes",
+        "keywords": "keywords",
+        "concept_codes": "concept_codes",
+        "topic_codes": "topic_codes",
+        "category_codes": "category_codes",
+        "subject_codes": "subject_codes",
+        "field_codes": "field_codes",
+        "cs2023_ka_mapping": "cs2023_ka_mapping",
+    }
+    for tsv_field, sb_field in array_fields_map.items():
+        val = row.get(tsv_field, "").strip()
+        if val:
+            vals = [v.strip() for v in val.replace(";", ",").split(",") if v.strip()]
+            payload[sb_field] = vals
+        else:
+            payload[sb_field] = []
+
+    # parent_lo_code (nullable)
+    p_code = row.get("parent_lo_code", "").strip()
+    if p_code and p_code.upper() != "NULL":
+        payload["parent_lo_code"] = p_code
+
+    # metadata as JSON object (assessment_approach, sequence_order, ...)
+    meta = {}
+    assessment = row.get("assessment_approach", "").strip()
+    if assessment:
+        meta["assessment_approach"] = assessment
+    sequence = row.get("sequence_order", "").strip()
+    if sequence:
+        meta["sequence_order"] = sequence
+    meta_val = row.get("metadata", "").strip()
+    if meta_val:
+        try:
+            extra = json.loads(meta_val)
+            meta.update(extra)
+        except Exception:
+            meta["extra"] = meta_val
+    if meta:
+        payload["metadata"] = meta
+
+    return payload
+
+
 def sync_to_supabase(supabase: Client, rows: List[Dict], lo_type: str, dry_run: bool = False) -> int:
     """Sync rows to Supabase learning_objectives table.
-    
+
     Returns number of rows upserted.
     """
     if not rows:
         print(f"[SKIP] No {lo_type} to sync")
         return 0
-    
+
+    # Map TSV rows to Supabase schema
+    payloads = [_map_lo_to_supabase(r) for r in rows]
+
     if dry_run:
-        print(f"[DRY-RUN] Would sync {len(rows)} {lo_type} to Supabase")
-        return len(rows)
-    
+        print(f"[DRY-RUN] Would sync {len(payloads)} {lo_type} to Supabase")
+        return len(payloads)
+
     # Upsert rows (update on conflict by code)
     try:
         result = supabase.table('learning_objectives').upsert(
-            rows,
+            payloads,
             on_conflict='code'
         ).execute()
-        
+
         synced = len(result.data)
         print(f"[SYNC] Upserted {synced} {lo_type} to Supabase")
         return synced
