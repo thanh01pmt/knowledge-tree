@@ -408,6 +408,44 @@ class PipelineOrchestrator:
             self._complete("step_8_6", instruction_dir=out_dir)
         return success
 
+    def step_8_7_assemble_roadmap(self) -> bool:
+        """STEP 8.7: Assemble final roadmap (topo sort + phases + metadata)."""
+        if self._skip_or_run("step_8_7"):
+            return True
+
+        print("\n📋 STEP 8.7: Assembling final roadmap...")
+        required = [
+            self._artifact("matched_cios", "matched_cios.json"),
+            self._artifact("resolved_sios", "resolved_sios.json"),
+            self._artifact("prerequisites", "prerequisites.json"),
+        ]
+        if not all(p.exists() for p in required):
+            print("⚠️  Missing inputs for roadmap assembly, skipping STEP 8.7")
+            return True
+
+        out = self.output_dir / "roadmap.json"
+
+        args = [
+            "--matched-cios", str(required[0]),
+            "--resolved-sios", str(required[1]),
+            "--prerequisites", str(required[2]),
+            "--goal", self.goal,
+            "--tech-stack", self.tech_stack,
+            "--output", str(out),
+        ]
+        jit_file = self._artifact("jit_los", "jit_los.json")
+        if jit_file.exists():
+            args += ["--jit-los", str(jit_file)]
+        instr_dir = self._artifact("instruction_dir", "instruction")
+        if Path(instr_dir).exists():
+            args += ["--instruction-dir", str(instr_dir)]
+
+        success = self._run_script("assemble_roadmap.py", args)
+
+        if success:
+            self._complete("step_8_7", roadmap=out)
+        return success
+
     def step_9_validate(self) -> bool:
         """STEP 9: Post-generation validation."""
         if self._skip_or_run("step_9"):
@@ -415,9 +453,10 @@ class PipelineOrchestrator:
 
         print("\n📋 STEP 9: Running post-generation validation...")
 
-        # Build a roadmap skeleton from resolved artifacts for validation
+        # Use assembled roadmap if STEP 8.7 produced it; else build skeleton
         roadmap_file = self.output_dir / "roadmap.json"
-        self._build_roadmap_skeleton(roadmap_file)
+        if not roadmap_file.exists():
+            self._build_roadmap_skeleton(roadmap_file)
 
         args = [
             "--roadmap-file", str(roadmap_file),
@@ -613,6 +652,7 @@ class PipelineOrchestrator:
             ("step_7", self.step_7_apply_staging),
             ("step_8_5", self.step_8_5_extract_snippets),
             ("step_8_6", self.step_8_6_generate_instruction),
+            ("step_8_7", self.step_8_7_assemble_roadmap),
             ("step_9", self.step_9_validate),
         ]
 
