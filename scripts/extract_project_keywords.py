@@ -250,6 +250,7 @@ def parse_ts_project(repo_dir: Path) -> Dict:
         ],
         'types': all_types[:100],
         'functions': all_functions[:100],
+        'docstrings': all_docstrings[:20],
         'error_handling_patterns': [
             {'pattern': p, 'count': count}
             for p, count in error_counts.most_common(10)
@@ -272,12 +273,17 @@ def parse_python_file(filepath: Path) -> Dict:
         'imports': [],
         'types': [],
         'functions': [],
+        'docstrings': [],
         'error_handling': [],
     }
     
     # Extract imports
     import_pattern = r'^(?:import|from)\s+(\w+)'
     result['imports'] = re.findall(import_pattern, content, re.MULTILINE)
+    
+    # Extract docstrings (module, class, function level) — high-signal domain intent
+    docstring_pattern = r'"""([^"]{20,300})"""'
+    result['docstrings'] = re.findall(docstring_pattern, content)
     
     # Extract class declarations
     class_pattern = r'\bclass\s+(\w+)(?:\s*\(([^)]+)\))?'
@@ -296,8 +302,9 @@ def parse_python_file(filepath: Path) -> Dict:
     for match in re.finditer(func_pattern, content):
         name = match.group(1)
         params = match.group(2)
-        # Skip private/dunder methods
-        if name.startswith('_'):
+        # Skip only dunder methods (__init__, __str__); keep private (_call_llm)
+        # because private methods often carry core domain logic
+        if name.startswith('__') and name.endswith('__'):
             continue
         result['functions'].append({
             'name': name,
@@ -321,6 +328,7 @@ def parse_python_project(repo_dir: Path) -> Dict:
     all_imports = []
     all_types = []
     all_functions = []
+    all_docstrings = []
     all_error_patterns = []
     
     for py_file in py_files:
@@ -332,6 +340,7 @@ def parse_python_project(repo_dir: Path) -> Dict:
         all_imports.extend(parsed['imports'])
         all_types.extend(parsed['types'])
         all_functions.extend(parsed['functions'])
+        all_docstrings.extend(parsed['docstrings'])
         all_error_patterns.extend(parsed['error_handling'])
     
     # Deduplicate and count
@@ -346,6 +355,7 @@ def parse_python_project(repo_dir: Path) -> Dict:
         ],
         'types': all_types[:100],
         'functions': all_functions[:100],
+        'docstrings': all_docstrings[:20],
         'error_handling_patterns': [
             {'pattern': p, 'count': count}
             for p, count in error_counts.most_common(10)
@@ -403,6 +413,18 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
             'context': 'Function signature',
         })
     
+    # Source 3.5: Docstrings → domain intent (high signal)
+    for doc in source_context.get('docstrings', []):
+        # Take first sentence as keyword
+        first_sentence = doc.strip().split('\n')[0][:120]
+        if len(first_sentence) > 15:
+            keywords.append({
+                'keyword': first_sentence,
+                'source': 'docstring',
+                'weight': 1.8,
+                'context': 'Docstring (domain intent)',
+            })
+    
     # Source 4: Property wrappers → state management patterns
     for wrapper in source_context.get('property_wrappers', []):
         wrapper_name = wrapper['wrapper']
@@ -425,20 +447,34 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
             'context': f'Used {count} times',
         })
     
-    # Source 6: README sections → design intent
+    # Source 6: README sections + description → design intent
     readme_path = Path(repo_dir) / 'README.md'
     if readme_path.exists():
         try:
             readme_content = readme_path.read_text(encoding='utf-8', errors='ignore')
-            # Extract section headers
+            # Extract section headers (design intent)
             headers = re.findall(r'^#+\s+(.+)$', readme_content, re.MULTILINE)
             for header in headers[:10]:
                 keywords.append({
                     'keyword': header.strip(),
                     'source': 'readme',
-                    'weight': 0.9,
+                    'weight': 1.5,  # design intent is high-signal
                     'context': 'README section',
                 })
+            # Extract first paragraph after title (project description)
+            # — often contains the core domain intent
+            lines = [l.strip() for l in readme_content.splitlines() if l.strip()]
+            for i, line in enumerate(lines):
+                if line.startswith('#') and i + 1 < len(lines):
+                    desc = lines[i + 1]
+                    if len(desc) > 15 and not desc.startswith(('#', '```', '|', '-')):
+                        keywords.append({
+                            'keyword': desc,
+                            'source': 'readme_description',
+                            'weight': 2.0,  # highest signal: project purpose
+                            'context': 'README description',
+                        })
+                    break
         except Exception:
             pass
     
