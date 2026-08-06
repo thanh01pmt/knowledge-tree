@@ -57,7 +57,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'lo_type': 'CONCEPTUAL_IMPL',
                 'concept': match.get('concept_code', ''),
                 'name': match.get('cio_name', ''),
-                'description': '',
+                'description': match.get('cio_description', ''),
                 'assessment': 'code-lab',
             }
 

@@ -23,8 +23,49 @@ Outputs:
 
 import json
 import argparse
+import os
+import sys
 from pathlib import Path
 from typing import Dict, List
+
+# LLM support (optional — falls back to template if unavailable)
+REPO_ROOT = Path(__file__).resolve().parents[1]
+SKILL_LLM_PATH = REPO_ROOT / ".agents" / "skills" / "keyword-extractor" / "scripts"
+if str(SKILL_LLM_PATH) not in sys.path:
+    sys.path.insert(0, str(SKILL_LLM_PATH))
+
+try:
+    from llm_call import llm_chat_json, LLMCallError
+    from openai import OpenAI
+    _LLM_AVAILABLE = True
+except ImportError:
+    _LLM_AVAILABLE = False
+
+
+def _get_llm():
+    """Return (client, model) or (None, None) if LLM unavailable."""
+    if not _LLM_AVAILABLE:
+        return None, None
+    api_key = os.environ.get("OPENAI_API_KEY", "ollama")
+    base_url = os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:11434/v1")
+    model = os.environ.get("ATE_MODEL", "deepseek-v4-flash:cloud")
+    try:
+        client = OpenAI(api_key=api_key, base_url=base_url)
+        return client, model
+    except Exception:
+        return None, None
+
+
+def _llm_generate(system: str, user: str) -> str:
+    """Call LLM, return text or empty string on failure."""
+    client, model = _get_llm()
+    if not client:
+        return ""
+    try:
+        result = llm_chat_json(client, model, system, user, temperature=0.4)
+        return result.get("description", "")
+    except Exception:
+        return ""
 
 
 def load_json(path: Path) -> dict:
@@ -63,14 +104,32 @@ def get_concept_description(concept_code: str, reuse_inventory: dict) -> str:
 
 
 def generate_ulo(concept_code: str, description: str) -> dict:
-    """Generate ULO (UNIVERSAL tier) from concept description."""
+    """Generate ULO (UNIVERSAL tier) from concept description.
+
+    Uses LLM to write a natural, context-aware description; falls back to
+    the concept description (or template) if LLM unavailable.
+    """
+    # Try LLM first for a natural description
+    llm_desc = _llm_generate(
+        "Bạn là chuyên gia sư phạm. Viết 1 câu mô tả ULO (Universal Learning Objective) "
+        "bắt đầu bằng 'Người học có khả năng hiểu' cho khái niệm sau. "
+        "Trả về JSON: {\"description\": \"...\"}",
+        f"Khái niệm: {concept_code}. Mô tả: {description}"
+    )
+    if llm_desc:
+        final_desc = llm_desc
+    elif description:
+        final_desc = f"Người học có khả năng hiểu: {description}"
+    else:
+        final_desc = (
+            f"Người học có khả năng hiểu nguyên lý phổ quát của {concept_code} "
+            f"và vai trò của nó trong thiết kế giải pháp phần mềm."
+        )
+
     return {
         'code': f"ULO-{concept_code}-01",
         'name': f"Understand {concept_code}",
-        'description': (
-            f"Người học có khả năng hiểu nguyên lý phổ quát của {concept_code}: "
-            f"{description[:200] if description else 'khái niệm và vai trò trong thiết kế giải pháp phần mềm.'}"
-        ),
+        'description': final_desc,
         'lo_type': 'UNIVERSAL',
         'parent_lo_code': '',
         'concept_codes': [concept_code],
@@ -81,14 +140,30 @@ def generate_ulo(concept_code: str, description: str) -> dict:
 
 
 def generate_cio(concept_code: str, description: str) -> dict:
-    """Generate CIO (CONCEPTUAL_IMPL tier) from concept description."""
+    """Generate CIO (CONCEPTUAL_IMPL tier) from concept description.
+
+    Uses LLM for a natural, tech-agnostic description; falls back to template.
+    """
+    llm_desc = _llm_generate(
+        "Bạn là chuyên gia sư phạm. Viết 1 câu mô tả CIO (Conceptual Implementation Objective) "
+        "bắt đầu bằng 'Người học có khả năng thiết kế' cho khái niệm sau, "
+        "KHÔNG nhắc tên công nghệ cụ thể. Trả về JSON: {\"description\": \"...\"}",
+        f"Khái niệm: {concept_code}. Mô tả: {description}"
+    )
+    if llm_desc:
+        final_desc = llm_desc
+    elif description:
+        final_desc = f"Người học có khả năng thiết kế quy trình xử lý cho {concept_code}: {description[:200]}"
+    else:
+        final_desc = (
+            f"Người học có khả năng thiết kế quy trình xử lý cho {concept_code}: "
+            f"phân tích yêu cầu, lựa chọn phương pháp, và đánh giá kết quả."
+        )
+
     return {
         'code': f"CIO-{concept_code}-01",
         'name': f"Apply {concept_code} Concepts",
-        'description': (
-            f"Người học có khả năng thiết kế quy trình xử lý cho {concept_code}: "
-            f"{description[:200] if description else 'phân tích yêu cầu, lựa chọn phương pháp, và đánh giá kết quả.'}"
-        ),
+        'description': final_desc,
         'lo_type': 'CONCEPTUAL_IMPL',
         'parent_lo_code': f"ULO-{concept_code}-01",
         'concept_codes': [concept_code],
@@ -99,18 +174,33 @@ def generate_cio(concept_code: str, description: str) -> dict:
 
 
 def generate_sio(concept_code: str, description: str, keywords: List[str], target_tech: str) -> dict:
-    """Generate SIO (SPECIFIC_IMPL tier) from concept + project keywords."""
+    """Generate SIO (SPECIFIC_IMPL tier) from concept + project keywords.
+
+    Uses LLM to write a natural, project-context-aware description; falls back
+    to template with real keywords.
+    """
     # Pick relevant keywords as context (exclude the concept code itself)
     context = [k for k in keywords if k.lower() not in concept_code.lower()][:3]
     context_str = ', '.join(context) if context else 'project context'
 
+    llm_desc = _llm_generate(
+        f"Bạn là chuyên gia sư phạm. Viết 1 câu mô tả SIO (Specific Implementation Objective) "
+        f"bắt đầu bằng 'Người học có khả năng triển khai' cho khái niệm sau trong {target_tech}, "
+        f"gắn với ngữ cảnh dự án: {context_str}. Trả về JSON: {{\"description\": \"...\"}}",
+        f"Khái niệm: {concept_code}. Mô tả: {description}"
+    )
+    if llm_desc:
+        final_desc = llm_desc
+    else:
+        final_desc = (
+            f"Người học có khả năng triển khai {concept_code} trong {target_tech} "
+            f"cho {context_str}: {description[:150] if description else 'viết code, xử lý lỗi, và kiểm thử.'}"
+        )
+
     return {
         'code': f"SIO-{target_tech}-{concept_code}-01",
         'name': f"{target_tech}: Implement {concept_code}",
-        'description': (
-            f"Người học có khả năng triển khai {concept_code} trong {target_tech} "
-            f"cho {context_str}: {description[:150] if description else 'viết code, xử lý lỗi, và kiểm thử.'}"
-        ),
+        'description': final_desc,
         'lo_type': 'SPECIFIC_IMPL',
         'parent_lo_code': f"CIO-{concept_code}-01",
         'concept_codes': [concept_code],

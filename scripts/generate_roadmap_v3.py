@@ -230,6 +230,7 @@ class PipelineOrchestrator:
             "--matched-cios", str(matched_file),
             "--target-tech", self.target_tech,
             "--projects-dir", str(self.repo_root / "projects"),
+            "--goal", self.goal,
             "--output", str(out),
         ])
 

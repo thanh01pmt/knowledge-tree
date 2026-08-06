@@ -196,6 +196,55 @@ def resolve_sios_for_cio(cio_code: str, target_tech: str, all_sios: list) -> dic
     }
 
 
+# Stopwords for domain relevance filtering
+_DOMAIN_STOPWORDS = {
+    'học', 'làm', 'dự', 'án', 'cơ', 'bản', 'theo', 'chủ', 'đề', 'cho', 'và',
+    'của', 'trong', 'một', 'các', 'để', 'với', 'người', 'có', 'khả', 'năng',
+    'the', 'to', 'for', 'and', 'with', 'using', 'build', 'create', 'make',
+    'app', 'project', 'learn', 'learning', 'study', 'python', 'basic',
+}
+
+
+def _goal_tokens(goal: str) -> set:
+    """Extract meaningful tokens from the user goal."""
+    import re
+    tokens = set()
+    for word in re.findall(r'[a-zA-Z0-9]+', goal.lower()):
+        if word not in _DOMAIN_STOPWORDS and len(word) > 2:
+            tokens.add(word)
+    return tokens
+
+
+def _sio_domain_score(sio: dict, goal_tokens: set) -> float:
+    """Score how relevant an SIO is to the user goal.
+
+    Overlap ratio between SIO description tokens and goal tokens.
+    Returns 0.0 if no overlap (generic SIO unrelated to the project).
+    """
+    if not goal_tokens:
+        return 1.0  # no goal -> keep all
+    import re
+    desc = (sio.get('name', '') + ' ' + sio.get('description', '')).lower()
+    desc_tokens = set(re.findall(r'[a-zA-Z0-9]+', desc))
+    overlap = desc_tokens & goal_tokens
+    return len(overlap) / len(goal_tokens)
+
+
+def filter_sios_by_domain(sio_list: list, goal_tokens: set, min_score: float = 0.0) -> list:
+    """Annotate SIOs with domain relevance score.
+
+    Keeps all SIOs (min_score=0) but tags each with domain_score so the
+    roadmap can surface relevance. SIOs with score 0 are generic (e.g.
+    'plugin system', 'DI container') and may be de-prioritized downstream.
+    """
+    kept = []
+    for sio in sio_list:
+        sio = dict(sio)
+        sio['domain_score'] = round(_sio_domain_score(sio, goal_tokens), 3)
+        kept.append(sio)
+    return kept
+
+
 def main():
     import argparse
     parser = argparse.ArgumentParser(description='STEP 5: Resolve SIOs via cross-tech reuse through CIO bridge')
@@ -207,6 +256,8 @@ def main():
                        help='Directory containing project outputs')
     parser.add_argument('--output', type=Path, default=Path('/tmp/resolved_sios.json'),
                        help='Output resolved_sios.json path')
+    parser.add_argument('--goal', type=str, default='',
+                       help='User learning goal (for domain relevance filtering)')
     args = parser.parse_args()
 
     # Load inputs
@@ -238,7 +289,12 @@ def main():
         result['concept_code'] = concept_code
         
         if result['action'] == 'REUSE':
-            print(f"  ✓ REUSE: {len(result['sios'])} SIOs from {result['tech']}")
+            # Annotate SIOs with domain relevance to the user goal
+            goal_tokens = _goal_tokens(args.goal)
+            result['sios'] = filter_sios_by_domain(result['sios'], goal_tokens)
+            result['siblings_count'] = len(result['sios'])
+            print(f"  ✓ REUSE: {len(result['sios'])} SIOs from {result['tech']} "
+                  f"(domain-annotated)")
         elif result['action'] == 'ADAPT':
             print(f"  → ADAPT from {result['source_tech']} (similarity: {result['similarity']:.2f})")
         elif result['action'] == 'TEMPLATE':

@@ -1,0 +1,42 @@
+{
+  "overall_status": "WARN",
+  "validations": {
+    "structure": {
+      "status": "PASS",
+      "issues": [],
+      "phase_count": 3,
+      "total_milestones": 12
+    },
+    "sio_coverage": {
+      "status": "PASS",
+      "issues": [],
+      "coverage": 1.0,
+      "roadmap_sio_count": 49,
+      "resolved_sio_count": 48
+    },
+    "concept_completeness": {
+      "status": "WARN",
+      "issues": [
+        "1 incomplete concept chains: ['AUTOMATED_TESTING_TOOLS missing SIO']"
+      ],
+      "completeness": 0.8,
+      "roadmap_concept_count": 5,
+      "incomplete_concept_count": 1
+    },
+    "prerequisite_dag": {
+      "status": "PASS",
+      "issues": [],
+      "has_cycles": false,
+      "invalid_ref_count": 0,
+      "concept_count": 5,
+      "edge_count": 0
+    },
+    "code_snippets": {
+      "status": "PASS",
+      "issues": [],
+      "coverage": 0.39,
+      "sio_needing_code": 49,
+      "sio_with_code": 19
+    }
+  }
+}

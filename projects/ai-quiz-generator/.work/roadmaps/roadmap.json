@@ -1,0 +1,1086 @@
+{
+  "project_brief": {
+    "goal": "Học Python để làm dự án AI Generative cơ bản: app desktop sinh câu hỏi trắc nghiệm theo chủ đề",
+    "tech_stack": [
+      "Python",
+      "OpenAI",
+      "JSON"
+    ]
+  },
+  "phases": [
+    {
+      "phase_id": 1,
+      "title": "Phase 1: Foundation",
+      "milestones": [
+        {
+          "concept_code": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+          "learning_objectives": [
+            {
+              "code": "ULO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "Understand AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "description": "Người học có khả năng hiểu: Nguyên lý kiểm định, đánh giá phản biện và xác minh tính đúng đắn, an toàn của sản phẩm code/dữ liệu do các hệ thống AI sinh ra.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "AUTOMATED_TESTING_TOOLS",
+          "learning_objectives": [
+            {
+              "code": "ULO-AUTOMATED_TESTING_TOOLS-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "AUTOMATED_TESTING_TOOLS",
+              "name": "Understand AUTOMATED_TESTING_TOOLS",
+              "description": "Người học có khả năng hiểu nguyên lý phổ quát của AUTOMATED_TESTING_TOOLS và vai trò của nó trong thiết kế giải pháp phần mềm.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": null
+            }
+          ]
+        },
+        {
+          "concept_code": "GENERATIVE_CONTENT_APPLICATION",
+          "learning_objectives": [
+            {
+              "code": "ULO-GENERATIVE_CONTENT_APPLICATION-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "GENERATIVE_CONTENT_APPLICATION",
+              "name": "Understand GENERATIVE_CONTENT_APPLICATION",
+              "description": "Người học có khả năng hiểu các ứng dụng nội dung sinh (generative content) trong việc tạo ra nội dung mới như văn bản, hình ảnh, âm thanh dựa trên các mô hình AI.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
+            },
+            {
+              "code": "CIO-GENERATIVE_CONTENT_APPLICATION-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "GENERATIVE_CONTENT_APPLICATION",
+              "name": "Apply GENERATIVE_CONTENT_APPLICATION Concepts",
+              "description": "Người học có khả năng thiết kế các ứng dụng tạo nội dung mới từ dữ liệu mẫu.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
+            },
+            {
+              "code": "SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "GENERATIVE_CONTENT_APPLICATION",
+              "name": "PYTHON: Implement GENERATIVE_CONTENT_APPLICATION",
+              "description": "Người học có khả năng triển khai ứng dụng GenerativeContentApplication trong dự án quiz_generator, sử dụng Config để tự động sinh nội dung câu hỏi từ question_bank.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "IF_ELSE_STATEMENT",
+          "learning_objectives": [
+            {
+              "code": "ULO-IF_ELSE_STATEMENT-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "Understand IF_ELSE_STATEMENT",
+              "description": "Người học có khả năng hiểu: Nắm vững cú pháp và logic của câu lệnh if-else để thực hiện một trong hai khối mã dựa trên một điều kiện logic.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "SQL_SELECT",
+          "learning_objectives": [
+            {
+              "code": "ULO-SQL_SELECT-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "SQL_SELECT",
+              "name": "Understand SQL_SELECT",
+              "description": "Người học có khả năng hiểu: Nắm vững cú pháp của câu lệnh SELECT để truy vấn và lấy dữ liệu từ một hoặc nhiều cột trong một bảng.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 2,
+      "title": "Phase 2",
+      "milestones": [
+        {
+          "concept_code": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+          "learning_objectives": [
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-01-EXPLAIN_MECHANISM",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Explain Mechanism",
+              "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của ai artifact verification & auditing bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-01-INTERPRET_PARAMETERS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Interpret Parameters",
+              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong ai artifact verification & auditing.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-02-DECOMPOSE_TRADEOFFS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Decompose Tradeoffs",
+              "description": "Người học có khả năng phân rã ai artifact verification & auditing thành các yếu tố quyết định và định lượng đánh đổi (cost/benefit, latency/throughput, consistency/availability).",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-02-COMPARE_ALTERNATIVES",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Compare Alternatives",
+              "description": "Người học có khả năng so sánh nhiều phương pháp/kiến trúc cho ai artifact verification & auditing theo tiêu chí định lượng và định tính.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-03-ASSESS_QUALITY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Assess Quality",
+              "description": "Người học có khả năng đánh giá chất lượng giải pháp ai artifact verification & auditing dựa trên tiêu chuẩn ngành, benchmark và rủi ro tiềm ẩn.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-03-CRITIQUE_DESIGN",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Critique Design",
+              "description": "Người học có khả năng chỉ ra điểm yếu, nợ kỹ thuật và đề xuất cải tiến có sơ bộ ước lượng effort/impact cho ai artifact verification & auditing.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-04-DESIGN_SOLUTION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Design Solution",
+              "description": "Người học có khả năng thiết kế giải pháp end-to-end áp dụng ai artifact verification & auditing cho bài toán mới, bao gồm kiến trúc, API, data flow và deployment.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "CIO-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-04-INNOVATE_EXTENSION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Innovate Extension",
+              "description": "Người học có khả năng mở rộng ai artifact verification & auditing với kỹ thuật mới, tối ưu hóa đột phá hoặc tích hợp cross-domain.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "AUTOMATED_TESTING_TOOLS",
+          "learning_objectives": [
+            {
+              "code": "CIO-UNIT-E2E-STRATEGY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "AUTOMATED_TESTING_TOOLS",
+              "name": "Implement Unit and End to End Tests",
+              "description": "Người học có khả năng viết các bài test đơn vị unit test và test tích hợp end-to-end.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": null
+            }
+          ]
+        },
+        {
+          "concept_code": "IF_ELSE_STATEMENT",
+          "learning_objectives": [
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-01-IDENTIFY_COMPONENTS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Identify Components",
+              "description": "Người học có khả năng xác định và phân loại các thành phần cấu thành của if-else statement theo mô hình tham chiếu.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-01-RECALL_DEFINITIONS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Recall Definitions",
+              "description": "Người học có khả năng tái tạo định nghĩa chính xác, ký hiệu và quy tắc cốt lõi của if-else statement mà không cần tài liệu tham khảo.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-02-EXPLAIN_MECHANISM",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Explain Mechanism",
+              "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của if-else statement bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-02-INTERPRET_PARAMETERS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Interpret Parameters",
+              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong if-else statement.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-03-IMPLEMENT_PATTERN",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Implement Pattern",
+              "description": "Người học có khả năng triển khai mẫu giải pháp chuẩn cho if-else statement tuân thủ các ràng buộc hiệu suất, độ tin cậy và bảo trì.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-03-ADAPT_TO_CONTEXT",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Adapt To Context",
+              "description": "Người học có khả năng tùy chỉnh cấu hình, tham số và giao diện của if-else statement cho bối cảnh triển khai cụ thể.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-04-DECOMPOSE_TRADEOFFS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Decompose Tradeoffs",
+              "description": "Người học có khả năng phân rã if-else statement thành các yếu tố quyết định và định lượng đánh đổi (cost/benefit, latency/throughput, consistency/availability).",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-04-COMPARE_ALTERNATIVES",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Compare Alternatives",
+              "description": "Người học có khả năng so sánh nhiều phương pháp/kiến trúc cho if-else statement theo tiêu chí định lượng và định tính.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-IF_ELSE_STATEMENT-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "Conditional Branching Logic",
+              "description": "Người học có khả năng thiết kế logic rẽ nhánh: điều kiện đơn (if), điều kiện lồng nhau (nested if), chuỗi điều kiện (else-if), short-circuit evaluation, guard clause pattern.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-CONDITIONAL-BINARY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "Implement Binary Conditionals (Triển khai Điều kiện Nhị phân)",
+              "description": "Người học có khả năng viết một cấu trúc điều kiện để thực thi một trong hai khối mã khác nhau (if/else) dựa trên một điều kiện.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-CONDITIONAL-MULTI",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "Implement Multi-Branch Conditionals (Triển khai Điều kiện Đa nhánh)",
+              "description": "Người học có khả năng viết một chuỗi các cấu trúc điều kiện (if/else if/else) để lựa chọn thực thi một trong nhiều khối mã.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "CIO-CONDITIONAL-SINGLE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "Implement Single-Branch Conditionals (Triển khai Điều kiện Đơn nhánh)",
+              "description": "Người học có khả năng viết một cấu trúc điều kiện để chỉ thực thi một khối mã nếu một điều kiện là đúng.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "SQL_SELECT",
+          "learning_objectives": [
+            {
+              "code": "CIO-SQL_SELECT-01-IDENTIFY_COMPONENTS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Identify Components",
+              "description": "Người học có khả năng xác định và phân loại các thành phần cấu thành của sql select statement theo mô hình tham chiếu.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-01-RECALL_DEFINITIONS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Recall Definitions",
+              "description": "Người học có khả năng tái tạo định nghĩa chính xác, ký hiệu và quy tắc cốt lõi của sql select statement mà không cần tài liệu tham khảo.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-02-EXPLAIN_MECHANISM",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Explain Mechanism",
+              "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của sql select statement bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-02-INTERPRET_PARAMETERS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Interpret Parameters",
+              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong sql select statement.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-03-IMPLEMENT_PATTERN",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Implement Pattern",
+              "description": "Người học có khả năng triển khai mẫu giải pháp chuẩn cho sql select statement tuân thủ các ràng buộc hiệu suất, độ tin cậy và bảo trì.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-03-ADAPT_TO_CONTEXT",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Adapt To Context",
+              "description": "Người học có khả năng tùy chỉnh cấu hình, tham số và giao diện của sql select statement cho bối cảnh triển khai cụ thể.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-04-DECOMPOSE_TRADEOFFS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Decompose Tradeoffs",
+              "description": "Người học có khả năng phân rã sql select statement thành các yếu tố quyết định và định lượng đánh đổi (cost/benefit, latency/throughput, consistency/availability).",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "CIO-SQL_SELECT-04-COMPARE_ALTERNATIVES",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Compare Alternatives",
+              "description": "Người học có khả năng so sánh nhiều phương pháp/kiến trúc cho sql select statement theo tiêu chí định lượng và định tính.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "Phase 3",
+      "milestones": [
+        {
+          "concept_code": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+          "learning_objectives": [
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-EXPLAIN_MECHANISM-DESIGN_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Design Framework",
+              "description": "Người học có khả năng design governance framework cho ai artifact verification & auditing: policy as code (OPA/Rego), audit logging, automated compliance checks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-EXPLAIN_MECHANISM-BUILD_TOOLING",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Build Tooling",
+              "description": "Người học có khả năng build tooling cho ai artifact verification & auditing: model card generator, datasheet generator, SBOM, provenance tracking.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-INTERPRET_PARAMETERS-RISK_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Risk Assess",
+              "description": "Người học có khả năng risk assessment cho ai artifact verification & auditing: threat modeling, impact analysis, likelihood estimation, mitigation prioritization.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-INTERPRET_PARAMETERS-IMPACT_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Impact Analysis",
+              "description": "Người học có khả năng analyze societal impact của ai artifact verification & auditing: displacement, inequality, environmental, dual-use, geopolitical.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-DECOMPOSE_TRADEOFFS-RISK_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Risk Assess",
+              "description": "Người học có khả năng risk assessment cho ai artifact verification & auditing: threat modeling, impact analysis, likelihood estimation, mitigation prioritization.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-DECOMPOSE_TRADEOFFS-IMPACT_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Impact Analysis",
+              "description": "Người học có khả năng analyze societal impact của ai artifact verification & auditing: displacement, inequality, environmental, dual-use, geopolitical.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-COMPARE_ALTERNATIVES-RISK_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Risk Assess",
+              "description": "Người học có khả năng risk assessment cho ai artifact verification & auditing: threat modeling, impact analysis, likelihood estimation, mitigation prioritization.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-COMPARE_ALTERNATIVES-IMPACT_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Impact Analysis",
+              "description": "Người học có khả năng analyze societal impact của ai artifact verification & auditing: displacement, inequality, environmental, dual-use, geopolitical.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-ASSESS_QUALITY-MATURITY_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Maturity Assess",
+              "description": "Người học có khả năng assess maturity của ai artifact verification & auditing: CMMI, ISO 42001, NIST AI RMF, organizational readiness, gap analysis.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-ASSESS_QUALITY-ROI_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Roi Analysis",
+              "description": "Người học có khả năng ROI analysis cho ai artifact verification & auditing: TCO, value realization, risk-adjusted return, opportunity cost, portfolio optimization.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-CRITIQUE_DESIGN-MATURITY_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Maturity Assess",
+              "description": "Người học có khả năng assess maturity của ai artifact verification & auditing: CMMI, ISO 42001, NIST AI RMF, organizational readiness, gap analysis.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-CRITIQUE_DESIGN-ROI_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Roi Analysis",
+              "description": "Người học có khả năng ROI analysis cho ai artifact verification & auditing: TCO, value realization, risk-adjusted return, opportunity cost, portfolio optimization.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-DESIGN_SOLUTION-DESIGN_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Design Framework",
+              "description": "Người học có khả năng design governance framework cho ai artifact verification & auditing: policy as code (OPA/Rego), audit logging, automated compliance checks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-DESIGN_SOLUTION-BUILD_TOOLING",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Build Tooling",
+              "description": "Người học có khả năng build tooling cho ai artifact verification & auditing: model card generator, datasheet generator, SBOM, provenance tracking.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-INNOVATE_EXTENSION-DESIGN_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Design Framework",
+              "description": "Người học có khả năng design governance framework cho ai artifact verification & auditing: policy as code (OPA/Rego), audit logging, automated compliance checks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            },
+            {
+              "code": "SIO-PYTHON-AI_ARTIFACT_VERIFICATION_AND_EVALUATION-INNOVATE_EXTENSION-BUILD_TOOLING",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "AI_ARTIFACT_VERIFICATION_AND_EVALUATION",
+              "name": "AI Artifact Verification & Auditing - Build Tooling",
+              "description": "Người học có khả năng build tooling cho ai artifact verification & auditing: model card generator, datasheet generator, SBOM, provenance tracking.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-ai_artifact_verification_and_evaluation.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "IF_ELSE_STATEMENT",
+          "learning_objectives": [
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-EXPLAIN_MECHANISM-IMPLEMENT_LIBRARY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Implement Library",
+              "description": "Người học có khả năng build reusable Python library cho if-else statement: API design, type hints, tests, docs, packaging (pyproject.toml).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-EXPLAIN_MECHANISM-BUILD_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Build Framework",
+              "description": "Người học có khả năng build framework component cho if-else statement: plugin system, DI container, async runtime, middleware.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-INTERPRET_PARAMETERS-STATIC_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Static Analysis",
+              "description": "Người học có khả năng static analysis code liên quan if-else statement: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-INTERPRET_PARAMETERS-PERFORMANCE_PROFILE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Performance Profile",
+              "description": "Người học có khả năng profile if-else statement: cProfile, pyinstrument, scalene, memray, line_profiler, identify bottlenecks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IMPLEMENT_PATTERN-IMPLEMENT_LIBRARY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Implement Library",
+              "description": "Người học có khả năng build reusable Python library cho if-else statement: API design, type hints, tests, docs, packaging (pyproject.toml).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IMPLEMENT_PATTERN-BUILD_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Build Framework",
+              "description": "Người học có khả năng build framework component cho if-else statement: plugin system, DI container, async runtime, middleware.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-ADAPT_TO_CONTEXT-USE_PATTERN",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Use Pattern",
+              "description": "Người học có khả năng áp dụng design pattern cho if-else statement: strategy, decorator, context manager, async context manager, protocol.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-ADAPT_TO_CONTEXT-REFACTOR_CODE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Refactor Code",
+              "description": "Người học có khả năng refactor code sử dụng if-else statement: extract method, introduce parameter object, replace conditional with polymorphism.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-DECOMPOSE_TRADEOFFS-STATIC_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Static Analysis",
+              "description": "Người học có khả năng static analysis code liên quan if-else statement: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-DECOMPOSE_TRADEOFFS-PERFORMANCE_PROFILE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Performance Profile",
+              "description": "Người học có khả năng profile if-else statement: cProfile, pyinstrument, scalene, memray, line_profiler, identify bottlenecks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-COMPARE_ALTERNATIVES-STATIC_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Static Analysis",
+              "description": "Người học có khả năng static analysis code liên quan if-else statement: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-COMPARE_ALTERNATIVES-PERFORMANCE_PROFILE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Performance Profile",
+              "description": "Người học có khả năng profile if-else statement: cProfile, pyinstrument, scalene, memray, line_profiler, identify bottlenecks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IDENTIFY_COMPONENTS-IMPLEMENT_LIBRARY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Implement Library",
+              "description": "Người học có khả năng build reusable Python library cho if-else statement: API design, type hints, tests, docs, packaging (pyproject.toml).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IDENTIFY_COMPONENTS-BUILD_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Build Framework",
+              "description": "Người học có khả năng build framework component cho if-else statement: plugin system, DI container, async runtime, middleware.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-RECALL_DEFINITIONS-USE_PATTERN",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Use Pattern",
+              "description": "Người học có khả năng áp dụng design pattern cho if-else statement: strategy, decorator, context manager, async context manager, protocol.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            },
+            {
+              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-RECALL_DEFINITIONS-REFACTOR_CODE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "IF_ELSE_STATEMENT",
+              "name": "If-Else Statement - Refactor Code",
+              "description": "Người học có khả năng refactor code sử dụng if-else statement: extract method, introduce parameter object, replace conditional with polymorphism.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "SQL_SELECT",
+          "learning_objectives": [
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-IDENTIFY_COMPONENTS-BUILD_PIPELINE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Build Pipeline",
+              "description": "Người học có khả năng build data pipeline cho sql select statement: Airflow/Dagster/Prefect DAG, task dependencies, retries, SLA, data quality gates.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-IDENTIFY_COMPONENTS-BUILD_MODEL",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Build Model",
+              "description": "Người học có khả năng train ML model cho sql select statement: feature store, experiment tracking (MLflow), model registry, serving (FastAPI/BentoML).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-RECALL_DEFINITIONS-QUERY_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Query Data",
+              "description": "Người học có khả năng query sql select statement: SQLAlchemy/DuckDB/Polars, parameterized queries, connection pooling, pagination.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-RECALL_DEFINITIONS-TRANSFORM_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Transform Data",
+              "description": "Người học có khả năng transform sql select statement: Pandas/Polars/Spark, type casting, pivot, window functions, UDF, vectorized ops.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-EXPLAIN_MECHANISM-BUILD_PIPELINE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Build Pipeline",
+              "description": "Người học có khả năng build data pipeline cho sql select statement: Airflow/Dagster/Prefect DAG, task dependencies, retries, SLA, data quality gates.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-EXPLAIN_MECHANISM-BUILD_MODEL",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Build Model",
+              "description": "Người học có khả năng train ML model cho sql select statement: feature store, experiment tracking (MLflow), model registry, serving (FastAPI/BentoML).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-INTERPRET_PARAMETERS-PROFILE_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Profile Data",
+              "description": "Người học có khả năng profile sql select statement: ydata-profiling, Great Expectations, schema validation, anomaly detection, data lineage.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-INTERPRET_PARAMETERS-OPTIMIZE_QUERY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Optimize Query",
+              "description": "Người học có khả năng optimize query cho sql select statement: EXPLAIN ANALYZE, index design, partition pruning, materialized view, caching.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-IMPLEMENT_PATTERN-BUILD_PIPELINE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Build Pipeline",
+              "description": "Người học có khả năng build data pipeline cho sql select statement: Airflow/Dagster/Prefect DAG, task dependencies, retries, SLA, data quality gates.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-IMPLEMENT_PATTERN-BUILD_MODEL",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Build Model",
+              "description": "Người học có khả năng train ML model cho sql select statement: feature store, experiment tracking (MLflow), model registry, serving (FastAPI/BentoML).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-ADAPT_TO_CONTEXT-QUERY_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Query Data",
+              "description": "Người học có khả năng query sql select statement: SQLAlchemy/DuckDB/Polars, parameterized queries, connection pooling, pagination.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-ADAPT_TO_CONTEXT-TRANSFORM_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Transform Data",
+              "description": "Người học có khả năng transform sql select statement: Pandas/Polars/Spark, type casting, pivot, window functions, UDF, vectorized ops.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-DECOMPOSE_TRADEOFFS-PROFILE_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Profile Data",
+              "description": "Người học có khả năng profile sql select statement: ydata-profiling, Great Expectations, schema validation, anomaly detection, data lineage.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-DECOMPOSE_TRADEOFFS-OPTIMIZE_QUERY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Optimize Query",
+              "description": "Người học có khả năng optimize query cho sql select statement: EXPLAIN ANALYZE, index design, partition pruning, materialized view, caching.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-COMPARE_ALTERNATIVES-PROFILE_DATA",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Profile Data",
+              "description": "Người học có khả năng profile sql select statement: ydata-profiling, Great Expectations, schema validation, anomaly detection, data lineage.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            },
+            {
+              "code": "SIO-PYTHON-SQL_SELECT-COMPARE_ALTERNATIVES-OPTIMIZE_QUERY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SQL_SELECT",
+              "name": "SQL SELECT Statement - Optimize Query",
+              "description": "Người học có khả năng optimize query cho sql select statement: EXPLAIN ANALYZE, index design, partition pruning, materialized view, caching.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-sql_select.md"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "total_milestones": 12,
+  "total_concepts": 5
+}

@@ -45,7 +45,7 @@ def load_cios_from_projects(projects_dir: Path) -> dict:
     
     return cios
 
-def derive_ulos(matched_cios: list) -> list:
+def derive_ulos(matched_cios: list, concepts_map: dict = None) -> list:
     """Derive ULO (Universal Learning Objective) codes from matched CIOs.
 
     Each matched concept gets a ULO at the UNIVERSAL tier:
@@ -54,6 +54,10 @@ def derive_ulos(matched_cios: list) -> list:
       - concept_codes: [CONCEPT]
       - parent_lo_code: (empty — ULO is the top of the derivation chain)
     Deduplicates by concept so each concept yields exactly one ULO.
+
+    Description uses the REAL concept description from the Master Tree
+    (concepts_map) instead of a template string, so the ULO carries actual
+    pedagogical meaning.
     """
     seen_concepts = set()
     ulos = []
@@ -64,13 +68,22 @@ def derive_ulos(matched_cios: list) -> list:
             continue
         seen_concepts.add(concept)
 
+        # Real description from Master Tree (fallback to template if missing)
+        concept_desc = ''
+        if concepts_map:
+            concept_desc = concepts_map.get(concept, {}).get('description', '')
+        if concept_desc:
+            description = f"Người học có khả năng hiểu: {concept_desc}"
+        else:
+            description = (
+                f"Người học có khả năng hiểu nguyên lý phổ quát của {concept} "
+                f"và vai trò của nó trong thiết kế giải pháp phần mềm."
+            )
+
         ulos.append({
             'code': f"ULO-{concept}-01",
             'name': f"Understand {concept}",
-            'description': (
-                f"Người học có khả năng hiểu nguyên lý phổ quát của {concept} "
-                f"và vai trò của nó trong thiết kế giải pháp phần mềm."
-            ),
+            'description': description,
             'lo_type': 'UNIVERSAL',
             'parent_lo_code': '',
             'concept_codes': [concept],
@@ -144,6 +157,7 @@ def main():
                         'concept_name': cio_data.get('concept_codes', ''),
                         'cio_code': cio_code,
                         'cio_name': cio_data.get('name', ''),
+                        'cio_description': cio_data.get('description', ''),
                         'project': cio_data.get('project', ''),
                     }
                     matched_cios.append(match_info)
@@ -154,7 +168,9 @@ def main():
     print(f"[*] Reused {len(set(reused_cios))} unique CIOs")
 
     # Derive ULOs from matched concepts (UNIVERSAL tier)
-    derived_ulos = derive_ulos(matched_cios)
+    # Pass master tree concepts so ULO descriptions use real concept text
+    master_concepts = inventory.get('master_tree', {}).get('concepts', {})
+    derived_ulos = derive_ulos(matched_cios, master_concepts)
     print(f"[*] Derived {len(derived_ulos)} ULOs from matched concepts")
 
     # Save output
