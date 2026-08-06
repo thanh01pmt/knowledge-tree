@@ -1,9 +1,9 @@
 # Progress Report: Pipeline v3 — Unified Roadmap Generation
 
 > **Ngày:** 2026-08-06
-> **Commit:** `9c6098d` — fix: resolve known limitations in Pipeline v3 (section 6)
+> **Commit:** `18595b8` — feat: add ULO derivation, prerequisites DAG, and instruction generation
 > **Liên kết thiết kế:** [`docs/ideas/2026-08-05-unified-roadmap-generation-architecture.md`](../ideas/2026-08-05-unified-roadmap-generation-architecture.md)
-> **Trạng thái:** ✅ Hoàn thành 10/10 tasks + 6/6 limitation fixes, pipeline Overall Status: PASS
+> **Trạng thái:** ✅ Pipeline v3 hoàn chỉnh 11 steps, verified với real repo (stream-chat-swift), Overall Status: PASS
 
 ---
 
@@ -73,11 +73,13 @@ Tất cả trong `scripts/`, mỗi script là standalone + argparse + testable r
 | 0 | `roadmap_discovery.py` | `--goal`, `--tech-stack` | `reuse_inventory.json` (Master Tree từ Supabase + scored projects) | ✅ |
 | 1-2 | `extract_project_keywords.py` | `--repo-url` / `--repo-dir` | `keywords.json` (imports, types, functions, property wrappers, error patterns) | ✅ |
 | 3 | `resolve_concepts.py` | keywords + inventory + goal | `resolved_concepts.json` (REUSE ≥0.55 / PROPOSE <0.55) | ✅ |
-| 4 | `match_cios.py` | resolved concepts + projects CIOs | `matched_cios.json` | ✅ |
+| 4 | `match_cios.py` | resolved concepts + projects CIOs | `matched_cios.json` (+ `derived_ulos[]`) | ✅ |
+| 4.5 | `generate_prerequisites.py` | matched CIOs + resolved SIOs + inventory | `prerequisites.json` (DAG: reuse master + concept + hierarchy) | ✅ |
 | 5 | `resolve_sios.py` | matched CIOs + target tech | `resolved_sios.json` (REUSE/ADAPT/GENERATE) | ✅ |
 | 6 | `agent_as_judge.py` | concepts + SIOs + prerequisites | `judgment.json` (PASS/FAIL per evaluator) | ✅ |
 | 7 | `apply_to_staging.py` | quarantine TSVs | Upsert lên Supabase `learning_objectives` (map TSV→Supabase schema, dry-run support) | ✅ |
 | 8.5 | `instruction_code_extractor.py` | repo + resolved SIOs | `code_snippets.json` (Python AST + Swift regex + TS/JS regex) | ✅ |
+| 8.6 | `generate_instruction.py` | SIOs + snippets + prereqs | `instruction/instruction-<concept>.md` (8-section, real code snippets) | ✅ |
 | 9 | `validate_roadmap.py` | roadmap + SIOs + concepts + snippets | `validation_report.json` | ✅ |
 | Orchestrator | `generate_roadmap_v3.py` | goal + tech-stack + repo | Toàn bộ artifacts + `pipeline_summary.json` | ✅ |
 
@@ -155,10 +157,10 @@ python scripts/generate_roadmap_v3.py \
 
 ### 🟢 Future work (chưa làm)
 
-5. **Chưa có ULO derivation**: STEP 4 chỉ match CIOs, chưa derive ULO từ CIO (theo design doc). *(Skeleton builder đã derive ULO/CIO tạm cho validation, nhưng chưa có script chính thức)*
-6. **Chưa có prerequisites generation**: STEP 9 validate DAG nhưng pipeline chưa sinh prerequisites.
-7. **Chưa có instruction generation**: STEP 8.5 extract snippets nhưng chưa có script sinh instruction.md từ snippets + SIOs.
-8. **Keyword extraction chưa test với real Swift repos lớn**: Test mới dùng test app nhỏ. Cần chạy với repos thực (stream-chat-swift, firebase-ios-sdk...).
+5. **ULO derivation chính thức** → ✅ **Đã làm** (commit `18595b8`): `match_cios.py` derive ULO từ matched concepts (`ULO-<CONCEPT>-01`, bloom=UNDERSTAND)
+6. **Prerequisites generation** → ✅ **Đã làm** (commit `18595b8`): `generate_prerequisites.py` sinh DAG (reuse master + concept-level + hierarchy SIO→CIO→ULO)
+7. **Instruction generation** → ✅ **Đã làm** (commit `18595b8`): `generate_instruction.py` sinh 8-section instruction với real code snippets + phase-specific debug table
+8. **Keyword extraction chưa test với real Swift repos lớn** → ✅ **Đã test** (commit `18595b8`): stream-chat-swift (1678 Swift files) → 214 keywords, 28 concepts, 116 CIOs, 59 SIOs, 12 instruction files, Overall PASS
 
 ---
 
@@ -265,26 +267,25 @@ python scripts/validate_roadmap.py --roadmap-file /tmp/roadmap.json --sios-file 
 
 ## 10. Next Steps (đề xuất)
 
-> **Cập nhật 2026-08-06:** Mục 1-3 (ngắn hạn) đã hoàn thành trong commit `9c6098d`.
+> **Cập nhật 2026-08-06:** Mục 1-6 đã hoàn thành (commits `9c6098d` + `18595b8`).
 
 ### ✅ Đã hoàn thành
 
 1. ~~Thêm Swift/TS/JS parser cho STEP 8.5~~ → ✅ 3 parsers (Python AST + Swift regex + TS/JS regex)
-2. ~~Test STEP 7 với Supabase thực~~ → ✅ Verified upsert end-to-end (2 test LOs)
+2. ~~Test STEP 7 với Supabase thực~~ → ✅ Verified upsert end-to-end (2 test LOs, đã xóa sau verify)
 3. ~~Calibrate validation thresholds~~ → ✅ Pipeline Overall Status: PASS (100% coverage)
-
-### Trung hạn (1 tháng)
-
-4. **ULO derivation**: STEP 4 derive ULO từ CIO thay vì chỉ match CIO (hiện skeleton chỉ derive tạm cho validation)
-5. **Prerequisites generation**: Sinh prerequisite DAG từ concept dependencies
-6. **Instruction generation**: Sinh `instruction.md` từ code snippets + SIOs + CIO descriptions
+4. ~~ULO derivation~~ → ✅ `match_cios.py` derive ULO từ matched concepts
+5. ~~Prerequisites generation~~ → ✅ `generate_prerequisites.py` sinh DAG (175 edges với real repo)
+6. ~~Instruction generation~~ → ✅ `generate_instruction.py` sinh 8-section instruction với real code snippets
+7. ~~Test với real repos lớn~~ → ✅ stream-chat-swift (1678 Swift files): 214 keywords → 28 concepts → 116 CIOs → 59 SIOs → 12 instruction files, Overall PASS
 
 ### Dài hạn (2-3 tháng)
 
-7. **Tích hợp với viewer**: Render roadmap từ `roadmap.json` trong `apps/viewer/`
-8. **Human review UI**: Dashboard để review proposed concepts/SIOs trước khi apply staging
-9. **Feedback loop**: Lưu judgment history để improve judge accuracy over time
-10. **Test với real repos lớn**: stream-chat-swift, firebase-ios-sdk, roadmap.sh repos để verify keyword extraction + snippet extraction ở scale
+8. **Tích hợp với viewer**: Render roadmap từ `roadmap.json` trong `apps/viewer/`
+9. **Human review UI**: Dashboard để review proposed concepts/SIOs trước khi apply staging
+10. **Feedback loop**: Lưu judgment history để improve judge accuracy over time
+11. **Scheduling theo time budget**: Giai đoạn 6 của design doc (greedy bin-packing theo hours/week) chưa implement
+12. **LLM Narration Layer**: Giai đoạn 8 của design doc (viết lại rationale thành văn phong tự nhiên) chưa implement
 
 ---
 
@@ -311,6 +312,7 @@ scripts/
 **Commits:**
 - `3536d8b` — feat: implement Pipeline v3 (14 files, ~2000 lines new code)
 - `9c6098d` — fix: resolve known limitations in Pipeline v3 (section 6) (5 files, +433/-97)
+- `18595b8` — feat: add ULO derivation, prerequisites DAG, and instruction generation (4 files, +624/-1)
 
 ---
 
