@@ -367,6 +367,21 @@ def parse_python_project(repo_dir: Path) -> Dict:
 # KEYWORD EXTRACTION
 # ============================================================================
 
+# Standard library modules that carry no domain signal — skip as keywords
+STDLIB_MODULES = {
+    # Python
+    'os', 'sys', 'typing', 'json', 're', 'math', 'random', 'time', 'datetime',
+    'pathlib', 'dataclasses', 'enum', 'collections', 'itertools', 'functools',
+    'logging', 'argparse', 'subprocess', 'threading', 'multiprocessing', 'asyncio',
+    'socket', 'http', 'urllib', 'ssl', 'hashlib', 'base64', 'csv', 'sqlite3',
+    'pickle', 'tempfile', 'shutil', 'glob', 'io', 'string', 'struct', 'uuid',
+    'abc', 'copy', 'decimal', 'fractions', 'statistics', 'queue', 'signal',
+    'traceback', 'warnings', 'weakref', 'contextlib', 'unittest', 'pytest',
+    'tkinter', 'tk', 'ttk', 'traceback', 'types', 'inspect', 'platform',
+    # Common third-party that are generic plumbing
+    'requests', 'urllib3', 'pydantic', 'dotenv', 'yaml', 'tomllib',
+}
+
 def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) -> List[Dict]:
     """Extract structured keywords from source context and basic analysis."""
     keywords = []
@@ -375,6 +390,9 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     for imp in source_context.get('imports', []):
         module = imp['module']
         count = imp['count']
+        # Skip standard library / generic plumbing — no domain signal
+        if module.lower() in STDLIB_MODULES:
+            continue
         keywords.append({
             'keyword': module,
             'source': 'import',

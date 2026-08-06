@@ -192,6 +192,102 @@ def search_concepts(
     return scored[:top_k]
 
 
+# Domain grouping for proposed concepts: map keyword patterns to a
+# canonical abstract concept. Prevents noisy per-class proposals
+# (QuizGenerator, QuestionBank, _call_llm...) and surfaces the real Gap D.
+# Keywords that are pure noise — never propose as concepts
+NOISE_KEYWORDS = {'features', 'usage', 'config', 'question', 'main', 'app', 'project'}
+
+# High-signal sources that carry explicit domain intent — used as cluster anchors
+ANCHOR_SOURCES = {'docstring', 'readme_description', 'readme'}
+
+# Minimum cosine similarity for a keyword to join an anchor cluster
+CLUSTER_THRESHOLD = 0.55
+
+
+def _slugify(text: str) -> str:
+    """Convert free text to UPPER_SNAKE_CASE concept code."""
+    import re
+    words = re.findall(r'[A-Za-z0-9]+', text)
+    return '_'.join(w.upper() for w in words[:4]) if words else 'PROPOSED_CONCEPT'
+
+
+def group_proposed_concepts(proposed: list, embed_fn=None) -> tuple:
+    """Group raw proposed keywords into canonical domain concepts.
+
+    Generic semantic clustering (no hardcoded domains):
+    1. Anchors = keywords from high-signal sources (docstring, README).
+       If none, the keyword with the highest best_match score is the anchor.
+    2. Each remaining keyword joins the nearest anchor if embedding cosine
+       similarity >= CLUSTER_THRESHOLD.
+    3. Each anchor becomes one concept proposal; unclustered keywords stay
+       as individual proposals (minus noise).
+
+    Returns (grouped_proposals, ungrouped_proposals).
+    """
+    if not proposed:
+        return [], []
+
+    # 1. Pick anchors: high-signal keywords, excluding noise
+    anchors = [
+        p for p in proposed
+        if p.get('source') in ANCHOR_SOURCES
+        and p.get('keyword', '').lower() not in NOISE_KEYWORDS
+    ]
+    if not anchors:
+        # Fallback: highest-weight keyword (domain intent signal)
+        anchors = [max(proposed, key=lambda p: p.get('weight', 0))]
+
+    # 2. Embed anchors (if embed_fn available)
+    anchor_embs = []
+    for a in anchors:
+        emb = embed_fn(a.get('keyword', '')) if embed_fn else []
+        anchor_embs.append((a, emb))
+
+    grouped = []
+    used = set()
+
+    for anchor, a_emb in anchor_embs:
+        members = [anchor]
+        used.add(id(anchor))
+
+        for p in proposed:
+            if id(p) in used:
+                continue
+            kw = p.get('keyword', '').lower()
+            if kw in NOISE_KEYWORDS:
+                continue
+            if not a_emb or not embed_fn:
+                continue
+            p_emb = embed_fn(p.get('keyword', ''))
+            if p_emb and cosine_similarity(p_emb, a_emb) >= CLUSTER_THRESHOLD:
+                members.append(p)
+                used.add(id(p))
+
+        # Anchor becomes the concept proposal
+        anchor_kw = anchor.get('keyword', '')
+        grouped.append({
+            'proposed_code': _slugify(anchor_kw),
+            'name': anchor_kw,
+            'description': f"Concept được đề xuất từ domain intent: {anchor_kw}",
+            'source_keywords': [m.get('keyword', '') for m in members],
+            'source': 'semantic_cluster',
+            'best_existing_match': max(
+                (m.get('best_match', {}) for m in members if m.get('best_match')),
+                key=lambda b: b.get('score', 0),
+                default=None,
+            ),
+        })
+
+    # 3. Ungrouped = remaining non-noise keywords
+    ungrouped = [
+        p for p in proposed
+        if id(p) not in used and p.get('keyword', '').lower() not in NOISE_KEYWORDS
+    ]
+
+    return grouped, ungrouped
+
+
 def resolve_concepts(
     keywords: list[dict],
     reuse_inventory: dict,
@@ -202,7 +298,23 @@ def resolve_concepts(
     threshold: float = 0.55,
 ) -> dict:
     """Resolve keywords to concepts with multi-label matching."""
-    
+
+    # Source-based thresholds: high-signal sources (docstring, README) carry
+    # explicit domain intent, so they can REUSE at a lower similarity than
+    # noisy sources (imports, generic function names).
+    SOURCE_THRESHOLDS = {
+        'docstring': 0.45,
+        'readme_description': 0.45,
+        'readme': 0.50,
+        'type_declaration': 0.55,
+        'function_signature': 0.55,
+        'import': 0.60,
+        'property_wrapper': 0.55,
+        'error_handling': 0.60,
+        'config': 0.60,
+        'default': threshold,
+    }
+
     master_tree = reuse_inventory.get("master_tree", {})
     concepts = master_tree.get("concepts", {})
     
@@ -251,34 +363,41 @@ def resolve_concepts(
             # If no field match, use top match anyway
             field_filtered = matches[:1]
         
-        # Check confidence threshold
+        # Check confidence threshold (source-aware)
+        eff_threshold = SOURCE_THRESHOLDS.get(source, SOURCE_THRESHOLDS['default'])
         top_match = field_filtered[0]
-        if top_match["score"] >= threshold:
+        if top_match["score"] >= eff_threshold:
             # High confidence → REUSE
             resolved.append({
                 "keyword": keyword,
                 "source": source,
-                "concept_codes": [m["code"] for m in field_filtered if m["score"] >= threshold],
+                "concept_codes": [m["code"] for m in field_filtered if m["score"] >= eff_threshold],
                 "matches": field_filtered,
             })
-            print(f"    ✓ REUSE: {[m['code'] for m in field_filtered if m['score'] >= threshold]}")
+            print(f"    ✓ REUSE: {[m['code'] for m in field_filtered if m['score'] >= eff_threshold]}")
         else:
             # Low confidence → PROPOSE
             proposed.append({
                 "keyword": keyword,
                 "source": source,
                 "best_match": top_match,
-                "reason": f"Low confidence ({top_match['score']:.2f} < {threshold})",
+                "reason": f"Low confidence ({top_match['score']:.2f} < {eff_threshold})",
             })
             print(f"    ? PROPOSE: best match {top_match['code']} ({top_match['score']:.2f})")
     
+    # Group raw proposed keywords into canonical domain concepts
+    grouped_proposed, ungrouped_proposed = group_proposed_concepts(proposed, embed_fn=embed_text)
+
     return {
         "resolved": resolved,
-        "proposed": proposed,
+        "proposed": grouped_proposed + ungrouped_proposed,
+        "proposed_raw": proposed,
         "summary": {
             "total_keywords": len(keywords),
             "resolved_count": len(resolved),
-            "proposed_count": len(proposed),
+            "proposed_count": len(grouped_proposed) + len(ungrouped_proposed),
+            "grouped_proposed_count": len(grouped_proposed),
+            "ungrouped_proposed_count": len(ungrouped_proposed),
             "threshold": threshold,
             "relevant_fields": relevant_fields,
         },
