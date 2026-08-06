@@ -103,6 +103,34 @@ def get_concept_description(concept_code: str, reuse_inventory: dict) -> str:
     return data.get('description', '')
 
 
+def get_concept_name(concept_code: str, reuse_inventory: dict) -> str:
+    """Get the natural-language concept name from master tree.
+
+    e.g. GENERATIVE_CONTENT_APPLICATION -> 'Generative Content Application'
+    """
+    concepts = reuse_inventory.get('master_tree', {}).get('concepts', {})
+    data = concepts.get(concept_code, {})
+    name = data.get('name', '')
+    if name:
+        return name
+    # Fallback: humanize the code
+    return concept_code.replace('_', ' ').title()
+
+
+def get_project_context(keywords_data: dict) -> str:
+    """Build a natural-language project description from docstrings/README.
+
+    Prefers high-signal sources (docstring, readme_description) which carry
+    real domain intent, instead of raw code identifiers.
+    """
+    for kw in keywords_data.get('keywords', []):
+        if kw.get('source') in ('readme_description', 'docstring'):
+            text = kw.get('keyword', '').strip()
+            if len(text) > 15:
+                return text
+    return ''
+
+
 def generate_ulo(concept_code: str, description: str) -> dict:
     """Generate ULO (UNIVERSAL tier) from concept description.
 
@@ -173,33 +201,34 @@ def generate_cio(concept_code: str, description: str) -> dict:
     }
 
 
-def generate_sio(concept_code: str, description: str, keywords: List[str], target_tech: str) -> dict:
-    """Generate SIO (SPECIFIC_IMPL tier) from concept + project keywords.
+def generate_sio(concept_code: str, concept_name: str, description: str,
+                 project_context: str, target_tech: str) -> dict:
+    """Generate SIO (SPECIFIC_IMPL tier) from concept + project context.
 
-    Uses LLM to write a natural, project-context-aware description; falls back
-    to template with real keywords.
+    Uses LLM to write a natural description grounded in the project's real
+    domain intent (docstring/README), NOT raw code identifiers.
     """
-    # Pick relevant keywords as context (exclude the concept code itself)
-    context = [k for k in keywords if k.lower() not in concept_code.lower()][:3]
-    context_str = ', '.join(context) if context else 'project context'
-
     llm_desc = _llm_generate(
         f"Bạn là chuyên gia sư phạm. Viết 1 câu mô tả SIO (Specific Implementation Objective) "
-        f"bắt đầu bằng 'Người học có khả năng triển khai' cho khái niệm sau trong {target_tech}, "
-        f"gắn với ngữ cảnh dự án: {context_str}. Trả về JSON: {{\"description\": \"...\"}}",
-        f"Khái niệm: {concept_code}. Mô tả: {description}"
+        f"bắt đầu bằng 'Người học có khả năng triển khai' cho khái niệm '{concept_name}' "
+        f"trong ngôn ngữ {target_tech}, gắn với mục đích dự án: '{project_context}'. "
+        f"QUAN TRỌNG: dùng tên khái niệm và mô tả tự nhiên bằng tiếng Việt, "
+        f"KHÔNG chèn tên biến/class/function (code identifiers) vào câu văn. "
+        f"Trả về JSON: {{\"description\": \"...\"}}",
+        f"Khái niệm: {concept_name}. Mô tả khái niệm: {description}"
     )
     if llm_desc:
         final_desc = llm_desc
     else:
         final_desc = (
-            f"Người học có khả năng triển khai {concept_code} trong {target_tech} "
-            f"cho {context_str}: {description[:150] if description else 'viết code, xử lý lỗi, và kiểm thử.'}"
+            f"Người học có khả năng triển khai {concept_name} trong {target_tech} "
+            f"phục vụ {project_context if project_context else 'mục đích của dự án'}: "
+            f"{description[:150] if description else 'viết code, xử lý lỗi, và kiểm thử.'}"
         )
 
     return {
         'code': f"SIO-{target_tech}-{concept_code}-01",
-        'name': f"{target_tech}: Implement {concept_code}",
+        'name': f"{target_tech}: Implement {concept_name}",
         'description': final_desc,
         'lo_type': 'SPECIFIC_IMPL',
         'parent_lo_code': f"CIO-{concept_code}-01",
@@ -243,17 +272,19 @@ def main():
             json.dump(output, f, indent=2, ensure_ascii=False)
         return 0
 
-    # Collect project keywords for SIO context
-    keywords = [k.get('keyword', '') for k in keywords_data.get('keywords', [])]
+    # Build natural-language project context (docstring/README, not code ids)
+    project_context = get_project_context(keywords_data)
 
     generated = []
     for concept_code, info in sorted(uncovered.items()):
         description = get_concept_description(concept_code, inventory)
-        print(f"  → Generating LOs for {concept_code}")
+        concept_name = get_concept_name(concept_code, inventory)
+        print(f"  → Generating LOs for {concept_name}")
 
         ulo = generate_ulo(concept_code, description)
         cio = generate_cio(concept_code, description)
-        sio = generate_sio(concept_code, description, keywords, args.target_tech)
+        sio = generate_sio(concept_code, concept_name, description,
+                           project_context, args.target_tech)
 
         generated.extend([ulo, cio, sio])
 

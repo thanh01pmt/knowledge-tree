@@ -50,7 +50,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "GENERATIVE_CONTENT_APPLICATION",
               "name": "Understand GENERATIVE_CONTENT_APPLICATION",
-              "description": "Người học có khả năng hiểu các ứng dụng nội dung sinh (generative content) trong việc tạo ra nội dung mới như văn bản, hình ảnh, âm thanh dựa trên các mô hình AI.",
+              "description": "Người học có khả năng hiểu khái niệm và các ứng dụng thực tiễn của nội dung sinh (generative content) trong việc tạo ra văn bản, hình ảnh, âm thanh và video thông qua các mô hình trí tuệ nhân tạo.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
@@ -60,7 +60,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "GENERATIVE_CONTENT_APPLICATION",
               "name": "Apply GENERATIVE_CONTENT_APPLICATION Concepts",
-              "description": "Người học có khả năng thiết kế các ứng dụng tạo nội dung mới từ dữ liệu mẫu.",
+              "description": "Người học có khả năng thiết kế các ứng dụng cho phép tạo ra nội dung mới dựa trên dữ liệu đầu vào, đáp ứng nhu cầu đa dạng của người dùng.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
@@ -69,8 +69,8 @@
               "code": "SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "GENERATIVE_CONTENT_APPLICATION",
-              "name": "PYTHON: Implement GENERATIVE_CONTENT_APPLICATION",
-              "description": "Người học có khả năng triển khai ứng dụng GenerativeContentApplication trong dự án quiz_generator, sử dụng Config để tự động sinh nội dung câu hỏi từ question_bank.",
+              "name": "PYTHON: Implement Generative Content Application",
+              "description": "Người học có khả năng triển khai cấu hình cho Generative Content Application trong dự án AI Quiz Generator, sử dụng Python để tạo ra các câu hỏi trắc nghiệm tự động.",
               "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"

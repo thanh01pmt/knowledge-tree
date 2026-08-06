@@ -10,8 +10,8 @@
 - Tạo module/file cho concept `GENERATIVE_CONTENT_APPLICATION` theo cấu trúc dự án hiện tại.
 
 ## 💻 3. THỰC THI MÃ NGUỒN
-### SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01 — PYTHON: Implement GENERATIVE_CONTENT_APPLICATION
-**Mô tả:** Người học có khả năng triển khai ứng dụng GenerativeContentApplication trong dự án quiz_generator, sử dụng Config để tự động sinh nội dung câu hỏi từ question_bank.
+### SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01 — PYTHON: Implement Generative Content Application
+**Mô tả:** Người học có khả năng triển khai cấu hình cho Generative Content Application trong dự án AI Quiz Generator, sử dụng Python để tạo ra các câu hỏi trắc nghiệm tự động.
 
 > ⚠️ Không có code snippet thực từ repository cho SIO này. Tham khảo tài liệu chính thức của framework/API tương ứng.
 
@@ -31,7 +31,7 @@
 | Compile error | Type mismatch / unresolved identifier | Đọc compiler message, fix type annotation |
 
 ## 📋 7. CHECKLIST NHIỆM VỤ NGUYÊN TỬ
-- [ ] **TASK_1** — `SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01`: PYTHON: Implement GENERATIVE_CONTENT_APPLICATION
+- [ ] **TASK_1** — `SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01`: PYTHON: Implement Generative Content Application
 
 ## 🏁 8. DEFINITION OF DONE
 - [ ] Code module hoạt động hoàn chỉnh.
