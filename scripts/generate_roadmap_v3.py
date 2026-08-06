@@ -264,6 +264,39 @@ class PipelineOrchestrator:
             self._complete("step_4_5", prerequisites=out)
         return success
 
+    def step_5_5_generate_jit_los(self) -> bool:
+        """STEP 5.5: JIT generate ULO/CIO/SIO for concepts without coverage."""
+        if self._skip_or_run("step_5_5"):
+            return True
+
+        print("\n📋 STEP 5.5: JIT generating LOs for uncovered concepts...")
+        required = [
+            self._artifact("resolved_concepts", "resolved_concepts.json"),
+            self._artifact("matched_cios", "matched_cios.json"),
+            self._artifact("resolved_sios", "resolved_sios.json"),
+            self._artifact("keywords", "keywords.json"),
+            self._artifact("inventory", "reuse_inventory.json"),
+        ]
+        if not all(p.exists() for p in required):
+            print("⚠️  Missing inputs for JIT generation, skipping STEP 5.5")
+            return True
+
+        out = self.output_dir / "jit_los.json"
+
+        success = self._run_script("generate_jit_los.py", [
+            "--resolved-concepts", str(required[0]),
+            "--matched-cios", str(required[1]),
+            "--resolved-sios", str(required[2]),
+            "--keywords", str(required[3]),
+            "--reuse-inventory", str(required[4]),
+            "--target-tech", self.target_tech,
+            "--output", str(out),
+        ])
+
+        if success:
+            self._complete("step_5_5", jit_los=out)
+        return success
+
     def step_6_agent_judge(self) -> bool:
         """STEP 6: Agent-as-Judge validation gate."""
         if self._skip_or_run("step_6"):
@@ -365,6 +398,9 @@ class PipelineOrchestrator:
         ]
         if prereqs_file.exists():
             args += ["--prerequisites", str(prereqs_file)]
+        jit_file = self._artifact("jit_los", "jit_los.json")
+        if jit_file.exists():
+            args += ["--jit-los", str(jit_file)]
 
         success = self._run_script("generate_instruction.py", args)
 
@@ -572,6 +608,7 @@ class PipelineOrchestrator:
             ("step_4", self.step_4_match_cios),
             ("step_5", self.step_5_resolve_sios),
             ("step_4_5", self.step_4_5_generate_prerequisites),
+            ("step_5_5", self.step_5_5_generate_jit_los),
             ("step_6", self.step_6_agent_judge),
             ("step_7", self.step_7_apply_staging),
             ("step_8_5", self.step_8_5_extract_snippets),

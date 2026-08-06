@@ -208,6 +208,8 @@ def main():
                        help='Path to code_snippets.json from STEP 8.5')
     parser.add_argument('--prerequisites', type=Path,
                        help='Path to prerequisites.json from STEP 4.5 (optional)')
+    parser.add_argument('--jit-los', type=Path,
+                       help='Path to jit_los.json from STEP 5.5 (optional)')
     parser.add_argument('--target-tech', type=str, default='SWIFT',
                        help='Target tech stack')
     parser.add_argument('--output-dir', type=Path, required=True,
@@ -223,6 +225,25 @@ def main():
 
     by_concept = collect_sios_by_concept(resolved_sios)
     snippets_by_sio = collect_snippets_by_sio(code_snippets)
+
+    # Merge JIT-generated SIOs (STEP 5.5) into by_concept
+    if args.jit_los and args.jit_los.exists():
+        jit_data = load_json(args.jit_los)
+        for lo in jit_data.get('generated', []):
+            if lo.get('lo_type') != 'SPECIFIC_IMPL':
+                continue
+            concept = (lo.get('concept_codes') or [''])[0]
+            if not concept:
+                continue
+            by_concept.setdefault(concept, []).append({
+                'code': lo.get('code', ''),
+                'name': lo.get('name', ''),
+                'description': lo.get('description', ''),
+                'action': 'JIT_GENERATED',
+                'source_tech': '',
+                'target_tech': args.target_tech,
+            })
+        print(f"[*] Merged JIT SIOs into instruction generation")
 
     print(f"[*] Found {len(by_concept)} concepts with SIOs")
 
