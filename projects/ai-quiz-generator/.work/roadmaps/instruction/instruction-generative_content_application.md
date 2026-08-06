@@ -11,7 +11,7 @@
 
 ## 💻 3. THỰC THI MÃ NGUỒN
 ### SIO-PYTHON-GENERATIVE_CONTENT_APPLICATION-01 — PYTHON: Implement Generative Content Application
-**Mô tả:** Người học có khả năng triển khai cấu hình cho Generative Content Application trong dự án AI Quiz Generator, sử dụng Python để tạo ra các câu hỏi trắc nghiệm tự động.
+**Mô tả:** Người học có khả năng triển khai một Generative Content Application trong Python để cấu hình cho AI Quiz Generator, sử dụng các mô hình generative AI nhằm tạo ra nội dung câu hỏi phù hợp.
 
 > ⚠️ Không có code snippet thực từ repository cho SIO này. Tham khảo tài liệu chính thức của framework/API tương ứng.
 

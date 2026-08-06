@@ -141,6 +141,9 @@ def generate_ulo(concept_code: str, description: str) -> dict:
     llm_desc = _llm_generate(
         "Bạn là chuyên gia sư phạm. Viết 1 câu mô tả ULO (Universal Learning Objective) "
         "bắt đầu bằng 'Người học có khả năng hiểu' cho khái niệm sau. "
+        "QUAN TRỌNG: dùng tên khái niệm tự nhiên bằng tiếng Việt, KHÔNG chèn mã code "
+        "(tên viết hoa như GENERATIVE_CONTENT_APPLICATION) vào câu văn. "
+        "Giữ nguyên thuật ngữ tiếng Anh như 'Generative AI', 'generative content' (không dịch sang tiếng Việt). "
         "Trả về JSON: {\"description\": \"...\"}",
         f"Khái niệm: {concept_code}. Mô tả: {description}"
     )
@@ -175,7 +178,9 @@ def generate_cio(concept_code: str, description: str) -> dict:
     llm_desc = _llm_generate(
         "Bạn là chuyên gia sư phạm. Viết 1 câu mô tả CIO (Conceptual Implementation Objective) "
         "bắt đầu bằng 'Người học có khả năng thiết kế' cho khái niệm sau, "
-        "KHÔNG nhắc tên công nghệ cụ thể. Trả về JSON: {\"description\": \"...\"}",
+        "KHÔNG nhắc tên công nghệ cụ thể, KHÔNG chèn mã code vào câu văn. "
+        "Giữ nguyên thuật ngữ tiếng Anh như 'Generative AI', 'generative content' (không dịch sang tiếng Việt). "
+        "Trả về JSON: {\"description\": \"...\"}",
         f"Khái niệm: {concept_code}. Mô tả: {description}"
     )
     if llm_desc:
@@ -214,6 +219,8 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         f"trong ngôn ngữ {target_tech}, gắn với mục đích dự án: '{project_context}'. "
         f"QUAN TRỌNG: dùng tên khái niệm và mô tả tự nhiên bằng tiếng Việt, "
         f"KHÔNG chèn tên biến/class/function (code identifiers) vào câu văn. "
+        f"Giữ nguyên thuật ngữ tiếng Anh như 'Generative AI', 'generative content' "
+        f"(không dịch sang tiếng Việt, không dùng 'sinh học'). "
         f"Trả về JSON: {{\"description\": \"...\"}}",
         f"Khái niệm: {concept_name}. Mô tả khái niệm: {description}"
     )

@@ -50,7 +50,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "GENERATIVE_CONTENT_APPLICATION",
               "name": "Understand GENERATIVE_CONTENT_APPLICATION",
-              "description": "Người học có khả năng hiểu khái niệm và các ứng dụng thực tiễn của nội dung sinh (generative content) trong việc tạo ra văn bản, hình ảnh, âm thanh và video thông qua các mô hình trí tuệ nhân tạo.",
+              "description": "Người học có khả năng hiểu cách ứng dụng generative content để tạo ra nội dung mới trong các lĩnh vực khác nhau.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
@@ -60,7 +60,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "GENERATIVE_CONTENT_APPLICATION",
               "name": "Apply GENERATIVE_CONTENT_APPLICATION Concepts",
-              "description": "Người học có khả năng thiết kế các ứng dụng cho phép tạo ra nội dung mới dựa trên dữ liệu đầu vào, đáp ứng nhu cầu đa dạng của người dùng.",
+              "description": "Người học có khả năng thiết kế một ứng dụng sử dụng generative content để tạo ra nội dung phù hợp với yêu cầu đầu vào.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
@@ -70,25 +70,10 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "GENERATIVE_CONTENT_APPLICATION",
               "name": "PYTHON: Implement Generative Content Application",
-              "description": "Người học có khả năng triển khai cấu hình cho Generative Content Application trong dự án AI Quiz Generator, sử dụng Python để tạo ra các câu hỏi trắc nghiệm tự động.",
+              "description": "Người học có khả năng triển khai một Generative Content Application trong Python để cấu hình cho AI Quiz Generator, sử dụng các mô hình generative AI nhằm tạo ra nội dung câu hỏi phù hợp.",
               "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-generative_content_application.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "IF_ELSE_STATEMENT",
-          "learning_objectives": [
-            {
-              "code": "ULO-IF_ELSE_STATEMENT-01",
-              "lo_type": "UNIVERSAL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "Understand IF_ELSE_STATEMENT",
-              "description": "Người học có khả năng hiểu: Nắm vững cú pháp và logic của câu lệnh if-else để thực hiện một trong hai khối mã dựa trên một điều kiện logic.",
-              "assessment": "concept-check",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
             }
           ]
         },
@@ -228,155 +213,6 @@
                 "CIO is a conceptual implementation of its parent ULO"
               ],
               "instruction_ref": null
-            }
-          ]
-        },
-        {
-          "concept_code": "IF_ELSE_STATEMENT",
-          "learning_objectives": [
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-01-IDENTIFY_COMPONENTS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Identify Components",
-              "description": "Người học có khả năng xác định và phân loại các thành phần cấu thành của if-else statement theo mô hình tham chiếu.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-01-RECALL_DEFINITIONS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Recall Definitions",
-              "description": "Người học có khả năng tái tạo định nghĩa chính xác, ký hiệu và quy tắc cốt lõi của if-else statement mà không cần tài liệu tham khảo.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-02-EXPLAIN_MECHANISM",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Explain Mechanism",
-              "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của if-else statement bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-02-INTERPRET_PARAMETERS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Interpret Parameters",
-              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong if-else statement.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-03-IMPLEMENT_PATTERN",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Implement Pattern",
-              "description": "Người học có khả năng triển khai mẫu giải pháp chuẩn cho if-else statement tuân thủ các ràng buộc hiệu suất, độ tin cậy và bảo trì.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-03-ADAPT_TO_CONTEXT",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Adapt To Context",
-              "description": "Người học có khả năng tùy chỉnh cấu hình, tham số và giao diện của if-else statement cho bối cảnh triển khai cụ thể.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-04-DECOMPOSE_TRADEOFFS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Decompose Tradeoffs",
-              "description": "Người học có khả năng phân rã if-else statement thành các yếu tố quyết định và định lượng đánh đổi (cost/benefit, latency/throughput, consistency/availability).",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-04-COMPARE_ALTERNATIVES",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Compare Alternatives",
-              "description": "Người học có khả năng so sánh nhiều phương pháp/kiến trúc cho if-else statement theo tiêu chí định lượng và định tính.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-IF_ELSE_STATEMENT-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "Conditional Branching Logic",
-              "description": "Người học có khả năng thiết kế logic rẽ nhánh: điều kiện đơn (if), điều kiện lồng nhau (nested if), chuỗi điều kiện (else-if), short-circuit evaluation, guard clause pattern.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-CONDITIONAL-BINARY",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "Implement Binary Conditionals (Triển khai Điều kiện Nhị phân)",
-              "description": "Người học có khả năng viết một cấu trúc điều kiện để thực thi một trong hai khối mã khác nhau (if/else) dựa trên một điều kiện.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-CONDITIONAL-MULTI",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "Implement Multi-Branch Conditionals (Triển khai Điều kiện Đa nhánh)",
-              "description": "Người học có khả năng viết một chuỗi các cấu trúc điều kiện (if/else if/else) để lựa chọn thực thi một trong nhiều khối mã.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "CIO-CONDITIONAL-SINGLE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "Implement Single-Branch Conditionals (Triển khai Điều kiện Đơn nhánh)",
-              "description": "Người học có khả năng viết một cấu trúc điều kiện để chỉ thực thi một khối mã nếu một điều kiện là đúng.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
             }
           ]
         },
@@ -685,203 +521,6 @@
           ]
         },
         {
-          "concept_code": "IF_ELSE_STATEMENT",
-          "learning_objectives": [
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-EXPLAIN_MECHANISM-IMPLEMENT_LIBRARY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Implement Library",
-              "description": "Người học có khả năng build reusable Python library cho if-else statement: API design, type hints, tests, docs, packaging (pyproject.toml).",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-EXPLAIN_MECHANISM-BUILD_FRAMEWORK",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Build Framework",
-              "description": "Người học có khả năng build framework component cho if-else statement: plugin system, DI container, async runtime, middleware.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-INTERPRET_PARAMETERS-STATIC_ANALYSIS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Static Analysis",
-              "description": "Người học có khả năng static analysis code liên quan if-else statement: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-INTERPRET_PARAMETERS-PERFORMANCE_PROFILE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Performance Profile",
-              "description": "Người học có khả năng profile if-else statement: cProfile, pyinstrument, scalene, memray, line_profiler, identify bottlenecks.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IMPLEMENT_PATTERN-IMPLEMENT_LIBRARY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Implement Library",
-              "description": "Người học có khả năng build reusable Python library cho if-else statement: API design, type hints, tests, docs, packaging (pyproject.toml).",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IMPLEMENT_PATTERN-BUILD_FRAMEWORK",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Build Framework",
-              "description": "Người học có khả năng build framework component cho if-else statement: plugin system, DI container, async runtime, middleware.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-ADAPT_TO_CONTEXT-USE_PATTERN",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Use Pattern",
-              "description": "Người học có khả năng áp dụng design pattern cho if-else statement: strategy, decorator, context manager, async context manager, protocol.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-ADAPT_TO_CONTEXT-REFACTOR_CODE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Refactor Code",
-              "description": "Người học có khả năng refactor code sử dụng if-else statement: extract method, introduce parameter object, replace conditional with polymorphism.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-DECOMPOSE_TRADEOFFS-STATIC_ANALYSIS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Static Analysis",
-              "description": "Người học có khả năng static analysis code liên quan if-else statement: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-DECOMPOSE_TRADEOFFS-PERFORMANCE_PROFILE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Performance Profile",
-              "description": "Người học có khả năng profile if-else statement: cProfile, pyinstrument, scalene, memray, line_profiler, identify bottlenecks.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-COMPARE_ALTERNATIVES-STATIC_ANALYSIS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Static Analysis",
-              "description": "Người học có khả năng static analysis code liên quan if-else statement: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-COMPARE_ALTERNATIVES-PERFORMANCE_PROFILE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Performance Profile",
-              "description": "Người học có khả năng profile if-else statement: cProfile, pyinstrument, scalene, memray, line_profiler, identify bottlenecks.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IDENTIFY_COMPONENTS-IMPLEMENT_LIBRARY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Implement Library",
-              "description": "Người học có khả năng build reusable Python library cho if-else statement: API design, type hints, tests, docs, packaging (pyproject.toml).",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-IDENTIFY_COMPONENTS-BUILD_FRAMEWORK",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Build Framework",
-              "description": "Người học có khả năng build framework component cho if-else statement: plugin system, DI container, async runtime, middleware.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-RECALL_DEFINITIONS-USE_PATTERN",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Use Pattern",
-              "description": "Người học có khả năng áp dụng design pattern cho if-else statement: strategy, decorator, context manager, async context manager, protocol.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            },
-            {
-              "code": "SIO-PYTHON-IF_ELSE_STATEMENT-RECALL_DEFINITIONS-REFACTOR_CODE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IF_ELSE_STATEMENT",
-              "name": "If-Else Statement - Refactor Code",
-              "description": "Người học có khả năng refactor code sử dụng if-else statement: extract method, introduce parameter object, replace conditional with polymorphism.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-quiz/instruction/instruction-if_else_statement.md"
-            }
-          ]
-        },
-        {
           "concept_code": "SQL_SELECT",
           "learning_objectives": [
             {
@@ -1081,6 +720,6 @@
       ]
     }
   ],
-  "total_milestones": 12,
-  "total_concepts": 5
+  "total_milestones": 9,
+  "total_concepts": 4
 }
