@@ -107,6 +107,7 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 | `/audit-coverage`      | @tree-validator   | Run `audit_coverage.py` to cross-reference LO output against source PDF                        |
 | `/sync-supabase`       | @tree-assembler   | Run `sync_to_supabase.py` to push TSVs into Supabase Cloud DB                                  |
 | `/crawl-roadmap <url>` | @roadmap-aligner  | Scaffold project in `projects/`, run standard pipeline, and propose merge to General Context   |
+| `/generate-roadmap <goal> --tech-stack <stack> [--repo-url <url>]` | @roadmap-generator | Generate adaptive learning roadmap from goal + tech stack + project repo (11-step pipeline, Master Tree + cross-tech SIO reuse + JIT expansion + Agent-as-Judge) |
 | `/research-trend "<topic>"` | @knowledge-researcher | Autonomous deep research on emerging tech trends, extract concepts, propose Master Tree updates |
 | `/validate-master-tree`| @tree-validator   | Run `validate_master_tree.py` for Master Tree referential integrity and collision detection   |
 
@@ -141,6 +142,12 @@ Khi có sai lệch hoặc xung đột giữa dữ liệu mới và backup trư�
 - Goal: Crawl external roadmaps (roadmap.sh) via Crawl4AI server & align missing topics with Master TSV.
 - Handover: `.work/roadmap_alignment_report.md`
 - Skill: `roadmap-aligner`
+
+## @roadmap-generator
+
+- Goal: Generate adaptive learning roadmap from user goal + tech stack + project repo. 11-step pipeline: Master Tree (Supabase) as source of truth for ULO/CIO, cross-tech SIO reuse via CIO bridge, JIT expansion for uncovered concepts, Agent-as-Judge validation, instruction generation with real code snippets.
+- Handover: `--output-dir` artifacts (roadmap.json, instruction/, validation_report.json)
+- Skill: `roadmap-generator`
 
 ## @tree-assembler
 
