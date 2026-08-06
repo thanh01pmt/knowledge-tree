@@ -44,14 +44,20 @@ def evaluate_concepts(concepts_data: Dict[str, Any]) -> Dict[str, Any]:
     # At STEP 6, proposals are raw: they have keyword/source/best_match/reason
     # A 'code' field only appears after the concept is generated (STEP 7+)
     seen_keywords = set()
+    seen_codes = set()
     for concept in proposed:
         keyword = concept.get("keyword", "")
-        code = concept.get("code", "")  # optional at this stage
+        code = concept.get("code", "")
+        proposed_code = concept.get("proposed_code", "")  # semantic_cluster format
         
-        # Require at least keyword to identify the proposal
-        if not keyword and not code:
-            issues.append(f"Proposed concept missing both 'keyword' and 'code': {concept}")
+        # Require at least one identifier: keyword | code | proposed_code
+        if not keyword and not code and not proposed_code:
+            issues.append(f"Proposed concept missing 'keyword'/'code'/'proposed_code': {concept}")
             continue
+        
+        # Use proposed_code as the code if present (semantic_cluster proposals)
+        if not code and proposed_code:
+            code = proposed_code
         
         # If code exists, validate naming convention
         if code:
