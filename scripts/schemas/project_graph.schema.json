@@ -1,0 +1,161 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ProjectGraph",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "project",
+    "product",
+    "architecture",
+    "decomposition"
+  ],
+  "properties": {
+    "schema_version": {
+      "type": "integer"
+    },
+    "project": {
+      "type": "object",
+      "required": ["name", "project_type", "platforms"],
+      "properties": {
+        "name": { "type": "string" },
+        "project_type": {
+          "type": "string",
+          "enum": ["app", "cli", "library", "api_service", "firmware", "multi_target"]
+        },
+        "platforms": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "product": {
+      "type": "object",
+      "required": ["purpose", "features", "user_journeys"],
+      "properties": {
+        "purpose": { "type": "string" },
+        "features": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "description", "files", "platform"],
+            "properties": {
+              "id": { "type": "string" },
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "files": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "platform": { "type": "string" }
+            }
+          }
+        },
+        "user_journeys": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "feature_ids"],
+            "properties": {
+              "name": { "type": "string" },
+              "feature_ids": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "architecture": {
+      "type": "object",
+      "required": ["layers", "services", "state_management", "communication"],
+      "properties": {
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "component_names"],
+            "properties": {
+              "name": { "type": "string" },
+              "component_names": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "services": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "file", "responsibility"],
+            "properties": {
+              "name": { "type": "string" },
+              "file": { "type": "string" },
+              "responsibility": { "type": "string" }
+            }
+          }
+        },
+        "state_management": {
+          "type": ["string", "null"]
+        },
+        "communication": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "protocol"],
+            "properties": {
+              "from": { "type": "string" },
+              "to": { "type": "string" },
+              "protocol": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "decomposition": {
+      "type": "object",
+      "required": ["milestones"],
+      "properties": {
+        "milestones": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "phase",
+              "name",
+              "goal",
+              "feature_ids",
+              "files",
+              "acceptance",
+              "depends_on"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "phase": {
+                "type": "string",
+                "enum": ["MVP", "EXTEND", "POLISH"]
+              },
+              "name": { "type": "string" },
+              "goal": { "type": "string" },
+              "feature_ids": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "files": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "acceptance": { "type": "string" },
+              "depends_on": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
