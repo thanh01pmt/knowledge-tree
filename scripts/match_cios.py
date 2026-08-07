@@ -68,17 +68,21 @@ def derive_ulos(matched_cios: list, concepts_map: dict = None) -> list:
             continue
         seen_concepts.add(concept)
 
-        # Real description from Master Tree (fallback to template if missing)
+        # Real description from Master Tree
+        # KHÔNG fallback template "nguyên lý phổ quát" (template máy móc, chất lượng thấp)
+        # KHÔNG thêm "hiểu:" vào desc đã có (tránh "hiểu: hiểu", "hiểu: Nắm vững" lủng củng)
         concept_desc = ''
         if concepts_map:
             concept_desc = concepts_map.get(concept, {}).get('description', '')
         if concept_desc:
-            description = f"Người học có khả năng hiểu: {concept_desc}"
+            # Dùng nguyên vẹn desc — bỏ prefix "hiểu:" nếu có
+            desc_clean = concept_desc.strip()
+            if desc_clean.startswith('hiểu:') or desc_clean.startswith('hiểu '):
+                desc_clean = desc_clean[5:].strip()
+            description = f"Người học có khả năng {desc_clean}"
         else:
-            description = (
-                f"Người học có khả năng hiểu nguyên lý phổ quát của {concept} "
-                f"và vai trò của nó trong thiết kế giải pháp phần mềm."
-            )
+            # Thiếu description → đánh dấu cần JIT regenerate (không dùng template)
+            description = f"Người học có khả năng hiểu và áp dụng {concept.replace('_', ' ').lower()}" 
 
         ulos.append({
             'code': f"ULO-{concept}-01",

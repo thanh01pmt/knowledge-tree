@@ -1,16 +1,18 @@
 {
   "project_brief": {
-    "goal": "Học Swift và SwiftUI để làm app điều khiển smart bulb ESP32-S3 qua WiFi: chỉnh độ sáng, màu sắc, hiệu ứng, báo trạng thái đèn",
+    "goal": "Học Swift và SwiftUI để làm app điều khiển smart bulb ESP32-S3 qua WiFi",
     "tech_stack": [
       "Swift",
       "SwiftUI",
-      "URLSession"
+      "URLSession",
+      "ESP32"
     ]
   },
   "phases": [
     {
       "phase_id": 1,
-      "title": "Phase 1: Foundation",
+      "title": "MVP",
+      "description": "Sản phẩm chạy được từ đầu (UI + logic + data tối giản)",
       "milestones": [
         {
           "concept_code": "CORE_LIBRARIES",
@@ -20,28 +22,8 @@
               "lo_type": "UNIVERSAL",
               "concept": "CORE_LIBRARIES",
               "name": "Understand CORE_LIBRARIES",
-              "description": "Người học có khả năng hiểu vai trò của các thư viện lõi trong việc cung cấp các chức năng nền tảng và tái sử dụng mã, giúp tăng hiệu quả phát triển phần mềm.",
+              "description": "Người học có khả năng hiểu core libraries là các thư viện nền tảng được tích hợp sẵn trong một ngôn ngữ lập trình hoặc framework, cung cấp các chức năng cơ bản và tái sử dụng để hỗ trợ phát triển ứng dụng một cách hiệu quả.",
               "assessment": "concept-check",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
-            },
-            {
-              "code": "CIO-CORE_LIBRARIES-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CORE_LIBRARIES",
-              "name": "Apply CORE_LIBRARIES Concepts",
-              "description": "Người học có khả năng thiết kế CORE_LIBRARIES nhằm tối ưu hóa quy trình xử lý dữ liệu và mô hình hóa, từ đó hỗ trợ hiệu quả việc tạo ra generative content trong các ứng dụng Generative AI.",
-              "assessment": "code-lab",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
-            },
-            {
-              "code": "SIO-SWIFT-CORE_LIBRARIES-01",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "CORE_LIBRARIES",
-              "name": "SWIFT: Implement Core Libraries",
-              "description": "Người học có khả năng triển khai các thành phần chức năng chính của ứng dụng bằng cách tận dụng các Core Libraries của Swift để quản lý dữ liệu, xử lý đồng thời và tương tác với môi trường chạy, nhằm đáp ứng yêu cầu kỹ thuật của dự án.",
-              "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
             }
@@ -55,28 +37,8 @@
               "lo_type": "UNIVERSAL",
               "concept": "EXCEPTION_HANDLING",
               "name": "Understand EXCEPTION_HANDLING",
-              "description": "Người học có khả năng hiểu exception handling là cơ chế trong lập trình cho phép phát hiện và xử lý các lỗi hoặc tình huống bất thường một cách có kiểm soát, giúp chương trình duy trì tính ổn định và tránh sụp đổ không mong muốn.",
+              "description": "Người học có khả năng hiểu khái niệm exception handling (xử lý ngoại lệ) trong lập trình, bao gồm cách sử dụng các khối try-catch để bắt và xử lý các ngoại lệ, giúp chương trình không bị dừng đột ngột khi gặp lỗi.",
               "assessment": "concept-check",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
-            },
-            {
-              "code": "CIO-EXCEPTION_HANDLING-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "EXCEPTION_HANDLING",
-              "name": "Apply EXCEPTION_HANDLING Concepts",
-              "description": "Người học có khả năng thiết kế chiến lược xử lý ngoại lệ (exception handling) để đảm bảo tính bền vững và khả năng phục hồi của hệ thống phần mềm.",
-              "assessment": "code-lab",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
-            },
-            {
-              "code": "SIO-SWIFT-EXCEPTION_HANDLING-01",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "EXCEPTION_HANDLING",
-              "name": "SWIFT: Implement Exception Handling",
-              "description": "Người học có khả năng triển khai Exception Handling trong ngôn ngữ Swift để xây dựng các cơ chế phát hiện và phản hồi lỗi một cách an toàn, đảm bảo ứng dụng không bị gián đoạn và có thể xử lý các tình huống ngoại lệ một cách linh hoạt trong quá trình thực thi.",
-              "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
             }
@@ -90,7 +52,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "FOR_LOOP",
               "name": "Understand FOR_LOOP",
-              "description": "Người học có khả năng hiểu: Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+              "description": "Người học có khả năng hiểu cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
@@ -105,7 +67,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "HTTP_PROTOCOL",
               "name": "Understand HTTP_PROTOCOL",
-              "description": "Người học có khả năng hiểu nguyên lý phổ quát của HTTP_PROTOCOL và vai trò của nó trong thiết kế giải pháp phần mềm.",
+              "description": "Người học có khả năng hiểu nguyên lý hoạt động của giao thức HTTP trong việc truyền tải thông tin trên World Wide Web.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
@@ -120,7 +82,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "LOCAL_VIEW_STATE",
               "name": "Understand LOCAL_VIEW_STATE",
-              "description": "Người học có khả năng hiểu: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "description": "Người học có khả năng hiểu khái niệm trạng thái cục bộ của View, được quản lý bằng cơ chế như @State, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
@@ -135,7 +97,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "WEB_AUTHENTICATION_STRATEGIES",
               "name": "Understand WEB_AUTHENTICATION_STRATEGIES",
-              "description": "Người học có khả năng hiểu nguyên lý phổ quát của WEB_AUTHENTICATION_STRATEGIES và vai trò của nó trong thiết kế giải pháp phần mềm.",
+              "description": "Người học có khả năng hiểu các chiến lược xác thực web, bao gồm cách thức hoạt động và sự khác biệt giữa session-based authentication, token-based authentication (JWT), và OAuth, cũng như các tình huống áp dụng phù hợp cho từng phương pháp.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": null
@@ -150,28 +112,8 @@
               "lo_type": "UNIVERSAL",
               "concept": "WEB_SERVER",
               "name": "Understand WEB_SERVER",
-              "description": "Người học có khả năng hiểu web server là một hệ thống phần mềm hoặc phần cứng có nhiệm vụ tiếp nhận các yêu cầu từ client qua giao thức HTTP, xử lý và trả về các tài nguyên như trang web, dữ liệu hoặc nội dung động, đồng thời nắm được vai trò trung tâm của nó trong kiến trúc hoạt động của các ứng dụng web và Generative AI.",
+              "description": "Người học có khả năng hiểu web server là một hệ thống phần mềm hoặc phần cứng nhận các yêu cầu HTTP từ client và phản hồi bằng các tài nguyên web như HTML, CSS, JavaScript, đồng thời xử lý logic phía máy chủ để phục vụ nội dung động.",
               "assessment": "concept-check",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
-            },
-            {
-              "code": "CIO-WEB_SERVER-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "WEB_SERVER",
-              "name": "Apply WEB_SERVER Concepts",
-              "description": "Người học có khả năng thiết kế một hệ thống web server đáp ứng các yêu cầu về hiệu suất, bảo mật và khả năng mở rộng, đồng thời tích hợp các nguyên tắc của Generative AI để tự động hóa việc tạo và quản lý generative content phục vụ người dùng.",
-              "assessment": "code-lab",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
-            },
-            {
-              "code": "SIO-SWIFT-WEB_SERVER-01",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "WEB_SERVER",
-              "name": "SWIFT: Implement Web Server",
-              "description": "Người học có khả năng triển khai một web server bằng ngôn ngữ Swift, thiết lập các điểm truy cập (endpoint) để xử lý các yêu cầu HTTP và phản hồi với dữ liệu phù hợp.",
-              "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
             }
@@ -181,8 +123,39 @@
     },
     {
       "phase_id": 2,
-      "title": "Phase 2",
+      "title": "MỞ RỘNG",
+      "description": "Thật hóa: API thật, file persistence, lọc",
       "milestones": [
+        {
+          "concept_code": "CORE_LIBRARIES",
+          "learning_objectives": [
+            {
+              "code": "CIO-CORE_LIBRARIES-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CORE_LIBRARIES",
+              "name": "Apply CORE_LIBRARIES Concepts",
+              "description": "Người học có khả năng thiết kế các CORE_LIBRARIES trừu tượng để hỗ trợ việc tạo ra generative content, đảm bảo tính mô-đun và khả năng tái sử dụng trong các hệ thống Generative AI.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "EXCEPTION_HANDLING",
+          "learning_objectives": [
+            {
+              "code": "CIO-EXCEPTION_HANDLING-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "Apply EXCEPTION_HANDLING Concepts",
+              "description": "Người học có khả năng thiết kế các chiến lược xử lý ngoại lệ (exception handling) trong hệ thống phần mềm, đảm bảo tính ổn định và khả năng phục hồi khi gặp lỗi, đồng thời tối ưu hóa trải nghiệm người dùng thông qua việc phân loại và phản hồi lỗi một cách thông minh, có thể tích hợp với các mô hình Generative AI để tạo ra các thông điệp lỗi thích ứng theo ngữ cảnh.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            }
+          ]
+        },
         {
           "concept_code": "FOR_LOOP",
           "learning_objectives": [
@@ -286,8 +259,8 @@
               "code": "CIO-FOR_LOOP-01",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "FOR_LOOP",
-              "name": "Iteration Control Structures",
-              "description": "Người học có khả năng mô tả các cấu trúc lặp: counter-controlled (for i=0..n), collection-controlled (for x in xs), range-based (for i in range), nested loops, loop invariants, termination proof.",
+              "name": "Apply FOR_LOOP Concepts",
+              "description": "Người học có khả năng thiết kế các giải pháp lặp lại có kiểm soát sử dụng FOR_LOOP để xử lý các tập hợp dữ liệu một cách hiệu quả.",
               "assessment": "code-lab",
               "rationale": [
                 "CIO is a conceptual implementation of its parent ULO"
@@ -335,6 +308,16 @@
         {
           "concept_code": "HTTP_PROTOCOL",
           "learning_objectives": [
+            {
+              "code": "CIO-HTTP_PROTOCOL-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Apply HTTP_PROTOCOL Concepts",
+              "description": "Người học có khả năng thiết kế các luồng giao tiếp dựa trên HTTP_PROTOCOL, đảm bảo tính nhất quán và hiệu quả trong việc truyền tải dữ liệu giữa các thành phần, đồng thời tối ưu hóa cho các ứng dụng sử dụng Generative AI và generative content.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
             {
               "code": "CIO-HTTP-HEADER-STATUS",
               "lo_type": "CONCEPTUAL_IMPL",
@@ -464,8 +447,8 @@
               "code": "CIO-LOCAL_VIEW_STATE-01",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "LOCAL_VIEW_STATE",
-              "name": "Ephemeral State Management",
-              "description": "Người học có khả năng mô hình hóa trạng thái cục bộ: component-scoped lifecycle, value vs reference semantics, derived state (computed/memo), state colocation, lifting state up.",
+              "name": "Apply LOCAL_VIEW_STATE Concepts",
+              "description": "Người học có khả năng thiết kế một cơ chế quản lý trạng thái cục bộ cho từng View riêng lẻ, nơi trạng thái chỉ tồn tại trong vòng đời của View đó và tự động bị hủy khi View biến mất, đồng thời có thể tận dụng Generative AI để tạo ra generative content phục vụ cho việc khởi tạo hoặc cập nhật trạng thái một cách linh hoạt.",
               "assessment": "code-lab",
               "rationale": [
                 "CIO is a conceptual implementation of its parent ULO"
@@ -502,6 +485,16 @@
           "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
           "learning_objectives": [
             {
+              "code": "CIO-WEB_AUTHENTICATION_STRATEGIES-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "Apply WEB_AUTHENTICATION_STRATEGIES Concepts",
+              "description": "Người học có khả năng thiết kế các chiến lược xác thực web (WEB_AUTHENTICATION_STRATEGIES) nhằm cân bằng giữa bảo mật và trải nghiệm người dùng, đồng thời tích hợp các phương pháp xác thực hiện đại như multi-factor authentication, token-based verification và adaptive risk assessment, có thể tận dụng Generative AI để tự động hóa việc phân tích hành vi đăng nhập và tạo ra các generative content phục vụ cho việc mô phỏng tấn công hoặc kiểm thử bảo mật.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": null
+            },
+            {
               "code": "CIO-TOKEN-SESSION-AUTH",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "WEB_AUTHENTICATION_STRATEGIES",
@@ -514,13 +507,59 @@
               "instruction_ref": null
             }
           ]
+        },
+        {
+          "concept_code": "WEB_SERVER",
+          "learning_objectives": [
+            {
+              "code": "CIO-WEB_SERVER-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_SERVER",
+              "name": "Apply WEB_SERVER Concepts",
+              "description": "Người học có khả năng thiết kế một hệ thống máy chủ web có khả năng xử lý các yêu cầu đồng thời, quản lý phiên làm việc và phục vụ nội dung tĩnh lẫn động một cách hiệu quả, đồng thời đảm bảo tính bảo mật và khả năng mở rộng.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            }
+          ]
         }
       ]
     },
     {
       "phase_id": 3,
-      "title": "Phase 3",
+      "title": "HOÀN THIỆN",
+      "description": "Độ chắc: error handling, validation, test, polish",
       "milestones": [
+        {
+          "concept_code": "CORE_LIBRARIES",
+          "learning_objectives": [
+            {
+              "code": "SIO-SWIFT-CORE_LIBRARIES-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CORE_LIBRARIES",
+              "name": "SWIFT: Implement Core Libraries",
+              "description": "Người học có khả năng triển khai các chức năng nền tảng của ứng dụng như quản lý dữ liệu, xử lý chuỗi và điều phối tác vụ bất đồng bộ bằng cách lựa chọn và vận dụng hợp lý các Core Libraries của Swift.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "EXCEPTION_HANDLING",
+          "learning_objectives": [
+            {
+              "code": "SIO-SWIFT-EXCEPTION_HANDLING-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "SWIFT: Implement Exception Handling",
+              "description": "Người học có khả năng triển khai cơ chế xử lý ngoại lệ trong ngôn ngữ Swift để bắt và xử lý các lỗi phát sinh, từ đó đảm bảo chương trình tiếp tục hoạt động hoặc kết thúc một cách có kiểm soát.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            }
+          ]
+        },
         {
           "concept_code": "FOR_LOOP",
           "learning_objectives": [
@@ -564,8 +603,8 @@
               "code": "SIO-SWIFT-FOR_LOOP-01",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "FOR_LOOP",
-              "name": "Swift: Iterate with for-in and stride",
-              "description": "Người học có khả năng sử dụng for i in 0..<n, for i in stride(from:0, to:n, by:2), for (index, element) in array.enumerated().",
+              "name": "SWIFT: Implement For Loop",
+              "description": "Người học có khả năng triển khai vòng lặp for trong ngôn ngữ Swift để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp dữ liệu.",
               "assessment": "code-review",
               "rationale": [
                 "SIO is a specific implementation of its parent CIO"
@@ -638,6 +677,16 @@
           "concept_code": "HTTP_PROTOCOL",
           "learning_objectives": [
             {
+              "code": "SIO-SWIFT-HTTP_PROTOCOL-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "SWIFT: Implement Http Protocol",
+              "description": "Người học có khả năng triển khai Http Protocol trong ngôn ngữ Swift bằng cách xây dựng các yêu cầu mạng, xử lý dữ liệu phản hồi và quản lý các phiên kết nối một cách hiệu quả.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
+            {
               "code": "SIO-CUSTOM-HTTP-HEADERS",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "HTTP_PROTOCOL",
@@ -694,8 +743,8 @@
               "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "LOCAL_VIEW_STATE",
-              "name": "Swift: Manage Ephemeral State with @State",
-              "description": "Người học có khả năng khai báo @State private var count = 0, hiểu ownership: parent sở hữu, child nhận @Binding nếu cần chia sẻ.",
+              "name": "SWIFT: Implement Local View State",
+              "description": "Người học có khả năng triển khai Local View State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và tự động được giải phóng khi View biến mất.",
               "assessment": "code-review",
               "rationale": [
                 "SIO is a specific implementation of its parent CIO"
@@ -715,10 +764,40 @@
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
             }
           ]
+        },
+        {
+          "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
+          "learning_objectives": [
+            {
+              "code": "SIO-SWIFT-WEB_AUTHENTICATION_STRATEGIES-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "SWIFT: Implement Web Authentication Strategies",
+              "description": "Người học có khả năng triển khai các chiến lược xác thực web (Web Authentication Strategies) như OAuth 2.0, JWT và token-based authentication trong ứng dụng Swift, đảm bảo an toàn cho các phiên đăng nhập và giao tiếp với máy chủ từ xa.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": null
+            }
+          ]
+        },
+        {
+          "concept_code": "WEB_SERVER",
+          "learning_objectives": [
+            {
+              "code": "SIO-SWIFT-WEB_SERVER-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "WEB_SERVER",
+              "name": "SWIFT: Implement Web Server",
+              "description": "Người học có khả năng triển khai một web server bằng ngôn ngữ Swift, bao gồm việc thiết lập các điểm cuối (endpoints) để xử lý các yêu cầu HTTP và trả về phản hồi dạng JSON hoặc HTML.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            }
+          ]
         }
       ]
     }
   ],
-  "total_milestones": 14,
+  "total_milestones": 21,
   "total_concepts": 7
 }

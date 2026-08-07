@@ -319,6 +319,31 @@ def main():
     # Concepts resolved from STEP 3
     resolved = collect_resolved_concepts(resolved_concepts)
 
+    # TEMPLATE DETECTION: concepts covered nhưng ULO là template máy móc
+    # → đưa vào JIT để regenerate (LLM sinh desc tự nhiên)
+    # Dấu hiệu template: "nguyên lý phổ quát", "hiểu:", hoặc concept code thô trong desc
+    TEMPLATE_SIGNALS = ['nguyên lý phổ quát', 'vai trò của nó trong thiết kế', 'hiểu:', 'hiểu ', 'người học có khả năng hiểu:']
+    for code in list(covered):
+        for lo in matched_cios.get('derived_ulos', []):
+            if lo.get('concept_codes') and code in lo.get('concept_codes', []):
+                desc = lo.get('description', '').lower()
+                if any(sig in desc for sig in TEMPLATE_SIGNALS):
+                    # Kiểm tra desc có phải template không (chứa concept code thô hoặc 'hiểu:')
+                    raw_code = code.lower()
+                    if (raw_code in desc or desc.startswith('người học có khả năng hiểu nguyên lý')
+                            or ' hiểu: ' in desc or desc.startswith('người học có khả năng hiểu:')):
+                        covered.discard(code)
+                        # Thêm vào resolved để JIT regenerate
+                        if code not in resolved:
+                            resolved[code] = {
+                                'keyword': code,
+                                'matches': [],
+                                'is_proposed': True,
+                                'proposed_name': code.replace('_', ' ').title(),
+                            }
+                        print(f"  → Template detected: {code} — regenerate qua JIT")
+                break
+
     # Concepts needing JIT generation
     uncovered = {c: info for c, info in resolved.items() if c not in covered}
     print(f"[*] Resolved concepts: {len(resolved)} | Covered: {len(covered)} | Uncovered: {len(uncovered)}")
