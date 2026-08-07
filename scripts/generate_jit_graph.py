@@ -1189,7 +1189,8 @@ def readable_name(name: str) -> str:
     return clean.strip()
 
 
-def build_graph(implements: List[dict], project_type: str = 'app', feature_names: dict = None) -> dict:
+def build_graph(implements: List[dict], project_type: str = 'app', feature_names: dict = None,
+                use_llm_bloom: bool = True) -> dict:
     """Build JIT knowledge graph: 1 main flow Start → End, phases colored.
 
     project_type quyết định "thấy sản phẩm" ở MVP:
@@ -1254,8 +1255,11 @@ def build_graph(implements: List[dict], project_type: str = 'app', feature_names
                 k['phase'] = phase
                 all_knowledge.append(k)
 
-    # LLM đánh giá bloom_level (fallback heuristic nếu LLM unavailable)
-    all_knowledge = evaluate_bloom_llm(all_knowledge, project_type)
+    # LLM đánh giá bloom_level (hoặc heuristic theo phase nếu --no-llm-bloom)
+    if use_llm_bloom:
+        all_knowledge = evaluate_bloom_llm(all_knowledge, project_type)
+    else:
+        all_knowledge = _evaluate_bloom_heuristic(all_knowledge)
     bloom_by_label = {k['label']: k['bloom_level'] for k in all_knowledge}
 
     # Sort phases
@@ -1329,6 +1333,8 @@ def main():
     parser.add_argument('--feature-config', type=Path, default=None,
                        help='Optional: JSON config override feature clustering '
                             '{"features": {"Tên feature": ["impl1", "impl2"]}}')
+    parser.add_argument('--no-llm-bloom', action='store_true',
+                       help='Bỏ qua LLM bloom evaluation, dùng heuristic theo phase (nhanh hơn)')
     args = parser.parse_args()
 
     if not args.repo_dir.exists():
@@ -1382,7 +1388,7 @@ def main():
         imp['feature_name'] = feature_names.get(imp['feature_id'], f'Feature {imp["feature_id"]}')
 
     # Build graph
-    graph = build_graph(all_implements, project_type, feature_names)
+    graph = build_graph(all_implements, project_type, feature_names, use_llm_bloom=not args.no_llm_bloom)
 
     # Save
     with open(args.output, 'w', encoding='utf-8') as f:
