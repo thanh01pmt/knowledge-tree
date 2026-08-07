@@ -36,39 +36,58 @@ function transformToCardData(roadmap) {
       const cios = los.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
       const sios = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
 
-      // Knowledge items: SIO labels (tech-specific) — mỗi SIO 1 item
-      const knowledge = sios.map(sio => ({
-        label: sio.name || sio.code || 'SIO',
-        code: sio.code,
-        bloom: sio.bloom_level || 'apply',
-        // SIO per-card (theo implementation)
-        sio: {
-          code: sio.code,
-          name: sio.name,
-          description: sio.description,
-          bloom: sio.bloom_level || 'apply',
-        },
-        // ULO liên kết (global theo concept-set)
-        ulo: ulos.length > 0 ? {
-          code: ulos[0].code,
-          name: ulos[0].name,
-          description: ulos[0].description,
-          bloom: ulos[0].bloom_level || 'remember',
-        } : null,
-        // CIO liên kết
-        cio: cios.length > 0 ? {
-          code: cios[0].code,
-          name: cios[0].name,
-          description: cios[0].description,
-          bloom: cios[0].bloom_level || 'understand',
-        } : null,
-      }));
+      // Knowledge items: mỗi ULO = 1 item (concept có NHIỀU ULO)
+      // Mỗi item mang ULO + CIO (global) + SIO (per-card, nếu có)
+      const knowledge = [];
+
+      // Nếu có SIO: mỗi SIO gắn với ULO/CIO liên quan (hoặc ULO đầu tiên)
+      if (sios.length > 0) {
+        sios.forEach((sio, i) => {
+          const ulo = ulos[Math.min(i, ulos.length - 1)] || null;
+          const cio = cios[Math.min(i, cios.length - 1)] || null;
+          knowledge.push({
+            id: `${milestone.concept_code}-sio-${i}`,
+            label: cleanLabel(sio.name || sio.code || 'SIO'),
+            bloom: sio.bloom_level || 'apply',
+            ulo: ulo ? {
+              code: ulo.code, name: cleanLabel(ulo.name), description: ulo.description,
+              bloom: ulo.bloom_level || 'remember',
+            } : null,
+            cio: cio ? {
+              code: cio.code, name: cleanLabel(cio.name), description: cio.description,
+              bloom: cio.bloom_level || 'understand',
+            } : null,
+            sio: {
+              code: sio.code, name: cleanLabel(sio.name), description: sio.description,
+              bloom: sio.bloom_level || 'apply',
+            },
+          });
+        });
+      } else if (ulos.length > 0) {
+        // Không có SIO: vẫn hiện ULO/CIO (kiến thức sử dụng)
+        ulos.forEach((ulo, i) => {
+          const cio = cios[Math.min(i, cios.length - 1)] || null;
+          knowledge.push({
+            id: `${milestone.concept_code}-ulo-${i}`,
+            label: cleanLabel(ulo.name || ulo.code),
+            bloom: ulo.bloom_level || 'remember',
+            ulo: {
+              code: ulo.code, name: cleanLabel(ulo.name), description: ulo.description,
+              bloom: ulo.bloom_level || 'remember',
+            },
+            cio: cio ? {
+              code: cio.code, name: cleanLabel(cio.name), description: cio.description,
+              bloom: cio.bloom_level || 'understand',
+            } : null,
+            sio: null,
+          });
+        });
+      }
 
       cards.push({
         id: milestone.concept_code || `card-${cards.length}`,
         conceptCode: milestone.concept_code,
         phaseId: pid,
-        // Cột trái: mô tả implementation (Cách 1 hoặc Cách 2)
         description: describeImplementation(milestone, los),
         knowledge: knowledge,
         loCount: los.length,
@@ -86,6 +105,17 @@ function transformToCardData(roadmap) {
   };
 }
 
+function cleanLabel(label) {
+  if (!label) return '';
+  // "Understand CORE_LIBRARIES" → "Hiểu CORE_LIBRARIES"
+  let s = String(label);
+  s = s.replace(/^Understand\s+/i, 'Hiểu ');
+  s = s.replace(/^Apply\s+/i, 'Áp dụng ');
+  s = s.replace(/^SWIFT:\s*/i, 'Swift — ');
+  s = s.replace(/^PYTHON:\s*/i, 'Python — ');
+  return s.trim();
+}
+
 // Cột trái: mô tả tính chất dự án đến implementation hiện tại
 function describeImplementation(milestone, los) {
   const concept = milestone.concept_code || 'UNSPECIFIED';
@@ -99,10 +129,17 @@ function describeImplementation(milestone, los) {
   const uloDesc = los.find(lo => lo.lo_type === 'UNIVERSAL')?.description || '';
   const desc = uloDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '');
 
-  return {
-    approach1: `Triển khai chức năng ${conceptName}${techHint}`,
-    approach2: desc ? `App có thể ${desc}.` : `App triển khai ${conceptName}.`,
-  };
+  // Hướng "App có thể..." — mô tả khả năng sản phẩm đến implementation hiện tại
+  // Ưu tiên ULO description (đã có cấu trúc "Người học có khả năng...")
+  // → chuyển thành "App có thể..."
+  if (desc) {
+    return `App có thể ${desc}.`;
+  }
+  // Fallback: nếu không có ULO desc, dùng SIO
+  if (sioNames.length > 0) {
+    return `App triển khai ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}.`;
+  }
+  return `App triển khai ${conceptName}.`;
 }
 
 // ============================================================================
@@ -172,7 +209,6 @@ function KnowledgeItem({ item, index }) {
 // ============================================================================
 
 function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
-  const [showApproach2, setShowApproach2] = useState(approach === 'approach2');
 
   return React.createElement('div', {
     className: 'tkr-card',
@@ -207,26 +243,10 @@ function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
             style: { marginLeft: 'auto', fontSize: '10px', color: '#9a9aa5', fontFamily: 'monospace' },
           }, `${card.loCount} mục tiêu`),
         ]),
-        // Mô tả: Cách 1 (mặc định) hoặc Cách 2
+        // Mô tả: "App có thể..." (hướng đã chọn)
         React.createElement('div', {
           style: { fontSize: '12.5px', color: '#5c5c66', lineHeight: 1.55 },
-        }, showApproach2 ? card.description.approach2 : card.description.approach1),
-        // Toggle Cách 1 / Cách 2
-        React.createElement('div', { style: { marginTop: '8px', display: 'flex', gap: '6px' } }, [
-          ['approach1', 'Triển khai gì', 'approach2', 'App có thể'].map((label, idx) => {
-            const val = idx === 0 ? 'approach1' : 'approach2';
-            return React.createElement('button', {
-              key: val,
-              onClick: () => setShowApproach2(val === 'approach2'),
-              style: {
-                fontSize: '10px', padding: '2px 8px', borderRadius: '12px', cursor: 'pointer',
-                border: `1px solid ${showApproach2 === (val === 'approach2') ? '#0e7c6b' : '#e6e6e6'}`,
-                background: showApproach2 === (val === 'approach2') ? '#e9f6f3' : '#fff',
-                color: showApproach2 === (val === 'approach2') ? '#0e7c6b' : '#9a9aa5',
-              },
-            }, label);
-          }),
-        ]),
+        }, card.description),
       ]),
 
       // CỘT PHẢI: KIẾN THỨC SỬ DỤNG
