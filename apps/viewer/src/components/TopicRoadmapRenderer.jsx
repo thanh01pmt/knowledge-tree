@@ -129,13 +129,11 @@ function describeImplementation(milestone, los) {
   const uloDesc = los.find(lo => lo.lo_type === 'UNIVERSAL')?.description || '';
   const desc = uloDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '');
 
-  // Hướng "App có thể..." — mô tả khả năng sản phẩm đến implementation hiện tại
-  // Ưu tiên ULO description (đã có cấu trúc "Người học có khả năng...")
-  // → chuyển thành "App có thể..."
+  // Hướng "App có thể..." — mô tả khả năng sản phẩm
+  // ULO desc đã là "Người học có khả năng X" → "App có thể X" (desc chứa sẵn prefix)
   if (desc) {
-    return `App có thể ${desc}.`;
+    return desc + '.';
   }
-  // Fallback: nếu không có ULO desc, dùng SIO
   if (sioNames.length > 0) {
     return `App triển khai ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}.`;
   }
@@ -157,50 +155,61 @@ function KnowledgeItem({ item, index }) {
     onMouseLeave: () => setHover(false),
     style: { position: 'relative', padding: '4px 0', fontSize: '13px', cursor: 'default' },
   }, [
-    React.createElement('span', {
+    // Label trên
+    React.createElement('div', {
       key: 'label',
-      style: { fontWeight: 500, color: '#18181b' },
+      style: { fontWeight: 500, color: '#18181b', lineHeight: 1.4 },
     }, item.label),
 
-    // Bloom badge
-    React.createElement('span', {
+    // Bloom badge DƯỚI label (giống Action Roadmap)
+    React.createElement('div', {
       key: 'bloom',
       className: 'tkr-bloom-badge',
       style: {
-        marginLeft: '8px', fontSize: '9px', fontWeight: 600, textTransform: 'uppercase',
+        marginTop: '2px', fontSize: '9px', fontWeight: 600, textTransform: 'uppercase',
         color: bloomColor, background: `${bloomColor}15`, padding: '1px 6px', borderRadius: '10px',
+        display: 'inline-block',
       },
     }, item.bloom),
 
-    // Hover: ULO/CIO/SIO (chỉ ULO dùng ở card này — JIT)
-    hover && item.ulo && React.createElement('div', {
-      key: 'hover',
-      className: 'tkr-hover-popup',
-      style: {
-        position: 'absolute', left: '100%', top: 0, zIndex: 100,
-        background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
-        padding: '10px 12px', width: '320px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-        fontSize: '12px', lineHeight: 1.5,
-      },
-    }, [
-      React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '6px' } },
-        `ⓘ ${item.label} [${item.bloom}]`),
-      item.ulo && React.createElement('div', { key: 'ulo', style: { marginBottom: '4px' } }, [
-        React.createElement('span', { style: { color: '#2b78e4', fontWeight: 600, marginRight: '6px' } }, 'ULO:'),
-        React.createElement('span', null, item.ulo.name || item.ulo.code),
-        item.ulo.description && React.createElement('div', { key: 'ulod', style: { color: '#5c5c66', fontSize: '11px', marginTop: '2px' } }, item.ulo.description),
-      ]),
-      item.cio && React.createElement('div', { key: 'cio', style: { marginBottom: '4px' } }, [
-        React.createElement('span', { style: { color: '#8e44ad', fontWeight: 600, marginRight: '6px' } }, 'CIO:'),
-        React.createElement('span', null, item.cio.name || item.cio.code),
-        item.cio.description && React.createElement('div', { key: 'ciod', style: { color: '#5c5c66', fontSize: '11px', marginTop: '2px' } }, item.cio.description),
-      ]),
-      item.sio && React.createElement('div', { key: 'sio' }, [
-        React.createElement('span', { style: { color: '#0e7c6b', fontWeight: 600, marginRight: '6px' } }, 'SIO:'),
-        React.createElement('span', null, item.sio.name || item.sio.code),
-        item.sio.description && React.createElement('div', { key: 'siod', style: { color: '#5c5c66', fontSize: '11px', marginTop: '2px' } }, item.sio.description),
-      ]),
-    ]),
+    // Hover: CHỈ hiện objective TƯƠNG ỨNG theo bloom của keyword
+    // remember → ULO | understand → CIO | apply/create → SIO
+    hover && (() => {
+      // Chọn objective theo bloom
+      let obj = null;
+      let objLabel = '';
+      if (item.bloom === 'remember' && item.ulo) {
+        obj = item.ulo; objLabel = 'ULO';
+      } else if ((item.bloom === 'understand' || item.bloom === 'analyze') && item.cio) {
+        obj = item.cio; objLabel = 'CIO';
+      } else if (item.sio) {
+        obj = item.sio; objLabel = 'SIO';
+      } else if (item.cio) {
+        obj = item.cio; objLabel = 'CIO';
+      } else if (item.ulo) {
+        obj = item.ulo; objLabel = 'ULO';
+      }
+      if (!obj) return null;
+      return React.createElement('div', {
+        key: 'hover',
+        className: 'tkr-hover-popup',
+        style: {
+          position: 'absolute', left: '100%', top: 0, zIndex: 9999,
+          background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
+          padding: '10px 12px', width: '300px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+          fontSize: '12px', lineHeight: 1.5,
+        },
+      }, [
+        React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '4px' } },
+          `ⓘ ${item.label}`),
+        React.createElement('div', { key: 'obj', style: { color: '#0e7c6b', fontWeight: 600, marginBottom: '4px' } },
+          `${objLabel} · ${obj.bloom || ''}`),
+        React.createElement('div', { key: 'name', style: { color: '#18181b', fontWeight: 500, marginBottom: '2px' } },
+          obj.name || obj.code),
+        obj.description && React.createElement('div', { key: 'desc', style: { color: '#5c5c66', fontSize: '11px', marginTop: '2px' } },
+          obj.description),
+      ]);
+    })(),
   ]);
 }
 
@@ -259,7 +268,7 @@ function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
             fontFamily: '"IBM Plex Mono", monospace', fontSize: '10px', letterSpacing: '0.05em',
             color: '#9a9aa5', marginBottom: '8px',
           },
-        }, '📚 KIẾN THỨC SỬ DỤNG'),
+        }, '📚 KIẾN THỨC CẦN'),
         card.knowledge.length > 0 ? React.createElement('ul', {
           style: { listStyle: 'none', margin: 0, padding: 0 },
         }, card.knowledge.map((k, i) =>
