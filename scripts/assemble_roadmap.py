@@ -198,6 +198,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'knowledge_dimension': lo.get('knowledge_dimension') or 'CONCEPTUAL',
                 'keyword': infer_keyword_from_sio(lo) if lo.get('lo_type') == 'SPECIFIC_IMPL' else (lo.get('keyword', '') or ''),
                 'platform': lo.get('platform', '') or '',
+                'needs_review': bool(lo.get('needs_review', False)),
             }
 
     return los
