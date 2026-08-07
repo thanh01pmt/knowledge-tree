@@ -5,7 +5,8 @@ import ActionRoadmapWeb from './ActionRoadmapWeb';
 import './RoadmapViewer.css';
 
 // JIT roadmaps (từ generate_jit_graph.py) — tự detect
-const JIT_ROADMAPS = ['jit-bulb', 'jit-quiz'];
+// jit-*-v3 = roadmap từ pipeline v3 (learning objectives → viewer format)
+const JIT_ROADMAPS = ['jit-bulb', 'jit-quiz', 'jit-bulb-v3'];
 // Roadmap.sh layout roadmaps
 const ROADMAP_SH_ROADMAPS = ['rust-cli', 'portfolio-js'];
 // Tự động gom tất cả roadmap từ public/roadmaps/
