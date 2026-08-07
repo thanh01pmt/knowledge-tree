@@ -29,6 +29,32 @@
               "keyword": "",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            },
+            {
+              "code": "CIO-CORE_LIBRARIES-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CORE_LIBRARIES",
+              "name": "Apply CORE_LIBRARIES Concepts",
+              "description": "Người học có khả năng thiết kế cấu trúc và API của CORE_LIBRARIES để đảm bảo tính nhất quán và khả năng mở rộng cho các ứng dụng.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            },
+            {
+              "code": "SIO-SWIFT-CORE_LIBRARIES-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CORE_LIBRARIES",
+              "name": "SWIFT: Implement Core Libraries",
+              "description": "Người học có khả năng triển khai Core Libraries (cụ thể là framework Foundation) trong dự án, bao gồm việc sử dụng các API như JSONSerialization để parse dữ liệu, UserDefaults để lưu trữ cài đặt, và Date để xử lý thời gian.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Foundation",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
             }
           ]
         },
@@ -45,6 +71,32 @@
               "bloom_level": "understand",
               "knowledge_dimension": "CONCEPTUAL",
               "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            },
+            {
+              "code": "CIO-EXCEPTION_HANDLING-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "Apply EXCEPTION_HANDLING Concepts",
+              "description": "Người học có khả năng thiết kế các phương án xử lý lỗi hiệu quả dựa trên EXCEPTION_HANDLING, tối ưu hóa độ tin cậy và trải nghiệm người dùng khi gặp sự cố.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            },
+            {
+              "code": "SIO-SWIFT-EXCEPTION_HANDLING-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "SWIFT: Implement Exception Handling",
+              "description": "Người học có khả năng triển khai Exception Handling trong dự án bằng cách khai báo các hàm có khả năng ném lỗi với từ khóa 'throws', sử dụng 'try' khi gọi và xử lý lỗi bằng khối 'do-catch', đồng thời áp dụng protocol 'Error' để định nghĩa các loại lỗi cụ thể cho từng nghiệp vụ.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "throws",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
             }
@@ -65,127 +117,7 @@
               "keyword": "",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "HTTP_PROTOCOL",
-          "learning_objectives": [
-            {
-              "code": "ULO-HTTP_PROTOCOL-01",
-              "lo_type": "UNIVERSAL",
-              "concept": "HTTP_PROTOCOL",
-              "name": "Understand HTTP_PROTOCOL",
-              "description": "Người học có khả năng hiểu HTTP protocol, bao gồm cách thức hoạt động, các phương thức chính, mã trạng thái và ý nghĩa của chúng trong truyền thông web.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "CONCEPTUAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "LOCAL_VIEW_STATE",
-          "learning_objectives": [
-            {
-              "code": "ULO-LOCAL_VIEW_STATE-01",
-              "lo_type": "UNIVERSAL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Understand LOCAL_VIEW_STATE",
-              "description": "Người học có khả năng hiểu Local View State: cách dùng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và bị hủy khi View biến mất.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "CONCEPTUAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
-          "learning_objectives": [
-            {
-              "code": "ULO-WEB_AUTHENTICATION_STRATEGIES-01",
-              "lo_type": "UNIVERSAL",
-              "concept": "WEB_AUTHENTICATION_STRATEGIES",
-              "name": "Understand WEB_AUTHENTICATION_STRATEGIES",
-              "description": "Người học có khả năng hiểu các chiến lược xác thực web (web authentication strategies) – bao gồm các phương pháp như session-based authentication, token-based authentication, và các giao thức như OAuth và OpenID Connect – cùng với ưu nhược điểm và trường hợp sử dụng của từng chiến lược.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "CONCEPTUAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": null
-            }
-          ]
-        },
-        {
-          "concept_code": "WEB_SERVER",
-          "learning_objectives": [
-            {
-              "code": "ULO-WEB_SERVER-01",
-              "lo_type": "UNIVERSAL",
-              "concept": "WEB_SERVER",
-              "name": "Understand WEB_SERVER",
-              "description": "Người học có khả năng hiểu web server là một phần mềm hoặc phần cứng xử lý các yêu cầu HTTP từ client và gửi lại các phản hồi tương ứng, đồng thời nắm được vai trò của nó trong việc lưu trữ và phân phối nội dung web.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "CONCEPTUAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "phase_id": 2,
-      "title": "MỞ RỘNG",
-      "description": "Thật hóa: API thật, file persistence, lọc",
-      "milestones": [
-        {
-          "concept_code": "CORE_LIBRARIES",
-          "learning_objectives": [
-            {
-              "code": "CIO-CORE_LIBRARIES-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CORE_LIBRARIES",
-              "name": "Apply CORE_LIBRARIES Concepts",
-              "description": "Người học có khả năng thiết kế cấu trúc và API của CORE_LIBRARIES để đảm bảo tính nhất quán và khả năng mở rộng cho các ứng dụng.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "EXCEPTION_HANDLING",
-          "learning_objectives": [
-            {
-              "code": "CIO-EXCEPTION_HANDLING-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "EXCEPTION_HANDLING",
-              "name": "Apply EXCEPTION_HANDLING Concepts",
-              "description": "Người học có khả năng thiết kế các phương án xử lý lỗi hiệu quả dựa trên EXCEPTION_HANDLING, tối ưu hóa độ tin cậy và trải nghiệm người dùng khi gặp sự cố.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "FOR_LOOP",
-          "learning_objectives": [
+            },
             {
               "code": "CIO-FOR_LOOP-01",
               "lo_type": "CONCEPTUAL_IMPL",
@@ -242,199 +174,7 @@
                 "CIO is a conceptual implementation of its parent ULO"
               ],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "HTTP_PROTOCOL",
-          "learning_objectives": [
-            {
-              "code": "CIO-HTTP_PROTOCOL-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "HTTP_PROTOCOL",
-              "name": "Apply HTTP_PROTOCOL Concepts",
-              "description": "Người học có khả năng thiết kế các giải pháp truyền thông sử dụng HTTP_PROTOCOL, bao gồm việc lựa chọn phương thức, quản lý header, và xử lý mã trạng thái nhằm tối ưu hóa hiệu quả trao đổi dữ liệu giữa client và server.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
             },
-            {
-              "code": "CIO-HTTP-HEADER-STATUS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "HTTP_PROTOCOL",
-              "name": "Understand HTTP Headers and Status Codes",
-              "description": "Người học có khả năng phân tích các nhóm status code và HTTP header trong các yêu cầu giao tiếp.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
-            },
-            {
-              "code": "CIO-HTTP-VERSIONS-EVOLUTION",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "HTTP_PROTOCOL",
-              "name": "Compare HTTP Versions and Innovations",
-              "description": "Người học có khả năng so sánh sự khác biệt về hiệu năng giữa HTTP/1.1, HTTP/2 và HTTP/3 QUIC.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "LOCAL_VIEW_STATE",
-          "learning_objectives": [
-            {
-              "code": "CIO-LOCAL_VIEW_STATE-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Apply LOCAL_VIEW_STATE Concepts",
-              "description": "Người học có khả năng thiết kế một giải pháp sử dụng LOCAL_VIEW_STATE để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và tự động giải phóng khi View biến mất.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            },
-            {
-              "code": "CIO-STATE-DECLARE-LOCAL",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Declare Local View State (Khai báo Trạng thái Cục bộ của View)",
-              "description": "Người học có khả năng khai báo một biến trạng thái chỉ thuộc về một thành phần giao diện duy nhất và quản lý vòng đời của nó.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            },
-            {
-              "code": "CIO-STATE-MUTATE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Mutate State to Update UI (Thay đổi Trạng thái để Cập nhật UI)",
-              "description": "Người học có khả năng thay đổi giá trị của một biến trạng thái để kích hoạt việc vẽ lại giao diện một cách tự động.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
-          "learning_objectives": [
-            {
-              "code": "CIO-WEB_AUTHENTICATION_STRATEGIES-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "WEB_AUTHENTICATION_STRATEGIES",
-              "name": "Apply WEB_AUTHENTICATION_STRATEGIES Concepts",
-              "description": "Người học có khả năng thiết kế một kiến trúc xác thực web vững chắc bằng cách lựa chọn và kết hợp các Web Authentication Strategies phù hợp.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": null
-            },
-            {
-              "code": "CIO-TOKEN-SESSION-AUTH",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "WEB_AUTHENTICATION_STRATEGIES",
-              "name": "Implement Token and Session Auth",
-              "description": "Người học có khả năng so sánh và triển khai xác thực qua Session Cookie và JWT Token.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": null
-            }
-          ]
-        },
-        {
-          "concept_code": "WEB_SERVER",
-          "learning_objectives": [
-            {
-              "code": "CIO-WEB_SERVER-01",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "WEB_SERVER",
-              "name": "Apply WEB_SERVER Concepts",
-              "description": "Người học có khả năng thiết kế một WEB_SERVER đáp ứng các yêu cầu về xử lý request, response, quản lý kết nối đồng thời, bảo mật, và khả năng mở rộng.",
-              "assessment": "code-lab",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "phase_id": 3,
-      "title": "HOÀN THIỆN",
-      "description": "Độ chắc: error handling, validation, test, polish",
-      "milestones": [
-        {
-          "concept_code": "CORE_LIBRARIES",
-          "learning_objectives": [
-            {
-              "code": "SIO-SWIFT-CORE_LIBRARIES-01",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "CORE_LIBRARIES",
-              "name": "SWIFT: Implement Core Libraries",
-              "description": "Người học có khả năng triển khai Core Libraries (cụ thể là framework Foundation) trong dự án, bao gồm việc sử dụng các API như JSONSerialization để parse dữ liệu, UserDefaults để lưu trữ cài đặt, và Date để xử lý thời gian.",
-              "assessment": "code-review",
-              "bloom_level": "create",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Foundation",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "EXCEPTION_HANDLING",
-          "learning_objectives": [
-            {
-              "code": "SIO-SWIFT-EXCEPTION_HANDLING-01",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "EXCEPTION_HANDLING",
-              "name": "SWIFT: Implement Exception Handling",
-              "description": "Người học có khả năng triển khai Exception Handling trong dự án bằng cách khai báo các hàm có khả năng ném lỗi với từ khóa 'throws', sử dụng 'try' khi gọi và xử lý lỗi bằng khối 'do-catch', đồng thời áp dụng protocol 'Error' để định nghĩa các loại lỗi cụ thể cho từng nghiệp vụ.",
-              "assessment": "code-review",
-              "bloom_level": "create",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "throws",
-              "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
-            }
-          ]
-        },
-        {
-          "concept_code": "FOR_LOOP",
-          "learning_objectives": [
             {
               "code": "SIO-SWIFT-FOR_LOOP-01",
               "lo_type": "SPECIFIC_IMPL",
@@ -511,10 +251,43 @@
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "phase_id": 2,
+      "title": "MỞ RỘNG",
+      "description": "Thật hóa: API thật, file persistence, lọc",
+      "milestones": [
         {
           "concept_code": "HTTP_PROTOCOL",
           "learning_objectives": [
+            {
+              "code": "ULO-HTTP_PROTOCOL-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Understand HTTP_PROTOCOL",
+              "description": "Người học có khả năng hiểu HTTP protocol, bao gồm cách thức hoạt động, các phương thức chính, mã trạng thái và ý nghĩa của chúng trong truyền thông web.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP_PROTOCOL-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Apply HTTP_PROTOCOL Concepts",
+              "description": "Người học có khả năng thiết kế các giải pháp truyền thông sử dụng HTTP_PROTOCOL, bao gồm việc lựa chọn phương thức, quản lý header, và xử lý mã trạng thái nhằm tối ưu hóa hiệu quả trao đổi dữ liệu giữa client và server.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
             {
               "code": "SIO-SWIFT-HTTP_PROTOCOL-01",
               "lo_type": "SPECIFIC_IMPL",
@@ -527,12 +300,96 @@
               "keyword": "HTTPBulbService",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP-HEADER-STATUS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Understand HTTP Headers and Status Codes",
+              "description": "Người học có khả năng phân tích các nhóm status code và HTTP header trong các yêu cầu giao tiếp.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP-VERSIONS-EVOLUTION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Compare HTTP Versions and Innovations",
+              "description": "Người học có khả năng so sánh sự khác biệt về hiệu năng giữa HTTP/1.1, HTTP/2 và HTTP/3 QUIC.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
             }
           ]
         },
         {
           "concept_code": "LOCAL_VIEW_STATE",
           "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_VIEW_STATE-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Understand LOCAL_VIEW_STATE",
+              "description": "Người học có khả năng hiểu Local View State: cách dùng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và bị hủy khi View biến mất.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Apply LOCAL_VIEW_STATE Concepts",
+              "description": "Người học có khả năng thiết kế một giải pháp sử dụng LOCAL_VIEW_STATE để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và tự động giải phóng khi View biến mất.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-DECLARE-LOCAL",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Declare Local View State (Khai báo Trạng thái Cục bộ của View)",
+              "description": "Người học có khả năng khai báo một biến trạng thái chỉ thuộc về một thành phần giao diện duy nhất và quản lý vòng đời của nó.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-MUTATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Mutate State to Update UI (Thay đổi Trạng thái để Cập nhật UI)",
+              "description": "Người học có khả năng thay đổi giá trị của một biến trạng thái để kích hoạt việc vẽ lại giao diện một cách tự động.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
             {
               "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
               "lo_type": "SPECIFIC_IMPL",
@@ -569,6 +426,32 @@
           "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
           "learning_objectives": [
             {
+              "code": "ULO-WEB_AUTHENTICATION_STRATEGIES-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "Understand WEB_AUTHENTICATION_STRATEGIES",
+              "description": "Người học có khả năng hiểu các chiến lược xác thực web (web authentication strategies) – bao gồm các phương pháp như session-based authentication, token-based authentication, và các giao thức như OAuth và OpenID Connect – cùng với ưu nhược điểm và trường hợp sử dụng của từng chiến lược.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": null
+            },
+            {
+              "code": "CIO-WEB_AUTHENTICATION_STRATEGIES-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "Apply WEB_AUTHENTICATION_STRATEGIES Concepts",
+              "description": "Người học có khả năng thiết kế một kiến trúc xác thực web vững chắc bằng cách lựa chọn và kết hợp các Web Authentication Strategies phù hợp.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": null
+            },
+            {
               "code": "SIO-SWIFT-WEB_AUTHENTICATION_STRATEGIES-01",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "WEB_AUTHENTICATION_STRATEGIES",
@@ -580,12 +463,59 @@
               "keyword": "WebServer.h",
               "rationale": [],
               "instruction_ref": null
+            },
+            {
+              "code": "CIO-TOKEN-SESSION-AUTH",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "Implement Token and Session Auth",
+              "description": "Người học có khả năng so sánh và triển khai xác thực qua Session Cookie và JWT Token.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": null
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "HOÀN THIỆN",
+      "description": "Độ chắc: error handling, validation, test, polish",
+      "milestones": [
         {
           "concept_code": "WEB_SERVER",
           "learning_objectives": [
+            {
+              "code": "ULO-WEB_SERVER-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "WEB_SERVER",
+              "name": "Understand WEB_SERVER",
+              "description": "Người học có khả năng hiểu web server là một phần mềm hoặc phần cứng xử lý các yêu cầu HTTP từ client và gửi lại các phản hồi tương ứng, đồng thời nắm được vai trò của nó trong việc lưu trữ và phân phối nội dung web.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            },
+            {
+              "code": "CIO-WEB_SERVER-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_SERVER",
+              "name": "Apply WEB_SERVER Concepts",
+              "description": "Người học có khả năng thiết kế một WEB_SERVER đáp ứng các yêu cầu về xử lý request, response, quản lý kết nối đồng thời, bảo mật, và khả năng mở rộng.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            },
             {
               "code": "SIO-SWIFT-WEB_SERVER-01",
               "lo_type": "SPECIFIC_IMPL",
@@ -604,6 +534,6 @@
       ]
     }
   ],
-  "total_milestones": 21,
+  "total_milestones": 7,
   "total_concepts": 7
 }

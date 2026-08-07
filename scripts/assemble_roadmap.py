@@ -21,6 +21,7 @@ Outputs:
 
 import json
 import argparse
+import math
 import re
 from collections import defaultdict, deque
 from pathlib import Path
@@ -297,38 +298,50 @@ def vertical_phase_for_lo(lo: dict) -> int:
 
 
 def group_vertical_phases(layers: List[List[str]], los: Dict[str, dict]) -> List[dict]:
-    """Group LOs vào 4 phase vertical (NỀN TẢNG → MVP → MỞ RỘNG → HOÀN THIỆN).
+    """Group LOs theo CONCEPT — 1 concept = 1 milestone duy nhất chứa ĐỦ ULO+CIO+SIO.
 
-    Giữ nguyên topological order bên trong mỗi phase (dependency vẫn đúng),
-    chỉ đổi cách nhóm phase từ "layer" sang "mức hoàn thiện sản phẩm".
+    Fix root cause: trước đây tách LO theo bloom (ULO→P1, CIO→P2, SIO→P3) khiến
+    cùng concept bị rải 3 phase, mỗi phase chỉ 1 tầng → card thiếu Concept hoặc
+    thiếu Keyword. Giờ gom toàn bộ LO của concept vào 1 milestone.
+
+    Phase = bước tiến của FLOW (thứ tự học concept theo layer), KHÔNG theo bloom.
+    Concept xuất hiện ở layer đầu (nền tảng) → phase sớm; layer cuối → phase muộn.
+    Chia đều concepts theo layer: mỗi phase nhận 1 nhóm layer liên tiếp.
     """
-    # Gán phase cho từng LO
-    lo_phase = {}
+    # Gom toàn bộ LO theo concept (xuyên phase)
+    by_concept = defaultdict(list)
+    concept_order = []  # thứ tự concept theo layer (dependency flow)
+    seen_concepts = set()
     for layer in layers:
         for code in layer:
-            lo_phase[code] = vertical_phase_for_lo(los[code])
-
-    # Gom theo phase, giữ thứ tự layer (dependency order)
-    phases = []
-    for p in VERTICAL_PHASES:
-        p_codes = [c for layer in layers for c in layer if lo_phase.get(c) == p['id']]
-        if not p_codes:
-            continue
-        # Group theo concept trong phase
-        by_concept = defaultdict(list)
-        for code in p_codes:
             concept = los[code]['concept'] or 'UNSPECIFIED'
             by_concept[concept].append(code)
+            if concept not in seen_concepts:
+                seen_concepts.add(concept)
+                concept_order.append(concept)
+
+    if not concept_order:
+        return []
+
+    # Chia concepts đều vào các phase theo thứ tự flow
+    n_phases = len([v for v in VERTICAL_PHASES if v['id'] >= 1])  # P1..P3 (bỏ P0 trống)
+    per_phase = max(1, math.ceil(len(concept_order) / max(1, n_phases)))
+    phases = []
+    phase_idx = 0
+    for start in range(0, len(concept_order), per_phase):
+        chunk = concept_order[start:start + per_phase]
+        vp = VERTICAL_PHASES[phase_idx + 1]  # P1, P2, P3... (chỉ dùng phase id>=1)
+        phase_idx += 1
         milestones = []
-        for concept, codes in sorted(by_concept.items()):
+        for concept in chunk:
             milestones.append({
                 'concept_code': concept,
-                'learning_objectives': [los[c] for c in codes],
+                'learning_objectives': [los[c] for c in by_concept[concept]],
             })
         phases.append({
-            'phase_id': p['id'],
-            'title': p['title'],
-            'description': p['desc'],
+            'phase_id': vp['id'],
+            'title': vp['title'],
+            'description': vp['desc'],
             'milestones': milestones,
         })
     return phases
