@@ -103,7 +103,7 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
     # Proposed concepts (chưa có trong Master Tree — JIT nội bộ)
     # Chỉ JIT cho keywords là KIẾN THỨC thật (import, property_wrapper, error_handling, docstring)
     # Bỏ tên class/function tự đặt (type_declaration, function_signature) — không phải concept
-    JIT_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config'}
+    JIT_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config', 'escalated'}
     for item in resolved_concepts.get('proposed', []):
         source = item.get('source', '')
         if source and source not in JIT_SOURCES:
@@ -111,8 +111,11 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
         keyword = item.get('keyword', '') or item.get('proposed_name', '') or item.get('name', '')
         if not keyword:
             continue
-        # Tạo concept_code tạm từ keyword (UPPER_SNAKE)
-        code = re.sub(r'[^A-Z0-9]+', '_', keyword.upper()).strip('_')
+        # Nếu có concept_code (từ STEP 3.5 escalated) — dùng trực tiếp (concept trung tính)
+        code = item.get('concept_code', '')
+        if not code:
+            # Fallback: tạo concept_code tạm từ keyword (UPPER_SNAKE)
+            code = re.sub(r'[^A-Z0-9]+', '_', keyword.upper()).strip('_')
         if not code:
             continue
         concepts[code] = {
@@ -279,6 +282,8 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
 def main():
     parser = argparse.ArgumentParser(description='STEP 5.5: JIT generate LOs for uncovered concepts')
     parser.add_argument('--resolved-concepts', type=Path, required=True)
+    parser.add_argument('--escalated-concepts', type=Path, default=None,
+                        help='Optional: escalated_concepts.json từ STEP 3.5 (concept trung tính)')
     parser.add_argument('--matched-cios', type=Path, required=True)
     parser.add_argument('--resolved-sios', type=Path, required=True)
     parser.add_argument('--keywords', type=Path, required=True)
@@ -288,6 +293,22 @@ def main():
     args = parser.parse_args()
 
     resolved_concepts = load_json(args.resolved_concepts)
+    # Nếu có escalated_concepts (STEP 3.5) — THAY proposed raw bằng concept trung tính
+    if args.escalated_concepts and args.escalated_concepts.exists():
+        escalated = load_json(args.escalated_concepts)
+        # Chỉ giữ escalated concepts (concept trung tính), bỏ proposed raw (tên thư viện)
+        escalated_proposed = []
+        for item in escalated.get('escalated', []):
+            code = item.get('concept_code', '')
+            if code and item.get('status') == 'new':
+                escalated_proposed.append({
+                    'keyword': item.get('keyword', ''),
+                    'proposed_name': item.get('concept_name', code),
+                    'concept_code': code,
+                    'source': 'escalated',
+                })
+        resolved_concepts['proposed'] = escalated_proposed
+        print(f"[*] Dùng escalated concepts từ STEP 3.5 ({len(escalated_proposed)} Gap D concepts)")
     matched_cios = load_json(args.matched_cios)
     resolved_sios = load_json(args.resolved_sios)
     keywords_data = load_json(args.keywords)

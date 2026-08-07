@@ -217,6 +217,54 @@ class PipelineOrchestrator:
             self._complete("step_3", resolved_concepts=out)
         return success
 
+    def step_3_5_escalate_concepts(self) -> bool:
+        """STEP 3.5: LLM escalate keyword → concept trung tính, match Master Tree."""
+        if self._skip_or_run("step_3_5"):
+            return True
+
+        print("\n📋 STEP 3.5: Escalating keywords to neutral concepts (LLM)...")
+        keywords_file = self._artifact("keywords", self.output_dir / "keywords.json")
+        resolved_file = self._artifact("resolved_concepts", self.output_dir / "resolved_concepts.json")
+        out = self.output_dir / "escalated_concepts.json"
+
+        if not keywords_file.exists() or not resolved_file.exists():
+            print("⚠️  Missing inputs for escalation, skipping STEP 3.5")
+            return True
+
+        success = self._run_script("escalate_concepts_v3.py", [
+            "--keywords", str(keywords_file),
+            "--resolved-concepts", str(resolved_file),
+            "--output", str(out),
+        ])
+
+        if success:
+            self._complete("step_3_5", escalated_concepts=out)
+        return success
+
+    def step_3_5_escalate_concepts(self) -> bool:
+        """STEP 3.5: LLM escalate keyword → concept trung tính, match Master Tree."""
+        if self._skip_or_run("step_3_5"):
+            return True
+
+        print("\n📋 STEP 3.5: Escalating keywords to neutral concepts (LLM)...")
+        keywords_file = self._artifact("keywords", self.output_dir / "keywords.json")
+        resolved_file = self._artifact("resolved_concepts", self.output_dir / "resolved_concepts.json")
+        out = self.output_dir / "escalated_concepts.json"
+
+        if not keywords_file.exists() or not resolved_file.exists():
+            print("⚠️  Missing inputs for escalation, skipping STEP 3.5")
+            return True
+
+        success = self._run_script("escalate_concepts_v3.py", [
+            "--keywords", str(keywords_file),
+            "--resolved-concepts", str(resolved_file),
+            "--output", str(out),
+        ])
+
+        if success:
+            self._complete("step_3_5", escalated_concepts=out)
+        return success
+
     def step_4_match_cios(self) -> bool:
         """STEP 4: Match concepts to CIOs."""
         if self._skip_or_run("step_4"):
@@ -674,6 +722,7 @@ class PipelineOrchestrator:
             ("step_0_5", self.step_0_5_propose_tech_stack),
             ("step_1_2", self.step_1_2_extract_keywords),
             ("step_3", self.step_3_resolve_concepts),
+            ("step_3_5", self.step_3_5_escalate_concepts),
             ("step_4", self.step_4_match_cios),
             ("step_5", self.step_5_resolve_sios),
             ("step_4_5", self.step_4_5_generate_prerequisites),
