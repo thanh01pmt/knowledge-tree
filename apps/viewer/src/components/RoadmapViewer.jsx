@@ -50,7 +50,7 @@ export default function RoadmapViewer() {
           title: m.project_brief?.title,
           created_at: new Date().toISOString(),
           key: `roadmap_${m.project_brief?.project_code}`,
-          _isJIT: m._isJIT
+          _type: m._type
         }));
         localStorage.setItem('roadmap_manifest', JSON.stringify(manifest));
         setSelectedRoadmap(loaded[0]);
@@ -104,8 +104,8 @@ export default function RoadmapViewer() {
       <header className="viewer-header">
         <div className="header-left">
           <h2>{selectedRoadmap.project_brief?.title || 'Untitled Roadmap'}</h2>
-          <span className={`badge ${isJIT ? 'jit' : 'roadmap-sh'}`}>
-            {isJIT ? '🧠 JIT Knowledge Graph' : '🗺️ roadmap.sh Layout'}
+          <span className={`badge ${roadmapType !== 'roadmap-sh' ? 'jit' : 'roadmap-sh'}`}>
+            {roadmapType === 'topic' ? '📘 Topic Roadmap' : roadmapType === 'action' ? '🎯 Action Roadmap' : '🗺️ roadmap.sh Layout'}
           </span>
           <span className="project-code">{selectedRoadmap.project_brief?.project_code}</span>
         </div>
@@ -120,7 +120,7 @@ export default function RoadmapViewer() {
             >
               {roadmaps.map(rm => (
                 <option key={rm.project_brief?.project_code} value={rm.project_brief?.project_code}>
-                  {rm.project_brief?.title} ({rm.project_brief?.project_code}) {rm._isJIT ? '🧠' : '🗺️'}
+                  {rm.project_brief?.title} ({rm.project_brief?.project_code}) {rm._type === 'topic' ? '📘' : rm._type === 'action' ? '🎯' : '🗺️'}
                 </option>
               ))}
             </select>
@@ -130,7 +130,7 @@ export default function RoadmapViewer() {
               className={activeTab === 'renderer' ? 'active' : ''}
               onClick={() => setActiveTab('renderer')}
             >
-              {isJIT ? 'Graph View' : 'Layout'}
+              {roadmapType !== 'roadmap-sh' ? 'Graph View' : 'Layout'}
             </button>
             <button 
               className={activeTab === 'frontend' ? 'active' : ''}
