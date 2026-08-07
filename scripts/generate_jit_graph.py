@@ -159,6 +159,63 @@ PHASE_NAMES = {
     3: 'HOÀN THIỆN',
 }
 
+# ============================================================================
+# PROJECT TYPE DETECTION (docs/ideas/2026-08-07-vertical-slicing-roadmap.md §7.4)
+# ============================================================================
+# "Thấy sản phẩm" khác nhau theo loại dự án:
+#   APP      — UI tối giản + logic chạy
+#   CLI      — chạy được command
+#   LIBRARY  — public API + 1 use case
+#   API_SVC  — 1 endpoint + health check
+
+PROJECT_TYPES = {
+    'app': 'App có UI',
+    'cli': 'CLI tool',
+    'library': 'Library/SDK',
+    'api_service': 'API service',
+}
+
+
+def detect_project_type(repo_dir: Path) -> str:
+    """Detect loại dự án từ cấu trúc repo.
+
+    Heuristic:
+    - Có main.py / AppDelegate / @main / __main__ → app
+    - Có Package.swift / setup.py / pyproject.toml (chỉ exports) → library
+    - Có main.py + argparse/click/typer → cli
+    - Có app.py / server.py / main.py + FastAPI/Flask/Django → api_service
+    """
+    files = list(repo_dir.rglob('*')) if repo_dir.exists() else []
+    names = {f.name for f in files if f.is_file()}
+    paths = {str(f) for f in files if f.is_file()}
+
+    has_main = any(n in names for n in ['main.py', 'app.py', 'server.py', 'index.js', 'index.ts'])
+    has_package = any(n in names for n in ['Package.swift', 'setup.py', 'pyproject.toml', 'package.json', 'Cargo.toml'])
+    has_cli = any(n in names for n in ['cli.py', 'cli.js', 'main.go'])
+
+    # API framework detection
+    api_frameworks = ['fastapi', 'flask', 'django', 'express', 'gin', 'actix']
+    has_api = False
+    for f in files:
+        if f.is_file() and f.suffix in ('.py', '.js', '.ts', '.go'):
+            try:
+                src = f.read_text(encoding='utf-8', errors='ignore')[:2000]
+                if any(fw in src.lower() for fw in api_frameworks):
+                    has_api = True
+                    break
+            except Exception:
+                pass
+
+    if has_api:
+        return 'api_service'
+    if has_cli:
+        return 'cli'
+    if has_main:
+        return 'app'
+    if has_package:
+        return 'library'
+    return 'app'  # default
+
 # Constructs báo hiệu external I/O (file persistence) → P2
 FILE_IO_CONSTRUCTS = {'Path()', 'read_text()', 'write_text()', 'exists()', 'open()',
                       'JSONDecoder', 'JSONEncoder', 'UserDefaults', 'URLSession', 'dataTask'}
@@ -276,6 +333,160 @@ def propagate_phases(implements: List[dict]) -> None:
                     break
         if not changed:
             break
+
+
+# ============================================================================
+# FEATURE CLUSTERING (docs/ideas/2026-08-07-vertical-slicing-roadmap.md §7.1)
+# ============================================================================
+# Hybrid: tự động detect (call graph → connected components) + config override.
+# Feature = nhóm implements cùng 1 chức năng (UI + logic + data).
+
+
+def build_call_graph(implements: List[dict]) -> Dict[str, Set[str]]:
+    """Build call graph: {function_name: set of called function names}."""
+    graph = {}
+    for imp in implements:
+        graph[imp['name']] = set(imp.get('calls', []))
+    return graph
+
+
+def cluster_features(implements: List[dict], config: dict = None) -> Dict[str, int]:
+    """Gán feature_id cho mỗi implement.
+
+    Tự động: connected components trên call graph (implements gọi nhau = 1 feature).
+    Override: config {'feature_name': ['impl1', 'impl2', ...]} — ghi đè auto.
+    """
+    # 1. Config override (nếu có)
+    if config and config.get('features'):
+        feature_id = {}
+        for fid, (fname, impls) in enumerate(config['features'].items()):
+            for name in impls:
+                feature_id[name] = fid
+        return feature_id
+
+    # 2. Auto: connected components trên call graph
+    graph = build_call_graph(implements)
+    # Union-find
+    parent = {imp['name']: imp['name'] for imp in implements}
+
+    def find(x):
+        while parent[x] != x:
+            parent[x] = parent[parent[x]]
+            x = parent[x]
+        return x
+
+    def union(a, b):
+        ra, rb = find(a), find(b)
+        if ra != rb:
+            parent[ra] = rb
+
+    # Union implements gọi nhau
+    for imp in implements:
+        for callee in imp.get('calls', []):
+            if callee in parent:
+                union(imp['name'], callee)
+
+    # Gán feature_id theo root
+    feature_ids = {}
+    root_to_id = {}
+    next_id = 0
+    for imp in implements:
+        root = find(imp['name'])
+        if root not in root_to_id:
+            root_to_id[root] = next_id
+            next_id += 1
+        feature_ids[imp['name']] = root_to_id[root]
+    return feature_ids
+
+
+# ============================================================================
+# BLOOM LEVEL — LLM EVALUATION (docs/ideas/2026-08-07-vertical-slicing-roadmap.md §7.3)
+# ============================================================================
+# LLM đánh giá bloom_level cho từng knowledge item (chính xác hơn heuristic).
+# Fallback: heuristic theo phase khi LLM unavailable.
+
+import sys as _sys
+REPO_ROOT = Path(__file__).resolve().parents[1]
+_SKILL_LLM = REPO_ROOT / '.agents' / 'skills' / 'keyword-extractor' / 'scripts'
+if str(_SKILL_LLM) not in _sys.path:
+    _sys.path.insert(0, str(_SKILL_LLM))
+
+try:
+    from llm_call import llm_chat_json, LLMCallError
+    from openai import OpenAI
+    _LLM_AVAILABLE = True
+except ImportError:
+    _LLM_AVAILABLE = False
+
+# Bloom levels (Anderson & Krathwohl)
+BLOOM_LEVELS = ['remember', 'understand', 'apply', 'analyze', 'evaluate', 'create']
+
+
+def evaluate_bloom_llm(knowledge_items: List[dict], project_type: str = 'app') -> List[dict]:
+    """LLM đánh giá bloom_level cho từng knowledge item.
+
+    Input: list knowledge items (label + note + phase)
+    Output: list với bloom_level gán bởi LLM
+    Fallback: heuristic theo phase nếu LLM unavailable/fail.
+    """
+    if not _LLM_AVAILABLE:
+        return _evaluate_bloom_heuristic(knowledge_items)
+
+    try:
+        import os
+        from dotenv import load_dotenv
+        load_dotenv(REPO_ROOT / '.env')
+        api_key = os.getenv('OPENAI_API_KEY') or os.getenv('ANTHROPIC_API_KEY')
+        if not api_key:
+            return _evaluate_bloom_heuristic(knowledge_items)
+
+        client = OpenAI(api_key=api_key, base_url=os.getenv('OPENAI_BASE_URL'))
+        model = os.getenv('ATE_MODEL', 'deepseek-v4-flash:cloud')
+
+        # Batch: gửi tất cả knowledge items 1 lần
+        items_desc = '\n'.join(
+            f"- {k['label']} ({k.get('note', '')}) [phase {k.get('phase', 1)}]"
+            for k in knowledge_items
+        )
+        system = (
+            "Bạn là chuyên gia giáo dục (Bloom's Taxonomy). "
+            "Đánh giá mức độ nhận thức cần thiết cho mỗi kiến thức trong roadmap học lập trình. "
+            f"Project type: {PROJECT_TYPES.get(project_type, project_type)}. "
+            'Trả JSON: {"items": [{"label": "...", "bloom_level": "understand"}]}'
+        )
+        user = "Đánh giá bloom_level (1 trong: " + ', '.join(BLOOM_LEVELS) + ") cho:\n" + items_desc
+
+        result = llm_chat_json(client, model, system, user, temperature=0.1)
+        llm_map = {}
+        for item in result.get('items', []):
+            label = item.get('label', '')
+            bloom = item.get('bloom_level', '')
+            if label and bloom in BLOOM_LEVELS:
+                llm_map[label] = bloom
+
+        # Gán bloom từ LLM, fallback heuristic cho items thiếu
+        for k in knowledge_items:
+            if k['label'] in llm_map:
+                k['bloom_level'] = llm_map[k['label']]
+            else:
+                k['bloom_level'] = _heuristic_bloom(k)
+        return knowledge_items
+    except Exception as e:
+        print(f"[WARN] LLM bloom evaluation failed ({e}), fallback heuristic")
+        return _evaluate_bloom_heuristic(knowledge_items)
+
+
+def _evaluate_bloom_heuristic(knowledge_items: List[dict]) -> List[dict]:
+    """Fallback: bloom theo phase (P0 remember, P1 understand, P2 apply, P3 create)."""
+    for k in knowledge_items:
+        k['bloom_level'] = _heuristic_bloom(k)
+    return knowledge_items
+
+
+def _heuristic_bloom(k: dict) -> str:
+    """Heuristic bloom từ phase + constructs."""
+    phase = k.get('phase', 1)
+    return PHASE_BLOOM.get(phase, 'understand')
 
 
 # ============================================================================
@@ -774,8 +985,15 @@ def readable_name(name: str) -> str:
     return clean.strip()
 
 
-def build_graph(implements: List[dict]) -> dict:
-    """Build JIT knowledge graph: 1 main flow Start → End, phases colored."""
+def build_graph(implements: List[dict], project_type: str = 'app') -> dict:
+    """Build JIT knowledge graph: 1 main flow Start → End, phases colored.
+
+    project_type quyết định "thấy sản phẩm" ở MVP:
+    - app: UI entry point
+    - cli: command chạy được
+    - library: public API
+    - api_service: endpoint
+    """
     nodes = []
     edges = []
     node_id = 0
@@ -824,6 +1042,18 @@ def build_graph(implements: List[dict]) -> dict:
     prev_node = start_id
     y = 0
 
+    # Collect all knowledge items (for LLM bloom evaluation)
+    all_knowledge = []
+    for phase in sorted(by_phase.keys()):
+        for imp in by_phase[phase]:
+            for k in map_constructs_to_knowledge(imp['constructs'], imp['phase']):
+                k['phase'] = phase
+                all_knowledge.append(k)
+
+    # LLM đánh giá bloom_level (fallback heuristic nếu LLM unavailable)
+    all_knowledge = evaluate_bloom_llm(all_knowledge, project_type)
+    bloom_by_label = {k['label']: k['bloom_level'] for k in all_knowledge}
+
     # Sort phases
     for phase in sorted(by_phase.keys()):
         phase_impls = by_phase[phase]
@@ -838,6 +1068,9 @@ def build_graph(implements: List[dict]) -> dict:
         # For each implement: knowledge nodes → implement node
         for imp in phase_impls:
             knowledge = map_constructs_to_knowledge(imp['constructs'], imp['phase'])
+            # Gán bloom từ LLM evaluation
+            for k in knowledge:
+                k['bloom_level'] = bloom_by_label.get(k['label'], k.get('bloom_level', 'understand'))
 
             # Knowledge nodes (main flow)
             for k in knowledge:
@@ -852,7 +1085,8 @@ def build_graph(implements: List[dict]) -> dict:
             else:
                 imp_label = f'Tính năng {readable_name(imp["name"])}'
             imp_note = imp.get('description', '') or f'({imp["file"].split("/")[-1]})'
-            iid = add_node(imp_label, imp_note, phase, 'implement', 0, y)
+            iid = add_node(imp_label, imp_note, phase, 'implement', 0, y,
+                           {'feature_id': imp.get('feature_id', 0)})
             edges.append({'source': prev_node, 'target': iid, 'data': {'edgeStyle': 'solid'}})
             prev_node = iid
             y += 100
@@ -886,6 +1120,9 @@ def main():
                        help='Repository directory to analyze')
     parser.add_argument('--output', type=Path, required=True,
                        help='Output jit_graph.json path')
+    parser.add_argument('--feature-config', type=Path, default=None,
+                       help='Optional: JSON config override feature clustering '
+                            '{"features": {"Tên feature": ["impl1", "impl2"]}}')
     args = parser.parse_args()
 
     if not args.repo_dir.exists():
@@ -898,6 +1135,10 @@ def main():
     if not py_files and not swift_files:
         print(f"[ERROR] No Python/Swift files in {args.repo_dir}")
         return 1
+
+    # Detect project type (app/cli/library/api_service)
+    project_type = detect_project_type(args.repo_dir)
+    print(f"[*] Project type: {PROJECT_TYPES.get(project_type, project_type)}")
 
     print(f"[*] Analyzing {len(py_files)} Python + {len(swift_files)} Swift files...")
 
@@ -917,8 +1158,19 @@ def main():
     # Call graph propagation: implement gọi function file I/O → P2
     propagate_phases(all_implements)
 
+    # Feature clustering (hybrid: auto + config override)
+    feature_config = None
+    if args.feature_config and args.feature_config.exists():
+        import json as _json
+        feature_config = _json.loads(args.feature_config.read_text(encoding='utf-8'))
+    feature_ids = cluster_features(all_implements, feature_config)
+    n_features = len(set(feature_ids.values()))
+    print(f"[*] Features: {n_features} clusters")
+    for imp in all_implements:
+        imp['feature_id'] = feature_ids.get(imp['name'], 0)
+
     # Build graph
-    graph = build_graph(all_implements)
+    graph = build_graph(all_implements, project_type)
 
     # Save
     with open(args.output, 'w', encoding='utf-8') as f:
