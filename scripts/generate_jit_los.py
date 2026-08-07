@@ -269,7 +269,14 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
 
     Uses LLM to write a natural description grounded in the project's real
     domain intent (docstring/README) + concept keyword (thực hành cụ thể).
+    SIO name dùng TÊN THỰC HÀNH (For Loop / @State...) — không dùng tên khái niệm
+    trừu tượng (Definite Iteration) làm tên implement.
     """
+    # Tên thực hành: FOR_LOOP → 'For Loop' (không phải 'Definite Iteration')
+    if concept_code == 'FOR_LOOP':
+        concept_name = 'For Loop'
+        if not keyword:
+            keyword = 'for'
     kw_hint = f"Khái niệm này trong dự án xuất hiện qua keyword/tên gọi: '{keyword}'. " if keyword else ""
     llm_desc = _llm_generate(
         f"Bạn là chuyên gia sư phạm. Viết 1 câu mô tả SIO (Specific Implementation Objective) "
