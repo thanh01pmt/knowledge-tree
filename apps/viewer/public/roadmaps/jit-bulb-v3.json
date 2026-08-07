@@ -1,868 +1,724 @@
 {
   "project_brief": {
-    "project_code": "V3_ROADMAP",
-    "title": "Học Swift và SwiftUI để làm app điều khiển smart bulb ESP32-",
-    "description": "Roadmap từ pipeline v3 (learning objectives)"
+    "goal": "Học Swift và SwiftUI để làm app điều khiển smart bulb ESP32-S3 qua WiFi: chỉnh độ sáng, màu sắc, hiệu ứng, báo trạng thái đèn",
+    "tech_stack": [
+      "Swift",
+      "SwiftUI",
+      "URLSession"
+    ]
   },
-  "nodes": [
+  "phases": [
     {
-      "id": "n0",
-      "type": "subtopic",
-      "data": {
-        "label": "START",
-        "note": "",
-        "phase": 0,
-        "nodeType": "start",
-        "color": "#6b6b76"
-      },
-      "position": {
-        "x": 0,
-        "y": 0
-      }
+      "phase_id": 1,
+      "title": "Phase 1: Foundation",
+      "milestones": [
+        {
+          "concept_code": "CORE_LIBRARIES",
+          "learning_objectives": [
+            {
+              "code": "ULO-CORE_LIBRARIES-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "CORE_LIBRARIES",
+              "name": "Understand CORE_LIBRARIES",
+              "description": "Người học có khả năng hiểu vai trò của các thư viện lõi trong việc cung cấp các chức năng nền tảng và tái sử dụng mã, giúp tăng hiệu quả phát triển phần mềm.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            },
+            {
+              "code": "CIO-CORE_LIBRARIES-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CORE_LIBRARIES",
+              "name": "Apply CORE_LIBRARIES Concepts",
+              "description": "Người học có khả năng thiết kế CORE_LIBRARIES nhằm tối ưu hóa quy trình xử lý dữ liệu và mô hình hóa, từ đó hỗ trợ hiệu quả việc tạo ra generative content trong các ứng dụng Generative AI.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            },
+            {
+              "code": "SIO-SWIFT-CORE_LIBRARIES-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CORE_LIBRARIES",
+              "name": "SWIFT: Implement Core Libraries",
+              "description": "Người học có khả năng triển khai các thành phần chức năng chính của ứng dụng bằng cách tận dụng các Core Libraries của Swift để quản lý dữ liệu, xử lý đồng thời và tương tác với môi trường chạy, nhằm đáp ứng yêu cầu kỹ thuật của dự án.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "EXCEPTION_HANDLING",
+          "learning_objectives": [
+            {
+              "code": "ULO-EXCEPTION_HANDLING-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "Understand EXCEPTION_HANDLING",
+              "description": "Người học có khả năng hiểu exception handling là cơ chế trong lập trình cho phép phát hiện và xử lý các lỗi hoặc tình huống bất thường một cách có kiểm soát, giúp chương trình duy trì tính ổn định và tránh sụp đổ không mong muốn.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            },
+            {
+              "code": "CIO-EXCEPTION_HANDLING-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "Apply EXCEPTION_HANDLING Concepts",
+              "description": "Người học có khả năng thiết kế chiến lược xử lý ngoại lệ (exception handling) để đảm bảo tính bền vững và khả năng phục hồi của hệ thống phần mềm.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            },
+            {
+              "code": "SIO-SWIFT-EXCEPTION_HANDLING-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "EXCEPTION_HANDLING",
+              "name": "SWIFT: Implement Exception Handling",
+              "description": "Người học có khả năng triển khai Exception Handling trong ngôn ngữ Swift để xây dựng các cơ chế phát hiện và phản hồi lỗi một cách an toàn, đảm bảo ứng dụng không bị gián đoạn và có thể xử lý các tình huống ngoại lệ một cách linh hoạt trong quá trình thực thi.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "FOR_LOOP",
+          "learning_objectives": [
+            {
+              "code": "ULO-FOR_LOOP-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "FOR_LOOP",
+              "name": "Understand FOR_LOOP",
+              "description": "Người học có khả năng hiểu: Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "HTTP_PROTOCOL",
+          "learning_objectives": [
+            {
+              "code": "ULO-HTTP_PROTOCOL-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Understand HTTP_PROTOCOL",
+              "description": "Người học có khả năng hiểu nguyên lý phổ quát của HTTP_PROTOCOL và vai trò của nó trong thiết kế giải pháp phần mềm.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "LOCAL_VIEW_STATE",
+          "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_VIEW_STATE-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Understand LOCAL_VIEW_STATE",
+              "description": "Người học có khả năng hiểu: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
+          "learning_objectives": [
+            {
+              "code": "ULO-WEB_AUTHENTICATION_STRATEGIES-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "Understand WEB_AUTHENTICATION_STRATEGIES",
+              "description": "Người học có khả năng hiểu nguyên lý phổ quát của WEB_AUTHENTICATION_STRATEGIES và vai trò của nó trong thiết kế giải pháp phần mềm.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": null
+            }
+          ]
+        },
+        {
+          "concept_code": "WEB_SERVER",
+          "learning_objectives": [
+            {
+              "code": "ULO-WEB_SERVER-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "WEB_SERVER",
+              "name": "Understand WEB_SERVER",
+              "description": "Người học có khả năng hiểu web server là một hệ thống phần mềm hoặc phần cứng có nhiệm vụ tiếp nhận các yêu cầu từ client qua giao thức HTTP, xử lý và trả về các tài nguyên như trang web, dữ liệu hoặc nội dung động, đồng thời nắm được vai trò trung tâm của nó trong kiến trúc hoạt động của các ứng dụng web và Generative AI.",
+              "assessment": "concept-check",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            },
+            {
+              "code": "CIO-WEB_SERVER-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_SERVER",
+              "name": "Apply WEB_SERVER Concepts",
+              "description": "Người học có khả năng thiết kế một hệ thống web server đáp ứng các yêu cầu về hiệu suất, bảo mật và khả năng mở rộng, đồng thời tích hợp các nguyên tắc của Generative AI để tự động hóa việc tạo và quản lý generative content phục vụ người dùng.",
+              "assessment": "code-lab",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            },
+            {
+              "code": "SIO-SWIFT-WEB_SERVER-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "WEB_SERVER",
+              "name": "SWIFT: Implement Web Server",
+              "description": "Người học có khả năng triển khai một web server bằng ngôn ngữ Swift, thiết lập các điểm truy cập (endpoint) để xử lý các yêu cầu HTTP và phản hồi với dữ liệu phù hợp.",
+              "assessment": "code-review",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "n1",
-      "type": "subtopic",
-      "data": {
-        "label": "PHASE 1 — Phase 1: Foundation",
-        "note": "",
-        "phase": 1,
-        "nodeType": "phase",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 100
-      }
+      "phase_id": 2,
+      "title": "Phase 2",
+      "milestones": [
+        {
+          "concept_code": "FOR_LOOP",
+          "learning_objectives": [
+            {
+              "code": "CIO-FOR_LOOP-01-IDENTIFY_COMPONENTS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Identify Components",
+              "description": "Người học có khả năng xác định và phân loại các thành phần cấu thành của for loop theo mô hình tham chiếu.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-01-RECALL_DEFINITIONS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Recall Definitions",
+              "description": "Người học có khả năng tái tạo định nghĩa chính xác, ký hiệu và quy tắc cốt lõi của for loop mà không cần tài liệu tham khảo.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-02-EXPLAIN_MECHANISM",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Explain Mechanism",
+              "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của for loop bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-02-INTERPRET_PARAMETERS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Interpret Parameters",
+              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong for loop.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-03-IMPLEMENT_PATTERN",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Implement Pattern",
+              "description": "Người học có khả năng triển khai mẫu giải pháp chuẩn cho for loop tuân thủ các ràng buộc hiệu suất, độ tin cậy và bảo trì.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-03-ADAPT_TO_CONTEXT",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Adapt To Context",
+              "description": "Người học có khả năng tùy chỉnh cấu hình, tham số và giao diện của for loop cho bối cảnh triển khai cụ thể.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-04-DECOMPOSE_TRADEOFFS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Decompose Tradeoffs",
+              "description": "Người học có khả năng phân rã for loop thành các yếu tố quyết định và định lượng đánh đổi (cost/benefit, latency/throughput, consistency/availability).",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-04-COMPARE_ALTERNATIVES",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Compare Alternatives",
+              "description": "Người học có khả năng so sánh nhiều phương pháp/kiến trúc cho for loop theo tiêu chí định lượng và định tính.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-FOR_LOOP-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Iteration Control Structures",
+              "description": "Người học có khả năng mô tả các cấu trúc lặp: counter-controlled (for i=0..n), collection-controlled (for x in xs), range-based (for i in range), nested loops, loop invariants, termination proof.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-ITERATE-COLLECTION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Traverse Elements of a Collection (Duyệt qua các Phần tử của một Tập hợp)",
+              "description": "Người học có khả năng sử dụng vòng lặp xác định để truy cập tuần tự từng phần tử trong một cấu trúc dữ liệu tập hợp (như mảng).",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-ITERATE-RANGE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Iterate Over a Numerical Range (Duyệt qua một Khoảng số)",
+              "description": "Người học có khả năng sử dụng vòng lặp xác định để lặp qua một dãy số có điểm bắt đầu và điểm kết thúc.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "CIO-ARRAY-TRAVERSE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Traverse all elements of an Array (Duyệt qua tất cả các phần tử của Mảng)",
+              "description": "Người học có khả năng lặp qua tuần tự từng phần tử trong một mảng để thực hiện một hành động trên mỗi phần tử.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "HTTP_PROTOCOL",
+          "learning_objectives": [
+            {
+              "code": "CIO-HTTP-HEADER-STATUS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Understand HTTP Headers and Status Codes",
+              "description": "Người học có khả năng phân tích các nhóm status code và HTTP header trong các yêu cầu giao tiếp.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP-VERSIONS-EVOLUTION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Compare HTTP Versions and Innovations",
+              "description": "Người học có khả năng so sánh sự khác biệt về hiệu năng giữa HTTP/1.1, HTTP/2 và HTTP/3 QUIC.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "LOCAL_VIEW_STATE",
+          "learning_objectives": [
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-01-EXPLAIN_MECHANISM",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Explain Mechanism",
+              "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của local view state bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-01-INTERPRET_PARAMETERS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Interpret Parameters",
+              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong local view state.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-02-DECOMPOSE_TRADEOFFS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Decompose Tradeoffs",
+              "description": "Người học có khả năng phân rã local view state thành các yếu tố quyết định và định lượng đánh đổi (cost/benefit, latency/throughput, consistency/availability).",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-02-COMPARE_ALTERNATIVES",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Compare Alternatives",
+              "description": "Người học có khả năng so sánh nhiều phương pháp/kiến trúc cho local view state theo tiêu chí định lượng và định tính.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-03-ASSESS_QUALITY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Assess Quality",
+              "description": "Người học có khả năng đánh giá chất lượng giải pháp local view state dựa trên tiêu chuẩn ngành, benchmark và rủi ro tiềm ẩn.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-03-CRITIQUE_DESIGN",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Critique Design",
+              "description": "Người học có khả năng chỉ ra điểm yếu, nợ kỹ thuật và đề xuất cải tiến có sơ bộ ước lượng effort/impact cho local view state.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-04-DESIGN_SOLUTION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Design Solution",
+              "description": "Người học có khả năng thiết kế giải pháp end-to-end áp dụng local view state cho bài toán mới, bao gồm kiến trúc, API, data flow và deployment.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-04-INNOVATE_EXTENSION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Innovate Extension",
+              "description": "Người học có khả năng mở rộng local view state với kỹ thuật mới, tối ưu hóa đột phá hoặc tích hợp cross-domain.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Ephemeral State Management",
+              "description": "Người học có khả năng mô hình hóa trạng thái cục bộ: component-scoped lifecycle, value vs reference semantics, derived state (computed/memo), state colocation, lifting state up.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-DECLARE-LOCAL",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Declare Local View State (Khai báo Trạng thái Cục bộ của View)",
+              "description": "Người học có khả năng khai báo một biến trạng thái chỉ thuộc về một thành phần giao diện duy nhất và quản lý vòng đời của nó.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-MUTATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Mutate State to Update UI (Thay đổi Trạng thái để Cập nhật UI)",
+              "description": "Người học có khả năng thay đổi giá trị của một biến trạng thái để kích hoạt việc vẽ lại giao diện một cách tự động.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "WEB_AUTHENTICATION_STRATEGIES",
+          "learning_objectives": [
+            {
+              "code": "CIO-TOKEN-SESSION-AUTH",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "WEB_AUTHENTICATION_STRATEGIES",
+              "name": "Implement Token and Session Auth",
+              "description": "Người học có khả năng so sánh và triển khai xác thực qua Session Cookie và JWT Token.",
+              "assessment": "code-lab",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": null
+            }
+          ]
+        }
+      ]
     },
     {
-      "id": "n2",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai core libraries",
-        "note": "3 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 200
-      }
-    },
-    {
-      "id": "n3",
-      "type": "topic",
-      "data": {
-        "label": "Understand CORE_LIBRARIES",
-        "note": "Người học có khả năng hiểu vai trò của các thư viện lõi tron",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 300
-      }
-    },
-    {
-      "id": "n4",
-      "type": "topic",
-      "data": {
-        "label": "Apply CORE_LIBRARIES Concepts",
-        "note": "Người học có khả năng thiết kế CORE_LIBRARIES nhằm tối ưu hó",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 400
-      }
-    },
-    {
-      "id": "n5",
-      "type": "topic",
-      "data": {
-        "label": "SWIFT: Implement Core Libraries",
-        "note": "Người học có khả năng triển khai các thành phần chức năng ch",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 500
-      }
-    },
-    {
-      "id": "n6",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai exception handling",
-        "note": "3 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 600
-      }
-    },
-    {
-      "id": "n7",
-      "type": "topic",
-      "data": {
-        "label": "Understand EXCEPTION_HANDLING",
-        "note": "Người học có khả năng hiểu exception handling là cơ chế tron",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 700
-      }
-    },
-    {
-      "id": "n8",
-      "type": "topic",
-      "data": {
-        "label": "Apply EXCEPTION_HANDLING Concepts",
-        "note": "Người học có khả năng thiết kế chiến lược xử lý ngoại lệ (ex",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 800
-      }
-    },
-    {
-      "id": "n9",
-      "type": "topic",
-      "data": {
-        "label": "SWIFT: Implement Exception Handling",
-        "note": "Người học có khả năng triển khai Exception Handling trong ng",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 900
-      }
-    },
-    {
-      "id": "n10",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai for loop",
-        "note": "1 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 1000
-      }
-    },
-    {
-      "id": "n11",
-      "type": "topic",
-      "data": {
-        "label": "Understand FOR_LOOP",
-        "note": "Người học có khả năng hiểu: Nắm vững cú pháp và cách sử dụng",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 1100
-      }
-    },
-    {
-      "id": "n12",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai http protocol",
-        "note": "1 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 1200
-      }
-    },
-    {
-      "id": "n13",
-      "type": "topic",
-      "data": {
-        "label": "Understand HTTP_PROTOCOL",
-        "note": "Người học có khả năng hiểu nguyên lý phổ quát của HTTP_PROTO",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 1300
-      }
-    },
-    {
-      "id": "n14",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai local view state",
-        "note": "1 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 1400
-      }
-    },
-    {
-      "id": "n15",
-      "type": "topic",
-      "data": {
-        "label": "Understand LOCAL_VIEW_STATE",
-        "note": "Người học có khả năng hiểu: Sử dụng cơ chế như @State để quả",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 1500
-      }
-    },
-    {
-      "id": "n16",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai web authentication strategies",
-        "note": "1 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 1600
-      }
-    },
-    {
-      "id": "n17",
-      "type": "topic",
-      "data": {
-        "label": "Understand WEB_AUTHENTICATION_STRATEGIES",
-        "note": "Người học có khả năng hiểu nguyên lý phổ quát của WEB_AUTHEN",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 1700
-      }
-    },
-    {
-      "id": "n18",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai web server",
-        "note": "3 mục tiêu học tập",
-        "phase": 1,
-        "nodeType": "implement",
-        "color": "#0e7c6b"
-      },
-      "position": {
-        "x": 0,
-        "y": 1800
-      }
-    },
-    {
-      "id": "n19",
-      "type": "topic",
-      "data": {
-        "label": "Understand WEB_SERVER",
-        "note": "Người học có khả năng hiểu web server là một hệ thống phần m",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "remember"
-      },
-      "position": {
-        "x": 0,
-        "y": 1900
-      }
-    },
-    {
-      "id": "n20",
-      "type": "topic",
-      "data": {
-        "label": "Apply WEB_SERVER Concepts",
-        "note": "Người học có khả năng thiết kế một hệ thống web server đáp ứ",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 2000
-      }
-    },
-    {
-      "id": "n21",
-      "type": "topic",
-      "data": {
-        "label": "SWIFT: Implement Web Server",
-        "note": "Người học có khả năng triển khai một web server bằng ngôn ng",
-        "phase": 1,
-        "nodeType": "knowledge",
-        "color": "#0e7c6b",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 2100
-      }
-    },
-    {
-      "id": "n22",
-      "type": "subtopic",
-      "data": {
-        "label": "PHASE 2 — Phase 2",
-        "note": "",
-        "phase": 2,
-        "nodeType": "phase",
-        "color": "#2b78e4"
-      },
-      "position": {
-        "x": 0,
-        "y": 2200
-      }
-    },
-    {
-      "id": "n23",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai for loop",
-        "note": "12 mục tiêu học tập",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#2b78e4"
-      },
-      "position": {
-        "x": 0,
-        "y": 2300
-      }
-    },
-    {
-      "id": "n24",
-      "type": "topic",
-      "data": {
-        "label": "For Loop - Identify Components",
-        "note": "Người học có khả năng xác định và phân loại các thành phần c",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 2400
-      }
-    },
-    {
-      "id": "n25",
-      "type": "topic",
-      "data": {
-        "label": "For Loop - Recall Definitions",
-        "note": "Người học có khả năng tái tạo định nghĩa chính xác, ký hiệu ",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 2500
-      }
-    },
-    {
-      "id": "n26",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai http protocol",
-        "note": "2 mục tiêu học tập",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#2b78e4"
-      },
-      "position": {
-        "x": 0,
-        "y": 2600
-      }
-    },
-    {
-      "id": "n27",
-      "type": "topic",
-      "data": {
-        "label": "Understand HTTP Headers and Status Codes",
-        "note": "Người học có khả năng phân tích các nhóm status code và HTTP",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 2700
-      }
-    },
-    {
-      "id": "n28",
-      "type": "topic",
-      "data": {
-        "label": "Compare HTTP Versions and Innovations",
-        "note": "Người học có khả năng so sánh sự khác biệt về hiệu năng giữa",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 2800
-      }
-    },
-    {
-      "id": "n29",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai local view state",
-        "note": "11 mục tiêu học tập",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#2b78e4"
-      },
-      "position": {
-        "x": 0,
-        "y": 2900
-      }
-    },
-    {
-      "id": "n30",
-      "type": "topic",
-      "data": {
-        "label": "Local View State - Explain Mechanism",
-        "note": "Người học có khả năng giải thích cơ chế hoạt động nội tại củ",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 3000
-      }
-    },
-    {
-      "id": "n31",
-      "type": "topic",
-      "data": {
-        "label": "Local View State - Interpret Parameters",
-        "note": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 3100
-      }
-    },
-    {
-      "id": "n32",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai web authentication strategies",
-        "note": "1 mục tiêu học tập",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#2b78e4"
-      },
-      "position": {
-        "x": 0,
-        "y": 3200
-      }
-    },
-    {
-      "id": "n33",
-      "type": "topic",
-      "data": {
-        "label": "Implement Token and Session Auth",
-        "note": "Người học có khả năng so sánh và triển khai xác thực qua Ses",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#2b78e4",
-        "bloom_level": "understand"
-      },
-      "position": {
-        "x": 0,
-        "y": 3300
-      }
-    },
-    {
-      "id": "n34",
-      "type": "subtopic",
-      "data": {
-        "label": "PHASE 3 — Phase 3",
-        "note": "",
-        "phase": 3,
-        "nodeType": "phase",
-        "color": "#8e44ad"
-      },
-      "position": {
-        "x": 0,
-        "y": 3400
-      }
-    },
-    {
-      "id": "n35",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai for loop",
-        "note": "9 mục tiêu học tập",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
-      },
-      "position": {
-        "x": 0,
-        "y": 3500
-      }
-    },
-    {
-      "id": "n36",
-      "type": "topic",
-      "data": {
-        "label": "For Loop - Implement Library",
-        "note": "Người học có khả năng build reusable Python library cho for ",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 3600
-      }
-    },
-    {
-      "id": "n37",
-      "type": "topic",
-      "data": {
-        "label": "For Loop - Implement Library",
-        "note": "Người học có khả năng build reusable Python library cho for ",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 3700
-      }
-    },
-    {
-      "id": "n38",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai http protocol",
-        "note": "1 mục tiêu học tập",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
-      },
-      "position": {
-        "x": 0,
-        "y": 3800
-      }
-    },
-    {
-      "id": "n39",
-      "type": "topic",
-      "data": {
-        "label": "Configure Custom HTTP Request Headers",
-        "note": "Người học có khả năng cấu hình các HTTP Header tùy chỉnh như",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 3900
-      }
-    },
-    {
-      "id": "n40",
-      "type": "subtopic",
-      "data": {
-        "label": "Triển khai local view state",
-        "note": "5 mục tiêu học tập",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
-      },
-      "position": {
-        "x": 0,
-        "y": 4000
-      }
-    },
-    {
-      "id": "n41",
-      "type": "topic",
-      "data": {
-        "label": "Local View State - Risk Assess",
-        "note": "Người học có khả năng risk assessment cho local view state: ",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 4100
-      }
-    },
-    {
-      "id": "n42",
-      "type": "topic",
-      "data": {
-        "label": "Local View State - Maturity Assess",
-        "note": "Người học có khả năng assess maturity của local view state: ",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad",
-        "bloom_level": "apply"
-      },
-      "position": {
-        "x": 0,
-        "y": 4200
-      }
-    },
-    {
-      "id": "n43",
-      "type": "subtopic",
-      "data": {
-        "label": "END",
-        "note": "",
-        "phase": 0,
-        "nodeType": "end",
-        "color": "#6b6b76"
-      },
-      "position": {
-        "x": 0,
-        "y": 4300
-      }
+      "phase_id": 3,
+      "title": "Phase 3",
+      "milestones": [
+        {
+          "concept_code": "FOR_LOOP",
+          "learning_objectives": [
+            {
+              "code": "SIO-PYTHON-FOR_LOOP-EXPLAIN_MECHANISM-IMPLEMENT_LIBRARY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Implement Library",
+              "description": "Người học có khả năng build reusable Python library cho for loop: API design, type hints, tests, docs, packaging (pyproject.toml).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-PYTHON-FOR_LOOP-IMPLEMENT_PATTERN-IMPLEMENT_LIBRARY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Implement Library",
+              "description": "Người học có khả năng build reusable Python library cho for loop: API design, type hints, tests, docs, packaging (pyproject.toml).",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-PYTHON-FOR_LOOP-DECOMPOSE_TRADEOFFS-STATIC_ANALYSIS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "For Loop - Static Analysis",
+              "description": "Người học có khả năng static analysis code liên quan for loop: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-SWIFT-FOR_LOOP-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Swift: Iterate with for-in and stride",
+              "description": "Người học có khả năng sử dụng for i in 0..<n, for i in stride(from:0, to:n, by:2), for (index, element) in array.enumerated().",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-SWIFT-FOR_LOOP-02",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Swift: Use forEach vs for-in for Side Effects",
+              "description": "Người học có khả năng phân biệt array.forEach (không break/continue) vs for-in (hỗ trợ control flow), chọn phù hợp ngữ cảnh.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-SWIFT-FOR-IN-ARRAY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Use a for-in loop to traverse a Swift Array",
+              "description": "Người học có khả năng viết một vòng lặp `for item in myArray` để duyệt qua tất cả các phần tử của một mảng. (Buổi 3.2, 3.4)",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-SWIFT-FOR-IN-IGNORE-INDEX",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Use an underscore in a for-in loop",
+              "description": "Người học có khả năng sử dụng `_` trong một vòng lặp `for _ in range` khi chỉ cần lặp lại một số lần mà không cần giá trị của biến lặp. (Buổi 1.7)",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-SWIFT-FOR-IN-RANGE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Use a for-in loop with a Range in Swift",
+              "description": "Người học có khả năng viết một vòng lặp `for-in` trong Swift sử dụng các toán tử tạo khoảng `...` (đóng) và `..<` (nửa mở). (Buổi 1.7)",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            },
+            {
+              "code": "SIO-SWIFT-ARRAY-FOR-IN",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FOR_LOOP",
+              "name": "Use a for-in loop to traverse a Swift Array",
+              "description": "Người học có khả năng viết một vòng lặp for item in myArray để duyệt qua tất cả các phần tử của một mảng. (Buổi 3.2)",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "HTTP_PROTOCOL",
+          "learning_objectives": [
+            {
+              "code": "SIO-CUSTOM-HTTP-HEADERS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Configure Custom HTTP Request Headers",
+              "description": "Người học có khả năng cấu hình các HTTP Header tùy chỉnh như Authorization và Content-Type trong trình duyệt.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
+            }
+          ]
+        },
+        {
+          "concept_code": "LOCAL_VIEW_STATE",
+          "learning_objectives": [
+            {
+              "code": "SIO-PYTHON-LOCAL_VIEW_STATE-DECOMPOSE_TRADEOFFS-RISK_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Risk Assess",
+              "description": "Người học có khả năng risk assessment cho local view state: threat modeling, impact analysis, likelihood estimation, mitigation prioritization.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "SIO-PYTHON-LOCAL_VIEW_STATE-ASSESS_QUALITY-MATURITY_ASSESS",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Maturity Assess",
+              "description": "Người học có khả năng assess maturity của local view state: CMMI, ISO 42001, NIST AI RMF, organizational readiness, gap analysis.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "SIO-PYTHON-LOCAL_VIEW_STATE-DESIGN_SOLUTION-DESIGN_FRAMEWORK",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Local View State - Design Framework",
+              "description": "Người học có khả năng design governance framework cho local view state: policy as code (OPA/Rego), audit logging, automated compliance checks.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Swift: Manage Ephemeral State with @State",
+              "description": "Người học có khả năng khai báo @State private var count = 0, hiểu ownership: parent sở hữu, child nhận @Binding nếu cần chia sẻ.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_VIEW_STATE-02",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Swift: Use @StateObject for Reference Type State",
+              "description": "Người học có khả năng phân biệt @State (value type) vs @StateObject (reference type, ObservableObject), tránh tạo mới mỗi render.",
+              "assessment": "code-review",
+              "rationale": [
+                "SIO is a specific implementation of its parent CIO"
+              ],
+              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
+            }
+          ]
+        }
+      ]
     }
   ],
-  "edges": [
-    {
-      "source": "n0",
-      "target": "n1"
-    },
-    {
-      "source": "n1",
-      "target": "n3"
-    },
-    {
-      "source": "n3",
-      "target": "n4"
-    },
-    {
-      "source": "n4",
-      "target": "n5"
-    },
-    {
-      "source": "n5",
-      "target": "n2"
-    },
-    {
-      "source": "n2",
-      "target": "n7"
-    },
-    {
-      "source": "n7",
-      "target": "n8"
-    },
-    {
-      "source": "n8",
-      "target": "n9"
-    },
-    {
-      "source": "n9",
-      "target": "n6"
-    },
-    {
-      "source": "n6",
-      "target": "n11"
-    },
-    {
-      "source": "n11",
-      "target": "n10"
-    },
-    {
-      "source": "n10",
-      "target": "n13"
-    },
-    {
-      "source": "n13",
-      "target": "n12"
-    },
-    {
-      "source": "n12",
-      "target": "n15"
-    },
-    {
-      "source": "n15",
-      "target": "n14"
-    },
-    {
-      "source": "n14",
-      "target": "n17"
-    },
-    {
-      "source": "n17",
-      "target": "n16"
-    },
-    {
-      "source": "n16",
-      "target": "n19"
-    },
-    {
-      "source": "n19",
-      "target": "n20"
-    },
-    {
-      "source": "n20",
-      "target": "n21"
-    },
-    {
-      "source": "n21",
-      "target": "n18"
-    },
-    {
-      "source": "n18",
-      "target": "n22"
-    },
-    {
-      "source": "n22",
-      "target": "n24"
-    },
-    {
-      "source": "n24",
-      "target": "n25"
-    },
-    {
-      "source": "n25",
-      "target": "n23"
-    },
-    {
-      "source": "n23",
-      "target": "n27"
-    },
-    {
-      "source": "n27",
-      "target": "n28"
-    },
-    {
-      "source": "n28",
-      "target": "n26"
-    },
-    {
-      "source": "n26",
-      "target": "n30"
-    },
-    {
-      "source": "n30",
-      "target": "n31"
-    },
-    {
-      "source": "n31",
-      "target": "n29"
-    },
-    {
-      "source": "n29",
-      "target": "n33"
-    },
-    {
-      "source": "n33",
-      "target": "n32"
-    },
-    {
-      "source": "n32",
-      "target": "n34"
-    },
-    {
-      "source": "n34",
-      "target": "n36"
-    },
-    {
-      "source": "n36",
-      "target": "n37"
-    },
-    {
-      "source": "n37",
-      "target": "n35"
-    },
-    {
-      "source": "n35",
-      "target": "n39"
-    },
-    {
-      "source": "n39",
-      "target": "n38"
-    },
-    {
-      "source": "n38",
-      "target": "n41"
-    },
-    {
-      "source": "n41",
-      "target": "n42"
-    },
-    {
-      "source": "n42",
-      "target": "n40"
-    },
-    {
-      "source": "n40",
-      "target": "n43"
-    }
-  ]
+  "total_milestones": 14,
+  "total_concepts": 7
 }
