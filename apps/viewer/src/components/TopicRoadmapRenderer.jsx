@@ -95,7 +95,10 @@ function transformToCardData(roadmap) {
           const kw = (sio.keyword || '').trim();
           if (kw && seenKws.has(kw)) return;
           if (kw) seenKws.add(kw);
-          const sioLabel = kw ? `Keyword ${kw}` : cleanLabel(sio.name || sio.code || 'SIO');
+          // Badge platform: phân biệt implement cho Swift app vs ESP32 firmware
+          const platform = sio.platform || '';
+          const platformBadge = platform === 'esp32' ? ' [ESP32]' : '';
+          const sioLabel = kw ? `Keyword ${kw}${platformBadge}` : cleanLabel(sio.name || sio.code || 'SIO');
           knowledge.push({
             id: `${milestone.concept_code}-sio-${i}`,
             label: sioLabel,
@@ -107,6 +110,7 @@ function transformToCardData(roadmap) {
               bloom: sio.bloom_level || 'apply',
             },
             keyword: kw,
+            platform,
           });
         });
       }

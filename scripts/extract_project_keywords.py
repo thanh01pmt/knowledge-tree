@@ -114,6 +114,8 @@ def parse_swift_project(repo_dir: Path) -> Dict:
     all_functions = []
     all_wrappers = []
     all_error_patterns = []
+    wrapper_file_pairs = []
+    error_file_pairs = []
     
     for swift_file in swift_files:
         # Skip test files and generated files
@@ -126,14 +128,25 @@ def parse_swift_project(repo_dir: Path) -> Dict:
         all_imports.extend(parsed['imports'])
         all_types.extend(parsed['types'])
         all_functions.extend(parsed['functions'])
-        all_wrappers.extend(parsed['property_wrappers'])
-        all_error_patterns.extend(parsed['error_handling'])
+        for w in parsed['property_wrappers']:
+            all_wrappers.append(w)
+            wrapper_file_pairs.append((w, str(swift_file.name)))
+        for e in parsed['error_handling']:
+            all_error_patterns.append(e)
+            error_file_pairs.append((e, str(swift_file.name)))
     
     # Deduplicate and count
     from collections import Counter
     import_counts = Counter(all_imports)
     wrapper_counts = Counter(all_wrappers)
     error_counts = Counter(all_error_patterns)
+    # File goc cua tung wrapper/error (de xac dinh platform)
+    wrapper_files = {}
+    error_files = {}
+    for wf in wrapper_file_pairs:
+        wrapper_files[wf[0]] = wf[1]
+    for ef in error_file_pairs:
+        error_files[ef[0]] = ef[1]
     
     return {
         'imports': [
@@ -143,11 +156,11 @@ def parse_swift_project(repo_dir: Path) -> Dict:
         'types': all_types[:100],  # Limit to top 100
         'functions': all_functions[:100],  # Limit to top 100
         'property_wrappers': [
-            {'wrapper': w, 'count': count}
+            {'wrapper': w, 'count': count, 'file': wrapper_files.get(w, '')}
             for w, count in wrapper_counts.most_common(10)
         ],
         'error_handling_patterns': [
-            {'pattern': p, 'count': count}
+            {'pattern': p, 'count': count, 'file': error_files.get(p, '')}
             for p, count in error_counts.most_common(10)
         ],
     }
@@ -382,8 +395,31 @@ STDLIB_MODULES = {
     'requests', 'urllib3', 'pydantic', 'dotenv', 'yaml', 'tomllib',
 }
 
+def _platform_from_path(file_path: str, repo_dir: str = '') -> str:
+    """Map file path → platform (multi-codebase project: Swift app vs ESP32 firmware).
+
+    Dựa trên extension + thư mục. Mặc định 'app' nếu không xác định được.
+    """
+    if not file_path:
+        return 'app'
+    fp = str(file_path).lower()
+    if fp.endswith(('.ino', '.cpp', '.h', '.hpp', '.c')):
+        # Phân biệt firmware (ESP32) vs header chung: .ino là Arduino chắc chắn
+        if fp.endswith('.ino'):
+            return 'esp32'
+        # .cpp/.h trong thư mục firmware → esp32, ngược lại app
+        if 'firmware' in fp or 'esp' in fp:
+            return 'esp32'
+        return 'app'
+    return 'app'
+
+
 def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) -> List[Dict]:
-    """Extract structured keywords from source context and basic analysis."""
+    """Extract structured keywords from source context and basic analysis.
+
+    Multi-target: mỗi keyword gắn platform (app/esp32) từ file gốc, để SIO
+    sinh đúng cho từng codebase (Swift app vs ESP32 firmware).
+    """
     keywords = []
     
     # Source 1: Import statements → framework keywords
@@ -391,15 +427,18 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
         if isinstance(imp, str):
             module = imp
             count = 1
+            platform = 'app'
         else:
             module = imp['module']
             count = imp['count']
+            platform = _platform_from_path(imp.get('file', ''))
         # Skip standard library / generic plumbing — no domain signal
         if module.lower() in STDLIB_MODULES:
             continue
         keywords.append({
             'keyword': module,
             'source': 'import',
+            'platform': platform,
             'weight': 1.0 + (count - 1) * 0.1,  # Higher weight for frequently used
             'context': f'Imported {count} times',
         })
@@ -408,6 +447,7 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     for type_decl in source_context.get('types', []):
         name = type_decl['name']
         kind = type_decl['kind']
+        platform = _platform_from_path(type_decl.get('file', ''))
         
         # Skip generic/framework types
         if name in {'View', 'Model', 'ViewModel', 'Controller', 'Service', 'Manager'}:
@@ -416,6 +456,7 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
         keywords.append({
             'keyword': name,
             'source': 'type_declaration',
+            'platform': platform,
             'weight': 1.5,
             'context': f'{kind} declaration',
         })
@@ -424,8 +465,10 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     for func in source_context.get('functions', []):
         if isinstance(func, str):
             name = func
+            platform = 'app'
         else:
             name = func['name']
+            platform = _platform_from_path(func.get('file', ''))
         
         # Skip generic helpers
         if name in {'init', 'setup', 'configure', 'initialize'}:
@@ -434,6 +477,7 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
         keywords.append({
             'keyword': name,
             'source': 'function_signature',
+            'platform': platform,
             'weight': 1.2,
             'context': 'Function signature',
         })
@@ -454,9 +498,11 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     for wrapper in source_context.get('property_wrappers', []):
         wrapper_name = wrapper['wrapper']
         count = wrapper['count']
+        platform = _platform_from_path(wrapper.get('file', ''))
         keywords.append({
             'keyword': f'@{wrapper_name}',
             'source': 'property_wrapper',
+            'platform': platform,
             'weight': 2.0,
             'context': f'Used {count} times',
         })
@@ -465,9 +511,11 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     for error in source_context.get('error_handling_patterns', []):
         pattern = error['pattern']
         count = error['count']
+        platform = _platform_from_path(error.get('file', ''))
         keywords.append({
             'keyword': pattern,
             'source': 'error_handling',
+            'platform': platform,
             'weight': 1.3,
             'context': f'Used {count} times',
         })
@@ -554,9 +602,9 @@ def parse_cpp_file(filepath: Path) -> Dict:
     except OSError:
         return {'imports': [], 'types': [], 'functions': [], 'property_wrappers': [], 'error_handling_patterns': []}
 
-    imports = re.findall(r'#include\s*[<"]([^>"]+)[>"]', src)
-    types = re.findall(r'\b(?:class|struct|enum)\s+(\w+)', src)
-    functions = re.findall(r'\b(?:void|int|float|double|char|bool|String|uint8_t|uint16_t|uint32_t)\s+(\w+)\s*\(', src)
+    imports = [{'module': m, 'file': str(filepath.name), 'count': 1} for m in re.findall(r'#include\s*[<"]([^>"]+)[>"]', src)]
+    types = [{'name': t, 'kind': 'cpp', 'file': str(filepath.name)} for t in re.findall(r'\b(?:class|struct|enum)\s+(\w+)', src)]
+    functions = [{'name': f, 'file': str(filepath.name)} for f in re.findall(r'\b(?:void|int|float|double|char|bool|String|uint8_t|uint16_t|uint32_t)\s+(\w+)\s*\(', src)]
     error_patterns = []
     if re.search(r'\btry\b|\bthrow\b|\bcatch\b', src):
         error_patterns.append('try/throw/catch')

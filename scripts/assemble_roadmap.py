@@ -180,6 +180,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                     'bloom_level': (sio.get('bloom_level') or 'create').lower(),
                     'knowledge_dimension': sio.get('knowledge_dimension') or 'PROCEDURAL',
                     'keyword': infer_keyword_from_sio(sio),
+                    'platform': sio.get('platform', '') or '',
                 }
 
     # JIT-generated LOs (STEP 5.5)
@@ -196,6 +197,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'bloom_level': (lo.get('bloom_level') or 'understand').lower(),
                 'knowledge_dimension': lo.get('knowledge_dimension') or 'CONCEPTUAL',
                 'keyword': infer_keyword_from_sio(lo) if lo.get('lo_type') == 'SPECIFIC_IMPL' else (lo.get('keyword', '') or ''),
+                'platform': lo.get('platform', '') or '',
             }
 
     return los

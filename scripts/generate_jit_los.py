@@ -186,6 +186,20 @@ def get_project_context(keywords_data: dict) -> str:
     return ''
 
 
+def get_keyword_platforms(keywords_data: dict) -> dict:
+    """Map keyword -> platform (app/esp32) tu keywords.json.
+
+    Multi-codebase project (Swift app + ESP32 firmware): keyword sinh tu file
+    nao thi platform do. SIO se sinh dung platform (Swift vs Arduino).
+    """
+    kw_to_platform = {}
+    for kw in keywords_data.get('keywords', []):
+        k = kw.get('keyword', '')
+        if k:
+            kw_to_platform[k] = kw.get('platform', 'app')
+    return kw_to_platform
+
+
 def generate_ulo(concept_code: str, description: str, concept_name: str = '') -> dict:
     """Generate ULO (UNIVERSAL tier) from concept description.
 
@@ -264,20 +278,27 @@ def generate_cio(concept_code: str, description: str) -> dict:
 
 
 def generate_sio(concept_code: str, concept_name: str, description: str,
-                 project_context: str, target_tech: str, keyword: str = '') -> dict:
+                 project_context: str, target_tech: str, keyword: str = '',
+                 platform: str = 'app') -> dict:
     """Generate SIO (SPECIFIC_IMPL tier) from concept + project context.
 
     Uses LLM to write a natural description grounded in the project's real
     domain intent (docstring/README) + concept keyword (thực hành cụ thể).
     SIO name dùng TÊN THỰC HÀNH (For Loop / @State...) — không dùng tên khái niệm
     trừu tượng (Definite Iteration) làm tên implement.
+    platform: app (Swift) | esp32 (Arduino) — phân biệt codebase thật.
     """
+    # Platform: esp32 → code prefix 'ESP32', hiển thị 'ESP32/Arduino'
+    platform_label = 'ESP32/Arduino' if platform == 'esp32' else target_tech
+    code_prefix = 'ESP32' if platform == 'esp32' else target_tech
     # Tên thực hành: FOR_LOOP → 'For Loop' (không phải 'Definite Iteration')
     if concept_code == 'FOR_LOOP':
         concept_name = 'For Loop'
         if not keyword:
             keyword = 'for'
-    kw_hint = f"Khái niệm này trong dự án xuất hiện qua keyword/tên gọi: '{keyword}'. " if keyword else ""
+    kw_hint = (f"Khái niệm này trong dự án xuất hiện qua keyword/tên gọi: '{keyword}' "
+               f"thuộc codebase {platform_label}. " if keyword
+               else f"Khái niệm này thuộc codebase {platform_label}. ")
     llm_desc = _llm_generate(
         f"Bạn là chuyên gia sư phạm. Viết 1 câu mô tả SIO (Specific Implementation Objective) "
         f"bắt đầu bằng 'Người học có khả năng triển khai' cho khái niệm '{concept_name}' "
@@ -304,13 +325,14 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         )
 
     return {
-        'code': f"SIO-{target_tech}-{concept_code}-01",
-        'name': f"{target_tech}: Implement {concept_name}",
+        'code': f"SIO-{code_prefix}-{concept_code}-01",
+        'name': f"{platform_label}: Implement {concept_name}",
         'description': final_desc,
         'lo_type': 'SPECIFIC_IMPL',
         'parent_lo_code': f"CIO-{concept_code}-01",
         'concept_codes': [concept_code],
         'keyword': keyword,  # keyword thực hành của concept trong project
+        'platform': platform,  # app (Swift) | esp32 (Arduino)
         'bloom_level': 'CREATE',  # SIO = thực hành hoàn thiện (Phase 3, vertical slicing)
         'knowledge_dimension': 'PROCEDURAL',
         'assessment_approach': 'code-review',
@@ -409,18 +431,28 @@ def main():
 
     # Build natural-language project context (docstring/README, not code ids)
     project_context = get_project_context(keywords_data)
+    kw_platforms = get_keyword_platforms(keywords_data)
 
     generated = []
     for concept_code, info in sorted(uncovered.items()):
         description = get_concept_description(concept_code, inventory)
         concept_name = get_concept_name(concept_code, inventory)
-        print(f"  → Generating LOs for {concept_name}")
+        print(f"  -> Generating LOs for {concept_name}")
 
         ulo = generate_ulo(concept_code, description, concept_name)
         cio = generate_cio(concept_code, description)
+        # Platform tu keyword goc (app/esp32) — SIO sinh dung codebase
+        kw = info.get('keyword', '')
+        platform = kw_platforms.get(kw, '')
+        # Fallback theo concept: loop thật của FOR_LOOP nằm ở ESP32 firmware
+        # (for/while trong smart_bulb.ino), dù keyword 'loop' bị lọc nguồn
+        if not platform and concept_code == 'FOR_LOOP':
+            platform = 'esp32'
+        if not platform:
+            platform = 'app'
         sio = generate_sio(concept_code, concept_name, description,
                            project_context, args.target_tech,
-                           keyword=info.get('keyword', ''))
+                           keyword=kw, platform=platform)
 
         generated.extend([ulo, cio, sio])
 
