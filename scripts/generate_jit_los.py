@@ -280,7 +280,7 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         'lo_type': 'SPECIFIC_IMPL',
         'parent_lo_code': f"CIO-{concept_code}-01",
         'concept_codes': [concept_code],
-        'bloom_level': 'APPLY',
+        'bloom_level': 'CREATE',  # SIO = thực hành hoàn thiện (Phase 3, vertical slicing)
         'knowledge_dimension': 'PROCEDURAL',
         'assessment_approach': 'code-review',
     }

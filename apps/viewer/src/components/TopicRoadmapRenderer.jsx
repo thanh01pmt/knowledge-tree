@@ -82,6 +82,21 @@ function transformToCardData(roadmap) {
             sio: null,
           });
         });
+      } else if (cios.length > 0) {
+        // Phase 2 (MỞ RỘNG): chỉ có CIOs — hiện CIO làm knowledge item
+        cios.forEach((cio, i) => {
+          knowledge.push({
+            id: `${milestone.concept_code}-cio-${i}`,
+            label: cleanLabel(cio.name || cio.code),
+            bloom: cio.bloom_level || 'understand',
+            ulo: null,
+            cio: {
+              code: cio.code, name: cleanLabel(cio.name), description: cio.description,
+              bloom: cio.bloom_level || 'understand',
+            },
+            sio: null,
+          });
+        });
       }
 
       cards.push({
@@ -121,19 +136,21 @@ function describeImplementation(milestone, los) {
   const concept = milestone.concept_code || 'UNSPECIFIED';
   const conceptName = concept.toLowerCase().replace(/_/g, ' ');
 
-  // Cách 1: "Triển khai chức năng X với Y"
-  const sioNames = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL').map(lo => lo.name || '');
-  const techHint = sioNames[0] ? ` với ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}` : '';
-
-  // Mô tả chính từ milestone (nếu có)
+  // Ưu tiên theo thứ tự mô tả thật: ULO → CIO → SIO name
+  // Phase 1 (ULO): "App có thể hiểu X" từ ULO description
   const uloDesc = los.find(lo => lo.lo_type === 'UNIVERSAL')?.description || '';
-  const desc = uloDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '');
-
-  // Hướng "App có thể..." — mô tả khả năng sản phẩm
-  // ULO desc đã là "Người học có khả năng X" → "App có thể X" (desc chứa sẵn prefix)
-  if (desc) {
-    return desc + '.';
+  if (uloDesc) {
+    return uloDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '') + '.';
   }
+
+  // Phase 2 (CIO): mô tả thiết kế/phân tích từ CIO description
+  const cioDesc = los.find(lo => lo.lo_type === 'CONCEPTUAL_IMPL')?.description || '';
+  if (cioDesc) {
+    return cioDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '') + '.';
+  }
+
+  // Phase 3 (SIO): "App triển khai X với Swift"
+  const sioNames = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL').map(lo => lo.name || '');
   if (sioNames.length > 0) {
     return `App triển khai ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}.`;
   }

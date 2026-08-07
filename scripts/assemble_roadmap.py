@@ -62,6 +62,8 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'name': ulo.get('name', ''),
                 'description': ulo.get('description', ''),
                 'assessment': ulo.get('assessment_approach', 'concept-check'),
+                'bloom_level': (ulo.get('bloom_level') or 'understand').lower(),
+                'knowledge_dimension': ulo.get('knowledge_dimension') or 'CONCEPTUAL',
             }
 
     # CIOs (matched in STEP 4) — bỏ template data thối từ Master Tree
@@ -75,9 +77,13 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'name': match.get('cio_name', ''),
                 'description': match.get('cio_description', ''),
                 'assessment': 'code-lab',
+                'bloom_level': (match.get('bloom_level') or 'apply').lower(),
+                'knowledge_dimension': match.get('knowledge_dimension') or 'PROCEDURAL',
             }
 
     # SIOs (resolved in STEP 5: REUSE 'sios' + ADAPT 'source_sio')
+    seen_sio_codes = set()
+    seen_sio_names = set()
     for group in resolved_sios.get('resolved_sios', []):
         concept = group.get('concept_code', '')
         sio_list = group.get('sios', [])
@@ -85,7 +91,14 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
             sio_list = [group['source_sio']]
         for sio in sio_list:
             code = sio.get('code', '')
-            if code and not is_template_description(sio.get('description', '')):
+            if not code or code in seen_sio_codes:
+                continue  # trùng code (REUSE lặp) — bỏ
+            seen_sio_codes.add(code)
+            name = sio.get('name', '') or code
+            if name in seen_sio_names:
+                continue  # trùng tên (Master Tree 2 SIO cùng tên) — giữ 1
+            seen_sio_names.add(name)
+            if not is_template_description(sio.get('description', '')):
                 los[code] = {
                     'code': code,
                     'lo_type': 'SPECIFIC_IMPL',
@@ -93,6 +106,8 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                     'name': sio.get('name', ''),
                     'description': sio.get('description', ''),
                     'assessment': 'code-review',
+                    'bloom_level': (sio.get('bloom_level') or 'create').lower(),
+                    'knowledge_dimension': sio.get('knowledge_dimension') or 'PROCEDURAL',
                 }
 
     # JIT-generated LOs (STEP 5.5)
@@ -106,6 +121,8 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'name': lo.get('name', ''),
                 'description': lo.get('description', ''),
                 'assessment': lo.get('assessment_approach', 'code-review'),
+                'bloom_level': (lo.get('bloom_level') or 'understand').lower(),
+                'knowledge_dimension': lo.get('knowledge_dimension') or 'CONCEPTUAL',
             }
 
     return los
@@ -212,7 +229,7 @@ LO_TYPE_BLOOM = {
 def vertical_phase_for_lo(lo: dict) -> int:
     """Assign vertical phase cho 1 LO dựa trên lo_type + bloom_level."""
     lo_type = lo.get('lo_type', '')
-    bloom = lo.get('bloom_level', '') or LO_TYPE_BLOOM.get(lo_type, 'understand')
+    bloom = (lo.get('bloom_level', '') or LO_TYPE_BLOOM.get(lo_type, 'understand')).lower()
 
     # P3: create (SIO robustness)
     if bloom == 'create':
