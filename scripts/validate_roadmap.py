@@ -66,40 +66,38 @@ def validate_roadmap_structure(roadmap: Dict) -> Dict:
 
 
 def validate_sio_coverage(roadmap: Dict, resolved_sios: List[Dict]) -> Dict:
-    """Validate that all resolved SIOs are assigned to milestones."""
+    """Validate SIO coverage theo ADR GENERATE-first (docs/ideas/2026-08-07).
+
+    GENERATE-first: SIOs sinh trực tiếp trong roadmap (jit_los) gắn keyword
+    dự án — KHÔNG còn REUSE/ADAPT từ resolved_sios. Coverage đo = tỷ lệ
+    concept có ít nhất 1 SIO trong roadmap (mọi concept phải có thực hành).
+    """
     issues = []
     
-    # Collect all SIO codes from roadmap
-    roadmap_sio_codes = set()
+    # Mọi concept trong roadmap phải có ≥1 SIO (thực hành)
+    concept_sio_count = {}
     for phase in roadmap.get('phases', []):
         for milestone in phase.get('milestones', []):
-            for lo in milestone.get('learning_objectives', []):
-                if lo.get('lo_type') == 'SPECIFIC_IMPL':
-                    roadmap_sio_codes.add(lo.get('code'))
+            concept = milestone.get('concept_code', '')
+            sio_count = sum(1 for lo in milestone.get('learning_objectives', [])
+                            if lo.get('lo_type') == 'SPECIFIC_IMPL')
+            concept_sio_count[concept] = sio_count
     
-    # Check all resolved SIOs are in roadmap
-    resolved_sio_codes = set()
-    for sio_group in resolved_sios:
-        action = sio_group.get('action', 'UNKNOWN')
-        if action == 'REUSE' and 'sios' in sio_group:
-            for sio in sio_group['sios']:
-                resolved_sio_codes.add(sio.get('code'))
-        elif action == 'ADAPT' and 'source_sio' in sio_group:
-            resolved_sio_codes.add(sio_group['source_sio'].get('code'))
+    total_concepts = max(len(concept_sio_count), 1)
+    covered = sum(1 for n in concept_sio_count.values() if n > 0)
+    coverage = covered / total_concepts
     
-    # Find missing SIOs
-    missing_sios = resolved_sio_codes - roadmap_sio_codes
-    if missing_sios:
-        issues.append(f"{len(missing_sios)} SIOs not assigned to roadmap: {list(missing_sios)[:5]}")
-    
-    coverage = len(roadmap_sio_codes & resolved_sio_codes) / max(len(resolved_sio_codes), 1)
+    if coverage < 1.0:
+        missing = [c for c, n in concept_sio_count.items() if n == 0]
+        issues.append(f"{len(missing)} concepts thiếu SIO: {missing[:5]}")
     
     return {
         'status': 'PASS' if coverage >= 0.8 else 'WARN',
         'issues': issues,
         'coverage': round(coverage, 2),
-        'roadmap_sio_count': len(roadmap_sio_codes),
-        'resolved_sio_count': len(resolved_sio_codes)
+        'roadmap_sio_count': sum(concept_sio_count.values()),
+        'concepts_with_sio': covered,
+        'resolved_sio_count': len(resolved_sios)  # giữ field cho tương thích
     }
 
 
