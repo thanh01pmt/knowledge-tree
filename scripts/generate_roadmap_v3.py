@@ -360,7 +360,9 @@ class PipelineOrchestrator:
 
         out = self.output_dir / "jit_los.json"
 
-        success = self._run_script("generate_jit_los.py", [
+        # Truyền escalated concepts (STEP 3.5) nếu có — để JIT dùng concept trung tính
+        escalated_file = self._artifact("escalated_concepts", self.output_dir / "escalated_concepts.json")
+        jit_args = [
             "--resolved-concepts", str(required[0]),
             "--matched-cios", str(required[1]),
             "--resolved-sios", str(required[2]),
@@ -368,7 +370,10 @@ class PipelineOrchestrator:
             "--reuse-inventory", str(required[4]),
             "--target-tech", self.target_tech,
             "--output", str(out),
-        ])
+        ]
+        if escalated_file.exists():
+            jit_args += ["--escalated-concepts", str(escalated_file)]
+        success = self._run_script("generate_jit_los.py", jit_args)
 
         if success:
             self._complete("step_5_5", jit_los=out)
