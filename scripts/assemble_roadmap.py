@@ -21,6 +21,7 @@ Outputs:
 
 import json
 import argparse
+import re
 from collections import defaultdict, deque
 from pathlib import Path
 from typing import Dict, List, Set, Tuple
@@ -48,6 +49,33 @@ _TEMPLATE_DESC_SIGNALS = [
     'tối ưu hóa đột phá', 'tích hợp cross-cutting', 'điều kiện biên',
     'so sánh nhiều phương pháp/kiến trúc cho', 'phân rã', 'cơ chế hoạt động nội tại',
 ]
+
+
+def infer_keyword_from_sio(sio: dict) -> str:
+    """Trích keyword thực hành từ SIO name khi SIO không có field keyword.
+
+    Ưu tiên token đặc thù (camelCase, @property, ký tự đặc biệt) thay vì
+    cả câu. VD:
+      'Use a for-in loop with a Range in Swift' → 'for-in'
+      'Swift: Use @StateObject for Reference Type State' → '@StateObject'
+      'Configure Custom HTTP Request Headers' → 'HTTP Request Headers'
+    """
+    kw = (sio.get('keyword') or '').strip()
+    if kw:
+        return kw
+    name = sio.get('name', '') or ''
+    name = re.sub(r'^SWIFT:\s*|^Swift:\s*', '', name)
+    # Token đặc thù: @Property, camelCase, ký tự đặc biệt (for-in, forEach, _)
+    tokens = re.findall(r'@[\w.]+|[a-z]+[A-Z][\w]*|[\w]+-[\w]+|_[\w]*', name)
+    if tokens:
+        # Ưu tiên token có @ hoặc camelCase hoặc ký tự đặc biệt
+        special = [t for t in tokens if '@' in t or '-' in t or '_' in t or (t != t.lower() and t != t.upper())]
+        if special:
+            return special[0]
+        return tokens[0]
+    # Fallback: bỏ động từ mở đầu, lấy phần còn lại cắt ngắn
+    name = re.sub(r'^(Use|Using|Configure|Implement|Apply|Understand|Traverse|Iterate|Declare|Mutate)\s+', '', name)
+    return name.strip(' .,;')[:40]
 
 
 def is_template_cio_code(cio_code: str) -> bool:
@@ -130,6 +158,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                     'assessment': 'code-review',
                     'bloom_level': (sio.get('bloom_level') or 'create').lower(),
                     'knowledge_dimension': sio.get('knowledge_dimension') or 'PROCEDURAL',
+                    'keyword': infer_keyword_from_sio(sio),
                 }
 
     # JIT-generated LOs (STEP 5.5)
@@ -145,6 +174,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'assessment': lo.get('assessment_approach', 'code-review'),
                 'bloom_level': (lo.get('bloom_level') or 'understand').lower(),
                 'knowledge_dimension': lo.get('knowledge_dimension') or 'CONCEPTUAL',
+                'keyword': lo.get('keyword', '') or '',
             }
 
     return los

@@ -42,12 +42,19 @@ function transformToCardData(roadmap) {
 
       // Nếu có SIO: mỗi SIO gắn với ULO/CIO liên quan (hoặc ULO đầu tiên)
       if (sios.length > 0) {
+        const seenKws = new Set();
         sios.forEach((sio, i) => {
           const ulo = ulos[Math.min(i, ulos.length - 1)] || null;
           const cio = cios[Math.min(i, cios.length - 1)] || null;
+          const kw = (sio.keyword || '').trim();
+          // Bỏ SIO trùng keyword (VD 3× "for-in") — chỉ hiện 1, hover vẫn đủ
+          if (kw && seenKws.has(kw)) return;
+          if (kw) seenKws.add(kw);
+          // Hiển thị keyword thực hành (VD "Keyword @State") thay vì tên SIO máy
+          const sioLabel = kw ? `Keyword ${kw}` : cleanLabel(sio.name || sio.code || 'SIO');
           knowledge.push({
             id: `${milestone.concept_code}-sio-${i}`,
-            label: cleanLabel(sio.name || sio.code || 'SIO'),
+            label: sioLabel,
             bloom: sio.bloom_level || 'apply',
             ulo: ulo ? {
               code: ulo.code, name: cleanLabel(ulo.name), description: ulo.description,
@@ -61,6 +68,7 @@ function transformToCardData(roadmap) {
               code: sio.code, name: cleanLabel(sio.name), description: sio.description,
               bloom: sio.bloom_level || 'apply',
             },
+            keyword: kw,
           });
         });
       } else if (ulos.length > 0) {
@@ -170,22 +178,31 @@ function KnowledgeItem({ item, index }) {
     className: 'tkr-knowledge-item',
     onMouseEnter: () => setHover(true),
     onMouseLeave: () => setHover(false),
-    style: { position: 'relative', padding: '4px 0', fontSize: '13px', cursor: 'default' },
+    style: { position: 'relative', display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', marginBottom: '8px', cursor: 'default' },
   }, [
-    // Label trên
-    React.createElement('div', {
-      key: 'label',
-      style: { fontWeight: 500, color: '#18181b', lineHeight: 1.4 },
-    }, item.label),
-
-    // Bloom badge DƯỚI label (giống Action Roadmap)
-    React.createElement('div', {
-      key: 'bloom',
-      className: 'tkr-bloom-badge',
+    // Dot (giống ActionRoadmapWeb cũ)
+    React.createElement('span', {
+      key: 'dot',
+      className: 'dot',
       style: {
-        marginTop: '2px', fontSize: '9px', fontWeight: 600, textTransform: 'uppercase',
-        color: bloomColor, background: `${bloomColor}15`, padding: '1px 6px', borderRadius: '10px',
-        display: 'inline-block',
+        flex: 'none', width: '6px', height: '6px', borderRadius: '50%', marginTop: '6px',
+        background: '#18181b',
+      },
+    }),
+    // Text label (flex chiếm phần còn lại)
+    React.createElement('span', {
+      key: 'txt',
+      className: 'txt',
+      style: { flex: 1, lineHeight: 1.45, color: '#18181b', fontWeight: 500 },
+    }, item.label),
+    // Bloom tag bên phải (giống ActionRoadmapWeb cũ, màu theo BLOOM_COLORS)
+    React.createElement('span', {
+      key: 'bloom',
+      className: 'tag bloom',
+      style: {
+        flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
+        color: bloomColor, background: `${bloomColor}15`, padding: '1px 7px', borderRadius: '20px',
+        marginTop: '1px', textTransform: 'uppercase',
       },
     }, item.bloom),
 

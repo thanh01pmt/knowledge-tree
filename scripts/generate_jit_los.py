@@ -247,18 +247,23 @@ def generate_cio(concept_code: str, description: str) -> dict:
 
 
 def generate_sio(concept_code: str, concept_name: str, description: str,
-                 project_context: str, target_tech: str) -> dict:
+                 project_context: str, target_tech: str, keyword: str = '') -> dict:
     """Generate SIO (SPECIFIC_IMPL tier) from concept + project context.
 
     Uses LLM to write a natural description grounded in the project's real
-    domain intent (docstring/README), NOT raw code identifiers.
+    domain intent (docstring/README) + concept keyword (thực hành cụ thể).
     """
+    kw_hint = f"Khái niệm này trong dự án xuất hiện qua keyword/tên gọi: '{keyword}'. " if keyword else ""
     llm_desc = _llm_generate(
         f"Bạn là chuyên gia sư phạm. Viết 1 câu mô tả SIO (Specific Implementation Objective) "
         f"bắt đầu bằng 'Người học có khả năng triển khai' cho khái niệm '{concept_name}' "
         f"trong ngôn ngữ {target_tech}, gắn với mục đích dự án: '{project_context}'. "
+        f"{kw_hint}"
+        f"QUAN TRỌNG: mô tả phải GẮN VỚI THỰC HÀNH CỤ THỂ trong dự án — nêu rõ keyword/tên "
+        f"API/framework người học sẽ dùng (như tên framework, property wrapper, từ khóa ngôn ngữ), "
+        f"KHÔNG viết lý thuyết trừu tượng chung chung. "
         f"QUAN TRỌNG: dùng tên khái niệm và mô tả tự nhiên bằng tiếng Việt, "
-        f"KHÔNG chèn tên biến/class/function (code identifiers) vào câu văn. "
+        f"KHÔNG chèn tên biến/class/function do lập trình viên tự đặt (code identifiers) vào câu văn. "
         f"Giữ nguyên thuật ngữ tiếng Anh chuyên ngành quốc tế (không dịch sang tiếng Việt) "
         f"nếu là khái niệm kỹ thuật; viết tự nhiên theo đúng tên khái niệm '{concept_name}'. "
         f"Trả về JSON: {{\"description\": \"...\"}}",
@@ -267,8 +272,9 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
     if llm_desc:
         final_desc = llm_desc
     else:
+        kw_part = f" sử dụng '{keyword}'" if keyword else ""
         final_desc = (
-            f"Người học có khả năng triển khai {concept_name} trong {target_tech} "
+            f"Người học có khả năng triển khai {concept_name}{kw_part} trong {target_tech} "
             f"phục vụ {project_context if project_context else 'mục đích của dự án'}: "
             f"{description[:150] if description else 'viết code, xử lý lỗi, và kiểm thử.'}"
         )
@@ -280,6 +286,7 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         'lo_type': 'SPECIFIC_IMPL',
         'parent_lo_code': f"CIO-{concept_code}-01",
         'concept_codes': [concept_code],
+        'keyword': keyword,  # keyword thực hành của concept trong project
         'bloom_level': 'CREATE',  # SIO = thực hành hoàn thiện (Phase 3, vertical slicing)
         'knowledge_dimension': 'PROCEDURAL',
         'assessment_approach': 'code-review',
@@ -388,7 +395,8 @@ def main():
         ulo = generate_ulo(concept_code, description)
         cio = generate_cio(concept_code, description)
         sio = generate_sio(concept_code, concept_name, description,
-                           project_context, args.target_tech)
+                           project_context, args.target_tech,
+                           keyword=info.get('keyword', ''))
 
         generated.extend([ulo, cio, sio])
 
