@@ -184,7 +184,7 @@
               "assessment": "code-review",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "loop",
+              "keyword": "for loop",
               "rationale": [
                 "SIO is a specific implementation of its parent CIO"
               ],

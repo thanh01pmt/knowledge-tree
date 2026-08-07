@@ -52,31 +52,51 @@ _TEMPLATE_DESC_SIGNALS = [
 ]
 
 
+# Keyword generic (tên hàm/khái niệm chung, KHÔNG phải keyword ngôn ngữ thực hành).
+# VD: 'loop' là tên hàm Arduino loop(), không phải từ khóa Swift — phải thay bằng
+# từ khóa thật (for, for-in) trích từ SIO name/description.
+_GENERIC_SIO_KEYWORDS = {
+    'loop', 'state', 'server', 'http', 'api', 'app', 'data', 'error',
+    'handler', 'service', 'model', 'view', 'config', 'file', 'function',
+}
+
+
 def infer_keyword_from_sio(sio: dict) -> str:
-    """Trích keyword thực hành từ SIO name khi SIO không có field keyword.
+    """Trích keyword thực hành từ SIO name/description.
 
     Ưu tiên token đặc thù (camelCase, @property, ký tự đặc biệt) thay vì
     cả câu. VD:
       'Use a for-in loop with a Range in Swift' → 'for-in'
       'Swift: Use @StateObject for Reference Type State' → '@StateObject'
       'Configure Custom HTTP Request Headers' → 'HTTP Request Headers'
+      'Implement For Loop' → 'for loop' (KHÔNG dùng keyword generic 'loop')
     """
     kw = (sio.get('keyword') or '').strip()
-    if kw:
-        return kw
     name = sio.get('name', '') or ''
-    name = re.sub(r'^SWIFT:\s*|^Swift:\s*', '', name)
+    name_clean = re.sub(r'^SWIFT:\s*|^Swift:\s*', '', name)
+
+    # Nếu keyword field là generic → bỏ qua, trích từ name (keyword thật hơn)
+    if kw and kw.lower() not in _GENERIC_SIO_KEYWORDS:
+        return kw
+
     # Token đặc thù: @Property, camelCase, ký tự đặc biệt (for-in, forEach, _)
-    tokens = re.findall(r'@[\w.]+|[a-z]+[A-Z][\w]*|[\w]+-[\w]+|_[\w]*', name)
+    tokens = re.findall(r'@[\w.]+|[a-z]+[A-Z][\w]*|[\w]+-[\w]+|_[\w]*', name_clean)
     if tokens:
-        # Ưu tiên token có @ hoặc camelCase hoặc ký tự đặc biệt
         special = [t for t in tokens if '@' in t or '-' in t or '_' in t or (t != t.lower() and t != t.upper())]
         if special:
             return special[0]
         return tokens[0]
-    # Fallback: bỏ động từ mở đầu, lấy phần còn lại cắt ngắn
-    name = re.sub(r'^(Use|Using|Configure|Implement|Apply|Understand|Traverse|Iterate|Declare|Mutate)\s+', '', name)
-    return name.strip(' .,;')[:40]
+
+    # Bỏ động từ mở đầu, lấy phần còn lại (VD "Implement For Loop" → "For Loop")
+    rest = re.sub(r'^(Use|Using|Configure|Implement|Apply|Understand|Traverse|Iterate|Declare|Mutate)\s+', '', name_clean)
+    rest = rest.strip(' .,;')
+    if not rest:
+        return kw or rest
+    # Keyword tự nhiên nhiều từ → lowercase (VD "For Loop" → "for loop"),
+    # trừ khi chứa ký tự đặc thù (giữ nguyên @State, HTTP, camelCase)
+    if not re.search(r'[@\-_]|[a-z][A-Z]', rest):
+        return rest.lower()[:40]
+    return rest[:40]
 
 
 def is_template_cio_code(cio_code: str) -> bool:
@@ -175,7 +195,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'assessment': lo.get('assessment_approach', 'code-review'),
                 'bloom_level': (lo.get('bloom_level') or 'understand').lower(),
                 'knowledge_dimension': lo.get('knowledge_dimension') or 'CONCEPTUAL',
-                'keyword': lo.get('keyword', '') or '',
+                'keyword': infer_keyword_from_sio(lo) if lo.get('lo_type') == 'SPECIFIC_IMPL' else (lo.get('keyword', '') or ''),
             }
 
     return los
