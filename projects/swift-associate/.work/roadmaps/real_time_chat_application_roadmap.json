@@ -1,0 +1,427 @@
+{
+  "project_brief": {
+    "title": "Real-time Chat Application",
+    "project_code": "PROJ-REALTIME-CHAT",
+    "type": "Single Large Capstone System",
+    "target_learner": "Intermediate iOS Developer",
+    "description": "Build a full-featured real-time chat app with WebSocket communication, user authentication, and message persistence. The app will support one-on-one and group chats, typing indicators, and push notifications.",
+    "tech_stack": [
+      "Swift",
+      "SwiftUI",
+      "Combine",
+      "WebSocket",
+      "Firebase Auth",
+      "Core Data"
+    ],
+    "key_features": [
+      "User registration and login with Firebase Auth",
+      "Real-time messaging via WebSocket (Starscream or URLSessionWebSocketTask)",
+      "Typing indicators and online status",
+      "Message history with Core Data offline caching",
+      "Push notifications for new messages"
+    ]
+  },
+  "all_proposals": [
+    {
+      "option_id": 1,
+      "project_code": "PROJ-REALTIME-CHAT",
+      "type": "Single Large Capstone System",
+      "title": "Real-time Chat Application",
+      "target_learner": "Intermediate iOS Developer",
+      "description": "Build a full-featured real-time chat app with WebSocket communication, user authentication, and message persistence. The app will support one-on-one and group chats, typing indicators, and push notifications.",
+      "estimated_weeks": 8,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "WebSocket",
+        "Firebase Auth",
+        "Core Data"
+      ],
+      "key_features": [
+        "User registration and login with Firebase Auth",
+        "Real-time messaging via WebSocket (Starscream or URLSessionWebSocketTask)",
+        "Typing indicators and online status",
+        "Message history with Core Data offline caching",
+        "Push notifications for new messages"
+      ],
+      "target_concept_codes": [
+        "ASYNCHRONOUS_PROG_CONCEPT",
+        "NETWORKING_CONCEPT",
+        "UI_UPDATE_CONCEPT",
+        "DATA_PERSISTENCE_CONCEPT",
+        "AUTH_CONCEPT"
+      ]
+    },
+    {
+      "option_id": 2,
+      "project_code": "PROJ-SPORTS-SCOREBOARD",
+      "type": "Single Large Capstone System",
+      "title": "Live Sports Scoreboard",
+      "target_learner": "Beginner to Intermediate iOS Developer",
+      "description": "Build an app that displays live sports scores using a public WebSocket API (e.g., from TheSportsDB or similar). The app will show real-time updates for multiple sports, with offline caching and a clean, animated UI.",
+      "estimated_weeks": 6,
+      "tech_stack": [
+        "Swift",
+        "UIKit/SwiftUI",
+        "WebSocket",
+        "Combine",
+        "Core Data"
+      ],
+      "key_features": [
+        "WebSocket connection management with automatic reconnection",
+        "Realtime score updates for multiple sports (e.g., football, basketball, soccer)",
+        "Offline score caching using Core Data",
+        "Simple, animated UI with score changes highlighted",
+        "Team and league selection"
+      ],
+      "target_concept_codes": [
+        "ASYNCHRONOUS_PROG_CONCEPT",
+        "NETWORKING_CONCEPT",
+        "UI_UPDATE_CONCEPT",
+        "DATA_PERSISTENCE_CONCEPT",
+        "ANIMATION_CONCEPT"
+      ]
+    },
+    {
+      "option_id": 3,
+      "project_code": "PROJ-COLLAB-WHITEBOARD",
+      "type": "Single Large Capstone System",
+      "title": "Collaborative Whiteboard",
+      "target_learner": "Advanced Beginner iOS Developer",
+      "description": "Build a real-time collaborative whiteboard app where multiple users can draw simultaneously. Uses WebSocket for synchronization and PencilKit for drawing. Includes session management, undo/redo, and user presence.",
+      "estimated_weeks": 8,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "WebSocket",
+        "PencilKit",
+        "Multipeer Connectivity"
+      ],
+      "key_features": [
+        "Real-time drawing synchronization across devices via WebSocket",
+        "Multiple color and brush size options using PencilKit",
+        "Undo/Redo functionality",
+        "User presence indicators (who is drawing)",
+        "Session creation and joining with unique codes"
+      ],
+      "target_concept_codes": [
+        "ASYNCHRONOUS_PROG_CONCEPT",
+        "NETWORKING_CONCEPT",
+        "UI_UPDATE_CONCEPT",
+        "GESTURE_RECOGNITION_CONCEPT",
+        "MULTIUSER_CONCEPT"
+      ]
+    }
+  ],
+  "parameters": {
+    "weekly_hours": 10,
+    "estimated_weeks": 8,
+    "total_hours": 80,
+    "known_concepts": []
+  },
+  "topo_order": [
+    "ASYNCHRONOUS_PROG_CONCEPT"
+  ],
+  "edges": [],
+  "alignment_matrix": [
+    {
+      "lesson_id": "LES_ASYNCHRONOUS_PROG_CONCEPT",
+      "feature": "User registration and login with Firebase Auth",
+      "concept": "ASYNCHRONOUS_PROG_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_ASYNCHRONOUS_PROG_CONCEPT",
+      "feature": "Real-time messaging via WebSocket (Starscream or URLSessionWebSocketTask)",
+      "concept": "ASYNCHRONOUS_PROG_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_ASYNCHRONOUS_PROG_CONCEPT",
+      "feature": "Typing indicators and online status",
+      "concept": "ASYNCHRONOUS_PROG_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_ASYNCHRONOUS_PROG_CONCEPT",
+      "feature": "Message history with Core Data offline caching",
+      "concept": "ASYNCHRONOUS_PROG_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_ASYNCHRONOUS_PROG_CONCEPT",
+      "feature": "Push notifications for new messages",
+      "concept": "ASYNCHRONOUS_PROG_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    }
+  ],
+  "milestones": [
+    {
+      "phase": 1,
+      "feature": "User registration and login with Firebase Auth",
+      "concepts": [
+        {
+          "concept_code": "ASYNCHRONOUS_PROG_CONCEPT",
+          "name": "Asynchronous Programming",
+          "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+          "learning_objectives": [
+            {
+              "code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Asynchronous Programming - Create",
+              "description": "Người học có khả năng thiết kế luồng xử lý bất đồng bộ sử dụng async/await, callbacks, hoặc promises để thực hiện các tác vụ I/O mà không chặn luồng chính.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Async Control Flow Design",
+              "description": "Người học có khả năng thiết kế luồng điều khiển bất đồng bộ: callback-based (continuation passing), Promise/Future chaining (then/catch), async/await (synchronous syntax, implicit promise), structured concurrency (task groups, cancellation).",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "SIO-SWIFT-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Swift: Fetch Data with async/await",
+              "description": "Người học có khả năng viết async function, gọi URLSession.shared.data(from:) với await, xử lý CancellationError.",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "code-review",
+              "sequence_order": "15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "feature": "Real-time messaging via WebSocket (Starscream or URLSessionWebSocketTask)",
+      "concepts": [
+        {
+          "concept_code": "ASYNCHRONOUS_PROG_CONCEPT",
+          "name": "Asynchronous Programming",
+          "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+          "learning_objectives": [
+            {
+              "code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Asynchronous Programming - Create",
+              "description": "Người học có khả năng thiết kế luồng xử lý bất đồng bộ sử dụng async/await, callbacks, hoặc promises để thực hiện các tác vụ I/O mà không chặn luồng chính.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Async Control Flow Design",
+              "description": "Người học có khả năng thiết kế luồng điều khiển bất đồng bộ: callback-based (continuation passing), Promise/Future chaining (then/catch), async/await (synchronous syntax, implicit promise), structured concurrency (task groups, cancellation).",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "SIO-SWIFT-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Swift: Fetch Data with async/await",
+              "description": "Người học có khả năng viết async function, gọi URLSession.shared.data(from:) với await, xử lý CancellationError.",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "code-review",
+              "sequence_order": "15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "feature": "Typing indicators and online status",
+      "concepts": [
+        {
+          "concept_code": "ASYNCHRONOUS_PROG_CONCEPT",
+          "name": "Asynchronous Programming",
+          "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+          "learning_objectives": [
+            {
+              "code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Asynchronous Programming - Create",
+              "description": "Người học có khả năng thiết kế luồng xử lý bất đồng bộ sử dụng async/await, callbacks, hoặc promises để thực hiện các tác vụ I/O mà không chặn luồng chính.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Async Control Flow Design",
+              "description": "Người học có khả năng thiết kế luồng điều khiển bất đồng bộ: callback-based (continuation passing), Promise/Future chaining (then/catch), async/await (synchronous syntax, implicit promise), structured concurrency (task groups, cancellation).",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "SIO-SWIFT-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Swift: Fetch Data with async/await",
+              "description": "Người học có khả năng viết async function, gọi URLSession.shared.data(from:) với await, xử lý CancellationError.",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "code-review",
+              "sequence_order": "15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "feature": "Message history with Core Data offline caching",
+      "concepts": [
+        {
+          "concept_code": "ASYNCHRONOUS_PROG_CONCEPT",
+          "name": "Asynchronous Programming",
+          "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+          "learning_objectives": [
+            {
+              "code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Asynchronous Programming - Create",
+              "description": "Người học có khả năng thiết kế luồng xử lý bất đồng bộ sử dụng async/await, callbacks, hoặc promises để thực hiện các tác vụ I/O mà không chặn luồng chính.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Async Control Flow Design",
+              "description": "Người học có khả năng thiết kế luồng điều khiển bất đồng bộ: callback-based (continuation passing), Promise/Future chaining (then/catch), async/await (synchronous syntax, implicit promise), structured concurrency (task groups, cancellation).",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "SIO-SWIFT-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Swift: Fetch Data with async/await",
+              "description": "Người học có khả năng viết async function, gọi URLSession.shared.data(from:) với await, xử lý CancellationError.",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "code-review",
+              "sequence_order": "15"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "feature": "Push notifications for new messages",
+      "concepts": [
+        {
+          "concept_code": "ASYNCHRONOUS_PROG_CONCEPT",
+          "name": "Asynchronous Programming",
+          "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+          "learning_objectives": [
+            {
+              "code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Asynchronous Programming - Create",
+              "description": "Người học có khả năng thiết kế luồng xử lý bất đồng bộ sử dụng async/await, callbacks, hoặc promises để thực hiện các tác vụ I/O mà không chặn luồng chính.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Async Control Flow Design",
+              "description": "Người học có khả năng thiết kế luồng điều khiển bất đồng bộ: callback-based (continuation passing), Promise/Future chaining (then/catch), async/await (synchronous syntax, implicit promise), structured concurrency (task groups, cancellation).",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "CREATE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "9"
+            },
+            {
+              "code": "SIO-SWIFT-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "name": "Swift: Fetch Data with async/await",
+              "description": "Người học có khả năng viết async function, gọi URLSession.shared.data(from:) với await, xử lý CancellationError.",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+              "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "code-review",
+              "sequence_order": "15"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

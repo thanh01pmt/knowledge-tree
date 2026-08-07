@@ -1,0 +1,1062 @@
+{
+  "project_brief": {
+    "title": "Build a Rust CLI Tool for File Processing",
+    "project_code": "RUST_CLI_001",
+    "type": "project",
+    "target_learner": "Intermediate Rust developers",
+    "description": "A command-line tool that processes files (e.g., search, replace, count lines, etc.) using Rust's standard library and popular crates like clap for argument parsing. The project will teach file I/O, error handling, and CLI design.",
+    "tech_stack": [
+      "Rust",
+      "clap",
+      "serde",
+      "std::fs",
+      "std::io"
+    ],
+    "key_features": [
+      "Parse command-line arguments with clap",
+      "Read and write files",
+      "Search for patterns in files",
+      "Replace text in files",
+      "Count lines/words/characters",
+      "Handle errors gracefully",
+      "Support multiple file inputs",
+      "Output results to stdout or file"
+    ]
+  },
+  "step_by_step_build_guide": [
+    {
+      "phase_id": 1,
+      "title": "Project Setup and Basic CLI with clap",
+      "engineering_action": "Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.",
+      "required_prereq_knowledge": "Basic Rust syntax, Cargo project structure, modules, and understanding of command-line interfaces.",
+      "matching_concept_codes": [
+        "VERSION_CONTROL_WORKFLOW"
+      ]
+    },
+    {
+      "phase_id": 2,
+      "title": "File Reading and Counting Operations",
+      "engineering_action": "Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+      "required_prereq_knowledge": "File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`.",
+      "matching_concept_codes": [
+        "MECHATRONICS_SYSTEMS_DIAGNOSTICS"
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "Search and Replace Functionality",
+      "engineering_action": "Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+      "required_prereq_knowledge": "Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization.",
+      "matching_concept_codes": [
+        "AI_HISTORY_MILESTONES"
+      ]
+    },
+    {
+      "phase_id": 4,
+      "title": "Robust Error Handling and Output Options",
+      "engineering_action": "Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+      "required_prereq_knowledge": "Advanced error handling patterns, custom error types, file output, and CLI design best practices.",
+      "matching_concept_codes": [
+        "TYPES_OF_AI"
+      ]
+    }
+  ],
+  "techstack_advisor": {
+    "intake_id": "intake-20260804-001",
+    "chosen_option": "A+C",
+    "stack": {
+      "tech_stack": [
+        "Rust",
+        "clap",
+        "serde",
+        "std::fs",
+        "std::io"
+      ],
+      "build_tooling": "cargo"
+    },
+    "estimated_effort_hours": 60,
+    "learner_budget_hours": 30,
+    "tradeoffs_noted": [
+      "Time conflict: project needs ~60h (4w × 15h/w baseline), learner has 30h (5h/w × 6w). Deficit: 30h (50% short).",
+      "(a) Scope reduced to MVP feature set.",
+      "(c) Scaffold-assisted approach for boilerplate modules to save ~15-20 hours."
+    ]
+  },
+  "execution_model": "Product-First Build Guide → Reverse Knowledge Mapping (45-Min Tasks)",
+  "student_active_roadmap": {
+    "status": "REQUIRES_CURRICULUM_AUDIT",
+    "project_id": "RUST_CLI_001",
+    "project_title": "Build a Rust CLI Tool for File Processing",
+    "current_phase_index": 0,
+    "pinned_at": "2026-08-04T10:09:19.568318+00:00",
+    "unmapped_steps_ratio": 0.75
+  },
+  "code_reviewer_rubric": {
+    "reviewer_agent": "AI Code Reviewer Agent (@reviewer)",
+    "rubric": {
+      "functional_correctness": "Code runs and satisfies deliverable acceptance criteria",
+      "language_syntax_idiom": "Code adheres to standard Rust, clap, serde, std::fs, std::io conventions",
+      "error_handling": "Code handles exceptions, network loss, and edge cases"
+    }
+  },
+  "quarantine_candidates": [
+    {
+      "lo_id": "GEN_SIO_9A8DC9D4",
+      "label": "Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+      "status": "proposed_new",
+      "judge_verdict": "not_a_duplicate — closest existing concept is MECHATRONICS_SYSTEMS_DIAGNOSTICS ('Mechatronics and Control Systems Diagnostics'); action 'Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.' is distinct enough for a new entry",
+      "prerequisites": [
+        "LO-MECHATRONICS_SYSTEMS_DIAGNOSTICS"
+      ],
+      "parallel_ok_with": [],
+      "optional": false,
+      "traced_to_instruction": [
+        "project-instruction/phase-1/step-1.md#L15"
+      ],
+      "pending_human_approval": true
+    },
+    {
+      "lo_id": "GEN_SIO_6E6FD382",
+      "label": "Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+      "status": "proposed_new",
+      "judge_verdict": "not_a_duplicate — closest existing concept is AI_HISTORY_MILESTONES ('History and Milestones of AI'); action 'Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.' is distinct enough for a new entry",
+      "prerequisites": [
+        "LO-AI_HISTORY_MILESTONES"
+      ],
+      "parallel_ok_with": [],
+      "optional": false,
+      "traced_to_instruction": [
+        "project-instruction/phase-2/step-2.md#L15"
+      ],
+      "pending_human_approval": true
+    },
+    {
+      "lo_id": "GEN_SIO_9F0E5B03",
+      "label": "Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+      "status": "proposed_new",
+      "judge_verdict": "not_a_duplicate — closest existing concept is TYPES_OF_AI ('Types of AI: Narrow vs. General'); action 'Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.' is distinct enough for a new entry",
+      "prerequisites": [
+        "LO-TYPES_OF_AI"
+      ],
+      "parallel_ok_with": [],
+      "optional": false,
+      "traced_to_instruction": [
+        "project-instruction/phase-3/step-3.md#L15"
+      ],
+      "pending_human_approval": true
+    }
+  ],
+  "roadmap_graph": {
+    "nodes": [
+      {
+        "id": "LO-ASYNCHRONOUS_PROG_CONCEPT",
+        "type": "topic",
+        "label": "Asynchronous Programming",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-BEHAVIORAL_PATTERNS",
+        "type": "topic",
+        "label": "Behavioral Design Patterns",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-CREATIONAL_PATTERNS",
+        "type": "topic",
+        "label": "Creational Design Patterns",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-ERROR_MESSAGES_CONCEPT",
+        "type": "topic",
+        "label": "Interpreting Error Messages",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "type": "topic",
+        "label": "First-Class & Higher-Order Functions",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-IMMUTABILITY_CONCEPT",
+        "type": "topic",
+        "label": "Immutability and Pure Functions",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-PROBLEM_DECOMPOSITION",
+        "type": "topic",
+        "label": "Problem Decomposition",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-STRUCTURAL_PATTERNS",
+        "type": "topic",
+        "label": "Structural Design Patterns",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "type": "topic",
+        "label": "Systematic Troubleshooting",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-VERSION_CONTROL_WORKFLOW",
+        "type": "checkpoint",
+        "label": "Version Control Workflow",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "checkpoint-phase0",
+        "type": "checkpoint",
+        "label": "Gate 0: Project Setup and Basic CLI with clap",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase1",
+        "type": "checkpoint",
+        "label": "Gate 1: File Reading and Counting Operations",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase2",
+        "type": "checkpoint",
+        "label": "Gate 2: Search and Replace Functionality",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase3",
+        "type": "checkpoint",
+        "label": "Gate 3: Robust Error Handling and Output Options",
+        "group": "Gates"
+      }
+    ],
+    "edges": [
+      {
+        "from": "LO-ASYNCHRONOUS_PROG_CONCEPT",
+        "to": "LO-BEHAVIORAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-BEHAVIORAL_PATTERNS",
+        "to": "LO-CREATIONAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-CREATIONAL_PATTERNS",
+        "to": "LO-ERROR_MESSAGES_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-ERROR_MESSAGES_CONCEPT",
+        "to": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "to": "LO-IMMUTABILITY_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-IMMUTABILITY_CONCEPT",
+        "to": "LO-PROBLEM_DECOMPOSITION",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-PROBLEM_DECOMPOSITION",
+        "to": "LO-STRUCTURAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-STRUCTURAL_PATTERNS",
+        "to": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "to": "LO-VERSION_CONTROL_WORKFLOW",
+        "kind": "prerequisite"
+      }
+    ]
+  },
+  "user_profile": {
+    "age_group": "adult",
+    "focus_window_minutes": 45,
+    "weekly_hours": 5,
+    "target_weeks": 6,
+    "total_budget_hours": 30,
+    "ultimate_outcome": "Build MVP Product for Portfolio",
+    "preferred_modality": "Hands-on Code Labs & Interactive Diagrams",
+    "known_concepts": []
+  },
+  "all_proposals": [
+    {
+      "option_id": "rust-cli-file-processor-001",
+      "project_code": "RUST_CLI_001",
+      "github_repo_url": "https://github.com/your-org/rust-cli-file-processor",
+      "type": "project",
+      "title": "Build a Rust CLI Tool for File Processing",
+      "target_learner": "Intermediate Rust developers",
+      "description": "A command-line tool that processes files (e.g., search, replace, count lines, etc.) using Rust's standard library and popular crates like clap for argument parsing. The project will teach file I/O, error handling, and CLI design.",
+      "estimated_weeks": 4,
+      "tech_stack": [
+        "Rust",
+        "clap",
+        "serde",
+        "std::fs",
+        "std::io"
+      ],
+      "key_features": [
+        "Parse command-line arguments with clap",
+        "Read and write files",
+        "Search for patterns in files",
+        "Replace text in files",
+        "Count lines/words/characters",
+        "Handle errors gracefully",
+        "Support multiple file inputs",
+        "Output results to stdout or file"
+      ],
+      "target_concept_codes": [
+        "RUST-CLI-01",
+        "RUST-FILE-IO",
+        "RUST-ERROR-HANDLING"
+      ]
+    }
+  ],
+  "topo_order": [
+    "ASYNCHRONOUS_PROG_CONCEPT",
+    "BEHAVIORAL_PATTERNS",
+    "CREATIONAL_PATTERNS",
+    "ERROR_MESSAGES_CONCEPT",
+    "FIRST_CLASS_FUNCTIONS_CONCEPT",
+    "IMMUTABILITY_CONCEPT",
+    "PROBLEM_DECOMPOSITION",
+    "STRUCTURAL_PATTERNS",
+    "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+    "VERSION_CONTROL_WORKFLOW"
+  ],
+  "edges": [],
+  "waterfall_gates": [
+    {
+      "gate_id": "GATE_0_PROJECT_SETUP_AND_BASIC_CLI_WITH_CLAP",
+      "phase": "Phase 0: Project Setup and Basic CLI with clap",
+      "engineering_action": "Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.",
+      "prerequisite_needed": "Basic Rust syntax, Cargo project structure, modules, and understanding of command-line interfaces.",
+      "timeframe": "Weeks 1-1 (8h)",
+      "checkpoint": "Complete 'Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 0 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_0_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Project Setup and Basic CLI with clap",
+            "instruction": "Read error log and fix code for 'Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_1_FILE_READING_AND_COUNTING_OPERATIONS",
+      "phase": "Phase 1: File Reading and Counting Operations",
+      "engineering_action": "Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+      "prerequisite_needed": "File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`.",
+      "timeframe": "Weeks 2-2 (8h)",
+      "checkpoint": "Complete 'Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 1 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_1_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in File Reading and Counting Operations",
+            "instruction": "Read error log and fix code for 'Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_2_SEARCH_AND_REPLACE_FUNCTIONALITY",
+      "phase": "Phase 2: Search and Replace Functionality",
+      "engineering_action": "Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+      "prerequisite_needed": "Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization.",
+      "timeframe": "Weeks 3-3 (8h)",
+      "checkpoint": "Complete 'Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 2 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_2_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Search and Replace Functionality",
+            "instruction": "Read error log and fix code for 'Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_3_ROBUST_ERROR_HANDLING_AND_OUTPUT_OPTIONS",
+      "phase": "Phase 3: Robust Error Handling and Output Options",
+      "engineering_action": "Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+      "prerequisite_needed": "Advanced error handling patterns, custom error types, file output, and CLI design best practices.",
+      "timeframe": "Weeks 4-6 (8h)",
+      "checkpoint": "Complete 'Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 3 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_3_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Robust Error Handling and Output Options",
+            "instruction": "Read error log and fix code for 'Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.'."
+          }
+        ]
+      }
+    }
+  ],
+  "waterfall_phases": [
+    {
+      "phase_num": 0,
+      "title": "Project Setup and Basic CLI with clap",
+      "engineering_action": "Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.",
+      "required_prereq_knowledge": "Basic Rust syntax, Cargo project structure, modules, and understanding of command-line interfaces.",
+      "matching_concept_codes": [
+        "RUST-CLI-01"
+      ],
+      "timeframe": "Weeks 1-1 (8h)",
+      "concepts": [
+        {
+          "concept_code": "RUST-CLI-01",
+          "name": "RUST-CLI-01",
+          "description": "",
+          "estimated_hours": 8,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-CLI-01-1",
+              "lo_type": "UNIVERSAL",
+              "tag": "INFRA_SETUP",
+              "name": "Universal Principle: RUST-CLI-01",
+              "description": "Hiểu nguyên lý phổ quát của RUST-CLI-01 cho 'Project Setup and Basic CLI with clap'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-CLI-01-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "INFRA_SETUP",
+              "name": "Algorithmic Pattern: RUST-CLI-01",
+              "description": "Thiết kế quy trình xử lý cho RUST-CLI-01.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-CLI-01-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "TOOL_ONBOARDING",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.",
+              "description": "Thực thi trực tiếp: 'Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_0_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-CLI-01-1",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Basic Rust syntax, Cargo project structure, modules, and understanding of command-line interfaces. (RUST-CLI-01)",
+              "deliverable": "Tooling Installation Log"
+            },
+            {
+              "task_id": "TASK_0_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-CLI-01-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_0_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-CLI-01-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Project Setup and Basic CLI with clap",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_0_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-CLI-01-1",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Basic Rust syntax, Cargo project structure, modules, and understanding of command-line interfaces. (RUST-CLI-01)",
+          "deliverable": "Tooling Installation Log"
+        },
+        {
+          "task_id": "TASK_0_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-CLI-01-1",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Initialize a new Rust project using Cargo. Add the `clap` crate as a dependency. Define a CLI structure with arguments for input file, output file, and operation type (e.g., count, search, replace). Implement argument parsing and print the parsed values to verify correctness.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_0_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-CLI-01-1",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Project Setup and Basic CLI with clap",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 1,
+      "title": "File Reading and Counting Operations",
+      "engineering_action": "Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+      "required_prereq_knowledge": "File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`.",
+      "matching_concept_codes": [
+        "RUST-FILE-IO",
+        "RUST-ERROR-HANDLING"
+      ],
+      "timeframe": "Weeks 2-2 (8h)",
+      "concepts": [
+        {
+          "concept_code": "RUST-FILE-IO",
+          "name": "RUST-FILE-IO",
+          "description": "",
+          "estimated_hours": 4,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-FILE-IO-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RUST-FILE-IO",
+              "description": "Hiểu nguyên lý phổ quát của RUST-FILE-IO cho 'File Reading and Counting Operations'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-FILE-IO-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RUST-FILE-IO",
+              "description": "Thiết kế quy trình xử lý cho RUST-FILE-IO.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-FILE-IO-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+              "description": "Thực thi trực tiếp: 'Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-FILE-IO-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`. (RUST-FILE-IO)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-FILE-IO-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_1_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-FILE-IO-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: File Reading and Counting Operations",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "RUST-ERROR-HANDLING",
+          "name": "RUST-ERROR-HANDLING",
+          "description": "",
+          "estimated_hours": 4,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-ERROR-HANDLING-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RUST-ERROR-HANDLING",
+              "description": "Hiểu nguyên lý phổ quát của RUST-ERROR-HANDLING cho 'File Reading and Counting Operations'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-ERROR-HANDLING-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RUST-ERROR-HANDLING",
+              "description": "Thiết kế quy trình xử lý cho RUST-ERROR-HANDLING.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-ERROR-HANDLING-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+              "description": "Thực thi trực tiếp: 'Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-ERROR-HANDLING-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`. (RUST-ERROR-HANDLING)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-ERROR-HANDLING-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_1_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-ERROR-HANDLING-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: File Reading and Counting Operations",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_1_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-FILE-IO-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`. (RUST-FILE-IO)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-FILE-IO-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_1_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-FILE-IO-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: File Reading and Counting Operations",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_1_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-ERROR-HANDLING-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: File I/O in Rust (`std::fs`, `std::io`), iterators, string manipulation, and basic error handling with `Result`. (RUST-ERROR-HANDLING)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-ERROR-HANDLING-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Implement file reading using `std::fs::File` and `std::io::BufReader`. Add functionality to count lines, words, and characters in a given file. Output the counts to stdout. Handle basic file-not-found errors with `?` operator and `match`.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_1_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-ERROR-HANDLING-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: File Reading and Counting Operations",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 2,
+      "title": "Search and Replace Functionality",
+      "engineering_action": "Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+      "required_prereq_knowledge": "Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization.",
+      "matching_concept_codes": [
+        "RUST-FILE-IO",
+        "RUST-ERROR-HANDLING"
+      ],
+      "timeframe": "Weeks 3-3 (8h)",
+      "concepts": [
+        {
+          "concept_code": "RUST-FILE-IO",
+          "name": "RUST-FILE-IO",
+          "description": "",
+          "estimated_hours": 4,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-FILE-IO-3",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RUST-FILE-IO",
+              "description": "Hiểu nguyên lý phổ quát của RUST-FILE-IO cho 'Search and Replace Functionality'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-FILE-IO-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RUST-FILE-IO",
+              "description": "Thiết kế quy trình xử lý cho RUST-FILE-IO.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-FILE-IO-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+              "description": "Thực thi trực tiếp: 'Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_2_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-FILE-IO-3",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization. (RUST-FILE-IO)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_2_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-FILE-IO-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_2_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-FILE-IO-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Search and Replace Functionality",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "RUST-ERROR-HANDLING",
+          "name": "RUST-ERROR-HANDLING",
+          "description": "",
+          "estimated_hours": 4,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-ERROR-HANDLING-3",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RUST-ERROR-HANDLING",
+              "description": "Hiểu nguyên lý phổ quát của RUST-ERROR-HANDLING cho 'Search and Replace Functionality'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-ERROR-HANDLING-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RUST-ERROR-HANDLING",
+              "description": "Thiết kế quy trình xử lý cho RUST-ERROR-HANDLING.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-ERROR-HANDLING-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+              "description": "Thực thi trực tiếp: 'Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_2_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-ERROR-HANDLING-3",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization. (RUST-ERROR-HANDLING)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_2_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-ERROR-HANDLING-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_2_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-ERROR-HANDLING-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Search and Replace Functionality",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_2_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-FILE-IO-3",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization. (RUST-FILE-IO)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_2_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-FILE-IO-3",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_2_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-FILE-IO-3",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Search and Replace Functionality",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_2_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-ERROR-HANDLING-3",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Pattern matching, regular expressions (optional), working with multiple files, and using external crates like `serde` for deserialization. (RUST-ERROR-HANDLING)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_2_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-ERROR-HANDLING-3",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Add search and replace operations. For search, read the file and find lines containing a given pattern (simple string or regex). For replace, replace all occurrences of the pattern with a replacement string. Optionally use `serde` to read a configuration file for patterns. Support multiple input files by accepting a list or glob pattern.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_2_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-ERROR-HANDLING-3",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Search and Replace Functionality",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 3,
+      "title": "Robust Error Handling and Output Options",
+      "engineering_action": "Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+      "required_prereq_knowledge": "Advanced error handling patterns, custom error types, file output, and CLI design best practices.",
+      "matching_concept_codes": [
+        "RUST-ERROR-HANDLING",
+        "RUST-CLI-01"
+      ],
+      "timeframe": "Weeks 4-6 (8h)",
+      "concepts": [
+        {
+          "concept_code": "RUST-ERROR-HANDLING",
+          "name": "RUST-ERROR-HANDLING",
+          "description": "",
+          "estimated_hours": 4,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-ERROR-HANDLING-4",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RUST-ERROR-HANDLING",
+              "description": "Hiểu nguyên lý phổ quát của RUST-ERROR-HANDLING cho 'Robust Error Handling and Output Options'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-ERROR-HANDLING-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RUST-ERROR-HANDLING",
+              "description": "Thiết kế quy trình xử lý cho RUST-ERROR-HANDLING.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-ERROR-HANDLING-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+              "description": "Thực thi trực tiếp: 'Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_3_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-ERROR-HANDLING-4",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Advanced error handling patterns, custom error types, file output, and CLI design best practices. (RUST-ERROR-HANDLING)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_3_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-ERROR-HANDLING-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_3_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-ERROR-HANDLING-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Robust Error Handling and Output Options",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "RUST-CLI-01",
+          "name": "RUST-CLI-01",
+          "description": "",
+          "estimated_hours": 4,
+          "learning_objectives": [
+            {
+              "code": "ULO-RUST-CLI-01-4",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RUST-CLI-01",
+              "description": "Hiểu nguyên lý phổ quát của RUST-CLI-01 cho 'Robust Error Handling and Output Options'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RUST-CLI-01-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RUST-CLI-01",
+              "description": "Thiết kế quy trình xử lý cho RUST-CLI-01.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-RUST-RUST-CLI-01-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Rust, clap, serde, std::fs, std::io Implementation: Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+              "description": "Thực thi trực tiếp: 'Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_3_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-RUST-CLI-01-4",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Advanced error handling patterns, custom error types, file output, and CLI design best practices. (RUST-CLI-01)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_3_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-RUST-RUST-CLI-01-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+              "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+            },
+            {
+              "task_id": "TASK_3_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-RUST-CLI-01-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Robust Error Handling and Output Options",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_3_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-ERROR-HANDLING-4",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Advanced error handling patterns, custom error types, file output, and CLI design best practices. (RUST-ERROR-HANDLING)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_3_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-ERROR-HANDLING-4",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_3_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-ERROR-HANDLING-4",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Robust Error Handling and Output Options",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_3_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-RUST-CLI-01-4",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Advanced error handling patterns, custom error types, file output, and CLI design best practices. (RUST-CLI-01)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_3_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-RUST-RUST-CLI-01-4",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Refactor error handling to use custom error types (e.g., an enum implementing `std::error::Error`). Add support for outputting results to a file (via `--output` flag) or stdout. Implement graceful handling of edge cases (e.g., empty files, invalid patterns). Optionally add a `--verbose` flag for detailed logs.",
+          "deliverable": "Working Code Module in Rust, clap, serde, std::fs, std::io"
+        },
+        {
+          "task_id": "TASK_3_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-RUST-CLI-01-4",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Robust Error Handling and Output Options",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    }
+  ]
+}

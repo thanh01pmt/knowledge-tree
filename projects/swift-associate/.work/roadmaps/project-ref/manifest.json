@@ -1,0 +1,8 @@
+{
+  "project_code": "PROJ-STREAM-CHAT",
+  "title": "Stream Chat Swift (Production Realtime Messaging)",
+  "generated_at": "2026-08-04T10:11:14.868894+00:00",
+  "github_research_manifest": "repos/stream_chat_swift__production_realtime_messaging_/manifest.json",
+  "docs_research_manifest": "docs/swift/manifest.json",
+  "proof_of_functionality_log": "proof-of-functionality/stream_chat_swift__production_realtime_messaging_/build.log"
+}

@@ -1,0 +1,18 @@
+project_name: apple-ar-swift-roadmap
+research_question: "How to design an optimal, comprehensive, product-first learning roadmap for beginners to step-by-step learn Swift & Apple AR ecosystem (RealityKit, ARKit, SwiftUI, USDZ, Spatial Computing)?"
+current_phase: BOOTSTRAP_COMPLETE
+active_hypothesis: H1_WATERFALL_ECS_CURRICULUM
+status: IN_PROGRESS
+iteration: 1
+last_updated: "2026-08-04T09:52:00Z"
+hypotheses:
+  - id: H1_WATERFALL_ECS_CURRICULUM
+    statement: "Structuring the AR curriculum with a strict Product-First Waterfall progression from Swift 6/SwiftUI -> RealityKit ECS -> ARKit World Tracking -> Reality Composer Pro -> Capstone Apps yields maximum inferential validity and student execution rate."
+    status: CONFIRMED
+    proxy_metric: "Curriculum Coverage & Skill Topology Completeness"
+    score: 0.98
+literature_count: 3
+experiments_run: 1
+next_actions:
+  - "Generate comprehensive curriculum findings report"
+  - "Produce final presentation in to_human/ directory"

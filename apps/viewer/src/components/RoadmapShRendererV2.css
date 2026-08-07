@@ -1,0 +1,458 @@
+/* RoadmapShRendererV2.css - Balsamiq Style (matching roadmap.sh SVG) */
+
+@import url('https://fonts.googleapis.com/css2?family=Balsamiq+Sans:wght@400;700&display=swap');
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.roadmap-sh-renderer-v2 {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  font-family: 'Balsamiq Sans', 'Comic Sans MS', cursive, sans-serif;
+  background: #f8fafc;
+}
+
+.roadmap-sh-renderer-v2.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f8fafc;
+}
+
+.loading {
+  color: #64748b;
+  font-size: 16px;
+}
+
+/* Toolbar */
+.renderer-toolbar-v2 {
+  position: absolute;
+  bottom: 16px;
+  left: 16px;
+  right: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 16px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 2.7px solid #000000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 #000000;
+  z-index: 1000;
+  pointer-events: none;
+}
+
+.renderer-toolbar-v2 > * {
+  pointer-events: auto;
+}
+
+.toolbar-left h3 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.subtitle {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.toolbar-center {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.toolbar-right {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: #334155;
+  white-space: nowrap;
+}
+
+.legend-node {
+  width: 14px;
+  height: 14px;
+  border: 2px solid #000000;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-node.topic { background: #FDFF00; }
+.legend-node.subtopic { background: #FFE599; }
+
+.legend-line {
+  width: 20px;
+  height: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.legend-line.solid {
+  background: #2B78E4;
+}
+
+.legend-line.dashed {
+  background: repeating-linear-gradient(
+    to right,
+    #2B78E4 0,
+    #2B78E4 4px,
+    transparent 4px,
+    transparent 8px
+  );
+}
+
+.zoom-indicator {
+  font-size: 13px;
+  font-weight: 700;
+  color: #000000;
+  min-width: 45px;
+  text-align: right;
+}
+
+.icon-btn {
+  width: 28px;
+  height: 28px;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  background: #ffffff;
+  color: #000000;
+  font-size: 14px;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.1s ease;
+}
+
+.icon-btn:hover {
+  background: #FDFF00;
+  transform: translate(-1px, -1px);
+  box-shadow: 2px 2px 0 #000000;
+}
+
+.icon-btn:active {
+  transform: translate(1px, 1px);
+  box-shadow: none;
+}
+
+/* Custom Node Styles */
+.vertical-spine {
+  position: relative;
+}
+
+.spine-handle {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #2B78E4;
+  border: 2px solid #ffffff;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.spine-handle::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.horizontal-rule {
+  position: relative;
+}
+
+.section-box {
+  position: relative;
+  border: 2.7px solid #000000;
+  border-radius: 5px;
+  background: #ffffff;
+  box-shadow: 4px 4px 0 #000000;
+  transition: all 0.15s ease;
+}
+
+.section-box:hover {
+  box-shadow: 6px 6px 0 #000000;
+  transform: translate(-1px, -1px);
+}
+
+.section-box.selected {
+  border-color: #2B78E4;
+  box-shadow: 4px 4px 0 #2B78E4;
+}
+
+.section-label {
+  position: absolute;
+  top: -12px;
+  left: 12px;
+  padding: 2px 8px;
+  background: #ffffff;
+  border: 2px solid #000000;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #000000;
+  box-shadow: 2px 2px 0 #000000;
+}
+
+.roadmap-node {
+  position: relative;
+  border: 2.7px solid #000000;
+  border-radius: 6px;
+  box-shadow: 4px 4px 0 #000000;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.roadmap-node:hover {
+  box-shadow: 6px 6px 0 #000000;
+  transform: translate(-1px, -1px);
+  z-index: 100;
+}
+
+.roadmap-node.selected {
+  border-color: #2B78E4;
+  box-shadow: 4px 4px 0 #2B78E4;
+}
+
+.roadmap-node.topic {
+  background: #FDFF00;
+}
+
+.roadmap-node.subtopic {
+  background: #FFE599;
+}
+
+.roadmap-node.has-legend {
+  padding-right: 36px;
+}
+
+.node-handle {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #2B78E4;
+  border: 2px solid #ffffff;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.node-handle[type="target"] {
+  top: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-handle[type="source"] {
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.node-handle.side {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.node-handle.side[type="target"] {
+  left: -5px;
+}
+
+.node-handle.side[type="source"] {
+  right: -5px;
+}
+
+.node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  align-items: flex-start;
+}
+
+.node-label {
+  font-weight: 600;
+  color: #000000;
+  line-height: 1.3;
+  word-wrap: break-word;
+}
+
+.node-label.topic { 
+  font-size: 16px; 
+  font-weight: 700;
+}
+
+.node-label.subtopic { 
+  font-size: 13px; 
+  font-weight: 500;
+}
+
+.node-legend {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 6px;
+  border: 2px solid;
+  border-radius: 3px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #000000;
+  box-shadow: 2px 2px 0 currentColor;
+}
+
+.node-progress {
+  width: 100%;
+  height: 4px;
+  background: #e2e8f0;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #2B78E4;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.paragraph-node {
+  font-family: 'Balsamiq Sans', 'Comic Sans MS', cursive, sans-serif;
+  border-radius: 5px;
+  box-shadow: 4px 4px 0 #000000;
+}
+
+.title-node {
+  font-family: 'Balsamiq Sans', 'Comic Sans MS', cursive, sans-serif;
+}
+
+.button-node {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 16px;
+  border: 2px solid;
+  border-radius: 6px;
+  font-family: 'Balsamiq Sans', 'Comic Sans MS', cursive, sans-serif;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 4px 4px 0;
+  transition: all 0.15s ease;
+}
+
+.button-node:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0;
+}
+
+.legend-node {
+  font-family: 'Balsamiq Sans', 'Comic Sans MS', cursive, sans-serif;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-label {
+  font-weight: 600;
+}
+
+/* React Flow Overrides */
+.roadmap-sh-renderer-v2 .react-flow__controls {
+  box-shadow: 4px 4px 0 #000000;
+  border: 2.7px solid #000000;
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.roadmap-sh-renderer-v2 .react-flow__controls-button {
+  border-radius: 0;
+  border: none;
+  border-bottom: 2px solid #e2e8f0;
+  background: #ffffff;
+  color: #000000;
+}
+
+.roadmap-sh-renderer-v2 .react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+.roadmap-sh-renderer-v2 .react-flow__controls-button:hover {
+  background: #FDFF00;
+}
+
+.roadmap-sh-renderer-v2 .react-flow__minimap {
+  border: 2.7px solid #000000;
+  border-radius: 8px;
+  box-shadow: 4px 4px 0 #000000;
+  background: #ffffff;
+}
+
+.roadmap-sh-renderer-v2 .react-flow__attribution {
+  display: none !important;
+}
+
+.roadmap-sh-renderer-v2 .react-flow__selection {
+  background: rgba(43, 120, 228, 0.1);
+  border: 2px dashed #2B78E4;
+  border-radius: 4px;
+}
+
+/* Edge path styling */
+.roadmap-sh-renderer-v2 .react-flow__edge-path {
+  stroke: #2B78E4 !important;
+  stroke-width: 3.5 !important;
+  fill: none !important;
+  pointer-events: stroke;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
+  .renderer-toolbar-v2 {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+  
+  .toolbar-center {
+    justify-content: center;
+  }
+  
+  .toolbar-right {
+    justify-content: center;
+  }
+}

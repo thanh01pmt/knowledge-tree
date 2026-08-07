@@ -1,0 +1,161 @@
+{
+  "projects": [
+    {
+      "option_id": 1,
+      "project_code": "PROJ-STREAM-CHAT",
+      "github_repo_url": "https://github.com/GetStream/stream-chat-swift",
+      "type": "Production Open-Source SDK / Application",
+      "title": "Stream Chat Swift (Production Realtime Messaging)",
+      "target_learner": "Intermediate/Advanced iOS Developer",
+      "description": "Production-grade open-source chat client supporting WebSockets, Combine state binding, offline CoreData persistence, and SwiftUI views. Demonstrates realtime messaging architecture with modular components.",
+      "estimated_weeks": 6,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "URLSessionWebSocketTask",
+        "CoreData"
+      ],
+      "key_features": [
+        "WebSocket Client & Transport Layer (URLSessionWebSocketTask)",
+        "Combine State Binding & Event Stream",
+        "Offline CoreData Caching & Persistence",
+        "Custom SwiftUI View Components & Reactions"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS",
+        "BEHAVIORAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ]
+    },
+    {
+      "option_id": 2,
+      "project_code": "PROJ-FIREBASE-IOS",
+      "github_repo_url": "https://github.com/firebase/firebase-ios-sdk",
+      "type": "Production Open-Source SDK",
+      "title": "Firebase iOS SDK (Realtime Database & Firestore)",
+      "target_learner": "Intermediate/Advanced iOS Developer",
+      "description": "Production-grade SDK for realtime data synchronization with Cloud Firestore and Realtime Database. Includes offline persistence, Combine integration, and SwiftUI support. Ideal for learning cloud-backed realtime architectures.",
+      "estimated_weeks": 8,
+      "tech_stack": [
+        "Swift",
+        "Objective-C",
+        "Combine",
+        "Firestore",
+        "Realtime Database",
+        "CoreData"
+      ],
+      "key_features": [
+        "Realtime Listeners & Data Sync",
+        "Offline Persistence & Conflict Resolution",
+        "Security Rules & Authentication Integration",
+        "Combine Publishers for Reactive Updates"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS",
+        "ABSTRACTION_LAYERS",
+        "RELATIONAL_VS_NONRELATIONAL",
+        "VERSION_CONTROL_WORKFLOW"
+      ]
+    },
+    {
+      "option_id": 3,
+      "project_code": "PROJ-SOCKETIO-CLIENT",
+      "github_repo_url": "https://github.com/socketio/socket.io-client-swift",
+      "type": "Production Open-Source Library",
+      "title": "Socket.IO Client Swift (Realtime WebSocket Communication)",
+      "target_learner": "Intermediate iOS Developer",
+      "description": "Production-grade WebSocket client library for realtime bidirectional communication. Supports rooms, namespaces, custom events, and automatic reconnection. A lightweight foundation for building custom realtime features.",
+      "estimated_weeks": 4,
+      "tech_stack": [
+        "Swift",
+        "WebSocket",
+        "Starscream",
+        "Combine"
+      ],
+      "key_features": [
+        "WebSocket Connection Management",
+        "Event-Based Messaging with Rooms & Namespaces",
+        "Automatic Reconnection & Backoff",
+        "Combine Integration for Reactive Streams"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS",
+        "BEHAVIORAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ]
+    },
+    {
+      "option_id": 1,
+      "project_code": "PORTFOLIO_GAME",
+      "github_repo_url": "https://github.com/example/interactive-portfolio",
+      "type": "web_application",
+      "title": "Interactive Portfolio with Embedded Game",
+      "target_learner": "Beginner to intermediate web developer",
+      "description": "Build a personal portfolio website that showcases your projects and includes a playable game (e.g., memory match, snake, or simple platformer) embedded directly into the page. The portfolio will be fully responsive and the game will be built with vanilla JavaScript or a lightweight library like Phaser. This project demonstrates front-end development skills, interactive design, and game logic implementation.",
+      "estimated_weeks": 6,
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript (ES6)",
+        "Canvas API",
+        "Phaser.js (optional)",
+        "Git",
+        "GitHub Pages"
+      ],
+      "key_features": [
+        "Responsive portfolio layout with project cards and about section",
+        "Embedded interactive game (e.g., memory match, snake, or simple platformer)",
+        "Game state management (score, lives, levels)",
+        "Smooth animations and transitions",
+        "Contact form with basic validation",
+        "Deployed on GitHub Pages or Netlify"
+      ],
+      "target_concept_codes": [
+        "DOM",
+        "EVENTS",
+        "CANVAS",
+        "GAME_LOOP",
+        "RESPONSIVE",
+        "CSS_GRID",
+        "FLEXBOX",
+        "FORMS"
+      ]
+    },
+    {
+      "option_id": "rust-cli-file-processor-001",
+      "project_code": "RUST_CLI_001",
+      "github_repo_url": "https://github.com/your-org/rust-cli-file-processor",
+      "type": "project",
+      "title": "Build a Rust CLI Tool for File Processing",
+      "target_learner": "Intermediate Rust developers",
+      "description": "A command-line tool that processes files (e.g., search, replace, count lines, etc.) using Rust's standard library and popular crates like clap for argument parsing. The project will teach file I/O, error handling, and CLI design.",
+      "estimated_weeks": 4,
+      "tech_stack": [
+        "Rust",
+        "clap",
+        "serde",
+        "std::fs",
+        "std::io"
+      ],
+      "key_features": [
+        "Parse command-line arguments with clap",
+        "Read and write files",
+        "Search for patterns in files",
+        "Replace text in files",
+        "Count lines/words/characters",
+        "Handle errors gracefully",
+        "Support multiple file inputs",
+        "Output results to stdout or file"
+      ],
+      "target_concept_codes": [
+        "RUST-CLI-01",
+        "RUST-FILE-IO",
+        "RUST-ERROR-HANDLING"
+      ]
+    }
+  ]
+}

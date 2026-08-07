@@ -1,0 +1,1665 @@
+{
+  "project_brief": {
+    "title": "Interactive Portfolio with Embedded Game",
+    "project_code": "PORTFOLIO_GAME",
+    "type": "web_application",
+    "target_learner": "Beginner to intermediate web developer",
+    "description": "Build a personal portfolio website that showcases your projects and includes a playable game (e.g., memory match, snake, or simple platformer) embedded directly into the page. The portfolio will be fully responsive and the game will be built with vanilla JavaScript or a lightweight library like Phaser. This project demonstrates front-end development skills, interactive design, and game logic implementation.",
+    "tech_stack": [
+      "HTML5",
+      "CSS3",
+      "JavaScript (ES6)",
+      "Canvas API",
+      "Phaser.js (optional)",
+      "Git",
+      "GitHub Pages"
+    ],
+    "key_features": [
+      "Responsive portfolio layout with project cards and about section",
+      "Embedded interactive game (e.g., memory match, snake, or simple platformer)",
+      "Game state management (score, lives, levels)",
+      "Smooth animations and transitions",
+      "Contact form with basic validation",
+      "Deployed on GitHub Pages or Netlify"
+    ]
+  },
+  "step_by_step_build_guide": [
+    {
+      "phase_id": 1,
+      "title": "Project Setup and HTML Structure",
+      "engineering_action": "Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.",
+      "required_prereq_knowledge": "Basic understanding of HTML tags, CSS linking, and Git commands (init, add, commit).",
+      "matching_concept_codes": [
+        "VERSION_CONTROL_WORKFLOW"
+      ]
+    },
+    {
+      "phase_id": 2,
+      "title": "Responsive Layout with CSS Grid and Flexbox",
+      "engineering_action": "Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+      "required_prereq_knowledge": "CSS selectors, box model, media queries, and basic layout principles.",
+      "matching_concept_codes": [
+        "LAYOUT_GRID_AND_COMPOSITION_RULES"
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "Interactive Elements and Event Handling",
+      "engineering_action": "Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+      "required_prereq_knowledge": "JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions.",
+      "matching_concept_codes": [
+        "IMMUTABILITY_CONCEPT"
+      ]
+    },
+    {
+      "phase_id": 4,
+      "title": "Game Development with Canvas and Game Loop",
+      "engineering_action": "Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+      "required_prereq_knowledge": "JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops.",
+      "matching_concept_codes": [
+        "GAME_LOOP"
+      ]
+    },
+    {
+      "phase_id": 5,
+      "title": "Game State Management and Polish",
+      "engineering_action": "Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+      "required_prereq_knowledge": "State management patterns, animation techniques (requestAnimationFrame), and event handling for game input.",
+      "matching_concept_codes": [
+        "GAME_LOOP"
+      ]
+    },
+    {
+      "phase_id": 6,
+      "title": "Contact Form and Deployment",
+      "engineering_action": "Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+      "required_prereq_knowledge": "HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify).",
+      "matching_concept_codes": [
+        "LOGIC_GATES"
+      ]
+    }
+  ],
+  "techstack_advisor": {
+    "intake_id": "intake-20260804-001",
+    "chosen_option": "A+C",
+    "stack": {
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript (ES6)",
+        "Canvas API",
+        "Phaser.js (optional)",
+        "Git",
+        "GitHub Pages"
+      ],
+      "build_tooling": "project-specific"
+    },
+    "estimated_effort_hours": 90,
+    "learner_budget_hours": 32,
+    "tradeoffs_noted": [
+      "Time conflict: project needs ~90h (6w × 15h/w baseline), learner has 32h (4h/w × 8w). Deficit: 58h (64% short).",
+      "(a) Scope reduced: focus on core feature module only, defer UI polish & caching.",
+      "(c) Scaffold provided: pre-built boilerplate for transport/data layer, learner focuses on business logic."
+    ]
+  },
+  "execution_model": "Product-First Build Guide → Reverse Knowledge Mapping (25-Min Tasks)",
+  "student_active_roadmap": {
+    "status": "REQUIRES_CURRICULUM_AUDIT",
+    "project_id": "PORTFOLIO_GAME",
+    "project_title": "Interactive Portfolio with Embedded Game",
+    "current_phase_index": 0,
+    "pinned_at": "2026-08-04T10:10:19.119462+00:00",
+    "unmapped_steps_ratio": 0.5
+  },
+  "code_reviewer_rubric": {
+    "reviewer_agent": "AI Code Reviewer Agent (@reviewer)",
+    "rubric": {
+      "functional_correctness": "Code runs and satisfies deliverable acceptance criteria",
+      "language_syntax_idiom": "Code adheres to standard HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages conventions",
+      "error_handling": "Code handles exceptions, network loss, and edge cases"
+    }
+  },
+  "quarantine_candidates": [
+    {
+      "lo_id": "GEN_SIO_23884287",
+      "label": "Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+      "status": "proposed_new",
+      "judge_verdict": "not_a_duplicate — closest existing concept is LAYOUT_GRID_AND_COMPOSITION_RULES ('Layout Grid and Compositional Rules'); action 'Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.' is distinct enough for a new entry",
+      "prerequisites": [
+        "LO-LAYOUT_GRID_AND_COMPOSITION_RULES"
+      ],
+      "parallel_ok_with": [],
+      "optional": false,
+      "traced_to_instruction": [
+        "project-instruction/phase-1/step-1.md#L15"
+      ],
+      "pending_human_approval": true
+    },
+    {
+      "lo_id": "GEN_SIO_7C8F0AE1",
+      "label": "Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+      "status": "proposed_new",
+      "judge_verdict": "not_a_duplicate — closest existing concept is IMMUTABILITY_CONCEPT ('Immutability and Pure Functions'); action 'Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.' is distinct enough for a new entry",
+      "prerequisites": [
+        "LO-IMMUTABILITY_CONCEPT"
+      ],
+      "parallel_ok_with": [],
+      "optional": false,
+      "traced_to_instruction": [
+        "project-instruction/phase-2/step-2.md#L15"
+      ],
+      "pending_human_approval": true
+    },
+    {
+      "lo_id": "GEN_SIO_72DA60B4",
+      "label": "Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+      "status": "proposed_new",
+      "judge_verdict": "not_a_duplicate — closest existing concept is LOGIC_GATES ('Logic Gates (AND, OR, NOT)'); action 'Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.' is distinct enough for a new entry",
+      "prerequisites": [
+        "LO-LOGIC_GATES"
+      ],
+      "parallel_ok_with": [],
+      "optional": false,
+      "traced_to_instruction": [
+        "project-instruction/phase-5/step-5.md#L15"
+      ],
+      "pending_human_approval": true
+    }
+  ],
+  "roadmap_graph": {
+    "nodes": [
+      {
+        "id": "LO-BEHAVIORAL_PATTERNS",
+        "type": "topic",
+        "label": "Behavioral Design Patterns",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-CREATIONAL_PATTERNS",
+        "type": "topic",
+        "label": "Creational Design Patterns",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-ERROR_MESSAGES_CONCEPT",
+        "type": "topic",
+        "label": "Interpreting Error Messages",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "type": "topic",
+        "label": "First-Class & Higher-Order Functions",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-GAME_LOOP",
+        "type": "topic",
+        "label": "Game Loop",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-IMMUTABILITY_CONCEPT",
+        "type": "topic",
+        "label": "Immutability and Pure Functions",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-PROBLEM_DECOMPOSITION",
+        "type": "topic",
+        "label": "Problem Decomposition",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-STRUCTURAL_PATTERNS",
+        "type": "topic",
+        "label": "Structural Design Patterns",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "type": "topic",
+        "label": "Systematic Troubleshooting",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-VERSION_CONTROL_WORKFLOW",
+        "type": "checkpoint",
+        "label": "Version Control Workflow",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "checkpoint-phase0",
+        "type": "checkpoint",
+        "label": "Gate 0: Project Setup and HTML Structure",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase1",
+        "type": "checkpoint",
+        "label": "Gate 1: Responsive Layout with CSS Grid and Flexbox",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase2",
+        "type": "checkpoint",
+        "label": "Gate 2: Interactive Elements and Event Handling",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase3",
+        "type": "checkpoint",
+        "label": "Gate 3: Game Development with Canvas and Game Loop",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase4",
+        "type": "checkpoint",
+        "label": "Gate 4: Game State Management and Polish",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase5",
+        "type": "checkpoint",
+        "label": "Gate 5: Contact Form and Deployment",
+        "group": "Gates"
+      }
+    ],
+    "edges": [
+      {
+        "from": "LO-BEHAVIORAL_PATTERNS",
+        "to": "LO-CREATIONAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-CREATIONAL_PATTERNS",
+        "to": "LO-ERROR_MESSAGES_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-ERROR_MESSAGES_CONCEPT",
+        "to": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "to": "LO-GAME_LOOP",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-GAME_LOOP",
+        "to": "LO-IMMUTABILITY_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-IMMUTABILITY_CONCEPT",
+        "to": "LO-PROBLEM_DECOMPOSITION",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-PROBLEM_DECOMPOSITION",
+        "to": "LO-STRUCTURAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-STRUCTURAL_PATTERNS",
+        "to": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "to": "LO-VERSION_CONTROL_WORKFLOW",
+        "kind": "prerequisite"
+      }
+    ]
+  },
+  "user_profile": {
+    "age_group": "teen",
+    "focus_window_minutes": 25,
+    "weekly_hours": 4,
+    "target_weeks": 8,
+    "total_budget_hours": 32,
+    "ultimate_outcome": "Build MVP Product for Portfolio",
+    "preferred_modality": "Hands-on Code Labs & Interactive Diagrams",
+    "known_concepts": []
+  },
+  "all_proposals": [
+    {
+      "option_id": 1,
+      "project_code": "PORTFOLIO_GAME",
+      "github_repo_url": "https://github.com/example/interactive-portfolio",
+      "type": "web_application",
+      "title": "Interactive Portfolio with Embedded Game",
+      "target_learner": "Beginner to intermediate web developer",
+      "description": "Build a personal portfolio website that showcases your projects and includes a playable game (e.g., memory match, snake, or simple platformer) embedded directly into the page. The portfolio will be fully responsive and the game will be built with vanilla JavaScript or a lightweight library like Phaser. This project demonstrates front-end development skills, interactive design, and game logic implementation.",
+      "estimated_weeks": 6,
+      "tech_stack": [
+        "HTML5",
+        "CSS3",
+        "JavaScript (ES6)",
+        "Canvas API",
+        "Phaser.js (optional)",
+        "Git",
+        "GitHub Pages"
+      ],
+      "key_features": [
+        "Responsive portfolio layout with project cards and about section",
+        "Embedded interactive game (e.g., memory match, snake, or simple platformer)",
+        "Game state management (score, lives, levels)",
+        "Smooth animations and transitions",
+        "Contact form with basic validation",
+        "Deployed on GitHub Pages or Netlify"
+      ],
+      "target_concept_codes": [
+        "DOM",
+        "EVENTS",
+        "CANVAS",
+        "GAME_LOOP",
+        "RESPONSIVE",
+        "CSS_GRID",
+        "FLEXBOX",
+        "FORMS"
+      ]
+    }
+  ],
+  "topo_order": [
+    "BEHAVIORAL_PATTERNS",
+    "CREATIONAL_PATTERNS",
+    "ERROR_MESSAGES_CONCEPT",
+    "FIRST_CLASS_FUNCTIONS_CONCEPT",
+    "GAME_LOOP",
+    "IMMUTABILITY_CONCEPT",
+    "PROBLEM_DECOMPOSITION",
+    "STRUCTURAL_PATTERNS",
+    "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+    "VERSION_CONTROL_WORKFLOW"
+  ],
+  "edges": [],
+  "waterfall_gates": [
+    {
+      "gate_id": "GATE_0_PROJECT_SETUP_AND_HTML_STRUCTURE",
+      "phase": "Phase 0: Project Setup and HTML Structure",
+      "engineering_action": "Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.",
+      "prerequisite_needed": "Basic understanding of HTML tags, CSS linking, and Git commands (init, add, commit).",
+      "timeframe": "Weeks 1-1 (5h)",
+      "checkpoint": "Complete 'Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 0 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_0_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Project Setup and HTML Structure",
+            "instruction": "Read error log and fix code for 'Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_1_RESPONSIVE_LAYOUT_WITH_CSS_GRID_AND_FLEXBOX",
+      "phase": "Phase 1: Responsive Layout with CSS Grid and Flexbox",
+      "engineering_action": "Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+      "prerequisite_needed": "CSS selectors, box model, media queries, and basic layout principles.",
+      "timeframe": "Weeks 2-2 (5h)",
+      "checkpoint": "Complete 'Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 1 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_1_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Responsive Layout with CSS Grid and Flexbox",
+            "instruction": "Read error log and fix code for 'Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_2_INTERACTIVE_ELEMENTS_AND_EVENT_HANDLING",
+      "phase": "Phase 2: Interactive Elements and Event Handling",
+      "engineering_action": "Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+      "prerequisite_needed": "JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions.",
+      "timeframe": "Weeks 3-3 (5h)",
+      "checkpoint": "Complete 'Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 2 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_2_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Interactive Elements and Event Handling",
+            "instruction": "Read error log and fix code for 'Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_3_GAME_DEVELOPMENT_WITH_CANVAS_AND_GAME_LOOP",
+      "phase": "Phase 3: Game Development with Canvas and Game Loop",
+      "engineering_action": "Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+      "prerequisite_needed": "JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops.",
+      "timeframe": "Weeks 4-4 (5h)",
+      "checkpoint": "Complete 'Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 3 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_3_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Game Development with Canvas and Game Loop",
+            "instruction": "Read error log and fix code for 'Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_4_GAME_STATE_MANAGEMENT_AND_POLISH",
+      "phase": "Phase 4: Game State Management and Polish",
+      "engineering_action": "Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+      "prerequisite_needed": "State management patterns, animation techniques (requestAnimationFrame), and event handling for game input.",
+      "timeframe": "Weeks 5-5 (5h)",
+      "checkpoint": "Complete 'Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 4 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_4_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Game State Management and Polish",
+            "instruction": "Read error log and fix code for 'Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_5_CONTACT_FORM_AND_DEPLOYMENT",
+      "phase": "Phase 5: Contact Form and Deployment",
+      "engineering_action": "Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+      "prerequisite_needed": "HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify).",
+      "timeframe": "Weeks 6-8 (5h)",
+      "checkpoint": "Complete 'Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 5 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_5_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Contact Form and Deployment",
+            "instruction": "Read error log and fix code for 'Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.'."
+          }
+        ]
+      }
+    }
+  ],
+  "waterfall_phases": [
+    {
+      "phase_num": 0,
+      "title": "Project Setup and HTML Structure",
+      "engineering_action": "Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.",
+      "required_prereq_knowledge": "Basic understanding of HTML tags, CSS linking, and Git commands (init, add, commit).",
+      "matching_concept_codes": [
+        "DOM"
+      ],
+      "timeframe": "Weeks 1-1 (5h)",
+      "concepts": [
+        {
+          "concept_code": "DOM",
+          "name": "DOM",
+          "description": "",
+          "estimated_hours": 5,
+          "learning_objectives": [
+            {
+              "code": "ULO-DOM-1",
+              "lo_type": "UNIVERSAL",
+              "tag": "INFRA_SETUP",
+              "name": "Universal Principle: DOM",
+              "description": "Hiểu nguyên lý phổ quát của DOM cho 'Project Setup and HTML Structure'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-DOM-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "INFRA_SETUP",
+              "name": "Algorithmic Pattern: DOM",
+              "description": "Thiết kế quy trình xử lý cho DOM.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-DOM-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "TOOL_ONBOARDING",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.",
+              "description": "Thực thi trực tiếp: 'Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_0_1_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-DOM-1",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Basic understanding of HTML tags, CSS linking, and Git commands (init, add, commit). (DOM)",
+              "deliverable": "Tooling Installation Log"
+            },
+            {
+              "task_id": "TASK_0_1_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-DOM-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_0_1_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-DOM-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Project Setup and HTML Structure",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_0_1_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-DOM-1",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Basic understanding of HTML tags, CSS linking, and Git commands (init, add, commit). (DOM)",
+          "deliverable": "Tooling Installation Log"
+        },
+        {
+          "task_id": "TASK_0_1_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-DOM-1",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Initialize Git repository, create project folder structure, write basic HTML skeleton with semantic elements, link external CSS and JavaScript files, and set up a local development server.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_0_1_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-DOM-1",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Project Setup and HTML Structure",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 1,
+      "title": "Responsive Layout with CSS Grid and Flexbox",
+      "engineering_action": "Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+      "required_prereq_knowledge": "CSS selectors, box model, media queries, and basic layout principles.",
+      "matching_concept_codes": [
+        "RESPONSIVE",
+        "CSS_GRID",
+        "FLEXBOX"
+      ],
+      "timeframe": "Weeks 2-2 (5h)",
+      "concepts": [
+        {
+          "concept_code": "RESPONSIVE",
+          "name": "RESPONSIVE",
+          "description": "",
+          "estimated_hours": 1,
+          "learning_objectives": [
+            {
+              "code": "ULO-RESPONSIVE-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: RESPONSIVE",
+              "description": "Hiểu nguyên lý phổ quát của RESPONSIVE cho 'Responsive Layout with CSS Grid and Flexbox'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-RESPONSIVE-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: RESPONSIVE",
+              "description": "Thiết kế quy trình xử lý cho RESPONSIVE.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-RESPONSIVE-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+              "description": "Thực thi trực tiếp: 'Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_1_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-RESPONSIVE-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: CSS selectors, box model, media queries, and basic layout principles. (RESPONSIVE)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_1_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-RESPONSIVE-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_1_1_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-RESPONSIVE-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Responsive Layout with CSS Grid and Flexbox",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "CSS_GRID",
+          "name": "CSS_GRID",
+          "description": "",
+          "estimated_hours": 1,
+          "learning_objectives": [
+            {
+              "code": "ULO-CSS_GRID-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: CSS_GRID",
+              "description": "Hiểu nguyên lý phổ quát của CSS_GRID cho 'Responsive Layout with CSS Grid and Flexbox'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-CSS_GRID-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: CSS_GRID",
+              "description": "Thiết kế quy trình xử lý cho CSS_GRID.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-CSS_GRID-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+              "description": "Thực thi trực tiếp: 'Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_2_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-CSS_GRID-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: CSS selectors, box model, media queries, and basic layout principles. (CSS_GRID)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_2_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-CSS_GRID-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_1_2_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-CSS_GRID-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Responsive Layout with CSS Grid and Flexbox",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "FLEXBOX",
+          "name": "FLEXBOX",
+          "description": "",
+          "estimated_hours": 1,
+          "learning_objectives": [
+            {
+              "code": "ULO-FLEXBOX-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: FLEXBOX",
+              "description": "Hiểu nguyên lý phổ quát của FLEXBOX cho 'Responsive Layout with CSS Grid and Flexbox'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-FLEXBOX-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: FLEXBOX",
+              "description": "Thiết kế quy trình xử lý cho FLEXBOX.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-FLEXBOX-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+              "description": "Thực thi trực tiếp: 'Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_3_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-FLEXBOX-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: CSS selectors, box model, media queries, and basic layout principles. (FLEXBOX)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_3_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-FLEXBOX-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_1_3_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-FLEXBOX-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Responsive Layout with CSS Grid and Flexbox",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_1_1_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-RESPONSIVE-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: CSS selectors, box model, media queries, and basic layout principles. (RESPONSIVE)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_1_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-RESPONSIVE-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_1_1_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-RESPONSIVE-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Responsive Layout with CSS Grid and Flexbox",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_1_2_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-CSS_GRID-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: CSS selectors, box model, media queries, and basic layout principles. (CSS_GRID)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_2_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-CSS_GRID-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_1_2_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-CSS_GRID-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Responsive Layout with CSS Grid and Flexbox",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_1_3_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-FLEXBOX-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: CSS selectors, box model, media queries, and basic layout principles. (FLEXBOX)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_3_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-FLEXBOX-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a responsive portfolio layout using CSS Grid for the overall page structure and Flexbox for aligning project cards, about section, and navigation. Ensure the design adapts to different screen sizes.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_1_3_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-FLEXBOX-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Responsive Layout with CSS Grid and Flexbox",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 2,
+      "title": "Interactive Elements and Event Handling",
+      "engineering_action": "Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+      "required_prereq_knowledge": "JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions.",
+      "matching_concept_codes": [
+        "DOM",
+        "EVENTS"
+      ],
+      "timeframe": "Weeks 3-3 (5h)",
+      "concepts": [
+        {
+          "concept_code": "DOM",
+          "name": "DOM",
+          "description": "",
+          "estimated_hours": 2,
+          "learning_objectives": [
+            {
+              "code": "ULO-DOM-3",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: DOM",
+              "description": "Hiểu nguyên lý phổ quát của DOM cho 'Interactive Elements and Event Handling'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-DOM-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: DOM",
+              "description": "Thiết kế quy trình xử lý cho DOM.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-DOM-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+              "description": "Thực thi trực tiếp: 'Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_2_1_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-DOM-3",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions. (DOM)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_2_1_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-DOM-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_2_1_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-DOM-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Interactive Elements and Event Handling",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "EVENTS",
+          "name": "EVENTS",
+          "description": "",
+          "estimated_hours": 2,
+          "learning_objectives": [
+            {
+              "code": "ULO-EVENTS-3",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: EVENTS",
+              "description": "Hiểu nguyên lý phổ quát của EVENTS cho 'Interactive Elements and Event Handling'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-EVENTS-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: EVENTS",
+              "description": "Thiết kế quy trình xử lý cho EVENTS.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-EVENTS-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+              "description": "Thực thi trực tiếp: 'Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_2_2_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-EVENTS-3",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions. (EVENTS)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_2_2_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-EVENTS-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_2_2_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-EVENTS-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Interactive Elements and Event Handling",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_2_1_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-DOM-3",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions. (DOM)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_2_1_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-DOM-3",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_2_1_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-DOM-3",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Interactive Elements and Event Handling",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_2_2_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-EVENTS-3",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: JavaScript basics (variables, functions, DOM manipulation), event handling, and CSS transitions. (EVENTS)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_2_2_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-EVENTS-3",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Add JavaScript interactivity: implement smooth scrolling, project card hover effects, a modal for project details, and a responsive navigation menu. Use event listeners for user interactions.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_2_2_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-EVENTS-3",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Interactive Elements and Event Handling",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 3,
+      "title": "Game Development with Canvas and Game Loop",
+      "engineering_action": "Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+      "required_prereq_knowledge": "JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops.",
+      "matching_concept_codes": [
+        "CANVAS",
+        "GAME_LOOP"
+      ],
+      "timeframe": "Weeks 4-4 (5h)",
+      "concepts": [
+        {
+          "concept_code": "CANVAS",
+          "name": "CANVAS",
+          "description": "",
+          "estimated_hours": 2,
+          "learning_objectives": [
+            {
+              "code": "ULO-CANVAS-4",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: CANVAS",
+              "description": "Hiểu nguyên lý phổ quát của CANVAS cho 'Game Development with Canvas and Game Loop'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-CANVAS-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: CANVAS",
+              "description": "Thiết kế quy trình xử lý cho CANVAS.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-CANVAS-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+              "description": "Thực thi trực tiếp: 'Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_3_1_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-CANVAS-4",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops. (CANVAS)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_3_1_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-CANVAS-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_3_1_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-CANVAS-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Game Development with Canvas and Game Loop",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "GAME_LOOP",
+          "name": "Game Loop",
+          "description": "Vòng lặp vô hạn duy trì trạng thái của trò chơi, xử lý đầu vào, cập nhật vật lý và vẽ lại hình ảnh (render) liên tục.",
+          "estimated_hours": 2,
+          "learning_objectives": [
+            {
+              "code": "ULO-GAME_LOOP-4",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Game Loop",
+              "description": "Hiểu nguyên lý phổ quát của Game Loop cho 'Game Development with Canvas and Game Loop'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-GAME_LOOP-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Game Loop",
+              "description": "Thiết kế quy trình xử lý cho Game Loop.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-GAME_LOOP-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+              "description": "Thực thi trực tiếp: 'Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_3_2_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-GAME_LOOP-4",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops. (Game Loop)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_3_2_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-GAME_LOOP-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_3_2_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-GAME_LOOP-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Game Development with Canvas and Game Loop",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_3_1_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-CANVAS-4",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops. (CANVAS)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_3_1_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-CANVAS-4",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_3_1_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-CANVAS-4",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Game Development with Canvas and Game Loop",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_3_2_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-GAME_LOOP-4",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: JavaScript objects, functions, Canvas API basics (drawing shapes, images), and understanding of game loops. (Game Loop)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_3_2_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-GAME_LOOP-4",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Implement a simple game (e.g., memory match, snake, or basic platformer) using the HTML5 Canvas API. Create a game loop that updates game state and renders graphics. Handle keyboard or mouse input for player control.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_3_2_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-GAME_LOOP-4",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Game Development with Canvas and Game Loop",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 4,
+      "title": "Game State Management and Polish",
+      "engineering_action": "Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+      "required_prereq_knowledge": "State management patterns, animation techniques (requestAnimationFrame), and event handling for game input.",
+      "matching_concept_codes": [
+        "GAME_LOOP",
+        "EVENTS"
+      ],
+      "timeframe": "Weeks 5-5 (5h)",
+      "concepts": [
+        {
+          "concept_code": "GAME_LOOP",
+          "name": "Game Loop",
+          "description": "Vòng lặp vô hạn duy trì trạng thái của trò chơi, xử lý đầu vào, cập nhật vật lý và vẽ lại hình ảnh (render) liên tục.",
+          "estimated_hours": 2,
+          "learning_objectives": [
+            {
+              "code": "ULO-GAME_LOOP-5",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Game Loop",
+              "description": "Hiểu nguyên lý phổ quát của Game Loop cho 'Game State Management and Polish'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-GAME_LOOP-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Game Loop",
+              "description": "Thiết kế quy trình xử lý cho Game Loop.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-GAME_LOOP-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+              "description": "Thực thi trực tiếp: 'Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_4_1_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-GAME_LOOP-5",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: State management patterns, animation techniques (requestAnimationFrame), and event handling for game input. (Game Loop)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_4_1_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-GAME_LOOP-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_4_1_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-GAME_LOOP-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Game State Management and Polish",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "EVENTS",
+          "name": "EVENTS",
+          "description": "",
+          "estimated_hours": 2,
+          "learning_objectives": [
+            {
+              "code": "ULO-EVENTS-5",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: EVENTS",
+              "description": "Hiểu nguyên lý phổ quát của EVENTS cho 'Game State Management and Polish'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-EVENTS-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: EVENTS",
+              "description": "Thiết kế quy trình xử lý cho EVENTS.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-EVENTS-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+              "description": "Thực thi trực tiếp: 'Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_4_2_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-EVENTS-5",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: State management patterns, animation techniques (requestAnimationFrame), and event handling for game input. (EVENTS)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_4_2_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-EVENTS-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_4_2_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-EVENTS-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Game State Management and Polish",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_4_1_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-GAME_LOOP-5",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: State management patterns, animation techniques (requestAnimationFrame), and event handling for game input. (Game Loop)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_4_1_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-GAME_LOOP-5",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_4_1_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-GAME_LOOP-5",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Game State Management and Polish",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_4_2_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-EVENTS-5",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: State management patterns, animation techniques (requestAnimationFrame), and event handling for game input. (EVENTS)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_4_2_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-EVENTS-5",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Add game state management: score, lives, levels, and game-over conditions. Implement smooth animations, transitions, and optional sound effects. Embed the game into the portfolio page and ensure it works seamlessly.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_4_2_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-EVENTS-5",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Game State Management and Polish",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 5,
+      "title": "Contact Form and Deployment",
+      "engineering_action": "Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+      "required_prereq_knowledge": "HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify).",
+      "matching_concept_codes": [
+        "FORMS",
+        "DOM",
+        "EVENTS"
+      ],
+      "timeframe": "Weeks 6-8 (5h)",
+      "concepts": [
+        {
+          "concept_code": "FORMS",
+          "name": "FORMS",
+          "description": "",
+          "estimated_hours": 1,
+          "learning_objectives": [
+            {
+              "code": "ULO-FORMS-6",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: FORMS",
+              "description": "Hiểu nguyên lý phổ quát của FORMS cho 'Contact Form and Deployment'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-FORMS-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: FORMS",
+              "description": "Thiết kế quy trình xử lý cho FORMS.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-FORMS-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+              "description": "Thực thi trực tiếp: 'Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_5_1_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-FORMS-6",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify). (FORMS)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_5_1_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-FORMS-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_5_1_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-FORMS-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Contact Form and Deployment",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "DOM",
+          "name": "DOM",
+          "description": "",
+          "estimated_hours": 1,
+          "learning_objectives": [
+            {
+              "code": "ULO-DOM-6",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: DOM",
+              "description": "Hiểu nguyên lý phổ quát của DOM cho 'Contact Form and Deployment'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-DOM-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: DOM",
+              "description": "Thiết kế quy trình xử lý cho DOM.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-DOM-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+              "description": "Thực thi trực tiếp: 'Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_5_2_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-DOM-6",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify). (DOM)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_5_2_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-DOM-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_5_2_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-DOM-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Contact Form and Deployment",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "EVENTS",
+          "name": "EVENTS",
+          "description": "",
+          "estimated_hours": 1,
+          "learning_objectives": [
+            {
+              "code": "ULO-EVENTS-6",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: EVENTS",
+              "description": "Hiểu nguyên lý phổ quát của EVENTS cho 'Contact Form and Deployment'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-EVENTS-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: EVENTS",
+              "description": "Thiết kế quy trình xử lý cho EVENTS.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-HTML5-EVENTS-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages Implementation: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+              "description": "Thực thi trực tiếp: 'Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_5_3_1",
+              "focus_minutes": 25,
+              "target_lo_code": "ULO-EVENTS-6",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify). (EVENTS)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_5_3_2",
+              "focus_minutes": 25,
+              "target_lo_code": "SIO-HTML5-EVENTS-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+              "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+            },
+            {
+              "task_id": "TASK_5_3_3",
+              "focus_minutes": 25,
+              "target_lo_code": "CIO-EVENTS-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Contact Form and Deployment",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_5_1_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-FORMS-6",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify). (FORMS)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_5_1_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-FORMS-6",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_5_1_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-FORMS-6",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Contact Form and Deployment",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_5_2_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-DOM-6",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify). (DOM)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_5_2_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-DOM-6",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_5_2_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-DOM-6",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Contact Form and Deployment",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_5_3_1",
+          "focus_minutes": 25,
+          "target_lo_code": "ULO-EVENTS-6",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: HTML forms, form validation, basic JavaScript, and deployment process (GitHub Pages or Netlify). (EVENTS)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_5_3_2",
+          "focus_minutes": 25,
+          "target_lo_code": "SIO-HTML5-EVENTS-6",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a contact form with HTML5 validation (required fields, email format) and JavaScript validation for custom rules. Style the form to match the portfolio. Deploy the project to GitHub Pages or Netlify. Perform final testing and polish.",
+          "deliverable": "Working Code Module in HTML5, CSS3, JavaScript (ES6), Canvas API, Phaser.js (optional), Git, GitHub Pages"
+        },
+        {
+          "task_id": "TASK_5_3_3",
+          "focus_minutes": 25,
+          "target_lo_code": "CIO-EVENTS-6",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Contact Form and Deployment",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    }
+  ]
+}

@@ -133,6 +133,11 @@ def escalate_keywords(keywords: List[Dict], master_concepts: Dict) -> List[Dict]
             "QUAN TRONG: Uu tien CHON concept da co trong Master Tree (danh sach ben duoi) "
             "neu keyword la bieu hien cua concept do. "
             "Chi tao concept MOI (status=new) khi that su khong co concept nao trong Master Tree cover. "
+            "KHI TAO CONCEPT MOI: "
+            "1. KHONG duoc ket thuc bang suffix '_CONCEPT' (chuong trinh se loi validate). "
+            "2. Code phai UNIQUE - khong trung bat ky code nao trong Master Tree (topic, concept, category, subject, field). "
+            "3. Topic (cap cha) rong hon concept (cap con) - concept code phai hep hon topic code. "
+            "4. Khong chua ten cong nghe cu the (MQTT, SwiftUI, Arduino...) - concept la trung tinh. "
             "Trả JSON đúng schema."
         )
         user = f"""Keywords cần escalate:

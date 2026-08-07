@@ -1753,7 +1753,7 @@
       "metadata": "{\"icon\": \"folder-open\"}"
     },
     {
-      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "code": "TROUBLESHOOTING_STEPS",
       "name": "Systematic Troubleshooting Methodology",
       "description": "Áp dụng một quy trình có hệ thống (ví dụ: xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
       "parent_or_relation": "TROUBLESHOOTING",
@@ -1767,7 +1767,7 @@
       "metadata": "{\"icon\": \"search\"}"
     },
     {
-      "code": "ERROR_MESSAGES",
+      "code": "ERROR_MSG_PARSING",
       "name": "Interpreting Error Messages",
       "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
       "parent_or_relation": "TROUBLESHOOTING, TESTING_DEBUGGING",
@@ -1881,7 +1881,7 @@
       "metadata": "{\"icon\": \"gamepad\"}"
     },
     {
-      "code": "BASIC_MECHANISMS",
+      "code": "MECHANICAL_SIMPLE",
       "name": "Basic Mechanical Systems",
       "description": "Giới thiệu các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy, ròng rọc và vai trò của chúng trong truyền động.",
       "parent_or_relation": "MECHANICAL_SYSTEMS",
@@ -1895,7 +1895,7 @@
       "metadata": "{\"icon\": \"cogs\"}"
     },
     {
-      "code": "BASIC_ELECTRONIC_COMPONENTS",
+      "code": "ELECTRONIC_ELEMENTS",
       "name": "Basic Electronic Components",
       "description": "Tìm hiểu các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) cơ bản.",
       "parent_or_relation": "ELECTRONIC_CIRCUITS",
@@ -1909,7 +1909,7 @@
       "metadata": "{\"icon\": \"bolt\"}"
     },
     {
-      "code": "CIRCUIT_PRINCIPLES",
+      "code": "CIRCUIT_FUNDAMENTALS",
       "name": "Basic Circuit Principles",
       "description": "Các nguyên tắc cơ bản về mạch điện, như định luật Ohm, mắc nối tiếp và song song, và cách đọc sơ đồ mạch.",
       "parent_or_relation": "ELECTRONIC_CIRCUITS",
@@ -1979,7 +1979,7 @@
       "metadata": "{\"icon\": \"globe-americas\"}"
     },
     {
-      "code": "ROUTERS_SWITCHES",
+      "code": "ROUTING_SWITCHING",
       "name": "Routers and Switches",
       "description": "Phân biệt chức năng của router (định tuyến giữa các mạng khác nhau) và switch (kết nối các thiết bị trong cùng một mạng).",
       "parent_or_relation": "NETWORK_INFRA",
@@ -1993,7 +1993,7 @@
       "metadata": "{\"icon\": \"ethernet\"}"
     },
     {
-      "code": "PHYSICAL_MEDIA",
+      "code": "MEDIUM_TYPES",
       "name": "Physical Media & Wireless",
       "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
       "parent_or_relation": "NETWORK_INFRA",
@@ -2007,7 +2007,7 @@
       "metadata": "{\"icon\": \"wifi\"}"
     },
     {
-      "code": "NETWORK_TOPOLOGIES",
+      "code": "TOPOLOGY_STRUCTURES",
       "name": "Network Topologies",
       "description": "Các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
       "parent_or_relation": "NETWORK_INFRA",
@@ -2379,7 +2379,7 @@
       "metadata": "{\"icon\": \"box-archive\"}"
     },
     {
-      "code": "STATIC_MEMBERS",
+      "code": "STATIC_ATTRIBUTES",
       "name": "Static Members",
       "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
       "parent_or_relation": "OOP",
@@ -2393,7 +2393,7 @@
       "metadata": "{\"icon\": \"star-of-life\"}"
     },
     {
-      "code": "FIRST_CLASS_FUNCTIONS",
+      "code": "FIRST_CLASS_VALUES",
       "name": "First-Class & Higher-Order Functions",
       "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
       "parent_or_relation": "FUNCTIONAL_PROG",
@@ -2407,7 +2407,7 @@
       "metadata": "{\"icon\": \"lambda\"}"
     },
     {
-      "code": "IMMUTABILITY",
+      "code": "IMMUTABLE_CONCEPTS",
       "name": "Immutability and Pure Functions",
       "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
       "parent_or_relation": "FUNCTIONAL_PROG",
@@ -2421,7 +2421,7 @@
       "metadata": "{\"icon\": \"snowflake\"}"
     },
     {
-      "code": "EVENT_HANDLERS",
+      "code": "EVENT_LISTENERS",
       "name": "Events and Event Handling",
       "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
       "parent_or_relation": "EVENT_DRIVEN_PROG",
@@ -2435,7 +2435,7 @@
       "metadata": "{\"icon\": \"hand-point-up\"}"
     },
     {
-      "code": "ASYNCHRONOUS_PROG",
+      "code": "ASYNC_PATTERNS",
       "name": "Asynchronous Programming",
       "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
       "parent_or_relation": "EVENT_DRIVEN_PROG,PARALLEL_DIST_ALGO",
@@ -2897,7 +2897,7 @@
       "metadata": "{\"icon\": \"user-cog\"}"
     },
     {
-      "code": "PASSWORD_STRENGTH",
+      "code": "PASSWORD_CRITERIA",
       "name": "Strong Passwords & Authentication",
       "description": "Các tiêu chí để tạo một mật khẩu mạnh và các phương pháp xác thực hiện đại như xác thực hai yếu tố (2FA) để tăng cường bảo mật.",
       "parent_or_relation": "DEVICE_PROTECTION",
@@ -2911,7 +2911,7 @@
       "metadata": "{\"icon\": \"key\"}"
     },
     {
-      "code": "MALWARE_TYPES",
+      "code": "MALWARE_KINDS",
       "name": "Malware Protection",
       "description": "Phân biệt các loại phần mềm độc hại (virus, worm, ransomware) và các biện pháp phòng chống như sử dụng phần mềm diệt virus.",
       "parent_or_relation": "DEVICE_PROTECTION",
@@ -3327,7 +3327,7 @@
       "metadata": "{\"icon\": \"gamepad\"}"
     },
     {
-      "code": "PHYSICS_CONSTRAINTS",
+      "code": "CONSTRAINT_MECHANICS",
       "name": "Physics Constraints & Joints",
       "description": "Sử dụng các khớp nối vật lý (Constraints) như bản lề (Hinge), lò xo (enterprise application framework), động cơ (Motor) để tạo ra các cơ cấu chuyển động cơ học (xe, cửa, bẫy) trong game.",
       "parent_or_relation": "GAME_PHYSICS",
@@ -3703,7 +3703,7 @@
       "metadata": "{\"icon\": \"exchange-alt\"}"
     },
     {
-      "code": "DMA_CONCEPT",
+      "code": "DMA",
       "name": "Direct Memory Access (DMA)",
       "description": "Hiểu khái niệm Truy cập Bộ nhớ Trực tiếp (DMA), cho phép các thiết bị phần cứng truy cập bộ nhớ chính độc lập với CPU.",
       "parent_or_relation": "IO_MECHANISMS",
@@ -3773,29 +3773,29 @@
       "metadata": "{\"icon\": \"file-invoice\"}"
     },
     {
-      "code": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "code": "TROUBLESHOOTING_STEPS",
       "name": "Systematic Troubleshooting",
       "description": "Áp dụng một quy trình có hệ thống (xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
-      "parent_or_relation": "TROUBLESHOOTING_METHODOLOGY",
+      "parent_or_relation": "TROUBLESHOOTING_STEPS",
       "topic_codes": [
-        "TROUBLESHOOTING_METHODOLOGY"
+        "TROUBLESHOOTING_STEPS"
       ],
       "parent_codes": [
-        "TROUBLESHOOTING_METHODOLOGY"
+        "TROUBLESHOOTING_STEPS"
       ],
       "keywords": "troubleshooting, diagnostics, problem solving",
       "metadata": "{\"icon\": \"search\"}"
     },
     {
-      "code": "ERROR_MESSAGES_CONCEPT",
+      "code": "ERROR_MSG_PARSING",
       "name": "Interpreting Error Messages",
       "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
-      "parent_or_relation": "ERROR_MESSAGES",
+      "parent_or_relation": "ERROR_MSG_PARSING",
       "topic_codes": [
-        "ERROR_MESSAGES"
+        "ERROR_MSG_PARSING"
       ],
       "parent_codes": [
-        "ERROR_MESSAGES"
+        "ERROR_MSG_PARSING"
       ],
       "keywords": "error handling, exceptions, debugging, log analysis",
       "metadata": "{\"icon\": \"exclamation-triangle\"}"
@@ -3915,43 +3915,43 @@
       "metadata": "{\"icon\": \"fan\"}"
     },
     {
-      "code": "ROUTERS_SWITCHES_CONCEPT",
+      "code": "ROUTING_SWITCHING",
       "name": "Routers and Switches",
       "description": "Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
-      "parent_or_relation": "ROUTERS_SWITCHES",
+      "parent_or_relation": "ROUTING_SWITCHING",
       "topic_codes": [
-        "ROUTERS_SWITCHES"
+        "ROUTING_SWITCHING"
       ],
       "parent_codes": [
-        "ROUTERS_SWITCHES"
+        "ROUTING_SWITCHING"
       ],
       "keywords": "router, switch, LAN, WAN, networking hardware",
       "metadata": "{\"icon\": \"ethernet\"}"
     },
     {
-      "code": "PHYSICAL_MEDIA_CONCEPT",
+      "code": "MEDIUM_TYPES",
       "name": "Physical Media & Wireless",
       "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
-      "parent_or_relation": "PHYSICAL_MEDIA",
+      "parent_or_relation": "MEDIUM_TYPES",
       "topic_codes": [
-        "PHYSICAL_MEDIA"
+        "MEDIUM_TYPES"
       ],
       "parent_codes": [
-        "PHYSICAL_MEDIA"
+        "MEDIUM_TYPES"
       ],
       "keywords": "Ethernet cable, fiber optic, Wi-Fi, Bluetooth",
       "metadata": "{\"icon\": \"wifi\"}"
     },
     {
-      "code": "NETWORK_TOPOLOGIES_CONCEPT",
+      "code": "TOPOLOGY_STRUCTURES",
       "name": "Network Topologies",
       "description": "Nhận biết các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
-      "parent_or_relation": "NETWORK_TOPOLOGIES",
+      "parent_or_relation": "TOPOLOGY_STRUCTURES",
       "topic_codes": [
-        "NETWORK_TOPOLOGIES"
+        "TOPOLOGY_STRUCTURES"
       ],
       "parent_codes": [
-        "NETWORK_TOPOLOGIES"
+        "TOPOLOGY_STRUCTURES"
       ],
       "keywords": "topology, star, bus, ring, mesh",
       "metadata": "{\"icon\": \"sitemap\"}"
@@ -4197,7 +4197,7 @@
       "metadata": "{\"icon\": \"desktop\"}"
     },
     {
-      "code": "MAPREDUCE_CONCEPT",
+      "code": "MAPREDUCE",
       "name": "MapReduce Concept",
       "description": "Hiểu mô hình lập trình MapReduce để xử lý song song các tập dữ liệu lớn, bao gồm hai bước chính là map và reduce.",
       "parent_or_relation": "ALGO_STRATEGIES",
@@ -4720,12 +4720,12 @@
       "code": "EVENT_BASED_PROGRAMMING",
       "name": "Event-Based Programming Model",
       "description": "Hiểu mô hình lập trình trong đó luồng của chương trình được quyết định bởi các sự kiện (như hành động của người dùng) thay vì một chuỗi lệnh tuần tự.",
-      "parent_or_relation": "EVENT_HANDLERS",
+      "parent_or_relation": "EVENT_LISTENERS",
       "topic_codes": [
-        "EVENT_HANDLERS"
+        "EVENT_LISTENERS"
       ],
       "parent_codes": [
-        "EVENT_HANDLERS"
+        "EVENT_LISTENERS"
       ],
       "keywords": "event-driven, event loop, asynchronous",
       "metadata": "{\"icon\": \"hand-point-up\"}"
@@ -4859,43 +4859,43 @@
       "metadata": "{\"icon\": \"th-large\"}"
     },
     {
-      "code": "BASIC_MECHANISMS_CONCEPT",
+      "code": "MECHANICAL_SIMPLE",
       "name": "Basic Mechanisms",
       "description": "Nhận biết và hiểu nguyên lý hoạt động của các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy và ròng rọc.",
-      "parent_or_relation": "BASIC_MECHANISMS",
+      "parent_or_relation": "MECHANICAL_SIMPLE",
       "topic_codes": [
-        "BASIC_MECHANISMS"
+        "MECHANICAL_SIMPLE"
       ],
       "parent_codes": [
-        "BASIC_MECHANISMS"
+        "MECHANICAL_SIMPLE"
       ],
       "keywords": "gears, levers, pulleys, mechanical advantage",
       "metadata": "{\"icon\": \"cogs\"}"
     },
     {
-      "code": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+      "code": "ELECTRONIC_ELEMENTS",
       "name": "Basic Electronic Components",
       "description": "Nhận biết các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) và chức năng cơ bản của chúng.",
-      "parent_or_relation": "BASIC_ELECTRONIC_COMPONENTS",
+      "parent_or_relation": "ELECTRONIC_ELEMENTS",
       "topic_codes": [
-        "BASIC_ELECTRONIC_COMPONENTS"
+        "ELECTRONIC_ELEMENTS"
       ],
       "parent_codes": [
-        "BASIC_ELECTRONIC_COMPONENTS"
+        "ELECTRONIC_ELEMENTS"
       ],
       "keywords": "resistor, capacitor, diode, transistor",
       "metadata": "{\"icon\": \"bolt\"}"
     },
     {
-      "code": "CIRCUIT_PRINCIPLES_CONCEPT",
+      "code": "CIRCUIT_FUNDAMENTALS",
       "name": "Basic Circuit Principles",
       "description": "Áp dụng các nguyên tắc cơ bản về mạch điện, như định luật Ohm và cách các linh kiện hoạt động khi mắc nối tiếp và song song.",
-      "parent_or_relation": "CIRCUIT_PRINCIPLES",
+      "parent_or_relation": "CIRCUIT_FUNDAMENTALS",
       "topic_codes": [
-        "CIRCUIT_PRINCIPLES"
+        "CIRCUIT_FUNDAMENTALS"
       ],
       "parent_codes": [
-        "CIRCUIT_PRINCIPLES"
+        "CIRCUIT_FUNDAMENTALS"
       ],
       "keywords": "Ohm's law, series circuit, parallel circuit",
       "metadata": "{\"icon\": \"project-diagram\"}"
@@ -5367,15 +5367,15 @@
       "metadata": "{\"icon\": \"clipboard-check\"}"
     },
     {
-      "code": "PASSWORD_STRENGTH_CONCEPT",
+      "code": "PASSWORD_CRITERIA",
       "name": "Strong Passwords",
       "description": "Nắm vững các tiêu chí để tạo một mật khẩu mạnh và an toàn, khó bị đoán hoặc bẻ khóa.",
-      "parent_or_relation": "PASSWORD_STRENGTH",
+      "parent_or_relation": "PASSWORD_CRITERIA",
       "topic_codes": [
-        "PASSWORD_STRENGTH"
+        "PASSWORD_CRITERIA"
       ],
       "parent_codes": [
-        "PASSWORD_STRENGTH"
+        "PASSWORD_CRITERIA"
       ],
       "keywords": "password, security, authentication",
       "metadata": "{\"icon\": \"key\"}"
@@ -5412,12 +5412,12 @@
       "code": "SYNTAX_ERRORS",
       "name": "Syntax Errors",
       "description": "Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.",
-      "parent_or_relation": "ERROR_MESSAGES",
+      "parent_or_relation": "ERROR_MSG_PARSING",
       "topic_codes": [
-        "ERROR_MESSAGES"
+        "ERROR_MSG_PARSING"
       ],
       "parent_codes": [
-        "ERROR_MESSAGES"
+        "ERROR_MSG_PARSING"
       ],
       "keywords": "syntax error, compiler error, parsing error",
       "metadata": "{\"icon\": \"file-exclamation\"}"
@@ -5593,71 +5593,71 @@
       "metadata": "{\"icon\": \"user-lock\"}"
     },
     {
-      "code": "STATIC_MEMBERS_CONCEPT",
+      "code": "STATIC_ATTRIBUTES",
       "name": "Static Members",
       "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
-      "parent_or_relation": "STATIC_MEMBERS",
+      "parent_or_relation": "STATIC_ATTRIBUTES",
       "topic_codes": [
-        "STATIC_MEMBERS"
+        "STATIC_ATTRIBUTES"
       ],
       "parent_codes": [
-        "STATIC_MEMBERS"
+        "STATIC_ATTRIBUTES"
       ],
       "keywords": "static, class variable, class method",
       "metadata": "{\"icon\": \"star-of-life\"}"
     },
     {
-      "code": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "code": "FIRST_CLASS_VALUES",
       "name": "First-Class & Higher-Order Functions",
       "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
-      "parent_or_relation": "FIRST_CLASS_FUNCTIONS",
+      "parent_or_relation": "FIRST_CLASS_VALUES",
       "topic_codes": [
-        "FIRST_CLASS_FUNCTIONS"
+        "FIRST_CLASS_VALUES"
       ],
       "parent_codes": [
-        "FIRST_CLASS_FUNCTIONS"
+        "FIRST_CLASS_VALUES"
       ],
       "keywords": "higher-order functions, lambda, closures, first-class functions",
       "metadata": "{\"icon\": \"lambda\"}"
     },
     {
-      "code": "IMMUTABILITY_CONCEPT",
+      "code": "IMMUTABLE_CONCEPTS",
       "name": "Immutability and Pure Functions",
       "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
-      "parent_or_relation": "IMMUTABILITY",
+      "parent_or_relation": "IMMUTABLE_CONCEPTS",
       "topic_codes": [
-        "IMMUTABILITY"
+        "IMMUTABLE_CONCEPTS"
       ],
       "parent_codes": [
-        "IMMUTABILITY"
+        "IMMUTABLE_CONCEPTS"
       ],
       "keywords": "immutability, pure functions, side effects, functional",
       "metadata": "{\"icon\": \"snowflake\"}"
     },
     {
-      "code": "EVENT_HANDLERS_CONCEPT",
+      "code": "EVENT_LISTENERS",
       "name": "Events and Event Handling",
       "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
-      "parent_or_relation": "EVENT_HANDLERS",
+      "parent_or_relation": "EVENT_LISTENERS",
       "topic_codes": [
-        "EVENT_HANDLERS"
+        "EVENT_LISTENERS"
       ],
       "parent_codes": [
-        "EVENT_HANDLERS"
+        "EVENT_LISTENERS"
       ],
       "keywords": "events, event handler, listener, callback",
       "metadata": "{\"icon\": \"hand-point-up\"}"
     },
     {
-      "code": "ASYNCHRONOUS_PROG_CONCEPT",
+      "code": "ASYNC_PATTERNS",
       "name": "Asynchronous Programming",
       "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
-      "parent_or_relation": "ASYNCHRONOUS_PROG",
+      "parent_or_relation": "ASYNC_PATTERNS",
       "topic_codes": [
-        "ASYNCHRONOUS_PROG"
+        "ASYNC_PATTERNS"
       ],
       "parent_codes": [
-        "ASYNCHRONOUS_PROG"
+        "ASYNC_PATTERNS"
       ],
       "keywords": "async, await, promises, callbacks, non-blocking",
       "metadata": "{\"icon\": \"hourglass-start\"}"
@@ -5722,26 +5722,26 @@
       "code": "TWO_FACTOR_AUTH",
       "name": "Two-Factor Authentication (2FA)",
       "description": "Hiểu nguyên lý và tầm quan trọng của Xác thực Hai Yếu tố (2FA) trong việc tăng cường bảo mật tài khoản.",
-      "parent_or_relation": "PASSWORD_STRENGTH",
+      "parent_or_relation": "PASSWORD_CRITERIA",
       "topic_codes": [
-        "PASSWORD_STRENGTH"
+        "PASSWORD_CRITERIA"
       ],
       "parent_codes": [
-        "PASSWORD_STRENGTH"
+        "PASSWORD_CRITERIA"
       ],
       "keywords": "2FA, MFA, authentication, security",
       "metadata": "{\"icon\": \"key\"}"
     },
     {
-      "code": "MALWARE_TYPES_CONCEPT",
+      "code": "MALWARE_KINDS",
       "name": "Malware Types",
       "description": "Phân biệt các loại phần mềm độc hại phổ biến như virus, worm, và ransomware.",
-      "parent_or_relation": "MALWARE_TYPES",
+      "parent_or_relation": "MALWARE_KINDS",
       "topic_codes": [
-        "MALWARE_TYPES"
+        "MALWARE_KINDS"
       ],
       "parent_codes": [
-        "MALWARE_TYPES"
+        "MALWARE_KINDS"
       ],
       "keywords": "malware, virus, ransomware, cybersecurity",
       "metadata": "{\"icon\": \"shield-virus\"}"
@@ -6092,26 +6092,26 @@
       "code": "COLLISION_DETECTION",
       "name": "Collision Detection",
       "description": "Cơ chế phát hiện khi hai vật thể trong không gian game chạm vào nhau hoặc xuyên qua nhau để kích hoạt sự kiện.",
-      "parent_or_relation": "PHYSICS_CONSTRAINTS",
+      "parent_or_relation": "CONSTRAINT_MECHANICS",
       "topic_codes": [
-        "PHYSICS_CONSTRAINTS"
+        "CONSTRAINT_MECHANICS"
       ],
       "parent_codes": [
-        "PHYSICS_CONSTRAINTS"
+        "CONSTRAINT_MECHANICS"
       ],
       "keywords": "collision, hitbox, raycasting",
       "metadata": "{\"icon\": \"car-crash\"}"
     },
     {
-      "code": "PHYSICS_CONSTRAINTS_CONCEPT",
+      "code": "CONSTRAINT_MECHANICS",
       "name": "Physics Constraints",
       "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
-      "parent_or_relation": "PHYSICS_CONSTRAINTS",
+      "parent_or_relation": "CONSTRAINT_MECHANICS",
       "topic_codes": [
-        "PHYSICS_CONSTRAINTS"
+        "CONSTRAINT_MECHANICS"
       ],
       "parent_codes": [
-        "PHYSICS_CONSTRAINTS"
+        "CONSTRAINT_MECHANICS"
       ],
       "keywords": "constraints, hinge, enterprise application framework, joints",
       "metadata": "{\"icon\": \"link\"}"
@@ -6633,7 +6633,7 @@
       "metadata": "{\"csta_strand\": \"AP-1\", \"csta_level\": \"1B,2,3A,3B\", \"ap_csp\": \"CRD-2\", \"spiral_bloom\": \"Remember->Create\"}"
     },
     {
-      "code": "PATTERN_RECOGNITION_CONCEPT",
+      "code": "PATTERN_RECOGNITION",
       "name": "Pattern Recognition in Computation",
       "description": "Khả năng phát hiện các điểm tương đồng, xu hướng hoặc quy luật lặp lại giữa các bài toán để áp dụng lại giải pháp đã biết.",
       "parent_or_relation": "PROBLEM_DECOMPOSITION_PATTERNS",
@@ -7416,14 +7416,14 @@
       "code": "ORBITAL_MECHANICS_SATELLITE_MESH",
       "name": "Orbital Mechanics and Inter-Satellite Mesh Networks",
       "description": "Thuật toán xác định quỹ đạo vệ tinh và điều hướng mạng truyền thông liên kết laser giữa các chòm vệ tinh vệ tinh tầm thấp (LEO).",
-      "parent_or_relation": "TRANSPORT_PROTOCOLS, NETWORK_TOPOLOGIES",
+      "parent_or_relation": "TRANSPORT_PROTOCOLS, TOPOLOGY_STRUCTURES",
       "topic_codes": [
         "TRANSPORT_PROTOCOLS",
-        "NETWORK_TOPOLOGIES"
+        "TOPOLOGY_STRUCTURES"
       ],
       "parent_codes": [
         "TRANSPORT_PROTOCOLS",
-        "NETWORK_TOPOLOGIES"
+        "TOPOLOGY_STRUCTURES"
       ],
       "keywords": "orbital mechanics, satellite mesh, inter-satellite laser, LEO constellation",
       "metadata": "{\"csta_strand\": \"NI-1\", \"csta_level\": \"3A,3B\", \"spiral_bloom\": \"Understand->Analyze\"}"
@@ -7480,14 +7480,14 @@
       "code": "QUANTUM_REPEATER_NETWORKS",
       "name": "Quantum Repeater Networks and Teleportation",
       "description": "Thuật toán trạm lặp lượng tử và truyền tải trạng thái lượng tử (Quantum Teleportation) phục vụ hạ tầng Internet Lượng tử.",
-      "parent_or_relation": "QUANTUM_CIRCUITS_AND_GATES, NETWORK_TOPOLOGIES",
+      "parent_or_relation": "QUANTUM_CIRCUITS_AND_GATES, TOPOLOGY_STRUCTURES",
       "topic_codes": [
         "QUANTUM_CIRCUITS_AND_GATES",
-        "NETWORK_TOPOLOGIES"
+        "TOPOLOGY_STRUCTURES"
       ],
       "parent_codes": [
         "QUANTUM_CIRCUITS_AND_GATES",
-        "NETWORK_TOPOLOGIES"
+        "TOPOLOGY_STRUCTURES"
       ],
       "keywords": "quantum repeater, quantum teleportation, quantum internet, entanglement distribution",
       "metadata": "{\"csta_strand\": \"NI-1\", \"csta_level\": \"3B\", \"spiral_bloom\": \"Analyze->Evaluate\"}"
@@ -7528,13 +7528,13 @@
       "code": "ULTRA_LOW_LATENCY_HFT_ARCHITECTURE",
       "name": "Ultra-Low Latency High-Frequency Trading Architecture",
       "description": "Kiến trúc phần mềm và phần cứng FPGA/Kernel Bypass đạt độ trễ dưới vi giây (Sub-microsecond) phục vụ giao dịch tài chính tần số cao.",
-      "parent_or_relation": "ASYNCHRONOUS_PROG, HW_CPU",
+      "parent_or_relation": "ASYNC_PATTERNS, HW_CPU",
       "topic_codes": [
-        "ASYNCHRONOUS_PROG",
+        "ASYNC_PATTERNS",
         "HW_CPU"
       ],
       "parent_codes": [
-        "ASYNCHRONOUS_PROG",
+        "ASYNC_PATTERNS",
         "HW_CPU"
       ],
       "keywords": "HFT, high frequency trading, ultra low latency, FPGA, kernel bypass, sub-microsecond",

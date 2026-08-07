@@ -121,6 +121,16 @@ def main():
                     else:
                         errors.append(f"[BROKEN_REFERENCE] {lvl}/{code}: '{r}' not in {plvl}")
 
+    # Concept code naming convention: không được kết thúc bằng _CONCEPT
+    # (chuẩn: IOT_MESSAGING_PROTOCOLS, không phải IOT_PROTOCOLS_MQTT_CONCEPT)
+    for row in tables.get("concepts", []):
+        code = row["code"].strip()
+        if code.endswith("_CONCEPT"):
+            errors.append(
+                f"[CONCEPT_SUFFIX] concepts/{code}: code kết thúc bằng '_CONCEPT' — "
+                f"bỏ suffix (chuẩn: {code[:-8]})"
+            )
+
     print(f"Checking {tsv_path}:")
     print(f"❌ {len(errors)} error(s), ⚠️ {len(warnings)} warning(s)")
 

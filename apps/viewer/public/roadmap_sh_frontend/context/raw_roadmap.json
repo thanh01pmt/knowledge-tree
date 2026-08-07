@@ -1,0 +1,798 @@
+{
+  "url": "https://roadmap.sh/frontend",
+  "topics_count": 132,
+  "topics": [
+    {
+      "order": 1,
+      "name": "Internet",
+      "type": "TOPIC",
+      "prerequisite": "Front-end"
+    },
+    {
+      "order": 2,
+      "name": "How does the internet work?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 3,
+      "name": "What is HTTP?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 4,
+      "name": "What is Domain Name?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 5,
+      "name": "What is hosting?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 6,
+      "name": "DNS and how it works?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 7,
+      "name": "Browsers and how they work?",
+      "type": "SUBTOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 8,
+      "name": "HTML",
+      "type": "TOPIC",
+      "prerequisite": "Internet"
+    },
+    {
+      "order": 9,
+      "name": "CSS",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 10,
+      "name": "JavaScript",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 11,
+      "name": "VCS Hosting",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 12,
+      "name": "Version Control",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 13,
+      "name": "Git",
+      "type": "SUBTOPIC",
+      "prerequisite": "Version Control "
+    },
+    {
+      "order": 14,
+      "name": "Package Managers",
+      "type": "TOPIC",
+      "prerequisite": "VCS Hosting"
+    },
+    {
+      "order": 15,
+      "name": "GitHub",
+      "type": "SUBTOPIC",
+      "prerequisite": "VCS Hosting"
+    },
+    {
+      "order": 16,
+      "name": "GitLab",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 17,
+      "name": "yarn",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 18,
+      "name": "pnpm",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 19,
+      "name": "npm",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 20,
+      "name": "Learn a Framework",
+      "type": "TOPIC",
+      "prerequisite": "At this point, you should be able to build modern vanilla JS frontend applications."
+    },
+    {
+      "order": 21,
+      "name": "Angular",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 22,
+      "name": "Vue.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 23,
+      "name": "React",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 24,
+      "name": "Svelte",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 25,
+      "name": "Solid JS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 26,
+      "name": "CSS Frameworks",
+      "type": "TOPIC",
+      "prerequisite": "Package Managers"
+    },
+    {
+      "order": 27,
+      "name": "Tailwind",
+      "type": "SUBTOPIC",
+      "prerequisite": "CSS Frameworks"
+    },
+    {
+      "order": 28,
+      "name": "Linters & Formatters",
+      "type": "TOPIC",
+      "prerequisite": "Advanced Frontend"
+    },
+    {
+      "order": 29,
+      "name": "Module Bundlers",
+      "type": "TOPIC",
+      "prerequisite": "Linters & Formatters"
+    },
+    {
+      "order": 30,
+      "name": "Parcel",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 31,
+      "name": "Rollup",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 32,
+      "name": "esbuild",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 33,
+      "name": "Vite",
+      "type": "SUBTOPIC",
+      "prerequisite": "Module Bundlers"
+    },
+    {
+      "order": 34,
+      "name": "Prettier",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 35,
+      "name": "ESLint",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 36,
+      "name": "Testing",
+      "type": "TOPIC",
+      "prerequisite": "Auth Strategies"
+    },
+    {
+      "order": 37,
+      "name": "Vitest",
+      "type": "SUBTOPIC",
+      "prerequisite": "Testing"
+    },
+    {
+      "order": 38,
+      "name": "Jest",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 39,
+      "name": "Playwright",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 40,
+      "name": "Cypress",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 41,
+      "name": "Auth Strategies",
+      "type": "TOPIC",
+      "prerequisite": "Module Bundlers"
+    },
+    {
+      "order": 42,
+      "name": "Web Security",
+      "type": "TOPIC",
+      "prerequisite": "Web APIs"
+    },
+    {
+      "order": 43,
+      "name": "CORS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 44,
+      "name": "HTTPS",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 45,
+      "name": "CSP",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 46,
+      "name": "OWASP Risks",
+      "type": "SUBTOPIC",
+      "prerequisite": "Web Security"
+    },
+    {
+      "order": 47,
+      "name": "Web Components",
+      "type": "TOPIC",
+      "prerequisite": "Performance"
+    },
+    {
+      "order": 48,
+      "name": "Type Checkers",
+      "type": "TOPIC",
+      "prerequisite": "SSG"
+    },
+    {
+      "order": 49,
+      "name": "Custom Elements",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 50,
+      "name": "HTML Templates",
+      "type": "SUBTOPIC",
+      "prerequisite": "Web Components"
+    },
+    {
+      "order": 51,
+      "name": "Shadow DOM",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 52,
+      "name": "SSR",
+      "type": "TOPIC",
+      "prerequisite": "Web Security"
+    },
+    {
+      "order": 53,
+      "name": "Svelte",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 54,
+      "name": "Vue.js",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 55,
+      "name": "Angular",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 56,
+      "name": "React",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 57,
+      "name": "react-router",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 58,
+      "name": "Next.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 59,
+      "name": "Nuxt.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 60,
+      "name": "SvelteKit",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 61,
+      "name": "GraphQL",
+      "type": "TOPIC",
+      "prerequisite": "Web Components"
+    },
+    {
+      "order": 62,
+      "name": "Apollo",
+      "type": "SUBTOPIC",
+      "prerequisite": "GraphQL"
+    },
+    {
+      "order": 63,
+      "name": "Relay Modern",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 64,
+      "name": "SSG",
+      "type": "TOPIC",
+      "prerequisite": "SSR"
+    },
+    {
+      "order": 65,
+      "name": "Vuepress",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 66,
+      "name": "Nuxt.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 67,
+      "name": "Astro",
+      "type": "SUBTOPIC",
+      "prerequisite": "SSG"
+    },
+    {
+      "order": 68,
+      "name": "Eleventy",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 69,
+      "name": "Next.js",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 70,
+      "name": "PWAs",
+      "type": "TOPIC",
+      "prerequisite": "Accessibility"
+    },
+    {
+      "order": 71,
+      "name": "Mobile Apps",
+      "type": "TOPIC",
+      "prerequisite": "PWAs, Desktop Apps"
+    },
+    {
+      "order": 72,
+      "name": "React Native",
+      "type": "SUBTOPIC",
+      "prerequisite": "Mobile Apps"
+    },
+    {
+      "order": 73,
+      "name": "Flutter",
+      "type": "SUBTOPIC",
+      "prerequisite": "Desktop Apps"
+    },
+    {
+      "order": 74,
+      "name": "Ionic",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 75,
+      "name": "Desktop Apps",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 76,
+      "name": "Nodejs",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 77,
+      "name": "Electron",
+      "type": "SUBTOPIC",
+      "prerequisite": "Desktop Apps"
+    },
+    {
+      "order": 78,
+      "name": "Tauri",
+      "type": "SUBTOPIC",
+      "prerequisite": "Desktop Apps"
+    },
+    {
+      "order": 79,
+      "name": "Flutter",
+      "type": "SUBTOPIC",
+      "prerequisite": "Desktop Apps"
+    },
+    {
+      "order": 80,
+      "name": "SWC",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 81,
+      "name": "Astro",
+      "type": "SUBTOPIC",
+      "prerequisite": "SSG"
+    },
+    {
+      "order": 82,
+      "name": "Fullstack",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 83,
+      "name": "Visit Beginner Friendly Version",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 84,
+      "name": "Beginner Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 85,
+      "name": "Bun",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 86,
+      "name": "Intermediate Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 87,
+      "name": "Biome",
+      "type": "SUBTOPIC",
+      "prerequisite": "Linters & Formatters"
+    },
+    {
+      "order": 88,
+      "name": "Rolldown",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 89,
+      "name": "Advanced Project Ideas",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 90,
+      "name": "Tanstack Start",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 91,
+      "name": "Deployment",
+      "type": "TOPIC",
+      "prerequisite": "Type Checkers"
+    },
+    {
+      "order": 92,
+      "name": "GitHub Pages",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 93,
+      "name": "Vercel",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 94,
+      "name": "Cloudflare",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 95,
+      "name": "Netlify",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 96,
+      "name": "Railway",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 97,
+      "name": "Render",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 98,
+      "name": "Performance",
+      "type": "TOPIC",
+      "prerequisite": "Design Systems"
+    },
+    {
+      "order": 99,
+      "name": "Lighthouse",
+      "type": "SUBTOPIC",
+      "prerequisite": "Performance"
+    },
+    {
+      "order": 100,
+      "name": "DevTools Usage",
+      "type": "SUBTOPIC",
+      "prerequisite": "Performance"
+    },
+    {
+      "order": 101,
+      "name": "Service Workers",
+      "type": "SUBTOPIC",
+      "prerequisite": "Performance"
+    },
+    {
+      "order": 102,
+      "name": "Streamed Responses",
+      "type": "SUBTOPIC",
+      "prerequisite": "Performance"
+    },
+    {
+      "order": 103,
+      "name": "Design Systems",
+      "type": "TOPIC",
+      "prerequisite": "Deployment"
+    },
+    {
+      "order": 104,
+      "name": "Web APIs",
+      "type": "TOPIC",
+      "prerequisite": "At this point you should have the expertise of an intermediate level frontend developer. Keep practicing and sharpening your skills."
+    },
+    {
+      "order": 105,
+      "name": "Accessibility",
+      "type": "TOPIC",
+      "prerequisite": "GraphQL"
+    },
+    {
+      "order": 106,
+      "name": "Backend",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 107,
+      "name": "Design System",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 108,
+      "name": "TypeScript",
+      "type": "BUTTON",
+      "prerequisite": "Type Checkers"
+    },
+    {
+      "order": 109,
+      "name": "Cache-Control",
+      "type": "SUBTOPIC",
+      "prerequisite": "Performance"
+    },
+    {
+      "order": 110,
+      "name": "roadmap.sh",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 111,
+      "name": "Claude Code",
+      "type": "SUBTOPIC",
+      "prerequisite": "AI Assisted Coding"
+    },
+    {
+      "order": 112,
+      "name": "Copilot",
+      "type": "SUBTOPIC",
+      "prerequisite": "AI Assisted Coding"
+    },
+    {
+      "order": 113,
+      "name": "Cursor",
+      "type": "SUBTOPIC",
+      "prerequisite": "AI Assisted Coding"
+    },
+    {
+      "order": 114,
+      "name": "Antigravity",
+      "type": "SUBTOPIC",
+      "prerequisite": "AI Assisted Coding"
+    },
+    {
+      "order": 115,
+      "name": "How LLMs work",
+      "type": "SUBTOPIC",
+      "prerequisite": "Learn the Basics"
+    },
+    {
+      "order": 116,
+      "name": "AI vs Traditional Coding",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 117,
+      "name": "Code Reviews",
+      "type": "SUBTOPIC",
+      "prerequisite": "Applications"
+    },
+    {
+      "order": 118,
+      "name": "Docs Generation",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 119,
+      "name": "Learn the Basics",
+      "type": "TOPIC",
+      "prerequisite": "AI in Development"
+    },
+    {
+      "order": 120,
+      "name": "AI Assisted Coding",
+      "type": "TOPIC",
+      "prerequisite": "Learn a Framework"
+    },
+    {
+      "order": 121,
+      "name": "Prompting Techniques",
+      "type": "TOPIC",
+      "prerequisite": "AI Assisted Coding"
+    },
+    {
+      "order": 122,
+      "name": "Gemini",
+      "type": "SUBTOPIC",
+      "prerequisite": "Implementing AI"
+    },
+    {
+      "order": 123,
+      "name": "OpenAI",
+      "type": "SUBTOPIC",
+      "prerequisite": "Implementing AI"
+    },
+    {
+      "order": 124,
+      "name": "Anthropic",
+      "type": "SUBTOPIC",
+      "prerequisite": "Implementing AI"
+    },
+    {
+      "order": 125,
+      "name": "Implementing AI",
+      "type": "TOPIC",
+      "prerequisite": "Skills"
+    },
+    {
+      "order": 126,
+      "name": "Refactoring",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 127,
+      "name": "Applications",
+      "type": "SUBTOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 128,
+      "name": "Prompt Engineering",
+      "type": "BUTTON",
+      "prerequisite": "Prompting Techniques"
+    },
+    {
+      "order": 129,
+      "name": "AI Agents Roadmap",
+      "type": "BUTTON",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 130,
+      "name": "Agents",
+      "type": "TOPIC",
+      "prerequisite": "Prompting Techniques, AI Agents Roadmap"
+    },
+    {
+      "order": 131,
+      "name": "MCP",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    },
+    {
+      "order": 132,
+      "name": "Skills",
+      "type": "TOPIC",
+      "prerequisite": "ROOT (Start)"
+    }
+  ]
+}

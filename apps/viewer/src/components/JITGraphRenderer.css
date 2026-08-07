@@ -1,0 +1,166 @@
+/* JIT Graph Renderer Styles */
+
+.jit-node {
+  transition: all 0.2s ease;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+.jit-node:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.12) !important;
+}
+
+.jit-node.selected {
+  box-shadow: 0 0 0 3px rgba(43, 120, 228, 0.3) !important;
+  border-width: 3px !important;
+}
+
+.jit-handle {
+  width: 10px;
+  height: 10px;
+  background: #2b78e4;
+  border: 2px solid white;
+  border-radius: 50%;
+}
+
+.jit-handle.connectable {
+  background: #27ae60;
+}
+
+.jit-handle:hover {
+  transform: scale(1.2);
+}
+
+.jit-node-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.jit-node-label {
+  font-weight: 500;
+  font-size: 13px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #1e293b;
+}
+
+.jit-node-note {
+  font-size: 10px !important;
+  color: #64748b !important;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.3;
+}
+
+.jit-phase-badge {
+  background: inherit;
+  color: white;
+  border-radius: 10px;
+  padding: 2px 8px;
+  font-size: 9px;
+  font-weight: 600;
+  display: inline-block;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.jit-toolbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.jit-legend {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+}
+
+.jit-legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #475569;
+}
+
+.jit-legend-color {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 6px;
+}
+
+.jit-phase-stats {
+  position: sticky;
+  bottom: 0;
+  z-index: 50;
+  background: white;
+  padding: 8px 20px;
+  border-top: 1px solid #e2e8f0;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+}
+
+.jit-phase-stats span {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+/* React Flow overrides for JIT */
+.react-flow__node.jit-node {
+  transition: all 0.2s ease;
+}
+
+.react-flow__node.jit-node:hover {
+  z-index: 10;
+}
+
+.react-flow__edge-path {
+  stroke-width: 2.5 !important;
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  stroke: #8e44ad !important;
+  stroke-width: 3.5 !important;
+}
+
+/* MiniMap customization */
+.react-flow__minimap-node {
+  shape-rendering: crispEdges;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .jit-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  
+  .jit-legend {
+    gap: 8px;
+  }
+  
+  .jit-phase-stats {
+    gap: 6px;
+  }
+  
+  .jit-phase-stats span {
+    padding: 3px 8px;
+    font-size: 10px;
+  }
+}

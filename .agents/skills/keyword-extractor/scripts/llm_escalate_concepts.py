@@ -50,7 +50,8 @@ except ImportError:
 class ConceptGroup(BaseModel):
     concept_name: str = Field(description=(
         "Tên khái niệm trung tính (technology-agnostic), tiếng Anh, danh từ/cụm danh từ ngắn gọn. "
-        "TUYỆT ĐỐI KHÔNG chứa tên ngôn ngữ lập trình hay công nghệ cụ thể (Python, Swift, JS, Arduino...)."
+        "TUYỆT ĐỐI KHÔNG chứa tên ngôn ngữ lập trình hay công nghệ cụ thể (Python, Swift, JS, Arduino...). "
+        "KHÔNG kết thúc bằng suffix '_CONCEPT'. Code phải unique, không trùng topic/concept khác."
     ))
     description_vi: str = Field(description=(
         "Mô tả ngắn bằng tiếng Việt (1-2 câu). "

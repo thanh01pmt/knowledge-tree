@@ -2161,7 +2161,7 @@
       ]
     },
     {
-      "code": "TROUBLESHOOTING_METHODOLOGY",
+      "code": "TROUBLESHOOTING_STEPS",
       "name": "Systematic Troubleshooting Methodology",
       "description": "Áp dụng một quy trình có hệ thống (ví dụ: xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
       "category_codes": "TROUBLESHOOTING",
@@ -2177,7 +2177,7 @@
       ]
     },
     {
-      "code": "ERROR_MESSAGES",
+      "code": "ERROR_MSG_PARSING",
       "name": "Interpreting Error Messages",
       "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
       "category_codes": "TROUBLESHOOTING, TESTING_DEBUGGING",
@@ -2311,7 +2311,7 @@
       ]
     },
     {
-      "code": "BASIC_MECHANISMS",
+      "code": "MECHANICAL_SIMPLE",
       "name": "Basic Mechanical Systems",
       "description": "Giới thiệu các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy, ròng rọc và vai trò của chúng trong truyền động.",
       "category_codes": "MECHANICAL_SYSTEMS",
@@ -2328,7 +2328,7 @@
       ]
     },
     {
-      "code": "BASIC_ELECTRONIC_COMPONENTS",
+      "code": "ELECTRONIC_ELEMENTS",
       "name": "Basic Electronic Components",
       "description": "Tìm hiểu các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) cơ bản.",
       "category_codes": "ELECTRONIC_CIRCUITS",
@@ -2345,7 +2345,7 @@
       ]
     },
     {
-      "code": "CIRCUIT_PRINCIPLES",
+      "code": "CIRCUIT_FUNDAMENTALS",
       "name": "Basic Circuit Principles",
       "description": "Các nguyên tắc cơ bản về mạch điện, như định luật Ohm, mắc nối tiếp và song song, và cách đọc sơ đồ mạch.",
       "category_codes": "ELECTRONIC_CIRCUITS",
@@ -2433,7 +2433,7 @@
       ]
     },
     {
-      "code": "ROUTERS_SWITCHES",
+      "code": "ROUTING_SWITCHING",
       "name": "Routers and Switches",
       "description": "Phân biệt chức năng của router (định tuyến giữa các mạng khác nhau) và switch (kết nối các thiết bị trong cùng một mạng).",
       "category_codes": "NETWORK_INFRA",
@@ -2451,7 +2451,7 @@
       ]
     },
     {
-      "code": "PHYSICAL_MEDIA",
+      "code": "MEDIUM_TYPES",
       "name": "Physical Media & Wireless",
       "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
       "category_codes": "NETWORK_INFRA",
@@ -2468,7 +2468,7 @@
       ]
     },
     {
-      "code": "NETWORK_TOPOLOGIES",
+      "code": "TOPOLOGY_STRUCTURES",
       "name": "Network Topologies",
       "description": "Các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
       "category_codes": "NETWORK_INFRA",
@@ -2921,7 +2921,7 @@
       ]
     },
     {
-      "code": "STATIC_MEMBERS",
+      "code": "STATIC_ATTRIBUTES",
       "name": "Static Members",
       "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
       "category_codes": "OOP",
@@ -2937,7 +2937,7 @@
       ]
     },
     {
-      "code": "FIRST_CLASS_FUNCTIONS",
+      "code": "FIRST_CLASS_VALUES",
       "name": "First-Class & Higher-Order Functions",
       "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
       "category_codes": "FUNCTIONAL_PROG",
@@ -2954,7 +2954,7 @@
       ]
     },
     {
-      "code": "IMMUTABILITY",
+      "code": "IMMUTABLE_CONCEPTS",
       "name": "Immutability and Pure Functions",
       "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
       "category_codes": "FUNCTIONAL_PROG",
@@ -2971,7 +2971,7 @@
       ]
     },
     {
-      "code": "EVENT_HANDLERS",
+      "code": "EVENT_LISTENERS",
       "name": "Events and Event Handling",
       "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
       "category_codes": "EVENT_DRIVEN_PROG",
@@ -2988,7 +2988,7 @@
       ]
     },
     {
-      "code": "ASYNCHRONOUS_PROG",
+      "code": "ASYNC_PATTERNS",
       "name": "Asynchronous Programming",
       "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
       "category_codes": "EVENT_DRIVEN_PROG,PARALLEL_DIST_ALGO",
@@ -3527,7 +3527,7 @@
       ]
     },
     {
-      "code": "PASSWORD_STRENGTH",
+      "code": "PASSWORD_CRITERIA",
       "name": "Strong Passwords & Authentication",
       "description": "Các tiêu chí để tạo một mật khẩu mạnh và các phương pháp xác thực hiện đại như xác thực hai yếu tố (2FA) để tăng cường bảo mật.",
       "category_codes": "DEVICE_PROTECTION",
@@ -3545,7 +3545,7 @@
       ]
     },
     {
-      "code": "MALWARE_TYPES",
+      "code": "MALWARE_KINDS",
       "name": "Malware Protection",
       "description": "Phân biệt các loại phần mềm độc hại (virus, worm, ransomware) và các biện pháp phòng chống như sử dụng phần mềm diệt virus.",
       "category_codes": "DEVICE_PROTECTION",
@@ -4051,7 +4051,7 @@
       ]
     },
     {
-      "code": "PHYSICS_CONSTRAINTS",
+      "code": "CONSTRAINT_MECHANICS",
       "name": "Physics Constraints & Joints",
       "description": "Sử dụng các khớp nối vật lý (Constraints) như bản lề (Hinge), lò xo (enterprise application framework), động cơ (Motor) để tạo ra các cơ cấu chuyển động cơ học (xe, cửa, bẫy) trong game.",
       "category_codes": "GAME_PHYSICS",
@@ -6139,7 +6139,7 @@
       ]
     },
     {
-      "code": "DMA_CONCEPT",
+      "code": "DMA",
       "name": "Direct Memory Access (DMA)",
       "description": "Hiểu khái niệm Truy cập Bộ nhớ Trực tiếp (DMA), cho phép các thiết bị phần cứng truy cập bộ nhớ chính độc lập với CPU.",
       "topic_codes": "IO_MECHANISMS",
@@ -6292,7 +6292,7 @@
           "description": "Token from concept 'Direct Memory Access (DMA)': hardware",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "DMA_CONCEPT",
+            "source_concept": "DMA",
             "extracted_at": "2026-08-03T12:28:05.452852"
           }
         },
@@ -6302,7 +6302,7 @@
           "description": "Token from concept 'Direct Memory Access (DMA)': access",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "DMA_CONCEPT",
+            "source_concept": "DMA",
             "extracted_at": "2026-08-03T12:28:05.452858"
           }
         },
@@ -6312,7 +6312,7 @@
           "description": "Token from concept 'Direct Memory Access (DMA)': direct",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "DMA_CONCEPT",
+            "source_concept": "DMA",
             "extracted_at": "2026-08-03T12:28:05.452863"
           }
         }
@@ -6470,7 +6470,7 @@
           "description": "Token from concept 'Direct Memory Access (DMA)': hardware",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "DMA_CONCEPT",
+            "source_concept": "DMA",
             "extracted_at": "2026-08-03T12:28:05.452852"
           }
         },
@@ -6480,7 +6480,7 @@
           "description": "Token from concept 'Direct Memory Access (DMA)': access",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "DMA_CONCEPT",
+            "source_concept": "DMA",
             "extracted_at": "2026-08-03T12:28:05.452858"
           }
         },
@@ -6490,7 +6490,7 @@
           "description": "Token from concept 'Direct Memory Access (DMA)': direct",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "DMA_CONCEPT",
+            "source_concept": "DMA",
             "extracted_at": "2026-08-03T12:28:05.452863"
           }
         }
@@ -8543,10 +8543,10 @@
       ]
     },
     {
-      "code": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "code": "TROUBLESHOOTING_STEPS",
       "name": "Systematic Troubleshooting",
       "description": "Áp dụng một quy trình có hệ thống (xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
-      "topic_codes": "TROUBLESHOOTING_METHODOLOGY",
+      "topic_codes": "TROUBLESHOOTING_STEPS",
       "keywords": [
         {
           "code": "KW_IN",
@@ -8570,7 +8570,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': solving",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452974"
           }
         },
@@ -8580,7 +8580,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': diagnostics",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452983"
           }
         },
@@ -8590,7 +8590,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': troubleshooting",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452988"
           }
         },
@@ -8600,7 +8600,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': problem",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452994"
           }
         },
@@ -8610,7 +8610,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': systematic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452999"
           }
         }
@@ -8642,7 +8642,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': solving",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452974"
           }
         },
@@ -8652,7 +8652,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': diagnostics",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452983"
           }
         },
@@ -8662,7 +8662,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': troubleshooting",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452988"
           }
         },
@@ -8672,7 +8672,7 @@
           "description": "Token from concept 'Systematic Troubleshooting': problem",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452994"
           }
         },
@@ -8682,17 +8682,17 @@
           "description": "Token from concept 'Systematic Troubleshooting': systematic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+            "source_concept": "TROUBLESHOOTING_STEPS",
             "extracted_at": "2026-08-03T12:28:05.452999"
           }
         }
       ]
     },
     {
-      "code": "ERROR_MESSAGES_CONCEPT",
+      "code": "ERROR_MSG_PARSING",
       "name": "Interpreting Error Messages",
       "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
-      "topic_codes": "ERROR_MESSAGES",
+      "topic_codes": "ERROR_MSG_PARSING",
       "keywords": [
         {
           "code": "KW_IN",
@@ -8829,7 +8829,7 @@
           "description": "Token from concept 'Interpreting Error Messages': analysis",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453008"
           }
         },
@@ -8839,7 +8839,7 @@
           "description": "Token from concept 'Interpreting Error Messages': log",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453013"
           }
         },
@@ -8849,7 +8849,7 @@
           "description": "Token from concept 'Interpreting Error Messages': debugging",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453018"
           }
         },
@@ -8859,7 +8859,7 @@
           "description": "Token from concept 'Interpreting Error Messages': error",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453023"
           }
         },
@@ -8869,7 +8869,7 @@
           "description": "Token from concept 'Interpreting Error Messages': messages",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453028"
           }
         },
@@ -8879,7 +8879,7 @@
           "description": "Token from concept 'Interpreting Error Messages': exceptions",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453033"
           }
         },
@@ -8889,7 +8889,7 @@
           "description": "Token from concept 'Interpreting Error Messages': handling",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453038"
           }
         },
@@ -8899,7 +8899,7 @@
           "description": "Token from concept 'Interpreting Error Messages': interpreting",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453043"
           }
         }
@@ -9044,7 +9044,7 @@
           "description": "Token from concept 'Interpreting Error Messages': analysis",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453008"
           }
         },
@@ -9054,7 +9054,7 @@
           "description": "Token from concept 'Interpreting Error Messages': log",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453013"
           }
         },
@@ -9064,7 +9064,7 @@
           "description": "Token from concept 'Interpreting Error Messages': debugging",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453018"
           }
         },
@@ -9074,7 +9074,7 @@
           "description": "Token from concept 'Interpreting Error Messages': error",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453023"
           }
         },
@@ -9084,7 +9084,7 @@
           "description": "Token from concept 'Interpreting Error Messages': messages",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453028"
           }
         },
@@ -9094,7 +9094,7 @@
           "description": "Token from concept 'Interpreting Error Messages': exceptions",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453033"
           }
         },
@@ -9104,7 +9104,7 @@
           "description": "Token from concept 'Interpreting Error Messages': handling",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453038"
           }
         },
@@ -9114,7 +9114,7 @@
           "description": "Token from concept 'Interpreting Error Messages': interpreting",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ERROR_MESSAGES_CONCEPT",
+            "source_concept": "ERROR_MSG_PARSING",
             "extracted_at": "2026-08-03T12:28:05.453043"
           }
         }
@@ -10661,10 +10661,10 @@
       ]
     },
     {
-      "code": "ROUTERS_SWITCHES_CONCEPT",
+      "code": "ROUTING_SWITCHING",
       "name": "Routers and Switches",
       "description": "Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
-      "topic_codes": "ROUTERS_SWITCHES",
+      "topic_codes": "ROUTING_SWITCHING",
       "keywords": [
         {
           "code": "KW_SWITCH",
@@ -10832,7 +10832,7 @@
           "description": "Token from concept 'Routers and Switches': routers",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453247"
           }
         },
@@ -10842,7 +10842,7 @@
           "description": "Token from concept 'Routers and Switches': router",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453252"
           }
         },
@@ -10852,7 +10852,7 @@
           "description": "Token from concept 'Routers and Switches': switches",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453260"
           }
         },
@@ -10862,7 +10862,7 @@
           "description": "Token from concept 'Routers and Switches': networking",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453265"
           }
         }
@@ -11038,7 +11038,7 @@
           "description": "Token from concept 'Routers and Switches': routers",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453247"
           }
         },
@@ -11048,7 +11048,7 @@
           "description": "Token from concept 'Routers and Switches': router",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453252"
           }
         },
@@ -11058,7 +11058,7 @@
           "description": "Token from concept 'Routers and Switches': switches",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453260"
           }
         },
@@ -11068,17 +11068,17 @@
           "description": "Token from concept 'Routers and Switches': networking",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+            "source_concept": "ROUTING_SWITCHING",
             "extracted_at": "2026-08-03T12:28:05.453265"
           }
         }
       ]
     },
     {
-      "code": "PHYSICAL_MEDIA_CONCEPT",
+      "code": "MEDIUM_TYPES",
       "name": "Physical Media & Wireless",
       "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
-      "topic_codes": "PHYSICAL_MEDIA",
+      "topic_codes": "MEDIUM_TYPES",
       "keywords": [
         {
           "code": "KW_CERTIFICATE",
@@ -11103,7 +11103,7 @@
           "description": "Token from concept 'Physical Media & Wireless': wireless",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453278"
           }
         },
@@ -11113,7 +11113,7 @@
           "description": "Token from concept 'Physical Media & Wireless': physical",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453283"
           }
         },
@@ -11123,7 +11123,7 @@
           "description": "Token from concept 'Physical Media & Wireless': cable",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453288"
           }
         },
@@ -11133,7 +11133,7 @@
           "description": "Token from concept 'Physical Media & Wireless': optic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453293"
           }
         },
@@ -11143,7 +11143,7 @@
           "description": "Token from concept 'Physical Media & Wireless': media",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453298"
           }
         },
@@ -11153,7 +11153,7 @@
           "description": "Token from concept 'Physical Media & Wireless': ethernet",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453303"
           }
         },
@@ -11163,7 +11163,7 @@
           "description": "Token from concept 'Physical Media & Wireless': bluetooth",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453307"
           }
         },
@@ -11173,7 +11173,7 @@
           "description": "Token from concept 'Physical Media & Wireless': fiber",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453312"
           }
         }
@@ -11206,7 +11206,7 @@
           "description": "Token from concept 'Physical Media & Wireless': wireless",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453278"
           }
         },
@@ -11216,7 +11216,7 @@
           "description": "Token from concept 'Physical Media & Wireless': physical",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453283"
           }
         },
@@ -11226,7 +11226,7 @@
           "description": "Token from concept 'Physical Media & Wireless': cable",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453288"
           }
         },
@@ -11236,7 +11236,7 @@
           "description": "Token from concept 'Physical Media & Wireless': optic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453293"
           }
         },
@@ -11246,7 +11246,7 @@
           "description": "Token from concept 'Physical Media & Wireless': media",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453298"
           }
         },
@@ -11256,7 +11256,7 @@
           "description": "Token from concept 'Physical Media & Wireless': ethernet",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453303"
           }
         },
@@ -11266,7 +11266,7 @@
           "description": "Token from concept 'Physical Media & Wireless': bluetooth",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453307"
           }
         },
@@ -11276,17 +11276,17 @@
           "description": "Token from concept 'Physical Media & Wireless': fiber",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+            "source_concept": "MEDIUM_TYPES",
             "extracted_at": "2026-08-03T12:28:05.453312"
           }
         }
       ]
     },
     {
-      "code": "NETWORK_TOPOLOGIES_CONCEPT",
+      "code": "TOPOLOGY_STRUCTURES",
       "name": "Network Topologies",
       "description": "Nhận biết các cấu trúc liên kết mạng phổ biến như Star (Hình sao), Bus, Ring (Vòng), và Mesh (Lưới).",
-      "topic_codes": "NETWORK_TOPOLOGIES",
+      "topic_codes": "TOPOLOGY_STRUCTURES",
       "keywords": [
         {
           "code": "KW_NETWORK",
@@ -11294,7 +11294,7 @@
           "description": "Token from concept 'Network Topologies': network",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453321"
           }
         },
@@ -11304,7 +11304,7 @@
           "description": "Token from concept 'Network Topologies': topology",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453326"
           }
         },
@@ -11314,7 +11314,7 @@
           "description": "Token from concept 'Network Topologies': bus",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453331"
           }
         },
@@ -11324,7 +11324,7 @@
           "description": "Token from concept 'Network Topologies': topologies",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453336"
           }
         },
@@ -11334,7 +11334,7 @@
           "description": "Token from concept 'Network Topologies': star",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453341"
           }
         },
@@ -11344,7 +11344,7 @@
           "description": "Token from concept 'Network Topologies': ring",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453346"
           }
         },
@@ -11354,7 +11354,7 @@
           "description": "Token from concept 'Network Topologies': mesh",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453351"
           }
         }
@@ -11370,7 +11370,7 @@
           "description": "Token from concept 'Network Topologies': network",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453321"
           }
         },
@@ -11380,7 +11380,7 @@
           "description": "Token from concept 'Network Topologies': topology",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453326"
           }
         },
@@ -11390,7 +11390,7 @@
           "description": "Token from concept 'Network Topologies': bus",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453331"
           }
         },
@@ -11400,7 +11400,7 @@
           "description": "Token from concept 'Network Topologies': topologies",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453336"
           }
         },
@@ -11410,7 +11410,7 @@
           "description": "Token from concept 'Network Topologies': star",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453341"
           }
         },
@@ -11420,7 +11420,7 @@
           "description": "Token from concept 'Network Topologies': ring",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453346"
           }
         },
@@ -11430,7 +11430,7 @@
           "description": "Token from concept 'Network Topologies': mesh",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+            "source_concept": "TOPOLOGY_STRUCTURES",
             "extracted_at": "2026-08-03T12:28:05.453351"
           }
         }
@@ -16405,7 +16405,7 @@
       ]
     },
     {
-      "code": "MAPREDUCE_CONCEPT",
+      "code": "MAPREDUCE",
       "name": "MapReduce Concept",
       "description": "Hiểu mô hình lập trình MapReduce để xử lý song song các tập dữ liệu lớn, bao gồm hai bước chính là map và reduce.",
       "topic_codes": "ALGO_STRATEGIES",
@@ -16480,7 +16480,7 @@
           "description": "Token from concept 'MapReduce Concept': distributed",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MAPREDUCE_CONCEPT",
+            "source_concept": "MAPREDUCE",
             "extracted_at": "2026-08-03T12:28:05.453825"
           }
         },
@@ -16490,7 +16490,7 @@
           "description": "Token from concept 'MapReduce Concept': processing",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MAPREDUCE_CONCEPT",
+            "source_concept": "MAPREDUCE",
             "extracted_at": "2026-08-03T12:28:05.453830"
           }
         },
@@ -16500,7 +16500,7 @@
           "description": "Token from concept 'MapReduce Concept': big",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MAPREDUCE_CONCEPT",
+            "source_concept": "MAPREDUCE",
             "extracted_at": "2026-08-03T12:28:05.453836"
           }
         }
@@ -16580,7 +16580,7 @@
           "description": "Token from concept 'MapReduce Concept': distributed",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MAPREDUCE_CONCEPT",
+            "source_concept": "MAPREDUCE",
             "extracted_at": "2026-08-03T12:28:05.453825"
           }
         },
@@ -16590,7 +16590,7 @@
           "description": "Token from concept 'MapReduce Concept': processing",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MAPREDUCE_CONCEPT",
+            "source_concept": "MAPREDUCE",
             "extracted_at": "2026-08-03T12:28:05.453830"
           }
         },
@@ -16600,7 +16600,7 @@
           "description": "Token from concept 'MapReduce Concept': big",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MAPREDUCE_CONCEPT",
+            "source_concept": "MAPREDUCE",
             "extracted_at": "2026-08-03T12:28:05.453836"
           }
         }
@@ -25770,7 +25770,7 @@
       "code": "EVENT_BASED_PROGRAMMING",
       "name": "Event-Based Programming Model",
       "description": "Hiểu mô hình lập trình trong đó luồng của chương trình được quyết định bởi các sự kiện (như hành động của người dùng) thay vì một chuỗi lệnh tuần tự.",
-      "topic_codes": "EVENT_HANDLERS",
+      "topic_codes": "EVENT_LISTENERS",
       "keywords": [
         {
           "code": "KW_BASE",
@@ -27419,10 +27419,10 @@
       ]
     },
     {
-      "code": "BASIC_MECHANISMS_CONCEPT",
+      "code": "MECHANICAL_SIMPLE",
       "name": "Basic Mechanisms",
       "description": "Nhận biết và hiểu nguyên lý hoạt động của các cơ cấu cơ khí đơn giản như bánh răng, đòn bẩy và ròng rọc.",
-      "topic_codes": "BASIC_MECHANISMS",
+      "topic_codes": "MECHANICAL_SIMPLE",
       "keywords": [
         {
           "code": "KW_GEARS",
@@ -27430,7 +27430,7 @@
           "description": "Token from concept 'Basic Mechanisms': gears",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455033"
           }
         },
@@ -27440,7 +27440,7 @@
           "description": "Token from concept 'Basic Mechanisms': mechanical",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455038"
           }
         },
@@ -27450,7 +27450,7 @@
           "description": "Token from concept 'Basic Mechanisms': pulleys",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455043"
           }
         },
@@ -27460,7 +27460,7 @@
           "description": "Token from concept 'Basic Mechanisms': mechanisms",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455053"
           }
         },
@@ -27470,7 +27470,7 @@
           "description": "Token from concept 'Basic Mechanisms': basic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455058"
           }
         },
@@ -27480,7 +27480,7 @@
           "description": "Token from concept 'Basic Mechanisms': advantage",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455063"
           }
         },
@@ -27490,7 +27490,7 @@
           "description": "Token from concept 'Basic Mechanisms': levers",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455068"
           }
         }
@@ -27506,7 +27506,7 @@
           "description": "Token from concept 'Basic Mechanisms': gears",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455033"
           }
         },
@@ -27516,7 +27516,7 @@
           "description": "Token from concept 'Basic Mechanisms': mechanical",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455038"
           }
         },
@@ -27526,7 +27526,7 @@
           "description": "Token from concept 'Basic Mechanisms': pulleys",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455043"
           }
         },
@@ -27536,7 +27536,7 @@
           "description": "Token from concept 'Basic Mechanisms': mechanisms",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455053"
           }
         },
@@ -27546,7 +27546,7 @@
           "description": "Token from concept 'Basic Mechanisms': basic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455058"
           }
         },
@@ -27556,7 +27556,7 @@
           "description": "Token from concept 'Basic Mechanisms': advantage",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455063"
           }
         },
@@ -27566,17 +27566,17 @@
           "description": "Token from concept 'Basic Mechanisms': levers",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_MECHANISMS_CONCEPT",
+            "source_concept": "MECHANICAL_SIMPLE",
             "extracted_at": "2026-08-03T12:28:05.455068"
           }
         }
       ]
     },
     {
-      "code": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+      "code": "ELECTRONIC_ELEMENTS",
       "name": "Basic Electronic Components",
       "description": "Nhận biết các linh kiện điện tử thụ động (điện trở, tụ điện) và chủ động (transistor, diode) và chức năng cơ bản của chúng.",
-      "topic_codes": "BASIC_ELECTRONIC_COMPONENTS",
+      "topic_codes": "ELECTRONIC_ELEMENTS",
       "keywords": [
         {
           "code": "KW_RESISTOR",
@@ -27584,7 +27584,7 @@
           "description": "Token from concept 'Basic Electronic Components': resistor",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455077"
           }
         },
@@ -27594,7 +27594,7 @@
           "description": "Token from concept 'Basic Electronic Components': electronic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455082"
           }
         },
@@ -27604,7 +27604,7 @@
           "description": "Token from concept 'Basic Electronic Components': capacitor",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455087"
           }
         },
@@ -27614,7 +27614,7 @@
           "description": "Token from concept 'Basic Electronic Components': diode",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455093"
           }
         },
@@ -27624,7 +27624,7 @@
           "description": "Token from concept 'Basic Electronic Components': components",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455098"
           }
         },
@@ -27634,7 +27634,7 @@
           "description": "Token from concept 'Basic Electronic Components': transistor",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455103"
           }
         }
@@ -27650,7 +27650,7 @@
           "description": "Token from concept 'Basic Electronic Components': resistor",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455077"
           }
         },
@@ -27660,7 +27660,7 @@
           "description": "Token from concept 'Basic Electronic Components': electronic",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455082"
           }
         },
@@ -27670,7 +27670,7 @@
           "description": "Token from concept 'Basic Electronic Components': capacitor",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455087"
           }
         },
@@ -27680,7 +27680,7 @@
           "description": "Token from concept 'Basic Electronic Components': diode",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455093"
           }
         },
@@ -27690,7 +27690,7 @@
           "description": "Token from concept 'Basic Electronic Components': components",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455098"
           }
         },
@@ -27700,17 +27700,17 @@
           "description": "Token from concept 'Basic Electronic Components': transistor",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+            "source_concept": "ELECTRONIC_ELEMENTS",
             "extracted_at": "2026-08-03T12:28:05.455103"
           }
         }
       ]
     },
     {
-      "code": "CIRCUIT_PRINCIPLES_CONCEPT",
+      "code": "CIRCUIT_FUNDAMENTALS",
       "name": "Basic Circuit Principles",
       "description": "Áp dụng các nguyên tắc cơ bản về mạch điện, như định luật Ohm và cách các linh kiện hoạt động khi mắc nối tiếp và song song.",
-      "topic_codes": "CIRCUIT_PRINCIPLES",
+      "topic_codes": "CIRCUIT_FUNDAMENTALS",
       "keywords": [
         {
           "code": "KW_IP",
@@ -27783,7 +27783,7 @@
           "description": "Token from concept 'Basic Circuit Principles': law",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455112"
           }
         },
@@ -27793,7 +27793,7 @@
           "description": "Token from concept 'Basic Circuit Principles': circuit",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455117"
           }
         },
@@ -27803,7 +27803,7 @@
           "description": "Token from concept 'Basic Circuit Principles': parallel",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455122"
           }
         },
@@ -27813,7 +27813,7 @@
           "description": "Token from concept 'Basic Circuit Principles': series",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455129"
           }
         },
@@ -27823,7 +27823,7 @@
           "description": "Token from concept 'Basic Circuit Principles': ohm",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455134"
           }
         }
@@ -27904,7 +27904,7 @@
           "description": "Token from concept 'Basic Circuit Principles': law",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455112"
           }
         },
@@ -27914,7 +27914,7 @@
           "description": "Token from concept 'Basic Circuit Principles': circuit",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455117"
           }
         },
@@ -27924,7 +27924,7 @@
           "description": "Token from concept 'Basic Circuit Principles': parallel",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455122"
           }
         },
@@ -27934,7 +27934,7 @@
           "description": "Token from concept 'Basic Circuit Principles': series",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455129"
           }
         },
@@ -27944,7 +27944,7 @@
           "description": "Token from concept 'Basic Circuit Principles': ohm",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+            "source_concept": "CIRCUIT_FUNDAMENTALS",
             "extracted_at": "2026-08-03T12:28:05.455134"
           }
         }
@@ -35115,10 +35115,10 @@
       ]
     },
     {
-      "code": "PASSWORD_STRENGTH_CONCEPT",
+      "code": "PASSWORD_CRITERIA",
       "name": "Strong Passwords",
       "description": "Nắm vững các tiêu chí để tạo một mật khẩu mạnh và an toàn, khó bị đoán hoặc bẻ khóa.",
-      "topic_codes": "PASSWORD_STRENGTH",
+      "topic_codes": "PASSWORD_CRITERIA",
       "keywords": [
         {
           "code": "KW_SESSION",
@@ -35240,7 +35240,7 @@
           "description": "Token from concept 'Strong Passwords': passwords",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+            "source_concept": "PASSWORD_CRITERIA",
             "extracted_at": "2026-08-03T12:28:05.455685"
           }
         },
@@ -35250,7 +35250,7 @@
           "description": "Token from concept 'Strong Passwords': password",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+            "source_concept": "PASSWORD_CRITERIA",
             "extracted_at": "2026-08-03T12:28:05.455690"
           }
         },
@@ -35260,7 +35260,7 @@
           "description": "Token from concept 'Strong Passwords': authentication",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+            "source_concept": "PASSWORD_CRITERIA",
             "extracted_at": "2026-08-03T12:28:05.455695"
           }
         }
@@ -35390,7 +35390,7 @@
           "description": "Token from concept 'Strong Passwords': passwords",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+            "source_concept": "PASSWORD_CRITERIA",
             "extracted_at": "2026-08-03T12:28:05.455685"
           }
         },
@@ -35400,7 +35400,7 @@
           "description": "Token from concept 'Strong Passwords': password",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+            "source_concept": "PASSWORD_CRITERIA",
             "extracted_at": "2026-08-03T12:28:05.455690"
           }
         },
@@ -35410,7 +35410,7 @@
           "description": "Token from concept 'Strong Passwords': authentication",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+            "source_concept": "PASSWORD_CRITERIA",
             "extracted_at": "2026-08-03T12:28:05.455695"
           }
         }
@@ -35886,7 +35886,7 @@
       "code": "SYNTAX_ERRORS",
       "name": "Syntax Errors",
       "description": "Nhận biết các lỗi vi phạm quy tắc cú pháp của ngôn ngữ lập trình, thường được trình biên dịch hoặc thông dịch phát hiện trước khi chạy.",
-      "topic_codes": "ERROR_MESSAGES",
+      "topic_codes": "ERROR_MSG_PARSING",
       "keywords": [
         {
           "code": "KW_THROW",
@@ -38537,10 +38537,10 @@
       ]
     },
     {
-      "code": "STATIC_MEMBERS_CONCEPT",
+      "code": "STATIC_ATTRIBUTES",
       "name": "Static Members",
       "description": "Hiểu về các thuộc tính và phương thức tĩnh (static) thuộc về lớp thay vì một đối tượng cụ thể, hữu ích cho các tiện ích hoặc hằng số chung.",
-      "topic_codes": "STATIC_MEMBERS",
+      "topic_codes": "STATIC_ATTRIBUTES",
       "keywords": [
         {
           "code": "KW_STATIC",
@@ -38580,7 +38580,7 @@
           "description": "Token from concept 'Static Members': variable",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "STATIC_MEMBERS_CONCEPT",
+            "source_concept": "STATIC_ATTRIBUTES",
             "extracted_at": "2026-08-03T12:28:05.456046"
           }
         },
@@ -38590,7 +38590,7 @@
           "description": "Token from concept 'Static Members': members",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "STATIC_MEMBERS_CONCEPT",
+            "source_concept": "STATIC_ATTRIBUTES",
             "extracted_at": "2026-08-03T12:28:05.456053"
           }
         }
@@ -38638,7 +38638,7 @@
           "description": "Token from concept 'Static Members': variable",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "STATIC_MEMBERS_CONCEPT",
+            "source_concept": "STATIC_ATTRIBUTES",
             "extracted_at": "2026-08-03T12:28:05.456046"
           }
         },
@@ -38648,17 +38648,17 @@
           "description": "Token from concept 'Static Members': members",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "STATIC_MEMBERS_CONCEPT",
+            "source_concept": "STATIC_ATTRIBUTES",
             "extracted_at": "2026-08-03T12:28:05.456053"
           }
         }
       ]
     },
     {
-      "code": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "code": "FIRST_CLASS_VALUES",
       "name": "First-Class & Higher-Order Functions",
       "description": "Khám phá khái niệm hàm là \"công dân hạng nhất\" và các hàm bậc cao có thể nhận hàm khác làm đối số hoặc trả về một hàm.",
-      "topic_codes": "FIRST_CLASS_FUNCTIONS",
+      "topic_codes": "FIRST_CLASS_VALUES",
       "keywords": [
         {
           "code": "KW_FUNCTION",
@@ -38900,7 +38900,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': first",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456063"
           }
         },
@@ -38910,7 +38910,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': functions",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456068"
           }
         },
@@ -38920,7 +38920,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': higher",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456073"
           }
         },
@@ -38930,7 +38930,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': closures",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456079"
           }
         }
@@ -39180,7 +39180,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': first",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456063"
           }
         },
@@ -39190,7 +39190,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': functions",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456068"
           }
         },
@@ -39200,7 +39200,7 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': higher",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456073"
           }
         },
@@ -39210,17 +39210,17 @@
           "description": "Token from concept 'First-Class & Higher-Order Functions': closures",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+            "source_concept": "FIRST_CLASS_VALUES",
             "extracted_at": "2026-08-03T12:28:05.456079"
           }
         }
       ]
     },
     {
-      "code": "IMMUTABILITY_CONCEPT",
+      "code": "IMMUTABLE_CONCEPTS",
       "name": "Immutability and Pure Functions",
       "description": "Nắm vững nguyên tắc về tính bất biến của dữ liệu và các hàm thuần túy (pure functions) không có tác dụng phụ (side effects), giúp mã dễ dự đoán và kiểm thử hơn.",
-      "topic_codes": "IMMUTABILITY",
+      "topic_codes": "IMMUTABLE_CONCEPTS",
       "keywords": [
         {
           "code": "KW_FUNCTION",
@@ -39431,7 +39431,7 @@
           "description": "Token from concept 'Immutability and Pure Functions': effects",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IMMUTABILITY_CONCEPT",
+            "source_concept": "IMMUTABLE_CONCEPTS",
             "extracted_at": "2026-08-03T12:28:05.456096"
           }
         },
@@ -39441,17 +39441,17 @@
           "description": "Token from concept 'Immutability and Pure Functions': functional",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IMMUTABILITY_CONCEPT",
+            "source_concept": "IMMUTABLE_CONCEPTS",
             "extracted_at": "2026-08-03T12:28:05.456102"
           }
         },
         {
-          "code": "KW_IMMUTABILITY",
+          "code": "KW_IMMUTABLE_CONCEPTS",
           "name": "immutability",
           "description": "Token from concept 'Immutability and Pure Functions': immutability",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IMMUTABILITY_CONCEPT",
+            "source_concept": "IMMUTABLE_CONCEPTS",
             "extracted_at": "2026-08-03T12:28:05.456107"
           }
         }
@@ -39670,7 +39670,7 @@
           "description": "Token from concept 'Immutability and Pure Functions': effects",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IMMUTABILITY_CONCEPT",
+            "source_concept": "IMMUTABLE_CONCEPTS",
             "extracted_at": "2026-08-03T12:28:05.456096"
           }
         },
@@ -39680,27 +39680,27 @@
           "description": "Token from concept 'Immutability and Pure Functions': functional",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IMMUTABILITY_CONCEPT",
+            "source_concept": "IMMUTABLE_CONCEPTS",
             "extracted_at": "2026-08-03T12:28:05.456102"
           }
         },
         {
-          "code": "KW_IMMUTABILITY",
+          "code": "KW_IMMUTABLE_CONCEPTS",
           "name": "immutability",
           "description": "Token from concept 'Immutability and Pure Functions': immutability",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IMMUTABILITY_CONCEPT",
+            "source_concept": "IMMUTABLE_CONCEPTS",
             "extracted_at": "2026-08-03T12:28:05.456107"
           }
         }
       ]
     },
     {
-      "code": "EVENT_HANDLERS_CONCEPT",
+      "code": "EVENT_LISTENERS",
       "name": "Events and Event Handling",
       "description": "Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
-      "topic_codes": "EVENT_HANDLERS",
+      "topic_codes": "EVENT_LISTENERS",
       "keywords": [
         {
           "code": "KW_HANDLER",
@@ -39708,7 +39708,7 @@
           "description": "Token from concept 'Events and Event Handling': handler",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "EVENT_HANDLERS_CONCEPT",
+            "source_concept": "EVENT_LISTENERS",
             "extracted_at": "2026-08-03T12:28:05.456117"
           }
         },
@@ -39718,7 +39718,7 @@
           "description": "Token from concept 'Events and Event Handling': callback",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "EVENT_HANDLERS_CONCEPT",
+            "source_concept": "EVENT_LISTENERS",
             "extracted_at": "2026-08-03T12:28:05.456122"
           }
         },
@@ -39728,7 +39728,7 @@
           "description": "Token from concept 'Events and Event Handling': listener",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "EVENT_HANDLERS_CONCEPT",
+            "source_concept": "EVENT_LISTENERS",
             "extracted_at": "2026-08-03T12:28:05.456130"
           }
         }
@@ -39744,7 +39744,7 @@
           "description": "Token from concept 'Events and Event Handling': handler",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "EVENT_HANDLERS_CONCEPT",
+            "source_concept": "EVENT_LISTENERS",
             "extracted_at": "2026-08-03T12:28:05.456117"
           }
         },
@@ -39754,7 +39754,7 @@
           "description": "Token from concept 'Events and Event Handling': callback",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "EVENT_HANDLERS_CONCEPT",
+            "source_concept": "EVENT_LISTENERS",
             "extracted_at": "2026-08-03T12:28:05.456122"
           }
         },
@@ -39764,17 +39764,17 @@
           "description": "Token from concept 'Events and Event Handling': listener",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "EVENT_HANDLERS_CONCEPT",
+            "source_concept": "EVENT_LISTENERS",
             "extracted_at": "2026-08-03T12:28:05.456130"
           }
         }
       ]
     },
     {
-      "code": "ASYNCHRONOUS_PROG_CONCEPT",
+      "code": "ASYNC_PATTERNS",
       "name": "Asynchronous Programming",
       "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
-      "topic_codes": "ASYNCHRONOUS_PROG",
+      "topic_codes": "ASYNC_PATTERNS",
       "keywords": [
         {
           "code": "KW_ASYNC",
@@ -39926,7 +39926,7 @@
           "description": "Token from concept 'Asynchronous Programming': blocking",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+            "source_concept": "ASYNC_PATTERNS",
             "extracted_at": "2026-08-03T12:28:05.456145"
           }
         },
@@ -39936,7 +39936,7 @@
           "description": "Token from concept 'Asynchronous Programming': promises",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+            "source_concept": "ASYNC_PATTERNS",
             "extracted_at": "2026-08-03T12:28:05.456150"
           }
         },
@@ -39946,7 +39946,7 @@
           "description": "Token from concept 'Asynchronous Programming': callbacks",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+            "source_concept": "ASYNC_PATTERNS",
             "extracted_at": "2026-08-03T12:28:05.456156"
           }
         }
@@ -40106,7 +40106,7 @@
           "description": "Token from concept 'Asynchronous Programming': blocking",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+            "source_concept": "ASYNC_PATTERNS",
             "extracted_at": "2026-08-03T12:28:05.456145"
           }
         },
@@ -40116,7 +40116,7 @@
           "description": "Token from concept 'Asynchronous Programming': promises",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+            "source_concept": "ASYNC_PATTERNS",
             "extracted_at": "2026-08-03T12:28:05.456150"
           }
         },
@@ -40126,7 +40126,7 @@
           "description": "Token from concept 'Asynchronous Programming': callbacks",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+            "source_concept": "ASYNC_PATTERNS",
             "extracted_at": "2026-08-03T12:28:05.456156"
           }
         }
@@ -41016,7 +41016,7 @@
       "code": "TWO_FACTOR_AUTH",
       "name": "Two-Factor Authentication (2FA)",
       "description": "Hiểu nguyên lý và tầm quan trọng của Xác thực Hai Yếu tố (2FA) trong việc tăng cường bảo mật tài khoản.",
-      "topic_codes": "PASSWORD_STRENGTH",
+      "topic_codes": "PASSWORD_CRITERIA",
       "keywords": [
         {
           "code": "KW_PROMISE",
@@ -41491,10 +41491,10 @@
       ]
     },
     {
-      "code": "MALWARE_TYPES_CONCEPT",
+      "code": "MALWARE_KINDS",
       "name": "Malware Types",
       "description": "Phân biệt các loại phần mềm độc hại phổ biến như virus, worm, và ransomware.",
-      "topic_codes": "MALWARE_TYPES",
+      "topic_codes": "MALWARE_KINDS",
       "keywords": [
         {
           "code": "KW_CYBERSECURITY",
@@ -41502,7 +41502,7 @@
           "description": "Token from concept 'Malware Types': cybersecurity",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456277"
           }
         },
@@ -41512,7 +41512,7 @@
           "description": "Token from concept 'Malware Types': malware",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456283"
           }
         },
@@ -41522,7 +41522,7 @@
           "description": "Token from concept 'Malware Types': ransomware",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456289"
           }
         },
@@ -41532,7 +41532,7 @@
           "description": "Token from concept 'Malware Types': virus",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456294"
           }
         }
@@ -41548,7 +41548,7 @@
           "description": "Token from concept 'Malware Types': cybersecurity",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456277"
           }
         },
@@ -41558,7 +41558,7 @@
           "description": "Token from concept 'Malware Types': malware",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456283"
           }
         },
@@ -41568,7 +41568,7 @@
           "description": "Token from concept 'Malware Types': ransomware",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456289"
           }
         },
@@ -41578,7 +41578,7 @@
           "description": "Token from concept 'Malware Types': virus",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "MALWARE_TYPES_CONCEPT",
+            "source_concept": "MALWARE_KINDS",
             "extracted_at": "2026-08-03T12:28:05.456294"
           }
         }
@@ -46214,7 +46214,7 @@
       "code": "COLLISION_DETECTION",
       "name": "Collision Detection",
       "description": "Cơ chế phát hiện khi hai vật thể trong không gian game chạm vào nhau hoặc xuyên qua nhau để kích hoạt sự kiện.",
-      "topic_codes": "PHYSICS_CONSTRAINTS",
+      "topic_codes": "CONSTRAINT_MECHANICS",
       "keywords": [
         {
           "code": "KW_HASH_TABLE",
@@ -46319,10 +46319,10 @@
       ]
     },
     {
-      "code": "PHYSICS_CONSTRAINTS_CONCEPT",
+      "code": "CONSTRAINT_MECHANICS",
       "name": "Physics Constraints",
       "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
-      "topic_codes": "PHYSICS_CONSTRAINTS",
+      "topic_codes": "CONSTRAINT_MECHANICS",
       "keywords": [
         {
           "code": "KW_CONST",
@@ -46394,7 +46394,7 @@
           "description": "Token from concept 'Physics Constraints': constraints",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+            "source_concept": "CONSTRAINT_MECHANICS",
             "extracted_at": "2026-08-03T12:28:05.457148"
           }
         },
@@ -46404,7 +46404,7 @@
           "description": "Token from concept 'Physics Constraints': hinge",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+            "source_concept": "CONSTRAINT_MECHANICS",
             "extracted_at": "2026-08-03T12:28:05.457153"
           }
         },
@@ -46414,7 +46414,7 @@
           "description": "Token from concept 'Physics Constraints': joints",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+            "source_concept": "CONSTRAINT_MECHANICS",
             "extracted_at": "2026-08-03T12:28:05.457160"
           }
         }
@@ -46494,7 +46494,7 @@
           "description": "Token from concept 'Physics Constraints': constraints",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+            "source_concept": "CONSTRAINT_MECHANICS",
             "extracted_at": "2026-08-03T12:28:05.457148"
           }
         },
@@ -46504,7 +46504,7 @@
           "description": "Token from concept 'Physics Constraints': hinge",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+            "source_concept": "CONSTRAINT_MECHANICS",
             "extracted_at": "2026-08-03T12:28:05.457153"
           }
         },
@@ -46514,7 +46514,7 @@
           "description": "Token from concept 'Physics Constraints': joints",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+            "source_concept": "CONSTRAINT_MECHANICS",
             "extracted_at": "2026-08-03T12:28:05.457160"
           }
         }
@@ -54521,7 +54521,7 @@
       ]
     },
     {
-      "code": "PATTERN_RECOGNITION_CONCEPT",
+      "code": "PATTERN_RECOGNITION",
       "name": "Pattern Recognition in Computation",
       "description": "Khả năng phát hiện các điểm tương đồng, xu hướng hoặc quy luật lặp lại giữa các bài toán để áp dụng lại giải pháp đã biết.",
       "topic_codes": "PROBLEM_DECOMPOSITION_PATTERNS",
@@ -54788,7 +54788,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': computation",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458082"
           }
         },
@@ -54798,7 +54798,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': reusable",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458090"
           }
         },
@@ -54808,7 +54808,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': identification",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458097"
           }
         },
@@ -54818,7 +54818,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': trend",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458104"
           }
         }
@@ -55093,7 +55093,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': computation",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458082"
           }
         },
@@ -55103,7 +55103,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': reusable",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458090"
           }
         },
@@ -55113,7 +55113,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': identification",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458097"
           }
         },
@@ -55123,7 +55123,7 @@
           "description": "Token from concept 'Pattern Recognition in Computation': trend",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+            "source_concept": "PATTERN_RECOGNITION",
             "extracted_at": "2026-08-03T12:28:05.458104"
           }
         }
@@ -63896,7 +63896,7 @@
       "code": "ORBITAL_MECHANICS_SATELLITE_MESH",
       "name": "Orbital Mechanics and Inter-Satellite Mesh Networks",
       "description": "Thuật toán xác định quỹ đạo vệ tinh và điều hướng mạng truyền thông liên kết laser giữa các chòm vệ tinh vệ tinh tầm thấp (LEO).",
-      "topic_codes": "TRANSPORT_PROTOCOLS, NETWORK_TOPOLOGIES",
+      "topic_codes": "TRANSPORT_PROTOCOLS, TOPOLOGY_STRUCTURES",
       "keywords": [
         {
           "code": "KW_LASER",
@@ -64718,7 +64718,7 @@
       "code": "QUANTUM_REPEATER_NETWORKS",
       "name": "Quantum Repeater Networks and Teleportation",
       "description": "Thuật toán trạm lặp lượng tử và truyền tải trạng thái lượng tử (Quantum Teleportation) phục vụ hạ tầng Internet Lượng tử.",
-      "topic_codes": "QUANTUM_CIRCUITS_AND_GATES, NETWORK_TOPOLOGIES",
+      "topic_codes": "QUANTUM_CIRCUITS_AND_GATES, TOPOLOGY_STRUCTURES",
       "keywords": [
         {
           "code": "KW_REPEATER",
@@ -65056,7 +65056,7 @@
       "code": "ULTRA_LOW_LATENCY_HFT_ARCHITECTURE",
       "name": "Ultra-Low Latency High-Frequency Trading Architecture",
       "description": "Kiến trúc phần mềm và phần cứng FPGA/Kernel Bypass đạt độ trễ dưới vi giây (Sub-microsecond) phục vụ giao dịch tài chính tần số cao.",
-      "topic_codes": "ASYNCHRONOUS_PROG, HW_CPU",
+      "topic_codes": "ASYNC_PATTERNS, HW_CPU",
       "keywords": [
         {
           "code": "KW_EQ",
@@ -65642,7 +65642,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421244",
       "updated_at": "2026-08-03T12:28:05.421245",
-      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"REFERENCE_TYPE_DECLARATION\", \"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"REFERENCE_TYPE_DECLARATION\", \"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_FUNCTION",
@@ -65662,7 +65662,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421378",
       "updated_at": "2026-08-03T12:28:05.421379",
-      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"REFERENCE_TYPE_DECLARATION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
+      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"REFERENCE_TYPE_DECLARATION\", \"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
     },
     {
       "code": "KW_FUNC",
@@ -65679,7 +65679,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421463",
       "updated_at": "2026-08-03T12:28:05.421464",
-      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"REFERENCE_TYPE_DECLARATION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"REFERENCE_TYPE_DECLARATION\", \"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_DEF",
@@ -65696,7 +65696,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421546",
       "updated_at": "2026-08-03T12:28:05.421547",
-      "concept_codes": "[\"CLASS_DEFINITION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"CLASS_DEFINITION\", \"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_LAMBDA",
@@ -65714,7 +65714,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421644",
       "updated_at": "2026-08-03T12:28:05.421645",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\"]"
     },
     {
       "code": "KW_ARROW",
@@ -65731,7 +65731,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421725",
       "updated_at": "2026-08-03T12:28:05.421725",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"TYPES_OF_AI\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\", \"TYPES_OF_AI\"]"
     },
     {
       "code": "KW_RETURN",
@@ -65750,7 +65750,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421839",
       "updated_at": "2026-08-03T12:28:05.421840",
-      "concept_codes": "[\"KEY_VALUE_PERSISTENCE\", \"SINGULAR_VALUE_DECOMPOSITION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"KEY_VALUE_PERSISTENCE\", \"SINGULAR_VALUE_DECOMPOSITION\", \"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_PARAMETER",
@@ -65769,7 +65769,7 @@
       },
       "created_at": "2026-08-03T12:28:05.421954",
       "updated_at": "2026-08-03T12:28:05.421955",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
     },
     {
       "code": "KW_ARGUMENT",
@@ -65788,7 +65788,7 @@
       },
       "created_at": "2026-08-03T12:28:05.422065",
       "updated_at": "2026-08-03T12:28:05.422066",
-      "concept_codes": "[\"KEY_VALUE_PERSISTENCE\", \"SINGULAR_VALUE_DECOMPOSITION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
+      "concept_codes": "[\"KEY_VALUE_PERSISTENCE\", \"SINGULAR_VALUE_DECOMPOSITION\", \"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
     },
     {
       "code": "KW_IF",
@@ -65861,7 +65861,7 @@
       },
       "created_at": "2026-08-03T12:28:05.422438",
       "updated_at": "2026-08-03T12:28:05.422438",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\", \"SWITCH_CASE\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\", \"SWITCH_CASE\"]"
     },
     {
       "code": "KW_CASE",
@@ -65879,7 +65879,7 @@
       },
       "created_at": "2026-08-03T12:28:05.422532",
       "updated_at": "2026-08-03T12:28:05.422533",
-      "concept_codes": "[\"SWITCH_CASE\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"ROUTERS_SWITCHES_CONCEPT\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
+      "concept_codes": "[\"SWITCH_CASE\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"ROUTING_SWITCHING\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
     },
     {
       "code": "KW_DEFAULT",
@@ -65897,7 +65897,7 @@
       },
       "created_at": "2026-08-03T12:28:05.422619",
       "updated_at": "2026-08-03T12:28:05.422619",
-      "concept_codes": "[\"SWITCH_CASE\", \"ROUTERS_SWITCHES_CONCEPT\"]"
+      "concept_codes": "[\"SWITCH_CASE\", \"ROUTING_SWITCHING\"]"
     },
     {
       "code": "KW_MATCH",
@@ -65916,7 +65916,7 @@
       },
       "created_at": "2026-08-03T12:28:05.422744",
       "updated_at": "2026-08-03T12:28:05.422745",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\", \"SWITCH_CASE\", \"ZERO_TRUST_ARCHITECTURE\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\", \"SWITCH_CASE\", \"ZERO_TRUST_ARCHITECTURE\"]"
     },
     {
       "code": "KW_FOR",
@@ -66045,7 +66045,7 @@
       },
       "created_at": "2026-08-03T12:28:05.423541",
       "updated_at": "2026-08-03T12:28:05.423542",
-      "concept_codes": "[\"FOR_LOOP\", \"WHILE_LOOP\", \"ARRAY_OPERATIONS\", \"IO_METHODS_POLLING_INTERRUPT\", \"SCHEDULING_ALGORITHMS\", \"TROUBLESHOOTING_METHODOLOGY_CONCEPT\", \"ERROR_MESSAGES_CONCEPT\", \"SBC_BASICS\"]"
+      "concept_codes": "[\"FOR_LOOP\", \"WHILE_LOOP\", \"ARRAY_OPERATIONS\", \"IO_METHODS_POLLING_INTERRUPT\", \"SCHEDULING_ALGORITHMS\", \"TROUBLESHOOTING_STEPS\", \"ERROR_MSG_PARSING\", \"SBC_BASICS\"]"
     },
     {
       "code": "KW_ASYNC",
@@ -66065,7 +66065,7 @@
       },
       "created_at": "2026-08-03T12:28:05.423668",
       "updated_at": "2026-08-03T12:28:05.423668",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_AWAIT",
@@ -66084,7 +66084,7 @@
       },
       "created_at": "2026-08-03T12:28:05.423780",
       "updated_at": "2026-08-03T12:28:05.423781",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_PROMISE",
@@ -66105,7 +66105,7 @@
       },
       "created_at": "2026-08-03T12:28:05.423924",
       "updated_at": "2026-08-03T12:28:05.423924",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\", \"TWO_FACTOR_AUTH\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\", \"TWO_FACTOR_AUTH\"]"
     },
     {
       "code": "KW_FUTURE",
@@ -66123,7 +66123,7 @@
       },
       "created_at": "2026-08-03T12:28:05.424018",
       "updated_at": "2026-08-03T12:28:05.424019",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_TASK",
@@ -66142,7 +66142,7 @@
       },
       "created_at": "2026-08-03T12:28:05.424123",
       "updated_at": "2026-08-03T12:28:05.424124",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_ACTOR",
@@ -66216,7 +66216,7 @@
       },
       "created_at": "2026-08-03T12:28:05.424517",
       "updated_at": "2026-08-03T12:28:05.424517",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\", \"RUNTIME_ERRORS\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\", \"RUNTIME_ERRORS\"]"
     },
     {
       "code": "KW_THROW",
@@ -66235,7 +66235,7 @@
       },
       "created_at": "2026-08-03T12:28:05.424624",
       "updated_at": "2026-08-03T12:28:05.424625",
-      "concept_codes": "[\"RUNTIME_ERRORS\", \"ERROR_MESSAGES_CONCEPT\", \"LOGIC_ERRORS\", \"SYNTAX_ERRORS\"]"
+      "concept_codes": "[\"RUNTIME_ERRORS\", \"ERROR_MSG_PARSING\", \"LOGIC_ERRORS\", \"SYNTAX_ERRORS\"]"
     },
     {
       "code": "KW_RAISE",
@@ -66254,7 +66254,7 @@
       },
       "created_at": "2026-08-03T12:28:05.424732",
       "updated_at": "2026-08-03T12:28:05.424733",
-      "concept_codes": "[\"RUNTIME_ERRORS\", \"ERROR_MESSAGES_CONCEPT\", \"LOGIC_ERRORS\", \"SYNTAX_ERRORS\"]"
+      "concept_codes": "[\"RUNTIME_ERRORS\", \"ERROR_MSG_PARSING\", \"LOGIC_ERRORS\", \"SYNTAX_ERRORS\"]"
     },
     {
       "code": "KW_EXCEPT",
@@ -66292,7 +66292,7 @@
       },
       "created_at": "2026-08-03T12:28:05.424957",
       "updated_at": "2026-08-03T12:28:05.424958",
-      "concept_codes": "[\"CSS_SELECTORS\", \"CLASS_DEFINITION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"OBJECT_PROPERTIES\", \"REFERENCE_TYPE_DECLARATION\", \"OBJECT_INSTANTIATION\", \"TYPE_SYSTEMS_AND_SAFETY\", \"MEMORY_TYPES\"]"
+      "concept_codes": "[\"CSS_SELECTORS\", \"CLASS_DEFINITION\", \"FIRST_CLASS_VALUES\", \"OBJECT_PROPERTIES\", \"REFERENCE_TYPE_DECLARATION\", \"OBJECT_INSTANTIATION\", \"TYPE_SYSTEMS_AND_SAFETY\", \"MEMORY_TYPES\"]"
     },
     {
       "code": "KW_STRUCT",
@@ -66588,7 +66588,7 @@
       },
       "created_at": "2026-08-03T12:28:05.426580",
       "updated_at": "2026-08-03T12:28:05.426580",
-      "concept_codes": "[\"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_STATIC",
@@ -66607,7 +66607,7 @@
       },
       "created_at": "2026-08-03T12:28:05.426685",
       "updated_at": "2026-08-03T12:28:05.426685",
-      "concept_codes": "[\"STATIC_MEMBERS_CONCEPT\", \"STATIC_PROGRAM_ANALYSIS\", \"SHARED_OBSERVABLE_STATE\", \"CREATIONAL_PATTERNS\"]"
+      "concept_codes": "[\"STATIC_ATTRIBUTES\", \"STATIC_PROGRAM_ANALYSIS\", \"SHARED_OBSERVABLE_STATE\", \"CREATIONAL_PATTERNS\"]"
     },
     {
       "code": "KW_GET",
@@ -66664,7 +66664,7 @@
       },
       "created_at": "2026-08-03T12:28:05.427021",
       "updated_at": "2026-08-03T12:28:05.427022",
-      "concept_codes": "[\"OBJECT_PROPERTIES\", \"STATIC_MEMBERS_CONCEPT\"]"
+      "concept_codes": "[\"OBJECT_PROPERTIES\", \"STATIC_ATTRIBUTES\"]"
     },
     {
       "code": "KW_NEW",
@@ -66740,7 +66740,7 @@
       },
       "created_at": "2026-08-03T12:28:05.427460",
       "updated_at": "2026-08-03T12:28:05.427461",
-      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"ROUTERS_SWITCHES_CONCEPT\", \"WIREFRAMING\", \"LEVEL_LAYOUT\", \"LAYOUT_GRID_AND_COMPOSITION_RULES\"]"
+      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"ROUTING_SWITCHING\", \"WIREFRAMING\", \"LEVEL_LAYOUT\", \"LAYOUT_GRID_AND_COMPOSITION_RULES\"]"
     },
     {
       "code": "KW_OUT",
@@ -66758,7 +66758,7 @@
       },
       "created_at": "2026-08-03T12:28:05.427565",
       "updated_at": "2026-08-03T12:28:05.427566",
-      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"ROUTERS_SWITCHES_CONCEPT\", \"LEVEL_LAYOUT\", \"LAYOUT_GRID_AND_COMPOSITION_RULES\"]"
+      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"ROUTING_SWITCHING\", \"LEVEL_LAYOUT\", \"LAYOUT_GRID_AND_COMPOSITION_RULES\"]"
     },
     {
       "code": "KW_INOUT",
@@ -66795,7 +66795,7 @@
       },
       "created_at": "2026-08-03T12:28:05.427774",
       "updated_at": "2026-08-03T12:28:05.427775",
-      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"MEMORY_TYPES\", \"DMA_CONCEPT\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"CPU_ARCHITECTURE\", \"CACHE_HIERARCHY\"]"
+      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"MEMORY_TYPES\", \"DMA\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"CPU_ARCHITECTURE\", \"CACHE_HIERARCHY\"]"
     },
     {
       "code": "KW_UNOWNED",
@@ -66814,7 +66814,7 @@
       },
       "created_at": "2026-08-03T12:28:05.427873",
       "updated_at": "2026-08-03T12:28:05.427874",
-      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"MEMORY_TYPES\", \"DMA_CONCEPT\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"CPU_ARCHITECTURE\", \"CACHE_HIERARCHY\"]"
+      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"MEMORY_TYPES\", \"DMA\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"CPU_ARCHITECTURE\", \"CACHE_HIERARCHY\"]"
     },
     {
       "code": "KW_GENERIC",
@@ -66909,7 +66909,7 @@
       },
       "created_at": "2026-08-03T12:28:05.428412",
       "updated_at": "2026-08-03T12:28:05.428413",
-      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"IO_METHODS_POLLING_INTERRUPT\", \"ERROR_MESSAGES_CONCEPT\", \"DIGITAL_FOOTPRINT\", \"BREAKPOINTS\", \"API_INTEGRATION\", \"MAP_INTEGRATION\", \"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"PRIMITIVE_TYPE_DECLARATION\", \"IO_METHODS_POLLING_INTERRUPT\", \"ERROR_MSG_PARSING\", \"DIGITAL_FOOTPRINT\", \"BREAKPOINTS\", \"API_INTEGRATION\", \"MAP_INTEGRATION\", \"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_FLOAT",
@@ -67103,7 +67103,7 @@
       },
       "created_at": "2026-08-03T12:28:05.429545",
       "updated_at": "2026-08-03T12:28:05.429545",
-      "concept_codes": "[\"MAP_INTEGRATION\", \"TRANSFORMATION_OPERATIONS\", \"FOURIER_TRANSFORM_SIGNAL_ANALYSIS\", \"MAPREDUCE_CONCEPT\", \"2D_3D_TRANSFORMATIONS_MATH\", \"MATERIAL_AND_TEXTURE\", \"TRANSFORMER_ARCHITECTURE\", \"SIMULTANEOUS_LOCALIZATION_MAPPING\"]"
+      "concept_codes": "[\"MAP_INTEGRATION\", \"TRANSFORMATION_OPERATIONS\", \"FOURIER_TRANSFORM_SIGNAL_ANALYSIS\", \"MAPREDUCE\", \"2D_3D_TRANSFORMATIONS_MATH\", \"MATERIAL_AND_TEXTURE\", \"TRANSFORMER_ARCHITECTURE\", \"SIMULTANEOUS_LOCALIZATION_MAPPING\"]"
     },
     {
       "code": "KW_DICTIONARY",
@@ -67122,7 +67122,7 @@
       },
       "created_at": "2026-08-03T12:28:05.429646",
       "updated_at": "2026-08-03T12:28:05.429647",
-      "concept_codes": "[\"MAP_INTEGRATION\", \"DNS_LOOKUP\", \"MAPREDUCE_CONCEPT\", \"MATERIAL_AND_TEXTURE\", \"SIMULTANEOUS_LOCALIZATION_MAPPING\", \"SPATIAL_COMPUTING_XR_MAPPING\"]"
+      "concept_codes": "[\"MAP_INTEGRATION\", \"DNS_LOOKUP\", \"MAPREDUCE\", \"MATERIAL_AND_TEXTURE\", \"SIMULTANEOUS_LOCALIZATION_MAPPING\", \"SPATIAL_COMPUTING_XR_MAPPING\"]"
     },
     {
       "code": "KW_TUPLE",
@@ -67247,7 +67247,7 @@
       },
       "created_at": "2026-08-03T12:28:05.430257",
       "updated_at": "2026-08-03T12:28:05.430257",
-      "concept_codes": "[\"MOTOR_CONTROL\", \"ROUTERS_SWITCHES_CONCEPT\", \"SCRUM_ROLES_EVENTS\", \"AI_HISTORY_MILESTONES\", \"PERSONAS_AND_SCENARIOS\", \"AFFORDANCES_SIGNIFIERS\", \"FEEDBACK_AND_RESPONSE\", \"CYBERBULLYING\"]"
+      "concept_codes": "[\"MOTOR_CONTROL\", \"ROUTING_SWITCHING\", \"SCRUM_ROLES_EVENTS\", \"AI_HISTORY_MILESTONES\", \"PERSONAS_AND_SCENARIOS\", \"AFFORDANCES_SIGNIFIERS\", \"FEEDBACK_AND_RESPONSE\", \"CYBERBULLYING\"]"
     },
     {
       "code": "KW_OR",
@@ -67265,7 +67265,7 @@
       },
       "created_at": "2026-08-03T12:28:05.430363",
       "updated_at": "2026-08-03T12:28:05.430364",
-      "concept_codes": "[\"LOGIC_GATES\", \"BOOLEAN_OPERATIONS_3D\", \"TRUTH_TABLES\", \"PRIMITIVE_TYPE_DECLARATION\", \"PROPOSITIONAL_LOGIC\", \"MEMORY_TYPES\", \"DMA_CONCEPT\", \"SCHEDULING_ALGORITHMS\"]"
+      "concept_codes": "[\"LOGIC_GATES\", \"BOOLEAN_OPERATIONS_3D\", \"TRUTH_TABLES\", \"PRIMITIVE_TYPE_DECLARATION\", \"PROPOSITIONAL_LOGIC\", \"MEMORY_TYPES\", \"DMA\", \"SCHEDULING_ALGORITHMS\"]"
     },
     {
       "code": "KW_NOT",
@@ -67603,7 +67603,7 @@
       },
       "created_at": "2026-08-03T12:28:05.432122",
       "updated_at": "2026-08-03T12:28:05.432122",
-      "concept_codes": "[\"FILE_ALLOCATION\", \"CPU_ARCHITECTURE\", \"FETCH_DECODE_EXECUTE\", \"CACHE_HIERARCHY\", \"DMA_CONCEPT\", \"PROCESS_VS_THREAD\", \"SCHEDULING_ALGORITHMS\", \"VIRTUAL_MEMORY\"]"
+      "concept_codes": "[\"FILE_ALLOCATION\", \"CPU_ARCHITECTURE\", \"FETCH_DECODE_EXECUTE\", \"CACHE_HIERARCHY\", \"DMA\", \"PROCESS_VS_THREAD\", \"SCHEDULING_ALGORITHMS\", \"VIRTUAL_MEMORY\"]"
     },
     {
       "code": "KW_FREE",
@@ -67622,7 +67622,7 @@
       },
       "created_at": "2026-08-03T12:28:05.432295",
       "updated_at": "2026-08-03T12:28:05.432295",
-      "concept_codes": "[\"CPU_ARCHITECTURE\", \"FETCH_DECODE_EXECUTE\", \"CACHE_HIERARCHY\", \"DMA_CONCEPT\", \"PROCESS_VS_THREAD\", \"SCHEDULING_ALGORITHMS\", \"VIRTUAL_MEMORY\", \"FILE_ALLOCATION\"]"
+      "concept_codes": "[\"CPU_ARCHITECTURE\", \"FETCH_DECODE_EXECUTE\", \"CACHE_HIERARCHY\", \"DMA\", \"PROCESS_VS_THREAD\", \"SCHEDULING_ALGORITHMS\", \"VIRTUAL_MEMORY\", \"FILE_ALLOCATION\"]"
     },
     {
       "code": "KW_GC",
@@ -67676,7 +67676,7 @@
       },
       "created_at": "2026-08-03T12:28:05.432570",
       "updated_at": "2026-08-03T12:28:05.432571",
-      "concept_codes": "[\"MEMORY_TYPES\", \"DMA_CONCEPT\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"CPU_ARCHITECTURE\", \"CACHE_HIERARCHY\", \"LINEAR_BINARY_SEARCH\"]"
+      "concept_codes": "[\"MEMORY_TYPES\", \"DMA\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"CPU_ARCHITECTURE\", \"CACHE_HIERARCHY\", \"LINEAR_BINARY_SEARCH\"]"
     },
     {
       "code": "KW_OWNERSHIP",
@@ -67827,7 +67827,7 @@
       },
       "created_at": "2026-08-03T12:28:05.433361",
       "updated_at": "2026-08-03T12:28:05.433362",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_SEMAPHORE",
@@ -67940,7 +67940,7 @@
       },
       "created_at": "2026-08-03T12:28:05.433982",
       "updated_at": "2026-08-03T12:28:05.433982",
-      "concept_codes": "[\"PROCESS_VS_THREAD\", \"USER_CENTERED_DESIGN\", \"DNS_LOOKUP\", \"MEMORY_TYPES\", \"DMA_CONCEPT\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\"]"
+      "concept_codes": "[\"PROCESS_VS_THREAD\", \"USER_CENTERED_DESIGN\", \"DNS_LOOKUP\", \"MEMORY_TYPES\", \"DMA\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\"]"
     },
     {
       "code": "KW_HTTP",
@@ -68154,7 +68154,7 @@
       },
       "created_at": "2026-08-03T12:28:05.435230",
       "updated_at": "2026-08-03T12:28:05.435231",
-      "concept_codes": "[\"AGILE_PRINCIPLES\", \"RENDERING_PIPELINE\", \"COMPOSITION_PRINCIPLES\", \"CIRCUIT_PRINCIPLES_CONCEPT\", \"TCP_IP_MODEL\", \"IPV4_VS_IPV6\", \"DOM_MANIPULATION\", \"REST_PRINCIPLES\"]"
+      "concept_codes": "[\"AGILE_PRINCIPLES\", \"RENDERING_PIPELINE\", \"COMPOSITION_PRINCIPLES\", \"CIRCUIT_FUNDAMENTALS\", \"TCP_IP_MODEL\", \"IPV4_VS_IPV6\", \"DOM_MANIPULATION\", \"REST_PRINCIPLES\"]"
     },
     {
       "code": "KW_DNS",
@@ -68230,7 +68230,7 @@
       },
       "created_at": "2026-08-03T12:28:05.435679",
       "updated_at": "2026-08-03T12:28:05.435679",
-      "concept_codes": "[\"HTML_STRUCTURE\", \"HTTP_METHODS\", \"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"HTML_STRUCTURE\", \"HTTP_METHODS\", \"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_STATUS",
@@ -68250,7 +68250,7 @@
       },
       "created_at": "2026-08-03T12:28:05.435797",
       "updated_at": "2026-08-03T12:28:05.435798",
-      "concept_codes": "[\"QR_CODE_GENERATION\", \"VISUAL_BLOCK_TO_CODE_TRANSITION\", \"HTTP_METHODS\", \"FEEDBACK_AND_RESPONSE\", \"CYBERBULLYING\", \"ERROR_MESSAGES_CONCEPT\", \"FETCH_DECODE_EXECUTE\", \"LOGIC_ERRORS\"]"
+      "concept_codes": "[\"QR_CODE_GENERATION\", \"VISUAL_BLOCK_TO_CODE_TRANSITION\", \"HTTP_METHODS\", \"FEEDBACK_AND_RESPONSE\", \"CYBERBULLYING\", \"ERROR_MSG_PARSING\", \"FETCH_DECODE_EXECUTE\", \"LOGIC_ERRORS\"]"
     },
     {
       "code": "KW_COOKIE",
@@ -68288,7 +68288,7 @@
       },
       "created_at": "2026-08-03T12:28:05.436024",
       "updated_at": "2026-08-03T12:28:05.436025",
-      "concept_codes": "[\"OBJECT_PROPERTIES\", \"LOCAL_VIEW_STATE\", \"SHARED_OBSERVABLE_STATE\", \"DURABLE_AGENT_STATE_MANAGEMENT\", \"MULTI_SENSOR_FUSION_ALGORITHMS\", \"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\", \"IDENTITY_AND_ACCESS_MANAGEMENT\"]"
+      "concept_codes": "[\"OBJECT_PROPERTIES\", \"LOCAL_VIEW_STATE\", \"SHARED_OBSERVABLE_STATE\", \"DURABLE_AGENT_STATE_MANAGEMENT\", \"MULTI_SENSOR_FUSION_ALGORITHMS\", \"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\", \"IDENTITY_AND_ACCESS_MANAGEMENT\"]"
     },
     {
       "code": "KW_JWT",
@@ -68346,7 +68346,7 @@
       },
       "created_at": "2026-08-03T12:28:05.436396",
       "updated_at": "2026-08-03T12:28:05.436396",
-      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\"]"
+      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\"]"
     },
     {
       "code": "KW_SQL",
@@ -68442,7 +68442,7 @@
       },
       "created_at": "2026-08-03T12:28:05.436998",
       "updated_at": "2026-08-03T12:28:05.436999",
-      "concept_codes": "[\"SQL_JOIN\", \"RELATIONAL_VS_NONRELATIONAL\", \"PUBLISHER_SUBSCRIBER_MODEL\", \"ROUTERS_SWITCHES_CONCEPT\", \"COPYRIGHT_CREATIVE_COMMONS\"]"
+      "concept_codes": "[\"SQL_JOIN\", \"RELATIONAL_VS_NONRELATIONAL\", \"PUBLISHER_SUBSCRIBER_MODEL\", \"ROUTING_SWITCHING\", \"COPYRIGHT_CREATIVE_COMMONS\"]"
     },
     {
       "code": "KW_GROUP",
@@ -68481,7 +68481,7 @@
       },
       "created_at": "2026-08-03T12:28:05.437237",
       "updated_at": "2026-08-03T12:28:05.437238",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"BUBBLE_INSERTION_SORT\", \"SQL_SELECT\", \"SQL_JOIN\", \"RELATIONAL_VS_NONRELATIONAL\", \"GRADIENT_DESCENT_OPTIMIZATION\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\", \"BUBBLE_INSERTION_SORT\", \"SQL_SELECT\", \"SQL_JOIN\", \"RELATIONAL_VS_NONRELATIONAL\", \"GRADIENT_DESCENT_OPTIMIZATION\"]"
     },
     {
       "code": "KW_INDEX",
@@ -68576,7 +68576,7 @@
       },
       "created_at": "2026-08-03T12:28:05.437781",
       "updated_at": "2026-08-03T12:28:05.437782",
-      "concept_codes": "[\"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_FOREIGN_KEY",
@@ -68595,7 +68595,7 @@
       },
       "created_at": "2026-08-03T12:28:05.437883",
       "updated_at": "2026-08-03T12:28:05.437883",
-      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"REFERENCE_TYPE_DECLARATION\", \"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_SCHEMA",
@@ -68976,7 +68976,7 @@
       },
       "created_at": "2026-08-03T12:28:05.440074",
       "updated_at": "2026-08-03T12:28:05.440075",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\", \"SWITCH_CASE\", \"DIGITAL_ANALOG_IO\", \"DIGITAL_IDENTITY\", \"DIGITAL_FOOTPRINT\", \"DIGITAL_DIVIDE\", \"DIGITAL_FILTERING_AND_SAMPLING\", \"COLOR_THEORY_AND_PALETTE_DESIGN\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\", \"SWITCH_CASE\", \"DIGITAL_ANALOG_IO\", \"DIGITAL_IDENTITY\", \"DIGITAL_FOOTPRINT\", \"DIGITAL_DIVIDE\", \"DIGITAL_FILTERING_AND_SAMPLING\", \"COLOR_THEORY_AND_PALETTE_DESIGN\"]"
     },
     {
       "code": "KW_FORK",
@@ -69015,7 +69015,7 @@
       },
       "created_at": "2026-08-03T12:28:05.440323",
       "updated_at": "2026-08-03T12:28:05.440324",
-      "concept_codes": "[\"SHARED_EDITING_ETIQUETTE\", \"COLLABORATIVE_PLATFORMS\", \"MULTI_AGENT_COOPERATION\", \"PROCESS_VS_THREAD\", \"ERROR_MESSAGES_CONCEPT\", \"PROBLEM_DECOMPOSITION\", \"AGILE_PRINCIPLES\", \"CHART_TYPES\"]"
+      "concept_codes": "[\"SHARED_EDITING_ETIQUETTE\", \"COLLABORATIVE_PLATFORMS\", \"MULTI_AGENT_COOPERATION\", \"PROCESS_VS_THREAD\", \"ERROR_MSG_PARSING\", \"PROBLEM_DECOMPOSITION\", \"AGILE_PRINCIPLES\", \"CHART_TYPES\"]"
     },
     {
       "code": "KW_REVIEW",
@@ -69053,7 +69053,7 @@
       },
       "created_at": "2026-08-03T12:28:05.440551",
       "updated_at": "2026-08-03T12:28:05.440552",
-      "concept_codes": "[\"AI_ARTIFACT_VERIFICATION_AND_EVALUATION\", \"RENDERING_PIPELINE\", \"AIOT_DATA_PIPELINE\", \"AGILE_PRINCIPLES\", \"ALGORITHMIC_BIAS_SOCIETY\", \"SHAPE_BUILDING\", \"COMPOSITION_PRINCIPLES\", \"CIRCUIT_PRINCIPLES_CONCEPT\"]"
+      "concept_codes": "[\"AI_ARTIFACT_VERIFICATION_AND_EVALUATION\", \"RENDERING_PIPELINE\", \"AIOT_DATA_PIPELINE\", \"AGILE_PRINCIPLES\", \"ALGORITHMIC_BIAS_SOCIETY\", \"SHAPE_BUILDING\", \"COMPOSITION_PRINCIPLES\", \"CIRCUIT_FUNDAMENTALS\"]"
     },
     {
       "code": "KW_COMPILE",
@@ -69129,7 +69129,7 @@
       },
       "created_at": "2026-08-03T12:28:05.440995",
       "updated_at": "2026-08-03T12:28:05.440996",
-      "concept_codes": "[\"RENDERING_PIPELINE\", \"AIOT_DATA_PIPELINE\", \"AGILE_PRINCIPLES\", \"ALGORITHMIC_BIAS_SOCIETY\", \"COMPOSITION_PRINCIPLES\", \"CIRCUIT_PRINCIPLES_CONCEPT\", \"REST_PRINCIPLES\", \"WCAG_PRINCIPLES\"]"
+      "concept_codes": "[\"RENDERING_PIPELINE\", \"AIOT_DATA_PIPELINE\", \"AGILE_PRINCIPLES\", \"ALGORITHMIC_BIAS_SOCIETY\", \"COMPOSITION_PRINCIPLES\", \"CIRCUIT_FUNDAMENTALS\", \"REST_PRINCIPLES\", \"WCAG_PRINCIPLES\"]"
     },
     {
       "code": "KW_CD",
@@ -69381,7 +69381,7 @@
       },
       "created_at": "2026-08-03T12:28:05.442562",
       "updated_at": "2026-08-03T12:28:05.442563",
-      "concept_codes": "[\"PUBLIC_KEY_INFRASTRUCTURE\", \"DIGITAL_IDENTITY\", \"IDENTITY_AND_ACCESS_MANAGEMENT\", \"ZERO_TRUST_ARCHITECTURE\", \"CACHE_HIERARCHY\", \"FILE_ALLOCATION\", \"PHYSICAL_MEDIA_CONCEPT\", \"CAP_THEOREM\"]"
+      "concept_codes": "[\"PUBLIC_KEY_INFRASTRUCTURE\", \"DIGITAL_IDENTITY\", \"IDENTITY_AND_ACCESS_MANAGEMENT\", \"ZERO_TRUST_ARCHITECTURE\", \"CACHE_HIERARCHY\", \"FILE_ALLOCATION\", \"MEDIUM_TYPES\", \"CAP_THEOREM\"]"
     },
     {
       "code": "KW_TLS",
@@ -69439,7 +69439,7 @@
       },
       "created_at": "2026-08-03T12:28:05.442907",
       "updated_at": "2026-08-03T12:28:05.442908",
-      "concept_codes": "[\"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\", \"IDENTITY_AND_ACCESS_MANAGEMENT\", \"DIGITAL_IDENTITY\", \"DMA_CONCEPT\", \"DIGITAL_DIVIDE\", \"ARRAY_OPERATIONS\", \"ACCESS_MODIFIERS\"]"
+      "concept_codes": "[\"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\", \"IDENTITY_AND_ACCESS_MANAGEMENT\", \"DIGITAL_IDENTITY\", \"DMA\", \"DIGITAL_DIVIDE\", \"ARRAY_OPERATIONS\", \"ACCESS_MODIFIERS\"]"
     },
     {
       "code": "KW_AUTHZ",
@@ -69536,7 +69536,7 @@
       },
       "created_at": "2026-08-03T12:28:05.443451",
       "updated_at": "2026-08-03T12:28:05.443452",
-      "concept_codes": "[\"DIGITAL_IDENTITY\", \"IDENTITY_AND_ACCESS_MANAGEMENT\", \"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\"]"
+      "concept_codes": "[\"DIGITAL_IDENTITY\", \"IDENTITY_AND_ACCESS_MANAGEMENT\", \"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\"]"
     },
     {
       "code": "KW_SAML",
@@ -69576,7 +69576,7 @@
       },
       "created_at": "2026-08-03T12:28:05.443684",
       "updated_at": "2026-08-03T12:28:05.443685",
-      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\"]"
+      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\"]"
     },
     {
       "code": "KW_XSS",
@@ -69596,7 +69596,7 @@
       },
       "created_at": "2026-08-03T12:28:05.443805",
       "updated_at": "2026-08-03T12:28:05.443806",
-      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\"]"
+      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\"]"
     },
     {
       "code": "KW_SQL_INJECTION",
@@ -69615,7 +69615,7 @@
       },
       "created_at": "2026-08-03T12:28:05.443905",
       "updated_at": "2026-08-03T12:28:05.443906",
-      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_STRENGTH_CONCEPT\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
+      "concept_codes": "[\"IOT_SECURITY_THREATS\", \"PASSWORD_CRITERIA\", \"TWO_FACTOR_AUTH\", \"THREAT_MODELING_ASSESSMENT\", \"PARAMETERIZED_QUANTUM_CIRCUITS\"]"
     },
     {
       "code": "KW_BIG_O",
@@ -69672,7 +69672,7 @@
       },
       "created_at": "2026-08-03T12:28:05.444218",
       "updated_at": "2026-08-03T12:28:05.444219",
-      "concept_codes": "[\"MEMORY_TYPES\", \"DMA_CONCEPT\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"DATA_EXPLORATION_EDA\", \"BIOINFORMATICS_GENOMIC_ANALYSIS\", \"FOURIER_TRANSFORM_SIGNAL_ANALYSIS\"]"
+      "concept_codes": "[\"MEMORY_TYPES\", \"DMA\", \"VIRTUAL_MEMORY\", \"AGENT_MEMORY_SYSTEMS\", \"COMPUTE_IN_MEMORY_ACCELERATION\", \"DATA_EXPLORATION_EDA\", \"BIOINFORMATICS_GENOMIC_ANALYSIS\", \"FOURIER_TRANSFORM_SIGNAL_ANALYSIS\"]"
     },
     {
       "code": "KW_SORT",
@@ -70316,7 +70316,7 @@
       },
       "created_at": "2026-08-03T12:28:05.447893",
       "updated_at": "2026-08-03T12:28:05.447893",
-      "concept_codes": "[\"PUBLISHER_SUBSCRIBER_MODEL\", \"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"PUBLISHER_SUBSCRIBER_MODEL\", \"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_SUBSCRIBER",
@@ -70335,7 +70335,7 @@
       },
       "created_at": "2026-08-03T12:28:05.447992",
       "updated_at": "2026-08-03T12:28:05.447993",
-      "concept_codes": "[\"PUBLISHER_SUBSCRIBER_MODEL\", \"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"PUBLISHER_SUBSCRIBER_MODEL\", \"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_SINK",
@@ -70372,7 +70372,7 @@
       },
       "created_at": "2026-08-03T12:28:05.448181",
       "updated_at": "2026-08-03T12:28:05.448182",
-      "concept_codes": "[\"EVENT_BASED_PROGRAMMING\", \"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"EVENT_BASED_PROGRAMMING\", \"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_TASK_GROUP",
@@ -70428,7 +70428,7 @@
       },
       "created_at": "2026-08-03T12:28:05.448537",
       "updated_at": "2026-08-03T12:28:05.448538",
-      "concept_codes": "[\"PROTOTYPING\", \"IMAGE_WARPING\", \"SHAPE_BUILDING\", \"CIRCUIT_PRINCIPLES_CONCEPT\", \"TWO_FACTOR_AUTH\", \"PUBLISHER_SUBSCRIBER_MODEL\", \"PARAMETERIZED_QUANTUM_CIRCUITS\", \"PHYSICAL_FLUID_DYNAMICS_SIMULATION\"]"
+      "concept_codes": "[\"PROTOTYPING\", \"IMAGE_WARPING\", \"SHAPE_BUILDING\", \"CIRCUIT_FUNDAMENTALS\", \"TWO_FACTOR_AUTH\", \"PUBLISHER_SUBSCRIBER_MODEL\", \"PARAMETERIZED_QUANTUM_CIRCUITS\", \"PHYSICAL_FLUID_DYNAMICS_SIMULATION\"]"
     },
     {
       "code": "KW_NONISOLATED",
@@ -70465,7 +70465,7 @@
       },
       "created_at": "2026-08-03T12:28:05.448736",
       "updated_at": "2026-08-03T12:28:05.448737",
-      "concept_codes": "[\"CREATIONAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"OBJECT_INSTANTIATION\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
+      "concept_codes": "[\"CREATIONAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"OBJECT_INSTANTIATION\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
     },
     {
       "code": "KW_FACTORY",
@@ -70484,7 +70484,7 @@
       },
       "created_at": "2026-08-03T12:28:05.448841",
       "updated_at": "2026-08-03T12:28:05.448842",
-      "concept_codes": "[\"CREATIONAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"ACCESS_MODIFIERS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
+      "concept_codes": "[\"CREATIONAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"ACCESS_MODIFIERS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
     },
     {
       "code": "KW_BUILDER",
@@ -70503,7 +70503,7 @@
       },
       "created_at": "2026-08-03T12:28:05.448942",
       "updated_at": "2026-08-03T12:28:05.448943",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\"]"
     },
     {
       "code": "KW_PROTOTYPE",
@@ -70522,7 +70522,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449045",
       "updated_at": "2026-08-03T12:28:05.449046",
-      "concept_codes": "[\"PROTOTYPING\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"COPYRIGHT_CREATIVE_COMMONS\"]"
+      "concept_codes": "[\"PROTOTYPING\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"COPYRIGHT_CREATIVE_COMMONS\"]"
     },
     {
       "code": "KW_ADAPTER",
@@ -70541,7 +70541,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449145",
       "updated_at": "2026-08-03T12:28:05.449146",
-      "concept_codes": "[\"STRUCTURAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"CREATIONAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"NEURAL_SIGNAL_DECODING_BCI\"]"
+      "concept_codes": "[\"STRUCTURAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"CREATIONAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"NEURAL_SIGNAL_DECODING_BCI\"]"
     },
     {
       "code": "KW_DECORATOR",
@@ -70560,7 +70560,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449247",
       "updated_at": "2026-08-03T12:28:05.449248",
-      "concept_codes": "[\"STRUCTURAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"CREATIONAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"SPATIAL_COMPUTING_XR_MAPPING\"]"
+      "concept_codes": "[\"STRUCTURAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"CREATIONAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"SPATIAL_COMPUTING_XR_MAPPING\"]"
     },
     {
       "code": "KW_FACADE",
@@ -70579,7 +70579,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449349",
       "updated_at": "2026-08-03T12:28:05.449350",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"STRUCTURAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"NEURAL_SIGNAL_DECODING_BCI\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"STRUCTURAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"NEURAL_SIGNAL_DECODING_BCI\"]"
     },
     {
       "code": "KW_PROXY",
@@ -70598,7 +70598,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449452",
       "updated_at": "2026-08-03T12:28:05.449453",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"MOTOR_CONTROL\", \"VERSION_CONTROL_WORKFLOW\", \"ROBOTIC_ACTUATION_CONTROL\", \"MECHATRONICS_SYSTEMS_DIAGNOSTICS\", \"UAV_FLIGHT_DYNAMICS_AND_CONTROL\", \"SWARM_ROBOTICS_FORMATION_CONTROL\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"MOTOR_CONTROL\", \"VERSION_CONTROL_WORKFLOW\", \"ROBOTIC_ACTUATION_CONTROL\", \"MECHATRONICS_SYSTEMS_DIAGNOSTICS\", \"UAV_FLIGHT_DYNAMICS_AND_CONTROL\", \"SWARM_ROBOTICS_FORMATION_CONTROL\"]"
     },
     {
       "code": "KW_OBSERVER",
@@ -70617,7 +70617,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449554",
       "updated_at": "2026-08-03T12:28:05.449554",
-      "concept_codes": "[\"BEHAVIORAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"LOCAL_NOTIFICATION_API\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\"]"
+      "concept_codes": "[\"BEHAVIORAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"LOCAL_NOTIFICATION_API\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\"]"
     },
     {
       "code": "KW_STRATEGY",
@@ -70636,7 +70636,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449653",
       "updated_at": "2026-08-03T12:28:05.449654",
-      "concept_codes": "[\"BEHAVIORAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"SCHEDULING_ALGORITHMS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"CLUSTERING_ALGORITHMS\", \"ALGORITHMIC_BIAS_SOCIETY\"]"
+      "concept_codes": "[\"BEHAVIORAL_PATTERNS\", \"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"SCHEDULING_ALGORITHMS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"CLUSTERING_ALGORITHMS\", \"ALGORITHMIC_BIAS_SOCIETY\"]"
     },
     {
       "code": "KW_COMMAND",
@@ -70655,7 +70655,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449756",
       "updated_at": "2026-08-03T12:28:05.449757",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"BEHAVIORAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"BEHAVIORAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\"]"
     },
     {
       "code": "KW_ITERATOR",
@@ -70674,7 +70674,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449870",
       "updated_at": "2026-08-03T12:28:05.449871",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"BEHAVIORAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"BEHAVIORAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\"]"
     },
     {
       "code": "KW_TEMPLATE",
@@ -70693,7 +70693,7 @@
       },
       "created_at": "2026-08-03T12:28:05.449988",
       "updated_at": "2026-08-03T12:28:05.449989",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"BEHAVIORAL_PATTERNS\", \"SCHEDULING_ALGORITHMS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"CLUSTERING_ALGORITHMS\", \"ALGORITHMIC_BIAS_SOCIETY\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"BEHAVIORAL_PATTERNS\", \"SCHEDULING_ALGORITHMS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"CLUSTERING_ALGORITHMS\", \"ALGORITHMIC_BIAS_SOCIETY\"]"
     },
     {
       "code": "KW_VISITOR",
@@ -70712,7 +70712,7 @@
       },
       "created_at": "2026-08-03T12:28:05.450096",
       "updated_at": "2026-08-03T12:28:05.450097",
-      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION_CONCEPT\", \"HTML_STRUCTURE\", \"BEHAVIORAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BOOLEAN_OPERATIONS_3D\", \"TRANSFORMATION_OPERATIONS\"]"
+      "concept_codes": "[\"MVVM_PATTERN\", \"PATTERN_RECOGNITION\", \"HTML_STRUCTURE\", \"BEHAVIORAL_PATTERNS\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BOOLEAN_OPERATIONS_3D\", \"TRANSFORMATION_OPERATIONS\"]"
     },
     {
       "code": "KW_MVC",
@@ -70789,7 +70789,7 @@
       },
       "created_at": "2026-08-03T12:28:05.450543",
       "updated_at": "2026-08-03T12:28:05.450544",
-      "concept_codes": "[\"CPU_ARCHITECTURE\", \"MVVM_PATTERN\", \"TRANSFORMER_ARCHITECTURE\", \"ZERO_TRUST_ARCHITECTURE\", \"ULTRA_LOW_LATENCY_HFT_ARCHITECTURE\", \"ROUTERS_SWITCHES_CONCEPT\", \"PERSONAS_AND_SCENARIOS\", \"DIGITAL_IDENTITY\"]"
+      "concept_codes": "[\"CPU_ARCHITECTURE\", \"MVVM_PATTERN\", \"TRANSFORMER_ARCHITECTURE\", \"ZERO_TRUST_ARCHITECTURE\", \"ULTRA_LOW_LATENCY_HFT_ARCHITECTURE\", \"ROUTING_SWITCHING\", \"PERSONAS_AND_SCENARIOS\", \"DIGITAL_IDENTITY\"]"
     },
     {
       "code": "KW_CLEAN",
@@ -70923,7 +70923,7 @@
       },
       "created_at": "2026-08-03T12:28:05.451313",
       "updated_at": "2026-08-03T12:28:05.451314",
-      "concept_codes": "[\"IMMUTABILITY_CONCEPT\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\"]"
+      "concept_codes": "[\"IMMUTABLE_CONCEPTS\", \"FIRST_CLASS_VALUES\"]"
     },
     {
       "code": "KW_IMMUTABLE",
@@ -70960,7 +70960,7 @@
       },
       "created_at": "2026-08-03T12:28:05.451533",
       "updated_at": "2026-08-03T12:28:05.451534",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_FILTER",
@@ -70998,7 +70998,7 @@
       },
       "created_at": "2026-08-03T12:28:05.451756",
       "updated_at": "2026-08-03T12:28:05.451757",
-      "concept_codes": "[\"MAPREDUCE_CONCEPT\"]"
+      "concept_codes": "[\"MAPREDUCE\"]"
     },
     {
       "code": "KW_FLATMAP",
@@ -71036,7 +71036,7 @@
       },
       "created_at": "2026-08-03T12:28:05.451985",
       "updated_at": "2026-08-03T12:28:05.451986",
-      "concept_codes": "[\"COMPOSITION_PRINCIPLES\", \"LAYOUT_GRID_AND_COMPOSITION_RULES\", \"RENDERING_PIPELINE\", \"AIOT_DATA_PIPELINE\", \"PROBLEM_DECOMPOSITION\", \"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\", \"SINGULAR_VALUE_DECOMPOSITION\"]"
+      "concept_codes": "[\"COMPOSITION_PRINCIPLES\", \"LAYOUT_GRID_AND_COMPOSITION_RULES\", \"RENDERING_PIPELINE\", \"AIOT_DATA_PIPELINE\", \"PROBLEM_DECOMPOSITION\", \"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\", \"SINGULAR_VALUE_DECOMPOSITION\"]"
     },
     {
       "code": "KW_CURRY",
@@ -71054,7 +71054,7 @@
       },
       "created_at": "2026-08-03T12:28:05.452108",
       "updated_at": "2026-08-03T12:28:05.452109",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_PARTIAL",
@@ -71073,7 +71073,7 @@
       },
       "created_at": "2026-08-03T12:28:05.452238",
       "updated_at": "2026-08-03T12:28:05.452239",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\", \"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\", \"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_MONAD",
@@ -71093,7 +71093,7 @@
       },
       "created_at": "2026-08-03T12:28:05.452370",
       "updated_at": "2026-08-03T12:28:05.452371",
-      "concept_codes": "[\"PATTERN_RECOGNITION_CONCEPT\", \"TWO_WAY_BINDING\", \"PHYSICAL_FLUID_DYNAMICS_SIMULATION\", \"COMPUTATIONAL_GENETICS_MODELS\"]"
+      "concept_codes": "[\"PATTERN_RECOGNITION\", \"TWO_WAY_BINDING\", \"PHYSICAL_FLUID_DYNAMICS_SIMULATION\", \"COMPUTATIONAL_GENETICS_MODELS\"]"
     },
     {
       "code": "KW_FUNCTOR",
@@ -71112,7 +71112,7 @@
       },
       "created_at": "2026-08-03T12:28:05.452494",
       "updated_at": "2026-08-03T12:28:05.452495",
-      "concept_codes": "[\"MAP_INTEGRATION\", \"HTML_STRUCTURE\", \"MAPREDUCE_CONCEPT\", \"MATERIAL_AND_TEXTURE\", \"SIMULTANEOUS_LOCALIZATION_MAPPING\", \"PUBLIC_KEY_INFRASTRUCTURE\", \"SPATIAL_COMPUTING_XR_MAPPING\"]"
+      "concept_codes": "[\"MAP_INTEGRATION\", \"HTML_STRUCTURE\", \"MAPREDUCE\", \"MATERIAL_AND_TEXTURE\", \"SIMULTANEOUS_LOCALIZATION_MAPPING\", \"PUBLIC_KEY_INFRASTRUCTURE\", \"SPATIAL_COMPUTING_XR_MAPPING\"]"
     },
     {
       "code": "KW_APPLICATIVE",
@@ -71132,7 +71132,7 @@
       },
       "created_at": "2026-08-03T12:28:05.452614",
       "updated_at": "2026-08-03T12:28:05.452615",
-      "concept_codes": "[\"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_NEUMANN",
@@ -71439,12 +71439,12 @@
       "description": "Token from concept 'Direct Memory Access (DMA)': hardware",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "DMA_CONCEPT",
+        "source_concept": "DMA",
         "extracted_at": "2026-08-03T12:28:05.452852"
       },
       "created_at": "2026-08-03T12:28:05.452854",
       "updated_at": "2026-08-03T12:28:05.452855",
-      "concept_codes": "[\"DMA_CONCEPT\"]"
+      "concept_codes": "[\"DMA\"]"
     },
     {
       "code": "KW_ACCESS",
@@ -71452,12 +71452,12 @@
       "description": "Token from concept 'Direct Memory Access (DMA)': access",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "DMA_CONCEPT",
+        "source_concept": "DMA",
         "extracted_at": "2026-08-03T12:28:05.452858"
       },
       "created_at": "2026-08-03T12:28:05.452860",
       "updated_at": "2026-08-03T12:28:05.452861",
-      "concept_codes": "[\"DMA_CONCEPT\"]"
+      "concept_codes": "[\"DMA\"]"
     },
     {
       "code": "KW_DIRECT",
@@ -71465,12 +71465,12 @@
       "description": "Token from concept 'Direct Memory Access (DMA)': direct",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "DMA_CONCEPT",
+        "source_concept": "DMA",
         "extracted_at": "2026-08-03T12:28:05.452863"
       },
       "created_at": "2026-08-03T12:28:05.452865",
       "updated_at": "2026-08-03T12:28:05.452866",
-      "concept_codes": "[\"DMA_CONCEPT\"]"
+      "concept_codes": "[\"DMA\"]"
     },
     {
       "code": "KW_MULTITASKING",
@@ -71673,12 +71673,12 @@
       "description": "Token from concept 'Systematic Troubleshooting': solving",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "source_concept": "TROUBLESHOOTING_STEPS",
         "extracted_at": "2026-08-03T12:28:05.452974"
       },
       "created_at": "2026-08-03T12:28:05.452980",
       "updated_at": "2026-08-03T12:28:05.452981",
-      "concept_codes": "[\"TROUBLESHOOTING_METHODOLOGY_CONCEPT\"]"
+      "concept_codes": "[\"TROUBLESHOOTING_STEPS\"]"
     },
     {
       "code": "KW_DIAGNOSTICS",
@@ -71686,12 +71686,12 @@
       "description": "Token from concept 'Systematic Troubleshooting': diagnostics",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "source_concept": "TROUBLESHOOTING_STEPS",
         "extracted_at": "2026-08-03T12:28:05.452983"
       },
       "created_at": "2026-08-03T12:28:05.452985",
       "updated_at": "2026-08-03T12:28:05.452986",
-      "concept_codes": "[\"TROUBLESHOOTING_METHODOLOGY_CONCEPT\"]"
+      "concept_codes": "[\"TROUBLESHOOTING_STEPS\"]"
     },
     {
       "code": "KW_TROUBLESHOOTING",
@@ -71699,12 +71699,12 @@
       "description": "Token from concept 'Systematic Troubleshooting': troubleshooting",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "source_concept": "TROUBLESHOOTING_STEPS",
         "extracted_at": "2026-08-03T12:28:05.452988"
       },
       "created_at": "2026-08-03T12:28:05.452991",
       "updated_at": "2026-08-03T12:28:05.452991",
-      "concept_codes": "[\"TROUBLESHOOTING_METHODOLOGY_CONCEPT\"]"
+      "concept_codes": "[\"TROUBLESHOOTING_STEPS\"]"
     },
     {
       "code": "KW_PROBLEM",
@@ -71712,12 +71712,12 @@
       "description": "Token from concept 'Systematic Troubleshooting': problem",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "source_concept": "TROUBLESHOOTING_STEPS",
         "extracted_at": "2026-08-03T12:28:05.452994"
       },
       "created_at": "2026-08-03T12:28:05.452996",
       "updated_at": "2026-08-03T12:28:05.452996",
-      "concept_codes": "[\"TROUBLESHOOTING_METHODOLOGY_CONCEPT\"]"
+      "concept_codes": "[\"TROUBLESHOOTING_STEPS\"]"
     },
     {
       "code": "KW_SYSTEMATIC",
@@ -71725,12 +71725,12 @@
       "description": "Token from concept 'Systematic Troubleshooting': systematic",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "source_concept": "TROUBLESHOOTING_STEPS",
         "extracted_at": "2026-08-03T12:28:05.452999"
       },
       "created_at": "2026-08-03T12:28:05.453001",
       "updated_at": "2026-08-03T12:28:05.453002",
-      "concept_codes": "[\"TROUBLESHOOTING_METHODOLOGY_CONCEPT\"]"
+      "concept_codes": "[\"TROUBLESHOOTING_STEPS\"]"
     },
     {
       "code": "KW_ANALYSIS",
@@ -71738,12 +71738,12 @@
       "description": "Token from concept 'Interpreting Error Messages': analysis",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453008"
       },
       "created_at": "2026-08-03T12:28:05.453010",
       "updated_at": "2026-08-03T12:28:05.453011",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_LOG",
@@ -71751,12 +71751,12 @@
       "description": "Token from concept 'Interpreting Error Messages': log",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453013"
       },
       "created_at": "2026-08-03T12:28:05.453015",
       "updated_at": "2026-08-03T12:28:05.453016",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_DEBUGGING",
@@ -71764,12 +71764,12 @@
       "description": "Token from concept 'Interpreting Error Messages': debugging",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453018"
       },
       "created_at": "2026-08-03T12:28:05.453020",
       "updated_at": "2026-08-03T12:28:05.453021",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_ERROR",
@@ -71777,12 +71777,12 @@
       "description": "Token from concept 'Interpreting Error Messages': error",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453023"
       },
       "created_at": "2026-08-03T12:28:05.453025",
       "updated_at": "2026-08-03T12:28:05.453026",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_MESSAGES",
@@ -71790,12 +71790,12 @@
       "description": "Token from concept 'Interpreting Error Messages': messages",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453028"
       },
       "created_at": "2026-08-03T12:28:05.453030",
       "updated_at": "2026-08-03T12:28:05.453031",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_EXCEPTIONS",
@@ -71803,12 +71803,12 @@
       "description": "Token from concept 'Interpreting Error Messages': exceptions",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453033"
       },
       "created_at": "2026-08-03T12:28:05.453035",
       "updated_at": "2026-08-03T12:28:05.453036",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_HANDLING",
@@ -71816,12 +71816,12 @@
       "description": "Token from concept 'Interpreting Error Messages': handling",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453038"
       },
       "created_at": "2026-08-03T12:28:05.453040",
       "updated_at": "2026-08-03T12:28:05.453041",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_INTERPRETING",
@@ -71829,12 +71829,12 @@
       "description": "Token from concept 'Interpreting Error Messages': interpreting",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ERROR_MESSAGES_CONCEPT",
+        "source_concept": "ERROR_MSG_PARSING",
         "extracted_at": "2026-08-03T12:28:05.453043"
       },
       "created_at": "2026-08-03T12:28:05.453045",
       "updated_at": "2026-08-03T12:28:05.453046",
-      "concept_codes": "[\"ERROR_MESSAGES_CONCEPT\"]"
+      "concept_codes": "[\"ERROR_MSG_PARSING\"]"
     },
     {
       "code": "KW_LOOP",
@@ -72245,12 +72245,12 @@
       "description": "Token from concept 'Routers and Switches': routers",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+        "source_concept": "ROUTING_SWITCHING",
         "extracted_at": "2026-08-03T12:28:05.453247"
       },
       "created_at": "2026-08-03T12:28:05.453249",
       "updated_at": "2026-08-03T12:28:05.453250",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\"]"
     },
     {
       "code": "KW_ROUTER",
@@ -72258,12 +72258,12 @@
       "description": "Token from concept 'Routers and Switches': router",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+        "source_concept": "ROUTING_SWITCHING",
         "extracted_at": "2026-08-03T12:28:05.453252"
       },
       "created_at": "2026-08-03T12:28:05.453254",
       "updated_at": "2026-08-03T12:28:05.453255",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\"]"
     },
     {
       "code": "KW_SWITCHES",
@@ -72271,12 +72271,12 @@
       "description": "Token from concept 'Routers and Switches': switches",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+        "source_concept": "ROUTING_SWITCHING",
         "extracted_at": "2026-08-03T12:28:05.453260"
       },
       "created_at": "2026-08-03T12:28:05.453263",
       "updated_at": "2026-08-03T12:28:05.453263",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\"]"
     },
     {
       "code": "KW_NETWORKING",
@@ -72284,12 +72284,12 @@
       "description": "Token from concept 'Routers and Switches': networking",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ROUTERS_SWITCHES_CONCEPT",
+        "source_concept": "ROUTING_SWITCHING",
         "extracted_at": "2026-08-03T12:28:05.453265"
       },
       "created_at": "2026-08-03T12:28:05.453268",
       "updated_at": "2026-08-03T12:28:05.453268",
-      "concept_codes": "[\"ROUTERS_SWITCHES_CONCEPT\"]"
+      "concept_codes": "[\"ROUTING_SWITCHING\"]"
     },
     {
       "code": "KW_WIRELESS",
@@ -72297,12 +72297,12 @@
       "description": "Token from concept 'Physical Media & Wireless': wireless",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453278"
       },
       "created_at": "2026-08-03T12:28:05.453280",
       "updated_at": "2026-08-03T12:28:05.453281",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_PHYSICAL",
@@ -72310,12 +72310,12 @@
       "description": "Token from concept 'Physical Media & Wireless': physical",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453283"
       },
       "created_at": "2026-08-03T12:28:05.453285",
       "updated_at": "2026-08-03T12:28:05.453286",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_CABLE",
@@ -72323,12 +72323,12 @@
       "description": "Token from concept 'Physical Media & Wireless': cable",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453288"
       },
       "created_at": "2026-08-03T12:28:05.453290",
       "updated_at": "2026-08-03T12:28:05.453291",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_OPTIC",
@@ -72336,12 +72336,12 @@
       "description": "Token from concept 'Physical Media & Wireless': optic",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453293"
       },
       "created_at": "2026-08-03T12:28:05.453295",
       "updated_at": "2026-08-03T12:28:05.453296",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_MEDIA",
@@ -72349,12 +72349,12 @@
       "description": "Token from concept 'Physical Media & Wireless': media",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453298"
       },
       "created_at": "2026-08-03T12:28:05.453300",
       "updated_at": "2026-08-03T12:28:05.453300",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_ETHERNET",
@@ -72362,12 +72362,12 @@
       "description": "Token from concept 'Physical Media & Wireless': ethernet",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453303"
       },
       "created_at": "2026-08-03T12:28:05.453305",
       "updated_at": "2026-08-03T12:28:05.453305",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_BLUETOOTH",
@@ -72375,12 +72375,12 @@
       "description": "Token from concept 'Physical Media & Wireless': bluetooth",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453307"
       },
       "created_at": "2026-08-03T12:28:05.453310",
       "updated_at": "2026-08-03T12:28:05.453310",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_FIBER",
@@ -72388,12 +72388,12 @@
       "description": "Token from concept 'Physical Media & Wireless': fiber",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICAL_MEDIA_CONCEPT",
+        "source_concept": "MEDIUM_TYPES",
         "extracted_at": "2026-08-03T12:28:05.453312"
       },
       "created_at": "2026-08-03T12:28:05.453314",
       "updated_at": "2026-08-03T12:28:05.453315",
-      "concept_codes": "[\"PHYSICAL_MEDIA_CONCEPT\"]"
+      "concept_codes": "[\"MEDIUM_TYPES\"]"
     },
     {
       "code": "KW_NETWORK",
@@ -72401,12 +72401,12 @@
       "description": "Token from concept 'Network Topologies': network",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453321"
       },
       "created_at": "2026-08-03T12:28:05.453323",
       "updated_at": "2026-08-03T12:28:05.453324",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_TOPOLOGY",
@@ -72414,12 +72414,12 @@
       "description": "Token from concept 'Network Topologies': topology",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453326"
       },
       "created_at": "2026-08-03T12:28:05.453328",
       "updated_at": "2026-08-03T12:28:05.453329",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_BUS",
@@ -72427,12 +72427,12 @@
       "description": "Token from concept 'Network Topologies': bus",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453331"
       },
       "created_at": "2026-08-03T12:28:05.453333",
       "updated_at": "2026-08-03T12:28:05.453334",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_TOPOLOGIES",
@@ -72440,12 +72440,12 @@
       "description": "Token from concept 'Network Topologies': topologies",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453336"
       },
       "created_at": "2026-08-03T12:28:05.453338",
       "updated_at": "2026-08-03T12:28:05.453339",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_STAR",
@@ -72453,12 +72453,12 @@
       "description": "Token from concept 'Network Topologies': star",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453341"
       },
       "created_at": "2026-08-03T12:28:05.453343",
       "updated_at": "2026-08-03T12:28:05.453344",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_RING",
@@ -72466,12 +72466,12 @@
       "description": "Token from concept 'Network Topologies': ring",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453346"
       },
       "created_at": "2026-08-03T12:28:05.453348",
       "updated_at": "2026-08-03T12:28:05.453349",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_MESH",
@@ -72479,12 +72479,12 @@
       "description": "Token from concept 'Network Topologies': mesh",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "NETWORK_TOPOLOGIES_CONCEPT",
+        "source_concept": "TOPOLOGY_STRUCTURES",
         "extracted_at": "2026-08-03T12:28:05.453351"
       },
       "created_at": "2026-08-03T12:28:05.453353",
       "updated_at": "2026-08-03T12:28:05.453354",
-      "concept_codes": "[\"NETWORK_TOPOLOGIES_CONCEPT\"]"
+      "concept_codes": "[\"TOPOLOGY_STRUCTURES\"]"
     },
     {
       "code": "KW_HIDING",
@@ -73337,12 +73337,12 @@
       "description": "Token from concept 'MapReduce Concept': distributed",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MAPREDUCE_CONCEPT",
+        "source_concept": "MAPREDUCE",
         "extracted_at": "2026-08-03T12:28:05.453825"
       },
       "created_at": "2026-08-03T12:28:05.453827",
       "updated_at": "2026-08-03T12:28:05.453828",
-      "concept_codes": "[\"MAPREDUCE_CONCEPT\"]"
+      "concept_codes": "[\"MAPREDUCE\"]"
     },
     {
       "code": "KW_PROCESSING",
@@ -73350,12 +73350,12 @@
       "description": "Token from concept 'MapReduce Concept': processing",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MAPREDUCE_CONCEPT",
+        "source_concept": "MAPREDUCE",
         "extracted_at": "2026-08-03T12:28:05.453830"
       },
       "created_at": "2026-08-03T12:28:05.453832",
       "updated_at": "2026-08-03T12:28:05.453833",
-      "concept_codes": "[\"MAPREDUCE_CONCEPT\"]"
+      "concept_codes": "[\"MAPREDUCE\"]"
     },
     {
       "code": "KW_BIG",
@@ -73363,12 +73363,12 @@
       "description": "Token from concept 'MapReduce Concept': big",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MAPREDUCE_CONCEPT",
+        "source_concept": "MAPREDUCE",
         "extracted_at": "2026-08-03T12:28:05.453836"
       },
       "created_at": "2026-08-03T12:28:05.453838",
       "updated_at": "2026-08-03T12:28:05.453839",
-      "concept_codes": "[\"MAPREDUCE_CONCEPT\"]"
+      "concept_codes": "[\"MAPREDUCE\"]"
     },
     {
       "code": "KW_SYSTEMS",
@@ -75573,12 +75573,12 @@
       "description": "Token from concept 'Basic Mechanisms': gears",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455033"
       },
       "created_at": "2026-08-03T12:28:05.455035",
       "updated_at": "2026-08-03T12:28:05.455036",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_MECHANICAL",
@@ -75586,12 +75586,12 @@
       "description": "Token from concept 'Basic Mechanisms': mechanical",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455038"
       },
       "created_at": "2026-08-03T12:28:05.455040",
       "updated_at": "2026-08-03T12:28:05.455041",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_PULLEYS",
@@ -75599,12 +75599,12 @@
       "description": "Token from concept 'Basic Mechanisms': pulleys",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455043"
       },
       "created_at": "2026-08-03T12:28:05.455050",
       "updated_at": "2026-08-03T12:28:05.455051",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_MECHANISMS",
@@ -75612,12 +75612,12 @@
       "description": "Token from concept 'Basic Mechanisms': mechanisms",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455053"
       },
       "created_at": "2026-08-03T12:28:05.455055",
       "updated_at": "2026-08-03T12:28:05.455056",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_BASIC",
@@ -75625,12 +75625,12 @@
       "description": "Token from concept 'Basic Mechanisms': basic",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455058"
       },
       "created_at": "2026-08-03T12:28:05.455060",
       "updated_at": "2026-08-03T12:28:05.455061",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_ADVANTAGE",
@@ -75638,12 +75638,12 @@
       "description": "Token from concept 'Basic Mechanisms': advantage",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455063"
       },
       "created_at": "2026-08-03T12:28:05.455066",
       "updated_at": "2026-08-03T12:28:05.455066",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_LEVERS",
@@ -75651,12 +75651,12 @@
       "description": "Token from concept 'Basic Mechanisms': levers",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_MECHANISMS_CONCEPT",
+        "source_concept": "MECHANICAL_SIMPLE",
         "extracted_at": "2026-08-03T12:28:05.455068"
       },
       "created_at": "2026-08-03T12:28:05.455070",
       "updated_at": "2026-08-03T12:28:05.455071",
-      "concept_codes": "[\"BASIC_MECHANISMS_CONCEPT\"]"
+      "concept_codes": "[\"MECHANICAL_SIMPLE\"]"
     },
     {
       "code": "KW_RESISTOR",
@@ -75664,12 +75664,12 @@
       "description": "Token from concept 'Basic Electronic Components': resistor",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+        "source_concept": "ELECTRONIC_ELEMENTS",
         "extracted_at": "2026-08-03T12:28:05.455077"
       },
       "created_at": "2026-08-03T12:28:05.455079",
       "updated_at": "2026-08-03T12:28:05.455080",
-      "concept_codes": "[\"BASIC_ELECTRONIC_COMPONENTS_CONCEPT\"]"
+      "concept_codes": "[\"ELECTRONIC_ELEMENTS\"]"
     },
     {
       "code": "KW_ELECTRONIC",
@@ -75677,12 +75677,12 @@
       "description": "Token from concept 'Basic Electronic Components': electronic",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+        "source_concept": "ELECTRONIC_ELEMENTS",
         "extracted_at": "2026-08-03T12:28:05.455082"
       },
       "created_at": "2026-08-03T12:28:05.455084",
       "updated_at": "2026-08-03T12:28:05.455085",
-      "concept_codes": "[\"BASIC_ELECTRONIC_COMPONENTS_CONCEPT\"]"
+      "concept_codes": "[\"ELECTRONIC_ELEMENTS\"]"
     },
     {
       "code": "KW_CAPACITOR",
@@ -75690,12 +75690,12 @@
       "description": "Token from concept 'Basic Electronic Components': capacitor",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+        "source_concept": "ELECTRONIC_ELEMENTS",
         "extracted_at": "2026-08-03T12:28:05.455087"
       },
       "created_at": "2026-08-03T12:28:05.455089",
       "updated_at": "2026-08-03T12:28:05.455090",
-      "concept_codes": "[\"BASIC_ELECTRONIC_COMPONENTS_CONCEPT\"]"
+      "concept_codes": "[\"ELECTRONIC_ELEMENTS\"]"
     },
     {
       "code": "KW_DIODE",
@@ -75703,12 +75703,12 @@
       "description": "Token from concept 'Basic Electronic Components': diode",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+        "source_concept": "ELECTRONIC_ELEMENTS",
         "extracted_at": "2026-08-03T12:28:05.455093"
       },
       "created_at": "2026-08-03T12:28:05.455095",
       "updated_at": "2026-08-03T12:28:05.455096",
-      "concept_codes": "[\"BASIC_ELECTRONIC_COMPONENTS_CONCEPT\"]"
+      "concept_codes": "[\"ELECTRONIC_ELEMENTS\"]"
     },
     {
       "code": "KW_COMPONENTS",
@@ -75716,12 +75716,12 @@
       "description": "Token from concept 'Basic Electronic Components': components",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+        "source_concept": "ELECTRONIC_ELEMENTS",
         "extracted_at": "2026-08-03T12:28:05.455098"
       },
       "created_at": "2026-08-03T12:28:05.455100",
       "updated_at": "2026-08-03T12:28:05.455101",
-      "concept_codes": "[\"BASIC_ELECTRONIC_COMPONENTS_CONCEPT\"]"
+      "concept_codes": "[\"ELECTRONIC_ELEMENTS\"]"
     },
     {
       "code": "KW_TRANSISTOR",
@@ -75729,12 +75729,12 @@
       "description": "Token from concept 'Basic Electronic Components': transistor",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "BASIC_ELECTRONIC_COMPONENTS_CONCEPT",
+        "source_concept": "ELECTRONIC_ELEMENTS",
         "extracted_at": "2026-08-03T12:28:05.455103"
       },
       "created_at": "2026-08-03T12:28:05.455105",
       "updated_at": "2026-08-03T12:28:05.455106",
-      "concept_codes": "[\"BASIC_ELECTRONIC_COMPONENTS_CONCEPT\"]"
+      "concept_codes": "[\"ELECTRONIC_ELEMENTS\"]"
     },
     {
       "code": "KW_LAW",
@@ -75742,12 +75742,12 @@
       "description": "Token from concept 'Basic Circuit Principles': law",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+        "source_concept": "CIRCUIT_FUNDAMENTALS",
         "extracted_at": "2026-08-03T12:28:05.455112"
       },
       "created_at": "2026-08-03T12:28:05.455114",
       "updated_at": "2026-08-03T12:28:05.455115",
-      "concept_codes": "[\"CIRCUIT_PRINCIPLES_CONCEPT\"]"
+      "concept_codes": "[\"CIRCUIT_FUNDAMENTALS\"]"
     },
     {
       "code": "KW_CIRCUIT",
@@ -75755,12 +75755,12 @@
       "description": "Token from concept 'Basic Circuit Principles': circuit",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+        "source_concept": "CIRCUIT_FUNDAMENTALS",
         "extracted_at": "2026-08-03T12:28:05.455117"
       },
       "created_at": "2026-08-03T12:28:05.455119",
       "updated_at": "2026-08-03T12:28:05.455120",
-      "concept_codes": "[\"CIRCUIT_PRINCIPLES_CONCEPT\"]"
+      "concept_codes": "[\"CIRCUIT_FUNDAMENTALS\"]"
     },
     {
       "code": "KW_PARALLEL",
@@ -75768,12 +75768,12 @@
       "description": "Token from concept 'Basic Circuit Principles': parallel",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+        "source_concept": "CIRCUIT_FUNDAMENTALS",
         "extracted_at": "2026-08-03T12:28:05.455122"
       },
       "created_at": "2026-08-03T12:28:05.455124",
       "updated_at": "2026-08-03T12:28:05.455125",
-      "concept_codes": "[\"CIRCUIT_PRINCIPLES_CONCEPT\"]"
+      "concept_codes": "[\"CIRCUIT_FUNDAMENTALS\"]"
     },
     {
       "code": "KW_SERIES",
@@ -75781,12 +75781,12 @@
       "description": "Token from concept 'Basic Circuit Principles': series",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+        "source_concept": "CIRCUIT_FUNDAMENTALS",
         "extracted_at": "2026-08-03T12:28:05.455129"
       },
       "created_at": "2026-08-03T12:28:05.455131",
       "updated_at": "2026-08-03T12:28:05.455132",
-      "concept_codes": "[\"CIRCUIT_PRINCIPLES_CONCEPT\"]"
+      "concept_codes": "[\"CIRCUIT_FUNDAMENTALS\"]"
     },
     {
       "code": "KW_OHM",
@@ -75794,12 +75794,12 @@
       "description": "Token from concept 'Basic Circuit Principles': ohm",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "CIRCUIT_PRINCIPLES_CONCEPT",
+        "source_concept": "CIRCUIT_FUNDAMENTALS",
         "extracted_at": "2026-08-03T12:28:05.455134"
       },
       "created_at": "2026-08-03T12:28:05.455136",
       "updated_at": "2026-08-03T12:28:05.455137",
-      "concept_codes": "[\"CIRCUIT_PRINCIPLES_CONCEPT\"]"
+      "concept_codes": "[\"CIRCUIT_FUNDAMENTALS\"]"
     },
     {
       "code": "KW_INTERNET",
@@ -76626,12 +76626,12 @@
       "description": "Token from concept 'Strong Passwords': passwords",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+        "source_concept": "PASSWORD_CRITERIA",
         "extracted_at": "2026-08-03T12:28:05.455685"
       },
       "created_at": "2026-08-03T12:28:05.455687",
       "updated_at": "2026-08-03T12:28:05.455688",
-      "concept_codes": "[\"PASSWORD_STRENGTH_CONCEPT\"]"
+      "concept_codes": "[\"PASSWORD_CRITERIA\"]"
     },
     {
       "code": "KW_PASSWORD",
@@ -76639,12 +76639,12 @@
       "description": "Token from concept 'Strong Passwords': password",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+        "source_concept": "PASSWORD_CRITERIA",
         "extracted_at": "2026-08-03T12:28:05.455690"
       },
       "created_at": "2026-08-03T12:28:05.455692",
       "updated_at": "2026-08-03T12:28:05.455693",
-      "concept_codes": "[\"PASSWORD_STRENGTH_CONCEPT\"]"
+      "concept_codes": "[\"PASSWORD_CRITERIA\"]"
     },
     {
       "code": "KW_AUTHENTICATION",
@@ -76652,12 +76652,12 @@
       "description": "Token from concept 'Strong Passwords': authentication",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PASSWORD_STRENGTH_CONCEPT",
+        "source_concept": "PASSWORD_CRITERIA",
         "extracted_at": "2026-08-03T12:28:05.455695"
       },
       "created_at": "2026-08-03T12:28:05.455697",
       "updated_at": "2026-08-03T12:28:05.455698",
-      "concept_codes": "[\"PASSWORD_STRENGTH_CONCEPT\"]"
+      "concept_codes": "[\"PASSWORD_CRITERIA\"]"
     },
     {
       "code": "KW_SCAM",
@@ -77315,12 +77315,12 @@
       "description": "Token from concept 'Static Members': variable",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "STATIC_MEMBERS_CONCEPT",
+        "source_concept": "STATIC_ATTRIBUTES",
         "extracted_at": "2026-08-03T12:28:05.456046"
       },
       "created_at": "2026-08-03T12:28:05.456048",
       "updated_at": "2026-08-03T12:28:05.456049",
-      "concept_codes": "[\"STATIC_MEMBERS_CONCEPT\"]"
+      "concept_codes": "[\"STATIC_ATTRIBUTES\"]"
     },
     {
       "code": "KW_MEMBERS",
@@ -77328,12 +77328,12 @@
       "description": "Token from concept 'Static Members': members",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "STATIC_MEMBERS_CONCEPT",
+        "source_concept": "STATIC_ATTRIBUTES",
         "extracted_at": "2026-08-03T12:28:05.456053"
       },
       "created_at": "2026-08-03T12:28:05.456056",
       "updated_at": "2026-08-03T12:28:05.456056",
-      "concept_codes": "[\"STATIC_MEMBERS_CONCEPT\"]"
+      "concept_codes": "[\"STATIC_ATTRIBUTES\"]"
     },
     {
       "code": "KW_FIRST",
@@ -77341,12 +77341,12 @@
       "description": "Token from concept 'First-Class & Higher-Order Functions': first",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "source_concept": "FIRST_CLASS_VALUES",
         "extracted_at": "2026-08-03T12:28:05.456063"
       },
       "created_at": "2026-08-03T12:28:05.456065",
       "updated_at": "2026-08-03T12:28:05.456066",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\"]"
     },
     {
       "code": "KW_FUNCTIONS",
@@ -77354,12 +77354,12 @@
       "description": "Token from concept 'First-Class & Higher-Order Functions': functions",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "source_concept": "FIRST_CLASS_VALUES",
         "extracted_at": "2026-08-03T12:28:05.456068"
       },
       "created_at": "2026-08-03T12:28:05.456071",
       "updated_at": "2026-08-03T12:28:05.456071",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\"]"
     },
     {
       "code": "KW_HIGHER",
@@ -77367,12 +77367,12 @@
       "description": "Token from concept 'First-Class & Higher-Order Functions': higher",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "source_concept": "FIRST_CLASS_VALUES",
         "extracted_at": "2026-08-03T12:28:05.456073"
       },
       "created_at": "2026-08-03T12:28:05.456076",
       "updated_at": "2026-08-03T12:28:05.456077",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\"]"
     },
     {
       "code": "KW_CLOSURES",
@@ -77380,12 +77380,12 @@
       "description": "Token from concept 'First-Class & Higher-Order Functions': closures",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "source_concept": "FIRST_CLASS_VALUES",
         "extracted_at": "2026-08-03T12:28:05.456079"
       },
       "created_at": "2026-08-03T12:28:05.456082",
       "updated_at": "2026-08-03T12:28:05.456083",
-      "concept_codes": "[\"FIRST_CLASS_FUNCTIONS_CONCEPT\"]"
+      "concept_codes": "[\"FIRST_CLASS_VALUES\"]"
     },
     {
       "code": "KW_EFFECTS",
@@ -77393,12 +77393,12 @@
       "description": "Token from concept 'Immutability and Pure Functions': effects",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IMMUTABILITY_CONCEPT",
+        "source_concept": "IMMUTABLE_CONCEPTS",
         "extracted_at": "2026-08-03T12:28:05.456096"
       },
       "created_at": "2026-08-03T12:28:05.456099",
       "updated_at": "2026-08-03T12:28:05.456099",
-      "concept_codes": "[\"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_FUNCTIONAL",
@@ -77406,25 +77406,25 @@
       "description": "Token from concept 'Immutability and Pure Functions': functional",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IMMUTABILITY_CONCEPT",
+        "source_concept": "IMMUTABLE_CONCEPTS",
         "extracted_at": "2026-08-03T12:28:05.456102"
       },
       "created_at": "2026-08-03T12:28:05.456104",
       "updated_at": "2026-08-03T12:28:05.456105",
-      "concept_codes": "[\"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"IMMUTABLE_CONCEPTS\"]"
     },
     {
-      "code": "KW_IMMUTABILITY",
+      "code": "KW_IMMUTABLE_CONCEPTS",
       "name": "immutability",
       "description": "Token from concept 'Immutability and Pure Functions': immutability",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IMMUTABILITY_CONCEPT",
+        "source_concept": "IMMUTABLE_CONCEPTS",
         "extracted_at": "2026-08-03T12:28:05.456107"
       },
       "created_at": "2026-08-03T12:28:05.456109",
       "updated_at": "2026-08-03T12:28:05.456110",
-      "concept_codes": "[\"IMMUTABILITY_CONCEPT\"]"
+      "concept_codes": "[\"IMMUTABLE_CONCEPTS\"]"
     },
     {
       "code": "KW_HANDLER",
@@ -77432,12 +77432,12 @@
       "description": "Token from concept 'Events and Event Handling': handler",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "EVENT_HANDLERS_CONCEPT",
+        "source_concept": "EVENT_LISTENERS",
         "extracted_at": "2026-08-03T12:28:05.456117"
       },
       "created_at": "2026-08-03T12:28:05.456119",
       "updated_at": "2026-08-03T12:28:05.456120",
-      "concept_codes": "[\"EVENT_HANDLERS_CONCEPT\"]"
+      "concept_codes": "[\"EVENT_LISTENERS\"]"
     },
     {
       "code": "KW_CALLBACK",
@@ -77445,12 +77445,12 @@
       "description": "Token from concept 'Events and Event Handling': callback",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "EVENT_HANDLERS_CONCEPT",
+        "source_concept": "EVENT_LISTENERS",
         "extracted_at": "2026-08-03T12:28:05.456122"
       },
       "created_at": "2026-08-03T12:28:05.456124",
       "updated_at": "2026-08-03T12:28:05.456125",
-      "concept_codes": "[\"EVENT_HANDLERS_CONCEPT\"]"
+      "concept_codes": "[\"EVENT_LISTENERS\"]"
     },
     {
       "code": "KW_LISTENER",
@@ -77458,12 +77458,12 @@
       "description": "Token from concept 'Events and Event Handling': listener",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "EVENT_HANDLERS_CONCEPT",
+        "source_concept": "EVENT_LISTENERS",
         "extracted_at": "2026-08-03T12:28:05.456130"
       },
       "created_at": "2026-08-03T12:28:05.456132",
       "updated_at": "2026-08-03T12:28:05.456133",
-      "concept_codes": "[\"EVENT_HANDLERS_CONCEPT\"]"
+      "concept_codes": "[\"EVENT_LISTENERS\"]"
     },
     {
       "code": "KW_BLOCKING",
@@ -77471,12 +77471,12 @@
       "description": "Token from concept 'Asynchronous Programming': blocking",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+        "source_concept": "ASYNC_PATTERNS",
         "extracted_at": "2026-08-03T12:28:05.456145"
       },
       "created_at": "2026-08-03T12:28:05.456147",
       "updated_at": "2026-08-03T12:28:05.456148",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_PROMISES",
@@ -77484,12 +77484,12 @@
       "description": "Token from concept 'Asynchronous Programming': promises",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+        "source_concept": "ASYNC_PATTERNS",
         "extracted_at": "2026-08-03T12:28:05.456150"
       },
       "created_at": "2026-08-03T12:28:05.456152",
       "updated_at": "2026-08-03T12:28:05.456153",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_CALLBACKS",
@@ -77497,12 +77497,12 @@
       "description": "Token from concept 'Asynchronous Programming': callbacks",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+        "source_concept": "ASYNC_PATTERNS",
         "extracted_at": "2026-08-03T12:28:05.456156"
       },
       "created_at": "2026-08-03T12:28:05.456159",
       "updated_at": "2026-08-03T12:28:05.456159",
-      "concept_codes": "[\"ASYNCHRONOUS_PROG_CONCEPT\"]"
+      "concept_codes": "[\"ASYNC_PATTERNS\"]"
     },
     {
       "code": "KW_DOCS",
@@ -77731,12 +77731,12 @@
       "description": "Token from concept 'Malware Types': cybersecurity",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MALWARE_TYPES_CONCEPT",
+        "source_concept": "MALWARE_KINDS",
         "extracted_at": "2026-08-03T12:28:05.456277"
       },
       "created_at": "2026-08-03T12:28:05.456280",
       "updated_at": "2026-08-03T12:28:05.456280",
-      "concept_codes": "[\"MALWARE_TYPES_CONCEPT\"]"
+      "concept_codes": "[\"MALWARE_KINDS\"]"
     },
     {
       "code": "KW_MALWARE",
@@ -77744,12 +77744,12 @@
       "description": "Token from concept 'Malware Types': malware",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MALWARE_TYPES_CONCEPT",
+        "source_concept": "MALWARE_KINDS",
         "extracted_at": "2026-08-03T12:28:05.456283"
       },
       "created_at": "2026-08-03T12:28:05.456286",
       "updated_at": "2026-08-03T12:28:05.456287",
-      "concept_codes": "[\"MALWARE_TYPES_CONCEPT\"]"
+      "concept_codes": "[\"MALWARE_KINDS\"]"
     },
     {
       "code": "KW_RANSOMWARE",
@@ -77757,12 +77757,12 @@
       "description": "Token from concept 'Malware Types': ransomware",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MALWARE_TYPES_CONCEPT",
+        "source_concept": "MALWARE_KINDS",
         "extracted_at": "2026-08-03T12:28:05.456289"
       },
       "created_at": "2026-08-03T12:28:05.456291",
       "updated_at": "2026-08-03T12:28:05.456292",
-      "concept_codes": "[\"MALWARE_TYPES_CONCEPT\"]"
+      "concept_codes": "[\"MALWARE_KINDS\"]"
     },
     {
       "code": "KW_VIRUS",
@@ -77770,12 +77770,12 @@
       "description": "Token from concept 'Malware Types': virus",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "MALWARE_TYPES_CONCEPT",
+        "source_concept": "MALWARE_KINDS",
         "extracted_at": "2026-08-03T12:28:05.456294"
       },
       "created_at": "2026-08-03T12:28:05.456296",
       "updated_at": "2026-08-03T12:28:05.456297",
-      "concept_codes": "[\"MALWARE_TYPES_CONCEPT\"]"
+      "concept_codes": "[\"MALWARE_KINDS\"]"
     },
     {
       "code": "KW_WIREFRAMING",
@@ -78485,12 +78485,12 @@
       "description": "Token from concept 'Physics Constraints': constraints",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+        "source_concept": "CONSTRAINT_MECHANICS",
         "extracted_at": "2026-08-03T12:28:05.457148"
       },
       "created_at": "2026-08-03T12:28:05.457150",
       "updated_at": "2026-08-03T12:28:05.457151",
-      "concept_codes": "[\"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_HINGE",
@@ -78498,12 +78498,12 @@
       "description": "Token from concept 'Physics Constraints': hinge",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+        "source_concept": "CONSTRAINT_MECHANICS",
         "extracted_at": "2026-08-03T12:28:05.457153"
       },
       "created_at": "2026-08-03T12:28:05.457155",
       "updated_at": "2026-08-03T12:28:05.457156",
-      "concept_codes": "[\"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_JOINTS",
@@ -78511,12 +78511,12 @@
       "description": "Token from concept 'Physics Constraints': joints",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PHYSICS_CONSTRAINTS_CONCEPT",
+        "source_concept": "CONSTRAINT_MECHANICS",
         "extracted_at": "2026-08-03T12:28:05.457160"
       },
       "created_at": "2026-08-03T12:28:05.457162",
       "updated_at": "2026-08-03T12:28:05.457163",
-      "concept_codes": "[\"PHYSICS_CONSTRAINTS_CONCEPT\"]"
+      "concept_codes": "[\"CONSTRAINT_MECHANICS\"]"
     },
     {
       "code": "KW_LEVEL",
@@ -79837,12 +79837,12 @@
       "description": "Token from concept 'Pattern Recognition in Computation': computation",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+        "source_concept": "PATTERN_RECOGNITION",
         "extracted_at": "2026-08-03T12:28:05.458082"
       },
       "created_at": "2026-08-03T12:28:05.458084",
       "updated_at": "2026-08-03T12:28:05.458085",
-      "concept_codes": "[\"PATTERN_RECOGNITION_CONCEPT\"]"
+      "concept_codes": "[\"PATTERN_RECOGNITION\"]"
     },
     {
       "code": "KW_REUSABLE",
@@ -79850,12 +79850,12 @@
       "description": "Token from concept 'Pattern Recognition in Computation': reusable",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+        "source_concept": "PATTERN_RECOGNITION",
         "extracted_at": "2026-08-03T12:28:05.458090"
       },
       "created_at": "2026-08-03T12:28:05.458092",
       "updated_at": "2026-08-03T12:28:05.458093",
-      "concept_codes": "[\"PATTERN_RECOGNITION_CONCEPT\"]"
+      "concept_codes": "[\"PATTERN_RECOGNITION\"]"
     },
     {
       "code": "KW_IDENTIFICATION",
@@ -79863,12 +79863,12 @@
       "description": "Token from concept 'Pattern Recognition in Computation': identification",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+        "source_concept": "PATTERN_RECOGNITION",
         "extracted_at": "2026-08-03T12:28:05.458097"
       },
       "created_at": "2026-08-03T12:28:05.458099",
       "updated_at": "2026-08-03T12:28:05.458100",
-      "concept_codes": "[\"PATTERN_RECOGNITION_CONCEPT\"]"
+      "concept_codes": "[\"PATTERN_RECOGNITION\"]"
     },
     {
       "code": "KW_TREND",
@@ -79876,12 +79876,12 @@
       "description": "Token from concept 'Pattern Recognition in Computation': trend",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "PATTERN_RECOGNITION_CONCEPT",
+        "source_concept": "PATTERN_RECOGNITION",
         "extracted_at": "2026-08-03T12:28:05.458104"
       },
       "created_at": "2026-08-03T12:28:05.458106",
       "updated_at": "2026-08-03T12:28:05.458107",
-      "concept_codes": "[\"PATTERN_RECOGNITION_CONCEPT\"]"
+      "concept_codes": "[\"PATTERN_RECOGNITION\"]"
     },
     {
       "code": "KW_UNPLUGGED",

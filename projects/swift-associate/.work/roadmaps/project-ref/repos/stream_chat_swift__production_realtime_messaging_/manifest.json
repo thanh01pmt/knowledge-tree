@@ -1,0 +1,17 @@
+{
+  "source_type": "existing_repo",
+  "repo_url": "https://github.com/GetStream/stream-chat-swift",
+  "why_relevant": "Production-grade architecture grounding for 'Stream Chat Swift (Production Realtime Messaging)'",
+  "key_files_to_read": [],
+  "license": "MIT",
+  "proof_of_functionality": {
+    "tier_achieved": 2,
+    "build_command": "swift build -c release",
+    "build_result": "pass",
+    "smoke_test": "swift test",
+    "smoke_test_result": "pass",
+    "fix_attempts_used": 1,
+    "fix_attempts_cap": 3,
+    "escalated_to_human": false
+  }
+}

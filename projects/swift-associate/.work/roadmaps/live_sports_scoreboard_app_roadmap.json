@@ -1,0 +1,166 @@
+{
+  "project_roadmap_id": "live_sports_scoreboard_app",
+  "user_goal": "Realtime iOS App with Swift",
+  "selected_project": {
+    "project_id": 1,
+    "type": "Single Large Capstone",
+    "title": "Live Sports Scoreboard App",
+    "description": "Build a real-time iOS app that displays live scores for multiple sports (e.g., NBA, NFL) using WebSocket connections. The app will update scores, game events, and standings in real-time with smooth UI animations. Includes push notifications for key events and a history view.",
+    "estimated_weeks": 6,
+    "key_features": [
+      "WebSocket client for live data streaming",
+      "Real-time UI updates with Combine or async/await",
+      "Background fetch and notification handling",
+      "MVVM architecture with dependency injection",
+      "Offline caching of recent scores"
+    ],
+    "target_concept_codes": [
+      "PROCESS_VS_THREAD",
+      "SCHEDULING_ALGORITHMS",
+      "ABSTRACTION_LAYERS",
+      "CREATIONAL_PATTERNS",
+      "STRUCTURAL_PATTERNS"
+    ]
+  },
+  "all_proposed_project_options": [
+    {
+      "project_id": 1,
+      "type": "Single Large Capstone",
+      "title": "Live Sports Scoreboard App",
+      "description": "Build a real-time iOS app that displays live scores for multiple sports (e.g., NBA, NFL) using WebSocket connections. The app will update scores, game events, and standings in real-time with smooth UI animations. Includes push notifications for key events and a history view.",
+      "estimated_weeks": 6,
+      "key_features": [
+        "WebSocket client for live data streaming",
+        "Real-time UI updates with Combine or async/await",
+        "Background fetch and notification handling",
+        "MVVM architecture with dependency injection",
+        "Offline caching of recent scores"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "SCHEDULING_ALGORITHMS",
+        "ABSTRACTION_LAYERS",
+        "CREATIONAL_PATTERNS",
+        "STRUCTURAL_PATTERNS"
+      ]
+    },
+    {
+      "project_id": 2,
+      "type": "Incremental Micro-Projects",
+      "title": "Real-Time iOS Fundamentals",
+      "description": "Three incremental micro-projects: (1) High-precision stopwatch with lap times using CADisplayLink and Grand Central Dispatch. (2) Live weather app that polls an API every 30 seconds and updates UI with smooth transitions. (3) Simple real-time chat app using Firebase Realtime Database with message sync and typing indicators. Each project builds on the previous, focusing on concurrency and real-time patterns.",
+      "estimated_weeks": 6,
+      "key_features": [
+        "CADisplayLink and Timer for precise updates",
+        "URLSession with background configuration",
+        "Firebase Realtime Database listeners",
+        "Thread-safe data models with actors",
+        "UI updates on main thread with Combine"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "IO_METHODS_POLLING_INTERRUPT",
+        "ABSTRACTION_LAYERS",
+        "PROBLEM_DECOMPOSITION",
+        "CREATIONAL_PATTERNS"
+      ]
+    },
+    {
+      "project_id": 3,
+      "type": "Single Large Capstone",
+      "title": "Real-Time Audio Visualizer",
+      "description": "Build an iOS app that captures microphone audio in real-time, performs FFT analysis, and renders a dynamic waveform or spectrum visualizer using Metal or Core Graphics. The app will demonstrate real-time data processing, low-latency audio capture, and efficient rendering.",
+      "estimated_weeks": 6,
+      "key_features": [
+        "Audio capture with AVAudioEngine",
+        "Real-time FFT using Accelerate framework",
+        "Custom Metal shader for waveform rendering",
+        "Thread-safe audio buffer management",
+        "Performance optimization for 60 fps rendering"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "SCHEDULING_ALGORITHMS",
+        "VIRTUAL_MEMORY",
+        "ABSTRACTION_LAYERS",
+        "BEHAVIORAL_PATTERNS"
+      ]
+    }
+  ],
+  "parameters": {
+    "weekly_hours": 10,
+    "estimated_weeks": 6,
+    "estimated_total_hours": 60,
+    "known_concepts": []
+  },
+  "topo_order": [
+    "ABSTRACTION_LAYERS",
+    "CREATIONAL_PATTERNS",
+    "PROCESS_VS_THREAD",
+    "SCHEDULING_ALGORITHMS",
+    "STRUCTURAL_PATTERNS"
+  ],
+  "edges": [],
+  "project_phases": [
+    {
+      "phase_num": 1,
+      "feature_name": "WebSocket client for live data streaming",
+      "concepts": [
+        {
+          "concept_code": "ABSTRACTION_LAYERS",
+          "name": "Layers of Abstraction",
+          "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase_num": 2,
+      "feature_name": "Real-time UI updates with Combine or async/await",
+      "concepts": [
+        {
+          "concept_code": "CREATIONAL_PATTERNS",
+          "name": "Creational Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế khởi tạo, như Singleton (đảm bảo một lớp chỉ có một thể hiện) và Factory (tạo đối tượng mà không cần chỉ rõ lớp cụ thể).",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase_num": 3,
+      "feature_name": "Background fetch and notification handling",
+      "concepts": [
+        {
+          "concept_code": "PROCESS_VS_THREAD",
+          "name": "Process vs. Thread",
+          "description": "Phân biệt sự khác nhau giữa một tiến trình (một chương trình đang chạy với không gian bộ nhớ riêng) và một luồng (một luồng thực thi trong một tiến trình).",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase_num": 4,
+      "feature_name": "MVVM architecture with dependency injection",
+      "concepts": [
+        {
+          "concept_code": "SCHEDULING_ALGORITHMS",
+          "name": "CPU Scheduling Algorithms",
+          "description": "Giới thiệu các thuật toán lập lịch CPU cơ bản như FCFS (First-Come, First-Served), SJF (Shortest Job First), và Round Robin.",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase_num": 5,
+      "feature_name": "Offline caching of recent scores",
+      "concepts": [
+        {
+          "concept_code": "STRUCTURAL_PATTERNS",
+          "name": "Structural Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế cấu trúc, như Adapter (cho phép các giao diện không tương thích làm việc với nhau) và Decorator (thêm chức năng cho đối tượng một cách linh hoạt).",
+          "learning_objectives": []
+        }
+      ]
+    }
+  ]
+}

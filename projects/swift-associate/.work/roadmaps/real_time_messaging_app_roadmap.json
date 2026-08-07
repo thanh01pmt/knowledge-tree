@@ -1,0 +1,421 @@
+{
+  "project_brief": {
+    "title": "Real-time Messaging App",
+    "project_code": "PROJ-REALTIME-CHAT",
+    "type": "Single Large Capstone System",
+    "target_learner": "Intermediate iOS Developer",
+    "description": "Build a full-stack real-time chat application with SwiftUI, using WebSockets for instant messaging, user authentication, and message persistence via Firebase.",
+    "tech_stack": [
+      "Swift",
+      "SwiftUI",
+      "Combine",
+      "WebSocket (URLSessionWebSocketTask)",
+      "Firebase Firestore",
+      "Firebase Auth"
+    ],
+    "key_features": [
+      "User registration and login",
+      "Real-time one-on-one and group messaging",
+      "Message history with offline caching",
+      "Typing indicators and read receipts",
+      "Push notifications"
+    ]
+  },
+  "all_proposals": [
+    {
+      "option_id": 1,
+      "project_code": "PROJ-REALTIME-CHAT",
+      "type": "Single Large Capstone System",
+      "title": "Real-time Messaging App",
+      "target_learner": "Intermediate iOS Developer",
+      "description": "Build a full-stack real-time chat application with SwiftUI, using WebSockets for instant messaging, user authentication, and message persistence via Firebase.",
+      "estimated_weeks": 8,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "WebSocket (URLSessionWebSocketTask)",
+        "Firebase Firestore",
+        "Firebase Auth"
+      ],
+      "key_features": [
+        "User registration and login",
+        "Real-time one-on-one and group messaging",
+        "Message history with offline caching",
+        "Typing indicators and read receipts",
+        "Push notifications"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS",
+        "PROBLEM_DECOMPOSITION",
+        "VERSION_CONTROL_WORKFLOW",
+        "ERROR_MESSAGES_CONCEPT",
+        "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "CLOUD_MODELS_IAAS_PAAS_SAAS",
+        "RELATIONAL_VS_NONRELATIONAL",
+        "CAP_THEOREM",
+        "BEHAVIORAL_PATTERNS"
+      ]
+    },
+    {
+      "option_id": 2,
+      "project_code": "PROJ-SPORTS-SCOREBOARD",
+      "type": "Incremental Micro-Projects",
+      "title": "Live Sports Scoreboard Suite",
+      "target_learner": "Beginner to Intermediate iOS Developer",
+      "description": "A series of three micro-projects: (1) a simple WebSocket client displaying live scores, (2) adding multiple sports and filtering, (3) integrating with a public API and adding push notifications for score updates.",
+      "estimated_weeks": 6,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "URLSessionWebSocketTask",
+        "UserNotifications",
+        "Core Data"
+      ],
+      "key_features": [
+        "WebSocket connection management",
+        "Real-time score updates with animations",
+        "Multi-sport support with category filters",
+        "Offline score caching using Core Data",
+        "Local push notifications for favorite teams"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS",
+        "PROBLEM_DECOMPOSITION",
+        "VERSION_CONTROL_WORKFLOW",
+        "ERROR_MESSAGES_CONCEPT",
+        "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "FRONTEND_FRAMEWORKS",
+        "CREATIONAL_PATTERNS",
+        "STRUCTURAL_PATTERNS"
+      ]
+    },
+    {
+      "option_id": 3,
+      "project_code": "PROJ-COLLAB-WHITEBOARD",
+      "type": "Single Large Capstone System",
+      "title": "Real-time Collaborative Whiteboard",
+      "target_learner": "Intermediate to Advanced iOS Developer",
+      "description": "Build an iOS app that allows multiple users to draw on a shared canvas in real-time using WebSockets, with undo/redo, color selection, and stroke synchronization.",
+      "estimated_weeks": 10,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "PencilKit",
+        "WebSocket (Starscream or URLSession)",
+        "Firebase Realtime Database or custom server"
+      ],
+      "key_features": [
+        "Multi-user real-time drawing synchronization",
+        "Toolbar with pen, eraser, color picker, and line width",
+        "Undo/redo support per user",
+        "Session management with invite codes",
+        "Canvas persistence and export as image"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS",
+        "PROBLEM_DECOMPOSITION",
+        "VERSION_CONTROL_WORKFLOW",
+        "ERROR_MESSAGES_CONCEPT",
+        "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "CLOUD_MODELS_IAAS_PAAS_SAAS",
+        "CAP_THEOREM",
+        "BEHAVIORAL_PATTERNS",
+        "CREATIONAL_PATTERNS",
+        "STRUCTURAL_PATTERNS"
+      ]
+    }
+  ],
+  "parameters": {
+    "weekly_hours": 10,
+    "estimated_weeks": 8,
+    "total_hours": 80,
+    "known_concepts": []
+  },
+  "topo_order": [
+    "ABSTRACTION_LAYERS",
+    "BEHAVIORAL_PATTERNS",
+    "CAP_THEOREM",
+    "CLOUD_MODELS_IAAS_PAAS_SAAS",
+    "ERROR_MESSAGES_CONCEPT",
+    "PROBLEM_DECOMPOSITION",
+    "PROCESS_VS_THREAD",
+    "RELATIONAL_VS_NONRELATIONAL",
+    "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+    "VERSION_CONTROL_WORKFLOW"
+  ],
+  "edges": [],
+  "alignment_matrix": [
+    {
+      "lesson_id": "LES_ABSTRACTION_LAYERS",
+      "feature": "User registration and login",
+      "concept": "ABSTRACTION_LAYERS",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_BEHAVIORAL_PATTERNS",
+      "feature": "User registration and login",
+      "concept": "BEHAVIORAL_PATTERNS",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_CAP_THEOREM",
+      "feature": "Real-time one-on-one and group messaging",
+      "concept": "CAP_THEOREM",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_CLOUD_MODELS_IAAS_PAAS_SAAS",
+      "feature": "Real-time one-on-one and group messaging",
+      "concept": "CLOUD_MODELS_IAAS_PAAS_SAAS",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_ERROR_MESSAGES_CONCEPT",
+      "feature": "Message history with offline caching",
+      "concept": "ERROR_MESSAGES_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_PROBLEM_DECOMPOSITION",
+      "feature": "Message history with offline caching",
+      "concept": "PROBLEM_DECOMPOSITION",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_PROCESS_VS_THREAD",
+      "feature": "Typing indicators and read receipts",
+      "concept": "PROCESS_VS_THREAD",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_RELATIONAL_VS_NONRELATIONAL",
+      "feature": "Typing indicators and read receipts",
+      "concept": "RELATIONAL_VS_NONRELATIONAL",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "feature": "Push notifications",
+      "concept": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    },
+    {
+      "lesson_id": "LES_VERSION_CONTROL_WORKFLOW",
+      "feature": "Push notifications",
+      "concept": "VERSION_CONTROL_WORKFLOW",
+      "has_lesson": "✅",
+      "has_act": "✅",
+      "has_code_lab": "✅",
+      "has_quiz": "✅",
+      "status": "APPROVED (GATE 2)"
+    }
+  ],
+  "milestones": [
+    {
+      "phase": 1,
+      "feature": "User registration and login",
+      "concepts": [
+        {
+          "concept_code": "ABSTRACTION_LAYERS",
+          "name": "Layers of Abstraction",
+          "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+          "learning_objectives": []
+        },
+        {
+          "concept_code": "BEHAVIORAL_PATTERNS",
+          "name": "Behavioral Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế hành vi, như Observer (định nghĩa sự phụ thuộc một-nhiều) và Strategy (cho phép chọn thuật toán lúc chạy).",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase": 2,
+      "feature": "Real-time one-on-one and group messaging",
+      "concepts": [
+        {
+          "concept_code": "CAP_THEOREM",
+          "name": "CAP Theorem",
+          "description": "Nắm vững định lý CAP (Consistency, Availability, Partition tolerance) và sự đánh đổi của nó trong các hệ thống phân tán.",
+          "learning_objectives": []
+        },
+        {
+          "concept_code": "CLOUD_MODELS_IAAS_PAAS_SAAS",
+          "name": "Cloud Service Models",
+          "description": "Phân biệt ba mô hình dịch vụ điện toán đám mây chính: IaaS (Cơ sở hạ tầng), PaaS (Nền tảng), và SaaS (Phần mềm như một Dịch vụ).",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase": 3,
+      "feature": "Message history with offline caching",
+      "concepts": [
+        {
+          "concept_code": "ERROR_MESSAGES_CONCEPT",
+          "name": "Interpreting Error Messages",
+          "description": "Kỹ năng đọc và hiểu các thông báo lỗi do chương trình hoặc hệ điều hành cung cấp để xác định nguyên nhân sự cố.",
+          "learning_objectives": [
+            {
+              "code": "ULO-ERROR_MESSAGES_CONCEPT-01",
+              "name": "Interpreting Error Messages - Analyze",
+              "description": "Người học có khả năng phân tích thông báo lỗi (stack trace, mã lỗi, mô tả) để xác định nguyên nhân gốc rễ và đề xuất phương án khắc phục.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "ERROR_MESSAGES_CONCEPT",
+              "bloom_level": "ANALYZE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "debugging-exercise",
+              "sequence_order": "6"
+            },
+            {
+              "code": "CIO-ERROR_MESSAGES_CONCEPT-01",
+              "name": "Error Message Diagnosis",
+              "description": "Người học có khả năng phân tích cấu trúc thông báo lỗi: error type, message, stack trace (file, line, call stack), context variables để truy vết nguyên nhân gốc rễ.",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-ERROR_MESSAGES_CONCEPT-01",
+              "concept_codes": "ERROR_MESSAGES_CONCEPT",
+              "bloom_level": "ANALYZE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "debugging-exercise",
+              "sequence_order": "6"
+            },
+            {
+              "code": "SIO-SWIFT-ERROR_MESSAGES_CONCEPT-01",
+              "name": "Swift: Decode Compiler Error in Xcode",
+              "description": "Người học có khả năng đọc error navigator Xcode: \"Consecutive statements on a line must be separated by ';'\", \"Type 'String' does not conform to protocol 'Numeric'\", \"Cannot find 'xxx' in scope\".",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-ERROR_MESSAGES_CONCEPT-01",
+              "concept_codes": "ERROR_MESSAGES_CONCEPT",
+              "bloom_level": "ANALYZE",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "debugging-exercise",
+              "sequence_order": "10"
+            }
+          ]
+        },
+        {
+          "concept_code": "PROBLEM_DECOMPOSITION",
+          "name": "Problem Decomposition",
+          "description": "Kỹ thuật chia một vấn đề lớn và phức tạp thành các vấn đề con nhỏ hơn, dễ quản lý hơn, là một phần cốt lõi của tư duy tính toán.",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase": 4,
+      "feature": "Typing indicators and read receipts",
+      "concepts": [
+        {
+          "concept_code": "PROCESS_VS_THREAD",
+          "name": "Process vs. Thread",
+          "description": "Phân biệt sự khác nhau giữa một tiến trình (một chương trình đang chạy với không gian bộ nhớ riêng) và một luồng (một luồng thực thi trong một tiến trình).",
+          "learning_objectives": []
+        },
+        {
+          "concept_code": "RELATIONAL_VS_NONRELATIONAL",
+          "name": "Relational vs. NoSQL Databases",
+          "description": "So sánh sự khác biệt cơ bản giữa cơ sở dữ liệu quan hệ (SQL) và không quan hệ (NoSQL) về mô hình dữ liệu, tính nhất quán và khả năng mở rộng.",
+          "learning_objectives": []
+        }
+      ]
+    },
+    {
+      "phase": 5,
+      "feature": "Push notifications",
+      "concepts": [
+        {
+          "concept_code": "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+          "name": "Systematic Troubleshooting",
+          "description": "Áp dụng một quy trình có hệ thống (xác định vấn đề, giả thuyết, kiểm tra, xác nhận) để giải quyết sự cố phần cứng và phần mềm.",
+          "learning_objectives": []
+        },
+        {
+          "concept_code": "VERSION_CONTROL_WORKFLOW",
+          "name": "Version Control Workflow",
+          "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+          "learning_objectives": [
+            {
+              "code": "ULO-VERSION_CONTROL_WORKFLOW-01",
+              "name": "Version Control Workflow - Apply",
+              "description": "Người học có khả năng áp dụng quy trình Git workflow (feature branch, commit convention, pull request, code review, merge strategy) trong làm việc nhóm.",
+              "lo_type": "UNIVERSAL",
+              "parent_lo_code": "",
+              "concept_codes": "VERSION_CONTROL_WORKFLOW",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "33"
+            },
+            {
+              "code": "CIO-VERSION_CONTROL_WORKFLOW-01",
+              "name": "Git Branching Strategy",
+              "description": "Người học có khả năng áp dụng chiến lược nhánh: Git Flow (main, develop, feature, release, hotfix), GitHub Flow (main, feature), Trunk-based Development, monorepo vs polyrepo, merge vs rebase.",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "parent_lo_code": "ULO-VERSION_CONTROL_WORKFLOW-01",
+              "concept_codes": "VERSION_CONTROL_WORKFLOW",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "33"
+            },
+            {
+              "code": "SIO-SWIFT-VERSION_CONTROL_WORKFLOW-01",
+              "name": "Swift: Write Conventional Commit Message",
+              "description": "Người học có khả năng viết commit message: feat(scope): description, fix(scope): description, chore: ..., refactor: ... theo Conventional Commits.",
+              "lo_type": "SPECIFIC_IMPL",
+              "parent_lo_code": "CIO-VERSION_CONTROL_WORKFLOW-01",
+              "concept_codes": "VERSION_CONTROL_WORKFLOW",
+              "bloom_level": "APPLY",
+              "knowledge_dimension": "PROCEDURAL",
+              "assessment_approach": "project",
+              "sequence_order": "57"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

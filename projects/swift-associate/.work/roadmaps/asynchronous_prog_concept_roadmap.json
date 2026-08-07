@@ -1,0 +1,433 @@
+{
+  "roadmap_id": "roadmap_asynchronous_prog_concept",
+  "goal_concept": {
+    "code": "ASYNCHRONOUS_PROG_CONCEPT",
+    "name": "Asynchronous Programming",
+    "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+    "topic_codes": "ASYNCHRONOUS_PROG",
+    "keywords": [
+      {
+        "code": "KW_ASYNC",
+        "name": "async",
+        "description": "Programming token: async (related: async, await, promise, future)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "async",
+            "await",
+            "promise",
+            "future",
+            "concurrency",
+            "non_blocking"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.423662"
+        }
+      },
+      {
+        "code": "KW_AWAIT",
+        "name": "await",
+        "description": "Programming token: await (related: await, async, promise, suspend)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "await",
+            "async",
+            "promise",
+            "suspend",
+            "resume"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.423776"
+        }
+      },
+      {
+        "code": "KW_PROMISE",
+        "name": "promise",
+        "description": "Programming token: promise (related: promise, future, async, then)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "promise",
+            "future",
+            "async",
+            "then",
+            "catch",
+            "resolve",
+            "reject"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.423920"
+        }
+      },
+      {
+        "code": "KW_FUTURE",
+        "name": "future",
+        "description": "Programming token: future (related: future, promise, async, completion)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "future",
+            "promise",
+            "async",
+            "completion"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.424015"
+        }
+      },
+      {
+        "code": "KW_TASK",
+        "name": "task",
+        "description": "Programming token: task (related: task, async, structured_concurrency, cancellation)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "task",
+            "async",
+            "structured_concurrency",
+            "cancellation",
+            "swift"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.424120"
+        }
+      },
+      {
+        "code": "KW_UNLOCK",
+        "name": "unlock",
+        "description": "Programming token: unlock (related: unlock, mutex, release, critical_section)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "unlock",
+            "mutex",
+            "release",
+            "critical_section"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.433358"
+        }
+      },
+      {
+        "code": "KW_PUBLISHER",
+        "name": "publisher",
+        "description": "Programming token: publisher (related: publisher, combine, stream, async)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "publisher",
+            "combine",
+            "stream",
+            "async",
+            "reactivity"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.447890"
+        }
+      },
+      {
+        "code": "KW_SUBSCRIBER",
+        "name": "subscriber",
+        "description": "Programming token: subscriber (related: subscriber, combine, stream, async)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "subscriber",
+            "combine",
+            "stream",
+            "async",
+            "reactivity"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.447989"
+        }
+      },
+      {
+        "code": "KW_ASYNC_AWAIT",
+        "name": "async_await",
+        "description": "Programming token: async_await (related: async_await, structured_concurrency, task, swift)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "async_await",
+            "structured_concurrency",
+            "task",
+            "swift"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.448178"
+        }
+      },
+      {
+        "code": "KW_BLOCKING",
+        "name": "blocking",
+        "description": "Token from concept 'Asynchronous Programming': blocking",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+          "extracted_at": "2026-08-03T12:28:05.456145"
+        }
+      },
+      {
+        "code": "KW_PROMISES",
+        "name": "promises",
+        "description": "Token from concept 'Asynchronous Programming': promises",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+          "extracted_at": "2026-08-03T12:28:05.456150"
+        }
+      },
+      {
+        "code": "KW_CALLBACKS",
+        "name": "callbacks",
+        "description": "Token from concept 'Asynchronous Programming': callbacks",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+          "extracted_at": "2026-08-03T12:28:05.456156"
+        }
+      }
+    ],
+    "cs2023_ka_mapping": "FPL, PDC",
+    "metadata": {
+      "icon": "hourglass-start"
+    },
+    "keywords_list": [
+      {
+        "code": "KW_ASYNC",
+        "name": "async",
+        "description": "Programming token: async (related: async, await, promise, future)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "async",
+            "await",
+            "promise",
+            "future",
+            "concurrency",
+            "non_blocking"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.423662"
+        }
+      },
+      {
+        "code": "KW_AWAIT",
+        "name": "await",
+        "description": "Programming token: await (related: await, async, promise, suspend)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "await",
+            "async",
+            "promise",
+            "suspend",
+            "resume"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.423776"
+        }
+      },
+      {
+        "code": "KW_PROMISE",
+        "name": "promise",
+        "description": "Programming token: promise (related: promise, future, async, then)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "promise",
+            "future",
+            "async",
+            "then",
+            "catch",
+            "resolve",
+            "reject"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.423920"
+        }
+      },
+      {
+        "code": "KW_FUTURE",
+        "name": "future",
+        "description": "Programming token: future (related: future, promise, async, completion)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "future",
+            "promise",
+            "async",
+            "completion"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.424015"
+        }
+      },
+      {
+        "code": "KW_TASK",
+        "name": "task",
+        "description": "Programming token: task (related: task, async, structured_concurrency, cancellation)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "task",
+            "async",
+            "structured_concurrency",
+            "cancellation",
+            "swift"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.424120"
+        }
+      },
+      {
+        "code": "KW_UNLOCK",
+        "name": "unlock",
+        "description": "Programming token: unlock (related: unlock, mutex, release, critical_section)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "unlock",
+            "mutex",
+            "release",
+            "critical_section"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.433358"
+        }
+      },
+      {
+        "code": "KW_PUBLISHER",
+        "name": "publisher",
+        "description": "Programming token: publisher (related: publisher, combine, stream, async)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "publisher",
+            "combine",
+            "stream",
+            "async",
+            "reactivity"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.447890"
+        }
+      },
+      {
+        "code": "KW_SUBSCRIBER",
+        "name": "subscriber",
+        "description": "Programming token: subscriber (related: subscriber, combine, stream, async)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "subscriber",
+            "combine",
+            "stream",
+            "async",
+            "reactivity"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.447989"
+        }
+      },
+      {
+        "code": "KW_ASYNC_AWAIT",
+        "name": "async_await",
+        "description": "Programming token: async_await (related: async_await, structured_concurrency, task, swift)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "async_await",
+            "structured_concurrency",
+            "task",
+            "swift"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.448178"
+        }
+      },
+      {
+        "code": "KW_BLOCKING",
+        "name": "blocking",
+        "description": "Token from concept 'Asynchronous Programming': blocking",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+          "extracted_at": "2026-08-03T12:28:05.456145"
+        }
+      },
+      {
+        "code": "KW_PROMISES",
+        "name": "promises",
+        "description": "Token from concept 'Asynchronous Programming': promises",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+          "extracted_at": "2026-08-03T12:28:05.456150"
+        }
+      },
+      {
+        "code": "KW_CALLBACKS",
+        "name": "callbacks",
+        "description": "Token from concept 'Asynchronous Programming': callbacks",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "ASYNCHRONOUS_PROG_CONCEPT",
+          "extracted_at": "2026-08-03T12:28:05.456156"
+        }
+      }
+    ]
+  },
+  "parameters": {
+    "weekly_hours": 10,
+    "target_depth": "Apply",
+    "known_concepts": [
+      "FIRST_CLASS_FUNCTIONS_CONCEPT"
+    ],
+    "estimated_weeks": 1,
+    "estimated_total_hours": 4
+  },
+  "judge_audit": {
+    "evaluation_status": "PASS_DEFAULT",
+    "pedagogical_coherence_score": 90,
+    "marr_t6_neutrality_pass": true,
+    "judge_notes": "Deterministic graph validation passed without LLM enhancement.",
+    "milestone_rationales": {}
+  },
+  "topo_order": [
+    "ASYNCHRONOUS_PROG_CONCEPT"
+  ],
+  "edges": [],
+  "milestones": [
+    {
+      "sequence": 1,
+      "week": 1,
+      "concept_code": "ASYNCHRONOUS_PROG_CONCEPT",
+      "name": "Asynchronous Programming",
+      "description": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+      "rationale": "Giới thiệu các kỹ thuật lập trình bất đồng bộ như callbacks, promises, hoặc async/await để xử lý các tác vụ tốn thời gian mà không chặn luồng chính.",
+      "learning_objectives": [
+        {
+          "code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+          "name": "Asynchronous Programming - Create",
+          "description": "Người học có khả năng thiết kế luồng xử lý bất đồng bộ sử dụng async/await, callbacks, hoặc promises để thực hiện các tác vụ I/O mà không chặn luồng chính.",
+          "lo_type": "UNIVERSAL",
+          "parent_lo_code": "",
+          "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+          "bloom_level": "CREATE",
+          "knowledge_dimension": "PROCEDURAL",
+          "assessment_approach": "project",
+          "sequence_order": "9"
+        },
+        {
+          "code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+          "name": "Async Control Flow Design",
+          "description": "Người học có khả năng thiết kế luồng điều khiển bất đồng bộ: callback-based (continuation passing), Promise/Future chaining (then/catch), async/await (synchronous syntax, implicit promise), structured concurrency (task groups, cancellation).",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "parent_lo_code": "ULO-ASYNCHRONOUS_PROG_CONCEPT-01",
+          "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+          "bloom_level": "CREATE",
+          "knowledge_dimension": "PROCEDURAL",
+          "assessment_approach": "project",
+          "sequence_order": "9"
+        },
+        {
+          "code": "SIO-SWIFT-ASYNCHRONOUS_PROG_CONCEPT-01",
+          "name": "Swift: Fetch Data with async/await",
+          "description": "Người học có khả năng viết async function, gọi URLSession.shared.data(from:) với await, xử lý CancellationError.",
+          "lo_type": "SPECIFIC_IMPL",
+          "parent_lo_code": "CIO-ASYNCHRONOUS_PROG_CONCEPT-01",
+          "concept_codes": "ASYNCHRONOUS_PROG_CONCEPT",
+          "bloom_level": "APPLY",
+          "knowledge_dimension": "PROCEDURAL",
+          "assessment_approach": "code-review",
+          "sequence_order": "15"
+        }
+      ]
+    }
+  ]
+}

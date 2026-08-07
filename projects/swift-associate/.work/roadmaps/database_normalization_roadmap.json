@@ -1,0 +1,146 @@
+{
+  "roadmap_id": "roadmap_database_normalization",
+  "goal_concept": {
+    "code": "DATABASE_NORMALIZATION",
+    "name": "Database Normalization",
+    "description": "Hiểu quá trình tổ chức các cột và bảng trong cơ sở dữ liệu quan hệ để giảm thiểu sự dư thừa dữ liệu và cải thiện tính toàn vẹn.",
+    "topic_codes": "RELATIONAL_DB,TRANSACTION_MANAGEMENT",
+    "keywords": [
+      {
+        "code": "KW_BASE",
+        "name": "base",
+        "description": "Programming token: base (related: base, parent, superclass, inheritance)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "base",
+            "parent",
+            "superclass",
+            "inheritance"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.425802"
+        }
+      },
+      {
+        "code": "KW_ROLLBACK",
+        "name": "rollback",
+        "description": "Programming token: rollback (related: rollback, transaction, undo, abort)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "rollback",
+            "transaction",
+            "undo",
+            "abort"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.437673"
+        }
+      },
+      {
+        "code": "KW_NORMALIZATION",
+        "name": "normalization",
+        "description": "Token from concept 'Database Normalization': normalization",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "DATABASE_NORMALIZATION",
+          "extracted_at": "2026-08-03T12:28:05.455852"
+        }
+      },
+      {
+        "code": "KW_DATABASE",
+        "name": "database",
+        "description": "Token from concept 'Database Normalization': database",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "DATABASE_NORMALIZATION",
+          "extracted_at": "2026-08-03T12:28:05.455857"
+        }
+      }
+    ],
+    "cs2023_ka_mapping": "DM",
+    "metadata": {
+      "icon": "columns"
+    },
+    "keywords_list": [
+      {
+        "code": "KW_BASE",
+        "name": "base",
+        "description": "Programming token: base (related: base, parent, superclass, inheritance)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "base",
+            "parent",
+            "superclass",
+            "inheritance"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.425802"
+        }
+      },
+      {
+        "code": "KW_ROLLBACK",
+        "name": "rollback",
+        "description": "Programming token: rollback (related: rollback, transaction, undo, abort)",
+        "metadata": {
+          "source": "reference_glossary",
+          "related_terms": [
+            "rollback",
+            "transaction",
+            "undo",
+            "abort"
+          ],
+          "extracted_at": "2026-08-03T12:28:05.437673"
+        }
+      },
+      {
+        "code": "KW_NORMALIZATION",
+        "name": "normalization",
+        "description": "Token from concept 'Database Normalization': normalization",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "DATABASE_NORMALIZATION",
+          "extracted_at": "2026-08-03T12:28:05.455852"
+        }
+      },
+      {
+        "code": "KW_DATABASE",
+        "name": "database",
+        "description": "Token from concept 'Database Normalization': database",
+        "metadata": {
+          "source": "concept_extraction",
+          "source_concept": "DATABASE_NORMALIZATION",
+          "extracted_at": "2026-08-03T12:28:05.455857"
+        }
+      }
+    ]
+  },
+  "parameters": {
+    "weekly_hours": 5,
+    "target_depth": "Apply",
+    "known_concepts": [],
+    "estimated_weeks": 1,
+    "estimated_total_hours": 4
+  },
+  "judge_audit": {
+    "evaluation_status": "PASS_DEFAULT",
+    "pedagogical_coherence_score": 90,
+    "marr_t6_neutrality_pass": true,
+    "judge_notes": "Deterministic graph validation passed without LLM enhancement.",
+    "milestone_rationales": {}
+  },
+  "topo_order": [
+    "DATABASE_NORMALIZATION"
+  ],
+  "edges": [],
+  "milestones": [
+    {
+      "sequence": 1,
+      "week": 1,
+      "concept_code": "DATABASE_NORMALIZATION",
+      "name": "Database Normalization",
+      "description": "Hiểu quá trình tổ chức các cột và bảng trong cơ sở dữ liệu quan hệ để giảm thiểu sự dư thừa dữ liệu và cải thiện tính toàn vẹn.",
+      "rationale": "Hiểu quá trình tổ chức các cột và bảng trong cơ sở dữ liệu quan hệ để giảm thiểu sự dư thừa dữ liệu và cải thiện tính toàn vẹn.",
+      "learning_objectives": []
+    }
+  ]
+}

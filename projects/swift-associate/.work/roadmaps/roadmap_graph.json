@@ -1,0 +1,158 @@
+{
+  "nodes": [
+    {
+      "id": "LO-ABSTRACTION_LAYERS",
+      "type": "topic",
+      "label": "Layers of Abstraction",
+      "group": "Foundations"
+    },
+    {
+      "id": "LO-BEHAVIORAL_PATTERNS",
+      "type": "topic",
+      "label": "Behavioral Design Patterns",
+      "group": "Foundations"
+    },
+    {
+      "id": "LO-CREATIONAL_PATTERNS",
+      "type": "topic",
+      "label": "Creational Design Patterns",
+      "group": "Foundations"
+    },
+    {
+      "id": "LO-ERROR_MESSAGES_CONCEPT",
+      "type": "topic",
+      "label": "Interpreting Error Messages",
+      "group": "Foundations"
+    },
+    {
+      "id": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "type": "topic",
+      "label": "First-Class & Higher-Order Functions",
+      "group": "Foundations"
+    },
+    {
+      "id": "LO-IMMUTABILITY_CONCEPT",
+      "type": "topic",
+      "label": "Immutability and Pure Functions",
+      "group": "Capstone Feature"
+    },
+    {
+      "id": "LO-PROBLEM_DECOMPOSITION",
+      "type": "topic",
+      "label": "Problem Decomposition",
+      "group": "Capstone Feature"
+    },
+    {
+      "id": "LO-PROCESS_VS_THREAD",
+      "type": "topic",
+      "label": "Process vs. Thread",
+      "group": "Capstone Feature"
+    },
+    {
+      "id": "LO-STRUCTURAL_PATTERNS",
+      "type": "topic",
+      "label": "Structural Design Patterns",
+      "group": "Capstone Feature"
+    },
+    {
+      "id": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "type": "topic",
+      "label": "Systematic Troubleshooting",
+      "group": "Capstone Feature"
+    },
+    {
+      "id": "LO-VERSION_CONTROL_WORKFLOW",
+      "type": "checkpoint",
+      "label": "Version Control Workflow",
+      "group": "Capstone Feature"
+    },
+    {
+      "id": "checkpoint-phase0",
+      "type": "checkpoint",
+      "label": "Gate 0: WebSocket Transport Layer",
+      "group": "Gates"
+    },
+    {
+      "id": "checkpoint-phase1",
+      "type": "checkpoint",
+      "label": "Gate 1: Combine State Binding & Event Stream",
+      "group": "Gates"
+    },
+    {
+      "id": "checkpoint-phase2",
+      "type": "checkpoint",
+      "label": "Gate 2: Offline CoreData Caching & Persistence",
+      "group": "Gates"
+    },
+    {
+      "id": "checkpoint-phase3",
+      "type": "checkpoint",
+      "label": "Gate 3: SwiftUI View Components & Reactions",
+      "group": "Gates"
+    },
+    {
+      "id": "checkpoint-phase4",
+      "type": "checkpoint",
+      "label": "Gate 4: Integration & Testing",
+      "group": "Gates"
+    },
+    {
+      "id": "checkpoint-phase5",
+      "type": "checkpoint",
+      "label": "Gate 5: Performance & Production Readiness",
+      "group": "Gates"
+    }
+  ],
+  "edges": [
+    {
+      "from": "LO-ABSTRACTION_LAYERS",
+      "to": "LO-BEHAVIORAL_PATTERNS",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-BEHAVIORAL_PATTERNS",
+      "to": "LO-CREATIONAL_PATTERNS",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-CREATIONAL_PATTERNS",
+      "to": "LO-ERROR_MESSAGES_CONCEPT",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-ERROR_MESSAGES_CONCEPT",
+      "to": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+      "to": "LO-IMMUTABILITY_CONCEPT",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-IMMUTABILITY_CONCEPT",
+      "to": "LO-PROBLEM_DECOMPOSITION",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-PROBLEM_DECOMPOSITION",
+      "to": "LO-PROCESS_VS_THREAD",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-PROCESS_VS_THREAD",
+      "to": "LO-STRUCTURAL_PATTERNS",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-STRUCTURAL_PATTERNS",
+      "to": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "kind": "prerequisite"
+    },
+    {
+      "from": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+      "to": "LO-VERSION_CONTROL_WORKFLOW",
+      "kind": "prerequisite"
+    }
+  ]
+}

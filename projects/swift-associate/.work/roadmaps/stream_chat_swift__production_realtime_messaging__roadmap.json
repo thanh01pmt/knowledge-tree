@@ -1,0 +1,1598 @@
+{
+  "project_brief": {
+    "title": "Stream Chat Swift (Production Realtime Messaging)",
+    "project_code": "PROJ-STREAM-CHAT",
+    "type": "Production Open-Source SDK / Application",
+    "target_learner": "Intermediate/Advanced iOS Developer",
+    "description": "Production-grade open-source chat client supporting WebSockets, Combine state binding, offline CoreData persistence, and SwiftUI views. Demonstrates realtime messaging architecture with modular components.",
+    "tech_stack": [
+      "Swift",
+      "SwiftUI",
+      "Combine",
+      "URLSessionWebSocketTask",
+      "CoreData"
+    ],
+    "key_features": [
+      "WebSocket Client & Transport Layer (URLSessionWebSocketTask)",
+      "Combine State Binding & Event Stream",
+      "Offline CoreData Caching & Persistence",
+      "Custom SwiftUI View Components & Reactions"
+    ]
+  },
+  "step_by_step_build_guide": [
+    {
+      "phase_id": 1,
+      "title": "WebSocket Transport Layer",
+      "engineering_action": "Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+      "required_prereq_knowledge": "Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding.",
+      "matching_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS"
+      ]
+    },
+    {
+      "phase_id": 2,
+      "title": "Combine State Binding & Event Stream",
+      "engineering_action": "Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+      "required_prereq_knowledge": "Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine.",
+      "matching_concept_codes": [
+        "BEHAVIORAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "Offline CoreData Caching & Persistence",
+      "engineering_action": "Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+      "required_prereq_knowledge": "CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling.",
+      "matching_concept_codes": [
+        "STRUCTURAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ]
+    },
+    {
+      "phase_id": 4,
+      "title": "SwiftUI View Components & Reactions",
+      "engineering_action": "Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+      "required_prereq_knowledge": "SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates.",
+      "matching_concept_codes": [
+        "STRUCTURAL_PATTERNS",
+        "BEHAVIORAL_PATTERNS"
+      ]
+    },
+    {
+      "phase_id": 5,
+      "title": "Integration & Testing",
+      "engineering_action": "Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+      "required_prereq_knowledge": "XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest.",
+      "matching_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS"
+      ]
+    },
+    {
+      "phase_id": 6,
+      "title": "Performance & Production Readiness",
+      "engineering_action": "Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+      "required_prereq_knowledge": "Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics).",
+      "matching_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS"
+      ]
+    }
+  ],
+  "techstack_advisor": {
+    "intake_id": "intake-20260804-001",
+    "chosen_option": "A",
+    "stack": {
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "URLSessionWebSocketTask",
+        "CoreData"
+      ],
+      "build_tooling": "Swift Package Manager (SPM)"
+    },
+    "estimated_effort_hours": 90,
+    "learner_budget_hours": 80,
+    "tradeoffs_noted": [
+      "Time conflict: project needs ~90h (6w × 15h/w baseline), learner has 80h (10h/w × 8w). Deficit: 10h (11% short).",
+      "Minor scope trim — omit integration test suite, focus on unit tests."
+    ]
+  },
+  "execution_model": "Product-First Build Guide → Reverse Knowledge Mapping (45-Min Tasks)",
+  "student_active_roadmap": {
+    "status": "PINNED_ACTIVE",
+    "project_id": "PROJ-STREAM-CHAT",
+    "project_title": "Stream Chat Swift (Production Realtime Messaging)",
+    "current_phase_index": 0,
+    "pinned_at": "2026-08-04T10:11:13.718827+00:00",
+    "unmapped_steps_ratio": 0.0
+  },
+  "code_reviewer_rubric": {
+    "reviewer_agent": "AI Code Reviewer Agent (@reviewer)",
+    "rubric": {
+      "functional_correctness": "Code runs and satisfies deliverable acceptance criteria",
+      "language_syntax_idiom": "Code adheres to standard Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData conventions",
+      "error_handling": "Code handles exceptions, network loss, and edge cases"
+    }
+  },
+  "quarantine_candidates": [],
+  "roadmap_graph": {
+    "nodes": [
+      {
+        "id": "LO-ABSTRACTION_LAYERS",
+        "type": "topic",
+        "label": "Layers of Abstraction",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-BEHAVIORAL_PATTERNS",
+        "type": "topic",
+        "label": "Behavioral Design Patterns",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-CREATIONAL_PATTERNS",
+        "type": "topic",
+        "label": "Creational Design Patterns",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-ERROR_MESSAGES_CONCEPT",
+        "type": "topic",
+        "label": "Interpreting Error Messages",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "type": "topic",
+        "label": "First-Class & Higher-Order Functions",
+        "group": "Foundations"
+      },
+      {
+        "id": "LO-IMMUTABILITY_CONCEPT",
+        "type": "topic",
+        "label": "Immutability and Pure Functions",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-PROBLEM_DECOMPOSITION",
+        "type": "topic",
+        "label": "Problem Decomposition",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-PROCESS_VS_THREAD",
+        "type": "topic",
+        "label": "Process vs. Thread",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-STRUCTURAL_PATTERNS",
+        "type": "topic",
+        "label": "Structural Design Patterns",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "type": "topic",
+        "label": "Systematic Troubleshooting",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "LO-VERSION_CONTROL_WORKFLOW",
+        "type": "checkpoint",
+        "label": "Version Control Workflow",
+        "group": "Capstone Feature"
+      },
+      {
+        "id": "checkpoint-phase0",
+        "type": "checkpoint",
+        "label": "Gate 0: WebSocket Transport Layer",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase1",
+        "type": "checkpoint",
+        "label": "Gate 1: Combine State Binding & Event Stream",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase2",
+        "type": "checkpoint",
+        "label": "Gate 2: Offline CoreData Caching & Persistence",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase3",
+        "type": "checkpoint",
+        "label": "Gate 3: SwiftUI View Components & Reactions",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase4",
+        "type": "checkpoint",
+        "label": "Gate 4: Integration & Testing",
+        "group": "Gates"
+      },
+      {
+        "id": "checkpoint-phase5",
+        "type": "checkpoint",
+        "label": "Gate 5: Performance & Production Readiness",
+        "group": "Gates"
+      }
+    ],
+    "edges": [
+      {
+        "from": "LO-ABSTRACTION_LAYERS",
+        "to": "LO-BEHAVIORAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-BEHAVIORAL_PATTERNS",
+        "to": "LO-CREATIONAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-CREATIONAL_PATTERNS",
+        "to": "LO-ERROR_MESSAGES_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-ERROR_MESSAGES_CONCEPT",
+        "to": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-FIRST_CLASS_FUNCTIONS_CONCEPT",
+        "to": "LO-IMMUTABILITY_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-IMMUTABILITY_CONCEPT",
+        "to": "LO-PROBLEM_DECOMPOSITION",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-PROBLEM_DECOMPOSITION",
+        "to": "LO-PROCESS_VS_THREAD",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-PROCESS_VS_THREAD",
+        "to": "LO-STRUCTURAL_PATTERNS",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-STRUCTURAL_PATTERNS",
+        "to": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "kind": "prerequisite"
+      },
+      {
+        "from": "LO-TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+        "to": "LO-VERSION_CONTROL_WORKFLOW",
+        "kind": "prerequisite"
+      }
+    ]
+  },
+  "user_profile": {
+    "age_group": "adult",
+    "focus_window_minutes": 45,
+    "weekly_hours": 10,
+    "target_weeks": 8,
+    "total_budget_hours": 80,
+    "ultimate_outcome": "Build MVP Product for Portfolio",
+    "preferred_modality": "Hands-on Code Labs & Interactive Diagrams",
+    "known_concepts": []
+  },
+  "all_proposals": [
+    {
+      "option_id": 1,
+      "project_code": "PROJ-STREAM-CHAT",
+      "github_repo_url": "https://github.com/GetStream/stream-chat-swift",
+      "type": "Production Open-Source SDK / Application",
+      "title": "Stream Chat Swift (Production Realtime Messaging)",
+      "target_learner": "Intermediate/Advanced iOS Developer",
+      "description": "Production-grade open-source chat client supporting WebSockets, Combine state binding, offline CoreData persistence, and SwiftUI views. Demonstrates realtime messaging architecture with modular components.",
+      "estimated_weeks": 6,
+      "tech_stack": [
+        "Swift",
+        "SwiftUI",
+        "Combine",
+        "URLSessionWebSocketTask",
+        "CoreData"
+      ],
+      "key_features": [
+        "WebSocket Client & Transport Layer (URLSessionWebSocketTask)",
+        "Combine State Binding & Event Stream",
+        "Offline CoreData Caching & Persistence",
+        "Custom SwiftUI View Components & Reactions"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS",
+        "BEHAVIORAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ]
+    },
+    {
+      "option_id": 2,
+      "project_code": "PROJ-FIREBASE-IOS",
+      "github_repo_url": "https://github.com/firebase/firebase-ios-sdk",
+      "type": "Production Open-Source SDK",
+      "title": "Firebase iOS SDK (Realtime Database & Firestore)",
+      "target_learner": "Intermediate/Advanced iOS Developer",
+      "description": "Production-grade SDK for realtime data synchronization with Cloud Firestore and Realtime Database. Includes offline persistence, Combine integration, and SwiftUI support. Ideal for learning cloud-backed realtime architectures.",
+      "estimated_weeks": 8,
+      "tech_stack": [
+        "Swift",
+        "Objective-C",
+        "Combine",
+        "Firestore",
+        "Realtime Database",
+        "CoreData"
+      ],
+      "key_features": [
+        "Realtime Listeners & Data Sync",
+        "Offline Persistence & Conflict Resolution",
+        "Security Rules & Authentication Integration",
+        "Combine Publishers for Reactive Updates"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS",
+        "ABSTRACTION_LAYERS",
+        "RELATIONAL_VS_NONRELATIONAL",
+        "VERSION_CONTROL_WORKFLOW"
+      ]
+    },
+    {
+      "option_id": 3,
+      "project_code": "PROJ-SOCKETIO-CLIENT",
+      "github_repo_url": "https://github.com/socketio/socket.io-client-swift",
+      "type": "Production Open-Source Library",
+      "title": "Socket.IO Client Swift (Realtime WebSocket Communication)",
+      "target_learner": "Intermediate iOS Developer",
+      "description": "Production-grade WebSocket client library for realtime bidirectional communication. Supports rooms, namespaces, custom events, and automatic reconnection. A lightweight foundation for building custom realtime features.",
+      "estimated_weeks": 4,
+      "tech_stack": [
+        "Swift",
+        "WebSocket",
+        "Starscream",
+        "Combine"
+      ],
+      "key_features": [
+        "WebSocket Connection Management",
+        "Event-Based Messaging with Rooms & Namespaces",
+        "Automatic Reconnection & Backoff",
+        "Combine Integration for Reactive Streams"
+      ],
+      "target_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS",
+        "BEHAVIORAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ]
+    }
+  ],
+  "topo_order": [
+    "ABSTRACTION_LAYERS",
+    "BEHAVIORAL_PATTERNS",
+    "CREATIONAL_PATTERNS",
+    "ERROR_MESSAGES_CONCEPT",
+    "FIRST_CLASS_FUNCTIONS_CONCEPT",
+    "IMMUTABILITY_CONCEPT",
+    "PROBLEM_DECOMPOSITION",
+    "PROCESS_VS_THREAD",
+    "STRUCTURAL_PATTERNS",
+    "TROUBLESHOOTING_METHODOLOGY_CONCEPT",
+    "VERSION_CONTROL_WORKFLOW"
+  ],
+  "edges": [],
+  "waterfall_gates": [
+    {
+      "gate_id": "GATE_0_WEBSOCKET_TRANSPORT_LAYER",
+      "phase": "Phase 0: WebSocket Transport Layer",
+      "engineering_action": "Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+      "prerequisite_needed": "Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding.",
+      "timeframe": "Weeks 1-1 (13h)",
+      "checkpoint": "Complete 'Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 0 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_0_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in WebSocket Transport Layer",
+            "instruction": "Read error log and fix code for 'Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_1_COMBINE_STATE_BINDING___EVENT_STREAM",
+      "phase": "Phase 1: Combine State Binding & Event Stream",
+      "engineering_action": "Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+      "prerequisite_needed": "Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine.",
+      "timeframe": "Weeks 2-2 (13h)",
+      "checkpoint": "Complete 'Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 1 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_1_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Combine State Binding & Event Stream",
+            "instruction": "Read error log and fix code for 'Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_2_OFFLINE_COREDATA_CACHING___PERSISTENCE",
+      "phase": "Phase 2: Offline CoreData Caching & Persistence",
+      "engineering_action": "Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+      "prerequisite_needed": "CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling.",
+      "timeframe": "Weeks 3-3 (13h)",
+      "checkpoint": "Complete 'Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 2 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_2_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Offline CoreData Caching & Persistence",
+            "instruction": "Read error log and fix code for 'Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_3_SWIFTUI_VIEW_COMPONENTS___REACTIONS",
+      "phase": "Phase 3: SwiftUI View Components & Reactions",
+      "engineering_action": "Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+      "prerequisite_needed": "SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates.",
+      "timeframe": "Weeks 4-4 (13h)",
+      "checkpoint": "Complete 'Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 3 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_3_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in SwiftUI View Components & Reactions",
+            "instruction": "Read error log and fix code for 'Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_4_INTEGRATION___TESTING",
+      "phase": "Phase 4: Integration & Testing",
+      "engineering_action": "Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+      "prerequisite_needed": "XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest.",
+      "timeframe": "Weeks 5-5 (13h)",
+      "checkpoint": "Complete 'Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 4 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_4_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Integration & Testing",
+            "instruction": "Read error log and fix code for 'Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.'."
+          }
+        ]
+      }
+    },
+    {
+      "gate_id": "GATE_5_PERFORMANCE___PRODUCTION_READINESS",
+      "phase": "Phase 5: Performance & Production Readiness",
+      "engineering_action": "Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+      "prerequisite_needed": "Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics).",
+      "timeframe": "Weeks 6-8 (13h)",
+      "checkpoint": "Complete 'Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.' and pass unit tests",
+      "status": "APPROVAL_REQUIRED (GATE CHECK)",
+      "remediation_sprint": {
+        "trigger": "FAIL_UNIT_TESTS_OR_CODE_REVIEW",
+        "sprint_title": "Phase 5 Remediation",
+        "tasks": [
+          {
+            "task_id": "REM_5_1",
+            "focus_minutes": 15,
+            "title": "Fix errors in Performance & Production Readiness",
+            "instruction": "Read error log and fix code for 'Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.'."
+          }
+        ]
+      }
+    }
+  ],
+  "waterfall_phases": [
+    {
+      "phase_num": 0,
+      "title": "WebSocket Transport Layer",
+      "engineering_action": "Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+      "required_prereq_knowledge": "Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding.",
+      "matching_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS"
+      ],
+      "timeframe": "Weeks 1-1 (13h)",
+      "concepts": [
+        {
+          "concept_code": "PROCESS_VS_THREAD",
+          "name": "Process vs. Thread",
+          "description": "Phân biệt sự khác nhau giữa một tiến trình (một chương trình đang chạy với không gian bộ nhớ riêng) và một luồng (một luồng thực thi trong một tiến trình).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-PROCESS_VS_THREAD-1",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Process vs. Thread",
+              "description": "Hiểu nguyên lý phổ quát của Process vs. Thread cho 'WebSocket Transport Layer'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-PROCESS_VS_THREAD-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Process vs. Thread",
+              "description": "Thiết kế quy trình xử lý cho Process vs. Thread.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-PROCESS_VS_THREAD-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+              "description": "Thực thi trực tiếp: 'Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_0_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-PROCESS_VS_THREAD-1",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding. (Process vs. Thread)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_0_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-PROCESS_VS_THREAD-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_0_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-PROCESS_VS_THREAD-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: WebSocket Transport Layer",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "ABSTRACTION_LAYERS",
+          "name": "Layers of Abstraction",
+          "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-ABSTRACTION_LAYERS-1",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Layers of Abstraction",
+              "description": "Hiểu nguyên lý phổ quát của Layers of Abstraction cho 'WebSocket Transport Layer'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-ABSTRACTION_LAYERS-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Layers of Abstraction",
+              "description": "Thiết kế quy trình xử lý cho Layers of Abstraction.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-ABSTRACTION_LAYERS-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+              "description": "Thực thi trực tiếp: 'Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_0_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-ABSTRACTION_LAYERS-1",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding. (Layers of Abstraction)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_0_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-1",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_0_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-ABSTRACTION_LAYERS-1",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: WebSocket Transport Layer",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_0_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-PROCESS_VS_THREAD-1",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding. (Process vs. Thread)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_0_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-PROCESS_VS_THREAD-1",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_0_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-PROCESS_VS_THREAD-1",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: WebSocket Transport Layer",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_0_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-ABSTRACTION_LAYERS-1",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Swift concurrency (async/await), URLSession, WebSocket protocol basics, JSON encoding/decoding. (Layers of Abstraction)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_0_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-1",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Implement a WebSocket client using URLSessionWebSocketTask with automatic reconnection, ping/pong keep-alive, and message serialization/deserialization.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_0_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-ABSTRACTION_LAYERS-1",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: WebSocket Transport Layer",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 1,
+      "title": "Combine State Binding & Event Stream",
+      "engineering_action": "Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+      "required_prereq_knowledge": "Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine.",
+      "matching_concept_codes": [
+        "BEHAVIORAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ],
+      "timeframe": "Weeks 2-2 (13h)",
+      "concepts": [
+        {
+          "concept_code": "BEHAVIORAL_PATTERNS",
+          "name": "Behavioral Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế hành vi, như Observer (định nghĩa sự phụ thuộc một-nhiều) và Strategy (cho phép chọn thuật toán lúc chạy).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-BEHAVIORAL_PATTERNS-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Behavioral Design Patterns",
+              "description": "Hiểu nguyên lý phổ quát của Behavioral Design Patterns cho 'Combine State Binding & Event Stream'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-BEHAVIORAL_PATTERNS-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Behavioral Design Patterns",
+              "description": "Thiết kế quy trình xử lý cho Behavioral Design Patterns.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-BEHAVIORAL_PATTERNS-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+              "description": "Thực thi trực tiếp: 'Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-BEHAVIORAL_PATTERNS-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine. (Behavioral Design Patterns)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-BEHAVIORAL_PATTERNS-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_1_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-BEHAVIORAL_PATTERNS-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Combine State Binding & Event Stream",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "ABSTRACTION_LAYERS",
+          "name": "Layers of Abstraction",
+          "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-ABSTRACTION_LAYERS-2",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Layers of Abstraction",
+              "description": "Hiểu nguyên lý phổ quát của Layers of Abstraction cho 'Combine State Binding & Event Stream'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-ABSTRACTION_LAYERS-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Layers of Abstraction",
+              "description": "Thiết kế quy trình xử lý cho Layers of Abstraction.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-ABSTRACTION_LAYERS-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+              "description": "Thực thi trực tiếp: 'Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_1_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-ABSTRACTION_LAYERS-2",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine. (Layers of Abstraction)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_1_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-2",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_1_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-ABSTRACTION_LAYERS-2",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Combine State Binding & Event Stream",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_1_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-BEHAVIORAL_PATTERNS-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine. (Behavioral Design Patterns)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-BEHAVIORAL_PATTERNS-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_1_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-BEHAVIORAL_PATTERNS-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Combine State Binding & Event Stream",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_1_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-ABSTRACTION_LAYERS-2",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Combine framework (Publishers, Subscribers, Subjects, Operators), reactive programming patterns, error handling in Combine. (Layers of Abstraction)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_1_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-2",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Build a Combine-based event stream that transforms raw WebSocket messages into typed chat events (new message, typing indicator, reactions) and exposes them as publishers for UI binding.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_1_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-ABSTRACTION_LAYERS-2",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Combine State Binding & Event Stream",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 2,
+      "title": "Offline CoreData Caching & Persistence",
+      "engineering_action": "Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+      "required_prereq_knowledge": "CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling.",
+      "matching_concept_codes": [
+        "STRUCTURAL_PATTERNS",
+        "ABSTRACTION_LAYERS"
+      ],
+      "timeframe": "Weeks 3-3 (13h)",
+      "concepts": [
+        {
+          "concept_code": "STRUCTURAL_PATTERNS",
+          "name": "Structural Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế cấu trúc, như Adapter (cho phép các giao diện không tương thích làm việc với nhau) và Decorator (thêm chức năng cho đối tượng một cách linh hoạt).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-STRUCTURAL_PATTERNS-3",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Structural Design Patterns",
+              "description": "Hiểu nguyên lý phổ quát của Structural Design Patterns cho 'Offline CoreData Caching & Persistence'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-STRUCTURAL_PATTERNS-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Structural Design Patterns",
+              "description": "Thiết kế quy trình xử lý cho Structural Design Patterns.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-STRUCTURAL_PATTERNS-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+              "description": "Thực thi trực tiếp: 'Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_2_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-STRUCTURAL_PATTERNS-3",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling. (Structural Design Patterns)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_2_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-STRUCTURAL_PATTERNS-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_2_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-STRUCTURAL_PATTERNS-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Offline CoreData Caching & Persistence",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "ABSTRACTION_LAYERS",
+          "name": "Layers of Abstraction",
+          "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-ABSTRACTION_LAYERS-3",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Layers of Abstraction",
+              "description": "Hiểu nguyên lý phổ quát của Layers of Abstraction cho 'Offline CoreData Caching & Persistence'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-ABSTRACTION_LAYERS-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Layers of Abstraction",
+              "description": "Thiết kế quy trình xử lý cho Layers of Abstraction.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-ABSTRACTION_LAYERS-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+              "description": "Thực thi trực tiếp: 'Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_2_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-ABSTRACTION_LAYERS-3",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling. (Layers of Abstraction)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_2_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-3",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_2_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-ABSTRACTION_LAYERS-3",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Offline CoreData Caching & Persistence",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_2_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-STRUCTURAL_PATTERNS-3",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling. (Structural Design Patterns)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_2_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-STRUCTURAL_PATTERNS-3",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_2_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-STRUCTURAL_PATTERNS-3",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Offline CoreData Caching & Persistence",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_2_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-ABSTRACTION_LAYERS-3",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: CoreData (NSManagedObjectModel, NSPersistentContainer, fetch requests, background contexts), offline-first data strategies, data modeling. (Layers of Abstraction)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_2_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-3",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Design and implement a CoreData stack for offline caching of messages and channels, including sync logic to reconcile network state with local storage and handle conflict resolution.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_2_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-ABSTRACTION_LAYERS-3",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Offline CoreData Caching & Persistence",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 3,
+      "title": "SwiftUI View Components & Reactions",
+      "engineering_action": "Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+      "required_prereq_knowledge": "SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates.",
+      "matching_concept_codes": [
+        "STRUCTURAL_PATTERNS",
+        "BEHAVIORAL_PATTERNS"
+      ],
+      "timeframe": "Weeks 4-4 (13h)",
+      "concepts": [
+        {
+          "concept_code": "STRUCTURAL_PATTERNS",
+          "name": "Structural Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế cấu trúc, như Adapter (cho phép các giao diện không tương thích làm việc với nhau) và Decorator (thêm chức năng cho đối tượng một cách linh hoạt).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-STRUCTURAL_PATTERNS-4",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Structural Design Patterns",
+              "description": "Hiểu nguyên lý phổ quát của Structural Design Patterns cho 'SwiftUI View Components & Reactions'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-STRUCTURAL_PATTERNS-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Structural Design Patterns",
+              "description": "Thiết kế quy trình xử lý cho Structural Design Patterns.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-STRUCTURAL_PATTERNS-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+              "description": "Thực thi trực tiếp: 'Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_3_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-STRUCTURAL_PATTERNS-4",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates. (Structural Design Patterns)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_3_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-STRUCTURAL_PATTERNS-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_3_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-STRUCTURAL_PATTERNS-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: SwiftUI View Components & Reactions",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "BEHAVIORAL_PATTERNS",
+          "name": "Behavioral Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế hành vi, như Observer (định nghĩa sự phụ thuộc một-nhiều) và Strategy (cho phép chọn thuật toán lúc chạy).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-BEHAVIORAL_PATTERNS-4",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Behavioral Design Patterns",
+              "description": "Hiểu nguyên lý phổ quát của Behavioral Design Patterns cho 'SwiftUI View Components & Reactions'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-BEHAVIORAL_PATTERNS-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Behavioral Design Patterns",
+              "description": "Thiết kế quy trình xử lý cho Behavioral Design Patterns.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-BEHAVIORAL_PATTERNS-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+              "description": "Thực thi trực tiếp: 'Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_3_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-BEHAVIORAL_PATTERNS-4",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates. (Behavioral Design Patterns)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_3_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-BEHAVIORAL_PATTERNS-4",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_3_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-BEHAVIORAL_PATTERNS-4",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: SwiftUI View Components & Reactions",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_3_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-STRUCTURAL_PATTERNS-4",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates. (Structural Design Patterns)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_3_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-STRUCTURAL_PATTERNS-4",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_3_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-STRUCTURAL_PATTERNS-4",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: SwiftUI View Components & Reactions",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_3_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-BEHAVIORAL_PATTERNS-4",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: SwiftUI (View, @State, @ObservedObject, @EnvironmentObject), view composition, animation, and state-driven UI updates. (Behavioral Design Patterns)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_3_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-BEHAVIORAL_PATTERNS-4",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Create reusable SwiftUI views for chat bubbles, reaction overlays, typing indicators, and message input field, binding them to the Combine state stream and CoreData store.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_3_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-BEHAVIORAL_PATTERNS-4",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: SwiftUI View Components & Reactions",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 4,
+      "title": "Integration & Testing",
+      "engineering_action": "Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+      "required_prereq_knowledge": "XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest.",
+      "matching_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "STRUCTURAL_PATTERNS"
+      ],
+      "timeframe": "Weeks 5-5 (13h)",
+      "concepts": [
+        {
+          "concept_code": "PROCESS_VS_THREAD",
+          "name": "Process vs. Thread",
+          "description": "Phân biệt sự khác nhau giữa một tiến trình (một chương trình đang chạy với không gian bộ nhớ riêng) và một luồng (một luồng thực thi trong một tiến trình).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-PROCESS_VS_THREAD-5",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Process vs. Thread",
+              "description": "Hiểu nguyên lý phổ quát của Process vs. Thread cho 'Integration & Testing'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-PROCESS_VS_THREAD-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Process vs. Thread",
+              "description": "Thiết kế quy trình xử lý cho Process vs. Thread.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-PROCESS_VS_THREAD-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+              "description": "Thực thi trực tiếp: 'Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_4_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-PROCESS_VS_THREAD-5",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest. (Process vs. Thread)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_4_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-PROCESS_VS_THREAD-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_4_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-PROCESS_VS_THREAD-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Integration & Testing",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "STRUCTURAL_PATTERNS",
+          "name": "Structural Design Patterns",
+          "description": "Hiểu mục đích của các mẫu thiết kế cấu trúc, như Adapter (cho phép các giao diện không tương thích làm việc với nhau) và Decorator (thêm chức năng cho đối tượng một cách linh hoạt).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-STRUCTURAL_PATTERNS-5",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Structural Design Patterns",
+              "description": "Hiểu nguyên lý phổ quát của Structural Design Patterns cho 'Integration & Testing'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-STRUCTURAL_PATTERNS-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Structural Design Patterns",
+              "description": "Thiết kế quy trình xử lý cho Structural Design Patterns.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-STRUCTURAL_PATTERNS-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+              "description": "Thực thi trực tiếp: 'Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_4_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-STRUCTURAL_PATTERNS-5",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest. (Structural Design Patterns)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_4_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-STRUCTURAL_PATTERNS-5",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_4_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-STRUCTURAL_PATTERNS-5",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Integration & Testing",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_4_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-PROCESS_VS_THREAD-5",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest. (Process vs. Thread)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_4_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-PROCESS_VS_THREAD-5",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_4_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-PROCESS_VS_THREAD-5",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Integration & Testing",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_4_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-STRUCTURAL_PATTERNS-5",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: XCTest framework, mocking network and CoreData, testing Combine publishers, UI testing with XCUITest. (Structural Design Patterns)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_4_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-STRUCTURAL_PATTERNS-5",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Integrate all layers (transport, state, persistence, UI) into a cohesive chat client, write unit tests for Combine pipelines and CoreData operations, and UI tests for SwiftUI views.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_4_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-STRUCTURAL_PATTERNS-5",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Integration & Testing",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    },
+    {
+      "phase_num": 5,
+      "title": "Performance & Production Readiness",
+      "engineering_action": "Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+      "required_prereq_knowledge": "Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics).",
+      "matching_concept_codes": [
+        "PROCESS_VS_THREAD",
+        "ABSTRACTION_LAYERS"
+      ],
+      "timeframe": "Weeks 6-8 (13h)",
+      "concepts": [
+        {
+          "concept_code": "PROCESS_VS_THREAD",
+          "name": "Process vs. Thread",
+          "description": "Phân biệt sự khác nhau giữa một tiến trình (một chương trình đang chạy với không gian bộ nhớ riêng) và một luồng (một luồng thực thi trong một tiến trình).",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-PROCESS_VS_THREAD-6",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Process vs. Thread",
+              "description": "Hiểu nguyên lý phổ quát của Process vs. Thread cho 'Performance & Production Readiness'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-PROCESS_VS_THREAD-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Process vs. Thread",
+              "description": "Thiết kế quy trình xử lý cho Process vs. Thread.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-PROCESS_VS_THREAD-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+              "description": "Thực thi trực tiếp: 'Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_5_1_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-PROCESS_VS_THREAD-6",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics). (Process vs. Thread)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_5_1_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-PROCESS_VS_THREAD-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_5_1_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-PROCESS_VS_THREAD-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Performance & Production Readiness",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        },
+        {
+          "concept_code": "ABSTRACTION_LAYERS",
+          "name": "Layers of Abstraction",
+          "description": "Hiểu cách các hệ thống phức tạp được xây dựng dựa trên nhiều lớp trừu tượng, mỗi lớp che giấu chi tiết của lớp dưới.",
+          "estimated_hours": 6,
+          "learning_objectives": [
+            {
+              "code": "ULO-ABSTRACTION_LAYERS-6",
+              "lo_type": "UNIVERSAL",
+              "tag": "ACADEMIC_ULO",
+              "name": "Universal Principle: Layers of Abstraction",
+              "description": "Hiểu nguyên lý phổ quát của Layers of Abstraction cho 'Performance & Production Readiness'.",
+              "assessment_approach": "concept-check"
+            },
+            {
+              "code": "CIO-ABSTRACTION_LAYERS-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "tag": "ACADEMIC_CIO",
+              "name": "Algorithmic Pattern: Layers of Abstraction",
+              "description": "Thiết kế quy trình xử lý cho Layers of Abstraction.",
+              "assessment_approach": "code-lab"
+            },
+            {
+              "code": "SIO-SWIFT-ABSTRACTION_LAYERS-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "tag": "PRODUCT_SIO",
+              "name": "Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData Implementation: Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+              "description": "Thực thi trực tiếp: 'Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.' trong IDE.",
+              "assessment_approach": "code-lab"
+            }
+          ],
+          "micro_tasks": [
+            {
+              "task_id": "TASK_5_2_1",
+              "focus_minutes": 45,
+              "target_lo_code": "ULO-ABSTRACTION_LAYERS-6",
+              "lo_type": "UNIVERSAL",
+              "action": "Read & Understand: Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics). (Layers of Abstraction)",
+              "deliverable": "Architecture Cheatsheet"
+            },
+            {
+              "task_id": "TASK_5_2_2",
+              "focus_minutes": 45,
+              "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-6",
+              "lo_type": "SPECIFIC_IMPL",
+              "action": "Hands-on: Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+              "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+            },
+            {
+              "task_id": "TASK_5_2_3",
+              "focus_minutes": 45,
+              "target_lo_code": "CIO-ABSTRACTION_LAYERS-6",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "action": "Unit Test & Verify: Performance & Production Readiness",
+              "deliverable": "Passing Test & Git Commit"
+            }
+          ]
+        }
+      ],
+      "micro_tasks": [
+        {
+          "task_id": "TASK_5_1_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-PROCESS_VS_THREAD-6",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics). (Process vs. Thread)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_5_1_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-PROCESS_VS_THREAD-6",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_5_1_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-PROCESS_VS_THREAD-6",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Performance & Production Readiness",
+          "deliverable": "Passing Test & Git Commit"
+        },
+        {
+          "task_id": "TASK_5_2_1",
+          "focus_minutes": 45,
+          "target_lo_code": "ULO-ABSTRACTION_LAYERS-6",
+          "lo_type": "UNIVERSAL",
+          "action": "Read & Understand: Instruments for profiling, memory management in Swift, production deployment considerations (crash reporting, analytics). (Layers of Abstraction)",
+          "deliverable": "Architecture Cheatsheet"
+        },
+        {
+          "task_id": "TASK_5_2_2",
+          "focus_minutes": 45,
+          "target_lo_code": "SIO-SWIFT-ABSTRACTION_LAYERS-6",
+          "lo_type": "SPECIFIC_IMPL",
+          "action": "Hands-on: Optimize WebSocket reconnection backoff, reduce memory footprint of CoreData cache, profile Combine subscriptions, and add logging/monitoring for production deployment.",
+          "deliverable": "Working Code Module in Swift, SwiftUI, Combine, URLSessionWebSocketTask, CoreData"
+        },
+        {
+          "task_id": "TASK_5_2_3",
+          "focus_minutes": 45,
+          "target_lo_code": "CIO-ABSTRACTION_LAYERS-6",
+          "lo_type": "CONCEPTUAL_IMPL",
+          "action": "Unit Test & Verify: Performance & Production Readiness",
+          "deliverable": "Passing Test & Git Commit"
+        }
+      ]
+    }
+  ]
+}

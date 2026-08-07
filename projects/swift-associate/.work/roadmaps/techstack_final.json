@@ -1,0 +1,20 @@
+{
+  "intake_id": "intake-20260804-001",
+  "chosen_option": "A",
+  "stack": {
+    "tech_stack": [
+      "Swift",
+      "SwiftUI",
+      "Combine",
+      "URLSessionWebSocketTask",
+      "CoreData"
+    ],
+    "build_tooling": "Swift Package Manager (SPM)"
+  },
+  "estimated_effort_hours": 90,
+  "learner_budget_hours": 80,
+  "tradeoffs_noted": [
+    "Time conflict: project needs ~90h (6w × 15h/w baseline), learner has 80h (10h/w × 8w). Deficit: 10h (11% short).",
+    "Minor scope trim — omit integration test suite, focus on unit tests."
+  ]
+}
