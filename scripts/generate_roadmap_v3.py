@@ -197,6 +197,54 @@ class PipelineOrchestrator:
             self._complete("step_1_2", keywords=out)
         return success
 
+    def step_1_3_extract_project_graph(self) -> bool:
+        """STEP 1.3: Extract AST dependency graph from project repository."""
+        if self._skip_or_run("step_1_3"):
+            return True
+
+        print("\n📋 STEP 1-3: Extracting project AST graph...")
+        out = self.output_dir / "project_graph.json"
+
+        if not self.repo_dir or not Path(self.repo_dir).exists():
+            print("⚠️  No valid --repo-dir provided, skipping STEP 1-3")
+            self._complete("step_1_3", skip_note="No repo_dir provided")
+            return True
+
+        success = self._run_script("extract_project_graph.py", [
+            "--repo-dir", str(self.repo_dir),
+            "--output", str(out),
+        ])
+
+        if success:
+            self._complete("step_1_3", project_graph=out)
+        return success
+
+    def step_1_4_verify_project_graph(self) -> bool:
+        """STEP 1.4: Verify project graph against source files (ground-truth gate)."""
+        if self._skip_or_run("step_1_4"):
+            return True
+
+        print("\n📋 STEP 1-4: Verifying project graph against ground truth...")
+        pg_file = self._artifact("project_graph", "project_graph.json")
+        if not self.repo_dir or not Path(self.repo_dir).exists() or not pg_file.exists():
+            print("⚠️  Missing project_graph or valid repo_dir, skipping STEP 1-4")
+            return True
+
+        out_verified = self.output_dir / "project_graph_verified.json"
+        out_hallucinations = self.output_dir / "graph_hallucinations.json"
+
+        success = self._run_script("verify_project_graph.py", [
+            "--project-graph", str(pg_file),
+            "--repo-dir", str(self.repo_dir),
+            "--output", str(out_verified),
+            "--hallucinations-output", str(out_hallucinations),
+        ])
+
+        if not success:
+            return self._fail("verify_project_graph.py failed ground-truth validation")
+
+        self._complete("step_1_4", project_graph_verified=out_verified, hallucinations=out_hallucinations)
+        return True
     def step_3_resolve_concepts(self) -> bool:
         """STEP 3: Resolve keywords to Master Tree concepts."""
         if self._skip_or_run("step_3"):
@@ -245,6 +293,39 @@ class PipelineOrchestrator:
             self._complete("step_3_5", escalated_concepts=out)
         return success
 
+    def step_3_6_map_concepts(self) -> bool:
+        """STEP 3.6: Map verified project graph components to Master Tree concepts."""
+        if self._skip_or_run("step_3_6"):
+            return True
+
+        print("\n📋 STEP 3-6: Mapping verified project graph to concepts...")
+        pg_verified = self._artifact("project_graph_verified", "project_graph_verified.json")
+        if not self.repo_dir or not Path(self.repo_dir).exists() or not pg_verified.exists():
+            print("⚠️  Missing project_graph_verified or valid repo_dir, skipping STEP 3-6")
+            return True
+
+        inventory_file = self._artifact("inventory", "reuse_inventory.json")
+        if inventory_file.exists():
+            inv_path = str(inventory_file)
+        else:
+            inv_min = Path("/tmp/inv_min.json")
+            with open(inv_min, "w", encoding="utf-8") as f:
+                json.dump({"master_tree": {"concepts": {}}}, f)
+            inv_path = str(inv_min)
+
+        out = self.output_dir / "concept_map.json"
+
+        success = self._run_script("map_project_graph.py", [
+            "--project-graph", str(pg_verified),
+            "--repo-dir", str(self.repo_dir),
+            "--reuse-inventory", inv_path,
+            "--goal", self.goal,
+            "--output", str(out),
+        ])
+
+        if success:
+            self._complete("step_3_6", concept_map=out)
+        return success
 
     def step_4_match_cios(self) -> bool:
         """STEP 4: Match concepts to CIOs."""
@@ -502,7 +583,10 @@ class PipelineOrchestrator:
         instr_dir = self._artifact("instruction_dir", "instruction")
         if Path(instr_dir).exists():
             args += ["--instruction-dir", str(instr_dir)]
-
+        pg_verified = self._artifact("project_graph_verified", "project_graph_verified.json")
+        concept_map = self._artifact("concept_map", "concept_map.json")
+        if pg_verified.exists() and concept_map.exists():
+            args += ["--project-graph", str(pg_verified), "--concept-map", str(concept_map)]
         success = self._run_script("assemble_roadmap.py", args)
 
         if success:
@@ -751,8 +835,11 @@ class PipelineOrchestrator:
             ("step_0", self.step_0_discover),
             ("step_0_5", self.step_0_5_propose_tech_stack),
             ("step_1_2", self.step_1_2_extract_keywords),
+            ("step_1_3", self.step_1_3_extract_project_graph),
+            ("step_1_4", self.step_1_4_verify_project_graph),
             ("step_3", self.step_3_resolve_concepts),
             ("step_3_5", self.step_3_5_escalate_concepts),
+            ("step_3_6", self.step_3_6_map_concepts),
             ("step_4", self.step_4_match_cios),
             ("step_5", self.step_5_resolve_sios),
             ("step_4_5", self.step_4_5_generate_prerequisites),

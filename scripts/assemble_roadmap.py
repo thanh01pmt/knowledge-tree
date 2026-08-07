@@ -370,27 +370,114 @@ def group_vertical_phases(layers: List[List[str]], los: Dict[str, dict]) -> List
     return phases
 
 
+def group_feature_mode_phases(project_graph: dict, concept_map: dict, los: Dict[str, dict]) -> List[dict]:
+    """Group LOs into feature-based milestones according to project_graph and concept_map.
+
+    Each milestone in project_graph is a feature cluster containing one or more concepts.
+    LOs are collected for all concepts in the milestone cluster.
+    """
+    milestones_data = []
+    if isinstance(project_graph, dict):
+        if 'decomposition' in project_graph and 'milestones' in project_graph['decomposition']:
+            milestones_data = project_graph['decomposition']['milestones']
+        elif 'milestones' in project_graph:
+            milestones_data = project_graph['milestones']
+
+    feature_concepts = concept_map.get('feature_concepts', {}) if isinstance(concept_map, dict) else {}
+    milestone_concepts = concept_map.get('milestone_concepts', {}) if isinstance(concept_map, dict) else {}
+
+    by_concept = defaultdict(list)
+    for lo_code, lo in los.items():
+        concept = lo.get('concept')
+        if concept:
+            by_concept[concept].append(lo)
+
+    LO_TYPE_RANK = {'UNIVERSAL': 0, 'CONCEPTUAL_IMPL': 1, 'SPECIFIC_IMPL': 2}
+
+    PHASE_MAP = {
+        'FOUNDATION': 0, 'NỀN TẢNG': 0, 0: 0, '0': 0,
+        'MVP': 1, 1: 1, '1': 1,
+        'EXTEND': 2, 'MỞ RỘNG': 2, 2: 2, '2': 2,
+        'POLISH': 3, 'HOÀN THIỆN': 3, 3: 3, '3': 3,
+    }
+
+    phase_milestones = defaultdict(list)
+
+    for m in milestones_data:
+        m_id = m.get('id', '')
+        m_name = m.get('name', m_id)
+        raw_phase = m.get('phase', 'MVP')
+        phase_id = PHASE_MAP.get(raw_phase if not isinstance(raw_phase, str) else raw_phase.upper().strip(), 1)
+
+        c_list = milestone_concepts.get(m_id)
+        if c_list is None:
+            c_list = []
+            for f_id in m.get('feature_ids', []):
+                for c in feature_concepts.get(f_id, []):
+                    if c not in c_list:
+                        c_list.append(c)
+
+        m_los = []
+        seen_codes = set()
+        for c in c_list:
+            concept_los = by_concept.get(c, [])
+            sorted_los = sorted(concept_los, key=lambda x: LO_TYPE_RANK.get(x.get('lo_type', ''), 99))
+            for lo in sorted_los:
+                if lo['code'] not in seen_codes:
+                    seen_codes.add(lo['code'])
+                    lo_copy = dict(lo)
+                    for f_id, f_concepts in feature_concepts.items():
+                        if c in f_concepts:
+                            lo_copy['feature_id'] = f_id
+                            break
+                    m_los.append(lo_copy)
+
+        concept_code_val = m.get('concept_code', m_id)
+        milestone_obj = {
+            'id': m_id,
+            'name': m_name,
+            'concept_code': concept_code_val,
+            'learning_objectives': m_los,
+        }
+        phase_milestones[phase_id].append(milestone_obj)
+
+    phases = []
+    for pid in sorted(phase_milestones.keys()):
+        vp = next((v for v in VERTICAL_PHASES if v['id'] == pid), {'id': pid, 'title': f'PHASE {pid}', 'desc': ''})
+        phases.append({
+            'phase_id': vp['id'],
+            'title': vp['title'],
+            'description': vp['desc'],
+            'milestones': phase_milestones[pid],
+        })
+
+    return phases
+
+
 def attach_metadata(phases: List[dict], rationale: Dict[Tuple[str, str], str],
                      instruction_dir: Path) -> List[dict]:
     """Attach rationale + instruction reference to each LO."""
     for phase in phases:
         for milestone in phase['milestones']:
-            concept = milestone['concept_code']
-            # Instruction file for this concept
+            concept = milestone.get('concept_code', '')
             safe = concept.lower().replace(' ', '_')
             instr_file = instruction_dir / f"instruction-{safe}.md"
             instr_ref = str(instr_file) if instr_file.exists() else None
 
             for lo in milestone['learning_objectives']:
                 code = lo['code']
-                # Rationale: find edges where this LO is the target
+                lo_concept = lo.get('concept') or concept
+                lo_safe = lo_concept.lower().replace(' ', '_')
+                lo_instr_file = instruction_dir / f"instruction-{lo_safe}.md"
+                lo_instr_ref = str(lo_instr_file) if lo_instr_file.exists() else instr_ref
+
                 lo_rationale = [
                     rationale.get((p, code), '')
                     for p in dag.get(code, [])
                     if rationale.get((p, code))
                 ]
                 lo['rationale'] = lo_rationale
-                lo['instruction_ref'] = instr_ref
+                lo['instruction_ref'] = lo_instr_ref
     return phases
 
 
@@ -401,6 +488,8 @@ def main():
     parser.add_argument('--prerequisites', type=Path, required=True)
     parser.add_argument('--jit-los', type=Path, help='Optional: jit_los.json from STEP 5.5')
     parser.add_argument('--instruction-dir', type=Path, help='Optional: instruction/ from STEP 8.6')
+    parser.add_argument('--project-graph', type=Path, help='Optional: verified project graph JSON (Phase B2)')
+    parser.add_argument('--concept-map', type=Path, help='Optional: concept map JSON (Phase B3)')
     parser.add_argument('--goal', type=str, default='')
     parser.add_argument('--tech-stack', type=str, default='')
     parser.add_argument('--vertical', action='store_true',
@@ -412,6 +501,9 @@ def main():
     resolved_sios = load_json(args.resolved_sios)
     prerequisites = load_json(args.prerequisites)
     jit_los = load_json(args.jit_los) if args.jit_los and args.jit_los.exists() else {'generated': []}
+
+    project_graph_data = load_json(args.project_graph) if args.project_graph and args.project_graph.exists() else None
+    concept_map_data = load_json(args.concept_map) if args.concept_map and args.concept_map.exists() else None
 
     # 1. Build LO inventory
     los = collect_los(matched_cios, resolved_sios, jit_los)
@@ -428,8 +520,13 @@ def main():
     for i, layer in enumerate(layers):
         print(f"    Layer {i+1}: {len(layer)} LOs")
 
-    # 4. Group into phases — vertical slicing (nếu --vertical) hoặc topological layers
-    if args.vertical:
+    # 4. Group into phases — feature mode (nếu --project-graph) hoặc vertical slicing / topological layers
+    if project_graph_data is not None:
+        phases = group_feature_mode_phases(project_graph_data, concept_map_data or {}, los)
+        print(f"[*] Feature mode phases: {len(phases)}")
+        for p in phases:
+            print(f"    {p['title']}: {sum(len(m['learning_objectives']) for m in p['milestones'])} LOs")
+    elif args.vertical:
         phases = group_vertical_phases(layers, los)
         print(f"[*] Vertical phases: {len(phases)}")
         for p in phases:
@@ -449,7 +546,7 @@ def main():
         },
         'phases': phases,
         'total_milestones': sum(len(p['milestones']) for p in phases),
-        'total_concepts': len({m['concept_code'] for p in phases for m in p['milestones']}),
+        'total_concepts': len({lo['concept'] for p in phases for m in p['milestones'] for lo in m['learning_objectives'] if lo.get('concept')}),
     }
 
     with open(args.output, 'w', encoding='utf-8') as f:
