@@ -214,7 +214,8 @@ def detect_project_type(repo_dir: Path) -> str:
         return 'app'
     if has_package:
         return 'library'
-    return 'app'  # default
+    # Không có entry point (main) → library (thư viện thuần)
+    return 'library'
 
 # Constructs báo hiệu external I/O (file persistence) → P2
 FILE_IO_CONSTRUCTS = {'Path()', 'read_text()', 'write_text()', 'exists()', 'open()',
@@ -244,6 +245,10 @@ def assign_phase(imp: dict) -> int:
     # P0: setup/scaffold — chỉ exact match, không bắt setUp (test) / setup (UI)
     if name in ('scaffold', 'bootstrap') or 'setup_python' in constructs:
         return 0
+
+    # CLI entry point (main) → P1 MVP — "thấy sản phẩm" = chạy được command
+    if name == 'main' and 'argparse' in str(imp.get('constructs', [])):
+        return 1
 
     # MOCK (giả lập) → P1 MVP — mock là sản phẩm chạy được, thật hóa ở P2
     if detect_mock(imp):
@@ -318,8 +323,10 @@ def propagate_phases(implements: List[dict]) -> None:
         for imp in implements:
             if imp['phase'] >= 2:
                 continue
-            # UI entry point → giữ P1 (MVP), không nâng
+            # UI/CLI entry point → giữ P1 (MVP), không nâng
             if UI_CONSTRUCTS & set(imp.get('constructs', [])):
+                continue
+            if imp['name'] == 'main':
                 continue
             # Nếu gọi function nào đó ở P2 (file I/O) → nâng lên P2
             for callee in imp.get('calls', []):
