@@ -368,6 +368,89 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         'knowledge_dimension': 'PROCEDURAL',
         'assessment_approach': 'code-review',
     }
+
+def _build_lo_triplet(concept_code: str, name_hint: str, description: str,
+                      keyword: str, platform: str, code_prefix: str,
+                      raw_ulo: str, raw_cio: str, raw_sio: str) -> List[dict]:
+    """Build [ulo, cio, sio] dicts from raw LLM strings; per-field fallback
+    via lo_quality.build_lo_desc when a field is missing/empty."""
+    # ULO
+    if raw_ulo:
+        cleaned_ulo = lo_quality.clean_llm_description(str(raw_ulo), name_hint)
+        if cleaned_ulo:
+            ulo_desc, ulo_needs_review = cleaned_ulo, False
+        else:
+            ulo_desc, ulo_needs_review = lo_quality.build_lo_desc('ULO', concept_code, name_hint, description)
+    else:
+        ulo_desc, ulo_needs_review = lo_quality.build_lo_desc('ULO', concept_code, name_hint, description)
+
+    # CIO
+    if raw_cio:
+        cleaned_cio = lo_quality.clean_llm_description(str(raw_cio), name_hint)
+        if cleaned_cio:
+            cio_desc, cio_needs_review = cleaned_cio, False
+        else:
+            cio_desc, cio_needs_review = lo_quality.build_lo_desc('CIO', concept_code, name_hint, description)
+    else:
+        cio_desc, cio_needs_review = lo_quality.build_lo_desc('CIO', concept_code, name_hint, description)
+
+    # SIO
+    if raw_sio:
+        cleaned_sio = lo_quality.clean_llm_description(str(raw_sio), name_hint)
+        if cleaned_sio:
+            sio_desc, sio_needs_review = cleaned_sio, False
+        else:
+            sio_desc, sio_needs_review = lo_quality.build_lo_desc(
+                'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
+            )
+    else:
+        sio_desc, sio_needs_review = lo_quality.build_lo_desc(
+            'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
+        )
+
+    platform_label = 'ESP32/Arduino' if platform == 'esp32' else code_prefix
+    ulo = {
+        'code': f"ULO-{concept_code}-01",
+        'name': f"Understand {concept_code}",
+        'description': ulo_desc,
+        'needs_review': ulo_needs_review,
+        'lo_type': 'UNIVERSAL',
+        'parent_lo_code': '',
+        'concept_codes': [concept_code],
+        'bloom_level': 'UNDERSTAND',
+        'knowledge_dimension': 'CONCEPTUAL',
+        'assessment_approach': 'concept-check',
+    }
+
+    cio = {
+        'code': f"CIO-{concept_code}-01",
+        'name': f"Apply {concept_code} Concepts",
+        'description': cio_desc,
+        'needs_review': cio_needs_review,
+        'lo_type': 'CONCEPTUAL_IMPL',
+        'parent_lo_code': f"ULO-{concept_code}-01",
+        'concept_codes': [concept_code],
+        'bloom_level': 'APPLY',
+        'knowledge_dimension': 'PROCEDURAL',
+        'assessment_approach': 'code-lab',
+    }
+
+    sio = {
+        'code': f"SIO-{code_prefix}-{concept_code}-01",
+        'name': f"{platform_label}: Implement {name_hint}",
+        'description': sio_desc,
+        'needs_review': sio_needs_review,
+        'lo_type': 'SPECIFIC_IMPL',
+        'parent_lo_code': f"CIO-{concept_code}-01",
+        'concept_codes': [concept_code],
+        'keyword': keyword,
+        'platform': platform,
+        'bloom_level': 'CREATE',
+        'knowledge_dimension': 'PROCEDURAL',
+        'assessment_approach': 'code-review',
+    }
+
+    return [ulo, cio, sio]
 def generate_concept_los(concept_code: str, concept_name: str, description: str,
                          project_context: str, target_tech: str, keyword: str = '',
                          platform: str = 'app') -> List[dict]:
@@ -429,86 +512,103 @@ def generate_concept_los(concept_code: str, concept_name: str, description: str,
     raw_cio = parsed.get('cio', '') if isinstance(parsed, dict) and parsed.get('cio') else ''
     raw_sio = parsed.get('sio', '') if isinstance(parsed, dict) and parsed.get('sio') else ''
 
-    # ULO
-    if raw_ulo:
-        cleaned_ulo = lo_quality.clean_llm_description(str(raw_ulo), name_hint)
-        if cleaned_ulo:
-            ulo_desc = cleaned_ulo
-            ulo_needs_review = False
-        else:
-            ulo_desc, ulo_needs_review = lo_quality.build_lo_desc('ULO', concept_code, name_hint, description)
-    else:
-        ulo_desc, ulo_needs_review = lo_quality.build_lo_desc('ULO', concept_code, name_hint, description)
+    return _build_lo_triplet(
+        concept_code, name_hint, description, keyword, platform, code_prefix,
+        raw_ulo, raw_cio, raw_sio
+    )
 
-    # CIO
-    if raw_cio:
-        cleaned_cio = lo_quality.clean_llm_description(str(raw_cio), concept_code)
-        if cleaned_cio:
-            cio_desc = cleaned_cio
-            cio_needs_review = False
-        else:
-            cio_desc, cio_needs_review = lo_quality.build_lo_desc('CIO', concept_code, concept_code, description)
-    else:
-        cio_desc, cio_needs_review = lo_quality.build_lo_desc('CIO', concept_code, concept_code, description)
 
-    # SIO
-    if raw_sio:
-        cleaned_sio = lo_quality.clean_llm_description(str(raw_sio), name_hint)
-        if cleaned_sio:
-            sio_desc = cleaned_sio
-            sio_needs_review = False
-        else:
-            sio_desc, sio_needs_review = lo_quality.build_lo_desc(
-                'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
-            )
-    else:
-        sio_desc, sio_needs_review = lo_quality.build_lo_desc(
-            'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
+def generate_concept_los_batch(concepts_info: List[dict], project_context: str,
+                              target_tech: str, batch_size: int = 10) -> List[dict]:
+    """Generate ULO+CIO+SIO for multiple concepts in ONE LLM call.
+
+    concepts_info: [{concept_code, concept_name, description, keyword, platform}]
+    Returns flat list of all LO dicts across all concepts.
+    Falls back per-concept via generate_concept_los if batch parse fails.
+    """
+    if len(concepts_info) <= 1:
+        results = []
+        for info in concepts_info:
+            results.extend(generate_concept_los(
+                info['concept_code'], info['concept_name'], info['description'],
+                project_context, target_tech,
+                keyword=info.get('keyword', ''), platform=info.get('platform', 'app')
+            ))
+        return results
+
+    system_prompt = (
+        "Bạn là chuyên gia sư phạm. Viết BẰNG TIẾNG VIỆT (giữ nguyên thuật ngữ kỹ thuật tiếng Anh). Sinh 3 câu mô tả mục tiêu học tập cho MỖI concept "
+        "trong danh sách, theo 3 tầng:\n"
+        "- ULO: bắt đầu bằng 'Người học có khả năng hiểu', nêu đặc điểm/bản chất khái niệm.\n"
+        "- CIO: bắt đầu bằng 'Người học có khả năng thiết kế', mô tả giải pháp mô hình.\n"
+        "- SIO: bắt đầu bằng 'Người học có khả năng triển khai', gắn keyword + platform cụ thể.\n"
+        "QUAN TRỌNG:\n"
+        "1. CẤM cấu trúc 'Tên: Mô tả'.\n"
+        "2. CẤM lặp từ 'hiểu' hai lần trong ULO.\n"
+        "3. CẤM template chung chung ('và vai trò của nó', 'và cách vận dụng nó').\n"
+        "4. Giữ thuật ngữ tiếng Anh chuyên ngành, KHÔNG chèn identifier/mã code.\n"
+        "Trả JSON: {\"results\": {\"<CONCEPT_CODE>\": {\"ulo\": \"...\", \"cio\": \"...\", \"sio\": \"...\"}}}"
+    )
+
+    user_items = []
+    for info in concepts_info:
+        code = info['concept_code']
+        name = info['concept_name'] or code
+        if code == 'FOR_LOOP':
+            name = 'For Loop'
+        platform_label = 'ESP32/Arduino' if info.get('platform') == 'esp32' else target_tech
+        kw = info.get('keyword', '')
+        kw_part = f" keyword '{kw}'," if kw else ''
+        user_items.append(
+            f"- {code}: {name} — {info.get('description', '')[:100]}{kw_part} platform={platform_label}"
         )
 
-    ulo = {
-        'code': f"ULO-{concept_code}-01",
-        'name': f"Understand {concept_code}",
-        'description': ulo_desc,
-        'needs_review': ulo_needs_review,
-        'lo_type': 'UNIVERSAL',
-        'parent_lo_code': '',
-        'concept_codes': [concept_code],
-        'bloom_level': 'UNDERSTAND',
-        'knowledge_dimension': 'CONCEPTUAL',
-        'assessment_approach': 'concept-check',
-    }
+    user_prompt = (
+        f"Dự án: {project_context[:200]}\n"
+        f"Target tech: {target_tech}\n\n"
+        "Concepts:\n" + "\n".join(user_items)
+    )
 
-    cio = {
-        'code': f"CIO-{concept_code}-01",
-        'name': f"Apply {concept_code} Concepts",
-        'description': cio_desc,
-        'needs_review': cio_needs_review,
-        'lo_type': 'CONCEPTUAL_IMPL',
-        'parent_lo_code': f"ULO-{concept_code}-01",
-        'concept_codes': [concept_code],
-        'bloom_level': 'APPLY',
-        'knowledge_dimension': 'PROCEDURAL',
-        'assessment_approach': 'code-lab',
-    }
+    llm_raw = _llm_generate(system_prompt, user_prompt)
+    parsed = None
+    if llm_raw:
+        raw_text = llm_raw.strip()
+        if raw_text.startswith("```"):
+            lines = raw_text.splitlines()
+            if lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].startswith("```"):
+                lines = lines[:-1]
+            raw_text = "\n".join(lines).strip()
+        try:
+            parsed = json.loads(raw_text)
+        except Exception:
+            parsed = None
 
-    sio = {
-        'code': f"SIO-{code_prefix}-{concept_code}-01",
-        'name': f"{platform_label}: Implement {concept_name}",
-        'description': sio_desc,
-        'needs_review': sio_needs_review,
-        'lo_type': 'SPECIFIC_IMPL',
-        'parent_lo_code': f"CIO-{concept_code}-01",
-        'concept_codes': [concept_code],
-        'keyword': keyword,
-        'platform': platform,
-        'bloom_level': 'CREATE',
-        'knowledge_dimension': 'PROCEDURAL',
-        'assessment_approach': 'code-review',
-    }
+    results_data = parsed.get('results', {}) if isinstance(parsed, dict) else {}
 
-    return [ulo, cio, sio]
+    all_los = []
+    for info in concepts_info:
+        code = info['concept_code']
+        name = info['concept_name'] or code
+        if code == 'FOR_LOOP':
+            name = 'For Loop'
+        platform = info.get('platform', 'app')
+        keyword = info.get('keyword', '')
+        code_prefix = 'ESP32' if platform == 'esp32' else target_tech
 
+        lo_data = results_data.get(code, {}) if isinstance(results_data, dict) else {}
+        raw_ulo = lo_data.get('ulo', '') if isinstance(lo_data, dict) else ''
+        raw_cio = lo_data.get('cio', '') if isinstance(lo_data, dict) else ''
+        raw_sio = lo_data.get('sio', '') if isinstance(lo_data, dict) else ''
+
+        triplet = _build_lo_triplet(
+            code, name, info.get('description', ''), keyword, platform, code_prefix,
+            raw_ulo, raw_cio, raw_sio
+        )
+        all_los.extend(triplet)
+
+    return all_los
 
 
 def main():
@@ -602,31 +702,37 @@ def main():
     project_context = get_project_context(keywords_data)
     kw_platforms = get_keyword_platforms(keywords_data)
 
-    generated = []
+    # Build concepts_info with description/platform resolution
+    concepts_info = []
     for concept_code, info in sorted(uncovered.items()):
-        # Ưu tiên description từ resolved/escalated (đúng nghĩa dự án),
-        # fallback Master Tree — tránh fallback template generic
         description = info.get('description') or get_concept_description(concept_code, inventory)
         concept_name = get_concept_name(concept_code, inventory)
-        print(f"  -> Generating LOs for {concept_name}")
-
-        # Platform tu keyword goc (app/esp32) — SIO sinh dung codebase
         kw = info.get('keyword', '')
         platform = kw_platforms.get(kw, '')
-        # Fallback theo concept: loop thật của FOR_LOOP nằm ở ESP32 firmware
-        # (for/while trong smart_bulb.ino), dù keyword 'loop' bị lọc nguồn
         if not platform and concept_code == 'FOR_LOOP':
             platform = 'esp32'
         if not platform:
             platform = 'app'
+        concepts_info.append({
+            'concept_code': concept_code,
+            'concept_name': concept_name,
+            'description': description,
+            'keyword': kw,
+            'platform': platform,
+        })
 
-        concept_los = generate_concept_los(
-            concept_code, concept_name, description,
-            project_context, args.target_tech,
-            keyword=kw, platform=platform
+    # Batch generation: 10 concepts per LLM call (tested: ~3.1s/concept, 3.9k output)
+    BATCH_SIZE = 10
+    generated = []
+    n_batches = (len(concepts_info) + BATCH_SIZE - 1) // BATCH_SIZE
+    for i in range(n_batches):
+        chunk = concepts_info[i * BATCH_SIZE:(i + 1) * BATCH_SIZE]
+        names = ", ".join(c['concept_name'] for c in chunk)
+        print(f"  -> Batch {i+1}/{n_batches}: {len(chunk)} concepts ({names[:80]}...)")
+        batch_los = generate_concept_los_batch(
+            chunk, project_context, args.target_tech, batch_size=BATCH_SIZE
         )
-
-        generated.extend(concept_los)
+        generated.extend(batch_los)
 
     print(f"[*] Generated {len(generated)} LOs ({len(uncovered)} concepts × 3 tiers)")
 
