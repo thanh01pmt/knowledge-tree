@@ -31,6 +31,22 @@ SKIP_DIRS = {
     "node_modules", ".build", "Pods", ".git", ".venv", "venv",
     "__pycache__", "build", "dist", ".idea", ".vscode"
 }
+# Directory-name substrings that indicate non-core code (tests, demos, samples).
+# Matched case-insensitively against each path part so that real repos with
+# large test/demo folders don't dominate the "biggest files" selection.
+SKIP_NAME_MARKERS = {
+    "test", "demo", "sample", "example", "playground", "fixture",
+    "docc", "docs", "readme", "integration", "mock", "stub"
+}
+
+
+def _is_skip_dir(name: str) -> bool:
+    """True if a directory name should be skipped (core-code extraction)."""
+    if name in SKIP_DIRS:
+        return True
+    lowered = name.lower()
+    return any(marker in lowered for marker in SKIP_NAME_MARKERS)
+
 ALLOWED_EXTENSIONS = {".swift", ".py", ".ino", ".cpp", ".h", ".js", ".ts"}
 
 SCHEMA_SPEC = {
@@ -100,7 +116,7 @@ def collect_repo_files(repo_dir: Path, max_files: int = 8) -> List[Path]:
         if not path.is_file():
             continue
         rel_parts = path.relative_to(repo_dir).parts
-        if any(part in SKIP_DIRS for part in rel_parts[:-1]):
+        if any(_is_skip_dir(part) for part in rel_parts[:-1]):
             continue
         ext = path.suffix.lower()
         if ext in ALLOWED_EXTENSIONS:
