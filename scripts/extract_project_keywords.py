@@ -388,8 +388,12 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     
     # Source 1: Import statements → framework keywords
     for imp in source_context.get('imports', []):
-        module = imp['module']
-        count = imp['count']
+        if isinstance(imp, str):
+            module = imp
+            count = 1
+        else:
+            module = imp['module']
+            count = imp['count']
         # Skip standard library / generic plumbing — no domain signal
         if module.lower() in STDLIB_MODULES:
             continue
@@ -418,7 +422,10 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
     
     # Source 3: Function signatures → business logic
     for func in source_context.get('functions', []):
-        name = func['name']
+        if isinstance(func, str):
+            name = func
+        else:
+            name = func['name']
         
         # Skip generic helpers
         if name in {'init', 'setup', 'configure', 'initialize'}:
@@ -540,6 +547,48 @@ def clone_repo(repo_url: str, target_dir: Path) -> Path:
     return repo_dir
 
 
+def parse_cpp_file(filepath: Path) -> Dict:
+    """Parse C++/Arduino file: imports, types, functions, error patterns."""
+    try:
+        src = filepath.read_text(encoding='utf-8', errors='ignore')
+    except OSError:
+        return {'imports': [], 'types': [], 'functions': [], 'property_wrappers': [], 'error_handling_patterns': []}
+
+    imports = re.findall(r'#include\s*[<"]([^>"]+)[>"]', src)
+    types = re.findall(r'\b(?:class|struct|enum)\s+(\w+)', src)
+    functions = re.findall(r'\b(?:void|int|float|double|char|bool|String|uint8_t|uint16_t|uint32_t)\s+(\w+)\s*\(', src)
+    error_patterns = []
+    if re.search(r'\btry\b|\bthrow\b|\bcatch\b', src):
+        error_patterns.append('try/throw/catch')
+
+    return {
+        'imports': imports,
+        'types': types,
+        'functions': functions,
+        'property_wrappers': [],
+        'error_handling_patterns': error_patterns,
+    }
+
+
+def parse_cpp_project(repo_dir: Path) -> Dict:
+    """Parse all C++/Arduino files in project."""
+    cpp_files = list(repo_dir.rglob('*.ino')) + list(repo_dir.rglob('*.cpp'))
+    all_imports, all_types, all_functions, all_errors = [], [], [], []
+    for f in cpp_files:
+        data = parse_cpp_file(f)
+        all_imports.extend(data['imports'])
+        all_types.extend(data['types'])
+        all_functions.extend(data['functions'])
+        all_errors.extend(data['error_handling_patterns'])
+    return {
+        'imports': all_imports,
+        'types': all_types,
+        'functions': all_functions,
+        'property_wrappers': [],
+        'error_handling_patterns': all_errors,
+    }
+
+
 def main():
     parser = argparse.ArgumentParser(description='Extract project keywords using AST-level analysis')
     parser.add_argument('--repo-url', help='GitHub repository URL to clone')
@@ -589,6 +638,13 @@ def main():
     else:
         print(f"  Warning: No parser for language '{primary_lang}'", file=sys.stderr)
         source_context = {'imports': [], 'types': [], 'functions': [], 'property_wrappers': [], 'error_handling_patterns': []}
+
+    # Merge C++/Arduino context (firmware) — đa ngôn ngữ
+    cpp_context = parse_cpp_project(repo_dir)
+    if cpp_context['imports'] or cpp_context['types'] or cpp_context['functions']:
+        for key in ['imports', 'types', 'functions', 'error_handling_patterns']:
+            source_context[key] = source_context.get(key, []) + cpp_context[key]
+        print(f"  Merged C++/Arduino: {len(cpp_context['imports'])} imports, {len(cpp_context['types'])} types", file=sys.stderr)
     
     # Step 3: Keyword extraction
     if not args.quiet:

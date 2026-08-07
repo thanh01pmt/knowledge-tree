@@ -24,6 +24,7 @@ Outputs:
 import json
 import argparse
 import os
+import re
 import sys
 from pathlib import Path
 from typing import Dict, List
@@ -84,20 +85,49 @@ def collect_covered_concepts(matched_cios: dict, resolved_sios: dict) -> set:
 
 
 def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
-    """Map concept_code -> concept info from resolved_concepts.json."""
+    """Map concept_code -> concept info từ resolved + proposed concepts.
+
+    - resolved: concept đã có trong Master Tree (match embedding)
+    - proposed: concept CHƯA có — cần JIT generation nội bộ (cuối dự án mới sync ngược)
+    """
     concepts = {}
+    # Resolved concepts (đã match Master Tree)
     for item in resolved_concepts.get('resolved', []):
         for code in item.get('concept_codes', []):
             if code:
                 concepts[code] = {
                     'keyword': item.get('keyword', ''),
                     'matches': item.get('matches', []),
+                    'is_proposed': False,
                 }
+    # Proposed concepts (chưa có trong Master Tree — JIT nội bộ)
+    # Chỉ JIT cho keywords là KIẾN THỨC thật (import, property_wrapper, error_handling, docstring)
+    # Bỏ tên class/function tự đặt (type_declaration, function_signature) — không phải concept
+    JIT_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config'}
+    for item in resolved_concepts.get('proposed', []):
+        source = item.get('source', '')
+        if source and source not in JIT_SOURCES:
+            continue
+        keyword = item.get('keyword', '') or item.get('proposed_name', '') or item.get('name', '')
+        if not keyword:
+            continue
+        # Tạo concept_code tạm từ keyword (UPPER_SNAKE)
+        code = re.sub(r'[^A-Z0-9]+', '_', keyword.upper()).strip('_')
+        if not code:
+            continue
+        concepts[code] = {
+            'keyword': keyword,
+            'matches': [],
+            'is_proposed': True,
+            'proposed_name': item.get('proposed_name', '') or item.get('name', '') or keyword,
+        }
     return concepts
 
 
 def get_concept_description(concept_code: str, reuse_inventory: dict) -> str:
-    """Get concept description from master tree."""
+    """Get concept description from master tree (hoặc fallback từ proposed)."""
+    # Nếu concept là proposed (từ collect_resolved_concepts), dùng keyword làm description
+    # (description thật sẽ do LLM sinh trong generate_ulo/cio/sio)
     concepts = reuse_inventory.get('master_tree', {}).get('concepts', {})
     data = concepts.get(concept_code, {})
     return data.get('description', '')
