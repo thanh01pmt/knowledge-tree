@@ -118,104 +118,28 @@ def _contains_foreign_tech_keywords(sio: dict, target_tech: str) -> bool:
     return False
 
 def resolve_sios_for_cio(cio_code: str, target_tech: str, all_sios: list) -> dict:
-    """Resolve SIOs for a given CIO and target tech stack."""
+    """Resolve SIOs for a given CIO and target tech stack.
+
+    ADR: BỎ REUSE/ADAPT cross-project (GENERATE-first).
+    Master Tree SIOs sinh từ project khác (stream-chat-swift, swift-associate...)
+    — 'generic Swift SIOs' không gắn keyword dự án đích (VD forEach không có
+    trong smart-bulb-controller). Reuse dễ lỗi → luôn GENERATE, JIT sinh SIO
+    gắn keyword thật của project, sau đó đánh giá loại/cập nhật.
+    """
     # Normalize CIO code to handle different formats
     normalized_cio = normalize_cio_code(cio_code)
     
-    # Find sibling SIOs
-    siblings = []
-    for sio in all_sios:
-        sio_parent = sio.get('parent_lo_code', '')
-        normalized_parent = normalize_cio_code(sio_parent)
-        
-        if normalized_parent == normalized_cio:
-            siblings.append(sio)
-    
-    if not siblings:
-        return {
-            'cio_code': cio_code,
-            'normalized_cio': normalized_cio,
-            'action': 'GENERATE',
-            'reason': 'No sibling SIOs found',
-            'siblings_count': 0
-        }
-    
-    # Group by tech
-    by_tech = {}
-    for sio in siblings:
-        tech = extract_tech_from_sio_code(sio['code'])
-        if tech not in by_tech:
-            by_tech[tech] = []
-        by_tech[tech].append(sio)
-    
-    # Check if target tech exists
-    if target_tech in by_tech:
-        return {
-            'cio_code': cio_code,
-            'normalized_cio': normalized_cio,
-            'action': 'REUSE',
-            'sios': by_tech[target_tech],
-            'tech': target_tech,
-            'siblings_count': len(siblings)
-        }
-    
-    # Find best cross-tech match
-    # Prioritize ADAPT over GENERATE when cross-tech siblings exist
-    best_match = None
-    best_score = 0.0
-    
-    # Extract concept name from normalized_cio for better similarity
-    concept_name = normalized_cio.split('-')[1] if '-' in normalized_cio else normalized_cio
-    
-    for tech, tech_sios in by_tech.items():
-        if tech == target_tech:
-            continue  # Skip target tech (already handled above)
-        for sio in tech_sios:
-            # Compare concept name with SIO name for better matching
-            score = keyword_similarity(concept_name, sio['name'])
-            if score > best_score:
-                best_score = score
-                best_match = {'sio': sio, 'tech': tech, 'score': score}
-    
-    # If any cross-tech sibling exists, prefer ADAPT over GENERATE
-    # ADAPT chỉ khi: (1) similarity CAO (>= 0.6) VÀ (2) SIO source KHÔNG chứa
-    # tech-specific keywords của tech khác (mypy/pyright/ruff/CMMI/ISO...) —
-    # vì không thể "đổi keyword" an toàn, cần GENERATE mới.
-    if best_match and best_score >= 0.6 and not _contains_foreign_tech_keywords(best_match['sio'], target_tech):
-        return {
-            'cio_code': cio_code,
-            'normalized_cio': normalized_cio,
-            'action': 'ADAPT',
-            'source_sio': best_match['sio'],
-            'source_tech': best_match['tech'],
-            'target_tech': target_tech,
-            'similarity': best_score,
-            'siblings_count': len(siblings)
-        }
-    
-    # Cross-tech similarity thấp HOẶC SIO chứa tech-specific keywords ngoại lai
-    # → GENERATE mới (JIT sinh SIO đúng tech), không copy SIO sai tech
-    reason = f'Cross-tech similarity thấp (best: {best_score:.2f}) — cần SIO mới đúng tech {target_tech}'
-    if best_match and best_score >= 0.6:
-        reason = f'SIO source ({best_match["tech"]}) chứa tech-specific keywords — không ADAPT an toàn, GENERATE mới'
+    # ADR (GENERATE-first): không REUSE/ADAPT SIO cross-project — JIT sinh mới
+    # gắn keyword thật của dự án. Tránh SIO 'generic Swift' (forEach, stride...)
+    # không tồn tại trong code dự án đích.
     return {
         'cio_code': cio_code,
         'normalized_cio': normalized_cio,
         'action': 'GENERATE',
-        'reason': reason,
-        'siblings_count': len(siblings),
-        'available_techs': list(by_tech.keys())
+        'reason': 'GENERATE-first (ADR): bỏ REUSE cross-project, JIT sinh SIO gắn keyword dự án',
+        'siblings_count': 0
     }
-
-
-# Stopwords for domain relevance filtering
-_DOMAIN_STOPWORDS = {
-    'học', 'làm', 'dự', 'án', 'cơ', 'bản', 'theo', 'chủ', 'đề', 'cho', 'và',
-    'của', 'trong', 'một', 'các', 'để', 'với', 'người', 'có', 'khả', 'năng',
-    'the', 'to', 'for', 'and', 'with', 'using', 'build', 'create', 'make',
-    'app', 'project', 'learn', 'learning', 'study', 'python', 'basic',
-}
-
+    
 
 def _goal_tokens(goal: str) -> set:
     """Extract meaningful tokens from the user goal."""
