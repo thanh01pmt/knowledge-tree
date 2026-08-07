@@ -31,12 +31,33 @@ def load_json(path: Path) -> dict:
         return json.load(f)
 
 
-# Dấu hiệu template máy móc (gen_real_los.py sinh data thối trong Master Tree)
-# Nếu description LO chứa các cụm này → KHÔNG đưa vào roadmap (chất lượng thấp)
+# Dấu hiệu template máy móc (Master Tree sinh data thối — 2160 CIOs từ 12-verb pattern)
+# 1. Pattern code: CIO-XXX-NN-VERB (VD: CIO-FOR_LOOP-02-EXPLAIN_MECHANISM)
+#    → 12 verb máy móc áp cho 70-270 concepts mỗi cái, không phải content thật
+# 2. Description chứa cụm generic (fallback nếu code pattern bị đổi dạng)
+_TEMPLATE_CIO_VERBS = {
+    'EXPLAIN_MECHANISM', 'INTERPRET_PARAMETERS', 'DECOMPOSE_TRADEOFFS',
+    'COMPARE_ALTERNATIVES', 'IDENTIFY_COMPONENTS', 'RECALL_DEFINITIONS',
+    'IMPLEMENT_PATTERN', 'ADAPT_TO_CONTEXT', 'ASSESS_QUALITY',
+    'CRITIQUE_DESIGN', 'DESIGN_SOLUTION', 'INNOVATE_EXTENSION',
+}
 _TEMPLATE_DESC_SIGNALS = [
     'ngưỡng', 'vật lý/logic', 'mô hình tham chiếu', 'chỉ số trong',
     'nguyên lý phổ quát', 'hiểu:', 'vai trò của nó trong thiết kế',
+    'định lượng đánh đổi', 'tiêu chuẩn ngành', 'benchmark', 'nợ kỹ thuật',
+    'tối ưu hóa đột phá', 'tích hợp cross-cutting', 'điều kiện biên',
+    'so sánh nhiều phương pháp/kiến trúc cho', 'phân rã', 'cơ chế hoạt động nội tại',
 ]
+
+
+def is_template_cio_code(cio_code: str) -> bool:
+    """True nếu code CIO theo pattern 12-verb template (VD: -02-EXPLAIN_MECHANISM)."""
+    if not cio_code:
+        return False
+    for verb in _TEMPLATE_CIO_VERBS:
+        if cio_code.endswith(f'-{verb}'):
+            return True
+    return False
 
 
 def is_template_description(desc: str) -> bool:
@@ -69,7 +90,8 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
     # CIOs (matched in STEP 4) — bỏ template data thối từ Master Tree
     for match in matched_cios.get('matched_cios', []):
         code = match.get('cio_code', '')
-        if code and not is_template_description(match.get('cio_description', '')):
+        if code and not is_template_description(match.get('cio_description', '')) \
+                and not is_template_cio_code(code):
             los[code] = {
                 'code': code,
                 'lo_type': 'CONCEPTUAL_IMPL',
