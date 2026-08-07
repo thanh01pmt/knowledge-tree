@@ -3360,7 +3360,7 @@
     },
     {
       "code": "IOT_PROTOCOLS_MQTT",
-      "name": "IoT Messaging Protocols (MQTT)",
+      "name": "IoT Messaging Protocols",
       "description": "Tập trung vào giao thức truyền tin MQTT, một tiêu chuẩn phổ biến cho các thiết bị IoT do tính nhẹ và hiệu quả.",
       "category_codes": "IOT_COMMUNICATION,IOT_SECURITY_SAFETY",
       "keywords": "MQTT, publish-subscribe, IoT protocols, messaging",
@@ -19427,8 +19427,8 @@
       ]
     },
     {
-      "code": "IOT_PROTOCOLS_MQTT_CONCEPT",
-      "name": "IoT Messaging Protocols (MQTT)",
+      "code": "IOT_MESSAGING_PROTOCOLS",
+      "name": "IoT Messaging Protocols",
       "description": "Hiểu nguyên lý hoạt động của giao thức MQTT theo mô hình publish-subscribe, được thiết kế cho các thiết bị IoT.",
       "topic_codes": "IOT_PROTOCOLS_MQTT,ENCRYPTION_PROTOCOLS",
       "keywords": [
@@ -19532,40 +19532,40 @@
         {
           "code": "KW_PROTOCOLS",
           "name": "protocols",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': protocols",
+          "description": "Token from concept 'IoT Messaging Protocols': protocols",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454128"
           }
         },
         {
           "code": "KW_MESSAGING",
           "name": "messaging",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': messaging",
+          "description": "Token from concept 'IoT Messaging Protocols': messaging",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454134"
           }
         },
         {
           "code": "KW_PUBLISH",
           "name": "publish",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': publish",
+          "description": "Token from concept 'IoT Messaging Protocols': publish",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454139"
           }
         },
         {
           "code": "KW_SUBSCRIBE",
           "name": "subscribe",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': subscribe",
+          "description": "Token from concept 'IoT Messaging Protocols': subscribe",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454144"
           }
         }
@@ -19675,40 +19675,40 @@
         {
           "code": "KW_PROTOCOLS",
           "name": "protocols",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': protocols",
+          "description": "Token from concept 'IoT Messaging Protocols': protocols",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454128"
           }
         },
         {
           "code": "KW_MESSAGING",
           "name": "messaging",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': messaging",
+          "description": "Token from concept 'IoT Messaging Protocols': messaging",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454134"
           }
         },
         {
           "code": "KW_PUBLISH",
           "name": "publish",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': publish",
+          "description": "Token from concept 'IoT Messaging Protocols': publish",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454139"
           }
         },
         {
           "code": "KW_SUBSCRIBE",
           "name": "subscribe",
-          "description": "Token from concept 'IoT Messaging Protocols (MQTT)': subscribe",
+          "description": "Token from concept 'IoT Messaging Protocols': subscribe",
           "metadata": {
             "source": "concept_extraction",
-            "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+            "source_concept": "IOT_MESSAGING_PROTOCOLS",
             "extracted_at": "2026-08-03T12:28:05.454144"
           }
         }
@@ -66329,7 +66329,7 @@
       },
       "created_at": "2026-08-03T12:28:05.425152",
       "updated_at": "2026-08-03T12:28:05.425153",
-      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"ABSTRACTION_LAYERS\", \"METHOD_OVERRIDING\", \"IOT_PROTOCOLS_MQTT_CONCEPT\", \"NEURAL_SIGNAL_DECODING_BCI\"]"
+      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"ABSTRACTION_LAYERS\", \"METHOD_OVERRIDING\", \"IOT_MESSAGING_PROTOCOLS\", \"NEURAL_SIGNAL_DECODING_BCI\"]"
     },
     {
       "code": "KW_PROTOCOL",
@@ -66348,7 +66348,7 @@
       },
       "created_at": "2026-08-03T12:28:05.425263",
       "updated_at": "2026-08-03T12:28:05.425264",
-      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"IOT_PROTOCOLS_MQTT_CONCEPT\", \"MVVM_PATTERN\", \"ROBOTIC_PATH_PLANNING\"]"
+      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"IOT_MESSAGING_PROTOCOLS\", \"MVVM_PATTERN\", \"ROBOTIC_PATH_PLANNING\"]"
     },
     {
       "code": "KW_ENUM",
@@ -66870,7 +66870,7 @@
       },
       "created_at": "2026-08-03T12:28:05.428174",
       "updated_at": "2026-08-03T12:28:05.428174",
-      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"IOT_PROTOCOLS_MQTT_CONCEPT\", \"MVVM_PATTERN\", \"ROBOTIC_PATH_PLANNING\"]"
+      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"CREATIONAL_PATTERNS\", \"STRUCTURAL_PATTERNS\", \"BEHAVIORAL_PATTERNS\", \"IOT_MESSAGING_PROTOCOLS\", \"MVVM_PATTERN\", \"ROBOTIC_PATH_PLANNING\"]"
     },
     {
       "code": "KW_STRING",
@@ -67960,7 +67960,7 @@
       },
       "created_at": "2026-08-03T12:28:05.434105",
       "updated_at": "2026-08-03T12:28:05.434106",
-      "concept_codes": "[\"HTTP_METHODS\", \"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"FEEDBACK_AND_RESPONSE\", \"CYBERBULLYING\", \"API_INTEGRATION\", \"REST_PRINCIPLES\", \"IOT_PROTOCOLS_MQTT_CONCEPT\"]"
+      "concept_codes": "[\"HTTP_METHODS\", \"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"FEEDBACK_AND_RESPONSE\", \"CYBERBULLYING\", \"API_INTEGRATION\", \"REST_PRINCIPLES\", \"IOT_MESSAGING_PROTOCOLS\"]"
     },
     {
       "code": "KW_HTTPS",
@@ -68134,7 +68134,7 @@
       },
       "created_at": "2026-08-03T12:28:05.435102",
       "updated_at": "2026-08-03T12:28:05.435103",
-      "concept_codes": "[\"IOT_PROTOCOLS_MQTT_CONCEPT\", \"TCP_IP_MODEL\"]"
+      "concept_codes": "[\"IOT_MESSAGING_PROTOCOLS\", \"TCP_IP_MODEL\"]"
     },
     {
       "code": "KW_IP",
@@ -70409,7 +70409,7 @@
       },
       "created_at": "2026-08-03T12:28:05.448410",
       "updated_at": "2026-08-03T12:28:05.448412",
-      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"IOT_PROTOCOLS_MQTT_CONCEPT\"]"
+      "concept_codes": "[\"MODEL_CONTEXT_PROTOCOL_STANDARD\", \"QUANTUM_KEY_DISTRIBUTION_QKD\", \"IOT_MESSAGING_PROTOCOLS\"]"
     },
     {
       "code": "KW_MAINACTOR",
@@ -73802,54 +73802,54 @@
     {
       "code": "KW_PROTOCOLS",
       "name": "protocols",
-      "description": "Token from concept 'IoT Messaging Protocols (MQTT)': protocols",
+      "description": "Token from concept 'IoT Messaging Protocols': protocols",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+        "source_concept": "IOT_MESSAGING_PROTOCOLS",
         "extracted_at": "2026-08-03T12:28:05.454128"
       },
       "created_at": "2026-08-03T12:28:05.454131",
       "updated_at": "2026-08-03T12:28:05.454131",
-      "concept_codes": "[\"IOT_PROTOCOLS_MQTT_CONCEPT\"]"
+      "concept_codes": "[\"IOT_MESSAGING_PROTOCOLS\"]"
     },
     {
       "code": "KW_MESSAGING",
       "name": "messaging",
-      "description": "Token from concept 'IoT Messaging Protocols (MQTT)': messaging",
+      "description": "Token from concept 'IoT Messaging Protocols': messaging",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+        "source_concept": "IOT_MESSAGING_PROTOCOLS",
         "extracted_at": "2026-08-03T12:28:05.454134"
       },
       "created_at": "2026-08-03T12:28:05.454136",
       "updated_at": "2026-08-03T12:28:05.454137",
-      "concept_codes": "[\"IOT_PROTOCOLS_MQTT_CONCEPT\"]"
+      "concept_codes": "[\"IOT_MESSAGING_PROTOCOLS\"]"
     },
     {
       "code": "KW_PUBLISH",
       "name": "publish",
-      "description": "Token from concept 'IoT Messaging Protocols (MQTT)': publish",
+      "description": "Token from concept 'IoT Messaging Protocols': publish",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+        "source_concept": "IOT_MESSAGING_PROTOCOLS",
         "extracted_at": "2026-08-03T12:28:05.454139"
       },
       "created_at": "2026-08-03T12:28:05.454141",
       "updated_at": "2026-08-03T12:28:05.454141",
-      "concept_codes": "[\"IOT_PROTOCOLS_MQTT_CONCEPT\"]"
+      "concept_codes": "[\"IOT_MESSAGING_PROTOCOLS\"]"
     },
     {
       "code": "KW_SUBSCRIBE",
       "name": "subscribe",
-      "description": "Token from concept 'IoT Messaging Protocols (MQTT)': subscribe",
+      "description": "Token from concept 'IoT Messaging Protocols': subscribe",
       "metadata": {
         "source": "concept_extraction",
-        "source_concept": "IOT_PROTOCOLS_MQTT_CONCEPT",
+        "source_concept": "IOT_MESSAGING_PROTOCOLS",
         "extracted_at": "2026-08-03T12:28:05.454144"
       },
       "created_at": "2026-08-03T12:28:05.454146",
       "updated_at": "2026-08-03T12:28:05.454146",
-      "concept_codes": "[\"IOT_PROTOCOLS_MQTT_CONCEPT\"]"
+      "concept_codes": "[\"IOT_MESSAGING_PROTOCOLS\"]"
     },
     {
       "code": "KW_BOTNET",

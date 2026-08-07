@@ -2746,7 +2746,7 @@
     },
     {
       "code": "IOT_PROTOCOLS_MQTT",
-      "name": "IoT Messaging Protocols (MQTT)",
+      "name": "IoT Messaging Protocols",
       "description": "Tập trung vào giao thức truyền tin MQTT, một tiêu chuẩn phổ biến cho các thiết bị IoT do tính nhẹ và hiệu quả.",
       "parent_or_relation": "IOT_COMMUNICATION,IOT_SECURITY_SAFETY",
       "category_codes": [
@@ -4337,8 +4337,8 @@
       "metadata": "{\"icon\": \"balance-scale\"}"
     },
     {
-      "code": "IOT_PROTOCOLS_MQTT_CONCEPT",
-      "name": "IoT Messaging Protocols (MQTT)",
+      "code": "IOT_MESSAGING_PROTOCOLS",
+      "name": "IoT Messaging Protocols",
       "description": "Hiểu nguyên lý hoạt động của giao thức MQTT theo mô hình publish-subscribe, được thiết kế cho các thiết bị IoT.",
       "parent_or_relation": "IOT_PROTOCOLS_MQTT,ENCRYPTION_PROTOCOLS",
       "topic_codes": [
