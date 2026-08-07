@@ -57,6 +57,29 @@ python scripts/generate_roadmap_v3.py \
   --skip-steps step_7                     # bỏ qua staging sync
 ```
 
+## 🤖 LLM Provider Config
+
+Pipeline dùng provider layer trong `.agents/skills/keyword-extractor/scripts/llm_call.py`
+(`get_llm_client()`) — chọn provider qua env `LLM_PROVIDER`:
+
+| `LLM_PROVIDER` | Base URL | Model mặc định | API key env |
+|---|---|---|---|
+| `deepseek` | `https://api.deepseek.com` | `deepseek-v4-flash` | `DEEPSEEK_API_KEY` hoặc `SAAS_DEEPSEEK_API_KEY` |
+| `ollama-cloud` | `https://api.ollama.ai/v1` | `deepseek-v4-flash:cloud` | `SAAS_OLLAMA_CLOUD_API_KEY` |
+| `ollama` | `http://127.0.0.1:11434/v1` | `qwen2.5:3b` (hoặc `ATE_MODEL`) | — |
+
+- **Không set `LLM_PROVIDER`** → auto: có `SAAS_OLLAMA_CLOUD_API_KEY` thì dùng `ollama-cloud`, ngược lại `ollama` local.
+- **`ATE_MODEL`** override model mặc định của provider (DeepSeek tự bỏ suffix `:cloud`).
+- **`.env`** auto-load từ repo root — không cần export thủ công.
+- DeepSeek JSON mode: `response_format={'type':'json_object'}` (tương thích `llm_chat_json`).
+
+Ví dụ dùng DeepSeek:
+```bash
+# .env
+LLM_PROVIDER=deepseek
+DEEPSEEK_API_KEY=sk-...
+```
+
 ## ⚙️ Chạy từng step riêng (debug)
 
 ```bash

@@ -90,6 +90,33 @@ def keyword_similarity(text1: str, text2: str) -> float:
     return len(intersection) / len(union)
 
 
+
+
+# Tech-specific keywords — nếu SIO mô tả chứa, không ADAPT được sang tech khác
+_FOREIGN_TECH_KEYWORDS = [
+    'mypy', 'pyright', 'ruff', 'pylint', 'flake8', 'black', 'isort',  # Python tooling
+    'pip', 'pypi', 'poetry', 'venv', 'virtualenv',  # Python packaging
+    'cmmi', 'iso 42001', 'iso42001', 'nis ', 'threat modeling',  # Rác governance
+    'governance framework', 'compliance', 'policy and', 'risk assessment', 'maturity',  # Rác governance
+    'numpy', 'pandas', 'requests', 'fastapi', 'flask', 'django',  # Python libs
+    'react', 'vue', 'angular', 'jsx', 'tsx',  # JS frameworks
+    'npm', 'yarn', 'pnpm', 'node_modules',  # JS packaging
+]
+
+
+def _contains_foreign_tech_keywords(sio: dict, target_tech: str) -> bool:
+    """Check if SIO description contains tech-specific keywords of OTHER techs.
+
+    If yes, cannot safely 'adapt' keyword to target tech — must GENERATE new.
+    """
+    desc = (sio.get('description', '') or '').lower()
+    name = (sio.get('name', '') or '').lower()
+    text = desc + ' ' + name
+    for kw in _FOREIGN_TECH_KEYWORDS:
+        if kw in text:
+            return True
+    return False
+
 def resolve_sios_for_cio(cio_code: str, target_tech: str, all_sios: list) -> dict:
     """Resolve SIOs for a given CIO and target tech stack."""
     # Normalize CIO code to handle different formats
@@ -151,8 +178,10 @@ def resolve_sios_for_cio(cio_code: str, target_tech: str, all_sios: list) -> dic
                 best_match = {'sio': sio, 'tech': tech, 'score': score}
     
     # If any cross-tech sibling exists, prefer ADAPT over GENERATE
-    # Lower threshold from 0.6 to 0.1 to favor adaptation
-    if best_match and best_score >= 0.1:
+    # ADAPT chỉ khi: (1) similarity CAO (>= 0.6) VÀ (2) SIO source KHÔNG chứa
+    # tech-specific keywords của tech khác (mypy/pyright/ruff/CMMI/ISO...) —
+    # vì không thể "đổi keyword" an toàn, cần GENERATE mới.
+    if best_match and best_score >= 0.6 and not _contains_foreign_tech_keywords(best_match['sio'], target_tech):
         return {
             'cio_code': cio_code,
             'normalized_cio': normalized_cio,
@@ -163,34 +192,17 @@ def resolve_sios_for_cio(cio_code: str, target_tech: str, all_sios: list) -> dic
             'similarity': best_score,
             'siblings_count': len(siblings)
         }
-        if best_score >= 0.6:
-            return {
-                'cio_code': cio_code,
-                'normalized_cio': normalized_cio,
-                'action': 'ADAPT',
-                'source_sio': best_match['sio'],
-                'source_tech': best_match['tech'],
-                'target_tech': target_tech,
-                'similarity': best_score,
-                'siblings_count': len(siblings)
-            }
-        elif best_score >= 0.3:
-            return {
-                'cio_code': cio_code,
-                'normalized_cio': normalized_cio,
-                'action': 'TEMPLATE',
-                'source_sio': best_match['sio'],
-                'source_tech': best_match['tech'],
-                'target_tech': target_tech,
-                'similarity': best_score,
-                'siblings_count': len(siblings)
-            }
     
+    # Cross-tech similarity thấp HOẶC SIO chứa tech-specific keywords ngoại lai
+    # → GENERATE mới (JIT sinh SIO đúng tech), không copy SIO sai tech
+    reason = f'Cross-tech similarity thấp (best: {best_score:.2f}) — cần SIO mới đúng tech {target_tech}'
+    if best_match and best_score >= 0.6:
+        reason = f'SIO source ({best_match["tech"]}) chứa tech-specific keywords — không ADAPT an toàn, GENERATE mới'
     return {
         'cio_code': cio_code,
         'normalized_cio': normalized_cio,
         'action': 'GENERATE',
-        'reason': f'Low similarity with siblings (best: {best_score:.2f})',
+        'reason': reason,
         'siblings_count': len(siblings),
         'available_techs': list(by_tech.keys())
     }

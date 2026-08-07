@@ -31,6 +31,22 @@ def load_json(path: Path) -> dict:
         return json.load(f)
 
 
+# Dấu hiệu template máy móc (gen_real_los.py sinh data thối trong Master Tree)
+# Nếu description LO chứa các cụm này → KHÔNG đưa vào roadmap (chất lượng thấp)
+_TEMPLATE_DESC_SIGNALS = [
+    'ngưỡng', 'vật lý/logic', 'mô hình tham chiếu', 'chỉ số trong',
+    'nguyên lý phổ quát', 'hiểu:', 'vai trò của nó trong thiết kế',
+]
+
+
+def is_template_description(desc: str) -> bool:
+    """True nếu description là template máy móc (data thối), không đưa vào roadmap."""
+    if not desc:
+        return False
+    d = desc.lower()
+    return any(sig in d for sig in _TEMPLATE_DESC_SIGNALS)
+
+
 def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[str, dict]:
     """Build {lo_code: {code, lo_type, concept, name, description, assessment}}."""
     los = {}
@@ -38,7 +54,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
     # ULOs (derived in STEP 4)
     for ulo in matched_cios.get('derived_ulos', []):
         code = ulo.get('code', '')
-        if code:
+        if code and not is_template_description(ulo.get('description', '')):
             los[code] = {
                 'code': code,
                 'lo_type': 'UNIVERSAL',
@@ -48,10 +64,10 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
                 'assessment': ulo.get('assessment_approach', 'concept-check'),
             }
 
-    # CIOs (matched in STEP 4)
+    # CIOs (matched in STEP 4) — bỏ template data thối từ Master Tree
     for match in matched_cios.get('matched_cios', []):
         code = match.get('cio_code', '')
-        if code:
+        if code and not is_template_description(match.get('cio_description', '')):
             los[code] = {
                 'code': code,
                 'lo_type': 'CONCEPTUAL_IMPL',
@@ -69,7 +85,7 @@ def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[
             sio_list = [group['source_sio']]
         for sio in sio_list:
             code = sio.get('code', '')
-            if code:
+            if code and not is_template_description(sio.get('description', '')):
                 los[code] = {
                     'code': code,
                     'lo_type': 'SPECIFIC_IMPL',

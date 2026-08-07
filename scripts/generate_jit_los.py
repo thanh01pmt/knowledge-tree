@@ -36,22 +36,29 @@ if str(SKILL_LLM_PATH) not in sys.path:
     sys.path.insert(0, str(SKILL_LLM_PATH))
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
-    from openai import OpenAI
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client, resolve_provider
     _LLM_AVAILABLE = True
 except ImportError:
     _LLM_AVAILABLE = False
 
 
 def _get_llm():
-    """Return (client, model) or (None, None) if LLM unavailable."""
+    """Return (client, model) or (None, None) if LLM unavailable.
+
+    Provider qua llm_call.resolve_provider():
+    - LLM_PROVIDER=deepseek      → https://api.deepseek.com, deepseek-v4-flash
+    - LLM_PROVIDER=ollama-cloud  → https://api.ollama.ai/v1, deepseek-v4-flash:cloud
+    - LLM_PROVIDER=ollama        → http://127.0.0.1:11434/v1 (local)
+    - Không set LLM_PROVIDER     → auto (cloud nếu có SAAS_OLLAMA_CLOUD_API_KEY)
+    """
     if not _LLM_AVAILABLE:
         return None, None
-    api_key = os.environ.get("OPENAI_API_KEY", "ollama")
-    base_url = os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:11434/v1")
-    model = os.environ.get("ATE_MODEL", "deepseek-v4-flash:cloud")
     try:
-        client = OpenAI(api_key=api_key, base_url=base_url)
+        client, provider, model = get_llm_client()
+        if client is None:
+            return None, None
+        if os.environ.get("VERBOSE_LLM"):
+            print(f"  [LLM] provider={provider} model={model}", file=sys.stderr)
         return client, model
     except Exception:
         return None, None
@@ -319,30 +326,44 @@ def main():
     # Concepts resolved from STEP 3
     resolved = collect_resolved_concepts(resolved_concepts)
 
-    # TEMPLATE DETECTION: concepts covered nhưng ULO là template máy móc
+    # TEMPLATE DETECTION: concepts covered nhưng ULO/CIO là template máy móc
     # → đưa vào JIT để regenerate (LLM sinh desc tự nhiên)
-    # Dấu hiệu template: "nguyên lý phổ quát", "hiểu:", hoặc concept code thô trong desc
-    TEMPLATE_SIGNALS = ['nguyên lý phổ quát', 'vai trò của nó trong thiết kế', 'hiểu:', 'hiểu ', 'người học có khả năng hiểu:']
+    # Dấu hiệu template ULO: "nguyên lý phổ quát", "hiểu:", concept code thô
+    # Dấu hiệu template CIO: "ngưỡng", "vật lý/logic", "mô hình tham chiếu", "chỉ số" (gen_real_los.py)
+    ULO_TEMPLATE_SIGNALS = ['nguyên lý phổ quát', 'vai trò của nó trong thiết kế', 'hiểu:', 'hiểu ', 'người học có khả năng hiểu:']
+    CIO_TEMPLATE_SIGNALS = ['ngưỡng', 'vật lý/logic', 'mô hình tham chiếu', 'chỉ số trong']
     for code in list(covered):
+        # Kiểm tra ULO template (derived_ulos)
+        ulo_template = False
         for lo in matched_cios.get('derived_ulos', []):
             if lo.get('concept_codes') and code in lo.get('concept_codes', []):
                 desc = lo.get('description', '').lower()
-                if any(sig in desc for sig in TEMPLATE_SIGNALS):
-                    # Kiểm tra desc có phải template không (chứa concept code thô hoặc 'hiểu:')
+                if any(sig in desc for sig in ULO_TEMPLATE_SIGNALS):
                     raw_code = code.lower()
                     if (raw_code in desc or desc.startswith('người học có khả năng hiểu nguyên lý')
                             or ' hiểu: ' in desc or desc.startswith('người học có khả năng hiểu:')):
-                        covered.discard(code)
-                        # Thêm vào resolved để JIT regenerate
-                        if code not in resolved:
-                            resolved[code] = {
-                                'keyword': code,
-                                'matches': [],
-                                'is_proposed': True,
-                                'proposed_name': code.replace('_', ' ').title(),
-                            }
-                        print(f"  → Template detected: {code} — regenerate qua JIT")
+                        ulo_template = True
                 break
+        # Kiểm tra CIO template (matched_cios) — data Master Tree thối (gen_real_los.py)
+        cio_template = False
+        for match in matched_cios.get('matched_cios', []):
+            if match.get('concept_code') == code:
+                cio_desc = match.get('cio_description', '').lower()
+                if any(sig in cio_desc for sig in CIO_TEMPLATE_SIGNALS):
+                    cio_template = True
+                    break
+        if ulo_template or cio_template:
+            covered.discard(code)
+            # Thêm vào resolved để JIT regenerate
+            if code not in resolved:
+                resolved[code] = {
+                    'keyword': code,
+                    'matches': [],
+                    'is_proposed': True,
+                    'proposed_name': code.replace('_', ' ').title(),
+                }
+            why = 'ULO' if ulo_template else 'CIO'
+            print(f"  → Template detected ({why}): {code} — regenerate qua JIT")
 
     # Concepts needing JIT generation
     uncovered = {c: info for c, info in resolved.items() if c not in covered}

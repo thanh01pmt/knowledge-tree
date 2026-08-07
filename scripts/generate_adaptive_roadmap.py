@@ -36,7 +36,7 @@ except ImportError:
     OpenAI = None
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client
 except ImportError:
     llm_chat_json = None
 
@@ -228,7 +228,7 @@ def run_agent_evaluation(
     target_depth: str
 ) -> Dict[str, Any]:
     """Calls LLM Agent-as-Judge to evaluate semantic progression and produce rationale audit."""
-    if not llm_chat_json or not OpenAI:
+    if not llm_chat_json:
         return {
             "evaluation_status": "PASS_DEFAULT",
             "pedagogical_coherence_score": 90,
@@ -237,18 +237,15 @@ def run_agent_evaluation(
             "milestone_rationales": {}
         }
         
-    api_key = os.environ.get("OPENAI_API_KEY")
-    if not api_key:
+    client, _provider, model = get_llm_client()
+    if client is None:
         return {
             "evaluation_status": "PASS_DEFAULT",
             "pedagogical_coherence_score": 90,
             "marr_t6_neutrality_pass": True,
-            "judge_notes": "OPENAI_API_KEY missing; using deterministic fallback.",
+            "judge_notes": "LLM unavailable; using deterministic fallback.",
             "milestone_rationales": {}
         }
-        
-    client = OpenAI(api_key=api_key, base_url=os.environ.get("OPENAI_BASE_URL"))
-    model = os.environ.get("ATE_MODEL", "gpt-4o-mini")
     system_prompt = "You are an expert pedagogical auditor and computer science curriculum designer."
     
     user_prompt = f"""You are the Lead Pedagogical Agent-as-Judge for an Adaptive Computer Science Knowledge Graph.

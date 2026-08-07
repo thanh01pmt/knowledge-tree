@@ -469,8 +469,7 @@ if str(_SKILL_LLM) not in _sys.path:
     _sys.path.insert(0, str(_SKILL_LLM))
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
-    from openai import OpenAI
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client
     _LLM_AVAILABLE = True
 except ImportError:
     _LLM_AVAILABLE = False
@@ -490,15 +489,9 @@ def evaluate_bloom_llm(knowledge_items: List[dict], project_type: str = 'app') -
         return _evaluate_bloom_heuristic(knowledge_items)
 
     try:
-        import os
-        from dotenv import load_dotenv
-        load_dotenv(REPO_ROOT / '.env')
-        api_key = os.getenv('OPENAI_API_KEY') or os.getenv('ANTHROPIC_API_KEY')
-        if not api_key:
+        client, provider, model = get_llm_client()
+        if client is None:
             return _evaluate_bloom_heuristic(knowledge_items)
-
-        client = OpenAI(api_key=api_key, base_url=os.getenv('OPENAI_BASE_URL'))
-        model = os.getenv('ATE_MODEL', 'deepseek-v4-flash:cloud')
 
         # Batch: gửi tất cả knowledge items 1 lần
         items_desc = '\n'.join(

@@ -101,7 +101,7 @@ except ImportError:
     OpenAI = None
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client
 except ImportError:
     llm_chat_json = None
 
@@ -111,13 +111,11 @@ except ImportError:
 # ---------------------------------------------------------------------------
 
 def _get_llm_client() -> Tuple[Any, str]:
-    """Returns (OpenAI client, model_name) or raises RuntimeError."""
-    if not OpenAI:
-        raise RuntimeError("openai package not installed")
-    api_key = os.environ.get("OPENAI_API_KEY", "ollama")
-    base_url = os.environ.get("OPENAI_BASE_URL", "http://127.0.0.1:11434/v1")
-    model = os.environ.get("ATE_MODEL", "gpt-4o-mini")
-    return OpenAI(api_key=api_key, base_url=base_url), model
+    """Returns (OpenAI client, model_name) via provider layer (deepseek | ollama-cloud | ollama)."""
+    client, _provider, model = get_llm_client()
+    if client is None:
+        raise RuntimeError("LLM client unavailable (kiểm tra LLM_PROVIDER + API key)")
+    return client, model
 
 
 def _llm_json(system: str, user: str, temperature: float = 0.2) -> Dict:

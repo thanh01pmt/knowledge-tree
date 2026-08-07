@@ -44,7 +44,7 @@ if str(SKILL_LLM) not in sys.path:
     sys.path.insert(0, str(SKILL_LLM))
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client
     from openai import OpenAI
     _LLM_AVAILABLE = True
 except ImportError:
@@ -113,11 +113,9 @@ def escalate_keywords(keywords: List[Dict], master_concepts: Dict) -> List[Dict]
         return _fallback_escalate(keywords, master_concepts)
 
     try:
-        client = OpenAI(
-            api_key=os.getenv('OPENAI_API_KEY') or os.getenv('SAAS_OLLAMA_CLOUD_API_KEY'),
-            base_url=os.getenv('OPENAI_BASE_URL'),
-        )
-        model = os.getenv('ATE_MODEL', 'deepseek-v4-flash:cloud')
+        client, _provider, model = get_llm_client()
+        if client is None:
+            return _fallback_escalate(keywords, master_concepts)
 
         # Master concepts — gửi TOÀN BỘ dạng compact (code + name) cho LLM match
         master_sample = [

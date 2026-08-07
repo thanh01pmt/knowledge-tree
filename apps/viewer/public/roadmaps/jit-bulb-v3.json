@@ -22,7 +22,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "CORE_LIBRARIES",
               "name": "Understand CORE_LIBRARIES",
-              "description": "Người học có khả năng hiểu core libraries là các thư viện nền tảng được tích hợp sẵn trong một ngôn ngữ lập trình hoặc framework, cung cấp các chức năng cơ bản và tái sử dụng để hỗ trợ phát triển ứng dụng một cách hiệu quả.",
+              "description": "Người học có khả năng hiểu core libraries là các thư viện cốt lõi được tích hợp sẵn trong môi trường lập trình, cung cấp các hàm và đối tượng cơ bản để phát triển ứng dụng một cách hiệu quả.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
@@ -37,7 +37,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "EXCEPTION_HANDLING",
               "name": "Understand EXCEPTION_HANDLING",
-              "description": "Người học có khả năng hiểu khái niệm exception handling (xử lý ngoại lệ) trong lập trình, bao gồm cách sử dụng các khối try-catch để bắt và xử lý các ngoại lệ, giúp chương trình không bị dừng đột ngột khi gặp lỗi.",
+              "description": "Người học có khả năng hiểu exception handling là phương pháp quản lý và phản hồi các lỗi phát sinh trong quá trình chạy chương trình một cách có kiểm soát.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
@@ -67,7 +67,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "HTTP_PROTOCOL",
               "name": "Understand HTTP_PROTOCOL",
-              "description": "Người học có khả năng hiểu nguyên lý hoạt động của giao thức HTTP trong việc truyền tải thông tin trên World Wide Web.",
+              "description": "Người học có khả năng hiểu nguyên tắc hoạt động của HTTP protocol trong việc truyền tải dữ liệu giữa client và server.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
@@ -82,7 +82,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "LOCAL_VIEW_STATE",
               "name": "Understand LOCAL_VIEW_STATE",
-              "description": "Người học có khả năng hiểu khái niệm trạng thái cục bộ của View, được quản lý bằng cơ chế như @State, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "description": "Người học có khả năng hiểu khái niệm trạng thái cục bộ của View, tức là cơ chế quản lý trạng thái đơn giản chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
@@ -97,7 +97,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "WEB_AUTHENTICATION_STRATEGIES",
               "name": "Understand WEB_AUTHENTICATION_STRATEGIES",
-              "description": "Người học có khả năng hiểu các chiến lược xác thực web, bao gồm cách thức hoạt động và sự khác biệt giữa session-based authentication, token-based authentication (JWT), và OAuth, cũng như các tình huống áp dụng phù hợp cho từng phương pháp.",
+              "description": "Người học có khả năng hiểu các chiến lược xác thực web như session-based authentication, token-based authentication, và OAuth, bao gồm cơ chế hoạt động, ưu nhược điểm và ứng dụng thực tế của từng chiến lược.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": null
@@ -112,7 +112,7 @@
               "lo_type": "UNIVERSAL",
               "concept": "WEB_SERVER",
               "name": "Understand WEB_SERVER",
-              "description": "Người học có khả năng hiểu web server là một hệ thống phần mềm hoặc phần cứng nhận các yêu cầu HTTP từ client và phản hồi bằng các tài nguyên web như HTML, CSS, JavaScript, đồng thời xử lý logic phía máy chủ để phục vụ nội dung động.",
+              "description": "Người học có khả năng hiểu máy chủ web là phần mềm lưu trữ và phục vụ nội dung trang web cho người dùng khi có yêu cầu thông qua giao thức HTTP.",
               "assessment": "concept-check",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
@@ -134,7 +134,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "CORE_LIBRARIES",
               "name": "Apply CORE_LIBRARIES Concepts",
-              "description": "Người học có khả năng thiết kế các CORE_LIBRARIES trừu tượng để hỗ trợ việc tạo ra generative content, đảm bảo tính mô-đun và khả năng tái sử dụng trong các hệ thống Generative AI.",
+              "description": "Người học có khả năng thiết kế kiến trúc tích hợp CORE_LIBRARIES trong các ứng dụng Generative AI để tối ưu hóa quy trình tạo ra generative content.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
@@ -149,7 +149,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "EXCEPTION_HANDLING",
               "name": "Apply EXCEPTION_HANDLING Concepts",
-              "description": "Người học có khả năng thiết kế các chiến lược xử lý ngoại lệ (exception handling) trong hệ thống phần mềm, đảm bảo tính ổn định và khả năng phục hồi khi gặp lỗi, đồng thời tối ưu hóa trải nghiệm người dùng thông qua việc phân loại và phản hồi lỗi một cách thông minh, có thể tích hợp với các mô hình Generative AI để tạo ra các thông điệp lỗi thích ứng theo ngữ cảnh.",
+              "description": "Người học có khả năng thiết kế các chiến lược exception handling nhằm phân loại và phản hồi các lỗi một cách hợp lý, duy trì hoạt động của hệ thống trong điều kiện không mong muốn.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
@@ -159,18 +159,6 @@
         {
           "concept_code": "FOR_LOOP",
           "learning_objectives": [
-            {
-              "code": "CIO-FOR_LOOP-01-IDENTIFY_COMPONENTS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "FOR_LOOP",
-              "name": "For Loop - Identify Components",
-              "description": "Người học có khả năng xác định và phân loại các thành phần cấu thành của for loop theo mô hình tham chiếu.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            },
             {
               "code": "CIO-FOR_LOOP-01-RECALL_DEFINITIONS",
               "lo_type": "CONCEPTUAL_IMPL",
@@ -189,18 +177,6 @@
               "concept": "FOR_LOOP",
               "name": "For Loop - Explain Mechanism",
               "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của for loop bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            },
-            {
-              "code": "CIO-FOR_LOOP-02-INTERPRET_PARAMETERS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "FOR_LOOP",
-              "name": "For Loop - Interpret Parameters",
-              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong for loop.",
               "assessment": "code-lab",
               "rationale": [
                 "CIO is a conceptual implementation of its parent ULO"
@@ -260,7 +236,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "FOR_LOOP",
               "name": "Apply FOR_LOOP Concepts",
-              "description": "Người học có khả năng thiết kế các giải pháp lặp lại có kiểm soát sử dụng FOR_LOOP để xử lý các tập hợp dữ liệu một cách hiệu quả.",
+              "description": "Người học có khả năng thiết kế các giải pháp lập trình sử dụng for loop để lặp lại một khối thao tác với số lần xác định, đặc biệt trong việc duyệt và xử lý các tập hợp dữ liệu.",
               "assessment": "code-lab",
               "rationale": [
                 "CIO is a conceptual implementation of its parent ULO"
@@ -313,7 +289,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "HTTP_PROTOCOL",
               "name": "Apply HTTP_PROTOCOL Concepts",
-              "description": "Người học có khả năng thiết kế các luồng giao tiếp dựa trên HTTP_PROTOCOL, đảm bảo tính nhất quán và hiệu quả trong việc truyền tải dữ liệu giữa các thành phần, đồng thời tối ưu hóa cho các ứng dụng sử dụng Generative AI và generative content.",
+              "description": "Người học có khả năng thiết kế một mô hình giao tiếp mạng cho phép các máy khách gửi yêu cầu và nhận phản hồi từ máy chủ để truyền tải các tài liệu siêu văn bản một cách có cấu trúc.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
@@ -353,18 +329,6 @@
               "concept": "LOCAL_VIEW_STATE",
               "name": "Local View State - Explain Mechanism",
               "description": "Người học có khả năng giải thích cơ chế hoạt động nội tại của local view state bao gồm luồng dữ liệu, chuyển đổi trạng thái và điều kiện biên.",
-              "assessment": "code-lab",
-              "rationale": [
-                "CIO is a conceptual implementation of its parent ULO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            },
-            {
-              "code": "CIO-LOCAL_VIEW_STATE-01-INTERPRET_PARAMETERS",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Local View State - Interpret Parameters",
-              "description": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các tham số, ngưỡng và chỉ số trong local view state.",
               "assessment": "code-lab",
               "rationale": [
                 "CIO is a conceptual implementation of its parent ULO"
@@ -448,7 +412,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "LOCAL_VIEW_STATE",
               "name": "Apply LOCAL_VIEW_STATE Concepts",
-              "description": "Người học có khả năng thiết kế một cơ chế quản lý trạng thái cục bộ cho từng View riêng lẻ, nơi trạng thái chỉ tồn tại trong vòng đời của View đó và tự động bị hủy khi View biến mất, đồng thời có thể tận dụng Generative AI để tạo ra generative content phục vụ cho việc khởi tạo hoặc cập nhật trạng thái một cách linh hoạt.",
+              "description": "Người học có khả năng thiết kế một giải pháp quản lý trạng thái nội bộ cho một View duy nhất, sao cho trạng thái chỉ tồn tại trong vòng đời của View và bị hủy ngay khi View biến mất.",
               "assessment": "code-lab",
               "rationale": [
                 "CIO is a conceptual implementation of its parent ULO"
@@ -489,7 +453,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "WEB_AUTHENTICATION_STRATEGIES",
               "name": "Apply WEB_AUTHENTICATION_STRATEGIES Concepts",
-              "description": "Người học có khả năng thiết kế các chiến lược xác thực web (WEB_AUTHENTICATION_STRATEGIES) nhằm cân bằng giữa bảo mật và trải nghiệm người dùng, đồng thời tích hợp các phương pháp xác thực hiện đại như multi-factor authentication, token-based verification và adaptive risk assessment, có thể tận dụng Generative AI để tự động hóa việc phân tích hành vi đăng nhập và tạo ra các generative content phục vụ cho việc mô phỏng tấn công hoặc kiểm thử bảo mật.",
+              "description": "Người học có khả năng thiết kế một hệ thống xác thực web dựa trên việc phân tích và lựa chọn các web authentication strategies thích hợp, cân nhắc giữa bảo mật và trải nghiệm người dùng.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": null
@@ -516,7 +480,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "WEB_SERVER",
               "name": "Apply WEB_SERVER Concepts",
-              "description": "Người học có khả năng thiết kế một hệ thống máy chủ web có khả năng xử lý các yêu cầu đồng thời, quản lý phiên làm việc và phục vụ nội dung tĩnh lẫn động một cách hiệu quả, đồng thời đảm bảo tính bảo mật và khả năng mở rộng.",
+              "description": "Người học có khả năng thiết kế kiến trúc của một web server, bao gồm việc xác định các thành phần để tiếp nhận và xử lý yêu cầu HTTP, quản lý phiên làm việc, và phân phối nội dung tĩnh cũng như nội dung được tạo động.",
               "assessment": "code-lab",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"
@@ -538,7 +502,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "CORE_LIBRARIES",
               "name": "SWIFT: Implement Core Libraries",
-              "description": "Người học có khả năng triển khai các chức năng nền tảng của ứng dụng như quản lý dữ liệu, xử lý chuỗi và điều phối tác vụ bất đồng bộ bằng cách lựa chọn và vận dụng hợp lý các Core Libraries của Swift.",
+              "description": "Người học có khả năng triển khai các Core Libraries của Swift để tận dụng các thành phần có sẵn, tối ưu hóa quy trình phát triển ứng dụng và xử lý dữ liệu một cách hiệu quả.",
               "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-core_libraries.md"
@@ -553,7 +517,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "EXCEPTION_HANDLING",
               "name": "SWIFT: Implement Exception Handling",
-              "description": "Người học có khả năng triển khai cơ chế xử lý ngoại lệ trong ngôn ngữ Swift để bắt và xử lý các lỗi phát sinh, từ đó đảm bảo chương trình tiếp tục hoạt động hoặc kết thúc một cách có kiểm soát.",
+              "description": "Người học có khả năng triển khai Exception Handling trong ngôn ngữ Swift để xử lý các lỗi phát sinh trong quá trình chạy chương trình, giúp ứng dụng vận hành ổn định và cung cấp phản hồi phù hợp cho người dùng.",
               "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-exception_handling.md"
@@ -563,42 +527,6 @@
         {
           "concept_code": "FOR_LOOP",
           "learning_objectives": [
-            {
-              "code": "SIO-PYTHON-FOR_LOOP-EXPLAIN_MECHANISM-IMPLEMENT_LIBRARY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "FOR_LOOP",
-              "name": "For Loop - Implement Library",
-              "description": "Người học có khả năng build reusable Python library cho for loop: API design, type hints, tests, docs, packaging (pyproject.toml).",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            },
-            {
-              "code": "SIO-PYTHON-FOR_LOOP-IMPLEMENT_PATTERN-IMPLEMENT_LIBRARY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "FOR_LOOP",
-              "name": "For Loop - Implement Library",
-              "description": "Người học có khả năng build reusable Python library cho for loop: API design, type hints, tests, docs, packaging (pyproject.toml).",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            },
-            {
-              "code": "SIO-PYTHON-FOR_LOOP-DECOMPOSE_TRADEOFFS-STATIC_ANALYSIS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "FOR_LOOP",
-              "name": "For Loop - Static Analysis",
-              "description": "Người học có khả năng static analysis code liên quan for loop: mypy, pyright, ruff, bandit, semgrep, custom AST visitor.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-for_loop.md"
-            },
             {
               "code": "SIO-SWIFT-FOR_LOOP-01",
               "lo_type": "SPECIFIC_IMPL",
@@ -681,21 +609,9 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "HTTP_PROTOCOL",
               "name": "SWIFT: Implement Http Protocol",
-              "description": "Người học có khả năng triển khai Http Protocol trong ngôn ngữ Swift bằng cách xây dựng các yêu cầu mạng, xử lý dữ liệu phản hồi và quản lý các phiên kết nối một cách hiệu quả.",
+              "description": "Người học có khả năng triển khai Http Protocol trong ngôn ngữ Swift để thiết lập và quản lý các phiên giao tiếp mạng, gửi yêu cầu đến máy chủ, xử lý phản hồi và tích hợp vào ứng dụng một cách hiệu quả.",
               "assessment": "code-review",
               "rationale": [],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
-            },
-            {
-              "code": "SIO-CUSTOM-HTTP-HEADERS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "HTTP_PROTOCOL",
-              "name": "Configure Custom HTTP Request Headers",
-              "description": "Người học có khả năng cấu hình các HTTP Header tùy chỉnh như Authorization và Content-Type trong trình duyệt.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-http_protocol.md"
             }
           ]
@@ -704,47 +620,11 @@
           "concept_code": "LOCAL_VIEW_STATE",
           "learning_objectives": [
             {
-              "code": "SIO-PYTHON-LOCAL_VIEW_STATE-DECOMPOSE_TRADEOFFS-RISK_ASSESS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Local View State - Risk Assess",
-              "description": "Người học có khả năng risk assessment cho local view state: threat modeling, impact analysis, likelihood estimation, mitigation prioritization.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            },
-            {
-              "code": "SIO-PYTHON-LOCAL_VIEW_STATE-ASSESS_QUALITY-MATURITY_ASSESS",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Local View State - Maturity Assess",
-              "description": "Người học có khả năng assess maturity của local view state: CMMI, ISO 42001, NIST AI RMF, organizational readiness, gap analysis.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            },
-            {
-              "code": "SIO-PYTHON-LOCAL_VIEW_STATE-DESIGN_SOLUTION-DESIGN_FRAMEWORK",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "Local View State - Design Framework",
-              "description": "Người học có khả năng design governance framework cho local view state: policy as code (OPA/Rego), audit logging, automated compliance checks.",
-              "assessment": "code-review",
-              "rationale": [
-                "SIO is a specific implementation of its parent CIO"
-              ],
-              "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-local_view_state.md"
-            },
-            {
               "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "LOCAL_VIEW_STATE",
               "name": "SWIFT: Implement Local View State",
-              "description": "Người học có khả năng triển khai Local View State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và tự động được giải phóng khi View biến mất.",
+              "description": "Người học có khả năng triển khai Local View State trong SwiftUI bằng cách sử dụng cơ chế quản lý trạng thái cục bộ cho một View duy nhất, đảm bảo trạng thái được khởi tạo cùng View và tự động hủy khi View biến mất.",
               "assessment": "code-review",
               "rationale": [
                 "SIO is a specific implementation of its parent CIO"
@@ -773,7 +653,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "WEB_AUTHENTICATION_STRATEGIES",
               "name": "SWIFT: Implement Web Authentication Strategies",
-              "description": "Người học có khả năng triển khai các chiến lược xác thực web (Web Authentication Strategies) như OAuth 2.0, JWT và token-based authentication trong ứng dụng Swift, đảm bảo an toàn cho các phiên đăng nhập và giao tiếp với máy chủ từ xa.",
+              "description": "Người học có khả năng triển khai các chiến lược xác thực web (Web Authentication Strategies) trong ngôn ngữ Swift, bao gồm việc phân tích, lựa chọn và áp dụng các phương thức xác thực phù hợp để đảm bảo an toàn cho ứng dụng.",
               "assessment": "code-review",
               "rationale": [],
               "instruction_ref": null
@@ -788,7 +668,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "WEB_SERVER",
               "name": "SWIFT: Implement Web Server",
-              "description": "Người học có khả năng triển khai một web server bằng ngôn ngữ Swift, bao gồm việc thiết lập các điểm cuối (endpoints) để xử lý các yêu cầu HTTP và trả về phản hồi dạng JSON hoặc HTML.",
+              "description": "Người học có khả năng triển khai một Web Server bằng ngôn ngữ Swift, lắng nghe các yêu cầu HTTP từ client và trả về phản hồi phù hợp.",
               "assessment": "code-review",
               "rationale": [],
               "instruction_ref": "/tmp/pipeline-bulb8/instruction/instruction-web_server.md"

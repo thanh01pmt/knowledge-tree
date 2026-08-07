@@ -44,7 +44,7 @@ if str(SKILL_LLM) not in sys.path:
     sys.path.insert(0, str(SKILL_LLM))
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client
     from openai import OpenAI
     _LLM_AVAILABLE = True
 except ImportError:
@@ -55,9 +55,9 @@ load_dotenv(REPO_ROOT / '.env')
 
 
 def _get_client():
-    api_key = os.getenv('OPENAI_API_KEY') or os.getenv('SAAS_OLLAMA_CLOUD_API_KEY')
-    base_url = os.getenv('OPENAI_BASE_URL')
-    return OpenAI(api_key=api_key, base_url=base_url)
+    """Trả (client, model) qua provider layer (deepseek | ollama-cloud | ollama)."""
+    client, _provider, model = get_llm_client()
+    return client, model
 
 
 def propose_options(goal: str, tech_stack: List[str]) -> List[Dict]:
@@ -66,8 +66,7 @@ def propose_options(goal: str, tech_stack: List[str]) -> List[Dict]:
         return _fallback_options(goal, tech_stack)
 
     try:
-        client = _get_client()
-        model = os.getenv('ATE_MODEL', 'deepseek-v4-flash:cloud')
+        client, model = _get_client()
 
         system = (
             "Bạn là kiến trúc sư phần mềm + cố vấn học tập. "

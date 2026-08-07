@@ -39,9 +39,10 @@ except ImportError:
     OpenAI = None
 
 try:
-    from llm_call import llm_chat_json, LLMCallError
+    from llm_call import llm_chat_json, LLMCallError, get_llm_client
 except ImportError:
     llm_chat_json = None
+    get_llm_client = None
 
 
 # ---------------------------------------------------------------------------
@@ -116,7 +117,7 @@ def propose_project_orientations(
     Uses LLM Agent to analyze user goal and propose 2-3 concrete Project Brief Options
     (e.g., Option 1: 1 Large Capstone, Option 2: 3 Incremental Micro-Projects).
     """
-    if not llm_chat_json or not OpenAI or not os.environ.get("OPENAI_API_KEY"):
+    if not llm_chat_json:
         # Deterministic Fallback Project Proposals if LLM is not configured
         return [
             {
@@ -148,8 +149,9 @@ def propose_project_orientations(
             }
         ]
 
-    client = OpenAI(api_key=os.environ.get("OPENAI_API_KEY"), base_url=os.environ.get("OPENAI_BASE_URL"))
-    model = os.environ.get("ATE_MODEL", "gpt-4o-mini")
+    client, _provider, model = get_llm_client()
+    if client is None:
+        return []
     system_prompt = "You are a Senior Software Architect and Curriculum Designer specialized in Project-Driven Learning."
 
     sample_concepts = list(concepts_map.keys())[:30]

@@ -38,9 +38,125 @@ Usage:
 """
 
 import json
+import os
 import re
 import time
-from typing import Any, Optional
+from pathlib import Path
+from typing import Any, Optional, Tuple
+
+# ─── LLM Provider Resolution ─────────────────────────────────────────────────
+# Hỗ trợ nhiều provider OpenAI-compatible:
+#   deepseek    → https://api.deepseek.com        (model: deepseek-v4-flash)
+#   ollama-cloud→ https://api.ollama.ai/v1        (model: deepseek-v4-flash:cloud)
+#   ollama      → http://127.0.0.1:11434/v1       (model: từ ATE_MODEL)
+# Chọn qua env LLM_PROVIDER. Nếu không set → tự động:
+#   SAAS_OLLAMA_CLOUD_API_KEY set → ollama-cloud, ngược lại → ollama local.
+
+_PROVIDERS = {
+    "deepseek": {
+        "base_url": "https://api.deepseek.com",
+        "api_key_envs": ("DEEPSEEK_API_KEY", "SAAS_DEEPSEEK_API_KEY"),
+        "default_model": "deepseek-v4-flash",
+        "json_mode": True,
+    },
+    "ollama-cloud": {
+        "base_url": "https://api.ollama.ai/v1",
+        "api_key_envs": ("SAAS_OLLAMA_CLOUD_API_KEY", "OPENAI_API_KEY"),
+        "default_model": "deepseek-v4-flash:cloud",
+        "json_mode": True,
+    },
+    "ollama": {
+        "base_url": "http://127.0.0.1:11434/v1",
+        "api_key_envs": (),
+        "default_model": "qwen2.5:3b",
+        "json_mode": False,  # Ollama local không ép JSON mode qua response_format
+    },
+}
+
+
+def resolve_provider() -> Tuple[str, str, str]:
+    """Return (provider_name, base_url, api_key) from env.
+
+    Selection:
+    1. LLM_PROVIDER env explicit (deepseek | ollama-cloud | ollama)
+    2. Fallback: SAAS_OLLAMA_CLOUD_API_KEY set → ollama-cloud, else → ollama local
+
+    Note: không fallback sang DeepSeek tự động — chỉ dùng khi LLM_PROVIDER=deepseek
+    hoặc .env cấu hình rõ.
+    """
+    provider = os.environ.get("LLM_PROVIDER", "").strip().lower()
+    if not provider:
+        # Auto-detect: giữ hành vi cũ (ưu tiên Ollama Cloud nếu có key)
+        if os.environ.get("SAAS_OLLAMA_CLOUD_API_KEY"):
+            provider = "ollama-cloud"
+        else:
+            provider = "ollama"
+
+    if provider not in _PROVIDERS:
+        raise LLMCallError(
+            f"Unknown LLM_PROVIDER '{provider}'. Chọn: {', '.join(_PROVIDERS)}",
+            "bad_request", False,
+        )
+
+    cfg = _PROVIDERS[provider]
+    api_key = "ollama"
+    for env_name in cfg["api_key_envs"]:
+        val = os.environ.get(env_name, "").strip()
+        if val:
+            api_key = val
+            break
+    return provider, cfg["base_url"], api_key
+
+
+def _load_env_file():
+    """Lazy-load .env từ repo root nếu chưa có LLM_PROVIDER/ATE_MODEL trong env.
+
+    Chỉ set nếu chưa có (không ghi đè env shell). Tìm .env theo thứ tự:
+    cwd → thư mục chứa llm_call.py lên 3 cấp (repo root).
+    """
+    if os.environ.get("LLM_PROVIDER") or os.environ.get("ATE_MODEL"):
+        return
+    candidates = [
+        Path.cwd() / ".env",
+        Path(__file__).resolve().parents[4] / ".env",  # repo root (llm_call→scripts→keyword-extractor→skills→.agents→repo)
+    ]
+    for env_path in candidates:
+        if env_path.is_file():
+            try:
+                for line in env_path.read_text(encoding="utf-8").splitlines():
+                    if "=" in line and not line.strip().startswith("#"):
+                        k, v = line.split("=", 1)
+                        os.environ.setdefault(k.strip(), v.strip().strip("'\""))
+                return
+            except OSError:
+                continue
+
+
+def get_llm_client():
+    """Return (client, provider, model) via OpenAI-compatible SDK.
+
+    Provider selection: LLM_PROVIDER env (deepseek | ollama-cloud | ollama)
+    hoặc auto-detect (SAAS_OLLAMA_CLOUD_API_KEY set → ollama-cloud).
+    Model resolution: ATE_MODEL env > provider default.
+    Trả (None, None, None) nếu openai SDK không cài.
+    """
+    _load_env_file()
+    try:
+        from openai import OpenAI
+    except ImportError:
+        return None, None, None
+
+    provider, base_url, api_key = resolve_provider()
+    cfg = _PROVIDERS[provider]
+    model = os.environ.get("ATE_MODEL", "").strip() or cfg["default_model"]
+    # ATE_MODEL thường mang suffix Ollama (:cloud) — không áp dụng cho DeepSeek API
+    if provider == "deepseek":
+        model = model.split(":")[0]  # deepseek-v4-flash:cloud → deepseek-v4-flash
+    try:
+        client = OpenAI(api_key=api_key, base_url=base_url)
+        return client, provider, model
+    except Exception:
+        return None, None, None
 
 
 class LLMCallError(Exception):
