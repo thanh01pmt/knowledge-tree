@@ -165,6 +165,10 @@ def main():
     parser.add_argument("--repo-dir", required=True, type=Path, help="Repository directory path")
     parser.add_argument("--reuse-inventory", type=Path, help="Reuse inventory JSON from STEP 0")
     parser.add_argument("--goal", required=True, help="User goal / application description")
+    parser.add_argument("--resolved-concepts", type=Path,
+                        help="Optional: existing resolved_concepts.json to reuse (skip internal resolve)")
+    parser.add_argument("--escalated-concepts", type=Path,
+                        help="Optional: existing escalated_concepts.json to reuse (skip internal escalate)")
     parser.add_argument("--output", required=True, type=Path, help="Output concept_map.json path")
     args = parser.parse_args()
 
@@ -194,77 +198,84 @@ def main():
 
         temp_inv_dir = tempfile.TemporaryDirectory()
         temp_inv_file = Path(temp_inv_dir.name) / "empty_inventory.json"
-        with open(temp_inv_file, "w", encoding="utf-8") as f:
-            json.dump({"master_tree": {"concepts": {}}}, f)
-        inv_file_to_use = temp_inv_file
-
     keywords_list = extract_keywords_from_graph(verified_graph)
     print(f"[*] Extracted {len(keywords_list)} evidence keywords from verified project graph.")
 
-    with tempfile.TemporaryDirectory() as temp_dir:
-        temp_dir_path = Path(temp_dir)
-        temp_kw_path = temp_dir_path / "keywords.json"
-        temp_resolved_path = temp_dir_path / "resolved_concepts.json"
-        temp_escalated_path = temp_dir_path / "escalated_concepts.json"
+    resolved_data: Dict[str, Any]
+    escalated_data: Optional[Dict[str, Any]] = None
 
-        # Write temp keywords.json
-        kw_data = {
-            "repo_dir": str(repo_dir_path),
-            "primary_language": "multi",
-            "languages": {},
-            "source_context": {},
-            "keywords": keywords_list
-        }
-        with open(temp_kw_path, "w", encoding="utf-8") as f:
-            json.dump(kw_data, f, indent=2, ensure_ascii=False)
-
-        scripts_dir = Path(__file__).parent.resolve()
-        resolve_script = scripts_dir / "resolve_concepts.py"
-        escalate_script = scripts_dir / "escalate_concepts_v3.py"
-
-        # Call resolve_concepts.py
-        print("[*] Running resolve_concepts.py...")
-        cmd_resolve = [
-            sys.executable,
-            str(resolve_script),
-            "--keywords", str(temp_kw_path),
-            "--reuse-inventory", str(inv_file_to_use),
-            "--goal", args.goal,
-            "--output", str(temp_resolved_path),
-        ]
-        res_resolve = subprocess.run(cmd_resolve, capture_output=True, text=True)
-        if res_resolve.returncode != 0:
-            print(f"[ERROR] resolve_concepts.py failed (exit code {res_resolve.returncode}):\n{res_resolve.stderr}", file=sys.stderr)
-            if temp_inv_dir:
-                temp_inv_dir.cleanup()
-            sys.exit(1)
-
-        # Call escalate_concepts_v3.py
-        print("[*] Running escalate_concepts_v3.py...")
-        cmd_escalate = [
-            sys.executable,
-            str(escalate_script),
-            "--keywords", str(temp_kw_path),
-            "--resolved-concepts", str(temp_resolved_path),
-            "--output", str(temp_escalated_path),
-        ]
-        res_escalate = subprocess.run(cmd_escalate, capture_output=True, text=True)
-        if res_escalate.returncode != 0:
-            print(f"[ERROR] escalate_concepts_v3.py failed (exit code {res_escalate.returncode}):\n{res_escalate.stderr}", file=sys.stderr)
-            if temp_inv_dir:
-                temp_inv_dir.cleanup()
-            sys.exit(1)
-
-        # Load resolved and escalated outputs
-        with open(temp_resolved_path, "r", encoding="utf-8") as f:
+    # Reuse path: join graph evidence against the pipeline's existing
+    # resolved/escalated concepts so the concept vocabulary matches what
+    # JIT generates LOs for (avoids a disjoint re-resolve).
+    if args.resolved_concepts and args.resolved_concepts.is_file():
+        print(f"[*] Reusing resolved concepts from {args.resolved_concepts}")
+        with open(args.resolved_concepts, "r", encoding="utf-8") as f:
             resolved_data = json.load(f)
-
-        escalated_data = None
-        if temp_escalated_path.is_file():
-            with open(temp_escalated_path, "r", encoding="utf-8") as f:
+        if args.escalated_concepts and args.escalated_concepts.is_file():
+            print(f"[*] Reusing escalated concepts from {args.escalated_concepts}")
+            with open(args.escalated_concepts, "r", encoding="utf-8") as f:
                 escalated_data = json.load(f)
-
         concept_map = build_concept_map(verified_graph, resolved_data, escalated_data)
+    else:
+        with tempfile.TemporaryDirectory() as temp_dir:
+            temp_dir_path = Path(temp_dir)
+            temp_kw_path = temp_dir_path / "keywords.json"
+            temp_resolved_path = temp_dir_path / "resolved_concepts.json"
+            temp_escalated_path = temp_dir_path / "escalated_concepts.json"
+
+            # Write temp keywords.json
+            kw_data = {
+                "repo_dir": str(repo_dir_path),
+                "primary_language": "multi",
+                "languages": {},
+                "source_context": {},
+                "keywords": keywords_list
+            }
+            with open(temp_kw_path, "w", encoding="utf-8") as f:
+                json.dump(kw_data, f, indent=2, ensure_ascii=False)
+
+            scripts_dir = Path(__file__).parent.resolve()
+            resolve_script = scripts_dir / "resolve_concepts.py"
+            escalate_script = scripts_dir / "escalate_concepts_v3.py"
+
+            # Call resolve_concepts.py
+            print("[*] Running resolve_concepts.py...")
+            cmd_resolve = [
+                sys.executable,
+                str(resolve_script),
+                "--keywords", str(temp_kw_path),
+                "--reuse-inventory", str(inv_file_to_use),
+                "--goal", args.goal,
+                "--output", str(temp_resolved_path),
+            ]
+            res_resolve = subprocess.run(cmd_resolve, capture_output=True, text=True)
+            if res_resolve.returncode != 0:
+                print(f"[ERROR] resolve_concepts.py failed (exit code {res_resolve.returncode}):\n{res_resolve.stderr}", file=sys.stderr)
+                sys.exit(1)
+
+            # Call escalate_concepts_v3.py
+            print("[*] Running escalate_concepts_v3.py...")
+            cmd_escalate = [
+                sys.executable,
+                str(escalate_script),
+                "--keywords", str(temp_kw_path),
+                "--resolved-concepts", str(temp_resolved_path),
+                "--output", str(temp_escalated_path),
+            ]
+            res_escalate = subprocess.run(cmd_escalate, capture_output=True, text=True)
+            if res_escalate.returncode != 0:
+                print(f"[ERROR] escalate_concepts_v3.py failed (exit code {res_escalate.returncode}):\n{res_escalate.stderr}", file=sys.stderr)
+                sys.exit(1)
+
+            # Load resolved and escalated outputs
+            with open(temp_resolved_path, "r", encoding="utf-8") as f:
+                resolved_data = json.load(f)
+
+            if temp_escalated_path.is_file():
+                with open(temp_escalated_path, "r", encoding="utf-8") as f:
+                    escalated_data = json.load(f)
+
+            concept_map = build_concept_map(verified_graph, resolved_data, escalated_data)
 
     if temp_inv_dir:
         temp_inv_dir.cleanup()

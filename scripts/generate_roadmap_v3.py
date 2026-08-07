@@ -315,13 +315,23 @@ class PipelineOrchestrator:
 
         out = self.output_dir / "concept_map.json"
 
-        success = self._run_script("map_project_graph.py", [
+        # Reuse STEP 3/3.5 outputs so concept vocabulary matches what JIT
+        # generates LOs for (avoids a disjoint re-resolve on evidence keywords).
+        resolved_file = self._artifact("resolved_concepts", "resolved_concepts.json")
+        escalated_file = self._artifact("escalated_concepts", "escalated_concepts.json")
+        map_args = [
             "--project-graph", str(pg_verified),
             "--repo-dir", str(self.repo_dir),
             "--reuse-inventory", inv_path,
             "--goal", self.goal,
             "--output", str(out),
-        ])
+        ]
+        if resolved_file.exists():
+            map_args += ["--resolved-concepts", str(resolved_file)]
+        if escalated_file.exists():
+            map_args += ["--escalated-concepts", str(escalated_file)]
+
+        success = self._run_script("map_project_graph.py", map_args)
 
         if success:
             self._complete("step_3_6", concept_map=out)

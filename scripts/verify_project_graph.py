@@ -221,19 +221,25 @@ def verify_project_graph(graph_data: Dict[str, Any], repo_dir: Path) -> Tuple[Di
         valid_feature_ids.add(feature_id)
         feature["files"] = valid_files
 
-        # LUẬT 2: Platform resolution based on root source files
+        # LUẬT 2: Platform resolution from file sources (majority vote).
+        # Mixed-platform features keep the majority platform; a warning records
+        # the mix instead of silently collapsing everything to esp32.
         file_platforms = [_platform_from_path(f, str(repo_dir)) for f in valid_files]
-        if "esp32" in file_platforms:
-            computed_platform = "esp32"
-        else:
-            computed_platform = "app"
+        plat_counts = {}
+        for fp in file_platforms:
+            plat_counts[fp] = plat_counts.get(fp, 0) + 1
+        computed_platform = max(plat_counts, key=plat_counts.get)
 
         claimed_platform = feature.get("platform")
+        if len(plat_counts) > 1:
+            warnings.append(
+                f"Feature '{feature_id}' is multi-platform {sorted(plat_counts)}; using majority '{computed_platform}'."
+            )
         if claimed_platform != computed_platform:
             warnings.append(
                 f"Feature '{feature_id}' platform corrected from '{claimed_platform}' to '{computed_platform}' based on source files."
             )
-            feature["platform"] = computed_platform
+        feature["platform"] = computed_platform
 
         # LUẬT 3: Extract evidence per feature
         feature_imports: Set[str] = set()
