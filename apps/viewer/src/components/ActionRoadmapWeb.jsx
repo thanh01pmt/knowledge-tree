@@ -160,6 +160,8 @@ function transformToWebData(frontendData) {
         type: step.data.nodeType,
         label: step.data.label || '',
         note: step.data.note || '',
+        featureId: step.data.feature_id,
+        featureName: step.data.feature_name,
         time: extractTimeFromNote(step.data.note),
         knowledge: knowledge.map(function(k, idx) {
           return {
@@ -288,6 +290,7 @@ function StepCard(_ref) {
   var note = step.note;
   var time = step.time;
   var knowledge = step.knowledge;
+  var featureName = step.featureName;
   var isVerify = type === 'verify';
   
   if (isVerify) {
@@ -389,6 +392,15 @@ function StepCard(_ref) {
             className: 'impl-fn',
             style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '13.5px', fontWeight: 600, color: '#18181b' }
           }, '▶ ' + label),
+          featureName && React.createElement('span', {
+            key: 'feature',
+            className: 'tag feature',
+            style: { 
+              flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
+              color: '#2b78e4', background: '#e7f3ff', padding: '1px 7px', borderRadius: '20px',
+              marginTop: '1px'
+            }
+          }, featureName),
           time && React.createElement('span', {
             key: 'time',
             className: 'impl-time',

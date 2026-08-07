@@ -2,7 +2,14 @@
   "project_brief": {
     "project_code": "JIT_GRAPH",
     "title": "JIT Knowledge Graph",
-    "description": "Just-in-time knowledge graph: minimal knowledge per implement"
+    "description": "Just-in-time knowledge graph: minimal knowledge per implement",
+    "project_type": "app",
+    "features": {
+      "0": "Khởi tạo dự án",
+      "1": "Tạo câu hỏi",
+      "2": "Giao diện",
+      "3": "Lưu trữ"
+    }
   },
   "title": {
     "card": "JIT Knowledge Graph",

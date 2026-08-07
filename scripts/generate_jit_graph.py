@@ -350,19 +350,23 @@ def build_call_graph(implements: List[dict]) -> Dict[str, Set[str]]:
     return graph
 
 
-def cluster_features(implements: List[dict], config: dict = None) -> Dict[str, int]:
-    """Gán feature_id cho mỗi implement.
+def cluster_features(implements: List[dict], config: dict = None) -> Tuple[Dict[str, int], Dict[int, str]]:
+    """Gán feature_id cho mỗi implement + feature names.
 
     Tự động: connected components trên call graph (implements gọi nhau = 1 feature).
     Override: config {'feature_name': ['impl1', 'impl2', ...]} — ghi đè auto.
+
+    Returns: (feature_id_map, feature_names) — feature_names: {id: tên feature}
     """
     # 1. Config override (nếu có)
     if config and config.get('features'):
         feature_id = {}
+        feature_names = {}
         for fid, (fname, impls) in enumerate(config['features'].items()):
+            feature_names[fid] = fname
             for name in impls:
                 feature_id[name] = fid
-        return feature_id
+        return feature_id, feature_names
 
     # 2. Auto: connected components trên call graph
     graph = build_call_graph(implements)
@@ -396,7 +400,12 @@ def cluster_features(implements: List[dict], config: dict = None) -> Dict[str, i
             root_to_id[root] = next_id
             next_id += 1
         feature_ids[imp['name']] = root_to_id[root]
-    return feature_ids
+
+    # Feature names từ root implement (tên có ý nghĩa nhất)
+    feature_names = {}
+    for root, fid in root_to_id.items():
+        feature_names[fid] = readable_name(root)
+    return feature_ids, feature_names
 
 
 # ============================================================================
@@ -985,7 +994,7 @@ def readable_name(name: str) -> str:
     return clean.strip()
 
 
-def build_graph(implements: List[dict], project_type: str = 'app') -> dict:
+def build_graph(implements: List[dict], project_type: str = 'app', feature_names: dict = None) -> dict:
     """Build JIT knowledge graph: 1 main flow Start → End, phases colored.
 
     project_type quyết định "thấy sản phẩm" ở MVP:
@@ -1100,6 +1109,8 @@ def build_graph(implements: List[dict], project_type: str = 'app') -> dict:
             'project_code': 'JIT_GRAPH',
             'title': 'JIT Knowledge Graph',
             'description': 'Just-in-time knowledge graph: minimal knowledge per implement',
+            'project_type': project_type,
+            'features': feature_names or {},
         },
         'title': {'card': 'JIT Knowledge Graph', 'page': 'JIT Knowledge Graph'},
         'nodes': nodes,
@@ -1163,14 +1174,15 @@ def main():
     if args.feature_config and args.feature_config.exists():
         import json as _json
         feature_config = _json.loads(args.feature_config.read_text(encoding='utf-8'))
-    feature_ids = cluster_features(all_implements, feature_config)
+    feature_ids, feature_names = cluster_features(all_implements, feature_config)
     n_features = len(set(feature_ids.values()))
     print(f"[*] Features: {n_features} clusters")
     for imp in all_implements:
         imp['feature_id'] = feature_ids.get(imp['name'], 0)
+        imp['feature_name'] = feature_names.get(imp['feature_id'], f'Feature {imp["feature_id"]}')
 
     # Build graph
-    graph = build_graph(all_implements, project_type)
+    graph = build_graph(all_implements, project_type, feature_names)
 
     # Save
     with open(args.output, 'w', encoding='utf-8') as f:
