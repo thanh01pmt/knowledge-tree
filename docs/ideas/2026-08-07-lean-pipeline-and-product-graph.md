@@ -341,3 +341,44 @@ B1 (schema + extractor) ─► B2 (verifier) ─► B3 (mapping) ─► B4 (asse
 ```
 
 Ước lượng: Phase A ~3-4h worker-time · Phase B ~1-1.5 ngày worker-time (B1/B2 là phần nặng).
+
+---
+
+## 9. Kết quả triển khai (2026-08-07/08)
+
+### Phase A — hoàn tất (4 commits)
+- A1 `lo_quality.py`: union 3 bảng copy → 1 module (22 signals, 12 verbs, 15 generic), 25 tests
+- A2 `generate_jit_los`: 9 fallback → `build_lo_desc` + `needs_review` (0 chuỗi cấm)
+- A3 orchestrator: dedupe step_3_5 + judge gate step_8_8 chấm roadmap CUỐI (FAIL → pipeline fail)
+- Fix phát hiện khi verify: signal 'hiểu ' false-positive (match mọi ULO hợp lệ) → 16 issues → 3 thật
+
+### Phase B — hoàn tất
+- B1 `extract_project_graph.py`: 1 LLM call, schema versioned, KHÔNG truyền knowledge tree
+- B2 `verify_project_graph.py`: 5 luật ground-truth (file tồn tại, platform từ file, evidence từ parser, symbol check)
+- B3 `map_project_graph.py`: evidence → resolve_concepts → concept_map
+- B4 `assemble_roadmap.py`: mode feature-cluster, legacy giữ nguyên (regression 12 milestones)
+- Orchestrator: steps 1_3/1_4/3_6 wired, step_8_7 auto-detect mode
+
+### B5 — Đánh giá song song (smart-bulb fixture)
+
+| | Legacy (concept-centric) | Feature (product-driven) |
+|---|---|---|
+| Milestones | 12 (1/concept) | 2 (1/feature-cluster) |
+| Concepts | 12 | 11 |
+| Phases | 3 (flow order) | 2 (MVP → MỞ RỘNG, từ decomposition) |
+| Judge | WARN (3 needs_review) | WARN (12 needs_review) |
+| Semantic gate | PASS | PASS (22 keywords) |
+| Coverage/completeness | 100% | 100% |
+| LLM calls | 48 (16 concepts × 3) | 105 (35 concepts × 3) — nhiều hơn do 92 evidence keywords → resolve rộng hơn |
+
+**Hạn chế fixture:** 3 file code → mọi feature resolve về cùng files → 2 milestones trùng content. Trên repo thật (nhiều file) milestones sẽ phân biệt. Không phải bug code.
+
+### Bugs phát hiện và fix trong B5 (bằng chứng "verify độc lập" hoạt động)
+1. **Platform collapse**: feature multi-target (.ino + .swift) bị ép về esp32 → majority-vote fix + regression test
+2. **Disjoint concept sets**: mapper tự resolve lại (30 concepts) ≠ JIT vocabulary (12) → chỉ 10 concepts vào roadmap. Fix: mapper reuse pipeline resolved/escalated → 100% alignment
+3. **Fuzzy symbol false-positive**: parser thấy `WebServer.h`, LLM ghi `WebServer` → exact match fail. Fix: `_symbol_matches` bidirectional substring
+
+### Kết luận
+- Feature mode PASS cả judge + semantic gate. **Chưa chuyển default** — cần Human duyệt output + test trên repo thật nhiều file trước.
+- Legacy mode giữ nguyên làm fallback an toàn.
+- Next steps (Human quyết): (1) test feature mode trên repo thật >10 files; (2) quyết định default mode; (3) tối ưu LLM calls (evidence keywords → dedup trước resolve).
