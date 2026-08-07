@@ -368,6 +368,146 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         'knowledge_dimension': 'PROCEDURAL',
         'assessment_approach': 'code-review',
     }
+def generate_concept_los(concept_code: str, concept_name: str, description: str,
+                         project_context: str, target_tech: str, keyword: str = '',
+                         platform: str = 'app') -> List[dict]:
+    """Generate ULO, CIO, and SIO in a single LLM call for a concept.
+
+    Returns [ulo_dict, cio_dict, sio_dict]. Falls back per-field via lo_quality.build_lo_desc.
+    """
+    if concept_code == 'FOR_LOOP':
+        concept_name = 'For Loop'
+        if not keyword:
+            keyword = 'for'
+    name_hint = concept_name or concept_code
+    platform_label = 'ESP32/Arduino' if platform == 'esp32' else target_tech
+    code_prefix = 'ESP32' if platform == 'esp32' else target_tech
+
+    kw_hint = (f"Khái niệm này trong dự án xuất hiện qua keyword/tên gọi: '{keyword}' "
+               f"thuộc codebase {platform_label}." if keyword
+               else f"Khái niệm này thuộc codebase {platform_label}.")
+
+    system_prompt = (
+        "Bạn là chuyên gia sư phạm. Hãy viết 3 câu mô tả mục tiêu học tập (LO) cho 1 khái niệm kỹ thuật theo 3 tầng (ULO, CIO, SIO):\n"
+        "- ULO (Universal Learning Objective): bắt đầu bằng 'Người học có khả năng hiểu', nêu rõ đặc điểm/bản chất của khái niệm trong ngữ cảnh dự án.\n"
+        "- CIO (Conceptual Implementation Objective): bắt đầu bằng 'Người học có khả năng thiết kế', mô tả giải pháp kiến trúc/mô hình (KHÔNG nhắc tên công nghệ cụ thể).\n"
+        "- SIO (Specific Implementation Objective): bắt đầu bằng 'Người học có khả năng triển khai', mô tả thực hành cụ thể gắn với keyword, platform và mục đích dự án.\n"
+        "QUAN TRỌNG:\n"
+        "1. CẤM cấu trúc 'Tên: Mô tả' (dấu hai chấm sau tên) ở tất cả các tầng.\n"
+        "2. CẤM lặp từ 'hiểu' hai lần trong câu ULO.\n"
+        "3. CẤM dùng các cụm từ template chung chung như 'và vai trò của nó', 'và cách vận dụng nó'.\n"
+        "4. Dùng đúng tên khái niệm tự nhiên bằng tiếng Việt/tiếng Anh chuyên ngành, KHÔNG chèn mã code/identifier biến vào câu văn.\n"
+        "Trả về JSON dạng: {\"ulo\": \"...\", \"cio\": \"...\", \"sio\": \"...\"}"
+    )
+
+    user_prompt = (
+        f"Khái niệm: {name_hint}\n"
+        f"Mô tả khái niệm: {description}\n"
+        f"Dự án / Ngữ cảnh: {project_context}\n"
+        f"Target Tech: {target_tech}\n"
+        f"Codebase / Platform: {platform_label}\n"
+        f"{kw_hint}"
+    )
+
+    llm_raw = _llm_generate(system_prompt, user_prompt)
+    parsed = None
+    if llm_raw:
+        raw_text = llm_raw.strip()
+        if raw_text.startswith("```"):
+            lines = raw_text.splitlines()
+            if lines[0].startswith("```"):
+                lines = lines[1:]
+            if lines and lines[-1].startswith("```"):
+                lines = lines[:-1]
+            raw_text = "\n".join(lines).strip()
+        try:
+            parsed = json.loads(raw_text)
+        except Exception:
+            parsed = None
+
+    raw_ulo = parsed.get('ulo', '') if isinstance(parsed, dict) and parsed.get('ulo') else ''
+    raw_cio = parsed.get('cio', '') if isinstance(parsed, dict) and parsed.get('cio') else ''
+    raw_sio = parsed.get('sio', '') if isinstance(parsed, dict) and parsed.get('sio') else ''
+
+    # ULO
+    if raw_ulo:
+        cleaned_ulo = lo_quality.clean_llm_description(str(raw_ulo), name_hint)
+        if cleaned_ulo:
+            ulo_desc = cleaned_ulo
+            ulo_needs_review = False
+        else:
+            ulo_desc, ulo_needs_review = lo_quality.build_lo_desc('ULO', concept_code, name_hint, description)
+    else:
+        ulo_desc, ulo_needs_review = lo_quality.build_lo_desc('ULO', concept_code, name_hint, description)
+
+    # CIO
+    if raw_cio:
+        cleaned_cio = lo_quality.clean_llm_description(str(raw_cio), concept_code)
+        if cleaned_cio:
+            cio_desc = cleaned_cio
+            cio_needs_review = False
+        else:
+            cio_desc, cio_needs_review = lo_quality.build_lo_desc('CIO', concept_code, concept_code, description)
+    else:
+        cio_desc, cio_needs_review = lo_quality.build_lo_desc('CIO', concept_code, concept_code, description)
+
+    # SIO
+    if raw_sio:
+        cleaned_sio = lo_quality.clean_llm_description(str(raw_sio), name_hint)
+        if cleaned_sio:
+            sio_desc = cleaned_sio
+            sio_needs_review = False
+        else:
+            sio_desc, sio_needs_review = lo_quality.build_lo_desc(
+                'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
+            )
+    else:
+        sio_desc, sio_needs_review = lo_quality.build_lo_desc(
+            'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
+        )
+
+    ulo = {
+        'code': f"ULO-{concept_code}-01",
+        'name': f"Understand {concept_code}",
+        'description': ulo_desc,
+        'needs_review': ulo_needs_review,
+        'lo_type': 'UNIVERSAL',
+        'parent_lo_code': '',
+        'concept_codes': [concept_code],
+        'bloom_level': 'UNDERSTAND',
+        'knowledge_dimension': 'CONCEPTUAL',
+        'assessment_approach': 'concept-check',
+    }
+
+    cio = {
+        'code': f"CIO-{concept_code}-01",
+        'name': f"Apply {concept_code} Concepts",
+        'description': cio_desc,
+        'needs_review': cio_needs_review,
+        'lo_type': 'CONCEPTUAL_IMPL',
+        'parent_lo_code': f"ULO-{concept_code}-01",
+        'concept_codes': [concept_code],
+        'bloom_level': 'APPLY',
+        'knowledge_dimension': 'PROCEDURAL',
+        'assessment_approach': 'code-lab',
+    }
+
+    sio = {
+        'code': f"SIO-{code_prefix}-{concept_code}-01",
+        'name': f"{platform_label}: Implement {concept_name}",
+        'description': sio_desc,
+        'needs_review': sio_needs_review,
+        'lo_type': 'SPECIFIC_IMPL',
+        'parent_lo_code': f"CIO-{concept_code}-01",
+        'concept_codes': [concept_code],
+        'keyword': keyword,
+        'platform': platform,
+        'bloom_level': 'CREATE',
+        'knowledge_dimension': 'PROCEDURAL',
+        'assessment_approach': 'code-review',
+    }
+
+    return [ulo, cio, sio]
 
 
 
@@ -470,8 +610,6 @@ def main():
         concept_name = get_concept_name(concept_code, inventory)
         print(f"  -> Generating LOs for {concept_name}")
 
-        ulo = generate_ulo(concept_code, description, concept_name)
-        cio = generate_cio(concept_code, description)
         # Platform tu keyword goc (app/esp32) — SIO sinh dung codebase
         kw = info.get('keyword', '')
         platform = kw_platforms.get(kw, '')
@@ -481,11 +619,14 @@ def main():
             platform = 'esp32'
         if not platform:
             platform = 'app'
-        sio = generate_sio(concept_code, concept_name, description,
-                           project_context, args.target_tech,
-                           keyword=kw, platform=platform)
 
-        generated.extend([ulo, cio, sio])
+        concept_los = generate_concept_los(
+            concept_code, concept_name, description,
+            project_context, args.target_tech,
+            keyword=kw, platform=platform
+        )
+
+        generated.extend(concept_los)
 
     print(f"[*] Generated {len(generated)} LOs ({len(uncovered)} concepts × 3 tiers)")
 
