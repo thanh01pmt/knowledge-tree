@@ -4,9 +4,10 @@ import ControlPanel from './components/ControlPanel';
 import NodeDetailsPanel from './components/NodeDetailsPanel';
 import DashboardModal from './components/DashboardModal';
 import OnboardingTour from './components/OnboardingTour';
+import RoadmapViewer from './components/RoadmapViewer';
+import RoadmapShDemo from './components/RoadmapShDemo';
 import { parseKnowledgeTree } from './utils/dataParser';
 import './App.css';
-
 const DEFAULT_VISUAL_CONFIG = { 
   // Points
   nodeSizeMultiplier: 3.0,
@@ -67,6 +68,7 @@ function App() {
   const [isolatedNodeId, setIsolatedNodeId] = useState(null);
   const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
+  const [viewMode, setViewMode] = useState('knowledge'); // 'knowledge' | 'roadmap' | 'roadmap-sh'
 
   const [rawTreeData, setRawTreeData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -187,92 +189,137 @@ function App() {
     handleNodeSelect(node);
   }, [handleNodeSelect]);
 
-  if (loading) {
-    return (
-      <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#0f172a] text-slate-200">
-        <div className="relative flex items-center justify-center mb-6">
-          <div className="w-16 h-16 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin" />
-          <div className="absolute w-8 h-8 rounded-full bg-blue-500/10 backdrop-blur border border-blue-400/30 animate-pulse" />
+  // Only show loading/error for Knowledge Tree view
+  if (viewMode === 'knowledge') {
+    if (loading) {
+      return (
+        <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#0f172a] text-slate-200">
+          <div className="relative flex items-center justify-center mb-6">
+            <div className="w-16 h-16 rounded-full border-4 border-blue-500/20 border-t-blue-500 animate-spin" />
+            <div className="absolute w-8 h-8 rounded-full bg-blue-500/10 backdrop-blur border border-blue-400/30 animate-pulse" />
+          </div>
+          <h2 className="text-lg font-bold text-slate-100 tracking-wide mb-1">Knowledge Tree</h2>
+          <p className="text-xs text-slate-400 animate-pulse">Loading curriculum graph from Supabase Cloud...</p>
         </div>
-        <h2 className="text-lg font-bold text-slate-100 tracking-wide mb-1">Knowledge Tree</h2>
-        <p className="text-xs text-slate-400 animate-pulse">Loading curriculum graph from Supabase Cloud...</p>
-      </div>
-    );
-  }
+      );
+    }
 
-  if (error) {
-    return (
-      <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#0f172a] text-red-400 p-6 text-center">
-        <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 max-w-md">
-          <h3 className="font-bold text-base text-red-300 mb-2">Connection Error</h3>
-          <p className="text-xs text-red-400 leading-relaxed mb-4">{error}</p>
-          <button 
-            onClick={() => window.location.reload()} 
-            className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-semibold transition-colors"
-          >
-            Retry Connection
-          </button>
+    if (error) {
+      return (
+        <div className="flex h-screen w-screen flex-col items-center justify-center bg-[#0f172a] text-red-400 p-6 text-center">
+          <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 max-w-md">
+            <h3 className="font-bold text-base text-red-300 mb-2">Connection Error</h3>
+            <p className="text-xs text-red-400 leading-relaxed mb-4">{error}</p>
+            <button 
+              onClick={() => window.location.reload()} 
+              className="px-4 py-2 bg-red-600 hover:bg-red-500 text-white rounded-lg text-xs font-semibold transition-colors"
+            >
+              Retry Connection
+            </button>
+          </div>
         </div>
-      </div>
-    );
+      );
+    }
   }
 
   return (
     <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
       <OnboardingTour />
       
-      <DashboardModal 
-        isOpen={isDashboardOpen} 
-        onClose={() => setIsDashboardOpen(false)} 
-        graphData={graphData} 
-      />
-
-      <ControlPanel 
-        nodes={graphData.nodes} 
-        onNodeSearch={handleNodeSearch}
-        filters={filters}
-        setFilters={setFilters}
-        visualConfig={visualConfig}
-        setVisualConfig={setVisualConfig}
-        levelConfig={levelConfig}
-        setLevelConfig={setLevelConfig}
-        onReset={resetConfigs}
-        onSearchMatchesChange={setSearchMatchingIds}
-        onOpenDashboard={() => setIsDashboardOpen(true)}
-      />
-
-      {/* Main 3D Graph */}
-      <div className="flex-1 min-w-0 relative h-full w-full">
-        <KnowledgeTree3D 
-          graphData={graphData} 
-          linksBySource={linksBySource} 
-          linksByTarget={linksByTarget}
-          prereqLinksBySource={prereqLinksBySource}
-          prereqLinksByTarget={prereqLinksByTarget}
-          onNodeSelect={handleNodeSelect}
-          searchedNodeId={searchedNodeId}
-          filters={filters}
-          visualConfig={visualConfig}
-          levelConfig={levelConfig}
-          selectedNode={selectedNode}
-          isolatedNodeId={isolatedNodeId}
-          searchMatchingIds={searchMatchingIds}
-        />
+      {/* View Mode Selector */}
+      <div className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-[#1e293b] border border-slate-700 rounded-lg p-2 px-3">
+        <button
+          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+            viewMode === 'knowledge' 
+              ? 'bg-[#44bbff] text-[#0f172a]' 
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
+          }`}
+          onClick={() => setViewMode('knowledge')}
+        >
+          🧠 Knowledge Tree
+        </button>
+        <button
+          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+            viewMode === 'roadmap' 
+              ? 'bg-[#f6fa00] text-[#0f172a]' 
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
+          }`}
+          onClick={() => setViewMode('roadmap')}
+        >
+          🎯 Action Roadmap
+        </button>
+        <button
+          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
+            viewMode === 'roadmap-sh' 
+              ? 'bg-[#2B78E4] text-[#ffffff]' 
+              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
+          }`}
+          onClick={() => setViewMode('roadmap-sh')}
+        >
+          🌐 roadmap.sh
+        </button>
       </div>
 
-      {/* Side Panel */}
-      <NodeDetailsPanel
-        selectedNode={selectedNode}
-        onNodeSelect={handleNodeSelect}
-        graphData={graphData}
-        linksBySource={linksBySource}
-        linksByTarget={linksByTarget}
-        history={history}
-        historyIndex={historyIndex}
-        onNavigateHistory={handleNavigateHistory}
-        isolatedNodeId={isolatedNodeId}
-        setIsolatedNodeId={setIsolatedNodeId}
-      />
+      {viewMode === 'knowledge' ? (
+        <>
+          <DashboardModal 
+            isOpen={isDashboardOpen} 
+            onClose={() => setIsDashboardOpen(false)} 
+            graphData={graphData} 
+          />
+
+          <ControlPanel 
+            nodes={graphData.nodes} 
+            onNodeSearch={handleNodeSearch}
+            filters={filters}
+            setFilters={setFilters}
+            visualConfig={visualConfig}
+            setVisualConfig={setVisualConfig}
+            levelConfig={levelConfig}
+            setLevelConfig={setLevelConfig}
+            onReset={resetConfigs}
+            onSearchMatchesChange={setSearchMatchingIds}
+            onOpenDashboard={() => setIsDashboardOpen(true)}
+          />
+
+          {/* Main 3D Graph */}
+          <div className="flex-1 min-w-0 relative h-full w-full">
+            <KnowledgeTree3D 
+              graphData={graphData} 
+              linksBySource={linksBySource} 
+              linksByTarget={linksByTarget}
+              prereqLinksBySource={prereqLinksBySource}
+              prereqLinksByTarget={prereqLinksByTarget}
+              onNodeSelect={handleNodeSelect}
+              searchedNodeId={searchedNodeId}
+              filters={filters}
+              visualConfig={visualConfig}
+              levelConfig={levelConfig}
+              selectedNode={selectedNode}
+              isolatedNodeId={isolatedNodeId}
+              searchMatchingIds={searchMatchingIds}
+            />
+          </div>
+
+          {/* Side Panel */}
+          <NodeDetailsPanel
+            selectedNode={selectedNode}
+            onNodeSelect={handleNodeSelect}
+            graphData={graphData}
+            linksBySource={linksBySource}
+            linksByTarget={linksByTarget}
+            history={history}
+            historyIndex={historyIndex}
+            onNavigateHistory={handleNavigateHistory}
+            isolatedNodeId={isolatedNodeId}
+            setIsolatedNodeId={setIsolatedNodeId}
+          />
+        </>
+      ) : viewMode === 'roadmap' ? (
+        <RoadmapViewer />
+      ) : (
+        <RoadmapShDemo />
+      )}
     </div>
   );
 }

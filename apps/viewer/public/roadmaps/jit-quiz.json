@@ -17,7 +17,7 @@
         "note": "",
         "phase": 0,
         "nodeType": "start",
-        "color": "#333"
+        "color": "#6b6b76"
       },
       "position": {
         "x": 0,
@@ -28,11 +28,11 @@
       "id": "n1",
       "type": "subtopic",
       "data": {
-        "label": "PHASE 2 — DATA MODEL & PERSISTENCE",
+        "label": "PHASE 0 — NỀN TẢNG",
         "note": "",
-        "phase": 2,
+        "phase": 0,
         "nodeType": "phase",
-        "color": "#27ae60"
+        "color": "#6b6b76"
       },
       "position": {
         "x": 0,
@@ -43,11 +43,12 @@
       "id": "n2",
       "type": "topic",
       "data": {
-        "label": "<Type hints>",
-        "note": "(List[str], Optional, -> Ret)",
-        "phase": 2,
+        "label": "Cài đặt Python",
+        "note": "install, terminal, PATH",
+        "phase": 0,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#6b6b76",
+        "bloom_level": "remember"
       },
       "position": {
         "x": 0,
@@ -56,13 +57,14 @@
     },
     {
       "id": "n3",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT Question]",
-        "note": "(question_bank.py)",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#27ae60"
+        "label": "Chạy script đầu tiên",
+        "note": "python main.py, print, input",
+        "phase": 0,
+        "nodeType": "knowledge",
+        "color": "#6b6b76",
+        "bloom_level": "remember"
       },
       "position": {
         "x": 0,
@@ -73,11 +75,12 @@
       "id": "n4",
       "type": "topic",
       "data": {
-        "label": "<Path & file I/O>",
-        "note": "(Path, read_text, write_text, exists)",
-        "phase": 2,
+        "label": "Tạo thư mục dự án",
+        "note": "main.py, config.py, requirements.txt",
+        "phase": 0,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#6b6b76",
+        "bloom_level": "remember"
       },
       "position": {
         "x": 0,
@@ -88,11 +91,12 @@
       "id": "n5",
       "type": "topic",
       "data": {
-        "label": "<dataclass>",
-        "note": "(@dataclass, asdict, field)",
-        "phase": 2,
+        "label": "Git init & commit",
+        "note": "git init, add, commit, .gitignore",
+        "phase": 0,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#6b6b76",
+        "bloom_level": "remember"
       },
       "position": {
         "x": 0,
@@ -101,13 +105,13 @@
     },
     {
       "id": "n6",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#27ae60"
+        "label": "Tính năng scaffold",
+        "note": "Cài đặt Python, làm quen cú pháp cơ bản, chạy script đầu tiên, khởi tạo git repo sạch.",
+        "phase": 0,
+        "nodeType": "implement",
+        "color": "#6b6b76"
       },
       "position": {
         "x": 0,
@@ -116,13 +120,13 @@
     },
     {
       "id": "n7",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<JSON>",
-        "note": "(json.dumps, indent)",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#27ae60"
+        "label": "PHASE 1 — MVP",
+        "note": "",
+        "phase": 1,
+        "nodeType": "phase",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -133,11 +137,12 @@
       "id": "n8",
       "type": "topic",
       "data": {
-        "label": "<if/else>",
-        "note": "(điều kiện, so sánh)",
-        "phase": 2,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -148,11 +153,12 @@
       "id": "n9",
       "type": "topic",
       "data": {
-        "label": "<List comprehension>",
-        "note": "([x for x in list if ...])",
-        "phase": 2,
+        "label": "Env vars",
+        "note": "os.getenv, default, .env",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -161,13 +167,13 @@
     },
     {
       "id": "n10",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<String methods>",
-        "note": "(lower, split, strip)",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#27ae60"
+        "label": "Tính năng tạo config",
+        "note": "Định nghĩa class Config",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -176,13 +182,14 @@
     },
     {
       "id": "n11",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT QuestionBank]",
-        "note": "(question_bank.py)",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#27ae60"
+        "label": "Tkinter widgets",
+        "note": "Entry, Button, Text, pack",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -193,11 +200,12 @@
       "id": "n12",
       "type": "topic",
       "data": {
-        "label": "<dataclass>",
-        "note": "(@dataclass, asdict, field)",
-        "phase": 2,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -208,11 +216,12 @@
       "id": "n13",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 2,
+        "label": "Event handler",
+        "note": "button command, callback, render kết quả",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -223,11 +232,12 @@
       "id": "n14",
       "type": "topic",
       "data": {
-        "label": "<JSON>",
-        "note": "(json.dumps, indent)",
-        "phase": 2,
+        "label": "F-string",
+        "note": "f\"...{var}\", format",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -238,11 +248,12 @@
       "id": "n15",
       "type": "topic",
       "data": {
-        "label": "<List comprehension>",
-        "note": "([x for x in list if ...])",
-        "phase": 2,
+        "label": "Vòng lặp",
+        "note": "for, range, duyệt collection",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -253,11 +264,12 @@
       "id": "n16",
       "type": "topic",
       "data": {
-        "label": "<Path & file I/O>",
-        "note": "(Path, read_text, write_text, exists)",
-        "phase": 2,
+        "label": "Tkinter layout",
+        "note": "pack, grid, padding",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -266,13 +278,14 @@
     },
     {
       "id": "n17",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT save]",
-        "note": "(question_bank.py)",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#27ae60"
+        "label": "Tkinter basics",
+        "note": "Tk, mainloop",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -281,13 +294,13 @@
     },
     {
       "id": "n18",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 2,
-        "nodeType": "knowledge",
-        "color": "#27ae60"
+        "label": "Tính năng tạo quizapp",
+        "note": "Định nghĩa class QuizApp với phương thức: setup_ui, generate",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -298,11 +311,12 @@
       "id": "n19",
       "type": "topic",
       "data": {
-        "label": "<Path & file I/O>",
-        "note": "(Path, read_text, write_text, exists)",
-        "phase": 2,
+        "label": "Tkinter widgets",
+        "note": "Entry, Button, Text, pack",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -313,11 +327,12 @@
       "id": "n20",
       "type": "topic",
       "data": {
-        "label": "<if/else>",
-        "note": "(điều kiện, so sánh)",
-        "phase": 2,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -328,11 +343,12 @@
       "id": "n21",
       "type": "topic",
       "data": {
-        "label": "<List comprehension>",
-        "note": "([x for x in list if ...])",
-        "phase": 2,
+        "label": "Tkinter layout",
+        "note": "pack, grid, padding",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -343,11 +359,12 @@
       "id": "n22",
       "type": "topic",
       "data": {
-        "label": "<JSON>",
-        "note": "(json.loads, parse)",
-        "phase": 2,
+        "label": "Tkinter basics",
+        "note": "Tk, mainloop",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -358,11 +375,11 @@
       "id": "n23",
       "type": "subtopic",
       "data": {
-        "label": "[IMPLEMENT load]",
-        "note": "(question_bank.py)",
-        "phase": 2,
+        "label": "Tính năng setup ui",
+        "note": "Thiết lập ui — dựng giao diện người dùng (thuộc QuizApp)",
+        "phase": 1,
         "nodeType": "implement",
-        "color": "#27ae60"
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -373,11 +390,12 @@
       "id": "n24",
       "type": "topic",
       "data": {
-        "label": "<List comprehension>",
-        "note": "([x for x in list if ...])",
-        "phase": 2,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -388,11 +406,12 @@
       "id": "n25",
       "type": "topic",
       "data": {
-        "label": "<String methods>",
-        "note": "(lower, split, strip)",
-        "phase": 2,
+        "label": "Event handler",
+        "note": "button command, callback, render kết quả",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#27ae60"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -401,13 +420,14 @@
     },
     {
       "id": "n26",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT filter_by_topic]",
-        "note": "(question_bank.py)",
-        "phase": 2,
-        "nodeType": "implement",
-        "color": "#27ae60"
+        "label": "F-string",
+        "note": "f\"...{var}\", format",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -416,13 +436,14 @@
     },
     {
       "id": "n27",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "PHASE 3 — CORE LOGIC (AI/DOMAIN)",
-        "note": "",
-        "phase": 3,
-        "nodeType": "phase",
-        "color": "#8e44ad"
+        "label": "Vòng lặp",
+        "note": "for, range, duyệt collection",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -431,13 +452,13 @@
     },
     {
       "id": "n28",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "label": "Tính năng generate",
+        "note": "sinh câu hỏi trắc nghiệm (thuộc QuizApp)",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -448,11 +469,12 @@
       "id": "n29",
       "type": "topic",
       "data": {
-        "label": "<JSON>",
-        "note": "(json.dumps, indent)",
-        "phase": 3,
+        "label": "Type hints",
+        "note": "List[str], Optional, -> Ret",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -461,13 +483,13 @@
     },
     {
       "id": "n30",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<f-string>",
-        "note": "(f\"...{var}\", format)",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "label": "Tính năng tạo question",
+        "note": "Định nghĩa class Question với các trường: question, options, correct_index, explanation",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -478,11 +500,12 @@
       "id": "n31",
       "type": "topic",
       "data": {
-        "label": "<env vars>",
-        "note": "(os.getenv, default, .env)",
-        "phase": 3,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -493,11 +516,12 @@
       "id": "n32",
       "type": "topic",
       "data": {
-        "label": "<List comprehension>",
-        "note": "([x for x in list if ...])",
-        "phase": 3,
+        "label": "JSON",
+        "note": "json.dumps, indent",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -508,11 +532,12 @@
       "id": "n33",
       "type": "topic",
       "data": {
-        "label": "<String methods>",
-        "note": "(lower, split, strip)",
-        "phase": 3,
+        "label": "F-string",
+        "note": "f\"...{var}\", format",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -521,13 +546,14 @@
     },
     {
       "id": "n34",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT QuizGenerator]",
-        "note": "(quiz_generator.py)",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
+        "label": "Env vars",
+        "note": "os.getenv, default, .env",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -538,11 +564,12 @@
       "id": "n35",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 3,
+        "label": "List comprehension",
+        "note": "[x for x in list if ...]",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -551,13 +578,14 @@
     },
     {
       "id": "n36",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT generate_questions]",
-        "note": "(quiz_generator.py)",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
+        "label": "String methods",
+        "note": "lower, split, strip",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -566,13 +594,13 @@
     },
     {
       "id": "n37",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<f-string>",
-        "note": "(f\"...{var}\", format)",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "label": "Tính năng tạo quizgenerator",
+        "note": "Định nghĩa class QuizGenerator với phương thức: generate_questions, _build_prompt, _call_llm, _parse_response",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -581,13 +609,14 @@
     },
     {
       "id": "n38",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT _build_prompt]",
-        "note": "(quiz_generator.py)",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -596,13 +625,13 @@
     },
     {
       "id": "n39",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<JSON>",
-        "note": "(json.dumps, indent)",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "label": "Tính năng generate questions",
+        "note": "Generate multiple-choice questions for a topic using LLM.",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -613,11 +642,12 @@
       "id": "n40",
       "type": "topic",
       "data": {
-        "label": "<f-string>",
-        "note": "(f\"...{var}\", format)",
-        "phase": 3,
+        "label": "F-string",
+        "note": "f\"...{var}\", format",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -626,13 +656,13 @@
     },
     {
       "id": "n41",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<String methods>",
-        "note": "(lower, split, strip)",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "label": "Tính năng build prompt",
+        "note": "Xây dựng prompt với tham số: topic, num — tạo chuỗi template (thuộc QuizGenerator)",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -641,13 +671,14 @@
     },
     {
       "id": "n42",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT _call_llm]",
-        "note": "(quiz_generator.py)",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
+        "label": "JSON",
+        "note": "json.dumps, indent",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -658,11 +689,12 @@
       "id": "n43",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 3,
+        "label": "F-string",
+        "note": "f\"...{var}\", format",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -673,11 +705,12 @@
       "id": "n44",
       "type": "topic",
       "data": {
-        "label": "<List comprehension>",
-        "note": "([x for x in list if ...])",
-        "phase": 3,
+        "label": "String methods",
+        "note": "lower, split, strip",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -686,13 +719,13 @@
     },
     {
       "id": "n45",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<JSON>",
-        "note": "(json.loads, parse)",
-        "phase": 3,
-        "nodeType": "knowledge",
-        "color": "#8e44ad"
+        "label": "Tính năng call llm",
+        "note": "gọi API bên ngoài với tham số: prompt (thuộc QuizGenerator)",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -701,13 +734,14 @@
     },
     {
       "id": "n46",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT _parse_response]",
-        "note": "(quiz_generator.py)",
-        "phase": 3,
-        "nodeType": "implement",
-        "color": "#8e44ad"
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -716,13 +750,14 @@
     },
     {
       "id": "n47",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "PHASE 4 — CẤU HÌNH",
-        "note": "",
-        "phase": 4,
-        "nodeType": "phase",
-        "color": "#f39c12"
+        "label": "List comprehension",
+        "note": "[x for x in list if ...]",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -733,11 +768,12 @@
       "id": "n48",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 4,
+        "label": "JSON",
+        "note": "json.loads, parse",
+        "phase": 1,
         "nodeType": "knowledge",
-        "color": "#f39c12"
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
       },
       "position": {
         "x": 0,
@@ -746,13 +782,13 @@
     },
     {
       "id": "n49",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<env vars>",
-        "note": "(os.getenv, default, .env)",
-        "phase": 4,
-        "nodeType": "knowledge",
-        "color": "#f39c12"
+        "label": "Tính năng parse response",
+        "note": "Phân tích response với tham số: response — chuyển JSON thành đối tượng (thuộc QuizGenerator)",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
       },
       "position": {
         "x": 0,
@@ -763,11 +799,11 @@
       "id": "n50",
       "type": "subtopic",
       "data": {
-        "label": "[IMPLEMENT Config]",
-        "note": "(config.py)",
-        "phase": 4,
-        "nodeType": "implement",
-        "color": "#f39c12"
+        "label": "PHASE 2 — MỞ RỘNG",
+        "note": "",
+        "phase": 2,
+        "nodeType": "phase",
+        "color": "#2b78e4"
       },
       "position": {
         "x": 0,
@@ -776,13 +812,14 @@
     },
     {
       "id": "n51",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "PHASE 5 — UI",
-        "note": "",
-        "phase": 5,
-        "nodeType": "phase",
-        "color": "#e74c3c"
+        "label": "Path & file I/O",
+        "note": "Path, read_text, write_text, exists",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -793,11 +830,12 @@
       "id": "n52",
       "type": "topic",
       "data": {
-        "label": "<tkinter widgets>",
-        "note": "(Entry, Button, Text, pack)",
-        "phase": 5,
+        "label": "Dataclass",
+        "note": "@dataclass, asdict, field",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -808,11 +846,12 @@
       "id": "n53",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 5,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -823,11 +862,12 @@
       "id": "n54",
       "type": "topic",
       "data": {
-        "label": "<Event handler>",
-        "note": "(button command, callback, render kết quả)",
-        "phase": 5,
+        "label": "JSON",
+        "note": "json.dumps, indent",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -838,11 +878,12 @@
       "id": "n55",
       "type": "topic",
       "data": {
-        "label": "<f-string>",
-        "note": "(f\"...{var}\", format)",
-        "phase": 5,
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -853,11 +894,12 @@
       "id": "n56",
       "type": "topic",
       "data": {
-        "label": "<Vòng lặp>",
-        "note": "(for, range, duyệt collection)",
-        "phase": 5,
+        "label": "List comprehension",
+        "note": "[x for x in list if ...]",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -868,11 +910,12 @@
       "id": "n57",
       "type": "topic",
       "data": {
-        "label": "<tkinter layout>",
-        "note": "(pack, grid, padding)",
-        "phase": 5,
+        "label": "String methods",
+        "note": "lower, split, strip",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -881,13 +924,13 @@
     },
     {
       "id": "n58",
-      "type": "topic",
+      "type": "subtopic",
       "data": {
-        "label": "<tkinter basics>",
-        "note": "(Tk, mainloop)",
-        "phase": 5,
-        "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "label": "Tính năng tạo questionbank",
+        "note": "Định nghĩa class QuestionBank với phương thức: save, load, filter_by_topic",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
       },
       "position": {
         "x": 0,
@@ -896,13 +939,14 @@
     },
     {
       "id": "n59",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT QuizApp]",
-        "note": "(main.py)",
-        "phase": 5,
-        "nodeType": "implement",
-        "color": "#e74c3c"
+        "label": "Dataclass",
+        "note": "@dataclass, asdict, field",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -913,11 +957,12 @@
       "id": "n60",
       "type": "topic",
       "data": {
-        "label": "<tkinter widgets>",
-        "note": "(Entry, Button, Text, pack)",
-        "phase": 5,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -928,11 +973,12 @@
       "id": "n61",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 5,
+        "label": "JSON",
+        "note": "json.dumps, indent",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -943,11 +989,12 @@
       "id": "n62",
       "type": "topic",
       "data": {
-        "label": "<tkinter layout>",
-        "note": "(pack, grid, padding)",
-        "phase": 5,
+        "label": "List comprehension",
+        "note": "[x for x in list if ...]",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -958,11 +1005,12 @@
       "id": "n63",
       "type": "topic",
       "data": {
-        "label": "<tkinter basics>",
-        "note": "(Tk, mainloop)",
-        "phase": 5,
+        "label": "Path & file I/O",
+        "note": "Path, read_text, write_text, exists",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -973,11 +1021,11 @@
       "id": "n64",
       "type": "subtopic",
       "data": {
-        "label": "[IMPLEMENT setup_ui]",
-        "note": "(main.py)",
-        "phase": 5,
+        "label": "Tính năng save",
+        "note": "lưu dữ liệu ra file với tham số: questions (thuộc QuestionBank)",
+        "phase": 2,
         "nodeType": "implement",
-        "color": "#e74c3c"
+        "color": "#2b78e4"
       },
       "position": {
         "x": 0,
@@ -988,11 +1036,12 @@
       "id": "n65",
       "type": "topic",
       "data": {
-        "label": "<Biến & kiểu dữ liệu>",
-        "note": "(int, str, bool, list, dict)",
-        "phase": 5,
+        "label": "Biến & kiểu dữ liệu",
+        "note": "int, str, bool, list, dict",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -1003,11 +1052,12 @@
       "id": "n66",
       "type": "topic",
       "data": {
-        "label": "<Event handler>",
-        "note": "(button command, callback, render kết quả)",
-        "phase": 5,
+        "label": "Path & file I/O",
+        "note": "Path, read_text, write_text, exists",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -1018,11 +1068,12 @@
       "id": "n67",
       "type": "topic",
       "data": {
-        "label": "<f-string>",
-        "note": "(f\"...{var}\", format)",
-        "phase": 5,
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -1033,11 +1084,12 @@
       "id": "n68",
       "type": "topic",
       "data": {
-        "label": "<Vòng lặp>",
-        "note": "(for, range, duyệt collection)",
-        "phase": 5,
+        "label": "List comprehension",
+        "note": "[x for x in list if ...]",
+        "phase": 2,
         "nodeType": "knowledge",
-        "color": "#e74c3c"
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -1046,13 +1098,14 @@
     },
     {
       "id": "n69",
-      "type": "subtopic",
+      "type": "topic",
       "data": {
-        "label": "[IMPLEMENT generate]",
-        "note": "(main.py)",
-        "phase": 5,
-        "nodeType": "implement",
-        "color": "#e74c3c"
+        "label": "JSON",
+        "note": "json.loads, parse",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
       },
       "position": {
         "x": 0,
@@ -1063,15 +1116,77 @@
       "id": "n70",
       "type": "subtopic",
       "data": {
-        "label": "END",
-        "note": "",
-        "phase": 0,
-        "nodeType": "end",
-        "color": "#333"
+        "label": "Tính năng load",
+        "note": "đọc dữ liệu từ file (thuộc QuestionBank)",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
       },
       "position": {
         "x": 0,
         "y": 6900
+      }
+    },
+    {
+      "id": "n71",
+      "type": "topic",
+      "data": {
+        "label": "List comprehension",
+        "note": "[x for x in list if ...]",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7000
+      }
+    },
+    {
+      "id": "n72",
+      "type": "topic",
+      "data": {
+        "label": "String methods",
+        "note": "lower, split, strip",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7100
+      }
+    },
+    {
+      "id": "n73",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng filter theo topic",
+        "note": "lọc theo điều kiện với tham số: topic (thuộc QuestionBank)",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 7200
+      }
+    },
+    {
+      "id": "n74",
+      "type": "subtopic",
+      "data": {
+        "label": "END",
+        "note": "",
+        "phase": 0,
+        "nodeType": "end",
+        "color": "#6b6b76"
+      },
+      "position": {
+        "x": 0,
+        "y": 7300
       }
     }
   ],
@@ -1565,10 +1680,38 @@
       "data": {
         "edgeStyle": "solid"
       }
+    },
+    {
+      "source": "n70",
+      "target": "n71",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n71",
+      "target": "n72",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n72",
+      "target": "n73",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n73",
+      "target": "n74",
+      "data": {
+        "edgeStyle": "solid"
+      }
     }
   ],
   "dimensions": {
-    "height": 7000,
+    "height": 7400,
     "width": 600
   },
   "type": "role",

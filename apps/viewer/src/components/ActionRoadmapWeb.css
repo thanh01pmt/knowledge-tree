@@ -1,0 +1,510 @@
+/* ============================================================================
+   ActionRoadmapWeb.css — Match HTML design tokens exactly
+   ============================================================================ */
+
+.action-roadmap-scope {
+  --bg: #fafafa;
+  --surface: #ffffff;
+  --border: #e6e6e6;
+  --border-strong: #d4d4d4;
+  --ink: #18181b;
+  --ink-dim: #5c5c66;
+  --ink-faint: #9a9aa5;
+  --accent: #0e7c6b;
+  --accent-bg: #e9f6f3;
+  --time: #b4530c;
+  --time-bg: #fdf1e6;
+  --review: #4f46e5;
+  --review-bg: #eeedfd;
+  --assumed: #6b6b76;
+  --verify: #0f9d63;
+  --verify-bg: #eafaf1;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'IBM Plex Sans', sans-serif;
+  --sidebar-w: 252px;
+}
+
+.action-roadmap-scope * { box-sizing: border-box; margin: 0; padding: 0; }
+
+.action-roadmap-scope a { color: inherit; text-decoration: none; }
+
+/* ================= LAYOUT ================= */
+.action-roadmap-scope .app {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* ---------- Sidebar ---------- */
+.action-roadmap-scope .sidebar {
+  width: var(--sidebar-w);
+  flex: none;
+  position: sticky;
+  top: 0;
+  height: 100%;
+  max-height: 100vh;
+  overflow-y: auto;
+  border-right: 1px solid var(--border);
+  background: var(--surface);
+  padding: 24px 18px 24px;
+}
+
+.action-roadmap-scope .sidebar-title {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 2px;
+}
+
+.action-roadmap-scope .sidebar-sub {
+  font-size: 12px;
+  color: var(--ink-faint);
+  margin-bottom: 18px;
+}
+
+.action-roadmap-scope .progress-wrap {
+  margin-bottom: 22px;
+}
+
+.action-roadmap-scope .progress-top {
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--ink-dim);
+  margin-bottom: 6px;
+}
+
+.action-roadmap-scope .progress-bar {
+  height: 6px;
+  background: var(--border);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.action-roadmap-scope .progress-fill {
+  height: 100%;
+  width: 0%;
+  background: var(--accent);
+  transition: width .35s ease;
+}
+
+.action-roadmap-scope .nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.action-roadmap-scope .nav-item {
+  display: block;
+  padding: 9px 10px;
+  border-radius: 7px;
+  text-decoration: none;
+  font-size: 13px;
+  color: var(--ink-dim);
+  border-left: 2px solid transparent;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.action-roadmap-scope .nav-item:hover {
+  background: var(--bg);
+  color: var(--ink);
+}
+
+.action-roadmap-scope .nav-item.active {
+  background: var(--accent-bg);
+  color: var(--accent);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.action-roadmap-scope .nav-item .n {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+  margin-right: 6px;
+}
+
+.action-roadmap-scope .nav-item.active .n {
+  color: var(--accent);
+}
+
+.action-roadmap-scope .nav-item .pct {
+  float: right;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--ink-faint);
+}
+
+.action-roadmap-scope .sidebar-foot {
+  margin-top: 26px;
+  padding-top: 14px;
+  border-top: 1px solid var(--border);
+  font-size: 11px;
+  color: var(--ink-faint);
+  line-height: 1.7;
+}
+
+.action-roadmap-scope .sidebar-foot .row {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 4px;
+}
+
+.action-roadmap-scope .dotc {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex: none;
+}
+
+/* ---------- Main ---------- */
+.action-roadmap-scope .main {
+  flex: 1;
+  min-width: 0;
+  padding: 40px clamp(20px, 5vw, 64px) 100px;
+  max-width: 920px;
+  margin: 0 auto;
+  overflow-y: auto;
+  height: 100%;
+}
+
+.action-roadmap-scope .hero {
+  margin-bottom: 36px;
+}
+
+.action-roadmap-scope .hero h1 {
+  font-size: clamp(22px, 3vw, 30px);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.action-roadmap-scope .hero p {
+  font-size: 14px;
+  color: var(--ink-dim);
+  max-width: 60ch;
+}
+
+.action-roadmap-scope .phase-section {
+  margin-bottom: 44px;
+  scroll-margin-top: 24px;
+}
+
+.action-roadmap-scope .phase-head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.action-roadmap-scope .phase-badge {
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  background: var(--accent-bg);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+.action-roadmap-scope .phase-head h2 {
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: -0.005em;
+  margin: 0;
+}
+
+.action-roadmap-scope .phase-time {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--time);
+  background: var(--time-bg);
+  padding: 3px 9px;
+  border-radius: 20px;
+}
+
+/* ---------- Step card ---------- */
+.action-roadmap-scope .step {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  margin-bottom: 12px;
+  overflow: hidden;
+  transition: box-shadow .2s ease, border-color .2s ease;
+}
+
+.action-roadmap-scope .step:hover {
+  border-color: var(--border-strong);
+  box-shadow: 0 4px 16px rgba(20, 20, 30, .06);
+}
+
+.action-roadmap-scope .step.done {
+  opacity: .55;
+}
+
+.action-roadmap-scope .step.flash {
+  box-shadow: 0 0 0 2px var(--review);
+}
+
+.action-roadmap-scope .step-grid {
+  display: grid;
+  grid-template-columns: 1.25fr 1fr;
+}
+
+@media (max-width: 720px) {
+  .action-roadmap-scope .step-grid {
+    grid-template-columns: 1fr;
+  }
+  .action-roadmap-scope .impl {
+    border-right: none !important;
+    border-bottom: 1px solid var(--border);
+  }
+}
+
+.action-roadmap-scope .impl {
+  padding: 18px 20px;
+  border-right: 1px solid var(--border);
+}
+
+.action-roadmap-scope .impl-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.action-roadmap-scope .check {
+  width: 17px;
+  height: 17px;
+  border-radius: 5px;
+  border: 1.5px solid var(--border-strong);
+  flex: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s ease, border-color .15s ease;
+}
+
+.action-roadmap-scope .check.on {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.action-roadmap-scope .check.on {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.action-roadmap-scope .impl-fn {
+  font-family: var(--mono);
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.action-roadmap-scope .impl-time {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--time);
+}
+
+.action-roadmap-scope .impl-desc {
+  font-size: 13.5px;
+  color: var(--ink-dim);
+  line-height: 1.6;
+}
+
+.action-roadmap-scope .impl-desc code {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  padding: 1px 5px;
+  border-radius: 4px;
+}
+
+.action-roadmap-scope .impl-note {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 10px;
+  font-size: 11.5px;
+  color: var(--review);
+  background: var(--review-bg);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+.action-roadmap-scope .know {
+  padding: 18px 20px;
+}
+
+.action-roadmap-scope .know-head {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: .05em;
+  color: var(--ink-faint);
+  margin-bottom: 10px;
+}
+
+.action-roadmap-scope .know-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+}
+
+.action-roadmap-scope .know-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: 13px;
+}
+
+.action-roadmap-scope .dot {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-top: 6px;
+  background: var(--ink);
+}
+
+.action-roadmap-scope .dot.optional {
+  background: transparent;
+  border: 1px solid var(--ink-faint);
+}
+
+.action-roadmap-scope .know-item .txt {
+  flex: 1;
+  line-height: 1.45;
+}
+
+.action-roadmap-scope .tag {
+  flex: none;
+  font-family: var(--mono);
+  font-size: 9.5px;
+  padding: 1px 7px;
+  border-radius: 20px;
+  margin-top: 1px;
+}
+
+.action-roadmap-scope .tag.review {
+  color: var(--review);
+  background: var(--review-bg);
+  cursor: pointer;
+}
+
+.action-roadmap-scope .tag.review:hover {
+  text-decoration: underline;
+}
+
+.action-roadmap-scope .tag.assumed {
+  color: var(--assumed);
+  background: var(--border);
+}
+
+.action-roadmap-scope .know-empty {
+  font-size: 12.5px;
+  color: var(--ink-faint);
+  font-style: italic;
+}
+
+/* ---------- Verify ---------- */
+.action-roadmap-scope .verify {
+  background: var(--verify-bg);
+  border: 1px dashed #9adcbd;
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.action-roadmap-scope .verify-mark {
+  font-family: var(--mono);
+  color: var(--verify);
+  font-weight: 700;
+  font-size: 13px;
+  flex: none;
+}
+
+.action-roadmap-scope .verify-body {
+  flex: 1;
+  font-size: 13px;
+  color: var(--ink-dim);
+}
+
+.action-roadmap-scope .verify-body b {
+  color: var(--verify);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+
+.action-roadmap-scope .verify-time {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--time);
+  flex: none;
+}
+
+/* ---------- Mobile top nav ---------- */
+.action-roadmap-scope .mobile-nav {
+  display: none;
+}
+
+@media (max-width: 880px) {
+  .action-roadmap-scope .sidebar {
+    display: none;
+  }
+  .action-roadmap-scope .mobile-nav {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: var(--surface);
+    border-bottom: 1px solid var(--border);
+    padding: 12px 16px;
+  }
+  .action-roadmap-scope .mobile-nav a {
+    flex: none;
+    font-family: var(--mono);
+    font-size: 11.5px;
+    color: var(--ink-dim);
+    background: var(--bg);
+    border: 1px solid var(--border);
+    padding: 6px 12px;
+    border-radius: 20px;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+  .action-roadmap-scope .main {
+    padding: 28px 20px 80px;
+  }
+}
+
+/* Flash animation */
+@keyframes flash {
+  0% { box-shadow: 0 0 0 0 var(--review); }
+  50% { box-shadow: 0 0 0 4px var(--review); }
+  100% { box-shadow: 0 0 0 0 var(--review); }
+}
+
+.action-roadmap-scope .step.flash {
+  animation: flash 1.3s ease;
+}

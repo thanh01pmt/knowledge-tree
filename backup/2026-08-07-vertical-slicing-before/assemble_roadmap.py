@@ -1,0 +1,257 @@
+#!/usr/bin/env python3
+"""
+STEP 8.7: Assemble final roadmap from resolved artifacts.
+
+Reads:
+- resolved_sios.json (from STEP 5)
+- matched_cios.json (from STEP 4, includes derived_ulos)
+- prerequisites.json (from STEP 4.5)
+- jit_los.json (from STEP 5.5, optional)
+- instruction/ (from STEP 8.6, optional)
+
+Performs:
+1. Build LO inventory (ULO/CIO/SIO per concept)
+2. Topological sort on prerequisite DAG (Kahn's algorithm, layered)
+3. Group into phases by layer
+4. Attach rationale + assessment + instruction reference per LO
+
+Outputs:
+- roadmap.json: {project_brief, phases[], total_milestones, total_concepts}
+"""
+
+import json
+import argparse
+from collections import defaultdict, deque
+from pathlib import Path
+from typing import Dict, List, Set, Tuple
+
+
+def load_json(path: Path) -> dict:
+    with open(path, 'r', encoding='utf-8') as f:
+        return json.load(f)
+
+
+def collect_los(matched_cios: dict, resolved_sios: dict, jit_los: dict) -> Dict[str, dict]:
+    """Build {lo_code: {code, lo_type, concept, name, description, assessment}}."""
+    los = {}
+
+    # ULOs (derived in STEP 4)
+    for ulo in matched_cios.get('derived_ulos', []):
+        code = ulo.get('code', '')
+        if code:
+            los[code] = {
+                'code': code,
+                'lo_type': 'UNIVERSAL',
+                'concept': (ulo.get('concept_codes') or [''])[0],
+                'name': ulo.get('name', ''),
+                'description': ulo.get('description', ''),
+                'assessment': ulo.get('assessment_approach', 'concept-check'),
+            }
+
+    # CIOs (matched in STEP 4)
+    for match in matched_cios.get('matched_cios', []):
+        code = match.get('cio_code', '')
+        if code:
+            los[code] = {
+                'code': code,
+                'lo_type': 'CONCEPTUAL_IMPL',
+                'concept': match.get('concept_code', ''),
+                'name': match.get('cio_name', ''),
+                'description': match.get('cio_description', ''),
+                'assessment': 'code-lab',
+            }
+
+    # SIOs (resolved in STEP 5: REUSE 'sios' + ADAPT 'source_sio')
+    for group in resolved_sios.get('resolved_sios', []):
+        concept = group.get('concept_code', '')
+        sio_list = group.get('sios', [])
+        if not sio_list and group.get('source_sio'):
+            sio_list = [group['source_sio']]
+        for sio in sio_list:
+            code = sio.get('code', '')
+            if code:
+                los[code] = {
+                    'code': code,
+                    'lo_type': 'SPECIFIC_IMPL',
+                    'concept': concept,
+                    'name': sio.get('name', ''),
+                    'description': sio.get('description', ''),
+                    'assessment': 'code-review',
+                }
+
+    # JIT-generated LOs (STEP 5.5)
+    for lo in jit_los.get('generated', []):
+        code = lo.get('code', '')
+        if code:
+            los[code] = {
+                'code': code,
+                'lo_type': lo.get('lo_type', ''),
+                'concept': (lo.get('concept_codes') or [''])[0],
+                'name': lo.get('name', ''),
+                'description': lo.get('description', ''),
+                'assessment': lo.get('assessment_approach', 'code-review'),
+            }
+
+    return los
+
+
+def build_dag(prerequisites: dict, los: Dict[str, dict]) -> Tuple[Dict[str, List[str]], Dict[str, str]]:
+    """Build prerequisite DAG: {lo_code: [prereq_codes]} + {lo_code: rationale}."""
+    dag = defaultdict(list)
+    rationale = {}
+    for edge in prerequisites.get('prerequisites', []):
+        target = edge.get('learning_objective_code', '')
+        prereq = edge.get('prerequisite_lo_code', '')
+        if target in los and prereq in los and target != prereq:
+            dag[target].append(prereq)
+            rationale[(prereq, target)] = edge.get('rationale', '')
+    return dag, rationale
+
+
+def topo_layers(dag: Dict[str, List[str]], los: Dict[str, dict]) -> List[List[str]]:
+    """Kahn's algorithm with layering. Returns list of layers (each = list of LO codes)."""
+    in_degree = {code: 0 for code in los}
+    forward = defaultdict(list)  # prereq -> dependents
+
+    for target, prereqs in dag.items():
+        for prereq in prereqs:
+            if prereq in in_degree:
+                in_degree[target] += 1
+                forward[prereq].append(target)
+
+    # Nodes with no prerequisites start first
+    queue = deque([c for c in los if in_degree[c] == 0])
+    layers = []
+    processed = set()
+
+    while queue:
+        layer = list(queue)
+        layers.append(layer)
+        next_queue = deque()
+        for node in layer:
+            processed.add(node)
+            for dependent in forward[node]:
+                in_degree[dependent] -= 1
+                if in_degree[dependent] == 0 and dependent not in processed:
+                    next_queue.append(dependent)
+        queue = next_queue
+
+    # Any remaining nodes (cycles) — append as final layer
+    remaining = [c for c in los if c not in processed]
+    if remaining:
+        layers.append(remaining)
+
+    return layers
+
+
+def group_by_concept(layers: List[List[str]], los: Dict[str, dict]) -> List[dict]:
+    """Group LO codes by concept within each layer, preserving order."""
+    phases = []
+    for layer_idx, layer in enumerate(layers):
+        # Group layer LOs by concept
+        by_concept = defaultdict(list)
+        for code in layer:
+            concept = los[code]['concept'] or 'UNSPECIFIED'
+            by_concept[concept].append(code)
+
+        milestones = []
+        for concept, codes in sorted(by_concept.items()):
+            milestones.append({
+                'concept_code': concept,
+                'learning_objectives': [los[c] for c in codes],
+            })
+
+        phases.append({
+            'phase_id': layer_idx + 1,
+            'title': f"Phase {layer_idx + 1}: Foundation" if layer_idx == 0 else f"Phase {layer_idx + 1}",
+            'milestones': milestones,
+        })
+    return phases
+
+
+def attach_metadata(phases: List[dict], rationale: Dict[Tuple[str, str], str],
+                     instruction_dir: Path) -> List[dict]:
+    """Attach rationale + instruction reference to each LO."""
+    for phase in phases:
+        for milestone in phase['milestones']:
+            concept = milestone['concept_code']
+            # Instruction file for this concept
+            safe = concept.lower().replace(' ', '_')
+            instr_file = instruction_dir / f"instruction-{safe}.md"
+            instr_ref = str(instr_file) if instr_file.exists() else None
+
+            for lo in milestone['learning_objectives']:
+                code = lo['code']
+                # Rationale: find edges where this LO is the target
+                lo_rationale = [
+                    rationale.get((p, code), '')
+                    for p in dag.get(code, [])
+                    if rationale.get((p, code))
+                ]
+                lo['rationale'] = lo_rationale
+                lo['instruction_ref'] = instr_ref
+    return phases
+
+
+def main():
+    parser = argparse.ArgumentParser(description='STEP 8.7: Assemble final roadmap')
+    parser.add_argument('--matched-cios', type=Path, required=True)
+    parser.add_argument('--resolved-sios', type=Path, required=True)
+    parser.add_argument('--prerequisites', type=Path, required=True)
+    parser.add_argument('--jit-los', type=Path, help='Optional: jit_los.json from STEP 5.5')
+    parser.add_argument('--instruction-dir', type=Path, help='Optional: instruction/ from STEP 8.6')
+    parser.add_argument('--goal', type=str, default='')
+    parser.add_argument('--tech-stack', type=str, default='')
+    parser.add_argument('--output', type=Path, required=True)
+    args = parser.parse_args()
+
+    matched_cios = load_json(args.matched_cios)
+    resolved_sios = load_json(args.resolved_sios)
+    prerequisites = load_json(args.prerequisites)
+    jit_los = load_json(args.jit_los) if args.jit_los and args.jit_los.exists() else {'generated': []}
+
+    # 1. Build LO inventory
+    los = collect_los(matched_cios, resolved_sios, jit_los)
+    print(f"[*] LO inventory: {len(los)} LOs")
+
+    # 2. Build DAG
+    global dag
+    dag, rationale = build_dag(prerequisites, los)
+    print(f"[*] Prerequisite edges: {sum(len(v) for v in dag.values())}")
+
+    # 3. Topological sort with layering
+    layers = topo_layers(dag, los)
+    print(f"[*] Topological layers: {len(layers)}")
+    for i, layer in enumerate(layers):
+        print(f"    Layer {i+1}: {len(layer)} LOs")
+
+    # 4. Group into phases by concept
+    phases = group_by_concept(layers, los)
+
+    # 5. Attach rationale + instruction refs
+    if args.instruction_dir and args.instruction_dir.exists():
+        phases = attach_metadata(phases, rationale, args.instruction_dir)
+
+    # 6. Build roadmap
+    roadmap = {
+        'project_brief': {
+            'goal': args.goal,
+            'tech_stack': [t.strip() for t in args.tech_stack.split(',')] if args.tech_stack else [],
+        },
+        'phases': phases,
+        'total_milestones': sum(len(p['milestones']) for p in phases),
+        'total_concepts': len({m['concept_code'] for p in phases for m in p['milestones']}),
+    }
+
+    with open(args.output, 'w', encoding='utf-8') as f:
+        json.dump(roadmap, f, indent=2, ensure_ascii=False)
+
+    print(f"\n[✓] Roadmap assembled: {roadmap['total_milestones']} milestones, "
+          f"{roadmap['total_concepts']} concepts, {len(phases)} phases")
+    print(f"    Saved to {args.output}")
+    return 0
+
+
+if __name__ == '__main__':
+    import sys
+    sys.exit(main())
