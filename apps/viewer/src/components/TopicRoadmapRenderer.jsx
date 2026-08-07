@@ -36,73 +36,61 @@ function transformToCardData(roadmap) {
       const cios = los.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
       const sios = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
 
-      // Knowledge items: mỗi ULO = 1 item (concept có NHIỀU ULO)
-      // Mỗi item mang ULO + CIO (global) + SIO (per-card, nếu có)
+      // Knowledge items theo thiết kế:
+      // - ULO/CIO cùng concept → GOM thành 1 item "Concept <Tên>" (không tách tầng)
+      // - SIO → mỗi item "Keyword <kw>" (thực hành cụ thể)
+      // Hover trên item → hiện đủ các LO liên quan (ULO + CIO, hoặc SIO)
       const knowledge = [];
+      const conceptLabel = humanizeCode(milestone.concept_code);
 
-      // Nếu có SIO: mỗi SIO gắn với ULO/CIO liên quan (hoặc ULO đầu tiên)
+      // Gom ULO + CIO của concept thành 1 item "Concept XYZ"
+      const conceptLois = [...ulos, ...cios];
+      if (conceptLois.length > 0) {
+        // Bloom tag đa cấp: gom các bloom khác nhau (VD understand·apply)
+        const blooms = [...new Set(conceptLois.map(lo => (lo.bloom_level || '').toLowerCase()).filter(Boolean))];
+        const allBlooms = blooms.length > 0 ? blooms.join(' · ') : 'understand';
+        knowledge.push({
+          id: `${milestone.concept_code}-concept`,
+          label: `Concept ${conceptLabel}`,
+          bloom: allBlooms,  // có thể nhiều cấp: "understand · apply"
+          conceptCode: milestone.concept_code,
+          conceptLabel,
+          lois: conceptLois.map(lo => ({
+            code: lo.code, name: cleanLabel(lo.name), description: lo.description,
+            lo_type: lo.lo_type, bloom: lo.bloom_level || '',
+          })),
+          ulo: ulos[0] ? {
+            code: ulos[0].code, name: cleanLabel(ulos[0].name), description: ulos[0].description,
+            bloom: ulos[0].bloom_level || 'remember',
+          } : null,
+          cio: cios[0] ? {
+            code: cios[0].code, name: cleanLabel(cios[0].name), description: cios[0].description,
+            bloom: cios[0].bloom_level || 'understand',
+          } : null,
+          sio: null,
+          keyword: '',
+        });
+      }
+
+      // SIO → mỗi item "Keyword X" (dedup keyword trùng)
       if (sios.length > 0) {
         const seenKws = new Set();
         sios.forEach((sio, i) => {
-          const ulo = ulos[Math.min(i, ulos.length - 1)] || null;
-          const cio = cios[Math.min(i, cios.length - 1)] || null;
           const kw = (sio.keyword || '').trim();
-          // Bỏ SIO trùng keyword (VD 3× "for-in") — chỉ hiện 1, hover vẫn đủ
           if (kw && seenKws.has(kw)) return;
           if (kw) seenKws.add(kw);
-          // Hiển thị keyword thực hành (VD "Keyword @State") thay vì tên SIO máy
           const sioLabel = kw ? `Keyword ${kw}` : cleanLabel(sio.name || sio.code || 'SIO');
           knowledge.push({
             id: `${milestone.concept_code}-sio-${i}`,
             label: sioLabel,
             bloom: sio.bloom_level || 'apply',
-            ulo: ulo ? {
-              code: ulo.code, name: cleanLabel(ulo.name), description: ulo.description,
-              bloom: ulo.bloom_level || 'remember',
-            } : null,
-            cio: cio ? {
-              code: cio.code, name: cleanLabel(cio.name), description: cio.description,
-              bloom: cio.bloom_level || 'understand',
-            } : null,
+            ulo: null,
+            cio: null,
             sio: {
               code: sio.code, name: cleanLabel(sio.name), description: sio.description,
               bloom: sio.bloom_level || 'apply',
             },
             keyword: kw,
-          });
-        });
-      } else if (ulos.length > 0) {
-        // Không có SIO: vẫn hiện ULO/CIO (kiến thức sử dụng)
-        ulos.forEach((ulo, i) => {
-          const cio = cios[Math.min(i, cios.length - 1)] || null;
-          knowledge.push({
-            id: `${milestone.concept_code}-ulo-${i}`,
-            label: cleanLabel(ulo.name || ulo.code),
-            bloom: ulo.bloom_level || 'remember',
-            ulo: {
-              code: ulo.code, name: cleanLabel(ulo.name), description: ulo.description,
-              bloom: ulo.bloom_level || 'remember',
-            },
-            cio: cio ? {
-              code: cio.code, name: cleanLabel(cio.name), description: cio.description,
-              bloom: cio.bloom_level || 'understand',
-            } : null,
-            sio: null,
-          });
-        });
-      } else if (cios.length > 0) {
-        // Phase 2 (MỞ RỘNG): chỉ có CIOs — hiện CIO làm knowledge item
-        cios.forEach((cio, i) => {
-          knowledge.push({
-            id: `${milestone.concept_code}-cio-${i}`,
-            label: cleanLabel(cio.name || cio.code),
-            bloom: cio.bloom_level || 'understand',
-            ulo: null,
-            cio: {
-              code: cio.code, name: cleanLabel(cio.name), description: cio.description,
-              bloom: cio.bloom_level || 'understand',
-            },
-            sio: null,
           });
         });
       }
@@ -126,6 +114,17 @@ function transformToCardData(roadmap) {
     })),
     cards,
   };
+}
+
+function humanizeCode(code) {
+  // "LOCAL_VIEW_STATE" → "Local View State" | "CORE_LIBRARIES" → "Core Libraries"
+  // (chỉ capitalize khi code là UPPER_SNAKE; giữ nguyên tên có sẵn như "SwiftUI")
+  if (!code) return '';
+  const s = String(code);
+  if (s === s.toUpperCase()) {
+    return s.toLowerCase().replace(/(^|_)(\w)/g, (m, sep, ch) => (sep ? ' ' : '') + ch.toUpperCase());
+  }
+  return s.replace(/_/g, ' ');
 }
 
 function cleanLabel(label) {
@@ -206,43 +205,63 @@ function KnowledgeItem({ item, index }) {
       },
     }, item.bloom),
 
-    // Hover: CHỈ hiện objective TƯƠNG ỨNG theo bloom của keyword
-    // remember → ULO | understand → CIO | apply/create → SIO
+    // Hover: hiện ĐỦ các LO liên quan đến item
+    // - "Concept X" → danh sách ULO + CIO (mỗi cái kèm bloom + desc)
+    // - "Keyword X" → SIO tương ứng
     hover && (() => {
-      // Chọn objective theo bloom
-      let obj = null;
-      let objLabel = '';
-      if (item.bloom === 'remember' && item.ulo) {
-        obj = item.ulo; objLabel = 'ULO';
-      } else if ((item.bloom === 'understand' || item.bloom === 'analyze') && item.cio) {
-        obj = item.cio; objLabel = 'CIO';
-      } else if (item.sio) {
-        obj = item.sio; objLabel = 'SIO';
-      } else if (item.cio) {
-        obj = item.cio; objLabel = 'CIO';
-      } else if (item.ulo) {
-        obj = item.ulo; objLabel = 'ULO';
+      if (item.lois && item.lois.length > 0) {
+        // CONCEPT ITEM: hiện tất cả ULO + CIO
+        const lois = item.lois;
+        const tierLabel = lo => lo.lo_type === 'UNIVERSAL' ? 'ULO' : 'CIO';
+        return React.createElement('div', {
+          key: 'hover',
+          className: 'tkr-hover-popup',
+          style: {
+            position: 'absolute', left: '100%', top: 0, zIndex: 9999,
+            background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
+            padding: '10px 12px', width: '320px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+            fontSize: '12px', lineHeight: 1.5,
+          },
+        }, [
+          React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '6px' } },
+            `ⓘ ${item.label}`),
+          ...lois.map((lo, i) => React.createElement('div', {
+            key: `lo-${i}`,
+            style: { marginBottom: '8px', paddingBottom: '6px', borderBottom: i < lois.length - 1 ? '1px solid #f0f0f0' : 'none' },
+          }, [
+            React.createElement('div', { key: 'tag', style: { color: '#0e7c6b', fontWeight: 600, fontSize: '11px', marginBottom: '2px' } },
+              `${tierLabel(lo)} · ${lo.bloom || ''}`),
+            React.createElement('div', { key: 'name', style: { color: '#18181b', fontWeight: 500, fontSize: '11.5px', marginBottom: '2px' } },
+              lo.name || lo.code),
+            lo.description && React.createElement('div', { key: 'desc', style: { color: '#5c5c66', fontSize: '10.5px' } },
+              lo.description),
+          ])),
+        ]);
       }
-      if (!obj) return null;
-      return React.createElement('div', {
-        key: 'hover',
-        className: 'tkr-hover-popup',
-        style: {
-          position: 'absolute', left: '100%', top: 0, zIndex: 9999,
-          background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
-          padding: '10px 12px', width: '300px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-          fontSize: '12px', lineHeight: 1.5,
-        },
-      }, [
-        React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '4px' } },
-          `ⓘ ${item.label}`),
-        React.createElement('div', { key: 'obj', style: { color: '#0e7c6b', fontWeight: 600, marginBottom: '4px' } },
-          `${objLabel} · ${obj.bloom || ''}`),
-        React.createElement('div', { key: 'name', style: { color: '#18181b', fontWeight: 500, marginBottom: '2px' } },
-          obj.name || obj.code),
-        obj.description && React.createElement('div', { key: 'desc', style: { color: '#5c5c66', fontSize: '11px', marginTop: '2px' } },
-          obj.description),
-      ]);
+      // SIO ITEM ("Keyword X")
+      if (item.sio) {
+        const sio = item.sio;
+        return React.createElement('div', {
+          key: 'hover',
+          className: 'tkr-hover-popup',
+          style: {
+            position: 'absolute', left: '100%', top: 0, zIndex: 9999,
+            background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
+            padding: '10px 12px', width: '300px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
+            fontSize: '12px', lineHeight: 1.5,
+          },
+        }, [
+          React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '4px' } },
+            `ⓘ ${item.label}`),
+          React.createElement('div', { key: 'obj', style: { color: '#0e7c6b', fontWeight: 600, marginBottom: '4px' } },
+            `SIO · ${sio.bloom || ''}`),
+          React.createElement('div', { key: 'name', style: { color: '#18181b', fontWeight: 500, marginBottom: '2px' } },
+            sio.name || sio.code),
+          sio.description && React.createElement('div', { key: 'desc', style: { color: '#5c5c66', fontSize: '11px', marginTop: '2px' } },
+            sio.description),
+        ]);
+      }
+      return null;
     })(),
   ]);
 }
