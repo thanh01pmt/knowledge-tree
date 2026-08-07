@@ -112,15 +112,15 @@ export default function RoadmapViewer() {
         <div className="header-right">
           <div className="roadmap-selector">
             <select 
-              value={selectedRoadmap.project_brief?.project_code || ''} 
+              value={selectedRoadmap._source || ''} 
               onChange={(e) => {
-                const rm = roadmaps.find(r => r.project_brief?.project_code === e.target.value);
+                const rm = roadmaps.find(r => r._source === e.target.value);
                 if (rm) setSelectedRoadmap(rm);
               }}
             >
               {roadmaps.map(rm => (
-                <option key={rm.project_brief?.project_code} value={rm.project_brief?.project_code}>
-                  {rm.project_brief?.title} ({rm.project_brief?.project_code}) {rm._type === 'topic' ? '📘' : rm._type === 'action' ? '🎯' : '🗺️'}
+                <option key={rm._source} value={rm._source}>
+                  {rm.project_brief?.title || rm._source} ({rm._source}) {rm._type === 'topic' ? '📘' : rm._type === 'action' ? '🎯' : '🗺️'}
                 </option>
               ))}
             </select>

@@ -328,7 +328,7 @@ function StepCard(_ref) {
   }
   
   var knowledgeItems = knowledge.map(function(k, i) { 
-    return React.createElement(KnowledgeItem, { key: k.id, item: k, onJump: onJump });
+    return React.createElement(KnowledgeItem, { key: k.id + '-' + i, item: k, onJump: onJump });
   });
   
   var isParallel = note && (note.includes('song song') || note.includes('parallel'));
