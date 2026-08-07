@@ -1,0 +1,516 @@
+{
+  "generated": [
+    {
+      "code": "ULO-ASYNC_PATTERNS-01",
+      "name": "Understand ASYNC_PATTERNS",
+      "description": "Người học có khả năng hiểu Async Patterns: Task is a common abstraction for asynchronous units of work in modern programming environments (e.g., Swift's Task, Android's AsyncTask), directly representing the concept of asynchronous programming.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "ASYNC_PATTERNS"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-ASYNC_PATTERNS-01",
+      "name": "Apply ASYNC_PATTERNS Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho ASYNC_PATTERNS: Task is a common abstraction for asynchronous units of work in modern programming environments (e.g., Swift's Task, Android's AsyncTask), directly representing the concept of asynchronous programming.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-ASYNC_PATTERNS-01",
+      "concept_codes": [
+        "ASYNC_PATTERNS"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-ASYNC_PATTERNS-01",
+      "name": "SWIFT: Implement Async Patterns",
+      "description": "Người học có khả năng triển khai Async Patterns sử dụng 'Task' trong SWIFT phục vụ mục đích của dự án: Task is a common abstraction for asynchronous units of work in modern programming environments (e.g., Swift's Task, Android's AsyncTask), directly rep",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-ASYNC_PATTERNS-01",
+      "concept_codes": [
+        "ASYNC_PATTERNS"
+      ],
+      "keyword": "Task",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-DIGITAL_ANALOG_IO-01",
+      "name": "Understand DIGITAL_ANALOG_IO",
+      "description": "Người học có khả năng hiểu Digital vs. Analog I/O Pins: Phân biệt chức năng của các chân I/O số (đọc/ghi giá trị HIGH/LOW) và các chân I/O tương tự (đọc giá trị trong một khoảng liên tục).",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "DIGITAL_ANALOG_IO"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-DIGITAL_ANALOG_IO-01",
+      "name": "Apply DIGITAL_ANALOG_IO Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho DIGITAL_ANALOG_IO: Phân biệt chức năng của các chân I/O số (đọc/ghi giá trị HIGH/LOW) và các chân I/O tương tự (đọc giá trị trong một khoảng liên tục).",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-DIGITAL_ANALOG_IO-01",
+      "concept_codes": [
+        "DIGITAL_ANALOG_IO"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-ESP32-DIGITAL_ANALOG_IO-01",
+      "name": "ESP32/Arduino: Implement Digital vs. Analog I/O Pins",
+      "description": "Người học có khả năng triển khai Digital vs. Analog I/O Pins sử dụng 'Adafruit_NeoPixel.h' trong SWIFT phục vụ mục đích của dự án: Phân biệt chức năng của các chân I/O số (đọc/ghi giá trị HIGH/LOW) và các chân I/O tương tự (đọc giá trị trong một khoảng liên tục).",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-DIGITAL_ANALOG_IO-01",
+      "concept_codes": [
+        "DIGITAL_ANALOG_IO"
+      ],
+      "keyword": "Adafruit_NeoPixel.h",
+      "platform": "esp32",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-EXCEPTION_HANDLING-01",
+      "name": "Understand EXCEPTION_HANDLING",
+      "description": "Người học có khả năng hiểu Exception Handling và cách vận dụng nó trong việc phát triển dự án.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "EXCEPTION_HANDLING"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-EXCEPTION_HANDLING-01",
+      "name": "Apply EXCEPTION_HANDLING Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho EXCEPTION_HANDLING: phân tích yêu cầu, lựa chọn phương pháp, và đánh giá kết quả.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-EXCEPTION_HANDLING-01",
+      "concept_codes": [
+        "EXCEPTION_HANDLING"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-EXCEPTION_HANDLING-01",
+      "name": "SWIFT: Implement Exception Handling",
+      "description": "Người học có khả năng triển khai Exception Handling sử dụng 'try!' trong SWIFT phục vụ mục đích của dự án: viết code, xử lý lỗi, và kiểm thử.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-EXCEPTION_HANDLING-01",
+      "concept_codes": [
+        "EXCEPTION_HANDLING"
+      ],
+      "keyword": "try!",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-FOR_LOOP-01",
+      "name": "Understand FOR_LOOP",
+      "description": "Người học có khả năng hiểu Definite Iteration: Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "FOR_LOOP"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-FOR_LOOP-01",
+      "name": "Apply FOR_LOOP Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho FOR_LOOP: Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-FOR_LOOP-01",
+      "concept_codes": [
+        "FOR_LOOP"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-ESP32-FOR_LOOP-01",
+      "name": "ESP32/Arduino: Implement For Loop",
+      "description": "Người học có khả năng triển khai For Loop sử dụng 'for' trong SWIFT phục vụ mục đích của dự án: Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-FOR_LOOP-01",
+      "concept_codes": [
+        "FOR_LOOP"
+      ],
+      "keyword": "for",
+      "platform": "esp32",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-FRONTEND_FRAMEWORKS-01",
+      "name": "Understand FRONTEND_FRAMEWORKS",
+      "description": "Người học có khả năng hiểu Frontend Frameworks/Libraries: Hiểu vai trò của các thư viện/framework như component-based frontend framework, progressive frontend framework, full-featured frontend framework trong việc xây dựng các giao diện người dùng tương tác và có cấu trúc.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "FRONTEND_FRAMEWORKS"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-FRONTEND_FRAMEWORKS-01",
+      "name": "Apply FRONTEND_FRAMEWORKS Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho FRONTEND_FRAMEWORKS: Hiểu vai trò của các thư viện/framework như component-based frontend framework, progressive frontend framework, full-featured frontend framework trong việc xây dựng các giao diện người dùng tương tác ",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-FRONTEND_FRAMEWORKS-01",
+      "concept_codes": [
+        "FRONTEND_FRAMEWORKS"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-FRONTEND_FRAMEWORKS-01",
+      "name": "SWIFT: Implement Frontend Frameworks/Libraries",
+      "description": "Người học có khả năng triển khai Frontend Frameworks/Libraries sử dụng 'SwiftUI' trong SWIFT phục vụ mục đích của dự án: Hiểu vai trò của các thư viện/framework như component-based frontend framework, progressive frontend framework, full-featured frontend framework trong",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-FRONTEND_FRAMEWORKS-01",
+      "concept_codes": [
+        "FRONTEND_FRAMEWORKS"
+      ],
+      "keyword": "SwiftUI",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-HTTP_PROTOCOL-01",
+      "name": "Understand HTTP_PROTOCOL",
+      "description": "Người học có khả năng hiểu Http Protocol: Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-HTTP_PROTOCOL-01",
+      "name": "Apply HTTP_PROTOCOL Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho HTTP_PROTOCOL: Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-HTTP_PROTOCOL-01",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-HTTP_PROTOCOL-01",
+      "name": "SWIFT: Implement Http Protocol",
+      "description": "Người học có khả năng triển khai Http Protocol sử dụng 'URLSession' trong SWIFT phục vụ mục đích của dự án: Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-HTTP_PROTOCOL-01",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "keyword": "URLSession",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-IOT_MESSAGING_PROTOCOLS-01",
+      "name": "Understand IOT_MESSAGING_PROTOCOLS",
+      "description": "Người học có khả năng hiểu Iot Messaging Protocols và cách vận dụng nó trong việc phát triển dự án.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "IOT_MESSAGING_PROTOCOLS"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-IOT_MESSAGING_PROTOCOLS-01",
+      "name": "Apply IOT_MESSAGING_PROTOCOLS Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho IOT_MESSAGING_PROTOCOLS: phân tích yêu cầu, lựa chọn phương pháp, và đánh giá kết quả.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-IOT_MESSAGING_PROTOCOLS-01",
+      "concept_codes": [
+        "IOT_MESSAGING_PROTOCOLS"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-ESP32-IOT_MESSAGING_PROTOCOLS-01",
+      "name": "ESP32/Arduino: Implement Iot Messaging Protocols",
+      "description": "Người học có khả năng triển khai Iot Messaging Protocols sử dụng 'PubSubClient.h' trong SWIFT phục vụ mục đích của dự án: viết code, xử lý lỗi, và kiểm thử.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-IOT_MESSAGING_PROTOCOLS-01",
+      "concept_codes": [
+        "IOT_MESSAGING_PROTOCOLS"
+      ],
+      "keyword": "PubSubClient.h",
+      "platform": "esp32",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-JSON_SERIALIZATION-01",
+      "name": "Understand JSON_SERIALIZATION",
+      "description": "Người học có khả năng hiểu JSON Serialization/Deserialization: Hiểu cơ chế mã hóa (serialize) đối tượng thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng trong bộ nhớ.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-JSON_SERIALIZATION-01",
+      "name": "Apply JSON_SERIALIZATION Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho JSON_SERIALIZATION: Hiểu cơ chế mã hóa (serialize) đối tượng thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng trong bộ nhớ.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-JSON_SERIALIZATION-01",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-JSON_SERIALIZATION-01",
+      "name": "SWIFT: Implement JSON Serialization/Deserialization",
+      "description": "Người học có khả năng triển khai JSON Serialization/Deserialization sử dụng 'JSONSerialization' trong SWIFT phục vụ mục đích của dự án: Hiểu cơ chế mã hóa (serialize) đối tượng thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng trong bộ nhớ.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-JSON_SERIALIZATION-01",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "keyword": "JSONSerialization",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-LOCAL_VIEW_STATE-01",
+      "name": "Understand LOCAL_VIEW_STATE",
+      "description": "Người học có khả năng hiểu Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "LOCAL_VIEW_STATE"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-LOCAL_VIEW_STATE-01",
+      "name": "Apply LOCAL_VIEW_STATE Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho LOCAL_VIEW_STATE: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-LOCAL_VIEW_STATE-01",
+      "concept_codes": [
+        "LOCAL_VIEW_STATE"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
+      "name": "SWIFT: Implement Local View State",
+      "description": "Người học có khả năng triển khai Local View State sử dụng '@State' trong SWIFT phục vụ mục đích của dự án: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-LOCAL_VIEW_STATE-01",
+      "concept_codes": [
+        "LOCAL_VIEW_STATE"
+      ],
+      "keyword": "@State",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-MEDIUM_TYPES-01",
+      "name": "Understand MEDIUM_TYPES",
+      "description": "Người học có khả năng hiểu Medium Types: So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "MEDIUM_TYPES"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-MEDIUM_TYPES-01",
+      "name": "Apply MEDIUM_TYPES Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho MEDIUM_TYPES: So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-MEDIUM_TYPES-01",
+      "concept_codes": [
+        "MEDIUM_TYPES"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-ESP32-MEDIUM_TYPES-01",
+      "name": "ESP32/Arduino: Implement Medium Types",
+      "description": "Người học có khả năng triển khai Medium Types sử dụng 'WiFi.h' trong SWIFT phục vụ mục đích của dự án: So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-MEDIUM_TYPES-01",
+      "concept_codes": [
+        "MEDIUM_TYPES"
+      ],
+      "keyword": "WiFi.h",
+      "platform": "esp32",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-STANDARD_LIBRARY-01",
+      "name": "Understand STANDARD_LIBRARY",
+      "description": "Người học có khả năng hiểu Standard Library: Foundation is the standard library/framework in Apple ecosystems, providing base data types, collections, and utility APIs. This corresponds to the neutral concept of a Standard Library, which is not yet represented in the Master Tree.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "STANDARD_LIBRARY"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-STANDARD_LIBRARY-01",
+      "name": "Apply STANDARD_LIBRARY Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho STANDARD_LIBRARY: Foundation is the standard library/framework in Apple ecosystems, providing base data types, collections, and utility APIs. This corresponds to the neutral concept of a Standard Library, which is not ",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-STANDARD_LIBRARY-01",
+      "concept_codes": [
+        "STANDARD_LIBRARY"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-SWIFT-STANDARD_LIBRARY-01",
+      "name": "SWIFT: Implement Standard Library",
+      "description": "Người học có khả năng triển khai Standard Library sử dụng 'Foundation' trong SWIFT phục vụ mục đích của dự án: Foundation is the standard library/framework in Apple ecosystems, providing base data types, collections, and utility APIs. This corresponds to the ne",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-STANDARD_LIBRARY-01",
+      "concept_codes": [
+        "STANDARD_LIBRARY"
+      ],
+      "keyword": "Foundation",
+      "platform": "app",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    },
+    {
+      "code": "ULO-WEB_SERVER-01",
+      "name": "Understand WEB_SERVER",
+      "description": "Người học có khả năng hiểu Web Server và cách vận dụng nó trong việc phát triển dự án.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "WEB_SERVER"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "CIO-WEB_SERVER-01",
+      "name": "Apply WEB_SERVER Concepts",
+      "description": "Người học có khả năng thiết kế quy trình xử lý cho WEB_SERVER: phân tích yêu cầu, lựa chọn phương pháp, và đánh giá kết quả.",
+      "lo_type": "CONCEPTUAL_IMPL",
+      "parent_lo_code": "ULO-WEB_SERVER-01",
+      "concept_codes": [
+        "WEB_SERVER"
+      ],
+      "bloom_level": "APPLY",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-lab"
+    },
+    {
+      "code": "SIO-ESP32-WEB_SERVER-01",
+      "name": "ESP32/Arduino: Implement Web Server",
+      "description": "Người học có khả năng triển khai Web Server sử dụng 'WebServer.h' trong SWIFT phục vụ mục đích của dự án: viết code, xử lý lỗi, và kiểm thử.",
+      "lo_type": "SPECIFIC_IMPL",
+      "parent_lo_code": "CIO-WEB_SERVER-01",
+      "concept_codes": [
+        "WEB_SERVER"
+      ],
+      "keyword": "WebServer.h",
+      "platform": "esp32",
+      "bloom_level": "CREATE",
+      "knowledge_dimension": "PROCEDURAL",
+      "assessment_approach": "code-review"
+    }
+  ],
+  "concepts_covered": [],
+  "concepts_generated": [
+    "ASYNC_PATTERNS",
+    "DIGITAL_ANALOG_IO",
+    "EXCEPTION_HANDLING",
+    "FOR_LOOP",
+    "FRONTEND_FRAMEWORKS",
+    "HTTP_PROTOCOL",
+    "IOT_MESSAGING_PROTOCOLS",
+    "JSON_SERIALIZATION",
+    "LOCAL_VIEW_STATE",
+    "MEDIUM_TYPES",
+    "STANDARD_LIBRARY",
+    "WEB_SERVER"
+  ],
+  "summary": {
+    "generated_count": 36,
+    "concepts_generated": 12,
+    "target_tech": "SWIFT"
+  }
+}

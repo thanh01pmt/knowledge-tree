@@ -1,0 +1,25 @@
+{
+  "escalated": [
+    {
+      "keyword": "Foundation",
+      "concept_code": "STANDARD_LIBRARY",
+      "concept_name": "Standard Library",
+      "status": "new",
+      "score": 0.9,
+      "reason": "Foundation is the standard library/framework in Apple ecosystems, providing base data types, collections, and utility APIs. This corresponds to the neutral concept of a Standard Library, which is not yet represented in the Master Tree."
+    },
+    {
+      "keyword": "Task",
+      "concept_code": "ASYNC_PATTERNS",
+      "concept_name": "Asynchronous Programming",
+      "status": "matched",
+      "score": 0.85,
+      "reason": "Task is a common abstraction for asynchronous units of work in modern programming environments (e.g., Swift's Task, Android's AsyncTask), directly representing the concept of asynchronous programming."
+    }
+  ],
+  "summary": {
+    "total_keywords": 14,
+    "matched": 1,
+    "new_concepts": 1
+  }
+}

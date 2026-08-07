@@ -1,0 +1,861 @@
+{
+  "matched_cios": [
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-01-IDENTIFY_COMPONENTS",
+      "cio_name": "Frontend Frameworks/Libraries - Identify Components",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng x\u00e1c \u0111\u1ecbnh v\u00e0 ph\u00e2n lo\u1ea1i c\u00e1c th\u00e0nh ph\u1ea7n c\u1ea5u th\u00e0nh c\u1ee7a frontend frameworks/libraries theo m\u00f4 h\u00ecnh tham chi\u1ebfu.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-01-RECALL_DEFINITIONS",
+      "cio_name": "Frontend Frameworks/Libraries - Recall Definitions",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00e1i t\u1ea1o \u0111\u1ecbnh ngh\u0129a ch\u00ednh x\u00e1c, k\u00fd hi\u1ec7u v\u00e0 quy t\u1eafc c\u1ed1t l\u00f5i c\u1ee7a frontend frameworks/libraries m\u00e0 kh\u00f4ng c\u1ea7n t\u00e0i li\u1ec7u tham kh\u1ea3o.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-02-EXPLAIN_MECHANISM",
+      "cio_name": "Frontend Frameworks/Libraries - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a frontend frameworks/libraries bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-02-INTERPRET_PARAMETERS",
+      "cio_name": "Frontend Frameworks/Libraries - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong frontend frameworks/libraries.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-03-IMPLEMENT_PATTERN",
+      "cio_name": "Frontend Frameworks/Libraries - Implement Pattern",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng tri\u1ec3n khai m\u1eabu gi\u1ea3i ph\u00e1p chu\u1ea9n cho frontend frameworks/libraries tu\u00e2n th\u1ee7 c\u00e1c r\u00e0ng bu\u1ed9c hi\u1ec7u su\u1ea5t, \u0111\u1ed9 tin c\u1eady v\u00e0 b\u1ea3o tr\u00ec.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-03-ADAPT_TO_CONTEXT",
+      "cio_name": "Frontend Frameworks/Libraries - Adapt To Context",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00f9y ch\u1ec9nh c\u1ea5u h\u00ecnh, tham s\u1ed1 v\u00e0 giao di\u1ec7n c\u1ee7a frontend frameworks/libraries cho b\u1ed1i c\u1ea3nh tri\u1ec3n khai c\u1ee5 th\u1ec3.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-04-DECOMPOSE_TRADEOFFS",
+      "cio_name": "Frontend Frameworks/Libraries - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 frontend frameworks/libraries th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-04-COMPARE_ALTERNATIVES",
+      "cio_name": "Frontend Frameworks/Libraries - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho frontend frameworks/libraries theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "SwiftUI",
+      "concept_code": "FRONTEND_FRAMEWORKS",
+      "concept_name": "FRONTEND_FRAMEWORKS",
+      "cio_code": "CIO-COMPONENT-STATE-PROPS",
+      "cio_name": "Manage Component State and Props",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng qu\u1ea3n l\u00fd d\u1eef li\u1ec7u tr\u1ea1ng th\u00e1i state v\u00e0 truy\u1ec1n tham s\u1ed1 props gi\u1eefa c\u00e1c component.",
+      "project": "roadmap_sh_frontend"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-01-IDENTIFY_COMPONENTS",
+      "cio_name": "Physical Media & Wireless - Identify Components",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng x\u00e1c \u0111\u1ecbnh v\u00e0 ph\u00e2n lo\u1ea1i c\u00e1c th\u00e0nh ph\u1ea7n c\u1ea5u th\u00e0nh c\u1ee7a physical media & wireless theo m\u00f4 h\u00ecnh tham chi\u1ebfu.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-01-RECALL_DEFINITIONS",
+      "cio_name": "Physical Media & Wireless - Recall Definitions",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00e1i t\u1ea1o \u0111\u1ecbnh ngh\u0129a ch\u00ednh x\u00e1c, k\u00fd hi\u1ec7u v\u00e0 quy t\u1eafc c\u1ed1t l\u00f5i c\u1ee7a physical media & wireless m\u00e0 kh\u00f4ng c\u1ea7n t\u00e0i li\u1ec7u tham kh\u1ea3o.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-02-EXPLAIN_MECHANISM",
+      "cio_name": "Physical Media & Wireless - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a physical media & wireless bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-02-INTERPRET_PARAMETERS",
+      "cio_name": "Physical Media & Wireless - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong physical media & wireless.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-03-IMPLEMENT_PATTERN",
+      "cio_name": "Physical Media & Wireless - Implement Pattern",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng tri\u1ec3n khai m\u1eabu gi\u1ea3i ph\u00e1p chu\u1ea9n cho physical media & wireless tu\u00e2n th\u1ee7 c\u00e1c r\u00e0ng bu\u1ed9c hi\u1ec7u su\u1ea5t, \u0111\u1ed9 tin c\u1eady v\u00e0 b\u1ea3o tr\u00ec.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-03-ADAPT_TO_CONTEXT",
+      "cio_name": "Physical Media & Wireless - Adapt To Context",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00f9y ch\u1ec9nh c\u1ea5u h\u00ecnh, tham s\u1ed1 v\u00e0 giao di\u1ec7n c\u1ee7a physical media & wireless cho b\u1ed1i c\u1ea3nh tri\u1ec3n khai c\u1ee5 th\u1ec3.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-04-DECOMPOSE_TRADEOFFS",
+      "cio_name": "Physical Media & Wireless - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 physical media & wireless th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "WiFi.h",
+      "concept_code": "MEDIUM_TYPES",
+      "concept_name": "MEDIUM_TYPES",
+      "cio_code": "CIO-MEDIUM_TYPES-04-COMPARE_ALTERNATIVES",
+      "cio_name": "Physical Media & Wireless - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho physical media & wireless theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-01-IDENTIFY_COMPONENTS",
+      "cio_name": "JSON Serialization/Deserialization - Identify Components",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng x\u00e1c \u0111\u1ecbnh v\u00e0 ph\u00e2n lo\u1ea1i c\u00e1c th\u00e0nh ph\u1ea7n c\u1ea5u th\u00e0nh c\u1ee7a json serialization/deserialization theo m\u00f4 h\u00ecnh tham chi\u1ebfu.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-01-RECALL_DEFINITIONS",
+      "cio_name": "JSON Serialization/Deserialization - Recall Definitions",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00e1i t\u1ea1o \u0111\u1ecbnh ngh\u0129a ch\u00ednh x\u00e1c, k\u00fd hi\u1ec7u v\u00e0 quy t\u1eafc c\u1ed1t l\u00f5i c\u1ee7a json serialization/deserialization m\u00e0 kh\u00f4ng c\u1ea7n t\u00e0i li\u1ec7u tham kh\u1ea3o.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-02-EXPLAIN_MECHANISM",
+      "cio_name": "JSON Serialization/Deserialization - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a json serialization/deserialization bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-02-INTERPRET_PARAMETERS",
+      "cio_name": "JSON Serialization/Deserialization - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong json serialization/deserialization.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-03-IMPLEMENT_PATTERN",
+      "cio_name": "JSON Serialization/Deserialization - Implement Pattern",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng tri\u1ec3n khai m\u1eabu gi\u1ea3i ph\u00e1p chu\u1ea9n cho json serialization/deserialization tu\u00e2n th\u1ee7 c\u00e1c r\u00e0ng bu\u1ed9c hi\u1ec7u su\u1ea5t, \u0111\u1ed9 tin c\u1eady v\u00e0 b\u1ea3o tr\u00ec.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-03-ADAPT_TO_CONTEXT",
+      "cio_name": "JSON Serialization/Deserialization - Adapt To Context",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00f9y ch\u1ec9nh c\u1ea5u h\u00ecnh, tham s\u1ed1 v\u00e0 giao di\u1ec7n c\u1ee7a json serialization/deserialization cho b\u1ed1i c\u1ea3nh tri\u1ec3n khai c\u1ee5 th\u1ec3.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-04-DECOMPOSE_TRADEOFFS",
+      "cio_name": "JSON Serialization/Deserialization - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 json serialization/deserialization th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-JSON_SERIALIZATION-04-COMPARE_ALTERNATIVES",
+      "cio_name": "JSON Serialization/Deserialization - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho json serialization/deserialization theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "API_INTEGRATION, JSON_SERIALIZATION",
+      "cio_code": "CIO-API-DATA-PARSING",
+      "cio_name": "Parse Received Data into Structures (Ph\u00e2n t\u00edch D\u1eef li\u1ec7u nh\u1eadn \u0111\u01b0\u1ee3c th\u00e0nh C\u1ea5u tr\u00fac)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng chuy\u1ec3n \u0111\u1ed5i d\u1eef li\u1ec7u th\u00f4 nh\u1eadn \u0111\u01b0\u1ee3c t\u1eeb m\u00e1y ch\u1ee7 (v\u00ed d\u1ee5: JSON) th\u00e0nh c\u00e1c c\u1ea5u tr\u00fac d\u1eef li\u1ec7u c\u00f3 th\u1ec3 s\u1eed d\u1ee5ng \u0111\u01b0\u1ee3c trong ch\u01b0\u01a1ng tr\u00ecnh (v\u00ed d\u1ee5: struct).",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-SERIALIZATION-DECODING",
+      "cio_name": "Decode a serialized format into an object (Gi\u1ea3i m\u00e3 \u0111\u1ecbnh d\u1ea1ng tu\u1ea7n t\u1ef1 h\u00f3a th\u00e0nh \u0111\u1ed1i t\u01b0\u1ee3ng)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng s\u1eed d\u1ee5ng m\u1ed9t b\u1ed9 gi\u1ea3i m\u00e3 (decoder) \u0111\u1ec3 ph\u00e2n t\u00edch m\u1ed9t chu\u1ed7i d\u1eef li\u1ec7u (v\u00ed d\u1ee5: JSON) v\u00e0 t\u00e1i t\u1ea1o l\u1ea1i \u0111\u1ed1i t\u01b0\u1ee3ng c\u00f3 c\u1ea5u tr\u00fac ban \u0111\u1ea7u trong b\u1ed9 nh\u1edb.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "concept_code": "JSON_SERIALIZATION",
+      "concept_name": "JSON_SERIALIZATION",
+      "cio_code": "CIO-SERIALIZATION-ENCODING",
+      "cio_name": "Encode an object into a serialized format (M\u00e3 h\u00f3a \u0111\u1ed1i t\u01b0\u1ee3ng th\u00e0nh \u0111\u1ecbnh d\u1ea1ng tu\u1ea7n t\u1ef1 h\u00f3a)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng s\u1eed d\u1ee5ng m\u1ed9t b\u1ed9 m\u00e3 h\u00f3a (encoder) \u0111\u1ec3 chuy\u1ec3n \u0111\u1ed5i m\u1ed9t \u0111\u1ed1i t\u01b0\u1ee3ng c\u00f3 c\u1ea5u tr\u00fac th\u00e0nh m\u1ed9t chu\u1ed7i d\u1eef li\u1ec7u, v\u00ed d\u1ee5 nh\u01b0 JSON.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-01-IDENTIFY_COMPONENTS",
+      "cio_name": "Digital vs. Analog I/O Pins - Identify Components",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng x\u00e1c \u0111\u1ecbnh v\u00e0 ph\u00e2n lo\u1ea1i c\u00e1c th\u00e0nh ph\u1ea7n c\u1ea5u th\u00e0nh c\u1ee7a digital vs. analog i/o pins theo m\u00f4 h\u00ecnh tham chi\u1ebfu.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-01-RECALL_DEFINITIONS",
+      "cio_name": "Digital vs. Analog I/O Pins - Recall Definitions",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00e1i t\u1ea1o \u0111\u1ecbnh ngh\u0129a ch\u00ednh x\u00e1c, k\u00fd hi\u1ec7u v\u00e0 quy t\u1eafc c\u1ed1t l\u00f5i c\u1ee7a digital vs. analog i/o pins m\u00e0 kh\u00f4ng c\u1ea7n t\u00e0i li\u1ec7u tham kh\u1ea3o.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-02-EXPLAIN_MECHANISM",
+      "cio_name": "Digital vs. Analog I/O Pins - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a digital vs. analog i/o pins bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-02-INTERPRET_PARAMETERS",
+      "cio_name": "Digital vs. Analog I/O Pins - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong digital vs. analog i/o pins.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-03-IMPLEMENT_PATTERN",
+      "cio_name": "Digital vs. Analog I/O Pins - Implement Pattern",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng tri\u1ec3n khai m\u1eabu gi\u1ea3i ph\u00e1p chu\u1ea9n cho digital vs. analog i/o pins tu\u00e2n th\u1ee7 c\u00e1c r\u00e0ng bu\u1ed9c hi\u1ec7u su\u1ea5t, \u0111\u1ed9 tin c\u1eady v\u00e0 b\u1ea3o tr\u00ec.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-03-ADAPT_TO_CONTEXT",
+      "cio_name": "Digital vs. Analog I/O Pins - Adapt To Context",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00f9y ch\u1ec9nh c\u1ea5u h\u00ecnh, tham s\u1ed1 v\u00e0 giao di\u1ec7n c\u1ee7a digital vs. analog i/o pins cho b\u1ed1i c\u1ea3nh tri\u1ec3n khai c\u1ee5 th\u1ec3.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-04-DECOMPOSE_TRADEOFFS",
+      "cio_name": "Digital vs. Analog I/O Pins - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 digital vs. analog i/o pins th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "concept_code": "DIGITAL_ANALOG_IO",
+      "concept_name": "DIGITAL_ANALOG_IO",
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-04-COMPARE_ALTERNATIVES",
+      "cio_name": "Digital vs. Analog I/O Pins - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho digital vs. analog i/o pins theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-01-IDENTIFY_COMPONENTS",
+      "cio_name": "IoT Messaging Protocols - Identify Components",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng x\u00e1c \u0111\u1ecbnh v\u00e0 ph\u00e2n lo\u1ea1i c\u00e1c th\u00e0nh ph\u1ea7n c\u1ea5u th\u00e0nh c\u1ee7a iot messaging protocols (mqtt) theo m\u00f4 h\u00ecnh tham chi\u1ebfu.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-01-RECALL_DEFINITIONS",
+      "cio_name": "IoT Messaging Protocols - Recall Definitions",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00e1i t\u1ea1o \u0111\u1ecbnh ngh\u0129a ch\u00ednh x\u00e1c, k\u00fd hi\u1ec7u v\u00e0 quy t\u1eafc c\u1ed1t l\u00f5i c\u1ee7a iot messaging protocols (mqtt) m\u00e0 kh\u00f4ng c\u1ea7n t\u00e0i li\u1ec7u tham kh\u1ea3o.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-02-EXPLAIN_MECHANISM",
+      "cio_name": "IoT Messaging Protocols - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a iot messaging protocols (mqtt) bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-02-INTERPRET_PARAMETERS",
+      "cio_name": "IoT Messaging Protocols - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong iot messaging protocols (mqtt).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-03-IMPLEMENT_PATTERN",
+      "cio_name": "IoT Messaging Protocols - Implement Pattern",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng tri\u1ec3n khai m\u1eabu gi\u1ea3i ph\u00e1p chu\u1ea9n cho iot messaging protocols (mqtt) tu\u00e2n th\u1ee7 c\u00e1c r\u00e0ng bu\u1ed9c hi\u1ec7u su\u1ea5t, \u0111\u1ed9 tin c\u1eady v\u00e0 b\u1ea3o tr\u00ec.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-03-ADAPT_TO_CONTEXT",
+      "cio_name": "IoT Messaging Protocols - Adapt To Context",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00f9y ch\u1ec9nh c\u1ea5u h\u00ecnh, tham s\u1ed1 v\u00e0 giao di\u1ec7n c\u1ee7a iot messaging protocols (mqtt) cho b\u1ed1i c\u1ea3nh tri\u1ec3n khai c\u1ee5 th\u1ec3.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-04-DECOMPOSE_TRADEOFFS",
+      "cio_name": "IoT Messaging Protocols - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 iot messaging protocols (mqtt) th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "concept_code": "IOT_MESSAGING_PROTOCOLS",
+      "concept_name": "IOT_MESSAGING_PROTOCOLS",
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-04-COMPARE_ALTERNATIVES",
+      "cio_name": "IoT Messaging Protocols - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho iot messaging protocols (mqtt) theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "HTTPBulbService",
+      "concept_code": "HTTP_PROTOCOL",
+      "concept_name": "HTTP_PROTOCOL",
+      "cio_code": "CIO-HTTP-HEADER-STATUS",
+      "cio_name": "Understand HTTP Headers and Status Codes",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n t\u00edch c\u00e1c nh\u00f3m status code v\u00e0 HTTP header trong c\u00e1c y\u00eau c\u1ea7u giao ti\u1ebfp.",
+      "project": "roadmap_sh_frontend"
+    },
+    {
+      "keyword": "HTTPBulbService",
+      "concept_code": "HTTP_PROTOCOL",
+      "concept_name": "HTTP_PROTOCOL",
+      "cio_code": "CIO-HTTP-VERSIONS-EVOLUTION",
+      "cio_name": "Compare HTTP Versions and Innovations",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh s\u1ef1 kh\u00e1c bi\u1ec7t v\u1ec1 hi\u1ec7u n\u0103ng gi\u1eefa HTTP/1.1, HTTP/2 v\u00e0 HTTP/3 QUIC.",
+      "project": "roadmap_sh_frontend"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-01-IDENTIFY_COMPONENTS",
+      "cio_name": "For Loop - Identify Components",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng x\u00e1c \u0111\u1ecbnh v\u00e0 ph\u00e2n lo\u1ea1i c\u00e1c th\u00e0nh ph\u1ea7n c\u1ea5u th\u00e0nh c\u1ee7a for loop theo m\u00f4 h\u00ecnh tham chi\u1ebfu.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-01-RECALL_DEFINITIONS",
+      "cio_name": "For Loop - Recall Definitions",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00e1i t\u1ea1o \u0111\u1ecbnh ngh\u0129a ch\u00ednh x\u00e1c, k\u00fd hi\u1ec7u v\u00e0 quy t\u1eafc c\u1ed1t l\u00f5i c\u1ee7a for loop m\u00e0 kh\u00f4ng c\u1ea7n t\u00e0i li\u1ec7u tham kh\u1ea3o.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-02-EXPLAIN_MECHANISM",
+      "cio_name": "For Loop - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a for loop bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-02-INTERPRET_PARAMETERS",
+      "cio_name": "For Loop - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong for loop.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-03-IMPLEMENT_PATTERN",
+      "cio_name": "For Loop - Implement Pattern",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng tri\u1ec3n khai m\u1eabu gi\u1ea3i ph\u00e1p chu\u1ea9n cho for loop tu\u00e2n th\u1ee7 c\u00e1c r\u00e0ng bu\u1ed9c hi\u1ec7u su\u1ea5t, \u0111\u1ed9 tin c\u1eady v\u00e0 b\u1ea3o tr\u00ec.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-03-ADAPT_TO_CONTEXT",
+      "cio_name": "For Loop - Adapt To Context",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng t\u00f9y ch\u1ec9nh c\u1ea5u h\u00ecnh, tham s\u1ed1 v\u00e0 giao di\u1ec7n c\u1ee7a for loop cho b\u1ed1i c\u1ea3nh tri\u1ec3n khai c\u1ee5 th\u1ec3.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-04-DECOMPOSE_TRADEOFFS",
+      "cio_name": "For Loop - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 for loop th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-04-COMPARE_ALTERNATIVES",
+      "cio_name": "For Loop - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho for loop theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-FOR_LOOP-01",
+      "cio_name": "Iteration Control Structures",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng m\u00f4 t\u1ea3 c\u00e1c c\u1ea5u tr\u00fac l\u1eb7p: counter-controlled (for i=0..n), collection-controlled (for x in xs), range-based (for i in range), nested loops, loop invariants, termination proof.",
+      "project": "swift-associate"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP, ARRAY_OPERATIONS",
+      "cio_code": "CIO-ITERATE-COLLECTION",
+      "cio_name": "Traverse Elements of a Collection (Duy\u1ec7t qua c\u00e1c Ph\u1ea7n t\u1eed c\u1ee7a m\u1ed9t T\u1eadp h\u1ee3p)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng s\u1eed d\u1ee5ng v\u00f2ng l\u1eb7p x\u00e1c \u0111\u1ecbnh \u0111\u1ec3 truy c\u1eadp tu\u1ea7n t\u1ef1 t\u1eebng ph\u1ea7n t\u1eed trong m\u1ed9t c\u1ea5u tr\u00fac d\u1eef li\u1ec7u t\u1eadp h\u1ee3p (nh\u01b0 m\u1ea3ng).",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "FOR_LOOP",
+      "cio_code": "CIO-ITERATE-RANGE",
+      "cio_name": "Iterate Over a Numerical Range (Duy\u1ec7t qua m\u1ed9t Kho\u1ea3ng s\u1ed1)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng s\u1eed d\u1ee5ng v\u00f2ng l\u1eb7p x\u00e1c \u0111\u1ecbnh \u0111\u1ec3 l\u1eb7p qua m\u1ed9t d\u00e3y s\u1ed1 c\u00f3 \u0111i\u1ec3m b\u1eaft \u0111\u1ea7u v\u00e0 \u0111i\u1ec3m k\u1ebft th\u00fac.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "loop",
+      "concept_code": "FOR_LOOP",
+      "concept_name": "ARRAY_OPERATIONS, FOR_LOOP",
+      "cio_code": "CIO-ARRAY-TRAVERSE",
+      "cio_name": "Traverse all elements of an Array (Duy\u1ec7t qua t\u1ea5t c\u1ea3 c\u00e1c ph\u1ea7n t\u1eed c\u1ee7a M\u1ea3ng)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng l\u1eb7p qua tu\u1ea7n t\u1ef1 t\u1eebng ph\u1ea7n t\u1eed trong m\u1ed9t m\u1ea3ng \u0111\u1ec3 th\u1ef1c hi\u1ec7n m\u1ed9t h\u00e0nh \u0111\u1ed9ng tr\u00ean m\u1ed7i ph\u1ea7n t\u1eed.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-01-EXPLAIN_MECHANISM",
+      "cio_name": "Local View State - Explain Mechanism",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng gi\u1ea3i th\u00edch c\u01a1 ch\u1ebf ho\u1ea1t \u0111\u1ed9ng n\u1ed9i t\u1ea1i c\u1ee7a local view state bao g\u1ed3m lu\u1ed3ng d\u1eef li\u1ec7u, chuy\u1ec3n \u0111\u1ed5i tr\u1ea1ng th\u00e1i v\u00e0 \u0111i\u1ec1u ki\u1ec7n bi\u00ean.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-01-INTERPRET_PARAMETERS",
+      "cio_name": "Local View State - Interpret Parameters",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng di\u1ec5n gi\u1ea3i \u00fd ngh\u0129a v\u1eadt l\u00fd/logic c\u1ee7a c\u00e1c tham s\u1ed1, ng\u01b0\u1ee1ng v\u00e0 ch\u1ec9 s\u1ed1 trong local view state.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-02-DECOMPOSE_TRADEOFFS",
+      "cio_name": "Local View State - Decompose Tradeoffs",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ph\u00e2n r\u00e3 local view state th\u00e0nh c\u00e1c y\u1ebfu t\u1ed1 quy\u1ebft \u0111\u1ecbnh v\u00e0 \u0111\u1ecbnh l\u01b0\u1ee3ng \u0111\u00e1nh \u0111\u1ed5i (cost/benefit, latency/throughput, consistency/availability).",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-02-COMPARE_ALTERNATIVES",
+      "cio_name": "Local View State - Compare Alternatives",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng so s\u00e1nh nhi\u1ec1u ph\u01b0\u01a1ng ph\u00e1p/ki\u1ebfn tr\u00fac cho local view state theo ti\u00eau ch\u00ed \u0111\u1ecbnh l\u01b0\u1ee3ng v\u00e0 \u0111\u1ecbnh t\u00ednh.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-03-ASSESS_QUALITY",
+      "cio_name": "Local View State - Assess Quality",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng \u0111\u00e1nh gi\u00e1 ch\u1ea5t l\u01b0\u1ee3ng gi\u1ea3i ph\u00e1p local view state d\u1ef1a tr\u00ean ti\u00eau chu\u1ea9n ng\u00e0nh, benchmark v\u00e0 r\u1ee7i ro ti\u1ec1m \u1ea9n.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-03-CRITIQUE_DESIGN",
+      "cio_name": "Local View State - Critique Design",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng ch\u1ec9 ra \u0111i\u1ec3m y\u1ebfu, n\u1ee3 k\u1ef9 thu\u1eadt v\u00e0 \u0111\u1ec1 xu\u1ea5t c\u1ea3i ti\u1ebfn c\u00f3 s\u01a1 b\u1ed9 \u01b0\u1edbc l\u01b0\u1ee3ng effort/impact cho local view state.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-04-DESIGN_SOLUTION",
+      "cio_name": "Local View State - Design Solution",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng thi\u1ebft k\u1ebf gi\u1ea3i ph\u00e1p end-to-end \u00e1p d\u1ee5ng local view state cho b\u00e0i to\u00e1n m\u1edbi, bao g\u1ed3m ki\u1ebfn tr\u00fac, API, data flow v\u00e0 deployment.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-04-INNOVATE_EXTENSION",
+      "cio_name": "Local View State - Innovate Extension",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng m\u1edf r\u1ed9ng local view state v\u1edbi k\u1ef9 thu\u1eadt m\u1edbi, t\u1ed1i \u01b0u h\u00f3a \u0111\u1ed9t ph\u00e1 ho\u1eb7c t\u00edch h\u1ee3p cross-domain.",
+      "project": "master-tree"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-LOCAL_VIEW_STATE-01",
+      "cio_name": "Ephemeral State Management",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng m\u00f4 h\u00ecnh h\u00f3a tr\u1ea1ng th\u00e1i c\u1ee5c b\u1ed9: component-scoped lifecycle, value vs reference semantics, derived state (computed/memo), state colocation, lifting state up.",
+      "project": "swift-associate"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-STATE-DECLARE-LOCAL",
+      "cio_name": "Declare Local View State (Khai b\u00e1o Tr\u1ea1ng th\u00e1i C\u1ee5c b\u1ed9 c\u1ee7a View)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng khai b\u00e1o m\u1ed9t bi\u1ebfn tr\u1ea1ng th\u00e1i ch\u1ec9 thu\u1ed9c v\u1ec1 m\u1ed9t th\u00e0nh ph\u1ea7n giao di\u1ec7n duy nh\u1ea5t v\u00e0 qu\u1ea3n l\u00fd v\u00f2ng \u0111\u1eddi c\u1ee7a n\u00f3.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "@State",
+      "concept_code": "LOCAL_VIEW_STATE",
+      "concept_name": "LOCAL_VIEW_STATE",
+      "cio_code": "CIO-STATE-MUTATE",
+      "cio_name": "Mutate State to Update UI (Thay \u0111\u1ed5i Tr\u1ea1ng th\u00e1i \u0111\u1ec3 C\u1eadp nh\u1eadt UI)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng thay \u0111\u1ed5i gi\u00e1 tr\u1ecb c\u1ee7a m\u1ed9t bi\u1ebfn tr\u1ea1ng th\u00e1i \u0111\u1ec3 k\u00edch ho\u1ea1t vi\u1ec7c v\u1ebd l\u1ea1i giao di\u1ec7n m\u1ed9t c\u00e1ch t\u1ef1 \u0111\u1ed9ng.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "throws",
+      "concept_code": "EXCEPTION_HANDLING",
+      "concept_name": "EXCEPTION_HANDLING_ISOLATION",
+      "cio_code": "CIO-EXCEPTION-CATCHING-RAISING",
+      "cio_name": "Catch Exceptions and Raise Custom Error Classes",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng b\u1eaft ngo\u1ea1i l\u1ec7 v\u00e0 n\u00e9m l\u1ed7i t\u00f9y ch\u1ec9nh b\u1eb1ng raise.",
+      "project": "roadmap_sh_python"
+    },
+    {
+      "keyword": "throws",
+      "concept_code": "EXCEPTION_HANDLING",
+      "concept_name": "ASYNCHRONOUS_PROG, EXCEPTION_HANDLING",
+      "cio_code": "CIO-ASYNC-ERROR-HANDLING",
+      "cio_name": "Handle Errors in Asynchronous Code (X\u1eed l\u00fd L\u1ed7i trong Code B\u1ea5t \u0111\u1ed3ng b\u1ed9)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng s\u1eed d\u1ee5ng c\u00e1c c\u01a1 ch\u1ebf x\u1eed l\u00fd l\u1ed7i (nh\u01b0 throws v\u00e0 try/catch) \u0111\u1ec3 qu\u1ea3n l\u00fd c\u00e1c l\u1ed7i c\u00f3 th\u1ec3 x\u1ea3y ra trong c\u00e1c t\u00e1c v\u1ee5 b\u1ea5t \u0111\u1ed3ng b\u1ed9.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "throws",
+      "concept_code": "EXCEPTION_HANDLING",
+      "concept_name": "EXCEPTION_HANDLING",
+      "cio_code": "CIO-ERROR-CATCHING",
+      "cio_name": "Catch and Handle Errors (B\u1eaft v\u00e0 X\u1eed l\u00fd L\u1ed7i)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng s\u1eed d\u1ee5ng c\u1ea5u tr\u00fac try-catch \u0111\u1ec3 \"b\u1eaft\" c\u00e1c l\u1ed7i \u0111\u01b0\u1ee3c n\u00e9m ra t\u1eeb c\u00e1c h\u00e0m v\u00e0 th\u1ef1c hi\u1ec7n c\u00e1c h\u00e0nh \u0111\u1ed9ng x\u1eed l\u00fd ph\u00f9 h\u1ee3p.",
+      "project": "ltasw"
+    },
+    {
+      "keyword": "throws",
+      "concept_code": "EXCEPTION_HANDLING",
+      "concept_name": "EXCEPTION_HANDLING",
+      "cio_code": "CIO-ERROR-PROPAGATION",
+      "cio_name": "Propagate Errors (Lan truy\u1ec1n L\u1ed7i)",
+      "cio_description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng \u0111\u1ecbnh ngh\u0129a c\u00e1c h\u00e0m c\u00f3 th\u1ec3 \"n\u00e9m\" (throw) m\u1ed9t l\u1ed7i khi c\u00f3 s\u1ef1 c\u1ed1 x\u1ea3y ra, v\u00e0 truy\u1ec1n l\u1ed7i \u0111\u00f3 l\u00ean cho n\u01a1i g\u1ecdi h\u00e0m x\u1eed l\u00fd.",
+      "project": "ltasw"
+    }
+  ],
+  "derived_ulos": [
+    {
+      "code": "ULO-FRONTEND_FRAMEWORKS-01",
+      "name": "Understand FRONTEND_FRAMEWORKS",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng Hi\u1ec3u vai tr\u00f2 c\u1ee7a c\u00e1c th\u01b0 vi\u1ec7n/framework nh\u01b0 component-based frontend framework, progressive frontend framework, full-featured frontend framework trong vi\u1ec7c x\u00e2y d\u1ef1ng c\u00e1c giao di\u1ec7n ng\u01b0\u1eddi d\u00f9ng t\u01b0\u01a1ng t\u00e1c v\u00e0 c\u00f3 c\u1ea5u tr\u00fac.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "FRONTEND_FRAMEWORKS"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-MEDIUM_TYPES-01",
+      "name": "Understand MEDIUM_TYPES",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng hi\u1ec3u v\u00e0 \u00e1p d\u1ee5ng medium types",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "MEDIUM_TYPES"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-JSON_SERIALIZATION-01",
+      "name": "Understand JSON_SERIALIZATION",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng S\u1eed d\u1ee5ng c\u01a1 ch\u1ebf chu\u1ea9n \u0111\u1ec3 m\u00e3 h\u00f3a (serialize) c\u00e1c \u0111\u1ed1i t\u01b0\u1ee3ng native language th\u00e0nh \u0111\u1ecbnh d\u1ea1ng JSON v\u00e0 gi\u1ea3i m\u00e3 (deserialize) JSON ng\u01b0\u1ee3c l\u1ea1i th\u00e0nh \u0111\u1ed1i t\u01b0\u1ee3ng.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-DIGITAL_ANALOG_IO-01",
+      "name": "Understand DIGITAL_ANALOG_IO",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng Ph\u00e2n bi\u1ec7t ch\u1ee9c n\u0103ng c\u1ee7a c\u00e1c ch\u00e2n I/O s\u1ed1 (\u0111\u1ecdc/ghi gi\u00e1 tr\u1ecb HIGH/LOW) v\u00e0 c\u00e1c ch\u00e2n I/O t\u01b0\u01a1ng t\u1ef1 (\u0111\u1ecdc gi\u00e1 tr\u1ecb trong m\u1ed9t kho\u1ea3ng li\u00ean t\u1ee5c).",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "DIGITAL_ANALOG_IO"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-IOT_MESSAGING_PROTOCOLS-01",
+      "name": "Understand IOT_MESSAGING_PROTOCOLS",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng hi\u1ec3u v\u00e0 \u00e1p d\u1ee5ng iot messaging protocols",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "IOT_MESSAGING_PROTOCOLS"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-HTTP_PROTOCOL-01",
+      "name": "Understand HTTP_PROTOCOL",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng hi\u1ec3u v\u00e0 \u00e1p d\u1ee5ng http protocol",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-FOR_LOOP-01",
+      "name": "Understand FOR_LOOP",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng N\u1eafm v\u1eefng c\u00fa ph\u00e1p v\u00e0 c\u00e1ch s\u1eed d\u1ee5ng v\u00f2ng l\u1eb7p for \u0111\u1ec3 l\u1eb7p l\u1ea1i m\u1ed9t kh\u1ed1i m\u00e3 m\u1ed9t s\u1ed1 l\u1ea7n x\u00e1c \u0111\u1ecbnh, th\u01b0\u1eddng d\u00f9ng \u0111\u1ec3 duy\u1ec7t qua c\u00e1c t\u1eadp h\u1ee3p.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "FOR_LOOP"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-LOCAL_VIEW_STATE-01",
+      "name": "Understand LOCAL_VIEW_STATE",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng S\u1eed d\u1ee5ng c\u01a1 ch\u1ebf nh\u01b0 @State \u0111\u1ec3 qu\u1ea3n l\u00fd tr\u1ea1ng th\u00e1i \u0111\u01a1n gi\u1ea3n, ch\u1ec9 thu\u1ed9c v\u1ec1 m\u1ed9t View duy nh\u1ea5t v\u00e0 s\u1ebd b\u1ecb h\u1ee7y khi View bi\u1ebfn m\u1ea5t.",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "LOCAL_VIEW_STATE"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    },
+    {
+      "code": "ULO-EXCEPTION_HANDLING-01",
+      "name": "Understand EXCEPTION_HANDLING",
+      "description": "Ng\u01b0\u1eddi h\u1ecdc c\u00f3 kh\u1ea3 n\u0103ng hi\u1ec3u v\u00e0 \u00e1p d\u1ee5ng exception handling",
+      "lo_type": "UNIVERSAL",
+      "parent_lo_code": "",
+      "concept_codes": [
+        "EXCEPTION_HANDLING"
+      ],
+      "bloom_level": "UNDERSTAND",
+      "knowledge_dimension": "CONCEPTUAL",
+      "assessment_approach": "concept-check"
+    }
+  ],
+  "reused_cios": [
+    "CIO-FRONTEND_FRAMEWORKS-03-IMPLEMENT_PATTERN",
+    "CIO-FOR_LOOP-04-COMPARE_ALTERNATIVES",
+    "CIO-JSON_SERIALIZATION-01-RECALL_DEFINITIONS",
+    "CIO-DIGITAL_ANALOG_IO-04-DECOMPOSE_TRADEOFFS",
+    "CIO-DIGITAL_ANALOG_IO-04-COMPARE_ALTERNATIVES",
+    "CIO-MEDIUM_TYPES-03-ADAPT_TO_CONTEXT",
+    "CIO-IOT_MESSAGING_PROTOCOLS-03-IMPLEMENT_PATTERN",
+    "CIO-FOR_LOOP-02-INTERPRET_PARAMETERS",
+    "CIO-LOCAL_VIEW_STATE-02-DECOMPOSE_TRADEOFFS",
+    "CIO-FRONTEND_FRAMEWORKS-03-ADAPT_TO_CONTEXT",
+    "CIO-API-DATA-PARSING",
+    "CIO-IOT_MESSAGING_PROTOCOLS-02-EXPLAIN_MECHANISM",
+    "CIO-DIGITAL_ANALOG_IO-03-ADAPT_TO_CONTEXT",
+    "CIO-FOR_LOOP-01-RECALL_DEFINITIONS",
+    "CIO-FOR_LOOP-04-DECOMPOSE_TRADEOFFS",
+    "CIO-JSON_SERIALIZATION-03-IMPLEMENT_PATTERN",
+    "CIO-LOCAL_VIEW_STATE-01-EXPLAIN_MECHANISM",
+    "CIO-STATE-MUTATE",
+    "CIO-SERIALIZATION-DECODING",
+    "CIO-FOR_LOOP-03-IMPLEMENT_PATTERN",
+    "CIO-FRONTEND_FRAMEWORKS-01-IDENTIFY_COMPONENTS",
+    "CIO-HTTP-HEADER-STATUS",
+    "CIO-MEDIUM_TYPES-04-COMPARE_ALTERNATIVES",
+    "CIO-JSON_SERIALIZATION-04-DECOMPOSE_TRADEOFFS",
+    "CIO-FRONTEND_FRAMEWORKS-02-INTERPRET_PARAMETERS",
+    "CIO-JSON_SERIALIZATION-02-INTERPRET_PARAMETERS",
+    "CIO-DIGITAL_ANALOG_IO-02-INTERPRET_PARAMETERS",
+    "CIO-ITERATE-RANGE",
+    "CIO-LOCAL_VIEW_STATE-02-COMPARE_ALTERNATIVES",
+    "CIO-FRONTEND_FRAMEWORKS-01-RECALL_DEFINITIONS",
+    "CIO-DIGITAL_ANALOG_IO-01-IDENTIFY_COMPONENTS",
+    "CIO-DIGITAL_ANALOG_IO-03-IMPLEMENT_PATTERN",
+    "CIO-EXCEPTION-CATCHING-RAISING",
+    "CIO-MEDIUM_TYPES-02-INTERPRET_PARAMETERS",
+    "CIO-MEDIUM_TYPES-02-EXPLAIN_MECHANISM",
+    "CIO-ITERATE-COLLECTION",
+    "CIO-JSON_SERIALIZATION-02-EXPLAIN_MECHANISM",
+    "CIO-JSON_SERIALIZATION-04-COMPARE_ALTERNATIVES",
+    "CIO-LOCAL_VIEW_STATE-03-CRITIQUE_DESIGN",
+    "CIO-JSON_SERIALIZATION-03-ADAPT_TO_CONTEXT",
+    "CIO-IOT_MESSAGING_PROTOCOLS-01-RECALL_DEFINITIONS",
+    "CIO-LOCAL_VIEW_STATE-04-INNOVATE_EXTENSION",
+    "CIO-LOCAL_VIEW_STATE-01",
+    "CIO-IOT_MESSAGING_PROTOCOLS-01-IDENTIFY_COMPONENTS",
+    "CIO-COMPONENT-STATE-PROPS",
+    "CIO-ERROR-CATCHING",
+    "CIO-MEDIUM_TYPES-01-IDENTIFY_COMPONENTS",
+    "CIO-FRONTEND_FRAMEWORKS-02-EXPLAIN_MECHANISM",
+    "CIO-FOR_LOOP-01-IDENTIFY_COMPONENTS",
+    "CIO-DIGITAL_ANALOG_IO-01-RECALL_DEFINITIONS",
+    "CIO-DIGITAL_ANALOG_IO-02-EXPLAIN_MECHANISM",
+    "CIO-FRONTEND_FRAMEWORKS-04-DECOMPOSE_TRADEOFFS",
+    "CIO-IOT_MESSAGING_PROTOCOLS-03-ADAPT_TO_CONTEXT",
+    "CIO-FRONTEND_FRAMEWORKS-04-COMPARE_ALTERNATIVES",
+    "CIO-LOCAL_VIEW_STATE-04-DESIGN_SOLUTION",
+    "CIO-FOR_LOOP-01",
+    "CIO-MEDIUM_TYPES-04-DECOMPOSE_TRADEOFFS",
+    "CIO-LOCAL_VIEW_STATE-03-ASSESS_QUALITY",
+    "CIO-ASYNC-ERROR-HANDLING",
+    "CIO-LOCAL_VIEW_STATE-01-INTERPRET_PARAMETERS",
+    "CIO-SERIALIZATION-ENCODING",
+    "CIO-MEDIUM_TYPES-01-RECALL_DEFINITIONS",
+    "CIO-FOR_LOOP-02-EXPLAIN_MECHANISM",
+    "CIO-HTTP-VERSIONS-EVOLUTION",
+    "CIO-IOT_MESSAGING_PROTOCOLS-02-INTERPRET_PARAMETERS",
+    "CIO-ERROR-PROPAGATION",
+    "CIO-IOT_MESSAGING_PROTOCOLS-04-DECOMPOSE_TRADEOFFS",
+    "CIO-JSON_SERIALIZATION-01-IDENTIFY_COMPONENTS",
+    "CIO-IOT_MESSAGING_PROTOCOLS-04-COMPARE_ALTERNATIVES",
+    "CIO-MEDIUM_TYPES-03-IMPLEMENT_PATTERN",
+    "CIO-ARRAY-TRAVERSE",
+    "CIO-FOR_LOOP-03-ADAPT_TO_CONTEXT",
+    "CIO-STATE-DECLARE-LOCAL"
+  ],
+  "summary": {
+    "total_matched": 73,
+    "unique_reused": 73,
+    "derived_ulo_count": 9,
+    "source": "local_projects"
+  }
+}

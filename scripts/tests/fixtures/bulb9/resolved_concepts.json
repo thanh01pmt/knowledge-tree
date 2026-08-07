@@ -1,0 +1,889 @@
+{
+  "resolved": [
+    {
+      "keyword": "SwiftUI",
+      "source": "import",
+      "concept_codes": [
+        "FRONTEND_FRAMEWORKS"
+      ],
+      "matches": [
+        {
+          "code": "PROMPT_ENGINEERING",
+          "name": "Prompt Engineering",
+          "description": "Thiết kế prompt hiệu quả cho mô hình ngôn ngữ lớn: system prompt, few-shot examples, chain-of-thought, tinh chỉnh temperature/top-p, prompt templates và đánh giá chất lượng prompt.",
+          "keywords": "prompt engineering, system prompt, few-shot, chain-of-thought, temperature, prompt template",
+          "score": 0.2787,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "WiFi.h",
+      "source": "import",
+      "concept_codes": [
+        "MEDIUM_TYPES"
+      ],
+      "matches": [
+        {
+          "code": "MEDIUM_TYPES",
+          "name": "Physical Media & Wireless",
+          "description": "So sánh các phương tiện truyền dẫn vật lý (cáp xoắn đôi, cáp quang) và các công nghệ không dây (Wi-Fi, Bluetooth).",
+          "keywords": "Ethernet cable, fiber optic, Wi-Fi, Bluetooth",
+          "score": 0.4369,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "WebServer.h",
+      "source": "import",
+      "concept_codes": [
+        "WEB_SERVER"
+      ],
+      "matches": [
+        {
+          "code": "WEB_AUTHENTICATION_STRATEGIES",
+          "name": "Web Authentication & Authorization",
+          "description": "Các chiến lược xác thực và phân quyền người dùng web.",
+          "keywords": "JWT, OAuth, Session Cookies, WebAuthn",
+          "score": 0.6034,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "ArduinoJson.h",
+      "source": "import",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "matches": [
+        {
+          "code": "MECHATRONICS_SYSTEMS_DIAGNOSTICS",
+          "name": "Mechatronics and Control Systems Diagnostics",
+          "description": "Quy trình chẩn đoán, tích hợp kiểm thử phần cứng vòng kín (Hardware-in-the-Loop) trong kỹ thuật cơ điện tử.",
+          "keywords": "mechatronics, Hardware-in-the-Loop, HIL, control systems, diagnostics",
+          "score": 0.2485,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "Adafruit_NeoPixel.h",
+      "source": "import",
+      "concept_codes": [
+        "DIGITAL_ANALOG_IO"
+      ],
+      "matches": [
+        {
+          "code": "PROTOTYPING",
+          "name": "Prototyping",
+          "description": "Kỹ thuật tạo ra các mẫu thử tương tác (prototype) từ mức độ chi tiết thấp đến cao để kiểm tra và thu thập phản hồi về ý tưởng thiết kế.",
+          "keywords": "prototype, mockup, UI, UX, Figma",
+          "score": 0.2425,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "PubSubClient.h",
+      "source": "import",
+      "concept_codes": [
+        "IOT_MESSAGING_PROTOCOLS"
+      ],
+      "matches": [
+        {
+          "code": "PACKAGE_MANAGEMENT",
+          "name": "Package & Dependency Management",
+          "description": "Nguyên lý và công cụ quản lý thư viện phụ thuộc.",
+          "keywords": "npm, yarn, pnpm, pip, conda, uv",
+          "score": 0.3963,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "HTTPBulbService",
+      "source": "type_declaration",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "matches": [
+        {
+          "code": "HTTP_PROTOCOL",
+          "name": "HTTP Protocol & Specification",
+          "description": "Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+          "keywords": "headers, status codes, REST",
+          "score": 0.5971,
+          "method": "embedding"
+        }
+      ]
+    },
+    {
+      "keyword": "loop",
+      "source": "function_signature",
+      "concept_codes": [
+        "FOR_LOOP"
+      ],
+      "matches": [
+        {
+          "code": "FOR_LOOP",
+          "name": "For Loop",
+          "description": "Nắm vững cú pháp và cách sử dụng vòng lặp for để lặp lại một khối mã một số lần xác định, thường dùng để duyệt qua các tập hợp.",
+          "keywords": "for loop, iteration, looping, repetition",
+          "score": 0.7287,
+          "method": "embedding"
+        }
+      ]
+    },
+    {
+      "keyword": "JSONDecoder",
+      "source": "framework_usage",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "matches": [
+        {
+          "code": "JSON_SERIALIZATION",
+          "name": "JSON Serialization/Deserialization",
+          "description": "Hiểu cơ chế mã hóa (serialize) đối tượng thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng trong bộ nhớ.",
+          "keywords": "JSON, serialization, deserialization, encoder, decoder, data interchange",
+          "score": 0.6782,
+          "method": "embedding"
+        }
+      ]
+    },
+    {
+      "keyword": "JSONSerialization",
+      "source": "framework_usage",
+      "concept_codes": [
+        "JSON_SERIALIZATION"
+      ],
+      "matches": [
+        {
+          "code": "JSON_SERIALIZATION",
+          "name": "JSON Serialization/Deserialization",
+          "description": "Hiểu cơ chế mã hóa (serialize) đối tượng thành định dạng JSON và giải mã (deserialize) JSON ngược lại thành đối tượng trong bộ nhớ.",
+          "keywords": "JSON, serialization, deserialization, encoder, decoder, data interchange",
+          "score": 0.7662,
+          "method": "embedding"
+        }
+      ]
+    },
+    {
+      "keyword": "URLRequest",
+      "source": "framework_usage",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "matches": [
+        {
+          "code": "HTTP_METHODS",
+          "name": "HTTP Methods (GET, POST)",
+          "description": "Phân biệt các phương thức HTTP cơ bản như GET để yêu cầu dữ liệu và POST để gửi dữ liệu lên máy chủ.",
+          "keywords": "HTTP, GET, POST, REST, request methods",
+          "score": 0.4354,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "URLSession",
+      "source": "framework_usage",
+      "concept_codes": [
+        "HTTP_PROTOCOL"
+      ],
+      "matches": [
+        {
+          "code": "HTTP_PROTOCOL",
+          "name": "HTTP Protocol & Specification",
+          "description": "Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+          "keywords": "headers, status codes, REST",
+          "score": 0.457,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "@State",
+      "source": "property_wrapper",
+      "concept_codes": [
+        "LOCAL_VIEW_STATE"
+      ],
+      "matches": [
+        {
+          "code": "LOCAL_VIEW_STATE",
+          "name": "Local View State",
+          "description": "Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+          "keywords": "state, @State, local state, ephemeral state",
+          "score": 0.615,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "throws",
+      "source": "error_handling",
+      "concept_codes": [
+        "EXCEPTION_HANDLING"
+      ],
+      "matches": [
+        {
+          "code": "COLLISION_DETECTION",
+          "name": "Collision Detection",
+          "description": "Cơ chế phát hiện khi hai vật thể trong không gian game chạm vào nhau hoặc xuyên qua nhau để kích hoạt sự kiện.",
+          "keywords": "collision, hitbox, raycasting",
+          "score": 0.3145,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    },
+    {
+      "keyword": "try!",
+      "source": "error_handling",
+      "concept_codes": [
+        "EXCEPTION_HANDLING"
+      ],
+      "matches": [
+        {
+          "code": "USABILITY_TESTING",
+          "name": "Usability Testing",
+          "description": "Nắm vững quy trình cơ bản của việc kiểm thử tính khả dụng: quan sát người dùng thực sự sử dụng một sản phẩm để xác định các vấn đề.",
+          "keywords": "usability testing, user testing, feedback",
+          "score": 0.2797,
+          "method": "embedding"
+        }
+      ],
+      "override": true
+    }
+  ],
+  "proposed": [
+    {
+      "proposed_code": "FOUNDATION",
+      "name": "Foundation",
+      "description": "Concept được đề xuất từ domain intent: Foundation",
+      "source_keywords": [
+        "Foundation"
+      ],
+      "source": "semantic_cluster",
+      "best_existing_match": {
+        "code": "REST_PRINCIPLES",
+        "name": "REST Architectural Principles",
+        "description": "Nắm vững các nguyên tắc của kiến trúc REST (Representational State Transfer) trong thiết kế API, như stateless và client-server.",
+        "keywords": "REST, stateless, API design, architectural style",
+        "score": 0.3266,
+        "method": "embedding"
+      }
+    },
+    {
+      "keyword": "BulbServiceProtocol",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.3473,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.35 < 0.55)"
+    },
+    {
+      "keyword": "MockBulbService",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "CYBERBULLYING",
+        "name": "Cyberbullying and Response",
+        "description": "Nhận biết các hình thức bắt nạt trên mạng và các chiến lược để ứng phó một cách an toàn và hiệu quả.",
+        "keywords": "cyberbullying, online safety, harassment",
+        "score": 0.3497,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.35 < 0.55)"
+    },
+    {
+      "keyword": "BulbState",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.3439,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.34 < 0.55)"
+    },
+    {
+      "keyword": "BulbEffect",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.3665,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.37 < 0.55)"
+    },
+    {
+      "keyword": "SmartBulbApp",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "LOGIC_ERRORS",
+        "name": "Logical Errors",
+        "description": "Nhận biết các lỗi trong logic của chương trình khiến nó chạy không đúng kết quả mong đợi, mặc dù không gây ra lỗi cú pháp hay lỗi runtime.",
+        "keywords": "logical error, bug, incorrect output",
+        "score": 0.4132,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.41 < 0.55)"
+    },
+    {
+      "keyword": "ContentView",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "SCREEN_READERS",
+        "name": "Screen Readers",
+        "description": "Hiểu cách trình đọc màn hình hoạt động và tầm quan trọng của việc viết mã đánh dấu ngữ nghĩa (semantic markup) để hỗ trợ người dùng khiếm thị.",
+        "keywords": "screen reader, accessibility, a11y, semantic markup, assistive technology",
+        "score": 0.4244,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.42 < 0.55)"
+    },
+    {
+      "keyword": "getState",
+      "source": "function_signature",
+      "best_match": {
+        "code": "HTTP_METHODS",
+        "name": "HTTP Methods (GET, POST)",
+        "description": "Phân biệt các phương thức HTTP cơ bản như GET để yêu cầu dữ liệu và POST để gửi dữ liệu lên máy chủ.",
+        "keywords": "HTTP, GET, POST, REST, request methods",
+        "score": 0.3644,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.36 < 0.55)"
+    },
+    {
+      "keyword": "setPower",
+      "source": "function_signature",
+      "best_match": {
+        "code": "SET_THEORY",
+        "name": "Set Theory",
+        "description": "Sets, subsets, operations.",
+        "keywords": "sets, unions",
+        "score": 0.4022,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.40 < 0.55)"
+    },
+    {
+      "keyword": "setBrightness",
+      "source": "function_signature",
+      "best_match": {
+        "code": "AFFORDANCES_SIGNIFIERS",
+        "name": "Affordances and Signifiers",
+        "description": "Phân biệt khái niệm \"khả năng\" (affordances - những gì một đối tượng có thể làm) và \"dấu hiệu\" (signifiers - gợi ý trực quan về cách sử dụng).",
+        "keywords": "affordance, signifier, discoverability",
+        "score": 0.4132,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.41 < 0.55)"
+    },
+    {
+      "keyword": "setColor",
+      "source": "function_signature",
+      "best_match": {
+        "code": "COLOR_THEORY_AND_PALETTE_DESIGN",
+        "name": "Color Theory and Digital Palette Systems",
+        "description": "Nguyên lý lý thuyết màu sắc, vòng tròn màu, không gian màu kỹ thuật số (RGB/CMYK/HSV) và thiết kế hệ thống phối màu tương phản.",
+        "keywords": "color theory, color palette, RGB, CMYK, contrast, color harmony",
+        "score": 0.4582,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.46 < 0.55)"
+    },
+    {
+      "keyword": "setEffect",
+      "source": "function_signature",
+      "best_match": {
+        "code": "SET_THEORY",
+        "name": "Set Theory",
+        "description": "Sets, subsets, operations.",
+        "keywords": "sets, unions",
+        "score": 0.5104,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.51 < 0.55)"
+    },
+    {
+      "keyword": "post",
+      "source": "function_signature",
+      "best_match": {
+        "code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "name": "Publisher-Subscriber Model for UI",
+        "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+        "keywords": "publisher, subscriber, @Published, Combine",
+        "score": 0.3086,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.31 < 0.55)"
+    },
+    {
+      "keyword": "handleGetState",
+      "source": "function_signature",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.4258,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.43 < 0.55)"
+    },
+    {
+      "keyword": "handleSetPower",
+      "source": "function_signature",
+      "best_match": {
+        "code": "CONSTRAINT_MECHANICS",
+        "name": "Physics Constraints",
+        "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
+        "keywords": "constraints, hinge joint, spring joint, joints, mechanical linkage",
+        "score": 0.4685,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.47 < 0.55)"
+    },
+    {
+      "keyword": "handleSetBrightness",
+      "source": "function_signature",
+      "best_match": {
+        "code": "CONSTRAINT_MECHANICS",
+        "name": "Physics Constraints",
+        "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
+        "keywords": "constraints, hinge joint, spring joint, joints, mechanical linkage",
+        "score": 0.5097,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.51 < 0.55)"
+    },
+    {
+      "keyword": "handleSetColor",
+      "source": "function_signature",
+      "best_match": {
+        "code": "COLOR_THEORY_AND_PALETTE_DESIGN",
+        "name": "Color Theory and Digital Palette Systems",
+        "description": "Nguyên lý lý thuyết màu sắc, vòng tròn màu, không gian màu kỹ thuật số (RGB/CMYK/HSV) và thiết kế hệ thống phối màu tương phản.",
+        "keywords": "color theory, color palette, RGB, CMYK, contrast, color harmony",
+        "score": 0.4827,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.48 < 0.55)"
+    },
+    {
+      "keyword": "handleSetEffect",
+      "source": "function_signature",
+      "best_match": {
+        "code": "METHOD_OVERRIDING",
+        "name": "Method Overriding",
+        "description": "Hiểu kỹ thuật ghi đè (override) một phương thức của lớp cha trong lớp con để cung cấp một triển khai cụ thể hơn.",
+        "keywords": "overriding, polymorphism, dynamic dispatch",
+        "score": 0.49,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.49 < 0.55)"
+    },
+    {
+      "keyword": "mqttCallback",
+      "source": "function_signature",
+      "best_match": {
+        "code": "BACKEND_FRAMEWORKS",
+        "name": "Backend Frameworks",
+        "description": "Hiểu vai trò của các framework backend trong việc tăng tốc xây dựng logic và API phía máy chủ.",
+        "keywords": "backend framework, web framework, MVC, API scaffolding",
+        "score": 0.3373,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.34 < 0.55)"
+    },
+    {
+      "keyword": "publishState",
+      "source": "function_signature",
+      "best_match": {
+        "code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "name": "Publisher-Subscriber Model for UI",
+        "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+        "keywords": "publisher, subscriber, @Published, Combine",
+        "score": 0.5192,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.52 < 0.55)"
+    },
+    {
+      "keyword": "updateLED",
+      "source": "function_signature",
+      "best_match": {
+        "code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "name": "Publisher-Subscriber Model for UI",
+        "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+        "keywords": "publisher, subscriber, @Published, Combine",
+        "score": 0.2456,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.25 < 0.55)"
+    },
+    {
+      "keyword": "wheel",
+      "source": "function_signature",
+      "best_match": {
+        "code": "AUTONOMOUS_DRONE_NAVIGATION",
+        "name": "Autonomous Vehicle and Drone Navigation",
+        "description": "Hệ thống tự điều hướng, tránh chướng ngại vật thời gian thực và tự chủ di chuyển cho phương tiện tự lái và thiết bị bay không người lái.",
+        "keywords": "autonomous navigation, drone control, self-driving, obstacle avoidance",
+        "score": 0.453,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.45 < 0.55)"
+    },
+    {
+      "keyword": "Task",
+      "source": "framework_usage",
+      "best_match": {
+        "code": "GRAPH_BASED_AGENTIC_WORKFLOW",
+        "name": "Graph-Based Agentic Workflow",
+        "description": "Mô hình điều khiển luồng công việc dạng đồ thị tuần hoàn cho phép tái lập kế hoạch, phản tư và phản hồi vòng kín trong quá trình thực thi tác vụ.",
+        "keywords": "graph workflow, cyclic execution, re-planning, feedback loop",
+        "score": 0.4288,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.43 < 0.45)"
+    }
+  ],
+  "proposed_raw": [
+    {
+      "keyword": "Foundation",
+      "source": "import",
+      "best_match": {
+        "code": "REST_PRINCIPLES",
+        "name": "REST Architectural Principles",
+        "description": "Nắm vững các nguyên tắc của kiến trúc REST (Representational State Transfer) trong thiết kế API, như stateless và client-server.",
+        "keywords": "REST, stateless, API design, architectural style",
+        "score": 0.3266,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.33 < 0.6)"
+    },
+    {
+      "keyword": "BulbServiceProtocol",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.3473,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.35 < 0.55)"
+    },
+    {
+      "keyword": "MockBulbService",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "CYBERBULLYING",
+        "name": "Cyberbullying and Response",
+        "description": "Nhận biết các hình thức bắt nạt trên mạng và các chiến lược để ứng phó một cách an toàn và hiệu quả.",
+        "keywords": "cyberbullying, online safety, harassment",
+        "score": 0.3497,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.35 < 0.55)"
+    },
+    {
+      "keyword": "BulbState",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.3439,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.34 < 0.55)"
+    },
+    {
+      "keyword": "BulbEffect",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.3665,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.37 < 0.55)"
+    },
+    {
+      "keyword": "SmartBulbApp",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "LOGIC_ERRORS",
+        "name": "Logical Errors",
+        "description": "Nhận biết các lỗi trong logic của chương trình khiến nó chạy không đúng kết quả mong đợi, mặc dù không gây ra lỗi cú pháp hay lỗi runtime.",
+        "keywords": "logical error, bug, incorrect output",
+        "score": 0.4132,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.41 < 0.55)"
+    },
+    {
+      "keyword": "ContentView",
+      "source": "type_declaration",
+      "best_match": {
+        "code": "SCREEN_READERS",
+        "name": "Screen Readers",
+        "description": "Hiểu cách trình đọc màn hình hoạt động và tầm quan trọng của việc viết mã đánh dấu ngữ nghĩa (semantic markup) để hỗ trợ người dùng khiếm thị.",
+        "keywords": "screen reader, accessibility, a11y, semantic markup, assistive technology",
+        "score": 0.4244,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.42 < 0.55)"
+    },
+    {
+      "keyword": "getState",
+      "source": "function_signature",
+      "best_match": {
+        "code": "HTTP_METHODS",
+        "name": "HTTP Methods (GET, POST)",
+        "description": "Phân biệt các phương thức HTTP cơ bản như GET để yêu cầu dữ liệu và POST để gửi dữ liệu lên máy chủ.",
+        "keywords": "HTTP, GET, POST, REST, request methods",
+        "score": 0.3644,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.36 < 0.55)"
+    },
+    {
+      "keyword": "setPower",
+      "source": "function_signature",
+      "best_match": {
+        "code": "SET_THEORY",
+        "name": "Set Theory",
+        "description": "Sets, subsets, operations.",
+        "keywords": "sets, unions",
+        "score": 0.4022,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.40 < 0.55)"
+    },
+    {
+      "keyword": "setBrightness",
+      "source": "function_signature",
+      "best_match": {
+        "code": "AFFORDANCES_SIGNIFIERS",
+        "name": "Affordances and Signifiers",
+        "description": "Phân biệt khái niệm \"khả năng\" (affordances - những gì một đối tượng có thể làm) và \"dấu hiệu\" (signifiers - gợi ý trực quan về cách sử dụng).",
+        "keywords": "affordance, signifier, discoverability",
+        "score": 0.4132,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.41 < 0.55)"
+    },
+    {
+      "keyword": "setColor",
+      "source": "function_signature",
+      "best_match": {
+        "code": "COLOR_THEORY_AND_PALETTE_DESIGN",
+        "name": "Color Theory and Digital Palette Systems",
+        "description": "Nguyên lý lý thuyết màu sắc, vòng tròn màu, không gian màu kỹ thuật số (RGB/CMYK/HSV) và thiết kế hệ thống phối màu tương phản.",
+        "keywords": "color theory, color palette, RGB, CMYK, contrast, color harmony",
+        "score": 0.4582,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.46 < 0.55)"
+    },
+    {
+      "keyword": "setEffect",
+      "source": "function_signature",
+      "best_match": {
+        "code": "SET_THEORY",
+        "name": "Set Theory",
+        "description": "Sets, subsets, operations.",
+        "keywords": "sets, unions",
+        "score": 0.5104,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.51 < 0.55)"
+    },
+    {
+      "keyword": "post",
+      "source": "function_signature",
+      "best_match": {
+        "code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "name": "Publisher-Subscriber Model for UI",
+        "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+        "keywords": "publisher, subscriber, @Published, Combine",
+        "score": 0.3086,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.31 < 0.55)"
+    },
+    {
+      "keyword": "handleGetState",
+      "source": "function_signature",
+      "best_match": {
+        "code": "VERSION_CONTROL_WORKFLOW",
+        "name": "Version Control Workflow",
+        "description": "Hiểu và áp dụng một quy trình làm việc với Git, như Git Flow, để quản lý các nhánh (feature, develop, release) một cách hiệu quả trong nhóm.",
+        "keywords": "Git workflow, Git Flow, branching strategy",
+        "score": 0.4258,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.43 < 0.55)"
+    },
+    {
+      "keyword": "handleSetPower",
+      "source": "function_signature",
+      "best_match": {
+        "code": "CONSTRAINT_MECHANICS",
+        "name": "Physics Constraints",
+        "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
+        "keywords": "constraints, hinge joint, spring joint, joints, mechanical linkage",
+        "score": 0.4685,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.47 < 0.55)"
+    },
+    {
+      "keyword": "handleSetBrightness",
+      "source": "function_signature",
+      "best_match": {
+        "code": "CONSTRAINT_MECHANICS",
+        "name": "Physics Constraints",
+        "description": "Các loại khớp nối (Bản lề, Lò xo, Dây) giới hạn chuyển động tự do của vật thể để tạo ra cơ cấu máy móc.",
+        "keywords": "constraints, hinge joint, spring joint, joints, mechanical linkage",
+        "score": 0.5097,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.51 < 0.55)"
+    },
+    {
+      "keyword": "handleSetColor",
+      "source": "function_signature",
+      "best_match": {
+        "code": "COLOR_THEORY_AND_PALETTE_DESIGN",
+        "name": "Color Theory and Digital Palette Systems",
+        "description": "Nguyên lý lý thuyết màu sắc, vòng tròn màu, không gian màu kỹ thuật số (RGB/CMYK/HSV) và thiết kế hệ thống phối màu tương phản.",
+        "keywords": "color theory, color palette, RGB, CMYK, contrast, color harmony",
+        "score": 0.4827,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.48 < 0.55)"
+    },
+    {
+      "keyword": "handleSetEffect",
+      "source": "function_signature",
+      "best_match": {
+        "code": "METHOD_OVERRIDING",
+        "name": "Method Overriding",
+        "description": "Hiểu kỹ thuật ghi đè (override) một phương thức của lớp cha trong lớp con để cung cấp một triển khai cụ thể hơn.",
+        "keywords": "overriding, polymorphism, dynamic dispatch",
+        "score": 0.49,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.49 < 0.55)"
+    },
+    {
+      "keyword": "mqttCallback",
+      "source": "function_signature",
+      "best_match": {
+        "code": "BACKEND_FRAMEWORKS",
+        "name": "Backend Frameworks",
+        "description": "Hiểu vai trò của các framework backend trong việc tăng tốc xây dựng logic và API phía máy chủ.",
+        "keywords": "backend framework, web framework, MVC, API scaffolding",
+        "score": 0.3373,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.34 < 0.55)"
+    },
+    {
+      "keyword": "publishState",
+      "source": "function_signature",
+      "best_match": {
+        "code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "name": "Publisher-Subscriber Model for UI",
+        "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+        "keywords": "publisher, subscriber, @Published, Combine",
+        "score": 0.5192,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.52 < 0.55)"
+    },
+    {
+      "keyword": "updateLED",
+      "source": "function_signature",
+      "best_match": {
+        "code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "name": "Publisher-Subscriber Model for UI",
+        "description": "Hiểu cách một thuộc tính được \"phát sóng\" (@Published) có thể tự động kích hoạt việc cập nhật giao diện của các View \"đăng ký\" theo dõi nó.",
+        "keywords": "publisher, subscriber, @Published, Combine",
+        "score": 0.2456,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.25 < 0.55)"
+    },
+    {
+      "keyword": "wheel",
+      "source": "function_signature",
+      "best_match": {
+        "code": "AUTONOMOUS_DRONE_NAVIGATION",
+        "name": "Autonomous Vehicle and Drone Navigation",
+        "description": "Hệ thống tự điều hướng, tránh chướng ngại vật thời gian thực và tự chủ di chuyển cho phương tiện tự lái và thiết bị bay không người lái.",
+        "keywords": "autonomous navigation, drone control, self-driving, obstacle avoidance",
+        "score": 0.453,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.45 < 0.55)"
+    },
+    {
+      "keyword": "Task",
+      "source": "framework_usage",
+      "best_match": {
+        "code": "GRAPH_BASED_AGENTIC_WORKFLOW",
+        "name": "Graph-Based Agentic Workflow",
+        "description": "Mô hình điều khiển luồng công việc dạng đồ thị tuần hoàn cho phép tái lập kế hoạch, phản tư và phản hồi vòng kín trong quá trình thực thi tác vụ.",
+        "keywords": "graph workflow, cyclic execution, re-planning, feedback loop",
+        "score": 0.4288,
+        "method": "embedding"
+      },
+      "reason": "Low confidence (0.43 < 0.45)"
+    }
+  ],
+  "summary": {
+    "total_keywords": 38,
+    "resolved_count": 15,
+    "proposed_count": 23,
+    "grouped_proposed_count": 1,
+    "ungrouped_proposed_count": 22,
+    "threshold": 0.55,
+    "relevant_fields": [
+      "ASE",
+      "HCI",
+      "MOB"
+    ]
+  }
+}

@@ -1,0 +1,595 @@
+{
+  "resolved_sios": [
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-01-IDENTIFY_COMPONENTS",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-01-RECALL_DEFINITIONS",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-02-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-02-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-03-IMPLEMENT_PATTERN",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-03-ADAPT_TO_CONTEXT",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-04-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-FRONTEND_FRAMEWORKS-04-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-FRONTEND_FRAMEWORKS-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-COMPONENT-STATE-PROPS",
+      "normalized_cio": "CIO-COMPONENT-STATE",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FRONTEND_FRAMEWORKS"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-01-IDENTIFY_COMPONENTS",
+      "normalized_cio": "CIO-MEDIUM_TYPES-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-01-RECALL_DEFINITIONS",
+      "normalized_cio": "CIO-MEDIUM_TYPES-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-02-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-MEDIUM_TYPES-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-02-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-MEDIUM_TYPES-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-03-IMPLEMENT_PATTERN",
+      "normalized_cio": "CIO-MEDIUM_TYPES-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-03-ADAPT_TO_CONTEXT",
+      "normalized_cio": "CIO-MEDIUM_TYPES-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-04-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-MEDIUM_TYPES-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-MEDIUM_TYPES-04-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-MEDIUM_TYPES-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "MEDIUM_TYPES"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-01-IDENTIFY_COMPONENTS",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-01-RECALL_DEFINITIONS",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-02-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-02-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-03-IMPLEMENT_PATTERN",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-03-ADAPT_TO_CONTEXT",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-04-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-JSON_SERIALIZATION-04-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-JSON_SERIALIZATION-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-API-DATA-PARSING",
+      "normalized_cio": "CIO-API-DATA",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-SERIALIZATION-DECODING",
+      "normalized_cio": "CIO-SERIALIZATION-DECODING",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-SERIALIZATION-ENCODING",
+      "normalized_cio": "CIO-SERIALIZATION-ENCODING",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "JSON_SERIALIZATION"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-01-IDENTIFY_COMPONENTS",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-01-RECALL_DEFINITIONS",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-02-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-02-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-03-IMPLEMENT_PATTERN",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-03-ADAPT_TO_CONTEXT",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-04-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-DIGITAL_ANALOG_IO-04-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-DIGITAL_ANALOG_IO-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "DIGITAL_ANALOG_IO"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-01-IDENTIFY_COMPONENTS",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-01-RECALL_DEFINITIONS",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-02-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-02-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-03-IMPLEMENT_PATTERN",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-03-ADAPT_TO_CONTEXT",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-04-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-IOT_MESSAGING_PROTOCOLS-04-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-IOT_MESSAGING_PROTOCOLS-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "IOT_MESSAGING_PROTOCOLS"
+    },
+    {
+      "cio_code": "CIO-HTTP-HEADER-STATUS",
+      "normalized_cio": "CIO-HTTP-HEADER",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "HTTP_PROTOCOL"
+    },
+    {
+      "cio_code": "CIO-HTTP-VERSIONS-EVOLUTION",
+      "normalized_cio": "CIO-HTTP-VERSIONS",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "HTTP_PROTOCOL"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-01-IDENTIFY_COMPONENTS",
+      "normalized_cio": "CIO-FOR_LOOP-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-01-RECALL_DEFINITIONS",
+      "normalized_cio": "CIO-FOR_LOOP-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-02-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-FOR_LOOP-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-02-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-FOR_LOOP-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-03-IMPLEMENT_PATTERN",
+      "normalized_cio": "CIO-FOR_LOOP-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-03-ADAPT_TO_CONTEXT",
+      "normalized_cio": "CIO-FOR_LOOP-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-04-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-FOR_LOOP-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-04-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-FOR_LOOP-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-FOR_LOOP-01",
+      "normalized_cio": "CIO-FOR_LOOP-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-ITERATE-COLLECTION",
+      "normalized_cio": "CIO-ITERATE-COLLECTION",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-ITERATE-RANGE",
+      "normalized_cio": "CIO-ITERATE-RANGE",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-ARRAY-TRAVERSE",
+      "normalized_cio": "CIO-ARRAY-TRAVERSE",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "FOR_LOOP"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-01-EXPLAIN_MECHANISM",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-01-INTERPRET_PARAMETERS",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-02-DECOMPOSE_TRADEOFFS",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-02-COMPARE_ALTERNATIVES",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-02",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-03-ASSESS_QUALITY",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-03-CRITIQUE_DESIGN",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-03",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-04-DESIGN_SOLUTION",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-04-INNOVATE_EXTENSION",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-04",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-LOCAL_VIEW_STATE-01",
+      "normalized_cio": "CIO-LOCAL_VIEW_STATE-01",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-STATE-DECLARE-LOCAL",
+      "normalized_cio": "CIO-STATE-DECLARE",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-STATE-MUTATE",
+      "normalized_cio": "CIO-STATE-MUTATE",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "LOCAL_VIEW_STATE"
+    },
+    {
+      "cio_code": "CIO-EXCEPTION-CATCHING-RAISING",
+      "normalized_cio": "CIO-EXCEPTION-CATCHING",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "EXCEPTION_HANDLING"
+    },
+    {
+      "cio_code": "CIO-ASYNC-ERROR-HANDLING",
+      "normalized_cio": "CIO-ASYNC-ERROR",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "EXCEPTION_HANDLING"
+    },
+    {
+      "cio_code": "CIO-ERROR-CATCHING",
+      "normalized_cio": "CIO-ERROR-CATCHING",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "EXCEPTION_HANDLING"
+    },
+    {
+      "cio_code": "CIO-ERROR-PROPAGATION",
+      "normalized_cio": "CIO-ERROR-PROPAGATION",
+      "action": "GENERATE",
+      "reason": "GENERATE-first (ADR): b\u1ecf REUSE cross-project, JIT sinh SIO g\u1eafn keyword d\u1ef1 \u00e1n",
+      "siblings_count": 0,
+      "concept_code": "EXCEPTION_HANDLING"
+    }
+  ],
+  "summary": {
+    "total_cios": 73,
+    "actions": {
+      "GENERATE": 73
+    },
+    "target_tech": "SWIFT"
+  }
+}
