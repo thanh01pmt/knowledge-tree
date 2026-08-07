@@ -31,9 +31,14 @@ from typing import Dict, List
 
 # LLM support (optional — falls back to template if unavailable)
 REPO_ROOT = Path(__file__).resolve().parents[1]
+SCRIPTS_DIR = Path(__file__).resolve().parent
+if str(SCRIPTS_DIR) not in sys.path:
+    sys.path.insert(0, str(SCRIPTS_DIR))
 SKILL_LLM_PATH = REPO_ROOT / ".agents" / "skills" / "keyword-extractor" / "scripts"
 if str(SKILL_LLM_PATH) not in sys.path:
     sys.path.insert(0, str(SKILL_LLM_PATH))
+
+import lo_quality
 
 try:
     from llm_call import llm_chat_json, LLMCallError, get_llm_client, resolve_provider
@@ -220,7 +225,7 @@ def generate_ulo(concept_code: str, description: str, concept_name: str = '') ->
     """Generate ULO (UNIVERSAL tier) from concept description.
 
     Uses LLM to write a natural, context-aware description; falls back to
-    the concept description (or template) if LLM unavailable.
+    lo_quality.build_lo_desc if LLM unavailable.
     """
     name_hint = concept_name or concept_code
     # Try LLM first for a natural description
@@ -238,23 +243,21 @@ def generate_ulo(concept_code: str, description: str, concept_name: str = '') ->
         f"Khái niệm: {name_hint}. Mô tả: {description}"
     )
     if llm_desc:
+        llm_desc = lo_quality.clean_llm_description(llm_desc, name_hint)
+
+    if llm_desc:
         final_desc = llm_desc
-    elif description:
-        # Bỏ prefix trùng: description đã bắt đầu "Hiểu..." thì không thêm "hiểu:"
-        d = description.strip()
-        d = re.sub(r'^(Người học có khả năng hiểu\s*[:]?\s*)', '', d, flags=re.IGNORECASE)
-        final_desc = f"Người học có khả năng hiểu {name_hint}: {d}"
+        needs_review = False
     else:
-        # KHÔNG dùng "nguyên lý phổ quát" (template máy móc) — dùng tên tự nhiên
-        final_desc = (
-            f"Người học có khả năng hiểu {name_hint} và cách vận dụng nó "
-            f"trong việc phát triển dự án."
+        final_desc, needs_review = lo_quality.build_lo_desc(
+            'ULO', concept_code, name_hint, description
         )
 
     return {
         'code': f"ULO-{concept_code}-01",
         'name': f"Understand {concept_code}",
         'description': final_desc,
+        'needs_review': needs_review,
         'lo_type': 'UNIVERSAL',
         'parent_lo_code': '',
         'concept_codes': [concept_code],
@@ -267,7 +270,7 @@ def generate_ulo(concept_code: str, description: str, concept_name: str = '') ->
 def generate_cio(concept_code: str, description: str) -> dict:
     """Generate CIO (CONCEPTUAL_IMPL tier) from concept description.
 
-    Uses LLM for a natural, tech-agnostic description; falls back to template.
+    Uses LLM for a natural, tech-agnostic description; falls back to lo_quality.build_lo_desc.
     """
     llm_desc = _llm_generate(
         "Bạn là chuyên gia sư phạm. Viết 1 câu mô tả CIO (Conceptual Implementation Objective) "
@@ -278,19 +281,21 @@ def generate_cio(concept_code: str, description: str) -> dict:
         f"Khái niệm: {concept_code}. Mô tả: {description}"
     )
     if llm_desc:
+        llm_desc = lo_quality.clean_llm_description(llm_desc, concept_code)
+
+    if llm_desc:
         final_desc = llm_desc
-    elif description:
-        final_desc = f"Người học có khả năng thiết kế quy trình xử lý cho {concept_code}: {description[:200]}"
+        needs_review = False
     else:
-        final_desc = (
-            f"Người học có khả năng thiết kế quy trình xử lý cho {concept_code}: "
-            f"phân tích yêu cầu, lựa chọn phương pháp, và đánh giá kết quả."
+        final_desc, needs_review = lo_quality.build_lo_desc(
+            'CIO', concept_code, concept_code, description
         )
 
     return {
         'code': f"CIO-{concept_code}-01",
         'name': f"Apply {concept_code} Concepts",
         'description': final_desc,
+        'needs_review': needs_review,
         'lo_type': 'CONCEPTUAL_IMPL',
         'parent_lo_code': f"ULO-{concept_code}-01",
         'concept_codes': [concept_code],
@@ -319,6 +324,7 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         concept_name = 'For Loop'
         if not keyword:
             keyword = 'for'
+    name_hint = concept_name or concept_code
     kw_hint = (f"Khái niệm này trong dự án xuất hiện qua keyword/tên gọi: '{keyword}' "
                f"thuộc codebase {platform_label}. " if keyword
                else f"Khái niệm này thuộc codebase {platform_label}. ")
@@ -338,19 +344,21 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         f"Khái niệm: {concept_name}. Mô tả khái niệm: {description}"
     )
     if llm_desc:
+        llm_desc = lo_quality.clean_llm_description(llm_desc, name_hint)
+
+    if llm_desc:
         final_desc = llm_desc
+        needs_review = False
     else:
-        kw_part = f" sử dụng '{keyword}'" if keyword else ""
-        final_desc = (
-            f"Người học có khả năng triển khai {concept_name}{kw_part} trong {target_tech} "
-            f"phục vụ {project_context if project_context else 'mục đích của dự án'}: "
-            f"{description[:150] if description else 'viết code, xử lý lỗi, và kiểm thử.'}"
+        final_desc, needs_review = lo_quality.build_lo_desc(
+            'SIO', concept_code, name_hint, description, keyword=keyword, platform=platform
         )
 
     return {
         'code': f"SIO-{code_prefix}-{concept_code}-01",
         'name': f"{platform_label}: Implement {concept_name}",
         'description': final_desc,
+        'needs_review': needs_review,
         'lo_type': 'SPECIFIC_IMPL',
         'parent_lo_code': f"CIO-{concept_code}-01",
         'concept_codes': [concept_code],
@@ -360,6 +368,7 @@ def generate_sio(concept_code: str, concept_name: str, description: str,
         'knowledge_dimension': 'PROCEDURAL',
         'assessment_approach': 'code-review',
     }
+
 
 
 def main():
@@ -408,28 +417,21 @@ def main():
 
     # TEMPLATE DETECTION: concepts covered nhưng ULO/CIO là template máy móc
     # → đưa vào JIT để regenerate (LLM sinh desc tự nhiên)
-    # Dấu hiệu template ULO: "nguyên lý phổ quát", "hiểu:", concept code thô
-    # Dấu hiệu template CIO: "ngưỡng", "vật lý/logic", "mô hình tham chiếu", "chỉ số" (gen_real_los.py)
-    ULO_TEMPLATE_SIGNALS = ['nguyên lý phổ quát', 'vai trò của nó trong thiết kế', 'hiểu:', 'hiểu ', 'người học có khả năng hiểu:']
-    CIO_TEMPLATE_SIGNALS = ['ngưỡng', 'vật lý/logic', 'mô hình tham chiếu', 'chỉ số trong']
     for code in list(covered):
         # Kiểm tra ULO template (derived_ulos)
         ulo_template = False
         for lo in matched_cios.get('derived_ulos', []):
             if lo.get('concept_codes') and code in lo.get('concept_codes', []):
-                desc = lo.get('description', '').lower()
-                if any(sig in desc for sig in ULO_TEMPLATE_SIGNALS):
-                    raw_code = code.lower()
-                    if (raw_code in desc or desc.startswith('người học có khả năng hiểu nguyên lý')
-                            or ' hiểu: ' in desc or desc.startswith('người học có khả năng hiểu:')):
-                        ulo_template = True
+                desc = lo.get('description', '')
+                if lo_quality.is_template_description(desc, layer='ULO'):
+                    ulo_template = True
                 break
         # Kiểm tra CIO template (matched_cios) — data Master Tree thối (gen_real_los.py)
         cio_template = False
         for match in matched_cios.get('matched_cios', []):
             if match.get('concept_code') == code:
-                cio_desc = match.get('cio_description', '').lower()
-                if any(sig in cio_desc for sig in CIO_TEMPLATE_SIGNALS):
+                cio_desc = match.get('cio_description', '')
+                if lo_quality.is_template_description(cio_desc, layer='CIO'):
                     cio_template = True
                     break
         if ulo_template or cio_template:
