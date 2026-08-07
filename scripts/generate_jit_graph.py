@@ -127,6 +127,35 @@ SWIFT_CONSTRUCT_KNOWLEDGE = {
     'Sendable': ('Actor', 'actor, isolated, Sendable'),
 }
 
+# C++/Arduino constructs → minimal knowledge needed
+CPP_CONSTRUCT_KNOWLEDGE = {
+    'include': ('Include & libraries', '#include, Arduino.h, Adafruit_NeoPixel'),
+    'setup': ('Arduino setup', 'setup(), pinMode, Serial.begin'),
+    'loop': ('Arduino loop', 'loop(), delay, millis'),
+    'WiFi': ('WiFi connection', 'WiFi.begin, WiFi.status, WL_CONNECTED'),
+    'WebServer': ('HTTP server', 'WebServer, server.on, server.send'),
+    'server.on': ('HTTP routes', 'server.on, HTTP_GET, HTTP_POST'),
+    'ArduinoJson': ('JSON parsing', 'StaticJsonDocument, deserializeJson, serializeJson'),
+    'deserializeJson': ('JSON parsing', 'StaticJsonDocument, deserializeJson, serializeJson'),
+    'serializeJson': ('JSON parsing', 'StaticJsonDocument, deserializeJson, serializeJson'),
+    'PubSubClient': ('MQTT client', 'PubSubClient, setServer, setCallback, publish'),
+    'mqttClient': ('MQTT client', 'PubSubClient, setServer, setCallback, publish'),
+    'Adafruit_NeoPixel': ('LED strip', 'Adafruit_NeoPixel, setPixelColor, show'),
+    'strip': ('LED strip', 'Adafruit_NeoPixel, setPixelColor, show'),
+    'setPixelColor': ('LED strip', 'Adafruit_NeoPixel, setPixelColor, show'),
+    'show': ('LED strip', 'Adafruit_NeoPixel, setPixelColor, show'),
+    'delay': ('Timing', 'delay, millis, non-blocking'),
+    'millis': ('Timing', 'delay, millis, non-blocking'),
+    'String': ('String handling', 'String, concat, indexOf'),
+    'uint8_t': ('Data types', 'uint8_t, uint16_t, int, byte'),
+    'if': ('If/Else', 'điều kiện, so sánh'),
+    'for': ('Vòng lặp', 'for, duyệt collection'),
+    'while': ('Vòng lặp', 'while, điều kiện'),
+    'switch': ('Switch', 'switch, case, break'),
+    'void': ('Hàm', 'void, return, tham số'),
+    'bool': ('Data types', 'bool, true, false'),
+}
+
 # Python builtins that are NOT knowledge (noise)
 PY_NOISE = {
     'print', 'len', 'range', 'str', 'int', 'list', 'dict', 'set', 'tuple',
@@ -190,6 +219,17 @@ def detect_project_type(repo_dir: Path) -> str:
     paths = {str(f) for f in files if f.is_file()}
 
     has_main = any(n in names for n in ['main.py', 'app.py', 'server.py', 'index.js', 'index.ts'])
+    # SwiftUI app: file có @main
+    if not has_main:
+        for f in files:
+            if f.is_file() and f.suffix == '.swift':
+                try:
+                    src = f.read_text(encoding='utf-8', errors='ignore')[:2000]
+                    if '@main' in src:
+                        has_main = True
+                        break
+                except Exception:
+                    pass
     has_package = any(n in names for n in ['Package.swift', 'setup.py', 'pyproject.toml', 'package.json', 'Cargo.toml'])
     has_cli = any(n in names for n in ['cli.py', 'cli.js', 'main.go'])
 
@@ -255,7 +295,8 @@ def assign_phase(imp: dict) -> int:
         return 1
 
     # P3: error handling, validation, test
-    if ROBUSTNESS_CONSTRUCTS & constructs:
+    # Lưu ý: 'try' trong Swift có thể là try! (force unwrap) — không phải error handling
+    if 'try_except' in constructs or 'catch' in constructs or 'throws' in constructs:
         return 3
     if 'validate' in name or 'test' in name or 'assert' in name:
         return 3
@@ -945,6 +986,147 @@ def _swift_description(kind: str, name: str, block: str) -> str:
 
 
 # ============================================================================
+# C++/ARDUINO ANALYSIS (regex-based)
+# ============================================================================
+
+CPP_TYPE_RE = _re.compile(
+    r'^[ \t]*(?:(?:public|private|protected|static|inline|virtual|final)\s+)*'
+    r'(class|struct|enum)\s+(\w+)',
+    _re.MULTILINE
+)
+CPP_FUNC_RE = _re.compile(
+    r'^[ \t]*(?:(?:static|inline|virtual|const|unsigned|signed|long|short|int|float|double|char|bool|void|String|uint8_t|uint16_t|uint32_t|int8_t|int16_t|int32_t)\s+)+'
+    r'(\w+)\s*\(',
+    _re.MULTILINE
+)
+
+# C++ constructs to detect
+CPP_CONSTRUCT_RE = {
+    'include': _re.compile(r'#include\s*<[^>]+>'),
+    'setup': _re.compile(r'\bvoid\s+setup\s*\('),
+    'loop': _re.compile(r'\bvoid\s+loop\s*\('),
+    'WiFi': _re.compile(r'\bWiFi\b'),
+    'WebServer': _re.compile(r'\bWebServer\b'),
+    'server.on': _re.compile(r'\.on\s*\('),
+    'ArduinoJson': _re.compile(r'\bArduinoJson\b'),
+    'deserializeJson': _re.compile(r'\bdeserializeJson\b'),
+    'serializeJson': _re.compile(r'\bserializeJson\b'),
+    'PubSubClient': _re.compile(r'\bPubSubClient\b'),
+    'mqttClient': _re.compile(r'\bmqttClient\b'),
+    'Adafruit_NeoPixel': _re.compile(r'\bAdafruit_NeoPixel\b'),
+    'strip': _re.compile(r'\bstrip\b'),
+    'setPixelColor': _re.compile(r'\.setPixelColor\s*\('),
+    'show': _re.compile(r'\.show\s*\('),
+    'delay': _re.compile(r'\bdelay\s*\('),
+    'millis': _re.compile(r'\bmillis\s*\('),
+    'String': _re.compile(r'\bString\b'),
+    'uint8_t': _re.compile(r'\buint8_t\b'),
+    'if': _re.compile(r'\bif\s*\('),
+    'for': _re.compile(r'\bfor\s*\('),
+    'while': _re.compile(r'\bwhile\s*\('),
+    'switch': _re.compile(r'\bswitch\s*\('),
+    'void': _re.compile(r'\bvoid\s+\w+'),
+    'bool': _re.compile(r'\bbool\b'),
+}
+
+
+def analyze_cpp_file(file_path: Path) -> List[dict]:
+    """Parse C++/Arduino file: extract types + functions with constructs."""
+    try:
+        src = file_path.read_text(encoding='utf-8')
+    except (UnicodeDecodeError, OSError) as e:
+        print(f"[WARN] Cannot read {file_path}: {e}")
+        return []
+
+    implements = []
+    lines = src.split('\n')
+
+    # Detect types
+    for m in CPP_TYPE_RE.finditer(src):
+        kind = m.group(1)
+        name = m.group(2)
+        start_line = src[:m.start()].count('\n')
+        end_line = _find_swift_block_end(lines, start_line)
+        block = '\n'.join(lines[start_line:end_line + 1])
+        constructs = _detect_cpp_constructs(block)
+        description = _cpp_description(kind, name, block)
+        imp = {
+            'name': name,
+            'kind': 'class',
+            'file': str(file_path),
+            'constructs': sorted(constructs),
+            'calls': [],
+            'description': description,
+        }
+        imp['phase'] = assign_phase(imp)
+        imp['phase_label'] = PHASE_NAMES[imp['phase']]
+        implements.append(imp)
+
+    # Detect functions
+    for m in CPP_FUNC_RE.finditer(src):
+        name = m.group(1)
+        # Skip common noise
+        if name in ('if', 'for', 'while', 'switch', 'return', 'sizeof'):
+            continue
+        start_line = src[:m.start()].count('\n')
+        end_line = _find_swift_block_end(lines, start_line)
+        block = '\n'.join(lines[start_line:end_line + 1])
+        constructs = _detect_cpp_constructs(block)
+        description = _cpp_description('func', name, block)
+        imp = {
+            'name': name,
+            'kind': 'function',
+            'file': str(file_path),
+            'constructs': sorted(constructs),
+            'calls': [],
+            'description': description,
+        }
+        imp['phase'] = assign_phase(imp)
+        imp['phase_label'] = PHASE_NAMES[imp['phase']]
+        implements.append(imp)
+
+    return implements
+
+
+def _detect_cpp_constructs(block: str) -> Set[str]:
+    """Detect C++ constructs in a code block."""
+    constructs = set()
+    for key, pattern in CPP_CONSTRUCT_RE.items():
+        if pattern.search(block):
+            constructs.add(key)
+    return constructs
+
+
+def _cpp_description(kind: str, name: str, block: str) -> str:
+    """Build description for C++ type/function."""
+    if kind in ('class', 'struct', 'enum'):
+        methods = CPP_FUNC_RE.findall(block)
+        if methods:
+            return f"Định nghĩa {kind} {name} với phương thức: {', '.join(methods[:6])}"
+        return f"Định nghĩa {kind} {name}"
+    # Function
+    verbs = {
+        'setup': 'Khởi tạo', 'loop': 'Vòng lặp chính', 'handle': 'Xử lý',
+        'publish': 'Phát hành', 'update': 'Cập nhật', 'connect': 'Kết nối',
+        'get': 'Lấy dữ liệu', 'set': 'Thiết lập', 'send': 'Gửi dữ liệu',
+    }
+    verb = 'Xử lý'
+    matched = None
+    for key, v in verbs.items():
+        if name.startswith(key):
+            verb = v
+            matched = key
+            break
+    clean = name
+    if matched and clean.startswith(matched):
+        clean = clean[len(matched):]
+    clean = clean.replace('_', ' ').strip()
+    if not clean:
+        return verb
+    return f"{verb} {clean}"
+
+
+# ============================================================================
 # KNOWLEDGE MAPPING
 # ============================================================================
 
@@ -974,11 +1156,17 @@ def map_constructs_to_knowledge(constructs: List[str], phase: int = 1) -> List[d
     for c in constructs:
         if c in PY_CONSTRUCT_KNOWLEDGE:
             label, note = PY_CONSTRUCT_KNOWLEDGE[c]
-            # Dedup key = (label, bloom_level) — cùng label khác mức = mới
-            key = (label, bloom)
-            if key not in seen:
-                seen.add(key)
-                knowledge.append({'label': label, 'note': note, 'bloom_level': bloom})
+        elif c in SWIFT_CONSTRUCT_KNOWLEDGE:
+            label, note = SWIFT_CONSTRUCT_KNOWLEDGE[c]
+        elif c in CPP_CONSTRUCT_KNOWLEDGE:
+            label, note = CPP_CONSTRUCT_KNOWLEDGE[c]
+        else:
+            continue
+        # Dedup key = (label, bloom_level) — cùng label khác mức = mới
+        key = (label, bloom)
+        if key not in seen:
+            seen.add(key)
+            knowledge.append({'label': label, 'note': note, 'bloom_level': bloom})
     return knowledge
 
 
@@ -1147,18 +1335,19 @@ def main():
         print(f"[ERROR] Repo not found: {args.repo_dir}")
         return 1
 
-    # Collect source files (Python + Swift)
+    # Collect source files (Python + Swift + C++)
     py_files = sorted(args.repo_dir.rglob('*.py'))
     swift_files = sorted(args.repo_dir.rglob('*.swift'))
-    if not py_files and not swift_files:
-        print(f"[ERROR] No Python/Swift files in {args.repo_dir}")
+    cpp_files = sorted(args.repo_dir.rglob('*.ino')) + sorted(args.repo_dir.rglob('*.cpp'))
+    if not py_files and not swift_files and not cpp_files:
+        print(f"[ERROR] No Python/Swift/C++ files in {args.repo_dir}")
         return 1
 
     # Detect project type (app/cli/library/api_service)
     project_type = detect_project_type(args.repo_dir)
     print(f"[*] Project type: {PROJECT_TYPES.get(project_type, project_type)}")
 
-    print(f"[*] Analyzing {len(py_files)} Python + {len(swift_files)} Swift files...")
+    print(f"[*] Analyzing {len(py_files)} Python + {len(swift_files)} Swift + {len(cpp_files)} C++ files...")
 
     all_implements = []
     skip_dirs = ['__pycache__', '.venv', 'venv', 'node_modules', '.build', 'Pods', 'DerivedData', '.swiftpm']
@@ -1170,6 +1359,10 @@ def main():
         if any(skip in str(f) for skip in skip_dirs):
             continue
         all_implements.extend(analyze_swift_file(f))
+    for f in cpp_files:
+        if any(skip in str(f) for skip in skip_dirs):
+            continue
+        all_implements.extend(analyze_cpp_file(f))
 
     print(f"[*] Found {len(all_implements)} implements (functions/classes)")
 

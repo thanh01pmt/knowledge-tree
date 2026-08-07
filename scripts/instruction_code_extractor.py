@@ -160,6 +160,20 @@ LANG_PATTERNS = {
             re.MULTILINE
         ),
     },
+    'cpp': {
+        # `class Name {`, `struct Name {`, `enum Name {`
+        'type': re.compile(
+            r'^[ \t]*(?:(?:public|private|protected|static|inline|virtual|final)\s+)*'
+            r'(class|struct|enum)\s+(\w+)',
+            re.MULTILINE
+        ),
+        # `void setup() {`, `void loop() {`, `int handleX() {`, `void handleY() {`
+        'function': re.compile(
+            r'^[ \t]*(?:(?:static|inline|virtual|const|unsigned|signed|long|short|int|float|double|char|bool|void|String|uint8_t|uint16_t|uint32_t|int8_t|int16_t|int32_t)\s+)+'
+            r'(\w+)\s*\(',
+            re.MULTILINE
+        ),
+    },
     'typescript': {
         # `class Name {`, `interface Name {`, `enum Name {`, `type Name = ...`
         'type': re.compile(
@@ -294,6 +308,10 @@ EXT_LANG_MAP = {
     '.jsx': 'javascript',
     '.mjs': 'javascript',
     '.cjs': 'javascript',
+    '.ino': 'cpp',
+    '.cpp': 'cpp',
+    '.h': 'cpp',
+    '.c': 'cpp',
 }
 
 

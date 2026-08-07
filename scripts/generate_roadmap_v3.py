@@ -141,6 +141,34 @@ class PipelineOrchestrator:
             self._complete("step_0", inventory=out)
         return success
 
+    def step_0_5_propose_tech_stack(self) -> bool:
+        """STEP 0.5: LLM đề xuất tech stack options + suy ra kiến trúc."""
+        if self._skip_or_run("step_0_5"):
+            return True
+
+        print("\n📋 STEP 0.5: Proposing tech stack options + architecture...")
+        out = self.output_dir / "tech_stack_proposal.json"
+
+        args = ["--goal", self.goal, "--output", str(out)]
+        if self.tech_stack:
+            args += ["--tech-stack", self.tech_stack]
+
+        success = self._run_script("propose_tech_stack.py", args)
+
+        if success:
+            self._complete("step_0_5", tech_proposal=out)
+            # Cập nhật tech_stack từ proposal nếu user không cung cấp
+            try:
+                with open(out, 'r', encoding='utf-8') as f:
+                    proposal = json.load(f)
+                if proposal.get('tech_stack'):
+                    self.tech_stack = ','.join(proposal['tech_stack'])
+                    self.target_tech = proposal['tech_stack'][0].upper()
+                    print(f"    → Tech stack từ proposal: {self.tech_stack}")
+            except Exception as e:
+                print(f"    ⚠️  Không đọc được proposal: {e}")
+        return success
+
     def step_1_2_extract_keywords(self) -> bool:
         """STEP 1-2: Extract keywords from project repository."""
         if self._skip_or_run("step_1_2"):
@@ -643,6 +671,7 @@ class PipelineOrchestrator:
 
         steps = [
             ("step_0", self.step_0_discover),
+            ("step_0_5", self.step_0_5_propose_tech_stack),
             ("step_1_2", self.step_1_2_extract_keywords),
             ("step_3", self.step_3_resolve_concepts),
             ("step_4", self.step_4_match_cios),

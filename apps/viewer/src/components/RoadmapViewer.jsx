@@ -5,6 +5,7 @@ import ActionRoadmapWeb from './ActionRoadmapWeb';
 import './RoadmapViewer.css';
 
 const knownRoadmaps = [
+  { path: '/roadmaps/jit-bulb.json', code: 'JIT_BULB', isJIT: true },
   { path: '/roadmaps/jit-quiz.json', code: 'JIT_QUIZ', isJIT: true },
   { path: '/roadmaps/rust-cli.json', code: 'RUST_CLI_001', isJIT: false },
   { path: '/roadmaps/portfolio-js.json', code: 'PORTFOLIO_GAME', isJIT: false }

@@ -1,0 +1,4061 @@
+{
+  "project_brief": {
+    "project_code": "JIT_GRAPH",
+    "title": "JIT Knowledge Graph",
+    "description": "Just-in-time knowledge graph: minimal knowledge per implement",
+    "project_type": "app",
+    "features": {
+      "0": "BulbState",
+      "1": "BulbEffect",
+      "2": "BulbServiceProtocol",
+      "3": "MockBulbService",
+      "4": "getState",
+      "5": "setPower",
+      "6": "setBrightness",
+      "7": "setColor",
+      "8": "setEffect",
+      "9": "ContentView",
+      "10": "HTTPBulbService",
+      "11": "post",
+      "12": "SmartBulbApp",
+      "13": "handleGetState",
+      "14": "handleSetPower",
+      "15": "handleSetBrightness",
+      "16": "handleSetColor",
+      "17": "handleSetEffect",
+      "18": "mqttCallback",
+      "19": "publishState",
+      "20": "updateLED",
+      "21": "wheel",
+      "22": "setup",
+      "23": "loop"
+    }
+  },
+  "title": {
+    "card": "JIT Knowledge Graph",
+    "page": "JIT Knowledge Graph"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "type": "subtopic",
+      "data": {
+        "label": "START",
+        "note": "",
+        "phase": 0,
+        "nodeType": "start",
+        "color": "#6b6b76"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "n1",
+      "type": "subtopic",
+      "data": {
+        "label": "PHASE 0 — NỀN TẢNG",
+        "note": "",
+        "phase": 0,
+        "nodeType": "phase",
+        "color": "#6b6b76"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "n2",
+      "type": "topic",
+      "data": {
+        "label": "Cài đặt Python",
+        "note": "install, terminal, PATH",
+        "phase": 0,
+        "nodeType": "knowledge",
+        "color": "#6b6b76",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 100
+      }
+    },
+    {
+      "id": "n3",
+      "type": "topic",
+      "data": {
+        "label": "Chạy script đầu tiên",
+        "note": "python main.py, print, input",
+        "phase": 0,
+        "nodeType": "knowledge",
+        "color": "#6b6b76",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 200
+      }
+    },
+    {
+      "id": "n4",
+      "type": "topic",
+      "data": {
+        "label": "Tạo thư mục dự án",
+        "note": "main.py, config.py, requirements.txt",
+        "phase": 0,
+        "nodeType": "knowledge",
+        "color": "#6b6b76",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 300
+      }
+    },
+    {
+      "id": "n5",
+      "type": "topic",
+      "data": {
+        "label": "Git init & commit",
+        "note": "git init, add, commit, .gitignore",
+        "phase": 0,
+        "nodeType": "knowledge",
+        "color": "#6b6b76",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 400
+      }
+    },
+    {
+      "id": "n6",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng scaffold",
+        "note": "Cài đặt Python, làm quen cú pháp cơ bản, chạy script đầu tiên, khởi tạo git repo sạch.",
+        "phase": 0,
+        "nodeType": "implement",
+        "color": "#6b6b76",
+        "feature_id": 0
+      },
+      "position": {
+        "x": 0,
+        "y": 500
+      }
+    },
+    {
+      "id": "n7",
+      "type": "subtopic",
+      "data": {
+        "label": "PHASE 1 — MVP",
+        "note": "",
+        "phase": 1,
+        "nodeType": "phase",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 600
+      }
+    },
+    {
+      "id": "n8",
+      "type": "topic",
+      "data": {
+        "label": "JSON Codable",
+        "note": "Codable, JSONDecoder, decode",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 700
+      }
+    },
+    {
+      "id": "n9",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 800
+      }
+    },
+    {
+      "id": "n10",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 900
+      }
+    },
+    {
+      "id": "n11",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo bulbstate",
+        "note": "Định nghĩa struct BulbState",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 0
+      },
+      "position": {
+        "x": 0,
+        "y": 1000
+      }
+    },
+    {
+      "id": "n12",
+      "type": "topic",
+      "data": {
+        "label": "Enum & associated values",
+        "note": "enum, case, associated values",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 1100
+      }
+    },
+    {
+      "id": "n13",
+      "type": "topic",
+      "data": {
+        "label": "Switch",
+        "note": "switch, case, pattern matching",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 1200
+      }
+    },
+    {
+      "id": "n14",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 1300
+      }
+    },
+    {
+      "id": "n15",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo bulbeffect",
+        "note": "Định nghĩa enum BulbEffect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 1
+      },
+      "position": {
+        "x": 0,
+        "y": 1400
+      }
+    },
+    {
+      "id": "n16",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 1500
+      }
+    },
+    {
+      "id": "n17",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 1600
+      }
+    },
+    {
+      "id": "n18",
+      "type": "topic",
+      "data": {
+        "label": "Protocol & delegate",
+        "note": "protocol, delegate, extension",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 1700
+      }
+    },
+    {
+      "id": "n19",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo bulbserviceprotocol",
+        "note": "Định nghĩa protocol BulbServiceProtocol với phương thức: getState, setPower, setBrightness, setColor, setEffect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 2
+      },
+      "position": {
+        "x": 0,
+        "y": 1800
+      }
+    },
+    {
+      "id": "n20",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 1900
+      }
+    },
+    {
+      "id": "n21",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2000
+      }
+    },
+    {
+      "id": "n22",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2100
+      }
+    },
+    {
+      "id": "n23",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2200
+      }
+    },
+    {
+      "id": "n24",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo mockbulbservice",
+        "note": "Định nghĩa class MockBulbService với phương thức: getState, setPower, setBrightness, setColor, setEffect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 3
+      },
+      "position": {
+        "x": 0,
+        "y": 2300
+      }
+    },
+    {
+      "id": "n25",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2400
+      }
+    },
+    {
+      "id": "n26",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2500
+      }
+    },
+    {
+      "id": "n27",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2600
+      }
+    },
+    {
+      "id": "n28",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2700
+      }
+    },
+    {
+      "id": "n29",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng getState",
+        "note": "Lấy dữ liệu State",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 4
+      },
+      "position": {
+        "x": 0,
+        "y": 2800
+      }
+    },
+    {
+      "id": "n30",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2900
+      }
+    },
+    {
+      "id": "n31",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3000
+      }
+    },
+    {
+      "id": "n32",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3100
+      }
+    },
+    {
+      "id": "n33",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3200
+      }
+    },
+    {
+      "id": "n34",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setPower",
+        "note": "Thiết lập Power",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 5
+      },
+      "position": {
+        "x": 0,
+        "y": 3300
+      }
+    },
+    {
+      "id": "n35",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3400
+      }
+    },
+    {
+      "id": "n36",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3500
+      }
+    },
+    {
+      "id": "n37",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3600
+      }
+    },
+    {
+      "id": "n38",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3700
+      }
+    },
+    {
+      "id": "n39",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setBrightness",
+        "note": "Thiết lập Brightness",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 6
+      },
+      "position": {
+        "x": 0,
+        "y": 3800
+      }
+    },
+    {
+      "id": "n40",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3900
+      }
+    },
+    {
+      "id": "n41",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4000
+      }
+    },
+    {
+      "id": "n42",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4100
+      }
+    },
+    {
+      "id": "n43",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4200
+      }
+    },
+    {
+      "id": "n44",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setColor",
+        "note": "Thiết lập Color",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 7
+      },
+      "position": {
+        "x": 0,
+        "y": 4300
+      }
+    },
+    {
+      "id": "n45",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4400
+      }
+    },
+    {
+      "id": "n46",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4500
+      }
+    },
+    {
+      "id": "n47",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4600
+      }
+    },
+    {
+      "id": "n48",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4700
+      }
+    },
+    {
+      "id": "n49",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setEffect",
+        "note": "Thiết lập Effect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 8
+      },
+      "position": {
+        "x": 0,
+        "y": 4800
+      }
+    },
+    {
+      "id": "n50",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4900
+      }
+    },
+    {
+      "id": "n51",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5000
+      }
+    },
+    {
+      "id": "n52",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng getState",
+        "note": "Lấy dữ liệu State",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 4
+      },
+      "position": {
+        "x": 0,
+        "y": 5100
+      }
+    },
+    {
+      "id": "n53",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5200
+      }
+    },
+    {
+      "id": "n54",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5300
+      }
+    },
+    {
+      "id": "n55",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setPower",
+        "note": "Thiết lập Power",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 5
+      },
+      "position": {
+        "x": 0,
+        "y": 5400
+      }
+    },
+    {
+      "id": "n56",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5500
+      }
+    },
+    {
+      "id": "n57",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5600
+      }
+    },
+    {
+      "id": "n58",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setBrightness",
+        "note": "Thiết lập Brightness",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 6
+      },
+      "position": {
+        "x": 0,
+        "y": 5700
+      }
+    },
+    {
+      "id": "n59",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5800
+      }
+    },
+    {
+      "id": "n60",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 5900
+      }
+    },
+    {
+      "id": "n61",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setColor",
+        "note": "Thiết lập Color",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 7
+      },
+      "position": {
+        "x": 0,
+        "y": 6000
+      }
+    },
+    {
+      "id": "n62",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 6100
+      }
+    },
+    {
+      "id": "n63",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 6200
+      }
+    },
+    {
+      "id": "n64",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setEffect",
+        "note": "Thiết lập Effect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 8
+      },
+      "position": {
+        "x": 0,
+        "y": 6300
+      }
+    },
+    {
+      "id": "n65",
+      "type": "topic",
+      "data": {
+        "label": "SwiftUI state",
+        "note": "@State, @Binding, @Environment",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 6400
+      }
+    },
+    {
+      "id": "n66",
+      "type": "topic",
+      "data": {
+        "label": "SwiftUI List",
+        "note": "List, ForEach, Section",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 6500
+      }
+    },
+    {
+      "id": "n67",
+      "type": "topic",
+      "data": {
+        "label": "Concurrency",
+        "note": "Task, async/await, MainActor",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 6600
+      }
+    },
+    {
+      "id": "n68",
+      "type": "topic",
+      "data": {
+        "label": "SwiftUI View",
+        "note": "View, body, some View",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 6700
+      }
+    },
+    {
+      "id": "n69",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 6800
+      }
+    },
+    {
+      "id": "n70",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 6900
+      }
+    },
+    {
+      "id": "n71",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7000
+      }
+    },
+    {
+      "id": "n72",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7100
+      }
+    },
+    {
+      "id": "n73",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo contentview",
+        "note": "Định nghĩa struct ContentView",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 9
+      },
+      "position": {
+        "x": 0,
+        "y": 7200
+      }
+    },
+    {
+      "id": "n74",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7300
+      }
+    },
+    {
+      "id": "n75",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7400
+      }
+    },
+    {
+      "id": "n76",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7500
+      }
+    },
+    {
+      "id": "n77",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7600
+      }
+    },
+    {
+      "id": "n78",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setPower",
+        "note": "Thiết lập Power",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 5
+      },
+      "position": {
+        "x": 0,
+        "y": 7700
+      }
+    },
+    {
+      "id": "n79",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7800
+      }
+    },
+    {
+      "id": "n80",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 7900
+      }
+    },
+    {
+      "id": "n81",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8000
+      }
+    },
+    {
+      "id": "n82",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8100
+      }
+    },
+    {
+      "id": "n83",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setBrightness",
+        "note": "Thiết lập Brightness",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 6
+      },
+      "position": {
+        "x": 0,
+        "y": 8200
+      }
+    },
+    {
+      "id": "n84",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8300
+      }
+    },
+    {
+      "id": "n85",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8400
+      }
+    },
+    {
+      "id": "n86",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8500
+      }
+    },
+    {
+      "id": "n87",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8600
+      }
+    },
+    {
+      "id": "n88",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setColor",
+        "note": "Thiết lập Color",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 7
+      },
+      "position": {
+        "x": 0,
+        "y": 8700
+      }
+    },
+    {
+      "id": "n89",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8800
+      }
+    },
+    {
+      "id": "n90",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 8900
+      }
+    },
+    {
+      "id": "n91",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 9000
+      }
+    },
+    {
+      "id": "n92",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 9100
+      }
+    },
+    {
+      "id": "n93",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setEffect",
+        "note": "Thiết lập Effect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 8
+      },
+      "position": {
+        "x": 0,
+        "y": 9200
+      }
+    },
+    {
+      "id": "n94",
+      "type": "topic",
+      "data": {
+        "label": "SwiftUI View",
+        "note": "View, body, some View",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 9300
+      }
+    },
+    {
+      "id": "n95",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 9400
+      }
+    },
+    {
+      "id": "n96",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 9500
+      }
+    },
+    {
+      "id": "n97",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo smartbulbapp",
+        "note": "Định nghĩa struct SmartBulbApp",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 12
+      },
+      "position": {
+        "x": 0,
+        "y": 9600
+      }
+    },
+    {
+      "id": "n98",
+      "type": "topic",
+      "data": {
+        "label": "String handling",
+        "note": "String, concat, indexOf",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 9700
+      }
+    },
+    {
+      "id": "n99",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 9800
+      }
+    },
+    {
+      "id": "n100",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 9900
+      }
+    },
+    {
+      "id": "n101",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng handleGetState",
+        "note": "Xử lý GetState",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 13
+      },
+      "position": {
+        "x": 0,
+        "y": 10000
+      }
+    },
+    {
+      "id": "n102",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 10100
+      }
+    },
+    {
+      "id": "n103",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 10200
+      }
+    },
+    {
+      "id": "n104",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 10300
+      }
+    },
+    {
+      "id": "n105",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng handleSetPower",
+        "note": "Xử lý SetPower",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 14
+      },
+      "position": {
+        "x": 0,
+        "y": 10400
+      }
+    },
+    {
+      "id": "n106",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 10500
+      }
+    },
+    {
+      "id": "n107",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 10600
+      }
+    },
+    {
+      "id": "n108",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 10700
+      }
+    },
+    {
+      "id": "n109",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng handleSetBrightness",
+        "note": "Xử lý SetBrightness",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 15
+      },
+      "position": {
+        "x": 0,
+        "y": 10800
+      }
+    },
+    {
+      "id": "n110",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 10900
+      }
+    },
+    {
+      "id": "n111",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 11000
+      }
+    },
+    {
+      "id": "n112",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 11100
+      }
+    },
+    {
+      "id": "n113",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng handleSetColor",
+        "note": "Xử lý SetColor",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 16
+      },
+      "position": {
+        "x": 0,
+        "y": 11200
+      }
+    },
+    {
+      "id": "n114",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 11300
+      }
+    },
+    {
+      "id": "n115",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 11400
+      }
+    },
+    {
+      "id": "n116",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 11500
+      }
+    },
+    {
+      "id": "n117",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng handleSetEffect",
+        "note": "Xử lý SetEffect",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 17
+      },
+      "position": {
+        "x": 0,
+        "y": 11600
+      }
+    },
+    {
+      "id": "n118",
+      "type": "topic",
+      "data": {
+        "label": "String handling",
+        "note": "String, concat, indexOf",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 11700
+      }
+    },
+    {
+      "id": "n119",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 11800
+      }
+    },
+    {
+      "id": "n120",
+      "type": "topic",
+      "data": {
+        "label": "Vòng lặp",
+        "note": "for, range, duyệt collection",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 11900
+      }
+    },
+    {
+      "id": "n121",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 12000
+      }
+    },
+    {
+      "id": "n122",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 12100
+      }
+    },
+    {
+      "id": "n123",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng mqttCallback",
+        "note": "Xử lý mqttCallback",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 18
+      },
+      "position": {
+        "x": 0,
+        "y": 12200
+      }
+    },
+    {
+      "id": "n124",
+      "type": "topic",
+      "data": {
+        "label": "MQTT client",
+        "note": "PubSubClient, setServer, setCallback, publish",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 12300
+      }
+    },
+    {
+      "id": "n125",
+      "type": "topic",
+      "data": {
+        "label": "JSON parsing",
+        "note": "StaticJsonDocument, deserializeJson, serializeJson",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 12400
+      }
+    },
+    {
+      "id": "n126",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 12500
+      }
+    },
+    {
+      "id": "n127",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng publishState",
+        "note": "Phát hành State",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 19
+      },
+      "position": {
+        "x": 0,
+        "y": 12600
+      }
+    },
+    {
+      "id": "n128",
+      "type": "topic",
+      "data": {
+        "label": "Vòng lặp",
+        "note": "for, range, duyệt collection",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 12700
+      }
+    },
+    {
+      "id": "n129",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 12800
+      }
+    },
+    {
+      "id": "n130",
+      "type": "topic",
+      "data": {
+        "label": "LED strip",
+        "note": "Adafruit_NeoPixel, setPixelColor, show",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 12900
+      }
+    },
+    {
+      "id": "n131",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 13000
+      }
+    },
+    {
+      "id": "n132",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng updateLED",
+        "note": "Cập nhật LED",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 20
+      },
+      "position": {
+        "x": 0,
+        "y": 13100
+      }
+    },
+    {
+      "id": "n133",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13200
+      }
+    },
+    {
+      "id": "n134",
+      "type": "topic",
+      "data": {
+        "label": "LED strip",
+        "note": "Adafruit_NeoPixel, setPixelColor, show",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13300
+      }
+    },
+    {
+      "id": "n135",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng wheel",
+        "note": "Xử lý wheel",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 21
+      },
+      "position": {
+        "x": 0,
+        "y": 13400
+      }
+    },
+    {
+      "id": "n136",
+      "type": "topic",
+      "data": {
+        "label": "WiFi connection",
+        "note": "WiFi.begin, WiFi.status, WL_CONNECTED",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13500
+      }
+    },
+    {
+      "id": "n137",
+      "type": "topic",
+      "data": {
+        "label": "Timing",
+        "note": "delay, millis, non-blocking",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13600
+      }
+    },
+    {
+      "id": "n138",
+      "type": "topic",
+      "data": {
+        "label": "MQTT client",
+        "note": "PubSubClient, setServer, setCallback, publish",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13700
+      }
+    },
+    {
+      "id": "n139",
+      "type": "topic",
+      "data": {
+        "label": "HTTP routes",
+        "note": "server.on, HTTP_GET, HTTP_POST",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13800
+      }
+    },
+    {
+      "id": "n140",
+      "type": "topic",
+      "data": {
+        "label": "Arduino setup",
+        "note": "setup(), pinMode, Serial.begin",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 13900
+      }
+    },
+    {
+      "id": "n141",
+      "type": "topic",
+      "data": {
+        "label": "LED strip",
+        "note": "Adafruit_NeoPixel, setPixelColor, show",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 14000
+      }
+    },
+    {
+      "id": "n142",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 14100
+      }
+    },
+    {
+      "id": "n143",
+      "type": "topic",
+      "data": {
+        "label": "Vòng lặp",
+        "note": "while, điều kiện",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 14200
+      }
+    },
+    {
+      "id": "n144",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng setup",
+        "note": "Khởi tạo",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 22
+      },
+      "position": {
+        "x": 0,
+        "y": 14300
+      }
+    },
+    {
+      "id": "n145",
+      "type": "topic",
+      "data": {
+        "label": "Timing",
+        "note": "delay, millis, non-blocking",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 14400
+      }
+    },
+    {
+      "id": "n146",
+      "type": "topic",
+      "data": {
+        "label": "If/Else",
+        "note": "điều kiện, so sánh",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 14500
+      }
+    },
+    {
+      "id": "n147",
+      "type": "topic",
+      "data": {
+        "label": "Arduino loop",
+        "note": "loop(), delay, millis",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 14600
+      }
+    },
+    {
+      "id": "n148",
+      "type": "topic",
+      "data": {
+        "label": "MQTT client",
+        "note": "PubSubClient, setServer, setCallback, publish",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 14700
+      }
+    },
+    {
+      "id": "n149",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "void, return, tham số",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 14800
+      }
+    },
+    {
+      "id": "n150",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng loop",
+        "note": "Vòng lặp chính",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b",
+        "feature_id": 23
+      },
+      "position": {
+        "x": 0,
+        "y": 14900
+      }
+    },
+    {
+      "id": "n151",
+      "type": "subtopic",
+      "data": {
+        "label": "PHASE 2 — MỞ RỘNG",
+        "note": "",
+        "phase": 2,
+        "nodeType": "phase",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 15000
+      }
+    },
+    {
+      "id": "n152",
+      "type": "topic",
+      "data": {
+        "label": "JSON Codable",
+        "note": "Codable, JSONDecoder, decode",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15100
+      }
+    },
+    {
+      "id": "n153",
+      "type": "topic",
+      "data": {
+        "label": "URLSession & API",
+        "note": "URLSession, dataTask, async/await",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15200
+      }
+    },
+    {
+      "id": "n154",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15300
+      }
+    },
+    {
+      "id": "n155",
+      "type": "topic",
+      "data": {
+        "label": "Class & struct",
+        "note": "class, struct, protocol, enum",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15400
+      }
+    },
+    {
+      "id": "n156",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15500
+      }
+    },
+    {
+      "id": "n157",
+      "type": "topic",
+      "data": {
+        "label": "Guard & early return",
+        "note": "guard let, else, early return",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15600
+      }
+    },
+    {
+      "id": "n158",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15700
+      }
+    },
+    {
+      "id": "n159",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 15800
+      }
+    },
+    {
+      "id": "n160",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng tạo httpbulbservice",
+        "note": "Định nghĩa class HTTPBulbService với phương thức: getState, setPower, setBrightness, setColor, setEffect, post",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4",
+        "feature_id": 10
+      },
+      "position": {
+        "x": 0,
+        "y": 15900
+      }
+    },
+    {
+      "id": "n161",
+      "type": "topic",
+      "data": {
+        "label": "JSON Codable",
+        "note": "Codable, JSONDecoder, decode",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16000
+      }
+    },
+    {
+      "id": "n162",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16100
+      }
+    },
+    {
+      "id": "n163",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16200
+      }
+    },
+    {
+      "id": "n164",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16300
+      }
+    },
+    {
+      "id": "n165",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16400
+      }
+    },
+    {
+      "id": "n166",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng getState",
+        "note": "Lấy dữ liệu State",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4",
+        "feature_id": 4
+      },
+      "position": {
+        "x": 0,
+        "y": 16500
+      }
+    },
+    {
+      "id": "n167",
+      "type": "topic",
+      "data": {
+        "label": "JSON Codable",
+        "note": "Codable, JSONDecoder, decode",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16600
+      }
+    },
+    {
+      "id": "n168",
+      "type": "topic",
+      "data": {
+        "label": "Async/await",
+        "note": "async, await, Task",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16700
+      }
+    },
+    {
+      "id": "n169",
+      "type": "topic",
+      "data": {
+        "label": "Hàm",
+        "note": "func, return, tham số, default value",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16800
+      }
+    },
+    {
+      "id": "n170",
+      "type": "topic",
+      "data": {
+        "label": "Guard & early return",
+        "note": "guard let, else, early return",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 16900
+      }
+    },
+    {
+      "id": "n171",
+      "type": "topic",
+      "data": {
+        "label": "Biến & kiểu dữ liệu",
+        "note": "var, let, Int, String, Bool",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 17000
+      }
+    },
+    {
+      "id": "n172",
+      "type": "topic",
+      "data": {
+        "label": "Error handling",
+        "note": "try, catch, throws, do",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 17100
+      }
+    },
+    {
+      "id": "n173",
+      "type": "subtopic",
+      "data": {
+        "label": "Tính năng post",
+        "note": "Xử lý post",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4",
+        "feature_id": 11
+      },
+      "position": {
+        "x": 0,
+        "y": 17200
+      }
+    },
+    {
+      "id": "n174",
+      "type": "subtopic",
+      "data": {
+        "label": "END",
+        "note": "",
+        "phase": 0,
+        "nodeType": "end",
+        "color": "#6b6b76"
+      },
+      "position": {
+        "x": 0,
+        "y": 17300
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n0",
+      "target": "n1",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n1",
+      "target": "n2",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n2",
+      "target": "n3",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n3",
+      "target": "n4",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n4",
+      "target": "n5",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n5",
+      "target": "n6",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n6",
+      "target": "n7",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n7",
+      "target": "n8",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n8",
+      "target": "n9",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n9",
+      "target": "n10",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n10",
+      "target": "n11",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n11",
+      "target": "n12",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n12",
+      "target": "n13",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n13",
+      "target": "n14",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n14",
+      "target": "n15",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n15",
+      "target": "n16",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n16",
+      "target": "n17",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n17",
+      "target": "n18",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n18",
+      "target": "n19",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n19",
+      "target": "n20",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n20",
+      "target": "n21",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n21",
+      "target": "n22",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n22",
+      "target": "n23",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n23",
+      "target": "n24",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n24",
+      "target": "n25",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n25",
+      "target": "n26",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n26",
+      "target": "n27",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n27",
+      "target": "n28",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n28",
+      "target": "n29",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n29",
+      "target": "n30",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n30",
+      "target": "n31",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n31",
+      "target": "n32",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n32",
+      "target": "n33",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n33",
+      "target": "n34",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n34",
+      "target": "n35",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n35",
+      "target": "n36",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n36",
+      "target": "n37",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n37",
+      "target": "n38",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n38",
+      "target": "n39",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n39",
+      "target": "n40",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n40",
+      "target": "n41",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n41",
+      "target": "n42",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n42",
+      "target": "n43",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n43",
+      "target": "n44",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n44",
+      "target": "n45",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n45",
+      "target": "n46",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n46",
+      "target": "n47",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n47",
+      "target": "n48",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n48",
+      "target": "n49",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n49",
+      "target": "n50",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n50",
+      "target": "n51",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n51",
+      "target": "n52",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n52",
+      "target": "n53",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n53",
+      "target": "n54",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n54",
+      "target": "n55",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n55",
+      "target": "n56",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n56",
+      "target": "n57",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n57",
+      "target": "n58",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n58",
+      "target": "n59",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n59",
+      "target": "n60",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n60",
+      "target": "n61",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n61",
+      "target": "n62",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n62",
+      "target": "n63",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n63",
+      "target": "n64",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n64",
+      "target": "n65",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n65",
+      "target": "n66",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n66",
+      "target": "n67",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n67",
+      "target": "n68",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n68",
+      "target": "n69",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n69",
+      "target": "n70",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n70",
+      "target": "n71",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n71",
+      "target": "n72",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n72",
+      "target": "n73",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n73",
+      "target": "n74",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n74",
+      "target": "n75",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n75",
+      "target": "n76",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n76",
+      "target": "n77",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n77",
+      "target": "n78",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n78",
+      "target": "n79",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n79",
+      "target": "n80",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n80",
+      "target": "n81",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n81",
+      "target": "n82",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n82",
+      "target": "n83",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n83",
+      "target": "n84",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n84",
+      "target": "n85",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n85",
+      "target": "n86",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n86",
+      "target": "n87",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n87",
+      "target": "n88",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n88",
+      "target": "n89",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n89",
+      "target": "n90",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n90",
+      "target": "n91",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n91",
+      "target": "n92",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n92",
+      "target": "n93",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n93",
+      "target": "n94",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n94",
+      "target": "n95",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n95",
+      "target": "n96",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n96",
+      "target": "n97",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n97",
+      "target": "n98",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n98",
+      "target": "n99",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n99",
+      "target": "n100",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n100",
+      "target": "n101",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n101",
+      "target": "n102",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n102",
+      "target": "n103",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n103",
+      "target": "n104",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n104",
+      "target": "n105",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n105",
+      "target": "n106",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n106",
+      "target": "n107",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n107",
+      "target": "n108",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n108",
+      "target": "n109",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n109",
+      "target": "n110",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n110",
+      "target": "n111",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n111",
+      "target": "n112",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n112",
+      "target": "n113",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n113",
+      "target": "n114",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n114",
+      "target": "n115",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n115",
+      "target": "n116",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n116",
+      "target": "n117",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n117",
+      "target": "n118",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n118",
+      "target": "n119",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n119",
+      "target": "n120",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n120",
+      "target": "n121",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n121",
+      "target": "n122",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n122",
+      "target": "n123",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n123",
+      "target": "n124",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n124",
+      "target": "n125",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n125",
+      "target": "n126",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n126",
+      "target": "n127",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n127",
+      "target": "n128",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n128",
+      "target": "n129",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n129",
+      "target": "n130",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n130",
+      "target": "n131",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n131",
+      "target": "n132",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n132",
+      "target": "n133",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n133",
+      "target": "n134",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n134",
+      "target": "n135",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n135",
+      "target": "n136",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n136",
+      "target": "n137",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n137",
+      "target": "n138",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n138",
+      "target": "n139",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n139",
+      "target": "n140",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n140",
+      "target": "n141",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n141",
+      "target": "n142",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n142",
+      "target": "n143",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n143",
+      "target": "n144",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n144",
+      "target": "n145",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n145",
+      "target": "n146",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n146",
+      "target": "n147",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n147",
+      "target": "n148",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n148",
+      "target": "n149",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n149",
+      "target": "n150",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n150",
+      "target": "n151",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n151",
+      "target": "n152",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n152",
+      "target": "n153",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n153",
+      "target": "n154",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n154",
+      "target": "n155",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n155",
+      "target": "n156",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n156",
+      "target": "n157",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n157",
+      "target": "n158",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n158",
+      "target": "n159",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n159",
+      "target": "n160",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n160",
+      "target": "n161",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n161",
+      "target": "n162",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n162",
+      "target": "n163",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n163",
+      "target": "n164",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n164",
+      "target": "n165",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n165",
+      "target": "n166",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n166",
+      "target": "n167",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n167",
+      "target": "n168",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n168",
+      "target": "n169",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n169",
+      "target": "n170",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n170",
+      "target": "n171",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n171",
+      "target": "n172",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n172",
+      "target": "n173",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    },
+    {
+      "source": "n173",
+      "target": "n174",
+      "data": {
+        "edgeStyle": "solid"
+      }
+    }
+  ],
+  "dimensions": {
+    "height": 17400,
+    "width": 600
+  },
+  "type": "role",
+  "status": "published"
+}
