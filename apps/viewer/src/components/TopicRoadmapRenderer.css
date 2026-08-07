@@ -1,0 +1,32 @@
+/* TopicRoadmapRenderer.css */
+
+.tkr-root * { box-sizing: border-box; }
+
+.tkr-knowledge-item {
+  transition: background .15s;
+}
+
+.tkr-knowledge-item:hover {
+  background: #f5f5f5;
+  border-radius: 6px;
+}
+
+.tkr-bloom-badge {
+  display: inline-block;
+}
+
+.tkr-hover-popup {
+  font-family: 'IBM Plex Sans', sans-serif;
+}
+
+.tkr-hover-popup div {
+  margin-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .tkr-hover-popup {
+    left: 0 !important;
+    right: 0;
+    width: auto !important;
+  }
+}

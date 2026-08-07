@@ -2,17 +2,20 @@ import React, { useState, useEffect, useCallback } from 'react';
 import { parseFrontendData } from './roadmapLayoutEngine';
 import RoadmapShRendererV2 from './RoadmapShRendererV2';
 import ActionRoadmapWeb from './ActionRoadmapWeb';
+import TopicRoadmapRenderer from './TopicRoadmapRenderer';
 import './RoadmapViewer.css';
 
-// JIT roadmaps (từ generate_jit_graph.py) — tự detect
-// jit-*-v3 = roadmap từ pipeline v3 (learning objectives → viewer format)
-const JIT_ROADMAPS = ['jit-bulb', 'jit-quiz', 'jit-bulb-v3'];
+// Action roadmaps (từ generate_jit_graph.py — implement-centric)
+const ACTION_ROADMAPS = ['jit-bulb', 'jit-quiz'];
+// Topic roadmaps (từ pipeline v3 — concept → ULO/CIO/SIO)
+const TOPIC_ROADMAPS = ['jit-bulb-v3'];
 // Roadmap.sh layout roadmaps
 const ROADMAP_SH_ROADMAPS = ['rust-cli', 'portfolio-js'];
 // Tự động gom tất cả roadmap từ public/roadmaps/
 const knownRoadmaps = [
-  ...JIT_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), isJIT: true })),
-  ...ROADMAP_SH_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), isJIT: false })),
+  ...ACTION_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), type: 'action' })),
+  ...TOPIC_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), type: 'topic' })),
+  ...ROADMAP_SH_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), type: 'roadmap-sh' })),
 ];
 
 export default function RoadmapViewer() {
@@ -32,7 +35,7 @@ export default function RoadmapViewer() {
           const resp = await fetch(rm.path);
           if (resp.ok) {
             const data = await resp.json();
-            loaded.push({ ...data, _source: rm.code, _isJIT: rm.isJIT });
+            loaded.push({ ...data, _source: rm.code, _type: rm.type });
             const key = `roadmap_${data.project_brief?.project_code || rm.code}`;
             localStorage.setItem(key, JSON.stringify(data));
           }
@@ -93,7 +96,8 @@ export default function RoadmapViewer() {
     );
   }
 
-  const isJIT = selectedRoadmap._isJIT === true;
+  const roadmapType = selectedRoadmap._type || 'action';
+  const isTopic = roadmapType === 'topic';
 
   return (
     <div className="roadmap-viewer">
@@ -147,7 +151,11 @@ export default function RoadmapViewer() {
       <main className="viewer-main">
         {activeTab === 'renderer' ? (
           <div className="renderer-container" style={{ height: 'calc(100vh - 80px)' }}>
-            {isJIT ? (
+            {isTopic ? (
+              <TopicRoadmapRenderer 
+                frontendData={selectedRoadmap}
+              />
+            ) : roadmapType === 'action' ? (
               <ActionRoadmapWeb 
                 frontendData={selectedRoadmap}
               />
