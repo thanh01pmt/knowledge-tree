@@ -1,0 +1,868 @@
+{
+  "project_brief": {
+    "project_code": "V3_ROADMAP",
+    "title": "Học Swift và SwiftUI để làm app điều khiển smart bulb ESP32-",
+    "description": "Roadmap từ pipeline v3 (learning objectives)"
+  },
+  "nodes": [
+    {
+      "id": "n0",
+      "type": "subtopic",
+      "data": {
+        "label": "START",
+        "note": "",
+        "phase": 0,
+        "nodeType": "start",
+        "color": "#6b6b76"
+      },
+      "position": {
+        "x": 0,
+        "y": 0
+      }
+    },
+    {
+      "id": "n1",
+      "type": "subtopic",
+      "data": {
+        "label": "PHASE 1 — Phase 1: Foundation",
+        "note": "",
+        "phase": 1,
+        "nodeType": "phase",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 100
+      }
+    },
+    {
+      "id": "n2",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai core libraries",
+        "note": "3 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 200
+      }
+    },
+    {
+      "id": "n3",
+      "type": "topic",
+      "data": {
+        "label": "Understand CORE_LIBRARIES",
+        "note": "Người học có khả năng hiểu vai trò của các thư viện lõi tron",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 300
+      }
+    },
+    {
+      "id": "n4",
+      "type": "topic",
+      "data": {
+        "label": "Apply CORE_LIBRARIES Concepts",
+        "note": "Người học có khả năng thiết kế CORE_LIBRARIES nhằm tối ưu hó",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 400
+      }
+    },
+    {
+      "id": "n5",
+      "type": "topic",
+      "data": {
+        "label": "SWIFT: Implement Core Libraries",
+        "note": "Người học có khả năng triển khai các thành phần chức năng ch",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 500
+      }
+    },
+    {
+      "id": "n6",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai exception handling",
+        "note": "3 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 600
+      }
+    },
+    {
+      "id": "n7",
+      "type": "topic",
+      "data": {
+        "label": "Understand EXCEPTION_HANDLING",
+        "note": "Người học có khả năng hiểu exception handling là cơ chế tron",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 700
+      }
+    },
+    {
+      "id": "n8",
+      "type": "topic",
+      "data": {
+        "label": "Apply EXCEPTION_HANDLING Concepts",
+        "note": "Người học có khả năng thiết kế chiến lược xử lý ngoại lệ (ex",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 800
+      }
+    },
+    {
+      "id": "n9",
+      "type": "topic",
+      "data": {
+        "label": "SWIFT: Implement Exception Handling",
+        "note": "Người học có khả năng triển khai Exception Handling trong ng",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 900
+      }
+    },
+    {
+      "id": "n10",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai for loop",
+        "note": "1 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 1000
+      }
+    },
+    {
+      "id": "n11",
+      "type": "topic",
+      "data": {
+        "label": "Understand FOR_LOOP",
+        "note": "Người học có khả năng hiểu: Nắm vững cú pháp và cách sử dụng",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 1100
+      }
+    },
+    {
+      "id": "n12",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai http protocol",
+        "note": "1 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 1200
+      }
+    },
+    {
+      "id": "n13",
+      "type": "topic",
+      "data": {
+        "label": "Understand HTTP_PROTOCOL",
+        "note": "Người học có khả năng hiểu nguyên lý phổ quát của HTTP_PROTO",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 1300
+      }
+    },
+    {
+      "id": "n14",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai local view state",
+        "note": "1 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 1400
+      }
+    },
+    {
+      "id": "n15",
+      "type": "topic",
+      "data": {
+        "label": "Understand LOCAL_VIEW_STATE",
+        "note": "Người học có khả năng hiểu: Sử dụng cơ chế như @State để quả",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 1500
+      }
+    },
+    {
+      "id": "n16",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai web authentication strategies",
+        "note": "1 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 1600
+      }
+    },
+    {
+      "id": "n17",
+      "type": "topic",
+      "data": {
+        "label": "Understand WEB_AUTHENTICATION_STRATEGIES",
+        "note": "Người học có khả năng hiểu nguyên lý phổ quát của WEB_AUTHEN",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 1700
+      }
+    },
+    {
+      "id": "n18",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai web server",
+        "note": "3 mục tiêu học tập",
+        "phase": 1,
+        "nodeType": "implement",
+        "color": "#0e7c6b"
+      },
+      "position": {
+        "x": 0,
+        "y": 1800
+      }
+    },
+    {
+      "id": "n19",
+      "type": "topic",
+      "data": {
+        "label": "Understand WEB_SERVER",
+        "note": "Người học có khả năng hiểu web server là một hệ thống phần m",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "remember"
+      },
+      "position": {
+        "x": 0,
+        "y": 1900
+      }
+    },
+    {
+      "id": "n20",
+      "type": "topic",
+      "data": {
+        "label": "Apply WEB_SERVER Concepts",
+        "note": "Người học có khả năng thiết kế một hệ thống web server đáp ứ",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 2000
+      }
+    },
+    {
+      "id": "n21",
+      "type": "topic",
+      "data": {
+        "label": "SWIFT: Implement Web Server",
+        "note": "Người học có khả năng triển khai một web server bằng ngôn ng",
+        "phase": 1,
+        "nodeType": "knowledge",
+        "color": "#0e7c6b",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 2100
+      }
+    },
+    {
+      "id": "n22",
+      "type": "subtopic",
+      "data": {
+        "label": "PHASE 2 — Phase 2",
+        "note": "",
+        "phase": 2,
+        "nodeType": "phase",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 2200
+      }
+    },
+    {
+      "id": "n23",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai for loop",
+        "note": "12 mục tiêu học tập",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 2300
+      }
+    },
+    {
+      "id": "n24",
+      "type": "topic",
+      "data": {
+        "label": "For Loop - Identify Components",
+        "note": "Người học có khả năng xác định và phân loại các thành phần c",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 2400
+      }
+    },
+    {
+      "id": "n25",
+      "type": "topic",
+      "data": {
+        "label": "For Loop - Recall Definitions",
+        "note": "Người học có khả năng tái tạo định nghĩa chính xác, ký hiệu ",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 2500
+      }
+    },
+    {
+      "id": "n26",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai http protocol",
+        "note": "2 mục tiêu học tập",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 2600
+      }
+    },
+    {
+      "id": "n27",
+      "type": "topic",
+      "data": {
+        "label": "Understand HTTP Headers and Status Codes",
+        "note": "Người học có khả năng phân tích các nhóm status code và HTTP",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 2700
+      }
+    },
+    {
+      "id": "n28",
+      "type": "topic",
+      "data": {
+        "label": "Compare HTTP Versions and Innovations",
+        "note": "Người học có khả năng so sánh sự khác biệt về hiệu năng giữa",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 2800
+      }
+    },
+    {
+      "id": "n29",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai local view state",
+        "note": "11 mục tiêu học tập",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 2900
+      }
+    },
+    {
+      "id": "n30",
+      "type": "topic",
+      "data": {
+        "label": "Local View State - Explain Mechanism",
+        "note": "Người học có khả năng giải thích cơ chế hoạt động nội tại củ",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 3000
+      }
+    },
+    {
+      "id": "n31",
+      "type": "topic",
+      "data": {
+        "label": "Local View State - Interpret Parameters",
+        "note": "Người học có khả năng diễn giải ý nghĩa vật lý/logic của các",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 3100
+      }
+    },
+    {
+      "id": "n32",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai web authentication strategies",
+        "note": "1 mục tiêu học tập",
+        "phase": 2,
+        "nodeType": "implement",
+        "color": "#2b78e4"
+      },
+      "position": {
+        "x": 0,
+        "y": 3200
+      }
+    },
+    {
+      "id": "n33",
+      "type": "topic",
+      "data": {
+        "label": "Implement Token and Session Auth",
+        "note": "Người học có khả năng so sánh và triển khai xác thực qua Ses",
+        "phase": 2,
+        "nodeType": "knowledge",
+        "color": "#2b78e4",
+        "bloom_level": "understand"
+      },
+      "position": {
+        "x": 0,
+        "y": 3300
+      }
+    },
+    {
+      "id": "n34",
+      "type": "subtopic",
+      "data": {
+        "label": "PHASE 3 — Phase 3",
+        "note": "",
+        "phase": 3,
+        "nodeType": "phase",
+        "color": "#8e44ad"
+      },
+      "position": {
+        "x": 0,
+        "y": 3400
+      }
+    },
+    {
+      "id": "n35",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai for loop",
+        "note": "9 mục tiêu học tập",
+        "phase": 3,
+        "nodeType": "implement",
+        "color": "#8e44ad"
+      },
+      "position": {
+        "x": 0,
+        "y": 3500
+      }
+    },
+    {
+      "id": "n36",
+      "type": "topic",
+      "data": {
+        "label": "For Loop - Implement Library",
+        "note": "Người học có khả năng build reusable Python library cho for ",
+        "phase": 3,
+        "nodeType": "knowledge",
+        "color": "#8e44ad",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3600
+      }
+    },
+    {
+      "id": "n37",
+      "type": "topic",
+      "data": {
+        "label": "For Loop - Implement Library",
+        "note": "Người học có khả năng build reusable Python library cho for ",
+        "phase": 3,
+        "nodeType": "knowledge",
+        "color": "#8e44ad",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3700
+      }
+    },
+    {
+      "id": "n38",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai http protocol",
+        "note": "1 mục tiêu học tập",
+        "phase": 3,
+        "nodeType": "implement",
+        "color": "#8e44ad"
+      },
+      "position": {
+        "x": 0,
+        "y": 3800
+      }
+    },
+    {
+      "id": "n39",
+      "type": "topic",
+      "data": {
+        "label": "Configure Custom HTTP Request Headers",
+        "note": "Người học có khả năng cấu hình các HTTP Header tùy chỉnh như",
+        "phase": 3,
+        "nodeType": "knowledge",
+        "color": "#8e44ad",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 3900
+      }
+    },
+    {
+      "id": "n40",
+      "type": "subtopic",
+      "data": {
+        "label": "Triển khai local view state",
+        "note": "5 mục tiêu học tập",
+        "phase": 3,
+        "nodeType": "implement",
+        "color": "#8e44ad"
+      },
+      "position": {
+        "x": 0,
+        "y": 4000
+      }
+    },
+    {
+      "id": "n41",
+      "type": "topic",
+      "data": {
+        "label": "Local View State - Risk Assess",
+        "note": "Người học có khả năng risk assessment cho local view state: ",
+        "phase": 3,
+        "nodeType": "knowledge",
+        "color": "#8e44ad",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4100
+      }
+    },
+    {
+      "id": "n42",
+      "type": "topic",
+      "data": {
+        "label": "Local View State - Maturity Assess",
+        "note": "Người học có khả năng assess maturity của local view state: ",
+        "phase": 3,
+        "nodeType": "knowledge",
+        "color": "#8e44ad",
+        "bloom_level": "apply"
+      },
+      "position": {
+        "x": 0,
+        "y": 4200
+      }
+    },
+    {
+      "id": "n43",
+      "type": "subtopic",
+      "data": {
+        "label": "END",
+        "note": "",
+        "phase": 0,
+        "nodeType": "end",
+        "color": "#6b6b76"
+      },
+      "position": {
+        "x": 0,
+        "y": 4300
+      }
+    }
+  ],
+  "edges": [
+    {
+      "source": "n0",
+      "target": "n1"
+    },
+    {
+      "source": "n1",
+      "target": "n3"
+    },
+    {
+      "source": "n3",
+      "target": "n4"
+    },
+    {
+      "source": "n4",
+      "target": "n5"
+    },
+    {
+      "source": "n5",
+      "target": "n2"
+    },
+    {
+      "source": "n2",
+      "target": "n7"
+    },
+    {
+      "source": "n7",
+      "target": "n8"
+    },
+    {
+      "source": "n8",
+      "target": "n9"
+    },
+    {
+      "source": "n9",
+      "target": "n6"
+    },
+    {
+      "source": "n6",
+      "target": "n11"
+    },
+    {
+      "source": "n11",
+      "target": "n10"
+    },
+    {
+      "source": "n10",
+      "target": "n13"
+    },
+    {
+      "source": "n13",
+      "target": "n12"
+    },
+    {
+      "source": "n12",
+      "target": "n15"
+    },
+    {
+      "source": "n15",
+      "target": "n14"
+    },
+    {
+      "source": "n14",
+      "target": "n17"
+    },
+    {
+      "source": "n17",
+      "target": "n16"
+    },
+    {
+      "source": "n16",
+      "target": "n19"
+    },
+    {
+      "source": "n19",
+      "target": "n20"
+    },
+    {
+      "source": "n20",
+      "target": "n21"
+    },
+    {
+      "source": "n21",
+      "target": "n18"
+    },
+    {
+      "source": "n18",
+      "target": "n22"
+    },
+    {
+      "source": "n22",
+      "target": "n24"
+    },
+    {
+      "source": "n24",
+      "target": "n25"
+    },
+    {
+      "source": "n25",
+      "target": "n23"
+    },
+    {
+      "source": "n23",
+      "target": "n27"
+    },
+    {
+      "source": "n27",
+      "target": "n28"
+    },
+    {
+      "source": "n28",
+      "target": "n26"
+    },
+    {
+      "source": "n26",
+      "target": "n30"
+    },
+    {
+      "source": "n30",
+      "target": "n31"
+    },
+    {
+      "source": "n31",
+      "target": "n29"
+    },
+    {
+      "source": "n29",
+      "target": "n33"
+    },
+    {
+      "source": "n33",
+      "target": "n32"
+    },
+    {
+      "source": "n32",
+      "target": "n34"
+    },
+    {
+      "source": "n34",
+      "target": "n36"
+    },
+    {
+      "source": "n36",
+      "target": "n37"
+    },
+    {
+      "source": "n37",
+      "target": "n35"
+    },
+    {
+      "source": "n35",
+      "target": "n39"
+    },
+    {
+      "source": "n39",
+      "target": "n38"
+    },
+    {
+      "source": "n38",
+      "target": "n41"
+    },
+    {
+      "source": "n41",
+      "target": "n42"
+    },
+    {
+      "source": "n42",
+      "target": "n40"
+    },
+    {
+      "source": "n40",
+      "target": "n43"
+    }
+  ]
+}

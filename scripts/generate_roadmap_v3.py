@@ -525,7 +525,15 @@ class PipelineOrchestrator:
         success = self._run_script("assemble_roadmap.py", args)
 
         if success:
-            self._complete("step_8_7", roadmap=out)
+            # Convert sang viewer format — thả vào public/roadmaps/ là UI tự hiện
+            viewer_out = self.output_dir / "roadmap-viewer.json"
+            conv = self._run_script("convert_roadmap_to_viewer.py", [
+                "--roadmap", str(out),
+                "--output", str(viewer_out),
+            ])
+            if conv:
+                print("    → Roadmap viewer-format: roadmap-viewer.json")
+            self._complete("step_8_7", roadmap=out, roadmap_viewer=viewer_out)
         return success
 
     def step_9_validate(self) -> bool:

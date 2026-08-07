@@ -4,11 +4,14 @@ import RoadmapShRendererV2 from './RoadmapShRendererV2';
 import ActionRoadmapWeb from './ActionRoadmapWeb';
 import './RoadmapViewer.css';
 
+// JIT roadmaps (từ generate_jit_graph.py) — tự detect
+const JIT_ROADMAPS = ['jit-bulb', 'jit-quiz'];
+// Roadmap.sh layout roadmaps
+const ROADMAP_SH_ROADMAPS = ['rust-cli', 'portfolio-js'];
+// Tự động gom tất cả roadmap từ public/roadmaps/
 const knownRoadmaps = [
-  { path: '/roadmaps/jit-bulb.json', code: 'JIT_BULB', isJIT: true },
-  { path: '/roadmaps/jit-quiz.json', code: 'JIT_QUIZ', isJIT: true },
-  { path: '/roadmaps/rust-cli.json', code: 'RUST_CLI_001', isJIT: false },
-  { path: '/roadmaps/portfolio-js.json', code: 'PORTFOLIO_GAME', isJIT: false }
+  ...JIT_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), isJIT: true })),
+  ...ROADMAP_SH_ROADMAPS.map(name => ({ path: `/roadmaps/${name}.json`, code: name.toUpperCase(), isJIT: false })),
 ];
 
 export default function RoadmapViewer() {
