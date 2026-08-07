@@ -23,10 +23,6 @@
   border-radius: 6px;
 }
 
-.tkr-bloom-badge {
-  display: inline-block;
-}
-
 .tkr-hover-popup {
   font-family: 'IBM Plex Sans', sans-serif;
   position: absolute;

@@ -82,12 +82,19 @@ def load_json(path: Path) -> dict:
 
 
 def collect_covered_concepts(matched_cios: dict, resolved_sios: dict) -> set:
-    """Concepts that already have CIO/SIO coverage."""
+    """Concepts co SIO THAT — chi concept nay duoc coi la 'covered'.
+
+    GENERATE-first: resolved_sios luon GENERATE (0 sios). Concept co CIO matched
+    nhung khong SIO → KHONG covered → JIT sinh du ULO+CIO+SIO. Truoc day cover
+    tu matched_cios (CIO) lam HTTP_PROTOCOL/EXCEPTION_HANDLING mat SIO.
+    """
     covered = set()
-    for match in matched_cios.get('matched_cios', []):
-        covered.add(match.get('concept_code', ''))
+    # Chi concept co SIO thuc (REUSE sios) moi covered
     for group in resolved_sios.get('resolved_sios', []):
-        covered.add(group.get('concept_code', ''))
+        if group.get('action') == 'REUSE' and group.get('sios'):
+            covered.add(group.get('concept_code', ''))
+        elif group.get('action') in ('ADAPT', 'TEMPLATE') and group.get('source_sio'):
+            covered.add(group.get('concept_code', ''))
     return {c for c in covered if c}
 
 
@@ -102,7 +109,7 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
     #   error_handling (throws, try!), docstring/readme/config, escalated
     # Bỏ TÊN DO DEV ĐẶT (function_signature: loop/getState — không phải keyword
     # ngôn ngữ; type_declaration: HTTPBulbService — tên class tự viết).
-    KEYWORD_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config', 'escalated'}
+    KEYWORD_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config', 'escalated', 'framework_usage'}
 
     concepts = {}
     # Resolved concepts (đã match Master Tree)
@@ -115,10 +122,18 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
             kw = ''  # giữ concept, bỏ keyword sai nguồn
         for code in item.get('concept_codes', []):
             if code:
+                # Lấy description từ match ĐÚNG code (không lấy matches[0] vì có
+                # thể là embedding sai nghĩa) — tránh fallback template generic
+                desc = ''
+                for m in item.get('matches', []):
+                    if m.get('code') == code:
+                        desc = m.get('description', '')
+                        break
                 concepts[code] = {
                     'keyword': kw,
                     'matches': item.get('matches', []),
                     'is_proposed': False,
+                    'description': desc,
                 }
     # Proposed concepts (chưa có trong Master Tree — JIT nội bộ)
     # Chỉ JIT cho keywords là KIẾN THỨC thật — cùng KEYWORD_SOURCES
@@ -141,6 +156,7 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
             'matches': [],
             'is_proposed': True,
             'proposed_name': item.get('proposed_name', '') or item.get('name', '') or keyword,
+            'description': item.get('reason', '') or item.get('description', ''),
         }
     return concepts
 
@@ -214,6 +230,9 @@ def generate_ulo(concept_code: str, description: str, concept_name: str = '') ->
         f"Dùng đúng tên khái niệm '{name_hint}' (không dùng mã code, không dùng tên khác). "
         "QUAN TRỌNG: dùng tên khái niệm tự nhiên bằng tiếng Việt, KHÔNG chèn mã code "
         "(tên viết hoa như GENERATIVE_CONTENT_APPLICATION) vào câu văn. "
+        "CẤM: cấu trúc 'Tên khái niệm: Mô tả' (dấu hai chấm sau tên) và mọi sự lặp từ 'hiểu' hai lần — "
+        "viết một câu liền mạch, cụ thể vào vai trò/đặc điểm của khái niệm trong dự án, không chung chung "
+        "(ví dụ nói rõ nó giải quyết vấn đề gì, không phải 'và vai trò của nó'). "
         "Giữ nguyên thuật ngữ tiếng Anh chuyên ngành (không dịch sang tiếng Việt) nếu là khái niệm kỹ thuật quốc tế, ví dụ như tên gốc của khái niệm đang xét. "
         "Trả về JSON: {\"description\": \"...\"}",
         f"Khái niệm: {name_hint}. Mô tả: {description}"
@@ -221,11 +240,15 @@ def generate_ulo(concept_code: str, description: str, concept_name: str = '') ->
     if llm_desc:
         final_desc = llm_desc
     elif description:
-        final_desc = f"Người học có khả năng hiểu: {description}"
+        # Bỏ prefix trùng: description đã bắt đầu "Hiểu..." thì không thêm "hiểu:"
+        d = description.strip()
+        d = re.sub(r'^(Người học có khả năng hiểu\s*[:]?\s*)', '', d, flags=re.IGNORECASE)
+        final_desc = f"Người học có khả năng hiểu {name_hint}: {d}"
     else:
+        # KHÔNG dùng "nguyên lý phổ quát" (template máy móc) — dùng tên tự nhiên
         final_desc = (
-            f"Người học có khả năng hiểu nguyên lý phổ quát của {concept_code} "
-            f"và vai trò của nó trong thiết kế giải pháp phần mềm."
+            f"Người học có khả năng hiểu {name_hint} và cách vận dụng nó "
+            f"trong việc phát triển dự án."
         )
 
     return {
@@ -356,19 +379,23 @@ def main():
     # Nếu có escalated_concepts (STEP 3.5) — THAY proposed raw bằng concept trung tính
     if args.escalated_concepts and args.escalated_concepts.exists():
         escalated = load_json(args.escalated_concepts)
-        # Chỉ giữ escalated concepts (concept trung tính), bỏ proposed raw (tên thư viện)
+        # Giữ escalated concepts: status=new (Gap D) VÀ status=matched (concept
+        # hợp lệ đã match Master Tree — có keyword thật: SwiftUI, ArduinoJson.h...)
+        # Trước đây chỉ giữ 'new' → 5 concepts matched bị mất (FRONTEND_FRAMEWORKS,
+        # JSON_SERIALIZATION, DIGITAL_ANALOG_IO, IOT_MESSAGING_PROTOCOLS, MEDIUM_TYPES)
         escalated_proposed = []
         for item in escalated.get('escalated', []):
             code = item.get('concept_code', '')
-            if code and item.get('status') == 'new':
+            if code and item.get('status') in ('new', 'matched'):
                 escalated_proposed.append({
                     'keyword': item.get('keyword', ''),
                     'proposed_name': item.get('concept_name', code),
                     'concept_code': code,
                     'source': 'escalated',
+                    'reason': item.get('reason', ''),
                 })
         resolved_concepts['proposed'] = escalated_proposed
-        print(f"[*] Dùng escalated concepts từ STEP 3.5 ({len(escalated_proposed)} Gap D concepts)")
+        print(f"[*] Dùng escalated concepts từ STEP 3.5 ({len(escalated_proposed)} concepts: new + matched)")
     matched_cios = load_json(args.matched_cios)
     resolved_sios = load_json(args.resolved_sios)
     keywords_data = load_json(args.keywords)
@@ -435,7 +462,9 @@ def main():
 
     generated = []
     for concept_code, info in sorted(uncovered.items()):
-        description = get_concept_description(concept_code, inventory)
+        # Ưu tiên description từ resolved/escalated (đúng nghĩa dự án),
+        # fallback Master Tree — tránh fallback template generic
+        description = info.get('description') or get_concept_description(concept_code, inventory)
         concept_name = get_concept_name(concept_code, inventory)
         print(f"  -> Generating LOs for {concept_name}")
 

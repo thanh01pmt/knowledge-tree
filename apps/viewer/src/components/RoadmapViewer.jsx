@@ -45,15 +45,13 @@ export default function RoadmapViewer() {
       }
       if (loaded.length > 0) {
         setRoadmaps(loaded);
-        const manifest = loaded.map(m => ({
-          project_code: m.project_brief?.project_code,
-          title: m.project_brief?.title,
-          created_at: new Date().toISOString(),
-          key: `roadmap_${m.project_brief?.project_code}`,
-          _type: m._type
-        }));
-        localStorage.setItem('roadmap_manifest', JSON.stringify(manifest));
-        setSelectedRoadmap(loaded[0]);
+        // Ưu tiên roadmap từ URL param ?roadmap=<source> (deep-link),
+        // fallback roadmap đầu tiên
+        const paramRoadmap = new URLSearchParams(window.location.search).get('roadmap');
+        const initial = paramRoadmap
+          ? loaded.find(m => m._source.toLowerCase() === paramRoadmap.toLowerCase())
+          : null;
+        setSelectedRoadmap(initial || loaded[0]);
       }
       setIsLoading(false);
     } catch (err) {

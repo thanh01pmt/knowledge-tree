@@ -312,7 +312,25 @@ def resolve_concepts(
         'property_wrapper': 0.55,
         'error_handling': 0.60,
         'config': 0.60,
+        'framework_usage': 0.45,  # type dùng trong code (URLSession, JSONDecoder) — signal mạnh
         'default': threshold,
+    }
+
+    # Keyword-exact override: embedding đôi khi sai nghĩa (WebServer.h → auth 0.60
+    # vì mang nghĩa 'web' chung, trong khi thực tế là web server). Map thủ công
+    # cho keyword có nghĩa rõ ràng, không thể nhầm.
+    KEYWORD_CONCEPT_OVERRIDE = {
+        'WebServer.h': 'WEB_SERVER',
+        'WiFi.h': 'MEDIUM_TYPES',
+        'PubSubClient.h': 'IOT_MESSAGING_PROTOCOLS',
+        'ArduinoJson.h': 'JSON_SERIALIZATION',
+        'Adafruit_NeoPixel.h': 'DIGITAL_ANALOG_IO',
+        'SwiftUI': 'FRONTEND_FRAMEWORKS',
+        'URLSession': 'HTTP_PROTOCOL',
+        'URLRequest': 'HTTP_PROTOCOL',
+        '@State': 'LOCAL_VIEW_STATE',
+        'throws': 'EXCEPTION_HANDLING',
+        'try!': 'EXCEPTION_HANDLING',
     }
 
     master_tree = reuse_inventory.get("master_tree", {})
@@ -366,7 +384,20 @@ def resolve_concepts(
         # Check confidence threshold (source-aware)
         eff_threshold = SOURCE_THRESHOLDS.get(source, SOURCE_THRESHOLDS['default'])
         top_match = field_filtered[0]
-        if top_match["score"] >= eff_threshold:
+        
+        # Keyword-exact override: embedding sai nghĩa (WebServer.h → auth 0.60
+        # nhưng thực tế là WEB_SERVER). Map thủ công cho keyword rõ nghĩa.
+        override_code = KEYWORD_CONCEPT_OVERRIDE.get(keyword)
+        if override_code:
+            resolved.append({
+                "keyword": keyword,
+                "source": source,
+                "concept_codes": [override_code],
+                "matches": field_filtered,
+                "override": True,
+            })
+            print(f"    ✓ REUSE (override): {override_code}")
+        elif top_match["score"] >= eff_threshold:
             # High confidence → REUSE
             resolved.append({
                 "keyword": keyword,

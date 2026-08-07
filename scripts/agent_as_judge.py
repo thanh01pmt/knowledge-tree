@@ -291,6 +291,81 @@ def evaluate_prerequisites(prereqs_data: Dict[str, Any]) -> Dict[str, Any]:
     return result
 
 
+def evaluate_roadmap(roadmap_data: Dict[str, Any]) -> Dict[str, Any]:
+    """
+    POST-ROADMAP evaluation — Judge roadmap HOÀN CHỈNH (sau khi assemble).
+
+    Kiểm ngữ nghĩa (structural validator bỏ qua):
+    1. Mỗi concept card có ĐỦ Concept (ULO/CIO) + Keyword (SIO)? — không card
+       nào chỉ có 1 bên (lỗi horizontal slicing đã gặp)
+    2. Mỗi SIO keyword là keyword THỰC HÀNH, không phải tên concept lọt
+       (VD 'http protocol' từ SIO name — sai, phải là URLSession)
+    3. Bloom đúng tầng: ULO=understand, CIO=apply, SIO=create
+    4. Không template máy móc (ngưỡng/mô hình tham chiếu/nguyên lý phổ quát)
+    5. Platform (app/esp32) nhất quán: SIO code prefix khớp platform field
+    """
+    issues = []
+    warnings = []
+
+    TEMPLATE_SIGNALS = ['ngưỡng', 'mô hình tham chiếu', 'vật lý/logic',
+                        'nguyên lý phổ quát', 'hiểu: hiểu', 'người học có khả năng hiểu:',
+                        'và vai trò của nó', 'và cách vận dụng nó', 'định lượng đánh đổi']
+    CONCEPT_NAME_SIGNALS = ['http protocol', 'definite iteration']  # tên concept lọt làm keyword
+
+    total_cards = 0
+    for phase in roadmap_data.get('phases', []):
+        for milestone in phase.get('milestones', []):
+            total_cards += 1
+            los = milestone.get('learning_objectives', [])
+            ulos = [lo for lo in los if lo.get('lo_type') == 'UNIVERSAL']
+            cios = [lo for lo in los if lo.get('lo_type') == 'CONCEPTUAL_IMPL']
+            sios = [lo for lo in los if lo.get('lo_type') == 'SPECIFIC_IMPL']
+
+            # 1. Đủ Concept + Keyword?
+            if not ulos and not cios:
+                issues.append(f"[{milestone.get('concept_code')}] Card thiếu Concept (ULO/CIO)")
+            if not sios:
+                issues.append(f"[{milestone.get('concept_code')}] Card thiếu Keyword (SIO) — không thực hành")
+
+            # 2. Keyword thực hành, không phải tên concept
+            for sio in sios:
+                kw = (sio.get('keyword') or '').strip()
+                if kw and kw.lower() in CONCEPT_NAME_SIGNALS:
+                    issues.append(f"[{milestone.get('concept_code')}] Keyword '{kw}' là tên concept lọt — cần keyword code thật")
+
+            # 3. Bloom đúng tầng
+            for lo in los:
+                bloom = (lo.get('bloom_level') or '').lower()
+                lt = lo.get('lo_type', '')
+                if lt == 'UNIVERSAL' and bloom not in ('understand', 'remember'):
+                    warnings.append(f"[{milestone.get('concept_code')}] ULO bloom '{bloom}' (mong đợi understand)")
+                if lt == 'SPECIFIC_IMPL' and bloom not in ('create', 'apply'):
+                    warnings.append(f"[{milestone.get('concept_code')}] SIO bloom '{bloom}' (mong đợi create)")
+
+            # 4. Không template
+            for lo in los:
+                desc = (lo.get('description') or '').lower()
+                if any(sig in desc for sig in TEMPLATE_SIGNALS):
+                    issues.append(f"[{milestone.get('concept_code')}] Mô tả template máy móc: {lo.get('code')}")
+
+            # 5. Platform nhất quán
+            for sio in sios:
+                platform = sio.get('platform') or ''
+                code = sio.get('code') or ''
+                if platform == 'esp32' and not code.startswith('SIO-ESP32'):
+                    issues.append(f"[{milestone.get('concept_code')}] platform=esp32 nhưng code '{code}' không prefix ESP32")
+                if platform == 'app' and not code.startswith('SIO-SWIFT') and 'SWIFT' not in code:
+                    warnings.append(f"[{milestone.get('concept_code')}] platform=app nhưng code '{code}' không prefix SWIFT")
+
+    status = 'FAIL' if issues else ('WARN' if warnings else 'PASS')
+    return {
+        'status': status,
+        'issues': issues,
+        'warnings': warnings,
+        'cards_checked': total_cards,
+    }
+
+
 def main():
     import argparse
     
@@ -299,6 +374,7 @@ def main():
     parser.add_argument("--sios", help="Path to resolved_sios.json from STEP 5")
     parser.add_argument("--prerequisites", help="Path to prerequisites.json from STEP 4")
     parser.add_argument("--target-tech", default="SWIFT", help="Target tech stack (default: SWIFT)")
+    parser.add_argument("--roadmap", help="Path to roadmap.json (POST-ROADMAP evaluation)")
     parser.add_argument("--output", default="/tmp/judgment.json", help="Output judgment file")
     
     args = parser.parse_args()
@@ -335,6 +411,24 @@ def main():
                 judgment["overall_status"] = "FAIL"
         else:
             print(f"[!] SIOs file not found: {args.sios}")
+    
+    # Evaluate roadmap (POST-ROADMAP — sau khi assemble xong)
+    if args.roadmap:
+        roadmap_path = Path(args.roadmap)
+        if roadmap_path.exists():
+            with open(roadmap_path) as f:
+                roadmap_data = json.load(f)
+            judgment["evaluators"]["roadmap"] = evaluate_roadmap(roadmap_data)
+            if judgment["evaluators"]["roadmap"]["status"] == "FAIL":
+                judgment["overall_status"] = "FAIL"
+            print(f"[Roadmap] {judgment['evaluators']['roadmap']['status']}: "
+                  f"{judgment['evaluators']['roadmap']['cards_checked']} cards checked")
+            for iss in judgment["evaluators"]["roadmap"].get("issues", []):
+                print(f"    ✗ {iss}")
+            for warn in judgment["evaluators"]["roadmap"].get("warnings", []):
+                print(f"    ! {warn}")
+        else:
+            print(f"[!] Roadmap file not found: {args.roadmap}")
     
     # Evaluate prerequisites
     if args.prerequisites:

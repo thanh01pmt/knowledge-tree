@@ -208,13 +208,25 @@ def main():
     keywords = load_keywords(keywords_data)
     print(f"[*] Keywords (kiến thức thật): {len(keywords)}")
 
+    # Keywords đã resolve thành concept (STEP 3) — KHÔNG escalate lại
+    # (tránh trùng concept: WebServer.h → WEB_SERVER (resolve) + HTTP_SERVER (escalate))
+    resolved_by_kw = {}
+    for item in resolved_data.get('resolved', []):
+        kw = item.get('keyword', '')
+        codes = item.get('concept_codes', [])
+        if kw and codes:
+            resolved_by_kw[kw] = codes[0]
+    keywords_unresolved = [k for k in keywords if k.get('keyword') not in resolved_by_kw]
+    print(f"[*] Sau khi loại {len(keywords) - len(keywords_unresolved)} keywords đã resolve: "
+          f"{len(keywords_unresolved)} keywords cần escalate")
+
     # Master Tree
     master_tsv = args.master_tsv or (REPO_ROOT / 'services' / 'python-api' / 'general-context' / 'mlo-knowlege-tree.tsv')
     master_concepts = load_master_concepts(master_tsv)
     print(f"[*] Master Tree concepts: {len(master_concepts)}")
 
-    # LLM escalate
-    escalated = escalate_keywords(keywords, master_concepts)
+    # LLM escalate (chỉ keywords chưa resolve)
+    escalated = escalate_keywords(keywords_unresolved, master_concepts)
     print(f"[*] Escalated: {len(escalated)} concepts")
 
     # Stats

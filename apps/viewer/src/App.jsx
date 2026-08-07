@@ -68,7 +68,11 @@ function App() {
   const [isolatedNodeId, setIsolatedNodeId] = useState(null);
   const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
-  const [viewMode, setViewMode] = useState('knowledge'); // 'knowledge' | 'roadmap' | 'roadmap-sh'
+  const [viewMode, setViewMode] = useState(() => {
+    // Deep-link: ?view=roadmap / ?view=roadmap-sh / ?view=knowledge
+    const v = new URLSearchParams(window.location.search).get('view');
+    return (v === 'roadmap' || v === 'roadmap-sh' || v === 'knowledge') ? v : 'knowledge';
+  }); // 'knowledge' | 'roadmap' | 'roadmap-sh'
 
   const [rawTreeData, setRawTreeData] = useState(null);
   const [loading, setLoading] = useState(true);

@@ -47,11 +47,18 @@ def parse_swift_file(filepath: Path) -> Dict:
         'functions': [],
         'property_wrappers': [],
         'error_handling': [],
+        'frameworks_used': [],
     }
     
     # Extract imports
     import_pattern = r'^import\s+(\w+)'
     result['imports'] = re.findall(import_pattern, content, re.MULTILINE)
+    
+    # Extract framework TYPES được DÙNG trong thân code (không phải declaration):
+    # URLSession, JSONSerialization, URLRequest... — keyword thực hành thật
+    # nhưng không xuất hiện ở import/type/function signature.
+    framework_usage = re.findall(r'\b(URLSession|URLRequest|JSONSerialization|JSONDecoder|JSONEncoder|Task|DispatchQueue|Timer|NotificationCenter|UserDefaults|FileManager|Bundle)\b', content)
+    result['frameworks_used'] = list(set(framework_usage))
     
     # Extract type declarations
     type_pattern = r'\b(class|struct|enum|protocol)\s+(\w+)(?:\s*:\s*([^\{]+))?'
@@ -114,6 +121,7 @@ def parse_swift_project(repo_dir: Path) -> Dict:
     all_functions = []
     all_wrappers = []
     all_error_patterns = []
+    all_frameworks = []
     wrapper_file_pairs = []
     error_file_pairs = []
     
@@ -128,6 +136,7 @@ def parse_swift_project(repo_dir: Path) -> Dict:
         all_imports.extend(parsed['imports'])
         all_types.extend(parsed['types'])
         all_functions.extend(parsed['functions'])
+        all_frameworks.extend(parsed['frameworks_used'])
         for w in parsed['property_wrappers']:
             all_wrappers.append(w)
             wrapper_file_pairs.append((w, str(swift_file.name)))
@@ -162,6 +171,10 @@ def parse_swift_project(repo_dir: Path) -> Dict:
         'error_handling_patterns': [
             {'pattern': p, 'count': count, 'file': error_files.get(p, '')}
             for p, count in error_counts.most_common(10)
+        ],
+        'frameworks_used': [
+            {'framework': f, 'file': ''}
+            for f in sorted(set(all_frameworks))
         ],
     }
 
@@ -494,6 +507,19 @@ def extract_keywords(source_context: Dict, basic_analysis: Dict, repo_dir: str) 
                 'context': 'Docstring (domain intent)',
             })
     
+    # Source 3.6: Framework usage → keyword thực hành thật (URLSession, JSONSerialization...)
+    # Bắt type DÙNG trong thân code, không phải declaration — nhiều keyword quan trọng
+    # (URLSession cho HTTP, JSONDecoder cho parsing) không xuất hiện ở import/type/function.
+    for fw in source_context.get('frameworks_used', []):
+        fw_name = fw['framework'] if isinstance(fw, dict) else fw
+        keywords.append({
+            'keyword': fw_name,
+            'source': 'framework_usage',
+            'platform': 'app',
+            'weight': 1.4,
+            'context': 'Framework usage (thực hành thật)',
+        })
+
     # Source 4: Property wrappers → state management patterns
     for wrapper in source_context.get('property_wrappers', []):
         wrapper_name = wrapper['wrapper']

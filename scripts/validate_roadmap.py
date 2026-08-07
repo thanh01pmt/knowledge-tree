@@ -101,6 +101,61 @@ def validate_sio_coverage(roadmap: Dict, resolved_sios: List[Dict]) -> Dict:
     }
 
 
+def validate_semantic_keywords(roadmap: Dict, repo_dir: str, project_keywords: List[Dict]) -> Dict:
+    """SEMANTIC GATE: mỗi SIO keyword phải TỒN TẠI trong code thật của dự án.
+
+    Chặn lỗi ngữ nghĩa mà structural check bỏ qua (VD: 'forEach' không có
+    trong smart-bulb-controller nhưng vẫn vào roadmap qua REUSE). Kiểm:
+    1. Keyword có trong keywords.json của dự án (đã extract từ code)
+    2. Hoặc keyword xuất hiện trực tiếp trong source files (grep)
+    """
+    issues = []
+    # Gom keyword đã extract từ dự án
+    extracted = {k.get('keyword', '').lower() for k in project_keywords if k.get('keyword')}
+
+    # Gom keyword trong roadmap SIOs
+    roadmap_kws = set()
+    for phase in roadmap.get('phases', []):
+        for milestone in phase.get('milestones', []):
+            for lo in milestone.get('learning_objectives', []):
+                if lo.get('lo_type') == 'SPECIFIC_IMPL' and lo.get('keyword'):
+                    roadmap_kws.add((lo.get('keyword', '').lower(), lo.get('keyword'), milestone.get('concept_code', '')))
+
+    # Tìm keyword không có trong dự án
+    missing = []
+    for kw_lower, kw_orig, concept in sorted(roadmap_kws):
+        if kw_lower in extracted:
+            continue
+        # Fallback: grep trực tiếp trong source files
+        if repo_dir and Path(repo_dir).exists():
+            found = False
+            for ext in ('*.swift', '*.py', '*.ino', '*.cpp', '*.h', '*.js', '*.ts'):
+                for f in Path(repo_dir).rglob(ext):
+                    try:
+                        if kw_orig.lower() in f.read_text(errors='ignore').lower():
+                            found = True
+                            break
+                    except OSError:
+                        continue
+                if found:
+                    break
+            if found:
+                continue
+        missing.append((kw_orig, concept))
+
+    if missing:
+        for kw, concept in missing:
+            issues.append(f"SIO keyword '{kw}' ({concept}) KHÔNG có trong code dự án — SIO không gắn thực hành thật")
+
+    status = 'PASS' if not missing else 'FAIL'
+    return {
+        'status': status,
+        'issues': issues,
+        'checked_count': len(roadmap_kws),
+        'missing_keywords': [k for k, _ in missing],
+    }
+
+
 def validate_concept_completeness(roadmap: Dict, resolved_concepts: List[Dict]) -> Dict:
     """Validate concept chain completeness (ULO -> CIO -> SIO)."""
     issues = []
@@ -262,6 +317,10 @@ def main():
                        help='Path to code_snippets.json from STEP 8.5 (optional)')
     parser.add_argument('--output', type=Path, required=True,
                        help='Output validation report JSON')
+    parser.add_argument('--keywords-file', type=Path,
+                       help='Path to keywords.json from STEP 1-2 (semantic gate)')
+    parser.add_argument('--repo-dir', type=str, default='',
+                       help='Project repo dir (semantic gate: grep keyword in source)')
     
     args = parser.parse_args()
     
@@ -312,6 +371,21 @@ def main():
     dag_result = validate_prerequisite_dag(roadmap)
     print(f"    {dag_result['status']}: {dag_result['concept_count']} concepts, {dag_result['edge_count']} edges")
     
+    # Semantic gate: SIO keyword phải tồn tại trong code dự án
+    semantic_result = None
+    if args.keywords_file and args.keywords_file.exists():
+        with open(args.keywords_file, 'r', encoding='utf-8') as f:
+            kw_data = json.load(f)
+        project_keywords = kw_data.get('keywords', kw_data if isinstance(kw_data, list) else [])
+        print("[*] Validating semantic keywords (phải tồn tại trong code dự án)...")
+        semantic_result = validate_semantic_keywords(roadmap, args.repo_dir, project_keywords)
+        if semantic_result['issues']:
+            for iss in semantic_result['issues']:
+                print(f"    ⚠ {iss}")
+        print(f"    {semantic_result['status']}: {semantic_result['checked_count']} keywords checked")
+    else:
+        print("[!] Bỏ qua semantic gate (thiếu --keywords-file)")
+    
     if code_snippets:
         print("[*] Validating code snippets...")
         snippets_result = validate_code_snippets(roadmap, code_snippets)
@@ -323,6 +397,8 @@ def main():
     all_results = [structure_result, sio_result, concept_result, dag_result]
     if snippets_result:
         all_results.append(snippets_result)
+    if semantic_result:
+        all_results.append(semantic_result)
     
     if any(r['status'] == 'FAIL' for r in all_results):
         overall_status = 'FAIL'
