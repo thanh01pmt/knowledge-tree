@@ -22,6 +22,8 @@ import sys
 from pathlib import Path
 from typing import Dict, List, Any, Tuple
 
+sys.path.insert(0, str(Path(__file__).parent))
+import lo_quality
 
 def evaluate_concepts(concepts_data: Dict[str, Any]) -> Dict[str, Any]:
     """
@@ -307,9 +309,6 @@ def evaluate_roadmap(roadmap_data: Dict[str, Any]) -> Dict[str, Any]:
     issues = []
     warnings = []
 
-    TEMPLATE_SIGNALS = ['ngưỡng', 'mô hình tham chiếu', 'vật lý/logic',
-                        'nguyên lý phổ quát', 'hiểu: hiểu', 'người học có khả năng hiểu:',
-                        'và vai trò của nó', 'và cách vận dụng nó', 'định lượng đánh đổi']
     CONCEPT_NAME_SIGNALS = ['http protocol', 'definite iteration']  # tên concept lọt làm keyword
 
     total_cards = 0
@@ -344,9 +343,14 @@ def evaluate_roadmap(roadmap_data: Dict[str, Any]) -> Dict[str, Any]:
 
             # 4. Không template
             for lo in los:
-                desc = (lo.get('description') or '').lower()
-                if any(sig in desc for sig in TEMPLATE_SIGNALS):
+                desc = lo.get('description') or ''
+                if lo_quality.is_template_description(desc):
                     issues.append(f"[{milestone.get('concept_code')}] Mô tả template máy móc: {lo.get('code')}")
+
+            # 5. Check needs_review
+            for lo in los:
+                if lo.get('needs_review') is True:
+                    warnings.append(f"[{milestone.get('concept_code')}] LO {lo.get('code')} đánh dấu needs_review — mô tả thiếu nguyên liệu")
 
             # 5. Platform nhất quán
             for sio in sios:

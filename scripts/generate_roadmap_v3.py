@@ -119,6 +119,10 @@ class PipelineOrchestrator:
             self.state["artifacts"][name] = str(path)
         self._save_state()
 
+    def _fail(self, message: str) -> bool:
+        print(f"❌ {message}")
+        return False
+
     # ------------------------------------------------------------------
     # Pipeline steps
     # ------------------------------------------------------------------
@@ -241,29 +245,6 @@ class PipelineOrchestrator:
             self._complete("step_3_5", escalated_concepts=out)
         return success
 
-    def step_3_5_escalate_concepts(self) -> bool:
-        """STEP 3.5: LLM escalate keyword → concept trung tính, match Master Tree."""
-        if self._skip_or_run("step_3_5"):
-            return True
-
-        print("\n📋 STEP 3.5: Escalating keywords to neutral concepts (LLM)...")
-        keywords_file = self._artifact("keywords", self.output_dir / "keywords.json")
-        resolved_file = self._artifact("resolved_concepts", self.output_dir / "resolved_concepts.json")
-        out = self.output_dir / "escalated_concepts.json"
-
-        if not keywords_file.exists() or not resolved_file.exists():
-            print("⚠️  Missing inputs for escalation, skipping STEP 3.5")
-            return True
-
-        success = self._run_script("escalate_concepts_v3.py", [
-            "--keywords", str(keywords_file),
-            "--resolved-concepts", str(resolved_file),
-            "--output", str(out),
-        ])
-
-        if success:
-            self._complete("step_3_5", escalated_concepts=out)
-        return success
 
     def step_4_match_cios(self) -> bool:
         """STEP 4: Match concepts to CIOs."""
@@ -535,6 +516,42 @@ class PipelineOrchestrator:
                 print("    → Roadmap viewer-format: roadmap-viewer.json")
             self._complete("step_8_7", roadmap=out, roadmap_viewer=viewer_out)
         return success
+    def step_8_8_judge_final_roadmap(self) -> bool:
+        """STEP 8.8: Judge final roadmap gate (agent_as_judge)."""
+        if self._skip_or_run("step_8_8"):
+            return True
+
+        print("\n📋 STEP 8.8: Running Agent-as-Judge validation gate on final roadmap...")
+        roadmap_file = self._artifact("roadmap", "roadmap.json")
+        if not Path(roadmap_file).exists():
+            return self._fail("Final roadmap artifact missing for STEP 8.8")
+
+        output_file = self.output_dir / "judgment_final.json"
+        self._run_script("agent_as_judge.py", [
+            "--roadmap", str(roadmap_file),
+            "--output", str(output_file),
+        ])
+
+        if not output_file.exists():
+            return self._fail("agent_as_judge.py crashed or judgment_final.json missing after STEP 8.8")
+
+        try:
+            with open(output_file, 'r', encoding='utf-8') as f:
+                judgment = json.load(f)
+        except Exception as e:
+            return self._fail(f"Failed to read judgment_final.json: {e}")
+
+        roadmap_eval = judgment.get("evaluators", {}).get("roadmap", {})
+        status = roadmap_eval.get("status", "UNKNOWN")
+        overall_status = judgment.get("overall_status", "UNKNOWN")
+
+        if status == "FAIL" or overall_status == "FAIL":
+            issues = roadmap_eval.get("issues", [])
+            issues_str = "; ".join(issues) if issues else "Roadmap evaluation failed"
+            return self._fail(f"Agent-as-Judge rejected final roadmap (status: {status}, overall: {overall_status}): {issues_str}")
+
+        self._complete("step_8_8", judgment_final=output_file)
+        return True
 
     def step_9_validate(self) -> bool:
         """STEP 9: Post-generation validation."""
@@ -745,6 +762,7 @@ class PipelineOrchestrator:
             ("step_8_5", self.step_8_5_extract_snippets),
             ("step_8_6", self.step_8_6_generate_instruction),
             ("step_8_7", self.step_8_7_assemble_roadmap),
+            ("step_8_8", self.step_8_8_judge_final_roadmap),
             ("step_9", self.step_9_validate),
         ]
 
