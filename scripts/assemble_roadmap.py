@@ -169,6 +169,86 @@ def group_by_concept(layers: List[List[str]], los: Dict[str, dict]) -> List[dict
     return phases
 
 
+# ============================================================================
+# VERTICAL SLICING PHASES (docs/ideas/2026-08-07-vertical-slicing-roadmap.md)
+# ============================================================================
+# Phase theo MỨC ĐỘ HOÀN THIỆN SẢN PHẨM, không theo topological layer:
+#   P0 NỀN TẢNG   — ULO nền tảng (remember/understand)
+#   P1 MVP        — ULO/CIO cốt lõi (understand/apply) — sản phẩm chạy được
+#   P2 MỞ RỘNG    — CIO/SIO thật hóa (apply) — I/O, API, persistence
+#   P3 HOÀN THIỆN — SIO robustness (create) — error handling, test, polish
+
+VERTICAL_PHASES = [
+    {'id': 0, 'title': 'NỀN TẢNG', 'desc': 'Làm quen công cụ, ngôn ngữ, thiết lập dự án'},
+    {'id': 1, 'title': 'MVP', 'desc': 'Sản phẩm chạy được từ đầu (UI + logic + data tối giản)'},
+    {'id': 2, 'title': 'MỞ RỘNG', 'desc': 'Thật hóa: API thật, file persistence, lọc'},
+    {'id': 3, 'title': 'HOÀN THIỆN', 'desc': 'Độ chắc: error handling, validation, test, polish'},
+]
+
+# Bloom level theo lo_type (heuristic — có thể override bằng data)
+LO_TYPE_BLOOM = {
+    'UNIVERSAL': 'understand',
+    'CONCEPTUAL_IMPL': 'apply',
+    'SPECIFIC_IMPL': 'create',
+}
+
+
+def vertical_phase_for_lo(lo: dict) -> int:
+    """Assign vertical phase cho 1 LO dựa trên lo_type + bloom_level."""
+    lo_type = lo.get('lo_type', '')
+    bloom = lo.get('bloom_level', '') or LO_TYPE_BLOOM.get(lo_type, 'understand')
+
+    # P3: create (SIO robustness)
+    if bloom == 'create':
+        return 3
+    # P2: apply (CIO/SIO thật hóa)
+    if bloom == 'apply':
+        return 2
+    # P1: understand (ULO/CIO cốt lõi)
+    if bloom == 'understand':
+        return 1
+    # P0: remember (nền tảng)
+    return 0
+
+
+def group_vertical_phases(layers: List[List[str]], los: Dict[str, dict]) -> List[dict]:
+    """Group LOs vào 4 phase vertical (NỀN TẢNG → MVP → MỞ RỘNG → HOÀN THIỆN).
+
+    Giữ nguyên topological order bên trong mỗi phase (dependency vẫn đúng),
+    chỉ đổi cách nhóm phase từ "layer" sang "mức hoàn thiện sản phẩm".
+    """
+    # Gán phase cho từng LO
+    lo_phase = {}
+    for layer in layers:
+        for code in layer:
+            lo_phase[code] = vertical_phase_for_lo(los[code])
+
+    # Gom theo phase, giữ thứ tự layer (dependency order)
+    phases = []
+    for p in VERTICAL_PHASES:
+        p_codes = [c for layer in layers for c in layer if lo_phase.get(c) == p['id']]
+        if not p_codes:
+            continue
+        # Group theo concept trong phase
+        by_concept = defaultdict(list)
+        for code in p_codes:
+            concept = los[code]['concept'] or 'UNSPECIFIED'
+            by_concept[concept].append(code)
+        milestones = []
+        for concept, codes in sorted(by_concept.items()):
+            milestones.append({
+                'concept_code': concept,
+                'learning_objectives': [los[c] for c in codes],
+            })
+        phases.append({
+            'phase_id': p['id'],
+            'title': p['title'],
+            'description': p['desc'],
+            'milestones': milestones,
+        })
+    return phases
+
+
 def attach_metadata(phases: List[dict], rationale: Dict[Tuple[str, str], str],
                      instruction_dir: Path) -> List[dict]:
     """Attach rationale + instruction reference to each LO."""
@@ -202,6 +282,8 @@ def main():
     parser.add_argument('--instruction-dir', type=Path, help='Optional: instruction/ from STEP 8.6')
     parser.add_argument('--goal', type=str, default='')
     parser.add_argument('--tech-stack', type=str, default='')
+    parser.add_argument('--vertical', action='store_true',
+                       help='Dùng vertical slicing phases (NỀN TẢNG/MVP/MỞ RỘNG/HOÀN THIỆN) thay vì topological layers')
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
 
@@ -225,8 +307,14 @@ def main():
     for i, layer in enumerate(layers):
         print(f"    Layer {i+1}: {len(layer)} LOs")
 
-    # 4. Group into phases by concept
-    phases = group_by_concept(layers, los)
+    # 4. Group into phases — vertical slicing (nếu --vertical) hoặc topological layers
+    if args.vertical:
+        phases = group_vertical_phases(layers, los)
+        print(f"[*] Vertical phases: {len(phases)}")
+        for p in phases:
+            print(f"    {p['title']}: {sum(len(m['learning_objectives']) for m in p['milestones'])} LOs")
+    else:
+        phases = group_by_concept(layers, los)
 
     # 5. Attach rationale + instruction refs
     if args.instruction_dir and args.instruction_dir.exists():
