@@ -97,23 +97,34 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
     - resolved: concept đã có trong Master Tree (match embedding)
     - proposed: concept CHƯA có — cần JIT generation nội bộ (cuối dự án mới sync ngược)
     """
+    # Nguồn keyword là KIẾN THỨC THẬT (dùng làm keyword thực hành):
+    #   import (Foundation, SwiftUI), property_wrapper (@State),
+    #   error_handling (throws, try!), docstring/readme/config, escalated
+    # Bỏ TÊN DO DEV ĐẶT (function_signature: loop/getState — không phải keyword
+    # ngôn ngữ; type_declaration: HTTPBulbService — tên class tự viết).
+    KEYWORD_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config', 'escalated'}
+
     concepts = {}
     # Resolved concepts (đã match Master Tree)
+    # Keyword nguồn dev-đặt (function_signature: loop/getState, type_declaration:
+    # HTTPBulbService) KHÔNG phải keyword thực hành — xóa để infer từ SIO name
     for item in resolved_concepts.get('resolved', []):
+        source = item.get('source', '')
+        kw = item.get('keyword', '')
+        if source and source not in KEYWORD_SOURCES:
+            kw = ''  # giữ concept, bỏ keyword sai nguồn
         for code in item.get('concept_codes', []):
             if code:
                 concepts[code] = {
-                    'keyword': item.get('keyword', ''),
+                    'keyword': kw,
                     'matches': item.get('matches', []),
                     'is_proposed': False,
                 }
     # Proposed concepts (chưa có trong Master Tree — JIT nội bộ)
-    # Chỉ JIT cho keywords là KIẾN THỨC thật (import, property_wrapper, error_handling, docstring)
-    # Bỏ tên class/function tự đặt (type_declaration, function_signature) — không phải concept
-    JIT_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config', 'escalated'}
+    # Chỉ JIT cho keywords là KIẾN THỨC thật — cùng KEYWORD_SOURCES
     for item in resolved_concepts.get('proposed', []):
         source = item.get('source', '')
-        if source and source not in JIT_SOURCES:
+        if source and source not in KEYWORD_SOURCES:
             continue
         keyword = item.get('keyword', '') or item.get('proposed_name', '') or item.get('name', '')
         if not keyword:
@@ -148,6 +159,10 @@ def get_concept_name(concept_code: str, reuse_inventory: dict) -> str:
 
     e.g. GENERATIVE_CONTENT_APPLICATION -> 'Generative Content Application'
     """
+    # FOR_LOOP hiển thị là "Definite Iteration" (lặp với số lần xác định) —
+    # khái niệm chuẩn hơn "Loop"; for/while/forEach là keyword/SIO cụ thể
+    if concept_code == 'FOR_LOOP':
+        return 'Definite Iteration'
     concepts = reuse_inventory.get('master_tree', {}).get('concepts', {})
     data = concepts.get(concept_code, {})
     name = data.get('name', '')
@@ -171,21 +186,23 @@ def get_project_context(keywords_data: dict) -> str:
     return ''
 
 
-def generate_ulo(concept_code: str, description: str) -> dict:
+def generate_ulo(concept_code: str, description: str, concept_name: str = '') -> dict:
     """Generate ULO (UNIVERSAL tier) from concept description.
 
     Uses LLM to write a natural, context-aware description; falls back to
     the concept description (or template) if LLM unavailable.
     """
+    name_hint = concept_name or concept_code
     # Try LLM first for a natural description
     llm_desc = _llm_generate(
         "Bạn là chuyên gia sư phạm. Viết 1 câu mô tả ULO (Universal Learning Objective) "
         "bắt đầu bằng 'Người học có khả năng hiểu' cho khái niệm sau. "
+        f"Dùng đúng tên khái niệm '{name_hint}' (không dùng mã code, không dùng tên khác). "
         "QUAN TRỌNG: dùng tên khái niệm tự nhiên bằng tiếng Việt, KHÔNG chèn mã code "
         "(tên viết hoa như GENERATIVE_CONTENT_APPLICATION) vào câu văn. "
         "Giữ nguyên thuật ngữ tiếng Anh chuyên ngành (không dịch sang tiếng Việt) nếu là khái niệm kỹ thuật quốc tế, ví dụ như tên gốc của khái niệm đang xét. "
         "Trả về JSON: {\"description\": \"...\"}",
-        f"Khái niệm: {concept_code}. Mô tả: {description}"
+        f"Khái niệm: {name_hint}. Mô tả: {description}"
     )
     if llm_desc:
         final_desc = llm_desc
@@ -392,7 +409,7 @@ def main():
         concept_name = get_concept_name(concept_code, inventory)
         print(f"  → Generating LOs for {concept_name}")
 
-        ulo = generate_ulo(concept_code, description)
+        ulo = generate_ulo(concept_code, description, concept_name)
         cio = generate_cio(concept_code, description)
         sio = generate_sio(concept_code, concept_name, description,
                            project_context, args.target_tech,

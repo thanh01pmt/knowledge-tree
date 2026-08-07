@@ -27,6 +27,17 @@ const STORAGE_KEY = 'orchable-topic-roadmap-progress';
 function transformToCardData(roadmap) {
   if (!roadmap?.phases) return { phases: [], cards: [] };
 
+  // Gom toàn bộ LO của MỖI concept từ mọi phase (ULO+CIO+SIO)
+  // → mỗi card luôn có CẢ Concept (ULO/CIO) lẫn Keyword (SIO), không thiếu bên nào
+  const conceptLoisAll = new Map();  // concept_code -> [all LOs across phases]
+  roadmap.phases.forEach(phase => {
+    (phase.milestones || []).forEach(milestone => {
+      const key = milestone.concept_code;
+      if (!conceptLoisAll.has(key)) conceptLoisAll.set(key, []);
+      (milestone.learning_objectives || []).forEach(lo => conceptLoisAll.get(key).push({ ...lo }));
+    });
+  });
+
   const cards = [];
   roadmap.phases.forEach(phase => {
     const pid = phase.phase_id;
@@ -35,6 +46,11 @@ function transformToCardData(roadmap) {
       const ulos = los.filter(lo => lo.lo_type === 'UNIVERSAL');
       const cios = los.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
       const sios = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
+      // Lấy đủ LO của concept này từ MỌI phase (không chỉ phase hiện tại)
+      const allLois = conceptLoisAll.get(milestone.concept_code) || los;
+      const allUlos = allLois.filter(lo => lo.lo_type === 'UNIVERSAL');
+      const allCios = allLois.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
+      const allSios = allLois.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
 
       // Knowledge items theo thiết kế:
       // - ULO/CIO cùng concept → GOM thành 1 item "Concept <Tên>" (không tách tầng)
@@ -43,8 +59,8 @@ function transformToCardData(roadmap) {
       const knowledge = [];
       const conceptLabel = humanizeCode(milestone.concept_code);
 
-      // Gom ULO + CIO của concept thành 1 item "Concept XYZ"
-      const conceptLois = [...ulos, ...cios];
+      // Gom ULO + CIO của concept thành 1 item "Concept XYZ" (từ MỌI phase)
+      const conceptLois = [...allUlos, ...allCios];
       if (conceptLois.length > 0) {
         // Bloom tag đa cấp: gom các bloom khác nhau (VD understand·apply)
         const blooms = [...new Set(conceptLois.map(lo => (lo.bloom_level || '').toLowerCase()).filter(Boolean))];
@@ -72,10 +88,10 @@ function transformToCardData(roadmap) {
         });
       }
 
-      // SIO → mỗi item "Keyword X" (dedup keyword trùng)
-      if (sios.length > 0) {
+      // SIO → mỗi item "Keyword X" (từ MỌI phase, dedup keyword trùng)
+      if (allSios.length > 0) {
         const seenKws = new Set();
-        sios.forEach((sio, i) => {
+        allSios.forEach((sio, i) => {
           const kw = (sio.keyword || '').trim();
           if (kw && seenKws.has(kw)) return;
           if (kw) seenKws.add(kw);
@@ -120,6 +136,7 @@ function humanizeCode(code) {
   // "LOCAL_VIEW_STATE" → "Local View State" | "CORE_LIBRARIES" → "Core Libraries"
   // (chỉ capitalize khi code là UPPER_SNAKE; giữ nguyên tên có sẵn như "SwiftUI")
   if (!code) return '';
+  if (code === 'FOR_LOOP') return 'Definite Iteration';  // lặp với số lần xác định
   const s = String(code);
   if (s === s.toUpperCase()) {
     return s.toLowerCase().replace(/(^|_)(\w)/g, (m, sep, ch) => (sep ? ' ' : '') + ch.toUpperCase());
