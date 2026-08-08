@@ -7900,66 +7900,976 @@
     "schema_version": 1,
     "concept_prerequisites": [
       {
+        "concept_code": "API_INTEGRATION",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "KEY_VALUE_PERSISTENCE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "LOCAL_NOTIFICATION_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "UI_MODIFIERS_CONCEPT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "VIEW_TRANSITIONS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "ASYNC_PATTERNS",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "ASYNC_PATTERNS",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "ASYNC_PATTERNS",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "EVENT_LISTENERS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "FRONTEND_FRAMEWORKS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "KEY_VALUE_PERSISTENCE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "LOCAL_VIEW_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "MEDIA_PICKER_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "STATE_PROPERTY_WRAPPER",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "TWO_WAY_BINDING",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "requires": "UI_MODIFIERS_CONCEPT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "EVENT_LISTENERS",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "EVENT_LISTENERS",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "EVENT_LISTENERS",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "EVENT_LISTENERS",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "EVENT_LISTENERS",
+        "requires": "KEY_VALUE_PERSISTENCE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
         "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
         "requires": "API_INTEGRATION",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.9,
-        "hub": false,
-        "judge_rationale": "API_INTEGRATION is a foundation for IAM since authentication/authorization often relies on network requests; API_INTEGRATION appears in T02 before IAM in T05."
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "requires": "TYPE_SYSTEMS_AND_SAFETY",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "LOCAL_NOTIFICATION_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "LOCAL_NOTIFICATION_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "requires": "KEY_VALUE_PERSISTENCE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "requires": "TWO_WAY_BINDING",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "requires": "UI_MODIFIERS_CONCEPT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PROJECT_ASSETS_MANAGEMENT",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "PROJECT_ASSETS_MANAGEMENT",
+        "requires": "LOCAL_VIEW_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "PROJECT_ASSETS_MANAGEMENT",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "EVENT_LISTENERS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "KEY_VALUE_PERSISTENCE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "requires": "TYPE_SYSTEMS_AND_SAFETY",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "CREATIONAL_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "FRONTEND_FRAMEWORKS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "KEY_VALUE_PERSISTENCE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "MEDIA_PICKER_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "STATE_PROPERTY_WRAPPER",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "TWO_WAY_BINDING",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "TYPE_SYSTEMS_AND_SAFETY",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "UI_MODIFIERS_CONCEPT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "VIEW_TRANSITIONS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
       },
       {
         "concept_code": "STATE_PROPERTY_WRAPPER",
         "requires": "DECLARATIVE_UI_PARADIGM",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.95,
-        "hub": false,
-        "judge_rationale": "State property wrappers are a feature of declarative UI frameworks; DECLARATIVE_UI_PARADIGM appears in T06 before STATE_PROPERTY_WRAPPER in T15."
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "FRONTEND_FRAMEWORKS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "MEDIA_PICKER_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "TWO_WAY_BINDING",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "requires": "UI_MODIFIERS_CONCEPT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
       },
       {
         "concept_code": "UI_MODIFIERS_CONCEPT",
         "requires": "DECLARATIVE_UI_PARADIGM",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.95,
-        "hub": false,
-        "judge_rationale": "UI modifiers are a core part of declarative UI; DECLARATIVE_UI_PARADIGM appears in T06 before UI_MODIFIERS_CONCEPT in T11."
+        "confidence": 0.5,
+        "hub": true
       },
       {
-        "concept_code": "EVENT_LISTENERS",
-        "requires": "DECLARATIVE_UI_PARADIGM",
-        "source": "LLM_CROSS_CONCEPT",
-        "confidence": 0.6,
-        "rationale": "Event listeners in declarative UI are expressed as callbacks attached to UI components, requiring comprehension of the d"
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "EVENT_LISTENERS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
       },
       {
-        "concept_code": "FRONTEND_FRAMEWORKS",
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "STATE_PROPERTY_WRAPPER",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "API_INTEGRATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
         "requires": "DECLARATIVE_UI_PARADIGM",
-        "source": "LLM_CROSS_CONCEPT",
-        "confidence": 0.6,
-        "rationale": "Modern frontend frameworks are built around declarative UI concepts, so understanding the paradigm is prerequisite to le"
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "FRONTEND_FRAMEWORKS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "MEDIA_PICKER_API",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "SHARED_OBSERVABLE_STATE",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "STATE_PROPERTY_WRAPPER",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "TWO_WAY_BINDING",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "requires": "UI_MODIFIERS_CONCEPT",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.5,
+        "hub": true
       }
     ],
     "concept_sequence": [
       {
-        "concept_code": "API_INTEGRATION",
-        "task_id": "T02",
+        "concept_code": "LOCAL_VIEW_STATE",
+        "task_id": "T06",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
-        "concept_code": "TYPE_SYSTEMS_AND_SAFETY",
-        "task_id": "T04",
+        "concept_code": "PROJECT_ASSETS_MANAGEMENT",
+        "task_id": "T06",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
-        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-        "task_id": "T05",
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T06",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "TWO_WAY_BINDING",
+        "task_id": "T16",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T16",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T16",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T07",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "task_id": "T07",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T07",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "task_id": "T09",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
         "concept_code": "API_INTEGRATION",
         "task_id": "T09",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T15",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T15",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "task_id": "T15",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "task_id": "T11",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T11",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T11",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "task_id": "T02",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T02",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "CREATIONAL_PATTERNS",
+        "task_id": "T02",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "task_id": "T12",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "JSON_SERIALIZATION",
+        "task_id": "T12",
         "encounter": 2,
         "bloom_cap": "APPLY"
       },
@@ -7970,14 +8880,146 @@
         "bloom_cap": "ANALYZE"
       },
       {
+        "concept_code": "MVVM_PATTERN",
+        "task_id": "T12",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "TYPE_SYSTEMS_AND_SAFETY",
+        "task_id": "T04",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T05",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "task_id": "T05",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "task_id": "T05",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "MVVM_PATTERN",
+        "task_id": "T05",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T08",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "LOCAL_VIEW_STATE",
+        "task_id": "T08",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T08",
+        "encounter": 6,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T13",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T13",
+        "encounter": 7,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "task_id": "T13",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T13",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "task_id": "T14",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
         "concept_code": "API_INTEGRATION",
         "task_id": "T14",
         "encounter": 4,
         "bloom_cap": "ANALYZE"
       },
       {
-        "concept_code": "STATE_PROPERTY_WRAPPER",
-        "task_id": "T15",
+        "concept_code": "MVVM_PATTERN",
+        "task_id": "T14",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "task_id": "T10",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T10",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T10",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T10",
+        "encounter": 8,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "EVENT_LISTENERS",
+        "task_id": "T10",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "MVVM_PATTERN",
+        "task_id": "T10",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T17",
+        "encounter": 9,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "ASYNC_PATTERNS",
+        "task_id": "T17",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
@@ -7988,33 +9030,81 @@
         "bloom_cap": "APPLY"
       },
       {
-        "concept_code": "UI_MODIFIERS_CONCEPT",
-        "task_id": "T13",
-        "encounter": 1,
-        "bloom_cap": "UNDERSTAND"
-      },
-      {
-        "concept_code": "UI_MODIFIERS_CONCEPT",
-        "task_id": "T16",
+        "concept_code": "TWO_WAY_BINDING",
+        "task_id": "T19",
         "encounter": 2,
         "bloom_cap": "APPLY"
       },
       {
-        "concept_code": "DECLARATIVE_UI_PARADIGM",
-        "task_id": "T07",
+        "concept_code": "MEDIA_PICKER_API",
+        "task_id": "T19",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
+        "concept_code": "FRONTEND_FRAMEWORKS",
+        "task_id": "T19",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T18",
+        "encounter": 6,
+        "bloom_cap": "ANALYZE"
+      },
+      {
         "concept_code": "DECLARATIVE_UI_PARADIGM",
-        "task_id": "T08",
+        "task_id": "T18",
+        "encounter": 10,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "VIEW_TRANSITIONS",
+        "task_id": "T18",
         "encounter": 2,
         "bloom_cap": "APPLY"
       },
       {
-        "concept_code": "DECLARATIVE_UI_PARADIGM",
-        "task_id": "T06",
+        "concept_code": "STATE_PROPERTY_WRAPPER",
+        "task_id": "T18",
         "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T03",
+        "encounter": 7,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T03",
+        "encounter": 6,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "MVVM_PATTERN",
+        "task_id": "T03",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "ASYNC_PATTERNS",
+        "task_id": "T20",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+        "task_id": "T20",
+        "encounter": 6,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "task_id": "T20",
+        "encounter": 8,
         "bloom_cap": "ANALYZE"
       },
       {
@@ -8024,63 +9114,51 @@
         "bloom_cap": "UNDERSTAND"
       },
       {
+        "concept_code": "JSON_SERIALIZATION",
+        "task_id": "T21",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T21",
+        "encounter": 7,
+        "bloom_cap": "ANALYZE"
+      },
+      {
         "concept_code": "KEY_VALUE_PERSISTENCE",
         "task_id": "T21",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
-        "concept_code": "EVENT_LISTENERS",
-        "task_id": "T10",
-        "encounter": 1,
-        "bloom_cap": "UNDERSTAND"
-      },
-      {
-        "concept_code": "UI_MODIFIERS_CONCEPT",
-        "task_id": "T11",
-        "encounter": 3,
-        "bloom_cap": "ANALYZE"
-      },
-      {
-        "concept_code": "API_INTEGRATION",
-        "task_id": "T03",
-        "encounter": 5,
-        "bloom_cap": "ANALYZE"
-      },
-      {
-        "concept_code": "FRONTEND_FRAMEWORKS",
-        "task_id": "T19",
-        "encounter": 1,
-        "bloom_cap": "UNDERSTAND"
-      },
-      {
-        "concept_code": "STATE_PROPERTY_WRAPPER",
-        "task_id": "T18",
-        "encounter": 3,
-        "bloom_cap": "ANALYZE"
-      },
-      {
         "concept_code": "API_INTEGRATION",
         "task_id": "T22",
-        "encounter": 6,
+        "encounter": 8,
         "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "task_id": "T22",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
       }
     ],
     "walking_skeleton": {
       "epitome": "Create the Xcode project from the SwiftUI iOS App template",
       "elaborations": [
-        "MVP: Implement FirebaseManager singleton that exposes Auth, Fires",
-        "MVP: Add ViewState enum for loading, loaded, empty, and error scr",
-        "MVP: Implement AuthViewModel with register, login, signOut, and e",
-        "MVP: Implement ChatUser, ChatMessage, and RecentMessage Firestore",
-        "MVP: Implement RecentChatViewModel to fetch recent messages and a",
-        "MVP: Implement NewChatViewModel to fetch all registered users",
-        "MVP: Implement NewChatView with user list and didSelectNewUser ca",
-        "MVP: Implement ProfileView with user info, edit profile navigatio",
-        "MVP: Implement RecentChatView with conversation list, header, pro",
-        "MVP: Implement reusable SecureTextField with show/hide password t",
-        "MVP: Implement login screen with email/password fields, sign-in a",
-        "MVP: Implement registration screen with email, password, confirm "
+        "Stage 2 — Static UI with mock data: Implement WelcomeView with branded hero and navigation to lo",
+        "Stage 2 — Static UI with mock data: Implement reusable SecureTextField with show/hide password t",
+        "Stage 2 — Static UI with mock data: Implement login screen with email/password fields, sign-in a",
+        "Stage 2 — Static UI with mock data: Implement ChatUser, ChatMessage, and RecentMessage Firestore",
+        "Stage 2 — Static UI with mock data: Implement NewChatView with user list and didSelectNewUser ca",
+        "Stage 2 — Static UI with mock data: Implement ChatDetailView with message bubbles and a chat inp",
+        "Stage 2 — Static UI with mock data: Implement FirebaseManager singleton that exposes Auth, Fires",
+        "Stage 2 — Static UI with mock data: Implement RecentChatViewModel to fetch recent messages and a",
+        "Stage 2 — Static UI with mock data: Add ViewState enum for loading, loaded, empty, and error scr",
+        "Stage 3 — Real authentication: Implement AuthViewModel with register, login, signOut, and e",
+        "Stage 3 — Real authentication: Implement registration screen with email, password, confirm ",
+        "Stage 3 — Real authentication: Implement RecentChatView with conversation list, header, pro"
       ]
     },
     "zpd_checks": [
@@ -8092,11 +9170,100 @@
         "issues": []
       },
       {
-        "task_id": "T02",
+        "task_id": "T06",
         "new_concepts": [
-          "API_INTEGRATION"
+          "DECLARATIVE_UI_PARADIGM",
+          "LOCAL_VIEW_STATE",
+          "PROJECT_ASSETS_MANAGEMENT"
         ],
         "known_concepts": [],
+        "verdict": "TOO_MANY_NEW",
+        "issues": [
+          "has 3 new concepts (limit 2) — intrinsic load overload (Sweller), consider splitting the task"
+        ]
+      },
+      {
+        "task_id": "T16",
+        "new_concepts": [
+          "TWO_WAY_BINDING",
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T07",
+        "new_concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM",
+          "LOCAL_VIEW_STATE"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T09",
+        "new_concepts": [
+          "API_INTEGRATION",
+          "JSON_SERIALIZATION"
+        ],
+        "known_concepts": [],
+        "verdict": "NO_ZPD_BRIDGE",
+        "issues": [
+          "no known-concept bridge (Vygotsky: tasks should connect prior knowledge to new)"
+        ]
+      },
+      {
+        "task_id": "T15",
+        "new_concepts": [
+          "STATE_PROPERTY_WRAPPER"
+        ],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM",
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T11",
+        "new_concepts": [
+          "PUBLISHER_SUBSCRIBER_MODEL"
+        ],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM",
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T02",
+        "new_concepts": [
+          "CREATIONAL_PATTERNS",
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T12",
+        "new_concepts": [
+          "MVVM_PATTERN"
+        ],
+        "known_concepts": [
+          "API_INTEGRATION",
+          "JSON_SERIALIZATION",
+          "PUBLISHER_SUBSCRIBER_MODEL"
+        ],
         "verdict": "OK",
         "issues": []
       },
@@ -8111,27 +9278,36 @@
       },
       {
         "task_id": "T05",
+        "new_concepts": [],
+        "known_concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT",
+          "MVVM_PATTERN",
+          "PUBLISHER_SUBSCRIBER_MODEL",
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T08",
+        "new_concepts": [],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM",
+          "LOCAL_VIEW_STATE",
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T13",
         "new_concepts": [
-          "IDENTITY_AND_ACCESS_MANAGEMENT"
+          "VIEW_TRANSITIONS"
         ],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T09",
-        "new_concepts": [],
         "known_concepts": [
-          "API_INTEGRATION"
-        ],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T12",
-        "new_concepts": [],
-        "known_concepts": [
-          "API_INTEGRATION"
+          "DECLARATIVE_UI_PARADIGM",
+          "SHARED_OBSERVABLE_STATE",
+          "UI_MODIFIERS_CONCEPT"
         ],
         "verdict": "OK",
         "issues": []
@@ -8140,70 +9316,71 @@
         "task_id": "T14",
         "new_concepts": [],
         "known_concepts": [
-          "API_INTEGRATION"
+          "API_INTEGRATION",
+          "MVVM_PATTERN",
+          "PUBLISHER_SUBSCRIBER_MODEL"
         ],
         "verdict": "OK",
         "issues": []
       },
       {
-        "task_id": "T15",
+        "task_id": "T10",
         "new_concepts": [
-          "STATE_PROPERTY_WRAPPER"
+          "EVENT_LISTENERS"
         ],
-        "known_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION",
+          "DECLARATIVE_UI_PARADIGM",
+          "MVVM_PATTERN",
+          "PUBLISHER_SUBSCRIBER_MODEL",
+          "SHARED_OBSERVABLE_STATE"
+        ],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "T17",
-        "new_concepts": [],
+        "new_concepts": [
+          "ASYNC_PATTERNS"
+        ],
         "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM",
           "STATE_PROPERTY_WRAPPER"
         ],
         "verdict": "OK",
         "issues": []
       },
       {
-        "task_id": "T13",
+        "task_id": "T19",
         "new_concepts": [
-          "UI_MODIFIERS_CONCEPT"
+          "FRONTEND_FRAMEWORKS",
+          "MEDIA_PICKER_API"
         ],
-        "known_concepts": [],
+        "known_concepts": [
+          "TWO_WAY_BINDING"
+        ],
         "verdict": "OK",
         "issues": []
       },
       {
-        "task_id": "T16",
+        "task_id": "T18",
         "new_concepts": [],
         "known_concepts": [
-          "UI_MODIFIERS_CONCEPT"
+          "DECLARATIVE_UI_PARADIGM",
+          "SHARED_OBSERVABLE_STATE",
+          "STATE_PROPERTY_WRAPPER",
+          "VIEW_TRANSITIONS"
         ],
         "verdict": "OK",
         "issues": []
       },
       {
-        "task_id": "T07",
-        "new_concepts": [
-          "DECLARATIVE_UI_PARADIGM"
-        ],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T08",
+        "task_id": "T03",
         "new_concepts": [],
         "known_concepts": [
-          "DECLARATIVE_UI_PARADIGM"
-        ],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T06",
-        "new_concepts": [],
-        "known_concepts": [
-          "DECLARATIVE_UI_PARADIGM"
+          "API_INTEGRATION",
+          "MVVM_PATTERN",
+          "SHARED_OBSERVABLE_STATE"
         ],
         "verdict": "OK",
         "issues": []
@@ -8213,7 +9390,11 @@
         "new_concepts": [
           "LOCAL_NOTIFICATION_API"
         ],
-        "known_concepts": [],
+        "known_concepts": [
+          "ASYNC_PATTERNS",
+          "PUBLISHER_SUBSCRIBER_MODEL",
+          "SHARED_OBSERVABLE_STATE"
+        ],
         "verdict": "OK",
         "issues": []
       },
@@ -8222,51 +9403,9 @@
         "new_concepts": [
           "KEY_VALUE_PERSISTENCE"
         ],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T10",
-        "new_concepts": [
-          "EVENT_LISTENERS"
-        ],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T11",
-        "new_concepts": [],
         "known_concepts": [
-          "UI_MODIFIERS_CONCEPT"
-        ],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T03",
-        "new_concepts": [],
-        "known_concepts": [
-          "API_INTEGRATION"
-        ],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T19",
-        "new_concepts": [
-          "FRONTEND_FRAMEWORKS"
-        ],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "T18",
-        "new_concepts": [],
-        "known_concepts": [
-          "STATE_PROPERTY_WRAPPER"
+          "API_INTEGRATION",
+          "JSON_SERIALIZATION"
         ],
         "verdict": "OK",
         "issues": []
@@ -8275,159 +9414,375 @@
         "task_id": "T22",
         "new_concepts": [],
         "known_concepts": [
-          "API_INTEGRATION"
+          "API_INTEGRATION",
+          "LOCAL_NOTIFICATION_API"
         ],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-1",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-2",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-3",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-4",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-5",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-6",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-7",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-gap-8",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-debt-1",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-debt-2",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-debt-3",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-debt-4",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-debt-5",
-        "new_concepts": [],
-        "known_concepts": [],
-        "verdict": "OK",
-        "issues": []
-      },
-      {
-        "task_id": "polish-debt-6",
-        "new_concepts": [],
-        "known_concepts": [],
         "verdict": "OK",
         "issues": []
       }
     ],
     "mastery_gates": [
       {
-        "phase": "FOUNDATION",
+        "phase": "Stage 1 — Xcode scaffold and first build",
         "criteria": [
           "T01: Project opens in Xcode and builds for the iOS Simulator",
           "T01: The default SwiftUI template app launches in the simulator"
         ],
-        "next_phase": "MVP"
+        "next_phase": "Stage 2 — Static UI with mock data"
       },
       {
-        "phase": "MVP",
+        "phase": "Stage 2 — Static UI with mock data",
         "criteria": [
-          "T02: FirebaseManager.shared.auth resolves to the app's Firebase Auth instance",
-          "T02: FirebaseManager.shared.firestore and storage resolve after FirebaseApp.configure()",
-          "T04: AuthViewModel.viewState can be set to .loading/.loaded/.error to drive button labels and alerts",
+          "T06: A guest sees the Talky welcome screen with a Start Messaging button",
+          "T06: Start Messaging opens RegisterxView",
+          "T06: A login link opens LoginxView",
+          "T16: Password field can toggle between secure dots and plain text",
+          "T07: User can enter credentials and tap Sign in",
+          "T07: Invalid credentials show an alert",
+          "T07: 'Loading...' appears while the request is in flight",
+          "T09: All three models are Codable and Identifiable"
+        ],
+        "next_phase": "Stage 3 — Real authentication"
+      },
+      {
+        "phase": "Stage 3 — Real authentication",
+        "criteria": [
           "T05: User can register with email/password and be signed in",
           "T05: User can log in with valid credentials",
           "T05: User can log out and loggedOut becomes true",
           "T05: editProfile validates current password and repeated new password",
-          "T09: All three models are Codable and Identifiable"
+          "T08: User can enter email and password and tap Sign up",
+          "T08: Password mismatch or invalid email shows an alert",
+          "T08: A successful registration signs the user in",
+          "T13: Signed-in user sees recent conversations"
         ],
-        "next_phase": "EXTEND"
+        "next_phase": "Stage 4 — Realtime messaging and recent conversations"
       },
       {
-        "phase": "EXTEND",
+        "phase": "Stage 4 — Realtime messaging and recent conversations",
+        "criteria": [
+          "T10: Messages appear in the conversation as soon as they are written to Firestore",
+          "T10: Sending appends the text to the peer's Firestore collection",
+          "T10: New message triggers a push notification to the recipient via PushNotificationManager"
+        ],
+        "next_phase": "Stage 5 — Profile editing"
+      },
+      {
+        "phase": "Stage 5 — Profile editing",
+        "criteria": [
+          "T17: Profile shows the current user's photo and email",
+          "T17: Edit Profile opens EditProfileView",
+          "T17: Log Out signs out and dismisses the profile screen",
+          "T19: Presenting ImagePicker shows the photo library",
+          "T19: Selecting an image updates the bound UIImage and dismisses the picker",
+          "T18: Save calls AuthViewModel.editProfile with the new password",
+          "T18: Password mismatch shows an alert",
+          "T18: Tapping the camera opens ImagePicker and updates authViewModel.image"
+        ],
+        "next_phase": "Stage 6 — Push notifications and hardening"
+      },
+      {
+        "phase": "Stage 6 — Push notifications and hardening",
         "criteria": [
           "T03: FirebaseApp.configure() is called before any Firebase service is used",
           "T03: The app launches into RecentChatView with AuthViewModel available in the environment",
-          "T03: Remote notification registration is requested at launch"
+          "T03: Remote notification registration is requested at launch",
+          "T20: App can request alert/badge/sound permission from the user",
+          "T20: hasPermission reflects the current authorization status",
+          "T21: FCM token is persisted in UserDefaults",
+          "T21: sendPushNotification posts a JSON notification to FCM and prints the response",
+          "T22: FCM token is printed and saved after launch"
         ],
         "next_phase": "POLISH"
       }
     ],
-    "master_bloom_progression": {},
+    "master_bloom_progression": {
+      "2D_3D_TRANSFORMATIONS_MATH": 1,
+      "ABSTRACTION_LAYERS": 1,
+      "ACCESS_MODIFIERS": 1,
+      "ADJUSTMENT_LAYERS": 1,
+      "AFFORDANCES_SIGNIFIERS": 1,
+      "AGENTIC_WORKFLOW_ORCHESTRATION": 1,
+      "AGENT_MEMORY_SYSTEMS": 1,
+      "AGILE_PRINCIPLES": 1,
+      "AIOT_DATA_PIPELINE": 1,
+      "AI_ARTIFACT_VERIFICATION_AND_EVALUATION": 1,
+      "AI_BIAS": 1,
+      "AI_GOVERNANCE_AND_RED_TEAMING": 1,
+      "AI_HISTORY_MILESTONES": 1,
+      "AI_VS_ML": 1,
+      "ALGORITHMIC_BIAS_SOCIETY": 1,
+      "ALGORITHMIC_GENERATIVE_ART": 1,
+      "API_INTEGRATION": 1,
+      "APP_EXTENSION_MODEL": 1,
+      "ARDUINO_BASICS": 1,
+      "ARRAY_OPERATIONS": 1,
+      "ASYNC_PATTERNS": 1,
+      "AUTONOMOUS_DRONE_NAVIGATION": 1,
+      "BACKEND_FRAMEWORKS": 1,
+      "ELECTRONIC_ELEMENTS": 1,
+      "MECHANICAL_SIMPLE": 1,
+      "BATTERY_MANAGEMENT_ALGORITHMS": 1,
+      "BEHAVIORAL_PATTERNS": 1,
+      "BIG_O_NOTATION": 1,
+      "BIOINFORMATICS_GENOMIC_ANALYSIS": 1,
+      "BOOLEAN_OPERATIONS_3D": 1,
+      "BREAKPOINTS": 1,
+      "BUBBLE_INSERTION_SORT": 1,
+      "CACHE_HIERARCHY": 1,
+      "CAP_THEOREM": 1,
+      "CARBON_FOOTPRINT_ACCOUNTING_SOFTWARE": 1,
+      "CHART_TYPES": 1,
+      "CIRCUIT_FUNDAMENTALS": 1,
+      "CLASS_DEFINITION": 1,
+      "CLOSED_LOOP_NEUROSTIMULATION": 1,
+      "CLOUD_DEPLOYMENT_MODELS": 1,
+      "CLOUD_MODELS_IAAS_PAAS_SAAS": 1,
+      "CLUSTERING_ALGORITHMS": 1,
+      "COLLABORATIVE_PLATFORMS": 1,
+      "COLLISION_DETECTION": 1,
+      "COLOR_THEORY": 1,
+      "COLOR_THEORY_AND_PALETTE_DESIGN": 1,
+      "COMBINATORICS": 1,
+      "COMPOSITION_PRINCIPLES": 1,
+      "COMPUTATIONAL_GENETICS_MODELS": 1,
+      "COMPUTER_VISION_FEATURE_EXTRACTION": 1,
+      "COMPUTE_IN_MEMORY_ACCELERATION": 1,
+      "COPYRIGHT_CREATIVE_COMMONS": 1,
+      "CORE_DATA_ORM": 1,
+      "CPU_ARCHITECTURE": 1,
+      "CREATIONAL_PATTERNS": 1,
+      "CROSSCUTTING_SCIENCE_CONCEPTS": 1,
+      "CSS_SELECTORS": 1,
+      "CYBERBULLYING": 1,
+      "DATABASE_NORMALIZATION": 1,
+      "DATA_CLEANING_TECHNIQUES": 1,
+      "DATA_DISTRIBUTIONS": 1,
+      "DATA_EXPLORATION_EDA": 1,
+      "DATA_LITERACY_DIKW_MODEL": 1,
+      "DECENTRALIZED_LEDGER_CONSENSUS": 1,
+      "DESIGN_THINKING_PROCESS": 1,
+      "DIGITAL_ANALOG_IO": 1,
+      "DIGITAL_DIVIDE": 1,
+      "DIGITAL_FILTERING_AND_SAMPLING": 1,
+      "DIGITAL_FOOTPRINT": 1,
+      "DIGITAL_IDENTITY": 1,
+      "DIGITAL_TWIN_SIMULATION": 1,
+      "DIVIDE_CONQUER": 1,
+      "DMA": 1,
+      "DNS_LOOKUP": 1,
+      "DOM_MANIPULATION": 1,
+      "DRAG_GESTURE": 1,
+      "DURABLE_AGENT_STATE_MANAGEMENT": 1,
+      "DYNAMIC_PROGRAMMING": 1,
+      "EDGE_MODEL_QUANTIZATION": 1,
+      "ENGINEERING_DESIGN_CYCLE": 1,
+      "ERROR_MSG_PARSING": 1,
+      "ETHICAL_AI_AND_BIAS_AWARENESS": 1,
+      "EVENT_BASED_PROGRAMMING": 1,
+      "EVENT_LISTENERS": 1,
+      "FEEDBACK_AND_RESPONSE": 1,
+      "FETCH_DECODE_EXECUTE": 1,
+      "FILE_ALLOCATION": 1,
+      "FIRST_CLASS_VALUES": 1,
+      "FORMAL_PROGRAM_VERIFICATION": 1,
+      "FOR_LOOP": 1,
+      "FOURIER_TRANSFORM_SIGNAL_ANALYSIS": 1,
+      "FRONTEND_FRAMEWORKS": 1,
+      "GAME_LOOP": 1,
+      "GRADIENT_DESCENT_OPTIMIZATION": 1,
+      "GRAPH_BASED_AGENTIC_WORKFLOW": 1,
+      "GRAPH_MODELS": 1,
+      "GREEDY_ALGORITHMS": 1,
+      "HDD_VS_SSD": 1,
+      "HTML_STRUCTURE": 1,
+      "HTTP_METHODS": 1,
+      "HYBRID_VECTOR_SPARSE_SEARCH": 1,
+      "IDENTITY_AND_ACCESS_MANAGEMENT": 1,
+      "IF_ELSE_STATEMENT": 1,
+      "IMAGE_COMPOSITING": 1,
+      "IMAGE_RETOUCHING": 1,
+      "IMAGE_WARPING": 1,
+      "IMMUTABLE_CONCEPTS": 1,
+      "IMPLICIT_EXPLICIT_ANIMATION": 1,
+      "INCLUSIVE_DESIGN_ACCESSIBILITY_WCAG": 1,
+      "INFORMATION_CREDIBILITY": 1,
+      "INFORMATION_ENTROPY_METRICS": 1,
+      "INHERITANCE_SYNTAX": 1,
+      "IOT_MESSAGING_PROTOCOLS": 1,
+      "IOT_SAFETY_RISKS": 1,
+      "IOT_SECURITY_THREATS": 1,
+      "IO_METHODS_POLLING_INTERRUPT": 1,
+      "IPV4_VS_IPV6": 1,
+      "JSON_SERIALIZATION": 1,
+      "KEYFRAME_ANIMATION": 1,
+      "KEY_VALUE_PERSISTENCE": 1,
+      "KNOWLEDGE_GRAPH_RETRIEVAL_AUGMENTATION": 1,
+      "LARGE_LANGUAGE_MODEL_CONCEPTS": 1,
+      "LAYER_BLEND_MODES": 1,
+      "LAYER_MASKING": 1,
+      "LAYOUT_GRID_AND_COMPOSITION_RULES": 1,
+      "LEADERBOARD_SYSTEM": 1,
+      "LEVEL_LAYOUT": 1,
+      "LIGHTING_AND_SHADOWS": 1,
+      "LIGHT_MOTION_SENSORS": 1,
+      "LINEAR_BINARY_SEARCH": 1,
+      "LIST_OPERATIONS": 1,
+      "LOCAL_NOTIFICATION_API": 1,
+      "LOCAL_VIEW_STATE": 1,
+      "LOCATION_SERVICES_API": 1,
+      "LOGIC_ERRORS": 1,
+      "LOGIC_GATES": 1,
+      "MALWARE_KINDS": 1,
+      "MAPREDUCE": 1,
+      "MAP_INTEGRATION": 1,
+      "MARITIME_UNDERWATER_ROBOTICS": 1,
+      "MATERIAL_AND_TEXTURE": 1,
+      "MECHATRONICS_SYSTEMS_DIAGNOSTICS": 1,
+      "MEDIA_PICKER_API": 1,
+      "MEDICAL_IMAGE_DICOM_SEGMENTATION": 1,
+      "MEMORY_TYPES": 1,
+      "MESH_EXTRUSION": 1,
+      "METHOD_OVERRIDING": 1,
+      "MODEL_CONTEXT_PROTOCOL_STANDARD": 1,
+      "MOLECULAR_DYNAMICS_MODELING": 1,
+      "MOTOR_CONTROL": 1,
+      "MULTI_AGENT_COOPERATION": 1,
+      "MULTI_SENSOR_FUSION_ALGORITHMS": 1,
+      "MVVM_PATTERN": 1,
+      "NATURAL_LANGUAGE_PARSING": 1,
+      "NETIQUETTE": 1,
+      "TOPOLOGY_STRUCTURES": 1,
+      "NEURAL_NETWORKS_BASICS": 1,
+      "NEURAL_SIGNAL_DECODING_BCI": 1,
+      "NEUROMORPHIC_COMPUTING_SPIKING_NEURONS": 1,
+      "OBJECT_INSTANTIATION": 1,
+      "OBJECT_PROPERTIES": 1,
+      "ORBITAL_MECHANICS_SATELLITE_MESH": 1,
+      "OSI_MODEL": 1,
+      "PARAMETERIZED_QUANTUM_CIRCUITS": 1,
+      "PASSWORD_CRITERIA": 1,
+      "PATTERN_RECOGNITION": 1,
+      "PERSONAS_AND_SCENARIOS": 1,
+      "PHISHING_IDENTIFICATION": 1,
+      "PHOTOGRAMMETRY_AND_POINT_CLOUD": 1,
+      "PHYSICAL_FLUID_DYNAMICS_SIMULATION": 1,
+      "MEDIUM_TYPES": 1,
+      "CONSTRAINT_MECHANICS": 1,
+      "POLYGON_MESH": 1,
+      "PRIMITIVE_TYPE_DECLARATION": 1,
+      "PROBABILISTIC_VS_DETERMINISTIC_REASONING": 1,
+      "PROBABILITY_BASICS": 1,
+      "PROBLEM_DECOMPOSITION": 1,
+      "PROBLEM_DECOMPOSITION_CONCEPT": 1,
+      "PROCESS_VS_THREAD": 1,
+      "PROPOSITIONAL_LOGIC": 1,
+      "PROTOTYPING": 1,
+      "PUBLIC_KEY_INFRASTRUCTURE": 1,
+      "PUBLISHER_SUBSCRIBER_MODEL": 1,
+      "PWM": 1,
+      "QR_CODE_GENERATION": 1,
+      "QUANTITATIVE_FINANCIAL_RISK_MODELING": 1,
+      "QUANTUM_ENTANGLEMENT": 1,
+      "QUANTUM_KEY_DISTRIBUTION_QKD": 1,
+      "QUANTUM_LOGIC_GATES": 1,
+      "QUANTUM_REPEATER_NETWORKS": 1,
+      "QUANTUM_STATES_SUPERPOSITION": 1,
+      "QUEUE_OPERATIONS": 1,
+      "RADIATION_HARDENED_SPACE_COMPUTING": 1,
+      "REFERENCE_TYPE_DECLARATION": 1,
+      "REGRESSION_CLASSIFICATION": 1,
+      "REINFORCEMENT_LEARNING_BASICS": 1,
+      "RELATIONAL_VS_NONRELATIONAL": 1,
+      "RENDERING_PIPELINE": 1,
+      "RENEWABLE_ENERGY_FORECASTING": 1,
+      "REST_PRINCIPLES": 1,
+      "RETRIEVAL_AUGMENTED_GENERATION": 1,
+      "ROBOTIC_ACTUATION_CONTROL": 1,
+      "ROBOTIC_PATH_PLANNING": 1,
+      "ROUTING_SWITCHING": 1,
+      "RUNTIME_ERRORS": 1,
+      "SBC_BASICS": 1,
+      "SCHEDULING_ALGORITHMS": 1,
+      "SCIENTIFIC_INQUIRY_METHOD": 1,
+      "SCREEN_READERS": 1,
+      "SCRUM_ROLES_EVENTS": 1,
+      "SET_THEORY": 1,
+      "SHAPE_BUILDING": 1,
+      "SHARED_EDITING_ETIQUETTE": 1,
+      "SHARED_OBSERVABLE_STATE": 1,
+      "SIMULATION_MODELING": 1,
+      "SIMULTANEOUS_LOCALIZATION_MAPPING": 1,
+      "SINGULAR_VALUE_DECOMPOSITION": 1,
+      "SMALL_LANGUAGE_MODEL_OPTIMIZATION": 1,
+      "SMART_GRID_ENERGY_OPTIMIZATION": 1,
+      "SPATIAL_AUDIO_AND_HAPTICS": 1,
+      "SPATIAL_COMPUTING_XR_MAPPING": 1,
+      "SPEECH_RECOGNITION_AND_SYNTHESIS": 1,
+      "SQL_JOIN": 1,
+      "SQL_SELECT": 1,
+      "STACK_OPERATIONS": 1,
+      "STATIC_ATTRIBUTES": 1,
+      "STATIC_PROGRAM_ANALYSIS": 1,
+      "STATISTICAL_MEASURES": 1,
+      "STROKE_PROPERTIES": 1,
+      "STRUCTURAL_PATTERNS": 1,
+      "SUBNETTING": 1,
+      "SUSTAINABLE_COMPUTING_AND_EFFICIENT_AI": 1,
+      "SWARM_INTELLIGENCE_OPTIMIZATION": 1,
+      "SWARM_ROBOTICS_FORMATION_CONTROL": 1,
+      "SWITCH_CASE": 1,
+      "SYNTAX_ERRORS": 1,
+      "TAP_GESTURE": 1,
+      "TCP_HANDSHAKE": 1,
+      "TCP_IP_MODEL": 1,
+      "TEMP_HUMIDITY_SENSORS": 1,
+      "THREAT_MODELING_ASSESSMENT": 1,
+      "TINYML_INFERENCE": 1,
+      "TINY_MLOPS_LIFECYCLE_MANAGEMENT": 1,
+      "TRANSFORMATION_OPERATIONS": 1,
+      "TRANSFORMER_ARCHITECTURE": 1,
+      "TROUBLESHOOTING_STEPS": 1,
+      "TRUTH_TABLES": 1,
+      "TWO_FACTOR_AUTH": 1,
+      "TWO_WAY_BINDING": 1,
+      "TYPES_OF_AI": 1,
+      "TYPE_SYSTEMS_AND_SAFETY": 1,
+      "TYPOGRAPHY_AND_VISUAL_HIERARCHY": 1,
+      "UAV_FLIGHT_DYNAMICS_AND_CONTROL": 1,
+      "ULTRA_LOW_LATENCY_HFT_ARCHITECTURE": 1,
+      "UNIT_TESTING": 1,
+      "UNPLUGGED_ALGORITHM_MIMICRY": 1,
+      "USABILITY_TESTING": 1,
+      "USER_CENTERED_DESIGN": 1,
+      "USER_PERSONAS": 1,
+      "VECTOR_EMBEDDING_SEARCH": 1,
+      "VERSION_CONTROL_WORKFLOW": 1,
+      "VIEW_TRANSITIONS": 1,
+      "VIRTUALIZATION": 1,
+      "VIRTUAL_MEMORY": 1,
+      "VISUAL_BLOCK_TO_CODE_TRANSITION": 1,
+      "WCAG_PRINCIPLES": 1,
+      "WEARABLE_PHYSIOLOGICAL_MONITORING": 1,
+      "WHILE_LOOP": 1,
+      "WIREFRAMING": 1,
+      "ZERO_TRUST_ARCHITECTURE": 1
+    },
     "task_stage_mapping": {
       "T01": "Stage 1 — Xcode scaffold and first build",
-      "T02": "Stage 3 — Real authentication",
-      "T03": "Stage 3 — Real authentication",
-      "T04": "Stage 6 — Push notifications and hardening",
+      "T02": "Stage 2 — Static UI with mock data",
+      "T03": "Stage 6 — Push notifications and hardening",
+      "T04": "Stage 2 — Static UI with mock data",
       "T05": "Stage 3 — Real authentication",
       "T06": "Stage 2 — Static UI with mock data",
       "T07": "Stage 2 — Static UI with mock data",
-      "T08": "Stage 2 — Static UI with mock data",
-      "T09": "Stage 4 — Realtime messaging and recent conversations",
+      "T08": "Stage 3 — Real authentication",
+      "T09": "Stage 2 — Static UI with mock data",
       "T10": "Stage 4 — Realtime messaging and recent conversations",
       "T11": "Stage 2 — Static UI with mock data",
-      "T12": "Stage 4 — Realtime messaging and recent conversations",
-      "T13": "Stage 2 — Static UI with mock data",
-      "T14": "Stage 4 — Realtime messaging and recent conversations",
+      "T12": "Stage 2 — Static UI with mock data",
+      "T13": "Stage 3 — Real authentication",
+      "T14": "Stage 3 — Real authentication",
       "T15": "Stage 2 — Static UI with mock data",
       "T16": "Stage 2 — Static UI with mock data",
       "T17": "Stage 5 — Profile editing",

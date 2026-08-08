@@ -1000,8 +1000,11 @@
                   "BLOCKED_BY",
                   "DEPENDS_ON",
                   "ENABLES",
-                  "FOLLOWS"
-                ]
+                  "FOLLOWS",
+                  "LEARNING_DEPENDENCY",
+                  "CODE_DEPENDENCY"
+                ],
+                "description": "LEARNING_DEPENDENCY = pedagogical prerequisite (knowledge learner needs first — component trước form, model trước logic). CODE_DEPENDENCY = compile-time/structural only (WelcomeView NavigationLink cần LoginView — cần để compile, nhưng học WelcomeView trước với placeholder). DEPENDS_ON = legacy không phân loại (STEP 4 xử lý như CODE_DEPENDENCY)."
               },
               "reason": {
                 "type": "string"

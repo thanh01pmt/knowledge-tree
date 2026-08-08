@@ -49,7 +49,10 @@ function transformToCardData(roadmap) {
       // - SIO → mỗi item "Keyword <kw>" (thực hành cụ thể)
       // Hover trên item → hiện đủ các LO liên quan (ULO + CIO, hoặc SIO)
       const knowledge = [];
-      const conceptLabel = humanizeCode(primaryConcept);
+      // Scaffold milestone (không concept — audit C.1/v2 #6): hiện tên task thay vì
+      // "Concept " rỗng hay task ID trá hình concept (trước đây 'Concept T01').
+      const conceptLabel = primaryConcept ? humanizeCode(primaryConcept) : (milestone.name || 'Setup');
+      const conceptPrefix = primaryConcept ? 'Concept ' : '';
       const cardKey = primaryConcept || milestone.concept_code || `card-${cards.length}`;
 
       // Gom ULO + CIO của concept thành 1 item "Concept XYZ" (của task này)
@@ -60,7 +63,7 @@ function transformToCardData(roadmap) {
         const allBlooms = blooms.length > 0 ? blooms.join(' · ') : 'understand';
         knowledge.push({
           id: `${cardKey}-concept`,
-          label: `Concept ${conceptLabel}`,
+          label: `${conceptPrefix}${conceptLabel}`,
           bloom: allBlooms,  // có thể nhiều cấp: "understand · apply"
           conceptCode: primaryConcept,
           conceptLabel,

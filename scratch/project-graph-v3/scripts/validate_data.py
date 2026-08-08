@@ -40,11 +40,18 @@ def check_task_keywords(pg: dict) -> list:
 
 
 def check_lo_concept(roadmap: dict) -> list:
-    """LO thiếu concept_code → mất traceability (không biết dạy concept gì)."""
+    """LO thiếu concept_code → mất traceability (không biết dạy concept gì).
+
+    Ngoại lệ: milestone SCAFFOLD (audit C.1 — T01 tạo project) có concept trống
+    LÀ THIẾT KẾ: không có concept master tree nào cho "tạo project từ template";
+    cấm fallback concept feature (F9 catch-all). LO scaffold không tính là thiếu.
+    """
     issues = []
     n_lo = n_missing = 0
     for ph in roadmap.get("phases", []):
         for m in ph.get("milestones", []):
+            if m.get("scaffold"):
+                continue  # scaffold milestone — concept trống là chủ đích
             for lo in m.get("los", []):
                 n_lo += 1
                 if not lo.get("concept_code"):
@@ -149,9 +156,14 @@ def main():
         all_issues += check_zpd(roadmap)
     all_issues += check_dag_cycle(pg)
 
-    if all_issues:
-        print(f"[FAIL] {len(all_issues)} vấn đề dữ liệu:")
-        for issue in all_issues:
+    blocking = [i for i in all_issues if i.startswith("❌")]
+    advisory = [i for i in all_issues if i.startswith("⚠️")]
+
+    if blocking:
+        print(f"[FAIL] {len(blocking)} vấn đề dữ liệu:")
+        for issue in blocking:
+            print(f"  {issue}")
+        for issue in advisory:
             print(f"  {issue}")
         return 1
 
@@ -159,7 +171,13 @@ def main():
     n_ms = len(pg.get("knowledge_mapping", {}).get("mappings", []))
     n_lo = (sum(len(m.get("los", [])) for ph in roadmap["phases"] for m in ph["milestones"])
             if roadmap else 0)
-    print(f"[PASS] {n_tasks} tasks | {n_ms} mappings | {n_lo} LOs — dữ liệu sạch")
+    if advisory:
+        print(f"[PASS] {n_tasks} tasks | {n_ms} mappings | {n_lo} LOs — dữ liệu sạch "
+              f"({len(advisory)} advisory — xem bên dưới)")
+        for issue in advisory:
+            print(f"  {issue}")
+    else:
+        print(f"[PASS] {n_tasks} tasks | {n_ms} mappings | {n_lo} LOs — dữ liệu sạch")
     return 0
 
 

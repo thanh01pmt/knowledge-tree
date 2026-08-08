@@ -3,18 +3,19 @@
 STEP 4 — Task-aware Roadmap: Project Graph (canonical v3) → roadmap.json.
 
 Compile Project Graph + knowledge_mapping thành roadmap task-aware:
-  1. Mỗi task → tập concepts (từ knowledge_mapping, giữ node_id)
-  2. Sắp xếp task theo task_dependencies (topo sort)
-  3. Chia phase theo feature.priority (core→MVP, supporting→EXTEND, optional/polish→POLISH)
+  1. Mỗi task → tập concepts (từ knowledge_mapping, giữ node_id; scaffold → [] )
+  2. Sắp xếp task theo LOGIC HỌC TẬP stage-aware (learning_order.py — narrative
+     development_stages, KHÔNG phải dependency compile-time)
+  3. Phase = development stage (6 stages thay vì 4 phases hardcode); gaps/debt → POLISH
   4. JIT sinh LO per-task (LLM) — dùng intent + outcome + keywords + concepts
   5. Gắn validation làm assessment
 
-Input: project_graph_standardized.json (STEP 3)
+Input: project_graph_curriculum.json (STEP 3.5)
 Output: roadmap.json (phases → milestones → tasks → LOs)
 
 Usage:
   python step4_roadmap.py \
-      --project-graph output/project_graph_standardized.json \
+      --project-graph output/project_graph_curriculum.json \
       --output output/roadmap.json \
       [--skip-jit]   # bỏ qua LLM (test cấu trúc), dùng desc mô tả sẵn
 """
@@ -37,18 +38,19 @@ try:
 except ImportError:
     _LLM_AVAILABLE = False
 
+# Stage-aware learning order (dùng chung với STEP 3.5 — một nguồn thứ tự duy nhất)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from learning_order import (
+    learning_task_order, honored_learning_deps,
+    stage_index as learning_stage_index,
+)
+
 # Mọi degradation LLM được ghi lại và đẩy vào roadmap output (KHÔNG nuốt âm thầm)
 WARNINGS: List[str] = []
 
-
-# Phase theo feature priority
-PRIORITY_PHASE = {
-    "core": "MVP",
-    "supporting": "EXTEND",
-    "optional": "POLISH",
-    "polish": "POLISH",
-}
-PHASE_ORDER = {"FOUNDATION": 0, "MVP": 1, "EXTEND": 2, "POLISH": 3}
+# Concept dạy MVVM pattern — gắn deterministic cho task ViewModel (audit E.5:
+# MVVM_PATTERN chỉ xuất hiện ở polish, không có ở MVP dù roadmap toàn MVVM).
+MVVM_PATTERN = "MVVM_PATTERN"
 
 
 def task_concepts(task: Dict, mappings: List[Dict]) -> List[str]:
@@ -181,117 +183,20 @@ def normalize_capability_id(task_cap_id: str, capabilities: List[Dict]) -> str:
     return best if best_score > 0 else ""
 
 
-def task_phase_from_stages(task: Dict, stages: list) -> str:
-    """M4-narrative: phase task từ development_stages (LLM narrative — đúng logic
-    học tập: UI trước, backend sau) thay vì completion_level công thức.
-
-    Map bằng keyword overlap giữa task.action và stage.need/product_state.
-    Task không khớp stage nào → '' (dùng fallback completion_level).
-    """
-    if not stages:
-        return ""
-    action = (task.get("action", "") + " " + task.get("intent", "")).lower()
-    # Token hữu ích từ action (bỏ từ chung)
-    STOP = {"implement", "với", "và", "của", "trong", "cho", "theo", "để",
-            "các", "một", "không", "có", "được", "sau", "khi", "từ"}
-    toks = {t for t in action.replace("-", " ").replace("/", " ").split() if len(t) > 2 and t not in STOP}
-
-    best_stage, best_score = "", 0
-    for i, s in enumerate(stages):
-        text = " ".join(s.get("need", []) + [s.get("product_state", "")]).lower()
-        score = sum(1 for t in toks if t in text)
-        if score > best_score:
-            best_stage, best_score = s.get("stage", f"stage-{i+1}"), score
-    return best_stage if best_score >= 2 else ""
-
-
-def task_phase_from_requirements(task: Dict, requirements: List[Dict]) -> str:
-    """M3 (cross-feature): phase từ completion_level của requirement mà task thực hiện.
-    Ưu tiên: mọi requirement của task cùng completion_level → dùng level đó.
-    Khác level → lấy level cao nhất (task hoàn thành nhiều mức).
-    Không có requirement_ids → fallback '' (dùng feature.priority)."""
-    req_ids = task.get("requirement_ids", [])
-    if not req_ids:
-        return ""
-    levels = []
-    for r in requirements:
-        if r.get("id") in req_ids and r.get("completion_level"):
-            levels.append(r["completion_level"])
-    if not levels:
-        return ""
-    # Mức cao nhất (polish > extend > mvp > base)
-    order = {"base": 0, "mvp": 1, "extend": 2, "polish": 3}
-    best = max(levels, key=lambda l: order.get(l, 1))
-    return best
-
-
-def task_phase(task: Dict, features_by_capability: Dict[str, str]) -> str:
-    """Phase từ feature.priority của capability task thuộc."""
-    cap_id = task.get("capability_id", "")
-    feat_id = features_by_capability.get(cap_id, "")
-    # fallback: không có → MVP
-    return PRIORITY_PHASE.get(feat_id, "MVP")
-
-
-def topo_sort_tasks(tasks: List[Dict], dependencies: List[Dict],
-                    task_journey_rank: dict = None) -> List[Dict]:
-    """Sắp xếp task theo dependency (DEPENDS_ON/BLOCKED_BY trước task phụ thuộc).
-
-    task_journey_rank: {task_id: journey_rank} — task thuộc user journey sớm hơn
-    (VD J1 Welcome → J2 Login → J3 Chat) được ưu tiên.
-
-    Fix Side Effect 1 (journey-skip): trước đây dep ở journey SAU bị BỎ QUA
-    (DFS skip) → task đứng trước prerequisite của nó (T07 Login cần T16
-    SecureTextField — journey J1 vs J5 — nhưng bị xếp trước). Nay dùng Kahn:
-    task chỉ được emit khi MỌI dep đã emit; journey rank chỉ là TIE-BREAK
-    cho các task ĐỘC LẬP, không bao giờ đè dependency.
-    """
-    task_map = {t["id"]: t for t in tasks}
-    dep_map: Dict[str, Set[str]] = defaultdict(set)  # task → tasks nó phụ thuộc
-    # Ưu tiên task.depends_on (field trên task — sinh cùng task, tin cậy hơn
-    # edge list riêng mà STEP 1 có thể viết ngược ý from/to).
-    for t in tasks:
-        for dep in t.get("depends_on", []) or []:
-            if dep in task_map and dep != t["id"]:
-                dep_map[t["id"]].add(dep)
-    # Bổ sung từ edge list — CHỈ edge nào KHÔNG mâu thuẫn: nếu task đã có dep khác
-    # với cùng "ý", edge chỉ thêm dep chưa có. Edge ngược (task A "cần" B mà B
-    # thực ra cần A theo task.depends_on) bị bỏ qua.
-    task_dep_fields = {t["id"]: set(t.get("depends_on", []) or []) for t in tasks}
-    for d in dependencies:
-        frm, to = d.get("from", ""), d.get("to", "")
-        if frm in task_map and to in task_map and frm != to:
-            if to in task_dep_fields.get(frm, set()):
-                continue
-            dep_map[frm].add(to)
-
-    journey_rank = task_journey_rank or {}
-
-    def rank(tid: str) -> int:
-        return journey_rank.get(tid, 999)
-
-    # Kahn: emit task có mọi dep đã emit, ưu tiên (journey, id) — deterministic.
-    remaining = set(task_map)
-    result: List[str] = []
-    while remaining:
-        ready = [tid for tid in remaining if not (dep_map.get(tid, set()) & remaining)]
-        if not ready:
-            # cycle (dep_map mâu thuẫn) — phá bằng task rank thấp nhất còn lại
-            ready = [min(remaining, key=lambda t: (rank(t), t))]
-        ready.sort(key=lambda t: (rank(t), t))
-        tid = ready[0]
-        remaining.discard(tid)
-        result.append(tid)
-    return [task_map[tid] for tid in result]
-
 def build_roadmap_structure(pg: Dict) -> Dict:
-    """Xây roadmap structure (không LLM): phases → milestones(task) → concepts."""
+    """Xây roadmap structure (không LLM): phases → milestones(task) → concepts.
+
+    Phase = development_stage (LLM narrative, đã lưu task_stage_mapping từ STEP 3.5)
+    — KHÔNG nén 6 stages → 4 phases hardcode (audit 2026-08-08: MVP 17 task +
+    POLISH 17 task, EXTEND 1 task). Thứ tự task = learning_order (stage → need[]
+    → journey) — backend không còn đứng trước UI.
+    """
     mappings = pg.get("knowledge_mapping", {}).get("mappings", [])
     tasks = pg.get("implementation", {}).get("tasks", [])
-    deps = pg.get("implementation", {}).get("task_dependencies", [])
     features = pg.get("features", [])
     caps = pg.get("capabilities", [])
-    requirements = pg.get("product", {}).get("requirements", [])
+    stages = pg.get("product", {}).get("development_stages", [])
+    stage_assignments = pg.get("curriculum", {}).get("task_stage_mapping", {})
 
     # M4 — line-level trace: file → [ref] (file#L<line>) từ STEP 2 evidence.
     # Đính vào milestone để viewer/LO giữ được truy xuất nguồn (không rơi rớt).
@@ -301,102 +206,55 @@ def build_roadmap_structure(pg: Dict) -> Dict:
         if src.get("ref"):
             ref_by_file[src.get("file", "")].append(src["ref"])
 
-    # feature.priority theo capability (chuẩn hoá id nếu lệch convention)
+    # task → feature (qua capability; F-XXX là feature id dùng thẳng) — cho
+    # scaffold detection + concept fallback (task không có task-node MAPPED)
     cap_feat = {c.get("id", ""): c.get("feature_id", "") for c in caps}
-    feat_priority = {f.get("id", ""): f.get("priority", "core") for f in features}
-
-    # User journey rank: J1 < J2 < ... — task thuộc feature journey sớm hơn lên trước
-    # (Welcome/Login J1-J2 trước RecentChat/Chat J3-J5)
-    JOURNEY_RANK = {"J1": 1, "J2": 2, "J3": 3, "J4": 4, "J5": 5, "J6": 6, "J7": 7, "J8": 8, "J9": 9, "J10": 10}
-    feat_journey = {}
-    for f in features:
-        jids = f.get("journey_ids", [])
-        if f.get("id", "") == "F-CORE":
-            feat_journey[f.get("id", "")] = 0  # setup/scaffold trước mọi journey
-        else:
-            feat_journey[f.get("id", "")] = min((JOURNEY_RANK.get(j, 99) for j in jids), default=99)
-    # task → feature (qua capability; F-XXX là feature id dùng thẳng)
     task_to_feature = {}
     for t in tasks:
         norm_id = normalize_capability_id(t.get("capability_id", ""), caps)
-        if re.match(r"^F[-_]?\d", norm_id):
-            fid = norm_id
-        else:
-            fid = cap_feat.get(norm_id, "")
+        fid = norm_id if re.match(r"^F[-_]?\d", norm_id) else cap_feat.get(norm_id, "")
         task_to_feature[t.get("id", "")] = fid
-    task_journey_rank = {
-        tid: feat_journey.get(fid, 99) for tid, fid in task_to_feature.items()
-    }
 
-    # Foundation tasks: setup/lifecycle/entry-point — NHẬN DIỆN từ action (không phụ thuộc feature priority)
-    FOUNDATION_SIGNALS = ["appdelegate", "entry point", "@main", "diagnostics", "configure sentry",
-                          "configure third-party", "initial setup", "setup"]
-
-    ordered = topo_sort_tasks(tasks, deps, task_journey_rank=task_journey_rank)
-
-    # M4-narrative: task→stage mapping ĐÃ LƯU từ STEP 3.5 (deterministic — không
-    # gọi LLM lại). Stage idx → phase: 0→FOUNDATION, 1→MVP, 2-3→EXTEND, 4+→POLISH.
-    stages = pg.get("product", {}).get("development_stages", [])
-    stage_assignments = pg.get("curriculum", {}).get("task_stage_mapping", {})
+    # Thứ tự học tập stage-aware (thay topo-sort theo dependency compile-time).
+    ordered = learning_task_order(pg, stage_assignments, stages, tasks)
+    # Learning-deps nhất quán narrative — milestone giữ field này để viewer/validator
+    # thấy ràng buộc học tập (task object giữ nguyên depends_on gốc — code-dep).
+    honored_deps = honored_learning_deps(pg, stage_assignments, stages, tasks)
 
     phases: Dict[str, List] = defaultdict(list)
     for i, t in enumerate(ordered):
-        cap_id = normalize_capability_id(t.get("capability_id", ""), caps)
-        # capability_id có thể là feature id trực tiếp ('F9') — nhận luôn, không
-        # tra cap_feat (capabilities là C1..C11, không trùng F\d).
-        feat_id = cap_id if re.match(r"^F[-_]?\d", cap_id) else cap_feat.get(cap_id, "")
-        priority = feat_priority.get(feat_id, "core")
+        st_idx = learning_stage_index(t.get("id", ""), stage_assignments, stages)
+        phase = stages[st_idx].get("stage", f"Stage {st_idx+1}") if st_idx < len(stages) else "POLISH"
         action_lower = (t.get("action", "") or "").lower()
-
-        stage_phase = stage_assignments.get(t.get("id", ""))
-        if stage_phase:
-            # LLM có thể trả "1. Giai đoạn 1 — ..." — strip số prefix
-            import re as _re
-            norm_phase = _re.sub(r"^\d+\.\s*", "", stage_phase)
-            stage_idx = next((i for i, s in enumerate(stages)
-                              if s.get("stage") == norm_phase), -1)
-            if stage_idx == 0:
-                phase = "FOUNDATION"
-            elif stage_idx == 1:
-                phase = "MVP"
-            elif stage_idx in (2, 3):
-                phase = "EXTEND"
-            else:
-                phase = "POLISH"
-        else:
-            # Fallback: completion_level → FOUNDATION signal → priority
-            completion = task_phase_from_requirements(t, requirements)
-            if completion:
-                phase = {"base": "FOUNDATION", "mvp": "MVP",
-                         "extend": "EXTEND", "polish": "POLISH"}.get(completion, "MVP")
-            elif any(sig in action_lower for sig in FOUNDATION_SIGNALS):
-                phase = "FOUNDATION"
-            else:
-                phase = PRIORITY_PHASE.get(priority, "MVP")
+        feat_id = task_to_feature.get(t.get("id", ""))
 
         concepts = task_concepts(t, mappings)
-        # Fallback: task không có task-node MAPPED (VD scaffold — keyword chỉ có
-        # Gap D proposals) → dùng concepts của FEATURE node (anchor ngữ nghĩa thật
-        # trong graph), giữ traceability LO → concept cho viewer/validator.
-        if not concepts and feat_id:
-            feat_node = f"feature:{feat_id}"
+        # Scaffold (stage 1 = nền tảng thuần / marker khởi tạo): KHÔNG fallback
+        # concept từ feature node (audit C.1 — T01 bị gán SHARED_OBSERVABLE_STATE
+        # + API_INTEGRATION từ feature F9 catch-all dù chưa có state/API nào).
+        SCAFFOLD_MARKERS = ("scaffold", "khởi tạo", "tạo project", "create project",
+                            "project setup", "setup project", "xcode project")
+        is_scaffold = st_idx == 0 or any(m in action_lower for m in SCAFFOLD_MARKERS)
+        if not concepts and not is_scaffold and feat_id:
+            # Task không có task-node MAPPED nhưng không phải scaffold → anchor
+            # ngữ nghĩa từ feature node (giữ traceability LO → concept).
             for m in mappings:
-                if m.get("node_id") == feat_node and m.get("status") == "MAPPED":
+                if m.get("node_id") == f"feature:{feat_id}" and m.get("status") == "MAPPED":
                     for c in m.get("concepts", []):
                         if c and c not in concepts:
                             concepts.append(c)
-        # Scaffold nhận diện theo CẤU TRÚC: feature setup (F-CORE rank 0) hoặc
-        # action chứa marker KHỞI TẠO (tiếng Việt + Anh). KHÔNG dùng
-        # FOUNDATION_SIGNALS (appdelegate/@main/...) — quá rộng: t21
-        # (PushNotificationManager) nhắc "AppDelegate" → false positive đẩy nó
-        # lên trước prerequisite t20 (hồi quy phát hiện khi tái kiểm).
-        SCAFFOLD_MARKERS = ("scaffold", "khởi tạo", "tạo project", "create project",
-                            "project setup", "setup project", "xcode project")
-        is_scaffold = feat_journey.get(feat_id) == 0 or any(
-            m in action_lower for m in SCAFFOLD_MARKERS)
+        # MVVM: task ViewModel dạy MVVM pattern (audit E.5) — từ MVP, không phải
+        # chỉ polish. Deterministic — không cần LLM map lại.
+        if "viewmodel" in action_lower and MVVM_PATTERN not in concepts:
+            concepts.append(MVVM_PATTERN)
+
         phases[phase].append({
             "task": t,
             "concepts": concepts,
+            # Dep compile-time được lọc thành learning-deps nhất quán narrative —
+            # milestone giữ field này để viewer/validator thấy ràng buộc học tập
+            # (task object giữ nguyên depends_on gốc).
+            "learning_dependencies": honored_deps.get(t.get("id", ""), []),
             "order": i,
             "scaffold": is_scaffold,
             # M4 — line-level trace (file#L<line>) từ STEP 2 evidence
@@ -404,7 +262,8 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                               for r in ref_by_file.get(f, [])],
         })
 
-    # POLISH tasks tự sinh từ missing_gaps + tech_debt (feature F6 + quality)
+    # POLISH tasks tự sinh từ missing_gaps + tech_debt (chất lượng — KHÔNG chứa
+    # feature thật; feature thật đã nằm ở stage của chúng: Profile S5, Push S6).
     polish_extra = []
     order_base = len(ordered)
     for idx, g in enumerate(pg.get("implementation", {}).get("missing_gaps", [])):
@@ -421,6 +280,7 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                 "source_evidence": [g.get('location', '')] if g.get('location') else [],
             },
             "concepts": polish_concepts(g, mappings, features, tasks),
+            "learning_dependencies": [],
             "order": order_base + idx,
             "scaffold": False,
             "evidence_refs": [r for f in ([g.get("location", "")] if g.get("location") else [])
@@ -439,20 +299,19 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                 "source_evidence": [d.get('location', '')] if d.get('location') else [],
             },
             "concepts": polish_concepts(d, mappings, features, tasks),
+            "learning_dependencies": [],
             "order": order_base + n_gaps + idx,
             "scaffold": False,
             "evidence_refs": [r for f in ([d.get("location", "")] if d.get("location") else [])
                               for r in ref_by_file.get(f, [])],
         })
-    phases["POLISH"].extend(polish_extra)
+    phases.setdefault("POLISH", []).extend(polish_extra)
 
-    # Gagné guard (cross-phase): task KHÔNG được đứng trước prerequisite của nó.
-    # task_stage_mapping (LLM, STEP 3.5) chỉ là phase gợi ý — depends_on là ràng
-    # buộc CỨNG. Nếu prerequisite của task nằm ở phase SAU → KÉO prerequisite về
-    # phase của task (học nền tảng sớm, giữ nguyên stage narrative của task chính
-    # — ít xáo trộn hơn việc đẩy task xuống; fixpoint tới khi ổn định).
-    # Fix Side Effect 1: trước đây phase render theo PHASE_ORDER đè lên thứ tự
-    # topo → t8 (cần t5) đứng trước t5 (xem data thật).
+    # Gagné guard (cross-phase, safety net): learning-dependency KHÔNG được nằm
+    # sau task của nó. Với thứ tự stage-aware, learning deps luôn ở stage sớm hơn
+    # hoặc cùng stage (đã lọc code-deps trỏ stage sau) → guard chỉ phòng hồi quy.
+    phase_order = {s.get("stage", f"Stage {i+1}"): i for i, s in enumerate(stages)}
+    phase_order["POLISH"] = len(stages)
     ms_by_id = {m["task"]["id"]: (ph, m) for ph, ms in phases.items() for m in ms}
     changed = True
     while changed:
@@ -460,12 +319,12 @@ def build_roadmap_structure(pg: Dict) -> Dict:
         for ph, ms in list(phases.items()):
             for m in list(ms):
                 tid = m["task"]["id"]
-                for dep in (m["task"].get("depends_on", []) or []):
+                for dep in m.get("learning_dependencies", []):
                     ditem = ms_by_id.get(dep)
                     if not ditem:
                         continue
                     dph, dm = ditem
-                    if PHASE_ORDER.get(dph, 9) > PHASE_ORDER.get(ph, 9):
+                    if phase_order.get(dph, 9) > phase_order.get(ph, 9):
                         phases[ph].append(dm)
                         phases[dph].remove(dm)
                         ms_by_id[dep] = (ph, dm)
@@ -477,9 +336,8 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                 break
 
     result = {"schema_version": 3, "phases": []}
-    for phase_name in sorted(phases.keys(), key=lambda p: PHASE_ORDER.get(p, 9)):
-        # Scaffold/setup task luôn đầu phase (tạo project trước khi code) — flag
-        # đã tính theo cấu trúc khi build milestone (xem is_scaffold).
+    for phase_name in sorted(phases.keys(), key=lambda p: phase_order.get(p, 9)):
+        # Scaffold/setup task luôn đầu phase (tạo project trước khi code)
         items = sorted(phases[phase_name], key=lambda x: (
             0 if x.get("scaffold") else 1,
             x["order"]
@@ -491,6 +349,20 @@ def build_roadmap_structure(pg: Dict) -> Dict:
             "milestones": items,
         })
     return result
+
+
+def _anchor_lo_concepts(los: List[Dict], concepts: List[str]) -> List[Dict]:
+    """LO không concept (LLM bỏ trống cho LO thực hành chung, VD 'build WelcomeView')
+    → anchor concept đầu của milestone — giữ traceability LO→concept (validator/UI
+    không mất, viewer đã fallback concepts[0] — roadmap tự nhất quán).
+    Milestone scaffold (concepts=[]) giữ nguyên trống (audit C.1)."""
+    anchor = concepts[0] if concepts else None
+    if not anchor:
+        return los
+    for lo in los:
+        if not lo.get("concept_code"):
+            lo["concept_code"] = anchor
+    return los
 
 
 def generate_task_lo(task: Dict, concepts: List[str], validations: List[Dict]) -> List[Dict]:
@@ -532,7 +404,7 @@ def generate_task_lo(task: Dict, concepts: List[str], validations: List[Dict]) -
         client, _p, model = get_llm_client()
         res = llm_chat_json(client=client, model=model, system=system, user=user, temperature=0.1)
         los = res.get("los", [])
-        return [{"task_id": task.get("id"), **lo} for lo in los]
+        return _anchor_lo_concepts([{"task_id": task.get("id"), **lo} for lo in los], concepts)
     except Exception as e:
         print(f"[WARN] LLM fail task {task.get('id')}: {e}", file=sys.stderr)
         WARNINGS.append(f"generate_task_lo fail ({task.get('id')}): {e} — LO fallback")
@@ -546,18 +418,32 @@ def attach_assessments(roadmap_structure: dict) -> dict:
     Assessment = cách kiểm tra LO đó đạt chưa. Nguồn: task.acceptance (tiêu chí
     chấp nhận) + outcome.user_visible. Nếu task không có acceptance → dùng action
     làm assessment gần đúng.
+
+    Bloom-aware (audit F.2): UNDERSTAND LO → khung "Explain:" (kiểm tra hiểu),
+    APPLY/ANALYZE/CREATE → acceptance criteria (kiểm tra làm được). KHÔNG dùng
+    outcome là tên phase ("POLISH") làm assessment — polish task không có
+    acceptance sẽ fallback action.
     """
+    PHASE_LIKE = {"POLISH", "MVP", "EXTEND", "FOUNDATION"}
     for phase in roadmap_structure.get("phases", []):
         for m in phase.get("milestones", []):
             t = m.get("task", {})
             acc = t.get("acceptance") or []
             acc_str = "; ".join(str(a) for a in acc) if acc else ""
             outcome = (t.get("outcome") or {}).get("user_visible", "")
+            if outcome.strip().upper() in PHASE_LIKE:
+                outcome = ""  # polish task outcome rác — dùng action
             for lo in m.get("los", []):
                 if not lo.get("assessment"):
                     base = acc_str or outcome or t.get("action", "")
-                    # Nối bloom vào assessment cho phù hợp (áp dụng/đánh giá)
-                    lo["assessment"] = base[:200] if base else f"Complete task {t.get('id', '')}"
+                    if not base:
+                        lo["assessment"] = f"Complete task {t.get('id', '')}"
+                        continue
+                    if (lo.get("bloom_level") or "").upper() == "UNDERSTAND":
+                        # Kiểm tra hiểu (không phải làm) — acceptance là bối cảnh
+                        lo["assessment"] = f"Explain: {base}"[:220]
+                    else:
+                        lo["assessment"] = base[:220]
     return roadmap_structure
 
 
@@ -632,7 +518,8 @@ def generate_tasks_lo_batch(tasks: List[Dict], validations: List[Dict],
             los = results.get(tid, {}).get("los", [])
             if not los:
                 raise ValueError(f"Batch thiếu LO cho {tid}")
-            out[tid] = [{"task_id": tid, **lo} for lo in los]
+            out[tid] = _anchor_lo_concepts([{"task_id": tid, **lo} for lo in los],
+                                           t.get("_concepts", []))
         return out
     except Exception as e:
         print(f"[WARN] Batch LLM fail ({e}) → fallback per-task", file=sys.stderr)

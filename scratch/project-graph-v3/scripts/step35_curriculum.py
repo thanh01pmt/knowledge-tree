@@ -5,10 +5,14 @@ STEP 3.5 — Curriculum Graph (tầng giữa Project Graph và Roadmap).
 Bám lý thuyết giáo dục (xem docs/curriculum-graph-design-B.md):
 - Gagné: concept prerequisite DAG — task chỉ vào khi concept tiên quyết đã xuất hiện.
 - Bruner: spiral curriculum — bloom cap tăng theo số lần concept được gặp.
-- Reigeluth: walking skeleton — epitome (FOUNDATION) trước, elaborate sau.
+- Reigeluth: walking skeleton — epitome (stage đầu) trước, elaborate sau.
 - Vygotsky: ZPD check — mỗi task có ≥1 concept quen (known) + ≤ K concept mới (new).
 - Sweller: intrinsic load gate — quá nhiều concept mới/task → flag tách task.
 - Bloom: mastery gates giữa phase — assessment phải pass mới qua phase sau.
+
+Thứ tự task = LOGIC HỌC TẬP stage-aware (learning_order.py — development_stages
+narrative, KHÔNG phải dependency compile-time). task_stage_mapping (LLM) là
+artifact sinh 1 lần, LƯU trong graph — STEP 4 đọc thuần, không gọi LLM lại.
 
 Output: curriculum section (thêm vào project graph):
 {
@@ -45,8 +49,30 @@ try:
 except ImportError:
     _LLM_AVAILABLE = False
 
+# Stage-aware learning order (dùng chung với STEP 4 — một nguồn thứ tự duy nhất)
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from learning_order import (
+    learning_task_order, stage_phases as build_stage_phases,
+    assign_stages_by_matching, correct_stage_assignments,
+)
+
 # Ngưỡng cognitive load (Sweller) — concept MỚI tối đa/task
 MAX_NEW_CONCEPTS_PER_TASK = 2
+
+# Concept dạy MVVM pattern — gắn deterministic cho task ViewModel (audit E.5:
+# MVVM_PATTERN chỉ xuất hiện ở polish, không có ở MVP dù roadmap toàn MVVM).
+MVVM_PATTERN = "MVVM_PATTERN"
+
+
+def _task_concepts_with_mvvm(task: dict, task_concepts: dict) -> list:
+    """Concepts của task (dedup) + MVVM_PATTERN nếu task là ViewModel (deterministic)."""
+    seen = []
+    for c in task_concepts.get(task.get("id", ""), []):
+        if c and c not in seen:
+            seen.append(c)
+    if "viewmodel" in (task.get("action", "") or "").lower() and MVVM_PATTERN not in seen:
+        seen.append(MVVM_PATTERN)
+    return seen
 
 # Ghi nhận mọi degradation LLM (timeout/JSON lỗi) — KHÔNG nuốt âm thầm: warnings
 # được đẩy vào output artifact + in tổng kết, để pipeline/CI thấy được chất lượng
@@ -378,12 +404,18 @@ def compute_concept_sequence(pg: dict, tasks_in_order: list) -> list:
     for m in pg.get("knowledge_mapping", {}).get("mappings", []):
         nid = m.get("node_id", "")
         if nid.startswith("task:") and m.get("status") == "MAPPED":
-            task_concepts[m.get("node_id").split(":", 1)[1]] = m.get("concepts", [])
+            task_concepts.setdefault(m.get("node_id").split(":", 1)[1], []).extend(
+                m.get("concepts", []))
 
+    tasks_by_id = {t.get("id"): t for t in pg.get("implementation", {}).get("tasks", [])}
     seq = []
     seen = defaultdict(int)
     for tid in tasks_in_order:
-        for c in task_concepts.get(tid, []):
+        task = tasks_by_id.get(tid, {})
+        # _task_concepts_with_mvvm: mọi mapping MAPPED của task + MVVM_PATTERN cho
+        # task ViewModel (trước đây gán đè task_concepts[tid] → mỗi task chỉ giữ
+        # mapping CUỐI → sequence thiếu concept, audit E.3)
+        for c in _task_concepts_with_mvvm(task, task_concepts):
             seen[c] += 1
             n = seen[c]
             if n == 1:
@@ -407,12 +439,14 @@ def zpd_check(pg: dict, tasks_in_order: list) -> list:
     for m in pg.get("knowledge_mapping", {}).get("mappings", []):
         nid = m.get("node_id", "")
         if nid.startswith("task:") and m.get("status") == "MAPPED":
-            task_concepts[m.get("node_id").split(":", 1)[1]] = set(m.get("concepts", []))
+            task_concepts.setdefault(m.get("node_id").split(":", 1)[1], []).extend(
+                m.get("concepts", []))
+    tasks_by_id = {t.get("id"): t for t in pg.get("implementation", {}).get("tasks", [])}
 
     seen = set()
     checks = []
     for idx, tid in enumerate(tasks_in_order):
-        conc = task_concepts.get(tid, set())
+        conc = set(_task_concepts_with_mvvm(tasks_by_id.get(tid, {}), task_concepts))
         new = conc - seen
         known = conc & seen
         seen |= conc
@@ -422,7 +456,7 @@ def zpd_check(pg: dict, tasks_in_order: list) -> list:
             verdict = "TOO_MANY_NEW"
             issues.append(f"has {len(new)} new concepts (limit {MAX_NEW_CONCEPTS_PER_TASK}) — "
                           f"intrinsic load overload (Sweller), consider splitting the task")
-        if len(conc) > 1 and len(known) == 0 and idx > 0:
+        if verdict == "OK" and len(conc) > 1 and len(known) == 0 and idx > 0:
             # First roadmap task + a single new concept = valid ZPD
             # (one step within reach — Vygotsky). Only flag when MANY new concepts at once.
             verdict = "NO_ZPD_BRIDGE"
@@ -485,7 +519,7 @@ def main():
     parser.add_argument("--lo-prerequisites", type=Path, default=None,
                         help="projects/master-tree/output/lo_prerequisites.tsv (Bloom progression)")
     parser.add_argument("--roadmap", type=Path, default=None,
-                        help="roadmap.json (nếu có — lấy phases cho mastery gates + skeleton)")
+                        help="(DEPRECATED — thứ tự task giờ từ task_stage_mapping + development_stages, không từ roadmap cũ)")
     parser.add_argument("--output", required=True, type=Path)
     parser.add_argument("--no-judge", action="store_true",
                         help="Bỏ qua LLM-as-judge (test cấu trúc nhanh)")
@@ -493,17 +527,30 @@ def main():
 
     pg = json.load(open(args.project_graph, encoding="utf-8"))
 
-    # Thứ tự task: từ roadmap phases (nếu có) hoặc task order trong graph
-    tasks_in_order = []
-    phases = []
-    if args.roadmap and args.roadmap.is_file():
-        rm = json.load(open(args.roadmap, encoding="utf-8"))
-        phases = rm.get("phases", [])
-        for ph in phases:
-            for m in ph.get("milestones", []):
-                tasks_in_order.append(m.get("task", {}).get("id", ""))
-    if not tasks_in_order:
-        tasks_in_order = [t.get("id", "") for t in pg.get("implementation", {}).get("tasks", [])]
+    stages = pg.get("product", {}).get("development_stages", [])
+    tasks_all = pg.get("implementation", {}).get("tasks", [])
+    existing_cur = pg.get("curriculum", {}) or {}
+
+    # task→stage mapping là ARTIFACT sinh 1 lần (LLM, deterministic) — tái sử
+    # dụng nếu đã lưu trong graph (như knowledge_mapping). STEP 4 đọc thuần.
+    # --no-judge trên graph chưa có artifact → fallback DETERMINISTIC bằng text
+    # matching (audit v2 #7: trước đây mapping rỗng → mọi task rơi vào POLISH).
+    task_stage_mapping = existing_cur.get("task_stage_mapping") or {}
+    if not task_stage_mapping and stages:
+        if args.no_judge:
+            task_stage_mapping = assign_stages_by_matching(tasks_all, stages)
+        else:
+            task_stage_mapping = assign_stages_llm(tasks_all, stages)
+    # Hiệu chỉnh deterministic (audit v2 #3): utility dùng chung bị xếp sai stage
+    # sau (T04 ViewState → S6 dù AuthViewModel S3 cần nó) → kéo về stage đúng.
+    if task_stage_mapping and stages:
+        task_stage_mapping = correct_stage_assignments(pg, task_stage_mapping, stages)
+
+    # Thứ tự task = LOGIC HỌC TẬP stage-aware (learning_order.py — narrative
+    # development_stages, KHÔNG phải dependency compile-time). KHÔNG đọc thứ tự
+    # từ roadmap.json cũ (nó phản ánh phase collapse đã sửa).
+    tasks_in_order = [t["id"] for t in learning_task_order(pg, task_stage_mapping, stages, tasks_all)]
+    phases = build_stage_phases(pg, task_stage_mapping, stages, tasks_all)
 
     curriculum = {
         "schema_version": 1,
@@ -513,10 +560,18 @@ def main():
         "zpd_checks": zpd_check(pg, tasks_in_order),
         "mastery_gates": mastery_gates(pg, phases),
         "master_bloom_progression": load_master_concepts(args.lo_prerequisites),
+        "task_stage_mapping": task_stage_mapping,
     }
-
-    # LLM-as-judge: lọc hub noise (hub: true → judge giữ/loại) + đánh giá mọi edge
-    if not args.no_judge:
+    # Không nuốt âm thầm: ghi warnings vào artifact để bước sau (roadmap/viewer/CI)
+    # thấy được degradation LLM.
+    if WARNINGS:
+        curriculum["pipeline_warnings"] = list(WARNINGS)
+    # LLM-as-judge: lọc hub noise (hub: true → judge giữ/loại) + đánh giá mọi edge.
+    # DAG đã judge là ARTIFACT (như task_stage_mapping) — tái sử dụng nếu có, chỉ
+    # judge khi graph CHƯA có curriculum (deterministic rerun, tiết kiệm LLM).
+    if existing_cur.get("concept_prerequisites"):
+        curriculum["concept_prerequisites"] = existing_cur["concept_prerequisites"]
+    elif not args.no_judge:
         curriculum["concept_prerequisites"] = llm_judge_edges(
             pg, curriculum["concept_prerequisites"], args.lo_prerequisites)
         # LLM sinh cross-concept còn thiếu + verify code
@@ -539,15 +594,6 @@ def main():
                     if (e["concept_code"], e["requires"]) in judged_ids
                     or e.get("source") != "LLM_CROSS_CONCEPT"
                 ]
-
-    # Root-cause fix: task→stage mapping sinh 1 lần, LƯU vào graph (deterministic).
-    # STEP 4 đọc từ đây — KHÔNG gọi LLM lại mỗi lần chạy.
-    stages = pg.get("product", {}).get("development_stages", [])
-    tasks_all = pg.get("implementation", {}).get("tasks", [])
-    if stages and not args.no_judge:
-        curriculum["task_stage_mapping"] = assign_stages_llm(tasks_all, stages)
-    else:
-        curriculum["task_stage_mapping"] = {}
 
     # Không nuốt âm thầm: ghi warnings vào artifact để bước sau (roadmap/viewer/CI)
     # thấy được degradation LLM.

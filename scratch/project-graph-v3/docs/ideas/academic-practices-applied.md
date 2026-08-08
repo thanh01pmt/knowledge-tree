@@ -186,3 +186,65 @@ convert_to_viewer.py → UI
 | **Tổng** | **13** | **~70.8k** | **~175k** | **~23 phút** |
 
 Cache: input lặp (source code) → prefix cache ấm giữa các call cùng profile.
+
+---
+
+## 7. Audit 2026-08-08 — Stage Narrative Fix (root-cause sửa 3 điểm chặn)
+
+**Vấn đề (audit Talky roadmap):** STEP 4 nén 6 `development_stages` → 4 phases
+hardcode (`0→FOUNDATION, 1→MVP, 2-3→EXTEND, 4+→POLISH`) + Gagné guard kéo
+prerequisite ngược theo dependency compile-time → mọi task dồn vào MVP (17/36)
++ POLISH (17/36), EXTEND 1 task. Stage narrative (LLM, đúng logic học) bị bỏ qua.
+
+**Root causes → fixes (xem `scripts/learning_order.py`):**
+
+| # | Root cause | Fix |
+|---|---|---|
+| A | Hardcode 6 stages → 4 phases | **Phase = development stage** (tên stage làm phase name); gaps/debt → POLISH cuối |
+| B | Dependency là code-dep (WelcomeView cần LoginView, Chat cần Push) lái thứ tự | **Thứ tự = LOGIC HỌC TẬP**: `(stage_idx, need_pos, journey, idx)` — need_pos từ `need[]` narrative; dep cùng stage chỉ được tôn trọng khi khớp need-order; dep trỏ stage sau = code-dep, loại khỏi ràng buộc |
+| C | Scaffold task (T01) fallback concept từ feature node (F9 catch-all) → SHARED_OBSERVABLE_STATE + API_INTEGRATION sai ngữ nghĩa | **Scaffold → concepts=[]** (không fallback feature); LO scaffold sinh theo task thật; validator miễn trừ concept_code cho milestone scaffold |
+| D | concept_sequence gán đè mapping → mỗi task 1 concept (21 entries/36 tasks) | **Gộp MỌI mapping MAPPED** + MVVM_PATTERN cho task ViewModel → 67 entries |
+| E | MVVM_PATTERN chỉ ở polish | **Rule deterministic**: task action chứa 'viewmodel' → thêm MVVM_PATTERN (T05/T10/T12/T14...) từ MVP |
+| F | Assessment giống nhau cho mọi bloom | **Bloom-aware**: UNDERSTAND → `Explain: <acceptance>`, còn lại → acceptance; outcome rác ("POLISH") bị loại |
+
+**Bằng chứng (Talky sau fix):** `1/7/3/4/3/4/14` thay vì `1/17/1/17`; WelcomeView
+(encounter 1 DECLARATIVE_UI_PARADIGM) đứng trước Login; FirebaseManager ở Stage 3
+sau UI; Push/Profile ở stage 6/5 (không còn POLISH); 0 vi phạm bloom cap;
+`validate_data.py` PASS (2 advisory ZPD — Sweller flag đúng, không hard-block).
+
+**Forward-compatible:** schema `task_dependencies[].type` thêm
+`LEARNING_DEPENDENCY`/`CODE_DEPENDENCY` (STEP 1 prompt hướng dẫn LLM phân loại);
+STEP 4 vẫn tự lọc deterministic theo stage — không phụ thuộc LLM gõ đúng type.
+
+---
+
+## 8. Audit v2 (cùng ngày) — Within-stage ordering + stage correction
+
+**Vấn đề:** sau fix v1, thứ tự TRONG stage vẫn chạy theo need[] narrative thuần →
+S4 đặt ChatDetailViewModel (T10) trước Models (T09); S5 đặt EditProfileView (T18)
+trước ImagePicker (T19); S6 đặt wiring (T22) đầu, foundation (T20) cuối; T04
+(ViewState — utility dùng chung) bị LLM xếp vào Stage 6 Push.
+
+**Fixes (`learning_order.py`):**
+
+| # | Vấn đề | Rule mới |
+|---|---|---|
+| 1 | Models sau ViewModel (S4) | **Navigation-drop rule**: dep cùng-stage VIEW→SCREEN ('navigates to'/'presents' tới screen) là code-dep → bỏ; dep tới COMPONENT/model ('uses', 'presents ImagePicker' reusable) → GIỮ → models trước ViewModel trước View |
+| 2 | ImagePicker sau EditProfile (S5) | Cùng navigation-drop rule — 'presents ImagePicker' (component) được giữ → T19 trước T18 |
+| 3 | T04 ViewState ở Stage 6 | **`correct_stage_assignments`** (deterministic): task có MỌI dep stage sớm hơn + dependent thật (không phải navigation) ở stage sớm hơn → kéo về stage sau dep muộn nhất (T04 → S2). Task feature-wired (T21 cần T20 cùng S6) không bị đụng |
+| 4 | Wiring đầu, foundation cuối (S6) | **Wiring rule**: task wiring (AppDelegate/'wire'/delegate) giữ MỌI dep cùng-stage → T20→T21→T22 (Kahn) |
+| 5 | Viewer 'Concept T01' | Converter: scaffold milestone → `concepts=[]`, `concept_code=""`, LO concept="" (bỏ fallback task_id); renderer hiện tên task cho milestone không concept |
+| 6 | `--no-judge` vỡ khi chưa có artifact | **`assign_stages_by_matching`**: fallback deterministic (text-match stage) thay vì mapping rỗng → mọi task POLISH |
+
+**Bằng chứng (Talky sau fix v2):**
+```
+S2: T06 → T16 → T07 → T08 → T13 → T15 → T11 → T04   (ViewState về S2)
+S3: T02 → T05 → T03
+S4: T09 → T10 → T12 → T14                           (models TRƯỚC viewmodels)
+S5: T17 → T19 → T18                                 (ImagePicker trước EditProfile)
+S6: T20 → T21 → T22                                 (foundation → manager → wiring)
+```
+`validate_data.py` PASS (110 LOs, 2 advisory ZPD); UI render đúng thứ tự, T01
+không còn hiện "Concept T01".
+
+

@@ -13,10 +13,27 @@ Usage:
 """
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
-PHASE_TITLES = {"FOUNDATION": "Foundation", "MVP": "MVP", "EXTEND": "Extend", "POLISH": "Polish"}
+# Phase = development_stage (audit 2026-08-08: step4 không còn nén 6 stages → 4
+# phases). phase_id = stage index (0-based); POLISH (gaps/debts) = phase 6+.
+POLISH_PHASE_ID = 6
+
+
+def _phase_id(phase_name: str) -> int:
+    m = re.match(r"Stage\s+(\d+)", phase_name or "")
+    if m:
+        return int(m.group(1)) - 1
+    return POLISH_PHASE_ID
+
+
+def _phase_title(phase_name: str) -> str:
+    m = re.match(r"Stage\s+\d+\s*[-—]\s*(.+)", phase_name or "")
+    if m:
+        return m.group(1).strip()
+    return "Polish" if phase_name == "POLISH" else (phase_name or "Phase")
 
 
 def convert(roadmap: dict) -> dict:
@@ -25,9 +42,14 @@ def convert(roadmap: dict) -> dict:
     lo_counter = 0
     all_concepts = set()
 
+    # Stage narrative → description cho phase (product_state của stage đó)
+    stage_desc = {}
+    for s in roadmap.get("development_stages", []):
+        stage_desc[s.get("stage", "")] = s.get("product_state", "")
+
     for phase in roadmap.get("phases", []):
-        phase_name = phase.get("phase", "MVP")
-        phase_id = {"FOUNDATION": 0, "MVP": 1, "EXTEND": 2, "POLISH": 3}.get(phase_name, 1)
+        phase_name = phase.get("phase", "POLISH")
+        phase_id = _phase_id(phase_name)
 
         milestones_out = []
         for m in phase.get("milestones", []):
@@ -40,13 +62,17 @@ def convert(roadmap: dict) -> dict:
             los_out = []
             for lo in m.get("los", []):
                 lo_counter += 1
-                concept = lo.get("concept_code") or (m.get("concepts") or [task_id])[0]
-                all_concepts.add(concept)
+                # Scaffold (audit C.1 + v2 #6): milestone không concept → KHÔNG
+                # fallback task_id làm concept (trước đây viewer hiện 'Concept T01'
+                # — task ID trá hình concept). concept = "" (renderer tự fallback).
+                concept = lo.get("concept_code") or (m.get("concepts") or [""])[0]
+                all_concepts.add(concept) if concept else None
                 lo_type = lo.get("lo_type", "SPECIFIC_IMPL")
                 prefix = {"UNIVERSAL": "ULO", "CONCEPTUAL_IMPL": "CIO", "SPECIFIC_IMPL": "SIO"}.get(
                     lo_type, "LO")
                 los_out.append({
-                    "code": f"{prefix}-{concept}-{lo_counter:02d}",
+                    "code": f"{prefix}-{concept}-{lo_counter:02d}" if concept
+                            else f"{prefix}-{lo_counter:02d}",
                     "lo_type": lo_type,
                     "concept": concept,
                     "name": f"{prefix}: {task_name}",
@@ -72,7 +98,10 @@ def convert(roadmap: dict) -> dict:
                 "id": task_id,
                 "name": task_name,
                 "concepts": milestone_concepts,
-                "concept_code": milestone_concepts[0] if milestone_concepts else task_id,
+                # Scaffold: concept_code = "" (không có concept thật — renderer
+                # fallback milestone.name thay vì task ID trá hình concept).
+                "concept_code": milestone_concepts[0] if milestone_concepts
+                                else ("" if m.get("scaffold") else task_id),
                 # M4 — line-level trace (file#L<line>) từ STEP 2 evidence, do
                 # step4_roadmap.py đính vào milestone (nếu có).
                 "evidence_refs": m.get("evidence_refs", []),
@@ -82,8 +111,9 @@ def convert(roadmap: dict) -> dict:
 
         phases_out.append({
             "phase_id": phase_id,
-            "title": PHASE_TITLES.get(phase_name, phase_name),
-            "description": f"{phase_name}: {len(milestones_out)} tasks",
+            "title": _phase_title(phase_name),
+            "description": stage_desc.get(phase_name)
+                or f"{phase_name}: {len(milestones_out)} tasks",
             "milestones": milestones_out,
         })
 
