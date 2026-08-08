@@ -61,27 +61,33 @@ def collect_keywords(project_graph: Dict[str, Any], repo_dir: Path) -> Dict[str,
     """
     keywords: Dict[str, Dict[str, Any]] = {}
 
-    # 0. Per-node keywords từ STEP 1 (A1/A2) — GIỮ QUAN HỆ node
+    # 0. Per-node keywords từ STEP 1 (A1/A2) — GIỮ QUAN HỆ node.
+    # LƯU Ý: 1 keyword (VD 'Codable') xuất hiện ở NHIỀU task (t5, t6, t7) —
+    # phải giữ node_id của TẤT CẢ, không setdefault (setdefault gán cho task
+    # đầu tiên → các task sau mất mapping → UI hiện 'Concept t7').
     for t in project_graph.get("implementation", {}).get("tasks", []):
         node_id = f"task:{t.get('id', '')}"
         for kw in t.get("keywords", []):
-            keywords.setdefault(kw, {"source": "task_keyword",
-                                     "evidence": {"file": (t.get("source_evidence") or [""])[0]},
-                                     "node_id": node_id})
+            entry = keywords.setdefault(kw, {"source": "task_keyword",
+                                             "evidence": {"file": (t.get("source_evidence") or [""])[0]},
+                                             "node_ids": set()})
+            entry["node_ids"].add(node_id)
     for f in project_graph.get("features", []):
         node_id = f"feature:{f.get('id', '')}"
         for kw in f.get("api_usage", []):
             # api_usage có thể là 'UserDefaults.currentUserId' — lấy token đầu
             base_kw = kw.split(".")[0] if isinstance(kw, str) else kw
-            keywords.setdefault(base_kw, {"source": "feature_api_usage",
-                                          "evidence": {},
-                                          "node_id": node_id})
+            entry = keywords.setdefault(base_kw, {"source": "feature_api_usage",
+                                                  "evidence": {},
+                                                  "node_ids": set()})
+            entry["node_ids"].add(node_id)
     for s in project_graph.get("experience", {}).get("screens", []):
         node_id = f"screen:{s.get('id', '')}"
         for kw in s.get("keywords", []):
-            keywords.setdefault(kw, {"source": "screen_keyword",
-                                     "evidence": {},
-                                     "node_id": node_id})
+            entry = keywords.setdefault(kw, {"source": "screen_keyword",
+                                             "evidence": {},
+                                             "node_ids": set()})
+            entry["node_ids"].add(node_id)
 
     # 1. Symbols OBSERVED từ evidence (đã verify tồn tại)
     for e in project_graph.get("evidence", {}).get("entries", []):
@@ -191,23 +197,29 @@ def apply_mappings(project_graph: Dict[str, Any], keywords: Dict[str, Dict[str, 
         kw = m.get("keyword", "")
         info = keywords.get(kw, {})
         status = "MAPPED" if m.get("status") == "mapped" else "UNMAPPED_CONCEPT"
-        entry = {
-            "project_node": kw,
-            "node_id": info.get("node_id", ""),  # giữ quan hệ task/feature/screen → keyword
-            "keywords": [kw],
-            "concepts": [m.get("concept_code", "")] if m.get("concept_code") else [],
-            "status": status,
-            "evidence": info.get("evidence", {}),
-        }
-        if status == "UNMAPPED_CONCEPT":
-            entry["suggested_concept"] = {
-                "code": m.get("concept_code", ""),
-                "name": m.get("concept_name", ""),
-                "topic": m.get("suggested_topic", ""),
-                "category": m.get("suggested_category", ""),
-                "reason": m.get("reason", ""),
+        # 1 keyword → NHIỀU node (t5/t6/t7 cùng 'Codable') → 1 mapping per node,
+        # giữ quan hệ task → keyword → concept cho MỌI task, không chỉ task đầu.
+        node_ids = info.get("node_ids") or ({info.get("node_id", "")} if info.get("node_id") else set())
+        if not node_ids:
+            node_ids = {""}
+        for nid in sorted(node_ids):
+            entry = {
+                "project_node": kw,
+                "node_id": nid,  # task/feature/screen cụ thể
+                "keywords": [kw],
+                "concepts": [m.get("concept_code", "")] if m.get("concept_code") else [],
+                "status": status,
+                "evidence": info.get("evidence", {}),
             }
-        knowledge_mappings.append(entry)
+            if status == "UNMAPPED_CONCEPT":
+                entry["suggested_concept"] = {
+                    "code": m.get("concept_code", ""),
+                    "name": m.get("concept_name", ""),
+                    "topic": m.get("suggested_topic", ""),
+                    "category": m.get("suggested_category", ""),
+                    "reason": m.get("reason", ""),
+                }
+            knowledge_mappings.append(entry)
 
     result["knowledge_mapping"] = {"mappings": knowledge_mappings}
     return result

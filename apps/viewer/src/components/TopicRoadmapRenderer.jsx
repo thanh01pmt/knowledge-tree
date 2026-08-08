@@ -27,37 +27,22 @@ const STORAGE_KEY = 'orchable-topic-roadmap-progress';
 function transformToCardData(roadmap) {
   if (!roadmap?.phases) return { phases: [], cards: [] };
 
-  // Gom toàn bộ LO của MỖI concept từ mọi phase (ULO+CIO+SIO)
-  // → mỗi concept luôn có CẢ ULO/CIO lẫn SIO, không thiếu bên nào.
-  // Gom theo lo.concept_code (concept THẬT của LO) — milestone v3 là task
-  // có thể chứa nhiều concepts, không phải 1 concept/1 milestone như v2.
-  const conceptLoisAll = new Map();  // concept_code -> [all LOs across phases]
-  roadmap.phases.forEach(phase => {
-    (phase.milestones || []).forEach(milestone => {
-      (milestone.learning_objectives || []).forEach(lo => {
-        const key = lo.concept || lo.concept_code || milestone.concept_code;
-        if (!key) return;
-        if (!conceptLoisAll.has(key)) conceptLoisAll.set(key, []);
-        conceptLoisAll.get(key).push({ ...lo });
-      });
-    });
-  });
-
   const cards = [];
   roadmap.phases.forEach(phase => {
     const pid = phase.phase_id;
     (phase.milestones || []).forEach(milestone => {
+      // v3: milestone = TASK đã có đủ LO riêng (ULO/CIO/SIO) — KHÔNG gom toàn cục
+      // theo concept (trước đây gom mọi task dạy cùng concept → keyword của task
+      // khác hiển thị nhầm, "3 mục tiêu" nhưng 7 items). Dùng LO của task này thôi.
       const los = milestone.learning_objectives || [];
       const ulos = los.filter(lo => lo.lo_type === 'UNIVERSAL');
       const cios = los.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
       const sios = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
-      // Lấy đủ LO của concept này từ MỌI phase (không chỉ phase hiện tại)
-      // Milestone v3 = task nhiều concepts → allLois = gom theo concept của LO đầu
       const primaryConcept = los[0]?.concept || los[0]?.concept_code || milestone.concept_code;
-      const allLois = conceptLoisAll.get(primaryConcept) || los;
-      const allUlos = allLois.filter(lo => lo.lo_type === 'UNIVERSAL');
-      const allCios = allLois.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
-      const allSios = allLois.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
+      const allLois = los;  // task-local — không gom concept toàn cục
+      const allUlos = ulos;
+      const allCios = cios;
+      const allSios = sios;
 
       // Knowledge items theo thiết kế:
       // - ULO/CIO cùng concept → GOM thành 1 item "Concept <Tên>" (không tách tầng)
@@ -67,7 +52,7 @@ function transformToCardData(roadmap) {
       const conceptLabel = humanizeCode(primaryConcept);
       const cardKey = primaryConcept || milestone.concept_code || `card-${cards.length}`;
 
-      // Gom ULO + CIO của concept thành 1 item "Concept XYZ" (từ MỌI phase)
+      // Gom ULO + CIO của concept thành 1 item "Concept XYZ" (của task này)
       const conceptLois = [...allUlos, ...allCios];
       if (conceptLois.length > 0) {
         // Bloom tag đa cấp: gom các bloom khác nhau (VD understand·apply)

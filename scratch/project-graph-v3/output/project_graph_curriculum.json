@@ -3877,16 +3877,16 @@
           ""
         ],
         "concepts": [
-          "MISSING_KEYWORD"
+          "UNDEFINED_KEYWORD"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {},
         "suggested_concept": {
-          "code": "MISSING_KEYWORD",
-          "name": "Missing Keyword",
-          "topic": "Input handling",
-          "category": "General",
-          "reason": "Chuỗi rỗng không thể hiện một khái niệm cụ thể nào trong Knowledge Tree."
+          "code": "UNDEFINED_KEYWORD",
+          "name": "Undefined Keyword",
+          "topic": "Input Metadata",
+          "category": "Metadata",
+          "reason": "Chuỗi rỗng, không có ngữ nghĩa để phân loại."
         }
       },
       {
@@ -3910,18 +3910,39 @@
           "@DocumentID"
         ],
         "concepts": [
-          "DOCUMENT_IDENTIFIER_BINDING"
+          "JSON_SERIALIZATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/Model/ChatUser.swift"
-        },
-        "suggested_concept": {
-          "code": "DOCUMENT_IDENTIFIER_BINDING",
-          "name": "Document Identifier Binding",
-          "topic": "Document persistence",
-          "category": "Data Persistence",
-          "reason": "@DocumentID gắn ID của document vào thuộc tính model, không có concept nào trong bank cover."
+        }
+      },
+      {
+        "project_node": "@DocumentID",
+        "node_id": "task:t6",
+        "keywords": [
+          "@DocumentID"
+        ],
+        "concepts": [
+          "JSON_SERIALIZATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Model/ChatUser.swift"
+        }
+      },
+      {
+        "project_node": "@DocumentID",
+        "node_id": "task:t7",
+        "keywords": [
+          "@DocumentID"
+        ],
+        "concepts": [
+          "JSON_SERIALIZATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Model/ChatUser.swift"
         }
       },
       {
@@ -3940,9 +3961,79 @@
         "suggested_concept": {
           "code": "ENVIRONMENT_INJECTION",
           "name": "Environment Injection",
-          "topic": "Environment / Dependency Injection",
+          "topic": "Dependency Injection & Configuration",
           "category": "Software Architecture",
-          "reason": "@Environment là cơ chế tiêm dữ liệu từ môi trường, chưa có concept tương ứng."
+          "reason": "Truy cập các giá trị môi trường do framework cung cấp."
+        }
+      },
+      {
+        "project_node": "@EnvironmentObject",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "@EnvironmentObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "@EnvironmentObject",
+        "node_id": "screen:loginx_view",
+        "keywords": [
+          "@EnvironmentObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "@EnvironmentObject",
+        "node_id": "screen:profile_view",
+        "keywords": [
+          "@EnvironmentObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "@EnvironmentObject",
+        "node_id": "screen:recent_chat_view",
+        "keywords": [
+          "@EnvironmentObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "@EnvironmentObject",
+        "node_id": "screen:register_view",
+        "keywords": [
+          "@EnvironmentObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
         }
       },
       {
@@ -3966,18 +4057,25 @@
           "@MainActor"
         ],
         "concepts": [
-          "CONCURRENCY_ACTOR_MODEL"
+          "ASYNC_PATTERNS"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/Util/Helper/NotificationManager.swift"
-        },
-        "suggested_concept": {
-          "code": "CONCURRENCY_ACTOR_MODEL",
-          "name": "Concurrency Actor Model",
-          "topic": "Concurrency and Actors",
-          "category": "Concurrency",
-          "reason": "@MainActor là cơ chế actor để đảm bảo main-thread, chưa có concept bao phủ."
+        }
+      },
+      {
+        "project_node": "@ObservedObject",
+        "node_id": "screen:new_chat_view",
+        "keywords": [
+          "@ObservedObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
         }
       },
       {
@@ -3992,6 +4090,62 @@
         "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "@ObservedObject",
+        "node_id": "task:t17",
+        "keywords": [
+          "@ObservedObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "@Published",
+        "node_id": "task:t13",
+        "keywords": [
+          "@Published"
+        ],
+        "concepts": [
+          "PUBLISHER_SUBSCRIBER_MODEL"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "@Published",
+        "node_id": "task:t15",
+        "keywords": [
+          "@Published"
+        ],
+        "concepts": [
+          "PUBLISHER_SUBSCRIBER_MODEL"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "@Published",
+        "node_id": "task:t17",
+        "keywords": [
+          "@Published"
+        ],
+        "concepts": [
+          "PUBLISHER_SUBSCRIBER_MODEL"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
         }
       },
       {
@@ -4010,6 +4164,18 @@
       },
       {
         "project_node": "@State",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "@State"
+        ],
+        "concepts": [
+          "LOCAL_VIEW_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "@State",
         "node_id": "screen:loginx_view",
         "keywords": [
           "@State"
@@ -4019,6 +4185,32 @@
         ],
         "status": "MAPPED",
         "evidence": {}
+      },
+      {
+        "project_node": "@State",
+        "node_id": "screen:register_view",
+        "keywords": [
+          "@State"
+        ],
+        "concepts": [
+          "LOCAL_VIEW_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "@StateObject",
+        "node_id": "screen:chat_detail_view",
+        "keywords": [
+          "@StateObject"
+        ],
+        "concepts": [
+          "SHARED_OBSERVABLE_STATE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
       },
       {
         "project_node": "@StateObject",
@@ -4049,10 +4241,10 @@
         },
         "suggested_concept": {
           "code": "APP_LIFECYCLE_MANAGEMENT",
-          "name": "App Lifecycle Management",
-          "topic": "App Lifecycle",
-          "category": "Application Architecture",
-          "reason": "@UIApplicationDelegateAdaptor tích hợp AppDelegate vào SwiftUI lifecycle, chưa có concept này."
+          "name": "Application Lifecycle Management",
+          "topic": "Application Lifecycle",
+          "category": "App Architecture",
+          "reason": "Tích hợp app delegate vào SwiftUI để quản lý vòng đời ứng dụng."
         }
       },
       {
@@ -4062,18 +4254,116 @@
           "@main"
         ],
         "concepts": [
-          "APP_LIFECYCLE_MANAGEMENT"
+          "PROGRAM_ENTRY_POINT"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "Talky/TalkyApp.swift"
         },
         "suggested_concept": {
-          "code": "APP_LIFECYCLE_MANAGEMENT",
-          "name": "App Lifecycle Management",
-          "topic": "App Lifecycle",
-          "category": "Application Architecture",
-          "reason": "@main là điểm vào của ứng dụng, thuộc khái niệm quản lý vòng đời."
+          "code": "PROGRAM_ENTRY_POINT",
+          "name": "Program Entry Point",
+          "topic": "Application Entry Point",
+          "category": "Programming Fundamentals",
+          "reason": "Đánh dấu điểm bắt đầu thực thi của chương trình."
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "feature:new_chat",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "feature:profile",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "feature:recent_chat",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "screen:new_chat_view",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "screen:profile_view",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "screen:recent_chat_view",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
         }
       },
       {
@@ -4083,18 +4373,53 @@
           "AsyncImage"
         ],
         "concepts": [
-          "REMOTE_MEDIA_LOADING"
+          "ASYNC_PATTERNS"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/RecentChatView.swift"
-        },
-        "suggested_concept": {
-          "code": "REMOTE_MEDIA_LOADING",
-          "name": "Remote Media Loading",
-          "topic": "Remote Image Loading",
-          "category": "UI Components",
-          "reason": "AsyncImage tải và hiển thị ảnh từ URL một cách bất đồng bộ, chưa có concept trong bank."
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "task:t18",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage",
+        "node_id": "task:t19",
+        "keywords": [
+          "AsyncImage"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "AsyncImage phase",
+        "node_id": "feature:ui_state",
+        "keywords": [
+          "AsyncImage phase"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Util/Enum/ViewState.swift"
         }
       },
       {
@@ -4104,23 +4429,28 @@
           "AsyncImage phase"
         ],
         "concepts": [
-          "REMOTE_MEDIA_LOADING"
+          "ASYNC_PATTERNS"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/Util/Enum/ViewState.swift"
-        },
-        "suggested_concept": {
-          "code": "REMOTE_MEDIA_LOADING",
-          "name": "Remote Media Loading",
-          "topic": "Remote Image Loading",
-          "category": "UI Components",
-          "reason": "Các phase của AsyncImage phản ánh trạng thái tải ảnh từ xa."
         }
       },
       {
         "project_node": "Auth",
         "node_id": "feature:auth",
+        "keywords": [
+          "Auth"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "Auth",
+        "node_id": "feature:profile",
         "keywords": [
           "Auth"
         ],
@@ -4264,8 +4594,48 @@
         }
       },
       {
+        "project_node": "Codable",
+        "node_id": "task:t6",
+        "keywords": [
+          "Codable"
+        ],
+        "concepts": [
+          "JSON_SERIALIZATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Model/ChatUser.swift"
+        }
+      },
+      {
+        "project_node": "Codable",
+        "node_id": "task:t7",
+        "keywords": [
+          "Codable"
+        ],
+        "concepts": [
+          "JSON_SERIALIZATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Model/ChatUser.swift"
+        }
+      },
+      {
         "project_node": "Color(asset)",
         "node_id": "feature:ui_shell",
+        "keywords": [
+          "Color(asset)"
+        ],
+        "concepts": [
+          "PROJECT_ASSETS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "Color(asset)",
+        "node_id": "screen:chat_detail_view",
         "keywords": [
           "Color(asset)"
         ],
@@ -4313,7 +4683,7 @@
           "Firebase"
         ],
         "concepts": [
-          "BACKEND_FRAMEWORKS"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4327,7 +4697,7 @@
           "FirebaseApp.configure()"
         ],
         "concepts": [
-          "BACKEND_FRAMEWORKS"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4341,7 +4711,7 @@
           "FirebaseCore"
         ],
         "concepts": [
-          "BACKEND_FRAMEWORKS"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4355,7 +4725,7 @@
           "FirebaseFirestore"
         ],
         "concepts": [
-          "RELATIONAL_VS_NONRELATIONAL"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4369,7 +4739,7 @@
           "FirebaseFirestoreSwift"
         ],
         "concepts": [
-          "JSON_SERIALIZATION"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4383,7 +4753,7 @@
           "FirebaseManager"
         ],
         "concepts": [
-          "CREATIONAL_PATTERNS"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4400,18 +4770,18 @@
           "FirebaseMessaging"
         ],
         "concepts": [
-          "PUSH_NOTIFICATION_API"
+          "REMOTE_NOTIFICATION_API"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "/tmp/repocand-Talky/Talky/TalkyApp.swift"
         },
         "suggested_concept": {
-          "code": "PUSH_NOTIFICATION_API",
-          "name": "Push Notification API",
-          "topic": "Remote Notifications",
-          "category": "Platform Services",
-          "reason": "FirebaseMessaging là dịch vụ push notification, không có concept riêng trong bank."
+          "code": "REMOTE_NOTIFICATION_API",
+          "name": "Remote Notification API",
+          "topic": "Remote/Push Notifications",
+          "category": "Notification Systems",
+          "reason": "SDK nhận thông báo đẩy từ xa."
         }
       },
       {
@@ -4421,18 +4791,11 @@
           "FirebaseStorage"
         ],
         "concepts": [
-          "CLOUD_FILE_STORAGE"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/ProfileView.swift"
-        },
-        "suggested_concept": {
-          "code": "CLOUD_FILE_STORAGE",
-          "name": "Cloud File Storage",
-          "topic": "Cloud Storage",
-          "category": "Backend Services",
-          "reason": "FirebaseStorage cung cấp lưu trữ tệp trên đám mây, chưa có concept tương ứng."
         }
       },
       {
@@ -4442,16 +4805,51 @@
           "FirebaseStorage putData"
         ],
         "concepts": [
-          "CLOUD_FILE_STORAGE"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
-        "evidence": {},
-        "suggested_concept": {
-          "code": "CLOUD_FILE_STORAGE",
-          "name": "Cloud File Storage",
-          "topic": "Cloud Storage",
-          "category": "Backend Services",
-          "reason": "putData dùng để tải dữ liệu lên cloud storage."
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "Firestore",
+        "node_id": "task:t13",
+        "keywords": [
+          "Firestore"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "Firestore",
+        "node_id": "task:t15",
+        "keywords": [
+          "Firestore"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
+        }
+      },
+      {
+        "project_node": "Firestore",
+        "node_id": "task:t17",
+        "keywords": [
+          "Firestore"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/TalkyApp.swift"
         }
       },
       {
@@ -4461,7 +4859,7 @@
           "Firestore"
         ],
         "concepts": [
-          "RELATIONAL_VS_NONRELATIONAL"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4471,6 +4869,18 @@
       {
         "project_node": "Firestore addSnapshotListener",
         "node_id": "feature:recent_chat",
+        "keywords": [
+          "Firestore addSnapshotListener"
+        ],
+        "concepts": [
+          "EVENT_LISTENERS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "Firestore addSnapshotListener",
+        "node_id": "screen:recent_chat_view",
         "keywords": [
           "Firestore addSnapshotListener"
         ],
@@ -4499,7 +4909,7 @@
           "Firestore collection \"users\""
         ],
         "concepts": [
-          "RELATIONAL_VS_NONRELATIONAL"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {}
@@ -4511,17 +4921,10 @@
           "Firestore collection \"users\" getDocuments"
         ],
         "concepts": [
-          "DATA_QUERY_OPERATIONS"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
-        "evidence": {},
-        "suggested_concept": {
-          "code": "DATA_QUERY_OPERATIONS",
-          "name": "Data Query Operations",
-          "topic": "Database Queries",
-          "category": "Data Persistence",
-          "reason": "getDocuments truy vấn dữ liệu, chưa có concept bao phủ cho NoSQL query."
-        }
+        "status": "MAPPED",
+        "evidence": {}
       },
       {
         "project_node": "Firestore.Decoder",
@@ -4558,7 +4961,7 @@
           "Firestore.firestore()"
         ],
         "concepts": [
-          "RELATIONAL_VS_NONRELATIONAL"
+          "API_INTEGRATION"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4578,24 +4981,36 @@
         "evidence": {}
       },
       {
+        "project_node": "ForEach",
+        "node_id": "screen:new_chat_view",
+        "keywords": [
+          "ForEach"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
         "project_node": "Foundation",
         "node_id": "",
         "keywords": [
           "Foundation"
         ],
         "concepts": [
-          "CORE_LIBRARY_UTILITIES"
+          "CORE_STANDARD_LIBRARY"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "/tmp/repocand-Talky/Talky/Model/ChatMessage.swift"
         },
         "suggested_concept": {
-          "code": "CORE_LIBRARY_UTILITIES",
-          "name": "Core Library Utilities",
-          "topic": "Core Standard Library",
+          "code": "CORE_STANDARD_LIBRARY",
+          "name": "Core Standard Library",
+          "topic": "Standard Libraries and Utilities",
           "category": "Programming Fundamentals",
-          "reason": "Foundation là framework nền tảng cung cấp các tiện ích cốt lõi, chưa có concept."
+          "reason": "Framework nền tảng cung cấp kiểu dữ liệu và tiện ích cơ bản."
         }
       },
       {
@@ -4673,12 +5088,26 @@
       },
       {
         "project_node": "LinearGradient",
+        "node_id": "screen:loginx_view",
+        "keywords": [
+          "LinearGradient"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "LinearGradient",
         "node_id": "task:t9",
         "keywords": [
           "LinearGradient"
         ],
         "concepts": [
-          "UI_MODIFIERS_CONCEPT"
+          "DECLARATIVE_UI_PARADIGM"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4709,16 +5138,16 @@
           "Messaging"
         ],
         "concepts": [
-          "PUSH_NOTIFICATION_API"
+          "REMOTE_NOTIFICATION_API"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {},
         "suggested_concept": {
-          "code": "PUSH_NOTIFICATION_API",
-          "name": "Push Notification API",
-          "topic": "Remote Notifications",
-          "category": "Platform Services",
-          "reason": "Messaging trong Firebase phục vụ push notification."
+          "code": "REMOTE_NOTIFICATION_API",
+          "name": "Remote Notification API",
+          "topic": "Remote/Push Notifications",
+          "category": "Notification Systems",
+          "reason": "Dịch vụ nhận thông báo đẩy từ xa."
         }
       },
       {
@@ -4728,18 +5157,60 @@
           "Messaging.messaging().apnsToken"
         ],
         "concepts": [
-          "PUSH_NOTIFICATION_API"
+          "REMOTE_NOTIFICATION_API"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "Talky/Util/Helper/PushNotificationManager.swift"
         },
         "suggested_concept": {
-          "code": "PUSH_NOTIFICATION_API",
-          "name": "Push Notification API",
-          "topic": "Remote Notifications",
-          "category": "Platform Services",
-          "reason": "apnsToken đăng ký token APNs cho push notification."
+          "code": "REMOTE_NOTIFICATION_API",
+          "name": "Remote Notification API",
+          "topic": "Remote/Push Notifications",
+          "category": "Notification Systems",
+          "reason": "Gửi APNs token lên Firebase Messaging để nhận push."
+        }
+      },
+      {
+        "project_node": "NavigationLink",
+        "node_id": "feature:ui_shell",
+        "keywords": [
+          "NavigationLink"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationLink",
+        "node_id": "task:t14",
+        "keywords": [
+          "NavigationLink"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationLink",
+        "node_id": "task:t19",
+        "keywords": [
+          "NavigationLink"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
         }
       },
       {
@@ -4749,7 +5220,77 @@
           "NavigationLink"
         ],
         "concepts": [
-          "VIEW_TRANSITIONS"
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationView",
+        "node_id": "feature:ui_shell",
+        "keywords": [
+          "NavigationView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationView",
+        "node_id": "screen:new_chat_view",
+        "keywords": [
+          "NavigationView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationView",
+        "node_id": "screen:profile_view",
+        "keywords": [
+          "NavigationView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationView",
+        "node_id": "screen:recent_chat_view",
+        "keywords": [
+          "NavigationView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/WelcomeView.swift"
+        }
+      },
+      {
+        "project_node": "NavigationView",
+        "node_id": "task:t14",
+        "keywords": [
+          "NavigationView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4763,7 +5304,7 @@
           "NavigationView"
         ],
         "concepts": [
-          "VIEW_TRANSITIONS"
+          "DECLARATIVE_UI_PARADIGM"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -4833,6 +5374,20 @@
         }
       },
       {
+        "project_node": "PlainButtonStyle",
+        "node_id": "task:t18",
+        "keywords": [
+          "PlainButtonStyle"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
         "project_node": "ProfileView",
         "node_id": "",
         "keywords": [
@@ -4856,7 +5411,7 @@
           "PushNotificationManager"
         ],
         "concepts": [
-          "PUSH_NOTIFICATION_API"
+          "REMOTE_NOTIFICATION_API"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
@@ -4866,11 +5421,11 @@
           "ref": "Talky/Util/Helper/PushNotificationManager.swift#L2"
         },
         "suggested_concept": {
-          "code": "PUSH_NOTIFICATION_API",
-          "name": "Push Notification API",
-          "topic": "Remote Notifications",
-          "category": "Platform Services",
-          "reason": "PushNotificationManager quản lý thông báo đẩy từ xa."
+          "code": "REMOTE_NOTIFICATION_API",
+          "name": "Remote Notification API",
+          "topic": "Remote/Push Notifications",
+          "category": "Notification Systems",
+          "reason": "Quản lý nhận và xử lý thông báo đẩy."
         }
       },
       {
@@ -4938,23 +5493,44 @@
       },
       {
         "project_node": "RelativeDateTimeFormatter",
-        "node_id": "task:t6",
+        "node_id": "feature:recent_chat",
         "keywords": [
           "RelativeDateTimeFormatter"
         ],
         "concepts": [
-          "DATE_FORMAT_UTILITIES"
+          "DATE_TIME_FORMATTING"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "Talky/Model/RecentMessage.swift"
         },
         "suggested_concept": {
-          "code": "DATE_FORMAT_UTILITIES",
-          "name": "Date Format Utilities",
-          "topic": "Date Formatting",
-          "category": "Utilities",
-          "reason": "RelativeDateTimeFormatter định dạng thời gian tương đối, chưa có concept."
+          "code": "DATE_TIME_FORMATTING",
+          "name": "Date and Time Formatting",
+          "topic": "Date and Time Handling",
+          "category": "Programming Utilities",
+          "reason": "Định dạng thời gian tương đối (ví dụ '5 phút trước')."
+        }
+      },
+      {
+        "project_node": "RelativeDateTimeFormatter",
+        "node_id": "task:t6",
+        "keywords": [
+          "RelativeDateTimeFormatter"
+        ],
+        "concepts": [
+          "DATE_TIME_FORMATTING"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "Talky/Model/RecentMessage.swift"
+        },
+        "suggested_concept": {
+          "code": "DATE_TIME_FORMATTING",
+          "name": "Date and Time Formatting",
+          "topic": "Date and Time Handling",
+          "category": "Programming Utilities",
+          "reason": "Định dạng thời gian tương đối (ví dụ '5 phút trước')."
         }
       },
       {
@@ -4973,6 +5549,30 @@
       },
       {
         "project_node": "ScrollView",
+        "node_id": "screen:chat_detail_view",
+        "keywords": [
+          "ScrollView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "ScrollView",
+        "node_id": "screen:new_chat_view",
+        "keywords": [
+          "ScrollView"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "ScrollView",
         "node_id": "screen:recent_chat_view",
         "keywords": [
           "ScrollView"
@@ -4982,6 +5582,34 @@
         ],
         "status": "MAPPED",
         "evidence": {}
+      },
+      {
+        "project_node": "ScrollViewReader",
+        "node_id": "feature:chat_detail",
+        "keywords": [
+          "ScrollViewReader"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/ChatDetailView.swift"
+        }
+      },
+      {
+        "project_node": "ScrollViewReader",
+        "node_id": "screen:chat_detail_view",
+        "keywords": [
+          "ScrollViewReader"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/ChatDetailView.swift"
+        }
       },
       {
         "project_node": "ScrollViewReader",
@@ -4995,6 +5623,34 @@
         "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/ChatDetailView.swift"
+        }
+      },
+      {
+        "project_node": "SecureField",
+        "node_id": "screen:loginx_view",
+        "keywords": [
+          "SecureField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
+        "project_node": "SecureField",
+        "node_id": "screen:register_view",
+        "keywords": [
+          "SecureField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
         }
       },
       {
@@ -5035,18 +5691,11 @@
           "Storage.storage()"
         ],
         "concepts": [
-          "CLOUD_FILE_STORAGE"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/Util/Helper/FirebaseManager.swift"
-        },
-        "suggested_concept": {
-          "code": "CLOUD_FILE_STORAGE",
-          "name": "Cloud File Storage",
-          "topic": "Cloud Storage",
-          "category": "Backend Services",
-          "reason": "Storage.storage() truy cập dịch vụ lưu trữ đám mây."
         }
       },
       {
@@ -5070,22 +5719,27 @@
           "TalkyApp"
         ],
         "concepts": [
-          "APP_LIFECYCLE_MANAGEMENT"
+          "DECLARATIVE_UI_PARADIGM"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/TalkyApp.swift",
           "symbol": "TalkyApp",
           "line": 2,
           "ref": "Talky/TalkyApp.swift#L2"
-        },
-        "suggested_concept": {
-          "code": "APP_LIFECYCLE_MANAGEMENT",
-          "name": "App Lifecycle Management",
-          "topic": "App Lifecycle",
-          "category": "Application Architecture",
-          "reason": "TalkyApp là struct App chính, đại diện cho điểm vào ứng dụng."
         }
+      },
+      {
+        "project_node": "Task",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "Task"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
       },
       {
         "project_node": "Task",
@@ -5100,8 +5754,104 @@
         "evidence": {}
       },
       {
+        "project_node": "Task",
+        "node_id": "screen:register_view",
+        "keywords": [
+          "Task"
+        ],
+        "concepts": [
+          "ASYNC_PATTERNS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "TextField",
+        "node_id": "screen:chat_detail_view",
+        "keywords": [
+          "TextField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
+        "project_node": "TextField",
+        "node_id": "screen:loginx_view",
+        "keywords": [
+          "TextField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
+        "project_node": "TextField",
+        "node_id": "screen:register_view",
+        "keywords": [
+          "TextField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
         "project_node": "TextField",
         "node_id": "task:t10",
+        "keywords": [
+          "TextField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
+        "project_node": "TextField",
+        "node_id": "task:t11",
+        "keywords": [
+          "TextField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
+        "project_node": "TextField",
+        "node_id": "task:t12",
+        "keywords": [
+          "TextField"
+        ],
+        "concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/Component/SecureTextField.swift"
+        }
+      },
+      {
+        "project_node": "TextField",
+        "node_id": "task:t16",
         "keywords": [
           "TextField"
         ],
@@ -5141,6 +5891,20 @@
       },
       {
         "project_node": "UIImagePickerController",
+        "node_id": "feature:profile",
+        "keywords": [
+          "UIImagePickerController"
+        ],
+        "concepts": [
+          "MEDIA_PICKER_API"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/ProfileView.swift"
+        }
+      },
+      {
+        "project_node": "UIImagePickerController",
         "node_id": "task:t19",
         "keywords": [
           "UIImagePickerController"
@@ -5160,18 +5924,25 @@
           "UIViewControllerRepresentable"
         ],
         "concepts": [
-          "UI_BRIDGING_INTEROPERABILITY"
+          "FRONTEND_FRAMEWORKS"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/ProfileView.swift"
-        },
-        "suggested_concept": {
-          "code": "UI_BRIDGING_INTEROPERABILITY",
-          "name": "UI Bridging and Interoperability",
-          "topic": "Cross-Framework UI Integration",
-          "category": "Interoperability",
-          "reason": "UIViewControllerRepresentable giúp tích hợp UIKit vào SwiftUI."
+        }
+      },
+      {
+        "project_node": "UNUserNotificationCenter",
+        "node_id": "feature:push",
+        "keywords": [
+          "UNUserNotificationCenter"
+        ],
+        "concepts": [
+          "LOCAL_NOTIFICATION_API"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Util/Helper/NotificationManager.swift"
         }
       },
       {
@@ -5193,6 +5964,20 @@
         "node_id": "task:t21",
         "keywords": [
           "URLRequest"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/Util/Helper/PushNotificationManager.swift"
+        }
+      },
+      {
+        "project_node": "URLSession",
+        "node_id": "feature:push",
+        "keywords": [
+          "URLSession"
         ],
         "concepts": [
           "API_INTEGRATION"
@@ -5297,18 +6082,18 @@
           "Xcode template"
         ],
         "concepts": [
-          "IDE_TEMPLATES"
+          "PROJECT_TEMPLATES"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": ""
         },
         "suggested_concept": {
-          "code": "IDE_TEMPLATES",
-          "name": "IDE Project Templates",
-          "topic": "Project Templates",
+          "code": "PROJECT_TEMPLATES",
+          "name": "Project Templates and Scaffolding",
+          "topic": "Project Scaffolding and Templates",
           "category": "Development Tools",
-          "reason": "Xcode template là mẫu dự án có sẵn trong IDE, chưa có concept."
+          "reason": "Template dự án trong Xcode để tạo project mới."
         }
       },
       {
@@ -5326,6 +6111,32 @@
         }
       },
       {
+        "project_node": "addSnapshotListener",
+        "node_id": "task:t15",
+        "keywords": [
+          "addSnapshotListener"
+        ],
+        "concepts": [
+          "EVENT_LISTENERS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "alert",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "alert"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
         "project_node": "alert",
         "node_id": "screen:loginx_view",
         "keywords": [
@@ -5339,7 +6150,49 @@
       },
       {
         "project_node": "alert(isPresented:)",
+        "node_id": "feature:ui_state",
+        "keywords": [
+          "alert(isPresented:)"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "alert(isPresented:)",
         "node_id": "task:t11",
+        "keywords": [
+          "alert(isPresented:)"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "alert(isPresented:)",
+        "node_id": "task:t12",
+        "keywords": [
+          "alert(isPresented:)"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "alert(isPresented:)",
+        "node_id": "task:t22",
         "keywords": [
           "alert(isPresented:)"
         ],
@@ -5358,7 +6211,7 @@
           "closure callback didSelectNewUser"
         ],
         "concepts": [
-          "EVENT_LISTENERS"
+          "FIRST_CLASS_VALUES"
         ],
         "status": "MAPPED",
         "evidence": {}
@@ -5370,17 +6223,10 @@
           "document()"
         ],
         "concepts": [
-          "DATA_QUERY_OPERATIONS"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
-        "evidence": {},
-        "suggested_concept": {
-          "code": "DATA_QUERY_OPERATIONS",
-          "name": "Data Query Operations",
-          "topic": "Database Queries",
-          "category": "Data Persistence",
-          "reason": "document() tạo tham chiếu đến một document trong NoSQL database."
-        }
+        "status": "MAPPED",
+        "evidence": {}
       },
       {
         "project_node": "enum",
@@ -5398,12 +6244,82 @@
       },
       {
         "project_node": "fullScreenCover",
+        "node_id": "feature:new_chat",
+        "keywords": [
+          "fullScreenCover"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "fullScreenCover",
+        "node_id": "feature:ui_shell",
+        "keywords": [
+          "fullScreenCover"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "fullScreenCover",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "fullScreenCover"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "fullScreenCover",
+        "node_id": "screen:new_chat_view",
+        "keywords": [
+          "fullScreenCover"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "fullScreenCover",
         "node_id": "task:t14",
         "keywords": [
           "fullScreenCover"
         ],
         "concepts": [
-          "VIEW_TRANSITIONS"
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/RecentChatView.swift"
+        }
+      },
+      {
+        "project_node": "fullScreenCover",
+        "node_id": "task:t18",
+        "keywords": [
+          "fullScreenCover"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -5417,18 +6333,39 @@
           "getDocuments"
         ],
         "concepts": [
-          "DATA_QUERY_OPERATIONS"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/NewChatView.swift"
-        },
-        "suggested_concept": {
-          "code": "DATA_QUERY_OPERATIONS",
-          "name": "Data Query Operations",
-          "topic": "Database Queries",
-          "category": "Data Persistence",
-          "reason": "getDocuments lấy danh sách document từ database."
+        }
+      },
+      {
+        "project_node": "onChange",
+        "node_id": "feature:ui_state",
+        "keywords": [
+          "onChange"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "onChange",
+        "node_id": "screen:edit_profile_view",
+        "keywords": [
+          "onChange"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
         }
       },
       {
@@ -5438,11 +6375,53 @@
           "onChange"
         ],
         "concepts": [
-          "EVENT_LISTENERS"
+          "UI_MODIFIERS_CONCEPT"
         ],
         "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "onChange",
+        "node_id": "task:t12",
+        "keywords": [
+          "onChange"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "onChange",
+        "node_id": "task:t22",
+        "keywords": [
+          "onChange"
+        ],
+        "concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/LoginxView.swift"
+        }
+      },
+      {
+        "project_node": "onReceive",
+        "node_id": "screen:chat_detail_view",
+        "keywords": [
+          "onReceive"
+        ],
+        "concepts": [
+          "PUBLISHER_SUBSCRIBER_MODEL"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "Talky/View/ChatDetailView.swift"
         }
       },
       {
@@ -5452,7 +6431,7 @@
           "onReceive"
         ],
         "concepts": [
-          "EVENT_LISTENERS"
+          "PUBLISHER_SUBSCRIBER_MODEL"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -5480,7 +6459,7 @@
           "scrollTo"
         ],
         "concepts": [
-          "UI_MODIFIERS_CONCEPT"
+          "DECLARATIVE_UI_PARADIGM"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -5494,18 +6473,11 @@
           "setData"
         ],
         "concepts": [
-          "DATA_WRITE_OPERATIONS"
+          "API_INTEGRATION"
         ],
-        "status": "UNMAPPED_CONCEPT",
+        "status": "MAPPED",
         "evidence": {
           "file": "Talky/View/ChatDetailView.swift"
-        },
-        "suggested_concept": {
-          "code": "DATA_WRITE_OPERATIONS",
-          "name": "Data Write Operations",
-          "topic": "Database Writes",
-          "category": "Data Persistence",
-          "reason": "setData ghi dữ liệu vào database, chưa có concept tương ứng."
         }
       },
       {
@@ -5541,79 +6513,63 @@
     "concept_prerequisites": [
       {
         "concept_code": "API_INTEGRATION",
-        "requires": "SHARED_OBSERVABLE_STATE",
+        "requires": "ASYNC_PATTERNS",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.7,
+        "confidence": 0.85,
         "hub": false,
-        "judge_rationale": "Shared observable state is needed to propagate API data to the UI in a declarative app; appears earlier and is a logical foundation."
+        "judge_rationale": "API calls are inherently asynchronous; async patterns are a prerequisite."
       },
       {
-        "concept_code": "EVENT_LISTENERS",
-        "requires": "DECLARATIVE_UI_PARADIGM",
-        "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.75,
-        "hub": false,
-        "judge_rationale": "In declarative UI, event listeners are attached via view declarations; t10 before t11."
-      },
-      {
-        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-        "requires": "BACKEND_FRAMEWORKS",
-        "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.8,
-        "hub": false,
-        "judge_rationale": "Identity/access management typically needs a backend framework to authenticate users; backend appears earlier (t2)."
-      },
-      {
-        "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+        "concept_code": "API_INTEGRATION",
         "requires": "JSON_SERIALIZATION",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.8,
+        "confidence": 0.85,
         "hub": false,
-        "judge_rationale": "Serializing credentials to JSON is required for auth flows; JSON serialization appears earlier (t5)."
+        "judge_rationale": "APIs typically exchange JSON; JSON serialization is needed for API integration."
       },
       {
         "concept_code": "SHARED_OBSERVABLE_STATE",
         "requires": "DECLARATIVE_UI_PARADIGM",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.85,
+        "confidence": 0.9,
         "hub": false,
-        "judge_rationale": "Observable state is used to drive declarative UI updates; declarative UI appears earlier (t1)."
+        "judge_rationale": "Shared observable state is a declarative state concept; declarative UI paradigm must come first."
       },
       {
         "concept_code": "UI_MODIFIERS_CONCEPT",
         "requires": "DECLARATIVE_UI_PARADIGM",
         "source": "TASK_DEPENDENCY_VERIFIED",
-        "confidence": 0.85,
+        "confidence": 0.95,
         "hub": false,
-        "judge_rationale": "Modifiers are applied to declarative views; declarative UI appears earlier."
+        "judge_rationale": "UI modifiers are a declarative UI concept; declarative UI paradigm is a prerequisite."
       },
       {
-        "concept_code": "MEDIA_PICKER_API",
+        "concept_code": "FRONTEND_FRAMEWORKS",
         "requires": "DECLARATIVE_UI_PARADIGM",
         "source": "LLM_CROSS_CONCEPT",
         "confidence": 0.6,
-        "rationale": "Media pickers are presented declaratively (e.g., via sheets) in modern UI frameworks, requiring understanding of the dec"
+        "rationale": "Modern frontend frameworks are built around the declarative UI model; understanding the paradigm is foundational."
       },
       {
-        "concept_code": "MEDIA_PICKER_API",
+        "concept_code": "FRONTEND_FRAMEWORKS",
         "requires": "EVENT_LISTENERS",
         "source": "LLM_CROSS_CONCEPT",
         "confidence": 0.6,
-        "rationale": "The picker result is delivered via a callback or event, so event listener knowledge is necessary."
-      },
-      {
-        "concept_code": "CREATIONAL_PATTERNS",
-        "requires": "TYPE_SYSTEMS_AND_SAFETY",
-        "source": "LLM_CROSS_CONCEPT",
-        "confidence": 0.6,
-        "rationale": "Creational design patterns (e.g., factory, singleton) rely on type-safe object creation and interfaces."
+        "rationale": "Frontend frameworks handle interaction through event listeners; the event-listening model is fundamental."
       },
       {
         "concept_code": "JSON_SERIALIZATION",
         "requires": "TYPE_SYSTEMS_AND_SAFETY",
         "source": "LLM_CROSS_CONCEPT",
         "confidence": 0.6,
-        "rationale": "Serialization maps JSON to typed objects and vice versa, requiring a solid understanding of type systems."
+        "rationale": "Converting JSON to typed objects relies on understanding type systems, nullability, and type safety."
+      },
+      {
+        "concept_code": "CREATIONAL_PATTERNS",
+        "requires": "TYPE_SYSTEMS_AND_SAFETY",
+        "source": "LLM_CROSS_CONCEPT",
+        "confidence": 0.6,
+        "rationale": "Creational patterns depend on interfaces, abstract types, and type-safe object construction."
       }
     ],
     "concept_sequence": [
@@ -5624,7 +6580,7 @@
         "bloom_cap": "UNDERSTAND"
       },
       {
-        "concept_code": "BACKEND_FRAMEWORKS",
+        "concept_code": "API_INTEGRATION",
         "task_id": "t2",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
@@ -5648,55 +6604,85 @@
         "bloom_cap": "UNDERSTAND"
       },
       {
-        "concept_code": "RELATIONAL_VS_NONRELATIONAL",
-        "task_id": "t8",
-        "encounter": 1,
-        "bloom_cap": "UNDERSTAND"
-      },
-      {
-        "concept_code": "VIEW_TRANSITIONS",
-        "task_id": "t9",
-        "encounter": 1,
-        "bloom_cap": "UNDERSTAND"
-      },
-      {
-        "concept_code": "DECLARATIVE_UI_PARADIGM",
-        "task_id": "t10",
+        "concept_code": "JSON_SERIALIZATION",
+        "task_id": "t6",
         "encounter": 2,
         "bloom_cap": "APPLY"
       },
       {
-        "concept_code": "EVENT_LISTENERS",
+        "concept_code": "JSON_SERIALIZATION",
+        "task_id": "t7",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "t8",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "t9",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "t10",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
         "task_id": "t11",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "t12",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
         "concept_code": "EVENT_LISTENERS",
         "task_id": "t13",
-        "encounter": 2,
-        "bloom_cap": "APPLY"
-      },
-      {
-        "concept_code": "VIEW_TRANSITIONS",
-        "task_id": "t14",
-        "encounter": 2,
-        "bloom_cap": "APPLY"
-      },
-      {
-        "concept_code": "UI_MODIFIERS_CONCEPT",
-        "task_id": "t16",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
       },
       {
         "concept_code": "UI_MODIFIERS_CONCEPT",
-        "task_id": "t18",
-        "encounter": 2,
-        "bloom_cap": "APPLY"
+        "task_id": "t14",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
       },
       {
-        "concept_code": "MEDIA_PICKER_API",
+        "concept_code": "API_INTEGRATION",
+        "task_id": "t15",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "t16",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "t17",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "t18",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "FRONTEND_FRAMEWORKS",
         "task_id": "t19",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
@@ -5712,6 +6698,12 @@
         "task_id": "t21",
         "encounter": 1,
         "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "t22",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
       }
     ],
     "walking_skeleton": {
@@ -5731,7 +6723,7 @@
       {
         "task_id": "t2",
         "new_concepts": [
-          "BACKEND_FRAMEWORKS"
+          "API_INTEGRATION"
         ],
         "known_concepts": [],
         "verdict": "OK",
@@ -5767,32 +6759,36 @@
       {
         "task_id": "t6",
         "new_concepts": [],
-        "known_concepts": [],
+        "known_concepts": [
+          "JSON_SERIALIZATION"
+        ],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "t7",
         "new_concepts": [],
-        "known_concepts": [],
+        "known_concepts": [
+          "JSON_SERIALIZATION"
+        ],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "t8",
-        "new_concepts": [
-          "RELATIONAL_VS_NONRELATIONAL"
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
         ],
-        "known_concepts": [],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "t9",
-        "new_concepts": [
-          "VIEW_TRANSITIONS"
+        "new_concepts": [],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM"
         ],
-        "known_concepts": [],
         "verdict": "OK",
         "issues": []
       },
@@ -5808,7 +6804,7 @@
       {
         "task_id": "t11",
         "new_concepts": [
-          "EVENT_LISTENERS"
+          "UI_MODIFIERS_CONCEPT"
         ],
         "known_concepts": [],
         "verdict": "OK",
@@ -5817,16 +6813,18 @@
       {
         "task_id": "t12",
         "new_concepts": [],
-        "known_concepts": [],
+        "known_concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "t13",
-        "new_concepts": [],
-        "known_concepts": [
+        "new_concepts": [
           "EVENT_LISTENERS"
         ],
+        "known_concepts": [],
         "verdict": "OK",
         "issues": []
       },
@@ -5834,7 +6832,7 @@
         "task_id": "t14",
         "new_concepts": [],
         "known_concepts": [
-          "VIEW_TRANSITIONS"
+          "UI_MODIFIERS_CONCEPT"
         ],
         "verdict": "OK",
         "issues": []
@@ -5842,23 +6840,27 @@
       {
         "task_id": "t15",
         "new_concepts": [],
-        "known_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "t16",
-        "new_concepts": [
-          "UI_MODIFIERS_CONCEPT"
+        "new_concepts": [],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM"
         ],
-        "known_concepts": [],
         "verdict": "OK",
         "issues": []
       },
       {
         "task_id": "t17",
         "new_concepts": [],
-        "known_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
         "verdict": "OK",
         "issues": []
       },
@@ -5874,7 +6876,7 @@
       {
         "task_id": "t19",
         "new_concepts": [
-          "MEDIA_PICKER_API"
+          "FRONTEND_FRAMEWORKS"
         ],
         "known_concepts": [],
         "verdict": "OK",
@@ -5901,7 +6903,9 @@
       {
         "task_id": "t22",
         "new_concepts": [],
-        "known_concepts": [],
+        "known_concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
         "verdict": "OK",
         "issues": []
       }
@@ -6180,7 +7184,7 @@
       "ZERO_TRUST_ARCHITECTURE": 1
     },
     "task_stage_mapping": {
-      "t1": "Giai đoạn 1 — App chạy được UI shell cơ bản",
+      "t1": "Giai đoạn 2 — Firebase setup và xác thực",
       "t2": "Giai đoạn 2 — Firebase setup và xác thực",
       "t3": "Giai đoạn 6 — Hoàn thiện và polish",
       "t4": "Giai đoạn 2 — Firebase setup và xác thực",
