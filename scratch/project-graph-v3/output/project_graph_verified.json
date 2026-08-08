@@ -2383,7 +2383,9 @@
         "target_id": "task-01-app-lifecycle:AppDelegate",
         "source": {
           "file": "DemoApp/AppDelegate.swift",
-          "symbol": "AppDelegate"
+          "symbol": "AppDelegate",
+          "line": 9,
+          "ref": "DemoApp/AppDelegate.swift#L9"
         },
         "evidence_type": "OBSERVED",
         "confidence": 1.0,
@@ -2393,7 +2395,9 @@
         "target_id": "task-02-diagnostics:DemoAppConfiguration",
         "source": {
           "file": "DemoApp/DemoAppConfiguration.swift",
-          "symbol": "DemoAppConfiguration"
+          "symbol": "DemoAppConfiguration",
+          "line": 10,
+          "ref": "DemoApp/DemoAppConfiguration.swift#L10"
         },
         "evidence_type": "OBSERVED",
         "confidence": 1.0,
@@ -2403,7 +2407,9 @@
         "target_id": "task-07-push-registration:AppDelegate",
         "source": {
           "file": "DemoApp/AppDelegate.swift",
-          "symbol": "AppDelegate"
+          "symbol": "AppDelegate",
+          "line": 9,
+          "ref": "DemoApp/AppDelegate.swift#L9"
         },
         "evidence_type": "OBSERVED",
         "confidence": 1.0,

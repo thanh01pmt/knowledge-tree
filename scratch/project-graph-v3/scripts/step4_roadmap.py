@@ -100,6 +100,26 @@ def normalize_capability_id(task_cap_id: str, capabilities: List[Dict]) -> str:
     return best if best_score > 0 else ""
 
 
+def task_phase_from_requirements(task: Dict, requirements: List[Dict]) -> str:
+    """M3 (cross-feature): phase từ completion_level của requirement mà task thực hiện.
+    Ưu tiên: mọi requirement của task cùng completion_level → dùng level đó.
+    Khác level → lấy level cao nhất (task hoàn thành nhiều mức).
+    Không có requirement_ids → fallback '' (dùng feature.priority)."""
+    req_ids = task.get("requirement_ids", [])
+    if not req_ids:
+        return ""
+    levels = []
+    for r in requirements:
+        if r.get("id") in req_ids and r.get("completion_level"):
+            levels.append(r["completion_level"])
+    if not levels:
+        return ""
+    # Mức cao nhất (polish > extend > mvp > base)
+    order = {"base": 0, "mvp": 1, "extend": 2, "polish": 3}
+    best = max(levels, key=lambda l: order.get(l, 1))
+    return best
+
+
 def task_phase(task: Dict, features_by_capability: Dict[str, str]) -> str:
     """Phase từ feature.priority của capability task thuộc."""
     cap_id = task.get("capability_id", "")
@@ -143,6 +163,7 @@ def build_roadmap_structure(pg: Dict) -> Dict:
     deps = pg.get("implementation", {}).get("task_dependencies", [])
     features = pg.get("features", [])
     caps = pg.get("capabilities", [])
+    requirements = pg.get("product", {}).get("requirements", [])
 
     # feature.priority theo capability (chuẩn hoá id nếu lệch convention)
     cap_feat = {c.get("id", ""): c.get("feature_id", "") for c in caps}
@@ -161,7 +182,13 @@ def build_roadmap_structure(pg: Dict) -> Dict:
         priority = feat_priority.get(feat_id, "core")
         action_lower = (t.get("action", "") or "").lower()
 
-        if any(sig in action_lower for sig in FOUNDATION_SIGNALS):
+        # M3 (cross-feature): ưu tiên completion_level từ requirement,
+        # rồi FOUNDATION signal (scaffold), rồi feature.priority (fallback)
+        completion = task_phase_from_requirements(t, requirements)
+        if completion:
+            phase = {"base": "FOUNDATION", "mvp": "MVP",
+                     "extend": "EXTEND", "polish": "POLISH"}.get(completion, "MVP")
+        elif any(sig in action_lower for sig in FOUNDATION_SIGNALS):
             phase = "FOUNDATION"
         else:
             phase = PRIORITY_PHASE.get(priority, "MVP")

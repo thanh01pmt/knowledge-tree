@@ -224,7 +224,42 @@
                 "items": {
                   "type": "string"
                 }
+              },
+              "completion_level": {
+                "type": "string",
+                "enum": [
+                  "base",
+                  "mvp",
+                  "extend",
+                  "polish"
+                ],
+                "description": "M3: mức hoàn thiện của requirement (cross-feature slicing). base=scaffold chạy được, mvp=walking skeleton, extend=thêm chức năng, polish=chất lượng."
               }
+            }
+          }
+        },
+        "scaffold": {
+          "type": "object",
+          "description": "M2: bước khởi tạo dự án — tạo từ template nền tảng, cấu trúc file sinh sẵn, build chạy được đầu tiên.",
+          "properties": {
+            "platform_template": {
+              "type": "string",
+              "description": "VD: Xcode iOS App template, Vite React template"
+            },
+            "generated_structure": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "description": "Files template sinh sẵn (AppDelegate, ContentView, Assets...)"
+            },
+            "first_build": {
+              "type": "string",
+              "description": "Bước build chạy được đầu tiên"
+            },
+            "tooling_intro": {
+              "type": "string",
+              "description": "Làm quen công cụ (Xcode, simulator...)"
             }
           }
         }
@@ -863,6 +898,13 @@
                     "type": "integer"
                   }
                 }
+              },
+              "requirement_ids": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                },
+                "description": "M3: requirements task này thực hiện (VD: ['RQ1','RQ3']) — dùng để xác định completion_level (base/mvp/extend/polish)"
               }
             }
           }

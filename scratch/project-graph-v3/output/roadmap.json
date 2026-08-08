@@ -41,7 +41,7 @@
   },
   "phases": [
     {
-      "phase": "MVP",
+      "phase": "FOUNDATION",
       "milestones": [
         {
           "task": {
@@ -93,27 +93,10 @@
           "los": [
             {
               "task_id": "task-01-app-lifecycle",
-              "description": "Người học có khả năng giải thích vai trò của AppDelegate như điểm vào của ứng dụng iOS sử dụng @main và UIApplicationDelegate, và cách nó được sử dụng để tích hợp các dịch vụ bên ngoài như StreamChat.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "@main"
-            },
-            {
-              "task_id": "task-01-app-lifecycle",
-              "description": "Người học có khả năng triển khai một shared singleton StreamChatWrapper và truy cập nó qua thuộc tính chat trên AppDelegate để đảm bảo có sẵn toàn cục trong ứng dụng.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "StreamChatWrapper"
-            },
-            {
-              "task_id": "task-01-app-lifecycle",
-              "description": "Người học có khả năng phân tích quá trình khởi động của ứng dụng để xác định thời điểm an toàn cho việc cấu hình StreamChat, đảm bảo didFinishLaunching trả về true và ứng dụng không bị crash.",
-              "bloom_level": "ANALYZE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "StreamChat"
+              "concepts": [
+                "API_INTEGRATION"
+              ],
+              "lo": "[skip-jit] Implement AppDelegate as @main entry point that exposes a shared StreamChatWrapper"
             }
           ]
         },
@@ -170,38 +153,16 @@
           "los": [
             {
               "task_id": "task-02-diagnostics",
-              "description": "Người học có khả năng giải thích mục đích của việc tích hợp Sentry, Atlantis và performance monitor trong ứng dụng nhằm tăng khả năng quan sát và gỡ lỗi.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "UNIVERSAL",
-              "concept_code": "StreamRuntimeCheck",
-              "keyword": "SentrySDK"
-            },
-            {
-              "task_id": "task-02-diagnostics",
-              "description": "Người học có khả năng cấu hình SentrySDK để chỉ khởi tạo trong các bản RELEASE, giúp tránh gây nhiễu khi phát triển.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "SentrySDK",
-              "keyword": "SentrySDK"
-            },
-            {
-              "task_id": "task-02-diagnostics",
-              "description": "Người học có khả năng triển khai cơ chế khởi động/dừng Atlantis dựa trên giá trị AppConfig.shared.demoAppConfig.isAtlantisEnabled, đảm bảo linh hoạt khi debug.",
-              "bloom_level": "APPLY",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "Atlantis",
-              "keyword": "Atlantis"
-            },
-            {
-              "task_id": "task-02-diagnostics",
-              "description": "Người học có khả năng thiết lập performance monitor bắt đầu sau 3 giây cho các bản internal, phục vụ theo dõi hiệu năng trong quá trình kiểm thử.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "PerformanceMonitor",
-              "keyword": "PerformanceMonitor"
+              "concepts": [],
+              "lo": "[skip-jit] Implement DemoAppConfiguration to configure Sentry, Atlantis, and performance monitor"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "phase": "MVP",
+      "milestones": [
         {
           "task": {
             "id": "task-03-session-persistence",
@@ -250,35 +211,11 @@
           "los": [
             {
               "task_id": "task-03-session-persistence",
-              "description": "Người học có khả năng giải thích vai trò của UserDefaults trong App Group để chia sẻ dữ liệu giữa ứng dụng và phần mở rộng hoặc giữa các ứng dụng liên quan.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "UNIVERSAL",
-              "concept_code": "KEY_VALUE_PERSISTENCE",
-              "keyword": "UserDefaults"
-            },
-            {
-              "task_id": "task-03-session-persistence",
-              "description": "Người học có khả năng sử dụng UserDefaults với applicationGroupIdentifier để đọc và ghi định danh người dùng hiện tại một cách bền vững.",
-              "bloom_level": "APPLY",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "KEY_VALUE_PERSISTENCE",
-              "keyword": "applicationGroupIdentifier"
-            },
-            {
-              "task_id": "task-03-session-persistence",
-              "description": "Người học có khả năng phân tích mối quan hệ giữa định danh người dùng được lưu trữ và đối tượng UserCredentials, từ đó xử lý đúng trường hợp định danh không tồn tại (trả về nil).",
-              "bloom_level": "ANALYZE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "UserCredentials"
-            },
-            {
-              "task_id": "task-03-session-persistence",
-              "description": "Người học có khả năng tạo một accessor dùng chung để quản lý thông tin đăng nhập hiện tại thông qua UserDefaults, đảm bảo đọc/ghi nhất quán và an toàn.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "UserDefaults"
+              "concepts": [
+                "IDENTITY_AND_ACCESS_MANAGEMENT",
+                "KEY_VALUE_PERSISTENCE"
+              ],
+              "lo": "[skip-jit] Implement shared UserDefaults accessor for current user credentials"
             }
           ]
         },
@@ -333,35 +270,11 @@
           "los": [
             {
               "task_id": "task-04-alert-helpers",
-              "description": "Người học có khả năng giải thích vai trò của UIAlertController và UIAlertAction trong việc tạo các cảnh báo nhất quán và tái sử dụng trên iOS.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "UIAlertController"
-            },
-            {
-              "task_id": "task-04-alert-helpers",
-              "description": "Người học có khả năng triển khai extension cho UIViewController hiển thị cảnh báo tùy chọn với các nút OK/Cancel và closure xử lý hành động tương ứng.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "UIAlertAction"
-            },
-            {
-              "task_id": "task-04-alert-helpers",
-              "description": "Người học có khả năng xây dựng cảnh báo có trường nhập liệu (text input) trả về chuỗi người dùng nhập thông qua okHandler.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "UIAlertController"
-            },
-            {
-              "task_id": "task-04-alert-helpers",
-              "description": "Người học có khả năng phân tích luồng xử lý khi kết hợp cảnh báo với điều hướng tới UserProfileViewController và gọi closure logout/disconnect trên ChatClient.",
-              "bloom_level": "ANALYZE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "ChatClient"
+              "concepts": [
+                "API_INTEGRATION",
+                "FRONTEND_FRAMEWORKS"
+              ],
+              "lo": "[skip-jit] Implement reusable UIViewController alert extension for options, text input, and user actions"
             }
           ]
         },
@@ -409,27 +322,8 @@
           "los": [
             {
               "task_id": "task-05-image-resize",
-              "description": "Người học có khả năng trình bày lý do cần tiêu chuẩn hóa kích thước ảnh đính kèm trong chat để đảm bảo hiển thị hiệu quả",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "UIImage",
-              "keyword": "UIImage"
-            },
-            {
-              "task_id": "task-05-image-resize",
-              "description": "Người học có khả năng tính toán kích thước mới của ảnh bằng cách sử dụng CGSize để giữ nguyên tỷ lệ khung hình",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "CGSize",
-              "keyword": "CGSize"
-            },
-            {
-              "task_id": "task-05-image-resize",
-              "description": "Người học có khả năng triển khai việc thay đổi kích thước ảnh trong extension UIImage bằng cách sử dụng UIGraphicsBeginImageContextWithOptions, vẽ lại ảnh và đảm bảo kết thúc context trong defer",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "UIGraphicsBeginImageContextWithOptions",
-              "keyword": "UIGraphicsBeginImageContextWithOptions"
+              "concepts": [],
+              "lo": "[skip-jit] Implement UIImage resizing extension for attachment thumbnails"
             }
           ]
         },
@@ -476,27 +370,8 @@
           "los": [
             {
               "task_id": "task-06-reaction-position",
-              "description": "Người học có khả năng giải thích lý do cần thứ tự ổn định cho các phản ứng tin nhắn trong picker/list.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "UNIVERSAL",
-              "concept_code": "",
-              "keyword": "MessageReactionType"
-            },
-            {
-              "task_id": "task-06-reaction-position",
-              "description": "Người học có khả năng áp dụng ánh xạ từ các loại phản ứng đã biết (love, haha, like, sad, wow) đến vị trí 0-4.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "",
-              "keyword": "rawValue"
-            },
-            {
-              "task_id": "task-06-reaction-position",
-              "description": "Người học có khả năng triển khai xử lý các loại phản ứng không xác định để xếp vào vị trí 5.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "",
-              "keyword": "MessageReactionType"
+              "concepts": [],
+              "lo": "[skip-jit] Implement MessageReactionType position mapping for reaction ordering"
             }
           ]
         },
@@ -552,27 +427,10 @@
           "los": [
             {
               "task_id": "task-08-login",
-              "description": "Người học có khả năng mô tả vai trò của danh tính người dùng và xác thực JWT trong ứng dụng chat.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "UNIVERSAL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "JWT"
-            },
-            {
-              "task_id": "task-08-login",
-              "description": "Người học có khả năng áp dụng xác thực JWT để thiết lập phiên đăng nhập cho ChatClient.",
-              "bloom_level": "APPLY",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "ChatClient"
-            },
-            {
-              "task_id": "task-08-login",
-              "description": "Người học có khả năng triển khai luồng đăng nhập với danh sách người dùng cấu hình sẵn và nhập thông tin xác thực nâng cao, đồng thời lưu trữ người dùng đã chọn vào UserDefaults.currentUser.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "currentUser"
+              "concepts": [
+                "IDENTITY_AND_ACCESS_MANAGEMENT"
+              ],
+              "lo": "[skip-jit] Implement login flow to pick a pre-configured user or enter advanced credentials"
             }
           ]
         },
@@ -628,35 +486,11 @@
           "los": [
             {
               "task_id": "task-09-channel-list",
-              "description": "Người học có khả năng giải thích vai trò của ChatChannelListViewController trong việc hiển thị danh sách kênh và xử lý tương tác người dùng.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "ChatChannelListViewController"
-            },
-            {
-              "task_id": "task-09-channel-list",
-              "description": "Người học có khả năng áp dụng phương thức query của ChatClient để tải danh sách kênh phân trang, hỗ trợ cuộn vô hạn.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "query"
-            },
-            {
-              "task_id": "task-09-channel-list",
-              "description": "Người học có khả năng phân tích cấu trúc dữ liệu kênh để hiển thị chính xác số tin nhắn chưa đọc, đoạn tin nhắn cuối và thời gian.",
-              "bloom_level": "ANALYZE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "ChatChannelListViewController"
-            },
-            {
-              "task_id": "task-09-channel-list",
-              "description": "Người học có khả năng tạo chức năng tạo kênh mới và xóa kênh bằng cách sử dụng phương thức delete của ChatClient và xử lý tương tác trượt.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "delete"
+              "concepts": [
+                "FRONTEND_FRAMEWORKS",
+                "API_INTEGRATION"
+              ],
+              "lo": "[skip-jit] Implement channel list screen with infinite scrolling, unread indicators, and channel creation/deletion"
             }
           ]
         },
@@ -713,97 +547,10 @@
           "los": [
             {
               "task_id": "task-10-channel-detail",
-              "description": "Người học có khả năng phân tích các thành phần chính của màn hình kênh chat, bao gồm danh sách tin nhắn, message composer và rich media, cùng với cách chúng tương tác trong một framework frontend.",
-              "bloom_level": "ANALYZE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "ChatChannelViewController"
-            },
-            {
-              "task_id": "task-10-channel-detail",
-              "description": "Người học có khả năng triển khai tính năng cuộn vô hạn cho danh sách tin nhắn và xử lý gửi tin nhắn từ composer bằng cách sử dụng các API cụ thể của framework.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "MessageComposer"
-            },
-            {
-              "task_id": "task-10-channel-detail",
-              "description": "Người học có khả năng xây dựng chức năng đính kèm tệp và hiển thị GIF trong màn hình chat, đồng thời tích hợp cử chỉ nhấn giữ để thêm phản ứng (reaction) dựa trên MessageReactionType.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "FRONTEND_FRAMEWORKS",
-              "keyword": "attachment"
-            }
-          ]
-        },
-        {
-          "task": {
-            "id": "task-11-user-profile",
-            "capability_id": "user-management",
-            "action": "Implement user profile screen accessible from account options",
-            "modifies": [],
-            "creates": [
-              "UserProfileViewController backed by CurrentUserController"
-            ],
-            "depends_on": [
-              "task-04-alert-helpers"
-            ],
-            "acceptance": [
-              "Profile screen initializes with ChatClient.currentUserController",
-              "Profile can be pushed from alert action"
-            ],
-            "intent": "Let users view their own profile information within the app",
-            "outcome": {
-              "user_visible": "User can see profile info by tapping Show Profile",
-              "technical": [
-                "CurrentUserController from ChatClient",
-                "Navigation push from alert"
-              ]
-            },
-            "source_evidence": [
-              "DemoApp/Extensions/UIViewController+Alert.swift"
-            ],
-            "keywords": [
-              "UserProfileViewController",
-              "CurrentUserController",
-              "ChatClient"
-            ],
-            "concurrency": [],
-            "effort": {
-              "concepts_count": 2,
-              "files_touched": 1,
-              "estimated_minutes": 45
-            }
-          },
-          "concepts": [
-            "API_INTEGRATION"
-          ],
-          "order": 10,
-          "los": [
-            {
-              "task_id": "task-11-user-profile",
-              "description": "Người học có khả năng giải thích vai trò của ChatClient.currentUserController trong việc truy xuất thông tin người dùng hiện tại.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "CurrentUserController"
-            },
-            {
-              "task_id": "task-11-user-profile",
-              "description": "Người học có khả năng áp dụng ChatClient.currentUserController để khởi tạo UserProfileViewController và hiển thị dữ liệu hồ sơ người dùng.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "UserProfileViewController"
-            },
-            {
-              "task_id": "task-11-user-profile",
-              "description": "Người học có khả năng tạo luồng điều hướng để đẩy UserProfileViewController từ hành động 'Show Profile' trong account options.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "UserProfileViewController"
+              "concepts": [
+                "FRONTEND_FRAMEWORKS"
+              ],
+              "lo": "[skip-jit] Implement channel screen with message list, rich media, and composer"
             }
           ]
         },
@@ -855,35 +602,11 @@
           "los": [
             {
               "task_id": "task-12-logout-disconnect",
-              "description": "Người học có khả năng giải thích sự khác biệt giữa logout (xóa người dùng hiện tại) và disconnect (ngắt kết nối chat) trong quản lý phiên.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "logout"
-            },
-            {
-              "task_id": "task-12-logout-disconnect",
-              "description": "Người học có khả năng áp dụng phương thức disconnect của ChatClient để ngừng nhận cập nhật chat.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "ChatClient"
-            },
-            {
-              "task_id": "task-12-logout-disconnect",
-              "description": "Người học có khả năng tạo hành động logout trong menu tùy chọn người dùng để xóa người dùng hiện tại khỏi phiên.",
-              "bloom_level": "CREATE",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "keyword": "logout"
-            },
-            {
-              "task_id": "task-12-logout-disconnect",
-              "description": "Người học có khả năng phân tích menu tùy chọn người dùng để đảm bảo cả hai tùy chọn logout và disconnect đều có thể truy cập.",
-              "bloom_level": "ANALYZE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "API_INTEGRATION",
-              "keyword": "disconnect"
+              "concepts": [
+                "API_INTEGRATION",
+                "IDENTITY_AND_ACCESS_MANAGEMENT"
+              ],
+              "lo": "[skip-jit] Implement logout and disconnect actions in user options alert"
             }
           ]
         }
@@ -939,32 +662,301 @@
           "los": [
             {
               "task_id": "task-07-push-registration",
-              "description": "Người học có khả năng hiểu được sự cần thiết của việc chuyển tiếp device token đến backend của Stream sau khi đăng ký nhận thông báo từ xa của Apple để kích hoạt thông báo đẩy cho các hoạt động chat.",
-              "bloom_level": "UNDERSTAND",
-              "lo_type": "UNIVERSAL",
-              "concept_code": "didRegisterForRemoteNotificationsWithDeviceToken",
-              "keyword": "didRegisterForRemoteNotificationsWithDeviceToken"
+              "concepts": [],
+              "lo": "[skip-jit] Register device token with Stream backend after remote notification registration"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-11-user-profile",
+            "capability_id": "user-management",
+            "action": "Implement user profile screen accessible from account options",
+            "modifies": [],
+            "creates": [
+              "UserProfileViewController backed by CurrentUserController"
+            ],
+            "depends_on": [
+              "task-04-alert-helpers"
+            ],
+            "acceptance": [
+              "Profile screen initializes with ChatClient.currentUserController",
+              "Profile can be pushed from alert action"
+            ],
+            "intent": "Let users view their own profile information within the app",
+            "outcome": {
+              "user_visible": "User can see profile info by tapping Show Profile",
+              "technical": [
+                "CurrentUserController from ChatClient",
+                "Navigation push from alert"
+              ]
             },
+            "source_evidence": [
+              "DemoApp/Extensions/UIViewController+Alert.swift"
+            ],
+            "keywords": [
+              "UserProfileViewController",
+              "CurrentUserController",
+              "ChatClient"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 45
+            }
+          },
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "order": 10,
+          "los": [
             {
-              "task_id": "task-07-push-registration",
-              "description": "Người học có khả năng thực hiện việc đăng ký device token bằng cách gọi `chat.registerForPushNotifications` trong phương thức `didRegisterForRemoteNotificationsWithDeviceToken`.",
-              "bloom_level": "APPLY",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept_code": "registerForPushNotifications",
-              "keyword": "registerForPushNotifications"
+              "task_id": "task-11-user-profile",
+              "concepts": [
+                "API_INTEGRATION"
+              ],
+              "lo": "[skip-jit] Implement user profile screen accessible from account options"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "POLISH",
+      "milestones": [
+        {
+          "task": {
+            "id": "polish-gap-1",
+            "capability_id": "",
+            "action": "Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), which can crash on e",
+            "intent": "Cải thiện chất lượng: UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), ",
+            "outcome": {
+              "user_visible": "Add nil-coalescing fallback to original image when resizing fails"
             },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [],
+          "order": 12,
+          "los": [
             {
-              "task_id": "task-07-push-registration",
-              "description": "Người học có khả năng phân tích yêu cầu về entitlement 'aps-environment' và vai trò của nó trong việc cho phép thông báo đẩy hoạt động cho ứng dụng.",
-              "bloom_level": "ANALYZE",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept_code": "aps-environment",
-              "keyword": "aps-environment"
+              "task_id": "polish-gap-1",
+              "concepts": [],
+              "lo": "[skip-jit] Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), which can crash on e"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-gap-2",
+            "capability_id": "",
+            "action": "Khắc phục: UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, Logout, Disconnect)",
+            "intent": "Cải thiện chất lượng: UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, L",
+            "outcome": {
+              "user_visible": "Move user-facing strings to Localizable.strings and use NSLocalizedString"
+            },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [],
+          "order": 13,
+          "los": [
+            {
+              "task_id": "polish-gap-2",
+              "concepts": [],
+              "lo": "[skip-jit] Khắc phục: UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, Logout, Disconnect)"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-gap-3",
+            "capability_id": "",
+            "action": "Khắc phục: No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate",
+            "intent": "Cải thiện chất lượng: No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate",
+            "outcome": {
+              "user_visible": "Implement push registration failure callback and surface a non-fatal error"
+            },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [],
+          "order": 14,
+          "los": [
+            {
+              "task_id": "polish-gap-3",
+              "concepts": [],
+              "lo": "[skip-jit] Khắc phục: No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-gap-4",
+            "capability_id": "",
+            "action": "Khắc phục: Login flow in README has no visible error handling for invalid JWT or failed authentication",
+            "intent": "Cải thiện chất lượng: Login flow in README has no visible error handling for invalid JWT or failed aut",
+            "outcome": {
+              "user_visible": "Add error alert for advanced login failures and preserve current user on failure"
+            },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [],
+          "order": 15,
+          "los": [
+            {
+              "task_id": "polish-gap-4",
+              "concepts": [],
+              "lo": "[skip-jit] Khắc phục: Login flow in README has no visible error handling for invalid JWT or failed authentication"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-gap-5",
+            "capability_id": "",
+            "action": "Khắc phục: No unit tests for UserDefaults.currentUserId or MessageReactionType.position mapping",
+            "intent": "Cải thiện chất lượng: No unit tests for UserDefaults.currentUserId or MessageReactionType.position map",
+            "outcome": {
+              "user_visible": "Add unit tests covering session persistence and reaction ordering"
+            },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [],
+          "order": 16,
+          "los": [
+            {
+              "task_id": "polish-gap-5",
+              "concepts": [],
+              "lo": "[skip-jit] Khắc phục: No unit tests for UserDefaults.currentUserId or MessageReactionType.position mapping"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-debt-1",
+            "capability_id": "",
+            "action": "Refactor: Three presentAlert overloads duplicate alert creation logic",
+            "intent": "Giảm tech debt: Three presentAlert overloads duplicate alert creation logic",
+            "outcome": {
+              "user_visible": "POLISH"
+            },
+            "keywords": [],
+            "source_evidence": [
+              "DemoApp/Extensions/UIViewController+Alert.swift"
+            ]
+          },
+          "concepts": [],
+          "order": 17,
+          "los": [
+            {
+              "task_id": "polish-debt-1",
+              "concepts": [],
+              "lo": "[skip-jit] Refactor: Three presentAlert overloads duplicate alert creation logic"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-debt-2",
+            "capability_id": "",
+            "action": "Refactor: Sentry DSN is hardcoded in source; Atlantis and performance config are entangled with internal flags",
+            "intent": "Giảm tech debt: Sentry DSN is hardcoded in source; Atlantis and performance config are entangled",
+            "outcome": {
+              "user_visible": "POLISH"
+            },
+            "keywords": [],
+            "source_evidence": [
+              "DemoApp/DemoAppConfiguration.swift"
+            ]
+          },
+          "concepts": [],
+          "order": 18,
+          "los": [
+            {
+              "task_id": "polish-debt-2",
+              "concepts": [],
+              "lo": "[skip-jit] Refactor: Sentry DSN is hardcoded in source; Atlantis and performance config are entangled with internal flags"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-debt-3",
+            "capability_id": "",
+            "action": "Refactor: AppDelegate combines app lifecycle, push registration, and wrapper access; could be extracted into a",
+            "intent": "Giảm tech debt: AppDelegate combines app lifecycle, push registration, and wrapper access; could",
+            "outcome": {
+              "user_visible": "POLISH"
+            },
+            "keywords": [],
+            "source_evidence": [
+              "DemoApp/AppDelegate.swift"
+            ]
+          },
+          "concepts": [],
+          "order": 19,
+          "los": [
+            {
+              "task_id": "polish-debt-3",
+              "concepts": [],
+              "lo": "[skip-jit] Refactor: AppDelegate combines app lifecycle, push registration, and wrapper access; could be extracted into a"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-debt-4",
+            "capability_id": "",
+            "action": "Refactor: Force unwrap of image context result can crash on edge cases",
+            "intent": "Giảm tech debt: Force unwrap of image context result can crash on edge cases",
+            "outcome": {
+              "user_visible": "POLISH"
+            },
+            "keywords": [],
+            "source_evidence": [
+              "DemoApp/Extensions/UIImage+Resized.swift"
+            ]
+          },
+          "concepts": [],
+          "order": 20,
+          "los": [
+            {
+              "task_id": "polish-debt-4",
+              "concepts": [],
+              "lo": "[skip-jit] Refactor: Force unwrap of image context result can crash on edge cases"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-debt-5",
+            "capability_id": "",
+            "action": "Refactor: Login and channel behavior documented but not covered by automated tests",
+            "intent": "Giảm tech debt: Login and channel behavior documented but not covered by automated tests",
+            "outcome": {
+              "user_visible": "POLISH"
+            },
+            "keywords": [],
+            "source_evidence": [
+              "DemoApp/README.md"
+            ]
+          },
+          "concepts": [],
+          "order": 21,
+          "los": [
+            {
+              "task_id": "polish-debt-5",
+              "concepts": [],
+              "lo": "[skip-jit] Refactor: Login and channel behavior documented but not covered by automated tests"
             }
           ]
         }
       ]
     }
   ],
-  "total_tasks": 12
+  "total_tasks": 22
 }

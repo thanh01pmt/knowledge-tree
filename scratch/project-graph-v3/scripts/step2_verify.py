@@ -29,16 +29,20 @@ def file_exists(repo_dir: Path, rel_path: str) -> bool:
     return (repo_dir / rel_path).is_file()
 
 
-def symbol_in_file(repo_dir: Path, rel_path: str, symbol: str) -> bool:
-    """Kiểm tra symbol xuất hiện trong file (case-sensitive, word boundary)."""
+def symbol_in_file(repo_dir: Path, rel_path: str, symbol: str):
+    """Tìm symbol trong file → trả (found: bool, line: int|None).
+    Line-level evidence (M4 — trace nguồn P3, REF: file#L45)."""
     p = repo_dir / rel_path
     if not p.is_file():
-        return False
+        return False, None
     try:
         content = p.read_text(encoding="utf-8", errors="ignore")
     except Exception:
-        return False
-    return re.search(rf"\b{re.escape(symbol)}\b", content) is not None
+        return False, None
+    for i, line in enumerate(content.split("\n"), start=1):
+        if re.search(rf"\b{re.escape(symbol)}\b", line):
+            return True, i
+    return False, None
 
 
 def verify_project_graph(raw: Dict[str, Any], repo_dir: Path) -> tuple:
@@ -81,10 +85,13 @@ def verify_project_graph(raw: Dict[str, Any], repo_dir: Path) -> tuple:
                 continue
             stem = Path(f).stem
             # Class/struct cùng tên file (Swift convention: WeatherView.swift → WeatherView)
-            if symbol_in_file(repo_dir, f, stem):
+            found, line = symbol_in_file(repo_dir, f, stem)
+            if found:
+                # REF tag dạng file#L<line> (M4 — trace nguồn P3)
+                ref = f"{f}#L{line}"
                 evidence_entries.append({
                     "target_id": f"{task_id}:{stem}",
-                    "source": {"file": f, "symbol": stem},
+                    "source": {"file": f, "symbol": stem, "line": line, "ref": ref},
                     "evidence_type": "OBSERVED",
                     "confidence": 1.0,
                     "extraction_method": "source_analysis_symbol"

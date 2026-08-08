@@ -126,7 +126,17 @@ BASE_SYSTEM = (
     "4. Boundary: KHÔNG đưa bloom level, quiz, mastery, lesson sequence, teaching content vào Project Graph.\n"
     "5. Task là ACTION có thể thực hiện ('Implement search query state'), KHÔNG phải 'Learn State'. "
     "Mỗi task có intent (WHY) + outcome (WHAT thay đổi sau task).\n"
-    "6. Trả JSON ĐÚNG schema. Chỉ điền các field bạn có bằng chứng từ code."
+    "6. Trả JSON ĐÚNG schema. Chỉ điền các field bạn có bằng chứng từ code.\n"
+    "7. GÓC NHÌN END-USER (product domain): goals/users/requirements phải mô tả từ góc nhìn "
+    "NGƯỜI DÙNG CUỐI dùng app — 'User có thể đăng nhập', 'User có thể xem danh sách channel', "
+    "'User có thể gửi tin nhắn'. CẤM mô tả repo/artifact (VD 'Provide a demo app', 'Serve as "
+    "reference implementation', 'preview SDK features'). User = actor dùng app, goals = hành động "
+    "họ làm được.\n"
+    "8. SCAFFOLD (NỀN TẢNG): ngoài việc phân tích code hiện có, phải xác định bước KHỞI TẠO dự án "
+    "mà người học cần — tạo project từ template của nền tảng (Xcode/SwiftUI template, cấu trúc file "
+    "sinh sẵn: AppDelegate, ContentView, Assets...), build chạy được đầu tiên, làm quen công cụ. "
+    "Đây là bước TRƯỚC khi code tồn tại — phân tích từ tech_stack + cấu trúc repo, không phải từ "
+    "nội dung file.\n"
 )
 
 def _file_context(source_text: str, max_chars: int) -> str:
