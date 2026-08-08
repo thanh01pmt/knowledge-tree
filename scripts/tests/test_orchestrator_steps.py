@@ -32,17 +32,11 @@ def test_step_methods_exist():
             repo_dir=fixture_repo,
         )
 
-        target_methods = [
-            "step_1_3_extract_project_graph",
-            "step_1_4_verify_project_graph",
-            "step_3_6_map_concepts",
-        ]
-
-        for method_name in target_methods:
-            assert hasattr(orchestrator, method_name), f"Missing method {method_name} in PipelineOrchestrator"
-            method = getattr(orchestrator, method_name)
-            assert callable(method), f"Method {method_name} is not callable"
-            print(f"  ✓ Method '{method_name}' exists and is callable.")
+        assert hasattr(orchestrator, "step_1_3_generate_project_graph"), "Missing method step_1_3_generate_project_graph in PipelineOrchestrator"
+        assert callable(getattr(orchestrator, "step_1_3_generate_project_graph")), "Method step_1_3_generate_project_graph is not callable"
+        assert not hasattr(orchestrator, "step_1_4_verify_project_graph"), "step_1_4_verify_project_graph should be removed"
+        assert not hasattr(orchestrator, "step_3_6_map_concepts"), "step_3_6_map_concepts should be removed"
+        print("  ✓ Method 'step_1_3_generate_project_graph' exists and obsolete methods removed.")
 
     print("  Test 1 PASSED!")
 
@@ -71,24 +65,21 @@ def test_steps_list_order():
 
     print(f"  Extracted step IDs: {step_ids}")
 
-    required_steps = ["step_1_3", "step_1_4", "step_3_6"]
-    for s in required_steps:
-        assert s in step_ids, f"Step '{s}' missing from run_pipeline steps list"
+    assert "step_1_3" in step_ids, "Step 'step_1_3' missing from run_pipeline steps list"
+    assert "step_1_4" not in step_ids, "Step 'step_1_4' should be removed from run_pipeline steps list"
+    assert "step_3_6" not in step_ids, "Step 'step_3_6' should be removed from run_pipeline steps list"
 
     idx_1_2 = step_ids.index("step_1_2")
     idx_1_3 = step_ids.index("step_1_3")
-    idx_1_4 = step_ids.index("step_1_4")
     idx_3 = step_ids.index("step_3")
     idx_3_5 = step_ids.index("step_3_5")
-    idx_3_6 = step_ids.index("step_3_6")
     idx_4 = step_ids.index("step_4")
 
-    # Assert 1_3 before 1_4, 1_4 before 3, 3_5 before 3_6, 3_6 before 4
+    # Assert 1_2 before 1_3, 1_3 before 3, 3 before 3_5, 3_5 before 4
     assert idx_1_2 < idx_1_3, f"step_1_3 ({idx_1_3}) should be after step_1_2 ({idx_1_2})"
-    assert idx_1_3 < idx_1_4, f"step_1_4 ({idx_1_4}) should be after step_1_3 ({idx_1_3})"
-    assert idx_1_4 < idx_3, f"step_1_4 ({idx_1_4}) should be before step_3 ({idx_3})"
-    assert idx_3_5 < idx_3_6, f"step_3_6 ({idx_3_6}) should be after step_3_5 ({idx_3_5})"
-    assert idx_3_6 < idx_4, f"step_3_6 ({idx_3_6}) should be before step_4 ({idx_4})"
+    assert idx_1_3 < idx_3, f"step_3 ({idx_3}) should be after step_1_3 ({idx_1_3})"
+    assert idx_3 < idx_3_5, f"step_3_5 ({idx_3_5}) should be after step_3 ({idx_3})"
+    assert idx_3_5 < idx_4, f"step_4 ({idx_4}) should be after step_3_5 ({idx_3_5})"
 
     print("  Test 2 PASSED!")
 
