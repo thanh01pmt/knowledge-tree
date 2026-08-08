@@ -1,0 +1,109 @@
+#!/usr/bin/env python3
+"""
+Convert STEP 4 roadmap (task-aware) → format viewer (jit-bulb-v3.json):
+  roadmap.json → {project_brief, phases:[{phase_id,title,description,milestones}],
+                  total_milestones, total_concepts}
+  milestone: {id, name, concept_code, learning_objectives:[{code,lo_type,description,
+              bloom_level,keyword,platform,...}]}
+
+Usage:
+  python convert_to_viewer.py \
+      --roadmap output/roadmap.json \
+      --output /path/to/roadmaps/stream-chat-demoapp.json
+"""
+import argparse
+import json
+import sys
+from pathlib import Path
+
+PHASE_TITLES = {"FOUNDATION": "NỀN TẢNG", "MVP": "MVP", "EXTEND": "MỞ RỘNG", "POLISH": "HOÀN THIỆN"}
+
+
+def convert(roadmap: dict) -> dict:
+    phases_out = []
+    concept_counter = 0
+    lo_counter = 0
+    all_concepts = set()
+
+    for phase in roadmap.get("phases", []):
+        phase_name = phase.get("phase", "MVP")
+        phase_id = {"FOUNDATION": 0, "MVP": 1, "EXTEND": 2, "POLISH": 3}.get(phase_name, 1)
+
+        milestones_out = []
+        for m in phase.get("milestones", []):
+            task = m.get("task", {})
+            task_id = task.get("id", "T")
+            task_name = task.get("action", task_id)[:60]
+
+            los_out = []
+            for lo in m.get("los", []):
+                lo_counter += 1
+                concept = lo.get("concept_code") or (m.get("concepts") or ["CONCEPT"])[0]
+                all_concepts.add(concept)
+                lo_type = lo.get("lo_type", "SPECIFIC_IMPL")
+                prefix = {"UNIVERSAL": "ULO", "CONCEPTUAL_IMPL": "CIO", "SPECIFIC_IMPL": "SIO"}.get(
+                    lo_type, "LO")
+                los_out.append({
+                    "code": f"{prefix}-{concept}-{lo_counter:02d}",
+                    "lo_type": lo_type,
+                    "concept": concept,
+                    "name": f"{prefix}: {task_name}",
+                    "description": lo.get("description", ""),
+                    "assessment": "code-review" if lo_type == "SPECIFIC_IMPL" else "concept-check",
+                    "bloom_level": (lo.get("bloom_level") or "understand").lower(),
+                    "knowledge_dimension": "PROCEDURAL",
+                    "keyword": lo.get("keyword", ""),
+                    "platform": lo.get("platform", "app"),
+                    "task_id": lo.get("task_id", task_id),
+                })
+
+            milestones_out.append({
+                "id": task_id,
+                "name": task_name,
+                "concept_code": task_id,  # renderer dùng cái này làm nhãn card
+                "learning_objectives": los_out,
+            })
+            concept_counter += 1
+
+        phases_out.append({
+            "phase_id": phase_id,
+            "title": PHASE_TITLES.get(phase_name, phase_name),
+            "description": f"{phase_name}: {len(milestones_out)} tasks",
+            "milestones": milestones_out,
+        })
+
+    project = roadmap.get("project", {})
+    return {
+        "project_brief": {
+            "project_code": "STREAM_CHAT_V3",
+            "title": project.get("name", "Xây app chat iOS dùng StreamChat SDK"),
+            "goal": project.get("purpose", ""),
+            "tech_stack": project.get("tech_stack", {}),
+        },
+        "phases": phases_out,
+        "total_milestones": concept_counter,
+        "total_concepts": len(all_concepts),
+        "lo_count": lo_counter,
+    }
+
+
+def main():
+    parser = argparse.ArgumentParser(description="Convert STEP 4 roadmap → viewer format")
+    parser.add_argument("--roadmap", required=True, type=Path)
+    parser.add_argument("--output", required=True, type=Path)
+    args = parser.parse_args()
+
+    roadmap = json.load(open(args.roadmap, encoding="utf-8"))
+    result = convert(roadmap)
+
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    with open(args.output, "w", encoding="utf-8") as f:
+        json.dump(result, f, indent=2, ensure_ascii=False)
+
+    print(f"[✓] Converted → {args.output}")
+    print(f"    {result['total_milestones']} milestones | {result['total_concepts']} concepts | {result['lo_count']} LOs")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
