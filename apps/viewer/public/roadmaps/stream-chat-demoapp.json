@@ -1,0 +1,805 @@
+{
+  "project_brief": {
+    "goal": "Xây app chat iOS dùng StreamChat SDK — học SwiftUI, StreamChat API, state management",
+    "tech_stack": [
+      "Swift",
+      "SwiftUI",
+      "StreamChat SDK"
+    ]
+  },
+  "phases": [
+    {
+      "phase_id": 1,
+      "title": "MVP",
+      "description": "Sản phẩm chạy được từ đầu (UI + logic + data tối giản)",
+      "milestones": [
+        {
+          "id": "M1",
+          "name": "Core Chat & Channel Management",
+          "concept_code": "M1",
+          "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Understand LOCAL_NOTIFICATION_API",
+              "description": "Người học có khả năng hiểu Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-NOTIFICATION-PERMISSION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Request Notification Permissions (Yêu cầu Quyền Gửi thông báo)",
+              "description": "Người học có khả năng triển khai mã để yêu cầu sự cho phép của người dùng trước khi ứng dụng có thể gửi thông báo.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F1",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-NOTIFICATION-SCHEDULE-TIME",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Schedule a Time-Based Notification (Lập lịch Thông báo Dựa trên Thời gian)",
+              "description": "Người học có khả năng tạo và lập lịch một thông báo sẽ được kích hoạt sau một khoảng thời gian hoặc tại một thời điểm lịch cụ thể.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F1",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Apply LOCAL_NOTIFICATION_API Concepts",
+              "description": "Người học có khả năng thiết kế Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "SWIFT: Implement Local Notification API",
+              "description": "Người học có khả năng triển khai Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UserNotifications",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            }
+          ]
+        },
+        {
+          "id": "M2",
+          "name": "Reminders Dashboard",
+          "concept_code": "M2",
+          "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Understand LOCAL_NOTIFICATION_API",
+              "description": "Người học có khả năng hiểu Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-NOTIFICATION-PERMISSION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Request Notification Permissions (Yêu cầu Quyền Gửi thông báo)",
+              "description": "Người học có khả năng triển khai mã để yêu cầu sự cho phép của người dùng trước khi ứng dụng có thể gửi thông báo.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F1",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-NOTIFICATION-SCHEDULE-TIME",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Schedule a Time-Based Notification (Lập lịch Thông báo Dựa trên Thời gian)",
+              "description": "Người học có khả năng tạo và lập lịch một thông báo sẽ được kích hoạt sau một khoảng thời gian hoặc tại một thời điểm lịch cụ thể.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F1",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Apply LOCAL_NOTIFICATION_API Concepts",
+              "description": "Người học có khả năng thiết kế Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "SWIFT: Implement Local Notification API",
+              "description": "Người học có khả năng triển khai Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UserNotifications",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            }
+          ]
+        },
+        {
+          "id": "M3",
+          "name": "Demo App Configuration",
+          "concept_code": "M3",
+          "learning_objectives": [
+            {
+              "code": "ULO-HTTP_PROTOCOL-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Understand HTTP_PROTOCOL",
+              "description": "Người học có khả năng hiểu Http Protocol: Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP-HEADER-STATUS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Understand HTTP Headers and Status Codes",
+              "description": "Người học có khả năng phân tích các nhóm status code và HTTP header trong các yêu cầu giao tiếp.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP-VERSIONS-EVOLUTION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Compare HTTP Versions and Innovations",
+              "description": "Người học có khả năng so sánh sự khác biệt về hiệu năng giữa HTTP/1.1, HTTP/2 và HTTP/3 QUIC.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "CIO-HTTP_PROTOCOL-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "Apply HTTP_PROTOCOL Concepts",
+              "description": "Người học có khả năng thiết kế Http Protocol: Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "SIO-SWIFT-HTTP_PROTOCOL-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "HTTP_PROTOCOL",
+              "name": "SWIFT: Implement Http Protocol",
+              "description": "Người học có khả năng triển khai Http Protocol: Giao thức truyền tải siêu văn bản HTTP/1.1, HTTP/2, HTTP/3.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "URLSession",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-http_protocol.md"
+            },
+            {
+              "code": "ULO-LOCAL_VIEW_STATE-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Understand LOCAL_VIEW_STATE",
+              "description": "Người học có khả năng hiểu Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Apply LOCAL_VIEW_STATE Concepts",
+              "description": "Người học có khả năng thiết kế Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-DECLARE-LOCAL",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Declare Local View State (Khai báo Trạng thái Cục bộ của View)",
+              "description": "Người học có khả năng khai báo một biến trạng thái chỉ thuộc về một thành phần giao diện duy nhất và quản lý vòng đời của nó.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-MUTATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Mutate State to Update UI (Thay đổi Trạng thái để Cập nhật UI)",
+              "description": "Người học có khả năng thay đổi giá trị của một biến trạng thái để kích hoạt việc vẽ lại giao diện một cách tự động.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "SWIFT: Implement Local View State",
+              "description": "Người học có khả năng triển khai Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@State",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "ULO-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Understand LOCAL_NOTIFICATION_API",
+              "description": "Người học có khả năng hiểu Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-NOTIFICATION-PERMISSION",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Request Notification Permissions (Yêu cầu Quyền Gửi thông báo)",
+              "description": "Người học có khả năng triển khai mã để yêu cầu sự cho phép của người dùng trước khi ứng dụng có thể gửi thông báo.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F1",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-NOTIFICATION-SCHEDULE-TIME",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Schedule a Time-Based Notification (Lập lịch Thông báo Dựa trên Thời gian)",
+              "description": "Người học có khả năng tạo và lập lịch một thông báo sẽ được kích hoạt sau một khoảng thời gian hoặc tại một thời điểm lịch cụ thể.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F1",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "CIO-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "Apply LOCAL_NOTIFICATION_API Concepts",
+              "description": "Người học có khả năng thiết kế Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_NOTIFICATION_API-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "SWIFT: Implement Local Notification API",
+              "description": "Người học có khả năng triển khai Local Notification API: UserNotifications is Apple's framework for local (and remote) notifications, closely matching the Local Notification API concept.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UserNotifications",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F1",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_notification_api.md"
+            },
+            {
+              "code": "ULO-ROUTING_SWITCHING-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "ROUTING_SWITCHING",
+              "name": "Understand ROUTING_SWITCHING",
+              "description": "Người học có khả năng hiểu Routing Switching: Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-routing_switching.md"
+            },
+            {
+              "code": "CIO-ROUTING_SWITCHING-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "ROUTING_SWITCHING",
+              "name": "Apply ROUTING_SWITCHING Concepts",
+              "description": "Người học có khả năng thiết kế Routing Switching: Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-routing_switching.md"
+            },
+            {
+              "code": "SIO-SWIFT-ROUTING_SWITCHING-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "ROUTING_SWITCHING",
+              "name": "SWIFT: Implement Routing Switching",
+              "description": "Người học có khả năng triển khai Routing Switching: Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "routing switching",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-routing_switching.md"
+            }
+          ]
+        },
+        {
+          "id": "M4",
+          "name": "Livestream Chat",
+          "concept_code": "M4",
+          "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_VIEW_STATE-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Understand LOCAL_VIEW_STATE",
+              "description": "Người học có khả năng hiểu Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Apply LOCAL_VIEW_STATE Concepts",
+              "description": "Người học có khả năng thiết kế Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-DECLARE-LOCAL",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Declare Local View State (Khai báo Trạng thái Cục bộ của View)",
+              "description": "Người học có khả năng khai báo một biến trạng thái chỉ thuộc về một thành phần giao diện duy nhất và quản lý vòng đời của nó.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "CIO-STATE-MUTATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "Mutate State to Update UI (Thay đổi Trạng thái để Cập nhật UI)",
+              "description": "Người học có khả năng thay đổi giá trị của một biến trạng thái để kích hoạt việc vẽ lại giao diện một cách tự động.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F3",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "SIO-SWIFT-LOCAL_VIEW_STATE-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "SWIFT: Implement Local View State",
+              "description": "Người học có khả năng triển khai Local View State: Sử dụng cơ chế như @State để quản lý trạng thái đơn giản, chỉ thuộc về một View duy nhất và sẽ bị hủy khi View biến mất.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@State",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-local_view_state.md"
+            },
+            {
+              "code": "ULO-EVENT_LISTENERS-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "EVENT_LISTENERS",
+              "name": "Understand EVENT_LISTENERS",
+              "description": "Người học có khả năng hiểu Event Listeners: Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F4",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-event_listeners.md"
+            },
+            {
+              "code": "CIO-EVENT_LISTENERS-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "EVENT_LISTENERS",
+              "name": "Apply EVENT_LISTENERS Concepts",
+              "description": "Người học có khả năng thiết kế Event Listeners: Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F4",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-event_listeners.md"
+            },
+            {
+              "code": "SIO-SWIFT-EVENT_LISTENERS-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "EVENT_LISTENERS",
+              "name": "SWIFT: Implement Event Listeners",
+              "description": "Người học có khả năng triển khai Event Listeners: Hiểu mô hình xử lý sự kiện, trong đó chương trình đăng ký các hàm (event handlers) để phản hồi lại các hành động của người dùng hoặc hệ thống (events).",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "event listeners",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F4",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-event_listeners.md"
+            },
+            {
+              "code": "ULO-COMPOSITION_PRINCIPLES-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Understand COMPOSITION_PRINCIPLES",
+              "description": "Người học có khả năng hiểu Composition Principles: Áp dụng các nguyên tắc bố cục trong thiết kế như Quy tắc 1/3, đường dẫn thị giác, và sự cân bằng để tạo ra một thiết kế hài hòa.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F4",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-COMPOSITION_PRINCIPLES-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Apply COMPOSITION_PRINCIPLES Concepts",
+              "description": "Người học có khả năng thiết kế Composition Principles: Áp dụng các nguyên tắc bố cục trong thiết kế như Quy tắc 1/3, đường dẫn thị giác, và sự cân bằng để tạo ra một thiết kế hài hòa.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-LAYOUT-SPACING",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Control spacing between UI elements (Kiểm soát khoảng cách giữa các thành phần UI)",
+              "description": "Người học có khả năng sử dụng các cơ chế để tạo ra khoảng trống linh hoạt hoặc cố định nhằm phân tách các thành phần giao diện.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-LIST-DISPLAY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Display Data in List Views (Hiển thị dữ liệu với List)",
+              "description": "Người học có khả năng hiển thị tập hợp dữ liệu có thứ tự bằng một danh sách, bao gồm ánh xạ phần tử sang hàng UI.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-IMAGE-MODIFIER-APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Apply Image Modifiers in UI",
+              "description": "Người học có khả năng điều chỉnh hiển thị ảnh bằng các modifiers như sizing, clipping, và overlay nhằm cải thiện bố cục.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-GEOMETRY-READ",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Read Layout Geometry for Responsive UI",
+              "description": "Người học có khả năng truy xuất kích thước/vị trí layout để điều chỉnh giao diện thích ứng.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-ADAPTIVE-LAYOUT-FITS",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Build Adaptive Layouts with ViewThatFits",
+              "description": "Người học có khả năng chọn biến thể UI phù hợp không gian hiển thị bằng `ViewThatFits`.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "CIO-SCROLL-LAYOUT",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "Compose Scrollable Interfaces",
+              "description": "Người học có khả năng tạo bố cục cuộn để trình bày nội dung dài với điều hướng mượt mà.",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "feature_id": "F4",
+              "rationale": [
+                "CIO is a conceptual implementation of its parent ULO"
+              ],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "SIO-SWIFT-COMPOSITION_PRINCIPLES-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "COMPOSITION_PRINCIPLES",
+              "name": "SWIFT: Implement Composition Principles",
+              "description": "Người học có khả năng triển khai Composition Principles: Áp dụng các nguyên tắc bố cục trong thiết kế như Quy tắc 1/3, đường dẫn thị giác, và sự cân bằng để tạo ra một thiết kế hài hòa.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Main Principles",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F4",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-composition_principles.md"
+            },
+            {
+              "code": "ULO-ROUTING_SWITCHING-01",
+              "lo_type": "UNIVERSAL",
+              "concept": "ROUTING_SWITCHING",
+              "name": "Understand ROUTING_SWITCHING",
+              "description": "Người học có khả năng hiểu Routing Switching: Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "CONCEPTUAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-routing_switching.md"
+            },
+            {
+              "code": "CIO-ROUTING_SWITCHING-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "ROUTING_SWITCHING",
+              "name": "Apply ROUTING_SWITCHING Concepts",
+              "description": "Người học có khả năng thiết kế Routing Switching: Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+              "assessment": "code-lab",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "",
+              "platform": "",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-routing_switching.md"
+            },
+            {
+              "code": "SIO-SWIFT-ROUTING_SWITCHING-01",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "ROUTING_SWITCHING",
+              "name": "SWIFT: Implement Routing Switching",
+              "description": "Người học có khả năng triển khai Routing Switching: Phân biệt chức năng của router (định tuyến giữa các mạng) và switch (kết nối các thiết bị trong cùng một mạng).",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "routing switching",
+              "platform": "app",
+              "needs_review": false,
+              "feature_id": "F3",
+              "rationale": [],
+              "instruction_ref": "/tmp/pipeline-stream-v4/instruction/instruction-routing_switching.md"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "total_milestones": 4,
+  "total_concepts": 6
+}

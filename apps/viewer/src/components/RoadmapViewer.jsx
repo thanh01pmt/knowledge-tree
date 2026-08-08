@@ -8,7 +8,7 @@ import './RoadmapViewer.css';
 // Action roadmaps (từ generate_jit_graph.py — implement-centric)
 const ACTION_ROADMAPS = ['jit-bulb', 'jit-quiz'];
 // Topic roadmaps (từ pipeline v3 — concept → ULO/CIO/SIO)
-const TOPIC_ROADMAPS = ['jit-bulb-v3'];
+const TOPIC_ROADMAPS = ['jit-bulb-v3', 'stream-chat-demoapp'];
 // Roadmap.sh layout roadmaps
 const ROADMAP_SH_ROADMAPS = ['rust-cli', 'portfolio-js'];
 // Tự động gom tất cả roadmap từ public/roadmaps/
