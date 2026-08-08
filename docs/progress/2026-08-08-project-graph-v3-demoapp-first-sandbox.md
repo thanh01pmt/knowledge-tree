@@ -111,3 +111,17 @@ scratch/project-graph-v3/
 ├── output/                      # ⬜
 └── docs/                        # ⬜ (progress này nằm ở docs/progress/ toàn cục)
 ```
+
+
+## 7. Reconciliation vs Main Docs (2026-08-08)
+
+Đối chiếu STEP 1-3 với docs/ideas main — 4 mâu thuẫn đã sửa (xem `scratch/project-graph-v3/docs/reconciliation-vs-main-docs.md`):
+
+| # | Mâu thuẫn | Sửa |
+|---|---|---|
+| M1 | Product Graph mô tả repo, không end-user | STEP 1 prompt: goals/users từ góc nhìn end-user, CẤM mô tả artifact |
+| M2 | Thiếu scaffold (product-first Chương 3-5) | STEP 1 prompt: domain scaffold (template, cấu trúc file, build đầu tiên) + schema `product.scaffold` |
+| M3 | By-feature trái vertical-slicing | Schema `requirement.completion_level` (base/mvp/extend/polish) + task.requirement_ids + STEP 4 ưu tiên completion_level |
+| M4 | Thiếu trace nguồn P3 (product-first Chương 6) | STEP 2: line-level evidence `file#L45` + `ref` tag |
+
+**Ghi chú vận hành**: M3 chỉ có hiệu lực khi chạy lại STEP 1 với prompt mới (sinh completion_level + scaffold + requirement_ids) — output hiện tại chưa có nên fallback feature.priority.
