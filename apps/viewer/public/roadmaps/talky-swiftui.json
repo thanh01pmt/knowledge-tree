@@ -30,24 +30,24 @@
   },
   "development_stages": [
     {
-      "stage": "Giai đoạn 1 — App chạy được UI shell cơ bản",
-      "product_state": "Người dùng mở app thấy màn hình chào mừng WelcomeView, có thể điều hướng tới form login/register và thấy màn hình chat chính (chưa kết nối Firebase thật).",
+      "stage": "Giai đoạn 1 — Làm quen nền tảng (IDE, Swift, template)",
+      "product_state": "Người học làm quen Xcode/simulator, hiểu cấu trúc project SwiftUI từ template, build và chạy app template mặc định. CHƯA động vào chức năng chat cụ thể.",
       "need": [
-        "Scaffold Xcode project từ template SwiftUI App",
-        "Tạo asset màu primary/secondary trong Assets.xcassets",
-        "Dựng WelcomeView với hình minh họa và nút Start Messaging",
-        "Dựng LoginxView và RegisterxView với SecureTextField tạm",
-        "Dựng RecentChatView shell (NavigationView + header Messages)"
+        "Làm quen Xcode IDE: navigator, editor, simulator, run/stop",
+        "Tìm hiểu cấu trúc template SwiftUI App (App, ContentView, Assets.xcassets)",
+        "Build và chạy app template mặc định trên simulator",
+        "Làm quen cú pháp Swift cơ bản (struct, var/let, Text, VStack)",
+        "Đổi tên project/ứng dụng, thử sửa Text trong template thấy kết quả ngay"
       ],
       "learn": [
-        "SwiftUI App lifecycle",
-        "View, VStack/HStack/ZStack, Button, TextField/SecureField",
-        "NavigationView/NavigationLink/fullScreenCover",
-        "Asset catalog và màu custom"
+        "Xcode IDE và simulator workflow",
+        "Cấu trúc project SwiftUI (App protocol, View, Assets)",
+        "Swift cơ bản: struct, var/let, String, HStack/VStack, Text",
+        "Build/run cycle và debug console"
       ],
-      "validation": "Build thành công trên simulator; điều hướng Welcome -> Login/Register; vào được RecentChatView.",
-      "cross_feature_value": "Tạo walking skeleton UI để mọi giai đoạn sau bồi đắp feature lên trên nền này.",
-      "temporary_approach": "Login/Register chưa gọi Firebase — chỉ hiện UI và alert tạm, giai đoạn 2 thay bằng Auth thật."
+      "validation": "App template chạy được trên simulator; học viên sửa được text hiển thị và build lại thành công.",
+      "cross_feature_value": "Nền tảng: học viên làm chủ công cụ và ngôn ngữ trước khi động vào code dự án — mọi giai đoạn sau xây trên nền này.",
+      "temporary_approach": "Không code chức năng — chỉ chạy template mặc định và sửa vài Text demo để quen workflow, chưa cần biết gì về chat."
     },
     {
       "stage": "Giai đoạn 2 — Firebase setup và xác thực",
@@ -157,100 +157,7 @@
     {
       "phase_id": 0,
       "title": "NỀN TẢNG",
-      "description": "FOUNDATION: 2 tasks",
-      "milestones": [
-        {
-          "id": "t10",
-          "name": "Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
-          "concepts": [
-            "TWO_WAY_BINDING",
-            "DECLARATIVE_UI_PARADIGM"
-          ],
-          "concept_code": "TWO_WAY_BINDING",
-          "learning_objectives": [
-            {
-              "code": "ULO-TWO_WAY_BINDING-01",
-              "lo_type": "UNIVERSAL",
-              "concept": "TWO_WAY_BINDING",
-              "name": "ULO: Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
-              "description": "Người học có khả năng giải thích cách @Binding tạo ràng buộc hai chiều giữa SecureTextField và biến password trong parent view.",
-              "assessment": "SecureTextField hiển thị SecureField mặc định; Nhấn eye icon chuyển sang TextField hiện plain text",
-              "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "@Binding",
-              "platform": "app",
-              "task_id": "t10"
-            },
-            {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-02",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "CIO: Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
-              "description": "Người học có khả năng xây dựng SecureTextField bằng cách khai báo điều kiện chuyển đổi giữa SecureField và TextField dựa trên trạng thái toggle.",
-              "assessment": "SecureTextField hiển thị SecureField mặc định; Nhấn eye icon chuyển sang TextField hiện plain text",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "SecureField",
-              "platform": "app",
-              "task_id": "t10"
-            },
-            {
-              "code": "CIO-TWO_WAY_BINDING-03",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "TWO_WAY_BINDING",
-              "name": "CIO: Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
-              "description": "Người học có khả năng sử dụng @Binding trong SecureTextField để cập nhật giá trị mật khẩu khi người dùng nhập ở cả hai chế độ hiện/ẩn.",
-              "assessment": "SecureTextField hiển thị SecureField mặc định; Nhấn eye icon chuyển sang TextField hiện plain text",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "TextField",
-              "platform": "app",
-              "task_id": "t10"
-            }
-          ]
-        },
-        {
-          "id": "t9",
-          "name": "Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
-          "concepts": [
-            "DECLARATIVE_UI_PARADIGM"
-          ],
-          "concept_code": "DECLARATIVE_UI_PARADIGM",
-          "learning_objectives": [
-            {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-04",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "CIO: Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
-              "description": "Người học có khả năng xây dựng WelcomeView với logo, LinearGradient nền và nút Start Messaging bằng cách khai báo các view trong NavigationView.",
-              "assessment": "Màn hình chào mừng hiển thị logo + nút Start Messaging; Nút Start Messaging dẫn sang RegisterxView; Có navigation sang LoginxView",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "LinearGradient",
-              "platform": "app",
-              "task_id": "t9"
-            },
-            {
-              "code": "SIO-DECLARATIVE_UI_PARADIGM-05",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "SIO: Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
-              "description": "Người học có khả năng thiết lập NavigationLink từ nút Start Messaging để điều hướng sang RegisterxView, đồng thời thêm navigation tới LoginxView cho luồng chưa đăng nhập.",
-              "assessment": "Màn hình chào mừng hiển thị logo + nút Start Messaging; Nút Start Messaging dẫn sang RegisterxView; Có navigation sang LoginxView",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "NavigationLink",
-              "platform": "app",
-              "task_id": "t9"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "phase_id": 1,
-      "title": "MVP",
-      "description": "MVP: 6 tasks",
+      "description": "FOUNDATION: 1 tasks",
       "milestones": [
         {
           "id": "t1",
@@ -262,11 +169,11 @@
           "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
-              "code": "ULO-API_INTEGRATION-06",
-              "lo_type": "UNIVERSAL",
+              "code": "CIO-API_INTEGRATION-01",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "ULO: Khởi tạo Xcode project SwiftUI và cấu hình Firebase SDK (FirebaseAuth, Firestore, Storage, Messaging, GoogleService-Info.plist)",
-              "description": "Người học có khả năng giải thích vì sao FirebaseApp.configure() cần được gọi trước khi dùng FirebaseAuth, Firestore, Storage hoặc Messaging.",
+              "name": "CIO: Khởi tạo Xcode project SwiftUI và cấu hình Firebase SDK (FirebaseAuth, Firestore, Storage, Messaging, GoogleService-Info.plist)",
+              "description": "Người học có khả năng giải thích vì sao cần dựng sẵn Xcode project SwiftUI và cấu hình Firebase SDK trước khi lập trình các tính năng chat.",
               "assessment": "Build được project iOS bằng Xcode; App chạy trên simulator với màn hình SwiftUI trống; Firebase SDK được link và không crash khi app launch",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -275,11 +182,11 @@
               "task_id": "t1"
             },
             {
-              "code": "CIO-API_INTEGRATION-07",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-API_INTEGRATION-02",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Khởi tạo Xcode project SwiftUI và cấu hình Firebase SDK (FirebaseAuth, Firestore, Storage, Messaging, GoogleService-Info.plist)",
-              "description": "Người học có khả năng thực hiện tạo Xcode project SwiftUI và gắn GoogleService-Info.plist cũng như Firebase SDK để app build và chạy trên simulator.",
+              "name": "SIO: Khởi tạo Xcode project SwiftUI và cấu hình Firebase SDK (FirebaseAuth, Firestore, Storage, Messaging, GoogleService-Info.plist)",
+              "description": "Người học có khả năng tạo mới Xcode project theo SwiftUI template, chọn bundle id và thêm GoogleService-Info.plist vào app target.",
               "assessment": "Build được project iOS bằng Xcode; App chạy trên simulator với màn hình SwiftUI trống; Firebase SDK được link và không crash khi app launch",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -288,17 +195,74 @@
               "task_id": "t1"
             },
             {
-              "code": "ULO-DECLARATIVE_UI_PARADIGM-08",
+              "code": "ULO-DECLARATIVE_UI_PARADIGM-03",
               "lo_type": "UNIVERSAL",
               "concept": "DECLARATIVE_UI_PARADIGM",
               "name": "ULO: Khởi tạo Xcode project SwiftUI và cấu hình Firebase SDK (FirebaseAuth, Firestore, Storage, Messaging, GoogleService-Info.plist)",
-              "description": "Người học có khả năng nhận diện cấu trúc khai báo view theo mô hình SwiftUI (App, Scene, View) trong project template để xác định nơi đặt mã khởi tạo.",
+              "description": "Người học có khả năng nhận diện đặc điểm khai báo UI của SwiftUI khi tạo project: màn hình chính do view và state điều khiển thay vì storyboard.",
               "assessment": "Build được project iOS bằng Xcode; App chạy trên simulator với màn hình SwiftUI trống; Firebase SDK được link và không crash khi app launch",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "SwiftUI",
               "platform": "app",
               "task_id": "t1"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 1,
+      "title": "MVP",
+      "description": "MVP: 7 tasks",
+      "milestones": [
+        {
+          "id": "t10",
+          "name": "Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
+          "concepts": [
+            "TWO_WAY_BINDING",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "TWO_WAY_BINDING",
+          "learning_objectives": [
+            {
+              "code": "CIO-TWO_WAY_BINDING-04",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "TWO_WAY_BINDING",
+              "name": "CIO: Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
+              "description": "Người học có khả năng xây dựng component SecureTextField nhận vào @Binding để đọc và ghi giá trị mật khẩu từ form cha.",
+              "assessment": "SecureTextField hiển thị SecureField mặc định; Nhấn eye icon chuyển sang TextField hiện plain text",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Binding",
+              "platform": "app",
+              "task_id": "t10"
+            },
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-05",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
+              "description": "Người học có khả năng áp dụng cấu trúc khai báo SwiftUI gồm HStack, Button, SecureField/TextField để tạo toggle hiện và ẩn mật khẩu.",
+              "assessment": "SecureTextField hiển thị SecureField mặc định; Nhấn eye icon chuyển sang TextField hiện plain text",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "TextField",
+              "platform": "app",
+              "task_id": "t10"
+            },
+            {
+              "code": "ULO-TWO_WAY_BINDING-06",
+              "lo_type": "UNIVERSAL",
+              "concept": "TWO_WAY_BINDING",
+              "name": "ULO: Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
+              "description": "Người học có khả năng giải thích cơ chế two-way binding @Binding là nguồn dữ liệu dùng chung giúp component đồng bộ với nơi sử dụng.",
+              "assessment": "SecureTextField hiển thị SecureField mặc định; Nhấn eye icon chuyển sang TextField hiện plain text",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Binding",
+              "platform": "app",
+              "task_id": "t10"
             }
           ]
         },
@@ -313,11 +277,11 @@
           "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
           "learning_objectives": [
             {
-              "code": "ULO-CREATIONAL_PATTERNS-09",
-              "lo_type": "UNIVERSAL",
+              "code": "CIO-CREATIONAL_PATTERNS-07",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "CREATIONAL_PATTERNS",
-              "name": "ULO: Implement FirebaseManager singleton cung cấp Auth, Firestore, Storage instances",
-              "description": "Người học có khả năng giải thích đặc điểm của singleton pattern và vì sao FirebaseManager nên được cài đặt dưới dạng singleton để chia sẻ một bộ instances dùng chung.",
+              "name": "CIO: Implement FirebaseManager singleton cung cấp Auth, Firestore, Storage instances",
+              "description": "Người học có khả năng giải thích ý nghĩa singleton pattern khi tạo FirebaseManager: chỉ một instance dùng chung cho Auth, Firestore và Storage.",
               "assessment": "FirebaseManager.shared trả về cùng Auth, Firestore, Storage instance",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -326,11 +290,11 @@
               "task_id": "t4"
             },
             {
-              "code": "SIO-API_INTEGRATION-10",
+              "code": "SIO-API_INTEGRATION-08",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
               "name": "SIO: Implement FirebaseManager singleton cung cấp Auth, Firestore, Storage instances",
-              "description": "Người học có khả năng triển khai FirebaseManager.shared cung cấp các instance Auth.auth(), Firestore.firestore() và Storage.storage() cho toàn bộ ViewModel.",
+              "description": "Người học có khả năng triển khai FirebaseManager.shared trả về các thể hiện Auth, Firestore, Storage được cấu hình từ FirebaseApp.",
               "assessment": "FirebaseManager.shared trả về cùng Auth, Firestore, Storage instance",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -339,15 +303,15 @@
               "task_id": "t4"
             },
             {
-              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-11",
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-09",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "CIO: Implement FirebaseManager singleton cung cấp Auth, Firestore, Storage instances",
-              "description": "Người học có khả năng phân tích luồng truy cập các service Firebase (Auth, Firestore, Storage) thông qua FirebaseManager.shared để đảm bảo việc xác thực và lấy dữ liệu diễn ra nhất quán.",
+              "description": "Người học có khả năng sử dụng FirebaseManager như cổng truy cập dịch vụ định danh để các ViewModel không cần tự khởi tạo service mới.",
               "assessment": "FirebaseManager.shared trả về cùng Auth, Firestore, Storage instance",
-              "bloom_level": "analyze",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Firestore.firestore()",
+              "keyword": "Auth.auth()",
               "platform": "app",
               "task_id": "t4"
             }
@@ -364,11 +328,24 @@
           "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
           "learning_objectives": [
             {
-              "code": "SIO-API_INTEGRATION-12",
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-10",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
+              "description": "Người học có khả năng phân tích luồng dữ liệu của AuthViewModel: hành động login/register/logout cập nhật @Published loggedOut và logMessage để view phản hồi.",
+              "assessment": "Đăng ký tạo user trong collection users; Đăng nhập thành công set loggedOut false và vào RecentChatView; Đăng xuất set loggedOut true và hiện WelcomeView; Edit profile cập nhật email/avatar/password",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Published",
+              "platform": "app",
+              "task_id": "t8"
+            },
+            {
+              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-11",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "SIO: Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
-              "description": "Người học có khả năng triển khai các phương thức register, login và logout trong AuthViewModel sử dụng Auth.auth().createUser, signIn và signOut từ Firebase Auth.",
+              "description": "Người học có khả năng triển khai đăng ký và đăng nhập dùng Auth.auth().createUser/signIn và ghi thêm profile vào collection users trên Firestore.",
               "assessment": "Đăng ký tạo user trong collection users; Đăng nhập thành công set loggedOut false và vào RecentChatView; Đăng xuất set loggedOut true và hiện WelcomeView; Edit profile cập nhật email/avatar/password",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -377,39 +354,26 @@
               "task_id": "t8"
             },
             {
-              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-13",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
-              "name": "CIO: Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
-              "description": "Người học có khả năng cập nhật các @Published property như loggedOut và viewState trong AuthViewModel để các view đăng ký theo dõi phản ứng với thay đổi trạng thái đăng nhập.",
-              "assessment": "Đăng ký tạo user trong collection users; Đăng nhập thành công set loggedOut false và vào RecentChatView; Đăng xuất set loggedOut true và hiện WelcomeView; Edit profile cập nhật email/avatar/password",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "@Published",
-              "platform": "app",
-              "task_id": "t8"
-            },
-            {
-              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-14",
+              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-12",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "SIO: Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
-              "description": "Người học có khả năng thao tác với Firestore collection users để fetch profile và edit profile (email, avatar, password) cho người dùng hiện tại.",
+              "description": "Người học có khả năng triển khai chức năng đăng xuất và cập nhật trạng thái loggedOut để chuyển màn hình về WelcomeView.",
               "assessment": "Đăng ký tạo user trong collection users; Đăng nhập thành công set loggedOut false và vào RecentChatView; Đăng xuất set loggedOut true và hiện WelcomeView; Edit profile cập nhật email/avatar/password",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Firestore",
+              "keyword": "Auth.auth().signOut()",
               "platform": "app",
               "task_id": "t8"
             },
             {
-              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-15",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "name": "CIO: Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
-              "description": "Người học có khả năng phân tích luồng dữ liệu đăng ký/đăng nhập từ form qua AuthViewModel đến Firebase Auth và Firestore để đảm bảo loggedOut và profile được cập nhật đúng thời điểm.",
+              "code": "SIO-API_INTEGRATION-13",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
+              "description": "Người học có khả năng áp dụng completion handler từ Firebase Auth API để bắt lỗi và gán logMessage trong ViewModel.",
               "assessment": "Đăng ký tạo user trong collection users; Đăng nhập thành công set loggedOut false và vào RecentChatView; Đăng xuất set loggedOut true và hiện WelcomeView; Edit profile cập nhật email/avatar/password",
-              "bloom_level": "analyze",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "Auth.auth().signIn(withEmail:password:)",
               "platform": "app",
@@ -427,24 +391,11 @@
           "concept_code": "DECLARATIVE_UI_PARADIGM",
           "learning_objectives": [
             {
-              "code": "ULO-UI_MODIFIERS_CONCEPT-16",
-              "lo_type": "UNIVERSAL",
-              "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "ULO: Implement LoginxView form đăng nhập email/password, gọi AuthViewModel.login và hiển thị alert lỗi",
-              "description": "Người học có khả năng giải thích cách alert(isPresented:) dùng để hiển thị thông báo lỗi một cách khai báo dựa trên dữ liệu trạng thái.",
-              "assessment": "Form email/password hiển thị; Khi login thành công vào RecentChatView; Khi lỗi hiện alert với logMessage; Nút hiển thị Loading khi viewState == .loading",
-              "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "alert(isPresented:)",
-              "platform": "app",
-              "task_id": "t11"
-            },
-            {
-              "code": "SIO-DECLARATIVE_UI_PARADIGM-17",
-              "lo_type": "SPECIFIC_IMPL",
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-14",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "SIO: Implement LoginxView form đăng nhập email/password, gọi AuthViewModel.login và hiển thị alert lỗi",
-              "description": "Người học có khả năng xây dựng form đăng nhập trong LoginxView bao gồm TextField email, SecureTextField password và nút đăng nhập gọi AuthViewModel.login.",
+              "name": "CIO: Implement LoginxView form đăng nhập email/password, gọi AuthViewModel.login và hiển thị alert lỗi",
+              "description": "Người học có khả năng xây dựng màn hình LoginxView với TextField, SecureTextField và nút đăng nhập gọi AuthViewModel.login.",
               "assessment": "Form email/password hiển thị; Khi login thành công vào RecentChatView; Khi lỗi hiện alert với logMessage; Nút hiển thị Loading khi viewState == .loading",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -453,11 +404,24 @@
               "task_id": "t11"
             },
             {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-18",
+              "code": "CIO-UI_MODIFIERS_CONCEPT-15",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
+              "concept": "UI_MODIFIERS_CONCEPT",
               "name": "CIO: Implement LoginxView form đăng nhập email/password, gọi AuthViewModel.login và hiển thị alert lỗi",
-              "description": "Người học có khả năng gắn trạng thái Loading và hiển thị alert lỗi trong LoginxView dựa trên viewState của AuthViewModel sau khi gọi login.",
+              "description": "Người học có khả năng giải thích cách modifier alert(isPresented:) kết hợp với thuộc tính lỗi của AuthViewModel để hiển thị thông báo đăng nhập thất bại.",
+              "assessment": "Form email/password hiển thị; Khi login thành công vào RecentChatView; Khi lỗi hiện alert với logMessage; Nút hiển thị Loading khi viewState == .loading",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "alert(isPresented:)",
+              "platform": "app",
+              "task_id": "t11"
+            },
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-16",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement LoginxView form đăng nhập email/password, gọi AuthViewModel.login và hiển thị alert lỗi",
+              "description": "Người học có khả năng sử dụng modifier onChange để phản ứng khi trạng thái đăng nhập thay đổi và tự chuyển sang RecentChatView.",
               "assessment": "Form email/password hiển thị; Khi login thành công vào RecentChatView; Khi lỗi hiện alert với logMessage; Nút hiển thị Loading khi viewState == .loading",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -477,24 +441,11 @@
           "concept_code": "DECLARATIVE_UI_PARADIGM",
           "learning_objectives": [
             {
-              "code": "CIO-UI_MODIFIERS_CONCEPT-19",
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-17",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "CIO: Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
-              "description": "Người học có khả năng sử dụng alert(isPresented:) và .onChange trong RegisterxView để hiển thị lỗi và bắt trạng thái đăng ký từ AuthViewModel.",
-              "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "alert(isPresented:)",
-              "platform": "app",
-              "task_id": "t12"
-            },
-            {
-              "code": "SIO-DECLARATIVE_UI_PARADIGM-20",
-              "lo_type": "SPECIFIC_IMPL",
               "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "SIO: Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
-              "description": "Người học có khả năng xây dựng form đăng ký trong RegisterxView gồm email, password, repassword và gọi AuthViewModel.register.",
+              "name": "CIO: Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
+              "description": "Người học có khả năng xây dựng màn hình RegisterxView gồm các trường email, password, re-password và nút đăng ký kết nối với AuthViewModel.register.",
               "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -503,15 +454,28 @@
               "task_id": "t12"
             },
             {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-21",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "CIO: Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
-              "description": "Người học có khả năng xử lý điều hướng sang RecentChatView khi đăng ký thành công và hiển thị thông báo lỗi khi đăng ký thất bại.",
+              "code": "SIO-UI_MODIFIERS_CONCEPT-18",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "SIO: Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
+              "description": "Người học có khả năng áp dụng UI modifier alert(isPresented:) để hiển thị lỗi từ AuthViewModel trong quá trình đăng ký.",
               "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "onChange",
+              "keyword": "alert(isPresented:)",
+              "platform": "app",
+              "task_id": "t12"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-19",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
+              "description": "Người học có khả năng triển khai kiểm tra repassword khớp password trước khi gọi register và vô hiệu hóa nút nếu dữ liệu không hợp lệ.",
+              "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "SecureTextField",
               "platform": "app",
               "task_id": "t12"
             }
@@ -527,11 +491,11 @@
           "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
-              "code": "ULO-API_INTEGRATION-22",
-              "lo_type": "UNIVERSAL",
+              "code": "CIO-API_INTEGRATION-20",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "ULO: Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
-              "description": "Người học có khả năng giải thích vì sao FirebaseApp.configure() phải được gọi trong AppDelegate.didFinishLaunching trước khi sử dụng Auth, Firestore, Storage.",
+              "name": "CIO: Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
+              "description": "Người học có khả năng giải thích vai trò của FirebaseApp.configure() trong AppDelegate để khởi tạo Firebase trước khi dùng Auth và Firestore.",
               "assessment": "App launch vào RecentChatView; FirebaseApp.configure() được gọi trong didFinishLaunching; UIApplicationDelegateAdaptor wire AppDelegate",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -540,30 +504,92 @@
               "task_id": "t2"
             },
             {
-              "code": "ULO-SHARED_OBSERVABLE_STATE-23",
-              "lo_type": "UNIVERSAL",
-              "concept": "SHARED_OBSERVABLE_STATE",
-              "name": "ULO: Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
-              "description": "Người học có khả năng giải thích cách @StateObject và @EnvironmentObject giúp chia sẻ AuthViewModel giữa các view trong toàn app.",
+              "code": "CIO-API_INTEGRATION-21",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
+              "description": "Người học có khả năng nhận diện cách @UIApplicationDelegateAdaptor kết nối AppDelegate với SwiftUI App để chạy Firebase configuration.",
               "assessment": "App launch vào RecentChatView; FirebaseApp.configure() được gọi trong didFinishLaunching; UIApplicationDelegateAdaptor wire AppDelegate",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "@StateObject",
+              "keyword": "@UIApplicationDelegateAdaptor",
               "platform": "app",
               "task_id": "t2"
             },
             {
-              "code": "SIO-SHARED_OBSERVABLE_STATE-24",
+              "code": "SIO-SHARED_OBSERVABLE_STATE-22",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "SHARED_OBSERVABLE_STATE",
               "name": "SIO: Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
-              "description": "Người học có khả năng cấu hình TalkyApp với @UIApplicationDelegateAdaptor, tạo AuthViewModel bằng @StateObject và inject bằng .environmentObject vào root view.",
+              "description": "Người học có khả năng cài đặt AuthViewModel là @StateObject và inject qua .environmentObject để chia sẻ trạng thái đăng nhập cho toàn bộ view.",
               "assessment": "App launch vào RecentChatView; FirebaseApp.configure() được gọi trong didFinishLaunching; UIApplicationDelegateAdaptor wire AppDelegate",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "@EnvironmentObject",
               "platform": "app",
               "task_id": "t2"
+            },
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-23",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
+              "description": "Người học có khả năng giải thích vì sao AuthViewModel cần là environment object để các màn hình như WelcomeView và RecentChatView cùng quan sát trạng thái.",
+              "assessment": "App launch vào RecentChatView; FirebaseApp.configure() được gọi trong didFinishLaunching; UIApplicationDelegateAdaptor wire AppDelegate",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@EnvironmentObject",
+              "platform": "app",
+              "task_id": "t2"
+            }
+          ]
+        },
+        {
+          "id": "t9",
+          "name": "Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
+          "learning_objectives": [
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-24",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
+              "description": "Người học có khả năng xây dựng WelcomeView với logo, LinearGradient nền và nút Start Messaging theo cấu trúc khai báo SwiftUI.",
+              "assessment": "Màn hình chào mừng hiển thị logo + nút Start Messaging; Nút Start Messaging dẫn sang RegisterxView; Có navigation sang LoginxView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "LinearGradient",
+              "platform": "app",
+              "task_id": "t9"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-25",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
+              "description": "Người học có khả năng sử dụng NavigationLink để dẫn người dùng từ nút Start Messaging sang RegisterxView và bố trí liên kết điều hướng đăng nhập.",
+              "assessment": "Màn hình chào mừng hiển thị logo + nút Start Messaging; Nút Start Messaging dẫn sang RegisterxView; Có navigation sang LoginxView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "NavigationLink",
+              "platform": "app",
+              "task_id": "t9"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-26",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
+              "description": "Người học có khả năng áp dụng modifier và view composition để tạo giao diện chào mừng thân thiện với người dùng.",
+              "assessment": "Màn hình chào mừng hiển thị logo + nút Start Messaging; Nút Start Messaging dẫn sang RegisterxView; Có navigation sang LoginxView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "NavigationView",
+              "platform": "app",
+              "task_id": "t9"
             }
           ]
         }
@@ -583,11 +609,11 @@
           "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
-              "code": "ULO-JSON_SERIALIZATION-25",
+              "code": "ULO-JSON_SERIALIZATION-27",
               "lo_type": "UNIVERSAL",
               "concept": "JSON_SERIALIZATION",
               "name": "ULO: Implement ChatUser model Codable với @DocumentID, username computed và fromRecentMessage",
-              "description": "Người học có khả năng giải thích vai trò của Codable và @DocumentID trong việc mapping struct ChatUser với document Firestore.",
+              "description": "Người học có khả năng giải thích vai trò của Codable khi ánh xạ dữ liệu ChatUser giữa Swift và Firestore document.",
               "assessment": "ChatUser decode/encode được Firestore document; username parse đúng phần trước @ của email",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -596,28 +622,28 @@
               "task_id": "t5"
             },
             {
-              "code": "ULO-JSON_SERIALIZATION-26",
-              "lo_type": "UNIVERSAL",
-              "concept": "JSON_SERIALIZATION",
-              "name": "ULO: Implement ChatUser model Codable với @DocumentID, username computed và fromRecentMessage",
-              "description": "Người học có khả năng mô tả cách Firestore.Encoder và Firestore.Decoder chuyển đổi ChatUser giữa dữ liệu Swift và Firestore document.",
-              "assessment": "ChatUser decode/encode được Firestore document; username parse đúng phần trước @ của email",
-              "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Firestore.Encoder",
-              "platform": "app",
-              "task_id": "t5"
-            },
-            {
-              "code": "CIO-JSON_SERIALIZATION-27",
+              "code": "CIO-JSON_SERIALIZATION-28",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "CIO: Implement ChatUser model Codable với @DocumentID, username computed và fromRecentMessage",
-              "description": "Người học có khả năng giải thích cách computed property username được tính từ email và dùng để hiển thị danh xưng trong màn hình chat.",
+              "description": "Người học có khả năng giải thích cách @DocumentID lưu id của document mà không nằm trong dữ liệu encode/decode thông thường.",
               "assessment": "ChatUser decode/encode được Firestore document; username parse đúng phần trước @ của email",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "@DocumentID",
+              "platform": "app",
+              "task_id": "t5"
+            },
+            {
+              "code": "CIO-JSON_SERIALIZATION-29",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "JSON_SERIALIZATION",
+              "name": "CIO: Implement ChatUser model Codable với @DocumentID, username computed và fromRecentMessage",
+              "description": "Người học có khả năng mô tả computed property username trích xuất phần trước @ của email và factory fromRecentMessage để tạo ChatUser từ tin nhắn gần đây.",
+              "assessment": "ChatUser decode/encode được Firestore document; username parse đúng phần trước @ của email",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Firestore.Decoder",
               "platform": "app",
               "task_id": "t5"
             }
@@ -632,24 +658,24 @@
           "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
-              "code": "SIO-JSON_SERIALIZATION-28",
+              "code": "SIO-JSON_SERIALIZATION-30",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "SIO: Implement RecentMessage model Codable với @DocumentID, username và timeAgo",
-              "description": "Người học có khả năng triển khai struct RecentMessage tuân thủ Codable với @DocumentID để decode document từ collection recent_messages.",
+              "description": "Người học có khả năng khai báo struct RecentMessage tuân thủ Codable có @DocumentID để decode document từ collection recent_messages.",
               "assessment": "RecentMessage decode được document từ collection recent_messages; timeAgo hiển thị thời gian tương đối",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "@DocumentID",
+              "keyword": "Codable",
               "platform": "app",
               "task_id": "t6"
             },
             {
-              "code": "CIO-JSON_SERIALIZATION-29",
+              "code": "CIO-JSON_SERIALIZATION-31",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "CIO: Implement RecentMessage model Codable với @DocumentID, username và timeAgo",
-              "description": "Người học có khả năng sử dụng RelativeDateTimeFormatter để tính timeAgo cho RecentMessage.",
+              "description": "Người học có khả năng triển khai thuộc tính username được parse từ dữ liệu user và timeAgo sử dụng RelativeDateTimeFormatter.",
               "assessment": "RecentMessage decode được document từ collection recent_messages; timeAgo hiển thị thời gian tương đối",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -658,15 +684,15 @@
               "task_id": "t6"
             },
             {
-              "code": "CIO-JSON_SERIALIZATION-30",
+              "code": "CIO-JSON_SERIALIZATION-32",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "CIO: Implement RecentMessage model Codable với @DocumentID, username và timeAgo",
-              "description": "Người học có khả năng giải thích cách property username trong RecentMessage map từ document data và hiển thị trong danh sách chat.",
+              "description": "Người học có khả năng giải thích mối quan hệ giữa model RecentMessage và cấu trúc Firestore document tại recent_messages.",
               "assessment": "RecentMessage decode được document từ collection recent_messages; timeAgo hiển thị thời gian tương đối",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Codable",
+              "keyword": "@DocumentID",
               "platform": "app",
               "task_id": "t6"
             }
@@ -684,11 +710,11 @@
           "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
-              "code": "CIO-EVENT_LISTENERS-31",
+              "code": "CIO-EVENT_LISTENERS-33",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "EVENT_LISTENERS",
               "name": "CIO: Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
-              "description": "Người học có khả năng giải thích cơ chế addSnapshotListener trong Firestore để lắng nghe realtime changes trên collection recent_messages.",
+              "description": "Người học có khả năng giải thích vai trò của addSnapshotListener trong việc lắng nghe realtime thay đổi của collection recent_messages.",
               "assessment": "fetchRecentMessages lắng nghe collection recent_messages; fetchAllUser lấy danh sách users; selectedChatUser được set khi click vào recent message",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -697,11 +723,11 @@
               "task_id": "t13"
             },
             {
-              "code": "SIO-API_INTEGRATION-32",
+              "code": "SIO-API_INTEGRATION-34",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
               "name": "SIO: Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
-              "description": "Người học có khả năng triển khai fetchRecentMessages và fetchAllUser để lấy danh sách recent messages từ collection recent_messages và users từ collection users.",
+              "description": "Người học có khả năng triển khai fetchRecentMessages sử dụng Firestore listener để cập nhật danh sách recent messages vào biến @Published.",
               "assessment": "fetchRecentMessages lắng nghe collection recent_messages; fetchAllUser lấy danh sách users; selectedChatUser được set khi click vào recent message",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -710,28 +736,28 @@
               "task_id": "t13"
             },
             {
-              "code": "SIO-SHARED_OBSERVABLE_STATE-33",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "SHARED_OBSERVABLE_STATE",
-              "name": "SIO: Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
-              "description": "Người học có khả năng quản lý selectedChatUser thông qua @Published khi người dùng tap vào recent message.",
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-35",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
+              "description": "Người học có khả năng phân tích luồng dữ liệu từ Firestore thông qua @Published trong RecentChatViewModel tới RecentChatView và cách selectedChatUser được đồng bộ khi người dùng chọn một recent message.",
               "assessment": "fetchRecentMessages lắng nghe collection recent_messages; fetchAllUser lấy danh sách users; selectedChatUser được set khi click vào recent message",
-              "bloom_level": "apply",
+              "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "@Published",
               "platform": "app",
               "task_id": "t13"
             },
             {
-              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-34",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
-              "name": "CIO: Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
-              "description": "Người học có khả năng phân tích luồng dữ liệu từ Firestore qua @Published đến RecentChatView để đảm bảo danh sách recent messages được cập nhật realtime và users được map chính xác.",
+              "code": "SIO-SHARED_OBSERVABLE_STATE-36",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
+              "description": "Người học có khả năng quản lý selectedChatUser như một trạng thái chia sẻ (@Published/@ObservedObject) để RecentChatView nhận biết chat đang được chọn.",
               "assessment": "fetchRecentMessages lắng nghe collection recent_messages; fetchAllUser lấy danh sách users; selectedChatUser được set khi click vào recent message",
-              "bloom_level": "analyze",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "@Published",
+              "keyword": "@ObservedObject",
               "platform": "app",
               "task_id": "t13"
             }
@@ -748,11 +774,11 @@
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-ASYNC_PATTERNS-35",
+              "code": "CIO-ASYNC_PATTERNS-37",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "ASYNC_PATTERNS",
               "name": "CIO: Implement RecentChatView UI với header Messages, list recent message, nút New Chat và profile link",
-              "description": "Người học có khả năng giải thích cách AsyncImage tải ảnh đại diện từ URL một cách bất đồng bộ trong RecentChatView.",
+              "description": "Người học có khả năng giải thích cách AsyncImage xử lý việc tải và hiển thị ảnh bất đồng bộ trong danh sách recent messages.",
               "assessment": "Hiển thị header + list recent messages; Click message mở ChatDetailView; Click New Chat mở NewChatView; Khi loggedOut true hiện WelcomeView",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -761,28 +787,28 @@
               "task_id": "t14"
             },
             {
-              "code": "SIO-DECLARATIVE_UI_PARADIGM-36",
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-38",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "DECLARATIVE_UI_PARADIGM",
               "name": "SIO: Implement RecentChatView UI với header Messages, list recent message, nút New Chat và profile link",
-              "description": "Người học có khả năng triển khai RecentChatView với NavigationView và NavigationLink để mở ChatDetailView khi chọn recent message và mở NewChatView khi nhấn New Chat.",
+              "description": "Người học có khả năng triển khai RecentChatView bằng NavigationView, NavigationLink và fullScreenCover để điều hướng tới ChatDetailView, NewChatView và WelcomeView.",
               "assessment": "Hiển thị header + list recent messages; Click message mở ChatDetailView; Click New Chat mở NewChatView; Khi loggedOut true hiện WelcomeView",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "NavigationLink",
+              "keyword": "NavigationView",
               "platform": "app",
               "task_id": "t14"
             },
             {
-              "code": "SIO-UI_MODIFIERS_CONCEPT-37",
+              "code": "SIO-UI_MODIFIERS_CONCEPT-39",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
               "name": "SIO: Implement RecentChatView UI với header Messages, list recent message, nút New Chat và profile link",
-              "description": "Người học có khả năng sử dụng fullScreenCover, PlainButtonStyle và điều kiện loggedOut để hiển thị WelcomeView khi phiên đăng nhập kết thúc.",
+              "description": "Người học có khả năng áp dụng các UI modifier và PlainButtonStyle để tạo header Messages, danh sách recent message và nút New Chat.",
               "assessment": "Hiển thị header + list recent messages; Click message mở ChatDetailView; Click New Chat mở NewChatView; Khi loggedOut true hiện WelcomeView",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "fullScreenCover",
+              "keyword": "PlainButtonStyle",
               "platform": "app",
               "task_id": "t14"
             }
@@ -797,11 +823,11 @@
           "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
-              "code": "SIO-JSON_SERIALIZATION-38",
+              "code": "SIO-JSON_SERIALIZATION-40",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "SIO: Implement ChatMessage model Codable với @DocumentID và các field fromId/toId/text/timestamp",
-              "description": "Người học có khả năng khai báo struct ChatMessage tuân thủ Codable với các thuộc tính fromId, toId, text, timestamp.",
+              "description": "Người học có khả năng khai báo model ChatMessage tuân thủ Codable với các thuộc tính fromId, toId, text, timestamp.",
               "assessment": "ChatMessage decode/encode được message document",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -810,28 +836,15 @@
               "task_id": "t7"
             },
             {
-              "code": "SIO-JSON_SERIALIZATION-39",
+              "code": "SIO-JSON_SERIALIZATION-41",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "SIO: Implement ChatMessage model Codable với @DocumentID và các field fromId/toId/text/timestamp",
-              "description": "Người học có khả năng sử dụng @DocumentID để ánh xạ document ID từ Firestore vào thuộc tính id của ChatMessage.",
+              "description": "Người học có khả năng tích hợp @DocumentID vào struct ChatMessage để đồng bộ document ID Firestore với thuộc tính id.",
               "assessment": "ChatMessage decode/encode được message document",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "@DocumentID",
-              "platform": "app",
-              "task_id": "t7"
-            },
-            {
-              "code": "CIO-JSON_SERIALIZATION-40",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "JSON_SERIALIZATION",
-              "name": "CIO: Implement ChatMessage model Codable với @DocumentID và các field fromId/toId/text/timestamp",
-              "description": "Người học có khả năng phân tích cách Firestore encode/decode document messages với kiểu dữ liệu timestamp để đảm bảo ChatMessage decode/encode chính xác.",
-              "assessment": "ChatMessage decode/encode được message document",
-              "bloom_level": "analyze",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Codable",
               "platform": "app",
               "task_id": "t7"
             }
@@ -848,11 +861,11 @@
           "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
           "learning_objectives": [
             {
-              "code": "SIO-API_INTEGRATION-41",
+              "code": "SIO-EVENT_LISTENERS-42",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
+              "concept": "EVENT_LISTENERS",
               "name": "SIO: Implement ChatDetailViewModel fetch messages realtime, handleSend và count trigger auto-scroll",
-              "description": "Người học có khả năng triển khai fetchMessage sử dụng addSnapshotListener để lắng nghe collection messages và cập nhật danh sách tin nhắn vào @Published.",
+              "description": "Người học có khả năng triển khai addSnapshotListener trên collection messages để phản ứng trước sự kiện thêm hoặc sửa tin nhắn.",
               "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -861,11 +874,11 @@
               "task_id": "t15"
             },
             {
-              "code": "SIO-API_INTEGRATION-42",
+              "code": "SIO-API_INTEGRATION-43",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
               "name": "SIO: Implement ChatDetailViewModel fetch messages realtime, handleSend và count trigger auto-scroll",
-              "description": "Người học có khả năng triển khai handleSend sử dụng setData để ghi tin nhắn mới lên Firestore và tăng count tin nhắn cho user nhận.",
+              "description": "Người học có khả năng gọi Firestore setData trong handleSend để gửi tin nhắn mới và tăng count trigger auto-scroll.",
               "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -874,26 +887,13 @@
               "task_id": "t15"
             },
             {
-              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-43",
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-44",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "PUBLISHER_SUBSCRIBER_MODEL",
               "name": "CIO: Implement ChatDetailViewModel fetch messages realtime, handleSend và count trigger auto-scroll",
-              "description": "Người học có khả năng phân tích cách biến count được publish qua @Published và dùng làm trigger để tự động scroll khi có tin nhắn mới.",
+              "description": "Người học có khả năng phân tích luồng dữ liệu khi handleSend setData -> @Published messages thay đổi -> view nhận onReceive -> ScrollViewReader scrollTo cuối.",
               "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
               "bloom_level": "analyze",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "@Published",
-              "platform": "app",
-              "task_id": "t15"
-            },
-            {
-              "code": "SIO-PUBLISHER_SUBSCRIBER_MODEL-44",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
-              "name": "SIO: Implement ChatDetailViewModel fetch messages realtime, handleSend và count trigger auto-scroll",
-              "description": "Người học có khả năng setup chatUser từ view để ChatDetailViewModel biết user đang chat và sử dụng trong handleSend.",
-              "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
-              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "@Published",
               "platform": "app",
@@ -912,24 +912,24 @@
           "concept_code": "UI_MODIFIERS_CONCEPT",
           "learning_objectives": [
             {
-              "code": "SIO-UI_MODIFIERS_CONCEPT-45",
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-45",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "UI_MODIFIERS_CONCEPT",
+              "concept": "DECLARATIVE_UI_PARADIGM",
               "name": "SIO: Implement ChatDetailView UI với message bubbles, chatBar input và ScrollViewReader auto-scroll",
-              "description": "Người học có khả năng triển khai message bubbles khác nhau cho tin gửi và tin nhận sử dụng RoundedCorner và màu nền phù hợp trong ChatDetailView.",
+              "description": "Người học có khả năng xây dựng ChatDetailView với ScrollViewReader và ScrollView để hiển thị danh sách message bubble.",
               "assessment": "Bubble khác nhau cho tin gửi và tin nhận; TextField nhập + nút gửi hoạt động; Scroll tự động xuống cuối khi count thay đổi",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "RoundedCorner",
+              "keyword": "ScrollViewReader",
               "platform": "app",
               "task_id": "t16"
             },
             {
-              "code": "SIO-DECLARATIVE_UI_PARADIGM-46",
+              "code": "SIO-UI_MODIFIERS_CONCEPT-46",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
+              "concept": "UI_MODIFIERS_CONCEPT",
               "name": "SIO: Implement ChatDetailView UI với message bubbles, chatBar input và ScrollViewReader auto-scroll",
-              "description": "Người học có khả năng triển khai chatBar với TextField và nút gửi để nhập và gửi tin nhắn trong ChatDetailView.",
+              "description": "Người học có khả năng tạo giao diện message bubble khác nhau cho tin gửi và tin nhận, cùng chatBar TextField và nút gửi bằng các UI modifier.",
               "assessment": "Bubble khác nhau cho tin gửi và tin nhận; TextField nhập + nút gửi hoạt động; Scroll tự động xuống cuối khi count thay đổi",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -938,15 +938,15 @@
               "task_id": "t16"
             },
             {
-              "code": "SIO-PUBLISHER_SUBSCRIBER_MODEL-47",
-              "lo_type": "SPECIFIC_IMPL",
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-47",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "PUBLISHER_SUBSCRIBER_MODEL",
-              "name": "SIO: Implement ChatDetailView UI với message bubbles, chatBar input và ScrollViewReader auto-scroll",
-              "description": "Người học có khả năng sử dụng ScrollViewReader kết hợp onReceive để tự động scrollTo vị trí cuối khi count tin nhắn thay đổi.",
+              "name": "CIO: Implement ChatDetailView UI với message bubbles, chatBar input và ScrollViewReader auto-scroll",
+              "description": "Người học có khả năng giải thích cách onReceive lắng nghe sự thay đổi count từ view model để kích hoạt auto-scroll xuống dưới cùng.",
               "assessment": "Bubble khác nhau cho tin gửi và tin nhận; TextField nhập + nút gửi hoạt động; Scroll tự động xuống cuối khi count thay đổi",
-              "bloom_level": "apply",
+              "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "ScrollViewReader",
+              "keyword": "onReceive",
               "platform": "app",
               "task_id": "t16"
             }
@@ -967,7 +967,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
               "name": "SIO: Implement NewChatViewModel fetch toàn bộ users từ Firestore và giữ errorMessage",
-              "description": "Người học có khả năng triển khai fetchAllUser sử dụng getDocuments để lấy toàn bộ users từ collection users và publish danh sách qua @Published.",
+              "description": "Người học có khả năng triển khai fetchAllUser sử dụng getDocuments để lấy tất cả users từ collection users trên Firestore.",
               "assessment": "fetchAllUser lấy toàn bộ users từ collection users",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -980,7 +980,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "SHARED_OBSERVABLE_STATE",
               "name": "SIO: Implement NewChatViewModel fetch toàn bộ users từ Firestore và giữ errorMessage",
-              "description": "Người học có khả năng quản lý errorMessage trong NewChatViewModel để hiển thị lỗi khi fetch users thất bại.",
+              "description": "Người học có khả năng lưu danh sách users và errorMessage trong biến @Published của NewChatViewModel để view cập nhật theo trạng thái.",
               "assessment": "fetchAllUser lấy toàn bộ users từ collection users",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -993,7 +993,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "PUBLISHER_SUBSCRIBER_MODEL",
               "name": "CIO: Implement NewChatViewModel fetch toàn bộ users từ Firestore và giữ errorMessage",
-              "description": "Người học có khả năng phân tích luồng dữ liệu giữa Firestore, @Published và NewChatView để đảm bảo danh sách user được cập nhật và thông báo lỗi được truyền đến view.",
+              "description": "Người học có khả năng phân tích luồng dữ liệu từ response Firestore tới @Published users và cách errorMessage được giữ để hiển thị lỗi trong NewChatView.",
               "assessment": "fetchAllUser lấy toàn bộ users từ collection users",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
@@ -1017,7 +1017,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "ASYNC_PATTERNS",
               "name": "SIO: Implement NewChatView UI với danh sách user, AsyncImage avatar và callback didSelectNewUser",
-              "description": "Người học có khả năng triển khai NewChatView hiển thị danh sách người dùng kèm ảnh đại diện sử dụng AsyncImage.",
+              "description": "Người học có khả năng triển khai AsyncImage để hiển thị avatar của từng user trong danh sách NewChatView.",
               "assessment": "Danh sách user hiển thị kèm avatar; Chọn user dismiss và callback để mở ChatDetailView",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -1030,24 +1030,11 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
               "name": "SIO: Implement NewChatView UI với danh sách user, AsyncImage avatar và callback didSelectNewUser",
-              "description": "Người học có khả năng sử dụng PlainButtonStyle và ToolbarItemGroup để tạo giao diện nút và thanh công cụ cho NewChatView.",
+              "description": "Người học có khả năng áp dụng PlainButtonStyle và các modifier để tạo danh sách user tương tác, gọi callback didSelectNewUser khi người dùng chọn.",
               "assessment": "Danh sách user hiển thị kèm avatar; Chọn user dismiss và callback để mở ChatDetailView",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "PlainButtonStyle",
-              "platform": "app",
-              "task_id": "t18"
-            },
-            {
-              "code": "SIO-UI_MODIFIERS_CONCEPT-53",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "SIO: Implement NewChatView UI với danh sách user, AsyncImage avatar và callback didSelectNewUser",
-              "description": "Người học có khả năng xử lý sự kiện chọn người dùng để gọi didSelectNewUser và dismiss fullScreenCover khi hoàn tất.",
-              "assessment": "Danh sách user hiển thị kèm avatar; Chọn user dismiss và callback để mở ChatDetailView",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "fullScreenCover",
               "platform": "app",
               "task_id": "t18"
             }
@@ -1073,37 +1060,24 @@
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-FRONTEND_FRAMEWORKS-54",
+              "code": "CIO-FRONTEND_FRAMEWORKS-53",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "FRONTEND_FRAMEWORKS",
               "name": "CIO: Implement ProfileView, EditProfileView và ImagePicker để xem/sửa avatar, đổi password và đăng xuất",
-              "description": "Người học có khả năng giải thích vì sao cần sử dụng UIViewControllerRepresentable để tích hợp UIImagePickerController vào SwiftUI.",
+              "description": "Người học có khả năng giải thích cách UIViewControllerRepresentable cho phép tích hợp UIImagePickerController (UIKit) vào SwiftUI để chọn ảnh profile.",
               "assessment": "Profile hiển thị avatar/username/email; Edit profile cho đổi avatar và password; Log out gọi handleSignOut và quay về WelcomeView",
               "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UIViewControllerRepresentable",
-              "platform": "app",
-              "task_id": "t19"
-            },
-            {
-              "code": "SIO-MEDIA_PICKER_API-55",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "MEDIA_PICKER_API",
-              "name": "SIO: Implement ProfileView, EditProfileView và ImagePicker để xem/sửa avatar, đổi password và đăng xuất",
-              "description": "Người học có khả năng triển khai ImagePicker wrapper dùng UIViewControllerRepresentable và UIImagePickerController để chọn ảnh từ thư viện.",
-              "assessment": "Profile hiển thị avatar/username/email; Edit profile cho đổi avatar và password; Log out gọi handleSignOut và quay về WelcomeView",
-              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "UIImagePickerController",
               "platform": "app",
               "task_id": "t19"
             },
             {
-              "code": "SIO-ASYNC_PATTERNS-56",
+              "code": "SIO-ASYNC_PATTERNS-54",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "ASYNC_PATTERNS",
               "name": "SIO: Implement ProfileView, EditProfileView và ImagePicker để xem/sửa avatar, đổi password và đăng xuất",
-              "description": "Người học có khả năng triển khai ProfileView hiển thị avatar, username, email sử dụng AsyncImage.",
+              "description": "Người học có khả năng triển khai AsyncImage để hiển thị avatar và cập nhật ảnh mới sau khi upload.",
               "assessment": "Profile hiển thị avatar/username/email; Edit profile cho đổi avatar và password; Log out gọi handleSignOut và quay về WelcomeView",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -1112,15 +1086,28 @@
               "task_id": "t19"
             },
             {
-              "code": "SIO-API_INTEGRATION-57",
+              "code": "SIO-API_INTEGRATION-55",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
               "name": "SIO: Implement ProfileView, EditProfileView và ImagePicker để xem/sửa avatar, đổi password và đăng xuất",
-              "description": "Người học có khả năng triển khai EditProfileView để đổi avatar (upload qua FirebaseStorage), đổi password và gọi handleSignOut để đăng xuất và quay về WelcomeView.",
+              "description": "Người học có khả năng triển khai upload avatar lên FirebaseStorage và gọi các API liên quan để cập nhật profile, đổi password và đăng xuất.",
               "assessment": "Profile hiển thị avatar/username/email; Edit profile cho đổi avatar và password; Log out gọi handleSignOut và quay về WelcomeView",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "FirebaseStorage",
+              "platform": "app",
+              "task_id": "t19"
+            },
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-56",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement ProfileView, EditProfileView và ImagePicker để xem/sửa avatar, đổi password và đăng xuất",
+              "description": "Người học có khả năng xây dựng ProfileView và EditProfileView với NavigationLink để chuyển giữa các màn hình quản lý thông tin cá nhân.",
+              "assessment": "Profile hiển thị avatar/username/email; Edit profile cho đổi avatar và password; Log out gọi handleSignOut và quay về WelcomeView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "NavigationLink",
               "platform": "app",
               "task_id": "t19"
             }
@@ -1137,37 +1124,37 @@
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-LOCAL_NOTIFICATION_API-58",
+              "code": "CIO-LOCAL_NOTIFICATION_API-57",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "LOCAL_NOTIFICATION_API",
               "name": "CIO: Implement NotificationManager với request quyền notification và getAuthStatus",
-              "description": "Người học có khả năng giải thích cách UNUserNotificationCenter và requestAuthorization hoạt động để yêu cầu quyền nhận thông báo từ người dùng.",
+              "description": "Người học có khả năng giải thích chức năng của UNUserNotificationCenter.requestAuthorization trong việc xin quyền hiển thị thông báo từ người dùng.",
               "assessment": "request() hỏi quyền notification; getAuthStatus cập nhật hasPermission",
               "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UNUserNotificationCenter",
-              "platform": "app",
-              "task_id": "t20"
-            },
-            {
-              "code": "SIO-ASYNC_PATTERNS-59",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "ASYNC_PATTERNS",
-              "name": "SIO: Implement NotificationManager với request quyền notification và getAuthStatus",
-              "description": "Người học có khả năng triển khai request() sử dụng requestAuthorization một cách bất đồng bộ để xin quyền notification và xử lý kết quả trả về.",
-              "assessment": "request() hỏi quyền notification; getAuthStatus cập nhật hasPermission",
-              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "requestAuthorization",
               "platform": "app",
               "task_id": "t20"
             },
             {
-              "code": "SIO-SHARED_OBSERVABLE_STATE-60",
+              "code": "SIO-ASYNC_PATTERNS-58",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "ASYNC_PATTERNS",
+              "name": "SIO: Implement NotificationManager với request quyền notification và getAuthStatus",
+              "description": "Người học có khả năng triển khai hàm request() sử dụng async/await hoặc completion handler để gọi requestAuthorization và xử lý kết quả.",
+              "assessment": "request() hỏi quyền notification; getAuthStatus cập nhật hasPermission",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UNUserNotificationCenter",
+              "platform": "app",
+              "task_id": "t20"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-59",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "SHARED_OBSERVABLE_STATE",
               "name": "SIO: Implement NotificationManager với request quyền notification và getAuthStatus",
-              "description": "Người học có khả năng triển khai getAuthStatus để cập nhật biến hasPermission thông qua @MainActor và @Published trong NotificationManager.",
+              "description": "Người học có khả năng cập nhật biến @Published hasPermission trong NotificationManager để UI phản ánh trạng thái quyền thông báo.",
               "assessment": "request() hỏi quyền notification; getAuthStatus cập nhật hasPermission",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -1188,11 +1175,11 @@
           "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
-              "code": "CIO-KEY_VALUE_PERSISTENCE-61",
+              "code": "CIO-KEY_VALUE_PERSISTENCE-60",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "KEY_VALUE_PERSISTENCE",
               "name": "CIO: Implement PushNotificationManager với saveFCM/getFCM và sendPushNotification, wire vào AppDelegate và luồng gửi tin nhắn",
-              "description": "Người học có khả năng giải thích vai trò của UserDefaults trong việc lưu trữ FCM token bằng saveFCM/getFCM để dùng cho các lần khởi động app.",
+              "description": "Người học có khả năng giải thích cách UserDefaults dùng để lưu trữ FCM token cho lần khởi động sau của app.",
               "assessment": "FCM token được lưu khi MessagingDelegate nhận token; sendPushNotification gửi POST tới FCM endpoint; Khi gửi tin nhắn, gọi sendPushNotification cho receiver",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -1201,24 +1188,11 @@
               "task_id": "t21"
             },
             {
-              "code": "SIO-API_INTEGRATION-62",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
-              "name": "SIO: Implement PushNotificationManager với saveFCM/getFCM và sendPushNotification, wire vào AppDelegate và luồng gửi tin nhắn",
-              "description": "Người học có khả năng triển khai sendPushNotification sử dụng URLSession và URLRequest để gửi POST request tới FCM endpoint.",
-              "assessment": "FCM token được lưu khi MessagingDelegate nhận token; sendPushNotification gửi POST tới FCM endpoint; Khi gửi tin nhắn, gọi sendPushNotification cho receiver",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "URLSession",
-              "platform": "app",
-              "task_id": "t21"
-            },
-            {
-              "code": "SIO-JSON_SERIALIZATION-63",
+              "code": "SIO-JSON_SERIALIZATION-61",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "SIO: Implement PushNotificationManager với saveFCM/getFCM và sendPushNotification, wire vào AppDelegate và luồng gửi tin nhắn",
-              "description": "Người học có khả năng tạo JSON payload cho thông báo bằng JSONSerialization để gửi tới FCM.",
+              "description": "Người học có khả năng xây dựng payload JSON cho push notification, sử dụng JSONSerialization để chuyển đổi dictionary thành Data.",
               "assessment": "FCM token được lưu khi MessagingDelegate nhận token; sendPushNotification gửi POST tới FCM endpoint; Khi gửi tin nhắn, gọi sendPushNotification cho receiver",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -1227,11 +1201,24 @@
               "task_id": "t21"
             },
             {
-              "code": "CIO-API_INTEGRATION-64",
+              "code": "SIO-API_INTEGRATION-62",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement PushNotificationManager với saveFCM/getFCM và sendPushNotification, wire vào AppDelegate và luồng gửi tin nhắn",
+              "description": "Người học có khả năng triển khai sendPushNotification dùng URLSession và URLRequest để gửi POST request tới FCM endpoint.",
+              "assessment": "FCM token được lưu khi MessagingDelegate nhận token; sendPushNotification gửi POST tới FCM endpoint; Khi gửi tin nhắn, gọi sendPushNotification cho receiver",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "URLSession",
+              "platform": "app",
+              "task_id": "t21"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-63",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
               "name": "CIO: Implement PushNotificationManager với saveFCM/getFCM và sendPushNotification, wire vào AppDelegate và luồng gửi tin nhắn",
-              "description": "Người học có khả năng phân tích luồng từ việc nhận FCM token qua MessagingDelegate, lưu bằng saveFCM/getFCM, đến gọi sendPushNotification khi gửi tin nhắn để đảm bảo push đến đúng người nhận.",
+              "description": "Người học có khả năng phân tích luồng xử lý từ khi MessagingDelegate nhận apnsToken, lưu FCM token qua getFCM/saveFCM, tới khi gửi tin nhắn gọi sendPushNotification cho receiver.",
               "assessment": "FCM token được lưu khi MessagingDelegate nhận token; sendPushNotification gửi POST tới FCM endpoint; Khi gửi tin nhắn, gọi sendPushNotification cho receiver",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
@@ -1250,11 +1237,11 @@
           "concept_code": "TYPE_SYSTEMS_AND_SAFETY",
           "learning_objectives": [
             {
-              "code": "ULO-TYPE_SYSTEMS_AND_SAFETY-65",
-              "lo_type": "UNIVERSAL",
+              "code": "CIO-TYPE_SYSTEMS_AND_SAFETY-64",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "TYPE_SYSTEMS_AND_SAFETY",
-              "name": "ULO: Implement ViewState enum với các case loading, loaded, empty, error",
-              "description": "Người học có khả năng giải thích lợi ích của việc dùng enum để biểu diễn các trạng thái UI hữu hạn (loading, loaded, empty, error) nhờ tính an toàn kiểu dữ liệu của Swift.",
+              "name": "CIO: Implement ViewState enum với các case loading, loaded, empty, error",
+              "description": "Người học có khả năng giải thích vai trò của ViewState enum trong việc đại diện các trạng thái loading, loaded, empty, error một cách an toàn kiểu (type-safe).",
               "assessment": "enum ViewState có đủ loading/loaded/empty/error; Các ViewModel có thể set viewState",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -1263,15 +1250,28 @@
               "task_id": "t3"
             },
             {
-              "code": "CIO-TYPE_SYSTEMS_AND_SAFETY-66",
+              "code": "CIO-TYPE_SYSTEMS_AND_SAFETY-65",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "TYPE_SYSTEMS_AND_SAFETY",
               "name": "CIO: Implement ViewState enum với các case loading, loaded, empty, error",
-              "description": "Người học có khả năng mô tả cấu trúc enum ViewState với đầy đủ các case loading, loaded, empty, error làm nền tảng cho việc hiển thị trạng thái nhất quán.",
+              "description": "Người học có khả năng mô tả ý nghĩa của từng case trong ViewState và lý do không nên dùng nhiều biến Bool rời rạc để quản lý trạng thái UI.",
               "assessment": "enum ViewState có đủ loading/loaded/empty/error; Các ViewModel có thể set viewState",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "ViewState",
+              "platform": "app",
+              "task_id": "t3"
+            },
+            {
+              "code": "CIO-TYPE_SYSTEMS_AND_SAFETY-66",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "TYPE_SYSTEMS_AND_SAFETY",
+              "name": "CIO: Implement ViewState enum với các case loading, loaded, empty, error",
+              "description": "Người học có khả năng nhận diện vì sao ViewState dùng enum giúp tránh các trạng thái không hợp lệ trong luồng UI.",
+              "assessment": "enum ViewState có đủ loading/loaded/empty/error; Các ViewModel có thể set viewState",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "type safety",
               "platform": "app",
               "task_id": "t3"
             }
@@ -1291,20 +1291,20 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "ASYNC_PATTERNS",
               "name": "CIO: Implement trạng thái loading/empty/error nhất quán trên các màn hình list và AsyncImage placeholder",
-              "description": "Người học có khả năng giải thích các phase của AsyncImage (empty, success, failure) và ý nghĩa của từng phase trong việc render placeholder.",
+              "description": "Người học có khả năng giải thích cơ chế AsyncImage phase (empty, success, failure) trong SwiftUI để phản ánh trạng thái tải ảnh bất đồng bộ.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "AsyncImage phase",
+              "keyword": "AsyncImage",
               "platform": "app",
               "task_id": "t22"
             },
             {
-              "code": "CIO-UI_MODIFIERS_CONCEPT-68",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-UI_MODIFIERS_CONCEPT-68",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "CIO: Implement trạng thái loading/empty/error nhất quán trên các màn hình list và AsyncImage placeholder",
-              "description": "Người học có khả năng vận dụng ViewState để hiển thị trạng thái loading, empty, error trên các màn hình danh sách.",
+              "name": "SIO: Implement trạng thái loading/empty/error nhất quán trên các màn hình list và AsyncImage placeholder",
+              "description": "Người học có khả năng triển khai ViewState loading/empty/error nhất quán trên các màn hình list bằng các modifier SwiftUI tương ứng.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -1313,15 +1313,15 @@
               "task_id": "t22"
             },
             {
-              "code": "SIO-UI_MODIFIERS_CONCEPT-69",
+              "code": "SIO-ASYNC_PATTERNS-69",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "UI_MODIFIERS_CONCEPT",
+              "concept": "ASYNC_PATTERNS",
               "name": "SIO: Implement trạng thái loading/empty/error nhất quán trên các màn hình list và AsyncImage placeholder",
-              "description": "Người học có khả năng triển khai AsyncImage với placeholder cho trạng thái empty/failure và dùng alert(isPresented:) để hiển thị lỗi.",
+              "description": "Người học có khả năng sử dụng AsyncImage kết hợp placeholder và failure view cho avatar/ảnh khi dữ liệu chưa tải xong hoặc tải lỗi.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "alert(isPresented:)",
+              "keyword": "AsyncImage",
               "platform": "app",
               "task_id": "t22"
             },
@@ -1330,11 +1330,11 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
               "name": "SIO: Implement trạng thái loading/empty/error nhất quán trên các màn hình list và AsyncImage placeholder",
-              "description": "Người học có khả năng sử dụng modifier onChange để phản ứng khi viewState chuyển sang error và hiển thị thông báo lỗi tương ứng.",
+              "description": "Người học có khả năng dùng alert(isPresented:) để hiển thị lỗi khi ViewState chuyển sang error trên các list view.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "onChange",
+              "keyword": "alert(isPresented:)",
               "platform": "app",
               "task_id": "t22"
             }
@@ -1342,7 +1342,7 @@
         },
         {
           "id": "polish-gap-1",
-          "name": "Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên f",
+          "name": "Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên field fcm của ChatUser trong Firestore — receiver token không có nguồn thật để gửi push.",
           "concepts": [
             "LOCAL_NOTIFICATION_API",
             "API_INTEGRATION"
@@ -1350,15 +1350,15 @@
           "concept_code": "LOCAL_NOTIFICATION_API",
           "learning_objectives": [
             {
-              "code": "CIO-API_INTEGRATION-71",
+              "code": "CIO-LOCAL_NOTIFICATION_API-71",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "API_INTEGRATION",
-              "name": "CIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên f",
-              "description": "Người học có khả năng phân tích luồng xử lý FCM token hiện tại trong PushNotificationManager.saveFCM để xác định vị trí thiếu đồng bộ lên Firestore/Cloud Functions.",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "CIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên field fcm của ChatUser trong Firestore — receiver token không có nguồn thật để gửi push.",
+              "description": "Người học có khả năng phân tích luồng FCM token từ PushNotificationManager.saveFCM đến field fcm của ChatUser trên Firestore để xác định vị trí thiếu đồng bộ.",
               "assessment": "Firestore/Cloud Functions",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "saveFCM",
+              "keyword": "FCM token",
               "platform": "app",
               "task_id": "polish-gap-1"
             },
@@ -1366,8 +1366,8 @@
               "code": "CIO-API_INTEGRATION-72",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên f",
-              "description": "Người học có khả năng thiết kế giải pháp đồng bộ FCM token lên Firestore ngay sau khi saveFCM được gọi.",
+              "name": "CIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên field fcm của ChatUser trong Firestore — receiver token không có nguồn thật để gửi push.",
+              "description": "Người học có khả năng thiết kế giải pháp đồng bộ FCM token lên Firestore sau khi đăng nhập hoặc khi token thay đổi.",
               "assessment": "Firestore/Cloud Functions",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
@@ -1376,15 +1376,15 @@
               "task_id": "polish-gap-1"
             },
             {
-              "code": "SIO-LOCAL_NOTIFICATION_API-73",
+              "code": "SIO-API_INTEGRATION-73",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "LOCAL_NOTIFICATION_API",
-              "name": "SIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên f",
-              "description": "Người học có khả năng cập nhật PushNotificationManager.saveFCM để thực hiện đồng thời việc lưu UserDefaults và đẩy token lên Firestore.",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên field fcm của ChatUser trong Firestore — receiver token không có nguồn thật để gửi push.",
+              "description": "Người học có khả năng triển khai cập nhật field fcm của ChatUser trong Firestore khi PushNotificationManager lưu token mới.",
               "assessment": "Firestore/Cloud Functions",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "PushNotificationManager",
+              "keyword": "ChatUser.fcm",
               "platform": "app",
               "task_id": "polish-gap-1"
             }
@@ -1392,7 +1392,7 @@
         },
         {
           "id": "polish-gap-2",
-          "name": "Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc sourc",
+          "name": "Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc source có thể lạm dụng — nên đưa lên server/proxy.",
           "concepts": [
             "LOCAL_NOTIFICATION_API",
             "API_INTEGRATION"
@@ -1403,12 +1403,12 @@
               "code": "CIO-API_INTEGRATION-74",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc sourc",
-              "description": "Người học có khả năng đánh giá rủi ro bảo mật khi hardcode FCM server key trong mã nguồn client.",
+              "name": "CIO: Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc source có thể lạm dụng — nên đưa lên server/proxy.",
+              "description": "Người học có khả năng phân tích rủi ro bảo mật khi hardcode FCM server key trong client và xác định ranh giới cần chuyển lên server/proxy.",
               "assessment": "Security best practice",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "server key",
+              "keyword": "FCM server key",
               "platform": "app",
               "task_id": "polish-gap-2"
             },
@@ -1416,12 +1416,12 @@
               "code": "CIO-API_INTEGRATION-75",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc sourc",
-              "description": "Người học có khả năng thiết kế phương án chuyển sendPushNotification lên Cloud Function/server để giữ bí mật FCM server key.",
+              "name": "CIO: Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc source có thể lạm dụng — nên đưa lên server/proxy.",
+              "description": "Người học có khả năng thiết kế API endpoint hoặc Cloud Function để gửi push notification thay cho việc gọi FCM trực tiếp từ client.",
               "assessment": "Security best practice",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Cloud Function",
+              "keyword": "push notification",
               "platform": "app",
               "task_id": "polish-gap-2"
             },
@@ -1429,12 +1429,12 @@
               "code": "SIO-LOCAL_NOTIFICATION_API-76",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "LOCAL_NOTIFICATION_API",
-              "name": "SIO: Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc sourc",
-              "description": "Người học có khả năng chỉnh sửa PushNotificationManager.sendPushNotification để gọi API server thay vì nhúng server key trong client.",
+              "name": "SIO: Khắc phục: Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc source có thể lạm dụng — nên đưa lên server/proxy.",
+              "description": "Người học có khả năng refactor PushNotificationManager.sendPushNotification để gọi server/proxy thay vì dùng server key nhúng trong client.",
               "assessment": "Security best practice",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "sendPushNotification",
+              "keyword": "PushNotificationManager",
               "platform": "app",
               "task_id": "polish-gap-2"
             }
@@ -1442,7 +1442,7 @@
         },
         {
           "id": "polish-gap-3",
-          "name": "Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi",
+          "name": "Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi gửi tin mới, nên danh sách recent có thể trễ hoặc thiếu.",
           "concepts": [
             "EVENT_LISTENERS",
             "DECLARATIVE_UI_PARADIGM",
@@ -1454,12 +1454,12 @@
               "code": "CIO-API_INTEGRATION-77",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi",
-              "description": "Người học có khả năng phân tích flow ghi tin nhắn trong ChatDetailViewModel để phát hiện thiếu cập nhật collection recent_messages.",
+              "name": "CIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi gửi tin mới, nên danh sách recent có thể trễ hoặc thiếu.",
+              "description": "Người học có khả năng phân tích luồng ghi dữ liệu từ ChatDetailViewModel vào collection messages và đối chiếu với recent_messages để xác định nguyên nhân recent list trễ/thiếu.",
               "assessment": "Firestore transaction/trigger",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "recent_messages",
+              "keyword": "ChatDetailViewModel",
               "platform": "app",
               "task_id": "polish-gap-3"
             },
@@ -1467,8 +1467,8 @@
               "code": "CIO-API_INTEGRATION-78",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi",
-              "description": "Người học có khả năng thiết kế giải pháp dùng Firestore transaction để ghi message và cập nhật recent_messages trong cùng một thao tác nguyên tử.",
+              "name": "CIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi gửi tin mới, nên danh sách recent có thể trễ hoặc thiếu.",
+              "description": "Người học có khả năng thiết kế cơ chế transaction/trigger cập nhật recent_messages đồng bộ sau khi gửi tin nhắn mới.",
               "assessment": "Firestore transaction/trigger",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
@@ -1477,24 +1477,11 @@
               "task_id": "polish-gap-3"
             },
             {
-              "code": "CIO-EVENT_LISTENERS-79",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-EVENT_LISTENERS-79",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "EVENT_LISTENERS",
-              "name": "CIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi",
-              "description": "Người học có khả năng triển khai listener lắng nghe sự thay đổi recent_messages để giao diện danh sách chat cập nhật theo thời gian thực.",
-              "assessment": "Firestore transaction/trigger",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "listener",
-              "platform": "app",
-              "task_id": "polish-gap-3"
-            },
-            {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-80",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "CIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi",
-              "description": "Người học có khả năng áp dụng nguyên tắc declarative UI để bind trạng thái recent_messages từ ViewModel vào RecentChatView.",
+              "name": "SIO: Khắc phục: ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi gửi tin mới, nên danh sách recent có thể trễ hoặc thiếu.",
+              "description": "Người học có khả năng triển khai cập nhật recent_messages trong ChatDetailViewModel khi gửi tin nhắn mới.",
               "assessment": "Firestore transaction/trigger",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -1506,7 +1493,7 @@
         },
         {
           "id": "polish-gap-4",
-          "name": "Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil",
+          "name": "Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil/ảnh lỗi.",
           "concepts": [
             "ASYNC_PATTERNS",
             "LOCAL_VIEW_STATE",
@@ -1515,11 +1502,11 @@
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-UI_MODIFIERS_CONCEPT-81",
+              "code": "CIO-LOCAL_VIEW_STATE-80",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "CIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil",
-              "description": "Người học có khả năng phân tích các vị trí force unwrap profileImageUrl trong EditProfileView, ProfileView, NewChatView để xác định nguy cơ crash khi dữ liệu nil.",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "CIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil/ảnh lỗi.",
+              "description": "Người học có khả năng rà soát các điểm force unwrap profileImageUrl trong EditProfileView, ProfileView, NewChatView và phân tích nguy cơ crash khi dữ liệu nil hoặc lỗi.",
               "assessment": "Optional handling/guard",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
@@ -1528,41 +1515,28 @@
               "task_id": "polish-gap-4"
             },
             {
-              "code": "CIO-UI_MODIFIERS_CONCEPT-82",
+              "code": "CIO-UI_MODIFIERS_CONCEPT-81",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "CIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil",
-              "description": "Người học có khả năng thiết kế một AvatarView/helper dùng chung hiển thị ảnh đại diện an toàn khi profileImageUrl nil.",
+              "name": "CIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil/ảnh lỗi.",
+              "description": "Người học có khả năng thiết kế pattern xử lý optional profileImageUrl an toàn với placeholder/fallback dùng chung cho các view.",
               "assessment": "Optional handling/guard",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "avatar",
+              "keyword": "placeholder",
               "platform": "app",
               "task_id": "polish-gap-4"
             },
             {
-              "code": "SIO-LOCAL_VIEW_STATE-83",
+              "code": "SIO-ASYNC_PATTERNS-82",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "LOCAL_VIEW_STATE",
-              "name": "SIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil",
-              "description": "Người học có khả năng thay thế force unwrap bằng conditional binding hoặc placeholder mặc định trong các view liên quan.",
+              "concept": "ASYNC_PATTERNS",
+              "name": "SIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil/ảnh lỗi.",
+              "description": "Người học có khả năng triển khai bảo vệ optional profileImageUrl bằng guard/if-let và hiển thị ảnh mặc định khi URL bị nil hoặc tải lỗi.",
               "assessment": "Optional handling/guard",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "profileImageUrl",
-              "platform": "app",
-              "task_id": "polish-gap-4"
-            },
-            {
-              "code": "SIO-ASYNC_PATTERNS-84",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "ASYNC_PATTERNS",
-              "name": "SIO: Khắc phục: Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil",
-              "description": "Người học có khả năng xử lý trạng thái tải ảnh profile bằng AsyncImage (loading/failure) thay vì ép unwrap URL.",
-              "assessment": "Optional handling/guard",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "AsyncImage",
               "platform": "app",
               "task_id": "polish-gap-4"
             }
@@ -1570,7 +1544,7 @@
         },
         {
           "id": "polish-gap-5",
-          "name": "Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể dupli",
+          "name": "Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể duplicate listener.",
           "concepts": [
             "ASYNC_PATTERNS",
             "EVENT_LISTENERS",
@@ -1579,54 +1553,41 @@
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-ASYNC_PATTERNS-85",
+              "code": "CIO-EVENT_LISTENERS-83",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "ASYNC_PATTERNS",
-              "name": "CIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể dupli",
-              "description": "Người học có khả năng phân tích vòng đời RecentChatView và việc gọi fetchAllUser + fetchRecentMessages trong onAppear để xác định nguyên nhân lặp lại và tốn tài nguyên.",
+              "concept": "EVENT_LISTENERS",
+              "name": "CIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể duplicate listener.",
+              "description": "Người học có khả năng phân tích vòng đời dữ liệu của RecentChatView khi gọi fetchAllUser và fetchRecentMessages trong onAppear, xác định nguyên nhân duplicate listener và việc fetch không tối ưu.",
               "assessment": "ViewModel lifecycle",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "onAppear",
+              "keyword": "listener",
               "platform": "app",
               "task_id": "polish-gap-5"
             },
             {
-              "code": "CIO-ASYNC_PATTERNS-86",
+              "code": "CIO-EVENT_LISTENERS-84",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "ASYNC_PATTERNS",
-              "name": "CIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể dupli",
-              "description": "Người học có khả năng thiết kế ViewModel lưu trữ dữ liệu dùng chung và chỉ fetch một lần, sau đó tái sử dụng cho các lần hiển thị.",
+              "concept": "EVENT_LISTENERS",
+              "name": "CIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể duplicate listener.",
+              "description": "Người học có khả năng thiết kế ViewModel quản lý việc subscribe/unsubscribe một lần theo vòng đời view để tránh duplicate listener.",
               "assessment": "ViewModel lifecycle",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "ViewModel",
+              "keyword": "ViewModel lifecycle",
               "platform": "app",
               "task_id": "polish-gap-5"
             },
             {
-              "code": "CIO-EVENT_LISTENERS-87",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "EVENT_LISTENERS",
-              "name": "CIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể dupli",
-              "description": "Người học có khả năng dùng event listener để cập nhật recent messages theo thời gian thực, tránh fetch lại toàn bộ khi màn hình xuất hiện.",
+              "code": "SIO-ASYNC_PATTERNS-85",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "ASYNC_PATTERNS",
+              "name": "SIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể duplicate listener.",
+              "description": "Người học có khả năng refactor RecentChatView để chuyển logic fetch và listener vào ViewModel thay vì gọi trực tiếp trong onAppear.",
               "assessment": "ViewModel lifecycle",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "event listener",
-              "platform": "app",
-              "task_id": "polish-gap-5"
-            },
-            {
-              "code": "CIO-JSON_SERIALIZATION-88",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "JSON_SERIALIZATION",
-              "name": "CIO: Khắc phục: RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể dupli",
-              "description": "Người học có khả năng áp dụng JSON serialization để so sánh dữ liệu cũ/mới trước khi cập nhật UI, giảm render không cần thiết.",
-              "assessment": "ViewModel lifecycle",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "JSON serialization",
+              "keyword": "onAppear",
               "platform": "app",
               "task_id": "polish-gap-5"
             }
@@ -1643,11 +1604,11 @@
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-89",
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-86",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "CIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lựa chọn sourceType (camera/photo library).",
-              "description": "Người học có khả năng phân tích luồng xin quyền camera/thư viện ảnh trong ImagePicker và xác định trường hợp permission denied bị bỏ qua.",
+              "description": "Người học có khả năng phân tích luồng hiện tại của ImagePicker để xác định các trường hợp thiếu xử lý permission denied và chưa hỗ trợ chọn sourceType (camera/photo library).",
               "assessment": "UIImagePickerController handling",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
@@ -1656,11 +1617,11 @@
               "task_id": "polish-gap-6"
             },
             {
-              "code": "CIO-API_INTEGRATION-90",
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-87",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "API_INTEGRATION",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "CIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lựa chọn sourceType (camera/photo library).",
-              "description": "Người học có khả năng thiết kế luồng lựa chọn sourceType (camera/photo library) kèm xử lý khi người dùng từ chối quyền.",
+              "description": "Người học có khả năng thiết kế luồng lựa chọn sourceType và xử lý từ chối quyền truy cập bằng alert/hướng dẫn mở Settings.",
               "assessment": "UIImagePickerController handling",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
@@ -1669,28 +1630,15 @@
               "task_id": "polish-gap-6"
             },
             {
-              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-91",
+              "code": "SIO-API_INTEGRATION-88",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "concept": "API_INTEGRATION",
               "name": "SIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lựa chọn sourceType (camera/photo library).",
-              "description": "Người học có khả năng triển khai ImagePicker có kiểm tra quyền truy cập trước khi mở UIImagePickerController.",
+              "description": "Người học có khả năng triển khai kiểm tra quyền truy cập camera/thư viện ảnh trước khi mở UIImagePickerController.",
               "assessment": "UIImagePickerController handling",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "UIImagePickerController",
-              "platform": "app",
-              "task_id": "polish-gap-6"
-            },
-            {
-              "code": "CIO-ASYNC_PATTERNS-92",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "ASYNC_PATTERNS",
-              "name": "CIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lựa chọn sourceType (camera/photo library).",
-              "description": "Người học có khả năng xử lý bất đồng bộ kết quả chọn ảnh sau khi quyền được cấp bằng async/await hoặc completion handler.",
-              "assessment": "UIImagePickerController handling",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "async/await",
               "platform": "app",
               "task_id": "polish-gap-6"
             }
@@ -1698,63 +1646,50 @@
         },
         {
           "id": "polish-debt-1",
-          "name": "Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần",
+          "name": "Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần, file dài khó bảo trì.",
           "concepts": [
+            "ASYNC_PATTERNS",
             "UI_MODIFIERS_CONCEPT",
-            "DECLARATIVE_UI_PARADIGM",
-            "PUBLISHER_SUBSCRIBER_MODEL"
+            "DECLARATIVE_UI_PARADIGM"
           ],
-          "concept_code": "UI_MODIFIERS_CONCEPT",
+          "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-93",
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-89",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "CIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần",
-              "description": "Người học có khả năng đánh giá các implementation message list trùng lặp (body và messagesView bị unused) và xác định phần code nên loại bỏ.",
+              "name": "CIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần, file dài khó bảo trì.",
+              "description": "Người học có khả năng phân tích hai implementation message list (body và messagesView) để chỉ ra phần trùng lặp về bubble layout và logic hiển thị.",
               "assessment": "POLISH",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "message list",
+              "keyword": "duplicate implementation",
               "platform": "app",
               "task_id": "polish-debt-1"
             },
             {
-              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-94",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
-              "name": "CIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần",
-              "description": "Người học có khả năng phân tích luồng dữ liệu message qua publisher/subscriber để quyết định implementation phù hợp duy nhất.",
-              "assessment": "POLISH",
-              "bloom_level": "analyze",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "publisher/subscriber",
-              "platform": "app",
-              "task_id": "polish-debt-1"
-            },
-            {
-              "code": "CIO-DECLARATIVE_UI_PARADIGM-95",
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-90",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "DECLARATIVE_UI_PARADIGM",
-              "name": "CIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần",
-              "description": "Người học có khả năng thiết kế một MessageListView tái sử dụng để thay thế cả body và messagesView, giảm trùng lặp.",
+              "name": "CIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần, file dài khó bảo trì.",
+              "description": "Người học có khả năng thiết kế component MessageBubble dùng chung và cấu trúc message list có thể tái sử dụng để giảm trùng lặp.",
               "assessment": "POLISH",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "MessageListView",
+              "keyword": "MessageBubble",
               "platform": "app",
               "task_id": "polish-debt-1"
             },
             {
-              "code": "SIO-UI_MODIFIERS_CONCEPT-96",
+              "code": "SIO-UI_MODIFIERS_CONCEPT-91",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "SIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần",
-              "description": "Người học có khả năng tách các modifier lặp lại trong bubble layout thành extension/helper function dùng chung.",
+              "name": "SIO: Refactor: Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần, file dài khó bảo trì.",
+              "description": "Người học có khả năng refactor ChatDetailView để dùng component dùng chung và loại bỏ implementation messagesView không dùng đến.",
               "assessment": "POLISH",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "bubble layout",
+              "keyword": "messagesView",
               "platform": "app",
               "task_id": "polish-debt-1"
             }
@@ -1764,18 +1699,18 @@
           "id": "polish-debt-2",
           "name": "Refactor: MainView debug chứa hardcoded FCM token và button test còn sót, không nên vào production.",
           "concepts": [
-            "SHARED_OBSERVABLE_STATE",
-            "API_INTEGRATION",
-            "JSON_SERIALIZATION"
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "IDENTITY_AND_ACCESS_MANAGEMENT",
+            "API_INTEGRATION"
           ],
-          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
           "learning_objectives": [
             {
-              "code": "CIO-API_INTEGRATION-97",
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-92",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "API_INTEGRATION",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "CIO: Refactor: MainView debug chứa hardcoded FCM token và button test còn sót, không nên vào production.",
-              "description": "Người học có khả năng phân tích MainView vùng debug để tìm hardcoded FCM token và button test còn sót, đánh giá tác động nếu đưa lên production.",
+              "description": "Người học có khả năng rà soát MainView để xác định các đoạn hardcoded FCM token và test button còn sót, đánh giá rủi ro rò rỉ thông tin trong production.",
               "assessment": "POLISH",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
@@ -1784,41 +1719,28 @@
               "task_id": "polish-debt-2"
             },
             {
-              "code": "CIO-SHARED_OBSERVABLE_STATE-98",
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-93",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "SHARED_OBSERVABLE_STATE",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
               "name": "CIO: Refactor: MainView debug chứa hardcoded FCM token và button test còn sót, không nên vào production.",
-              "description": "Người học có khả năng thiết kế AppState dùng chung (ObservableObject) với cờ isDebug để kiểm soát hiển thị các tính năng debug trong MainView.",
+              "description": "Người học có khả năng thiết kế giải pháp tách debug code/test button chỉ chạy trong môi trường DEBUG, không ảnh hưởng đến production.",
               "assessment": "POLISH",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "AppState",
+              "keyword": "DEBUG",
               "platform": "app",
               "task_id": "polish-debt-2"
             },
             {
-              "code": "SIO-JSON_SERIALIZATION-99",
+              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-94",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "JSON_SERIALIZATION",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "SIO: Refactor: MainView debug chứa hardcoded FCM token và button test còn sót, không nên vào production.",
-              "description": "Người học có khả năng chuyển FCM token dùng cho debug vào file cấu hình JSON và đọc bằng JSONDecoder trong môi trường debug.",
+              "description": "Người học có khả năng xoá hardcoded FCM token và button test trong MainView, thay bằng cấu hình debug an toàn khi build production.",
               "assessment": "POLISH",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "JSONDecoder",
-              "platform": "app",
-              "task_id": "polish-debt-2"
-            },
-            {
-              "code": "SIO-SHARED_OBSERVABLE_STATE-100",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "SHARED_OBSERVABLE_STATE",
-              "name": "SIO: Refactor: MainView debug chứa hardcoded FCM token và button test còn sót, không nên vào production.",
-              "description": "Người học có khả năng sử dụng cờ isDebug từ AppState để điều kiện hóa việc hiển thị button test và FCM token trong MainView.",
-              "assessment": "POLISH",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "isDebug",
+              "keyword": "MainView",
               "platform": "app",
               "task_id": "polish-debt-2"
             }
@@ -1826,63 +1748,50 @@
         },
         {
           "id": "polish-debt-3",
-          "name": "Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationSta",
+          "name": "Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationStack value-based.",
           "concepts": [
             "ASYNC_PATTERNS",
             "UI_MODIFIERS_CONCEPT",
-            "SHARED_OBSERVABLE_STATE"
+            "DECLARATIVE_UI_PARADIGM"
           ],
           "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
-              "code": "CIO-SHARED_OBSERVABLE_STATE-101",
+              "code": "CIO-ASYNC_PATTERNS-95",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "SHARED_OBSERVABLE_STATE",
-              "name": "CIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationSta",
-              "description": "Người học có khả năng phân tích các rủi ro và hạn chế của việc điều hướng thủ công bằng @State shouldNavigate và selectedChatUser trong ứng dụng hiện tại.",
+              "concept": "ASYNC_PATTERNS",
+              "name": "CIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationStack value-based.",
+              "description": "Người học có khả năng phân tích trạng thái điều hướng hiện tại (@State shouldNavigate, selectedChatUser) để nhận diện các xung đột trạng thái khi nhiều luồng async cập nhật cùng lúc.",
               "assessment": "POLISH",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "phân tích điều hướng thủ công",
+              "keyword": "trạng thái điều hướng",
               "platform": "app",
               "task_id": "polish-debt-3"
             },
             {
-              "code": "CIO-SHARED_OBSERVABLE_STATE-102",
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-96",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "SHARED_OBSERVABLE_STATE",
-              "name": "CIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationSta",
-              "description": "Người học có khả năng thiết kế mô hình điều hướng mới sử dụng NavigationStack với value-based path, thay thế toàn bộ cơ chế @State thủ công để giảm thiểu lỗi.",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationStack value-based.",
+              "description": "Người học có khả năng thiết kế mô hình điều hướng khai báo bằng NavigationStack value-based, trong đó mỗi destination là một giá trị route.",
               "assessment": "POLISH",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "thiết kế NavigationStack",
+              "keyword": "NavigationStack value-based",
               "platform": "app",
               "task_id": "polish-debt-3"
             },
             {
-              "code": "SIO-UI_MODIFIERS_CONCEPT-103",
+              "code": "SIO-UI_MODIFIERS_CONCEPT-97",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "UI_MODIFIERS_CONCEPT",
-              "name": "SIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationSta",
-              "description": "Người học có khả năng triển khai navigationDestination và value-based navigation bằng NavigationStack, đồng thời sử dụng binding để truyền selectedChatUser một cách an toàn.",
+              "name": "SIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationStack value-based.",
+              "description": "Người học có khả năng áp dụng navigationDestination và NavigationPath để thay thế việc gán @State thủ công, giúp UI phản ánh đúng trạng thái điều hướng.",
               "assessment": "POLISH",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "navigationDestination binding",
-              "platform": "app",
-              "task_id": "polish-debt-3"
-            },
-            {
-              "code": "SIO-ASYNC_PATTERNS-104",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "ASYNC_PATTERNS",
-              "name": "SIO: Refactor: Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationSta",
-              "description": "Người học có khả năng áp dụng các async pattern để xử lý selectedChatUser khi dữ liệu tải bất đồng bộ trước khi kích hoạt điều hướng.",
-              "assessment": "POLISH",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "async patterns điều hướng",
+              "keyword": "navigationDestination",
               "platform": "app",
               "task_id": "polish-debt-3"
             }
@@ -1899,54 +1808,54 @@
           "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
-              "code": "CIO-API_INTEGRATION-105",
+              "code": "CIO-API_INTEGRATION-98",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
               "name": "CIO: Refactor: Server key FCM hardcode trong client — security debt và sẽ hết hạn.",
-              "description": "Người học có khả năng phân tích rủi ro bảo mật của việc hardcode server key FCM trong client, bao gồm nguy cơ lộ key và hết hạn.",
+              "description": "Người học có khả năng phân tích đoạn code đang hardcode FCM server key trong client, chỉ ra rủi ro lộ thông tin và hết hạn key không thể cập nhật nếu không phát hành bản mới.",
               "assessment": "POLISH",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "rủi ro bảo mật server key",
+              "keyword": "FCM server key",
               "platform": "app",
               "task_id": "polish-debt-4"
             },
             {
-              "code": "CIO-API_INTEGRATION-106",
+              "code": "CIO-KEY_VALUE_PERSISTENCE-99",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "API_INTEGRATION",
+              "concept": "KEY_VALUE_PERSISTENCE",
               "name": "CIO: Refactor: Server key FCM hardcode trong client — security debt và sẽ hết hạn.",
-              "description": "Người học có khả năng thiết kế giải pháp cung cấp server key FCM cho client thông qua API endpoint hoặc secure storage, không còn hardcode trong mã nguồn.",
+              "description": "Người học có khả năng thiết kế cấu hình an toàn dạng key-value cho FCM server key, trong đó key được lưu ngoài mã nguồn và có thể thay đổi tại runtime.",
               "assessment": "POLISH",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "thiết kế cung cấp server key",
+              "keyword": "key-value configuration",
               "platform": "app",
               "task_id": "polish-debt-4"
             },
             {
-              "code": "SIO-JSON_SERIALIZATION-107",
-              "lo_type": "SPECIFIC_IMPL",
+              "code": "CIO-JSON_SERIALIZATION-100",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "JSON_SERIALIZATION",
-              "name": "SIO: Refactor: Server key FCM hardcode trong client — security debt và sẽ hết hạn.",
-              "description": "Người học có khả năng triển khai API integration để lấy server key FCM từ server, xử lý JSON response và chuyển đổi dữ liệu bằng JSON serialization.",
+              "name": "CIO: Refactor: Server key FCM hardcode trong client — security debt và sẽ hết hạn.",
+              "description": "Người học có khả năng áp dụng Codable + JSON serialization để đọc cấu hình FCM từ một nguồn an toàn (ví dụ Remote Config) trước khi dùng cho API call.",
               "assessment": "POLISH",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "API integration JSON parsing",
+              "keyword": "JSON serialization",
               "platform": "app",
               "task_id": "polish-debt-4"
             },
             {
-              "code": "SIO-KEY_VALUE_PERSISTENCE-108",
+              "code": "SIO-API_INTEGRATION-101",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "KEY_VALUE_PERSISTENCE",
+              "concept": "API_INTEGRATION",
               "name": "SIO: Refactor: Server key FCM hardcode trong client — security debt và sẽ hết hạn.",
-              "description": "Người học có khả năng lưu trữ server key FCM một cách an toàn bằng key-value persistence (Keychain/UserDefaults) sau khi lấy từ server.",
+              "description": "Người học có khả năng tích hợp FCM server key vào request gửi thông báo từ cấu hình đã tải, không nhúng trực tiếp trong code.",
               "assessment": "POLISH",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "lưu trữ an toàn key-value",
+              "keyword": "API request",
               "platform": "app",
               "task_id": "polish-debt-4"
             }
@@ -1961,41 +1870,41 @@
           "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
-              "code": "CIO-JSON_SERIALIZATION-109",
+              "code": "CIO-JSON_SERIALIZATION-102",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "CIO: Refactor: Custom decoder/encoder thủ công phức tạp, có thể dựa vào Firestore.Decoder mặc định để đơn giản hơn.",
-              "description": "Người học có khả năng phân tích các điểm phức tạp và lỗi tiềm ẩn trong custom decoder/encoder hiện tại so với việc sử dụng Firestore.Decoder mặc định.",
+              "description": "Người học có khả năng phân tích các custom decoder/encoder thủ công hiện có để xác định phần trùng lặp với Firestore.Decoder mặc định.",
               "assessment": "POLISH",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "phân tích custom decoder",
+              "keyword": "custom decoder",
               "platform": "app",
               "task_id": "polish-debt-5"
             },
             {
-              "code": "CIO-JSON_SERIALIZATION-110",
+              "code": "CIO-JSON_SERIALIZATION-103",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "CIO: Refactor: Custom decoder/encoder thủ công phức tạp, có thể dựa vào Firestore.Decoder mặc định để đơn giản hơn.",
-              "description": "Người học có khả năng thiết kế chiến lược chuyển đổi codebase sang Firestore.Decoder/Encoder mặc định, bao gồm việc xử lý các mapping cần thiết cho từng model.",
+              "description": "Người học có khả năng thiết kế lại các model Codable với keyDecodingStrategy/phương thức decode phù hợp để tận dụng Firestore.Decoder mặc định.",
               "assessment": "POLISH",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "chiến lược chuyển đổi Firestore.Decoder",
+              "keyword": "Firestore.Decoder",
               "platform": "app",
               "task_id": "polish-debt-5"
             },
             {
-              "code": "SIO-JSON_SERIALIZATION-111",
+              "code": "SIO-JSON_SERIALIZATION-104",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "JSON_SERIALIZATION",
               "name": "SIO: Refactor: Custom decoder/encoder thủ công phức tạp, có thể dựa vào Firestore.Decoder mặc định để đơn giản hơn.",
-              "description": "Người học có khả năng thay thế custom decoder/encoder bằng Firestore.Decoder/Encoder mặc định trong tầng dữ liệu, kiểm thử tính tương thích dữ liệu.",
+              "description": "Người học có khả năng áp dụng Firestore.Decoder/Encoder mặc định thay thế decoding/encoding thủ công cho các model đã thiết kế.",
               "assessment": "POLISH",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "thay thế decoder encoder",
+              "keyword": "Firestore.Encoder",
               "platform": "app",
               "task_id": "polish-debt-5"
             }
@@ -2005,6 +1914,6 @@
     }
   ],
   "total_milestones": 33,
-  "total_concepts": 17,
-  "lo_count": 111
+  "total_concepts": 16,
+  "lo_count": 104
 }

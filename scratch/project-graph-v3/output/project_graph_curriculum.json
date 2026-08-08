@@ -293,24 +293,24 @@
     },
     "development_stages": [
       {
-        "stage": "Giai đoạn 1 — App chạy được UI shell cơ bản",
-        "product_state": "Người dùng mở app thấy màn hình chào mừng WelcomeView, có thể điều hướng tới form login/register và thấy màn hình chat chính (chưa kết nối Firebase thật).",
+        "stage": "Giai đoạn 1 — Làm quen nền tảng (IDE, Swift, template)",
+        "product_state": "Người học làm quen Xcode/simulator, hiểu cấu trúc project SwiftUI từ template, build và chạy app template mặc định. CHƯA động vào chức năng chat cụ thể.",
         "need": [
-          "Scaffold Xcode project từ template SwiftUI App",
-          "Tạo asset màu primary/secondary trong Assets.xcassets",
-          "Dựng WelcomeView với hình minh họa và nút Start Messaging",
-          "Dựng LoginxView và RegisterxView với SecureTextField tạm",
-          "Dựng RecentChatView shell (NavigationView + header Messages)"
+          "Làm quen Xcode IDE: navigator, editor, simulator, run/stop",
+          "Tìm hiểu cấu trúc template SwiftUI App (App, ContentView, Assets.xcassets)",
+          "Build và chạy app template mặc định trên simulator",
+          "Làm quen cú pháp Swift cơ bản (struct, var/let, Text, VStack)",
+          "Đổi tên project/ứng dụng, thử sửa Text trong template thấy kết quả ngay"
         ],
         "learn": [
-          "SwiftUI App lifecycle",
-          "View, VStack/HStack/ZStack, Button, TextField/SecureField",
-          "NavigationView/NavigationLink/fullScreenCover",
-          "Asset catalog và màu custom"
+          "Xcode IDE và simulator workflow",
+          "Cấu trúc project SwiftUI (App protocol, View, Assets)",
+          "Swift cơ bản: struct, var/let, String, HStack/VStack, Text",
+          "Build/run cycle và debug console"
         ],
-        "validation": "Build thành công trên simulator; điều hướng Welcome -> Login/Register; vào được RecentChatView.",
-        "cross_feature_value": "Tạo walking skeleton UI để mọi giai đoạn sau bồi đắp feature lên trên nền này.",
-        "temporary_approach": "Login/Register chưa gọi Firebase — chỉ hiện UI và alert tạm, giai đoạn 2 thay bằng Auth thật."
+        "validation": "App template chạy được trên simulator; học viên sửa được text hiển thị và build lại thành công.",
+        "cross_feature_value": "Nền tảng: học viên làm chủ công cụ và ngôn ngữ trước khi động vào code dự án — mọi giai đoạn sau xây trên nền này.",
+        "temporary_approach": "Không code chức năng — chỉ chạy template mặc định và sửa vài Text demo để quen workflow, chưa cần biết gì về chat."
       },
       {
         "stage": "Giai đoạn 2 — Firebase setup và xác thực",
@@ -7184,7 +7184,7 @@
       "ZERO_TRUST_ARCHITECTURE": 1
     },
     "task_stage_mapping": {
-      "t1": "Giai đoạn 2 — Firebase setup và xác thực",
+      "t1": "Giai đoạn 1 — Làm quen nền tảng (IDE, Swift, template)",
       "t2": "Giai đoạn 2 — Firebase setup và xác thực",
       "t3": "Giai đoạn 6 — Hoàn thiện và polish",
       "t4": "Giai đoạn 2 — Firebase setup và xác thực",
@@ -7192,8 +7192,8 @@
       "t6": "Giai đoạn 3 — Realtime chat cơ bản",
       "t7": "Giai đoạn 3 — Realtime chat cơ bản",
       "t8": "Giai đoạn 2 — Firebase setup và xác thực",
-      "t9": "Giai đoạn 1 — App chạy được UI shell cơ bản",
-      "t10": "Giai đoạn 1 — App chạy được UI shell cơ bản",
+      "t9": "Giai đoạn 2 — Firebase setup và xác thực",
+      "t10": "Giai đoạn 2 — Firebase setup và xác thực",
       "t11": "Giai đoạn 2 — Firebase setup và xác thực",
       "t12": "Giai đoạn 2 — Firebase setup và xác thực",
       "t13": "Giai đoạn 3 — Realtime chat cơ bản",
