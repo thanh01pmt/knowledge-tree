@@ -79,13 +79,7 @@ const isRelated = (item, type, context) => {
         counts[tab.id] = rawTreeData[tab.id].length;
         return;
       }
-      
-      // If it's the active context type, don't filter siblings for count
-      if (tab.id === selectedContext.type) {
-        counts[tab.id] = rawTreeData[tab.id].length;
-        return;
-      }
-      
+            
       let count = 0;
       for (let i = 0; i < rawTreeData[tab.id].length; i++) {
         if (isRelated(rawTreeData[tab.id][i], tab.id, selectedContext)) {
