@@ -210,12 +210,18 @@ class PipelineOrchestrator:
             self._complete("step_1_3", skip_note="No repo_dir provided")
             return True
 
-        success = self._run_script("llm_project_graph.py", [
+        resolved_file = self._artifact("resolved_concepts", "resolved_concepts.json")
+        pg_args = [
             "--repo-dir", str(self.repo_dir),
             "--goal", self.goal,
             "--tech-stack", self.tech_stack,
             "--output", str(out_verified),
-        ])
+        ]
+        # STEP E (concept bank) cần resolved_concepts — có sau step_3 (đã reorder)
+        if resolved_file.exists():
+            pg_args += ["--resolved-concepts", str(resolved_file)]
+
+        success = self._run_script("llm_project_graph.py", pg_args)
 
         if success:
             self._complete("step_1_3", project_graph_verified=out_verified)
@@ -800,9 +806,9 @@ class PipelineOrchestrator:
             ("step_0", self.step_0_discover),
             ("step_0_5", self.step_0_5_propose_tech_stack),
             ("step_1_2", self.step_1_2_extract_keywords),
-            ("step_1_3", self.step_1_3_generate_project_graph),
             ("step_3", self.step_3_resolve_concepts),
             ("step_3_5", self.step_3_5_escalate_concepts),
+            ("step_1_3", self.step_1_3_generate_project_graph),
             ("step_4", self.step_4_match_cios),
             ("step_5", self.step_5_resolve_sios),
             ("step_4_5", self.step_4_5_generate_prerequisites),
