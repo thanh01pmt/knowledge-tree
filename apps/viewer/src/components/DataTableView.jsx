@@ -18,61 +18,51 @@ export default function DataTableView({ rawTreeData, theme, linksBySource, links
   const ITEMS_PER_PAGE = 50; // { type, item }
 
   // Simple lineage tracking to find direct parents/children
-  const isRelated = (item, type, context) => {
-    if (!context || !context.item) return true;
-    
-    // Same item
-    if (item.code === context.item.code) return true;
-    
-    // If same type, return true (show all siblings so user can switch selection)
-    if (type === context.type) return true;
+  
+  const relatedIds = useMemo(() => {
+    const ids = new Set();
+    if (!selectedContext || !selectedContext.item) return ids;
+    const startCode = selectedContext.item.code;
+    ids.add(startCode);
 
-    // We can use linksBySource to find all descendants, and linksByTarget to find all ancestors
-    const isDescendant = (startCode, targetCode) => {
-      if (!linksBySource) return false;
-      const visited = new Set();
+    if (linksBySource) {
       const queue = [startCode];
       while (queue.length > 0) {
         const curr = queue.shift();
-        if (curr === targetCode) return true;
         if (linksBySource[curr]) {
           linksBySource[curr].forEach(child => {
-            if (!visited.has(child)) {
-              visited.add(child);
+            if (!ids.has(child)) {
+              ids.add(child);
               queue.push(child);
             }
           });
         }
       }
-      return false;
-    };
+    }
 
-    const isAncestor = (startCode, targetCode) => {
-      if (!linksByTarget) return false;
-      const visited = new Set();
+    if (linksByTarget) {
       const queue = [startCode];
+      const visited = new Set([startCode]);
       while (queue.length > 0) {
         const curr = queue.shift();
-        if (curr === targetCode) return true;
         if (linksByTarget[curr]) {
           linksByTarget[curr].forEach(parent => {
             if (!visited.has(parent)) {
               visited.add(parent);
+              ids.add(parent);
               queue.push(parent);
             }
           });
         }
       }
-      return false;
-    };
+    }
+    return ids;
+  }, [selectedContext, linksBySource, linksByTarget]);
 
-    // Check if the item is a descendant of the selected context
-    if (isDescendant(context.item.code, item.code)) return true;
-    
-    // Check if the item is an ancestor of the selected context
-    if (isAncestor(context.item.code, item.code)) return true;
-
-    return false;
+const isRelated = (item, type, context) => {
+    if (!context || !context.item) return true;
+    if (type === context.type) return true;
+    return relatedIds.has(item.code);
   };
 
   
@@ -106,7 +96,7 @@ export default function DataTableView({ rawTreeData, theme, linksBySource, links
       counts[tab.id] = count;
     });
     return counts;
-  }, [rawTreeData, selectedContext, linksBySource, linksByTarget]);
+  }, [rawTreeData, selectedContext, relatedIds]);
 
   const displayedData = useMemo(() => {
     if (!rawTreeData || !rawTreeData[activeTab]) return [];
@@ -128,7 +118,7 @@ export default function DataTableView({ rawTreeData, theme, linksBySource, links
     }
 
     return data;
-  }, [rawTreeData, activeTab, searchTerm, selectedContext, linksBySource, linksByTarget]);
+  }, [rawTreeData, activeTab, searchTerm, selectedContext, relatedIds]);
 
   const paginatedData = displayedData.slice((currentPage - 1) * ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE);
   const totalPages = Math.ceil(displayedData.length / ITEMS_PER_PAGE);
