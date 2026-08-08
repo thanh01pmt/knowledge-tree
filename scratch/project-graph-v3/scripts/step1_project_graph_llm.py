@@ -57,6 +57,36 @@ CALL_GROUPS = {
 }
 ALL_DOMAINS = list(CALL_GROUPS.keys())
 
+# ============ PROFILES (bật theo nhóm) ============
+# lite: phân tích nhanh sản phẩm + features (1 call)
+# essential: + kiến trúc + implementation cốt lõi (task có keywords/effort)
+# full: tất cả domain + chi tiết (concurrency, missing_gaps, tech_debt, state machine)
+PROFILES = {
+    "lite": ["product", "feature"],
+    "essential": ["identity", "product", "feature", "capability", "architecture", "implementation"],
+    "full": ALL_DOMAINS,
+}
+PROFILE_EXTRA_INSTRUCTIONS = {
+    "lite": "",
+    "essential": (
+        "\nBỔ SUNG (essential):\n"
+        "- feature.api_usage[]: API/framework methods feature dùng (VD: ChatClient.connectUser, queryChannels).\n"
+        "- task.keywords[]: API/framework/property wrapper task dùng (VD: '@State', 'ChatClient').\n"
+        "- task.effort: ước lượng độ nặng (concepts_count, files_touched, estimated_minutes).\n"
+    ),
+    "full": (
+        "\nBỔ SUNG (full):\n"
+        "- feature.api_usage[]: API/framework methods feature dùng.\n"
+        "- task.keywords[]: API/framework/property wrapper task dùng.\n"
+        "- task.concurrency[]: cơ chế async dùng (Task, DispatchQueue, async/await).\n"
+        "- task.effort: ước lượng độ nặng.\n"
+        "- screen.keywords[]: framework/property wrapper screen dùng.\n"
+        "- implementation.missing_gaps[]: điều code THIẾU (missing error handling/test/hardcoded) — roadmap dạy bổ sung.\n"
+        "- implementation.tech_debt[]: tech debt signals (file lớn, logic lồng sâu) — Polish.\n"
+        "- validation.quality_requirements: accessibility/security/localization (B2/B3/B6).\n"
+    ),
+}
+
 # Flag domain → schema property key
 FLAG_TO_SCHEMA_KEY = {
     "identity": "project", "product": "product", "feature": "features",
@@ -112,13 +142,15 @@ def _schema_section(domains: list = None) -> str:
     return schema_subset(domains)
 
 def build_call_a(source_text: str, goal: str, tech_stack: str, max_chars: int = 60000,
-                 domains: list = None) -> tuple:
+                 domains: list = None,
+                 profile_extra: str = "") -> tuple:
     """Call A: Identity + Product + Feature + Architecture (theo domains bật)."""
     domains = domains or ["identity", "product", "feature", "capability", "architecture"]
     domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
         f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
         "Trả JSON theo schema — chỉ điền các field của domain được yêu cầu, các domain khác để rỗng ([] / {} như schema).\n"
+        + profile_extra + "\n"
     )
     user = (
         f"GOAL: {goal}\nTECH_STACK: {tech_stack}\n\n"
@@ -129,7 +161,8 @@ def build_call_a(source_text: str, goal: str, tech_stack: str, max_chars: int = 
     return system, user
 
 def build_call_b(source_text: str, goal: str, tech_stack: str, features_summary: str, max_chars: int = 40000,
-                 domains: list = None) -> tuple:
+                 domains: list = None,
+                 profile_extra: str = "") -> tuple:
     """Call B: Experience/UI + Data & Integration (theo domains bật)."""
     domains = domains or ["experience", "data"]
     domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
@@ -137,6 +170,7 @@ def build_call_b(source_text: str, goal: str, tech_stack: str, features_summary:
         f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
         "Dựa trên features đã xác định (đưa trong user prompt) — gắn UI/data vào features đó.\n"
         "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
+        + profile_extra + "\n"
     )
     user = (
         f"GOAL: {goal}\nTECH_STACK: {tech_stack}\n\n"
@@ -147,7 +181,8 @@ def build_call_b(source_text: str, goal: str, tech_stack: str, features_summary:
     return system, user
 
 def build_call_c(source_text: str, goal: str, features_summary: str, arch_summary: str, max_chars: int = 60000,
-                 domains: list = None) -> tuple:
+                 domains: list = None,
+                 profile_extra: str = "") -> tuple:
     """Call C: Implementation + Validation (theo domains bật)."""
     domains = domains or ["implementation", "validation"]
     domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
@@ -156,6 +191,7 @@ def build_call_c(source_text: str, goal: str, features_summary: str, arch_summar
         "Mỗi task: action = hành động cụ thể, intent = WHY, outcome = WHAT thay đổi, "
         "source_evidence = file thật minh hoạ (KHÔNG phải 'task = tạo file đó').\n"
         "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
+        + profile_extra + "\n"
     )
     user = (
         f"GOAL: {goal}\n\n"
@@ -205,9 +241,12 @@ def merge_domains(a: dict, b: dict, c: dict, domains: list = None) -> dict:
 
 def run_pipeline(source_file: Path, goal: str, tech_stack: str, output_path: Path,
                  max_chars_a: int = 60000, max_chars_b: int = 40000, max_chars_c: int = 60000,
-                 include_domains: list = None) -> dict:
-    """Chỉ chạy các call có domain được bật (--include). Bỏ call không cần → tiết kiệm LLM."""
+                 include_domains: list = None, profile: str = None) -> dict:
+    """Chỉ chạy các call có domain được bật (--include hoặc --profile). Bỏ call không cần → tiết kiệm LLM."""
+    if profile:
+        include_domains = PROFILES.get(profile, include_domains)
     domains = include_domains or ALL_DOMAINS
+    profile_extra = PROFILE_EXTRA_INSTRUCTIONS.get(profile or "full", "")
     group_a = [d for d in domains if CALL_GROUPS.get(d, ("", ""))[0] == "A"]
     group_b = [d for d in domains if CALL_GROUPS.get(d, ("", ""))[0] == "B"]
     group_c = [d for d in domains if CALL_GROUPS.get(d, ("", ""))[0] == "C"]
@@ -219,7 +258,7 @@ def run_pipeline(source_file: Path, goal: str, tech_stack: str, output_path: Pat
 
     if group_a:
         print(f"[*] Call A: {group_a}...")
-        sys_a, user_a = build_call_a(source_text, goal, tech_stack, max_chars_a, domains=group_a)
+        sys_a, user_a = build_call_a(source_text, goal, tech_stack, max_chars_a, domains=group_a, profile_extra=profile_extra)
         res_a = _llm_json(sys_a, user_a)
 
     # Tóm tắt features cho call B/C (nếu có data)
@@ -228,12 +267,12 @@ def run_pipeline(source_file: Path, goal: str, tech_stack: str, output_path: Pat
 
     if group_b:
         print(f"[*] Call B: {group_b}...")
-        sys_b, user_b = build_call_b(source_text, goal, tech_stack, features_summary, max_chars_b, domains=group_b)
+        sys_b, user_b = build_call_b(source_text, goal, tech_stack, features_summary, max_chars_b, domains=group_b, profile_extra=profile_extra)
         res_b = _llm_json(sys_b, user_b)
 
     if group_c:
         print(f"[*] Call C: {group_c}...")
-        sys_c, user_c = build_call_c(source_text, goal, features_summary, arch_summary, max_chars_c, domains=group_c)
+        sys_c, user_c = build_call_c(source_text, goal, features_summary, arch_summary, max_chars_c, domains=group_c, profile_extra=profile_extra)
         res_c = _llm_json(sys_c, user_c)
 
     # Merge (bỏ domain không bật)
@@ -255,6 +294,8 @@ def main():
     parser.add_argument("--goal", default="", help="Application goal")
     parser.add_argument("--tech-stack", default="", help="Technologies (comma-separated)")
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--profile", default=None, choices=["lite", "essential", "full"],
+                        help="(PROFILE) lite: product+feature (1 call) | essential: +architecture+implementation | full: tất cả")
     parser.add_argument("--include", default=None,
                         help="(BẬT/TẮT DOMAIN) Chỉ phân tích các domain, comma-separated. "
                              "VD: --include product,feature (lite) | --include implementation "
@@ -274,7 +315,7 @@ def main():
 
     try:
         run_pipeline(args.source_file, args.goal, args.tech_stack, args.output,
-                     include_domains=include_domains)
+                     include_domains=include_domains, profile=args.profile)
     except Exception as e:
         print(f"❌ STEP 1 fail: {e}", file=sys.stderr)
         sys.exit(1)
