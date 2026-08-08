@@ -1,0 +1,206 @@
+{
+  "schema_version": 3,
+  "project": {
+    "id": "weather_app",
+    "name": "Weather App",
+    "version": "1.0",
+    "purpose": "Allow users to search and view weather information.",
+    "platform": ["iOS"],
+    "tech_stack": {
+      "language": ["Swift"],
+      "ui": ["SwiftUI"],
+      "persistence": ["SwiftData"],
+      "networking": ["URLSession"]
+    },
+    "architecture": ["MVVM"],
+    "source": {
+      "repository": "example/weather-app",
+      "commit": "abc123",
+      "scan_dir": "DemoApp"
+    }
+  },
+  "product": {
+    "goals": [
+      {"id": "view_weather", "description": "User can find weather information for a location."}
+    ],
+    "users": [
+      {"id": "normal_user", "goals": ["view_weather"]}
+    ],
+    "journeys": [
+      {
+        "id": "search_weather",
+        "name": "Search Weather",
+        "steps": ["open_app", "enter_city", "submit_search", "view_result"],
+        "requirement_ids": ["search_city"]
+      }
+    ],
+    "requirements": [
+      {
+        "id": "search_city",
+        "statement": "User can search weather by city.",
+        "priority": "core",
+        "acceptance": ["search_field_exists", "search_can_be_submitted", "result_is_displayed"]
+      }
+    ]
+  },
+  "features": [
+    {
+      "id": "weather_search",
+      "name": "Weather Search",
+      "purpose": "Find weather information for a location.",
+      "priority": "core",
+      "status": "PLANNED",
+      "requirement_ids": ["search_city"],
+      "journey_ids": ["search_weather"],
+      "depends_on": []
+    }
+  ],
+  "capabilities": [
+    {
+      "id": "fetch_weather",
+      "feature_id": "weather_search",
+      "purpose": "Retrieve weather data for selected location.",
+      "depends_on": ["valid_location"],
+      "produces": ["weather_data"]
+    }
+  ],
+  "architecture": {
+    "pattern": ["MVVM"],
+    "confidence": 0.92,
+    "evidence": ["WeatherViewModel.swift", "@Observable"],
+    "nodes": [
+      {
+        "id": "weather_view_model",
+        "type": "view_model",
+        "layer": "presentation",
+        "responsibility": "Manage weather presentation state.",
+        "depends_on": ["weather_repository"],
+        "used_by": ["weather_view"],
+        "evidence_type": "INFERRED",
+        "confidence": 0.92
+      }
+    ],
+    "edges": [
+      {"from": "weather_view", "to": "weather_view_model", "type": "USES"}
+    ]
+  },
+  "experience": {
+    "screens": [
+      {
+        "id": "home_screen",
+        "name": "Home",
+        "purpose": "Display current weather.",
+        "entry_point": true,
+        "components": ["search_bar", "weather_card", "forecast_list"],
+        "states": ["idle", "loading", "loaded", "error"],
+        "navigates_to": ["search_screen"]
+      }
+    ],
+    "components": [
+      {
+        "id": "weather_card",
+        "type": "reusable_view",
+        "purpose": "Display current weather.",
+        "inputs": ["weather"],
+        "outputs": [],
+        "state": ["none"]
+      }
+    ],
+    "ui_states": [
+      {
+        "id": "weather_loading",
+        "owner": "home_screen",
+        "triggered_by": ["fetch_weather"],
+        "transitions_to": ["weather_loaded", "weather_error"]
+      }
+    ],
+    "navigation": [
+      {"from": "home_screen", "to": "search_screen", "trigger": "search_button", "presentation": "push"}
+    ]
+  },
+  "data_integration": {
+    "data_flows": [
+      {"id": "weather_fetch", "flow": ["weather_api", "weather_dto", "weather_mapper", "weather_model", "weather_repository", "weather_view_model"]}
+    ],
+    "models": [
+      {"id": "weather", "type": "domain", "properties": ["temperature", "condition", "location"]}
+    ],
+    "integrations": [
+      {
+        "id": "weather_api",
+        "type": "rest_api",
+        "protocol": "HTTP",
+        "operations": ["get_weather"],
+        "inputs": ["location"],
+        "outputs": ["weather_dto"],
+        "failure_modes": ["network_error", "invalid_response", "server_error"]
+      }
+    ],
+    "persistence": [
+      {"id": "favorite_location_storage", "technology": "SwiftData", "entities": ["FavoriteLocation"], "operations": ["create", "read", "delete"]}
+    ]
+  },
+  "implementation": {
+    "tasks": [
+      {
+        "id": "implement_search_query",
+        "capability_id": "search_input",
+        "action": "Implement search query state.",
+        "modifies": ["SearchView.swift"],
+        "creates": ["search_query_state"],
+        "depends_on": ["create_search_view"],
+        "acceptance": ["query_can_change"],
+        "intent": "Allow the user to type a city and trigger a search.",
+        "outcome": {
+          "user_visible": "Search field accepts text input.",
+          "technical": ["SearchView", "searchQuery"]
+        },
+        "source_evidence": ["Views/SearchView.swift"]
+      }
+    ],
+    "task_dependencies": [
+      {"from": "display_weather", "to": "weather_view_model", "type": "BLOCKED_BY", "reason": "Weather data must be available before rendering dynamic content."}
+    ]
+  },
+  "validation": {
+    "validations": [
+      {
+        "id": "validate_search",
+        "target": "search_weather",
+        "criteria": ["search_input_accepts_text", "request_is_triggered", "result_is_displayed"],
+        "method": ["manual", "unit_test"]
+      }
+    ],
+    "quality_requirements": [
+      {"id": "search_accessibility", "type": "accessibility", "requirement": "Search field must have an accessible label."}
+    ]
+  },
+  "evidence": {
+    "entries": [
+      {
+        "target_id": "weather_view_model",
+        "source": {"file": "WeatherView.swift", "lines": "12-27"},
+        "evidence_type": "INFERRED",
+        "confidence": 0.96,
+        "extraction_method": "source_analysis"
+      },
+      {
+        "target_id": "WeatherView.swift",
+        "source": {"file": "WeatherView.swift"},
+        "evidence_type": "OBSERVED",
+        "confidence": 1.0,
+        "extraction_method": "git_tracker"
+      }
+    ]
+  },
+  "knowledge_mapping": {
+    "mappings": [
+      {
+        "project_node": "implement_search_query",
+        "keywords": ["@State"],
+        "concepts": ["LOCAL_VIEW_STATE"],
+        "status": "MAPPED"
+      }
+    ]
+  }
+}

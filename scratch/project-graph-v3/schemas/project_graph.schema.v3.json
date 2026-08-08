@@ -1,0 +1,449 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "project_graph.schema.v3.json",
+  "title": "Project Graph — Canonical Schema v3",
+  "description": "Canonical representation của một software project, đủ để Agent đi từ Source Code → hiểu sản phẩm → architecture → dependency → task → map Knowledge Tree. KHÔNG phải AST, KHÔNG phải Knowledge Tree, KHÔNG phải roadmap. Định nghĩa theo tài liệu thiết kế 8 domain + 2 lớp cross-cutting.",
+  "type": "object",
+  "required": ["schema_version", "project", "product", "features", "capabilities", "architecture", "experience", "data_integration", "implementation", "validation", "evidence", "knowledge_mapping"],
+  "properties": {
+    "schema_version": {"const": 3},
+
+    "project": {
+      "type": "object",
+      "description": "01. Project Identity — root node",
+      "required": ["id", "name", "purpose", "platform", "tech_stack", "architecture", "source"],
+      "properties": {
+        "id": {"type": "string"},
+        "name": {"type": "string"},
+        "version": {"type": "string"},
+        "purpose": {"type": "string", "description": "WHY — sản phẩm tồn tại vì sao"},
+        "platform": {"type": "array", "items": {"type": "string"}},
+        "tech_stack": {
+          "type": "object",
+          "properties": {
+            "language": {"type": "array", "items": {"type": "string"}},
+            "ui": {"type": "array", "items": {"type": "string"}},
+            "persistence": {"type": "array", "items": {"type": "string"}},
+            "networking": {"type": "array", "items": {"type": "string"}},
+            "other": {"type": "array", "items": {"type": "string"}}
+          }
+        },
+        "architecture": {"type": "array", "items": {"type": "string"}, "description": "VD: ['MVVM']"},
+        "source": {
+          "type": "object",
+          "properties": {
+            "repository": {"type": "string"},
+            "commit": {"type": "string"},
+            "scan_dir": {"type": "string", "description": "Thư mục app được phân tích (VD: DemoApp)"}
+          }
+        }
+      }
+    },
+
+    "product": {
+      "type": "object",
+      "description": "02. Product Graph — 'chúng ta đang xây sản phẩm gì'",
+      "required": ["goals", "users", "journeys", "requirements"],
+      "properties": {
+        "goals": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "description"],
+            "properties": {
+              "id": {"type": "string"},
+              "description": {"type": "string"}
+            }
+          }
+        },
+        "users": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id"],
+            "properties": {
+              "id": {"type": "string"},
+              "goals": {"type": "array", "items": {"type": "string"}, "description": "Tham chiếu product.goals[].id"}
+            }
+          }
+        },
+        "journeys": {
+          "type": "array",
+          "description": "User Journey — chuỗi hành động từ User → Action → Screen → Outcome",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "steps"],
+            "properties": {
+              "id": {"type": "string"},
+              "name": {"type": "string"},
+              "steps": {"type": "array", "items": {"type": "string"}},
+              "requirement_ids": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "requirements": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "statement", "priority", "acceptance"],
+            "properties": {
+              "id": {"type": "string"},
+              "statement": {"type": "string"},
+              "priority": {"enum": ["core", "supporting", "optional", "polish"]},
+              "acceptance": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+
+    "features": {
+      "type": "array",
+      "description": "03. Feature Graph — sản phẩm cần capability gì",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "purpose", "priority", "status"],
+        "properties": {
+          "id": {"type": "string"},
+          "name": {"type": "string"},
+          "purpose": {"type": "string"},
+          "priority": {"enum": ["core", "supporting", "optional", "polish"]},
+          "status": {"enum": ["DISCOVERED", "PLANNED", "IN_PROGRESS", "IMPLEMENTED", "VALIDATED", "REFACTORED", "POLISHED"]},
+          "requirement_ids": {"type": "array", "items": {"type": "string"}},
+          "journey_ids": {"type": "array", "items": {"type": "string"}},
+          "depends_on": {"type": "array", "items": {"type": "string"}, "description": "Tham chiếu features[].id"}
+        }
+      }
+    },
+
+    "capabilities": {
+      "type": "array",
+      "description": "Cầu nối Feature → Task. Feature quá lớn, Task quá nhỏ.",
+      "items": {
+        "type": "object",
+        "required": ["id", "feature_id", "purpose", "depends_on", "produces"],
+        "properties": {
+          "id": {"type": "string"},
+          "feature_id": {"type": "string"},
+          "purpose": {"type": "string"},
+          "depends_on": {"type": "array", "items": {"type": "string"}},
+          "produces": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+
+    "architecture": {
+      "type": "object",
+      "description": "04. Architecture Graph — project được cấu tạo như thế nào. FACT vs INFERENCE tách bạch.",
+      "required": ["pattern", "confidence", "evidence", "nodes", "edges"],
+      "properties": {
+        "pattern": {"type": "array", "items": {"type": "string"}, "description": "VD: ['MVVM']"},
+        "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+        "evidence": {"type": "array", "items": {"type": "string"}, "description": "VD: ['WeatherViewModel.swift', '@Observable']"},
+        "nodes": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "layer", "responsibility", "evidence_type"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"enum": ["app", "module", "layer", "service", "repository", "view_model", "model", "component", "manager", "utility"]},
+              "custom_type": {"type": "string", "description": "Khi project dùng architecture đặc biệt"},
+              "layer": {"type": "string", "description": "presentation | domain | data | infra"},
+              "responsibility": {"type": "string"},
+              "depends_on": {"type": "array", "items": {"type": "string"}},
+              "used_by": {"type": "array", "items": {"type": "string"}},
+              "evidence_type": {"enum": ["OBSERVED", "INFERRED", "GENERATED"]},
+              "confidence": {"type": "number", "minimum": 0, "maximum": 1}
+            }
+          }
+        },
+        "edges": {"$ref": "#/definitions/edges"}
+      }
+    },
+
+    "experience": {
+      "type": "object",
+      "description": "05. Experience / UI Graph",
+      "required": ["screens", "components", "ui_states", "navigation"],
+      "properties": {
+        "screens": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "name", "purpose", "entry_point"],
+            "properties": {
+              "id": {"type": "string"},
+              "name": {"type": "string"},
+              "purpose": {"type": "string"},
+              "entry_point": {"type": "boolean"},
+              "components": {"type": "array", "items": {"type": "string"}},
+              "states": {"type": "array", "items": {"type": "string"}, "description": "VD: idle, loading, loaded, error"},
+              "navigates_to": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "components": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "purpose"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"type": "string", "description": "VD: reusable_view, container, cell"},
+              "purpose": {"type": "string"},
+              "inputs": {"type": "array", "items": {"type": "string"}},
+              "outputs": {"type": "array", "items": {"type": "string"}},
+              "state": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "ui_states": {
+          "type": "array",
+          "description": "UI State Graph — quyết định Knowledge cần học (State, Binding, Async, Error handling)",
+          "items": {
+            "type": "object",
+            "required": ["id", "owner", "triggered_by", "transitions_to"],
+            "properties": {
+              "id": {"type": "string"},
+              "owner": {"type": "string", "description": "Screen id"},
+              "triggered_by": {"type": "array", "items": {"type": "string"}},
+              "transitions_to": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "navigation": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "trigger", "presentation"],
+            "properties": {
+              "from": {"type": "string"},
+              "to": {"type": "string"},
+              "trigger": {"type": "string"},
+              "presentation": {"type": "string", "description": "VD: push, sheet, fullScreenCover, tab"}
+            }
+          }
+        }
+      }
+    },
+
+    "data_integration": {
+      "type": "object",
+      "description": "06. Data & Integration Graph",
+      "required": ["data_flows", "models", "integrations", "persistence"],
+      "properties": {
+        "data_flows": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "flow"],
+            "properties": {
+              "id": {"type": "string"},
+              "flow": {"type": "array", "items": {"type": "string"}, "description": "VD: [api, dto, mapper, model, repository, view_model]"}
+            }
+          }
+        },
+        "models": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "properties"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"enum": ["domain", "dto", "persistence", "view_model"]},
+              "properties": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "integrations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "protocol", "operations"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"type": "string", "description": "VD: rest_api, websocket, mqtt"},
+              "protocol": {"type": "string", "description": "VD: HTTP, WebSocket, MQTT, WiFi"},
+              "operations": {"type": "array", "items": {"type": "string"}},
+              "inputs": {"type": "array", "items": {"type": "string"}},
+              "outputs": {"type": "array", "items": {"type": "string"}},
+              "failure_modes": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        },
+        "persistence": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "technology", "entities"],
+            "properties": {
+              "id": {"type": "string"},
+              "technology": {"type": "string", "description": "VD: SwiftData, CoreData, UserDefaults, File"},
+              "entities": {"type": "array", "items": {"type": "string"}},
+              "operations": {"type": "array", "items": {"type": "string"}}
+            }
+          }
+        }
+      }
+    },
+
+    "implementation": {
+      "type": "object",
+      "description": "07. Implementation Graph — learner phải LÀM gì, không phải code làm gì",
+      "required": ["tasks", "task_dependencies"],
+      "properties": {
+        "tasks": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "capability_id", "action", "modifies", "creates", "depends_on", "acceptance", "intent", "outcome", "source_evidence"],
+            "properties": {
+              "id": {"type": "string"},
+              "capability_id": {"type": "string"},
+              "action": {"type": "string", "description": "Action có thể thực hiện. KHÔNG phải 'Learn State' mà là 'Implement search query state'"},
+              "modifies": {"type": "array", "items": {"type": "string"}, "description": "Files bị sửa"},
+              "creates": {"type": "array", "items": {"type": "string"}, "description": "Thứ được tạo (state, file, type...)"},
+              "depends_on": {"type": "array", "items": {"type": "string"}, "description": "Tham chiếu tasks[].id"},
+              "acceptance": {"type": "array", "items": {"type": "string"}},
+              "intent": {"type": "string", "description": "WHY — tại sao task này tồn tại (người dùng cần gì)"},
+              "outcome": {
+                "type": "object",
+                "properties": {
+                  "user_visible": {"type": "string", "description": "Sau task này sản phẩm thay đổi gì cho user"},
+                  "technical": {"type": "array", "items": {"type": "string"}}
+                }
+              },
+              "source_evidence": {
+                "type": "array",
+                "description": "Reference implementation — file thật minh hoạ, KHÔNG phải task = tạo file đó",
+                "items": {"type": "string"}
+              }
+            }
+          }
+        },
+        "task_dependencies": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["from", "to", "type", "reason"],
+            "properties": {
+              "from": {"type": "string"},
+              "to": {"type": "string"},
+              "type": {"enum": ["BLOCKED_BY", "DEPENDS_ON", "ENABLES", "FOLLOWS"]},
+              "reason": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+
+    "validation": {
+      "type": "object",
+      "description": "08. Validation Graph",
+      "required": ["validations", "quality_requirements"],
+      "properties": {
+        "validations": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "target", "criteria", "method"],
+            "properties": {
+              "id": {"type": "string"},
+              "target": {"type": "string", "description": "Task/capability id"},
+              "criteria": {"type": "array", "items": {"type": "string"}},
+              "method": {"type": "array", "items": {"enum": ["manual", "unit_test", "ui_test"]}}
+            }
+          }
+        },
+        "quality_requirements": {
+          "type": "array",
+          "description": "Functional/Performance/Accessibility/Security/Reliability/UX/Maintainability — chủ yếu vào Polish",
+          "items": {
+            "type": "object",
+            "required": ["id", "type", "requirement"],
+            "properties": {
+              "id": {"type": "string"},
+              "type": {"enum": ["functional", "performance", "accessibility", "security", "reliability", "ux", "maintainability"]},
+              "requirement": {"type": "string"}
+            }
+          }
+        }
+      }
+    },
+
+    "evidence": {
+      "type": "object",
+      "description": "Lớp cross-cutting — Evidence / Source Traceability. Mỗi inference phải có evidence.",
+      "properties": {
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["target_id", "source", "evidence_type"],
+            "properties": {
+              "target_id": {"type": "string", "description": "Node id được chứng minh"},
+              "source": {
+                "type": "object",
+                "properties": {
+                  "file": {"type": "string"},
+                  "lines": {"type": "string", "description": "VD: '12-27'"},
+                  "symbol": {"type": "string"}
+                }
+              },
+              "evidence_type": {"enum": ["OBSERVED", "INFERRED", "GENERATED"]},
+              "confidence": {"type": "number", "minimum": 0, "maximum": 1},
+              "extraction_method": {"type": "string", "description": "VD: source_analysis, git_tracker, LLM_inference"}
+            }
+          }
+        }
+      }
+    },
+
+    "knowledge_mapping": {
+      "type": "object",
+      "description": "Lớp cross-cutting — Knowledge Mapping. Bridge sang Knowledge Tree. Agent KHÔNG tạo concept mới tùy tiện.",
+      "properties": {
+        "mappings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["project_node", "keywords", "concepts"],
+            "properties": {
+              "project_node": {"type": "string", "description": "Task/Capability/Symbol id"},
+              "keywords": {"type": "array", "items": {"type": "string"}, "description": "VD: ['@State']"},
+              "concepts": {"type": "array", "items": {"type": "string"}, "description": "Tham chiếu Knowledge Tree concept codes"},
+              "status": {"enum": ["MAPPED", "UNMAPPED_CONCEPT"], "description": "UNMAPPED → review queue"}
+            }
+          }
+        }
+      }
+    }
+  },
+
+  "definitions": {
+    "edges": {
+      "type": "array",
+      "description": "Canonical edge types — không dùng 'related_to' chung chung",
+      "items": {
+        "type": "object",
+        "required": ["from", "to", "type"],
+        "properties": {
+          "from": {"type": "string"},
+          "to": {"type": "string"},
+          "type": {"enum": [
+            "CONTAINS", "PART_OF",
+            "REQUIRES", "DEPENDS_ON", "BLOCKED_BY", "ENABLES",
+            "IMPLEMENTS", "REALIZES", "USES", "PROVIDES", "CONSUMES",
+            "NAVIGATES_TO", "UPDATES", "READS", "WRITES",
+            "CREATES", "MODIFIES", "PRODUCES",
+            "VALIDATED_BY", "SATISFIES",
+            "MAPS_TO", "EVIDENCED_BY"
+          ]}
+        }
+      }
+    }
+  },
+
+  "additionalProperties": false
+}
