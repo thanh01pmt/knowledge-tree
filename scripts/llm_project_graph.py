@@ -409,10 +409,13 @@ def to_upper_snake(term: str) -> str:
 def escalate_and_map_concepts(
     project_graph: Dict[str, Any],
     file_contents_map: Dict[str, str],
-    concept_map_override: Optional[Dict[str, Dict[str, str]]] = None
+    concept_map_override: Optional[Dict[str, Dict[str, str]]] = None,
+    available_concepts: Optional[List[str]] = None
 ) -> Dict[str, List[Dict[str, Any]]]:
     """
     STEP E: Escalate keywords/api_usage to neutral concepts and join evidence files.
+    Ưu tiên map vào concept ĐÃ CÓ (available_concepts — cùng vocabulary JIT/resolved).
+    Chỉ tạo concept mới khi không có concept nào cover keyword.
     """
     all_terms: Set[str] = set()
     features = project_graph.get("product", {}).get("features", [])
@@ -432,11 +435,19 @@ def escalate_and_map_concepts(
         if _LLM_AVAILABLE:
             try:
                 client, provider, model = get_llm_client()
+                # Danh sách concepts có sẵn (từ resolved_concepts — vocabulary JIT dùng).
+                # LLM PHẢI chọn từ đây trước; chỉ tạo concept mới khi thật sự thiếu.
+                concept_bank = ", ".join(sorted(available_concepts or [])) or "(rỗng)"
                 system_prompt = (
-                    "Bạn là chuyên gia phân loại tri thức. Với mỗi keyword/API cụ thể, trả concept trung tính "
-                    "(technology-agnostic, UPPER_SNAKE_CASE, KHÔNG kết thúc _CONCEPT). "
-                    "VD: ChatClient → CHAT_CLIENT_API, @State → LOCAL_VIEW_STATE, URLSession → HTTP_PROTOCOL. "
-                    "CẤM tên công nghệ cụ thể trong concept name."
+                    "Bạn là chuyên gia phân loại tri thức. Với mỗi keyword/API cụ thể, "
+                    "xác định concept trung tính nó thuộc về.\n"
+                    f"QUY TẮC:\n"
+                    "1. ƯU TIÊN chọn concept ĐÃ CÓ trong danh sách CONCEPT_BANK bên dưới nếu keyword là biểu hiện của concept đó.\n"
+                    f"2. CHỈ tạo concept MỚI (UPPER_SNAKE_CASE, KHÔNG kết thúc _CONCEPT, KHÔNG chứa tên công nghệ cụ thể) khi KHÔNG concept nào trong bank cover.\n"
+                    "3. CONCEPT_BANK: " + concept_bank[:12000] + "\n"
+                    "VD: ChatClient → CHAT_CLIENT_API (hoặc API_INTEGRATION nếu có trong bank), "
+                    "@State → LOCAL_VIEW_STATE, URLSession → HTTP_PROTOCOL.\n"
+                    "Trả JSON: {\"results\": {\"<keyword>\": {\"concept_code\": \"...\", \"concept_name\": \"...\"}}}"
                 )
                 user_prompt = (
                     f"Phân loại danh sách keyword/API sau thành concept trung tính (UPPER_SNAKE_CASE):\n"
@@ -543,9 +554,31 @@ def run_pipeline(
     )
 
     # STEP E: Escalate concepts & map evidence
+    # available_concepts: từ resolved_concepts (nếu có) — cùng vocabulary JIT,
+    # để feature_concepts khớp concept codes mà JIT sinh LOs (overlap > 0).
+    available_concepts = None
+    if args.resolved_concepts and args.resolved_concepts.is_file():
+        try:
+            with open(args.resolved_concepts, "r", encoding="utf-8") as f:
+                rc = json.load(f)
+            available_concepts = []
+            for item in rc.get("resolved", []):
+                available_concepts.extend(item.get("concept_codes", []))
+            for item in rc.get("proposed", []):
+                c = item.get("concept_code") or item.get("concept_codes")
+                if isinstance(c, list):
+                    available_concepts.extend(c)
+                elif c:
+                    available_concepts.append(c)
+            available_concepts = sorted(set(filter(None, available_concepts)))
+            print(f"[*] STEP E dùng {len(available_concepts)} concepts có sẵn từ resolved_concepts")
+        except Exception as e:
+            print(f"[WARN] Không đọc được resolved_concepts cho concept bank: {e}", file=sys.stderr)
+
     feature_concepts = escalate_and_map_concepts(
         project_graph=verified_graph,
-        file_contents_map=file_contents_map
+        file_contents_map=file_contents_map,
+        available_concepts=available_concepts
     )
 
     # Assemble final contract JSON
@@ -574,6 +607,8 @@ def main():
     parser.add_argument("--target", choices=["auto", "demo_app", "sdk_core"], default="auto", help="Target scanning strategy")
     parser.add_argument("--max-files", type=int, default=70, help="Max files limit")
     parser.add_argument("--max-chars", type=int, default=120000, help="Max total chars limit")
+    parser.add_argument("--resolved-concepts", type=Path,
+                        help="Optional: resolved_concepts.json — dùng làm concept bank cho STEP E (khớp vocabulary JIT)")
 
     args = parser.parse_args()
 

@@ -414,8 +414,10 @@ def group_feature_mode_phases(project_graph: dict, concept_map: dict, los: Dict[
             c_list = []
             for f_id in m.get('feature_ids', []):
                 for c in feature_concepts.get(f_id, []):
-                    if c not in c_list:
-                        c_list.append(c)
+                    # Hỗ trợ 2 format: string (cũ) hoặc dict {concept_code} (mới)
+                    c_code = c.get('concept_code') if isinstance(c, dict) else c
+                    if c_code and c_code not in c_list:
+                        c_list.append(c_code)
 
         m_los = []
         seen_codes = set()
@@ -427,7 +429,12 @@ def group_feature_mode_phases(project_graph: dict, concept_map: dict, los: Dict[
                     seen_codes.add(lo['code'])
                     lo_copy = dict(lo)
                     for f_id, f_concepts in feature_concepts.items():
-                        if c in f_concepts:
+                        # Match cả string lẫn dict format
+                        has_c = any(
+                            (fc.get('concept_code') if isinstance(fc, dict) else fc) == c
+                            for fc in f_concepts
+                        )
+                        if has_c:
                             lo_copy['feature_id'] = f_id
                             break
                     m_los.append(lo_copy)
@@ -522,6 +529,11 @@ def main():
 
     # 4. Group into phases — feature mode (nếu --project-graph) hoặc vertical slicing / topological layers
     if project_graph_data is not None:
+        # Unwrap format mới: {"project_graph": {...}, "feature_concepts": {...}, "sdk_api_index": {...}}
+        if isinstance(project_graph_data, dict) and 'project_graph' in project_graph_data and 'feature_concepts' in project_graph_data:
+            if concept_map_data is None or not concept_map_data.get('feature_concepts'):
+                concept_map_data = project_graph_data
+            project_graph_data = project_graph_data['project_graph']
         phases = group_feature_mode_phases(project_graph_data, concept_map_data or {}, los)
         print(f"[*] Feature mode phases: {len(phases)}")
         for p in phases:
