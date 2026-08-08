@@ -52,13 +52,15 @@ def verify_project_graph(raw: Dict[str, Any], repo_dir: Path) -> tuple:
     evidence_entries: List[Dict[str, Any]] = []
 
     # L1: files trong toàn graph tồn tại?
+    # Null-safe: LLM có thể trả "source": null / "architecture": null — .get(k, {})
+    # KHÔNG chặn được (key tồn tại với giá trị null) → phải (x or {}).
     all_files: Set[str] = set()
-    for task in verified.get("implementation", {}).get("tasks", []):
+    for task in (verified.get("implementation") or {}).get("tasks", []):
         for f in task.get("source_evidence", []):
             all_files.add(f)
         for f in task.get("modifies", []):
             all_files.add(f)
-    for f in verified.get("source", {}).get("files", []):
+    for f in (verified.get("source") or {}).get("files", []):
         all_files.add(f)
 
     valid_files: Set[str] = set()
@@ -77,7 +79,7 @@ def verify_project_graph(raw: Dict[str, Any], repo_dir: Path) -> tuple:
 
     # L2: symbol/keyword xuất hiện trong file? (grep từ tasks + architecture evidence)
     # Thu thập mọi symbol cần verify: keywords trong task action/source_evidence files
-    for task in verified.get("implementation", {}).get("tasks", []):
+    for task in (verified.get("implementation") or {}).get("tasks", []):
         task_id = task.get("id", "")
         # Lấy symbol từ source_evidence files: tìm tên class/struct khớp tên file
         for f in task.get("source_evidence", []):
@@ -101,7 +103,7 @@ def verify_project_graph(raw: Dict[str, Any], repo_dir: Path) -> tuple:
                 pass
 
     # L3: architecture nodes INFERRED → giữ + thêm evidence
-    for node in verified.get("architecture", {}).get("nodes", []):
+    for node in (verified.get("architecture") or {}).get("nodes", []):
         if node.get("evidence_type") == "INFERRED" and node.get("confidence") is not None:
             evidence_entries.append({
                 "target_id": node.get("id", ""),
@@ -112,7 +114,7 @@ def verify_project_graph(raw: Dict[str, Any], repo_dir: Path) -> tuple:
             })
 
     # L4: task phải có intent + outcome (boundary D7) — thiếu → warning (không hallucination)
-    missing_intent = [t["id"] for t in verified.get("implementation", {}).get("tasks", [])
+    missing_intent = [t["id"] for t in (verified.get("implementation") or {}).get("tasks", [])
                       if not t.get("intent") or not t.get("outcome")]
     if missing_intent:
         hallucinations.append({"type": "missing_intent_outcome", "tasks": missing_intent})

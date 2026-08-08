@@ -290,6 +290,70 @@ def merge_domains(a: dict, b: dict, c: dict, domains: list = None) -> dict:
     return result
 
 
+def _trim_json(obj, max_chars: int) -> str:
+    """Serialize obj → JSON hợp lệ, ≤ max_chars.
+
+    KHÔNG cắt chuỗi theo chỉ số ký tự thô ([:N] — vỡ cú pháp JSON + mất chữ giữa
+    từ; bài học §3.3 academic-practices-applied.md). Cắt theo CẤU TRÚC:
+      1. Bỏ field mô tả dài (description/rationale/...) — ít giá trị cross-reference
+      2. Co chuỗi còn lại theo biên từ với '…'
+      3. Bỏ phần tử cuối (list) / key cuối (dict) tới khi vừa budget
+    Luôn trả về JSON parse được (trường hợp biên: hơi quá budget nhưng không vỡ).
+    """
+    def _len(x) -> int:
+        return len(json.dumps(x, ensure_ascii=False))
+
+    s = json.dumps(obj, ensure_ascii=False)
+    if len(s) <= max_chars:
+        return s
+
+    HEAVY = {"description", "rationale", "acceptance", "details",
+             "outcome", "evidence", "purpose", "product_state"}
+
+    def drop_heavy(x):
+        if isinstance(x, dict):
+            return {k: drop_heavy(v) for k, v in x.items() if k not in HEAVY}
+        if isinstance(x, list):
+            return [drop_heavy(i) for i in x]
+        return x
+
+    def shrink_strings(x, budget):
+        if isinstance(x, str) and len(x) > budget:
+            cut = x[:budget]
+            cut = cut.rsplit(" ", 1)[0] if " " in cut else cut
+            return cut + "…"
+        if isinstance(x, dict):
+            return {k: shrink_strings(v, budget) for k, v in x.items()}
+        if isinstance(x, list):
+            return [shrink_strings(i, budget) for i in x]
+        return x
+
+    def drop_tail(x):
+        while _len(x) > max_chars:
+            if isinstance(x, list):
+                if len(x) <= 1:
+                    break
+                x = x[:-1]
+            elif isinstance(x, dict):
+                if not x:
+                    break
+                x = {k: v for k, v in list(x.items())[:-1]}
+            else:
+                break
+        return x
+
+    # Bước 1: bỏ field mô tả dài
+    light = drop_heavy(obj)
+    if _len(light) <= max_chars:
+        return json.dumps(light, ensure_ascii=False)
+    # Bước 2: co chuỗi dài theo biên từ
+    shrunk = shrink_strings(light, max(64, max_chars // 4))
+    if _len(shrunk) <= max_chars:
+        return json.dumps(shrunk, ensure_ascii=False)
+    # Bước 3: bỏ phần tử cuối
+    return json.dumps(drop_tail(shrunk), ensure_ascii=False)
+
+
 def run_pipeline(source_file: Path, goal: str, tech_stack: str, output_path: Path,
                  max_chars_a: int = 60000, max_chars_b: int = 40000, max_chars_c: int = 60000,
                  include_domains: list = None, profile: str = None) -> dict:
@@ -312,9 +376,10 @@ def run_pipeline(source_file: Path, goal: str, tech_stack: str, output_path: Pat
         sys_a, user_a = build_call_a(source_text, goal, tech_stack, max_chars_a, domains=group_a, profile_extra=profile_extra)
         res_a = _llm_json(sys_a, user_a)
 
-    # Tóm tắt features cho call B/C (nếu có data)
-    features_summary = json.dumps(res_a.get("features", []), ensure_ascii=False)[:8000]
-    arch_summary = json.dumps(res_a.get("architecture", {}), ensure_ascii=False)[:4000]
+    # Tóm tắt features cho call B/C (nếu có data) — trim theo CẤU TRÚC, không cắt
+    # giữa chuỗi: giữ JSON hợp lệ cho prompt LLM (xem _trim_json).
+    features_summary = _trim_json(res_a.get("features", []), 8000)
+    arch_summary = _trim_json(res_a.get("architecture", {}), 4000)
 
     if group_b:
         print(f"[*] Call B: {group_b}...")

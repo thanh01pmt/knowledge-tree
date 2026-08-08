@@ -76,7 +76,13 @@ def collect_keywords(project_graph: Dict[str, Any], repo_dir: Path) -> Dict[str,
         node_id = f"feature:{f.get('id', '')}"
         for kw in f.get("api_usage", []):
             # api_usage có thể là 'UserDefaults.currentUserId' — lấy token đầu
+            # (tên class/framework có nghĩa concept). Token đầu vô nghĩa
+            # ('self.viewModel.loadData' → 'self') thì giữ nguyên chuỗi đầy đủ
+            # để LLM mapping xử lý thay vì biến thành keyword rác.
             base_kw = kw.split(".")[0] if isinstance(kw, str) else kw
+            if isinstance(base_kw, str) and (
+                    len(base_kw) < 2 or base_kw.lower() in {"self", "this", "super"}):
+                base_kw = kw
             entry = keywords.setdefault(base_kw, {"source": "feature_api_usage",
                                                   "evidence": {},
                                                   "node_ids": set()})
@@ -96,6 +102,9 @@ def collect_keywords(project_graph: Dict[str, Any], repo_dir: Path) -> Dict[str,
             keywords[sym] = {"source": "observed", "evidence": e.get("source", {})}
 
     # 2. Imports + framework calls từ code DemoApp (parse từng file)
+    # Khởi tạo scan_roots NGOÀI khối if — nếu thiếu parser (_HAS_PARSER=False),
+    # bước 3 vẫn chạy vòng lặp này (rỗng) thay vì UnboundLocalError.
+    scan_roots: List[Path] = []
     if _HAS_PARSER:
         app_dirs = ["DemoApp", "Example", "App", "app"]
         scan_roots = [repo_dir / d for d in app_dirs if (repo_dir / d).is_dir()]

@@ -93,7 +93,12 @@ def check_dag_cycle(pg: dict) -> list:
     edges = pg.get("curriculum", {}).get("concept_prerequisites", [])
     adj = defaultdict(list)
     for e in edges:
-        adj[e["concept_code"]].append(e["requires"])
+        # requires có thể là string (implementation hiện tại) HOẶC list
+        # (schema cũ trong curriculum-graph-design-B.md) — chuẩn hoá cả 2 để
+        # tránh TypeError: unhashable type: 'list' khi DFS dùng làm dict key.
+        reqs = e["requires"] if isinstance(e["requires"], list) else [e["requires"]]
+        for r in reqs:
+            adj[e["concept_code"]].append(r)
     WHITE, GRAY, BLACK = 0, 1, 2
     color = defaultdict(int)
     cycle = []

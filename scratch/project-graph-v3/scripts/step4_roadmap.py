@@ -37,6 +37,9 @@ try:
 except ImportError:
     _LLM_AVAILABLE = False
 
+# Mọi degradation LLM được ghi lại và đẩy vào roadmap output (KHÔNG nuốt âm thầm)
+WARNINGS: List[str] = []
+
 
 # Phase theo feature priority
 PRIORITY_PHASE = {
@@ -292,6 +295,14 @@ def build_roadmap_structure(pg: Dict) -> Dict:
     caps = pg.get("capabilities", [])
     requirements = pg.get("product", {}).get("requirements", [])
 
+    # M4 — line-level trace: file → [ref] (file#L<line>) từ STEP 2 evidence.
+    # Đính vào milestone để viewer/LO giữ được truy xuất nguồn (không rơi rớt).
+    ref_by_file: Dict[str, List[str]] = defaultdict(list)
+    for ent in pg.get("evidence", {}).get("entries", []):
+        src = ent.get("source") or {}
+        if src.get("ref"):
+            ref_by_file[src.get("file", "")].append(src["ref"])
+
     # feature.priority theo capability (chuẩn hoá id nếu lệch convention)
     cap_feat = {c.get("id", ""): c.get("feature_id", "") for c in caps}
     feat_priority = {f.get("id", ""): f.get("priority", "core") for f in features}
@@ -364,10 +375,23 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                 phase = PRIORITY_PHASE.get(priority, "MVP")
 
         concepts = task_concepts(t, mappings)
+        # Scaffold nhận diện theo CẤU TRÚC: feature setup (F-CORE rank 0) hoặc
+        # action chứa marker KHỞI TẠO (tiếng Việt + Anh). KHÔNG dùng
+        # FOUNDATION_SIGNALS (appdelegate/@main/...) — quá rộng: t21
+        # (PushNotificationManager) nhắc "AppDelegate" → false positive đẩy nó
+        # lên trước prerequisite t20 (hồi quy phát hiện khi tái kiểm).
+        SCAFFOLD_MARKERS = ("scaffold", "khởi tạo", "tạo project", "create project",
+                            "project setup", "setup project", "xcode project")
+        is_scaffold = feat_journey.get(feat_id) == 0 or any(
+            m in action_lower for m in SCAFFOLD_MARKERS)
         phases[phase].append({
             "task": t,
             "concepts": concepts,
             "order": i,
+            "scaffold": is_scaffold,
+            # M4 — line-level trace (file#L<line>) từ STEP 2 evidence
+            "evidence_refs": [r for f in (t.get("source_evidence") or [])
+                              for r in ref_by_file.get(f, [])],
         })
 
     # POLISH tasks tự sinh từ missing_gaps + tech_debt (feature F6 + quality)
@@ -388,6 +412,9 @@ def build_roadmap_structure(pg: Dict) -> Dict:
             },
             "concepts": polish_concepts(g, mappings, features, tasks),
             "order": order_base + idx,
+            "scaffold": False,
+            "evidence_refs": [r for f in ([g.get("location", "")] if g.get("location") else [])
+                              for r in ref_by_file.get(f, [])],
         })
     n_gaps = len(polish_extra)
     for idx, d in enumerate(pg.get("implementation", {}).get("tech_debt", [])):
@@ -403,16 +430,52 @@ def build_roadmap_structure(pg: Dict) -> Dict:
             },
             "concepts": polish_concepts(d, mappings, features, tasks),
             "order": order_base + n_gaps + idx,
+            "scaffold": False,
+            "evidence_refs": [r for f in ([d.get("location", "")] if d.get("location") else [])
+                              for r in ref_by_file.get(f, [])],
         })
     phases["POLISH"].extend(polish_extra)
 
+    # Gagné guard (cross-phase): task KHÔNG được đứng trước prerequisite của nó.
+    # task_stage_mapping (LLM, STEP 3.5) chỉ là phase gợi ý — depends_on là ràng
+    # buộc CỨNG. Nếu prerequisite của task nằm ở phase SAU → KÉO prerequisite về
+    # phase của task (học nền tảng sớm, giữ nguyên stage narrative của task chính
+    # — ít xáo trộn hơn việc đẩy task xuống; fixpoint tới khi ổn định).
+    # Fix Side Effect 1: trước đây phase render theo PHASE_ORDER đè lên thứ tự
+    # topo → t8 (cần t5) đứng trước t5 (xem data thật).
+    ms_by_id = {m["task"]["id"]: (ph, m) for ph, ms in phases.items() for m in ms}
+    changed = True
+    while changed:
+        changed = False
+        for ph, ms in list(phases.items()):
+            for m in list(ms):
+                tid = m["task"]["id"]
+                for dep in (m["task"].get("depends_on", []) or []):
+                    ditem = ms_by_id.get(dep)
+                    if not ditem:
+                        continue
+                    dph, dm = ditem
+                    if PHASE_ORDER.get(dph, 9) > PHASE_ORDER.get(ph, 9):
+                        phases[ph].append(dm)
+                        phases[dph].remove(dm)
+                        ms_by_id[dep] = (ph, dm)
+                        changed = True
+                        break
+                if changed:
+                    break
+            if changed:
+                break
+
     result = {"schema_version": 3, "phases": []}
     for phase_name in sorted(phases.keys(), key=lambda p: PHASE_ORDER.get(p, 9)):
-        # Scaffold/setup task luôn đầu phase (tạo project trước khi code)
+        # Scaffold/setup task luôn đầu phase (tạo project trước khi code) — flag
+        # đã tính theo cấu trúc khi build milestone (xem is_scaffold).
         items = sorted(phases[phase_name], key=lambda x: (
-            0 if "scaffold" in x["task"].get("action", "").lower() else 1,
+            0 if x.get("scaffold") else 1,
             x["order"]
         ))
+        if not items:
+            continue  # phase rỗng sau Gagné guard promotes — không emit
         result["phases"].append({
             "phase": phase_name,
             "milestones": items,
@@ -461,6 +524,7 @@ def generate_task_lo(task: Dict, concepts: List[str], validations: List[Dict]) -
         return [{"task_id": task.get("id"), **lo} for lo in los]
     except Exception as e:
         print(f"[WARN] LLM fail task {task.get('id')}: {e}", file=sys.stderr)
+        WARNINGS.append(f"generate_task_lo fail ({task.get('id')}): {e} — LO fallback")
         return [{"task_id": task.get("id"), "concepts": concepts,
                  "lo": f"[fallback] {task.get('action', '')}"}]
 
@@ -561,6 +625,7 @@ def generate_tasks_lo_batch(tasks: List[Dict], validations: List[Dict],
         return out
     except Exception as e:
         print(f"[WARN] Batch LLM fail ({e}) → fallback per-task", file=sys.stderr)
+        WARNINGS.append(f"generate_tasks_lo_batch fail: {e} — fallback per-task")
         return {t["id"]: generate_task_lo(t, t.get("_concepts", []), validations)
                 for t in tasks}
 
@@ -620,6 +685,8 @@ def main():
         "phases": structure["phases"],
         "total_tasks": sum(len(p["milestones"]) for p in structure["phases"]),
     }
+    if WARNINGS:
+        roadmap["pipeline_warnings"] = list(WARNINGS)
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with open(args.output, "w", encoding="utf-8") as f:
@@ -630,6 +697,10 @@ def main():
         n = len(phase["milestones"])
         n_lo = sum(len(m.get("los", [])) for m in phase["milestones"])
         print(f"    {phase['phase']}: {n} tasks, {n_lo} LOs")
+    if WARNINGS:
+        print(f"    ⚠ {len(WARNINGS)} LLM degradation warning(s) — xem pipeline_warnings trong output:")
+        for w in WARNINGS:
+            print(f"      - {w}")
     return 0
 
 

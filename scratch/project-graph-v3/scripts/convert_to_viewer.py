@@ -63,14 +63,19 @@ def convert(roadmap: dict) -> dict:
 
             # Milestone dùng concepts THẬT của task (KHÔNG phải task_id — task
             # không phải concept). Renderer dùng field này làm nhãn concept.
+            # LƯU Ý: los_out dùng key "concept" (đã transform), KHÔNG phải
+            # "concept_code" (key của LO thô trong roadmap) — fallback đọc đúng key.
             milestone_concepts = m.get("concepts") or list({
-                lo.get("concept_code") for lo in los_out if lo.get("concept_code")
+                lo.get("concept") for lo in los_out if lo.get("concept")
             })
             milestones_out.append({
                 "id": task_id,
                 "name": task_name,
                 "concepts": milestone_concepts,
                 "concept_code": milestone_concepts[0] if milestone_concepts else task_id,
+                # M4 — line-level trace (file#L<line>) từ STEP 2 evidence, do
+                # step4_roadmap.py đính vào milestone (nếu có).
+                "evidence_refs": m.get("evidence_refs", []),
                 "learning_objectives": los_out,
             })
             concept_counter += 1
@@ -85,8 +90,10 @@ def convert(roadmap: dict) -> dict:
     project = roadmap.get("project", {})
     return {
         "project_brief": {
-            "project_code": "STREAM_CHAT_V3",
-            "title": project.get("name", "Xây app chat iOS dùng StreamChat SDK"),
+            # M1 — không hardcode template project cũ (StreamChat). Code/tiêu đề
+            # đều lấy từ roadmap; fallback trung tính, không nhắc SDK/repo.
+            "project_code": (project.get("name") or "PROJECT").upper().replace(" ", "_"),
+            "title": project.get("name", "Dự án học-by-building"),
             "goal": project.get("purpose", ""),
             "tech_stack": project.get("tech_stack", {}),
         },

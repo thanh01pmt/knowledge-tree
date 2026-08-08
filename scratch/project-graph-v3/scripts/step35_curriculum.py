@@ -48,6 +48,11 @@ except ImportError:
 # Ngưỡng cognitive load (Sweller) — concept MỚI tối đa/task
 MAX_NEW_CONCEPTS_PER_TASK = 2
 
+# Ghi nhận mọi degradation LLM (timeout/JSON lỗi) — KHÔNG nuốt âm thầm: warnings
+# được đẩy vào output artifact + in tổng kết, để pipeline/CI thấy được chất lượng
+# bị giảm thay vì exit 0 với dữ liệu rỗng/không được judge.
+WARNINGS: list = []
+
 
 def _concept_descriptions(pg: dict, master_path: Path) -> dict:
     """Nạp mô tả concept: ưu tiên master tree (Bảng 5), fallback từ mappings."""
@@ -145,6 +150,7 @@ def llm_judge_edges(pg: dict, edges: list, master_path: Path) -> list:
         return judged
     except Exception as e:
         print(f"[WARN] LLM judge fail: {e} → giữ nguyên edges cũ", file=sys.stderr)
+        WARNINGS.append(f"llm_judge_edges fail: {e} — giữ {len(edges)} edges cũ (chưa judge)")
         return edges
 
 
@@ -194,6 +200,7 @@ def assign_stages_llm(tasks: list, stages: list) -> dict:
         return {tid: _re.sub(r"^\d+\.\s*", "", st) for tid, st in assign.items()}
     except Exception as e:
         print(f"[WARN] assign_stages_llm fail: {e}", file=sys.stderr)
+        WARNINGS.append(f"assign_stages_llm fail: {e} — task_stage_mapping rỗng (fallback completion_level)")
         return {}
 
 
@@ -283,6 +290,7 @@ def llm_generate_cross_concepts(pg: dict, existing: list, master_path: Path) -> 
         return verified
     except Exception as e:
         print(f"[WARN] LLM cross-concept fail: {e}", file=sys.stderr)
+        WARNINGS.append(f"llm_generate_cross_concepts fail: {e} — 0 cross-concept edges")
         return []
 
 
@@ -543,6 +551,11 @@ def main():
     else:
         curriculum["task_stage_mapping"] = {}
 
+    # Không nuốt âm thầm: ghi warnings vào artifact để bước sau (roadmap/viewer/CI)
+    # thấy được degradation LLM.
+    if WARNINGS:
+        curriculum["pipeline_warnings"] = list(WARNINGS)
+
     pg["curriculum"] = curriculum
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
@@ -562,6 +575,10 @@ def main():
     for c in curriculum["zpd_checks"]:
         if c["verdict"] != "OK":
             print(f"    ⚠ {c['task_id']}: {c['verdict']} — {c['issues'][0][:70] if c['issues'] else ''}")
+    if WARNINGS:
+        print(f"    ⚠ {len(WARNINGS)} LLM degradation warning(s) — xem pipeline_warnings trong output:")
+        for w in WARNINGS:
+            print(f"      - {w}")
     return 0
 
 
