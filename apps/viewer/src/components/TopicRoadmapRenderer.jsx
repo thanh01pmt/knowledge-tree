@@ -197,9 +197,13 @@ function KnowledgeItem({ item, index }) {
     // Tính vị trí fixed từ item rect — tránh popup tràn ra ngoài scroll container
     const r = e.currentTarget.getBoundingClientRect();
     const popupW = 320;
+    const popupH = Math.round(window.innerHeight * 0.7);  // = maxHeight 70vh
     let x = r.right + 8;
     if (x + popupW > window.innerWidth - 8) x = Math.max(8, r.left - popupW - 8);
-    setPos({ x, y: r.top });
+    // Clamp dọc: popup (tối đa 70vh) không tràn dưới đáy viewport
+    let y = r.top;
+    if (y + popupH > window.innerHeight - 8) y = Math.max(8, window.innerHeight - popupH - 8);
+    setPos({ x, y });
   };
 
   return React.createElement('li', {
