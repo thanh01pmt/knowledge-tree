@@ -829,7 +829,7 @@ export default function KnowledgeTree3D({
       <div className="absolute top-4 left-4 flex flex-col gap-3 z-10 pointer-events-none">
         
         {/* Zoom Controls */}
-        <div className="flex flex-col bg-white/80 dark:bg-slate-50 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
+        <div className="flex flex-col bg-white/80 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
           <button onClick={handleZoomFit} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Fit to screen">
             <Maximize className="w-4 h-4" strokeWidth={2} />
           </button>
@@ -842,7 +842,7 @@ export default function KnowledgeTree3D({
         </div>
 
         {/* Action Controls */}
-        <div className="flex flex-col bg-white/80 dark:bg-slate-50 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
+        <div className="flex flex-col bg-white/80 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
           <button onClick={() => setIsPanMode(!isPanMode)} className={`p-2 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center ${isPanMode ? 'text-blue-600 bg-slate-100 dark:text-blue-400 dark:bg-slate-700' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700'}`} title={isPanMode ? "Switch to Rotate (3D Orbit) Mode" : "Switch to Pan Mode"}>
             {isPanMode ? <Hand className="w-4 h-4" strokeWidth={2} /> : <Rotate3d className="w-4 h-4" strokeWidth={2} />}
           </button>
