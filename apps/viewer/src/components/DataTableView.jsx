@@ -143,7 +143,7 @@ export default function DataTableView({ rawTreeData, theme, linksBySource, links
             <div className="flex items-center gap-2 text-sm bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-3 py-1.5 rounded-md border border-blue-200 dark:border-blue-800/50">
               <span className="font-medium">Filtered by {TABS.find(t => t.id === selectedContext.type)?.label}:</span>
               <span className="truncate max-w-[200px]">{selectedContext.item.name}</span>
-              <button onClick={() => setSelectedContext(null); setCurrentPage(1);} className="ml-2 hover:text-blue-900 dark:hover:text-blue-100">
+              <button onClick={() => { setSelectedContext(null); setCurrentPage(1); }} className="ml-2 hover:text-blue-900 dark:hover:text-blue-100">
                 <X className="w-4 h-4" />
               </button>
             </div>
