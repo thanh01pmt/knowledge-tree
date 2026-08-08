@@ -3,7 +3,7 @@
 > **Ngày:** 2026-08-08
 > **Phạm vi:** Thiết kế lại Project Graph theo canonical 8-domain model, DemoApp-first, LLM semantics (bỏ embedding resolve).
 > **Vị trí:** `scratch/project-graph-v3/` — sandbox cô lập, KHÔNG đụng `scripts/` production.
-> **Trạng thái:** 🟢 STEP 0→2 hoàn tất end-to-end trên DemoApp (verified, 0 hallucination). STEP 3-4 chưa triển khai.
+> **Trạng thái:** 🟢 STEP 0→3 hoàn tất end-to-end trên DemoApp (21 MAPPED + 7 Gap D). STEP 4 chưa triển khai.
 
 ---
 
@@ -89,7 +89,7 @@ python scripts/git_tracker.py \
 | Schema v3 (8 domain canonical) | ✅ `schemas/project_graph.schema.v3.json` + example + tests (Draft-07, D6/D7/D8) |
 | STEP 1 — LLM Project Graph (3 calls theo cụm domain) | ✅ `scripts/step1_project_graph_llm.py` — 6 features, 13 tasks, 280s |
 | STEP 2 — Verify evidence OBSERVED | ✅ `scripts/step2_verify.py` — 21 evidence, 0 hallucination |
-| STEP 3 — Standardize (LLM #2, concept bank) | ⬜ Kế thừa bài học STEP E |
+| STEP 3 — Standardize (LLM #2, concept bank) | ✅ `scripts/step3_standardize.py` — 28 keywords → 21 MAPPED + 7 Gap D |
 | STEP 4 — JIT + Assemble + Judge | ⬜ Kế thừa pipeline hiện có |
 | Test trên smart-bulb + stream-chat | ⬜ |
 
