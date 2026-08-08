@@ -197,21 +197,20 @@ function KnowledgeItem({ item, index }) {
 
   const onEnter = (e) => {
     setHover(true);
-    // Tính vị trí fixed từ item rect — popup hiện GẦN item (trên/dưới),
-    // KHÔNG nhảy xa (clamp đơn thuần đưa popup lên đầu màn hình — user đang
-    // nhìn item ở đáy sẽ thấy popup 'mất' vì nằm ngoài tầm mắt).
     const r = e.currentTarget.getBoundingClientRect();
     const popupW = 320;
-    const popupH = Math.round(window.innerHeight * 0.7);  // = maxHeight 70vh
+    
     let x = r.right + 8;
     if (x + popupW > window.innerWidth - 8) x = Math.max(8, r.left - popupW - 8);
-    // Dọc: ưu tiên hiện DƯỚI item; nếu không đủ chỗ → hiện TRÊN item
-    let y = r.bottom + 6;
-    if (y + popupH > window.innerHeight - 8) {
-      y = r.top - 6 - popupH;  // hiện trên item
-    }
-    if (y < 8) y = 8;  // safety — vẫn dính viewport
-    setPos({ x, y });
+    
+    // Nếu ở nửa trên màn hình -> popup thả xuống từ top của item
+    // Nếu ở nửa dưới màn hình -> popup nảy lên từ bottom của item
+    const isTopHalf = r.top < window.innerHeight / 2;
+    const yObj = isTopHalf 
+      ? { top: Math.max(8, r.top) } 
+      : { bottom: Math.max(8, window.innerHeight - r.bottom) };
+      
+    setPos({ x, yObj });
   };
 
   return React.createElement('li', {
@@ -258,7 +257,7 @@ function KnowledgeItem({ item, index }) {
           key: 'hover',
           className: 'tkr-hover-popup',
           style: {
-            position: 'fixed', left: pos.x, top: pos.y, zIndex: 99999,
+            position: 'fixed', left: pos.x, ...pos.yObj, zIndex: 99999,
             background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
             padding: '10px 12px', width: '320px', maxHeight: '70vh', overflowY: 'auto',
             boxShadow: '0 4px 16px rgba(0,0,0,0.12)', fontSize: '12px', lineHeight: 1.5,
@@ -286,7 +285,7 @@ function KnowledgeItem({ item, index }) {
           key: 'hover',
           className: 'tkr-hover-popup',
           style: {
-            position: 'fixed', left: pos.x, top: pos.y, zIndex: 99999,
+            position: 'fixed', left: pos.x, ...pos.yObj, zIndex: 99999,
             background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
             padding: '10px 12px', width: '300px', maxHeight: '70vh', overflowY: 'auto',
             boxShadow: '0 4px 16px rgba(0,0,0,0.12)', fontSize: '12px', lineHeight: 1.5,
@@ -327,24 +326,28 @@ function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
       // CỘT TRÁI: IMPLEMENTATION
       React.createElement('div', {
         key: 'left',
-        style: { padding: '14px 16px', borderRight: '1px solid #e6e6e6' },
+        style: { padding: '16px', borderRight: '1px solid #e6e6e6' },
       }, [
-        React.createElement('div', { style: { display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '6px' } }, [
+        React.createElement('div', { style: { display: 'flex', alignItems: 'flex-start', gap: '10px', marginBottom: '10px' } }, [
           React.createElement('div', {
             onClick: () => onToggle(card.id),
             style: {
-              width: '16px', height: '16px', borderRadius: '4px', cursor: 'pointer',
+              width: '17px', height: '17px', borderRadius: '4px', cursor: 'pointer',
               border: `1.5px solid ${done ? '#0e7c6b' : '#d4d4d4'}`,
               background: done ? '#0e7c6b' : 'transparent',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
+              flex: 'none', marginTop: '2px'
             },
-          }, done && React.createElement('span', { style: { color: '#fff', fontSize: '10px' } }, '✓')),
-          React.createElement('span', {
-            style: { fontFamily: '"IBM Plex Mono", monospace', fontWeight: 600, fontSize: '12.5px', color: '#18181b' },
+          }, done && React.createElement('span', { style: { color: '#fff', fontSize: '10px', fontWeight: 'bold' } }, '✓')),
+          React.createElement('div', {
+            style: { fontFamily: '"IBM Plex Mono", monospace', fontWeight: 600, fontSize: '13px', color: '#18181b', flex: 1, lineHeight: 1.45 },
           }, card.name || card.conceptCode),
-          React.createElement('span', {
-            style: { marginLeft: 'auto', fontSize: '10px', color: '#9a9aa5', fontFamily: 'monospace' },
-          }, card.conceptCode ? `📚 ${card.conceptCode} · ${card.loCount} mục tiêu` : `${card.loCount} mục tiêu`),
+          React.createElement('div', {
+            style: { marginLeft: '12px', fontSize: '10px', color: '#9a9aa5', fontFamily: 'monospace', flex: 'none', textAlign: 'right', display: 'flex', flexDirection: 'column', gap: '3px' },
+          }, [
+            card.conceptCode && React.createElement('span', { key: 'concept' }, `📚 ${card.conceptCode}`),
+            React.createElement('span', { key: 'count' }, `· ${card.loCount} mục tiêu`),
+          ]),
         ]),
         // Mô tả: "App có thể..." (hướng đã chọn)
         React.createElement('div', {
@@ -370,6 +373,79 @@ function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
         )) : React.createElement('div', { style: { fontSize: '12px', color: '#9a9aa5', fontStyle: 'italic' } },
           'Không có SIO riêng cho concept này'),
       ]),
+    ]),
+  ]);
+}
+
+// ============================================================================
+// SIDEBAR COMPONENT
+// ============================================================================
+
+function TopicSidebar({ phases, cards, doneCards, title, goal }) {
+  const totalAllCards = cards.length;
+  const totalDone = doneCards.size;
+  const pct = totalAllCards > 0 ? Math.round((totalDone / totalAllCards) * 100) : 0;
+  
+  const phaseStats = {};
+  phases.forEach(p => {
+    const phaseCards = cards.filter(c => c.phaseId === p.id);
+    const done = phaseCards.filter(c => doneCards.has(c.id)).length;
+    phaseStats[p.id] = { done, total: phaseCards.length, pct: phaseCards.length > 0 ? Math.round((done / phaseCards.length) * 100) : 0 };
+  });
+  
+  return React.createElement('aside', {
+    className: 'sidebar',
+    style: { 
+      width: '252px', flex: 'none', position: 'sticky', top: 0, height: '100%',
+      overflowY: 'auto', borderRight: '1px solid #e6e6e6', background: '#ffffff',
+      padding: '24px 18px 24px'
+    }
+  }, [
+    React.createElement('div', { key: 'title', className: 'sidebar-title', style: { fontSize: '15px', fontWeight: 700, marginBottom: '2px' } }, title || 'Topic Roadmap'),
+    React.createElement('div', { key: 'sub', className: 'sidebar-sub', style: { fontSize: '12px', color: '#9a9aa5', marginBottom: '18px' } }, 'Topic Roadmap · Knowledge Tree'),
+    
+    React.createElement('div', { key: 'progress', className: 'progress-wrap', style: { marginBottom: '22px' } }, [
+      React.createElement('div', { key: 'top', className: 'progress-top', style: { display: 'flex', justifyContent: 'space-between', fontFamily: '"IBM Plex Mono", monospace', fontSize: '11px', color: '#5c5c66', marginBottom: '6px' } }, [
+        React.createElement('span', { key: 'label' }, pct + '% hoàn thành'),
+        React.createElement('span', { key: 'count' }, totalDone + '/' + totalAllCards),
+      ]),
+      React.createElement('div', { key: 'bar', className: 'progress-bar', style: { height: '6px', background: '#e6e6e6', borderRadius: '4px', overflow: 'hidden' } }, [
+        React.createElement('div', { key: 'fill', className: 'progress-fill', style: { height: '100%', width: pct + '%', background: '#0e7c6b', transition: 'width .35s ease' } }),
+      ]),
+    ]),
+    
+    React.createElement('ul', { key: 'nav', className: 'nav-list', style: { listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '2px', padding: 0, margin: 0 } }, 
+      phases.map(p => {
+        const stat = phaseStats[p.id] || { done: 0, total: 0, pct: 0 };
+        return React.createElement('li', { key: p.id }, 
+          React.createElement('a', {
+            className: 'nav-item' + (stat.pct === 100 ? ' active' : ''),
+            href: '#' + p.id,
+            onClick: e => {
+              e.preventDefault();
+              const el = document.getElementById(`phase-${p.id}`);
+              if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            },
+            style: { 
+              display: 'block', padding: '9px 10px', borderRadius: '7px', textDecoration: 'none',
+              fontSize: '13px', color: '#5c5c66', borderLeft: '2px solid transparent', cursor: 'pointer',
+              transition: 'background .15s ease, color .15s ease',
+              background: stat.pct === 100 ? '#e9f6f3' : 'transparent',
+              color: stat.pct === 100 ? '#0e7c6b' : '#5c5c66',
+              borderLeftColor: stat.pct === 100 ? '#0e7c6b' : 'transparent',
+              fontWeight: stat.pct === 100 ? 600 : 400,
+            }
+          }, [
+            React.createElement('span', { key: 'num', className: 'n', style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: stat.pct === 100 ? '#0e7c6b' : '#9a9aa5', marginRight: '6px' } }, String(p.id).padStart(2, '0')),
+            p.name,
+            React.createElement('span', { key: 'pct', className: 'pct', style: { float: 'right', fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: '#9a9aa5' } }, stat.pct + '%'),
+          ])
+        );
+      })
+    ),
+    
+    goal && React.createElement('div', { key: 'foot', className: 'sidebar-foot', style: { marginTop: '26px', paddingTop: '14px', borderTop: '1px solid #e6e6e6', fontSize: '11px', color: '#9a9aa5', lineHeight: 1.7 } }, [
+      React.createElement('div', { key: 'l1', style: { fontStyle: 'italic' } }, goal.slice(0, 100) + (goal.length > 100 ? '...' : ''))
     ]),
   ]);
 }
@@ -408,42 +484,49 @@ export default function TopicRoadmapRenderer({ frontendData }) {
 
   return React.createElement('div', {
     className: 'tkr-root',
-    style: { background: '#fafafa', minHeight: '100%', fontFamily: '"IBM Plex Sans", sans-serif' },
+    style: { display: 'flex', background: '#fafafa', minHeight: '100%', height: '100%', fontFamily: '"IBM Plex Sans", sans-serif' },
   }, [
-    // Header + progress
-    React.createElement('div', {
+    React.createElement(TopicSidebar, {
+      key: 'sidebar',
+      phases,
+      cards,
+      doneCards,
+      title: frontendData?.project_brief?.title,
+      goal: frontendData?.project_brief?.goal,
+    }),
+    React.createElement('main', {
+      key: 'main',
       style: {
-        background: '#fff', borderBottom: '1px solid #e6e6e6', padding: '16px 24px',
-        display: 'flex', alignItems: 'center', gap: '20px', flexWrap: 'wrap',
-      },
+        flex: 1, minWidth: 0,
+        padding: '40px clamp(20px, 5vw, 64px) 100px',
+        maxWidth: '920px',
+        margin: '0 auto',
+        overflowY: 'auto',
+        height: '100%'
+      }
     }, [
-      React.createElement('h1', { style: { fontSize: '20px', fontWeight: 700, margin: 0, color: '#18181b' } },
-        '📘 Topic Roadmap'),
-      React.createElement('span', { style: { fontSize: '12px', color: '#9a9aa5' } },
-        frontendData?.project_brief?.goal ? frontendData.project_brief.goal.slice(0, 70) + '...' : ''),
       React.createElement('div', {
-        style: {
-          marginLeft: 'auto', display: 'flex', alignItems: 'center', gap: '10px',
-          fontFamily: 'monospace', fontSize: '11px', color: '#5c5c66',
-        },
+        key: 'hero',
+        className: 'hero',
+        style: { marginBottom: '36px' }
       }, [
-        React.createElement('div', {
-          style: { width: '160px', height: '6px', background: '#e6e6e6', borderRadius: '3px', overflow: 'hidden' },
-        }, React.createElement('div', {
-          style: { height: '100%', width: `${pct}%`, background: '#0e7c6b', transition: 'width .35s' },
-        })),
-        React.createElement('span', null, `${doneCount}/${totalCards} · ${pct}%`),
+        React.createElement('h1', { 
+          key: 'h1', 
+          style: { fontSize: 'clamp(22px, 3vw, 30px)', fontWeight: 700, letterSpacing: '-0.01em', margin: '0 0 8px 0', color: '#18181b' } 
+        }, 'Topic Roadmap'),
+        React.createElement('p', { 
+          key: 'desc', 
+          style: { fontSize: '14px', color: '#5c5c66', maxWidth: '60ch', margin: 0 } 
+        }, 'Lộ trình phát triển được xây dựng dựa trên mạng lưới khái niệm. Chọn từng mục tiêu hoàn thành để theo dõi tiến độ.'),
       ]),
-    ]),
 
-    // Phases
-    React.createElement('div', { style: { padding: '24px', maxWidth: '1100px', margin: '0 auto' } },
       phases.map(phase => {
         const phaseCards = cards.filter(c => c.phaseId === phase.id);
         if (phaseCards.length === 0) return null;
         return React.createElement('section', {
           key: phase.id,
-          style: { marginBottom: '36px' },
+          id: `phase-${phase.id}`,
+          style: { marginBottom: '36px', scrollMarginTop: '24px' },
         }, [
           React.createElement('div', {
             style: {
@@ -474,6 +557,6 @@ export default function TopicRoadmapRenderer({ frontendData }) {
           ),
         ]);
       }),
-    ),
+    ]),
   ]);
 }

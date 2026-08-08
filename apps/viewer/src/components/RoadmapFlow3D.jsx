@@ -569,7 +569,7 @@ export default function RoadmapFlow3D({
           <button className="icon-btn" onClick={handleZoomFit} title="Fit View"><Maximize size={18} /></button>
           <button className="icon-btn" onClick={handleTogglePlay} title={isPlaying ? 'Pause' : 'Play'}>{isPlaying ? <Pause size={18} /> : <Play size={18} />}</button>
           <button className="icon-btn" onClick={handleReheat} title="Reheat Simulation"><Rotate3d size={18} /></button>
-          <button className="icon-btn" onClick={() => setIsPanMode(!isPanMode)} title={isPanMode ? 'Rotate Mode' : 'Pan Mode'} className={isPanMode ? 'active' : ''}>{isPanMode ? <Hand size={18} /> : <Rotate3d size={18} />}</button>
+          <button className={`icon-btn ${isPanMode ? 'active' : ''}`} onClick={() => setIsPanMode(!isPanMode)} title={isPanMode ? 'Rotate Mode' : 'Pan Mode'}>{isPanMode ? <Hand size={18} /> : <Rotate3d size={18} />}</button>
         </div>
       </div>
     </div>

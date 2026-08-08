@@ -124,26 +124,7 @@ export default function RoadmapViewer() {
               ))}
             </select>
           </div>
-          <div className="tab-selector">
-            <button 
-              className={activeTab === 'renderer' ? 'active' : ''}
-              onClick={() => setActiveTab('renderer')}
-            >
-              {roadmapType !== 'roadmap-sh' ? 'Graph View' : 'Layout'}
-            </button>
-            <button 
-              className={activeTab === 'frontend' ? 'active' : ''}
-              onClick={() => setActiveTab('frontend')}
-            >
-              Frontend.json
-            </button>
-            <button 
-              className={activeTab === 'raw' ? 'active' : ''}
-              onClick={() => setActiveTab('raw')}
-            >
-              Raw Data
-            </button>
-          </div>
+
         </div>
       </header>
 
@@ -152,7 +133,7 @@ export default function RoadmapViewer() {
           <div className="renderer-container" style={{ height: 'calc(100vh - 80px)', position: 'relative' }}>
             {selectedRoadmap.development_stages?.length > 0 && (
               <div className="dev-stages-banner" style={{
-                position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100,
+                position: 'relative', zIndex: 100,
                 background: '#f0f7f4', borderBottom: '1px solid #d5e8e0',
                 fontSize: '12.5px', color: '#3d5a50', boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
               }}>

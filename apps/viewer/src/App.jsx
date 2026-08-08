@@ -5,7 +5,8 @@ import NodeDetailsPanel from './components/NodeDetailsPanel';
 import DashboardModal from './components/DashboardModal';
 import OnboardingTour from './components/OnboardingTour';
 import RoadmapViewer from './components/RoadmapViewer';
-import RoadmapShDemo from './components/RoadmapShDemo';
+import ProjectGraphViewer from './components/ProjectGraphViewer';
+import AppLayout from './components/layout/AppLayout';
 import { parseKnowledgeTree } from './utils/dataParser';
 import './App.css';
 const DEFAULT_VISUAL_CONFIG = { 
@@ -69,10 +70,10 @@ function App() {
   const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
   const [viewMode, setViewMode] = useState(() => {
-    // Deep-link: ?view=roadmap / ?view=roadmap-sh / ?view=knowledge
+    // Deep-link: ?view=roadmap / ?view=project-graph / ?view=knowledge
     const v = new URLSearchParams(window.location.search).get('view');
-    return (v === 'roadmap' || v === 'roadmap-sh' || v === 'knowledge') ? v : 'knowledge';
-  }); // 'knowledge' | 'roadmap' | 'roadmap-sh'
+    return (v === 'roadmap' || v === 'project-graph' || v === 'knowledge') ? v : 'knowledge';
+  }); // 'knowledge' | 'roadmap' | 'project-graph'
 
   const [rawTreeData, setRawTreeData] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -227,42 +228,8 @@ function App() {
   }
 
   return (
-    <div className="flex h-screen w-screen bg-[#0f172a] overflow-hidden text-slate-200">
+    <AppLayout viewMode={viewMode} setViewMode={setViewMode}>
       <OnboardingTour />
-      
-      {/* View Mode Selector */}
-      <div className="absolute top-4 left-4 z-50 flex items-center gap-2 bg-[#1e293b] border border-slate-700 rounded-lg p-2 px-3">
-        <button
-          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-            viewMode === 'knowledge' 
-              ? 'bg-[#44bbff] text-[#0f172a]' 
-              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
-          }`}
-          onClick={() => setViewMode('knowledge')}
-        >
-          🧠 Knowledge Tree
-        </button>
-        <button
-          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-            viewMode === 'roadmap' 
-              ? 'bg-[#f6fa00] text-[#0f172a]' 
-              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
-          }`}
-          onClick={() => setViewMode('roadmap')}
-        >
-          🎯 Action Roadmap
-        </button>
-        <button
-          className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${
-            viewMode === 'roadmap-sh' 
-              ? 'bg-[#2B78E4] text-[#ffffff]' 
-              : 'text-slate-400 hover:text-slate-200 hover:bg-slate-700'
-          }`}
-          onClick={() => setViewMode('roadmap-sh')}
-        >
-          🌐 roadmap.sh
-        </button>
-      </div>
 
       {viewMode === 'knowledge' ? (
         <>
@@ -322,9 +289,9 @@ function App() {
       ) : viewMode === 'roadmap' ? (
         <RoadmapViewer />
       ) : (
-        <RoadmapShDemo />
+        <ProjectGraphViewer />
       )}
-    </div>
+    </AppLayout>
   );
 }
 
