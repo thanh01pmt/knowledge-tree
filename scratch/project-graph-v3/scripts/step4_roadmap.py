@@ -68,18 +68,23 @@ def normalize_capability_id(task_cap_id: str, capabilities: List[Dict]) -> str:
     for cap in capabilities:
         if cap.get("id", "") == norm or cap.get("id", "") == f"CAP_{norm}":
             return cap["id"]
-    # 1. Map thủ công các capability_id phổ biến (nền tảng — không phụ thuộc project)
+    # 1. Map thủ công các capability_id phổ biến (nền tảng — không phụ thuộc project).
+    # Key UPPERCASE (norm), value format CAP-XXX (dash — khớp caps id thật).
     COMMON = {
-        "app_lifecycle": "CAP_LOGIN", "session_auth": "CAP_LOGIN",
-        "session_control": "CAP_LOGIN", "ui_utils": "CAP_LOGIN",
-        "state_management": "CAP_SESSION_ACTIONS", "session_persistence": "CAP_SESSION_ACTIONS",
-        "channel_list": "CAP_CHANNEL_BROWSING", "message_thread": "CAP_MESSAGING",
-        "message_customization": "CAP_MESSAGING", "image_handling": "CAP_MESSAGING",
-        "push_notifications": "CAP_PUSH", "user_management": "CAP_PROFILE",
-        "observability": "CAP_DEVMODE", "devmode": "CAP_DEVMODE",
-        "accessibility": "CAP_ACCESSIBILITY",
+        "APP_LIFECYCLE": "CAP-LOGIN", "SESSION_AUTH": "CAP-LOGIN",
+        "SESSION_CONTROL": "CAP-LOGIN", "UI_UTILS": "CAP-LOGIN",
+        "STATE_MANAGEMENT": "CAP-SESSION-ACTIONS", "SESSION_PERSISTENCE": "CAP-SESSION-ACTIONS",
+        "CHANNEL_LIST": "CAP-CHANNEL-BROWSING", "MESSAGE_THREAD": "CAP-MESSAGING",
+        "MESSAGE_CUSTOMIZATION": "CAP-MESSAGING", "IMAGE_HANDLING": "CAP-MESSAGING",
+        "PUSH_NOTIFICATIONS": "CAP-PUSH", "USER_MANAGEMENT": "CAP-PROFILE",
+        "OBSERVABILITY": "CAP-DEVMODE", "DEVMODE": "CAP-DEVMODE",
+        "ACCESSIBILITY": "CAP-ACCESSIBILITY",
     }
     if norm in COMMON:
+        target = COMMON[norm]
+        for cap in capabilities:
+            if cap.get("id", "") == target:
+                return cap["id"]
         cap_id = COMMON[norm]
         for cap in capabilities:
             if cap.get("id", "").replace("-", "_") == cap_id:
@@ -143,6 +148,10 @@ def build_roadmap_structure(pg: Dict) -> Dict:
     cap_feat = {c.get("id", ""): c.get("feature_id", "") for c in caps}
     feat_priority = {f.get("id", ""): f.get("priority", "core") for f in features}
 
+    # Foundation tasks: setup/lifecycle/entry-point — NHẬN DIỆN từ action (không phụ thuộc feature priority)
+    FOUNDATION_SIGNALS = ["appdelegate", "entry point", "@main", "diagnostics", "configure sentry",
+                          "configure third-party", "initial setup", "setup"]
+
     ordered = topo_sort_tasks(tasks, deps)
 
     phases: Dict[str, List] = defaultdict(list)
@@ -150,7 +159,12 @@ def build_roadmap_structure(pg: Dict) -> Dict:
         cap_id = normalize_capability_id(t.get("capability_id", ""), caps)
         feat_id = cap_feat.get(cap_id, "")
         priority = feat_priority.get(feat_id, "core")
-        phase = PRIORITY_PHASE.get(priority, "MVP")
+        action_lower = (t.get("action", "") or "").lower()
+
+        if any(sig in action_lower for sig in FOUNDATION_SIGNALS):
+            phase = "FOUNDATION"
+        else:
+            phase = PRIORITY_PHASE.get(priority, "MVP")
 
         concepts = task_concepts(t, mappings)
         phases[phase].append({
@@ -158,6 +172,40 @@ def build_roadmap_structure(pg: Dict) -> Dict:
             "concepts": concepts,
             "order": i,
         })
+
+    # POLISH tasks tự sinh từ missing_gaps + tech_debt (feature F6 + quality)
+    polish_extra = []
+    order_base = len(ordered)
+    for idx, g in enumerate(pg.get("implementation", {}).get("missing_gaps", [])):
+        polish_extra.append({
+            "task": {
+                "id": f"polish-gap-{idx+1}",
+                "capability_id": "",
+                "action": f"Khắc phục: {g.get('gap', '')[:100]}",
+                "intent": f"Cải thiện chất lượng: {g.get('gap', '')[:80]}",
+                "outcome": {"user_visible": g.get('suggested_lo', '')},
+                "keywords": [],
+                "source_evidence": [g.get('location', '')] if g.get('location') else [],
+            },
+            "concepts": [],
+            "order": order_base + idx,
+        })
+    n_gaps = len(polish_extra)
+    for idx, d in enumerate(pg.get("implementation", {}).get("tech_debt", [])):
+        polish_extra.append({
+            "task": {
+                "id": f"polish-debt-{idx+1}",
+                "capability_id": "",
+                "action": f"Refactor: {d.get('issue', '')[:100]}",
+                "intent": f"Giảm tech debt: {d.get('issue', '')[:80]}",
+                "outcome": {"user_visible": d.get('suggested_phase', 'POLISH')},
+                "keywords": [],
+                "source_evidence": [d.get('location', '')] if d.get('location') else [],
+            },
+            "concepts": [],
+            "order": order_base + n_gaps + idx,
+        })
+    phases["POLISH"].extend(polish_extra)
 
     result = {"schema_version": 3, "phases": []}
     for phase_name in sorted(phases.keys(), key=lambda p: PHASE_ORDER.get(p, 9)):

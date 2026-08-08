@@ -27,9 +27,9 @@
   },
   "phases": [
     {
-      "phase_id": 1,
-      "title": "MVP",
-      "description": "MVP: 11 tasks",
+      "phase_id": 0,
+      "title": "NỀN TẢNG",
+      "description": "FOUNDATION: 2 tasks",
       "milestones": [
         {
           "id": "task-01-app-lifecycle",
@@ -41,7 +41,7 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
               "name": "CIO: Implement AppDelegate as @main entry point that exposes a sh",
-              "description": "Người học có khả năng giải thích vai trò của AppDelegate như điểm vào của ứng dụng iOS sử dụng @main và UIApplicationDelegate, và cách nó được sử dụng để tích hợp các dịch vụ bên ngoài như StreamChat.",
+              "description": "Người học có khả năng giải thích cách @main và UIApplicationDelegate đóng vai trò là điểm khởi đầu của ứng dụng iOS, liên kết với việc tích hợp StreamChat qua AppDelegate.",
               "assessment": "concept-check",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -54,7 +54,7 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
               "name": "SIO: Implement AppDelegate as @main entry point that exposes a sh",
-              "description": "Người học có khả năng triển khai một shared singleton StreamChatWrapper và truy cập nó qua thuộc tính chat trên AppDelegate để đảm bảo có sẵn toàn cục trong ứng dụng.",
+              "description": "Người học có khả năng triển khai AppDelegate với thuộc tính chat truy cập vào StreamChatWrapper.shared để khởi tạo StreamChat trong vòng đời ứng dụng.",
               "assessment": "code-review",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -67,11 +67,11 @@
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
               "name": "CIO: Implement AppDelegate as @main entry point that exposes a sh",
-              "description": "Người học có khả năng phân tích quá trình khởi động của ứng dụng để xác định thời điểm an toàn cho việc cấu hình StreamChat, đảm bảo didFinishLaunching trả về true và ứng dụng không bị crash.",
+              "description": "Người học có khả năng phân tích quy trình khởi động ứng dụng để kiểm tra rằng didFinishLaunching trả về true và StreamChatWrapper.shared được truy cập an toàn mà không gây crash.",
               "assessment": "concept-check",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "StreamChat",
+              "keyword": "UIApplicationDelegate",
               "platform": "app",
               "task_id": "task-01-app-lifecycle"
             }
@@ -83,41 +83,41 @@
           "concept_code": "task-02-diagnostics",
           "learning_objectives": [
             {
-              "code": "ULO-StreamRuntimeCheck-04",
-              "lo_type": "UNIVERSAL",
-              "concept": "StreamRuntimeCheck",
-              "name": "ULO: Implement DemoAppConfiguration to configure Sentry, Atlantis",
-              "description": "Người học có khả năng giải thích mục đích của việc tích hợp Sentry, Atlantis và performance monitor trong ứng dụng nhằm tăng khả năng quan sát và gỡ lỗi.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "SentrySDK",
-              "platform": "app",
-              "task_id": "task-02-diagnostics"
-            },
-            {
-              "code": "SIO-SentrySDK-05",
+              "code": "SIO-SentrySDK-04",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "SentrySDK",
               "name": "SIO: Implement DemoAppConfiguration to configure Sentry, Atlantis",
-              "description": "Người học có khả năng cấu hình SentrySDK để chỉ khởi tạo trong các bản RELEASE, giúp tránh gây nhiễu khi phát triển.",
+              "description": "Người học có khả năng cấu hình SentrySDK chỉ khởi động trong bản RELEASE bằng cách sử dụng chỉ thị #if DEBUG.",
               "assessment": "code-review",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "SentrySDK",
+              "keyword": "SentrySDK release-only startup",
               "platform": "app",
               "task_id": "task-02-diagnostics"
             },
             {
-              "code": "CIO-Atlantis-06",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-Atlantis-05",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "Atlantis",
-              "name": "CIO: Implement DemoAppConfiguration to configure Sentry, Atlantis",
-              "description": "Người học có khả năng triển khai cơ chế khởi động/dừng Atlantis dựa trên giá trị AppConfig.shared.demoAppConfig.isAtlantisEnabled, đảm bảo linh hoạt khi debug.",
-              "assessment": "concept-check",
+              "name": "SIO: Implement DemoAppConfiguration to configure Sentry, Atlantis",
+              "description": "Người học có khả năng triển khai logic khởi động/dừng Atlantis dựa trên giá trị AppConfig.shared.demoAppConfig.isAtlantisEnabled.",
+              "assessment": "code-review",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "Atlantis",
+              "keyword": "Atlantis configuration-based start/stop",
+              "platform": "app",
+              "task_id": "task-02-diagnostics"
+            },
+            {
+              "code": "CIO-StreamRuntimeCheck-06",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "StreamRuntimeCheck",
+              "name": "CIO: Implement DemoAppConfiguration to configure Sentry, Atlantis",
+              "description": "Người học có khả năng phân tích cách sử dụng StreamRuntimeCheck để xác định bản build nội bộ.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "StreamRuntimeCheck internal build detection",
               "platform": "app",
               "task_id": "task-02-diagnostics"
             },
@@ -126,44 +126,51 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "PerformanceMonitor",
               "name": "SIO: Implement DemoAppConfiguration to configure Sentry, Atlantis",
-              "description": "Người học có khả năng thiết lập performance monitor bắt đầu sau 3 giây cho các bản internal, phục vụ theo dõi hiệu năng trong quá trình kiểm thử.",
+              "description": "Người học có khả năng thực hiện khởi động PerformanceMonitor sau 3 giây dành cho bản build nội bộ.",
               "assessment": "code-review",
-              "bloom_level": "create",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "PerformanceMonitor",
+              "keyword": "PerformanceMonitor delayed start",
               "platform": "app",
               "task_id": "task-02-diagnostics"
             }
           ]
-        },
+        }
+      ]
+    },
+    {
+      "phase_id": 1,
+      "title": "MVP",
+      "description": "MVP: 8 tasks",
+      "milestones": [
         {
           "id": "task-03-session-persistence",
           "name": "Implement shared UserDefaults accessor for current user cred",
           "concept_code": "task-03-session-persistence",
           "learning_objectives": [
             {
-              "code": "ULO-KEY_VALUE_PERSISTENCE-08",
-              "lo_type": "UNIVERSAL",
+              "code": "CIO-KEY_VALUE_PERSISTENCE-08",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "KEY_VALUE_PERSISTENCE",
-              "name": "ULO: Implement shared UserDefaults accessor for current user cred",
-              "description": "Người học có khả năng giải thích vai trò của UserDefaults trong App Group để chia sẻ dữ liệu giữa ứng dụng và phần mở rộng hoặc giữa các ứng dụng liên quan.",
+              "name": "CIO: Implement shared UserDefaults accessor for current user cred",
+              "description": "Người học có khả năng giải thích cách sử dụng UserDefaults với applicationGroupIdentifier để lưu trữ dữ liệu dùng chung giữa các thành phần trong hệ sinh thái Apple.",
               "assessment": "concept-check",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UserDefaults",
+              "keyword": "applicationGroupIdentifier",
               "platform": "app",
               "task_id": "task-03-session-persistence"
             },
             {
-              "code": "CIO-KEY_VALUE_PERSISTENCE-09",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-KEY_VALUE_PERSISTENCE-09",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "KEY_VALUE_PERSISTENCE",
-              "name": "CIO: Implement shared UserDefaults accessor for current user cred",
-              "description": "Người học có khả năng sử dụng UserDefaults với applicationGroupIdentifier để đọc và ghi định danh người dùng hiện tại một cách bền vững.",
-              "assessment": "concept-check",
+              "name": "SIO: Implement shared UserDefaults accessor for current user cred",
+              "description": "Người học có khả năng triển khai một accessor lưu trữ currentUserId vào shared UserDefaults thuộc App Group, đảm bảo dữ liệu được đọc/ghi chính xác.",
+              "assessment": "code-review",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "applicationGroupIdentifier",
+              "keyword": "UserDefaults",
               "platform": "app",
               "task_id": "task-03-session-persistence"
             },
@@ -172,24 +179,11 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "SIO: Implement shared UserDefaults accessor for current user cred",
-              "description": "Người học có khả năng phân tích mối quan hệ giữa định danh người dùng được lưu trữ và đối tượng UserCredentials, từ đó xử lý đúng trường hợp định danh không tồn tại (trả về nil).",
+              "description": "Người học có khả năng phân tích logic truy xuất UserCredentials dựa trên currentUserId được lưu, bao gồm xử lý trường hợp không tìm thấy người dùng.",
               "assessment": "code-review",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "UserCredentials",
-              "platform": "app",
-              "task_id": "task-03-session-persistence"
-            },
-            {
-              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-11",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "name": "SIO: Implement shared UserDefaults accessor for current user cred",
-              "description": "Người học có khả năng tạo một accessor dùng chung để quản lý thông tin đăng nhập hiện tại thông qua UserDefaults, đảm bảo đọc/ghi nhất quán và an toàn.",
-              "assessment": "code-review",
-              "bloom_level": "create",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UserDefaults",
               "platform": "app",
               "task_id": "task-03-session-persistence"
             }
@@ -201,11 +195,11 @@
           "concept_code": "task-04-alert-helpers",
           "learning_objectives": [
             {
-              "code": "CIO-FRONTEND_FRAMEWORKS-12",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "ULO-FRONTEND_FRAMEWORKS-11",
+              "lo_type": "UNIVERSAL",
               "concept": "FRONTEND_FRAMEWORKS",
-              "name": "CIO: Implement reusable UIViewController alert extension for opti",
-              "description": "Người học có khả năng giải thích vai trò của UIAlertController và UIAlertAction trong việc tạo các cảnh báo nhất quán và tái sử dụng trên iOS.",
+              "name": "ULO: Implement reusable UIViewController alert extension for opti",
+              "description": "Người học có khả năng giải thích cách sử dụng UIAlertController và UIAlertAction để hiển thị cảnh báo trong iOS.",
               "assessment": "concept-check",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -214,12 +208,12 @@
               "task_id": "task-04-alert-helpers"
             },
             {
-              "code": "SIO-FRONTEND_FRAMEWORKS-13",
-              "lo_type": "SPECIFIC_IMPL",
+              "code": "CIO-FRONTEND_FRAMEWORKS-12",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "FRONTEND_FRAMEWORKS",
-              "name": "SIO: Implement reusable UIViewController alert extension for opti",
-              "description": "Người học có khả năng triển khai extension cho UIViewController hiển thị cảnh báo tùy chọn với các nút OK/Cancel và closure xử lý hành động tương ứng.",
-              "assessment": "code-review",
+              "name": "CIO: Implement reusable UIViewController alert extension for opti",
+              "description": "Người học có khả năng áp dụng UIAlertController để xây dựng extension UIViewController dùng chung hiển thị cảnh báo với tiêu đề, thông điệp và các hành động OK/Cancel.",
+              "assessment": "concept-check",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "UIAlertAction",
@@ -227,25 +221,25 @@
               "task_id": "task-04-alert-helpers"
             },
             {
-              "code": "SIO-FRONTEND_FRAMEWORKS-14",
+              "code": "SIO-FRONTEND_FRAMEWORKS-13",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "FRONTEND_FRAMEWORKS",
               "name": "SIO: Implement reusable UIViewController alert extension for opti",
-              "description": "Người học có khả năng xây dựng cảnh báo có trường nhập liệu (text input) trả về chuỗi người dùng nhập thông qua okHandler.",
+              "description": "Người học có khả năng tạo ra một cảnh báo nhập văn bản trả về chuỗi người dùng nhập qua closure okHandler.",
               "assessment": "code-review",
-              "bloom_level": "apply",
+              "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "UIAlertController",
               "platform": "app",
               "task_id": "task-04-alert-helpers"
             },
             {
-              "code": "CIO-API_INTEGRATION-15",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-API_INTEGRATION-14",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "CIO: Implement reusable UIViewController alert extension for opti",
-              "description": "Người học có khả năng phân tích luồng xử lý khi kết hợp cảnh báo với điều hướng tới UserProfileViewController và gọi closure logout/disconnect trên ChatClient.",
-              "assessment": "concept-check",
+              "name": "SIO: Implement reusable UIViewController alert extension for opti",
+              "description": "Người học có khả năng phân tích sự tích hợp giữa các hành động cảnh báo và API bằng cách gọi closures logout/disconnect cũng như điều hướng đến UserProfileViewController thông qua ChatClient.",
+              "assessment": "code-review",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "ChatClient",
@@ -260,41 +254,41 @@
           "concept_code": "task-05-image-resize",
           "learning_objectives": [
             {
-              "code": "CIO-UIImage-16",
+              "code": "CIO-UIImage-15",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "UIImage",
               "name": "CIO: Implement UIImage resizing extension for attachment thumbnai",
-              "description": "Người học có khả năng trình bày lý do cần tiêu chuẩn hóa kích thước ảnh đính kèm trong chat để đảm bảo hiển thị hiệu quả",
+              "description": "Người học có khả năng nhận biết được mục đích của việc thay đổi kích thước hình ảnh để hiển thị thumbnail trong chat.",
               "assessment": "concept-check",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UIImage",
+              "keyword": "thumbnail",
               "platform": "app",
               "task_id": "task-05-image-resize"
             },
             {
-              "code": "SIO-CGSize-17",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "CGSize",
-              "name": "SIO: Implement UIImage resizing extension for attachment thumbnai",
-              "description": "Người học có khả năng tính toán kích thước mới của ảnh bằng cách sử dụng CGSize để giữ nguyên tỷ lệ khung hình",
-              "assessment": "code-review",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "CGSize",
-              "platform": "app",
-              "task_id": "task-05-image-resize"
-            },
-            {
-              "code": "SIO-UIGraphicsBeginImageContextWithOptions-18",
+              "code": "SIO-UIGraphicsBeginImageContextWithOptions-16",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "UIGraphicsBeginImageContextWithOptions",
               "name": "SIO: Implement UIImage resizing extension for attachment thumbnai",
-              "description": "Người học có khả năng triển khai việc thay đổi kích thước ảnh trong extension UIImage bằng cách sử dụng UIGraphicsBeginImageContextWithOptions, vẽ lại ảnh và đảm bảo kết thúc context trong defer",
+              "description": "Người học có khả năng sử dụng UIGraphicsBeginImageContextWithOptions và CGSize để tạo một UIImage đã resize.",
               "assessment": "code-review",
-              "bloom_level": "create",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UIGraphicsBeginImageContextWithOptions",
+              "keyword": "resize",
+              "platform": "app",
+              "task_id": "task-05-image-resize"
+            },
+            {
+              "code": "CIO-CGSize-17",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CGSize",
+              "name": "CIO: Implement UIImage resizing extension for attachment thumbnai",
+              "description": "Người học có khả năng phân tích và áp dụng cách tính toán tỷ lệ khung hình để tránh méo ảnh, đồng thời đảm bảo gọi UIGraphicsEndImageContext trong khối defer.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "aspect ratio",
               "platform": "app",
               "task_id": "task-05-image-resize"
             }
@@ -306,24 +300,37 @@
           "concept_code": "task-06-reaction-position",
           "learning_objectives": [
             {
-              "code": "ULO-CONCEPT-19",
+              "code": "ULO-MessageReactionType-18",
               "lo_type": "UNIVERSAL",
-              "concept": "CONCEPT",
+              "concept": "MessageReactionType",
               "name": "ULO: Implement MessageReactionType position mapping for reaction ",
-              "description": "Người học có khả năng giải thích lý do cần thứ tự ổn định cho các phản ứng tin nhắn trong picker/list.",
+              "description": "Người học có khả năng giải thích tại sao cần có thứ tự ổn định và có thể dự đoán được cho danh sách phản ứng trong giao diện.",
               "assessment": "concept-check",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "MessageReactionType",
+              "keyword": "deterministic ordering",
               "platform": "app",
               "task_id": "task-06-reaction-position"
             },
             {
-              "code": "SIO-CONCEPT-20",
+              "code": "CIO-MessageReactionType-19",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MessageReactionType",
+              "name": "CIO: Implement MessageReactionType position mapping for reaction ",
+              "description": "Người học có khả năng xác định ánh xạ giữa các loại MessageReactionType đã biết (love, haha, like, sad, wow) và các vị trí từ 0 đến 4.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "position mapping",
+              "platform": "app",
+              "task_id": "task-06-reaction-position"
+            },
+            {
+              "code": "SIO-MessageReactionType-20",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "MessageReactionType",
               "name": "SIO: Implement MessageReactionType position mapping for reaction ",
-              "description": "Người học có khả năng áp dụng ánh xạ từ các loại phản ứng đã biết (love, haha, like, sad, wow) đến vị trí 0-4.",
+              "description": "Người học có khả năng triển khai hàm ánh xạ vị trí dựa trên rawValue của MessageReactionType, gán vị trí 5 cho các loại không xác định.",
               "assessment": "code-review",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
@@ -332,15 +339,15 @@
               "task_id": "task-06-reaction-position"
             },
             {
-              "code": "SIO-CONCEPT-21",
+              "code": "SIO-MessageReactionType-21",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "MessageReactionType",
               "name": "SIO: Implement MessageReactionType position mapping for reaction ",
-              "description": "Người học có khả năng triển khai xử lý các loại phản ứng không xác định để xếp vào vị trí 5.",
+              "description": "Người học có khả năng đánh giá tính đúng đắn của việc triển khai bằng cách kiểm tra các trường hợp phản ứng đã biết và không xác định, đảm bảo đáp ứng tiêu chí chấp nhận.",
               "assessment": "code-review",
-              "bloom_level": "apply",
+              "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "MessageReactionType",
+              "keyword": "validation",
               "platform": "app",
               "task_id": "task-06-reaction-position"
             }
@@ -352,41 +359,15 @@
           "concept_code": "task-08-login",
           "learning_objectives": [
             {
-              "code": "ULO-IDENTITY_AND_ACCESS_MANAGEMENT-22",
-              "lo_type": "UNIVERSAL",
-              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "name": "ULO: Implement login flow to pick a pre-configured user or enter ",
-              "description": "Người học có khả năng mô tả vai trò của danh tính người dùng và xác thực JWT trong ứng dụng chat.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "JWT",
-              "platform": "app",
-              "task_id": "task-08-login"
-            },
-            {
-              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-23",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "name": "CIO: Implement login flow to pick a pre-configured user or enter ",
-              "description": "Người học có khả năng áp dụng xác thực JWT để thiết lập phiên đăng nhập cho ChatClient.",
-              "assessment": "concept-check",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "ChatClient",
-              "platform": "app",
-              "task_id": "task-08-login"
-            },
-            {
-              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-24",
+              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-22",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "SIO: Implement login flow to pick a pre-configured user or enter ",
-              "description": "Người học có khả năng triển khai luồng đăng nhập với danh sách người dùng cấu hình sẵn và nhập thông tin xác thực nâng cao, đồng thời lưu trữ người dùng đã chọn vào UserDefaults.currentUser.",
+              "description": "",
               "assessment": "code-review",
-              "bloom_level": "create",
+              "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "currentUser",
+              "keyword": "",
               "platform": "app",
               "task_id": "task-08-login"
             }
@@ -398,25 +379,25 @@
           "concept_code": "task-09-channel-list",
           "learning_objectives": [
             {
-              "code": "CIO-FRONTEND_FRAMEWORKS-25",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "SIO-FRONTEND_FRAMEWORKS-23",
+              "lo_type": "SPECIFIC_IMPL",
               "concept": "FRONTEND_FRAMEWORKS",
-              "name": "CIO: Implement channel list screen with infinite scrolling, unrea",
-              "description": "Người học có khả năng giải thích vai trò của ChatChannelListViewController trong việc hiển thị danh sách kênh và xử lý tương tác người dùng.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
+              "name": "SIO: Implement channel list screen with infinite scrolling, unrea",
+              "description": "Người học có khả năng triển khai màn hình danh sách kênh với cuộn vô hạn, hiển thị avatar, số tin chưa đọc, tin nhắn cuối và thời gian dựa trên ChatChannelListViewController.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "ChatChannelListViewController",
               "platform": "app",
               "task_id": "task-09-channel-list"
             },
             {
-              "code": "SIO-API_INTEGRATION-26",
-              "lo_type": "SPECIFIC_IMPL",
+              "code": "CIO-API_INTEGRATION-24",
+              "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
-              "name": "SIO: Implement channel list screen with infinite scrolling, unrea",
-              "description": "Người học có khả năng áp dụng phương thức query của ChatClient để tải danh sách kênh phân trang, hỗ trợ cuộn vô hạn.",
-              "assessment": "code-review",
+              "name": "CIO: Implement channel list screen with infinite scrolling, unrea",
+              "description": "Người học có khả năng sử dụng ChatClient để truy vấn danh sách kênh theo trang (pagination) và xử lý dữ liệu trả về.",
+              "assessment": "concept-check",
               "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "query",
@@ -424,28 +405,28 @@
               "task_id": "task-09-channel-list"
             },
             {
-              "code": "CIO-FRONTEND_FRAMEWORKS-27",
+              "code": "CIO-API_INTEGRATION-25",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "FRONTEND_FRAMEWORKS",
+              "concept": "API_INTEGRATION",
               "name": "CIO: Implement channel list screen with infinite scrolling, unrea",
-              "description": "Người học có khả năng phân tích cấu trúc dữ liệu kênh để hiển thị chính xác số tin nhắn chưa đọc, đoạn tin nhắn cuối và thời gian.",
+              "description": "Người học có khả năng tích hợp thao tác xóa kênh khi vuốt trái, gọi phương thức delete từ ChatClient và cập nhật giao diện.",
               "assessment": "concept-check",
-              "bloom_level": "analyze",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "ChatChannelListViewController",
+              "keyword": "delete",
               "platform": "app",
               "task_id": "task-09-channel-list"
             },
             {
-              "code": "SIO-API_INTEGRATION-28",
+              "code": "SIO-FRONTEND_FRAMEWORKS-26",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
+              "concept": "FRONTEND_FRAMEWORKS",
               "name": "SIO: Implement channel list screen with infinite scrolling, unrea",
-              "description": "Người học có khả năng tạo chức năng tạo kênh mới và xóa kênh bằng cách sử dụng phương thức delete của ChatClient và xử lý tương tác trượt.",
+              "description": "Người học có khả năng thực hiện tạo kênh mới từ nút trên góc phải, gọi API tạo kênh và thêm vào danh sách.",
               "assessment": "code-review",
-              "bloom_level": "create",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "delete",
+              "keyword": "ChatClient",
               "platform": "app",
               "task_id": "task-09-channel-list"
             }
@@ -457,15 +438,41 @@
           "concept_code": "task-10-channel-detail",
           "learning_objectives": [
             {
-              "code": "CIO-FRONTEND_FRAMEWORKS-29",
+              "code": "CIO-FRONTEND_FRAMEWORKS-27",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "FRONTEND_FRAMEWORKS",
               "name": "CIO: Implement channel screen with message list, rich media, and ",
-              "description": "Người học có khả năng phân tích các thành phần chính của màn hình kênh chat, bao gồm danh sách tin nhắn, message composer và rich media, cùng với cách chúng tương tác trong một framework frontend.",
+              "description": "Người học có khả năng phân tích cấu trúc của màn hình chat channel trong một frontend framework, bao gồm message list, composer, và cách chúng tương tác với dữ liệu tin nhắn.",
               "assessment": "concept-check",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "ChatChannelViewController",
+              "keyword": "chat channel architecture",
+              "platform": "app",
+              "task_id": "task-10-channel-detail"
+            },
+            {
+              "code": "SIO-FRONTEND_FRAMEWORKS-28",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FRONTEND_FRAMEWORKS",
+              "name": "SIO: Implement channel screen with message list, rich media, and ",
+              "description": "Người học có khả năng triển khai danh sách tin nhắn với infinite scrolling bằng cách sử dụng các component list có sẵn của frontend framework và xử lý sự kiện cuộn để tải thêm dữ liệu.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "infinite scrolling message list",
+              "platform": "app",
+              "task_id": "task-10-channel-detail"
+            },
+            {
+              "code": "SIO-FRONTEND_FRAMEWORKS-29",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "FRONTEND_FRAMEWORKS",
+              "name": "SIO: Implement channel screen with message list, rich media, and ",
+              "description": "Người học có khả năng xây dựng message composer hỗ trợ rich media như GIF và file đính kèm, bao gồm việc tích hợp bộ chọn tệp và xử lý hiển thị media trong luồng tin nhắn.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "rich media composer",
               "platform": "app",
               "task_id": "task-10-channel-detail"
             },
@@ -474,72 +481,13 @@
               "lo_type": "SPECIFIC_IMPL",
               "concept": "FRONTEND_FRAMEWORKS",
               "name": "SIO: Implement channel screen with message list, rich media, and ",
-              "description": "Người học có khả năng triển khai tính năng cuộn vô hạn cho danh sách tin nhắn và xử lý gửi tin nhắn từ composer bằng cách sử dụng các API cụ thể của framework.",
-              "assessment": "code-review",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "MessageComposer",
-              "platform": "app",
-              "task_id": "task-10-channel-detail"
-            },
-            {
-              "code": "SIO-FRONTEND_FRAMEWORKS-31",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "FRONTEND_FRAMEWORKS",
-              "name": "SIO: Implement channel screen with message list, rich media, and ",
-              "description": "Người học có khả năng xây dựng chức năng đính kèm tệp và hiển thị GIF trong màn hình chat, đồng thời tích hợp cử chỉ nhấn giữ để thêm phản ứng (reaction) dựa trên MessageReactionType.",
+              "description": "Người học có khả năng tạo tính năng thêm reaction vào tin nhắn bằng cách bắt sự kiện long press (nhấn giữ) trên từng tin nhắn và hiển thị menu chọn reaction.",
               "assessment": "code-review",
               "bloom_level": "create",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "attachment",
+              "keyword": "message reaction long press",
               "platform": "app",
               "task_id": "task-10-channel-detail"
-            }
-          ]
-        },
-        {
-          "id": "task-11-user-profile",
-          "name": "Implement user profile screen accessible from account option",
-          "concept_code": "task-11-user-profile",
-          "learning_objectives": [
-            {
-              "code": "CIO-API_INTEGRATION-32",
-              "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "API_INTEGRATION",
-              "name": "CIO: Implement user profile screen accessible from account option",
-              "description": "Người học có khả năng giải thích vai trò của ChatClient.currentUserController trong việc truy xuất thông tin người dùng hiện tại.",
-              "assessment": "concept-check",
-              "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "CurrentUserController",
-              "platform": "app",
-              "task_id": "task-11-user-profile"
-            },
-            {
-              "code": "SIO-API_INTEGRATION-33",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
-              "name": "SIO: Implement user profile screen accessible from account option",
-              "description": "Người học có khả năng áp dụng ChatClient.currentUserController để khởi tạo UserProfileViewController và hiển thị dữ liệu hồ sơ người dùng.",
-              "assessment": "code-review",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UserProfileViewController",
-              "platform": "app",
-              "task_id": "task-11-user-profile"
-            },
-            {
-              "code": "SIO-API_INTEGRATION-34",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
-              "name": "SIO: Implement user profile screen accessible from account option",
-              "description": "Người học có khả năng tạo luồng điều hướng để đẩy UserProfileViewController từ hành động 'Show Profile' trong account options.",
-              "assessment": "code-review",
-              "bloom_level": "create",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "UserProfileViewController",
-              "platform": "app",
-              "task_id": "task-11-user-profile"
             }
           ]
         },
@@ -549,11 +497,11 @@
           "concept_code": "task-12-logout-disconnect",
           "learning_objectives": [
             {
-              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-35",
-              "lo_type": "CONCEPTUAL_IMPL",
+              "code": "ULO-IDENTITY_AND_ACCESS_MANAGEMENT-31",
+              "lo_type": "UNIVERSAL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
-              "name": "CIO: Implement logout and disconnect actions in user options aler",
-              "description": "Người học có khả năng giải thích sự khác biệt giữa logout (xóa người dùng hiện tại) và disconnect (ngắt kết nối chat) trong quản lý phiên.",
+              "name": "ULO: Implement logout and disconnect actions in user options aler",
+              "description": "Người học có khả năng giải thích vai trò của quản lý danh tính và quyền truy cập trong việc đăng xuất người dùng khỏi phiên chat.",
               "assessment": "concept-check",
               "bloom_level": "understand",
               "knowledge_dimension": "PROCEDURAL",
@@ -562,41 +510,41 @@
               "task_id": "task-12-logout-disconnect"
             },
             {
-              "code": "SIO-API_INTEGRATION-36",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "API_INTEGRATION",
-              "name": "SIO: Implement logout and disconnect actions in user options aler",
-              "description": "Người học có khả năng áp dụng phương thức disconnect của ChatClient để ngừng nhận cập nhật chat.",
-              "assessment": "code-review",
-              "bloom_level": "apply",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "ChatClient",
-              "platform": "app",
-              "task_id": "task-12-logout-disconnect"
-            },
-            {
-              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-37",
+              "code": "SIO-IDENTITY_AND_ACCESS_MANAGEMENT-32",
               "lo_type": "SPECIFIC_IMPL",
               "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
               "name": "SIO: Implement logout and disconnect actions in user options aler",
-              "description": "Người học có khả năng tạo hành động logout trong menu tùy chọn người dùng để xóa người dùng hiện tại khỏi phiên.",
+              "description": "Người học có khả năng triển khai chức năng logout trong ChatClient để xóa người dùng hiện tại.",
               "assessment": "code-review",
-              "bloom_level": "create",
+              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "logout",
               "platform": "app",
               "task_id": "task-12-logout-disconnect"
             },
             {
-              "code": "CIO-API_INTEGRATION-38",
+              "code": "SIO-API_INTEGRATION-33",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement logout and disconnect actions in user options aler",
+              "description": "Người học có khả năng sử dụng phương thức disconnect trong ChatClient để ngắt kết nối chat.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "disconnect",
+              "platform": "app",
+              "task_id": "task-12-logout-disconnect"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-34",
               "lo_type": "CONCEPTUAL_IMPL",
               "concept": "API_INTEGRATION",
               "name": "CIO: Implement logout and disconnect actions in user options aler",
-              "description": "Người học có khả năng phân tích menu tùy chọn người dùng để đảm bảo cả hai tùy chọn logout và disconnect đều có thể truy cập.",
+              "description": "Người học có khả năng phân tích sự tương tác giữa logout và disconnect trong alert tùy chọn người dùng để đảm bảo kết thúc phiên sạch sẽ.",
               "assessment": "concept-check",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
-              "keyword": "disconnect",
+              "keyword": "ChatClient",
               "platform": "app",
               "task_id": "task-12-logout-disconnect"
             }
@@ -607,7 +555,7 @@
     {
       "phase_id": 2,
       "title": "MỞ RỘNG",
-      "description": "EXTEND: 1 tasks",
+      "description": "EXTEND: 2 tasks",
       "milestones": [
         {
           "id": "task-07-push-registration",
@@ -615,37 +563,50 @@
           "concept_code": "task-07-push-registration",
           "learning_objectives": [
             {
-              "code": "ULO-didRegisterForRemoteNotificationsWithDeviceToken-39",
+              "code": "ULO-CONCEPT-35",
               "lo_type": "UNIVERSAL",
-              "concept": "didRegisterForRemoteNotificationsWithDeviceToken",
+              "concept": "CONCEPT",
               "name": "ULO: Register device token with Stream backend after remote notif",
-              "description": "Người học có khả năng hiểu được sự cần thiết của việc chuyển tiếp device token đến backend của Stream sau khi đăng ký nhận thông báo từ xa của Apple để kích hoạt thông báo đẩy cho các hoạt động chat.",
+              "description": "Người học có khả năng hiểu được quy trình đăng ký thông báo đẩy (remote notifications) và tầm quan trọng của device token trong việc nhận thông báo khi app ở trạng thái nền.",
               "assessment": "concept-check",
               "bloom_level": "understand",
-              "knowledge_dimension": "PROCEDURAL",
-              "keyword": "didRegisterForRemoteNotificationsWithDeviceToken",
-              "platform": "app",
-              "task_id": "task-07-push-registration"
-            },
-            {
-              "code": "SIO-registerForPushNotifications-40",
-              "lo_type": "SPECIFIC_IMPL",
-              "concept": "registerForPushNotifications",
-              "name": "SIO: Register device token with Stream backend after remote notif",
-              "description": "Người học có khả năng thực hiện việc đăng ký device token bằng cách gọi `chat.registerForPushNotifications` trong phương thức `didRegisterForRemoteNotificationsWithDeviceToken`.",
-              "assessment": "code-review",
-              "bloom_level": "apply",
               "knowledge_dimension": "PROCEDURAL",
               "keyword": "registerForPushNotifications",
               "platform": "app",
               "task_id": "task-07-push-registration"
             },
             {
-              "code": "CIO-aps-environment-41",
+              "code": "SIO-CONCEPT-36",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Register device token with Stream backend after remote notif",
+              "description": "Người học có khả năng thực hiện việc đăng ký nhận thông báo đẩy bằng cách sử dụng method 'registerForPushNotifications' của StreamChat trong hàm 'didRegisterForRemoteNotificationsWithDeviceToken'.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "didRegisterForRemoteNotificationsWithDeviceToken",
+              "platform": "app",
+              "task_id": "task-07-push-registration"
+            },
+            {
+              "code": "CIO-CONCEPT-37",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "aps-environment",
+              "concept": "CONCEPT",
               "name": "CIO: Register device token with Stream backend after remote notif",
-              "description": "Người học có khả năng phân tích yêu cầu về entitlement 'aps-environment' và vai trò của nó trong việc cho phép thông báo đẩy hoạt động cho ứng dụng.",
+              "description": "Người học có khả năng chuyển tiếp device token từ AppDelegate đến StreamChatWrapper để hoàn tất quá trình đăng ký.",
+              "assessment": "concept-check",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "StreamChatWrapper",
+              "platform": "app",
+              "task_id": "task-07-push-registration"
+            },
+            {
+              "code": "CIO-CONCEPT-38",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Register device token with Stream backend after remote notif",
+              "description": "Người học có khả năng phân tích và kiểm tra sự tồn tại của entitlement 'aps-environment' để đảm bảo cấu hình push notification chính xác.",
               "assessment": "concept-check",
               "bloom_level": "analyze",
               "knowledge_dimension": "PROCEDURAL",
@@ -654,11 +615,615 @@
               "task_id": "task-07-push-registration"
             }
           ]
+        },
+        {
+          "id": "task-11-user-profile",
+          "name": "Implement user profile screen accessible from account option",
+          "concept_code": "task-11-user-profile",
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-39",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement user profile screen accessible from account option",
+              "description": "Người học có khả năng giải thích vai trò của CurrentUserController trong việc lấy dữ liệu hồ sơ người dùng từ ChatClient",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "CurrentUserController",
+              "platform": "app",
+              "task_id": "task-11-user-profile"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-40",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement user profile screen accessible from account option",
+              "description": "Người học có khả năng khởi tạo UserProfileViewController với dữ liệu từ ChatClient.currentUserController để hiển thị thông tin hồ sơ",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UserProfileViewController",
+              "platform": "app",
+              "task_id": "task-11-user-profile"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-41",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement user profile screen accessible from account option",
+              "description": "Người học có khả năng thực hiện điều hướng đến UserProfileViewController từ một alert action trong màn hình tài khoản",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "ChatClient",
+              "platform": "app",
+              "task_id": "task-11-user-profile"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-42",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement user profile screen accessible from account option",
+              "description": "Người học có khả năng phân tích các bước tích hợp API cần thiết để hiển thị dữ liệu người dùng hiện tại trên màn hình hồ sơ",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "CurrentUserController",
+              "platform": "app",
+              "task_id": "task-11-user-profile"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "HOÀN THIỆN",
+      "description": "POLISH: 10 tasks",
+      "milestones": [
+        {
+          "id": "polish-gap-1",
+          "name": "Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetI",
+          "concept_code": "polish-gap-1",
+          "learning_objectives": [
+            {
+              "code": "CIO-UIImage-43",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "UIImage",
+              "name": "CIO: Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetI",
+              "description": "Người học có khả năng giải thích tại sao việc force-unwrap UIGraphicsGetImageFromCurrentImageContext() trong UIImage.resized(to:) có thể gây crash khi context rỗng.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "force unwrap, UIGraphicsGetImageFromCurrentImageContext",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            },
+            {
+              "code": "SIO-UIImage-44",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "UIImage",
+              "name": "SIO: Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetI",
+              "description": "Người học có khả năng triển khai nil-coalescing fallback để trả về ảnh gốc khi context tạo ảnh thất bại trong phương thức resized(to:).",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "nil-coalescing, fallback, resized(to:)",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            },
+            {
+              "code": "CIO-UIImage-45",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "UIImage",
+              "name": "CIO: Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetI",
+              "description": "Người học có khả năng phân tích ảnh hưởng của việc sử dụng nil-coalescing đối với hiệu năng và độ an toàn của code khi xử lý ảnh.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "nil-coalescing, performance, safety",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-2",
+          "name": "Khắc phục: UIViewController+Alert.swift uses hardcoded Engli",
+          "concept_code": "polish-gap-2",
+          "learning_objectives": [
+            {
+              "code": "CIO-LOCALIZATION-46",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCALIZATION",
+              "name": "CIO: Khắc phục: UIViewController+Alert.swift uses hardcoded Engli",
+              "description": "Người học có khả năng giải thích vì sao việc sử dụng chuỗi tiếng Anh cứng nhắc trong mã nguồn (như tiêu đề nút OK, Cancel) là vấn đề về khả năng địa phương hóa và trải nghiệm người dùng.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "hardcoded strings",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            },
+            {
+              "code": "SIO-LOCALIZATION-47",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCALIZATION",
+              "name": "SIO: Khắc phục: UIViewController+Alert.swift uses hardcoded Engli",
+              "description": "Người học có khả năng sử dụng NSLocalizedString để thay thế các chuỗi tiếng Anh cứng nhắc trong tệp UIViewController+Alert.swift bằng các khóa bản địa hóa tương ứng.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "NSLocalizedString",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            },
+            {
+              "code": "ULO-LOCALIZATION-48",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCALIZATION",
+              "name": "ULO: Khắc phục: UIViewController+Alert.swift uses hardcoded Engli",
+              "description": "Người học có khả năng phân tích mã nguồn của UIViewController+Alert.swift để xác định tất cả các chuỗi giao diện người dùng cần chuyển vào Localizable.strings, bao gồm tiêu đề và nhãn nút.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "string extraction",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            },
+            {
+              "code": "SIO-LOCALIZATION-49",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCALIZATION",
+              "name": "SIO: Khắc phục: UIViewController+Alert.swift uses hardcoded Engli",
+              "description": "Người học có khả năng tạo hoặc cập nhật tệp Localizable.strings với các khóa và giá trị thích hợp cho tất cả các chuỗi đã trích xuất, đảm bảo định dạng đúng và khả năng mở rộng cho nhiều ngôn ngữ.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Localizable.strings",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-3",
+          "name": "Khắc phục: No didFailToRegisterForRemoteNotificationsWithErr",
+          "concept_code": "polish-gap-3",
+          "learning_objectives": [
+            {
+              "code": "ULO-CONCEPT-50",
+              "lo_type": "UNIVERSAL",
+              "concept": "CONCEPT",
+              "name": "ULO: Khắc phục: No didFailToRegisterForRemoteNotificationsWithErr",
+              "description": "Người học có khả năng giải thích vai trò của phương thức didFailToRegisterForRemoteNotificationsWithError trong quá trình đăng ký nhận thông báo đẩy.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "didFailToRegisterForRemoteNotificationsWithError",
+              "platform": "app",
+              "task_id": "polish-gap-3"
+            },
+            {
+              "code": "SIO-CONCEPT-51",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Khắc phục: No didFailToRegisterForRemoteNotificationsWithErr",
+              "description": "Người học có khả năng triển khai phương thức didFailToRegisterForRemoteNotificationsWithError trong AppDelegate để xử lý lỗi đăng ký và ghi log/phản hồi.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "handle-registration-failure",
+              "platform": "app",
+              "task_id": "polish-gap-3"
+            },
+            {
+              "code": "CIO-CONCEPT-52",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Khắc phục: No didFailToRegisterForRemoteNotificationsWithErr",
+              "description": "Người học có khả năng phân tích tác động của việc thiếu handler lỗi đăng ký thông báo đẩy và đề xuất cách hiển thị lỗi không gây chết ứng dụng.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "non-fatal-error",
+              "platform": "app",
+              "task_id": "polish-gap-3"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-4",
+          "name": "Khắc phục: Login flow in README has no visible error handlin",
+          "concept_code": "polish-gap-4",
+          "learning_objectives": [
+            {
+              "code": "ULO-authentication-53",
+              "lo_type": "UNIVERSAL",
+              "concept": "authentication",
+              "name": "ULO: Khắc phục: Login flow in README has no visible error handlin",
+              "description": "Người học có khả năng giải thích tầm quan trọng của việc xử lý lỗi xác thực (JWT không hợp lệ, xác thực thất bại) trong luồng đăng nhập.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "importance of error handling",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            },
+            {
+              "code": "CIO-authentication-54",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "authentication",
+              "name": "CIO: Khắc phục: Login flow in README has no visible error handlin",
+              "description": "Người học có khả năng phân tích luồng đăng nhập hiện tại trong README để xác định các điểm thiếu xử lý lỗi cho JWT không hợp lệ hoặc xác thực thất bại.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "analyze login flow",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            },
+            {
+              "code": "SIO-authentication-55",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "authentication",
+              "name": "SIO: Khắc phục: Login flow in README has no visible error handlin",
+              "description": "Người học có khả năng triển khai hiển thị thông báo lỗi (error alert) khi xác thực thất bại hoặc JWT không hợp lệ trong luồng đăng nhập.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "error alert",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            },
+            {
+              "code": "SIO-authentication-56",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "authentication",
+              "name": "SIO: Khắc phục: Login flow in README has no visible error handlin",
+              "description": "Người học có khả năng thiết kế giải pháp giữ nguyên trạng thái người dùng hiện tại khi xác thực thất bại, tránh mất phiên đăng nhập hợp lệ.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "preserve user state",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-5",
+          "name": "Khắc phục: No unit tests for UserDefaults.currentUserId or M",
+          "concept_code": "polish-gap-5",
+          "learning_objectives": [
+            {
+              "code": "ULO-CONCEPT-57",
+              "lo_type": "UNIVERSAL",
+              "concept": "CONCEPT",
+              "name": "ULO: Khắc phục: No unit tests for UserDefaults.currentUserId or M",
+              "description": "Người học có khả năng giải thích tầm quan trọng của việc kiểm thử đơn vị cho lưu trữ phiên và thứ tự phản ứng.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "unit-testing",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            },
+            {
+              "code": "SIO-CONCEPT-58",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Khắc phục: No unit tests for UserDefaults.currentUserId or M",
+              "description": "Người học có khả năng viết unit test cho UserDefaults.currentUserId để xác minh lưu trữ và truy xuất đúng.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UserDefaults",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            },
+            {
+              "code": "SIO-CONCEPT-59",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Khắc phục: No unit tests for UserDefaults.currentUserId or M",
+              "description": "Người học có khả năng viết unit test cho MessageReactionType.position mapping để đảm bảo thứ tự chính xác.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "MessageReactionType",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            },
+            {
+              "code": "CIO-CONCEPT-60",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Khắc phục: No unit tests for UserDefaults.currentUserId or M",
+              "description": "Người học có khả năng phân tích các trường hợp biên trong kiểm thử session persistence và reaction ordering.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "edge-cases",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-1",
+          "name": "Refactor: Three presentAlert overloads duplicate alert creat",
+          "concept_code": "polish-debt-1",
+          "learning_objectives": [
+            {
+              "code": "ULO-CONCEPT-61",
+              "lo_type": "UNIVERSAL",
+              "concept": "CONCEPT",
+              "name": "ULO: Refactor: Three presentAlert overloads duplicate alert creat",
+              "description": "Người học có khả năng giải thích vì sao việc trùng lặp logic khởi tạo alert trong các overload là một code smell và ảnh hưởng đến khả năng bảo trì.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "code-smell",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            },
+            {
+              "code": "SIO-CONCEPT-62",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Three presentAlert overloads duplicate alert creat",
+              "description": "Người học có khả năng phân tích ba overload hiện có của presentAlert để xác định các điểm chung và khác biệt nhằm đề xuất một phương pháp hợp nhất.",
+              "assessment": "code-review",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "overload-analysis",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            },
+            {
+              "code": "CIO-CONCEPT-63",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Refactor: Three presentAlert overloads duplicate alert creat",
+              "description": "Người học có khả năng áp dụng kỹ thuật refactoring 'Extract Method' để tạo một phương thức riêng xử lý logic tạo alert, từ đó loại bỏ sự trùng lặp.",
+              "assessment": "concept-check",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "extract-method",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            },
+            {
+              "code": "CIO-CONCEPT-64",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Refactor: Three presentAlert overloads duplicate alert creat",
+              "description": "Người học có khả năng thiết kế một API thống nhất cho việc hiển thị alert giảm thiểu số lượng overload mà vẫn đảm bảo tính tương thích ngược.",
+              "assessment": "concept-check",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "api-design",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-2",
+          "name": "Refactor: Sentry DSN is hardcoded in source; Atlantis and pe",
+          "concept_code": "polish-debt-2",
+          "learning_objectives": [
+            {
+              "code": "ULO-CONCEPT-65",
+              "lo_type": "UNIVERSAL",
+              "concept": "CONCEPT",
+              "name": "ULO: Refactor: Sentry DSN is hardcoded in source; Atlantis and pe",
+              "description": "Người học có khả năng giải thích vì sao việc hardcode Sentry DSN và trộn lẫn cấu hình Atlantis với cờ nội bộ là nợ kỹ thuật, gây khó khăn trong bảo trì, triển khai và mở rộng hệ thống.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "tech debt, hardcoded config, configuration entanglement",
+              "platform": "app",
+              "task_id": "polish-debt-2"
+            },
+            {
+              "code": "SIO-CONCEPT-66",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Sentry DSN is hardcoded in source; Atlantis and pe",
+              "description": "Người học có khả năng thực hiện refactor để chuyển Sentry DSN từ hằng số trong mã nguồn sang biến môi trường, đồng thời cập nhật các nơi sử dụng và tài liệu cấu hình tương ứng.",
+              "assessment": "code-review",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "environment variable, Sentry DSN, code refactoring",
+              "platform": "app",
+              "task_id": "polish-debt-2"
+            },
+            {
+              "code": "CIO-CONCEPT-67",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Refactor: Sentry DSN is hardcoded in source; Atlantis and pe",
+              "description": "Người học có khả năng phân tích mã nguồn hiện tại để xác định các điểm trộn lẫn giữa cấu hình Atlantis, cấu hình performance và cờ nội bộ, từ đó đề xuất cách tách biệt rõ ràng giữa các thành phần cấu hình.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "configuration separation, code analysis, modularization",
+              "platform": "app",
+              "task_id": "polish-debt-2"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-3",
+          "name": "Refactor: AppDelegate combines app lifecycle, push registrat",
+          "concept_code": "polish-debt-3",
+          "learning_objectives": [
+            {
+              "code": "ULO-SEPARATION_OF_CONCERNS-68",
+              "lo_type": "UNIVERSAL",
+              "concept": "SEPARATION_OF_CONCERNS",
+              "name": "ULO: Refactor: AppDelegate combines app lifecycle, push registrat",
+              "description": "Người học có khả năng giải thích vì sao AppDelegate nên giữ vai trò duy nhất là điều phối vòng đời ứng dụng, tránh gộp chung các trách nhiệm khác",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "AppDelegate responsibilities",
+              "platform": "app",
+              "task_id": "polish-debt-3"
+            },
+            {
+              "code": "CIO-REFACTORING-69",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "REFACTORING",
+              "name": "CIO: Refactor: AppDelegate combines app lifecycle, push registrat",
+              "description": "Người học có khả năng áp dụng nguyên tắc Separation of Concerns để tách biệt các phần đăng ký push notification và wrapper access ra khỏi AppDelegate",
+              "assessment": "concept-check",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "extract responsibilities",
+              "platform": "app",
+              "task_id": "polish-debt-3"
+            },
+            {
+              "code": "SIO-APP_DELEGATE-70",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "APP_DELEGATE",
+              "name": "SIO: Refactor: AppDelegate combines app lifecycle, push registrat",
+              "description": "Người học có khả năng thiết kế cấu trúc refactored cho AppDelegate bằng cách tạo các service hoặc coordinator riêng cho từng trách nhiệm",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "design refactored structure",
+              "platform": "app",
+              "task_id": "polish-debt-3"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-4",
+          "name": "Refactor: Force unwrap of image context result can crash on ",
+          "concept_code": "polish-debt-4",
+          "learning_objectives": [
+            {
+              "code": "ULO-CONCEPT-71",
+              "lo_type": "UNIVERSAL",
+              "concept": "CONCEPT",
+              "name": "ULO: Refactor: Force unwrap of image context result can crash on ",
+              "description": "Người học có khả năng giải thích các rủi ro của force unwrap đối với kết quả optional từ image context, đặc biệt trong các trường hợp ngoại lệ.",
+              "assessment": "concept-check",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "force unwrap",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            },
+            {
+              "code": "CIO-CONCEPT-72",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Refactor: Force unwrap of image context result can crash on ",
+              "description": "Người học có khả năng vận dụng các kỹ thuật unwrap an toàn như guard let hoặc if let để xử lý kết quả optional từ image context, giảm thiểu khả năng crash.",
+              "assessment": "concept-check",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "safe unwrapping",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            },
+            {
+              "code": "SIO-CONCEPT-73",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Force unwrap of image context result can crash on ",
+              "description": "Người học có khả năng phân tích các tình huống cụ thể mà kết quả image context có thể là nil, từ đó xác định cách xử lý lỗi phù hợp cho từng trường hợp.",
+              "assessment": "code-review",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "edge cases",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            },
+            {
+              "code": "SIO-CONCEPT-74",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Force unwrap of image context result can crash on ",
+              "description": "Người học có khả năng tạo ra một kế hoạch refactor để thay thế force unwrap bằng các phương thức xử lý optional an toàn và kiểm thử biên.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "refactoring plan",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-5",
+          "name": "Refactor: Login and channel behavior documented but not cove",
+          "concept_code": "polish-debt-5",
+          "learning_objectives": [
+            {
+              "code": "CIO-CONCEPT-75",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "CONCEPT",
+              "name": "CIO: Refactor: Login and channel behavior documented but not cove",
+              "description": "Người học có khả năng phân tích tài liệu và mã nguồn hiện có để xác định các hành vi đăng nhập và kênh cần được kiểm thử tự động.",
+              "assessment": "concept-check",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "test analysis",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            },
+            {
+              "code": "SIO-CONCEPT-76",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Login and channel behavior documented but not cove",
+              "description": "Người học có khả năng thiết kế và viết các bài kiểm thử tự động cho chức năng đăng nhập bao gồm các trường hợp hợp lệ và không hợp lệ.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "login tests",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            },
+            {
+              "code": "SIO-CONCEPT-77",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Login and channel behavior documented but not cove",
+              "description": "Người học có khả năng thiết kế và viết các bài kiểm thử tự động cho hành vi kênh bao gồm tham gia, rời kênh và trao đổi tin nhắn.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "channel tests",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            },
+            {
+              "code": "SIO-CONCEPT-78",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CONCEPT",
+              "name": "SIO: Refactor: Login and channel behavior documented but not cove",
+              "description": "Người học có khả năng tái cấu trúc mã nguồn của chức năng đăng nhập và kênh để tăng tính khả kiểm thử mà không thay đổi hành vi.",
+              "assessment": "code-review",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "testability refactor",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            }
+          ]
         }
       ]
     }
   ],
-  "total_milestones": 12,
-  "total_concepts": 15,
-  "lo_count": 41
+  "total_milestones": 22,
+  "total_concepts": 18,
+  "lo_count": 78
 }
