@@ -49,7 +49,9 @@ def convert(roadmap: dict) -> dict:
                     "concept": concept,
                     "name": f"{prefix}: {task_name}",
                     "description": lo.get("description", ""),
-                    "assessment": "code-review" if lo_type == "SPECIFIC_IMPL" else "concept-check",
+                    # Biggs constructive alignment — assessment thật từ roadmap
+                    "assessment": lo.get("assessment")
+                        or ("code-review" if lo_type == "SPECIFIC_IMPL" else "concept-check"),
                     "bloom_level": (lo.get("bloom_level") or "understand").lower(),
                     "knowledge_dimension": "PROCEDURAL",
                     "keyword": lo.get("keyword", ""),
