@@ -515,7 +515,8 @@ def run_pipeline(
     tech_stack: str = "",
     target: str = "auto",
     max_files: int = 70,
-    max_chars: int = 120000
+    max_chars: int = 120000,
+    resolved_concepts: Optional[Path] = None
 ) -> Dict[str, Any]:
     """Execute full 5-step pipeline and write output."""
     repo_dir = repo_dir.resolve()
@@ -557,9 +558,9 @@ def run_pipeline(
     # available_concepts: từ resolved_concepts (nếu có) — cùng vocabulary JIT,
     # để feature_concepts khớp concept codes mà JIT sinh LOs (overlap > 0).
     available_concepts = None
-    if args.resolved_concepts and args.resolved_concepts.is_file():
+    if resolved_concepts and resolved_concepts.is_file():
         try:
-            with open(args.resolved_concepts, "r", encoding="utf-8") as f:
+            with open(resolved_concepts, "r", encoding="utf-8") as f:
                 rc = json.load(f)
             available_concepts = []
             for item in rc.get("resolved", []):
@@ -620,7 +621,8 @@ def main():
             tech_stack=args.tech_stack,
             target=args.target,
             max_files=args.max_files,
-            max_chars=args.max_chars
+            max_chars=args.max_chars,
+            resolved_concepts=args.resolved_concepts
         )
     except Exception as e:
         print(f"❌ Error running llm_project_graph: {e}", file=sys.stderr)
