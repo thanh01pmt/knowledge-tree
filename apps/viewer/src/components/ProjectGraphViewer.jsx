@@ -253,39 +253,39 @@ export default function ProjectGraphViewer({ theme }) {
 
         {/* Node Details Overlay */}
         {selectedNode && (
-          <div className="absolute top-6 right-6 w-80 bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl border border-slate-200/60 p-5 z-20">
+          <div className="absolute top-6 right-6 w-80 bg-white/95 dark:bg-[#1a1d21]/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.12)] rounded-xl border border-slate-200/60 dark:border-slate-800/60 p-5 z-20">
             <div className="flex justify-between items-start mb-4">
-              <h3 className="font-bold text-slate-800 text-lg leading-tight pr-4">{selectedNode.id}</h3>
+              <h3 className="font-bold text-slate-800 dark:text-slate-100 text-lg leading-tight pr-4">{selectedNode.id}</h3>
               <button 
                 onClick={() => setSelectedNode(null)}
-                className="text-slate-400 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-full w-7 h-7 flex items-center justify-center transition-colors"
+                className="text-slate-400 dark:text-slate-500 hover:text-slate-700 dark:hover:text-slate-200 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 rounded-full w-7 h-7 flex items-center justify-center transition-colors"
               >
                 ✕
               </button>
             </div>
             
             <div className="flex flex-wrap gap-2 mb-5">
-              <span className="px-2.5 py-1 bg-indigo-50 text-indigo-700 border border-indigo-100 rounded-md text-[10px] font-bold uppercase tracking-wider">
+              <span className="px-2.5 py-1 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-700 dark:text-indigo-300 border border-indigo-100 dark:border-indigo-800/50 rounded-md text-[10px] font-bold uppercase tracking-wider">
                 {selectedNode.type}
               </span>
-              <span className="px-2.5 py-1 bg-emerald-50 text-emerald-700 border border-emerald-100 rounded-md text-[10px] font-bold uppercase tracking-wider">
+              <span className="px-2.5 py-1 bg-emerald-50 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 border border-emerald-100 dark:border-emerald-800/50 rounded-md text-[10px] font-bold uppercase tracking-wider">
                 {selectedNode.layer}
               </span>
             </div>
 
             <div className="mb-5">
-              <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">Responsibility</h4>
-              <p className="text-[13px] text-slate-700 leading-relaxed">{selectedNode.responsibility}</p>
+              <h4 className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Responsibility</h4>
+              <p className="text-[13px] text-slate-700 dark:text-slate-300 leading-relaxed">{selectedNode.responsibility}</p>
             </div>
 
             {selectedNode.depends_on?.length > 0 && (
               <div>
-                <h4 className="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-2">Depends On</h4>
-                <ul className="text-[13px] text-slate-700 space-y-1.5">
+                <h4 className="text-[11px] font-bold text-slate-400 dark:text-slate-500 uppercase tracking-widest mb-2">Depends On</h4>
+                <ul className="text-[13px] text-slate-700 dark:text-slate-300 space-y-1.5">
                   {selectedNode.depends_on.map(d => (
                     <li key={d} className="flex items-start gap-2">
-                      <span className="text-slate-300 mt-0.5">↳</span>
-                      <span className="font-mono text-slate-600">{d}</span>
+                      <span className="text-slate-300 dark:text-slate-600 mt-0.5">↳</span>
+                      <span className="font-mono text-slate-600 dark:text-slate-400">{d}</span>
                     </li>
                   ))}
                 </ul>
