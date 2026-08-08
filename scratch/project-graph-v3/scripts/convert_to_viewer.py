@@ -33,7 +33,9 @@ def convert(roadmap: dict) -> dict:
         for m in phase.get("milestones", []):
             task = m.get("task", {})
             task_id = task.get("id", "T")
-            task_name = task.get("action", task_id)[:60]
+            # KHÔNG truncate action — renderer tự wrap dòng (trước cắt 60 ký tự
+            # làm mất chữ: 'mật khẩu' → 'mật k')
+            task_name = task.get("action", task_id)
 
             los_out = []
             for lo in m.get("los", []):

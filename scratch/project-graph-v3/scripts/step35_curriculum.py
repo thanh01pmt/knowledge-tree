@@ -437,13 +437,14 @@ def mastery_gates(pg: dict, phases: list) -> list:
         for m in ph.get("milestones", []):
             t = m.get("task", {})
             for acc in t.get("acceptance", []) or []:
+                # KHÔNG truncate — gate criteria là tiêu chí đánh giá, phải đầy đủ
                 if isinstance(acc, str):
-                    criteria.append(f"{t.get('id')}: {acc[:60]}")
+                    criteria.append(f"{t.get('id')}: {acc}")
                 elif isinstance(acc, dict):
-                    criteria.append(f"{t.get('id')}: {acc.get('criteria', str(acc))[:60]}")
+                    criteria.append(f"{t.get('id')}: {acc.get('criteria', str(acc))}")
             # Fallback: action làm gate gần đúng
             if not criteria:
-                criteria.append(f"{t.get('id')}: {t.get('action', '')[:60]}")
+                criteria.append(f"{t.get('id')}: {t.get('action', '')}")
         gates.append({
             "phase": ph.get("phase"),
             "criteria": criteria[:8],  # giới hạn hiển thị

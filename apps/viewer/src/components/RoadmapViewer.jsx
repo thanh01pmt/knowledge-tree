@@ -24,6 +24,7 @@ export default function RoadmapViewer() {
   const [error, setError] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [activeTab, setActiveTab] = useState('renderer'); // 'renderer' | 'raw' | 'frontend'
+  const [stagesOpen, setStagesOpen] = useState(false); // banner lộ trình phát triển — mặc định thu gọn
 
   const loadPublicRoadmaps = useCallback(async () => {
     setIsLoading(true);
@@ -148,36 +149,46 @@ export default function RoadmapViewer() {
 
       <main className="viewer-main">
         {activeTab === 'renderer' ? (
-          <div className="renderer-container" style={{ height: 'calc(100vh - 80px)' }}>
+          <div className="renderer-container" style={{ height: 'calc(100vh - 80px)', position: 'relative' }}>
             {selectedRoadmap.development_stages?.length > 0 && (
               <div className="dev-stages-banner" style={{
-                padding: '14px 20px', background: '#f0f7f4', borderBottom: '1px solid #d5e8e0',
-                fontSize: '12.5px', color: '#3d5a50', overflowY: 'auto', maxHeight: '30%',
+                position: 'absolute', top: 0, left: 0, right: 0, zIndex: 100,
+                background: '#f0f7f4', borderBottom: '1px solid #d5e8e0',
+                fontSize: '12.5px', color: '#3d5a50', boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
               }}>
-                <div style={{ fontWeight: 700, fontSize: '13px', marginBottom: '8px', color: '#0e7c6b' }}>
-                  🗺️ Lộ trình phát triển ({selectedRoadmap.development_stages.length} giai đoạn)
+                {/* Header — click để toggle (mặc định THU GỌN — không chiếm chỗ roadmap) */}
+                <div onClick={() => setStagesOpen(!stagesOpen)}
+                     style={{ padding: '8px 20px', cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <span style={{ fontWeight: 700, fontSize: '13px', color: '#0e7c6b' }}>
+                    🗺️ Lộ trình phát triển ({selectedRoadmap.development_stages.length} giai đoạn)
+                  </span>
+                  <span style={{ fontSize: '11px', color: '#4a6b5f' }}>{stagesOpen ? '▲ thu gọn' : '▼ xem chi tiết'}</span>
                 </div>
-                {selectedRoadmap.development_stages.map((s, i) => (
-                  <div key={i} style={{ marginBottom: '10px', paddingLeft: '12px', borderLeft: '2px solid #a8d5c5' }}>
-                    <div style={{ fontWeight: 600 }}>{s.stage}</div>
-                    <div style={{ color: '#4a6b5f' }}>{s.product_state}</div>
-                    {s.cross_feature_value && (
-                      <div style={{ color: '#0e7c6b', fontSize: '11.5px', marginTop: '2px' }}>
-                        ➕ {s.cross_feature_value}
+                {stagesOpen && (
+                  <div style={{ maxHeight: '50vh', overflowY: 'auto', padding: '0 20px 12px' }}>
+                    {selectedRoadmap.development_stages.map((s, i) => (
+                      <div key={i} style={{ marginBottom: '10px', paddingLeft: '12px', borderLeft: '2px solid #a8d5c5' }}>
+                        <div style={{ fontWeight: 600 }}>{s.stage}</div>
+                        <div style={{ color: '#4a6b5f' }}>{s.product_state}</div>
+                        {s.cross_feature_value && (
+                          <div style={{ color: '#0e7c6b', fontSize: '11.5px', marginTop: '2px' }}>
+                            ➕ {s.cross_feature_value}
+                          </div>
+                        )}
+                        {s.temporary_approach && (
+                          <div style={{ color: '#9a6b2f', fontSize: '11.5px', marginTop: '2px' }}>
+                            🔧 {s.temporary_approach}
+                          </div>
+                        )}
+                        {s.learn?.length > 0 && (
+                          <div style={{ color: '#5c5c66', fontSize: '11.5px', marginTop: '2px' }}>
+                            📚 Học: {s.learn.join(', ')}
+                          </div>
+                        )}
                       </div>
-                    )}
-                    {s.temporary_approach && (
-                      <div style={{ color: '#9a6b2f', fontSize: '11.5px', marginTop: '2px' }}>
-                        🔧 {s.temporary_approach}
-                      </div>
-                    )}
-                    {s.learn?.length > 0 && (
-                      <div style={{ color: '#5c5c66', fontSize: '11.5px', marginTop: '2px' }}>
-                        📚 Học: {s.learn.join(', ')}
-                      </div>
-                    )}
+                    ))}
                   </div>
-                ))}
+                )}
               </div>
             )}
             {isTopic ? (

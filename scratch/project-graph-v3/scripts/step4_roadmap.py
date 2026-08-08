@@ -378,8 +378,10 @@ def build_roadmap_structure(pg: Dict) -> Dict:
             "task": {
                 "id": f"polish-gap-{idx+1}",
                 "capability_id": "",
-                "action": f"Khắc phục: {g.get('gap', '')[:100]}",
-                "intent": f"Cải thiện chất lượng: {g.get('gap', '')[:80]}",
+                # KHÔNG truncate — dữ liệu giữ nguyên nội dung gap (trước cắt 100
+                # ký tự làm mất ý: 'đưa lên server/proxy' bị cắt bỏ)
+                "action": f"Khắc phục: {g.get('gap', '')}",
+                "intent": f"Cải thiện chất lượng: {g.get('gap', '')}",
                 "outcome": {"user_visible": g.get('suggested_lo', '')},
                 "keywords": [],
                 "source_evidence": [g.get('location', '')] if g.get('location') else [],
@@ -393,8 +395,8 @@ def build_roadmap_structure(pg: Dict) -> Dict:
             "task": {
                 "id": f"polish-debt-{idx+1}",
                 "capability_id": "",
-                "action": f"Refactor: {d.get('issue', '')[:100]}",
-                "intent": f"Giảm tech debt: {d.get('issue', '')[:80]}",
+                "action": f"Refactor: {d.get('issue', '')}",
+                "intent": f"Giảm tech debt: {d.get('issue', '')}",
                 "outcome": {"user_visible": d.get('suggested_phase', 'POLISH')},
                 "keywords": [],
                 "source_evidence": [d.get('location', '')] if d.get('location') else [],

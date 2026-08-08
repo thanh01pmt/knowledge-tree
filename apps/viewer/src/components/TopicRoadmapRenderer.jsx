@@ -194,15 +194,20 @@ function KnowledgeItem({ item, index }) {
 
   const onEnter = (e) => {
     setHover(true);
-    // Tính vị trí fixed từ item rect — tránh popup tràn ra ngoài scroll container
+    // Tính vị trí fixed từ item rect — popup hiện GẦN item (trên/dưới),
+    // KHÔNG nhảy xa (clamp đơn thuần đưa popup lên đầu màn hình — user đang
+    // nhìn item ở đáy sẽ thấy popup 'mất' vì nằm ngoài tầm mắt).
     const r = e.currentTarget.getBoundingClientRect();
     const popupW = 320;
     const popupH = Math.round(window.innerHeight * 0.7);  // = maxHeight 70vh
     let x = r.right + 8;
     if (x + popupW > window.innerWidth - 8) x = Math.max(8, r.left - popupW - 8);
-    // Clamp dọc: popup (tối đa 70vh) không tràn dưới đáy viewport
-    let y = r.top;
-    if (y + popupH > window.innerHeight - 8) y = Math.max(8, window.innerHeight - popupH - 8);
+    // Dọc: ưu tiên hiện DƯỚI item; nếu không đủ chỗ → hiện TRÊN item
+    let y = r.bottom + 6;
+    if (y + popupH > window.innerHeight - 8) {
+      y = r.top - 6 - popupH;  // hiện trên item
+    }
+    if (y < 8) y = 8;  // safety — vẫn dính viewport
     setPos({ x, y });
   };
 
