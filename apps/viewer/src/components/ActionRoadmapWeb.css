@@ -508,3 +508,23 @@
 .action-roadmap-scope .step.flash {
   animation: flash 1.3s ease;
 }
+
+/* ================= DARK MODE ================= */
+.dark .action-roadmap-scope {
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --border: #334155;
+  --border-strong: #475569;
+  --ink: #f8fafc;
+  --ink-dim: #94a3b8;
+  --ink-faint: #64748b;
+  --accent: #2dd4bf;
+  --accent-bg: rgba(14, 124, 107, 0.3);
+  --time: #fb923c;
+  --time-bg: rgba(180, 83, 12, 0.3);
+  --review: #818cf8;
+  --review-bg: rgba(79, 70, 229, 0.3);
+  --assumed: #94a3b8;
+  --verify: #34d399;
+  --verify-bg: rgba(15, 157, 99, 0.2);
+}

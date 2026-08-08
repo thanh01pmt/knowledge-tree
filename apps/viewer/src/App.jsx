@@ -75,6 +75,15 @@ function App() {
     return (v === 'roadmap' || v === 'project-graph' || v === 'knowledge') ? v : 'knowledge';
   }); // 'knowledge' | 'roadmap' | 'project-graph'
 
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem('kt_theme');
+    return saved || 'dark';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('kt_theme', theme);
+  }, [theme]);
+
   const [rawTreeData, setRawTreeData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -228,7 +237,7 @@ function App() {
   }
 
   return (
-    <AppLayout viewMode={viewMode} setViewMode={setViewMode}>
+    <AppLayout viewMode={viewMode} setViewMode={setViewMode} theme={theme} setTheme={setTheme}>
       <OnboardingTour />
 
       {viewMode === 'knowledge' ? (
@@ -269,6 +278,7 @@ function App() {
               selectedNode={selectedNode}
               isolatedNodeId={isolatedNodeId}
               searchMatchingIds={searchMatchingIds}
+              theme={theme}
             />
           </div>
 
@@ -287,9 +297,9 @@ function App() {
           />
         </>
       ) : viewMode === 'roadmap' ? (
-        <RoadmapViewer />
+        <RoadmapViewer theme={theme} />
       ) : (
-        <ProjectGraphViewer />
+        <ProjectGraphViewer theme={theme} />
       )}
     </AppLayout>
   );

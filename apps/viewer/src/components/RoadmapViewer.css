@@ -221,3 +221,26 @@
     min-width: 150px;
   }
 }
+
+/* ================= DARK MODE ================= */
+.dark .roadmap-viewer {
+  background: #0f172a;
+  color: #f8fafc;
+}
+.dark .loading-spinner { color: #94a3b8; }
+.dark .viewer-header { background: #1e293b; border-bottom-color: #334155; }
+.dark .header-left h2 { color: #f8fafc; }
+.dark .badge.jit { background: rgba(14, 124, 107, 0.2); color: #2dd4bf; }
+.dark .badge.roadmap-sh { background: rgba(43, 120, 228, 0.2); color: #60a5fa; }
+.dark .project-code { color: #64748b; background: #0f172a; }
+.dark .roadmap-selector select { 
+  background: #1e293b; 
+  border-color: #334155; 
+  color: #f8fafc; 
+}
+.dark .tab-selector { background: #0f172a; }
+.dark .tab-selector button { color: #94a3b8; }
+.dark .tab-selector button:hover { color: #f8fafc; background: #1e293b; }
+.dark .tab-selector button.active { background: #0e7c6b; color: #ffffff; }
+.dark .frontend-json h3, .dark .raw-data h3 { color: #f8fafc; }
+.dark .frontend-json pre, .dark .raw-data pre { background: #0f172a; }

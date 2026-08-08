@@ -121,20 +121,20 @@ export default function NodeDetailsPanel({
   const isIsolated = isolatedNodeId === selectedNode.id;
 
   return (
-    <div className="h-[60vh] md:h-full w-full md:w-[360px] bg-[#1a1d21] border-t md:border-t-0 md:border-l border-slate-800 flex flex-col text-slate-300 z-20 transition-all duration-300 flex-shrink-0 shadow-2xl fixed md:relative bottom-0 right-0">
-      <div className="flex items-center justify-between p-3 border-b border-slate-800 bg-[#1e2227] flex-shrink-0">
+    <div className="h-[60vh] md:h-full w-full md:w-[360px] bg-white dark:bg-[#1a1d21] border-t md:border-t-0 md:border-l border-slate-200 dark:border-slate-800 flex flex-col text-slate-700 dark:text-slate-300 z-20 transition-all duration-300 flex-shrink-0 shadow-2xl fixed md:relative bottom-0 right-0">
+      <div className="flex items-center justify-between p-3 border-b border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-[#1e2227] flex-shrink-0">
         <div className="flex items-center gap-1">
           <button 
             onClick={() => onNavigateHistory('back')}
             disabled={!canGoBack}
-            className={`p-1.5 rounded-md transition-colors ${canGoBack ? 'text-slate-300 hover:bg-slate-700 hover:text-white' : 'text-slate-600 cursor-not-allowed'}`}
+            className={`p-1.5 rounded-md transition-colors ${canGoBack ? 'text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white' : 'text-slate-600 cursor-not-allowed'}`}
           >
             <ArrowLeft className="w-4 h-4" />
           </button>
           <button 
             onClick={() => onNavigateHistory('forward')}
             disabled={!canGoForward}
-            className={`p-1.5 rounded-md transition-colors ${canGoForward ? 'text-slate-300 hover:bg-slate-700 hover:text-white' : 'text-slate-600 cursor-not-allowed'}`}
+            className={`p-1.5 rounded-md transition-colors ${canGoForward ? 'text-slate-700 dark:text-slate-300 hover:bg-slate-300 dark:hover:bg-slate-700 hover:text-slate-900 dark:hover:text-white' : 'text-slate-600 cursor-not-allowed'}`}
           >
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -147,7 +147,7 @@ export default function NodeDetailsPanel({
               className={`flex items-center gap-1 px-2 py-1 rounded-md text-xs font-semibold border transition-all ${
                 isIsolated 
                   ? 'bg-amber-500/20 border-amber-500/40 text-amber-300' 
-                  : 'bg-slate-800 border-slate-700 text-slate-400 hover:text-slate-200 hover:border-slate-600'
+                  : 'bg-slate-100 dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:border-slate-600'
               }`}
               title={isIsolated ? "Show Full Tree" : "Isolate Subtree (Hide other branches)"}
             >
@@ -158,7 +158,7 @@ export default function NodeDetailsPanel({
 
           <button 
             onClick={() => onNodeSelect(null)}
-            className="text-slate-500 hover:text-slate-300 p-1.5 rounded-md hover:bg-slate-700 transition-colors text-xs font-semibold uppercase tracking-wider"
+            className="text-slate-600 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 p-1.5 rounded-md hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors text-xs font-semibold uppercase tracking-wider"
           >
             Close
           </button>
@@ -167,12 +167,12 @@ export default function NodeDetailsPanel({
 
       <div className="flex-1 overflow-y-auto custom-scrollbar flex flex-col">
         <div className="p-5 flex flex-col gap-4">
-          <div className="flex flex-wrap items-center gap-1 text-[11px] text-slate-500 font-medium tracking-wide">
+          <div className="flex flex-wrap items-center gap-1 text-[11px] text-slate-600 dark:text-slate-500 font-medium tracking-wide">
             {breadcrumbs.map((crumb, idx) => (
               <React.Fragment key={crumb.id}>
                 {idx > 0 && <ChevronRight className="w-3 h-3 text-slate-600" />}
                 <span 
-                  className={`cursor-pointer hover:text-blue-400 transition-colors ${idx === breadcrumbs.length - 1 ? 'text-slate-300 cursor-default hover:text-slate-300' : ''}`}
+                  className={`cursor-pointer hover:text-blue-400 transition-colors ${idx === breadcrumbs.length - 1 ? 'text-slate-700 dark:text-slate-300 cursor-default hover:text-slate-800 dark:hover:text-slate-300' : ''}`}
                   onClick={() => idx !== breadcrumbs.length - 1 && onNodeSelect(crumb)}
                 >
                   {crumb.name}
@@ -182,21 +182,21 @@ export default function NodeDetailsPanel({
           </div>
 
           <div className="flex items-start justify-between gap-4 mt-1">
-            <h2 className="text-2xl font-bold text-slate-100 leading-tight">
+            <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-100 leading-tight">
               {selectedNode.name}
             </h2>
-            <div className="flex items-center gap-1 mt-1 bg-slate-800/50 rounded-lg p-0.5 border border-slate-700">
+            <div className="flex items-center gap-1 mt-1 bg-slate-800/50 rounded-lg p-0.5 border border-slate-200 dark:border-slate-700">
               <button 
                 onClick={() => onNodeSelect(prevSibling)}
                 disabled={!prevSibling}
-                className={`p-1 rounded transition-colors ${prevSibling ? 'hover:bg-slate-600 text-slate-300' : 'text-slate-600 cursor-not-allowed'}`}
+                className={`p-1 rounded transition-colors ${prevSibling ? 'hover:bg-slate-400 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300' : 'text-slate-600 cursor-not-allowed'}`}
               >
                 <ChevronLeft className="w-4 h-4" />
               </button>
               <button 
                 onClick={() => onNodeSelect(nextSibling)}
                 disabled={!nextSibling}
-                className={`p-1 rounded transition-colors ${nextSibling ? 'hover:bg-slate-600 text-slate-300' : 'text-slate-600 cursor-not-allowed'}`}
+                className={`p-1 rounded transition-colors ${nextSibling ? 'hover:bg-slate-400 dark:hover:bg-slate-600 text-slate-700 dark:text-slate-300' : 'text-slate-600 cursor-not-allowed'}`}
               >
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -225,13 +225,13 @@ export default function NodeDetailsPanel({
 
           {/* Extended Metadata Attributes */}
           {selectedNode.metadata && Object.keys(selectedNode.metadata).length > 0 && (
-            <div className="grid grid-cols-2 gap-2 bg-[#23272e] p-3 rounded-xl border border-slate-800 text-xs">
+            <div className="grid grid-cols-2 gap-2 bg-slate-50 dark:bg-[#23272e] p-3 rounded-xl border border-slate-200 dark:border-slate-800 text-xs">
               {Object.entries(selectedNode.metadata).map(([key, val]) => {
                 if (key === 'color' || key === 'lo_type') return null; // skip color and lo_type since rendered elsewhere
                 return (
                   <div key={key} className="flex flex-col">
-                    <span className="text-[10px] text-slate-500 font-semibold uppercase tracking-wider">{key.replace(/_/g, ' ')}</span>
-                    <span className="text-slate-300 font-medium truncate">{typeof val === 'object' ? JSON.stringify(val) : String(val)}</span>
+                    <span className="text-[10px] text-slate-600 dark:text-slate-500 font-semibold uppercase tracking-wider">{key.replace(/_/g, ' ')}</span>
+                    <span className="text-slate-700 dark:text-slate-300 font-medium truncate">{typeof val === 'object' ? JSON.stringify(val) : String(val)}</span>
                   </div>
                 );
               })}
@@ -239,7 +239,7 @@ export default function NodeDetailsPanel({
           )}
 
           {selectedNode.description && (
-            <p className="text-sm text-slate-400 leading-relaxed mt-1 bg-[#2a2f36]/50 p-4 rounded-xl border border-slate-800/80">
+            <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed mt-1 bg-slate-50 dark:bg-[#2a2f36]/50 p-4 rounded-xl border border-slate-800/80">
               {selectedNode.description}
             </p>
           )}
@@ -248,7 +248,7 @@ export default function NodeDetailsPanel({
         {children.length > 0 ? (
           <div className="flex flex-col border-t border-slate-800/50">
             <div className="px-5 pt-5 pb-3 flex items-center justify-between">
-              <div className="text-[11px] font-semibold text-slate-500 uppercase tracking-widest">
+              <div className="text-[11px] font-semibold text-slate-600 dark:text-slate-500 uppercase tracking-widest">
                 Contents ({children.length})
               </div>
             </div>
@@ -257,16 +257,16 @@ export default function NodeDetailsPanel({
                 <button
                   key={child.id}
                   onClick={() => onNodeSelect(child)}
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-[#2a2f36] border border-transparent hover:border-slate-700/50 transition-all text-left group"
+                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:bg-[#2a2f36] border border-transparent hover:border-slate-700/50 transition-all text-left group"
                 >
-                  <div className="p-2 rounded-lg bg-slate-800 text-slate-400 group-hover:bg-slate-700 group-hover:text-blue-400 transition-colors">
+                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 group-hover:bg-slate-300 dark:hover:bg-slate-700 group-hover:text-blue-400 transition-colors">
                     <LevelIcon level={child.level} className="w-4 h-4" />
                   </div>
                   <div className="flex-1 overflow-hidden">
-                    <div className="text-sm font-medium text-slate-300 group-hover:text-slate-100 truncate transition-colors">
+                    <div className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-100 truncate transition-colors">
                       {child.name}
                     </div>
-                    <div className="text-[10px] text-slate-500 uppercase tracking-wider mt-0.5">
+                    <div className="text-[10px] text-slate-600 dark:text-slate-500 uppercase tracking-wider mt-0.5">
                       {child.level}
                     </div>
                   </div>
@@ -276,7 +276,7 @@ export default function NodeDetailsPanel({
             </div>
           </div>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-500 border-t border-slate-800/50">
+          <div className="flex-1 flex flex-col items-center justify-center p-8 text-center text-slate-600 dark:text-slate-500 border-t border-slate-800/50">
             <Minus className="w-8 h-8 mb-3 opacity-20" />
             <p className="text-sm">No child nodes available.</p>
           </div>

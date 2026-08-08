@@ -6,7 +6,7 @@ import './ActionRoadmapWeb.css';
 // ============================================================================
 
 const PHASE_COLORS = {
-  0: '#6b6b76', 1: '#0e7c6b', 2: '#2b78e4', 3: '#8e44ad',
+  0: 'var(--assumed)', 1: 'var(--accent)', 2: 'var(--review)', 3: '#8e44ad',
 };
 
 const PHASE_NAMES = {
@@ -210,9 +210,9 @@ function KnowledgeItem(_ref) {
   var isAssumed = state === 'ASSUMED';
   
   var stateColors = {
-    NEW: { dot: '#18181b' },
-    REVIEW: { dot: '#4f46e5' },
-    ASSUMED: { dot: '#6b6b76' },
+    NEW: { dot: 'var(--ink)' },
+    REVIEW: { dot: 'var(--review)' },
+    ASSUMED: { dot: 'var(--assumed)' },
   };
   
   return React.createElement('li', {
@@ -225,8 +225,8 @@ function KnowledgeItem(_ref) {
       className: 'dot' + (isOptional ? ' optional' : ''),
       style: { 
         flex: 'none', width: '6px', height: '6px', borderRadius: '50%', marginTop: '6px',
-        background: isOptional ? 'transparent' : (stateColors[state]?.dot || '#18181b'),
-        border: isOptional ? '1px solid #9a9aa5' : 'none',
+        background: isOptional ? 'transparent' : (stateColors[state]?.dot || 'var(--ink)'),
+        border: isOptional ? '1px solid var(--ink-faint)' : 'none',
       }
     }),
     React.createElement('span', {
@@ -240,7 +240,7 @@ function KnowledgeItem(_ref) {
       onClick: function() { return onJump(firstCardId); },
       style: { 
         flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
-        color: '#4f46e5', background: '#eeedfd', padding: '1px 7px', borderRadius: '20px',
+        color: 'var(--review)', background: 'var(--review-bg)', padding: '1px 7px', borderRadius: '20px',
         cursor: 'pointer', marginTop: '1px', textDecoration: 'none'
       }
     }, 'đã học · ' + firstCardId.slice(0, 8)),
@@ -249,7 +249,7 @@ function KnowledgeItem(_ref) {
       className: 'tag assumed',
       style: { 
         flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
-        color: '#6b6b76', background: '#e6e6e6', padding: '1px 7px', borderRadius: '20px',
+        color: 'var(--assumed)', background: 'var(--border)', padding: '1px 7px', borderRadius: '20px',
         marginTop: '1px'
       }
     }, 'giả định biết'),
@@ -258,7 +258,7 @@ function KnowledgeItem(_ref) {
       className: 'tag optional',
       style: { 
         flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
-        color: '#9a9aa5', background: '#f5f5f5', padding: '1px 7px', borderRadius: '20px',
+        color: 'var(--ink-faint)', background: 'var(--border)', padding: '1px 7px', borderRadius: '20px',
         marginTop: '1px'
       }
     }, 'OPTIONAL'),
@@ -267,7 +267,7 @@ function KnowledgeItem(_ref) {
       className: 'tag bloom',
       style: { 
         flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
-        color: '#0e7c6b', background: '#e9f6f3', padding: '1px 7px', borderRadius: '20px',
+        color: 'var(--accent)', background: 'var(--accent-bg)', padding: '1px 7px', borderRadius: '20px',
         marginTop: '1px', textTransform: 'uppercase'
       }
     }, bloom),
@@ -298,7 +298,7 @@ function StepCard(_ref) {
       className: 'verify',
       key: id,
       style: { 
-        background: '#eafaf1', border: '1px dashed #9adcbd', borderRadius: '14px',
+        background: 'var(--verify-bg)', border: '1px dashed var(--verify)', borderRadius: '14px',
         padding: '14px 20px', display: 'flex', alignItems: 'baseline', gap: '12px',
         marginBottom: '12px'
       }
@@ -306,23 +306,23 @@ function StepCard(_ref) {
       React.createElement('span', {
         key: 'mark',
         className: 'verify-mark',
-        style: { fontFamily: '"IBM Plex Mono", monospace', color: '#0f9d63', fontWeight: 700, fontSize: '13px', flex: 'none' }
+        style: { fontFamily: '"IBM Plex Mono", monospace', color: 'var(--verify)', fontWeight: 700, fontSize: '13px', flex: 'none' }
       }, '✓'),
       React.createElement('div', {
         key: 'body',
         className: 'verify-body',
-        style: { flex: 1, fontSize: '13px', color: '#5c5c66' }
+        style: { flex: 1, fontSize: '13px', color: 'var(--ink-dim)' }
       }, [
         React.createElement('b', {
           key: 'label',
-          style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '12px', color: '#0f9d63' }
+          style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '12px', color: 'var(--verify)' }
         }, 'VERIFY — ' + label),
-        note && React.createElement('div', { key: 'desc', style: { marginTop: '4px', color: '#18181b' } }, note),
+        note && React.createElement('div', { key: 'desc', style: { marginTop: '4px', color: 'var(--ink)' } }, note),
       ]),
       time && React.createElement('span', {
         key: 'time',
         className: 'verify-time',
-        style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: '#b4530c', flex: 'none' }
+        style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: 'var(--time)', flex: 'none' }
       }, time),
     ]);
   }
@@ -345,7 +345,7 @@ function StepCard(_ref) {
     knowledgeColumn = React.createElement('p', {
       key: 'empty',
       className: 'know-empty',
-      style: { fontSize: '12.5px', color: '#9a9aa5', fontStyle: 'italic' }
+      style: { fontSize: '12.5px', color: 'var(--ink-faint)', fontStyle: 'italic' }
     }, 'Không có — chỉ ghép lại các bước ở trên.');
   }
   
@@ -354,7 +354,7 @@ function StepCard(_ref) {
     'data-id': id,
     key: id,
     style: { 
-      background: '#ffffff', border: '1px solid #e6e6e6', borderRadius: '14px',
+      background: 'var(--surface)', border: '1px solid var(--border)', borderRadius: '14px',
       marginBottom: '12px', overflow: 'hidden',
       transition: 'box-shadow .2s ease, border-color .2s ease',
       opacity: done ? 0.55 : 1
@@ -368,7 +368,7 @@ function StepCard(_ref) {
       React.createElement('div', {
         key: 'left',
         className: 'impl',
-        style: { padding: '18px 20px', borderRight: '1px solid #e6e6e6' }
+        style: { padding: '18px 20px', borderRight: '1px solid var(--border)' }
       }, [
         React.createElement('div', {
           key: 'top',
@@ -381,43 +381,43 @@ function StepCard(_ref) {
             onClick: function() { return onToggle(id); },
             style: { 
               width: '17px', height: '17px', borderRadius: '5px', 
-              border: '1.5px solid ' + (done ? '#0e7c6b' : '#d4d4d4'), flex: 'none', cursor: 'pointer',
+              border: '1.5px solid ' + (done ? 'var(--accent)' : 'var(--border-strong)'), flex: 'none', cursor: 'pointer',
               display: 'flex', alignItems: 'center', justifyContent: 'center',
-              background: done ? '#0e7c6b' : 'transparent',
+              background: done ? 'var(--accent)' : 'transparent',
               transition: 'background .15s ease, border-color .15s ease'
             }
-          }, done && React.createElement('span', { key: 'checkmark', style: { color: '#fff', fontSize: '11px' } }, '✓')),
+          }, done && React.createElement('span', { key: 'checkmark', style: { color: 'var(--surface)', fontSize: '11px' } }, '✓')),
           React.createElement('span', {
             key: 'fn',
             className: 'impl-fn',
-            style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '13.5px', fontWeight: 600, color: '#18181b' }
+            style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '13.5px', fontWeight: 600, color: 'var(--ink)' }
           }, '▶ ' + label),
           featureName && React.createElement('span', {
             key: 'feature',
             className: 'tag feature',
             style: { 
               flex: 'none', fontFamily: '"IBM Plex Mono", monospace', fontSize: '9.5px',
-              color: '#2b78e4', background: '#e7f3ff', padding: '1px 7px', borderRadius: '20px',
+              color: 'var(--review)', background: 'var(--review-bg)', padding: '1px 7px', borderRadius: '20px',
               marginTop: '1px'
             }
           }, featureName),
           time && React.createElement('span', {
             key: 'time',
             className: 'impl-time',
-            style: { marginLeft: 'auto', fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: '#b4530c' }
+            style: { marginLeft: 'auto', fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: 'var(--time)' }
           }, time),
         ]),
         React.createElement('div', {
           key: 'desc',
           className: 'impl-desc',
-          style: { fontSize: '13.5px', color: '#5c5c66', lineHeight: 1.6 }
+          style: { fontSize: '13.5px', color: 'var(--ink-dim)', lineHeight: 1.6 }
         }, note),
         note && note.includes('song song') && React.createElement('div', {
           key: 'parallel',
           className: 'impl-note',
           style: { 
             display: 'inline-flex', alignItems: 'center', gap: '5px', marginTop: '10px',
-            fontSize: '11.5px', color: '#4f46e5', background: '#eeedfd',
+            fontSize: '11.5px', color: 'var(--review)', background: 'var(--review-bg)',
             padding: '3px 8px', borderRadius: '20px'
           }
         }, [React.createElement('span', { key: 'icon' }, '⇄'), note.match(/có thể làm song song.*|parallel.*/)[0]]),
@@ -435,7 +435,7 @@ function StepCard(_ref) {
           style: { 
             display: 'flex', alignItems: 'center', gap: '6px',
             fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px',
-            letterSpacing: '0.05em', color: '#9a9aa5', marginBottom: '10px'
+            letterSpacing: '0.05em', color: 'var(--ink-faint)', marginBottom: '10px'
           }
         }, '📚 KIẾN THỨC CẦN'),
         knowledgeColumn,
@@ -463,7 +463,7 @@ function PhaseSection(_ref) {
     return sum;
   }, 0);
   
-  var phaseColor = PHASE_COLORS[parseInt(phase.num)] || '#0e7c6b';
+  var phaseColor = PHASE_COLORS[parseInt(phase.num)] || 'var(--accent)';
   var doneInPhase = steps.filter(function(s) { return doneSteps.has(s.id); }).length;
   
   return React.createElement('section', {
@@ -482,7 +482,7 @@ function PhaseSection(_ref) {
         className: 'phase-badge',
         style: { 
           fontFamily: '"IBM Plex Mono", monospace', fontSize: '11px', fontWeight: 600,
-          color: phaseColor, background: '#e9f6f3', padding: '3px 9px', borderRadius: '20px'
+          color: phaseColor, background: 'var(--accent-bg)', padding: '3px 9px', borderRadius: '20px'
         }
       }, 'PHASE ' + phase.num),
       React.createElement('h2', {
@@ -494,7 +494,7 @@ function PhaseSection(_ref) {
         className: 'phase-time',
         style: { 
           marginLeft: 'auto', fontFamily: '"IBM Plex Mono", monospace', fontSize: '11.5px',
-          color: '#b4530c', background: '#fdf1e6', padding: '3px 9px', borderRadius: '20px'
+          color: 'var(--time)', background: 'var(--time-bg)', padding: '3px 9px', borderRadius: '20px'
         }
       }, '~' + formatTime(phaseTime / 60) + ' · ' + steps.length + ' bước'),
     ]),
@@ -541,20 +541,20 @@ function Sidebar(_ref) {
     className: 'sidebar',
     style: { 
       width: '252px', flex: 'none', position: 'sticky', top: 0, height: '100%',
-      overflowY: 'auto', borderRight: '1px solid #e6e6e6', background: '#ffffff',
+      overflowY: 'auto', borderRight: '1px solid var(--border)', background: 'var(--surface)',
       padding: '24px 18px 24px'
     }
   }, [
     React.createElement('div', { key: 'title', className: 'sidebar-title', style: { fontSize: '15px', fontWeight: 700, marginBottom: '2px' } }, 'AI Quiz Generator'),
-    React.createElement('div', { key: 'sub', className: 'sidebar-sub', style: { fontSize: '12px', color: '#9a9aa5', marginBottom: '18px' } }, 'Action Roadmap · Orchable'),
+    React.createElement('div', { key: 'sub', className: 'sidebar-sub', style: { fontSize: '12px', color: 'var(--ink-faint)', marginBottom: '18px' } }, 'Action Roadmap · Orchable'),
     
     React.createElement('div', { key: 'progress', className: 'progress-wrap', style: { marginBottom: '22px' } }, [
-      React.createElement('div', { key: 'top', className: 'progress-top', style: { display: 'flex', justifyContent: 'space-between', fontFamily: '"IBM Plex Mono", monospace', fontSize: '11px', color: '#5c5c66', marginBottom: '6px' } }, [
+      React.createElement('div', { key: 'top', className: 'progress-top', style: { display: 'flex', justifyContent: 'space-between', fontFamily: '"IBM Plex Mono", monospace', fontSize: '11px', color: 'var(--ink-dim)', marginBottom: '6px' } }, [
         React.createElement('span', { key: 'label', id: 'pctLabel' }, pct + '% hoàn thành'),
         React.createElement('span', { key: 'count', id: 'doneCount' }, totalSteps + '/' + totalAllSteps),
       ]),
-      React.createElement('div', { key: 'bar', className: 'progress-bar', style: { height: '6px', background: '#e6e6e6', borderRadius: '4px', overflow: 'hidden' } }, [
-        React.createElement('div', { key: 'fill', className: 'progress-fill', id: 'progressFill', style: { height: '100%', width: pct + '%', background: '#0e7c6b', transition: 'width .35s ease' } }),
+      React.createElement('div', { key: 'bar', className: 'progress-bar', style: { height: '6px', background: 'var(--border)', borderRadius: '4px', overflow: 'hidden' } }, [
+        React.createElement('div', { key: 'fill', className: 'progress-fill', id: 'progressFill', style: { height: '100%', width: pct + '%', background: 'var(--accent)', transition: 'width .35s ease' } }),
       ]),
     ]),
     
@@ -573,37 +573,37 @@ function Sidebar(_ref) {
             },
             style: { 
               display: 'block', padding: '9px 10px', borderRadius: '7px', textDecoration: 'none',
-              fontSize: '13px', color: '#5c5c66', borderLeft: '2px solid transparent', cursor: 'pointer',
+              fontSize: '13px', color: 'var(--ink-dim)', borderLeft: '2px solid transparent', cursor: 'pointer',
               transition: 'background .15s ease, color .15s ease',
-              background: stat.pct === 100 ? '#e9f6f3' : 'transparent',
-              color: stat.pct === 100 ? '#0e7c6b' : '#5c5c66',
-              borderLeftColor: stat.pct === 100 ? '#0e7c6b' : 'transparent',
+              background: stat.pct === 100 ? 'var(--accent-bg)' : 'transparent',
+              color: stat.pct === 100 ? 'var(--accent)' : 'var(--ink-dim)',
+              borderLeftColor: stat.pct === 100 ? 'var(--accent)' : 'transparent',
               fontWeight: stat.pct === 100 ? 600 : 400,
             }
           }, [
-            React.createElement('span', { key: 'num', className: 'n', style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: stat.pct === 100 ? '#0e7c6b' : '#9a9aa5', marginRight: '6px' } }, p.num),
+            React.createElement('span', { key: 'num', className: 'n', style: { fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: stat.pct === 100 ? 'var(--accent)' : 'var(--ink-faint)', marginRight: '6px' } }, p.num),
             p.name,
-            React.createElement('span', { key: 'pct', className: 'pct', id: 'pct-' + p.id, style: { float: 'right', fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: '#9a9aa5' } }, stat.pct + '%'),
+            React.createElement('span', { key: 'pct', className: 'pct', id: 'pct-' + p.id, style: { float: 'right', fontFamily: '"IBM Plex Mono", monospace', fontSize: '10.5px', color: 'var(--ink-faint)' } }, stat.pct + '%'),
           ])
         );
       })
     ),
     
-    React.createElement('div', { key: 'foot', className: 'sidebar-foot', style: { marginTop: '26px', paddingTop: '14px', borderTop: '1px solid #e6e6e6', fontSize: '11px', color: '#9a9aa5', lineHeight: 1.7 } }, [
+    React.createElement('div', { key: 'foot', className: 'sidebar-foot', style: { marginTop: '26px', paddingTop: '14px', borderTop: '1px solid var(--border)', fontSize: '11px', color: 'var(--ink-faint)', lineHeight: 1.7 } }, [
       React.createElement('div', { key: 'l1', className: 'row', style: { display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '4px' } }, [
-        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: '#b4530c' } }),
+        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: 'var(--time)' } }),
         'Thời gian ước tính'
       ]),
       React.createElement('div', { key: 'l2', className: 'row', style: { display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '4px' } }, [
-        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: '#4f46e5' } }),
+        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: 'var(--review)' } }),
         'Đã học / làm song song'
       ]),
       React.createElement('div', { key: 'l3', className: 'row', style: { display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '4px' } }, [
-        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: '#6b6b76' } }),
+        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: 'var(--assumed)' } }),
         'Giả định đã biết'
       ]),
       React.createElement('div', { key: 'l4', className: 'row', style: { display: 'flex', alignItems: 'center', gap: '7px', marginBottom: '4px' } }, [
-        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: '#0f9d63' } }),
+        React.createElement('span', { key: 'dot', className: 'dotc', style: { width: '7px', height: '7px', borderRadius: '50%', flex: 'none', background: 'var(--verify)' } }),
         'Điểm kiểm chứng'
       ]),
     ]),
@@ -725,7 +725,7 @@ export default function ActionRoadmapWeb(_ref) {
         }, 'Action Roadmap'),
         React.createElement('p', { 
           key: 'desc', 
-          style: { fontSize: '14px', color: '#5c5c66', maxWidth: '60ch' } 
+          style: { fontSize: '14px', color: 'var(--ink-dim)', maxWidth: '60ch' } 
         }, 'Lộ trình dựng từ source code thật — mỗi bước implement đi kèm đúng kiến thức tối thiểu cần để làm bước đó. Tick vào từng bước khi hoàn thành, tiến độ được lưu lại trên trình duyệt này.'),
       ]),
       

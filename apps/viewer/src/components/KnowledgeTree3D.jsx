@@ -50,7 +50,8 @@ export default function KnowledgeTree3D({
   levelConfig, 
   selectedNode,
   isolatedNodeId = null,
-  searchMatchingIds = null
+  searchMatchingIds = null,
+  theme
 }) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
@@ -759,13 +760,13 @@ export default function KnowledgeTree3D({
       onNodeHover={handleNodeHover}
       onBackgroundClick={handleBackgroundClick}
       
-      backgroundColor="#0f172a" // Slate 900
+      backgroundColor={theme === 'dark' ? "#0f172a" : "#f8fafc"}
     />
 
       {/* Hover Preview Tooltip */}
       {hoveredNode && (
         <div 
-          className="absolute z-50 pointer-events-none bg-[#1e2227]/95 backdrop-blur shadow-2xl border border-slate-700 rounded-lg p-3 transition-opacity duration-200"
+          className="absolute z-50 pointer-events-none bg-white/95 dark:bg-[#1e2227]/95 backdrop-blur shadow-2xl border border-slate-200 dark:border-slate-700 rounded-lg p-3 transition-opacity duration-200"
           style={{
             bottom: '24px',
             left: '24px',
@@ -773,20 +774,20 @@ export default function KnowledgeTree3D({
           }}
         >
           <div className="flex items-center gap-2 mb-1">
-            <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-400 text-[9px] font-bold uppercase tracking-wider">
+            <span className="px-1.5 py-0.5 rounded bg-blue-500/20 text-blue-600 dark:text-blue-400 text-[9px] font-bold uppercase tracking-wider">
               {hoveredNode.level}
             </span>
             {hoveredNode.cs2023_ka && (
-              <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-300 text-[9px] font-bold uppercase">
+              <span className="px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-600 dark:text-purple-300 text-[9px] font-bold uppercase">
                 {hoveredNode.cs2023_ka}
               </span>
             )}
           </div>
-          <h4 className="text-slate-100 font-semibold text-sm line-clamp-2 leading-tight">
+          <h4 className="text-slate-800 dark:text-slate-100 font-semibold text-sm line-clamp-2 leading-tight">
             {hoveredNode.name}
           </h4>
           {hoveredNode.description && (
-            <p className="text-slate-400 text-xs mt-1 line-clamp-2">
+            <p className="text-slate-500 dark:text-slate-400 text-xs mt-1 line-clamp-2">
               {hoveredNode.description}
             </p>
           )}
@@ -794,28 +795,28 @@ export default function KnowledgeTree3D({
       )}
 
       {/* Legend Badge (Bottom Right) */}
-      <div className="absolute bottom-4 right-4 z-10 bg-[#1e2227]/80 backdrop-blur-md border border-slate-700/60 rounded-lg p-3 shadow-xl max-w-xs text-xs pointer-events-auto">
-        <div className="text-[10px] font-bold uppercase text-slate-400 tracking-wider mb-1.5">
+      <div className="absolute bottom-4 right-4 z-10 bg-white/80 dark:bg-[#1e2227]/80 backdrop-blur-md border border-slate-200/60 dark:border-slate-700/60 rounded-lg p-3 shadow-xl max-w-xs text-xs pointer-events-auto">
+        <div className="text-[10px] font-bold uppercase text-slate-500 dark:text-slate-400 tracking-wider mb-1.5">
           Color Strategy: {visualConfig?.coloringStrategy || 'hierarchy'}
         </div>
         {visualConfig?.coloringStrategy === 'cs2023' ? (
-          <div className="flex flex-col gap-1 text-[11px] text-slate-300">
+          <div className="flex flex-col gap-1 text-[11px] text-slate-600 dark:text-slate-300">
             <div className="flex items-center gap-2">
               <span className="w-2.5 h-2.5 rounded-full bg-purple-400 inline-block" />
               <span>Color mapped to CS2023 Knowledge Area</span>
             </div>
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-slate-600 inline-block" />
+              <span className="w-2.5 h-2.5 rounded-full bg-slate-400 dark:bg-slate-600 inline-block" />
               <span>Unmapped concept</span>
             </div>
           </div>
         ) : visualConfig?.coloringStrategy === 'connections' ? (
-          <div className="flex items-center gap-2 text-[11px] text-slate-300">
+          <div className="flex items-center gap-2 text-[11px] text-slate-600 dark:text-slate-300">
             <div className="h-2 flex-1 rounded bg-gradient-to-r from-blue-500 via-yellow-400 to-red-500" />
             <span>Low → High degree</span>
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-slate-400">
+          <div className="grid grid-cols-2 gap-x-3 gap-y-1 text-[10px] text-slate-600 dark:text-slate-400">
             <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-cyan-400" /> Field</span>
             <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-green-500" /> Subject</span>
             <span className="flex items-center gap-1.5"><span className="w-2 h-2 rounded-full bg-amber-600" /> Category</span>
@@ -828,36 +829,36 @@ export default function KnowledgeTree3D({
       <div className="absolute top-4 left-4 flex flex-col gap-3 z-10 pointer-events-none">
         
         {/* Zoom Controls */}
-        <div className="flex flex-col bg-[#2a2f36]/80 backdrop-blur-md border border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
-          <button onClick={handleZoomFit} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Fit to screen">
+        <div className="flex flex-col bg-white/80 dark:bg-slate-50 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
+          <button onClick={handleZoomFit} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Fit to screen">
             <Maximize className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={handleZoomIn} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Zoom In">
+          <button onClick={handleZoomIn} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Zoom In">
             <Plus className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={handleZoomOut} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors flex items-center justify-center" title="Zoom Out">
+          <button onClick={handleZoomOut} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center justify-center" title="Zoom Out">
             <Minus className="w-4 h-4" strokeWidth={2} />
           </button>
         </div>
 
         {/* Action Controls */}
-        <div className="flex flex-col bg-[#2a2f36]/80 backdrop-blur-md border border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
-          <button onClick={() => setIsPanMode(!isPanMode)} className={`p-2 transition-colors border-b border-slate-700/50 flex items-center justify-center ${isPanMode ? 'text-blue-400 bg-slate-700' : 'text-slate-400 hover:text-white hover:bg-slate-700'}`} title={isPanMode ? "Switch to Rotate (3D Orbit) Mode" : "Switch to Pan Mode"}>
+        <div className="flex flex-col bg-white/80 dark:bg-slate-50 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
+          <button onClick={() => setIsPanMode(!isPanMode)} className={`p-2 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center ${isPanMode ? 'text-blue-600 bg-slate-100 dark:text-blue-400 dark:bg-slate-700' : 'text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700'}`} title={isPanMode ? "Switch to Rotate (3D Orbit) Mode" : "Switch to Pan Mode"}>
             {isPanMode ? <Hand className="w-4 h-4" strokeWidth={2} /> : <Rotate3d className="w-4 h-4" strokeWidth={2} />}
           </button>
-          <button onClick={handleTogglePlay} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title={isPlaying ? "Pause Simulation" : "Play Simulation"}>
+          <button onClick={handleTogglePlay} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title={isPlaying ? "Pause Simulation" : "Play Simulation"}>
             {isPlaying ? <Pause className="w-4 h-4" fill="currentColor" strokeWidth={0} /> : <Play className="w-4 h-4" fill="currentColor" strokeWidth={0} />}
           </button>
-          <button onClick={handleReheat} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Reheat Simulation">
+          <button onClick={handleReheat} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Reheat Simulation">
             <Network className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={handleSearchClick} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Search Node">
+          <button onClick={handleSearchClick} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Search Node">
             <Search className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={handleScreenshot} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors border-b border-slate-700/50 flex items-center justify-center" title="Take Screenshot">
+          <button onClick={handleScreenshot} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Take Screenshot">
             <Camera className="w-4 h-4" strokeWidth={2} />
           </button>
-          <button onClick={() => setShowHelpModal(true)} className="p-2 text-slate-400 hover:text-white hover:bg-slate-700 transition-colors flex items-center justify-center" title="Keyboard Shortcuts & Controls Help">
+          <button onClick={() => setShowHelpModal(true)} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center justify-center" title="Keyboard Shortcuts & Controls Help">
             <HelpCircle className="w-4 h-4" strokeWidth={2} />
           </button>
         </div>
@@ -865,11 +866,11 @@ export default function KnowledgeTree3D({
 
       {/* Keyboard Shortcuts & Help Modal */}
       {showHelpModal && (
-        <div className="fixed inset-0 z-50 bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-[#1e2227] border border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl relative text-slate-200">
+        <div className="fixed inset-0 z-50 bg-black/40 dark:bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
+          <div className="bg-white dark:bg-[#1e2227] border border-slate-200 dark:border-slate-700 rounded-2xl max-w-md w-full p-6 shadow-2xl relative text-slate-800 dark:text-slate-200">
             <button 
               onClick={() => setShowHelpModal(false)}
-              className="absolute top-4 right-4 p-1 text-slate-400 hover:text-white rounded-lg hover:bg-slate-800 transition-colors"
+              className="absolute top-4 right-4 p-1 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-lg hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
             >
               <X className="w-5 h-5" />
             </button>
@@ -881,21 +882,21 @@ export default function KnowledgeTree3D({
             <div className="space-y-4 text-xs">
               <div>
                 <h4 className="font-semibold text-blue-400 uppercase tracking-wider text-[10px] mb-2">3D Camera Navigation</h4>
-                <div className="grid grid-cols-2 gap-2 bg-[#252930] p-3 rounded-lg border border-slate-800">
-                  <div><span className="font-semibold text-slate-300">Left Click + Drag:</span> Orbit / Rotate</div>
-                  <div><span className="font-semibold text-slate-300">Right Click / 2-Finger:</span> Pan Camera</div>
-                  <div><span className="font-semibold text-slate-300">Scroll / Pinch:</span> Zoom In/Out</div>
-                  <div><span className="font-semibold text-slate-300">Double Click Node:</span> Expand/Collapse</div>
+                <div className="grid grid-cols-2 gap-2 bg-slate-100 dark:bg-[#252930] p-3 rounded-lg border border-slate-200 dark:border-slate-800">
+                  <div><span className="font-semibold text-slate-700 dark:text-slate-300">Left Click + Drag:</span> Orbit / Rotate</div>
+                  <div><span className="font-semibold text-slate-700 dark:text-slate-300">Right Click / 2-Finger:</span> Pan Camera</div>
+                  <div><span className="font-semibold text-slate-700 dark:text-slate-300">Scroll / Pinch:</span> Zoom In/Out</div>
+                  <div><span className="font-semibold text-slate-700 dark:text-slate-300">Double Click Node:</span> Expand/Collapse</div>
                 </div>
               </div>
 
               <div>
                 <h4 className="font-semibold text-purple-400 uppercase tracking-wider text-[10px] mb-2">Keyboard Shortcuts (When Node Selected)</h4>
-                <div className="grid grid-cols-2 gap-2 bg-[#252930] p-3 rounded-lg border border-slate-800 font-mono">
-                  <div><span className="text-slate-300 font-sans">↑ Arrow Up:</span> Go to Parent</div>
-                  <div><span className="text-slate-300 font-sans">↓ Arrow Down:</span> Go to First Child</div>
-                  <div><span className="text-slate-300 font-sans">← Arrow Left:</span> Previous Sibling</div>
-                  <div><span className="text-slate-300 font-sans">→ Arrow Right:</span> Next Sibling</div>
+                <div className="grid grid-cols-2 gap-2 bg-slate-100 dark:bg-[#252930] p-3 rounded-lg border border-slate-200 dark:border-slate-800 font-mono">
+                  <div><span className="text-slate-700 dark:text-slate-300 font-sans">↑ Arrow Up:</span> Go to Parent</div>
+                  <div><span className="text-slate-700 dark:text-slate-300 font-sans">↓ Arrow Down:</span> Go to First Child</div>
+                  <div><span className="text-slate-700 dark:text-slate-300 font-sans">← Arrow Left:</span> Previous Sibling</div>
+                  <div><span className="text-slate-700 dark:text-slate-300 font-sans">→ Arrow Right:</span> Next Sibling</div>
                 </div>
               </div>
 
