@@ -257,13 +257,13 @@ export default function NodeDetailsPanel({
                 <button
                   key={child.id}
                   onClick={() => onNodeSelect(child)}
-                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:bg-[#2a2f36] border border-transparent hover:border-slate-700/50 transition-all text-left group"
+                  className="flex items-center gap-3 p-3 rounded-xl hover:bg-slate-50 dark:hover:bg-[#2a2f36] border border-transparent hover:border-slate-200 dark:hover:border-slate-700/50 transition-all text-left group"
                 >
-                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 group-hover:bg-slate-300 dark:hover:bg-slate-700 group-hover:text-blue-400 transition-colors">
+                  <div className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 group-hover:bg-slate-200 dark:group-hover:bg-slate-700 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     <LevelIcon level={child.level} className="w-4 h-4" />
                   </div>
                   <div className="flex-1 overflow-hidden">
-                    <div className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-100 truncate transition-colors">
+                    <div className="text-sm font-medium text-slate-700 dark:text-slate-300 group-hover:text-slate-900 dark:group-hover:text-slate-100 truncate transition-colors">
                       {child.name}
                     </div>
                     <div className="text-[10px] text-slate-600 dark:text-slate-500 uppercase tracking-wider mt-0.5">
