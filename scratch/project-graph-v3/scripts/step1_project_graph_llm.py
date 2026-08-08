@@ -41,6 +41,47 @@ except ImportError:
 SCHEMA_PATH = Path(__file__).resolve().parent.parent / "schemas" / "project_graph.schema.v3.json"
 SCHEMA = json.load(open(SCHEMA_PATH, encoding="utf-8"))
 
+# ============ DOMAIN GROUPS (bật/tắt từng phần) ============
+
+# Domain → call nào chạy + mô tả ngắn cho prompt
+CALL_GROUPS = {
+    "identity":      ("A", "project (Identity): id/name/purpose/platform/tech_stack/source"),
+    "product":       ("A", "product (Product Graph): goals/users/journeys/requirements"),
+    "feature":       ("A", "features (Feature Graph): capability của sản phẩm, priority, status"),
+    "capability":    ("A", "capabilities: cầu nối Feature → Task (purpose/depends_on/produces)"),
+    "architecture":  ("A", "architecture (Architecture Graph): pattern/confidence/nodes/edges — FACT vs INFERENCE"),
+    "experience":    ("B", "experience (Experience/UI Graph): screens/components/ui_states/navigation"),
+    "data":          ("B", "data_integration (Data & Integration Graph): data_flows/models/integrations/persistence"),
+    "implementation": ("C", "implementation (Implementation Graph): tasks/task_dependencies — mỗi task kèm intent/outcome/source_evidence"),
+    "validation":    ("C", "validation (Validation Graph): validations/quality_requirements"),
+}
+ALL_DOMAINS = list(CALL_GROUPS.keys())
+
+# Flag domain → schema property key
+FLAG_TO_SCHEMA_KEY = {
+    "identity": "project", "product": "product", "feature": "features",
+    "capability": "capabilities", "architecture": "architecture",
+    "experience": "experience", "data": "data_integration",
+    "implementation": "implementation", "validation": "validation",
+}
+
+# Schema subset theo domain (giảm prompt khi lite)
+def schema_subset(domains: list) -> str:
+    """Cắt schema chỉ giữ các property được bật."""
+    props = SCHEMA.get("properties", {})
+    keys = [FLAG_TO_SCHEMA_KEY[d] for d in domains if d in FLAG_TO_SCHEMA_KEY and FLAG_TO_SCHEMA_KEY[d] in props]
+    subset = {
+        "$schema": SCHEMA.get("$schema"),
+        "type": "object",
+        "required": ["schema_version"] + keys,
+        "properties": {k: props[k] for k in keys},
+    }
+    # Thêm definitions.edges nếu có domain dùng nó
+    if "architecture" in domains or "implementation" in domains:
+        subset["definitions"] = {"edges": SCHEMA.get("definitions", {}).get("edges", {})}
+    return json.dumps(subset, ensure_ascii=False)
+
+
 # ============ PROMPT BUILDERS ============
 
 BASE_SYSTEM = (
@@ -64,54 +105,64 @@ def _file_context(source_text: str, max_chars: int) -> str:
         return source_text
     return source_text[:max_chars] + "\n... (TRUNCATED — còn lại không đưa vào prompt này)"
 
-def _schema_section(subset_hint: str = "") -> str:
-    """Nhúng schema (hoặc subset) vào prompt."""
-    return json.dumps(SCHEMA, ensure_ascii=False, indent=1)
+def _schema_section(domains: list = None) -> str:
+    """Nhúng schema (hoặc subset theo domain được bật) vào prompt."""
+    if domains is None or set(domains) == set(ALL_DOMAINS):
+        return json.dumps(SCHEMA, ensure_ascii=False, indent=1)
+    return schema_subset(domains)
 
-def build_call_a(source_text: str, goal: str, tech_stack: str, max_chars: int = 60000) -> tuple:
-    """Call A: Identity + Product + Feature + Architecture."""
+def build_call_a(source_text: str, goal: str, tech_stack: str, max_chars: int = 60000,
+                 domains: list = None) -> tuple:
+    """Call A: Identity + Product + Feature + Architecture (theo domains bật)."""
+    domains = domains or ["identity", "product", "feature", "capability", "architecture"]
+    domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
-        "\n\nNHIỆM VỤ NÀY: Phân tích 4 domain: project (Identity), product, features, capabilities, architecture.\n"
-        "Trả JSON theo schema — chỉ điền các field của 4 domain này, các domain khác để rỗng ([] / {} như schema).\n"
+        f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
+        "Trả JSON theo schema — chỉ điền các field của domain được yêu cầu, các domain khác để rỗng ([] / {} như schema).\n"
     )
     user = (
         f"GOAL: {goal}\nTECH_STACK: {tech_stack}\n\n"
         f"SOURCE CODE (files có header '# FILE: <path>'):\n\n"
         f"{_file_context(source_text, max_chars)}\n\n"
-        f"SCHEMA (điền đúng):\n{_schema_section()}"
+        f"SCHEMA (điền đúng, chỉ các domain được yêu cầu):\n{_schema_section(domains)}"
     )
     return system, user
 
-def build_call_b(source_text: str, goal: str, tech_stack: str, features_summary: str, max_chars: int = 40000) -> tuple:
-    """Call B: Experience/UI + Data & Integration."""
+def build_call_b(source_text: str, goal: str, tech_stack: str, features_summary: str, max_chars: int = 40000,
+                 domains: list = None) -> tuple:
+    """Call B: Experience/UI + Data & Integration (theo domains bật)."""
+    domains = domains or ["experience", "data"]
+    domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
-        "\n\nNHIỆM VỤ NÀY: Phân tích 2 domain: experience (screens/components/ui_states/navigation), "
-        "data_integration (data_flows/models/integrations/persistence).\n"
+        f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
         "Dựa trên features đã xác định (đưa trong user prompt) — gắn UI/data vào features đó.\n"
-        "Trả JSON theo schema — chỉ điền 2 domain này, các domain khác để rỗng.\n"
+        "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
     )
     user = (
         f"GOAL: {goal}\nTECH_STACK: {tech_stack}\n\n"
         f"FEATURES (đã xác định ở call trước):\n{features_summary}\n\n"
         f"SOURCE CODE:\n\n{_file_context(source_text, max_chars)}\n\n"
-        f"SCHEMA:\n{_schema_section()}"
+        f"SCHEMA:\n{_schema_section(domains)}"
     )
     return system, user
 
-def build_call_c(source_text: str, goal: str, features_summary: str, arch_summary: str, max_chars: int = 60000) -> tuple:
-    """Call C: Implementation (Capability/Task/Dependency) + Validation."""
+def build_call_c(source_text: str, goal: str, features_summary: str, arch_summary: str, max_chars: int = 60000,
+                 domains: list = None) -> tuple:
+    """Call C: Implementation + Validation (theo domains bật)."""
+    domains = domains or ["implementation", "validation"]
+    domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
-        "\n\nNHIỆM VỤ NÀY: Phân tích 2 domain: implementation (tasks/task_dependencies), validation.\n"
+        f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
         "Mỗi task: action = hành động cụ thể, intent = WHY, outcome = WHAT thay đổi, "
         "source_evidence = file thật minh hoạ (KHÔNG phải 'task = tạo file đó').\n"
-        "Trả JSON theo schema — chỉ điền 2 domain này, các domain khác để rỗng.\n"
+        "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
     )
     user = (
         f"GOAL: {goal}\n\n"
         f"FEATURES:\n{features_summary}\n\n"
         f"ARCHITECTURE:\n{arch_summary}\n\n"
         f"SOURCE CODE:\n\n{_file_context(source_text, max_chars)}\n\n"
-        f"SCHEMA:\n{_schema_section()}"
+        f"SCHEMA:\n{_schema_section(domains)}"
     )
     return system, user
 
@@ -132,54 +183,61 @@ def _llm_json(system: str, user: str, retries: int = 1) -> dict:
     raise RuntimeError(f"LLM JSON call fail sau {retries+1} lần: {last_err}")
 
 
-def merge_domains(a: dict, b: dict, c: dict) -> dict:
-    """Gộp 3 kết quả domain thành 1 project graph hoàn chỉnh."""
-    merged = dict(SCHEMA.get("properties", {}))
-    # Bắt đầu từ cấu trúc rỗng đúng schema, điền từng domain
+def merge_domains(a: dict, b: dict, c: dict, domains: list = None) -> dict:
+    """Gộp 3 kết quả domain thành 1 project graph hoàn chỉnh (bỏ domain không bật)."""
+    domains = domains or ALL_DOMAINS
     result = {
         "schema_version": 3,
-        "project": a.get("project", {}),
-        "product": a.get("product", {}),
-        "features": a.get("features", []),
-        "capabilities": a.get("capabilities", []),
-        "architecture": a.get("architecture", {}),
-        "experience": b.get("experience", {}),
-        "data_integration": b.get("data_integration", {}),
-        "implementation": c.get("implementation", {}),
-        "validation": c.get("validation", {}),
+        "project": a.get("project", {}) if "identity" in domains else {},
+        "product": a.get("product", {}) if "product" in domains else {},
+        "features": a.get("features", []) if "feature" in domains else [],
+        "capabilities": a.get("capabilities", []) if "capability" in domains else [],
+        "architecture": a.get("architecture", {}) if "architecture" in domains else {},
+        "experience": b.get("experience", {}) if "experience" in domains else {},
+        "data_integration": b.get("data_integration", {}) if "data" in domains else {},
+        "implementation": c.get("implementation", {}) if "implementation" in domains else {},
+        "validation": c.get("validation", {}) if "validation" in domains else {},
         "evidence": {},  # STEP 2 (verify) sẽ điền — không phải LLM
         "knowledge_mapping": {},  # STEP 3 (standardize) sẽ điền
     }
-    # Cross-check: architecture.nodes từ call A, bổ sung từ call B nếu có
     return result
 
 
 def run_pipeline(source_file: Path, goal: str, tech_stack: str, output_path: Path,
-                 max_chars_a: int = 60000, max_chars_b: int = 40000, max_chars_c: int = 60000) -> dict:
+                 max_chars_a: int = 60000, max_chars_b: int = 40000, max_chars_c: int = 60000,
+                 include_domains: list = None) -> dict:
+    """Chỉ chạy các call có domain được bật (--include). Bỏ call không cần → tiết kiệm LLM."""
+    domains = include_domains or ALL_DOMAINS
+    group_a = [d for d in domains if CALL_GROUPS.get(d, ("", ""))[0] == "A"]
+    group_b = [d for d in domains if CALL_GROUPS.get(d, ("", ""))[0] == "B"]
+    group_c = [d for d in domains if CALL_GROUPS.get(d, ("", ""))[0] == "C"]
+
     source_text = source_file.read_text(encoding="utf-8", errors="ignore")
-    print(f"[*] Source: {source_file} ({len(source_text):,} chars)")
+    print(f"[*] Source: {source_file} ({len(source_text):,} chars) | domains: {domains}")
 
-    # Call A
-    print("[*] Call A: Identity + Product + Feature + Architecture...")
-    sys_a, user_a = build_call_a(source_text, goal, tech_stack, max_chars_a)
-    res_a = _llm_json(sys_a, user_a)
+    res_a, res_b, res_c = {}, {}, {}
 
-    # Tóm tắt features cho call B/C (giảm prompt)
+    if group_a:
+        print(f"[*] Call A: {group_a}...")
+        sys_a, user_a = build_call_a(source_text, goal, tech_stack, max_chars_a, domains=group_a)
+        res_a = _llm_json(sys_a, user_a)
+
+    # Tóm tắt features cho call B/C (nếu có data)
     features_summary = json.dumps(res_a.get("features", []), ensure_ascii=False)[:8000]
     arch_summary = json.dumps(res_a.get("architecture", {}), ensure_ascii=False)[:4000]
 
-    # Call B
-    print("[*] Call B: Experience/UI + Data & Integration...")
-    sys_b, user_b = build_call_b(source_text, goal, tech_stack, features_summary, max_chars_b)
-    res_b = _llm_json(sys_b, user_b)
+    if group_b:
+        print(f"[*] Call B: {group_b}...")
+        sys_b, user_b = build_call_b(source_text, goal, tech_stack, features_summary, max_chars_b, domains=group_b)
+        res_b = _llm_json(sys_b, user_b)
 
-    # Call C
-    print("[*] Call C: Implementation + Validation...")
-    sys_c, user_c = build_call_c(source_text, goal, features_summary, arch_summary, max_chars_c)
-    res_c = _llm_json(sys_c, user_c)
+    if group_c:
+        print(f"[*] Call C: {group_c}...")
+        sys_c, user_c = build_call_c(source_text, goal, features_summary, arch_summary, max_chars_c, domains=group_c)
+        res_c = _llm_json(sys_c, user_c)
 
-    # Merge
-    result = merge_domains(res_a, res_b, res_c)
+    # Merge (bỏ domain không bật)
+    result = merge_domains(res_a, res_b, res_c, domains)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
     with open(output_path, "w", encoding="utf-8") as f:
@@ -197,14 +255,26 @@ def main():
     parser.add_argument("--goal", default="", help="Application goal")
     parser.add_argument("--tech-stack", default="", help="Technologies (comma-separated)")
     parser.add_argument("--output", required=True, type=Path)
+    parser.add_argument("--include", default=None,
+                        help="(BẬT/TẮT DOMAIN) Chỉ phân tích các domain, comma-separated. "
+                             "VD: --include product,feature (lite) | --include implementation "
+                             "| bỏ qua = tất cả. Domain: " + ",".join(ALL_DOMAINS))
     args = parser.parse_args()
+
+    include_domains = None
+    if args.include:
+        include_domains = [d.strip() for d in args.include.split(",") if d.strip()]
+        invalid = [d for d in include_domains if d not in ALL_DOMAINS]
+        if invalid:
+            parser.error(f"--include có domain không hợp lệ: {invalid}. Hợp lệ: {ALL_DOMAINS}")
 
     if not args.source_file.is_file():
         print(f"❌ Source file không tồn tại: {args.source_file}", file=sys.stderr)
         sys.exit(1)
 
     try:
-        run_pipeline(args.source_file, args.goal, args.tech_stack, args.output)
+        run_pipeline(args.source_file, args.goal, args.tech_stack, args.output,
+                     include_domains=include_domains)
     except Exception as e:
         print(f"❌ STEP 1 fail: {e}", file=sys.stderr)
         sys.exit(1)
