@@ -9,7 +9,7 @@ export default function ActivityBar({ viewMode, setViewMode, toggleChat, theme, 
   ];
 
   return (
-    <div className="w-12 h-full bg-white dark:bg-[#1e293b] flex flex-col items-center py-4 border-r border-slate-200 dark:border-slate-800 z-50 flex-shrink-0">
+    <div className="w-12 h-full bg-white dark:bg-[#16181d] flex flex-col items-center py-4 border-r border-slate-200 dark:border-slate-800 z-50 flex-shrink-0">
       <div className="flex-1 flex flex-col gap-4 w-full items-center">
         {items.map(item => (
           <button

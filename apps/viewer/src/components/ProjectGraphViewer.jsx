@@ -98,7 +98,7 @@ export default function ProjectGraphViewer({ theme }) {
   return (
     <div className={`flex h-full w-full font-sans ${theme === 'dark' ? 'dark text-slate-200' : 'text-slate-800'}`}>
       {/* SIDEBAR */}
-      <div className="w-80 h-full bg-white dark:bg-[#1e293b] border-r border-[#e6e6e6] dark:border-slate-800 flex flex-col overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
+      <div className="w-80 h-full bg-white dark:bg-[#1a1d21] border-r border-[#e6e6e6] dark:border-slate-800 flex flex-col overflow-y-auto z-10 shadow-[2px_0_10px_rgba(0,0,0,0.05)]">
         <div className="p-5 border-b border-[#e6e6e6] dark:border-slate-800 bg-[#f8f9fa] dark:bg-transparent">
           <h2 className="m-0 text-[17px] font-bold tracking-tight mb-2 text-[#18181b] dark:text-slate-100">{graphData.project.name}</h2>
           <p className="text-[13px] text-slate-500 dark:text-slate-400 line-clamp-3 leading-relaxed mb-4">{graphData.project.purpose}</p>
