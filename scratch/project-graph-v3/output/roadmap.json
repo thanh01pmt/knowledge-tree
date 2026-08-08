@@ -1,0 +1,970 @@
+{
+  "project": {
+    "id": "stream-chat-demo-ios",
+    "name": "StreamChatDemoApp",
+    "version": "1.0.0",
+    "purpose": "iOS demo app for Stream Chat UI. It showcases standard StreamChatUI implementation with login, channel list, messaging, reactions, push notifications and developer tooling. The provided source is UIKit/StreamChatUI-based.",
+    "platform": [
+      "iOS"
+    ],
+    "tech_stack": {
+      "language": [
+        "Swift"
+      ],
+      "ui": [
+        "UIKit",
+        "StreamChatUI"
+      ],
+      "persistence": [
+        "UserDefaults (shared app group)"
+      ],
+      "networking": [
+        "StreamChat API/WebSocket client"
+      ],
+      "other": [
+        "Sentry",
+        "Atlantis",
+        "GDPerformanceView_Swift",
+        "StreamChat SDK"
+      ]
+    },
+    "architecture": [
+      "AppDelegate life cycle",
+      "Singleton service wrapper (StreamChatWrapper)",
+      "UIViewController extension-based UI composition"
+    ],
+    "source": {
+      "repository": "",
+      "commit": "",
+      "scan_dir": "DemoApp"
+    }
+  },
+  "phases": [
+    {
+      "phase": "MVP",
+      "milestones": [
+        {
+          "task": {
+            "id": "task-01-app-lifecycle",
+            "capability_id": "app-lifecycle",
+            "action": "Implement AppDelegate as @main entry point that exposes a shared StreamChatWrapper",
+            "modifies": [
+              "DemoApp/AppDelegate.swift"
+            ],
+            "creates": [
+              "App lifecycle hooks",
+              "StreamChatWrapper shared access point"
+            ],
+            "depends_on": [],
+            "acceptance": [
+              "App launches without crashing",
+              "didFinishLaunching returns true",
+              "StreamChatWrapper.shared is accessible via the chat property"
+            ],
+            "intent": "Provide a single app entry point that wires StreamChat into the iOS app lifecycle",
+            "outcome": {
+              "user_visible": "App starts to a known login/channel flow after launch",
+              "technical": [
+                "AppDelegate conforms to UIApplicationDelegate",
+                "StreamChatWrapper.shared is accessible",
+                "didFinishLaunching configures Sentry"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/AppDelegate.swift"
+            ],
+            "keywords": [
+              "@main",
+              "UIApplicationDelegate",
+              "StreamChatWrapper",
+              "StreamChat"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 30
+            }
+          },
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "order": 0,
+          "los": [
+            {
+              "task_id": "task-01-app-lifecycle",
+              "description": "Người học có khả năng giải thích vai trò của AppDelegate như điểm vào của ứng dụng iOS sử dụng @main và UIApplicationDelegate, và cách nó được sử dụng để tích hợp các dịch vụ bên ngoài như StreamChat.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "@main"
+            },
+            {
+              "task_id": "task-01-app-lifecycle",
+              "description": "Người học có khả năng triển khai một shared singleton StreamChatWrapper và truy cập nó qua thuộc tính chat trên AppDelegate để đảm bảo có sẵn toàn cục trong ứng dụng.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "StreamChatWrapper"
+            },
+            {
+              "task_id": "task-01-app-lifecycle",
+              "description": "Người học có khả năng phân tích quá trình khởi động của ứng dụng để xác định thời điểm an toàn cho việc cấu hình StreamChat, đảm bảo didFinishLaunching trả về true và ứng dụng không bị crash.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "StreamChat"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-02-diagnostics",
+            "capability_id": "observability",
+            "action": "Implement DemoAppConfiguration to configure Sentry, Atlantis, and performance monitor",
+            "modifies": [
+              "DemoApp/DemoAppConfiguration.swift"
+            ],
+            "creates": [
+              "Sentry crash reporting setup",
+              "Atlantis network proxy toggle",
+              "Performance tracker start"
+            ],
+            "depends_on": [
+              "task-01-app-lifecycle"
+            ],
+            "acceptance": [
+              "Sentry starts only in RELEASE builds",
+              "Atlantis starts/stops based on AppConfig.shared.demoAppConfig.isAtlantisEnabled",
+              "Performance monitor starts for internal builds after 3s delay"
+            ],
+            "intent": "Enable debugging and crash reporting to keep the chat app maintainable and observable",
+            "outcome": {
+              "user_visible": "No visible change; developers can inspect network traffic and crash reports",
+              "technical": [
+                "Sentry DSN configured",
+                "Atlantis starts for Proxyman traffic inspection",
+                "PerformanceMonitor configured with .performance option"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/DemoAppConfiguration.swift"
+            ],
+            "keywords": [
+              "SentrySDK",
+              "Atlantis",
+              "PerformanceMonitor",
+              "StreamRuntimeCheck"
+            ],
+            "concurrency": [
+              "DispatchQueue.main.asyncAfter"
+            ],
+            "effort": {
+              "concepts_count": 3,
+              "files_touched": 1,
+              "estimated_minutes": 45
+            }
+          },
+          "concepts": [],
+          "order": 1,
+          "los": [
+            {
+              "task_id": "task-02-diagnostics",
+              "description": "Người học có khả năng giải thích mục đích của việc tích hợp Sentry, Atlantis và performance monitor trong ứng dụng nhằm tăng khả năng quan sát và gỡ lỗi.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "StreamRuntimeCheck",
+              "keyword": "SentrySDK"
+            },
+            {
+              "task_id": "task-02-diagnostics",
+              "description": "Người học có khả năng cấu hình SentrySDK để chỉ khởi tạo trong các bản RELEASE, giúp tránh gây nhiễu khi phát triển.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "SentrySDK",
+              "keyword": "SentrySDK"
+            },
+            {
+              "task_id": "task-02-diagnostics",
+              "description": "Người học có khả năng triển khai cơ chế khởi động/dừng Atlantis dựa trên giá trị AppConfig.shared.demoAppConfig.isAtlantisEnabled, đảm bảo linh hoạt khi debug.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "Atlantis",
+              "keyword": "Atlantis"
+            },
+            {
+              "task_id": "task-02-diagnostics",
+              "description": "Người học có khả năng thiết lập performance monitor bắt đầu sau 3 giây cho các bản internal, phục vụ theo dõi hiệu năng trong quá trình kiểm thử.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "PerformanceMonitor",
+              "keyword": "PerformanceMonitor"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-03-session-persistence",
+            "capability_id": "state-management",
+            "action": "Implement shared UserDefaults accessor for current user credentials",
+            "modifies": [
+              "DemoApp/Extensions/UserDefaults+Shared.swift"
+            ],
+            "creates": [
+              "currentUserId persisted property",
+              "currentUser derived from built-in users"
+            ],
+            "depends_on": [],
+            "acceptance": [
+              "currentUserId reads/writes to shared App Group UserDefaults",
+              "currentUser returns UserCredentials matching stored id or nil"
+            ],
+            "intent": "Persist the selected user across app launches so the chat session survives restarts",
+            "outcome": {
+              "user_visible": "User stays logged in after relaunch",
+              "technical": [
+                "UserDefaults suite backed by applicationGroupIdentifier",
+                "currentUserId uses #function as key"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/Extensions/UserDefaults+Shared.swift"
+            ],
+            "keywords": [
+              "UserDefaults",
+              "applicationGroupIdentifier",
+              "UserCredentials"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 20
+            }
+          },
+          "concepts": [
+            "IDENTITY_AND_ACCESS_MANAGEMENT",
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "order": 2,
+          "los": [
+            {
+              "task_id": "task-03-session-persistence",
+              "description": "Người học có khả năng giải thích vai trò của UserDefaults trong App Group để chia sẻ dữ liệu giữa ứng dụng và phần mở rộng hoặc giữa các ứng dụng liên quan.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "KEY_VALUE_PERSISTENCE",
+              "keyword": "UserDefaults"
+            },
+            {
+              "task_id": "task-03-session-persistence",
+              "description": "Người học có khả năng sử dụng UserDefaults với applicationGroupIdentifier để đọc và ghi định danh người dùng hiện tại một cách bền vững.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "KEY_VALUE_PERSISTENCE",
+              "keyword": "applicationGroupIdentifier"
+            },
+            {
+              "task_id": "task-03-session-persistence",
+              "description": "Người học có khả năng phân tích mối quan hệ giữa định danh người dùng được lưu trữ và đối tượng UserCredentials, từ đó xử lý đúng trường hợp định danh không tồn tại (trả về nil).",
+              "bloom_level": "ANALYZE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "UserCredentials"
+            },
+            {
+              "task_id": "task-03-session-persistence",
+              "description": "Người học có khả năng tạo một accessor dùng chung để quản lý thông tin đăng nhập hiện tại thông qua UserDefaults, đảm bảo đọc/ghi nhất quán và an toàn.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "UserDefaults"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-04-alert-helpers",
+            "capability_id": "ui-utils",
+            "action": "Implement reusable UIViewController alert extension for options, text input, and user actions",
+            "modifies": [
+              "DemoApp/Extensions/UIViewController+Alert.swift"
+            ],
+            "creates": [
+              "presentAlert overloads",
+              "presentUserOptionsAlert for Profile/Logout/Disconnect"
+            ],
+            "depends_on": [],
+            "acceptance": [
+              "Alerts can show title/message with OK/Cancel",
+              "Text input alert returns entered text via okHandler",
+              "User options alert pushes UserProfileViewController and invokes logout/disconnect closures"
+            ],
+            "intent": "Provide consistent alert and presentation patterns across the app's account and channel flows",
+            "outcome": {
+              "user_visible": "Tapping profile/logout/disconnect shows familiar system alerts",
+              "technical": [
+                "UIAlertController wrappers added",
+                "Closure-based callbacks",
+                "Navigation push to UserProfileViewController"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/Extensions/UIViewController+Alert.swift"
+            ],
+            "keywords": [
+              "UIAlertController",
+              "UIAlertAction",
+              "ChatClient",
+              "UserProfileViewController"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 3,
+              "files_touched": 1,
+              "estimated_minutes": 60
+            }
+          },
+          "concepts": [
+            "API_INTEGRATION",
+            "FRONTEND_FRAMEWORKS"
+          ],
+          "order": 3,
+          "los": [
+            {
+              "task_id": "task-04-alert-helpers",
+              "description": "Người học có khả năng giải thích vai trò của UIAlertController và UIAlertAction trong việc tạo các cảnh báo nhất quán và tái sử dụng trên iOS.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "UIAlertController"
+            },
+            {
+              "task_id": "task-04-alert-helpers",
+              "description": "Người học có khả năng triển khai extension cho UIViewController hiển thị cảnh báo tùy chọn với các nút OK/Cancel và closure xử lý hành động tương ứng.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "UIAlertAction"
+            },
+            {
+              "task_id": "task-04-alert-helpers",
+              "description": "Người học có khả năng xây dựng cảnh báo có trường nhập liệu (text input) trả về chuỗi người dùng nhập thông qua okHandler.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "UIAlertController"
+            },
+            {
+              "task_id": "task-04-alert-helpers",
+              "description": "Người học có khả năng phân tích luồng xử lý khi kết hợp cảnh báo với điều hướng tới UserProfileViewController và gọi closure logout/disconnect trên ChatClient.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "ChatClient"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-05-image-resize",
+            "capability_id": "image-handling",
+            "action": "Implement UIImage resizing extension for attachment thumbnails",
+            "modifies": [
+              "DemoApp/Extensions/UIImage+Resized.swift"
+            ],
+            "creates": [
+              "resized(to:) utility"
+            ],
+            "depends_on": [],
+            "acceptance": [
+              "Resized image preserves aspect ratio",
+              "Image context is ended in defer"
+            ],
+            "intent": "Standardize image resizing for chat attachments so media messages display efficiently",
+            "outcome": {
+              "user_visible": "Images sent in chat appear correctly sized without distortion",
+              "technical": [
+                "UIGraphicsBeginImageContextWithOptions used",
+                "Aspect-fit calculation implemented"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/Extensions/UIImage+Resized.swift"
+            ],
+            "keywords": [
+              "UIImage",
+              "UIGraphicsBeginImageContextWithOptions",
+              "CGSize"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 30
+            }
+          },
+          "concepts": [],
+          "order": 4,
+          "los": [
+            {
+              "task_id": "task-05-image-resize",
+              "description": "Người học có khả năng trình bày lý do cần tiêu chuẩn hóa kích thước ảnh đính kèm trong chat để đảm bảo hiển thị hiệu quả",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UIImage",
+              "keyword": "UIImage"
+            },
+            {
+              "task_id": "task-05-image-resize",
+              "description": "Người học có khả năng tính toán kích thước mới của ảnh bằng cách sử dụng CGSize để giữ nguyên tỷ lệ khung hình",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "CGSize",
+              "keyword": "CGSize"
+            },
+            {
+              "task_id": "task-05-image-resize",
+              "description": "Người học có khả năng triển khai việc thay đổi kích thước ảnh trong extension UIImage bằng cách sử dụng UIGraphicsBeginImageContextWithOptions, vẽ lại ảnh và đảm bảo kết thúc context trong defer",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "UIGraphicsBeginImageContextWithOptions",
+              "keyword": "UIGraphicsBeginImageContextWithOptions"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-06-reaction-position",
+            "capability_id": "message-customization",
+            "action": "Implement MessageReactionType position mapping for reaction ordering",
+            "modifies": [
+              "DemoApp/Extensions/MessageReactionType+Position.swift"
+            ],
+            "creates": [
+              "position computed property on MessageReactionType"
+            ],
+            "depends_on": [],
+            "acceptance": [
+              "love/haha/like/sad/wow map to positions 0-4",
+              "Unknown reactions map to position 5"
+            ],
+            "intent": "Give deterministic ordering to message reactions in the reaction picker/list",
+            "outcome": {
+              "user_visible": "Message reactions appear in a stable, predictable order",
+              "technical": [
+                "MessageReactionType extension added",
+                "rawValue switch returns stable position"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/Extensions/MessageReactionType+Position.swift"
+            ],
+            "keywords": [
+              "MessageReactionType",
+              "rawValue"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 1,
+              "files_touched": 1,
+              "estimated_minutes": 15
+            }
+          },
+          "concepts": [],
+          "order": 5,
+          "los": [
+            {
+              "task_id": "task-06-reaction-position",
+              "description": "Người học có khả năng giải thích lý do cần thứ tự ổn định cho các phản ứng tin nhắn trong picker/list.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "",
+              "keyword": "MessageReactionType"
+            },
+            {
+              "task_id": "task-06-reaction-position",
+              "description": "Người học có khả năng áp dụng ánh xạ từ các loại phản ứng đã biết (love, haha, like, sad, wow) đến vị trí 0-4.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "rawValue"
+            },
+            {
+              "task_id": "task-06-reaction-position",
+              "description": "Người học có khả năng triển khai xử lý các loại phản ứng không xác định để xếp vào vị trí 5.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "MessageReactionType"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-08-login",
+            "capability_id": "session-auth",
+            "action": "Implement login flow to pick a pre-configured user or enter advanced credentials",
+            "modifies": [],
+            "creates": [
+              "Login screen",
+              "Authentication to StreamChat client"
+            ],
+            "depends_on": [
+              "task-03-session-persistence",
+              "task-04-alert-helpers"
+            ],
+            "acceptance": [
+              "Pre-configured user list is displayed on first screen",
+              "Advanced options allow custom server and JWT token",
+              "Selected user is persisted via UserDefaults.currentUser"
+            ],
+            "intent": "Let users enter the chat app with a known identity and receive their channels",
+            "outcome": {
+              "user_visible": "Users can choose a demo user or log in with custom credentials and land on channel list",
+              "technical": [
+                "UserCredentials built-in users power the list",
+                "JWT token generation required for advanced login",
+                "Session persisted in UserDefaults"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/README.md",
+              "DemoApp/Extensions/UserDefaults+Shared.swift"
+            ],
+            "keywords": [
+              "UserCredentials",
+              "JWT",
+              "ChatClient",
+              "currentUser"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 5,
+              "files_touched": 3,
+              "estimated_minutes": 120
+            }
+          },
+          "concepts": [
+            "IDENTITY_AND_ACCESS_MANAGEMENT"
+          ],
+          "order": 7,
+          "los": [
+            {
+              "task_id": "task-08-login",
+              "description": "Người học có khả năng mô tả vai trò của danh tính người dùng và xác thực JWT trong ứng dụng chat.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "JWT"
+            },
+            {
+              "task_id": "task-08-login",
+              "description": "Người học có khả năng áp dụng xác thực JWT để thiết lập phiên đăng nhập cho ChatClient.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "ChatClient"
+            },
+            {
+              "task_id": "task-08-login",
+              "description": "Người học có khả năng triển khai luồng đăng nhập với danh sách người dùng cấu hình sẵn và nhập thông tin xác thực nâng cao, đồng thời lưu trữ người dùng đã chọn vào UserDefaults.currentUser.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "currentUser"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-09-channel-list",
+            "capability_id": "channel-list",
+            "action": "Implement channel list screen with infinite scrolling, unread indicators, and channel creation/deletion",
+            "modifies": [],
+            "creates": [
+              "ChatChannelListViewController flow",
+              "Channel query-driven list"
+            ],
+            "depends_on": [
+              "task-08-login"
+            ],
+            "acceptance": [
+              "Channels for logged-in user appear as infinite scrolling list",
+              "Avatar, unread counts, last message previews, and timestamps shown",
+              "New channel can be created from top-right button",
+              "Swiping left deletes channel"
+            ],
+            "intent": "Show a user all their chat channels at a glance and let them navigate into conversation",
+            "outcome": {
+              "user_visible": "User sees all channels and can open any of them",
+              "technical": [
+                "StreamChatUI ChatChannelListViewController used",
+                "Controller-backed channel query",
+                "Swipe actions for delete"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/README.md"
+            ],
+            "keywords": [
+              "ChatChannelListViewController",
+              "ChatClient",
+              "query",
+              "delete"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 4,
+              "files_touched": 2,
+              "estimated_minutes": 90
+            }
+          },
+          "concepts": [
+            "FRONTEND_FRAMEWORKS",
+            "API_INTEGRATION"
+          ],
+          "order": 8,
+          "los": [
+            {
+              "task_id": "task-09-channel-list",
+              "description": "Người học có khả năng giải thích vai trò của ChatChannelListViewController trong việc hiển thị danh sách kênh và xử lý tương tác người dùng.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "ChatChannelListViewController"
+            },
+            {
+              "task_id": "task-09-channel-list",
+              "description": "Người học có khả năng áp dụng phương thức query của ChatClient để tải danh sách kênh phân trang, hỗ trợ cuộn vô hạn.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "query"
+            },
+            {
+              "task_id": "task-09-channel-list",
+              "description": "Người học có khả năng phân tích cấu trúc dữ liệu kênh để hiển thị chính xác số tin nhắn chưa đọc, đoạn tin nhắn cuối và thời gian.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "ChatChannelListViewController"
+            },
+            {
+              "task_id": "task-09-channel-list",
+              "description": "Người học có khả năng tạo chức năng tạo kênh mới và xóa kênh bằng cách sử dụng phương thức delete của ChatClient và xử lý tương tác trượt.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "delete"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-10-channel-detail",
+            "capability_id": "message-thread",
+            "action": "Implement channel screen with message list, rich media, and composer",
+            "modifies": [],
+            "creates": [
+              "ChatChannelViewController flow",
+              "Message composer and reactions"
+            ],
+            "depends_on": [
+              "task-09-channel-list"
+            ],
+            "acceptance": [
+              "Infinite scrolling messages in channel",
+              "Header shows channel info",
+              "Rich media including GIF supported",
+              "Composer supports file attachments",
+              "Long press on message adds reactions"
+            ],
+            "intent": "Enable the core chat experience: reading and sending messages with media and reactions",
+            "outcome": {
+              "user_visible": "User can read and send messages, attach files, send GIFs, and react to messages",
+              "technical": [
+                "StreamChatUI ChatChannelViewController used",
+                "Composer with attachment support",
+                "Reaction long-press gesture"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/README.md",
+              "DemoApp/Extensions/MessageReactionType+Position.swift"
+            ],
+            "keywords": [
+              "ChatChannelViewController",
+              "MessageComposer",
+              "attachment",
+              "MessageReactionType"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 5,
+              "files_touched": 2,
+              "estimated_minutes": 180
+            }
+          },
+          "concepts": [
+            "FRONTEND_FRAMEWORKS"
+          ],
+          "order": 9,
+          "los": [
+            {
+              "task_id": "task-10-channel-detail",
+              "description": "Người học có khả năng phân tích các thành phần chính của màn hình kênh chat, bao gồm danh sách tin nhắn, message composer và rich media, cùng với cách chúng tương tác trong một framework frontend.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "ChatChannelViewController"
+            },
+            {
+              "task_id": "task-10-channel-detail",
+              "description": "Người học có khả năng triển khai tính năng cuộn vô hạn cho danh sách tin nhắn và xử lý gửi tin nhắn từ composer bằng cách sử dụng các API cụ thể của framework.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "MessageComposer"
+            },
+            {
+              "task_id": "task-10-channel-detail",
+              "description": "Người học có khả năng xây dựng chức năng đính kèm tệp và hiển thị GIF trong màn hình chat, đồng thời tích hợp cử chỉ nhấn giữ để thêm phản ứng (reaction) dựa trên MessageReactionType.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "FRONTEND_FRAMEWORKS",
+              "keyword": "attachment"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-11-user-profile",
+            "capability_id": "user-management",
+            "action": "Implement user profile screen accessible from account options",
+            "modifies": [],
+            "creates": [
+              "UserProfileViewController backed by CurrentUserController"
+            ],
+            "depends_on": [
+              "task-04-alert-helpers"
+            ],
+            "acceptance": [
+              "Profile screen initializes with ChatClient.currentUserController",
+              "Profile can be pushed from alert action"
+            ],
+            "intent": "Let users view their own profile information within the app",
+            "outcome": {
+              "user_visible": "User can see profile info by tapping Show Profile",
+              "technical": [
+                "CurrentUserController from ChatClient",
+                "Navigation push from alert"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/Extensions/UIViewController+Alert.swift"
+            ],
+            "keywords": [
+              "UserProfileViewController",
+              "CurrentUserController",
+              "ChatClient"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 45
+            }
+          },
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "order": 10,
+          "los": [
+            {
+              "task_id": "task-11-user-profile",
+              "description": "Người học có khả năng giải thích vai trò của ChatClient.currentUserController trong việc truy xuất thông tin người dùng hiện tại.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "CurrentUserController"
+            },
+            {
+              "task_id": "task-11-user-profile",
+              "description": "Người học có khả năng áp dụng ChatClient.currentUserController để khởi tạo UserProfileViewController và hiển thị dữ liệu hồ sơ người dùng.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "UserProfileViewController"
+            },
+            {
+              "task_id": "task-11-user-profile",
+              "description": "Người học có khả năng tạo luồng điều hướng để đẩy UserProfileViewController từ hành động 'Show Profile' trong account options.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "UserProfileViewController"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "task-12-logout-disconnect",
+            "capability_id": "session-control",
+            "action": "Implement logout and disconnect actions in user options alert",
+            "modifies": [],
+            "creates": [
+              "Logout/disconnect callback wiring"
+            ],
+            "depends_on": [
+              "task-04-alert-helpers"
+            ],
+            "acceptance": [
+              "Logout clears current user",
+              "Disconnect stops chat connection",
+              "Both options reachable from user options alert"
+            ],
+            "intent": "Give users control over ending their chat session cleanly",
+            "outcome": {
+              "user_visible": "Users can log out or disconnect via the alert menu",
+              "technical": [
+                "onLogout/onDisconnect closures wired",
+                "ChatClient disconnect invoked"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/Extensions/UIViewController+Alert.swift"
+            ],
+            "keywords": [
+              "ChatClient",
+              "disconnect",
+              "logout"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 30
+            }
+          },
+          "concepts": [
+            "API_INTEGRATION",
+            "IDENTITY_AND_ACCESS_MANAGEMENT"
+          ],
+          "order": 11,
+          "los": [
+            {
+              "task_id": "task-12-logout-disconnect",
+              "description": "Người học có khả năng giải thích sự khác biệt giữa logout (xóa người dùng hiện tại) và disconnect (ngắt kết nối chat) trong quản lý phiên.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "logout"
+            },
+            {
+              "task_id": "task-12-logout-disconnect",
+              "description": "Người học có khả năng áp dụng phương thức disconnect của ChatClient để ngừng nhận cập nhật chat.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "ChatClient"
+            },
+            {
+              "task_id": "task-12-logout-disconnect",
+              "description": "Người học có khả năng tạo hành động logout trong menu tùy chọn người dùng để xóa người dùng hiện tại khỏi phiên.",
+              "bloom_level": "CREATE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "keyword": "logout"
+            },
+            {
+              "task_id": "task-12-logout-disconnect",
+              "description": "Người học có khả năng phân tích menu tùy chọn người dùng để đảm bảo cả hai tùy chọn logout và disconnect đều có thể truy cập.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "disconnect"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase": "EXTEND",
+      "milestones": [
+        {
+          "task": {
+            "id": "task-07-push-registration",
+            "capability_id": "push-notifications",
+            "action": "Register device token with Stream backend after remote notification registration",
+            "modifies": [
+              "DemoApp/AppDelegate.swift"
+            ],
+            "creates": [
+              "Push notification device token forwarding"
+            ],
+            "depends_on": [
+              "task-01-app-lifecycle"
+            ],
+            "acceptance": [
+              "didRegisterForRemoteNotificationsWithDeviceToken calls chat.registerForPushNotifications",
+              "aps-environment entitlement exists"
+            ],
+            "intent": "Enable push notifications so users receive mentions and new messages even when the app is backgrounded",
+            "outcome": {
+              "user_visible": "Users receive push notifications for new chat activity",
+              "technical": [
+                "registerForPushNotifications called on StreamChatWrapper",
+                "ChatSample.entitlements contains aps-environment"
+              ]
+            },
+            "source_evidence": [
+              "DemoApp/AppDelegate.swift",
+              "DemoApp/ChatSample.entitlements"
+            ],
+            "keywords": [
+              "registerForPushNotifications",
+              "didRegisterForRemoteNotificationsWithDeviceToken",
+              "aps-environment"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 2,
+              "estimated_minutes": 45
+            }
+          },
+          "concepts": [],
+          "order": 6,
+          "los": [
+            {
+              "task_id": "task-07-push-registration",
+              "description": "Người học có khả năng hiểu được sự cần thiết của việc chuyển tiếp device token đến backend của Stream sau khi đăng ký nhận thông báo từ xa của Apple để kích hoạt thông báo đẩy cho các hoạt động chat.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "didRegisterForRemoteNotificationsWithDeviceToken",
+              "keyword": "didRegisterForRemoteNotificationsWithDeviceToken"
+            },
+            {
+              "task_id": "task-07-push-registration",
+              "description": "Người học có khả năng thực hiện việc đăng ký device token bằng cách gọi `chat.registerForPushNotifications` trong phương thức `didRegisterForRemoteNotificationsWithDeviceToken`.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "registerForPushNotifications",
+              "keyword": "registerForPushNotifications"
+            },
+            {
+              "task_id": "task-07-push-registration",
+              "description": "Người học có khả năng phân tích yêu cầu về entitlement 'aps-environment' và vai trò của nó trong việc cho phép thông báo đẩy hoạt động cho ứng dụng.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "aps-environment",
+              "keyword": "aps-environment"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "total_tasks": 12
+}
