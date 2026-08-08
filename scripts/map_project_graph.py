@@ -100,6 +100,7 @@ def build_concept_file_index(repo_dir: Path, kw_to_concepts: Dict[str, List[str]
         # Chỉ dùng category có từ vựng khớp resolved keywords (imports, framework usage)
         tokens = set(ev.get("imports", []))
         tokens.update(ev.get("property_wrappers", []))
+        tokens.update(ev.get("framework_usage", []))
         for tok in tokens:
             for code in kw_to_concepts.get(tok, []):
                 concept_files.setdefault(code, set()).add(rel)
@@ -164,8 +165,8 @@ def build_concept_map(
             continue
         feat_concepts_set: Set[str] = set()
         evidence = feat.get("evidence", {})
-        # Ưu tiên imports + property_wrappers — từ vựng khớp resolved keywords
-        for cat in ("imports", "property_wrappers"):
+        # Ưu tiên imports + property_wrappers + framework_usage — từ vựng khớp resolved keywords
+        for cat in ("imports", "property_wrappers", "framework_usage"):
             for token in evidence.get(cat, []):
                 for c in kw_to_concepts.get(token, []):
                     feat_concepts_set.add(c)

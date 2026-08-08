@@ -67,6 +67,7 @@ def extract_file_evidence(filepath: Path) -> Dict[str, List[str]]:
     property_wrappers: List[str] = []
     type_usages: List[str] = []
     api_calls: List[str] = []
+    framework_usage: List[str] = []
 
     if ext == ".swift":
         res = parse_swift_file(filepath)
@@ -86,8 +87,9 @@ def extract_file_evidence(filepath: Path) -> Dict[str, List[str]]:
                     api_calls.append(fn["name"])
             elif isinstance(fn, str):
                 api_calls.append(fn)
-        for fw in res.get("frameworks_used", []):
-            api_calls.append(fw)
+        # frameworks_used: keyword ngôn ngữ dùng trong thân code (Task, DispatchQueue...)
+        # — tách riêng khỏi api_calls để join concept chuẩn xác hơn
+        framework_usage.extend(res.get("frameworks_used", []))
 
     elif ext in (".cpp", ".c", ".cc", ".cxx", ".h", ".hpp", ".ino"):
         res = parse_cpp_file(filepath)
@@ -158,6 +160,7 @@ def extract_file_evidence(filepath: Path) -> Dict[str, List[str]]:
         "property_wrappers": sorted(list(set(filter(None, property_wrappers)))),
         "type_usages": sorted(list(set(filter(None, type_usages)))),
         "api_calls": sorted(list(set(filter(None, api_calls)))),
+        "framework_usage": sorted(list(set(filter(None, framework_usage)))),
     }
 
 
@@ -258,6 +261,7 @@ def verify_project_graph(graph_data: Dict[str, Any], repo_dir: Path) -> Tuple[Di
         feature_prop_wrappers: Set[str] = set()
         feature_type_usages: Set[str] = set()
         feature_api_calls: Set[str] = set()
+        feature_framework_usage: Set[str] = set()
 
         for f_path in feature["files"]:
             ev = file_evidence_cache.get(f_path) or extract_file_evidence(repo_dir / f_path)
@@ -265,12 +269,14 @@ def verify_project_graph(graph_data: Dict[str, Any], repo_dir: Path) -> Tuple[Di
             feature_prop_wrappers.update(ev["property_wrappers"])
             feature_type_usages.update(ev["type_usages"])
             feature_api_calls.update(ev["api_calls"])
+            feature_framework_usage.update(ev.get("framework_usage", []))
 
         feature["evidence"] = {
             "imports": sorted(list(feature_imports)),
             "property_wrappers": sorted(list(feature_prop_wrappers)),
             "type_usages": sorted(list(feature_type_usages)),
-            "api_calls": sorted(list(feature_api_calls))
+            "api_calls": sorted(list(feature_api_calls)),
+            "framework_usage": sorted(list(feature_framework_usage))
         }
 
         verified_features.append(feature)
