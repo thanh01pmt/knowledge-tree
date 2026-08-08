@@ -60,20 +60,20 @@ def main():
         sys.exit(1)
 
     system = (
-        "Bạn là chuyên gia phân tích cấu trúc dự án phần mềm.\n"
-        "Nhìn vào TREE MAP của một project (cây thư mục + file), xác định:\n"
-        "1. tech_stack THỰC của project (ngôn ngữ, framework, thư viện) — đối chiếu với goal learner nếu có.\n"
-        "2. extensions: các đuôi file CHỨA CODE cần collect nội dung (VD ['.swift'], ['.ts','.tsx'], ['.py']). "
-        "BỎ file build/config/asset (VD .json Contents, .png, .plist, .xcassets).\n"
-        "3. include_dirs: thư mục code chính (VD 'Talky', 'src').\n"
-        "4. exclude_dirs: thư mục KHÔNG cần (assets, build, node_modules, *.colorset...).\n"
-        "Trả JSON: {\"tech_stack\": [], \"extensions\": [], \"include_dirs\": [], "
+        "You are a software project structure analyst.\n"
+        "Look at the TREE MAP of a project (directory + file tree) and determine:\n"
+        "1. The ACTUAL tech_stack of the project (language, framework, libraries) — cross-check against the learner goal if provided.\n"
+        "2. extensions: the CODE file extensions whose content should be collected (e.g. ['.swift'], ['.ts','.tsx'], ['.py']). "
+        "EXCLUDE build/config/asset files (e.g. .json Contents, .png, .plist, .xcassets).\n"
+        "3. include_dirs: the main code directories (e.g. 'Talky', 'src').\n"
+        "4. exclude_dirs: directories NOT needed (assets, build, node_modules, *.colorset...).\n"
+        "Return JSON: {\"tech_stack\": [], \"extensions\": [], \"include_dirs\": [], "
         "\"exclude_dirs\": [], \"reasoning\": \"...\"}"
     )
     user = (
-        f"GOAL của learner: {args.goal or '(không có)'}\n\n"
-        f"TREE MAP của project:\n{tree}\n\n"
-        "Trả JSON đúng schema trên. extensions phải là đuôi file code thật (có dấu chấm)."
+        f"LEARNER GOAL: {args.goal or '(none)'}\n\n"
+        f"PROJECT TREE MAP:\n{tree}\n\n"
+        "Return JSON matching the schema above. extensions must be real code file extensions (with a leading dot)."
     )
 
     try:

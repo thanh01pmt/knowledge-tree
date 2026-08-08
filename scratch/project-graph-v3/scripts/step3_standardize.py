@@ -171,22 +171,22 @@ def standardize_keywords(keywords: Dict[str, Dict[str, Any]],
     )
 
     system = (
-        "Bạn là chuyên gia phân loại tri thức. Với mỗi keyword/API/thư viện từ dự án, "
-        "xác định concept trung tính nó thuộc về trong Knowledge Tree.\n"
-        "QUY TẮC:\n"
-        "1. ƯU TIÊN chọn concept CÓ SẴN trong CONCEPT_BANK nếu keyword là biểu hiện của concept đó "
-        "(dựa trên ngữ nghĩa, không phải khớp chữ).\n"
-        "2. Chỉ khi KHÔNG concept nào trong bank cover, trả status=unmapped + đề xuất concept mới "
-        "(code UPPER_SNAKE_CASE, KHÔNG kết thúc _CONCEPT, KHÔNG chứa tên công nghệ cụ thể) "
-        "kèm suggested_topic + suggested_category hợp lý.\n"
-        "3. VD: ChatClient → API_INTEGRATION, @State → LOCAL_VIEW_STATE, "
+        "You are a knowledge classification expert. For each keyword/API/library from the project, "
+        "determine the technology-neutral concept it belongs to in the Knowledge Tree.\n"
+        "RULES:\n"
+        "1. PREFER a concept ALREADY in the CONCEPT_BANK when the keyword is a manifestation of that "
+        "concept (based on semantics, not literal text matching).\n"
+        "2. Only when NO concept in the bank covers it, return status=unmapped and propose a new concept "
+        "(code UPPER_SNAKE_CASE, must NOT end with _CONCEPT, must NOT contain specific technology names) "
+        "with sensible suggested_topic + suggested_category.\n"
+        "3. Examples: ChatClient → API_INTEGRATION, @State → LOCAL_VIEW_STATE, "
         "UserNotifications → LOCAL_NOTIFICATION_API, UIKit → FRONTEND_FRAMEWORKS.\n"
-        "Trả JSON: {\"mappings\": [{\"keyword\": \"...\", \"status\": \"mapped|unmapped\", "
+        "Return JSON: {\"mappings\": [{\"keyword\": \"...\", \"status\": \"mapped|unmapped\", "
         "\"concept_code\": \"...\", \"concept_name\": \"...\", "
         "\"suggested_topic\": \"...\", \"suggested_category\": \"...\", \"reason\": \"...\"}]}"
     )
     user = (
-        f"KEYWORDS cần map ({len(keyword_list)}):\n" + "\n".join(f"- {k}" for k in keyword_list) +
+        f"KEYWORDS to map ({len(keyword_list)}):\n" + "\n".join(f"- {k}" for k in keyword_list) +
         f"\n\nCONCEPT_BANK ({len(concept_bank)} concepts):\n{bank_str}"
     )
 

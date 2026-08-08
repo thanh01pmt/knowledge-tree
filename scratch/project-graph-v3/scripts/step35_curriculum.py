@@ -99,21 +99,21 @@ def llm_judge_edges(pg: dict, edges: list, master_path: Path) -> list:
         )
 
     system = (
-        "Bạn là chuyên gia giáo dục + kiến trúc sư phần mềm. Đánh giá từng cạnh "
-        "prerequisite trong concept DAG của một roadmap học-by-building.\n"
-        "'A requires B' nghĩa: học viên PHẢI hiểu concept B trước khi học A.\n"
-        "Tiêu chí giữ (keep):\n"
-        "1. B là nền tảng/tiền đề logic của A (VD: biết data binding trước khi dùng "
-        "ObservableObject; biết async trước khi realtime sync).\n"
-        "2. B thực sự xuất hiện ở task trước A trong roadmap (kiểm tra task context).\n"
-        "Tiêu chí loại (reject):\n"
-        "1. Đây là nhiễu cấu trúc — A và B chỉ cùng xuất hiện vì 1 task chứa cả 2, "
-        "không có quan hệ tiền đề (VD: 'API_INTEGRATION requires LOCAL_NOTIFICATION_API' "
-        "nếu không có lý do thật).\n"
-        "2. Thứ tự ngược: A thực ra phụ thuộc B nhưng B xuất hiện SAU A, hoặc quan hệ "
-        "không rõ ràng.\n"
-        "3. Quan hệ quá lỏng lẻo — mọi concept đều 'cần' nhau thì không phải prerequisite.\n"
-        "Trả JSON: {\"verdicts\": [{\"edge_index\": <số thứ tự>, \"keep\": true/false, "
+        "You are an education expert + software architect. Judge each prerequisite "
+        "edge in the concept DAG of a learn-by-building roadmap.\n"
+        "'A requires B' means: the learner MUST understand concept B before learning A.\n"
+        "Keep criteria:\n"
+        "1. B is the logical foundation/prerequisite of A (e.g. know data binding before using "
+        "ObservableObject; know async before realtime sync).\n"
+        "2. B actually appears in a task BEFORE A in the roadmap (check the task context).\n"
+        "Reject criteria:\n"
+        "1. Structural noise — A and B only co-occur because a single task contains both, "
+        "with no real prerequisite relationship (e.g. 'API_INTEGRATION requires LOCAL_NOTIFICATION_API' "
+        "with no real reason).\n"
+        "2. Reversed order: A actually depends on B but B appears AFTER A, or the relationship "
+        "is unclear.\n"
+        "3. Too loose — if every concept 'needs' every other, it is not a prerequisite.\n"
+        "Return JSON: {\"verdicts\": [{\"edge_index\": <index>, \"keep\": true/false, "
         "\"confidence\": 0.0-1.0, \"rationale\": \"...\"}]}"
     )
     user = (
@@ -122,8 +122,8 @@ def llm_judge_edges(pg: dict, edges: list, master_path: Path) -> list:
                   {e['concept_code'] for e in edges} | {e['requires'] for e in edges}) +
         "\n\nTASK CONTEXT (task → concepts):\n" +
         "\n".join(f"- {tid}: {conc}" for tid, conc in sorted(task_conc.items())) +
-        "\n\nEDGES CẦN ĐÁNH GIÁ:\n" + "\n".join(edge_lines) +
-        "\n\nTrả verdict cho MỌI edge. Giữ edge chỉ khi có lý do prerequisite thật."
+        "\n\nEDGES TO JUDGE:\n" + "\n".join(edge_lines) +
+        "\n\nReturn a verdict for EVERY edge. Keep an edge only when there is a real prerequisite reason."
     )
 
     try:
@@ -163,27 +163,25 @@ def assign_stages_llm(tasks: list, stages: list) -> dict:
     if not _LLM_AVAILABLE or not stages or not tasks:
         return {}
     system = (
-        "Bạn là chuyên gia sư phạm. Gán MỖI implementation task vào ĐÚNG giai đoạn "
-        "phát triển (development_stages) của app — theo LOGIC HỌC TẬP (task nào dạy "
-        "điều gì thuộc giai đoạn nào), không theo keyword bề mặt.\n"
-        "Quy tắc:\n"
-        "1. GIAI ĐOẠN 1 = NỀN TẢNG THUẦN (làm quen IDE/ngôn ngữ/template/build chạy). "
-        "KHÔNG gán task nào triển khai CHỨC NĂNG CỤ THỂ của dự án (WelcomeView, form login, "
-        "component SecureTextField, model, navigation của app) vào giai đoạn 1 — những task "
-        "đó thuộc giai đoạn 2+.\n"
-        "2. UI view/form (Welcome, Login, Register, RecentChatView, ChatDetailView) thuộc "
-        "giai đoạn UI/auth của nó — Login form thuộc giai đoạn auth, KHÔNG phải profile.\n"
-        "3. Model/ViewModel thuộc giai đoạn feature nó phục vụ (ChatMessage model → giai "
-        "đoạn chat; NewChatViewModel → giai đoạn bắt đầu chat).\n"
-        "4. FirebaseManager/AuthViewModel/entry point → giai đoạn Firebase setup.\n"
-        "5. ProfileView/EditProfile/ImagePicker/NotificationManager/Push → giai đoạn Profile "
-        "và push.\n"
-        "6. ViewState/loading/error/empty refactor → giai đoạn hoàn thiện.\n"
-        "7. KHÔNG bao giờ gán task feature CORE (NewChat, Profile, Push, SecureTextField "
-        "component) vào giai đoạn hoàn thiện/polish — chúng có giai đoạn riêng của mình.\n"
-        "8. Mỗi task PHẢI có đúng 1 giai đoạn — dùng stage name CHÍNH XÁC từ danh sách "
-        "bên dưới (copy nguyên văn, không thêm số thứ tự).\n"
-        "Trả JSON: {\"assignments\": {\"<task_id>\": \"<stage_name chính xác>\"}}"
+        "You are a pedagogy expert. Assign EACH implementation task to the CORRECT "
+        "development stage of the app — by LEARNING LOGIC (which task teaches what belongs "
+        "in which stage), not by surface keywords.\n"
+        "Rules:\n"
+        "1. STAGE 1 = PURE FOUNDATION (getting familiar with IDE/language/template/build run). "
+        "Do NOT assign any task that implements a PROJECT-SPECIFIC FEATURE (WelcomeView, login form, "
+        "SecureTextField component, model, app navigation) to stage 1 — those belong to stage 2+.\n"
+        "2. UI views/forms (Welcome, Login, Register, RecentChatView, ChatDetailView) belong to "
+        "their UI/auth stage — a Login form belongs to the auth stage, NOT the profile stage.\n"
+        "3. Models/ViewModels belong to the stage of the feature they serve (ChatMessage model → chat "
+        "stage; NewChatViewModel → start-chat stage).\n"
+        "4. FirebaseManager/AuthViewModel/entry point → Firebase setup stage.\n"
+        "5. ProfileView/EditProfile/ImagePicker/NotificationManager/Push → Profile and push stage.\n"
+        "6. ViewState/loading/error/empty refactor → finalization stage.\n"
+        "7. NEVER assign tasks of CORE features (NewChat, Profile, Push, SecureTextField "
+        "component) to the finalization/polish stage — they have their own stage.\n"
+        "8. Each task MUST have exactly 1 stage — use the EXACT stage name from the list "
+        "below (copy verbatim, do not add an ordinal).\n"
+        "Return JSON: {\"assignments\": {\"<task_id>\": \"<exact stage name>\"}}"
     )
     stage_list = "\n".join(f"- {i+1}. {s.get('stage')}: need={s.get('need', [])}"
                            for i, s in enumerate(stages))
@@ -192,7 +190,7 @@ def assign_stages_llm(tasks: list, stages: list) -> dict:
     try:
         client, _p, model = get_llm_client()
         res = llm_chat_json(client=client, model=model, system=system,
-                            user=f"GIAI ĐOẠN:\n{stage_list}\n\nTASKS:\n{task_list}",
+                            user=f"STAGES:\n{stage_list}\n\nTASKS:\n{task_list}",
                             temperature=0.0)  # deterministic
         assign = res.get("assignments", {})
         # Normalize: strip "1. " prefix nếu LLM vẫn thêm
@@ -222,14 +220,14 @@ def llm_generate_cross_concepts(pg: dict, existing: list, master_path: Path) -> 
             task_conc[m.get("node_id").split(":", 1)[1]] = m.get("concepts", [])
     # task deps
     deps = pg.get("implementation", {}).get("task_dependencies", [])
-    dep_lines = "\n".join(f"- {d.get('task_id')} cần {d.get('depends_on')}" for d in deps[:40])
+    dep_lines = "\n".join(f"- {d.get('task_id')} needs {d.get('depends_on')}" for d in deps[:40])
 
     system = (
-        "Bạn là chuyên gia giáo dục (Gagné learning hierarchies). Đề xuất prerequisite "
-        "giữa các KHÁI NIỆM KHÁC NHAU (cross-concept) cho roadmap học-by-building.\n"
-        "'A requires B' = học viên phải hiểu B trước khi học A (B là nền tảng của A).\n"
-        "CHỈ đề xuất cạnh có quan hệ tiền đề THẬT — không đề xuất cạnh lỏng lẻo.\n"
-        "Trả JSON: {\"new_edges\": [{\"concept_code\": \"A\", \"requires\": \"B\", "
+        "You are an education expert (Gagné learning hierarchies). Propose prerequisites "
+        "between DIFFERENT CONCEPTS (cross-concept) for a learn-by-building roadmap.\n"
+        "'A requires B' = the learner must understand B before learning A (B is the foundation of A).\n"
+        "ONLY propose edges with a REAL prerequisite relationship — do not propose loose edges.\n"
+        "Return JSON: {\"new_edges\": [{\"concept_code\": \"A\", \"requires\": \"B\", "
         "\"rationale\": \"...\"}]}"
     )
     user = (
@@ -238,9 +236,9 @@ def llm_generate_cross_concepts(pg: dict, existing: list, master_path: Path) -> 
                   {c for t in task_conc.values() for c in t}) +
         "\n\nTASK CONTEXT:\n" +
         "\n".join(f"- {tid}: {conc}" for tid, conc in sorted(task_conc.items())) +
-        "\n\nTASK DEPENDENCIES (task nào cần task nào xong trước):\n" + dep_lines +
-        "\n\nĐề xuất tối đa 15 cạnh cross-concept mới có ý nghĩa nhất. "
-        "KHÔNG lặp lại cạnh đã có. KHÔNG đề xuất 'A requires A'."
+        "\n\nTASK DEPENDENCIES (which task must finish before which):\n" + dep_lines +
+        "\n\nPropose at most 15 most meaningful new cross-concept edges. "
+        "Do NOT repeat existing edges. Do NOT propose 'A requires A'."
     )
 
     try:
@@ -422,13 +420,13 @@ def zpd_check(pg: dict, tasks_in_order: list) -> list:
         issues = []
         if len(new) > MAX_NEW_CONCEPTS_PER_TASK:
             verdict = "TOO_MANY_NEW"
-            issues.append(f"có {len(new)} concept mới (giới hạn {MAX_NEW_CONCEPTS_PER_TASK}) — "
-                          f"quá tải intrinsic load (Sweller), cân nhắc tách task")
+            issues.append(f"has {len(new)} new concepts (limit {MAX_NEW_CONCEPTS_PER_TASK}) — "
+                          f"intrinsic load overload (Sweller), consider splitting the task")
         if len(conc) > 1 and len(known) == 0 and idx > 0:
-            # Task đầu tiên roadmap + task 1 concept mới = ZPD hợp lệ
-            # (1 bước vừa sức — Vygotsky). Chỉ flag khi NHIỀU concept mới đồng thời.
+            # First roadmap task + a single new concept = valid ZPD
+            # (one step within reach — Vygotsky). Only flag when MANY new concepts at once.
             verdict = "NO_ZPD_BRIDGE"
-            issues.append("không có concept quen (Vygotsky: nhiệm vụ nên nối kiến thức cũ → mới)")
+            issues.append("no known-concept bridge (Vygotsky: tasks should connect prior knowledge to new)")
         checks.append({
             "task_id": tid,
             "new_concepts": sorted(new),

@@ -47,12 +47,12 @@ SCHEMA = json.load(open(SCHEMA_PATH, encoding="utf-8"))
 CALL_GROUPS = {
     "identity":      ("A", "project (Identity): id/name/purpose/platform/tech_stack/source"),
     "product":       ("A", "product (Product Graph): goals/users/journeys/requirements"),
-    "feature":       ("A", "features (Feature Graph): capability của sản phẩm, priority, status"),
-    "capability":    ("A", "capabilities: cầu nối Feature → Task (purpose/depends_on/produces)"),
+    "feature":       ("A", "features (Feature Graph): product capabilities, priority, status"),
+    "capability":    ("A", "capabilities: bridge Feature → Task (purpose/depends_on/produces)"),
     "architecture":  ("A", "architecture (Architecture Graph): pattern/confidence/nodes/edges — FACT vs INFERENCE"),
     "experience":    ("B", "experience (Experience/UI Graph): screens/components/ui_states/navigation"),
     "data":          ("B", "data_integration (Data & Integration Graph): data_flows/models/integrations/persistence"),
-    "implementation": ("C", "implementation (Implementation Graph): tasks/task_dependencies — mỗi task kèm intent/outcome/source_evidence"),
+    "implementation": ("C", "implementation (Implementation Graph): tasks/task_dependencies — each task with intent/outcome/source_evidence"),
     "validation":    ("C", "validation (Validation Graph): validations/quality_requirements"),
 }
 ALL_DOMAINS = list(CALL_GROUPS.keys())
@@ -69,20 +69,20 @@ PROFILES = {
 PROFILE_EXTRA_INSTRUCTIONS = {
     "lite": "",
     "essential": (
-        "\nBỔ SUNG (essential):\n"
-        "- feature.api_usage[]: API/framework methods feature dùng (VD: ChatClient.connectUser, queryChannels).\n"
-        "- task.keywords[]: API/framework/property wrapper task dùng (VD: '@State', 'ChatClient').\n"
-        "- task.effort: ước lượng độ nặng (concepts_count, files_touched, estimated_minutes).\n"
+        "\nADDITIONAL (essential):\n"
+        "- feature.api_usage[]: API/framework methods the feature uses (e.g. ChatClient.connectUser, queryChannels).\n"
+        "- task.keywords[]: API/framework/property wrapper the task uses (e.g. '@State', 'ChatClient').\n"
+        "- task.effort: workload estimate (concepts_count, files_touched, estimated_minutes).\n"
     ),
     "full": (
-        "\nBỔ SUNG (full):\n"
-        "- feature.api_usage[]: API/framework methods feature dùng.\n"
-        "- task.keywords[]: API/framework/property wrapper task dùng.\n"
-        "- task.concurrency[]: cơ chế async dùng (Task, DispatchQueue, async/await).\n"
-        "- task.effort: ước lượng độ nặng.\n"
-        "- screen.keywords[]: framework/property wrapper screen dùng.\n"
-        "- implementation.missing_gaps[]: điều code THIẾU (missing error handling/test/hardcoded) — roadmap dạy bổ sung.\n"
-        "- implementation.tech_debt[]: tech debt signals (file lớn, logic lồng sâu) — Polish.\n"
+        "\nADDITIONAL (full):\n"
+        "- feature.api_usage[]: API/framework methods the feature uses.\n"
+        "- task.keywords[]: API/framework/property wrapper the task uses.\n"
+        "- task.concurrency[]: async mechanisms used (Task, DispatchQueue, async/await).\n"
+        "- task.effort: workload estimate.\n"
+        "- screen.keywords[]: framework/property wrapper the screen uses.\n"
+        "- implementation.missing_gaps[]: code that is MISSING (error handling/test/hardcoded) — the roadmap teaches it as follow-up work.\n"
+        "- implementation.tech_debt[]: tech debt signals (large files, deeply nested logic) — Polish phase.\n"
         "- validation.quality_requirements: accessibility/security/localization (B2/B3/B6).\n"
     ),
 }
@@ -115,72 +115,74 @@ def schema_subset(domains: list) -> str:
 # ============ PROMPT BUILDERS ============
 
 BASE_SYSTEM = (
-    "Bạn là kiến trúc sư phần mềm phân tích source code thành Project Graph chuẩn hóa.\n"
-    "Project Graph là canonical representation: mô tả 'project cần được xây dựng như thế nào', "
-    "KHÔNG phải AST, KHÔNG phải Knowledge Tree, KHÔNG phải roadmap.\n"
-    "NGUYÊN TẮC:\n"
-    "1. App người dùng sẽ xây CHÍNH LÀ các files được cung cấp (không phải SDK/lib bên ngoài).\n"
-    "2. Mỗi thông tin suy ra phải có evidence: file tồn tại, symbol có trong file. CẤM bịa file/symbol.\n"
-    "3. FACT vs INFERENCE tách bạch: file/symbol/keyword = OBSERVED; architecture/pattern = INFERRED "
-    "kèm confidence + evidence.\n"
-    "4. Boundary: KHÔNG đưa bloom level, quiz, mastery, lesson sequence, teaching content vào Project Graph.\n"
-    "5. Task là ACTION có thể thực hiện ('Implement search query state'), KHÔNG phải 'Learn State'. "
-    "Mỗi task có intent (WHY) + outcome (WHAT thay đổi sau task).\n"
-    "6. Trả JSON ĐÚNG schema. Chỉ điền các field bạn có bằng chứng từ code.\n"
-    "7. GÓC NHÌN END-USER (product domain): goals/users/requirements phải mô tả từ góc nhìn "
-    "NGƯỜI DÙNG CUỐI dùng app — 'User có thể đăng nhập', 'User có thể xem danh sách channel', "
-    "'User có thể gửi tin nhắn'. CẤM mô tả repo/artifact (VD 'Provide a demo app', 'Serve as "
-    "reference implementation', 'preview SDK features'). User = actor dùng app, goals = hành động "
-    "họ làm được.\n"
-    "8. SCAFFOLD (NỀN TẢNG): ngoài việc phân tích code hiện có, phải xác định bước KHỞI TẠO dự án "
-    "mà người học cần — tạo project từ template của nền tảng (Xcode/SwiftUI template, cấu trúc file "
-    "sinh sẵn: AppDelegate, ContentView, Assets...), build chạy được đầu tiên, làm quen công cụ. "
-    "Đây là bước TRƯỚC khi code tồn tại — phân tích từ tech_stack + cấu trúc repo, không phải từ "
-    "nội dung file.\n"
-    "9. project_type (identity domain) là field BẮT BUỘC: một trong "
+    "You are a software architect analyzing source code into a canonical Project Graph.\n"
+    "The Project Graph is a canonical representation: it describes 'how the project should be built', "
+    "NOT an AST, NOT a Knowledge Tree, NOT a roadmap.\n"
+    "RULES:\n"
+    "1. The app the learner will build IS EXACTLY the provided files (not external SDKs/libs).\n"
+    "2. Every inferred fact must have evidence: file exists, symbol present in file. NEVER invent files/symbols.\n"
+    "3. Keep FACT vs INFERENCE separate: file/symbol/keyword = OBSERVED; architecture/pattern = INFERRED "
+    "with confidence + evidence.\n"
+    "4. Boundary: DO NOT put bloom levels, quizzes, mastery, lesson sequences, or teaching content into the Project Graph.\n"
+    "5. A task is an ACTION that can be performed ('Implement search query state'), NOT 'Learn State'. "
+    "Each task has intent (WHY) + outcome (WHAT changes after the task).\n"
+    "6. Return JSON matching the schema exactly. Fill only fields you have code evidence for.\n"
+    "7. END-USER PERSPECTIVE (product domain): goals/users/requirements must be described from the "
+    "END USER's perspective of using the app — 'User can sign in', 'User can view the channel list', "
+    "'User can send a message'. NEVER describe repo/artifacts (e.g. 'Provide a demo app', 'Serve as "
+    "reference implementation', 'preview SDK features'). User = the actor using the app; goals = the "
+    "actions they can perform.\n"
+    "8. SCAFFOLD (FOUNDATION): besides analyzing the existing code, identify the PROJECT INITIALIZATION "
+    "step the learner needs — creating the project from the platform template (Xcode/SwiftUI template, "
+    "generated file structure: AppDelegate, ContentView, Assets...), first successful build, getting "
+    "familiar with the tooling. This step comes BEFORE the code exists — derive it from tech_stack + "
+    "repo structure, not from file contents.\n"
+    "9. project_type (identity domain) is REQUIRED: one of "
     "['mobile_app', 'web_app', 'cli_tool', 'library_sdk', 'desktop_app', 'backend_service', "
     "'fullstack_app', 'game', 'design_tool', 'ai_agent', 'plugin_extension', 'data_pipeline', 'other']. "
-    "Luôn điền, không để null/empty.\n"
-    "10. completion_level (product domain, mỗi requirement) BẮT BUỘC cho MỌI requirement: "
-    "một trong ['base', 'mvp', 'extend', 'polish'] — base = nền tảng cần có trước, mvp = chức năng "
-    "lõi vận hành được, extend = mở rộng thêm, polish = hoàn thiện/refactor.\n"
-    "11. Architecture confidence: node/pattern có bằng chứng cấu trúc THẬT (thư mục tên "
-    "ViewModel/, Model/, View/; file tên rõ vai trò) thì INFERRED confidence PHẢI ≥ 0.7. "
-    "Chỉ thấp (0.3-0.5) khi đoán không có bằng chứng.\n"
-    "12. development_stages (product domain) BẮT BUỘC — NARRATIVE cross-feature phát triển.\n"
-    "Mô tả app này phát triển qua các GIAI ĐOẠN như thế nào từ tối thiểu đến hoàn thiện, "
-    "mỗi giai đoạn là một mốc sản phẩm VẬN HÀNH ĐƯỢC (walking skeleton tăng dần).\n"
-    "QUAN TRỌNG — sắp xếp theo LOGIC HỌC TẬP (Reigeluth elaboration: dễ/feedback nhanh trước, "
-    "cấu hình nặng sau), KHÔNG phải theo completion_level:\n"
-    "  - GIAI ĐOẠN 1 = NỀN TẢNG THUẦN (M2 scaffold): làm quen IDE/platform (Xcode, simulator), "
-    "làm quen NGÔN NGỮ (Swift cú pháp cơ bản), thiết lập project từ template, build và chạy "
-    "template mặc định, trải nghiệm nhanh (sửa vài Text demo thấy kết quả). "
-    "Giai đoạn 1 KHÔNG được chứa chức năng CỤ THỂ của dự án (KHÔNG dựng WelcomeView của app, "
-    "KHÔNG viết component SecureTextField, KHÔNG navigation của app) — chỉ làm quen nền tảng "
-    "và template mặc định.\n"
-    "  - Giai đoạn 2 trở đi mới vào UI/feature của dự án (WelcomeView, form, component) — "
-    "đơn giản trước (màn hình chạy được, data giả/tạm), phức tạp sau.\n"
-    "  - Backend/config nặng (Firebase configure, singleton, API keys) KHÔNG nhét sớm — "
-    "đẩy xuống sau khi đã có UI chạy.\n"
-    "  - Mỗi giai đoạn: product_state (người dùng làm được gì), need (features/tasks triển khai), "
-    "learn (kiến thức học để làm được), validation (cách biết hoàn thành).\n"
-    "  - Giai đoạn cuối = sản phẩm hoàn thiện như repo hiện tại.\n"
-    "CROSS-FEATURE BỒI ĐẮP (additive value): mỗi giai đoạn phải mô tả rõ giá trị nó BỒI ĐẮP "
-    "vào sản phẩm tổng thể (VD giai đoạn auth bồi đắp 'user có danh tính riêng' lên nền UI đã có, "
-    "không phải feature cô lập). Sản phẩm sau mỗi giai đoạn = sản phẩm giai đoạn trước + lớp mới.\n"
-    "PHI TUYẾN (non-linearity): cho phép/dự đoán các SCAFFOLD TẠM để test nhanh — giải pháp "
-    "trung gian KHÔNG có trong kiến trúc cuối (mock data, local storage tạm thay Firebase, "
-    "hardcode token, navigation tạm thay auth gate). Ghi rõ ở need dạng 'tạm dùng X để test Y' "
-    "và nó sẽ được THAY bằng giải pháp thật ở giai đoạn nào (VD: 'tạm lưu session bằng "
-    "UserDefaults để test nhanh, giai đoạn 3 thay bằng FirebaseAuth').\n"
-    "Sinh 4-6 giai đoạn, mỗi giai đoạn gắn features/tasks CÓ THẬT trong graph.\n"
+    "Always fill it; never leave it null/empty.\n"
+    "10. completion_level (product domain, per requirement) is REQUIRED for EVERY requirement: "
+    "one of ['base', 'mvp', 'extend', 'polish'] — base = foundation needed first, mvp = core "
+    "functionality works, extend = add more, polish = finalize/refactor.\n"
+    "11. Architecture confidence: a node/pattern with REAL structural evidence (directories named "
+    "ViewModel/, Model/, View/; files whose names indicate their role) must have INFERRED confidence ≥ 0.7. "
+    "Only use low confidence (0.3-0.5) for guesses without evidence.\n"
+    "12. development_stages (product domain) is REQUIRED — a cross-feature NARRATIVE of growth.\n"
+    "Describe how this app evolves through STAGES from minimal to complete, where each stage is a "
+    "RUNNABLE product milestone (incremental walking skeleton).\n"
+    "IMPORTANT — order by LEARNING LOGIC (Reigeluth elaboration: easy/quick-feedback first, "
+    "heavy configuration later), NOT by completion_level:\n"
+    "  - STAGE 1 = PURE FOUNDATION (M2 scaffold): get familiar with the IDE/platform (Xcode, simulator), "
+    "get familiar with the LANGUAGE (Swift basic syntax), set up the project from the template, build and "
+    "run the default template, quick wins (edit a few demo Texts and see the result). "
+    "Stage 1 MUST NOT contain project-specific features (NO app WelcomeView, NO SecureTextField "
+    "component, NO app navigation) — only platform/template basics.\n"
+    "  - From stage 2 onward, work on the project's UI/features (WelcomeView, forms, components) — "
+    "simple first (runnable screens, fake/temporary data), complex later.\n"
+    "  - Heavy backend/config (Firebase configure, singletons, API keys) must NOT be front-loaded — "
+    "push them down until after a working UI exists.\n"
+    "  - Each stage: product_state (what the user can do), need (features/tasks to implement), "
+    "learn (knowledge needed), validation (how to know it is done).\n"
+    "  - The final stage = the complete product as it exists in the current repo.\n"
+    "CROSS-FEATURE ADDITIVE VALUE: each stage must clearly describe the value it ADDS to the overall "
+    "product (e.g. the auth stage adds 'the user has their own identity' on top of the existing UI, "
+    "not as an isolated feature). The product after each stage = previous product + new layer.\n"
+    "NON-LINEARITY: allow/anticipate TEMPORARY SCAFFOLDS for fast testing — intermediate solutions "
+    "NOT present in the final architecture (mock data, temporary local storage instead of Firebase, "
+    "hardcoded tokens, temporary navigation instead of auth gate). Note in need as 'temporarily use X "
+    "to test Y' and state which stage replaces it with the real solution (e.g. 'temporarily store the "
+    "session with UserDefaults for fast testing, replaced by FirebaseAuth in stage 3').\n"
+    "Generate 4-6 stages, each tied to REAL features/tasks in the graph.\n"
+    "13. LANGUAGE: write ALL generated text — goals, purposes, requirements, feature descriptions, "
+    "task actions, intents, outcomes, source notes, and stage narratives — IN ENGLISH. "
+    "Keep technical identifiers (class names, APIs) verbatim.\n"
 )
 
 def _file_context(source_text: str, max_chars: int) -> str:
-    """Cắt source theo giới hạn ký tự, giữ header # FILE:."""
+    """Cut source to the char limit, keeping the # FILE: headers."""
     if len(source_text) <= max_chars:
         return source_text
-    return source_text[:max_chars] + "\n... (TRUNCATED — còn lại không đưa vào prompt này)"
+    return source_text[:max_chars] + "\n... (TRUNCATED — the rest is not included in this prompt)"
 
 def _schema_section(domains: list = None) -> str:
     """Nhúng schema (hoặc subset theo domain được bật) vào prompt."""
@@ -195,15 +197,15 @@ def build_call_a(source_text: str, goal: str, tech_stack: str, max_chars: int = 
     domains = domains or ["identity", "product", "feature", "capability", "architecture"]
     domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
-        f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
-        "Trả JSON theo schema — chỉ điền các field của domain được yêu cầu, các domain khác để rỗng ([] / {} như schema).\n"
+        f"\n\nTHIS TASK: Analyze the domains: {domain_desc}.\n"
+        "Return JSON matching the schema — fill only the fields of the requested domains; leave the other domains empty ([] / {} as in the schema).\n"
         + profile_extra + "\n"
     )
     user = (
         f"GOAL: {goal}\nTECH_STACK: {tech_stack}\n\n"
-        f"SOURCE CODE (files có header '# FILE: <path>'):\n\n"
+        f"SOURCE CODE (files have '# FILE: <path>' headers):\n\n"
         f"{_file_context(source_text, max_chars)}\n\n"
-        f"SCHEMA (điền đúng, chỉ các domain được yêu cầu):\n{_schema_section(domains)}"
+        f"SCHEMA (fill exactly, only the requested domains):\n{_schema_section(domains)}"
     )
     return system, user
 
@@ -214,14 +216,14 @@ def build_call_b(source_text: str, goal: str, tech_stack: str, features_summary:
     domains = domains or ["experience", "data"]
     domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
-        f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
-        "Dựa trên features đã xác định (đưa trong user prompt) — gắn UI/data vào features đó.\n"
-        "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
+        f"\n\nTHIS TASK: Analyze the domains: {domain_desc}.\n"
+        "Base on the features already identified (provided in the user prompt) — attach UI/data to those features.\n"
+        "Return JSON matching the schema — fill only the requested domains; leave the others empty.\n"
         + profile_extra + "\n"
     )
     user = (
         f"GOAL: {goal}\nTECH_STACK: {tech_stack}\n\n"
-        f"FEATURES (đã xác định ở call trước):\n{features_summary}\n\n"
+        f"FEATURES (identified in the previous call):\n{features_summary}\n\n"
         f"SOURCE CODE:\n\n{_file_context(source_text, max_chars)}\n\n"
         f"SCHEMA:\n{_schema_section(domains)}"
     )
@@ -234,14 +236,14 @@ def build_call_c(source_text: str, goal: str, features_summary: str, arch_summar
     domains = domains or ["implementation", "validation"]
     domain_desc = "; ".join(CALL_GROUPS[d][1] for d in domains if d in CALL_GROUPS)
     system = BASE_SYSTEM + (
-        f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
-        "Mỗi task: action = hành động cụ thể, intent = WHY, outcome = WHAT thay đổi, "
-        "source_evidence = danh sách ĐƯỜNG DẪN FILE CHÍNH XÁC từ header '# FILE: <path>' trong SOURCE CODE. "
-        "BẮT BUỘC: mỗi entry source_evidence phải là 1 path y hệt header (VD 'Talky/ViewModel/AuthViewModel.swift'), "
-        "KHÔNG viết mô tả text, KHÔNG viết nội dung file, KHÔNG viết 'task = tạo file'. "
-        "Nếu task liên quan nhiều file, liệt kê hết path. "
-        "Nếu task chưa có file (VD task scaffold), để rỗng [].\n"
-        "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
+        f"\n\nTHIS TASK: Analyze the domains: {domain_desc}.\n"
+        "Each task: action = a concrete action, intent = WHY, outcome = WHAT changes, "
+        "source_evidence = the list of EXACT FILE PATHS taken from the '# FILE: <path>' headers in SOURCE CODE. "
+        "REQUIRED: every source_evidence entry must be a path identical to a header (e.g. 'Talky/ViewModel/AuthViewModel.swift'), "
+        "NO descriptive text, NO file contents, NO 'task = create file'. "
+        "If a task involves multiple files, list every path. "
+        "If a task has no file yet (e.g. a scaffold task), leave it empty [].\n"
+        "Return JSON matching the schema — fill only the requested domains; leave the others empty.\n"
         + profile_extra + "\n"
     )
     user = (

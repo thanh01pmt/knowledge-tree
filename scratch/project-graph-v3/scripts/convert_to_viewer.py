@@ -16,7 +16,7 @@ import json
 import sys
 from pathlib import Path
 
-PHASE_TITLES = {"FOUNDATION": "NỀN TẢNG", "MVP": "MVP", "EXTEND": "MỞ RỘNG", "POLISH": "HOÀN THIỆN"}
+PHASE_TITLES = {"FOUNDATION": "Foundation", "MVP": "MVP", "EXTEND": "Extend", "POLISH": "Polish"}
 
 
 def convert(roadmap: dict) -> dict:
@@ -93,7 +93,7 @@ def convert(roadmap: dict) -> dict:
             # M1 — không hardcode template project cũ (StreamChat). Code/tiêu đề
             # đều lấy từ roadmap; fallback trung tính, không nhắc SDK/repo.
             "project_code": (project.get("name") or "PROJECT").upper().replace(" ", "_"),
-            "title": project.get("name", "Dự án học-by-building"),
+            "title": project.get("name", "Learn-by-building project"),
             "goal": project.get("purpose", ""),
             "tech_stack": project.get("tech_stack", {}),
         },

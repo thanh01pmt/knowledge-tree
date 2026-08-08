@@ -404,8 +404,8 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                 "capability_id": "",
                 # KHÔNG truncate — dữ liệu giữ nguyên nội dung gap (trước cắt 100
                 # ký tự làm mất ý: 'đưa lên server/proxy' bị cắt bỏ)
-                "action": f"Khắc phục: {g.get('gap', '')}",
-                "intent": f"Cải thiện chất lượng: {g.get('gap', '')}",
+                "action": f"Fix: {g.get('gap', '')}",
+                "intent": f"Improve quality: {g.get('gap', '')}",
                 "outcome": {"user_visible": g.get('suggested_lo', '')},
                 "keywords": [],
                 "source_evidence": [g.get('location', '')] if g.get('location') else [],
@@ -494,16 +494,17 @@ def generate_task_lo(task: Dict, concepts: List[str], validations: List[Dict]) -
 
     val = [v for v in validations if v.get("target") == task.get("id", "")]
     system = (
-        "Bạn là chuyên gia sư phạm. Sinh Learning Objectives (LO) cho MỘT implementation task "
-        "trong roadmap học-by-building.\n"
-        "Mỗi LO: câu bắt đầu 'Người học có khả năng', kèm bloom_level (UNDERSTAND/APPLY/ANALYZE/CREATE) "
-        "và lo_type (UNIVERSAL/CONCEPTUAL_IMPL/SPECIFIC_IMPL).\n"
-        "Gắn LO vào CONCEPT đã cho (concept_code), KHÔNG tạo concept mới.\n"
-        "BLOOM THEO LOẠI TASK (BẮT BUỘC): task thuần UI → APPLY chính (tối đa 1 UNDERSTAND, KHÔNG "
-        "ANALYZE); task logic/service → ANALYZE tối đa 1 + APPLY; task khái niệm mới/scaffold → "
-        "UNDERSTAND chính + APPLY; task refactor/polish/gap → ANALYZE + CREATE chính, không UNDERSTAND "
-        "trừ khái niệm mới. Mỗi task tối đa 1 ANALYZE, tối thiểu 1 APPLY.\n"
-        "Trả JSON: {\"los\": [{\"description\": \"...\", \"bloom_level\": \"...\", "
+        "You are a pedagogy expert. Generate Learning Objectives (LOs) for ONE implementation task "
+        "in a learn-by-building roadmap.\n"
+        "Each LO: sentence starts with 'Learners will be able to', with bloom_level (UNDERSTAND/APPLY/ANALYZE/CREATE) "
+        "and lo_type (UNIVERSAL/CONCEPTUAL_IMPL/SPECIFIC_IMPL).\n"
+        "Attach LOs to the GIVEN concept (concept_code); do NOT create new concepts.\n"
+        "BLOOM BY TASK TYPE (REQUIRED): pure UI task → APPLY is primary (max 1 UNDERSTAND, NO "
+        "ANALYZE); logic/service task → max 1 ANALYZE + APPLY; new-concept/scaffold task → "
+        "UNDERSTAND primary + APPLY; refactor/polish/gap task → ANALYZE + CREATE primary, no UNDERSTAND "
+        "except for new concepts. Each task: max 1 ANALYZE, min 1 APPLY.\n"
+        "Write all LO descriptions IN ENGLISH.\n"
+        "Return JSON: {\"los\": [{\"description\": \"...\", \"bloom_level\": \"...\", "
         "\"lo_type\": \"...\", \"concept_code\": \"...\", \"keyword\": \"...\"}]}"
     )
     user = (
@@ -511,11 +512,11 @@ def generate_task_lo(task: Dict, concepts: List[str], validations: List[Dict]) -
         f"INTENT (WHY): {task.get('intent', '')}\n"
         f"OUTCOME: {task.get('outcome', {}).get('user_visible', '')}\n"
         f"KEYWORDS: {task.get('keywords', [])}\n"
-        f"CONCEPTS (chọn concept_code từ đây): {concepts}\n"
+        f"CONCEPTS (choose concept_code from here): {concepts}\n"
         f"ACCEPTANCE: {task.get('acceptance', [])}\n"
         f"VALIDATION: {[v.get('criteria', []) for v in val]}\n"
         f"EFFORT: {task.get('effort', {})}\n"
-        "Sinh 2-4 LO bao phủ khái niệm + thực hành của task."
+        "Generate 2-4 LOs covering the concept and the practice of the task."
     )
     try:
         client, _p, model = get_llm_client()
@@ -546,7 +547,7 @@ def attach_assessments(roadmap_structure: dict) -> dict:
                 if not lo.get("assessment"):
                     base = acc_str or outcome or t.get("action", "")
                     # Nối bloom vào assessment cho phù hợp (áp dụng/đánh giá)
-                    lo["assessment"] = base[:200] if base else f"Hoàn thành task {t.get('id', '')}"
+                    lo["assessment"] = base[:200] if base else f"Complete task {t.get('id', '')}"
     return roadmap_structure
 
 
@@ -563,31 +564,31 @@ def generate_tasks_lo_batch(tasks: List[Dict], validations: List[Dict],
                 for t in tasks}
 
     system = (
-        "Bạn là chuyên gia sư phạm. Sinh Learning Objectives (LO) cho NHIỀU implementation task "
-        "trong roadmap học-by-building.\n"
-        "Mỗi task: sinh 2-4 LO — câu bắt đầu 'Người học có khả năng', kèm bloom_level "
-        "(UNDERSTAND/APPLY/ANALYZE/CREATE) và lo_type (UNIVERSAL/CONCEPTUAL_IMPL/SPECIFIC_IMPL).\n"
-        "Gắn LO vào concept_code ĐÃ CHO ở mỗi task, KHÔNG tạo concept mới.\n"
-        "BLOOM THEO LOẠI TASK (BẮT BUỘC — KHÔNG bơm ANALYZE bừa bãi):\n"
-        "  - Task thuần UI/view (Implement XView, render, hiển thị): APPLY là chính, tối đa 1 UNDERSTAND "
-        "nếu có khái niệm SwiftUI mới. KHÔNG ANALYZE.\n"
-        "  - Task logic/service (ViewModel, manager, data layer, realtime sync): ANALYZE hợp lý cho "
-        "1 LO (phân tích luồng dữ liệu), còn lại APPLY.\n"
-        "  - Task khái niệm mới (scaffold, entry point, setup nền tảng): UNDERSTAND là chính (hiểu "
-        "vì sao cần), kèm APPLY cho thao tác.\n"
-        "  - Task refactor/polish/gap: ANALYZE (đánh giá code hiện tại) + CREATE (thiết kế giải pháp "
-        "mới) là chính, KHÔNG UNDERSTAND trừ khi giải thích khái niệm mới.\n"
-        "Mỗi task KHÔNG được có quá 1 ANALYZE (trừ polish/refactor). "
-        "Tối thiểu 1 APPLY cho task nào cũng có.\n"
-        "BLOOM CAP (Bruner spiral — BẮT BUỘC tuân thủ, không vượt): nếu task có ghi "
-        "BLOOM_CAPS, mỗi concept phải sinh LO có bloom_level ≤ cap (UNDERSTAND < APPLY < "
-        "ANALYZE < CREATE). Concept gặp lần đầu chỉ được UNDERSTAND/APPLY — KHÔNG được "
-        "ANALYZE/CREATE cho khái niệm hoàn toàn mới.\n"
-        "Trả JSON: {\"results\": {\"<TASK_ID>\": {\"los\": [{\"description\": \"...\", "
+        "You are a pedagogy expert. Generate Learning Objectives (LOs) for MULTIPLE implementation tasks "
+        "in a learn-by-building roadmap.\n"
+        "Each task: generate 2-4 LOs — each sentence starts with 'Learners will be able to', with bloom_level "
+        "(UNDERSTAND/APPLY/ANALYZE/CREATE) and lo_type (UNIVERSAL/CONCEPTUAL_IMPL/SPECIFIC_IMPL).\n"
+        "Attach LOs to the concept_code GIVEN for each task; do NOT create new concepts.\n"
+        "BLOOM BY TASK TYPE (REQUIRED — do NOT inflate ANALYZE):\n"
+        "  - Pure UI/view task (Implement XView, render, display): APPLY is primary, max 1 UNDERSTAND "
+        "if there is a new SwiftUI concept. NO ANALYZE.\n"
+        "  - Logic/service task (ViewModel, manager, data layer, realtime sync): ANALYZE is appropriate for "
+        "1 LO (analyze the data flow), the rest APPLY.\n"
+        "  - New-concept task (scaffold, entry point, platform setup): UNDERSTAND is primary (understand "
+        "why it is needed), plus APPLY for the hands-on step.\n"
+        "  - Refactor/polish/gap task: ANALYZE (evaluate the current code) + CREATE (design the new "
+        "solution) are primary, NO UNDERSTAND unless explaining a new concept.\n"
+        "Each task MUST NOT have more than 1 ANALYZE (except polish/refactor). "
+        "Every task must have at least 1 APPLY.\n"
+        "BLOOM CAP (Bruner spiral — MUST obey, do not exceed): if a task lists "
+        "BLOOM_CAPS, each concept must generate LOs with bloom_level ≤ cap (UNDERSTAND < APPLY < "
+        "ANALYZE < CREATE). A concept seen for the first time may only be UNDERSTAND/APPLY — NEVER "
+        "ANALYZE/CREATE for a completely new concept.\n"
+        "Return JSON: {\"results\": {\"<TASK_ID>\": {\"los\": [{\"description\": \"...\", "
         "\"bloom_level\": \"...\", \"lo_type\": \"...\", \"concept_code\": \"...\", "
         "\"keyword\": \"...\"}]}}}\n"
-        "Nếu task không có concept, concept_code để rỗng.\n"
-        "Viết BẰNG TIẾNG VIỆT (giữ thuật ngữ kỹ thuật tiếng Anh)."
+        "If a task has no concept, leave concept_code empty.\n"
+        "Write all LO descriptions IN ENGLISH (keep technical terms verbatim)."
     )
 
     user_items = []
@@ -608,7 +609,7 @@ def generate_tasks_lo_batch(tasks: List[Dict], validations: List[Dict],
         )
 
     user = (
-        "Sinh LO cho các task sau (mỗi task 2-4 LO):\n\n" + "\n".join(user_items)
+        "Generate LOs for the following tasks (2-4 LOs each):\n\n" + "\n".join(user_items)
     )
 
     try:
