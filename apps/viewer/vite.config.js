@@ -7,7 +7,7 @@ export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
     proxy: {
-      '/.netlify/functions': {
+      '/api/chat': {
         target: 'https://knowledge-graph.netlify.app',
         changeOrigin: true,
       }

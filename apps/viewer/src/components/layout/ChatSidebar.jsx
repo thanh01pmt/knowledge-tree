@@ -29,7 +29,7 @@ export default function ChatSidebar({ isOpen, onClose }) {
     try {
       // In local dev without Netlify CLI, this might fail unless proxied.
       // We call the Netlify function endpoint we defined.
-      const response = await fetch('/.netlify/functions/chat', {
+      const response = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: newMessages })

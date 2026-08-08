@@ -14,7 +14,7 @@ export default async (req, context) => {
     
     // API Key từ Netlify Environment Variables
     // Có thể dùng process.env hoặc Netlify.env
-    const apiKey = process.env.DEEPSEEK_API_KEY || Netlify?.env?.get('DEEPSEEK_API_KEY');
+    const apiKey = Netlify.env.get('DEEPSEEK_API_KEY');
     
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'Missing DEEPSEEK_API_KEY' }), { 
@@ -64,6 +64,3 @@ export default async (req, context) => {
   }
 };
 
-export const config = {
-  path: "/api/chat"
-};
