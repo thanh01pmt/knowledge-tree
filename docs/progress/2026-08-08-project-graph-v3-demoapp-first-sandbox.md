@@ -3,7 +3,7 @@
 > **Ngày:** 2026-08-08
 > **Phạm vi:** Thiết kế lại Project Graph theo canonical 8-domain model, DemoApp-first, LLM semantics (bỏ embedding resolve).
 > **Vị trí:** `scratch/project-graph-v3/` — sandbox cô lập, KHÔNG đụng `scripts/` production.
-> **Trạng thái:** 🟢 STEP 0→3 hoàn tất — 3 profile (lite/essential/full), per-node keywords giữ quan hệ (53 node_id), 76 mappings. STEP 4 chưa triển khai.
+> **Trạng thái:** 🟢 STEP 0→4 hoàn tất — task-aware roadmap: MVP 11 tasks/38 LOs + EXTEND 1/3. Toàn pipeline v3 đã chứng minh end-to-end.
 
 ---
 
@@ -90,7 +90,7 @@ python scripts/git_tracker.py \
 | STEP 1 — LLM Project Graph (3 calls theo cụm domain) | ✅ + `--profile lite/essential/full` + `--include` + fields A1/A2/A4/C1/C2/C3 |
 | STEP 2 — Verify evidence OBSERVED | ✅ `scripts/step2_verify.py` — 21 evidence, 0 hallucination |
 | STEP 3 — Standardize (LLM #2, concept bank) | ✅ per-node: 76 mappings (50 MAPPED + 26 Gap D), 53 giữ node_id + `merge_project_graphs.py` |
-| STEP 4 — JIT + Assemble + Judge | ⬜ Kế thừa pipeline hiện có |
+| STEP 4 — Task-aware Roadmap | ✅ `scripts/step4_roadmap.py` — topo sort, phase theo priority, LO per-task (41 LOs) |
 | Test trên smart-bulb + stream-chat | ⬜ |
 
 ## 5. Bài học rút ra (từ v4 — pipeline cũ chạy thật)
