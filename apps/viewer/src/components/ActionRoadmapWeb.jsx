@@ -541,7 +541,7 @@ function Sidebar(_ref) {
     className: 'sidebar',
     style: { 
       width: '252px', flex: 'none', position: 'sticky', top: 0, height: '100%',
-      overflowY: 'auto', borderRight: '1px solid var(--border)', background: 'var(--surface)',
+      overflowY: 'auto', borderRight: '1px solid var(--border)', background: 'var(--sidebar-bg)',
       padding: '24px 18px 24px'
     }
   }, [
