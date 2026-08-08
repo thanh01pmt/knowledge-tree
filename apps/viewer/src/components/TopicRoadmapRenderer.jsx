@@ -165,24 +165,25 @@ function describeImplementation(milestone, los) {
   const conceptName = concept.toLowerCase().replace(/_/g, ' ');
 
   // Ưu tiên theo thứ tự mô tả thật: ULO → CIO → SIO name
-  // Phase 1 (ULO): "App có thể hiểu X" từ ULO description
+  // Phase 1 (ULO): "Người học có khả năng hiểu X" từ ULO description
+  // (KHÔNG đổi "App có thể" — người học thực hiện task, không phải App)
   const uloDesc = los.find(lo => lo.lo_type === 'UNIVERSAL')?.description || '';
   if (uloDesc) {
-    return uloDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '') + '.';
+    return uloDesc.replace(/\.$/, '') + '.';
   }
 
   // Phase 2 (CIO): mô tả thiết kế/phân tích từ CIO description
   const cioDesc = los.find(lo => lo.lo_type === 'CONCEPTUAL_IMPL')?.description || '';
   if (cioDesc) {
-    return cioDesc.replace(/^Người học có khả năng\s*/i, 'App có thể ').replace(/\.$/, '') + '.';
+    return cioDesc.replace(/\.$/, '') + '.';
   }
 
-  // Phase 3 (SIO): "App triển khai X với Swift"
+  // Phase 3 (SIO): "Người học triển khai X với Swift"
   const sioNames = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL').map(lo => lo.name || '');
   if (sioNames.length > 0) {
-    return `App triển khai ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}.`;
+    return `Người học triển khai ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}.`;
   }
-  return `App triển khai ${conceptName}.`;
+  return `Người học triển khai ${conceptName}.`;
 }
 
 // ============================================================================
