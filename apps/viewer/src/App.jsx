@@ -68,6 +68,7 @@ function App() {
 
   const [isolatedNodeId, setIsolatedNodeId] = useState(null);
   const [searchMatchingIds, setSearchMatchingIds] = useState(new Set());
+  const [isConfigSidebarOpen, setIsConfigSidebarOpen] = useState(true);
   const [isDashboardOpen, setIsDashboardOpen] = useState(false);
   const [viewMode, setViewMode] = useState(() => {
     // Deep-link: ?view=roadmap / ?view=project-graph / ?view=knowledge
@@ -249,6 +250,8 @@ function App() {
           />
 
           <ControlPanel 
+            isOpen={isConfigSidebarOpen}
+            onToggle={() => setIsConfigSidebarOpen(!isConfigSidebarOpen)} 
             nodes={graphData.nodes} 
             onNodeSearch={handleNodeSearch}
             filters={filters}
@@ -265,6 +268,8 @@ function App() {
           {/* Main 3D Graph */}
           <div className="flex-1 min-w-0 relative h-full w-full">
             <KnowledgeTree3D 
+              isConfigSidebarOpen={isConfigSidebarOpen}
+              onToggleConfigSidebar={() => setIsConfigSidebarOpen(!isConfigSidebarOpen)} 
               graphData={graphData} 
               linksBySource={linksBySource} 
               linksByTarget={linksByTarget}

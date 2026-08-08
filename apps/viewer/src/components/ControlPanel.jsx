@@ -12,13 +12,14 @@ export default function ControlPanel({
   setLevelConfig,
   onReset,
   onSearchMatchesChange,
-  onOpenDashboard
+  onOpenDashboard,
+  isOpen = true,
+  onToggle
 }) {
   const [activeTab, setActiveTab] = useState('elements');
   const [selectedLevel, setSelectedLevel] = useState('field');
   const [searchTerm, setSearchTerm] = useState('');
   const [showSuggestions, setShowSuggestions] = useState(false);
-  const [isCollapsed, setIsCollapsed] = useState(false);
   const searchRef = useRef();
 
   const matchingNodeIds = useMemo(() => {
@@ -81,19 +82,7 @@ export default function ControlPanel({
     if (onNodeSearch) onNodeSearch(node);
   };
 
-  if (isCollapsed) {
-    return (
-      <div className="h-full w-[41px] bg-white dark:bg-[#1a1d21] border-r border-slate-200 dark:border-slate-800 flex flex-col items-center py-2 z-10 transition-all duration-300">
-        <button 
-          onClick={() => setIsCollapsed(false)}
-          className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-800 rounded-md transition-colors"
-          title="Expand Graph Configuration"
-        >
-          <PanelLeftOpen className="w-5 h-5" />
-        </button>
-      </div>
-    );
-  }
+  if (!isOpen) return null;
 
   return (
     <div className="h-full w-[320px] bg-white dark:bg-[#1a1d21] border-r border-slate-200 dark:border-slate-800 flex flex-col text-slate-700 dark:text-slate-300 z-10 transition-all duration-300 flex-shrink-0">
@@ -121,7 +110,7 @@ export default function ControlPanel({
             <RotateCcw className="w-4 h-4" />
           </button>
           <button 
-            onClick={() => setIsCollapsed(true)}
+            onClick={onToggle}
             className="text-slate-600 dark:text-slate-500 hover:text-slate-800 dark:hover:text-slate-300 p-1.5 rounded-md hover:bg-slate-200 dark:hover:bg-slate-800 transition-colors"
             title="Collapse Panel"
           >

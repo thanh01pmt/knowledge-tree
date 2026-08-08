@@ -2,7 +2,7 @@ import { useRef, useEffect, useState, useCallback, useMemo } from 'react';
 import ForceGraph3D from 'react-force-graph-3d';
 import SpriteText from 'three-spritetext';
 import * as THREE from 'three';
-import { Maximize, Plus, Minus, Play, Pause, Network, Search, Camera, Hand, Rotate3d, HelpCircle, X } from 'lucide-react';
+import { Maximize, Plus, Minus, Play, Pause, Network, Search, Camera, Hand, Rotate3d, HelpCircle, X, PanelLeftOpen, PanelLeftClose } from 'lucide-react';
 
 // Static geometries for performance (normalized to ~radius 1)
 const shapeGeometries = {
@@ -51,7 +51,9 @@ export default function KnowledgeTree3D({
   selectedNode,
   isolatedNodeId = null,
   searchMatchingIds = null,
-  theme
+  theme,
+  isConfigSidebarOpen,
+  onToggleConfigSidebar
 }) {
   const fgRef = useRef();
   const [highlightNodes, setHighlightNodes] = useState(new Set());
@@ -533,6 +535,8 @@ export default function KnowledgeTree3D({
       'concept': `hsl(${hue}, 40%, 25%)`
     };
 
+    const fadedColor = theme === 'dark' ? '#334155' : '#cbd5e1';
+
     if (visualConfig && visualConfig.coloringStrategy === 'cs2023') {
        if (node.cs2023_ka) {
           const kaStr = String(node.cs2023_ka);
@@ -543,19 +547,19 @@ export default function KnowledgeTree3D({
           const kaHue = Math.abs(hash) % 360;
           
           if (highlightNodes.size === 0) return `hsl(${kaHue}, 80%, 55%)`;
-          return highlightNodes.has(node.id) ? `hsl(${kaHue}, 100%, 75%)` : 'rgba(255,255,255,0.05)';
+          return highlightNodes.has(node.id) ? `hsl(${kaHue}, 100%, 75%)` : fadedColor;
        } else {
-          return highlightNodes.size > 0 && !highlightNodes.has(node.id) ? 'rgba(255,255,255,0.05)' : '#475569';
+          return highlightNodes.size > 0 && !highlightNodes.has(node.id) ? fadedColor : '#475569';
        }
     }
 
     if (highlightNodes.size === 0) {
       if (node.metadata && node.metadata.color && (!visualConfig || visualConfig.coloringStrategy === 'hierarchy')) return node.metadata.color;
-      return levelStyles[node.level] || '#ffffff';
+      return levelStyles[node.level] || (theme === 'dark' ? '#ffffff' : '#475569');
     }
     
-    return highlightNodes.has(node.id) ? `hsl(${hue}, 100%, 75%)` : 'rgba(255,255,255,0.05)';
-  }, [highlightNodes, visualConfig]);
+    return highlightNodes.has(node.id) ? `hsl(${hue}, 100%, 75%)` : fadedColor;
+  }, [highlightNodes, visualConfig, theme]);
 
   const nodeThreeObject = useCallback(node => {
     // Memory leak prevention: dispose previous object resources if re-creating
@@ -697,10 +701,12 @@ export default function KnowledgeTree3D({
     const linkId = `${sourceId}-${targetId}`;
     
     const opacity = visualConfig ? visualConfig.linkOpacity : 0.3;
+    const isDark = theme === 'dark';
+    const rgb = isDark ? '255,255,255' : '100,116,139'; // slate-500
     
-    if (highlightLinks.size === 0) return `rgba(255,255,255,${opacity})`;
-    return highlightLinks.has(linkId) ? '#ffaa00' : 'rgba(255,255,255, 0.01)';
-  }, [visualConfig?.linkOpacity, highlightLinks]);
+    if (highlightLinks.size === 0) return `rgba(${rgb},${opacity})`;
+    return highlightLinks.has(linkId) ? '#ffaa00' : `rgba(${rgb}, 0.05)`;
+  }, [visualConfig?.linkOpacity, highlightLinks, theme]);
 
   const getLinkWidth = useCallback(link => {
     if (link.type === 'prereq_forward' || link.type === 'prereq_backward') return 1.5;
@@ -728,8 +734,8 @@ export default function KnowledgeTree3D({
   const getLinkDirectionalParticleColor = useCallback(link => {
     if (link.type === 'prereq_forward') return '#4ade80';
     if (link.type === 'prereq_backward') return '#f87171';
-    return '#ffffff';
-  }, []);
+    return theme === 'dark' ? '#ffffff' : '#64748b';
+  }, [theme]);
 
   const finalGraphData = useMemo(() => ({
     nodes: visibleGraphData.nodes,
@@ -828,6 +834,17 @@ export default function KnowledgeTree3D({
       {/* Canvas Toolbars */}
       <div className="absolute top-4 left-4 flex flex-col gap-3 z-10 pointer-events-none">
         
+        {/* Sidebar Toggle */}
+        <div className="flex flex-col bg-white/80 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
+          <button 
+            onClick={onToggleConfigSidebar} 
+            className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors flex items-center justify-center" 
+            title={isConfigSidebarOpen ? "Collapse Graph Configuration" : "Expand Graph Configuration"}
+          >
+            {isConfigSidebarOpen ? <PanelLeftClose className="w-4 h-4" strokeWidth={2} /> : <PanelLeftOpen className="w-4 h-4" strokeWidth={2} />}
+          </button>
+        </div>
+
         {/* Zoom Controls */}
         <div className="flex flex-col bg-white/80 dark:bg-[#2a2f36]/80 backdrop-blur-md border border-slate-200/50 dark:border-slate-700/50 rounded-lg overflow-hidden shadow-xl pointer-events-auto">
           <button onClick={handleZoomFit} className="p-2 text-slate-500 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center" title="Fit to screen">
