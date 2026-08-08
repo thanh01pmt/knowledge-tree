@@ -3,7 +3,7 @@
 > **Ngày:** 2026-08-08
 > **Phạm vi:** Thiết kế lại Project Graph theo canonical 8-domain model, DemoApp-first, LLM semantics (bỏ embedding resolve).
 > **Vị trí:** `scratch/project-graph-v3/` — sandbox cô lập, KHÔNG đụng `scripts/` production.
-> **Trạng thái:** 🟢 STEP 0→3 hoàn tất end-to-end trên DemoApp (21 MAPPED + 7 Gap D). STEP 4 chưa triển khai.
+> **Trạng thái:** 🟢 STEP 0→3 hoàn tất — 3 profile (lite/essential/full), per-node keywords giữ quan hệ (53 node_id), 76 mappings. STEP 4 chưa triển khai.
 
 ---
 
@@ -87,9 +87,9 @@ python scripts/git_tracker.py \
 |---|---|
 | STEP 0 — git_tracker mở rộng | ✅ Hoàn tất (committed) |
 | Schema v3 (8 domain canonical) | ✅ `schemas/project_graph.schema.v3.json` + example + tests (Draft-07, D6/D7/D8) |
-| STEP 1 — LLM Project Graph (3 calls theo cụm domain) | ✅ `scripts/step1_project_graph_llm.py` — 6 features, 13 tasks, 280s |
+| STEP 1 — LLM Project Graph (3 calls theo cụm domain) | ✅ + `--profile lite/essential/full` + `--include` + fields A1/A2/A4/C1/C2/C3 |
 | STEP 2 — Verify evidence OBSERVED | ✅ `scripts/step2_verify.py` — 21 evidence, 0 hallucination |
-| STEP 3 — Standardize (LLM #2, concept bank) | ✅ `scripts/step3_standardize.py` — 28 keywords → 21 MAPPED + 7 Gap D |
+| STEP 3 — Standardize (LLM #2, concept bank) | ✅ per-node: 76 mappings (50 MAPPED + 26 Gap D), 53 giữ node_id + `merge_project_graphs.py` |
 | STEP 4 — JIT + Assemble + Judge | ⬜ Kế thừa pipeline hiện có |
 | Test trên smart-bulb + stream-chat | ⬜ |
 
