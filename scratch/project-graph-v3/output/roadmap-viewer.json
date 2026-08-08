@@ -1,0 +1,2266 @@
+{
+  "project_brief": {
+    "project_code": "TALKY",
+    "title": "Talky",
+    "goal": "A realtime iOS chat app where users sign up, sign in, exchange instant messages, browse recent conversations, edit their profile, and receive push notifications.",
+    "tech_stack": {
+      "language": [
+        "Swift"
+      ],
+      "ui": [
+        "SwiftUI"
+      ],
+      "persistence": [
+        "FirebaseFirestore",
+        "FirebaseStorage",
+        "UserDefaults"
+      ],
+      "networking": [
+        "FirebaseAuth",
+        "FirebaseMessaging",
+        "URLSession"
+      ],
+      "other": [
+        "FirebaseCore",
+        "UserNotifications"
+      ]
+    }
+  },
+  "development_stages": [
+    {
+      "stage": "Stage 1 — Xcode scaffold and first build",
+      "product_state": "The app runs from the Xcode template and shows the default SwiftUI screen.",
+      "need": [
+        "Create Xcode project from the iOS App template",
+        "Explore generated files (TalkyApp.swift, ContentView.swift, Assets)",
+        "Run the app on the iPhone simulator",
+        "Make a small edit to the default Text and observe the preview/simulator refresh"
+      ],
+      "learn": [
+        "Xcode basics: navigator, editor, inspector",
+        "SwiftUI App lifecycle",
+        "Swift syntax fundamentals",
+        "SwiftUI preview canvas and simulator workflow"
+      ],
+      "validation": "App builds and launches with the default template view on the simulator.",
+      "cross_feature_value": "No product features yet — establishes the runnable skeleton every later stage builds on.",
+      "temporary_approach": "None."
+    },
+    {
+      "stage": "Stage 2 — Static UI with mock data",
+      "product_state": "User can navigate from a welcome screen to login/register screens and browse a chat list, new chat screen, and chat detail screen filled with fake data.",
+      "need": [
+        "Build WelcomeView with navigation to LoginxView and RegisterxView",
+        "Implement login/register UI using SecureTextField",
+        "Create RecentChatView with hardcoded RecentMessage rows",
+        "Create NewChatView with a mock ChatUser list",
+        "Create ChatDetailView with sample message bubbles"
+      ],
+      "learn": [
+        "SwiftUI views, NavigationView, NavigationLink",
+        "@State and @Binding",
+        "View composition and reusable components",
+        "ForEach, AsyncImage, and layout containers",
+        "TextField/SecureField styling"
+      ],
+      "validation": "Navigating from Welcome to Register/Login works; chat screens render mock data and the send button updates the local chat bar state.",
+      "cross_feature_value": "The product gains a navigable UI shell: every main screen is reachable, but data is fake.",
+      "temporary_approach": "Use hardcoded arrays instead of Firestore; replaced by real Firebase data in stages 3-4."
+    },
+    {
+      "stage": "Stage 3 — Real authentication",
+      "product_state": "User can create an account, sign in, and sign out; the app switches between WelcomeView and RecentChatView based on auth state.",
+      "need": [
+        "Configure Firebase project and add GoogleService-Info.plist",
+        "Wire FirebaseManager singleton (Auth, Firestore, Storage)",
+        "Implement AuthViewModel register/login/logout against FirebaseAuth",
+        "Gate RecentChatView on authViewModel.loggedOut"
+      ],
+      "learn": [
+        "FirebaseAuth: createUser, signIn, signOut",
+        "@StateObject, @EnvironmentObject, @MainActor",
+        "Async view model flows",
+        "Error mapping to logMessage and ViewState"
+      ],
+      "validation": "Registering a new user creates an account and lands in the chat list; logging out returns to WelcomeView.",
+      "cross_feature_value": "The product gains identity: the existing UI now acts on a real authenticated user.",
+      "temporary_approach": "While waiting for the Firebase project, keep a mock session flag in UserDefaults; replaced by FirebaseAuth in this stage."
+    },
+    {
+      "stage": "Stage 4 — Realtime messaging and recent conversations",
+      "product_state": "User sees real recent conversations, can select another user from the directory, and can send/receive messages that appear instantly.",
+      "need": [
+        "Implement ChatDetailViewModel fetchMessage() and handleSend() with Firestore",
+        "Store ChatMessage documents with fromId/toId/text/timestamp",
+        "Implement RecentChatViewModel fetchRecentMessages()",
+        "Implement NewChatViewModel fetchAllUser() for the user directory",
+        "Wire RecentChatView rows to ChatDetailView"
+      ],
+      "learn": [
+        "Firestore snapshots and realtime listeners",
+        "@DocumentID and Codable with Firestore",
+        "Swift concurrency in view models",
+        "RelativeDateTimeFormatter for timeAgo"
+      ],
+      "validation": "Two simulators/devices logged in as different users can chat in real time; the recent list updates with new conversations.",
+      "cross_feature_value": "Core product value: real two-way messaging on top of authenticated identity.",
+      "temporary_approach": "No temporary shortcut here — realtime messaging is the milestone."
+    },
+    {
+      "stage": "Stage 5 — Profile editing",
+      "product_state": "User can view their profile, update their profile picture, and change their password.",
+      "need": [
+        "Build ProfileView",
+        "Build EditProfileView form with SecureTextField fields",
+        "Add ImagePicker and prepare image upload to FirebaseStorage",
+        "Call authViewModel.editProfile(email:currPassword:newPassword:newRePassword:)"
+      ],
+      "learn": [
+        "AsyncImage phase states",
+        "UIViewControllerRepresentable and UIImagePickerControllerDelegate",
+        "FirebaseStorage upload and profileImageUrl persistence",
+        "Reauthentication for password change"
+      ],
+      "validation": "User can change photo and password; updated profile persists after app restart.",
+      "cross_feature_value": "The product adds persistent personal identity: the profile image travels with messages and the recent list.",
+      "temporary_approach": "Temporarily store the picked image in memory (authViewModel.image) and skip upload until FirebaseStorage is configured in this stage."
+    },
+    {
+      "stage": "Stage 6 — Push notifications and hardening",
+      "product_state": "User receives push notifications for new messages and can open the app from the notification.",
+      "need": [
+        "Register device for remote notifications in AppDelegate",
+        "Store FCM token with PushNotificationManager.saveFCM",
+        "Send FCM push via PushNotificationManager.sendPushNotification",
+        "Polish loading/error states with ViewState and alerts",
+        "Clean up chat bubble layout and empty states"
+      ],
+      "learn": [
+        "UNUserNotificationCenter authorization",
+        "MessagingDelegate and APNs token mapping",
+        "FCM HTTP request via URLSession and JSONSerialization",
+        "Hardening UI state with ViewState"
+      ],
+      "validation": "With the app in the background, an incoming message triggers a notification; tapping it opens the app.",
+      "cross_feature_value": "The final layer turns the app into a complete messaging product that alerts users outside the app.",
+      "temporary_approach": "Use a hardcoded server key/token snippet for quick testing (as in MainView); replaced by the real FCM token flow. The temporary MainView remains in the repo."
+    }
+  ],
+  "phases": [
+    {
+      "phase_id": 0,
+      "title": "Foundation",
+      "description": "FOUNDATION: 1 tasks",
+      "milestones": [
+        {
+          "id": "T01",
+          "name": "Create the Xcode project from the SwiftUI iOS App template",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-01",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Create the Xcode project from the SwiftUI iOS App template",
+              "description": "Learners will be able to explain why the SwiftUI App Lifecycle provides a root view and environment that will later host shared observable state.",
+              "assessment": "Project opens in Xcode and builds for the iOS Simulator; The default SwiftUI template app launches in the simulator",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "SwiftUI App Lifecycle",
+              "platform": "app",
+              "task_id": "T01"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-02",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Create the Xcode project from the SwiftUI iOS App template",
+              "description": "Learners will be able to create an Xcode project from the SwiftUI iOS App template and run it in the iOS Simulator to verify the toolchain for future API integration.",
+              "assessment": "Project opens in Xcode and builds for the iOS Simulator; The default SwiftUI template app launches in the simulator",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Xcode project setup",
+              "platform": "app",
+              "task_id": "T01"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 1,
+      "title": "MVP",
+      "description": "MVP: 17 tasks",
+      "milestones": [
+        {
+          "id": "T02",
+          "name": "Implement FirebaseManager singleton that exposes Auth, Firestore, and Storage instances",
+          "concepts": [
+            "IDENTITY_AND_ACCESS_MANAGEMENT",
+            "API_INTEGRATION",
+            "CREATIONAL_PATTERNS"
+          ],
+          "concept_code": "IDENTITY_AND_ACCESS_MANAGEMENT",
+          "evidence_refs": [
+            "Talky/Util/Helper/FirebaseManager.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-03",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement FirebaseManager singleton that exposes Auth, Firestore, and Storage instances",
+              "description": "Learners will be able to explain the role of a FirebaseManager singleton in centralizing access to Auth, Firestore, and Storage services.",
+              "assessment": "FirebaseManager.shared.auth resolves to the app's Firebase Auth instance; FirebaseManager.shared.firestore and storage resolve after FirebaseApp.configure()",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "FirebaseManager singleton",
+              "platform": "app",
+              "task_id": "T02"
+            },
+            {
+              "code": "SIO-CREATIONAL_PATTERNS-04",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "CREATIONAL_PATTERNS",
+              "name": "SIO: Implement FirebaseManager singleton that exposes Auth, Firestore, and Storage instances",
+              "description": "Learners will be able to implement a FirebaseManager class with a static shared instance and lazy properties exposing Firebase.Auth, Firestore, and Storage.",
+              "assessment": "FirebaseManager.shared.auth resolves to the app's Firebase Auth instance; FirebaseManager.shared.firestore and storage resolve after FirebaseApp.configure()",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Singleton pattern",
+              "platform": "app",
+              "task_id": "T02"
+            },
+            {
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-05",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "name": "CIO: Implement FirebaseManager singleton that exposes Auth, Firestore, and Storage instances",
+              "description": "Learners will be able to configure FirebaseApp in the manager so the shared Auth, Firestore, and Storage instances resolve correctly for app features.",
+              "assessment": "FirebaseManager.shared.auth resolves to the app's Firebase Auth instance; FirebaseManager.shared.firestore and storage resolve after FirebaseApp.configure()",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Firebase configuration",
+              "platform": "app",
+              "task_id": "T02"
+            }
+          ]
+        },
+        {
+          "id": "T04",
+          "name": "Add ViewState enum for loading, loaded, empty, and error screen states",
+          "concepts": [
+            "TYPE_SYSTEMS_AND_SAFETY"
+          ],
+          "concept_code": "TYPE_SYSTEMS_AND_SAFETY",
+          "evidence_refs": [
+            "Talky/Util/Enum/ViewState.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-TYPE_SYSTEMS_AND_SAFETY-06",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "TYPE_SYSTEMS_AND_SAFETY",
+              "name": "CIO: Add ViewState enum for loading, loaded, empty, and error screen states",
+              "description": "Learners will be able to identify the cases of a ViewState enum that represent loading, loaded, empty, and error screen states.",
+              "assessment": "AuthViewModel.viewState can be set to .loading/.loaded/.error to drive button labels and alerts",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "ViewState enum cases",
+              "platform": "app",
+              "task_id": "T04"
+            },
+            {
+              "code": "CIO-TYPE_SYSTEMS_AND_SAFETY-07",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "TYPE_SYSTEMS_AND_SAFETY",
+              "name": "CIO: Add ViewState enum for loading, loaded, empty, and error screen states",
+              "description": "Learners will be able to explain why using an enum for view state increases type safety compared to string or boolean flags.",
+              "assessment": "AuthViewModel.viewState can be set to .loading/.loaded/.error to drive button labels and alerts",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Type safety with enums",
+              "platform": "app",
+              "task_id": "T04"
+            }
+          ]
+        },
+        {
+          "id": "T05",
+          "name": "Implement AuthViewModel with register, login, signOut, and editProfile actions",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "IDENTITY_AND_ACCESS_MANAGEMENT"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/View/LoginxView.swift#L10",
+            "Talky/View/LoginxView.swift#L10",
+            "Talky/View/RegisterxView.swift#L2",
+            "Talky/View/RegisterxView.swift#L2",
+            "Talky/View/ProfileView.swift#L2",
+            "Talky/View/ProfileView.swift#L2",
+            "Talky/View/EditProfileView.swift#L2",
+            "Talky/View/EditProfileView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-08",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Implement AuthViewModel with register, login, signOut, and editProfile actions",
+              "description": "Learners will be able to trace the data flow between AuthViewModel's @Published properties and the views that observe them during registration, login, sign-out, and profile edits.",
+              "assessment": "User can register with email/password and be signed in; User can log in with valid credentials; User can log out and loggedOut becomes true; editProfile validates current password and repeated new pas",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Observable state flow",
+              "platform": "app",
+              "task_id": "T05"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-09",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement AuthViewModel with register, login, signOut, and editProfile actions",
+              "description": "Learners will be able to publish authentication state changes as @Published properties and drive view updates in response to Auth operations.",
+              "assessment": "User can register with email/password and be signed in; User can log in with valid credentials; User can log out and loggedOut becomes true; editProfile validates current password and repeated new pas",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Published auth state",
+              "platform": "app",
+              "task_id": "T05"
+            },
+            {
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-10",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "name": "CIO: Implement AuthViewModel with register, login, signOut, and editProfile actions",
+              "description": "Learners will be able to explain the role of FirebaseAuth in managing user identity and how AuthViewModel exposes authentication state to the UI.",
+              "assessment": "User can register with email/password and be signed in; User can log in with valid credentials; User can log out and loggedOut becomes true; editProfile validates current password and repeated new pas",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "FirebaseAuth user identity",
+              "platform": "app",
+              "task_id": "T05"
+            }
+          ]
+        },
+        {
+          "id": "T09",
+          "name": "Implement ChatUser, ChatMessage, and RecentMessage Firestore models",
+          "concepts": [
+            "JSON_SERIALIZATION",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "JSON_SERIALIZATION",
+          "evidence_refs": [
+            "Talky/Model/ChatUser.swift#L2",
+            "Talky/Model/ChatMessage.swift#L2",
+            "Talky/Model/RecentMessage.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "SIO-JSON_SERIALIZATION-11",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "JSON_SERIALIZATION",
+              "name": "SIO: Implement ChatUser, ChatMessage, and RecentMessage Firestore models",
+              "description": "Learners will be able to define ChatUser, ChatMessage, and RecentMessage as Codable structs conforming to Identifiable.",
+              "assessment": "All three models are Codable and Identifiable; ChatUser can be decoded from Firestore including the document ID; RecentMessage can be derived from message data for the conversation list",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Codable models",
+              "platform": "app",
+              "task_id": "T09"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-12",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement ChatUser, ChatMessage, and RecentMessage Firestore models",
+              "description": "Learners will be able to use @DocumentID to map the Firestore document ID into a Codable model during decoding.",
+              "assessment": "All three models are Codable and Identifiable; ChatUser can be decoded from Firestore including the document ID; RecentMessage can be derived from message data for the conversation list",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Firestore @DocumentID",
+              "platform": "app",
+              "task_id": "T09"
+            },
+            {
+              "code": "CIO-JSON_SERIALIZATION-13",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "JSON_SERIALIZATION",
+              "name": "CIO: Implement ChatUser, ChatMessage, and RecentMessage Firestore models",
+              "description": "Learners will be able to explain how RecentMessage can be derived from ChatMessage data for conversation previews.",
+              "assessment": "All three models are Codable and Identifiable; ChatUser can be decoded from Firestore including the document ID; RecentMessage can be derived from message data for the conversation list",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "RecentMessage derivation",
+              "platform": "app",
+              "task_id": "T09"
+            }
+          ]
+        },
+        {
+          "id": "T14",
+          "name": "Implement NewChatViewModel to fetch all registered users",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [
+            "Talky/View/NewChatView.swift#L2",
+            "Talky/View/NewChatView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-14",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement NewChatViewModel to fetch all registered users",
+              "description": "Learners will be able to analyze how Firestore queries return user documents and how the view model maps them to a @Published array for the UI.",
+              "assessment": "New message screen lists all registered users from Firestore",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Firestore user query flow",
+              "platform": "app",
+              "task_id": "T14"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-15",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement NewChatViewModel to fetch all registered users",
+              "description": "Learners will be able to implement a Firestore query that fetches all registered users and assigns them to a published array.",
+              "assessment": "New message screen lists all registered users from Firestore",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "fetchAllUser query",
+              "platform": "app",
+              "task_id": "T14"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-16",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement NewChatViewModel to fetch all registered users",
+              "description": "Learners will be able to expose the fetched users via @Published so NewChatView can observe and render the list.",
+              "assessment": "New message screen lists all registered users from Firestore",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Published user directory",
+              "platform": "app",
+              "task_id": "T14"
+            }
+          ]
+        },
+        {
+          "id": "T15",
+          "name": "Implement NewChatView with user list and didSelectNewUser callback",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT",
+            "STATE_PROPERTY_WRAPPER"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
+          "evidence_refs": [
+            "Talky/View/NewChatView.swift#L2",
+            "Talky/View/NewChatView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-17",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement NewChatView with user list and didSelectNewUser callback",
+              "description": "Learners will be able to build a screen that lists users from NewChatViewModel using ForEach and row items.",
+              "assessment": "User can tap a row to dismiss the screen and start a chat with that user; Loading/error state is shown when fetchAllUser fails",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "User list UI",
+              "platform": "app",
+              "task_id": "T15"
+            },
+            {
+              "code": "CIO-UI_MODIFIERS_CONCEPT-18",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "CIO: Implement NewChatView with user list and didSelectNewUser callback",
+              "description": "Learners will be able to apply PlainButtonStyle and presentationMode to dismiss the sheet and start a chat with the selected user.",
+              "assessment": "User can tap a row to dismiss the screen and start a chat with that user; Loading/error state is shown when fetchAllUser fails",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Sheet dismissal callback",
+              "platform": "app",
+              "task_id": "T15"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-19",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement NewChatView with user list and didSelectNewUser callback",
+              "description": "Learners will be able to display loading and error states in NewChatView based on the view model's published state.",
+              "assessment": "User can tap a row to dismiss the screen and start a chat with that user; Loading/error state is shown when fetchAllUser fails",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Loading/error state UI",
+              "platform": "app",
+              "task_id": "T15"
+            },
+            {
+              "code": "CIO-STATE_PROPERTY_WRAPPER-20",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "STATE_PROPERTY_WRAPPER",
+              "name": "CIO: Implement NewChatView with user list and didSelectNewUser callback",
+              "description": "Learners will be able to explain how @EnvironmentObject or @ObservedObject and callbacks propagate user selection from the view to the parent.",
+              "assessment": "User can tap a row to dismiss the screen and start a chat with that user; Loading/error state is shown when fetchAllUser fails",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "State propagation",
+              "platform": "app",
+              "task_id": "T15"
+            }
+          ]
+        },
+        {
+          "id": "T12",
+          "name": "Implement RecentChatViewModel to fetch recent messages and all users",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "JSON_SERIALIZATION",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [
+            "Talky/View/RecentChatView.swift#L10",
+            "Talky/View/RecentChatView.swift#L10"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-21",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement RecentChatViewModel to fetch recent messages and all users",
+              "description": "Learners will be able to analyze the data flow from Firestore recent message queries to a published array that drives the conversation list.",
+              "assessment": "Recent list is populated from Firestore when the user is signed in; Tapping a row maps the peer user to selectedChatUser",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Recent messages data flow",
+              "platform": "app",
+              "task_id": "T12"
+            },
+            {
+              "code": "SIO-JSON_SERIALIZATION-22",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "JSON_SERIALIZATION",
+              "name": "SIO: Implement RecentChatViewModel to fetch recent messages and all users",
+              "description": "Learners will be able to implement the fetch of recent messages and all users from Firestore, mapping them to a Codable RecentMessage model.",
+              "assessment": "Recent list is populated from Firestore when the user is signed in; Tapping a row maps the peer user to selectedChatUser",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Fetch recent messages",
+              "platform": "app",
+              "task_id": "T12"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-23",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement RecentChatViewModel to fetch recent messages and all users",
+              "description": "Learners will be able to map a selected recent conversation to the peer user as selectedChatUser for navigation.",
+              "assessment": "Recent list is populated from Firestore when the user is signed in; Tapping a row maps the peer user to selectedChatUser",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "selectedChatUser navigation",
+              "platform": "app",
+              "task_id": "T12"
+            }
+          ]
+        },
+        {
+          "id": "T16",
+          "name": "Implement reusable SecureTextField with show/hide password toggle",
+          "concepts": [
+            "TWO_WAY_BINDING",
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "TWO_WAY_BINDING",
+          "evidence_refs": [
+            "Talky/View/Component/SecureTextField.swift#L10"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-TWO_WAY_BINDING-24",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "TWO_WAY_BINDING",
+              "name": "CIO: Implement reusable SecureTextField with show/hide password toggle",
+              "description": "Learners will be able to implement a reusable SecureTextField component using @Binding for the password value.",
+              "assessment": "Password field can toggle between secure dots and plain text",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Two-way binding",
+              "platform": "app",
+              "task_id": "T16"
+            },
+            {
+              "code": "SIO-UI_MODIFIERS_CONCEPT-25",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "SIO: Implement reusable SecureTextField with show/hide password toggle",
+              "description": "Learners will be able to add an overlay eye icon that toggles secure text entry visibility using a @State flag.",
+              "assessment": "Password field can toggle between secure dots and plain text",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Show/hide password toggle",
+              "platform": "app",
+              "task_id": "T16"
+            },
+            {
+              "code": "CIO-TWO_WAY_BINDING-26",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "TWO_WAY_BINDING",
+              "name": "CIO: Implement reusable SecureTextField with show/hide password toggle",
+              "description": "Learners will be able to explain how a custom input can expose a Binding to the parent view while maintaining local presentation state.",
+              "assessment": "Password field can toggle between secure dots and plain text",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Binding composition",
+              "platform": "app",
+              "task_id": "T16"
+            }
+          ]
+        },
+        {
+          "id": "T07",
+          "name": "Implement login screen with email/password fields, sign-in action, and error alert",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_VIEW_STATE",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/View/LoginxView.swift#L10",
+            "Talky/View/LoginxView.swift#L10"
+          ],
+          "learning_objectives": [
+            {
+              "code": "SIO-LOCAL_VIEW_STATE-27",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "SIO: Implement login screen with email/password fields, sign-in action, and error alert",
+              "description": "Learners will be able to implement a login form with TextField and SecureTextField bound to local @State variables.",
+              "assessment": "User can enter credentials and tap Sign in; Invalid credentials show an alert; 'Loading...' appears while the request is in flight",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Login form state",
+              "platform": "app",
+              "task_id": "T07"
+            },
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-28",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Implement login screen with email/password fields, sign-in action, and error alert",
+              "description": "Learners will be able to invoke the AuthViewModel sign-in method from the view and present an alert when credentials are invalid.",
+              "assessment": "User can enter credentials and tap Sign in; Invalid credentials show an alert; 'Loading...' appears while the request is in flight",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Sign-in action alert",
+              "platform": "app",
+              "task_id": "T07"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-29",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement login screen with email/password fields, sign-in action, and error alert",
+              "description": "Learners will be able to display a loading indicator on the sign-in button while the AuthViewModel viewState is .loading.",
+              "assessment": "User can enter credentials and tap Sign in; Invalid credentials show an alert; 'Loading...' appears while the request is in flight",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Loading state button",
+              "platform": "app",
+              "task_id": "T07"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-30",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement login screen with email/password fields, sign-in action, and error alert",
+              "description": "Learners will be able to explain how the declarative view hierarchy composes text fields, buttons, and alerts based on current state.",
+              "assessment": "User can enter credentials and tap Sign in; Invalid credentials show an alert; 'Loading...' appears while the request is in flight",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Declarative composition",
+              "platform": "app",
+              "task_id": "T07"
+            }
+          ]
+        },
+        {
+          "id": "T08",
+          "name": "Implement registration screen with email, password, confirm password, and sign-up action",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_VIEW_STATE",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/View/RegisterxView.swift#L2",
+            "Talky/View/RegisterxView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "ULO-DECLARATIVE_UI_PARADIGM-31",
+              "lo_type": "UNIVERSAL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "ULO: Implement registration screen with email, password, confirm password, and sign-up action",
+              "description": "Recognize the declarative approach of describing the registration form with bindings instead of imperative event handling.",
+              "assessment": "User can enter email and password and tap Sign up; Password mismatch or invalid email shows an alert; A successful registration signs the user in",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "TextField",
+              "platform": "app",
+              "task_id": "T08"
+            },
+            {
+              "code": "SIO-LOCAL_VIEW_STATE-32",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "SIO: Implement registration screen with email, password, confirm password, and sign-up action",
+              "description": "Use @State to bind the email, password, and confirm password fields and validate their equality.",
+              "assessment": "User can enter email and password and tap Sign up; Password mismatch or invalid email shows an alert; A successful registration signs the user in",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "SecureTextField",
+              "platform": "app",
+              "task_id": "T08"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-33",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement registration screen with email, password, confirm password, and sign-up action",
+              "description": "Trigger the shared AuthViewModel registration method through @EnvironmentObject to sign up the user.",
+              "assessment": "User can enter email and password and tap Sign up; Password mismatch or invalid email shows an alert; A successful registration signs the user in",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@EnvironmentObject",
+              "platform": "app",
+              "task_id": "T08"
+            }
+          ]
+        },
+        {
+          "id": "T06",
+          "name": "Implement WelcomeView with branded hero and navigation to login and registration",
+          "concepts": [
+            "LOCAL_VIEW_STATE",
+            "PROJECT_ASSETS_MANAGEMENT",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "LOCAL_VIEW_STATE",
+          "evidence_refs": [
+            "Talky/View/WelcomeView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "SIO-PROJECT_ASSETS_MANAGEMENT-34",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "PROJECT_ASSETS_MANAGEMENT",
+              "name": "SIO: Implement WelcomeView with branded hero and navigation to login and registration",
+              "description": "Apply LinearGradient and Image to assemble a branded hero section in SwiftUI.",
+              "assessment": "A guest sees the Talky welcome screen with a Start Messaging button; Start Messaging opens RegisterxView; A login link opens LoginxView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "LinearGradient",
+              "platform": "app",
+              "task_id": "T06"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-35",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement WelcomeView with branded hero and navigation to login and registration",
+              "description": "Use NavigationView and NavigationLink to route from the welcome screen to login and registration.",
+              "assessment": "A guest sees the Talky welcome screen with a Start Messaging button; Start Messaging opens RegisterxView; A login link opens LoginxView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "NavigationView",
+              "platform": "app",
+              "task_id": "T06"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-36",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "CIO: Implement WelcomeView with branded hero and navigation to login and registration",
+              "description": "Manage whether the welcome view is being presented by holding a local @State flag for navigation.",
+              "assessment": "A guest sees the Talky welcome screen with a Start Messaging button; Start Messaging opens RegisterxView; A login link opens LoginxView",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@State",
+              "platform": "app",
+              "task_id": "T06"
+            }
+          ]
+        },
+        {
+          "id": "T17",
+          "name": "Implement ProfileView with user info, edit profile navigation, and log out",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "ASYNC_PATTERNS",
+            "STATE_PROPERTY_WRAPPER"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
+          "evidence_refs": [
+            "Talky/View/ProfileView.swift#L2",
+            "Talky/View/ProfileView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-ASYNC_PATTERNS-37",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "ASYNC_PATTERNS",
+              "name": "CIO: Implement ProfileView with user info, edit profile navigation, and log out",
+              "description": "Understand the role of Task and AsyncImage for loading remote user images without blocking the UI.",
+              "assessment": "Profile shows the current user's photo and email; Edit Profile opens EditProfileView; Log Out signs out and dismisses the profile screen",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "AsyncImage",
+              "platform": "app",
+              "task_id": "T17"
+            },
+            {
+              "code": "SIO-STATE_PROPERTY_WRAPPER-38",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "STATE_PROPERTY_WRAPPER",
+              "name": "SIO: Implement ProfileView with user info, edit profile navigation, and log out",
+              "description": "Consume AuthViewModel from the environment to display the current user's photo and email.",
+              "assessment": "Profile shows the current user's photo and email; Edit Profile opens EditProfileView; Log Out signs out and dismisses the profile screen",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@EnvironmentObject",
+              "platform": "app",
+              "task_id": "T17"
+            },
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-39",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement ProfileView with user info, edit profile navigation, and log out",
+              "description": "Dismiss the profile screen after logging out by using presentationMode.",
+              "assessment": "Profile shows the current user's photo and email; Edit Profile opens EditProfileView; Log Out signs out and dismisses the profile screen",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "presentationMode",
+              "platform": "app",
+              "task_id": "T17"
+            }
+          ]
+        },
+        {
+          "id": "T13",
+          "name": "Implement RecentChatView with conversation list, header, profile link, new chat button, and auth-gated welcome cover",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "DECLARATIVE_UI_PARADIGM",
+            "VIEW_TRANSITIONS",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/View/RecentChatView.swift#L10",
+            "Talky/View/RecentChatView.swift#L10"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-UI_MODIFIERS_CONCEPT-40",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "CIO: Implement RecentChatView with conversation list, header, profile link, new chat button, and auth-gated welcome cover",
+              "description": "Understand how UI modifier chains like PlainButtonStyle and list row styling alter the appearance of the conversation list.",
+              "assessment": "Signed-in user sees recent conversations; Tapping a row opens ChatDetailView for that peer; New Chat opens NewChatView; When loggedOut is true, WelcomeView covers the chat list",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "PlainButtonStyle",
+              "platform": "app",
+              "task_id": "T13"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-41",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement RecentChatView with conversation list, header, profile link, new chat button, and auth-gated welcome cover",
+              "description": "Read the loggedIn state from AuthViewModel via @EnvironmentObject to conditionally show the chat list or welcome cover.",
+              "assessment": "Signed-in user sees recent conversations; Tapping a row opens ChatDetailView for that peer; New Chat opens NewChatView; When loggedOut is true, WelcomeView covers the chat list",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@EnvironmentObject",
+              "platform": "app",
+              "task_id": "T13"
+            },
+            {
+              "code": "CIO-VIEW_TRANSITIONS-42",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "VIEW_TRANSITIONS",
+              "name": "CIO: Implement RecentChatView with conversation list, header, profile link, new chat button, and auth-gated welcome cover",
+              "description": "Use FullScreenCover to present WelcomeView when the user is logged out.",
+              "assessment": "Signed-in user sees recent conversations; Tapping a row opens ChatDetailView for that peer; New Chat opens NewChatView; When loggedOut is true, WelcomeView covers the chat list",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "FullScreenCover",
+              "platform": "app",
+              "task_id": "T13"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-43",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement RecentChatView with conversation list, header, profile link, new chat button, and auth-gated welcome cover",
+              "description": "Compose a NavigationView with header, profile link, and new chat button in a declarative manner.",
+              "assessment": "Signed-in user sees recent conversations; Tapping a row opens ChatDetailView for that peer; New Chat opens NewChatView; When loggedOut is true, WelcomeView covers the chat list",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "NavigationView",
+              "platform": "app",
+              "task_id": "T13"
+            }
+          ]
+        },
+        {
+          "id": "T20",
+          "name": "Implement NotificationManager to request and observe push notification authorization",
+          "concepts": [
+            "ASYNC_PATTERNS",
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "ASYNC_PATTERNS",
+          "evidence_refs": [
+            "Talky/Util/Helper/NotificationManager.swift#L2",
+            "Talky/Util/Helper/NotificationManager.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_NOTIFICATION_API-44",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "ULO: Implement NotificationManager to request and observe push notification authorization",
+              "description": "Describe the UNUserNotificationCenter API for requesting alert, badge, and sound authorization.",
+              "assessment": "App can request alert/badge/sound permission from the user; hasPermission reflects the current authorization status",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UNUserNotificationCenter",
+              "platform": "app",
+              "task_id": "T20"
+            },
+            {
+              "code": "CIO-ASYNC_PATTERNS-45",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "ASYNC_PATTERNS",
+              "name": "CIO: Implement NotificationManager to request and observe push notification authorization",
+              "description": "Use async/await to await the notification authorization response and update the stored permission status.",
+              "assessment": "App can request alert/badge/sound permission from the user; hasPermission reflects the current authorization status",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UNUserNotificationCenter",
+              "platform": "app",
+              "task_id": "T20"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-46",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement NotificationManager to request and observe push notification authorization",
+              "description": "Analyze how the authorization result flows from the system callback into the ObservableObject's @Published property and then to observers.",
+              "assessment": "App can request alert/badge/sound permission from the user; hasPermission reflects the current authorization status",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Published",
+              "platform": "app",
+              "task_id": "T20"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-47",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement NotificationManager to request and observe push notification authorization",
+              "description": "Expose the NotificationManager to the view hierarchy as a shared observable object so any view can check hasPermission.",
+              "assessment": "App can request alert/badge/sound permission from the user; hasPermission reflects the current authorization status",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "ObservableObject",
+              "platform": "app",
+              "task_id": "T20"
+            }
+          ]
+        },
+        {
+          "id": "T21",
+          "name": "Implement PushNotificationManager to save/get FCM token and send push notifications via FCM HTTP API",
+          "concepts": [
+            "JSON_SERIALIZATION",
+            "API_INTEGRATION",
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "concept_code": "JSON_SERIALIZATION",
+          "evidence_refs": [
+            "Talky/Util/Helper/PushNotificationManager.swift#L2",
+            "Talky/Util/Helper/PushNotificationManager.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "ULO-KEY_VALUE_PERSISTENCE-48",
+              "lo_type": "UNIVERSAL",
+              "concept": "KEY_VALUE_PERSISTENCE",
+              "name": "ULO: Implement PushNotificationManager to save/get FCM token and send push notifications via FCM HTTP API",
+              "description": "Understand the use of UserDefaults as a key-value store for persisting the FCM token.",
+              "assessment": "FCM token is persisted in UserDefaults; sendPushNotification posts a JSON notification to FCM and prints the response",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UserDefaults",
+              "platform": "app",
+              "task_id": "T21"
+            },
+            {
+              "code": "SIO-JSON_SERIALIZATION-49",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "JSON_SERIALIZATION",
+              "name": "SIO: Implement PushNotificationManager to save/get FCM token and send push notifications via FCM HTTP API",
+              "description": "Serialize the push notification payload to JSON using JSONSerialization.",
+              "assessment": "FCM token is persisted in UserDefaults; sendPushNotification posts a JSON notification to FCM and prints the response",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "JSONSerialization",
+              "platform": "app",
+              "task_id": "T21"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-50",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Implement PushNotificationManager to save/get FCM token and send push notifications via FCM HTTP API",
+              "description": "Analyze the full request flow: retrieving the token, constructing the request, sending it via URLSession, and printing the response.",
+              "assessment": "FCM token is persisted in UserDefaults; sendPushNotification posts a JSON notification to FCM and prints the response",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "URLSession",
+              "platform": "app",
+              "task_id": "T21"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-51",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement PushNotificationManager to save/get FCM token and send push notifications via FCM HTTP API",
+              "description": "Use URLSession to POST the JSON notification payload to the FCM HTTP API.",
+              "assessment": "FCM token is persisted in UserDefaults; sendPushNotification posts a JSON notification to FCM and prints the response",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "URLSession",
+              "platform": "app",
+              "task_id": "T21"
+            }
+          ]
+        },
+        {
+          "id": "T10",
+          "name": "Implement ChatDetailViewModel with realtime message fetching and sending",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION",
+            "DECLARATIVE_UI_PARADIGM",
+            "EVENT_LISTENERS"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [
+            "Talky/View/ChatDetailView.swift#L2",
+            "Talky/View/ChatDetailView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-EVENT_LISTENERS-52",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "EVENT_LISTENERS",
+              "name": "CIO: Implement ChatDetailViewModel with realtime message fetching and sending",
+              "description": "Understand how snapshotListener registers a realtime listener on the Firestore conversation document.",
+              "assessment": "Messages appear in the conversation as soon as they are written to Firestore; Sending appends the text to the peer's Firestore collection; New message triggers a push notification to the recipient via",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "snapshotListener",
+              "platform": "app",
+              "task_id": "T10"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-53",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement ChatDetailViewModel with realtime message fetching and sending",
+              "description": "Send a message by writing to the peer's Firestore collection and trigger a push notification through PushNotificationManager.",
+              "assessment": "Messages appear in the conversation as soon as they are written to Firestore; Sending appends the text to the peer's Firestore collection; New message triggers a push notification to the recipient via",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Firestore",
+              "platform": "app",
+              "task_id": "T10"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-54",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement ChatDetailViewModel with realtime message fetching and sending",
+              "description": "Analyze the flow of an incoming Firestore snapshot updating the published messages array and then the chat view.",
+              "assessment": "Messages appear in the conversation as soon as they are written to Firestore; Sending appends the text to the peer's Firestore collection; New message triggers a push notification to the recipient via",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "snapshotListener",
+              "platform": "app",
+              "task_id": "T10"
+            },
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-55",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Implement ChatDetailViewModel with realtime message fetching and sending",
+              "description": "Expose the ChatDetailViewModel as a @StateObject and let the view bind to its published messages.",
+              "assessment": "Messages appear in the conversation as soon as they are written to Firestore; Sending appends the text to the peer's Firestore collection; New message triggers a push notification to the recipient via",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@StateObject",
+              "platform": "app",
+              "task_id": "T10"
+            }
+          ]
+        },
+        {
+          "id": "T11",
+          "name": "Implement ChatDetailView with message bubbles and a chat input bar",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [
+            "Talky/View/ChatDetailView.swift#L2",
+            "Talky/View/ChatDetailView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-56",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Implement ChatDetailView with message bubbles and a chat input bar",
+              "description": "Build the message list with ScrollViewReader and ForEach to render chat bubbles in a scrollable conversation.",
+              "assessment": "Conversation opens with existing messages; Own messages render right-aligned in primary color, other messages left-aligned in white; Tapping send clears the TextField and sends via ChatDetailViewModel",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "ScrollViewReader",
+              "platform": "app",
+              "task_id": "T11"
+            },
+            {
+              "code": "SIO-UI_MODIFIERS_CONCEPT-57",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "SIO: Implement ChatDetailView with message bubbles and a chat input bar",
+              "description": "Apply cornerRadius and alignment modifiers to differentiate the user's outgoing messages from incoming ones.",
+              "assessment": "Conversation opens with existing messages; Own messages render right-aligned in primary color, other messages left-aligned in white; Tapping send clears the TextField and sends via ChatDetailViewModel",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "cornerRadius",
+              "platform": "app",
+              "task_id": "T11"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-58",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Implement ChatDetailView with message bubbles and a chat input bar",
+              "description": "Observe the view model's @Published messages with .onReceive to update the UI when new messages arrive.",
+              "assessment": "Conversation opens with existing messages; Own messages render right-aligned in primary color, other messages left-aligned in white; Tapping send clears the TextField and sends via ChatDetailViewModel",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": ".onReceive",
+              "platform": "app",
+              "task_id": "T11"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 2,
+      "title": "Extend",
+      "description": "EXTEND: 1 tasks",
+      "milestones": [
+        {
+          "id": "T03",
+          "name": "Implement AppDelegate and the root App that configures Firebase, registers for remote notifications, and injects AuthViewModel",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/TalkyApp.swift#L2",
+            "Talky/TalkyApp.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "ULO-API_INTEGRATION-59",
+              "lo_type": "UNIVERSAL",
+              "concept": "API_INTEGRATION",
+              "name": "ULO: Implement AppDelegate and the root App that configures Firebase, registers for remote notifications, and injects AuthViewModel",
+              "description": "Understand why FirebaseApp.configure() must be called at launch before any Firebase product is used.",
+              "assessment": "FirebaseApp.configure() is called before any Firebase service is used; The app launches into RecentChatView with AuthViewModel available in the environment; Remote notification registration is request",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "FirebaseApp.configure()",
+              "platform": "app",
+              "task_id": "T03"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-60",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Implement AppDelegate and the root App that configures Firebase, registers for remote notifications, and injects AuthViewModel",
+              "description": "Implement the AppDelegate to configure Firebase and register for remote notifications.",
+              "assessment": "FirebaseApp.configure() is called before any Firebase service is used; The app launches into RecentChatView with AuthViewModel available in the environment; Remote notification registration is request",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@UIApplicationDelegateAdaptor",
+              "platform": "app",
+              "task_id": "T03"
+            },
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-61",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Implement AppDelegate and the root App that configures Firebase, registers for remote notifications, and injects AuthViewModel",
+              "description": "Understand why the root App needs to own AuthViewModel as @StateObject and inject it into the environment.",
+              "assessment": "FirebaseApp.configure() is called before any Firebase service is used; The app launches into RecentChatView with AuthViewModel available in the environment; Remote notification registration is request",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@StateObject",
+              "platform": "app",
+              "task_id": "T03"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-62",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement AppDelegate and the root App that configures Firebase, registers for remote notifications, and injects AuthViewModel",
+              "description": "Inject AuthViewModel into the SwiftUI environment using .environmentObject so all child views can access it.",
+              "assessment": "FirebaseApp.configure() is called before any Firebase service is used; The app launches into RecentChatView with AuthViewModel available in the environment; Remote notification registration is request",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": ".environmentObject",
+              "platform": "app",
+              "task_id": "T03"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "phase_id": 3,
+      "title": "Polish",
+      "description": "POLISH: 17 tasks",
+      "milestones": [
+        {
+          "id": "T19",
+          "name": "Implement ImagePicker wrapping UIImagePickerController as a SwiftUI representable",
+          "concepts": [
+            "TWO_WAY_BINDING",
+            "MEDIA_PICKER_API",
+            "FRONTEND_FRAMEWORKS"
+          ],
+          "concept_code": "TWO_WAY_BINDING",
+          "evidence_refs": [
+            "Talky/Util/Helper/ImagePicker.swift#L2",
+            "Talky/Util/Helper/ImagePicker.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "ULO-FRONTEND_FRAMEWORKS-63",
+              "lo_type": "UNIVERSAL",
+              "concept": "FRONTEND_FRAMEWORKS",
+              "name": "ULO: Implement ImagePicker wrapping UIImagePickerController as a SwiftUI representable",
+              "description": "Understand the role of UIViewControllerRepresentable in bridging UIKit view controllers to SwiftUI.",
+              "assessment": "Presenting ImagePicker shows the photo library; Selecting an image updates the bound UIImage and dismisses the picker",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UIViewControllerRepresentable",
+              "platform": "app",
+              "task_id": "T19"
+            },
+            {
+              "code": "CIO-MEDIA_PICKER_API-64",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MEDIA_PICKER_API",
+              "name": "CIO: Implement ImagePicker wrapping UIImagePickerController as a SwiftUI representable",
+              "description": "Understand how UIImagePickerController and its delegate methods report the selected media.",
+              "assessment": "Presenting ImagePicker shows the photo library; Selecting an image updates the bound UIImage and dismisses the picker",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UIImagePickerController",
+              "platform": "app",
+              "task_id": "T19"
+            },
+            {
+              "code": "SIO-TWO_WAY_BINDING-65",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "TWO_WAY_BINDING",
+              "name": "SIO: Implement ImagePicker wrapping UIImagePickerController as a SwiftUI representable",
+              "description": "Use @Binding to propagate the selected image from the image picker back to the profile edit screen.",
+              "assessment": "Presenting ImagePicker shows the photo library; Selecting an image updates the bound UIImage and dismisses the picker",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@Binding",
+              "platform": "app",
+              "task_id": "T19"
+            },
+            {
+              "code": "SIO-MEDIA_PICKER_API-66",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "MEDIA_PICKER_API",
+              "name": "SIO: Implement ImagePicker wrapping UIImagePickerController as a SwiftUI representable",
+              "description": "Implement the Coordinator methods to handle image selection and dismiss the picker.",
+              "assessment": "Presenting ImagePicker shows the photo library; Selecting an image updates the bound UIImage and dismisses the picker",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Coordinator",
+              "platform": "app",
+              "task_id": "T19"
+            }
+          ]
+        },
+        {
+          "id": "T18",
+          "name": "Implement EditProfileView for changing password and profile photo",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "DECLARATIVE_UI_PARADIGM",
+            "VIEW_TRANSITIONS",
+            "STATE_PROPERTY_WRAPPER"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/View/EditProfileView.swift#L2",
+            "Talky/View/EditProfileView.swift#L2",
+            "Talky/Util/Helper/ImagePicker.swift#L2",
+            "Talky/Util/Helper/ImagePicker.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-67",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Implement EditProfileView for changing password and profile photo",
+              "description": "Learners will be able to explain how AsyncImage and the view body declaratively map AuthViewModel state to the profile photo UI.",
+              "assessment": "Save calls AuthViewModel.editProfile with the new password; Password mismatch shows an alert; Tapping the camera opens ImagePicker and updates authViewModel.image",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "AsyncImage",
+              "platform": "app",
+              "task_id": "T18"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-68",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Implement EditProfileView for changing password and profile photo",
+              "description": "Learners will be able to use @EnvironmentObject to access the shared AuthViewModel and call editProfile with the new password when the save button is tapped.",
+              "assessment": "Save calls AuthViewModel.editProfile with the new password; Password mismatch shows an alert; Tapping the camera opens ImagePicker and updates authViewModel.image",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "@EnvironmentObject",
+              "platform": "app",
+              "task_id": "T18"
+            },
+            {
+              "code": "SIO-VIEW_TRANSITIONS-69",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "VIEW_TRANSITIONS",
+              "name": "SIO: Implement EditProfileView for changing password and profile photo",
+              "description": "Learners will be able to present the system image picker using fullScreenCover and assign the selected image to authViewModel.image.",
+              "assessment": "Save calls AuthViewModel.editProfile with the new password; Password mismatch shows an alert; Tapping the camera opens ImagePicker and updates authViewModel.image",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "fullScreenCover",
+              "platform": "app",
+              "task_id": "T18"
+            },
+            {
+              "code": "SIO-STATE_PROPERTY_WRAPPER-70",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "STATE_PROPERTY_WRAPPER",
+              "name": "SIO: Implement EditProfileView for changing password and profile photo",
+              "description": "Learners will be able to use @State with TextField for the password fields and @Environment(\\.presentationMode) to dismiss the screen, showing an alert when the passwords do not match.",
+              "assessment": "Save calls AuthViewModel.editProfile with the new password; Password mismatch shows an alert; Tapping the camera opens ImagePicker and updates authViewModel.image",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "TextField",
+              "platform": "app",
+              "task_id": "T18"
+            }
+          ]
+        },
+        {
+          "id": "T22",
+          "name": "Wire AppDelegate as UNUserNotificationCenter and Messaging delegate to persist APNS/FCM tokens and request permission on launch",
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "API_INTEGRATION",
+          "evidence_refs": [
+            "Talky/TalkyApp.swift#L2",
+            "Talky/TalkyApp.swift#L2",
+            "Talky/Util/Helper/PushNotificationManager.swift#L2",
+            "Talky/Util/Helper/PushNotificationManager.swift#L2",
+            "Talky/Util/Helper/NotificationManager.swift#L2",
+            "Talky/Util/Helper/NotificationManager.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "ULO-LOCAL_NOTIFICATION_API-71",
+              "lo_type": "UNIVERSAL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "ULO: Wire AppDelegate as UNUserNotificationCenter and Messaging delegate to persist APNS/FCM tokens and request permission on launch",
+              "description": "Learners will be able to explain why the app must conform to UNUserNotificationCenterDelegate and MessagingDelegate in AppDelegate to receive notification authorization and FCM token callbacks.",
+              "assessment": "FCM token is printed and saved after launch; Notification permission is requested when the app opens; Incoming notification tap is handled by the userNotificationCenter delegate",
+              "bloom_level": "understand",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Messaging",
+              "platform": "app",
+              "task_id": "T22"
+            },
+            {
+              "code": "SIO-LOCAL_NOTIFICATION_API-72",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "SIO: Wire AppDelegate as UNUserNotificationCenter and Messaging delegate to persist APNS/FCM tokens and request permission on launch",
+              "description": "Learners will be able to set UNUserNotificationCenter.current().delegate and Messaging.messaging().delegate in AppDelegate and request authorization for alerts, sounds, and badges on launch.",
+              "assessment": "FCM token is printed and saved after launch; Notification permission is requested when the app opens; Incoming notification tap is handled by the userNotificationCenter delegate",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UIApplicationDelegate",
+              "platform": "app",
+              "task_id": "T22"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-73",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Wire AppDelegate as UNUserNotificationCenter and Messaging delegate to persist APNS/FCM tokens and request permission on launch",
+              "description": "Learners will be able to forward the APNS device token to Firebase Messaging in didRegisterForRemoteNotificationsWithDeviceToken and persist the returned FCM token for later use.",
+              "assessment": "FCM token is printed and saved after launch; Notification permission is requested when the app opens; Incoming notification tap is handled by the userNotificationCenter delegate",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "apnsToken",
+              "platform": "app",
+              "task_id": "T22"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-74",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Wire AppDelegate as UNUserNotificationCenter and Messaging delegate to persist APNS/FCM tokens and request permission on launch",
+              "description": "Learners will be able to implement userNotificationCenter(_:didReceive:withCompletionHandler:) to print and route incoming notification payloads.",
+              "assessment": "FCM token is printed and saved after launch; Notification permission is requested when the app opens; Incoming notification tap is handled by the userNotificationCenter delegate",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UNUserNotificationCenter",
+              "platform": "app",
+              "task_id": "T22"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-1",
+          "name": "Fix: FCM server key and hardcoded device token are embedded in the client (TalkyApp.swift and PushNotificationManager.swift); there is no server-side proxy or secure token management.",
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "API_INTEGRATION",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-75",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Fix: FCM server key and hardcoded device token are embedded in the client (TalkyApp.swift and PushNotificationManager.swift); there is no server-side proxy or secure token management.",
+              "description": "Learners will be able to analyze TalkyApp.swift and PushNotificationManager.swift to identify the security risk of exposing the FCM server key and a hardcoded device token in the client code.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "FCM server key",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-76",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Fix: FCM server key and hardcoded device token are embedded in the client (TalkyApp.swift and PushNotificationManager.swift); there is no server-side proxy or secure token management.",
+              "description": "Learners will be able to design a server-side proxy that accepts a client-supplied device token and sends push notifications through FCM without ever embedding the server key in the app.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "server-side proxy",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-77",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Fix: FCM server key and hardcoded device token are embedded in the client (TalkyApp.swift and PushNotificationManager.swift); there is no server-side proxy or secure token management.",
+              "description": "Learners will be able to refactor PushNotificationManager to retrieve the device token at runtime and send it to the backend proxy instead of using a hardcoded token.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "device token",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            },
+            {
+              "code": "SIO-LOCAL_NOTIFICATION_API-78",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "SIO: Fix: FCM server key and hardcoded device token are embedded in the client (TalkyApp.swift and PushNotificationManager.swift); there is no server-side proxy or secure token management.",
+              "description": "Learners will be able to keep the UNUserNotificationCenter permission flow while migrating token registration to the new proxy endpoint.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "UNUserNotificationCenter",
+              "platform": "app",
+              "task_id": "polish-gap-1"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-2",
+          "name": "Fix: The 'Forgot Password?' button in LoginxView has no action; no Firebase password reset flow is implemented.",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "IDENTITY_AND_ACCESS_MANAGEMENT",
+            "MVVM_PATTERN"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-MVVM_PATTERN-79",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: The 'Forgot Password?' button in LoginxView has no action; no Firebase password reset flow is implemented.",
+              "description": "Learners will be able to analyze LoginxView and AuthViewModel to locate the 'Forgot Password?' button and determine why it is not bound to any Firebase password reset action.",
+              "assessment": "EXTEND",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "Forgot Password",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            },
+            {
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-80",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "name": "CIO: Fix: The 'Forgot Password?' button in LoginxView has no action; no Firebase password reset flow is implemented.",
+              "description": "Learners will be able to design a password reset flow in AuthViewModel using Firebase Auth.sendPasswordReset that includes loading, success, and error states.",
+              "assessment": "EXTEND",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "sendPasswordReset",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-81",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Fix: The 'Forgot Password?' button in LoginxView has no action; no Firebase password reset flow is implemented.",
+              "description": "Learners will be able to implement the 'Forgot Password?' button action to call the AuthViewModel reset method and publish the result so the view can show feedback.",
+              "assessment": "EXTEND",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "AuthViewModel",
+              "platform": "app",
+              "task_id": "polish-gap-2"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-3",
+          "name": "Fix: Camera and microphone buttons in ChatDetailView have empty actions; no media message support exists.",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "SHARED_OBSERVABLE_STATE",
+            "MVVM_PATTERN"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-MVVM_PATTERN-82",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: Camera and microphone buttons in ChatDetailView have empty actions; no media message support exists.",
+              "description": "Learners will be able to analyze ChatDetailView and its message view model to identify where camera and microphone actions are defined but left empty and what media message payloads are needed.",
+              "assessment": "EXTEND",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "media message",
+              "platform": "app",
+              "task_id": "polish-gap-3"
+            },
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-83",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Fix: Camera and microphone buttons in ChatDetailView have empty actions; no media message support exists.",
+              "description": "Learners will be able to design a media message publishing flow that captures an asset (photo/video/audio), uploads it, and publishes the resulting message through the existing subscriber model.",
+              "assessment": "EXTEND",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "publisher",
+              "platform": "app",
+              "task_id": "polish-gap-3"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-84",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Fix: Camera and microphone buttons in ChatDetailView have empty actions; no media message support exists.",
+              "description": "Learners will be able to implement camera and microphone button actions that update shared observable state and add the captured media message to the conversation's message list.",
+              "assessment": "EXTEND",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "message list",
+              "platform": "app",
+              "task_id": "polish-gap-3"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-4",
+          "name": "Fix: Message fetching loads all messages in a conversation without pagination; long conversations will degrade performance and memory.",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "SHARED_OBSERVABLE_STATE",
+            "MVVM_PATTERN"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-PUBLISHER_SUBSCRIBER_MODEL-85",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "CIO: Fix: Message fetching loads all messages in a conversation without pagination; long conversations will degrade performance and memory.",
+              "description": "Learners will be able to analyze the current message-fetching logic that loads every message in a conversation to pinpoint the performance and memory risks in long conversations.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "pagination",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            },
+            {
+              "code": "CIO-MVVM_PATTERN-86",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: Message fetching loads all messages in a conversation without pagination; long conversations will degrade performance and memory.",
+              "description": "Learners will be able to design a paginated fetching strategy in the view model using limits and cursors so only a bounded window of messages is loaded and appended.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "cursor",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-87",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Fix: Message fetching loads all messages in a conversation without pagination; long conversations will degrade performance and memory.",
+              "description": "Learners will be able to implement a load-more trigger in the chat UI that appends new pages from the publisher to the shared observable conversation state.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "load more",
+              "platform": "app",
+              "task_id": "polish-gap-4"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-5",
+          "name": "Fix: Auth error messages are hardcoded English strings and there is no client-side validation for weak passwords or invalid email before calling Firebase.",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "IDENTITY_AND_ACCESS_MANAGEMENT",
+            "MVVM_PATTERN"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-IDENTITY_AND_ACCESS_MANAGEMENT-88",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "IDENTITY_AND_ACCESS_MANAGEMENT",
+              "name": "CIO: Fix: Auth error messages are hardcoded English strings and there is no client-side validation for weak passwords or invalid email before calling Firebase.",
+              "description": "Learners will be able to analyze the current auth error handling to identify hardcoded English messages and missing validation for weak passwords and invalid email before Firebase is called.",
+              "assessment": "EXTEND",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "client-side validation",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            },
+            {
+              "code": "CIO-MVVM_PATTERN-89",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: Auth error messages are hardcoded English strings and there is no client-side validation for weak passwords or invalid email before calling Firebase.",
+              "description": "Learners will be able to design a centralized validation and error-mapping layer inside AuthViewModel that converts Firebase auth errors into localized user-facing messages.",
+              "assessment": "EXTEND",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "localized messages",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-90",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Fix: Auth error messages are hardcoded English strings and there is no client-side validation for weak passwords or invalid email before calling Firebase.",
+              "description": "Learners will be able to implement published properties for validation errors and map them to form fields in the login and password views.",
+              "assessment": "EXTEND",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "published properties",
+              "platform": "app",
+              "task_id": "polish-gap-5"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-6",
+          "name": "Fix: Profile image upload is incomplete: authViewModel.image is set locally but there is no visible upload-to-Storage flow, progress indicator, or upload error handling in the provided views.",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "MVVM_PATTERN",
+            "STATE_PROPERTY_WRAPPER"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-MVVM_PATTERN-91",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: Profile image upload is incomplete: authViewModel.image is set locally but there is no visible upload-to-Storage flow, progress indicator, or upload error handling in the provided views.",
+              "description": "Learners will be able to analyze the profile image flow to see that authViewModel.image is only stored locally and never uploaded to Firebase Storage.",
+              "assessment": "EXTEND",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "profile image",
+              "platform": "app",
+              "task_id": "polish-gap-6"
+            },
+            {
+              "code": "CIO-MVVM_PATTERN-92",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: Profile image upload is incomplete: authViewModel.image is set locally but there is no visible upload-to-Storage flow, progress indicator, or upload error handling in the provided views.",
+              "description": "Learners will be able to design an image upload pipeline in AuthViewModel that uploads the selected photo to Firebase Storage, reports progress, and saves the download URL.",
+              "assessment": "EXTEND",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "upload pipeline",
+              "platform": "app",
+              "task_id": "polish-gap-6"
+            },
+            {
+              "code": "SIO-STATE_PROPERTY_WRAPPER-93",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "STATE_PROPERTY_WRAPPER",
+              "name": "SIO: Fix: Profile image upload is incomplete: authViewModel.image is set locally but there is no visible upload-to-Storage flow, progress indicator, or upload error handling in the provided views.",
+              "description": "Learners will be able to implement @State properties for upload progress and error so the profile view can display a loading indicator and failure alert.",
+              "assessment": "EXTEND",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "progress indicator",
+              "platform": "app",
+              "task_id": "polish-gap-6"
+            },
+            {
+              "code": "SIO-DECLARATIVE_UI_PARADIGM-94",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "SIO: Fix: Profile image upload is incomplete: authViewModel.image is set locally but there is no visible upload-to-Storage flow, progress indicator, or upload error handling in the provided views.",
+              "description": "Learners will be able to update EditProfileView to declaratively show uploading, success, and failure states from the view model's upload state.",
+              "assessment": "EXTEND",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "upload state",
+              "platform": "app",
+              "task_id": "polish-gap-6"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-7",
+          "name": "Fix: Notification tap handling is empty (userNotificationCenter(_:didReceive:) does nothing); tapping a push does not deep-link to the conversation.",
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "API_INTEGRATION",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-LOCAL_NOTIFICATION_API-95",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "CIO: Fix: Notification tap handling is empty (userNotificationCenter(_:didReceive:) does nothing); tapping a push does not deep-link to the conversation.",
+              "description": "Learners will be able to analyze userNotificationCenter(_:didReceive:) to determine why notification taps currently have no effect and what conversation data is available in the payload.",
+              "assessment": "EXTEND",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "notification tap",
+              "platform": "app",
+              "task_id": "polish-gap-7"
+            },
+            {
+              "code": "CIO-API_INTEGRATION-96",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Fix: Notification tap handling is empty (userNotificationCenter(_:didReceive:) does nothing); tapping a push does not deep-link to the conversation.",
+              "description": "Learners will be able to design a deep-link mapping that extracts conversationId from the FCM payload and routes the user to the matching ChatDetailView.",
+              "assessment": "EXTEND",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "deep-linking",
+              "platform": "app",
+              "task_id": "polish-gap-7"
+            },
+            {
+              "code": "SIO-API_INTEGRATION-97",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "SIO: Fix: Notification tap handling is empty (userNotificationCenter(_:didReceive:) does nothing); tapping a push does not deep-link to the conversation.",
+              "description": "Learners will be able to implement the didReceive delegate to trigger navigation to the conversation using the notification payload and existing navigation state.",
+              "assessment": "EXTEND",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "didReceive",
+              "platform": "app",
+              "task_id": "polish-gap-7"
+            }
+          ]
+        },
+        {
+          "id": "polish-gap-8",
+          "name": "Fix: RecentChatView contains a debug `var _ = print(recentMessage)` inside ForEach and lacks empty/error state UI.",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "VIEW_TRANSITIONS",
+            "MVVM_PATTERN"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-MVVM_PATTERN-98",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "MVVM_PATTERN",
+              "name": "CIO: Fix: RecentChatView contains a debug `var _ = print(recentMessage)` inside ForEach and lacks empty/error state UI.",
+              "description": "Learners will be able to analyze RecentChatView to locate the debug print inside ForEach and evaluate how the view mixes debugging output with UI construction.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "debug print",
+              "platform": "app",
+              "task_id": "polish-gap-8"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-99",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Fix: RecentChatView contains a debug `var _ = print(recentMessage)` inside ForEach and lacks empty/error state UI.",
+              "description": "Learners will be able to design a state-driven UI that renders loading, empty, error, and list states from the view model instead of unconditional ForEach rendering.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "empty state",
+              "platform": "app",
+              "task_id": "polish-gap-8"
+            },
+            {
+              "code": "SIO-VIEW_TRANSITIONS-100",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "VIEW_TRANSITIONS",
+              "name": "SIO: Fix: RecentChatView contains a debug `var _ = print(recentMessage)` inside ForEach and lacks empty/error state UI.",
+              "description": "Learners will be able to implement empty and error views in RecentChatView with transitions and remove the debug `var _ = print(recentMessage)` from the ForEach.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "ForEach",
+              "platform": "app",
+              "task_id": "polish-gap-8"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-1",
+          "name": "Refactor: File is very large and contains a duplicate messagesView that is never used; message bubble layout is repeated twice.",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+          "evidence_refs": [
+            "Talky/View/ChatDetailView.swift#L2",
+            "Talky/View/ChatDetailView.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-101",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Refactor: File is very large and contains a duplicate messagesView that is never used; message bubble layout is repeated twice.",
+              "description": "Analyze the chat view file to identify the duplicate messagesView and the repeated message bubble layout, assessing their impact on code maintainability.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "duplicate view removal",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            },
+            {
+              "code": "CIO-UI_MODIFIERS_CONCEPT-102",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "CIO: Refactor: File is very large and contains a duplicate messagesView that is never used; message bubble layout is repeated twice.",
+              "description": "Design a reusable MessageBubble component that encapsulates the repeated bubble layout and modifier chain.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "reusable component",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            },
+            {
+              "code": "SIO-PUBLISHER_SUBSCRIBER_MODEL-103",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "PUBLISHER_SUBSCRIBER_MODEL",
+              "name": "SIO: Refactor: File is very large and contains a duplicate messagesView that is never used; message bubble layout is repeated twice.",
+              "description": "Extract the repeated bubble layout into the new MessageBubble component and delete the unused messagesView from the file, ensuring the active messages view continues to subscribe to published messages.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "extract component",
+              "platform": "app",
+              "task_id": "polish-debt-1"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-2",
+          "name": "Refactor: MainView dev/test view with a hardcoded FCM token and server key is left in the app target alongside commented-out code.",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/TalkyApp.swift#L2",
+            "Talky/TalkyApp.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-104",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Refactor: MainView dev/test view with a hardcoded FCM token and server key is left in the app target alongside commented-out code.",
+              "description": "Inspect MainView to locate the hardcoded FCM token and server key, and evaluate the security risk of shipping these credentials in the app target.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "security risk assessment",
+              "platform": "app",
+              "task_id": "polish-debt-2"
+            },
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-105",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Refactor: MainView dev/test view with a hardcoded FCM token and server key is left in the app target alongside commented-out code.",
+              "description": "Design a debug-only configuration mechanism that keeps dev/test views out of the production app target while preserving the existing shared observable state architecture.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "debug-only configuration",
+              "platform": "app",
+              "task_id": "polish-debt-2"
+            },
+            {
+              "code": "SIO-LOCAL_NOTIFICATION_API-106",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "LOCAL_NOTIFICATION_API",
+              "name": "SIO: Refactor: MainView dev/test view with a hardcoded FCM token and server key is left in the app target alongside commented-out code.",
+              "description": "Remove the hardcoded FCM token, server key, and commented-out code from MainView, including any dead local notification setup, and confirm the app still compiles.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "remove hardcoded credentials",
+              "platform": "app",
+              "task_id": "polish-debt-2"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-3",
+          "name": "Refactor: Login and register screens are almost identical duplicated layouts; extract a shared auth form component.",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_VIEW_STATE",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [],
+          "learning_objectives": [
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-107",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Refactor: Login and register screens are almost identical duplicated layouts; extract a shared auth form component.",
+              "description": "Compare the login and register screen layouts to identify the duplicated structure and the fields that differ between them.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "duplicate layout analysis",
+              "platform": "app",
+              "task_id": "polish-debt-3"
+            },
+            {
+              "code": "CIO-LOCAL_VIEW_STATE-108",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "LOCAL_VIEW_STATE",
+              "name": "CIO: Refactor: Login and register screens are almost identical duplicated layouts; extract a shared auth form component.",
+              "description": "Design a reusable AuthForm component that accepts a mode (login/register) and internally manages local view state for its fields.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "reusable auth form",
+              "platform": "app",
+              "task_id": "polish-debt-3"
+            },
+            {
+              "code": "SIO-SHARED_OBSERVABLE_STATE-109",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "SIO: Refactor: Login and register screens are almost identical duplicated layouts; extract a shared auth form component.",
+              "description": "Refactor both login and register screens to use the new AuthForm component, wiring its output to the shared observable state for authentication.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "extract auth form",
+              "platform": "app",
+              "task_id": "polish-debt-3"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-4",
+          "name": "Refactor: FCM server key is embedded in client code; major security and maintenance debt.",
+          "concepts": [
+            "JSON_SERIALIZATION",
+            "API_INTEGRATION",
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "concept_code": "JSON_SERIALIZATION",
+          "evidence_refs": [
+            "Talky/Util/Helper/PushNotificationManager.swift#L2",
+            "Talky/Util/Helper/PushNotificationManager.swift#L2"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-API_INTEGRATION-110",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "API_INTEGRATION",
+              "name": "CIO: Refactor: FCM server key is embedded in client code; major security and maintenance debt.",
+              "description": "Audit the client code to locate the embedded FCM server key and analyze the security and maintenance consequences of keeping it in the app bundle.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "embedded secret audit",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            },
+            {
+              "code": "CIO-KEY_VALUE_PERSISTENCE-111",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "KEY_VALUE_PERSISTENCE",
+              "name": "CIO: Refactor: FCM server key is embedded in client code; major security and maintenance debt.",
+              "description": "Design a secure approach for storing and retrieving the FCM server key, such as using the system Keychain or a remote config service.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "secure storage design",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            },
+            {
+              "code": "SIO-JSON_SERIALIZATION-112",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "JSON_SERIALIZATION",
+              "name": "SIO: Refactor: FCM server key is embedded in client code; major security and maintenance debt.",
+              "description": "Update the API client to retrieve the FCM server key from the secure storage, using JSON serialization where needed to decode the stored configuration, and remove the hardcoded key from the client code.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "secure key loading",
+              "platform": "app",
+              "task_id": "polish-debt-4"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-5",
+          "name": "Refactor: Debug print inside ForEach and scattered boolean state toggles (shouldShowLogOutOptions, shouldNavigateToChatLogView) make flow logic hard to follow.",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "DECLARATIVE_UI_PARADIGM",
+            "VIEW_TRANSITIONS"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
+          "evidence_refs": [
+            "Talky/View/RecentChatView.swift#L10",
+            "Talky/View/RecentChatView.swift#L10"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-113",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Refactor: Debug print inside ForEach and scattered boolean state toggles (shouldShowLogOutOptions, shouldNavigateToChatLogView) make flow logic hard to follow.",
+              "description": "Analyze how debug print statements and scattered boolean toggles obscure the navigation and state transition logic in the views.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "state flow analysis",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            },
+            {
+              "code": "CIO-SHARED_OBSERVABLE_STATE-114",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "SHARED_OBSERVABLE_STATE",
+              "name": "CIO: Refactor: Debug print inside ForEach and scattered boolean state toggles (shouldShowLogOutOptions, shouldNavigateToChatLogView) make flow logic hard to follow.",
+              "description": "Design a single source of truth for the flow state, such as an enum-based state machine, to replace the scattered boolean toggles.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "state machine design",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            },
+            {
+              "code": "SIO-VIEW_TRANSITIONS-115",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "VIEW_TRANSITIONS",
+              "name": "SIO: Refactor: Debug print inside ForEach and scattered boolean state toggles (shouldShowLogOutOptions, shouldNavigateToChatLogView) make flow logic hard to follow.",
+              "description": "Refactor the views to use the new state machine, removing debug prints from ForEach and driving view transitions from the single state.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "state-driven transitions",
+              "platform": "app",
+              "task_id": "polish-debt-5"
+            }
+          ]
+        },
+        {
+          "id": "polish-debt-6",
+          "name": "Refactor: SecureTextField and several views hardcode Color literals and constant paddings instead of using theme tokens.",
+          "concepts": [
+            "TWO_WAY_BINDING",
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "TWO_WAY_BINDING",
+          "evidence_refs": [
+            "Talky/View/Component/SecureTextField.swift#L10"
+          ],
+          "learning_objectives": [
+            {
+              "code": "CIO-UI_MODIFIERS_CONCEPT-116",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "UI_MODIFIERS_CONCEPT",
+              "name": "CIO: Refactor: SecureTextField and several views hardcode Color literals and constant paddings instead of using theme tokens.",
+              "description": "Inspect SecureTextField and related views to list all hardcoded color literals and constant paddings that bypass the current theme tokens.",
+              "assessment": "POLISH",
+              "bloom_level": "analyze",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "hardcoded style audit",
+              "platform": "app",
+              "task_id": "polish-debt-6"
+            },
+            {
+              "code": "CIO-DECLARATIVE_UI_PARADIGM-117",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept": "DECLARATIVE_UI_PARADIGM",
+              "name": "CIO: Refactor: SecureTextField and several views hardcode Color literals and constant paddings instead of using theme tokens.",
+              "description": "Create a theme token set for colors and spacing that centralizes the app's design values and can be referenced by any view.",
+              "assessment": "POLISH",
+              "bloom_level": "create",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "theme token design",
+              "platform": "app",
+              "task_id": "polish-debt-6"
+            },
+            {
+              "code": "SIO-TWO_WAY_BINDING-118",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept": "TWO_WAY_BINDING",
+              "name": "SIO: Refactor: SecureTextField and several views hardcode Color literals and constant paddings instead of using theme tokens.",
+              "description": "Replace the hardcoded color literals and constant paddings in SecureTextField and other views with the new theme tokens, ensuring the two-way binding behavior remains intact.",
+              "assessment": "POLISH",
+              "bloom_level": "apply",
+              "knowledge_dimension": "PROCEDURAL",
+              "keyword": "apply theme tokens",
+              "platform": "app",
+              "task_id": "polish-debt-6"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "total_milestones": 36,
+  "total_concepts": 21,
+  "lo_count": 118
+}

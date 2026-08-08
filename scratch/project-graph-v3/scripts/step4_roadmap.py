@@ -95,12 +95,16 @@ def polish_concepts(gap_or_debt: Dict, mappings: List[Dict], features: List[Dict
                             if c and c not in concepts:
                                 concepts.append(c)
 
-    # 2. Qua location file (debt có) — tìm task node có source_evidence chứa file
+    # 2. Qua location file (debt có) — tìm task node có source_evidence chứa file đó.
+    # Location có thể nối NHIỀU file ('Talky/View/LoginxView.swift and Talky/View/RegisterxView.swift')
+    # — phải tách trước khi match, nếu không mọi task đều miss (concepts = []).
     loc = gap_or_debt.get("location", "")
     if loc and impl_tasks:
+        loc_files = [f.strip() for f in re.split(r"\s*(?:and|,)\s*", loc) if f.strip()]
         matched_task_ids = {
             t.get("id") for t in impl_tasks
-            if loc in (t.get("source_evidence", []) or []) or loc in (t.get("modifies", []) or [])
+            for f in loc_files
+            if f in (t.get("source_evidence", []) or []) or f in (t.get("modifies", []) or [])
         }
         for tid in matched_task_ids:
             for m in mappings:
@@ -135,8 +139,11 @@ def normalize_capability_id(task_cap_id: str, capabilities: List[Dict]) -> str:
     if not task_cap_id:
         return ""
 
-    # 0. Đã là feature id (F-XXX) → giữ nguyên
-    if re.match(r"^F[-_]", task_cap_id):
+    # 0. Đã là feature id (F-XXX / F_XXX / F9) → giữ nguyên.
+    # LLM gán thẳng feature id cho task.capability_id theo 2 convention: 'F-CORE'
+    # (có dấu) và 'F9' (số — STEP 1 v3). Capability ids thật là C1..C11, không
+    # trùng F\d nên match an toàn.
+    if re.match(r"^F[-_]?\d", task_cap_id):
         return task_cap_id
 
     norm = task_cap_id.replace("-", "_").replace(" ", "_").upper()
@@ -231,7 +238,13 @@ def topo_sort_tasks(tasks: List[Dict], dependencies: List[Dict],
     """Sắp xếp task theo dependency (DEPENDS_ON/BLOCKED_BY trước task phụ thuộc).
 
     task_journey_rank: {task_id: journey_rank} — task thuộc user journey sớm hơn
-    (VD J1 Welcome → J2 Login → J3 Chat) được ưu tiên trước khi cùng dependency.
+    (VD J1 Welcome → J2 Login → J3 Chat) được ưu tiên.
+
+    Fix Side Effect 1 (journey-skip): trước đây dep ở journey SAU bị BỎ QUA
+    (DFS skip) → task đứng trước prerequisite của nó (T07 Login cần T16
+    SecureTextField — journey J1 vs J5 — nhưng bị xếp trước). Nay dùng Kahn:
+    task chỉ được emit khi MỌI dep đã emit; journey rank chỉ là TIE-BREAK
+    cho các task ĐỘC LẬP, không bao giờ đè dependency.
     """
     task_map = {t["id"]: t for t in tasks}
     dep_map: Dict[str, Set[str]] = defaultdict(set)  # task → tasks nó phụ thuộc
@@ -248,42 +261,27 @@ def topo_sort_tasks(tasks: List[Dict], dependencies: List[Dict],
     for d in dependencies:
         frm, to = d.get("from", ""), d.get("to", "")
         if frm in task_map and to in task_map and frm != to:
-            # Bỏ edge nếu nó ngược với depends_on field: to cần frm theo field
             if to in task_dep_fields.get(frm, set()):
                 continue
-            # Bỏ edge nếu frm thực sự phụ thuộc to nhưng field của frm không có
-            # (edge riêng chỉ dùng khi field không nhắc) — thêm dep an toàn
             dep_map[frm].add(to)
 
     journey_rank = task_journey_rank or {}
 
-    def sort_key(tid):
-        # Journey sớm (rank nhỏ) lên trước — user journey thắng dependency
-        # (Welcome J1 trước Login J2 dù code Login dùng AuthVM).
-        # Cùng journey → giữ thứ tự id ổn định.
-        return (journey_rank.get(tid, 999), tid)
+    def rank(tid: str) -> int:
+        return journey_rank.get(tid, 999)
 
-    result, visited, visiting = [], set(), set()
-
-    def dfs(tid):
-        if tid in visited:
-            return
-        if tid in visiting:
-            return  # cycle — bỏ
-        visiting.add(tid)
-        # Dep trong CÙNG journey: phải trước. Dep khác journey: journey rank quyết.
-        for dep in sorted(dep_map.get(tid, []), key=sort_key):
-            if journey_rank.get(dep, 999) == journey_rank.get(tid, 999) or \
-               journey_rank.get(dep, 999) < journey_rank.get(tid, 999):
-                dfs(dep)
-            # dep ở journey SAU task hiện tại (code dep ngược journey) → bỏ qua,
-            # để sort_key xếp task theo journey đúng
-        visiting.discard(tid)
-        visited.add(tid)
+    # Kahn: emit task có mọi dep đã emit, ưu tiên (journey, id) — deterministic.
+    remaining = set(task_map)
+    result: List[str] = []
+    while remaining:
+        ready = [tid for tid in remaining if not (dep_map.get(tid, set()) & remaining)]
+        if not ready:
+            # cycle (dep_map mâu thuẫn) — phá bằng task rank thấp nhất còn lại
+            ready = [min(remaining, key=lambda t: (rank(t), t))]
+        ready.sort(key=lambda t: (rank(t), t))
+        tid = ready[0]
+        remaining.discard(tid)
         result.append(tid)
-
-    for t in sorted(task_map.keys(), key=sort_key):
-        dfs(t)
     return [task_map[tid] for tid in result]
 
 def build_roadmap_structure(pg: Dict) -> Dict:
@@ -321,7 +319,7 @@ def build_roadmap_structure(pg: Dict) -> Dict:
     task_to_feature = {}
     for t in tasks:
         norm_id = normalize_capability_id(t.get("capability_id", ""), caps)
-        if re.match(r"^F[-_]", norm_id):
+        if re.match(r"^F[-_]?\d", norm_id):
             fid = norm_id
         else:
             fid = cap_feat.get(norm_id, "")
@@ -344,7 +342,9 @@ def build_roadmap_structure(pg: Dict) -> Dict:
     phases: Dict[str, List] = defaultdict(list)
     for i, t in enumerate(ordered):
         cap_id = normalize_capability_id(t.get("capability_id", ""), caps)
-        feat_id = cap_feat.get(cap_id, "")
+        # capability_id có thể là feature id trực tiếp ('F9') — nhận luôn, không
+        # tra cap_feat (capabilities là C1..C11, không trùng F\d).
+        feat_id = cap_id if re.match(r"^F[-_]?\d", cap_id) else cap_feat.get(cap_id, "")
         priority = feat_priority.get(feat_id, "core")
         action_lower = (t.get("action", "") or "").lower()
 
@@ -375,6 +375,16 @@ def build_roadmap_structure(pg: Dict) -> Dict:
                 phase = PRIORITY_PHASE.get(priority, "MVP")
 
         concepts = task_concepts(t, mappings)
+        # Fallback: task không có task-node MAPPED (VD scaffold — keyword chỉ có
+        # Gap D proposals) → dùng concepts của FEATURE node (anchor ngữ nghĩa thật
+        # trong graph), giữ traceability LO → concept cho viewer/validator.
+        if not concepts and feat_id:
+            feat_node = f"feature:{feat_id}"
+            for m in mappings:
+                if m.get("node_id") == feat_node and m.get("status") == "MAPPED":
+                    for c in m.get("concepts", []):
+                        if c and c not in concepts:
+                            concepts.append(c)
         # Scaffold nhận diện theo CẤU TRÚC: feature setup (F-CORE rank 0) hoặc
         # action chứa marker KHỞI TẠO (tiếng Việt + Anh). KHÔNG dùng
         # FOUNDATION_SIGNALS (appdelegate/@main/...) — quá rộng: t21
