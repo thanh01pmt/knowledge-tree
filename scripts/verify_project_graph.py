@@ -218,13 +218,25 @@ def verify_project_graph(graph_data: Dict[str, Any], repo_dir: Path) -> Tuple[Di
             })
             continue
 
+        # LUẬT 1b: LLM thường claim quá ít files (1 file cho mọi feature trên repo lớn).
+        # Mở rộng sang MỌI source file cùng thư mục với file đã claim — ground-truth
+        # từ filesystem, không tin claim của LLM. Feature "Channel Observation" claim
+        # ChannelController.swift → lấy cả ChannelController+Combine.swift, Delegate...
+        expanded = set(valid_files)
+        for f_path in list(valid_files):
+            parent_dir = (repo_dir / f_path).parent
+            if parent_dir.is_dir():
+                for sibling in parent_dir.iterdir():
+                    if sibling.is_file() and sibling.suffix.lower() in {".swift", ".py", ".ino", ".cpp", ".c", ".cc", ".h", ".hpp", ".js", ".ts"}:
+                        rel = str(sibling.relative_to(repo_dir))
+                        expanded.add(rel)
+        feature["files"] = sorted(expanded)
         valid_feature_ids.add(feature_id)
-        feature["files"] = valid_files
 
         # LUẬT 2: Platform resolution from file sources (majority vote).
         # Mixed-platform features keep the majority platform; a warning records
         # the mix instead of silently collapsing everything to esp32.
-        file_platforms = [_platform_from_path(f, str(repo_dir)) for f in valid_files]
+        file_platforms = [_platform_from_path(f, str(repo_dir)) for f in feature["files"]]
         plat_counts = {}
         for fp in file_platforms:
             plat_counts[fp] = plat_counts.get(fp, 0) + 1
@@ -247,7 +259,7 @@ def verify_project_graph(graph_data: Dict[str, Any], repo_dir: Path) -> Tuple[Di
         feature_type_usages: Set[str] = set()
         feature_api_calls: Set[str] = set()
 
-        for f_path in valid_files:
+        for f_path in feature["files"]:
             ev = file_evidence_cache.get(f_path) or extract_file_evidence(repo_dir / f_path)
             feature_imports.update(ev["imports"])
             feature_prop_wrappers.update(ev["property_wrappers"])

@@ -62,10 +62,56 @@ def extract_keywords_from_graph(verified_graph: Dict[str, Any]) -> List[Dict[str
     return keywords
 
 
+def build_concept_file_index(repo_dir: Path, kw_to_concepts: Dict[str, List[str]]) -> Dict[str, List[str]]:
+    """Ground-truth: concept → ALL source files where its keywords appear.
+
+    Scans the repo with the same parser the pipeline uses (verify_project_graph
+    extract_file_evidence), so we do NOT rely on the LLM's feature→file claims
+    (which collapse to a single file on large repos). Every file containing an
+    evidence token that maps to a concept associates that concept with the file.
+    """
+    import sys as _sys
+    _here = Path(__file__).resolve().parent
+    if str(_here) not in _sys.path:
+        _sys.path.insert(0, str(_here))
+    from verify_project_graph import extract_file_evidence
+
+    concept_files: Dict[str, Set[str]] = {}
+
+    SKIP_PARTS = {"node_modules", ".build", "Pods", ".git", ".venv", "venv",
+                  "__pycache__", "build", "dist", "Tests", "tests", "TestTools",
+                  "DemoApp", "Examples", "Integration", "Sample", "Samples"}
+    ALLOWED_EXT = {".swift", ".py", ".ino", ".cpp", ".c", ".cc", ".cxx",
+                   ".h", ".hpp", ".js", ".jsx", ".ts", ".tsx"}
+
+    for path in repo_dir.rglob("*"):
+        if not path.is_file():
+            continue
+        rel_parts = path.relative_to(repo_dir).parts
+        if any(p in SKIP_PARTS for p in rel_parts[:-1]):
+            continue
+        if path.suffix.lower() not in ALLOWED_EXT:
+            continue
+        try:
+            ev = extract_file_evidence(path)
+        except Exception:
+            continue
+        rel = str(path.relative_to(repo_dir))
+        # Chỉ dùng category có từ vựng khớp resolved keywords (imports, framework usage)
+        tokens = set(ev.get("imports", []))
+        tokens.update(ev.get("property_wrappers", []))
+        for tok in tokens:
+            for code in kw_to_concepts.get(tok, []):
+                concept_files.setdefault(code, set()).add(rel)
+
+    return {c: sorted(fs) for c, fs in concept_files.items()}
+
+
 def build_concept_map(
     verified_graph: Dict[str, Any],
     resolved_data: Dict[str, Any],
-    escalated_data: Optional[Dict[str, Any]] = None
+    escalated_data: Optional[Dict[str, Any]] = None,
+    repo_dir: Optional[Path] = None,
 ) -> Dict[str, Any]:
     """
     Join verified graph evidence keywords with resolved/escalated concepts.
@@ -104,7 +150,11 @@ def build_concept_map(
                     if c not in kw_to_concepts[kw]:
                         kw_to_concepts[kw].append(c)
 
-    # 2. Map feature_id -> sorted unique concept codes
+    # 2. Map feature_id -> sorted unique concept codes.
+    # Dùng kw_to_concepts TOÀN CỤC (keyword → concept từ resolved/escalated) —
+    # KHÔNG giới hạn trong evidence của từng feature, vì evidence bị ràng buộc
+    # bởi feature→file claim của LLM (thoái hóa thành 1 file trên repo lớn).
+    # Mỗi feature gom concepts của MỌI keyword nó chạm tới (imports + property wrappers).
     feature_concepts: Dict[str, List[str]] = {}
     features = verified_graph.get("product", {}).get("features", [])
 
@@ -114,11 +164,17 @@ def build_concept_map(
             continue
         feat_concepts_set: Set[str] = set()
         evidence = feat.get("evidence", {})
-        for cat_list in evidence.values():
-            if isinstance(cat_list, list):
-                for token in cat_list:
-                    if token in kw_to_concepts:
-                        for c in kw_to_concepts[token]:
+        # Ưu tiên imports + property_wrappers — từ vựng khớp resolved keywords
+        for cat in ("imports", "property_wrappers"):
+            for token in evidence.get(cat, []):
+                for c in kw_to_concepts.get(token, []):
+                    feat_concepts_set.add(c)
+        # Fallback: các category khác nếu feature không có imports rõ
+        if not feat_concepts_set:
+            for cat_list in evidence.values():
+                if isinstance(cat_list, list):
+                    for token in cat_list:
+                        for c in kw_to_concepts.get(token, []):
                             feat_concepts_set.add(c)
         feature_concepts[fid] = sorted(list(feat_concepts_set))
 
@@ -150,12 +206,17 @@ def build_concept_map(
                     if token in kw_to_concepts and kw_to_concepts[token]:
                         keyword_evidence[token] = kw_to_concepts[token]
 
+    concept_files: Dict[str, List[str]] = {}
+    if repo_dir is not None:
+        concept_files = build_concept_file_index(repo_dir, kw_to_concepts)
+
     return {
         "schema_version": 1,
         "feature_concepts": feature_concepts,
         "milestone_concepts": milestone_concepts,
         "concepts": all_concepts,
         "keyword_evidence": keyword_evidence,
+        "concept_files": concept_files,
     }
 
 
@@ -215,7 +276,7 @@ def main():
             print(f"[*] Reusing escalated concepts from {args.escalated_concepts}")
             with open(args.escalated_concepts, "r", encoding="utf-8") as f:
                 escalated_data = json.load(f)
-        concept_map = build_concept_map(verified_graph, resolved_data, escalated_data)
+        concept_map = build_concept_map(verified_graph, resolved_data, escalated_data, repo_dir=repo_dir_path)
     else:
         with tempfile.TemporaryDirectory() as temp_dir:
             temp_dir_path = Path(temp_dir)
@@ -275,7 +336,7 @@ def main():
                 with open(temp_escalated_path, "r", encoding="utf-8") as f:
                     escalated_data = json.load(f)
 
-            concept_map = build_concept_map(verified_graph, resolved_data, escalated_data)
+            concept_map = build_concept_map(verified_graph, resolved_data, escalated_data, repo_dir=repo_dir_path)
 
     if temp_inv_dir:
         temp_inv_dir.cleanup()

@@ -217,7 +217,14 @@ def build_prompt(file_contents: str, tech_stack: str = "") -> Tuple[str, str]:
         "Bạn là kiến trúc sư phần mềm. Phân tích source code thành Product/Architecture Graph theo schema JSON. "
         "CẤM bịa file/symbol/tính năng không thấy trong code. "
         "KHÔNG tham chiếu danh mục kiến thức bên ngoài nào. "
-        "Trả JSON đúng schema."
+        "Trả JSON đúng schema.\n"
+        "QUAN TRỌNG về file:\n"
+        "1. Mỗi feature (F1, F2...) phải liệt kê ĐÚNG tất cả source files thực hiện chức năng đó. "
+        "Một feature thường dùng NHIỀU files (không bao giờ chỉ 1 file trừ khi repo thật sự nhỏ).\n"
+        "2. Một file có thể xuất hiện trong NHIỀU features nếu nó phục vụ nhiều chức năng — đó là bình thường.\n"
+        "3. Mọi file quan trọng đã đọc phải xuất hiện trong ít nhất 1 feature — không bỏ sót file.\n"
+        "4. CẤM đặt tất cả features vào cùng 1 file khi có nhiều file khác nhau.\n"
+        "5. decomposition.milestones[].files = union của feature_ids[].files."
     )
 
     schema_str = json.dumps(SCHEMA_SPEC, indent=2, ensure_ascii=False)

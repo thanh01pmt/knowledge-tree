@@ -88,8 +88,14 @@ def test_ca1_valid_graph(repo_dir: Path):
     # Assertions
     features = verified["product"]["features"]
     assert len(features) == 2, f"Expected 2 features, got {len(features)}"
-    assert features[0]["files"] == ["ContentView.swift", "HTTPBulbService.swift"]
-    assert features[1]["files"] == ["smart_bulb.ino"]
+    # LUẬT 1b: files được mở rộng sang siblings cùng thư mục (ground-truth).
+    # F1 (ContentView+HTTPBulbService) giờ bao gồm cả smart_bulb.ino (cùng dir).
+    f1_files = set(features[0]["files"])
+    assert "ContentView.swift" in f1_files and "HTTPBulbService.swift" in f1_files, \
+        f"F1 must contain claimed files, got {features[0]['files']}"
+    assert len(f1_files) >= 2, f"F1 files should be expanded by dir rule, got {features[0]['files']}"
+    f2_files = set(features[1]["files"])
+    assert "smart_bulb.ino" in f2_files, f"F2 missing smart_bulb.ino, got {features[1]['files']}"
 
     # Evidence assertions
     f1_evidence = features[0]["evidence"]
@@ -119,7 +125,7 @@ def test_ca2_hallucinated_file(repo_dir: Path):
     # Assertions
     f1_files = verified["product"]["features"][0]["files"]
     assert "FakeService.swift" not in f1_files, "FakeService.swift should be removed from verified features"
-    assert f1_files == ["ContentView.swift", "HTTPBulbService.swift"]
+    assert len(f1_files) >= 2 and "ContentView.swift" in f1_files and "HTTPBulbService.swift" in f1_files
 
     m1_files = verified["decomposition"]["milestones"][0]["files"]
     assert "FakeService.swift" not in m1_files, "FakeService.swift should be removed from verified milestones"
