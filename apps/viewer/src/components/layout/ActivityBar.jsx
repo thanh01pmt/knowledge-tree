@@ -1,11 +1,12 @@
 import React from 'react';
-import { Network, Target, FolderTree, MessageSquare, Sun, Moon } from 'lucide-react';
+import { Network, Target, FolderTree, MessageSquare, Sun, Moon, Table } from 'lucide-react';
 
 export default function ActivityBar({ viewMode, setViewMode, toggleChat, theme, setTheme }) {
   const items = [
     { id: 'knowledge', icon: Network, title: 'Knowledge Tree' },
     { id: 'roadmap', icon: Target, title: 'Action Roadmap' },
     { id: 'project-graph', icon: FolderTree, title: 'Project Graph' },
+    { id: 'table', icon: Table, title: 'Data Table' },
   ];
 
   return (

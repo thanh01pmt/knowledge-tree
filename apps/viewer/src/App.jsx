@@ -6,6 +6,7 @@ import DashboardModal from './components/DashboardModal';
 import OnboardingTour from './components/OnboardingTour';
 import RoadmapViewer from './components/RoadmapViewer';
 import ProjectGraphViewer from './components/ProjectGraphViewer';
+import DataTableView from './components/DataTableView';
 import AppLayout from './components/layout/AppLayout';
 import { parseKnowledgeTree } from './utils/dataParser';
 import './App.css';
@@ -301,6 +302,13 @@ function App() {
             setIsolatedNodeId={setIsolatedNodeId}
           />
         </>
+      ) : viewMode === 'table' ? (
+        <DataTableView 
+          rawTreeData={rawTreeData} 
+          theme={theme} 
+          linksBySource={linksBySource} 
+          linksByTarget={linksByTarget} 
+        />
       ) : viewMode === 'roadmap' ? (
         <RoadmapViewer theme={theme} />
       ) : (
