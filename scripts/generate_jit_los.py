@@ -114,7 +114,7 @@ def collect_resolved_concepts(resolved_concepts: dict) -> Dict[str, dict]:
     #   error_handling (throws, try!), docstring/readme/config, escalated
     # Bỏ TÊN DO DEV ĐẶT (function_signature: loop/getState — không phải keyword
     # ngôn ngữ; type_declaration: HTTPBulbService — tên class tự viết).
-    KEYWORD_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'config', 'escalated', 'framework_usage'}
+    KEYWORD_SOURCES = {'import', 'property_wrapper', 'error_handling', 'docstring', 'readme', 'escalated', 'framework_usage'}
 
     concepts = {}
     # Resolved concepts (đã match Master Tree)

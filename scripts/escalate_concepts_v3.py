@@ -56,9 +56,11 @@ load_dotenv(REPO_ROOT / '.env')
 # Keywords KHÔNG phải kiến thức (tên class/function tự đặt) — bỏ qua
 NOISE_KEYWORDS = {
     'type_declaration', 'function_signature', 'property_wrapper',
+    'config',
 }
 # Keywords là kiến thức thật — cần escalate
-REAL_SOURCES = {'import', 'error_handling', 'docstring', 'readme', 'config'}
+# (config đã loại: file build/cấu hình không phải nội dung học — ưu tiên mã nguồn)
+REAL_SOURCES = {'import', 'error_handling', 'docstring', 'readme'}
 
 
 def load_keywords(keywords_json: dict) -> List[Dict]:
