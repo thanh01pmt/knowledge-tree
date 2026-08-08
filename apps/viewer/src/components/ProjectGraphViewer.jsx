@@ -171,7 +171,7 @@ export default function ProjectGraphViewer({ theme }) {
       </div>
 
       {/* MAIN VIEW */}
-      <div className="flex-1 relative bg-[#f8fafc] dark:bg-[#0f172a] min-w-0" ref={containerRef}>
+      <div className={`flex-1 relative min-w-0 ${theme === 'dark' ? 'bg-[#0f172a]' : 'bg-[#f8fafc]'}`} ref={containerRef}>
         <div className="absolute inset-0">
           {dimensions.width > 0 && (
             <ForceGraph3D
