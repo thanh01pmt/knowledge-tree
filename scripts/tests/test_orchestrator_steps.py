@@ -75,11 +75,11 @@ def test_steps_list_order():
     idx_3_5 = step_ids.index("step_3_5")
     idx_4 = step_ids.index("step_4")
 
-    # Assert 1_2 before 1_3, 1_3 before 3, 3 before 3_5, 3_5 before 4
-    assert idx_1_2 < idx_1_3, f"step_1_3 ({idx_1_3}) should be after step_1_2 ({idx_1_2})"
-    assert idx_1_3 < idx_3, f"step_3 ({idx_3}) should be after step_1_3 ({idx_1_3})"
+    # Assert 1_2 before 3, 3 before 3_5, 3_5 before 1_3 (project graph cần concept bank), 1_3 before 4
+    assert idx_1_2 < idx_3, f"step_3 ({idx_3}) should be after step_1_2 ({idx_1_2})"
     assert idx_3 < idx_3_5, f"step_3_5 ({idx_3_5}) should be after step_3 ({idx_3})"
-    assert idx_3_5 < idx_4, f"step_4 ({idx_4}) should be after step_3_5 ({idx_3_5})"
+    assert idx_3_5 < idx_1_3, f"step_1_3 ({idx_1_3}) should be after step_3_5 ({idx_3_5}) — cần resolved/escalated cho concept bank"
+    assert idx_1_3 < idx_4, f"step_4 ({idx_4}) should be after step_1_3 ({idx_1_3})"
 
     print("  Test 2 PASSED!")
 
