@@ -1,0 +1,141 @@
+# Project Structure
+# Generated: 2026-08-08T10:36:05.547477
+# Project Path: /private/tmp/stream-chat-swift
+================================================================================
+
+stream-chat-swift/
+└── DemoApp/
+    ├── Extensions/
+    │   ├── MessageReactionType+Position.swift 📄
+    │   ├── UIImage+Resized.swift 📄
+    │   ├── UIViewController+Alert.swift 📄
+    │   └── UserDefaults+Shared.swift 📄
+    ├── Resources/
+    │   ├── Assets.xcassets/
+    │   │   ├── AccentColor.colorset/
+    │   │   │   └── Contents.json ⚙️
+    │   │   ├── advanced_settings.imageset/
+    │   │   │   ├── advanced_icon.pdf 📄
+    │   │   │   └── Contents.json ⚙️
+    │   │   ├── AppIcon.appiconset/
+    │   │   │   ├── Contents.json ⚙️
+    │   │   │   └── stream-test-app-icon.png 🖼️
+    │   │   ├── Icon_arrow_right.imageset/
+    │   │   │   ├── Contents.json ⚙️
+    │   │   │   └── Icon_arrow_right.pdf 📄
+    │   │   ├── pencil.imageset/
+    │   │   │   ├── Contents.json ⚙️
+    │   │   │   └── Icon_pen-write.pdf 📄
+    │   │   ├── Stream_logo.imageset/
+    │   │   │   ├── Contents.json ⚙️
+    │   │   │   └── logo.pdf 📄
+    │   │   └── Contents.json ⚙️
+    │   ├── Base.lproj/
+    │   │   ├── LaunchScreen.storyboard 📄
+    │   │   └── Main.storyboard 📄
+    │   ├── cs.lproj/
+    │   │   ├── Localizable.strings 📄
+    │   │   └── Localizable.stringsdict 📄
+    │   └── en.lproj/
+    │       ├── Localizable.strings 📄
+    │       └── Localizable.stringsdict 📄
+    ├── Screens/
+    │   ├── AppConfigViewController/
+    │   │   ├── AppConfigViewController.swift 📄
+    │   │   ├── OptionsSelectorViewController.swift 📄
+    │   │   └── SwitchButton.swift 📄
+    │   ├── Create Chat/
+    │   │   ├── Cells/
+    │   │   │   ├── GroupUserCell.swift 📄
+    │   │   │   └── SearchUserCell.swift 📄
+    │   │   ├── CreateChatViewController.swift 📄
+    │   │   ├── CreateGroupViewController.swift 📄
+    │   │   └── NameGroupViewController.swift 📄
+    │   ├── Livestream/
+    │   │   ├── DemoLivestreamChatChannelVC.swift 📄
+    │   │   ├── DemoLivestreamChatMessageListVC.swift 📄
+    │   │   ├── DemoLivestreamMessageActionsVC.swift 📄
+    │   │   ├── DemoLivestreamReactionsListView.swift 📄
+    │   │   └── LivestreamPauseBannerView.swift 📄
+    │   ├── LoginViewController/
+    │   │   ├── Views/
+    │   │   │   ├── AvatarView.swift 📄
+    │   │   │   └── UserCredentialsCell.swift 📄
+    │   │   └── LoginViewController.swift 📄
+    │   ├── UserProfile/
+    │   │   ├── PushPreferencesView.swift 📄
+    │   │   ├── UnreadDetailsView.swift 📄
+    │   │   ├── UserGroupsConfigView.swift 📄
+    │   │   └── UserProfileViewController.swift 📄
+    │   ├── DebugObjectViewController.swift 📄
+    │   ├── DemoAppTabBarController.swift 📄
+    │   ├── DemoDraftMessageListVC.swift 📄
+    │   ├── DemoReminderListVC.swift 📄
+    │   └── MembersViewController.swift 📄
+    ├── Shared/
+    │   ├── Bundle+PushProvider.swift 📄
+    │   ├── ChatUser+CustomFields.swift 📄
+    │   ├── DemoAppCoordinator.swift 📄
+    │   ├── DemoUsers.swift 📄
+    │   ├── PushNotifications.swift 📄
+    │   ├── StreamChatWrapper.swift 📄
+    │   └── Token+Development.swift 📄
+    ├── StreamChat/
+    │   ├── Components/
+    │   │   ├── Banner/
+    │   │   │   ├── BannerShowingConnectionDelegate.swift 📄
+    │   │   │   └── DemoConnectionBannerView.swift 📄
+    │   │   ├── CustomAttachments/
+    │   │   │   ├── LocationAttachment/
+    │   │   │   │   ├── LocationAttachmentSnapshotView.swift 📄
+    │   │   │   │   ├── LocationAttachmentViewDelegate.swift 📄
+    │   │   │   │   ├── LocationAttachmentViewInjector.swift 📄
+    │   │   │   │   ├── LocationDetailViewController.swift 📄
+    │   │   │   │   ├── LocationProvider.swift 📄
+    │   │   │   │   ├── LocationSelectionViewController.swift 📄
+    │   │   │   │   ├── LocationSharingStatusView.swift 📄
+    │   │   │   │   ├── UserAnnotation.swift 📄
+    │   │   │   │   └── UserAnnotationView.swift 📄
+    │   │   │   ├── DemoAttachmentViewCatalog.swift 📄
+    │   │   │   ├── DemoChatMessageListVC.swift 📄
+    │   │   │   ├── DemoComposerVC.swift 📄
+    │   │   │   └── DemoQuotedChatMessageView.swift 📄
+    │   │   ├── DeliveredMessages/
+    │   │   │   └── DemoMessageReadsInfoView.swift 📄
+    │   │   ├── DemoChatChannelListErrorView.swift 📄
+    │   │   ├── DemoChatChannelListItemView.swift 📄
+    │   │   ├── DemoChatChannelListRouter.swift 📄
+    │   │   ├── DemoChatChannelListVC.swift 📄
+    │   │   ├── DemoChatChannelVC.swift 📄
+    │   │   ├── DemoChatMessageActionsVC.swift 📄
+    │   │   ├── DemoChatMessageContentView.swift 📄
+    │   │   ├── DemoChatMessageLayoutOptionsResolver.swift 📄
+    │   │   ├── DemoChatThreadListVC.swift 📄
+    │   │   ├── DemoChatThreadVC.swift 📄
+    │   │   └── HiddenChannelListVC.swift 📄
+    │   ├── DemoAppCoordinator+DemoApp.swift 📄
+    │   ├── StreamChatWrapper+DemoApp.swift 📄
+    │   └── SystemMessage+Warning.swift 📄
+    ├── AppDelegate.swift 📄
+    ├── ChatSample.entitlements 📄
+    ├── DemoAppConfiguration.swift 📄
+    ├── Info.plist 📄
+    ├── README.md 📝
+    ├── SceneDelegate.swift 📄
+    └── StreamRuntimeCheck+StreamInternal.swift 📄
+
+================================================================================
+# STATISTICS
+================================================================================
+Total tracked files (respecting .gitignore & script ignores): 91
+Total size: 708.71 KB
+
+Files by type:
+  🖼️ Assets: 1 files (1.1%)
+  ⚙️ Config: 7 files (7.7%)
+  📝 Markdown: 1 files (1.1%)
+  📄 Other: 12 files (13.2%)
+  📄 Swift: 70 files (76.9%)
+
+Directory statistics (top 10 by file count in top-level dirs):
+  📁 DemoApp: 91 files
