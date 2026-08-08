@@ -211,15 +211,18 @@ class PipelineOrchestrator:
             return True
 
         resolved_file = self._artifact("resolved_concepts", "resolved_concepts.json")
+        escalated_file = self._artifact("escalated_concepts", "escalated_concepts.json")
         pg_args = [
             "--repo-dir", str(self.repo_dir),
             "--goal", self.goal,
             "--tech-stack", self.tech_stack,
             "--output", str(out_verified),
         ]
-        # STEP E (concept bank) cần resolved_concepts — có sau step_3 (đã reorder)
+        # STEP E (concept bank) cần resolved + escalated — có sau step_3/3_5 (đã reorder)
         if resolved_file.exists():
             pg_args += ["--resolved-concepts", str(resolved_file)]
+        if escalated_file.exists():
+            pg_args += ["--escalated-concepts", str(escalated_file)]
 
         success = self._run_script("llm_project_graph.py", pg_args)
 

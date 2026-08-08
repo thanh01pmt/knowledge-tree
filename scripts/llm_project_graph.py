@@ -516,7 +516,8 @@ def run_pipeline(
     target: str = "auto",
     max_files: int = 70,
     max_chars: int = 120000,
-    resolved_concepts: Optional[Path] = None
+    resolved_concepts: Optional[Path] = None,
+    escalated_concepts: Optional[Path] = None
 ) -> Dict[str, Any]:
     """Execute full 5-step pipeline and write output."""
     repo_dir = repo_dir.resolve()
@@ -571,8 +572,16 @@ def run_pipeline(
                     available_concepts.extend(c)
                 elif c:
                     available_concepts.append(c)
+            # Gộp escalated_concepts (step_3_5) — JIT vocabulary = resolved + escalated
+            if escalated_concepts and escalated_concepts.is_file():
+                with open(escalated_concepts, "r", encoding="utf-8") as f:
+                    ec = json.load(f)
+                for item in ec.get("escalated", []):
+                    c = item.get("concept_code")
+                    if c:
+                        available_concepts.append(c)
             available_concepts = sorted(set(filter(None, available_concepts)))
-            print(f"[*] STEP E dùng {len(available_concepts)} concepts có sẵn từ resolved_concepts")
+            print(f"[*] STEP E dùng {len(available_concepts)} concepts có sẵn (resolved + escalated)")
         except Exception as e:
             print(f"[WARN] Không đọc được resolved_concepts cho concept bank: {e}", file=sys.stderr)
 
@@ -610,6 +619,8 @@ def main():
     parser.add_argument("--max-chars", type=int, default=120000, help="Max total chars limit")
     parser.add_argument("--resolved-concepts", type=Path,
                         help="Optional: resolved_concepts.json — dùng làm concept bank cho STEP E (khớp vocabulary JIT)")
+    parser.add_argument("--escalated-concepts", type=Path,
+                        help="Optional: escalated_concepts.json — gộp vào concept bank (JIT vocabulary = resolved + escalated)")
 
     args = parser.parse_args()
 
@@ -622,7 +633,8 @@ def main():
             target=args.target,
             max_files=args.max_files,
             max_chars=args.max_chars,
-            resolved_concepts=args.resolved_concepts
+            resolved_concepts=args.resolved_concepts,
+            escalated_concepts=args.escalated_concepts
         )
     except Exception as e:
         print(f"❌ Error running llm_project_graph: {e}", file=sys.stderr)
