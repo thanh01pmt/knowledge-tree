@@ -282,6 +282,46 @@
               "description": "Làm quen công cụ (Xcode, simulator...)"
             }
           }
+        },
+        "development_stages": {
+          "type": "array",
+          "description": "NARRATIVE cross-feature phát triển: mô tả từng giai đoạn app phát triển từ tối thiểu đến hoàn thiện, kèm học gì để làm được. LLM sinh từ toàn bộ source + goal — KHÔNG phải công thức.",
+          "items": {
+            "type": "object",
+            "required": ["stage", "product_state", "need", "learn"],
+            "properties": {
+              "stage": {
+                "type": "string",
+                "description": "Tên giai đoạn (VD 'Giai đoạn 1 — App chạy được UI cơ bản')"
+              },
+              "product_state": {
+                "type": "string",
+                "description": "Trạng thái sản phẩm ĐẠT ĐƯỢC ở cuối giai đoạn này (góc nhìn người dùng — app làm được gì)"
+              },
+              "need": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Các thứ cần triển khai (features/tasks cụ thể, VD 'scaffold', 'FirebaseAuth', 'RecentChatView')"
+              },
+              "learn": {
+                "type": "array",
+                "items": {"type": "string"},
+                "description": "Kiến thức/kỹ năng học để làm được giai đoạn này (VD 'SwiftUI View', '@StateObject', 'async auth flow')"
+              },
+              "validation": {
+                "type": "string",
+                "description": "Cách biết giai đoạn này hoàn thành (build chạy? user đăng nhập được? tin nhắn realtime?)"
+              },
+              "cross_feature_value": {
+                "type": "string",
+                "description": "Giá trị BỒI ĐẮP vào sản phẩm tổng thể (additive value) — sản phẩm sau giai đoạn này = sản phẩm trước + lớp mới gì"
+              },
+              "temporary_approach": {
+                "type": "string",
+                "description": "Scaffold TẠM phi tuyến (non-linearity) — giải pháp trung gian test nhanh không có trong kiến trúc cuối (VD 'tạm dùng UserDefaults lưu session để test, thay bằng FirebaseAuth ở giai đoạn 3')"
+              }
+            }
+          }
         }
       }
     },

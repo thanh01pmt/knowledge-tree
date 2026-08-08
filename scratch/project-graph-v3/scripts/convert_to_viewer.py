@@ -88,6 +88,7 @@ def convert(roadmap: dict) -> dict:
             "goal": project.get("purpose", ""),
             "tech_stack": project.get("tech_stack", {}),
         },
+        "development_stages": roadmap.get("development_stages", []),
         "phases": phases_out,
         "total_milestones": concept_counter,
         "total_concepts": len(all_concepts),

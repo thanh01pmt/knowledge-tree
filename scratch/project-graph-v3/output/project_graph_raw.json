@@ -3,9 +3,9 @@
   "project": {
     "id": "talky",
     "name": "Talky",
-    "version": "1.0.0",
-    "purpose": "Talky là ứng dụng chat messenger iOS cho phép người dùng đăng ký/đăng nhập, trò chuyện 1-1 theo thời gian thực và nhận thông báo đẩy khi có tin nhắn mới.",
+    "version": "1.0",
     "project_type": "mobile_app",
+    "purpose": "App chat realtime trên iOS bằng SwiftUI và Firebase — người dùng đăng ký/đăng nhập, nhắn tin realtime, quản lý hồ sơ và nhận thông báo push.",
     "platform": [
       "iOS"
     ],
@@ -14,23 +14,23 @@
         "Swift"
       ],
       "ui": [
-        "SwiftUI"
+        "SwiftUI",
+        "UIKit (UIImagePickerController)"
       ],
       "persistence": [
-        "Firebase Firestore",
+        "FirebaseFirestore",
+        "FirestoreSwift",
         "UserDefaults"
       ],
       "networking": [
-        "Firebase Auth",
-        "Firebase Firestore",
-        "Firebase Storage",
-        "Firebase Cloud Messaging",
-        "URLSession"
+        "FirebaseAuth",
+        "FirebaseStorage",
+        "FirebaseMessaging",
+        "FCM REST API (URLSession)"
       ],
       "other": [
-        "FirebaseMessaging",
-        "UserNotifications",
-        "FCM"
+        "FirebaseCore",
+        "UserNotifications"
       ]
     },
     "architecture": [
@@ -38,593 +38,673 @@
       "Singleton"
     ],
     "source": {
-      "repository": "",
-      "commit": "",
+      "repository": null,
+      "commit": null,
       "scan_dir": "Talky"
     }
   },
   "product": {
     "goals": [
       {
-        "id": "G-AUTH",
-        "description": "User có thể tạo tài khoản, đăng nhập và đăng xuất."
+        "id": "g1",
+        "description": "Người dùng có thể tạo tài khoản mới bằng email và mật khẩu."
       },
       {
-        "id": "G-RECENT",
-        "description": "User có thể xem danh sách các cuộc trò chuyện gần đây."
+        "id": "g2",
+        "description": "Người dùng có thể đăng nhập và đăng xuất."
       },
       {
-        "id": "G-CHAT",
-        "description": "User có thể chọn một người dùng khác và bắt đầu cuộc trò chuyện 1-1."
+        "id": "g3",
+        "description": "Người dùng có thể xem danh sách đoạn chat gần đây."
       },
       {
-        "id": "G-MSG",
-        "description": "User có thể gửi và nhận tin nhắn realtime trong cuộc trò chuyện."
+        "id": "g4",
+        "description": "Người dùng có thể bắt đầu chat với người dùng khác."
       },
       {
-        "id": "G-PROFILE",
-        "description": "User có thể xem hồ sơ, chỉnh sửa ảnh đại diện và đổi mật khẩu."
+        "id": "g5",
+        "description": "Người dùng có thể xem và gửi tin nhắn realtime."
       },
       {
-        "id": "G-PUSH",
-        "description": "User có thể nhận thông báo đẩy khi có tin nhắn mới."
+        "id": "g6",
+        "description": "Người dùng có thể xem và sửa thông tin cá nhân (avatar, mật khẩu)."
+      },
+      {
+        "id": "g7",
+        "description": "Người dùng nhận được thông báo push khi có tin nhắn mới."
       }
     ],
     "users": [
       {
-        "id": "U1",
+        "id": "app_user",
         "goals": [
-          "G-AUTH"
-        ]
-      },
-      {
-        "id": "U2",
-        "goals": [
-          "G-RECENT",
-          "G-CHAT",
-          "G-MSG",
-          "G-PROFILE",
-          "G-PUSH"
+          "g1",
+          "g2",
+          "g3",
+          "g4",
+          "g5",
+          "g6",
+          "g7"
         ]
       }
     ],
     "journeys": [
       {
-        "id": "J1",
-        "name": "Đăng ký tài khoản mới",
+        "id": "j1",
+        "name": "Đăng ký và đăng nhập lần đầu",
         "steps": [
-          "Mở app Talky",
-          "WelcomeView hiển thị màn hình chào mừng",
-          "Chạm nút Start Messaging",
-          "Điền email, password, confirm password",
-          "Chạm Sign Up",
-          "AuthViewModel.register() gọi Firebase Auth để tạo user",
-          "Chuyển sang RecentChatView"
+          "Mở app, WelcomeView hiển thị với nút Start Messaging.",
+          "Chọn Start Messaging để mở RegisterxView.",
+          "Nhập email, password, confirm password.",
+          "Nhấn Sign up — AuthViewModel.register() tạo tài khoản.",
+          "Chuyển vào RecentChatView với phiên đã đăng nhập."
         ],
         "requirement_ids": [
-          "REQ-ONBOARD",
-          "REQ-REGISTER"
+          "r1",
+          "r2",
+          "r9"
         ]
       },
       {
-        "id": "J2",
-        "name": "Đăng nhập vào tài khoản đã có",
+        "id": "j2",
+        "name": "Xem và tham gia chat gần đây",
         "steps": [
-          "Mở app Talky",
-          "WelcomeView hiển thị",
-          "Chạm nút điều hướng tới Login",
-          "Nhập email và password",
-          "Chạm Sign in",
-          "AuthViewModel.login() xác thực Firebase",
-          "Chuyển sang RecentChatView"
+          "Đăng nhập thành công vào RecentChatView.",
+          "Xem danh sách recent messages (avatar, username, text, timeAgo).",
+          "Bấm vào một recent message.",
+          "Mở ChatDetailView với ChatUser tương ứng.",
+          "Xem tin nhắn cũ và gửi tin nhắn mới realtime."
         ],
         "requirement_ids": [
-          "REQ-ONBOARD",
-          "REQ-LOGIN"
+          "r3",
+          "r5"
         ]
       },
       {
-        "id": "J3",
-        "name": "Xem và mở cuộc trò chuyện gần đây",
+        "id": "j3",
+        "name": "Bắt đầu chat với người mới",
         "steps": [
-          "Mở app khi đã đăng nhập",
-          "RecentChatView gọi vm.fetchRecentMessages()",
-          "Danh sách recent messages hiển thị username, text, timeAgo, avatar",
-          "Chạm vào một conversation",
-          "NavigationLink chuyển tới ChatDetailView",
-          "ChatDetailView fetch messages và hiển thị hội thoại"
+          "Bấm nút New Chat ở RecentChatView.",
+          "NewChatView tải danh sách tất cả users.",
+          "Chọn một user.",
+          "ChatDetailView mở với user đã chọn.",
+          "Gửi tin nhắn đầu tiên."
         ],
         "requirement_ids": [
-          "REQ-RECENT",
-          "REQ-CHAT"
+          "r4",
+          "r5"
         ]
       },
       {
-        "id": "J4",
-        "name": "Bắt đầu cuộc trò chuyện mới",
+        "id": "j4",
+        "name": "Cập nhật hồ sơ",
         "steps": [
-          "Ở RecentChatView chạm nút New Chat",
-          "fullScreenCover mở NewChatView",
-          "NewChatView gọi vm.fetchAllUser()",
-          "Danh sách tất cả user hiển thị",
-          "Chọn một user",
-          "Callback didSelectNewUser đặt selectedChatUser",
-          "Điều hướng tới ChatDetailView và gửi tin nhắn đầu tiên"
+          "Mở ProfileView từ biểu tượng person trên RecentChatView.",
+          "Xem avatar, email, username.",
+          "Bấm Edit Profile.",
+          "Đổi ảnh đại diện hoặc mật khẩu trong EditProfileView.",
+          "Bấm Save, cập nhật được lưu vào Firebase."
         ],
         "requirement_ids": [
-          "REQ-NEWCHAT",
-          "REQ-CHAT"
+          "r6"
         ]
       },
       {
-        "id": "J5",
-        "name": "Gửi và nhận tin nhắn realtime",
+        "id": "j5",
+        "name": "Nhận thông báo push",
         "steps": [
-          "Mở ChatDetailView",
-          "Nhập tin nhắn vào TextField trong chatBar",
-          "Chạm paperplane icon",
-          "vm.handleSend() lưu tin nhắn lên Firestore",
-          "vm.$count được phát ra để ScrollViewReader cuộn xuống cuối",
-          "Tin nhắn mới từ đối phương hiển thị realtime qua Firestore listener"
+          "App gọi NotificationManager.request() xin quyền notification.",
+          "User đồng ý, FCM token được PushNotificationManager.saveFCM lưu.",
+          "User A gửi tin nhắn cho User B.",
+          "User B nhận push notification dù app ở background."
         ],
         "requirement_ids": [
-          "REQ-CHAT"
-        ]
-      },
-      {
-        "id": "J6",
-        "name": "Xem hồ sơ, chỉnh sửa và đăng xuất",
-        "steps": [
-          "Ở RecentChatView chạm person icon",
-          "ProfileView hiển thị avatar, username, email",
-          "Chạm Edit Profile",
-          "EditProfileView cho phép chọn ảnh, đổi mật khẩu",
-          "Chạm Save",
-          "Quay lại ProfileView",
-          "Hoặc chạm Log Out",
-          "AuthViewModel.handleSignOut() đăng xuất",
-          "fullScreenCover hiển thị WelcomeView"
-        ],
-        "requirement_ids": [
-          "REQ-PROFILE",
-          "REQ-EDITPROFILE",
-          "REQ-LOGOUT"
-        ]
-      },
-      {
-        "id": "J7",
-        "name": "Nhận thông báo đẩy",
-        "steps": [
-          "AppDelegate đăng ký remote notifications",
-          "FirebaseMessaging nhận FCM token",
-          "PushNotificationManager.saveFCM lưu token vào UserDefaults",
-          "Khi có tin nhắn mới, PushNotificationManager.sendPushNotification gửi HTTP request tới FCM",
-          "Thiết bị nhận notification"
-        ],
-        "requirement_ids": [
-          "REQ-PUSH"
+          "r7"
         ]
       }
     ],
     "requirements": [
       {
-        "id": "REQ-SCAFFOLD",
-        "statement": "Ứng dụng iOS SwiftUI có thể được khởi tạo từ template Xcode, cấu hình Firebase và build/run được trên simulator trước khi phát triển nghiệp vụ.",
+        "id": "r1",
+        "statement": "Người dùng có thể đăng ký tài khoản mới bằng email và mật khẩu.",
         "priority": "core",
+        "completion_level": "mvp",
         "acceptance": [
-          "Tạo được project iOS App từ template Xcode",
-          "GoogleService-Info.plist được thêm vào project",
-          "FirebaseApp.configure() chạy thành công trong AppDelegate",
-          "App launch tới WelcomeView"
-        ],
-        "completion_level": "base"
+          "Mở WelcomeView, chọn Start Messaging để đến RegisterxView.",
+          "Nhập email/password/repassword và nhấn Sign up.",
+          "Tài khoản được tạo trong FirebaseAuth.",
+          "App tự động vào RecentChatView sau khi đăng ký."
+        ]
       },
       {
-        "id": "REQ-ONBOARD",
-        "statement": "User mới thấy màn hình chào mừng và có thể chuyển tới đăng ký hoặc đăng nhập.",
+        "id": "r2",
+        "statement": "Người dùng có thể đăng nhập và đăng xuất.",
+        "priority": "core",
+        "completion_level": "mvp",
+        "acceptance": [
+          "Mở WelcomeView, chọn Sign in để đến LoginxView.",
+          "Nhập email/password và nhấn Sign in.",
+          "Đăng nhập thành công vào RecentChatView.",
+          "Từ ProfileView chọn Log Out, quay về WelcomeView."
+        ]
+      },
+      {
+        "id": "r3",
+        "statement": "Người dùng có thể xem danh sách đoạn chat gần đây.",
+        "priority": "core",
+        "completion_level": "mvp",
+        "acceptance": [
+          "RecentChatView hiển thị danh sách recent messages.",
+          "Mỗi item hiển thị avatar, username, nội dung tin nhắn và thời gian tương đối.",
+          "Danh sách cập nhật khi có tin nhắn mới."
+        ]
+      },
+      {
+        "id": "r4",
+        "statement": "Người dùng có thể tìm và mở chat với người dùng khác.",
+        "priority": "core",
+        "completion_level": "extend",
+        "acceptance": [
+          "Nút New Chat mở NewChatView hiển thị danh sách users.",
+          "Chọn một user sẽ mở ChatDetailView với đúng người đó.",
+          "Sau khi nhắn, recent messages được cập nhật."
+        ]
+      },
+      {
+        "id": "r5",
+        "statement": "Người dùng có thể xem và gửi tin nhắn realtime trong cuộc chat.",
+        "priority": "core",
+        "completion_level": "mvp",
+        "acceptance": [
+          "ChatDetailView hiển thị tin nhắn cũ.",
+          "Gửi tin nhắn mới hiện ngay trong scroll.",
+          "Tin nhắn từ người kia xuất hiện realtime nhờ Firestore listener.",
+          "Scroll tự động xuống tin nhắn mới nhất."
+        ]
+      },
+      {
+        "id": "r6",
+        "statement": "Người dùng có thể xem và sửa thông tin cá nhân, avatar và mật khẩu.",
         "priority": "supporting",
+        "completion_level": "extend",
         "acceptance": [
-          "WelcomeView hiển thị tiêu đề Connect with Talky",
-          "Nút Start Messaging mở RegisterxView",
-          "Có đường dẫn tới LoginxView"
-        ],
-        "completion_level": "mvp"
+          "ProfileView hiển thị avatar, email, username.",
+          "EditProfileView cho phép đổi avatar qua ImagePicker.",
+          "Cho phép đổi mật khẩu và cập nhật lên FirebaseAuth.",
+          "Sau khi lưu, ProfileView hiển thị thông tin mới."
+        ]
       },
       {
-        "id": "REQ-REGISTER",
-        "statement": "User chưa có tài khoản có thể tạo tài khoản bằng email và mật khẩu.",
-        "priority": "core",
-        "acceptance": [
-          "Nhập email, password, confirm password",
-          "Bấm Sign Up gọi AuthViewModel.register()",
-          "Tài khoản được tạo trên Firebase Auth",
-          "Nếu thành công, vào RecentChatView; nếu lỗi, hiển thị alert logMessage"
-        ],
-        "completion_level": "mvp"
-      },
-      {
-        "id": "REQ-LOGIN",
-        "statement": "User có thể đăng nhập bằng email và mật khẩu.",
-        "priority": "core",
-        "acceptance": [
-          "Nhập email và password",
-          "Bấm Sign in gọi AuthViewModel.login()",
-          "Nếu thành công, vào RecentChatView; nếu lỗi, hiển thị alert logMessage"
-        ],
-        "completion_level": "mvp"
-      },
-      {
-        "id": "REQ-LOGOUT",
-        "statement": "User đã đăng nhập có thể đăng xuất.",
-        "priority": "core",
-        "acceptance": [
-          "ProfileView có nút Log Out",
-          "AuthViewModel.handleSignOut() gọi Firebase signOut",
-          "authViewModel.loggedOut = true và hiển thị WelcomeView"
-        ],
-        "completion_level": "mvp"
-      },
-      {
-        "id": "REQ-RECENT",
-        "statement": "User đã đăng nhập có thể xem danh sách cuộc trò chuyện gần đây.",
-        "priority": "core",
-        "acceptance": [
-          "RecentChatView hiển thị danh sách recent messages",
-          "Mỗi item hiển thị username, đoạn text cuối, timeAgo và avatar",
-          "Chạm vào item mở ChatDetailView tương ứng"
-        ],
-        "completion_level": "mvp"
-      },
-      {
-        "id": "REQ-NEWCHAT",
-        "statement": "User có thể xem danh sách tất cả user và tạo cuộc trò chuyện mới.",
-        "priority": "core",
-        "acceptance": [
-          "Nút New Chat mở NewChatView",
-          "NewChatView fetch và hiển thị tất cả user",
-          "Chọn user sẽ mở ChatDetailView với user đó"
-        ],
-        "completion_level": "mvp"
-      },
-      {
-        "id": "REQ-CHAT",
-        "statement": "User có thể gửi và nhận tin nhắn trong cuộc trò chuyện 1-1 theo thời gian thực.",
-        "priority": "core",
-        "acceptance": [
-          "ChatDetailView nhập tin nhắn và gửi lên Firestore",
-          "Tin nhắn của user hiển thị bên phải, tin nhắn của đối phương hiển thị bên trái",
-          "ScrollView tự cuộn xuống tin nhắn mới nhất",
-          "Tin nhắn mới cập nhật realtime qua Firestore listener"
-        ],
-        "completion_level": "mvp"
-      },
-      {
-        "id": "REQ-PROFILE",
-        "statement": "User có thể xem hồ sơ của mình gồm avatar, username và email.",
-        "priority": "supporting",
-        "acceptance": [
-          "ProfileView hiển thị ảnh đại diện, username và email",
-          "Nút Edit Profile chuyển tới EditProfileView"
-        ],
-        "completion_level": "extend"
-      },
-      {
-        "id": "REQ-EDITPROFILE",
-        "statement": "User có thể chỉnh sửa hồ sơ: thay ảnh đại diện và đổi mật khẩu.",
-        "priority": "supporting",
-        "acceptance": [
-          "EditProfileView hiển thị email đang đăng nhập",
-          "ImagePicker cho phép chọn ảnh mới",
-          "Đổi mật khẩu yêu cầu current password, new password và confirm",
-          "Bấm Save gọi AuthViewModel.editProfile()",
-          "Khi hoàn tất quay lại ProfileView"
-        ],
-        "completion_level": "extend"
-      },
-      {
-        "id": "REQ-PUSH",
-        "statement": "User nhận thông báo đẩy khi có tin nhắn mới.",
+        "id": "r7",
+        "statement": "Người dùng nhận thông báo push khi có tin nhắn mới.",
         "priority": "optional",
+        "completion_level": "extend",
         "acceptance": [
-          "AppDelegate đăng ký remote notification",
-          "FCM token được lưu qua PushNotificationManager.saveFCM",
-          "PushNotificationManager.sendPushNotification gửi request tới FCM endpoint",
-          "Thiết bị nhận notification với title và body"
-        ],
-        "completion_level": "extend"
+          "App xin quyền notification khi khởi động.",
+          "FCM token được lưu vào UserDefaults.",
+          "Khi user khác gửi tin nhắn, người nhận nhận được push notification."
+        ]
+      },
+      {
+        "id": "r8",
+        "statement": "Giao diện hiển thị trạng thái loading/error/empty nhất quán.",
+        "priority": "supporting",
+        "completion_level": "polish",
+        "acceptance": [
+          "Các view hiển thị trạng thái loading khi tải dữ liệu.",
+          "Lỗi đăng nhập/đăng ký hiện alert với logMessage.",
+          "Có placeholder khi chưa có ảnh đại diện."
+        ]
+      },
+      {
+        "id": "r9",
+        "statement": "Người dùng có thể điều hướng giữa màn hình chào mừng, đăng nhập, đăng ký và màn hình chat chính.",
+        "priority": "core",
+        "completion_level": "base",
+        "acceptance": [
+          "WelcomeView có nút Start Messaging và Sign in.",
+          "Điều hướng đến RegisterxView và LoginxView hoạt động.",
+          "RecentChatView hiển thị header Messages."
+        ]
+      },
+      {
+        "id": "r10",
+        "statement": "Người dùng không gặp crash khi dữ liệu profileImageUrl hoặc fcm bị nil.",
+        "priority": "supporting",
+        "completion_level": "polish",
+        "acceptance": [
+          "User không có ảnh hiển thị placeholder thay vì crash.",
+          "fcm nil không gây lỗi khi gửi push.",
+          "AsyncImage xử lý phase empty/failure."
+        ]
       }
     ],
     "scaffold": {
-      "platform_template": "Xcode iOS App template (SwiftUI)",
+      "platform_template": "Xcode iOS App template (SwiftUI App Lifecycle)",
       "generated_structure": [
-        "Talky.xcodeproj",
-        "TalkyApp.swift",
-        "ContentView.swift",
+        "TalkyApp.swift / YourApp.swift (App entry)",
+        "ContentView.swift (mặc định template — thay bằng RecentChatView)",
         "Assets.xcassets",
-        "Preview Content/Preview Assets.xcassets",
-        "GoogleService-Info.plist (cấu hình Firebase)"
+        "Info.plist",
+        "Preview Content"
       ],
-      "first_build": "Tạo project iOS SwiftUI từ template, thêm Firebase SDK qua Swift Package Manager hoặc CocoaPods, thêm GoogleService-Info.plist, build & run trên iOS Simulator để thấy app khởi chạy được.",
-      "tooling_intro": "Làm quen Xcode project navigator, SwiftUI Preview, iOS Simulator và cách gỡ lỗi console."
-    }
+      "first_build": "Tạo project iOS bằng Xcode, chọn SwiftUI App, chạy trên simulator thấy màn hình trắng cơ bản.",
+      "tooling_intro": "Làm quen Xcode, simulator, Preview Canvas, quản lý file trong Project Navigator."
+    },
+    "development_stages": [
+      {
+        "stage": "Giai đoạn 1 — App chạy được UI shell cơ bản",
+        "product_state": "Người dùng mở app thấy màn hình chào mừng WelcomeView, có thể điều hướng tới form login/register và thấy màn hình chat chính (chưa kết nối Firebase thật).",
+        "need": [
+          "Scaffold Xcode project từ template SwiftUI App",
+          "Tạo asset màu primary/secondary trong Assets.xcassets",
+          "Dựng WelcomeView với hình minh họa và nút Start Messaging",
+          "Dựng LoginxView và RegisterxView với SecureTextField tạm",
+          "Dựng RecentChatView shell (NavigationView + header Messages)"
+        ],
+        "learn": [
+          "SwiftUI App lifecycle",
+          "View, VStack/HStack/ZStack, Button, TextField/SecureField",
+          "NavigationView/NavigationLink/fullScreenCover",
+          "Asset catalog và màu custom"
+        ],
+        "validation": "Build thành công trên simulator; điều hướng Welcome -> Login/Register; vào được RecentChatView.",
+        "cross_feature_value": "Tạo walking skeleton UI để mọi giai đoạn sau bồi đắp feature lên trên nền này.",
+        "temporary_approach": "Login/Register chưa gọi Firebase — chỉ hiện UI và alert tạm, giai đoạn 2 thay bằng Auth thật."
+      },
+      {
+        "stage": "Giai đoạn 2 — Firebase setup và xác thực",
+        "product_state": "Người dùng có thể đăng ký, đăng nhập, đăng xuất thật sự; app nhớ phiên đăng nhập và chặn vào màn hình chat khi chưa đăng nhập.",
+        "need": [
+          "Tạo Firebase project, thêm GoogleService-Info.plist",
+          "Tạo FirebaseManager singleton (Auth, Firestore, Storage)",
+          "Tạo AuthViewModel với @StateObject/@EnvironmentObject",
+          "Triển khai register/login/logout bằng FirebaseAuth",
+          "Gắn fullScreenCover(loggedOut) trong RecentChatView"
+        ],
+        "learn": [
+          "Firebase console cấu hình iOS app",
+          "Auth.auth().createUser/signIn/signOut",
+          "@StateObject/@EnvironmentObject data flow",
+          "Singleton pattern",
+          "async/await trong view model"
+        ],
+        "validation": "Đăng ký user mới vào được RecentChatView; đăng xuất quay về WelcomeView; dữ liệu auth hiện trong Firebase Console.",
+        "cross_feature_value": "Bồi đắp lớp danh tính: mọi feature sau biết người dùng là ai.",
+        "temporary_approach": "Tạm giữ flag loggedOut trong AuthViewModel để chuyển màn hình nhanh, chưa cần auth listener; listener thật bổ sung ở giai đoạn 6."
+      },
+      {
+        "stage": "Giai đoạn 3 — Realtime chat cơ bản",
+        "product_state": "Người dùng thấy danh sách đoạn chat gần đây, mở được chat, gửi và nhận tin nhắn realtime.",
+        "need": [
+          "Tạo RecentChatViewModel fetch recent messages và all users",
+          "Tạo ChatDetailViewModel + ChatDetailView",
+          "Gửi tin nhắn lên Firestore collection messages",
+          "Lắng nghe realtime bằng addSnapshotListener",
+          "Hỗ trợ bong bóng chat và auto-scroll"
+        ],
+        "learn": [
+          "Firestore schema messages/{id} (fromId, toId, text, timestamp)",
+          "@DocumentID và Codable với Firestore",
+          "addSnapshotListener realtime",
+          "ScrollViewReader và onReceive",
+          "ForEach + Identifiable"
+        ],
+        "validation": "Chat giữa 2 user trên 2 simulator — tin nhắn hiện realtime, auto scroll.",
+        "cross_feature_value": "Bồi đắp giá trị lõi chat: app từ shell tĩnh thành chat realtime dùng được.",
+        "temporary_approach": "Tạm dùng UID user cố định/hardcode để test realtime, giai đoạn 4 thay bằng NewChatView chọn user thật."
+      },
+      {
+        "stage": "Giai đoạn 4 — Bắt đầu chat với người bất kỳ",
+        "product_state": "Người dùng chủ động tìm người khác, bắt đầu cuộc chat mới và quay lại danh sách recent thấy đoạn chat vừa nhắn.",
+        "need": [
+          "Tạo NewChatView + NewChatViewModel fetch toàn bộ users",
+          "Truyền didSelectNewUser callback lên RecentChatView",
+          "Mở ChatDetailView với ChatUser đã chọn",
+          "Cập nhật recent messages sau khi nhắn"
+        ],
+        "learn": [
+          "Fetch users từ Firestore collection users",
+          "Closure callback giữa các view",
+          "fullScreenCover dựng NewChatView",
+          "NavigationLink programmatic"
+        ],
+        "validation": "Bấm New Chat, chọn user, vào đúng chat, quay lại thấy recent mới.",
+        "cross_feature_value": "Hoàn thiện vòng đời chat: tìm kiếm -> nhắn -> quay lại danh sách.",
+        "temporary_approach": "Không cần scaffold tạm — giai đoạn này thay hardcode UID bằng flow chọn user thật."
+      },
+      {
+        "stage": "Giai đoạn 5 — Profile và push notification",
+        "product_state": "Người dùng xem/sửa hồ sơ cá nhân, đổi avatar, đổi mật khẩu và nhận thông báo push khi có tin nhắn mới.",
+        "need": [
+          "Tạo ProfileView hiển thị avatar/email/username",
+          "Tạo EditProfileView + ImagePicker upload avatar lên Firebase Storage",
+          "Đổi mật khẩu qua AuthViewModel.editProfile",
+          "Tạo NotificationManager xin quyền thông báo",
+          "PushNotificationManager lưu FCM token và gửi push"
+        ],
+        "learn": [
+          "FirebaseStorage uploadData",
+          "UIViewControllerRepresentable bọc UIImagePickerController",
+          "FirebaseAuth updatePassword",
+          "UNUserNotificationCenter authorization",
+          "FirebaseMessaging delegate + APNs token; URLSession POST FCM"
+        ],
+        "validation": "User đổi avatar -> profile hiển thị ảnh mới; gửi tin nhắn -> thiết bị kia nhận push notification.",
+        "cross_feature_value": "Bồi đắp trải nghiệm cá nhân hóa và khả năng quay lại app khi nhận tin mới ở background.",
+        "temporary_approach": "Hardcode serverKey FCM trong source để test push nhanh; production nên chuyển lên Cloud Functions để giữ bí mật."
+      },
+      {
+        "stage": "Giai đoạn 6 — Hoàn thiện và polish",
+        "product_state": "App hoạt động ổn định với trạng thái loading/error/empty rõ ràng, không crash với dữ liệu thiếu, mã nguồn được refactor sạch.",
+        "need": [
+          "Refactor ViewState enum cho loading/loaded/empty/error",
+          "Xử lý các optional profileImageUrl/fcm an toàn",
+          "Tách SecureTextField/RoundedCorner thành component",
+          "Xóa hardcoded token, đưa cấu hình ra ngoài",
+          "Kiểm tra error handling async/await"
+        ],
+        "learn": [
+          "Enum-based UI state machine",
+          "Optional handling trong Swift",
+          "View composition",
+          "Refactoring và code quality",
+          "Error handling trong async/await"
+        ],
+        "validation": "Toàn bộ feature hoạt động ổn định; không crash với user thiếu ảnh; không còn hardcoded key trong source.",
+        "cross_feature_value": "Bồi đắp chất lượng sản phẩm: từ chat dùng được thành app bảo trì, an toàn.",
+        "temporary_approach": "Không dùng scaffold tạm — chỉ thay hardcode bằng cấu hình môi trường thật."
+      }
+    ]
   },
   "features": [
     {
-      "id": "F-CORE",
-      "name": "Firebase & App Bootstrap",
-      "purpose": "Cấu hình Firebase (Auth, Firestore, Storage, Messaging), đăng ký remote notification và inject AuthViewModel vào toàn app.",
+      "id": "ui_shell",
+      "name": "UI shell và điều hướng",
+      "purpose": "Tạo bộ khung màn hình chào mừng, đăng nhập, đăng ký và màn hình chat chính để các feature khác bồi đắp lên.",
       "priority": "core",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "REQ-SCAFFOLD"
-      ],
-      "journey_ids": [],
-      "depends_on": [],
-      "api_usage": [
-        "FirebaseApp.configure()",
-        "UIApplicationDelegateAdaptor",
-        "application.registerForRemoteNotifications()",
-        "Messaging.messaging().delegate = self",
-        "UNUserNotificationCenter.current().delegate = self"
-      ]
-    },
-    {
-      "id": "F-ONBOARD",
-      "name": "Welcome / Onboarding",
-      "purpose": "Hiển thị màn hình chào mừng và điều hướng tới đăng ký/đăng nhập.",
-      "priority": "supporting",
-      "status": "IMPLEMENTED",
-      "requirement_ids": [
-        "REQ-ONBOARD"
+        "r9"
       ],
       "journey_ids": [
-        "J1",
-        "J2"
+        "j1"
       ],
       "depends_on": [],
       "api_usage": [
         "NavigationView",
         "NavigationLink",
-        "LinearGradient",
-        "Image"
+        "fullScreenCover",
+        "TextField/SecureField",
+        "Color(asset)"
       ]
     },
     {
-      "id": "F-AUTH",
-      "name": "Registration, Login, Logout",
-      "purpose": "Cho phép user đăng ký, đăng nhập và đăng xuất thông qua Firebase Authentication.",
+      "id": "auth",
+      "name": "Xác thực người dùng",
+      "purpose": "Đăng ký, đăng nhập, đăng xuất và quản lý phiên đăng nhập của người dùng.",
       "priority": "core",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "REQ-REGISTER",
-        "REQ-LOGIN",
-        "REQ-LOGOUT"
+        "r1",
+        "r2"
       ],
       "journey_ids": [
-        "J1",
-        "J2"
+        "j1"
       ],
       "depends_on": [
-        "F-CORE"
+        "ui_shell"
       ],
       "api_usage": [
         "Auth.auth().createUser(withEmail:password:)",
         "Auth.auth().signIn(withEmail:password:)",
         "Auth.auth().signOut()",
-        "FirebaseManager.shared.auth.currentUser"
+        "Auth.auth().currentUser",
+        "Firestore collection \"users\""
       ]
     },
     {
-      "id": "F-RECENT",
-      "name": "Recent Conversations Feed",
-      "purpose": "Hiển thị danh sách các cuộc trò chuyện gần đây của user.",
+      "id": "recent_chat",
+      "name": "Danh sách chat gần đây",
+      "purpose": "Hiển thị các đoạn chat gần đây kèm avatar, username, nội dung và thời gian.",
       "priority": "core",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "REQ-RECENT"
+        "r3"
       ],
       "journey_ids": [
-        "J3"
+        "j2"
       ],
       "depends_on": [
-        "F-AUTH"
+        "auth",
+        "ui_shell"
       ],
       "api_usage": [
-        "Firestore.collection(\"recent_messages\").addSnapshotListener",
+        "Firestore addSnapshotListener",
+        "RecentMessage Codable",
+        "RelativeDateTimeFormatter",
+        "AsyncImage"
+      ]
+    },
+    {
+      "id": "chat_detail",
+      "name": "Chat realtime",
+      "purpose": "Xem và gửi tin nhắn realtime trong một cuộc chat với auto-scroll.",
+      "priority": "core",
+      "status": "IMPLEMENTED",
+      "requirement_ids": [
+        "r5"
+      ],
+      "journey_ids": [
+        "j2",
+        "j3"
+      ],
+      "depends_on": [
+        "auth",
+        "recent_chat"
+      ],
+      "api_usage": [
+        "Firestore collection \"messages\" addSnapshotListener",
+        "document().setData",
+        "ScrollViewReader.scrollTo",
+        ".onReceive(vm.$count)"
+      ]
+    },
+    {
+      "id": "new_chat",
+      "name": "Bắt đầu chat mới",
+      "purpose": "Tìm kiếm người dùng khác và khởi động cuộc chat mới.",
+      "priority": "core",
+      "status": "IMPLEMENTED",
+      "requirement_ids": [
+        "r4"
+      ],
+      "journey_ids": [
+        "j3"
+      ],
+      "depends_on": [
+        "auth",
+        "chat_detail"
+      ],
+      "api_usage": [
+        "Firestore collection \"users\" getDocuments",
         "AsyncImage",
-        "RelativeDateTimeFormatter"
+        "fullScreenCover",
+        "closure callback didSelectNewUser"
       ]
     },
     {
-      "id": "F-NEWCHAT",
-      "name": "User Directory & New Chat",
-      "purpose": "Cho phép user xem tất cả user khác và chọn một user để bắt đầu chat.",
-      "priority": "core",
-      "status": "IMPLEMENTED",
-      "requirement_ids": [
-        "REQ-NEWCHAT"
-      ],
-      "journey_ids": [
-        "J4"
-      ],
-      "depends_on": [
-        "F-AUTH"
-      ],
-      "api_usage": [
-        "Firestore.collection(\"users\").getDocuments",
-        "AsyncImage",
-        "fullScreenCover"
-      ]
-    },
-    {
-      "id": "F-CHAT",
-      "name": "Direct Messaging",
-      "purpose": "Cho phép gửi và nhận tin nhắn 1-1 realtime theo thời gian thực.",
-      "priority": "core",
-      "status": "IMPLEMENTED",
-      "requirement_ids": [
-        "REQ-CHAT"
-      ],
-      "journey_ids": [
-        "J3",
-        "J4",
-        "J5"
-      ],
-      "depends_on": [
-        "F-AUTH",
-        "F-RECENT",
-        "F-NEWCHAT"
-      ],
-      "api_usage": [
-        "Firestore.collection(\"messages\").addSnapshotListener",
-        "Firestore.collection(\"messages\").document().setData",
-        "@StateObject ChatDetailViewModel",
-        "ScrollViewReader",
-        "TextField(axis: .vertical)"
-      ]
-    },
-    {
-      "id": "F-PROFILE",
-      "name": "Profile & Edit Profile",
-      "purpose": "Cho phép user xem thông tin hồ sơ, thay ảnh đại diện và đổi mật khẩu.",
+      "id": "profile",
+      "name": "Hồ sơ cá nhân",
+      "purpose": "Xem thông tin cá nhân, sửa avatar, đổi mật khẩu.",
       "priority": "supporting",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "REQ-PROFILE",
-        "REQ-EDITPROFILE"
+        "r6"
       ],
       "journey_ids": [
-        "J6"
+        "j4"
       ],
       "depends_on": [
-        "F-AUTH"
+        "auth"
       ],
       "api_usage": [
-        "AsyncImage",
-        "ImagePicker (UIImagePickerController)",
-        "Storage.storage().reference().putData",
-        "Auth.currentUser?.updatePassword"
+        "FirebaseStorage putData",
+        "Auth.updatePassword",
+        "UIImagePickerController",
+        "AsyncImage"
       ]
     },
     {
-      "id": "F-PUSH",
-      "name": "Push Notifications",
-      "purpose": "Nhận và gửi thông báo đẩy khi có tin nhắn mới.",
+      "id": "push",
+      "name": "Thông báo push",
+      "purpose": "Xin quyền notification, lưu FCM token và gửi push khi có tin nhắn mới.",
       "priority": "optional",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "REQ-PUSH"
+        "r7"
       ],
       "journey_ids": [
-        "J7"
+        "j5"
       ],
       "depends_on": [
-        "F-CORE",
-        "F-CHAT"
+        "auth",
+        "chat_detail"
       ],
       "api_usage": [
-        "UNUserNotificationCenter.current().requestAuthorization",
-        "UNUserNotificationCenter.current().notificationSettings()",
+        "UNUserNotificationCenter.requestAuthorization",
         "Messaging.messaging().apnsToken",
-        "URLSession.shared.dataTask (FCM HTTP endpoint)",
-        "UserDefaults.standard.set"
+        "PushNotificationManager.saveFCM",
+        "URLSession.dataTask POST FCM"
+      ]
+    },
+    {
+      "id": "ui_state",
+      "name": "Trạng thái loading/error/empty",
+      "purpose": "Đảm bảo các view hiển thị trạng thái tải, lỗi và rỗng nhất quán.",
+      "priority": "supporting",
+      "status": "IMPLEMENTED",
+      "requirement_ids": [
+        "r8",
+        "r10"
+      ],
+      "journey_ids": [
+        "j2"
+      ],
+      "depends_on": [],
+      "api_usage": [
+        "ViewState enum",
+        "AsyncImage phase",
+        "alert(isPresented:)",
+        "onChange"
       ]
     }
   ],
   "capabilities": [
     {
-      "id": "cap_bootstrap",
-      "feature_id": "F-CORE",
-      "purpose": "Tạo FirebaseManager singleton và AppDelegate để cấu hình Firebase, đăng ký notification.",
+      "id": "cap_ui_shell",
+      "feature_id": "ui_shell",
+      "purpose": "Dựng bộ khung màn hình và navigation cho toàn app.",
       "depends_on": [],
       "produces": [
-        "FirebaseManager",
-        "AppDelegate",
-        "NotificationManager",
-        "FCM token registration"
+        "WelcomeView",
+        "LoginxView",
+        "RegisterxView",
+        "RecentChatView shell",
+        "SecureTextField component"
       ]
     },
     {
       "id": "cap_auth",
-      "feature_id": "F-AUTH",
-      "purpose": "Xây AuthViewModel quản lý state đăng ký/đăng nhập/đăng xuất và hiển thị viewState loading/error.",
+      "feature_id": "auth",
+      "purpose": "Quản lý phiên đăng nhập để đồng bộ trạng thái auth giữa các màn hình.",
       "depends_on": [
-        "cap_bootstrap"
+        "cap_ui_shell"
       ],
       "produces": [
         "AuthViewModel",
-        "viewState",
-        "environmentObject authViewModel"
+        "loggedOut state",
+        "user document trong Firestore"
       ]
     },
     {
       "id": "cap_recent",
-      "feature_id": "F-RECENT",
-      "purpose": "Xây RecentChatViewModel lắng nghe recent_messages và map sang ChatUser để điều hướng chat.",
+      "feature_id": "recent_chat",
+      "purpose": "Hiển thị danh sách đoạn chat gần đây và cho phép chọn chat.",
       "depends_on": [
         "cap_auth"
       ],
       "produces": [
-        "RecentChatViewModel",
-        "RecentMessage list",
-        "RecentChatView UI"
-      ]
-    },
-    {
-      "id": "cap_users",
-      "feature_id": "F-NEWCHAT",
-      "purpose": "Fetch danh sách user trong Firestore và cho phép chọn user để mở chat.",
-      "depends_on": [
-        "cap_auth"
-      ],
-      "produces": [
-        "NewChatViewModel",
-        "NewChatView",
-        "selected ChatUser"
+        "recentMessages list",
+        "users list",
+        "selectedChatUser"
       ]
     },
     {
       "id": "cap_chat",
-      "feature_id": "F-CHAT",
-      "purpose": "Xây ChatDetailViewModel lưu tin nhắn, lắng nghe Firestore realtime và tự scroll xuống cuối.",
+      "feature_id": "chat_detail",
+      "purpose": "Gửi/nhận tin nhắn realtime và hiển thị bong bóng chat auto-scroll.",
       "depends_on": [
-        "cap_auth",
-        "cap_recent",
-        "cap_users"
+        "cap_recent"
       ],
       "produces": [
-        "ChatDetailViewModel",
-        "ChatDetailView",
-        "chatMessages array",
-        "handleSend()"
+        "chatMessages",
+        "chatText + handleSend",
+        "auto-scroll trigger count"
+      ]
+    },
+    {
+      "id": "cap_new_chat",
+      "feature_id": "new_chat",
+      "purpose": "Tìm user và khởi động cuộc chat mới.",
+      "depends_on": [
+        "cap_auth",
+        "cap_chat"
+      ],
+      "produces": [
+        "all users list",
+        "didSelectNewUser callback",
+        "navigation to ChatDetailView"
       ]
     },
     {
       "id": "cap_profile",
-      "feature_id": "F-PROFILE",
-      "purpose": "Xây ProfileView/EditProfileView, chọn ảnh và cập nhật thông tin user/đổi mật khẩu.",
+      "feature_id": "profile",
+      "purpose": "Xem và chỉnh sửa hồ sơ cá nhân.",
       "depends_on": [
         "cap_auth"
       ],
       "produces": [
         "ProfileView",
         "EditProfileView",
-        "ImagePicker",
-        "updated ChatUser/password"
+        "avatar upload qua Storage"
       ]
     },
     {
       "id": "cap_push",
-      "feature_id": "F-PUSH",
-      "purpose": "Xin quyền notification, lưu FCM token và gửi push khi có tin nhắn mới.",
+      "feature_id": "push",
+      "purpose": "Xin quyền, lưu FCM token và gửi thông báo push.",
       "depends_on": [
-        "cap_bootstrap",
+        "cap_auth",
         "cap_chat"
       ],
       "produces": [
         "NotificationManager",
-        "PushNotificationManager",
-        "FCM send request"
+        "FCM token lưu UserDefaults",
+        "FCM POST request"
+      ]
+    },
+    {
+      "id": "cap_ui_state",
+      "feature_id": "ui_state",
+      "purpose": "Đảm bảo trạng thái loading/error/empty nhất quán trên toàn app.",
+      "depends_on": [
+        "cap_ui_shell"
+      ],
+      "produces": [
+        "ViewState enum",
+        "logMessage/errorMessage",
+        "AsyncImage fallback"
       ]
     }
   ],
@@ -635,19 +715,23 @@
     ],
     "confidence": 0.85,
     "evidence": [
-      "View files dùng @StateObject/@ObservedObject/@EnvironmentObject để gắn với ViewModel (RecentChatView, ChatDetailView, ProfileView, EditProfileView)",
-      "Các ViewModel được tham chiếu trong code: AuthViewModel, RecentChatViewModel, ChatDetailViewModel, NewChatViewModel",
-      "FirebaseManager.shared là singleton dùng chung cho Auth/Firestore/Storage",
-      "Directory structure: Talky/Model, Talky/View, Talky/View/Component, Talky/Util/Helper",
-      "Model structs Codable + @DocumentID (ChatMessage, ChatUser, RecentMessage)"
+      "FirebaseManager.swift có singleton FirebaseManager.shared",
+      "TalkyApp inject AuthViewModel qua .environmentObject(authViewModel)",
+      "RecentChatView/ChatDetailView/NewChatView dùng @StateObject/@ObservedObject ViewModel",
+      "View/Model tách thành thư mục riêng trong source (View/, Model/, Util/)",
+      "ChatMessage/ChatUser/RecentMessage là Codable model Firestore"
     ],
     "nodes": [
       {
         "id": "n_app",
         "type": "app",
-        "layer": "app",
-        "responsibility": "Entry point SwiftUI App, cấu hình Firebase, notification delegate, inject AuthViewModel vào environment.",
-        "depends_on": [],
+        "layer": "presentation",
+        "responsibility": "Entry point SwiftUI, cấu hình AppDelegate, inject AuthViewModel, hiển thị RecentChatView.",
+        "depends_on": [
+          "n_appdelegate",
+          "n_auth_vm",
+          "n_recent_chat_view"
+        ],
         "used_by": [],
         "evidence_type": "OBSERVED",
         "confidence": 1
@@ -655,11 +739,10 @@
       {
         "id": "n_appdelegate",
         "type": "manager",
-        "custom_type": "UIApplicationDelegate",
+        "custom_type": "AppDelegate",
         "layer": "infra",
-        "responsibility": "Khởi tạo Firebase, đăng ký remote notifications, nhận FCM token.",
+        "responsibility": "FirebaseApp.configure, đăng ký remote notifications, nhận FCM token và lưu qua PushNotificationManager.",
         "depends_on": [
-          "n_firebase_manager",
           "n_push_manager"
         ],
         "used_by": [
@@ -669,11 +752,76 @@
         "confidence": 1
       },
       {
+        "id": "n_auth_vm",
+        "type": "view_model",
+        "layer": "presentation",
+        "responsibility": "Quản lý trạng thái đăng nhập, đăng ký, đăng xuất, edit profile và logMessage.",
+        "depends_on": [
+          "n_firebase_manager",
+          "n_chat_user",
+          "n_view_state"
+        ],
+        "used_by": [
+          "n_app",
+          "n_login_view",
+          "n_register_view",
+          "n_profile_view",
+          "n_edit_profile_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 0.8
+      },
+      {
+        "id": "n_recent_vm",
+        "type": "view_model",
+        "layer": "presentation",
+        "responsibility": "Fetch danh sách recent messages và users, quản lý selectedChatUser.",
+        "depends_on": [
+          "n_firebase_manager",
+          "n_recent_message",
+          "n_chat_user"
+        ],
+        "used_by": [
+          "n_recent_chat_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 0.8
+      },
+      {
+        "id": "n_chatdetail_vm",
+        "type": "view_model",
+        "layer": "presentation",
+        "responsibility": "Fetch và gửi tin nhắn realtime, giữ chatText và count trigger auto-scroll.",
+        "depends_on": [
+          "n_firebase_manager",
+          "n_chat_message"
+        ],
+        "used_by": [
+          "n_chat_detail_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 0.8
+      },
+      {
+        "id": "n_newchat_vm",
+        "type": "view_model",
+        "layer": "presentation",
+        "responsibility": "Fetch toàn bộ user để tạo chat mới, giữ errorMessage.",
+        "depends_on": [
+          "n_firebase_manager",
+          "n_chat_user"
+        ],
+        "used_by": [
+          "n_new_chat_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 0.8
+      },
+      {
         "id": "n_firebase_manager",
         "type": "manager",
-        "custom_type": "singleton",
-        "layer": "infra",
-        "responsibility": "Singleton cung cấp Auth, Firestore, Storage cho toàn app.",
+        "layer": "data",
+        "responsibility": "Singleton cung cấp Auth, Firestore, Storage instances.",
         "depends_on": [],
         "used_by": [
           "n_auth_vm",
@@ -685,95 +833,10 @@
         "confidence": 1
       },
       {
-        "id": "n_auth_vm",
-        "type": "view_model",
-        "layer": "presentation",
-        "responsibility": "Quản lý email/password, register, login, logout, editProfile, viewState và logMessage.",
-        "depends_on": [
-          "n_firebase_manager"
-        ],
-        "used_by": [
-          "n_app",
-          "n_login_view",
-          "n_register_view",
-          "n_profile_view",
-          "n_editprofile_view",
-          "n_recent_view"
-        ],
-        "evidence_type": "INFERRED",
-        "confidence": 0.8
-      },
-      {
-        "id": "n_recent_vm",
-        "type": "view_model",
-        "layer": "presentation",
-        "responsibility": "Fetch recent messages, fetch all users, theo dõi selectedChatUser để điều hướng.",
-        "depends_on": [
-          "n_firebase_manager"
-        ],
-        "used_by": [
-          "n_recent_view"
-        ],
-        "evidence_type": "INFERRED",
-        "confidence": 0.8
-      },
-      {
-        "id": "n_chatdetail_vm",
-        "type": "view_model",
-        "layer": "presentation",
-        "responsibility": "Lưu chatText, chatUser, fetch/listen messages, handleSend, phát count để scroll.",
-        "depends_on": [
-          "n_firebase_manager"
-        ],
-        "used_by": [
-          "n_chatdetail_view"
-        ],
-        "evidence_type": "INFERRED",
-        "confidence": 0.8
-      },
-      {
-        "id": "n_newchat_vm",
-        "type": "view_model",
-        "layer": "presentation",
-        "responsibility": "Fetch tất cả user, expose errorMessage.",
-        "depends_on": [
-          "n_firebase_manager"
-        ],
-        "used_by": [
-          "n_newchat_view"
-        ],
-        "evidence_type": "INFERRED",
-        "confidence": 0.8
-      },
-      {
-        "id": "n_notification_manager",
-        "type": "manager",
-        "layer": "infra",
-        "responsibility": "Xin quyền notification và theo dõi trạng thái hasPermission.",
-        "depends_on": [],
-        "used_by": [
-          "n_app"
-        ],
-        "evidence_type": "OBSERVED",
-        "confidence": 0.95
-      },
-      {
-        "id": "n_push_manager",
-        "type": "manager",
-        "layer": "infra",
-        "responsibility": "Lưu FCM token vào UserDefaults và gửi push notification qua FCM HTTP API.",
-        "depends_on": [],
-        "used_by": [
-          "n_appdelegate"
-        ],
-        "evidence_type": "OBSERVED",
-        "confidence": 0.95
-      },
-      {
-        "id": "n_model_chat_message",
+        "id": "n_chat_message",
         "type": "model",
         "layer": "data",
-        "responsibility": "Dữ liệu tin nhắn Codable/Identifiable với @DocumentID.",
+        "responsibility": "Codable model tin nhắn Firestore với @DocumentID.",
         "depends_on": [],
         "used_by": [
           "n_chatdetail_vm"
@@ -782,23 +845,24 @@
         "confidence": 1
       },
       {
-        "id": "n_model_chat_user",
+        "id": "n_chat_user",
         "type": "model",
         "layer": "data",
-        "responsibility": "Dữ liệu user Codable/Identifiable, username được derive từ email.",
+        "responsibility": "Codable model user Firestore, tính username từ email.",
         "depends_on": [],
         "used_by": [
           "n_auth_vm",
+          "n_recent_vm",
           "n_newchat_vm"
         ],
         "evidence_type": "OBSERVED",
         "confidence": 1
       },
       {
-        "id": "n_model_recent_message",
+        "id": "n_recent_message",
         "type": "model",
         "layer": "data",
-        "responsibility": "Dữ liệu recent conversation Codable/Identifiable/Hashable, timeAgo.",
+        "responsibility": "Codable model recent message Firestore, timeAgo format.",
         "depends_on": [],
         "used_by": [
           "n_recent_vm"
@@ -807,57 +871,16 @@
         "confidence": 1
       },
       {
-        "id": "n_viewstate",
-        "type": "utility",
-        "layer": "presentation",
-        "responsibility": "Enum ViewState: loading, loaded, empty, error.",
-        "depends_on": [],
-        "used_by": [
-          "n_auth_vm"
-        ],
-        "evidence_type": "OBSERVED",
-        "confidence": 1
-      },
-      {
-        "id": "n_imagepicker",
-        "type": "component",
-        "layer": "presentation",
-        "responsibility": "UIViewControllerRepresentable wrapper cho UIImagePickerController.",
-        "depends_on": [],
-        "used_by": [
-          "n_editprofile_view"
-        ],
-        "evidence_type": "OBSERVED",
-        "confidence": 1
-      },
-      {
-        "id": "n_securetextfield",
-        "type": "component",
-        "layer": "presentation",
-        "responsibility": "Reusable text field/secure field có toggle hiện/ẩn password.",
-        "depends_on": [],
-        "used_by": [
-          "n_login_view",
-          "n_register_view",
-          "n_editprofile_view"
-        ],
-        "evidence_type": "OBSERVED",
-        "confidence": 1
-      },
-      {
         "id": "n_welcome_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình chào mừng, điều hướng tới login/register.",
-        "keywords": [
-          "NavigationView",
-          "NavigationLink",
-          "LinearGradient",
-          "Image"
+        "responsibility": "Màn hình chào mừng, điều hướng login/register.",
+        "depends_on": [
+          "n_login_view",
+          "n_register_view"
         ],
-        "depends_on": [],
         "used_by": [
-          "n_app"
+          "n_recent_chat_view"
         ],
         "evidence_type": "OBSERVED",
         "confidence": 1
@@ -866,13 +889,7 @@
         "id": "n_login_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình đăng nhập email/password.",
-        "keywords": [
-          "TextField",
-          "SecureTextField",
-          "alert",
-          "@EnvironmentObject"
-        ],
+        "responsibility": "Form đăng nhập email/password, gọi AuthViewModel.login.",
         "depends_on": [
           "n_auth_vm"
         ],
@@ -886,13 +903,7 @@
         "id": "n_register_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình đăng ký tài khoản.",
-        "keywords": [
-          "TextField",
-          "SecureTextField",
-          "alert",
-          "@EnvironmentObject"
-        ],
+        "responsibility": "Form đăng ký email/password, gọi AuthViewModel.register.",
         "depends_on": [
           "n_auth_vm"
         ],
@@ -903,21 +914,16 @@
         "confidence": 1
       },
       {
-        "id": "n_recent_view",
+        "id": "n_recent_chat_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình chính hiển thị recent messages, avatar, nút New Chat và điều hướng hồ sơ/chat.",
-        "keywords": [
-          "NavigationView",
-          "NavigationLink",
-          "fullScreenCover",
-          "AsyncImage",
-          "@ObservedObject",
-          "@EnvironmentObject"
-        ],
+        "responsibility": "Màn hình chính: header Messages, danh sách recent, nút New Chat, fullScreenCover Welcome khi loggedOut.",
         "depends_on": [
           "n_recent_vm",
-          "n_auth_vm"
+          "n_auth_vm",
+          "n_profile_view",
+          "n_chat_detail_view",
+          "n_new_chat_view"
         ],
         "used_by": [
           "n_app"
@@ -926,45 +932,29 @@
         "confidence": 1
       },
       {
-        "id": "n_newchat_view",
+        "id": "n_chat_detail_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình danh sách user để tạo chat mới.",
-        "keywords": [
-          "ScrollView",
-          "AsyncImage",
-          "PlainButtonStyle",
-          "toolbar",
-          "@ObservedObject"
-        ],
+        "responsibility": "Hiển thị bong bóng chat, auto-scroll, chatBar gửi tin nhắn.",
         "depends_on": [
-          "n_newchat_vm"
+          "n_chatdetail_vm"
         ],
         "used_by": [
-          "n_recent_view"
+          "n_recent_chat_view"
         ],
         "evidence_type": "OBSERVED",
         "confidence": 1
       },
       {
-        "id": "n_chatdetail_view",
+        "id": "n_new_chat_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình hội thoại 1-1: hiển thị tin nhắn, chatBar, scroll tự động.",
-        "keywords": [
-          "ScrollViewReader",
-          "ScrollView",
-          "TextField(axis: .vertical)",
-          "onReceive",
-          "@StateObject"
-        ],
+        "responsibility": "Danh sách user, callback didSelectNewUser.",
         "depends_on": [
-          "n_chatdetail_vm",
-          "n_firebase_manager"
+          "n_newchat_vm"
         ],
         "used_by": [
-          "n_recent_view",
-          "n_newchat_view"
+          "n_recent_chat_view"
         ],
         "evidence_type": "OBSERVED",
         "confidence": 1
@@ -973,40 +963,92 @@
         "id": "n_profile_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình hồ sơ user: avatar, username, email, nút Edit Profile và Log Out.",
-        "keywords": [
-          "AsyncImage",
-          "NavigationLink",
-          "@EnvironmentObject"
-        ],
+        "responsibility": "Hiển thị avatar/email/username, nút Edit Profile và Log Out.",
         "depends_on": [
-          "n_auth_vm"
+          "n_auth_vm",
+          "n_edit_profile_view"
         ],
         "used_by": [
-          "n_recent_view"
+          "n_recent_chat_view"
         ],
         "evidence_type": "OBSERVED",
         "confidence": 1
       },
       {
-        "id": "n_editprofile_view",
+        "id": "n_edit_profile_view",
         "type": "component",
         "layer": "presentation",
-        "responsibility": "Màn hình chỉnh sửa hồ sơ: đổi ảnh đại diện và mật khẩu.",
-        "keywords": [
-          "AsyncImage",
-          "ImagePicker",
-          "fullScreenCover",
-          "SecureTextField",
-          "onChange",
-          "@EnvironmentObject"
-        ],
+        "responsibility": "Form sửa email (disabled), đổi mật khẩu, chọn ảnh đại diện.",
         "depends_on": [
           "n_auth_vm",
-          "n_imagepicker"
+          "n_image_picker",
+          "n_secure_text_field"
         ],
         "used_by": [
           "n_profile_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 1
+      },
+      {
+        "id": "n_notification_manager",
+        "type": "manager",
+        "layer": "infra",
+        "responsibility": "Xin quyền và kiểm tra trạng thái notification.",
+        "depends_on": [],
+        "used_by": [
+          "n_app"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 1
+      },
+      {
+        "id": "n_push_manager",
+        "type": "manager",
+        "layer": "infra",
+        "responsibility": "Lưu FCM token vào UserDefaults, gửi HTTP POST tới FCM endpoint.",
+        "depends_on": [],
+        "used_by": [
+          "n_appdelegate"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 1
+      },
+      {
+        "id": "n_image_picker",
+        "type": "component",
+        "custom_type": "UIViewControllerRepresentable",
+        "layer": "presentation",
+        "responsibility": "Bọc UIImagePickerController để chọn ảnh.",
+        "depends_on": [],
+        "used_by": [
+          "n_edit_profile_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 1
+      },
+      {
+        "id": "n_secure_text_field",
+        "type": "component",
+        "layer": "presentation",
+        "responsibility": "TextField/SecureField có toggle hiện mật khẩu.",
+        "depends_on": [],
+        "used_by": [
+          "n_login_view",
+          "n_register_view",
+          "n_edit_profile_view"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 1
+      },
+      {
+        "id": "n_view_state",
+        "type": "utility",
+        "layer": "presentation",
+        "responsibility": "Enum ViewState loading/loaded/empty/error.",
+        "depends_on": [],
+        "used_by": [
+          "n_auth_vm"
         ],
         "evidence_type": "OBSERVED",
         "confidence": 1
@@ -1015,17 +1057,17 @@
     "edges": [
       {
         "from": "n_app",
-        "to": "n_recent_view",
+        "to": "n_recent_chat_view",
+        "type": "CONTAINS"
+      },
+      {
+        "from": "n_app",
+        "to": "n_appdelegate",
         "type": "CONTAINS"
       },
       {
         "from": "n_app",
         "to": "n_auth_vm",
-        "type": "USES"
-      },
-      {
-        "from": "n_app",
-        "to": "n_appdelegate",
         "type": "USES"
       },
       {
@@ -1039,11 +1081,6 @@
         "type": "USES"
       },
       {
-        "from": "n_recent_view",
-        "to": "n_welcome_view",
-        "type": "NAVIGATES_TO"
-      },
-      {
         "from": "n_welcome_view",
         "to": "n_login_view",
         "type": "NAVIGATES_TO"
@@ -1054,123 +1091,118 @@
         "type": "NAVIGATES_TO"
       },
       {
-        "from": "n_recent_view",
-        "to": "n_chatdetail_view",
+        "from": "n_recent_chat_view",
+        "to": "n_welcome_view",
         "type": "NAVIGATES_TO"
       },
       {
-        "from": "n_recent_view",
+        "from": "n_recent_chat_view",
+        "to": "n_chat_detail_view",
+        "type": "NAVIGATES_TO"
+      },
+      {
+        "from": "n_recent_chat_view",
         "to": "n_profile_view",
         "type": "NAVIGATES_TO"
       },
       {
-        "from": "n_recent_view",
-        "to": "n_newchat_view",
-        "type": "NAVIGATES_TO"
-      },
-      {
-        "from": "n_newchat_view",
-        "to": "n_chatdetail_view",
+        "from": "n_recent_chat_view",
+        "to": "n_new_chat_view",
         "type": "NAVIGATES_TO"
       },
       {
         "from": "n_profile_view",
-        "to": "n_editprofile_view",
+        "to": "n_edit_profile_view",
         "type": "NAVIGATES_TO"
       },
       {
-        "from": "n_chatdetail_view",
-        "to": "n_chatdetail_vm",
+        "from": "n_login_view",
+        "to": "n_auth_vm",
         "type": "USES"
       },
       {
-        "from": "n_recent_view",
+        "from": "n_register_view",
+        "to": "n_auth_vm",
+        "type": "USES"
+      },
+      {
+        "from": "n_profile_view",
+        "to": "n_auth_vm",
+        "type": "USES"
+      },
+      {
+        "from": "n_edit_profile_view",
+        "to": "n_auth_vm",
+        "type": "USES"
+      },
+      {
+        "from": "n_recent_chat_view",
         "to": "n_recent_vm",
         "type": "USES"
       },
       {
-        "from": "n_newchat_view",
+        "from": "n_chat_detail_view",
+        "to": "n_chatdetail_vm",
+        "type": "USES"
+      },
+      {
+        "from": "n_new_chat_view",
         "to": "n_newchat_vm",
         "type": "USES"
       },
       {
-        "from": "n_login_view",
-        "to": "n_auth_vm",
-        "type": "USES"
-      },
-      {
-        "from": "n_register_view",
-        "to": "n_auth_vm",
-        "type": "USES"
-      },
-      {
-        "from": "n_profile_view",
-        "to": "n_auth_vm",
-        "type": "USES"
-      },
-      {
-        "from": "n_editprofile_view",
-        "to": "n_auth_vm",
-        "type": "USES"
-      },
-      {
-        "from": "n_recent_view",
-        "to": "n_auth_vm",
-        "type": "USES"
-      },
-      {
         "from": "n_auth_vm",
         "to": "n_firebase_manager",
-        "type": "USES"
+        "type": "DEPENDS_ON"
       },
       {
         "from": "n_recent_vm",
         "to": "n_firebase_manager",
-        "type": "USES"
+        "type": "DEPENDS_ON"
       },
       {
         "from": "n_chatdetail_vm",
         "to": "n_firebase_manager",
-        "type": "USES"
+        "type": "DEPENDS_ON"
       },
       {
         "from": "n_newchat_vm",
         "to": "n_firebase_manager",
-        "type": "USES"
+        "type": "DEPENDS_ON"
       },
       {
         "from": "n_chatdetail_vm",
-        "to": "n_model_chat_message",
-        "type": "WRITES"
+        "to": "n_chat_message",
+        "type": "READS"
       },
       {
         "from": "n_recent_vm",
-        "to": "n_model_recent_message",
+        "to": "n_recent_message",
+        "type": "READS"
+      },
+      {
+        "from": "n_recent_vm",
+        "to": "n_chat_user",
+        "type": "READS"
+      },
+      {
+        "from": "n_newchat_vm",
+        "to": "n_chat_user",
         "type": "READS"
       },
       {
         "from": "n_auth_vm",
-        "to": "n_model_chat_user",
-        "type": "UPDATES"
+        "to": "n_chat_user",
+        "type": "CREATES"
       },
       {
-        "from": "n_login_view",
-        "to": "n_securetextfield",
-        "type": "CONTAINS"
+        "from": "n_edit_profile_view",
+        "to": "n_image_picker",
+        "type": "USES"
       },
       {
-        "from": "n_register_view",
-        "to": "n_securetextfield",
-        "type": "CONTAINS"
-      },
-      {
-        "from": "n_editprofile_view",
-        "to": "n_securetextfield",
-        "type": "CONTAINS"
-      },
-      {
-        "from": "n_editprofile_view",
-        "to": "n_imagepicker",
+        "from": "n_auth_vm",
+        "to": "n_view_state",
         "type": "USES"
       }
     ]
@@ -1178,12 +1210,12 @@
   "experience": {
     "screens": [
       {
-        "id": "screen_recent_chat",
-        "name": "Recent Conversations / Root",
-        "purpose": "Root container shown at app launch. Displays the recent conversation feed when authenticated and branches to auth/onboarding when logged out. (F-CORE, F-RECENT)",
+        "id": "recent_chat_view",
+        "name": "RecentChatView",
+        "purpose": "Màn hình chính sau khi đăng nhập: hiển thị danh sách chat gần đây, cho phép mở chat, bắt đầu chat mới hoặc xem hồ sơ cá nhân.",
         "entry_point": true,
         "components": [
-          "comp_user_row"
+          "recent_message_row"
         ],
         "states": [
           "loading",
@@ -1192,499 +1224,489 @@
           "error"
         ],
         "navigates_to": [
-          "screen_chat_detail",
-          "screen_new_chat",
-          "screen_profile"
+          "chat_detail_view",
+          "new_chat_view",
+          "profile_view"
         ],
         "keywords": [
-          "NavigationView",
-          "NavigationLink",
-          "AsyncImage",
           "@EnvironmentObject",
-          "Firestore.addSnapshotListener"
-        ]
+          "NavigationView",
+          "ScrollView",
+          "AsyncImage",
+          "Firestore addSnapshotListener"
+        ],
+        "feature_id": "recent_chat"
       },
       {
-        "id": "screen_new_chat",
-        "name": "New Chat / User Directory",
-        "purpose": "Lists all registered users and lets the user pick someone to start a direct chat. (F-NEWCHAT)",
+        "id": "loginx_view",
+        "name": "LoginxView",
+        "purpose": "Màn hình đăng nhập bằng email và mật khẩu; hiển thị lỗi nếu đăng nhập thất bại.",
         "entry_point": false,
         "components": [
-          "comp_user_row"
+          "secure_text_field"
+        ],
+        "states": [
+          "idle",
+          "loading",
+          "error"
+        ],
+        "navigates_to": [
+          "recent_chat_view"
+        ],
+        "keywords": [
+          "TextField",
+          "SecureField",
+          "@EnvironmentObject",
+          "@State",
+          "LinearGradient",
+          "alert",
+          "Task"
+        ],
+        "feature_id": "auth"
+      },
+      {
+        "id": "register_view",
+        "name": "RegisterView",
+        "purpose": "Màn hình đăng ký tài khoản mới bằng email và mật khẩu, tạo user trong Firestore collection users.",
+        "entry_point": false,
+        "components": [
+          "secure_text_field"
+        ],
+        "states": [
+          "idle",
+          "loading",
+          "error"
+        ],
+        "navigates_to": [
+          "recent_chat_view"
+        ],
+        "keywords": [
+          "TextField",
+          "SecureField",
+          "@EnvironmentObject",
+          "@State",
+          "Task",
+          "Auth.auth().createUser"
+        ],
+        "feature_id": "auth"
+      },
+      {
+        "id": "chat_detail_view",
+        "name": "ChatDetailView",
+        "purpose": "Hiển thị cuộc chat realtime: danh sách tin nhắn, auto-scroll, soạn và gửi tin nhắn mới.",
+        "entry_point": false,
+        "components": [
+          "chat_bar",
+          "message_bubble"
         ],
         "states": [
           "loading",
           "loaded",
           "error"
-        ],
-        "navigates_to": [
-          "screen_chat_detail"
-        ],
-        "keywords": [
-          "@ObservedObject",
-          "NavigationView",
-          "AsyncImage",
-          "fullScreenCover",
-          "Firestore.getDocuments"
-        ]
-      },
-      {
-        "id": "screen_chat_detail",
-        "name": "Direct Messaging",
-        "purpose": "Opens an existing or new one-to-one chat, displays realtime message bubbles, and sends messages. (F-CHAT)",
-        "entry_point": false,
-        "components": [
-          "comp_chat_input_bar",
-          "comp_rounded_corner"
-        ],
-        "states": [
-          "loading",
-          "loaded",
-          "error",
-          "sending"
         ],
         "navigates_to": [],
         "keywords": [
           "@StateObject",
+          "ScrollView",
           "ScrollViewReader",
-          "TextField(axis: .vertical)",
-          "Firestore.addSnapshotListener",
-          "Firestore.setData"
-        ]
+          "ForEach",
+          "onReceive",
+          "withAnimation",
+          "TextField",
+          "Color(asset)"
+        ],
+        "feature_id": "chat_detail"
       },
       {
-        "id": "screen_login",
-        "name": "Login",
-        "purpose": "Lets an existing user sign in with email and password. (F-AUTH, REQ-LOGIN)",
+        "id": "new_chat_view",
+        "name": "NewChatView",
+        "purpose": "Tìm kiếm và hiển thị danh sách người dùng khác, chọn một user để bắt đầu chat mới.",
         "entry_point": false,
         "components": [
-          "comp_secure_text_field"
+          "user_row"
         ],
         "states": [
-          "idle",
           "loading",
           "loaded",
+          "empty",
           "error"
         ],
         "navigates_to": [
-          "screen_recent_chat"
+          "chat_detail_view"
         ],
         "keywords": [
-          "@EnvironmentObject",
-          "TextField",
-          "SecureField",
-          "Task",
-          "Alert"
-        ]
-      },
-      {
-        "id": "screen_register",
-        "name": "Registration",
-        "purpose": "Lets a new user create an account with email and password. (F-AUTH, REQ-REGISTER)",
-        "entry_point": false,
-        "components": [
-          "comp_secure_text_field"
-        ],
-        "states": [
-          "idle",
-          "loading",
-          "loaded",
-          "error"
-        ],
-        "navigates_to": [
-          "screen_recent_chat"
-        ],
-        "keywords": [
-          "@EnvironmentObject",
-          "TextField",
-          "SecureField",
-          "Task",
-          "Alert"
-        ]
-      },
-      {
-        "id": "screen_onboarding",
-        "name": "Welcome / Onboarding",
-        "purpose": "First-run welcome screen that routes the user to registration or login. (F-ONBOARD)",
-        "entry_point": false,
-        "components": [],
-        "states": [
-          "idle"
-        ],
-        "navigates_to": [
-          "screen_login",
-          "screen_register"
-        ],
-        "keywords": [
+          "@ObservedObject",
           "NavigationView",
-          "NavigationLink",
-          "LinearGradient",
-          "Image"
-        ]
+          "ScrollView",
+          "ForEach",
+          "AsyncImage",
+          "fullScreenCover"
+        ],
+        "feature_id": "new_chat"
       },
       {
-        "id": "screen_profile",
-        "name": "Profile",
-        "purpose": "Shows the current user's profile info and avatar, with routes to edit profile and logout. (F-PROFILE, REQ-LOGOUT)",
+        "id": "profile_view",
+        "name": "ProfileView",
+        "purpose": "Xem thông tin cá nhân của người dùng đang đăng nhập và thực hiện đăng xuất.",
         "entry_point": false,
         "components": [],
         "states": [
+          "loaded"
+        ],
+        "navigates_to": [
+          "edit_profile_view"
+        ],
+        "keywords": [
+          "@EnvironmentObject",
+          "NavigationView",
+          "AsyncImage"
+        ],
+        "feature_id": "profile"
+      },
+      {
+        "id": "edit_profile_view",
+        "name": "EditProfileView",
+        "purpose": "Chỉnh sửa ảnh đại diện, đổi mật khẩu; lưu thay đổi qua AuthViewModel.editProfile.",
+        "entry_point": false,
+        "components": [
+          "secure_text_field",
+          "image_picker"
+        ],
+        "states": [
           "loading",
-          "loaded",
           "error"
         ],
         "navigates_to": [
-          "screen_edit_profile",
-          "screen_login"
-        ],
-        "keywords": [
-          "AsyncImage",
-          "@EnvironmentObject",
-          "NavigationView"
-        ]
-      },
-      {
-        "id": "screen_edit_profile",
-        "name": "Edit Profile",
-        "purpose": "Lets the user change their avatar photo and password, then persists changes through AuthViewModel. (F-PROFILE, REQ-EDITPROFILE)",
-        "entry_point": false,
-        "components": [
-          "comp_secure_text_field",
-          "comp_image_picker"
-        ],
-        "states": [
-          "idle",
-          "loading",
-          "saving",
-          "error",
-          "saved"
-        ],
-        "navigates_to": [
-          "screen_profile"
+          "profile_view"
         ],
         "keywords": [
           "@EnvironmentObject",
           "@State",
-          "SecureTextField",
           "AsyncImage",
           "fullScreenCover",
-          "Task",
-          "Alert"
-        ]
+          "onChange",
+          "alert",
+          "Task"
+        ],
+        "feature_id": "profile"
       }
     ],
     "components": [
       {
-        "id": "comp_user_row",
-        "type": "cell",
-        "purpose": "Displays an avatar (AsyncImage or placeholder) and email/username for a user or recent conversation row.",
-        "inputs": [
-          "user",
-          "recentMessage"
-        ],
-        "outputs": [
-          "selectUser"
-        ],
-        "state": [
-          "imageLoading"
-        ]
-      },
-      {
-        "id": "comp_secure_text_field",
+        "id": "secure_text_field",
         "type": "reusable_view",
-        "purpose": "Password input with a show/hide toggle; switches between TextField and SecureField.",
+        "purpose": "TextField/SecureField có nút toggle hiện/ẩn mật khẩu.",
         "inputs": [
-          "placeholder",
-          "text",
-          "show"
+          "placeholder: String",
+          "text: Binding<String>",
+          "show: Binding<Bool>"
         ],
         "outputs": [
-          "text"
+          "text: String"
         ],
         "state": [
-          "show"
-        ]
+          "show: Bool"
+        ],
+        "feature_id": "auth"
       },
       {
-        "id": "comp_image_picker",
+        "id": "image_picker",
         "type": "reusable_view",
-        "purpose": "Wraps UIImagePickerController via UIViewControllerRepresentable so the user can pick a profile photo.",
+        "purpose": "Bọc UIImagePickerController thành SwiftUI view để chọn ảnh từ thư viện.",
         "inputs": [
-          "image"
+          "image: Binding<UIImage?>"
         ],
         "outputs": [
-          "image"
+          "image: UIImage?"
         ],
         "state": [
-          "controller"
-        ]
+          "UIImagePickerController delegate"
+        ],
+        "feature_id": "profile"
       },
       {
-        "id": "comp_chat_input_bar",
+        "id": "chat_bar",
         "type": "container",
-        "purpose": "Bottom message composer containing a multiline TextField and send button; shows camera/mic placeholder buttons when text is empty.",
+        "purpose": "Thanh soạn tin nhắn gồm TextField và nút gửi (hoặc camera/mic khi trống).",
         "inputs": [
-          "chatText",
-          "isSending"
+          "chatText: Binding<String>",
+          "handleSend: () -> Void"
         ],
         "outputs": [
-          "sendAction"
+          "send action"
         ],
         "state": [
-          "chatText"
-        ]
+          "chatText.isEmpty"
+        ],
+        "feature_id": "chat_detail"
       },
       {
-        "id": "comp_rounded_corner",
+        "id": "message_bubble",
         "type": "reusable_view",
-        "purpose": "RoundedCorner Shape used by the cornerRadius extension to clip only selected corners of chat bubbles.",
+        "purpose": "Hiển thị bong bóng tin nhắn, căn trái cho tin đến và căn phải cho tin đi.",
         "inputs": [
-          "radius",
-          "corners"
+          "message: ChatMessage",
+          "isFromCurrentUser: Bool"
+        ],
+        "outputs": [],
+        "state": [],
+        "feature_id": "chat_detail"
+      },
+      {
+        "id": "user_row",
+        "type": "cell",
+        "purpose": "Một dòng hiển thị user trong NewChatView: avatar, email, hành động chọn để mở chat.",
+        "inputs": [
+          "user: ChatUser",
+          "didSelectNewUser: (ChatUser) -> Void"
         ],
         "outputs": [
-          "path"
+          "selected ChatUser"
         ],
-        "state": []
+        "state": [],
+        "feature_id": "new_chat"
+      },
+      {
+        "id": "recent_message_row",
+        "type": "cell",
+        "purpose": "Một dòng trong danh sách chat gần đây: avatar, username, nội dung cuối, thời gian tương đối.",
+        "inputs": [
+          "recent: RecentMessage"
+        ],
+        "outputs": [
+          "tap -> open chat detail"
+        ],
+        "state": [],
+        "feature_id": "recent_chat"
       }
     ],
     "ui_states": [
       {
-        "id": "state_recent_loading",
-        "owner": "screen_recent_chat",
+        "id": "auth_idle",
+        "owner": "loginx_view",
         "triggered_by": [
-          "screen appears",
-          "auth state changes"
+          "app launch not authenticated"
         ],
         "transitions_to": [
-          "state_recent_loaded",
-          "state_recent_empty",
-          "state_recent_error"
+          "auth_loading"
         ]
       },
       {
-        "id": "state_recent_loaded",
-        "owner": "screen_recent_chat",
+        "id": "auth_loading",
+        "owner": "loginx_view",
         "triggered_by": [
-          "recent_messages snapshot emits documents"
-        ],
-        "transitions_to": []
-      },
-      {
-        "id": "state_recent_empty",
-        "owner": "screen_recent_chat",
-        "triggered_by": [
-          "recent_messages snapshot returns no documents"
+          "authViewModel.login()",
+          "authViewModel.register()"
         ],
         "transitions_to": [
-          "state_recent_loaded"
+          "auth_error",
+          "auth_success"
         ]
       },
       {
-        "id": "state_recent_error",
-        "owner": "screen_recent_chat",
+        "id": "auth_error",
+        "owner": "loginx_view",
         "triggered_by": [
-          "Firestore listener error",
-          "network error"
+          "login/register failure -> authViewModel.logMessage"
         ],
         "transitions_to": [
-          "state_recent_loading"
+          "auth_loading"
         ]
       },
       {
-        "id": "state_auth_loading",
-        "owner": "screen_login",
+        "id": "auth_success",
+        "owner": "loginx_view",
         "triggered_by": [
-          "login form submitted"
+          "login/register success"
         ],
         "transitions_to": [
-          "state_auth_loaded",
-          "state_auth_error"
+          "recent_loaded"
         ]
       },
       {
-        "id": "state_auth_loaded",
-        "owner": "screen_login",
+        "id": "recent_loading",
+        "owner": "recent_chat_view",
         "triggered_by": [
-          "Firebase signIn success"
+          "fetchRecentMessages()"
         ],
         "transitions_to": [
-          "state_recent_loaded"
+          "recent_loaded",
+          "recent_empty",
+          "recent_error"
         ]
       },
       {
-        "id": "state_auth_error",
-        "owner": "screen_login",
+        "id": "recent_loaded",
+        "owner": "recent_chat_view",
         "triggered_by": [
-          "invalid credentials",
-          "network error"
+          "Firestore recent_messages snapshot received"
         ],
         "transitions_to": [
-          "state_auth_loading"
+          "recent_loading"
         ]
       },
       {
-        "id": "state_users_loading",
-        "owner": "screen_new_chat",
+        "id": "recent_empty",
+        "owner": "recent_chat_view",
         "triggered_by": [
-          "NewChatView appears"
+          "không có recent_messages"
         ],
         "transitions_to": [
-          "state_users_loaded",
-          "state_users_error"
+          "recent_loading"
         ]
       },
       {
-        "id": "state_users_loaded",
-        "owner": "screen_new_chat",
+        "id": "recent_error",
+        "owner": "recent_chat_view",
         "triggered_by": [
-          "users fetched from Firestore"
-        ],
-        "transitions_to": []
-      },
-      {
-        "id": "state_users_error",
-        "owner": "screen_new_chat",
-        "triggered_by": [
-          "getDocuments fails"
+          "Firestore listener error"
         ],
         "transitions_to": [
-          "state_users_loading"
+          "recent_loading"
         ]
       },
       {
-        "id": "state_chat_loading",
-        "owner": "screen_chat_detail",
+        "id": "chat_loading",
+        "owner": "chat_detail_view",
         "triggered_by": [
-          "fetchMessage called"
+          "vm.fetchMessage()"
         ],
         "transitions_to": [
-          "state_chat_loaded",
-          "state_chat_error"
+          "chat_loaded",
+          "chat_error"
         ]
       },
       {
-        "id": "state_chat_loaded",
-        "owner": "screen_chat_detail",
+        "id": "chat_loaded",
+        "owner": "chat_detail_view",
         "triggered_by": [
-          "messages snapshot emits documents"
+          "Firestore messages snapshot received"
         ],
         "transitions_to": [
-          "state_chat_sending"
+          "chat_loading"
         ]
       },
       {
-        "id": "state_chat_sending",
-        "owner": "screen_chat_detail",
+        "id": "chat_error",
+        "owner": "chat_detail_view",
         "triggered_by": [
-          "user taps send button"
+          "Firestore listener error"
         ],
         "transitions_to": [
-          "state_chat_loaded",
-          "state_chat_error"
+          "chat_loading"
         ]
       },
       {
-        "id": "state_chat_error",
-        "owner": "screen_chat_detail",
+        "id": "search_loading",
+        "owner": "new_chat_view",
         "triggered_by": [
-          "send/fetch message fails"
+          "vm.fetchAllUser()"
         ],
         "transitions_to": [
-          "state_chat_loading"
+          "search_loaded",
+          "search_empty",
+          "search_error"
         ]
       },
       {
-        "id": "state_profile_saving",
-        "owner": "screen_edit_profile",
+        "id": "search_loaded",
+        "owner": "new_chat_view",
         "triggered_by": [
-          "user taps Save"
+          "Firestore users getDocuments success"
         ],
         "transitions_to": [
-          "state_profile_saved",
-          "state_profile_error"
+          "search_loading",
+          "chat_loaded"
         ]
       },
       {
-        "id": "state_profile_saved",
-        "owner": "screen_edit_profile",
+        "id": "search_empty",
+        "owner": "new_chat_view",
         "triggered_by": [
-          "profile update succeeds"
-        ],
-        "transitions_to": []
-      },
-      {
-        "id": "state_profile_error",
-        "owner": "screen_edit_profile",
-        "triggered_by": [
-          "storage upload fails",
-          "password update fails",
-          "Firestore update fails"
+          "không có user nào"
         ],
         "transitions_to": [
-          "state_profile_saving"
+          "search_loading"
+        ]
+      },
+      {
+        "id": "search_error",
+        "owner": "new_chat_view",
+        "triggered_by": [
+          "getDocuments error"
+        ],
+        "transitions_to": [
+          "search_loading"
+        ]
+      },
+      {
+        "id": "profile_loading",
+        "owner": "edit_profile_view",
+        "triggered_by": [
+          "authViewModel.editProfile()"
+        ],
+        "transitions_to": [
+          "profile_error"
+        ]
+      },
+      {
+        "id": "profile_error",
+        "owner": "edit_profile_view",
+        "triggered_by": [
+          "editProfile failure"
+        ],
+        "transitions_to": [
+          "profile_loading"
         ]
       }
     ],
     "navigation": [
       {
-        "from": "screen_recent_chat",
-        "to": "screen_chat_detail",
-        "trigger": "tap recent conversation row",
+        "from": "recent_chat_view",
+        "to": "chat_detail_view",
+        "trigger": "tap vào recent message",
         "presentation": "push"
       },
       {
-        "from": "screen_recent_chat",
-        "to": "screen_new_chat",
-        "trigger": "tap new message / compose button",
+        "from": "recent_chat_view",
+        "to": "new_chat_view",
+        "trigger": "tap nút New Message",
         "presentation": "fullScreenCover"
       },
       {
-        "from": "screen_new_chat",
-        "to": "screen_chat_detail",
+        "from": "recent_chat_view",
+        "to": "profile_view",
+        "trigger": "tap avatar / thông tin user",
+        "presentation": "push"
+      },
+      {
+        "from": "new_chat_view",
+        "to": "chat_detail_view",
         "trigger": "didSelectNewUser(user)",
         "presentation": "push"
       },
       {
-        "from": "screen_recent_chat",
-        "to": "screen_profile",
-        "trigger": "tap current user avatar / profile button",
-        "presentation": "push"
-      },
-      {
-        "from": "screen_profile",
-        "to": "screen_edit_profile",
-        "trigger": "tap edit profile button",
-        "presentation": "push"
-      },
-      {
-        "from": "screen_profile",
-        "to": "screen_login",
-        "trigger": "tap logout button",
+        "from": "loginx_view",
+        "to": "recent_chat_view",
+        "trigger": "login success",
         "presentation": "replace"
       },
       {
-        "from": "screen_onboarding",
-        "to": "screen_login",
-        "trigger": "tap Login",
-        "presentation": "push"
-      },
-      {
-        "from": "screen_onboarding",
-        "to": "screen_register",
-        "trigger": "tap Register",
-        "presentation": "push"
-      },
-      {
-        "from": "screen_login",
-        "to": "screen_recent_chat",
-        "trigger": "sign in success",
+        "from": "register_view",
+        "to": "recent_chat_view",
+        "trigger": "register success",
         "presentation": "replace"
       },
       {
-        "from": "screen_register",
-        "to": "screen_recent_chat",
-        "trigger": "registration success",
+        "from": "profile_view",
+        "to": "edit_profile_view",
+        "trigger": "tap Edit Profile",
+        "presentation": "push"
+      },
+      {
+        "from": "recent_chat_view",
+        "to": "loginx_view",
+        "trigger": "logout / currentUser == nil",
         "presentation": "replace"
       }
     ]
@@ -1692,329 +1714,278 @@
   "data_integration": {
     "data_flows": [
       {
-        "id": "flow_auth_register",
+        "id": "flow_auth",
+        "feature_id": "auth",
         "flow": [
-          "screen_register",
-          "auth_view_model",
-          "integration_firebase_auth",
-          "integration_firestore",
-          "chat_user"
+          "Auth.auth().createUser/signIn",
+          "AuthViewModel",
+          "Firestore collection users",
+          "ChatUser",
+          "LoginxView/RegisterView"
         ]
       },
       {
-        "id": "flow_auth_login",
+        "id": "flow_recent_messages",
+        "feature_id": "recent_chat",
         "flow": [
-          "screen_login",
-          "auth_view_model",
-          "integration_firebase_auth",
-          "integration_firestore",
-          "chat_user"
+          "Firestore collection recent_messages addSnapshotListener",
+          "RecentMessage Codable",
+          "RecentChatViewModel",
+          "RecentChatView"
         ]
       },
       {
-        "id": "flow_auth_logout",
+        "id": "flow_chat_messages",
+        "feature_id": "chat_detail",
         "flow": [
-          "screen_profile",
-          "auth_view_model",
-          "integration_firebase_auth"
+          "ChatDetailViewModel.fetchMessage()",
+          "Firestore collection messages addSnapshotListener",
+          "ChatMessage Codable",
+          "ChatDetailViewModel",
+          "ChatDetailView"
         ]
       },
       {
-        "id": "flow_fetch_recent_chats",
+        "id": "flow_new_chat_users",
+        "feature_id": "new_chat",
         "flow": [
-          "screen_recent_chat",
-          "recent_chat_view_model",
-          "integration_firestore",
-          "recent_message"
+          "NewChatViewModel.fetchAllUser()",
+          "Firestore collection users getDocuments",
+          "ChatUser Codable",
+          "NewChatViewModel",
+          "NewChatView"
         ]
       },
       {
-        "id": "flow_open_recent_chat",
+        "id": "flow_edit_profile",
+        "feature_id": "profile",
         "flow": [
-          "recent_message",
-          "chat_user",
-          "chat_detail_view_model",
-          "screen_chat_detail"
+          "EditProfileView",
+          "AuthViewModel.editProfile()",
+          "FirebaseStorage putData",
+          "Firestore users update",
+          "Auth.updatePassword",
+          "ChatUser"
         ]
       },
       {
-        "id": "flow_fetch_all_users",
+        "id": "flow_push_notification",
+        "feature_id": "push",
         "flow": [
-          "screen_new_chat",
-          "new_chat_view_model",
-          "integration_firestore",
-          "chat_user"
-        ]
-      },
-      {
-        "id": "flow_fetch_messages",
-        "flow": [
-          "screen_chat_detail",
-          "chat_detail_view_model",
-          "integration_firestore",
-          "chat_message"
-        ]
-      },
-      {
-        "id": "flow_send_message",
-        "flow": [
-          "screen_chat_detail",
-          "chat_detail_view_model",
-          "integration_firestore",
-          "chat_message",
-          "push_notification_manager",
-          "integration_fcm"
-        ]
-      },
-      {
-        "id": "flow_save_fcm_token",
-        "flow": [
-          "integration_messaging",
-          "push_notification_manager",
-          "persistence_user_defaults"
-        ]
-      },
-      {
-        "id": "flow_send_push",
-        "flow": [
-          "push_notification_manager",
-          "integration_fcm",
-          "device_notifications"
-        ]
-      },
-      {
-        "id": "flow_update_profile",
-        "flow": [
-          "screen_edit_profile",
-          "auth_view_model",
-          "integration_firebase_auth",
-          "integration_firebase_storage",
-          "integration_firestore",
-          "chat_user"
-        ]
-      },
-      {
-        "id": "flow_notification_permission",
-        "flow": [
-          "notification_manager",
-          "integration_user_notifications"
+          "AppDelegate.didRegisterForRemoteNotifications",
+          "Messaging.messaging().apnsToken",
+          "PushNotificationManager.saveFCM",
+          "UserDefaults",
+          "PushNotificationManager.sendPushNotification",
+          "URLSession POST fcm.googleapis.com/fcm/send"
         ]
       }
     ],
     "models": [
       {
-        "id": "ChatMessage",
-        "type": "domain",
+        "id": "chat_message",
+        "type": "dto",
         "properties": [
-          "id",
-          "fromId",
-          "toId",
-          "text",
-          "timestamp"
-        ]
+          "id: String?",
+          "fromId: String",
+          "toId: String",
+          "text: String",
+          "timestamp: Date"
+        ],
+        "feature_id": "chat_detail"
       },
       {
-        "id": "ChatUser",
-        "type": "domain",
+        "id": "chat_user",
+        "type": "dto",
         "properties": [
-          "id",
-          "uid",
-          "email",
-          "profileImageUrl",
-          "fcm",
-          "username"
-        ]
+          "id: String?",
+          "uid: String",
+          "email: String",
+          "profileImageUrl: String?",
+          "fcm: String?",
+          "username: String (computed)"
+        ],
+        "feature_id": "auth"
       },
       {
-        "id": "RecentMessage",
-        "type": "domain",
+        "id": "recent_message",
+        "type": "dto",
         "properties": [
-          "id",
-          "text",
-          "email",
-          "fromId",
-          "toId",
-          "profileImageUrl",
-          "timestamp",
-          "username",
-          "timeAgo"
-        ]
+          "id: String?",
+          "text: String",
+          "email: String",
+          "fromId: String",
+          "toId: String",
+          "profileImageUrl: String?",
+          "timestamp: Date",
+          "username: String (computed)",
+          "timeAgo: String (computed)"
+        ],
+        "feature_id": "recent_chat"
       },
       {
-        "id": "AuthViewModel",
+        "id": "auth_view_model",
         "type": "view_model",
         "properties": [
-          "email",
-          "password",
-          "user",
-          "image",
-          "viewState",
-          "logMessage"
-        ]
+          "email: String",
+          "password: String",
+          "user: ChatUser?",
+          "viewState: ViewState",
+          "logMessage: String",
+          "image: UIImage?"
+        ],
+        "feature_id": "auth"
       },
       {
-        "id": "NewChatViewModel",
+        "id": "chat_detail_view_model",
         "type": "view_model",
         "properties": [
-          "users",
-          "errorMessage"
-        ]
+          "chatText: String",
+          "chatMessages: [ChatMessage]",
+          "count: Int",
+          "chatUser: ChatUser?"
+        ],
+        "feature_id": "chat_detail"
       },
       {
-        "id": "ChatDetailViewModel",
+        "id": "new_chat_view_model",
         "type": "view_model",
         "properties": [
-          "chatUser",
-          "chatMessages",
-          "chatText",
-          "count"
-        ]
+          "users: [ChatUser]",
+          "errorMessage: String"
+        ],
+        "feature_id": "new_chat"
       },
       {
-        "id": "NotificationManager",
+        "id": "recent_chat_view_model",
         "type": "view_model",
         "properties": [
-          "hasPermission"
-        ]
+          "recentMessages: [RecentMessage]",
+          "viewState: ViewState",
+          "errorMessage: String"
+        ],
+        "feature_id": "recent_chat"
       }
     ],
     "integrations": [
       {
-        "id": "integration_firebase_auth",
-        "type": "firebase_auth",
-        "protocol": "Firebase Auth SDK",
+        "id": "firebase_auth",
+        "feature_id": "auth",
+        "type": "sdk",
+        "protocol": "FirebaseAuth SDK",
         "operations": [
-          "FirebaseApp.configure()",
-          "Auth.auth().createUser(withEmail:password:)",
-          "Auth.auth().signIn(withEmail:password:)",
-          "Auth.auth().signOut()",
-          "FirebaseManager.shared.auth.currentUser"
+          "Auth.auth()",
+          "createUser(withEmail:password:)",
+          "signIn(withEmail:password:)",
+          "signOut()",
+          "currentUser",
+          "updatePassword(to:)"
         ],
         "inputs": [
           "email",
           "password"
         ],
         "outputs": [
-          "Firebase User",
-          "ChatUser"
+          "FirebaseAuth.User",
+          "ChatUser (users collection)"
         ],
         "failure_modes": [
-          "invalid credentials",
+          "invalid email",
+          "wrong password",
           "email already in use",
           "network error"
         ]
       },
       {
-        "id": "integration_firestore",
-        "type": "firestore",
+        "id": "cloud_firestore",
+        "feature_id": "recent_chat",
+        "type": "database",
         "protocol": "Firestore SDK",
         "operations": [
-          "Firestore.collection(\"users\").getDocuments",
-          "Firestore.collection(\"recent_messages\").addSnapshotListener",
-          "Firestore.collection(\"messages\").addSnapshotListener",
-          "Firestore.collection(\"messages\").document().setData"
+          "collection(\"users\").getDocuments()",
+          "collection(\"recent_messages\").addSnapshotListener()",
+          "collection(\"messages\").addSnapshotListener()",
+          "document().setData()"
         ],
         "inputs": [
           "collection path",
           "document data"
         ],
         "outputs": [
-          "DocumentSnapshot",
-          "decoded model"
+          "QuerySnapshot",
+          "DocumentSnapshot"
         ],
         "failure_modes": [
           "permission denied",
-          "document not found",
           "network error",
-          "quota exceeded"
+          "offline"
         ]
       },
       {
-        "id": "integration_firebase_storage",
-        "type": "firebase_storage",
-        "protocol": "Firebase Storage SDK",
+        "id": "firebase_storage",
+        "feature_id": "profile",
+        "type": "storage",
+        "protocol": "FirebaseStorage SDK",
         "operations": [
-          "Storage.storage().reference().putData"
+          "Storage.storage().reference()",
+          "putData()"
         ],
         "inputs": [
-          "image data"
+          "UIImage data"
         ],
         "outputs": [
+          "StorageMetadata",
           "download URL"
         ],
         "failure_modes": [
-          "upload failed",
           "network error",
-          "permission denied"
+          "unauthorized"
         ]
       },
       {
-        "id": "integration_fcm",
-        "type": "rest_api",
-        "protocol": "HTTPS",
+        "id": "fcm_push",
+        "feature_id": "push",
+        "type": "push_notification",
+        "protocol": "HTTP",
         "operations": [
-          "URLSession.shared.dataTask",
-          "POST https://fcm.googleapis.com/fcm/send"
+          "UNUserNotificationCenter.requestAuthorization()",
+          "application.registerForRemoteNotifications()",
+          "Messaging.messaging().apnsToken = deviceToken",
+          "PushNotificationManager.saveFCM()",
+          "PushNotificationManager.sendPushNotification()",
+          "URLSession.dataTask POST https://fcm.googleapis.com/fcm/send"
         ],
         "inputs": [
           "FCM token",
-          "notification title",
-          "notification body"
+          "notification title/body"
         ],
         "outputs": [
-          "FCM response JSON"
+          "push notification delivery"
         ],
         "failure_modes": [
-          "invalid server key",
+          "notification permission denied",
           "invalid FCM token",
-          "network error",
-          "hardcoded server key security risk"
-        ]
-      },
-      {
-        "id": "integration_user_notifications",
-        "type": "notification_center",
-        "protocol": "UNUserNotificationCenter",
-        "operations": [
-          "UNUserNotificationCenter.current().requestAuthorization",
-          "UNUserNotificationCenter.current().notificationSettings()",
-          "UNUserNotificationCenter.current().delegate"
-        ],
-        "inputs": [
-          "permission options"
-        ],
-        "outputs": [
-          "authorization status"
-        ],
-        "failure_modes": [
-          "user denies permission"
-        ]
-      },
-      {
-        "id": "integration_messaging",
-        "type": "firebase_messaging",
-        "protocol": "APNs + FCM",
-        "operations": [
-          "application.registerForRemoteNotifications()",
-          "Messaging.messaging().delegate = self",
-          "Messaging.messaging().apnsToken = deviceToken"
-        ],
-        "inputs": [
-          "APNs device token"
-        ],
-        "outputs": [
-          "FCM registration token"
-        ],
-        "failure_modes": [
-          "APNs unavailable",
-          "registration failed"
+          "network error"
         ]
       }
     ],
     "persistence": [
       {
-        "id": "persistence_firestore",
-        "technology": "Firestore (remote)",
+        "id": "user_defaults_fcm",
+        "feature_id": "push",
+        "technology": "UserDefaults",
+        "entities": [
+          "fcm_token"
+        ],
+        "operations": [
+          "set(_:forKey: \"fcm\")",
+          "string(forKey: \"fcm\")"
+        ]
+      },
+      {
+        "id": "firestore_persistence",
+        "feature_id": "recent_chat",
+        "technology": "Cloud Firestore",
         "entities": [
           "users",
           "recent_messages",
@@ -2025,229 +1996,340 @@
           "addSnapshotListener",
           "setData"
         ]
-      },
-      {
-        "id": "persistence_user_defaults",
-        "technology": "UserDefaults",
-        "entities": [
-          "fcm"
-        ],
-        "operations": [
-          "PushNotificationManager.saveFCM",
-          "PushNotificationManager.getFCM"
-        ]
       }
     ]
   },
   "implementation": {
     "tasks": [
       {
-        "id": "T-SCAFFOLD",
-        "capability_id": "F-CORE",
-        "action": "Scaffold iOS SwiftUI app from Xcode template, add Firebase SDK and GoogleService-Info.plist",
+        "id": "t1",
+        "capability_id": "ui_shell",
+        "action": "Khởi tạo Xcode project SwiftUI và cấu hình Firebase SDK (FirebaseAuth, Firestore, Storage, Messaging, GoogleService-Info.plist)",
         "modifies": [],
         "creates": [
-          "Xcode project",
-          "App entry point",
-          "GoogleService-Info.plist"
+          "Talky.xcodeproj",
+          "SwiftUI App template",
+          "GoogleService-Info.plist trong target"
         ],
         "depends_on": [],
         "acceptance": [
-          "Project builds and runs in iOS Simulator",
-          "Firebase SDK installed and linked",
-          "GoogleService-Info.plist is added to the app target"
+          "Build được project iOS bằng Xcode",
+          "App chạy trên simulator với màn hình SwiftUI trống",
+          "Firebase SDK được link và không crash khi app launch"
         ],
-        "intent": "Tạo nền tảng Xcode + Firebase trước khi bắt đầu code tính năng chat.",
+        "intent": "Người học cần môi trường Xcode/SwiftUI + Firebase đã cấu hình để bắt đầu code app chat",
         "outcome": {
-          "user_visible": "Người dùng thấy màn hình SwiftUI mặc định khi mở app, chưa có tính năng.",
+          "user_visible": "App có thể build và chạy được trên simulator",
           "technical": [
-            "Xcode project with SwiftUI lifecycle",
-            "Firebase SDK integrated",
+            "Xcode project scaffold",
+            "Firebase packages installed",
             "GoogleService-Info.plist configured"
           ]
         },
         "source_evidence": [],
         "keywords": [
           "SwiftUI",
-          "Xcode",
-          "Firebase"
+          "Firebase",
+          "Xcode template"
         ],
         "concurrency": [],
         "effort": {
-          "concepts_count": 3,
-          "files_touched": 5,
+          "concepts_count": 5,
+          "files_touched": 0,
           "estimated_minutes": 60
         },
         "requirement_ids": [
-          "REQ-SCAFFOLD"
+          "r9"
         ]
       },
       {
-        "id": "T-FB-BOOTSTRAP",
-        "capability_id": "F-CORE",
-        "action": "Implement AppDelegate with UIApplicationDelegateAdaptor and call FirebaseApp.configure()",
+        "id": "t2",
+        "capability_id": "ui_shell",
+        "action": "Implement TalkyApp entry point với AppDelegate, FirebaseApp.configure và inject AuthViewModel qua environmentObject",
         "modifies": [
           "Talky/TalkyApp.swift"
         ],
         "creates": [
           "AppDelegate",
-          "Firebase initialization"
+          "YourApp",
+          "authViewModel environmentObject"
         ],
         "depends_on": [
-          "T-SCAFFOLD"
+          "t1"
         ],
         "acceptance": [
-          "App launches without crashing",
-          "FirebaseApp.configure() is called once on launch"
+          "App launch vào RecentChatView",
+          "FirebaseApp.configure() được gọi trong didFinishLaunching",
+          "UIApplicationDelegateAdaptor wire AppDelegate"
         ],
-        "intent": "Firebase phải được khởi tạo trước khi các service Auth/Firestore/Storage được dùng.",
+        "intent": "Mọi SwiftUI app cần entry point và Firebase init trước khi dùng auth/firestore",
         "outcome": {
-          "user_visible": "App mở được nhưng chưa hiện màn hình chào mừng vì auth chưa inject.",
+          "user_visible": "App mở ra màn hình chat gần đây (sau này được bọc bởi auth gate)",
           "technical": [
-            "UIApplicationDelegateAdaptor connected to @main App",
-            "Firebase configured in didFinishLaunching"
+            "AppDelegate cấu hình remote notification + messaging",
+            "AuthViewModel inject qua environmentObject"
           ]
         },
         "source_evidence": [
           "Talky/TalkyApp.swift"
         ],
         "keywords": [
+          "@main",
+          "@UIApplicationDelegateAdaptor",
           "FirebaseApp.configure()",
-          "UIApplicationDelegateAdaptor"
+          "@StateObject",
+          "@EnvironmentObject"
         ],
-        "concurrency": [],
+        "concurrency": [
+          "Task"
+        ],
         "effort": {
-          "concepts_count": 2,
+          "concepts_count": 4,
           "files_touched": 1,
           "estimated_minutes": 30
         },
         "requirement_ids": [
-          "REQ-SCAFFOLD"
+          "r9",
+          "r7"
         ]
       },
       {
-        "id": "T-FIREBASE-MANAGER",
-        "capability_id": "F-CORE",
-        "action": "Implement FirebaseManager singleton exposing shared Auth, Firestore, and Storage instances",
+        "id": "t3",
+        "capability_id": "ui_state",
+        "action": "Implement ViewState enum với các case loading, loaded, empty, error",
         "modifies": [],
         "creates": [
-          "FirebaseManager",
-          "Auth",
-          "Firestore",
-          "Storage"
+          "ViewState enum"
+        ],
+        "depends_on": [],
+        "acceptance": [
+          "enum ViewState có đủ loading/loaded/empty/error",
+          "Các ViewModel có thể set viewState"
+        ],
+        "intent": "Cần trạng thái chung để màn hình hiển thị loading/error/empty nhất quán",
+        "outcome": {
+          "user_visible": "Chưa có user-visible thay đổi; nền cho trạng thái UI",
+          "technical": [
+            "Talky/Util/Enum/ViewState.swift định nghĩa các case"
+          ]
+        },
+        "source_evidence": [
+          "Talky/Util/Enum/ViewState.swift"
+        ],
+        "keywords": [
+          "enum"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 1,
+          "files_touched": 1,
+          "estimated_minutes": 15
+        },
+        "requirement_ids": [
+          "r8",
+          "r10"
+        ]
+      },
+      {
+        "id": "t4",
+        "capability_id": "auth",
+        "action": "Implement FirebaseManager singleton cung cấp Auth, Firestore, Storage instances",
+        "modifies": [],
+        "creates": [
+          "FirebaseManager.shared"
         ],
         "depends_on": [
-          "T-FB-BOOTSTRAP"
+          "t1"
         ],
         "acceptance": [
-          "FirebaseManager.shared.auth returns the shared Auth instance",
-          "Firestore.firestore() and Storage.storage() resolve correctly"
+          "FirebaseManager.shared trả về cùng Auth, Firestore, Storage instance"
         ],
-        "intent": "Các ViewModel cùng dùng một nguồn Firebase thay vì khởi tạo lặp lại.",
+        "intent": "Mọi ViewModel cần một nguồn duy nhất truy cập Firebase",
         "outcome": {
-          "user_visible": "Không đổi UI, nhưng là hạ tầng nền cho đăng nhập và chat.",
+          "user_visible": "Nền tảng Firebase sẵn sàng cho các feature",
           "technical": [
-            "Singleton pattern",
-            "Central access to Auth/Firestore/Storage"
+            "Singleton FirebaseManager"
           ]
         },
         "source_evidence": [
           "Talky/Util/Helper/FirebaseManager.swift"
         ],
         "keywords": [
-          "FirebaseManager",
           "Auth.auth()",
-          "Firestore.firestore()",
           "Storage.storage()",
+          "Firestore.firestore()",
           "singleton"
         ],
         "concurrency": [],
         "effort": {
-          "concepts_count": 2,
+          "concepts_count": 3,
           "files_touched": 1,
-          "estimated_minutes": 15
+          "estimated_minutes": 20
         },
         "requirement_ids": [
-          "REQ-SCAFFOLD"
+          "r1",
+          "r2",
+          "r3",
+          "r4",
+          "r5",
+          "r6"
         ]
       },
       {
-        "id": "T-MODELS",
-        "capability_id": "F-CORE",
-        "action": "Implement Codable models ChatMessage, ChatUser, RecentMessage with @DocumentID and computed properties",
+        "id": "t5",
+        "capability_id": "auth",
+        "action": "Implement ChatUser model Codable với @DocumentID, username computed và fromRecentMessage",
         "modifies": [],
         "creates": [
-          "ChatMessage",
-          "ChatUser",
-          "RecentMessage",
-          "username",
-          "timeAgo"
+          "ChatUser model",
+          "username computed property",
+          "fromRecentMessage factory"
         ],
         "depends_on": [
-          "T-FIREBASE-MANAGER"
+          "t4"
         ],
         "acceptance": [
-          "Models decode Firestore documents into Swift structs",
-          "ChatUser.username is derived from email",
-          "RecentMessage.timeAgo uses RelativeDateTimeFormatter"
+          "ChatUser decode/encode được Firestore document",
+          "username parse đúng phần trước @ của email"
         ],
-        "intent": "Cần cấu trúc dữ liệu để đọc/ghi Firestore cho tin nhắn, user và hội thoại gần đây.",
+        "intent": "App cần mô hình user để đăng nhập, hiển thị danh sách chat và profile",
         "outcome": {
-          "user_visible": "Chưa ảnh hưởng trực tiếp, nhưng dữ liệu chat/recent có thể lưu và đọc.",
+          "user_visible": "Người dùng có danh tính (email, avatar, fcm) được hiển thị",
           "technical": [
-            "Codable + Identifiable",
-            "@DocumentID maps Firestore document id",
-            "Custom encode/decode in ChatUser"
+            "Codable struct với @DocumentID",
+            "Custom decoder/encoder cho Firestore"
           ]
         },
         "source_evidence": [
-          "Talky/Model/ChatMessage.swift",
-          "Talky/Model/ChatUser.swift",
+          "Talky/Model/ChatUser.swift"
+        ],
+        "keywords": [
+          "Codable",
+          "@DocumentID",
+          "Firestore.Encoder",
+          "Firestore.Decoder"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 4,
+          "files_touched": 1,
+          "estimated_minutes": 40
+        },
+        "requirement_ids": [
+          "r1",
+          "r2",
+          "r4",
+          "r6"
+        ]
+      },
+      {
+        "id": "t6",
+        "capability_id": "recent_chat",
+        "action": "Implement RecentMessage model Codable với @DocumentID, username và timeAgo",
+        "modifies": [],
+        "creates": [
+          "RecentMessage model",
+          "timeAgo computed property"
+        ],
+        "depends_on": [
+          "t4"
+        ],
+        "acceptance": [
+          "RecentMessage decode được document từ collection recent_messages",
+          "timeAgo hiển thị thời gian tương đối"
+        ],
+        "intent": "Trang danh sách chat cần model cho một đoạn chat gần đây kèm preview + thời gian",
+        "outcome": {
+          "user_visible": "Mỗi dòng chat hiển thị được preview, username, avatar, thời gian tương đối",
+          "technical": [
+            "Codable struct với @DocumentID",
+            "RelativeDateTimeFormatter"
+          ]
+        },
+        "source_evidence": [
           "Talky/Model/RecentMessage.swift"
         ],
         "keywords": [
           "Codable",
           "@DocumentID",
-          "RelativeDateTimeFormatter",
-          "FirestoreSwift"
+          "RelativeDateTimeFormatter"
         ],
         "concurrency": [],
         "effort": {
           "concepts_count": 3,
-          "files_touched": 3,
-          "estimated_minutes": 45
+          "files_touched": 1,
+          "estimated_minutes": 30
         },
-        "requirement_ids": []
+        "requirement_ids": [
+          "r3"
+        ]
       },
       {
-        "id": "T-AUTH-VM",
-        "capability_id": "F-AUTH",
-        "action": "Implement AuthViewModel with register, login, logout, editProfile, published viewState, logMessage and user",
+        "id": "t7",
+        "capability_id": "chat_detail",
+        "action": "Implement ChatMessage model Codable với @DocumentID và các field fromId/toId/text/timestamp",
+        "modifies": [],
+        "creates": [
+          "ChatMessage model"
+        ],
+        "depends_on": [
+          "t4"
+        ],
+        "acceptance": [
+          "ChatMessage decode/encode được message document"
+        ],
+        "intent": "Màn hình chat chi tiết cần model cho từng tin nhắn",
+        "outcome": {
+          "user_visible": "Tin nhắn hiển thị được nội dung, người gửi, thời gian",
+          "technical": [
+            "Codable struct với @DocumentID"
+          ]
+        },
+        "source_evidence": [
+          "Talky/Model/ChatMessage.swift"
+        ],
+        "keywords": [
+          "Codable",
+          "@DocumentID"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 1,
+          "estimated_minutes": 20
+        },
+        "requirement_ids": [
+          "r5"
+        ]
+      },
+      {
+        "id": "t8",
+        "capability_id": "auth",
+        "action": "Implement AuthViewModel với login/register/logout, profile fetch, edit profile và trạng thái đăng nhập loggedOut",
         "modifies": [],
         "creates": [
           "AuthViewModel",
-          "viewState",
+          "email/password/repassword state",
+          "loggedOut state",
           "logMessage",
-          "loggedOut",
-          "user"
+          "viewState"
         ],
         "depends_on": [
-          "T-FIREBASE-MANAGER",
-          "T-MODELS"
+          "t4",
+          "t5"
         ],
         "acceptance": [
-          "User can create an account and the user document is saved",
-          "User can sign in with correct email/password",
-          "User can sign out and loggedOut publishes true",
-          "Failed auth sets viewState .error and logMessage"
+          "Đăng ký tạo user trong collection users",
+          "Đăng nhập thành công set loggedOut false và vào RecentChatView",
+          "Đăng xuất set loggedOut true và hiện WelcomeView",
+          "Edit profile cập nhật email/avatar/password"
         ],
-        "intent": "Authentication là cửa ngõ để vào danh sách chat, profile, và realtime messaging.",
+        "intent": "App cần tầng xử lý auth để người dùng có thể tạo tài khoản, đăng nhập, đăng xuất và quản lý profile",
         "outcome": {
-          "user_visible": "Người dùng có thể đăng ký, đăng nhập và đăng xuất.",
+          "user_visible": "User có thể đăng ký, đăng nhập, đăng xuất, sửa profile",
           "technical": [
-            "@Published state drives SwiftUI views",
-            "Firebase Auth calls",
-            "Firestore users collection update"
+            "@EnvironmentObject dependency injection",
+            "Firestore collection users"
           ]
         },
         "source_evidence": [
@@ -2258,151 +2340,49 @@
           "Talky/View/EditProfileView.swift"
         ],
         "keywords": [
-          "@StateObject",
-          "@EnvironmentObject",
           "Auth.auth().createUser(withEmail:password:)",
           "Auth.auth().signIn(withEmail:password:)",
-          "Auth.auth().signOut()"
+          "Auth.auth().signOut()",
+          "@Published",
+          "Firestore"
         ],
         "concurrency": [
-          "async/await",
-          "Task"
+          "Task",
+          "async/await"
         ],
         "effort": {
-          "concepts_count": 5,
+          "concepts_count": 6,
           "files_touched": 5,
           "estimated_minutes": 90
         },
         "requirement_ids": [
-          "REQ-REGISTER",
-          "REQ-LOGIN",
-          "REQ-LOGOUT"
+          "r1",
+          "r2",
+          "r6"
         ]
       },
       {
-        "id": "T-LOGIN",
-        "capability_id": "F-AUTH",
-        "action": "Implement login screen with email/password fields, show/hide password, sign-in button and error alert",
+        "id": "t9",
+        "capability_id": "ui_shell",
+        "action": "Implement WelcomeView với logo, gradient, nút Start Messaging và NavigationLink sang login/register",
         "modifies": [],
         "creates": [
-          "LoginxView",
-          "Sign in button",
-          "Error alert"
+          "WelcomeView"
         ],
         "depends_on": [
-          "T-AUTH-VM"
+          "t2",
+          "t8"
         ],
         "acceptance": [
-          "User can type email and password",
-          "Tapping Sign in calls authViewModel.login()",
-          "Wrong credentials shows alert with logMessage"
+          "Màn hình chào mừng hiển thị logo + nút Start Messaging",
+          "Nút Start Messaging dẫn sang RegisterxView",
+          "Có navigation sang LoginxView"
         ],
-        "intent": "Người dùng có tài khoản cần đăng nhập để vào Recent Chats.",
+        "intent": "Khi chưa đăng nhập, user cần màn hình entry để chọn đăng ký/đăng nhập",
         "outcome": {
-          "user_visible": "Người dùng đăng nhập được bằng email/mật khẩu.",
+          "user_visible": "User thấy màn hình chào mừng với CTA",
           "technical": [
-            "TextField + SecureTextField bound to AuthViewModel",
-            "onChange of viewState shows alert"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/LoginxView.swift",
-          "Talky/View/Component/SecureTextField.swift"
-        ],
-        "keywords": [
-          "TextField",
-          "SecureField",
-          "@EnvironmentObject",
-          "alert"
-        ],
-        "concurrency": [
-          "async/await",
-          "Task"
-        ],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 2,
-          "estimated_minutes": 45
-        },
-        "requirement_ids": [
-          "REQ-LOGIN"
-        ]
-      },
-      {
-        "id": "T-REGISTER",
-        "capability_id": "F-AUTH",
-        "action": "Implement registration screen with email, password, confirm password, sign-up button and error alert",
-        "modifies": [],
-        "creates": [
-          "RegisterxView",
-          "Sign up button",
-          "Error alert"
-        ],
-        "depends_on": [
-          "T-AUTH-VM"
-        ],
-        "acceptance": [
-          "User can enter email, password and confirm password",
-          "Tapping Sign up calls authViewModel.register()",
-          "Failed registration shows alert"
-        ],
-        "intent": "Người dùng mới cần tạo tài khoản trước khi sử dụng chat.",
-        "outcome": {
-          "user_visible": "Người dùng đăng ký và tự đăng nhập sau khi tạo tài khoản.",
-          "technical": [
-            "SecureTextField reuse",
-            "Async register call",
-            "Alert on .error state"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/RegisterxView.swift",
-          "Talky/View/Component/SecureTextField.swift"
-        ],
-        "keywords": [
-          "TextField",
-          "SecureField",
-          "@EnvironmentObject",
-          "alert"
-        ],
-        "concurrency": [
-          "async/await",
-          "Task"
-        ],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 2,
-          "estimated_minutes": 45
-        },
-        "requirement_ids": [
-          "REQ-REGISTER"
-        ]
-      },
-      {
-        "id": "T-WELCOME",
-        "capability_id": "F-ONBOARD",
-        "action": "Implement WelcomeView with hero image, gradient, branding and navigation links to Login and Register",
-        "modifies": [],
-        "creates": [
-          "WelcomeView",
-          "Start Messaging CTA",
-          "Navigation links to auth screens"
-        ],
-        "depends_on": [
-          "T-LOGIN",
-          "T-REGISTER"
-        ],
-        "acceptance": [
-          "User sees 'Connect with Talky' welcome screen",
-          "Tapping Start Messaging navigates to Register",
-          "WelcomeView is used as logged-out fallback"
-        ],
-        "intent": "Lần đầu mở app cần màn hình giới thiệu để dẫn người dùng vào đăng nhập/đăng ký.",
-        "outcome": {
-          "user_visible": "Người dùng thấy màn hình chào mừng với hình ảnh và nút Start Messaging.",
-          "technical": [
-            "NavigationView + NavigationLink",
-            "LinearGradient overlay"
+            "NavigationLink destinations"
           ]
         },
         "source_evidence": [
@@ -2418,16 +2398,149 @@
         "effort": {
           "concepts_count": 3,
           "files_touched": 1,
-          "estimated_minutes": 30
+          "estimated_minutes": 35
         },
         "requirement_ids": [
-          "REQ-ONBOARD"
+          "r9"
         ]
       },
       {
-        "id": "T-RECENT-VM",
-        "capability_id": "F-RECENT",
-        "action": "Implement RecentChatViewModel to fetch recent messages, fetch all users, and track selectedChatUser",
+        "id": "t10",
+        "capability_id": "ui_shell",
+        "action": "Implement SecureTextField component với toggle hiện/ẩn mật khẩu",
+        "modifies": [],
+        "creates": [
+          "SecureTextField component"
+        ],
+        "depends_on": [],
+        "acceptance": [
+          "SecureTextField hiển thị SecureField mặc định",
+          "Nhấn eye icon chuyển sang TextField hiện plain text"
+        ],
+        "intent": "Các form login/register cần input mật khẩu có thể show/hide",
+        "outcome": {
+          "user_visible": "Password field có nút hiện/ẩn",
+          "technical": [
+            "Binding show/text"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/Component/SecureTextField.swift"
+        ],
+        "keywords": [
+          "TextField",
+          "SecureField",
+          "@Binding"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 3,
+          "files_touched": 1,
+          "estimated_minutes": 25
+        },
+        "requirement_ids": [
+          "r9"
+        ]
+      },
+      {
+        "id": "t11",
+        "capability_id": "auth",
+        "action": "Implement LoginxView form đăng nhập email/password, gọi AuthViewModel.login và hiển thị alert lỗi",
+        "modifies": [],
+        "creates": [
+          "LoginxView"
+        ],
+        "depends_on": [
+          "t8",
+          "t10"
+        ],
+        "acceptance": [
+          "Form email/password hiển thị",
+          "Khi login thành công vào RecentChatView",
+          "Khi lỗi hiện alert với logMessage",
+          "Nút hiển thị Loading khi viewState == .loading"
+        ],
+        "intent": "User đã có account cần đăng nhập",
+        "outcome": {
+          "user_visible": "User có thể đăng nhập bằng email/password",
+          "technical": [
+            "EnvironmentObject AuthViewModel",
+            "onChange viewState"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/LoginxView.swift"
+        ],
+        "keywords": [
+          "TextField",
+          "SecureTextField",
+          "alert(isPresented:)",
+          "onChange"
+        ],
+        "concurrency": [
+          "Task"
+        ],
+        "effort": {
+          "concepts_count": 4,
+          "files_touched": 1,
+          "estimated_minutes": 45
+        },
+        "requirement_ids": [
+          "r1",
+          "r8"
+        ]
+      },
+      {
+        "id": "t12",
+        "capability_id": "auth",
+        "action": "Implement RegisterxView form đăng ký email/password/repassword, gọi AuthViewModel.register và hiển thị alert lỗi",
+        "modifies": [],
+        "creates": [
+          "RegisterxView"
+        ],
+        "depends_on": [
+          "t8",
+          "t10"
+        ],
+        "acceptance": [
+          "Form email/password/repassword hiển thị",
+          "Khi register thành công vào RecentChatView",
+          "Khi lỗi hiện alert với logMessage"
+        ],
+        "intent": "User mới cần đăng ký tài khoản",
+        "outcome": {
+          "user_visible": "User có thể tạo tài khoản mới",
+          "technical": [
+            "EnvironmentObject AuthViewModel",
+            "onChange viewState"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/RegisterxView.swift"
+        ],
+        "keywords": [
+          "TextField",
+          "SecureTextField",
+          "alert(isPresented:)",
+          "onChange"
+        ],
+        "concurrency": [
+          "Task"
+        ],
+        "effort": {
+          "concepts_count": 4,
+          "files_touched": 1,
+          "estimated_minutes": 45
+        },
+        "requirement_ids": [
+          "r2",
+          "r8"
+        ]
+      },
+      {
+        "id": "t13",
+        "capability_id": "recent_chat",
+        "action": "Implement RecentChatViewModel fetch recent messages và users, quản lý selectedChatUser",
         "modifies": [],
         "creates": [
           "RecentChatViewModel",
@@ -2436,32 +2549,462 @@
           "selectedChatUser"
         ],
         "depends_on": [
-          "T-AUTH-VM",
-          "T-MODELS",
-          "T-FIREBASE-MANAGER"
+          "t5",
+          "t6"
         ],
         "acceptance": [
-          "recentMessages updates when Firestore recent_messages changes",
-          "users contains all users for resolving chat partner",
-          "selectedChatUser is set when a recent conversation is tapped"
+          "fetchRecentMessages lắng nghe collection recent_messages",
+          "fetchAllUser lấy danh sách users",
+          "selectedChatUser được set khi click vào recent message"
         ],
-        "intent": "Màn hình Recent Chats cần dữ liệu realtime của các cuộc trò chuyện gần đây.",
+        "intent": "Danh sách chat cần dữ liệu recent messages + users để map và hiển thị",
         "outcome": {
-          "user_visible": "Người dùng thấy danh sách hội thoại gần đây cập nhật realtime.",
+          "user_visible": "List chat có dữ liệu thật từ Firestore",
           "technical": [
-            "Firestore snapshot listener",
-            "Mapping recent message to ChatUser"
+            "Firestore addSnapshotListener",
+            "@Published state"
           ]
         },
         "source_evidence": [
-          "Talky/View/RecentChatView.swift",
-          "Talky/Model/RecentMessage.swift",
-          "Talky/Model/ChatUser.swift"
+          "Talky/View/RecentChatView.swift"
         ],
         "keywords": [
-          "@Published",
+          "Firestore",
           "addSnapshotListener",
-          "Firestore"
+          "@ObservedObject",
+          "@Published"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 5,
+          "files_touched": 1,
+          "estimated_minutes": 60
+        },
+        "requirement_ids": [
+          "r3"
+        ]
+      },
+      {
+        "id": "t14",
+        "capability_id": "recent_chat",
+        "action": "Implement RecentChatView UI với header Messages, list recent message, nút New Chat và profile link",
+        "modifies": [],
+        "creates": [
+          "RecentChatView",
+          "Header Messages",
+          "New Chat button",
+          "Profile NavigationLink"
+        ],
+        "depends_on": [
+          "t2",
+          "t8",
+          "t13"
+        ],
+        "acceptance": [
+          "Hiển thị header + list recent messages",
+          "Click message mở ChatDetailView",
+          "Click New Chat mở NewChatView",
+          "Khi loggedOut true hiện WelcomeView"
+        ],
+        "intent": "Màn hình chính của app hiển thị các đoạn chat gần đây và điểm vào chat mới/profile",
+        "outcome": {
+          "user_visible": "User thấy danh sách chat gần đây, mở được chat, tạo chat mới, vào profile",
+          "technical": [
+            "NavigationView",
+            "NavigationLink",
+            "fullScreenCover"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/RecentChatView.swift"
+        ],
+        "keywords": [
+          "NavigationView",
+          "NavigationLink",
+          "fullScreenCover",
+          "AsyncImage",
+          "PlainButtonStyle"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 6,
+          "files_touched": 1,
+          "estimated_minutes": 60
+        },
+        "requirement_ids": [
+          "r3",
+          "r9",
+          "r4"
+        ]
+      },
+      {
+        "id": "t15",
+        "capability_id": "chat_detail",
+        "action": "Implement ChatDetailViewModel fetch messages realtime, handleSend và count trigger auto-scroll",
+        "modifies": [],
+        "creates": [
+          "ChatDetailViewModel",
+          "chatMessages",
+          "chatText",
+          "count"
+        ],
+        "depends_on": [
+          "t7"
+        ],
+        "acceptance": [
+          "fetchMessage lắng nghe collection messages",
+          "handleSend setData tin nhắn + tăng count",
+          "chatUser được set từ view"
+        ],
+        "intent": "Màn hình chat cần quản lý realtime messages và gửi tin nhắn",
+        "outcome": {
+          "user_visible": "Tin nhắn hiện ra realtime khi có tin mới",
+          "technical": [
+            "Firestore addSnapshotListener",
+            "document().setData"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/ChatDetailView.swift"
+        ],
+        "keywords": [
+          "Firestore",
+          "addSnapshotListener",
+          "setData",
+          "@Published"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 5,
+          "files_touched": 1,
+          "estimated_minutes": 60
+        },
+        "requirement_ids": [
+          "r5"
+        ]
+      },
+      {
+        "id": "t16",
+        "capability_id": "chat_detail",
+        "action": "Implement ChatDetailView UI với message bubbles, chatBar input và ScrollViewReader auto-scroll",
+        "modifies": [],
+        "creates": [
+          "ChatDetailView",
+          "Message bubbles",
+          "chatBar",
+          "Auto-scroll"
+        ],
+        "depends_on": [
+          "t15"
+        ],
+        "acceptance": [
+          "Bubble khác nhau cho tin gửi và tin nhận",
+          "TextField nhập + nút gửi hoạt động",
+          "Scroll tự động xuống cuối khi count thay đổi"
+        ],
+        "intent": "User cần xem và nhắn tin realtime trong một cuộc chat",
+        "outcome": {
+          "user_visible": "User gửi tin nhắn, xem hội thoại dạng bubble, auto-scroll",
+          "technical": [
+            "ScrollViewReader",
+            "onReceive(vm.$count)",
+            "cornerRadius shape"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/ChatDetailView.swift"
+        ],
+        "keywords": [
+          "ScrollViewReader",
+          "scrollTo",
+          "onReceive",
+          "TextField",
+          "RoundedCorner"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 6,
+          "files_touched": 1,
+          "estimated_minutes": 75
+        },
+        "requirement_ids": [
+          "r5",
+          "r10"
+        ]
+      },
+      {
+        "id": "t17",
+        "capability_id": "new_chat",
+        "action": "Implement NewChatViewModel fetch toàn bộ users từ Firestore và giữ errorMessage",
+        "modifies": [],
+        "creates": [
+          "NewChatViewModel",
+          "users",
+          "errorMessage"
+        ],
+        "depends_on": [
+          "t5"
+        ],
+        "acceptance": [
+          "fetchAllUser lấy toàn bộ users từ collection users"
+        ],
+        "intent": "Bắt đầu chat mới cần danh sách user để chọn",
+        "outcome": {
+          "user_visible": "Màn hình new chat hiển thị user khác",
+          "technical": [
+            "Firestore getDocuments"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/NewChatView.swift"
+        ],
+        "keywords": [
+          "Firestore",
+          "getDocuments",
+          "@ObservedObject",
+          "@Published"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 3,
+          "files_touched": 1,
+          "estimated_minutes": 30
+        },
+        "requirement_ids": [
+          "r4"
+        ]
+      },
+      {
+        "id": "t18",
+        "capability_id": "new_chat",
+        "action": "Implement NewChatView UI với danh sách user, AsyncImage avatar và callback didSelectNewUser",
+        "modifies": [],
+        "creates": [
+          "NewChatView",
+          "User row + avatar",
+          "didSelectNewUser callback"
+        ],
+        "depends_on": [
+          "t17"
+        ],
+        "acceptance": [
+          "Danh sách user hiển thị kèm avatar",
+          "Chọn user dismiss và callback để mở ChatDetailView"
+        ],
+        "intent": "User cần tìm và chọn người nhận trước khi chat",
+        "outcome": {
+          "user_visible": "User tìm được user và mở chat với họ",
+          "technical": [
+            "fullScreenCover parent",
+            "AsyncImage phase"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/NewChatView.swift"
+        ],
+        "keywords": [
+          "AsyncImage",
+          "fullScreenCover",
+          "PlainButtonStyle",
+          "ToolbarItemGroup"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 4,
+          "files_touched": 1,
+          "estimated_minutes": 45
+        },
+        "requirement_ids": [
+          "r4",
+          "r10"
+        ]
+      },
+      {
+        "id": "t19",
+        "capability_id": "profile",
+        "action": "Implement ProfileView, EditProfileView và ImagePicker để xem/sửa avatar, đổi password và đăng xuất",
+        "modifies": [],
+        "creates": [
+          "ProfileView",
+          "EditProfileView",
+          "ImagePicker"
+        ],
+        "depends_on": [
+          "t8",
+          "t5"
+        ],
+        "acceptance": [
+          "Profile hiển thị avatar/username/email",
+          "Edit profile cho đổi avatar và password",
+          "Log out gọi handleSignOut và quay về WelcomeView"
+        ],
+        "intent": "User cần quản lý thông tin cá nhân và đăng xuất",
+        "outcome": {
+          "user_visible": "User xem/sửa profile, đổi avatar, đổi mật khẩu, đăng xuất",
+          "technical": [
+            "UIImagePickerController representable",
+            "FirebaseStorage putData"
+          ]
+        },
+        "source_evidence": [
+          "Talky/View/ProfileView.swift",
+          "Talky/View/EditProfileView.swift",
+          "Talky/Util/Helper/ImagePicker.swift"
+        ],
+        "keywords": [
+          "AsyncImage",
+          "UIImagePickerController",
+          "UIViewControllerRepresentable",
+          "NavigationLink",
+          "FirebaseStorage"
+        ],
+        "concurrency": [
+          "Task"
+        ],
+        "effort": {
+          "concepts_count": 7,
+          "files_touched": 3,
+          "estimated_minutes": 100
+        },
+        "requirement_ids": [
+          "r6"
+        ]
+      },
+      {
+        "id": "t20",
+        "capability_id": "push",
+        "action": "Implement NotificationManager với request quyền notification và getAuthStatus",
+        "modifies": [],
+        "creates": [
+          "NotificationManager",
+          "hasPermission"
+        ],
+        "depends_on": [
+          "t2"
+        ],
+        "acceptance": [
+          "request() hỏi quyền notification",
+          "getAuthStatus cập nhật hasPermission"
+        ],
+        "intent": "Push notification cần quyền từ user trước",
+        "outcome": {
+          "user_visible": "App có thể xin quyền thông báo",
+          "technical": [
+            "UNUserNotificationCenter"
+          ]
+        },
+        "source_evidence": [
+          "Talky/Util/Helper/NotificationManager.swift"
+        ],
+        "keywords": [
+          "UNUserNotificationCenter",
+          "requestAuthorization",
+          "@MainActor",
+          "ObservableObject"
+        ],
+        "concurrency": [
+          "Task",
+          "async/await"
+        ],
+        "effort": {
+          "concepts_count": 4,
+          "files_touched": 1,
+          "estimated_minutes": 30
+        },
+        "requirement_ids": [
+          "r7"
+        ]
+      },
+      {
+        "id": "t21",
+        "capability_id": "push",
+        "action": "Implement PushNotificationManager với saveFCM/getFCM và sendPushNotification, wire vào AppDelegate và luồng gửi tin nhắn",
+        "modifies": [],
+        "creates": [
+          "PushNotificationManager",
+          "saveFCM/getFCM",
+          "sendPushNotification"
+        ],
+        "depends_on": [
+          "t20",
+          "t15"
+        ],
+        "acceptance": [
+          "FCM token được lưu khi MessagingDelegate nhận token",
+          "sendPushNotification gửi POST tới FCM endpoint",
+          "Khi gửi tin nhắn, gọi sendPushNotification cho receiver"
+        ],
+        "intent": "Cần gửi thông báo cho user khi có tin nhắn mới từ người khác",
+        "outcome": {
+          "user_visible": "User nhận push khi có tin nhắn mới",
+          "technical": [
+            "URLSession dataTask POST FCM",
+            "APNs token infrastructure"
+          ]
+        },
+        "source_evidence": [
+          "Talky/Util/Helper/PushNotificationManager.swift",
+          "Talky/TalkyApp.swift"
+        ],
+        "keywords": [
+          "URLSession",
+          "URLRequest",
+          "JSONSerialization",
+          "Messaging.messaging().apnsToken",
+          "UserDefaults"
+        ],
+        "concurrency": [
+          "URLSession.dataTask"
+        ],
+        "effort": {
+          "concepts_count": 6,
+          "files_touched": 2,
+          "estimated_minutes": 90
+        },
+        "requirement_ids": [
+          "r7"
+        ]
+      },
+      {
+        "id": "t22",
+        "capability_id": "ui_state",
+        "action": "Implement trạng thái loading/empty/error nhất quán trên các màn hình list và AsyncImage placeholder",
+        "modifies": [
+          "Talky/View/RecentChatView.swift",
+          "Talky/View/ChatDetailView.swift",
+          "Talky/View/NewChatView.swift"
+        ],
+        "creates": [
+          "ViewState hiển thị nhất quán",
+          "AsyncImage empty/failure placeholders"
+        ],
+        "depends_on": [
+          "t3",
+          "t14",
+          "t16",
+          "t18"
+        ],
+        "acceptance": [
+          "Mỗi list view xử lý loading, empty, error",
+          "AsyncImage có empty/failure placeholder"
+        ],
+        "intent": "Các màn hình phải không bị trắng/treo khi chưa có data hoặc lỗi",
+        "outcome": {
+          "user_visible": "Khi không có chat thấy empty state, khi lỗi thấy alert",
+          "technical": [
+            "ViewState enum + onChange"
+          ]
+        },
+        "source_evidence": [
+          "Talky/Util/Enum/ViewState.swift",
+          "Talky/View/RecentChatView.swift",
+          "Talky/View/NewChatView.swift"
+        ],
+        "keywords": [
+          "ViewState",
+          "alert(isPresented:)",
+          "AsyncImage phase",
+          "onChange"
         ],
         "concurrency": [],
         "effort": {
@@ -2470,804 +3013,177 @@
           "estimated_minutes": 60
         },
         "requirement_ids": [
-          "REQ-RECENT"
-        ]
-      },
-      {
-        "id": "T-RECENT-VIEW",
-        "capability_id": "F-RECENT",
-        "action": "Implement RecentChatView with header, recent message list, profile navigation, new chat button and logged-out cover",
-        "modifies": [],
-        "creates": [
-          "RecentChatView",
-          "Messages list UI",
-          "Profile navigation",
-          "New Chat fullScreenCover"
-        ],
-        "depends_on": [
-          "T-RECENT-VM",
-          "T-AUTH-VM",
-          "T-WELCOME",
-          "T-PROFILE",
-          "T-NEWCHAT-VIEW",
-          "T-CHAT-VIEW"
-        ],
-        "acceptance": [
-          "User sees recent messages with avatar, username, text and time ago",
-          "Tapping profile icon opens ProfileView",
-          "Tapping New Chat opens NewChatView",
-          "Logged-out user is shown WelcomeView via fullScreenCover"
-        ],
-        "intent": "Người dùng cần cái nhìn tổng quan các cuộc trò chuyện và lối vào chat/profile.",
-        "outcome": {
-          "user_visible": "Người dùng thấy danh sách hội thoại, số incoming messages, và nút New Chat.",
-          "technical": [
-            "NavigationView",
-            "AsyncImage avatar",
-            "fullScreenCover for NewChat/Welcome"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/RecentChatView.swift"
-        ],
-        "keywords": [
-          "NavigationLink",
-          "AsyncImage",
-          "fullScreenCover",
-          "@ObservedObject",
-          "@EnvironmentObject"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 5,
-          "files_touched": 1,
-          "estimated_minutes": 75
-        },
-        "requirement_ids": [
-          "REQ-RECENT"
-        ]
-      },
-      {
-        "id": "T-NEWCHAT-VM",
-        "capability_id": "F-NEWCHAT",
-        "action": "Implement NewChatViewModel to fetch all Firestore users and expose errorMessage",
-        "modifies": [],
-        "creates": [
-          "NewChatViewModel",
-          "users",
-          "errorMessage"
-        ],
-        "depends_on": [
-          "T-FIREBASE-MANAGER",
-          "T-MODELS"
-        ],
-        "acceptance": [
-          "users array is populated from Firestore users collection",
-          "errorMessage is set when fetch fails"
-        ],
-        "intent": "User muốn bắt đầu chat mới cần danh sách user khác trong hệ thống.",
-        "outcome": {
-          "user_visible": "Người dùng có thể duyệt danh sách user.",
-          "technical": [
-            "Firestore getDocuments",
-            "ObservableObject"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/NewChatView.swift"
-        ],
-        "keywords": [
-          "@ObservedObject",
-          "getDocuments",
-          "Firestore"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 2,
-          "files_touched": 1,
-          "estimated_minutes": 30
-        },
-        "requirement_ids": [
-          "REQ-NEWCHAT"
-        ]
-      },
-      {
-        "id": "T-NEWCHAT-VIEW",
-        "capability_id": "F-NEWCHAT",
-        "action": "Implement NewChatView with user directory list, cancel button and didSelectNewUser callback",
-        "modifies": [],
-        "creates": [
-          "NewChatView",
-          "User row UI",
-          "didSelectNewUser callback"
-        ],
-        "depends_on": [
-          "T-NEWCHAT-VM"
-        ],
-        "acceptance": [
-          "User sees all users with avatar and email",
-          "Tapping a user dismisses screen and starts chat",
-          "Cancel button dismisses"
-        ],
-        "intent": "Người dùng cần chọn người nhận khi bắt đầu cuộc trò chuyện mới.",
-        "outcome": {
-          "user_visible": "Người dùng chọn user từ danh sách và được chuyển vào màn hình chat.",
-          "technical": [
-            "ScrollView + ForEach",
-            "PlainButtonStyle",
-            "NavigationView toolbar"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/NewChatView.swift"
-        ],
-        "keywords": [
-          "@ObservedObject",
-          "AsyncImage",
-          "NavigationView",
-          "toolbar"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 1,
-          "estimated_minutes": 45
-        },
-        "requirement_ids": [
-          "REQ-NEWCHAT"
-        ]
-      },
-      {
-        "id": "T-CHAT-VM",
-        "capability_id": "F-CHAT",
-        "action": "Implement ChatDetailViewModel to listen for 1-1 messages, send text, and expose auto-scroll count",
-        "modifies": [],
-        "creates": [
-          "ChatDetailViewModel",
-          "chatText",
-          "chatMessages",
-          "chatUser",
-          "count"
-        ],
-        "depends_on": [
-          "T-FIREBASE-MANAGER",
-          "T-AUTH-VM",
-          "T-MODELS"
-        ],
-        "acceptance": [
-          "Messages between current user and chatUser are observed realtime",
-          "handleSend() persists a new message to Firestore",
-          "count increments to trigger auto-scroll"
-        ],
-        "intent": "Trái tim của app chat: gửi/nhận tin nhắn realtime giữa hai người.",
-        "outcome": {
-          "user_visible": "Tin nhắn gửi đi và nhận về hiển thị ngay lập tức.",
-          "technical": [
-            "Firestore messages collection",
-            "Snapshot listener filtered by chat partner",
-            "@Published count"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/ChatDetailView.swift",
-          "Talky/Model/ChatMessage.swift"
-        ],
-        "keywords": [
-          "@StateObject",
-          "@Published",
-          "addSnapshotListener",
-          "document().setData"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 4,
-          "files_touched": 2,
-          "estimated_minutes": 75
-        },
-        "requirement_ids": [
-          "REQ-CHAT"
-        ]
-      },
-      {
-        "id": "T-CHAT-VIEW",
-        "capability_id": "F-CHAT",
-        "action": "Implement ChatDetailView UI with message bubbles, ScrollViewReader auto-scroll, and chat input bar",
-        "modifies": [],
-        "creates": [
-          "ChatDetailView",
-          "Bubble UI",
-          "chatBar",
-          "ScrollViewReader auto-scroll"
-        ],
-        "depends_on": [
-          "T-CHAT-VM"
-        ],
-        "acceptance": [
-          "User sees chat bubbles aligned by sender",
-          "Typing in TextField and tapping send calls vm.handleSend()",
-          "ScrollView auto-scrolls to latest message",
-          "Camera/Mic buttons appear when input is empty"
-        ],
-        "intent": "Người dùng cần giao diện trò chuyện trực quan để đọc và gửi tin nhắn.",
-        "outcome": {
-          "user_visible": "Người dùng thấy tin nhắn dạng bubble, ô nhập liệu và nút gửi.",
-          "technical": [
-            "ScrollViewReader scrollTo",
-            "TextField(axis: .vertical)",
-            "Custom RoundedCorner shape"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/ChatDetailView.swift"
-        ],
-        "keywords": [
-          "ScrollViewReader",
-          "TextField(axis: .vertical)",
-          "@StateObject",
-          "cornerRadius"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 4,
-          "files_touched": 1,
-          "estimated_minutes": 75
-        },
-        "requirement_ids": [
-          "REQ-CHAT"
-        ]
-      },
-      {
-        "id": "T-IMAGE-PICKER",
-        "capability_id": "F-PROFILE",
-        "action": "Implement ImagePicker as a UIViewControllerRepresentable wrapping UIImagePickerController",
-        "modifies": [],
-        "creates": [
-          "ImagePicker",
-          "Coordinator",
-          "Image selection binding"
-        ],
-        "depends_on": [
-          "T-SCAFFOLD"
-        ],
-        "acceptance": [
-          "SwiftUI view can present photo library",
-          "Selected UIImage is written to binding",
-          "Cancel dismisses picker"
-        ],
-        "intent": "Chức năng đổi avatar cần chọn ảnh từ thư viện ảnh.",
-        "outcome": {
-          "user_visible": "Người dùng có thể chọn ảnh từ thư viện.",
-          "technical": [
-            "UIViewControllerRepresentable",
-            "UIImagePickerControllerDelegate"
-          ]
-        },
-        "source_evidence": [
-          "Talky/Util/Helper/ImagePicker.swift"
-        ],
-        "keywords": [
-          "UIViewControllerRepresentable",
-          "UIImagePickerController",
-          "Binding"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 1,
-          "estimated_minutes": 30
-        },
-        "requirement_ids": [
-          "REQ-EDITPROFILE"
-        ]
-      },
-      {
-        "id": "T-PROFILE",
-        "capability_id": "F-PROFILE",
-        "action": "Implement ProfileView with user info, avatar, edit profile navigation and logout button",
-        "modifies": [],
-        "creates": [
-          "ProfileView",
-          "Avatar display",
-          "Edit Profile navigation",
-          "Logout handler"
-        ],
-        "depends_on": [
-          "T-AUTH-VM",
-          "T-EDIT-PROFILE"
-        ],
-        "acceptance": [
-          "User sees avatar, username and email",
-          "Tapping Edit Profile navigates to EditProfileView",
-          "Tapping Log Out calls authViewModel.handleSignOut() and dismisses"
-        ],
-        "intent": "Người dùng cần xem thông tin cá nhân và đăng xuất/điều hướng chỉnh sửa hồ sơ.",
-        "outcome": {
-          "user_visible": "Người dùng xem được hồ sơ và đăng xuất.",
-          "technical": [
-            "AsyncImage with phase handling",
-            "NavigationLink isActive"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/ProfileView.swift"
-        ],
-        "keywords": [
-          "@EnvironmentObject",
-          "AsyncImage",
-          "NavigationLink"
-        ],
-        "concurrency": [
-          "async/await",
-          "Task"
-        ],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 1,
-          "estimated_minutes": 45
-        },
-        "requirement_ids": [
-          "REQ-PROFILE",
-          "REQ-LOGOUT"
-        ]
-      },
-      {
-        "id": "T-EDIT-PROFILE",
-        "capability_id": "F-PROFILE",
-        "action": "Implement EditProfileView with avatar picker, email display, password fields and save action",
-        "modifies": [],
-        "creates": [
-          "EditProfileView",
-          "Avatar upload",
-          "Change password",
-          "Save button"
-        ],
-        "depends_on": [
-          "T-AUTH-VM",
-          "T-IMAGE-PICKER"
-        ],
-        "acceptance": [
-          "User can pick a new avatar image",
-          "User can change password with current password",
-          "Save button shows loading while editProfile runs",
-          "Screen dismisses after successful save"
-        ],
-        "intent": "Người dùng muốn cập nhật ảnh đại diện và mật khẩu.",
-        "outcome": {
-          "user_visible": "Người dùng đổi được ảnh đại diện và mật khẩu.",
-          "technical": [
-            "fullScreenCover for ImagePicker",
-            "Firebase Storage upload",
-            "updatePassword"
-          ]
-        },
-        "source_evidence": [
-          "Talky/View/EditProfileView.swift",
-          "Talky/Util/Helper/ImagePicker.swift"
-        ],
-        "keywords": [
-          "AsyncImage",
-          "fullScreenCover",
-          "Storage",
-          "updatePassword",
-          "@EnvironmentObject"
-        ],
-        "concurrency": [
-          "async/await",
-          "Task"
-        ],
-        "effort": {
-          "concepts_count": 5,
-          "files_touched": 2,
-          "estimated_minutes": 75
-        },
-        "requirement_ids": [
-          "REQ-PROFILE",
-          "REQ-EDITPROFILE"
-        ]
-      },
-      {
-        "id": "T-NOTIFICATION-MANAGER",
-        "capability_id": "F-PUSH",
-        "action": "Implement NotificationManager to request notification permission and expose hasPermission",
-        "modifies": [],
-        "creates": [
-          "NotificationManager",
-          "hasPermission",
-          "request()",
-          "getAuthStatus()"
-        ],
-        "depends_on": [
-          "T-SCAFFOLD"
-        ],
-        "acceptance": [
-          "App requests notification permission on launch",
-          "hasPermission reflects authorized status"
-        ],
-        "intent": "Để nhận push notification, app cần xin quyền thông báo từ người dùng.",
-        "outcome": {
-          "user_visible": "Hệ thống hiện hộp thoại xin phép thông báo.",
-          "technical": [
-            "UNUserNotificationCenter requestAuthorization",
-            "@MainActor ObservableObject"
-          ]
-        },
-        "source_evidence": [
-          "Talky/Util/Helper/NotificationManager.swift",
-          "Talky/TalkyApp.swift"
-        ],
-        "keywords": [
-          "UNUserNotificationCenter.current().requestAuthorization",
-          "@MainActor",
-          "@Published",
-          "ObservableObject"
-        ],
-        "concurrency": [
-          "async/await",
-          "Task"
-        ],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 2,
-          "estimated_minutes": 30
-        },
-        "requirement_ids": [
-          "REQ-PUSH"
-        ]
-      },
-      {
-        "id": "T-PUSH-MANAGER",
-        "capability_id": "F-PUSH",
-        "action": "Implement PushNotificationManager to save FCM token to UserDefaults and send notifications via FCM HTTP API",
-        "modifies": [],
-        "creates": [
-          "PushNotificationManager",
-          "saveFCM",
-          "getFCM",
-          "sendPushNotification"
-        ],
-        "depends_on": [
-          "T-SCAFFOLD"
-        ],
-        "acceptance": [
-          "FCM token is saved to UserDefaults",
-          "sendPushNotification posts JSON payload to FCM endpoint",
-          "Network error is printed, not crash"
-        ],
-        "intent": "Cần có token và cơ chế gọi FCM để gửi thông báo đẩy khi có tin nhắn mới.",
-        "outcome": {
-          "user_visible": "Người dùng nhận được push notification khi có tin nhắn mới.",
-          "technical": [
-            "URLSession.dataTask",
-            "UserDefaults storage",
-            "JSONSerialization"
-          ]
-        },
-        "source_evidence": [
-          "Talky/Util/Helper/PushNotificationManager.swift"
-        ],
-        "keywords": [
-          "URLSession",
-          "UserDefaults.standard.set",
-          "JSONSerialization",
-          "FCM"
-        ],
-        "concurrency": [
-          "URLSession.dataTask"
-        ],
-        "effort": {
-          "concepts_count": 3,
-          "files_touched": 1,
-          "estimated_minutes": 45
-        },
-        "requirement_ids": [
-          "REQ-PUSH"
-        ]
-      },
-      {
-        "id": "T-PUSH-SETUP",
-        "capability_id": "F-PUSH",
-        "action": "Integrate MessagingDelegate and UNUserNotificationCenterDelegate into AppDelegate to forward APNs token to FCM",
-        "modifies": [
-          "Talky/TalkyApp.swift"
-        ],
-        "creates": [
-          "MessagingDelegate",
-          "UNUserNotificationCenterDelegate",
-          "APNs token forwarding"
-        ],
-        "depends_on": [
-          "T-NOTIFICATION-MANAGER",
-          "T-PUSH-MANAGER"
-        ],
-        "acceptance": [
-          "App registers for remote notifications",
-          "FCM token is saved through PushNotificationManager.saveFCM",
-          "UNUserNotificationCenter delegate is assigned"
-        ],
-        "intent": "AppDelegate phải nhận FCM token từ APNs để push notification hoạt động.",
-        "outcome": {
-          "user_visible": "Không trực tiếp, nhưng push notification có thể gửi đến đúng thiết bị.",
-          "technical": [
-            "Messaging.messaging().delegate = self",
-            "didRegisterForRemoteNotificationsWithDeviceToken",
-            "Messaging.messaging().apnsToken = deviceToken"
-          ]
-        },
-        "source_evidence": [
-          "Talky/TalkyApp.swift",
-          "Talky/Util/Helper/PushNotificationManager.swift"
-        ],
-        "keywords": [
-          "Messaging.messaging().delegate",
-          "apnsToken",
-          "UNUserNotificationCenter.current().delegate"
-        ],
-        "concurrency": [],
-        "effort": {
-          "concepts_count": 4,
-          "files_touched": 1,
-          "estimated_minutes": 30
-        },
-        "requirement_ids": [
-          "REQ-PUSH"
+          "r8",
+          "r10"
         ]
       }
     ],
     "task_dependencies": [
       {
-        "from": "T-SCAFFOLD",
-        "to": "T-FB-BOOTSTRAP",
-        "type": "ENABLES",
-        "reason": "Firebase SDK must be installed before FirebaseApp.configure()"
+        "from": "t2",
+        "to": "t1",
+        "type": "BLOCKED_BY",
+        "reason": "Cần project scaffold trước khi code entry point"
       },
       {
-        "from": "T-FB-BOOTSTRAP",
-        "to": "T-FIREBASE-MANAGER",
-        "type": "ENABLES",
-        "reason": "Firebase must be configured before singleton services can be created"
+        "from": "t4",
+        "to": "t1",
+        "type": "BLOCKED_BY",
+        "reason": "Firebase SDK phải được cài trước khi dùng Auth/Storage/Firestore"
       },
       {
-        "from": "T-FIREBASE-MANAGER",
-        "to": "T-MODELS",
+        "from": "t5",
+        "to": "t4",
         "type": "DEPENDS_ON",
-        "reason": "Models reference FirebaseManager.shared in ChatUser.fromRecentMessage"
+        "reason": "ChatUser dùng FirebaseManager.shared khi encode/decode"
       },
       {
-        "from": "T-FIREBASE-MANAGER",
-        "to": "T-AUTH-VM",
+        "from": "t6",
+        "to": "t4",
         "type": "DEPENDS_ON",
-        "reason": "AuthViewModel uses FirebaseManager.shared to access Auth/Firestore"
+        "reason": "RecentMessage là model Firestore"
       },
       {
-        "from": "T-MODELS",
-        "to": "T-AUTH-VM",
+        "from": "t7",
+        "to": "t4",
         "type": "DEPENDS_ON",
-        "reason": "AuthViewModel stores ChatUser data"
+        "reason": "ChatMessage là model Firestore"
       },
       {
-        "from": "T-AUTH-VM",
-        "to": "T-LOGIN",
+        "from": "t8",
+        "to": "t5",
         "type": "DEPENDS_ON",
-        "reason": "Login screen needs authViewModel.login()"
+        "reason": "AuthViewModel cần ChatUser để tạo/lưu user document"
       },
       {
-        "from": "T-AUTH-VM",
-        "to": "T-REGISTER",
+        "from": "t9",
+        "to": "t8",
         "type": "DEPENDS_ON",
-        "reason": "Register screen needs authViewModel.register()"
+        "reason": "WelcomeView được dùng khi loggedOut, cần AuthViewModel state"
       },
       {
-        "from": "T-LOGIN",
-        "to": "T-WELCOME",
+        "from": "t11",
+        "to": "t10",
         "type": "DEPENDS_ON",
-        "reason": "WelcomeView navigates to LoginxView"
+        "reason": "Login cần SecureTextField component"
       },
       {
-        "from": "T-REGISTER",
-        "to": "T-WELCOME",
+        "from": "t12",
+        "to": "t10",
         "type": "DEPENDS_ON",
-        "reason": "WelcomeView navigates to RegisterxView"
+        "reason": "Register cần SecureTextField component"
       },
       {
-        "from": "T-AUTH-VM",
-        "to": "T-RECENT-VM",
+        "from": "t13",
+        "to": "t6",
         "type": "DEPENDS_ON",
-        "reason": "RecentChatViewModel needs current user to fetch recent messages"
+        "reason": "RecentChatViewModel dùng RecentMessage model"
       },
       {
-        "from": "T-MODELS",
-        "to": "T-RECENT-VM",
+        "from": "t14",
+        "to": "t13",
+        "type": "BLOCKED_BY",
+        "reason": "Cần dữ liệu recent messages trước khi render UI"
+      },
+      {
+        "from": "t16",
+        "to": "t15",
+        "type": "BLOCKED_BY",
+        "reason": "ChatDetailView cần ViewModel fetch/gửi messages"
+      },
+      {
+        "from": "t18",
+        "to": "t17",
+        "type": "BLOCKED_BY",
+        "reason": "NewChatView cần danh sách users từ ViewModel"
+      },
+      {
+        "from": "t19",
+        "to": "t8",
         "type": "DEPENDS_ON",
-        "reason": "RecentChatViewModel uses RecentMessage and ChatUser"
+        "reason": "Profile dùng AuthViewModel để edit và logout"
       },
       {
-        "from": "T-RECENT-VM",
-        "to": "T-RECENT-VIEW",
+        "from": "t21",
+        "to": "t20",
         "type": "DEPENDS_ON",
-        "reason": "RecentChatView uses RecentChatViewModel"
+        "reason": "Push send cần quyền notification request trước"
       },
       {
-        "from": "T-AUTH-VM",
-        "to": "T-RECENT-VIEW",
+        "from": "t22",
+        "to": "t14",
         "type": "DEPENDS_ON",
-        "reason": "RecentChatView needs @EnvironmentObject authViewModel"
+        "reason": "Thêm empty/error state lên RecentChatView đã có"
       },
       {
-        "from": "T-WELCOME",
-        "to": "T-RECENT-VIEW",
+        "from": "t22",
+        "to": "t16",
         "type": "DEPENDS_ON",
-        "reason": "RecentChatView presents WelcomeView when logged out"
+        "reason": "Thêm auto-scroll + empty state vào ChatDetailView"
       },
       {
-        "from": "T-PROFILE",
-        "to": "T-RECENT-VIEW",
+        "from": "t22",
+        "to": "t18",
         "type": "DEPENDS_ON",
-        "reason": "RecentChatView navigates to ProfileView"
-      },
-      {
-        "from": "T-NEWCHAT-VIEW",
-        "to": "T-RECENT-VIEW",
-        "type": "DEPENDS_ON",
-        "reason": "RecentChatView presents NewChatView via fullScreenCover"
-      },
-      {
-        "from": "T-CHAT-VIEW",
-        "to": "T-RECENT-VIEW",
-        "type": "DEPENDS_ON",
-        "reason": "RecentChatView navigates to ChatDetailView"
-      },
-      {
-        "from": "T-FIREBASE-MANAGER",
-        "to": "T-NEWCHAT-VM",
-        "type": "DEPENDS_ON",
-        "reason": "NewChatViewModel needs Firestore via FirebaseManager"
-      },
-      {
-        "from": "T-MODELS",
-        "to": "T-NEWCHAT-VM",
-        "type": "DEPENDS_ON",
-        "reason": "NewChatViewModel uses ChatUser model"
-      },
-      {
-        "from": "T-NEWCHAT-VM",
-        "to": "T-NEWCHAT-VIEW",
-        "type": "DEPENDS_ON",
-        "reason": "NewChatView uses NewChatViewModel"
-      },
-      {
-        "from": "T-FIREBASE-MANAGER",
-        "to": "T-CHAT-VM",
-        "type": "DEPENDS_ON",
-        "reason": "ChatDetailViewModel needs Firestore via FirebaseManager"
-      },
-      {
-        "from": "T-AUTH-VM",
-        "to": "T-CHAT-VM",
-        "type": "DEPENDS_ON",
-        "reason": "ChatDetailViewModel needs current user to filter messages"
-      },
-      {
-        "from": "T-MODELS",
-        "to": "T-CHAT-VM",
-        "type": "DEPENDS_ON",
-        "reason": "ChatDetailViewModel uses ChatMessage model"
-      },
-      {
-        "from": "T-CHAT-VM",
-        "to": "T-CHAT-VIEW",
-        "type": "DEPENDS_ON",
-        "reason": "ChatDetailView uses ChatDetailViewModel"
-      },
-      {
-        "from": "T-AUTH-VM",
-        "to": "T-PROFILE",
-        "type": "DEPENDS_ON",
-        "reason": "ProfileView uses authViewModel user and handleSignOut"
-      },
-      {
-        "from": "T-EDIT-PROFILE",
-        "to": "T-PROFILE",
-        "type": "DEPENDS_ON",
-        "reason": "ProfileView navigates to EditProfileView"
-      },
-      {
-        "from": "T-AUTH-VM",
-        "to": "T-EDIT-PROFILE",
-        "type": "DEPENDS_ON",
-        "reason": "EditProfileView uses authViewModel.editProfile and user"
-      },
-      {
-        "from": "T-IMAGE-PICKER",
-        "to": "T-EDIT-PROFILE",
-        "type": "DEPENDS_ON",
-        "reason": "EditProfileView presents ImagePicker for avatar"
-      },
-      {
-        "from": "T-SCAFFOLD",
-        "to": "T-NOTIFICATION-MANAGER",
-        "type": "ENABLES",
-        "reason": "NotificationManager can be added once project exists"
-      },
-      {
-        "from": "T-SCAFFOLD",
-        "to": "T-PUSH-MANAGER",
-        "type": "ENABLES",
-        "reason": "PushNotificationManager can be added once project exists"
-      },
-      {
-        "from": "T-NOTIFICATION-MANAGER",
-        "to": "T-PUSH-SETUP",
-        "type": "DEPENDS_ON",
-        "reason": "AppDelegate uses NotificationManager to request permission"
-      },
-      {
-        "from": "T-PUSH-MANAGER",
-        "to": "T-PUSH-SETUP",
-        "type": "DEPENDS_ON",
-        "reason": "AppDelegate uses PushNotificationManager.saveFCM"
+        "reason": "Thêm AsyncImage placeholder vào NewChatView"
       }
     ],
     "missing_gaps": [
       {
-        "feature_id": "F-PUSH",
-        "gap": "FCM server key hardcoded trong PushNotificationManager.swift và MainView demo; kẻ đọc source có thể lấy key, cần đưa ra backend/server.",
-        "suggested_lo": "security"
+        "feature_id": "push",
+        "gap": "FCM token chỉ được lưu vào UserDefaults qua PushNotificationManager.saveFCM, chưa thấy đồng bộ lên field fcm của ChatUser trong Firestore — receiver token không có nguồn thật để gửi push.",
+        "suggested_lo": "Firestore/Cloud Functions"
       },
       {
-        "feature_id": "F-CORE",
-        "gap": "MainView trong TalkyApp.swift là demo leftover với hardcoded device token, cần xoá trước production.",
-        "suggested_lo": "cleanup"
+        "feature_id": "push",
+        "gap": "Server key FCM bị hardcode trong client (PushNotificationManager.sendPushNotification), ai đọc source có thể lạm dụng — nên đưa lên server/proxy.",
+        "suggested_lo": "Security best practice"
       },
       {
-        "feature_id": "F-AUTH",
-        "gap": "Không có unit test cho AuthViewModel (validate input, error state, loading state).",
-        "suggested_lo": "testing"
+        "feature_id": "chat_detail",
+        "gap": "ChatDetailViewModel chỉ thấy setData vào collection messages; chưa thấy cập nhật recent_messages khi gửi tin mới, nên danh sách recent có thể trễ hoặc thiếu.",
+        "suggested_lo": "Firestore transaction/trigger"
       },
       {
-        "feature_id": "F-PROFILE",
-        "gap": "Force unwrap optional profileImageUrl trong ProfileView và EditProfileView dễ crash khi nil.",
-        "suggested_lo": "error_handling"
+        "feature_id": "ui_state",
+        "gap": "Một số nơi force unwrap profileImageUrl (EditProfileView, ProfileView, NewChatView) dễ crash nếu nil/ảnh lỗi.",
+        "suggested_lo": "Optional handling/guard"
       },
       {
-        "feature_id": "F-CHAT",
-        "gap": "Nút camera/mic trong ChatDetailView chỉ là placeholder, chưa gửi ảnh/audio.",
-        "suggested_lo": "feature_completion"
+        "feature_id": "recent_chat",
+        "gap": "RecentChatView gọi fetchAllUser + fetchRecentMessages mỗi lần onAppear, không tối ưu và có thể duplicate listener.",
+        "suggested_lo": "ViewModel lifecycle"
       },
       {
-        "feature_id": "F-RECENT",
-        "gap": "Không có empty state khi recentMessages rỗng; user thấy màn hình trống.",
-        "suggested_lo": "ux"
-      },
-      {
-        "feature_id": "F-NEWCHAT",
-        "gap": "NewChatView hiển thị cả chính user hiện tại trong danh sách; cần lọc bỏ.",
-        "suggested_lo": "feature_fix"
+        "feature_id": "profile",
+        "gap": "ImagePicker không xử lý permission denied hoặc lựa chọn sourceType (camera/photo library).",
+        "suggested_lo": "UIImagePickerController handling"
       }
     ],
     "tech_debt": [
       {
-        "location": "Talky/TalkyApp.swift",
-        "issue": "MainView demo code trùng logic push notification và chứa hardcoded token; tăng rủi ro bảo mật và khó maintain.",
-        "suggested_phase": "POLISH"
-      },
-      {
         "location": "Talky/View/ChatDetailView.swift",
-        "issue": "Body và messagesView duplicate gần hết UI chat bubble; file quá lớn, dễ sai lệch khi sửa.",
+        "issue": "Có hai implementation message list (body và messagesView bị unused), bubble layout lặp lại nhiều lần, file dài khó bảo trì.",
         "suggested_phase": "POLISH"
       },
       {
-        "location": "Talky/View/ProfileView.swift",
-        "issue": "Force unwrap authViewModel.user! và profileImageUrl!; optional handling không an toàn.",
+        "location": "Talky/TalkyApp.swift",
+        "issue": "MainView debug chứa hardcoded FCM token và button test còn sót, không nên vào production.",
         "suggested_phase": "POLISH"
       },
       {
         "location": "Talky/View/RecentChatView.swift",
-        "issue": "AsyncImage phase switch lặp lại ở RecentChatView, NewChatView, ProfileView; nên tách AvatarView component.",
+        "issue": "Dùng @State shouldNavigate + selectedChatUser để điều hướng thủ công, dễ lỗi; nên dùng NavigationStack value-based.",
         "suggested_phase": "POLISH"
       },
       {
-        "location": "Talky/View/EditProfileView.swift",
-        "issue": "Các SecureTextField dùng chung binding $showPassword nên bật/tắt hiện mật khẩu đồng loạt cả 3 field.",
+        "location": "Talky/Util/Helper/PushNotificationManager.swift",
+        "issue": "Server key FCM hardcode trong client — security debt và sẽ hết hạn.",
+        "suggested_phase": "POLISH"
+      },
+      {
+        "location": "Talky/Model/ChatUser.swift",
+        "issue": "Custom decoder/encoder thủ công phức tạp, có thể dựa vào Firestore.Decoder mặc định để đơn giản hơn.",
         "suggested_phase": "POLISH"
       }
     ]
@@ -3275,203 +3191,154 @@
   "validation": {
     "validations": [
       {
-        "id": "VAL-SCAFFOLD",
-        "target": "T-SCAFFOLD",
+        "id": "v1",
+        "target": "t1",
         "criteria": [
-          "Project builds and runs in iOS Simulator",
-          "Firebase SDK present and GoogleService-Info.plist linked"
+          "App build và chạy trên iOS Simulator",
+          "Firebase SDK được cấu hình không crash ở launch"
         ],
         "method": [
           "manual"
         ]
       },
       {
-        "id": "VAL-FB-BOOTSTRAP",
-        "target": "T-FB-BOOTSTRAP",
+        "id": "v2",
+        "target": "t11",
         "criteria": [
-          "App launches and FirebaseApp.configure() executes without crash"
+          "Nhập email/password đúng -> vào RecentChatView",
+          "Nhập sai -> alert hiện logMessage"
         ],
         "method": [
           "manual"
         ]
       },
       {
-        "id": "VAL-AUTH",
-        "target": "T-AUTH-VM",
+        "id": "v3",
+        "target": "t12",
         "criteria": [
-          "User can register with email/password and account is created",
-          "User can log in and out; auth state updates environment"
+          "Đăng ký tài khoản mới thành công và vào app",
+          "Mật khẩu không khớp -> alert lỗi"
         ],
         "method": [
-          "manual",
+          "manual"
+        ]
+      },
+      {
+        "id": "v4",
+        "target": "t13",
+        "criteria": [
+          "RecentChatView hiển thị đúng số recent messages",
+          "Avatar/username/timeAgo hiển thị"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "v5",
+        "target": "t16",
+        "criteria": [
+          "Gửi tin nhắn -> message hiện ra ngay",
+          "Receiver thấy tin realtime",
+          "Scroll tự động xuống cuối"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "v6",
+        "target": "t18",
+        "criteria": [
+          "NewChatView hiển thị toàn bộ users ngoài current user",
+          "Tap user -> mở ChatDetailView với user đó"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "v7",
+        "target": "t19",
+        "criteria": [
+          "Edit profile đổi được avatar (Storage upload)",
+          "Đổi password thành công",
+          "Log out thoát về WelcomeView"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "v8",
+        "target": "t21",
+        "criteria": [
+          "FCM token được lưu khi app nhận device token",
+          "Send message gọi push tới device nhận"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "v9",
+        "target": "t22",
+        "criteria": [
+          "Khi chưa có chat hiện empty state",
+          "Khi fetch lỗi hiện alert/error state",
+          "AsyncImage failure hiển thị placeholder"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "v10",
+        "target": "t5",
+        "criteria": [
+          "ChatUser decode/encode không crash với document Firestore",
+          "username đúng phần trước @ của email"
+        ],
+        "method": [
           "unit_test"
-        ]
-      },
-      {
-        "id": "VAL-LOGIN",
-        "target": "T-LOGIN",
-        "criteria": [
-          "Valid credentials sign in successfully",
-          "Invalid credentials show error alert"
-        ],
-        "method": [
-          "ui_test",
-          "manual"
-        ]
-      },
-      {
-        "id": "VAL-REGISTER",
-        "target": "T-REGISTER",
-        "criteria": [
-          "New account registration signs user in and creates Firestore document"
-        ],
-        "method": [
-          "manual"
-        ]
-      },
-      {
-        "id": "VAL-ONBOARD",
-        "target": "T-WELCOME",
-        "criteria": [
-          "User can navigate from welcome to login and register screens"
-        ],
-        "method": [
-          "ui_test",
-          "manual"
-        ]
-      },
-      {
-        "id": "VAL-RECENT",
-        "target": "T-RECENT-VIEW",
-        "criteria": [
-          "Recent conversations load and update live",
-          "Tapping a conversation opens ChatDetailView"
-        ],
-        "method": [
-          "manual",
-          "ui_test"
-        ]
-      },
-      {
-        "id": "VAL-NEWCHAT",
-        "target": "T-NEWCHAT-VIEW",
-        "criteria": [
-          "User directory displays all users",
-          "Selecting a user opens a new chat"
-        ],
-        "method": [
-          "manual",
-          "ui_test"
-        ]
-      },
-      {
-        "id": "VAL-CHAT",
-        "target": "T-CHAT-VIEW",
-        "criteria": [
-          "Messages send and appear in bubble",
-          "Incoming messages appear without refresh",
-          "Input clears after send"
-        ],
-        "method": [
-          "manual",
-          "ui_test"
-        ]
-      },
-      {
-        "id": "VAL-PROFILE",
-        "target": "T-PROFILE",
-        "criteria": [
-          "Profile shows current user info",
-          "Logout returns to Welcome"
-        ],
-        "method": [
-          "manual"
-        ]
-      },
-      {
-        "id": "VAL-EDITPROFILE",
-        "target": "T-EDIT-PROFILE",
-        "criteria": [
-          "Avatar update persists after relaunch",
-          "Password change works with current password"
-        ],
-        "method": [
-          "manual"
-        ]
-      },
-      {
-        "id": "VAL-PUSH",
-        "target": "T-PUSH-SETUP",
-        "criteria": [
-          "App requests notification permission",
-          "FCM token printed and saved to UserDefaults",
-          "Push notification appears on another device"
-        ],
-        "method": [
-          "manual"
         ]
       }
     ],
     "quality_requirements": [
       {
-        "id": "QR-FUNC-01",
+        "id": "q1",
         "type": "functional",
-        "requirement": "Người dùng có thể đăng ký, đăng nhập và đăng xuất tài khoản."
+        "requirement": "App phải hiển thị màn hình chào mừng khi chưa đăng nhập, màn hình chat chính khi đã đăng nhập, và quay lại welcome sau đăng xuất."
       },
       {
-        "id": "QR-FUNC-02",
-        "type": "functional",
-        "requirement": "Người dùng có thể xem danh sách cuộc trò chuyện gần đây và mở hội thoại."
-      },
-      {
-        "id": "QR-FUNC-03",
-        "type": "functional",
-        "requirement": "Người dùng có thể gửi/nhận tin nhắn văn bản realtime 1-1."
-      },
-      {
-        "id": "QR-FUNC-04",
-        "type": "functional",
-        "requirement": "Người dùng có thể chỉnh sửa hồ sơ gồm ảnh đại diện và mật khẩu."
-      },
-      {
-        "id": "QR-PERF-01",
+        "id": "q2",
         "type": "performance",
-        "requirement": "Danh sách recent messages cuộn mượt ngay cả khi có nhiều hội thoại; snapshot listener không gây lag UI."
+        "requirement": "RecentChatView nên tối ưu listener Firestore, tránh fetch toàn bộ users mỗi lần onAppear nếu không cần."
       },
       {
-        "id": "QR-ACC-01",
+        "id": "q3",
         "type": "accessibility",
-        "requirement": "Các nút bấm có accessibilityLabel; tương phản màu chữ/nền đạt WCAG AA."
+        "requirement": "TextField, SecureField, Button phải có accessibility label; bubble text cần tương phản màu đủ rõ trên nền."
       },
       {
-        "id": "QR-ACC-02",
-        "type": "accessibility",
-        "requirement": "Hỗ trợ localization cho chuỗi hiển thị chính (tiếng Anh và tiếng Việt) qua Localizable.strings."
-      },
-      {
-        "id": "QR-SEC-01",
+        "id": "q4",
         "type": "security",
-        "requirement": "FCM server key không được nhúng trong app; phải lưu ở backend hoặc môi trường an toàn."
+        "requirement": "FCM server key không được nhúng trong client; phải xử lý qua proxy/server hoặc service account phía backend."
       },
       {
-        "id": "QR-SEC-02",
-        "type": "security",
-        "requirement": "Mật khẩu chỉ xử lý qua Firebase Auth, không log plaintext."
-      },
-      {
-        "id": "QR-REL-01",
+        "id": "q5",
         "type": "reliability",
-        "requirement": "Lỗi network/firestore hiển thị thông báo rõ ràng và app không crash."
+        "requirement": "Firebase auth/firestore actions và push notification phải có error handling, không crash khi network lỗi hoặc permission bị từ chối."
       },
       {
-        "id": "QR-UX-01",
+        "id": "q6",
         "type": "ux",
-        "requirement": "Khi có tin nhắn mới, khung chat tự cuộn xuống tin nhắn cuối."
+        "requirement": "Auto-scroll tin nhắn mới mượt, keyboard không che input, empty state rõ ràng khi chưa có chat."
       },
       {
-        "id": "QR-MAIN-01",
+        "id": "q7",
         "type": "maintainability",
-        "requirement": "Tách component AvatarView dùng AsyncImage chung cho RecentChat/NewChat/Profile để giảm duplicate code."
+        "requirement": "Tách message bubble thành component dùng lại, loại bỏ code debug và duplicate ScrollView trong ChatDetailView."
       }
     ]
   },

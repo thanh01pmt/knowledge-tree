@@ -148,6 +148,51 @@ def llm_judge_edges(pg: dict, edges: list, master_path: Path) -> list:
         return edges
 
 
+def assign_stages_llm(tasks: list, stages: list) -> dict:
+    """LLM map task → giai đoạn (1 call, deterministic — lưu mapping vào graph).
+
+    Root-cause fix: task→stage mapping là ARTIFACT sinh 1 lần (như knowledge_mapping),
+    không chạy lại mỗi lần STEP 4 (trước đây non-deterministic → phải vá hard rule).
+    """
+    if not _LLM_AVAILABLE or not stages or not tasks:
+        return {}
+    system = (
+        "Bạn là chuyên gia sư phạm. Gán MỖI implementation task vào ĐÚNG giai đoạn "
+        "phát triển (development_stages) của app — theo LOGIC HỌC TẬP (task nào dạy "
+        "điều gì thuộc giai đoạn nào), không theo keyword bề mặt.\n"
+        "Quy tắc:\n"
+        "1. UI view/form (Welcome, Login, Register, RecentChatView, ChatDetailView) thuộc "
+        "giai đoạn UI/auth của nó — Login form thuộc giai đoạn auth, KHÔNG phải profile.\n"
+        "2. Model/ViewModel thuộc giai đoạn feature nó phục vụ (ChatMessage model → giai "
+        "đoạn chat; NewChatViewModel → giai đoạn bắt đầu chat).\n"
+        "3. FirebaseManager/AuthViewModel/entry point → giai đoạn Firebase setup.\n"
+        "4. ProfileView/EditProfile/ImagePicker/NotificationManager/Push → giai đoạn Profile "
+        "và push.\n"
+        "5. ViewState/loading/error/empty refactor → giai đoạn hoàn thiện.\n"
+        "6. KHÔNG bao giờ gán task feature CORE (NewChat, Profile, Push, SecureTextField "
+        "component) vào giai đoạn hoàn thiện/polish — chúng có giai đoạn riêng của mình.\n"
+        "7. Mỗi task PHẢI có đúng 1 giai đoạn — dùng stage name CHÍNH XÁC từ danh sách "
+        "bên dưới (copy nguyên văn, không thêm số thứ tự).\n"
+        "Trả JSON: {\"assignments\": {\"<task_id>\": \"<stage_name chính xác>\"}}"
+    )
+    stage_list = "\n".join(f"- {i+1}. {s.get('stage')}: need={s.get('need', [])}"
+                           for i, s in enumerate(stages))
+    task_list = "\n".join(f"- {t.get('id')}: {t.get('action', '')[:80]}"
+                          for t in tasks)
+    try:
+        client, _p, model = get_llm_client()
+        res = llm_chat_json(client=client, model=model, system=system,
+                            user=f"GIAI ĐOẠN:\n{stage_list}\n\nTASKS:\n{task_list}",
+                            temperature=0.0)  # deterministic
+        assign = res.get("assignments", {})
+        # Normalize: strip "1. " prefix nếu LLM vẫn thêm
+        import re as _re
+        return {tid: _re.sub(r"^\d+\.\s*", "", st) for tid, st in assign.items()}
+    except Exception as e:
+        print(f"[WARN] assign_stages_llm fail: {e}", file=sys.stderr)
+        return {}
+
+
 def llm_generate_cross_concepts(pg: dict, existing: list, master_path: Path) -> list:
     """LLM sinh cross-concept prerequisites còn thiếu (Gagné — master chỉ có 0/811).
 
@@ -483,6 +528,15 @@ def main():
                     if (e["concept_code"], e["requires"]) in judged_ids
                     or e.get("source") != "LLM_CROSS_CONCEPT"
                 ]
+
+    # Root-cause fix: task→stage mapping sinh 1 lần, LƯU vào graph (deterministic).
+    # STEP 4 đọc từ đây — KHÔNG gọi LLM lại mỗi lần chạy.
+    stages = pg.get("product", {}).get("development_stages", [])
+    tasks_all = pg.get("implementation", {}).get("tasks", [])
+    if stages and not args.no_judge:
+        curriculum["task_stage_mapping"] = assign_stages_llm(tasks_all, stages)
+    else:
+        curriculum["task_stage_mapping"] = {}
 
     pg["curriculum"] = curriculum
 

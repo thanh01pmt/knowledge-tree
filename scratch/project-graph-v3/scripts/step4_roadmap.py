@@ -171,6 +171,30 @@ def normalize_capability_id(task_cap_id: str, capabilities: List[Dict]) -> str:
     return best if best_score > 0 else ""
 
 
+def task_phase_from_stages(task: Dict, stages: list) -> str:
+    """M4-narrative: phase task từ development_stages (LLM narrative — đúng logic
+    học tập: UI trước, backend sau) thay vì completion_level công thức.
+
+    Map bằng keyword overlap giữa task.action và stage.need/product_state.
+    Task không khớp stage nào → '' (dùng fallback completion_level).
+    """
+    if not stages:
+        return ""
+    action = (task.get("action", "") + " " + task.get("intent", "")).lower()
+    # Token hữu ích từ action (bỏ từ chung)
+    STOP = {"implement", "với", "và", "của", "trong", "cho", "theo", "để",
+            "các", "một", "không", "có", "được", "sau", "khi", "từ"}
+    toks = {t for t in action.replace("-", " ").replace("/", " ").split() if len(t) > 2 and t not in STOP}
+
+    best_stage, best_score = "", 0
+    for i, s in enumerate(stages):
+        text = " ".join(s.get("need", []) + [s.get("product_state", "")]).lower()
+        score = sum(1 for t in toks if t in text)
+        if score > best_score:
+            best_stage, best_score = s.get("stage", f"stage-{i+1}"), score
+    return best_stage if best_score >= 2 else ""
+
+
 def task_phase_from_requirements(task: Dict, requirements: List[Dict]) -> str:
     """M3 (cross-feature): phase từ completion_level của requirement mà task thực hiện.
     Ưu tiên: mọi requirement của task cùng completion_level → dùng level đó.
@@ -301,6 +325,11 @@ def build_roadmap_structure(pg: Dict) -> Dict:
 
     ordered = topo_sort_tasks(tasks, deps, task_journey_rank=task_journey_rank)
 
+    # M4-narrative: task→stage mapping ĐÃ LƯU từ STEP 3.5 (deterministic — không
+    # gọi LLM lại). Stage idx → phase: 0→FOUNDATION, 1→MVP, 2-3→EXTEND, 4+→POLISH.
+    stages = pg.get("product", {}).get("development_stages", [])
+    stage_assignments = pg.get("curriculum", {}).get("task_stage_mapping", {})
+
     phases: Dict[str, List] = defaultdict(list)
     for i, t in enumerate(ordered):
         cap_id = normalize_capability_id(t.get("capability_id", ""), caps)
@@ -308,16 +337,31 @@ def build_roadmap_structure(pg: Dict) -> Dict:
         priority = feat_priority.get(feat_id, "core")
         action_lower = (t.get("action", "") or "").lower()
 
-        # M3 (cross-feature): ưu tiên completion_level từ requirement,
-        # rồi FOUNDATION signal (scaffold), rồi feature.priority (fallback)
-        completion = task_phase_from_requirements(t, requirements)
-        if completion:
-            phase = {"base": "FOUNDATION", "mvp": "MVP",
-                     "extend": "EXTEND", "polish": "POLISH"}.get(completion, "MVP")
-        elif any(sig in action_lower for sig in FOUNDATION_SIGNALS):
-            phase = "FOUNDATION"
+        stage_phase = stage_assignments.get(t.get("id", ""))
+        if stage_phase:
+            # LLM có thể trả "1. Giai đoạn 1 — ..." — strip số prefix
+            import re as _re
+            norm_phase = _re.sub(r"^\d+\.\s*", "", stage_phase)
+            stage_idx = next((i for i, s in enumerate(stages)
+                              if s.get("stage") == norm_phase), -1)
+            if stage_idx == 0:
+                phase = "FOUNDATION"
+            elif stage_idx == 1:
+                phase = "MVP"
+            elif stage_idx in (2, 3):
+                phase = "EXTEND"
+            else:
+                phase = "POLISH"
         else:
-            phase = PRIORITY_PHASE.get(priority, "MVP")
+            # Fallback: completion_level → FOUNDATION signal → priority
+            completion = task_phase_from_requirements(t, requirements)
+            if completion:
+                phase = {"base": "FOUNDATION", "mvp": "MVP",
+                         "extend": "EXTEND", "polish": "POLISH"}.get(completion, "MVP")
+            elif any(sig in action_lower for sig in FOUNDATION_SIGNALS):
+                phase = "FOUNDATION"
+            else:
+                phase = PRIORITY_PHASE.get(priority, "MVP")
 
         concepts = task_concepts(t, mappings)
         phases[phase].append({
@@ -570,6 +614,7 @@ def main():
     roadmap = {
         "project": pg.get("project", {}),
         "curriculum": pg.get("curriculum", {}),
+        "development_stages": pg.get("product", {}).get("development_stages", []),
         "phases": structure["phases"],
         "total_tasks": sum(len(p["milestones"]) for p in structure["phases"]),
     }

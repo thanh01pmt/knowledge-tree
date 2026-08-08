@@ -149,6 +149,37 @@ export default function RoadmapViewer() {
       <main className="viewer-main">
         {activeTab === 'renderer' ? (
           <div className="renderer-container" style={{ height: 'calc(100vh - 80px)' }}>
+            {selectedRoadmap.development_stages?.length > 0 && (
+              <div className="dev-stages-banner" style={{
+                padding: '14px 20px', background: '#f0f7f4', borderBottom: '1px solid #d5e8e0',
+                fontSize: '12.5px', color: '#3d5a50', overflowY: 'auto', maxHeight: '30%',
+              }}>
+                <div style={{ fontWeight: 700, fontSize: '13px', marginBottom: '8px', color: '#0e7c6b' }}>
+                  🗺️ Lộ trình phát triển ({selectedRoadmap.development_stages.length} giai đoạn)
+                </div>
+                {selectedRoadmap.development_stages.map((s, i) => (
+                  <div key={i} style={{ marginBottom: '10px', paddingLeft: '12px', borderLeft: '2px solid #a8d5c5' }}>
+                    <div style={{ fontWeight: 600 }}>{s.stage}</div>
+                    <div style={{ color: '#4a6b5f' }}>{s.product_state}</div>
+                    {s.cross_feature_value && (
+                      <div style={{ color: '#0e7c6b', fontSize: '11.5px', marginTop: '2px' }}>
+                        ➕ {s.cross_feature_value}
+                      </div>
+                    )}
+                    {s.temporary_approach && (
+                      <div style={{ color: '#9a6b2f', fontSize: '11.5px', marginTop: '2px' }}>
+                        🔧 {s.temporary_approach}
+                      </div>
+                    )}
+                    {s.learn?.length > 0 && (
+                      <div style={{ color: '#5c5c66', fontSize: '11.5px', marginTop: '2px' }}>
+                        📚 Học: {s.learn.join(', ')}
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            )}
             {isTopic ? (
               <TopicRoadmapRenderer 
                 frontendData={selectedRoadmap}
