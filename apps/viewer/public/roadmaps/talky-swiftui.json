@@ -463,9 +463,9 @@
           "concept_code": "t12",
           "learning_objectives": [
             {
-              "code": "SIO-CONCEPT-18",
+              "code": "SIO-t12-18",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t12",
               "name": "SIO: Implement RegisterxView form đăng ký email/password/repasswo",
               "description": "Xây dựng form đăng ký với các trường email, password, re-password sử dụng các component SwiftUI cơ bản.",
               "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
@@ -476,9 +476,9 @@
               "task_id": "t12"
             },
             {
-              "code": "SIO-CONCEPT-19",
+              "code": "SIO-t12-19",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t12",
               "name": "SIO: Implement RegisterxView form đăng ký email/password/repasswo",
               "description": "Gọi AuthViewModel.register() từ view và xử lý kết quả để điều hướng hoặc hiện alert lỗi.",
               "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
@@ -489,9 +489,9 @@
               "task_id": "t12"
             },
             {
-              "code": "SIO-CONCEPT-20",
+              "code": "SIO-t12-20",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t12",
               "name": "SIO: Implement RegisterxView form đăng ký email/password/repasswo",
               "description": "Kiểm tra password và re-password khớp nhau và hiển thị thông báo lỗi nếu không khớp.",
               "assessment": "Form email/password/repassword hiển thị; Khi register thành công vào RecentChatView; Khi lỗi hiện alert với logMessage",
@@ -616,9 +616,9 @@
           "concept_code": "t6",
           "learning_objectives": [
             {
-              "code": "SIO-CONCEPT-27",
+              "code": "SIO-t6-27",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t6",
               "name": "SIO: Implement RecentMessage model Codable với @DocumentID, usern",
               "description": "Implement RecentMessage model Codable với các thuộc tính message, username, avatar, timestamp và @DocumentID.",
               "assessment": "RecentMessage decode được document từ collection recent_messages; timeAgo hiển thị thời gian tương đối",
@@ -629,9 +629,9 @@
               "task_id": "t6"
             },
             {
-              "code": "SIO-CONCEPT-28",
+              "code": "SIO-t6-28",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t6",
               "name": "SIO: Implement RecentMessage model Codable với @DocumentID, usern",
               "description": "Sử dụng RelativeDateTimeFormatter để hiển thị thời gian tương đối từ timestamp (timeAgo).",
               "assessment": "RecentMessage decode được document từ collection recent_messages; timeAgo hiển thị thời gian tương đối",
@@ -642,9 +642,9 @@
               "task_id": "t6"
             },
             {
-              "code": "SIO-CONCEPT-29",
+              "code": "SIO-t6-29",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t6",
               "name": "SIO: Implement RecentMessage model Codable với @DocumentID, usern",
               "description": "Decode document từ collection recent_messages sang RecentMessage object.",
               "assessment": "RecentMessage decode được document từ collection recent_messages; timeAgo hiển thị thời gian tương đối",
@@ -763,9 +763,9 @@
           "concept_code": "t7",
           "learning_objectives": [
             {
-              "code": "CIO-CONCEPT-36",
+              "code": "CIO-t7-36",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t7",
               "name": "CIO: Implement ChatMessage model Codable với @DocumentID và các f",
               "description": "Người học có khả năng triển khai struct ChatMessage tuân thủ Codable với các thuộc tính fromId, toId, text, timestamp để encode/decode message document từ Firestore.",
               "assessment": "ChatMessage decode/encode được message document",
@@ -776,9 +776,9 @@
               "task_id": "t7"
             },
             {
-              "code": "CIO-CONCEPT-37",
+              "code": "CIO-t7-37",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t7",
               "name": "CIO: Implement ChatMessage model Codable với @DocumentID và các f",
               "description": "Người học có khả năng sử dụng @DocumentID trong ChatMessage để ánh xạ document identifier của Firestore vào thuộc tính id.",
               "assessment": "ChatMessage decode/encode được message document",
@@ -789,9 +789,9 @@
               "task_id": "t7"
             },
             {
-              "code": "ULO-CONCEPT-38",
+              "code": "ULO-t7-38",
               "lo_type": "UNIVERSAL",
-              "concept": "CONCEPT",
+              "concept": "t7",
               "name": "ULO: Implement ChatMessage model Codable với @DocumentID và các f",
               "description": "Người học có khả năng phân tích cách ChatMessage kết hợp Codable và @DocumentID để decode document messages từ Firestore, bao gồm xử lý timestamp trong quá trình encode/decode.",
               "assessment": "ChatMessage decode/encode được message document",
@@ -810,9 +810,9 @@
           "concept_code": "t15",
           "learning_objectives": [
             {
-              "code": "CIO-CONCEPT-39",
+              "code": "CIO-t15-39",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t15",
               "name": "CIO: Implement ChatDetailViewModel fetch messages realtime, handl",
               "description": "Người học có khả năng triển khai fetchMessage trong ChatDetailViewModel dùng Firestore.addSnapshotListener để lắng nghe collection messages và cập nhật @Published messages.",
               "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
@@ -823,9 +823,9 @@
               "task_id": "t15"
             },
             {
-              "code": "SIO-CONCEPT-40",
+              "code": "SIO-t15-40",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t15",
               "name": "SIO: Implement ChatDetailViewModel fetch messages realtime, handl",
               "description": "Người học có khả năng triển khai handleSend để ghi tin nhắn mới bằng Firestore.setData và tăng biến count dùng làm trigger cho auto-scroll.",
               "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
@@ -836,9 +836,9 @@
               "task_id": "t15"
             },
             {
-              "code": "ULO-CONCEPT-41",
+              "code": "ULO-t15-41",
               "lo_type": "UNIVERSAL",
-              "concept": "CONCEPT",
+              "concept": "t15",
               "name": "ULO: Implement ChatDetailViewModel fetch messages realtime, handl",
               "description": "Người học có khả năng phân tích luồng dữ liệu realtime khi count thay đổi để view tự scroll sau khi gửi hoặc nhận tin nhắn, và cách chatUser được gán từ view trước khi gửi.",
               "assessment": "fetchMessage lắng nghe collection messages; handleSend setData tin nhắn + tăng count; chatUser được set từ view",
@@ -908,9 +908,9 @@
           "concept_code": "t17",
           "learning_objectives": [
             {
-              "code": "CIO-CONCEPT-45",
+              "code": "CIO-t17-45",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t17",
               "name": "CIO: Implement NewChatViewModel fetch toàn bộ users từ Firestore ",
               "description": "Người học có khả năng triển khai fetchAllUser trong NewChatViewModel dùng Firestore.getDocuments để lấy toàn bộ users từ collection users và gán vào @Published.",
               "assessment": "fetchAllUser lấy toàn bộ users từ collection users",
@@ -921,9 +921,9 @@
               "task_id": "t17"
             },
             {
-              "code": "ULO-CONCEPT-46",
+              "code": "ULO-t17-46",
               "lo_type": "UNIVERSAL",
-              "concept": "CONCEPT",
+              "concept": "t17",
               "name": "ULO: Implement NewChatViewModel fetch toàn bộ users từ Firestore ",
               "description": "Người học có khả năng phân tích cách duy trì và hiển thị errorMessage khi fetch users thất bại, đảm bảo view có thể phản hồi trạng thái lỗi.",
               "assessment": "fetchAllUser lấy toàn bộ users từ collection users",
@@ -1210,9 +1210,9 @@
           "concept_code": "t22",
           "learning_objectives": [
             {
-              "code": "CIO-CONCEPT-63",
+              "code": "CIO-t22-63",
               "lo_type": "CONCEPTUAL_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t22",
               "name": "CIO: Implement trạng thái loading/empty/error nhất quán trên các ",
               "description": "Người học có khả năng giải thích các phase của AsyncImage (empty, success, failure) và cách hiển thị placeholder tương ứng khi tải ảnh đại diện.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
@@ -1223,9 +1223,9 @@
               "task_id": "t22"
             },
             {
-              "code": "SIO-CONCEPT-64",
+              "code": "SIO-t22-64",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t22",
               "name": "SIO: Implement trạng thái loading/empty/error nhất quán trên các ",
               "description": "Người học có khả năng triển khai trạng thái loading, empty, error trên các màn hình list bằng cách sử dụng ViewState và các view điều kiện.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
@@ -1236,9 +1236,9 @@
               "task_id": "t22"
             },
             {
-              "code": "SIO-CONCEPT-65",
+              "code": "SIO-t22-65",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "t22",
               "name": "SIO: Implement trạng thái loading/empty/error nhất quán trên các ",
               "description": "Người học có khả năng sử dụng alert(isPresented:) kết hợp onChange để hiển thị lỗi từ ViewModel và cập nhật giao diện khi dữ liệu thay đổi.",
               "assessment": "Mỗi list view xử lý loading, empty, error; AsyncImage có empty/failure placeholder",
@@ -1257,9 +1257,9 @@
           "concept_code": "polish-gap-1",
           "learning_objectives": [
             {
-              "code": "SIO-CONCEPT-66",
+              "code": "SIO-polish-gap-1-66",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-1",
               "name": "SIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushN",
               "description": "Người học có khả năng phân tích luồng lưu trữ FCM token hiện tại (chỉ ghi vào UserDefaults) và xác định các điểm cần đồng bộ lên Firestore/Cloud Functions.",
               "assessment": "Firestore/Cloud Functions",
@@ -1270,9 +1270,9 @@
               "task_id": "polish-gap-1"
             },
             {
-              "code": "SIO-CONCEPT-67",
+              "code": "SIO-polish-gap-1-67",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-1",
               "name": "SIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushN",
               "description": "Người học có khả năng thiết kế giải pháp đồng bộ FCM token lên Firestore/Cloud Functions khi token mới được tạo hoặc thay đổi.",
               "assessment": "Firestore/Cloud Functions",
@@ -1283,9 +1283,9 @@
               "task_id": "polish-gap-1"
             },
             {
-              "code": "SIO-CONCEPT-68",
+              "code": "SIO-polish-gap-1-68",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-1",
               "name": "SIO: Khắc phục: FCM token chỉ được lưu vào UserDefaults qua PushN",
               "description": "Người học có khả năng cài đặt cơ chế gọi lên Firestore/Cloud Functions sau khi PushNotificationManager.saveFCM lưu token thành công.",
               "assessment": "Firestore/Cloud Functions",
@@ -1304,9 +1304,9 @@
           "concept_code": "polish-gap-2",
           "learning_objectives": [
             {
-              "code": "SIO-CONCEPT-69",
+              "code": "SIO-polish-gap-2-69",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-2",
               "name": "SIO: Khắc phục: Server key FCM bị hardcode trong client (PushNoti",
               "description": "Người học có khả năng phân tích rủi ro bảo mật khi server key FCM bị hardcode trong client và xác định vị trí cần loại bỏ.",
               "assessment": "Security best practice",
@@ -1317,9 +1317,9 @@
               "task_id": "polish-gap-2"
             },
             {
-              "code": "SIO-CONCEPT-70",
+              "code": "SIO-polish-gap-2-70",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-2",
               "name": "SIO: Khắc phục: Server key FCM bị hardcode trong client (PushNoti",
               "description": "Người học có khả năng thiết kế kiến trúc ủy quyền gửi push notification qua một Cloud Function thay vì gọi trực tiếp từ client.",
               "assessment": "Security best practice",
@@ -1330,9 +1330,9 @@
               "task_id": "polish-gap-2"
             },
             {
-              "code": "SIO-CONCEPT-71",
+              "code": "SIO-polish-gap-2-71",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-2",
               "name": "SIO: Khắc phục: Server key FCM bị hardcode trong client (PushNoti",
               "description": "Người học có khả năng thay thế việc gửi push notification từ client bằng lời gọi đến Cloud Function với server key được lưu an toàn.",
               "assessment": "Security best practice",
@@ -1499,9 +1499,9 @@
           "concept_code": "polish-gap-6",
           "learning_objectives": [
             {
-              "code": "SIO-CONCEPT-81",
+              "code": "SIO-polish-gap-6-81",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-6",
               "name": "SIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lự",
               "description": "Người học có khả năng phân tích các trường hợp lỗi khi sử dụng UIImagePickerController (permission denied, sourceType not available) ảnh hưởng đến trải nghiệm người dùng.",
               "assessment": "UIImagePickerController handling",
@@ -1512,9 +1512,9 @@
               "task_id": "polish-gap-6"
             },
             {
-              "code": "SIO-CONCEPT-82",
+              "code": "SIO-polish-gap-6-82",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-6",
               "name": "SIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lự",
               "description": "Người học có khả năng thiết kế luồng xử lý quyền truy cập camera/photo library và lựa chọn sourceType phù hợp trong ImagePicker.",
               "assessment": "UIImagePickerController handling",
@@ -1525,9 +1525,9 @@
               "task_id": "polish-gap-6"
             },
             {
-              "code": "SIO-CONCEPT-83",
+              "code": "SIO-polish-gap-6-83",
               "lo_type": "SPECIFIC_IMPL",
-              "concept": "CONCEPT",
+              "concept": "polish-gap-6",
               "name": "SIO: Khắc phục: ImagePicker không xử lý permission denied hoặc lự",
               "description": "Người học có khả năng triển khai kiểm tra quyền (authorization status) và hiển thị alert khi người dùng từ chối quyền.",
               "assessment": "UIImagePickerController handling",
@@ -1809,6 +1809,6 @@
     }
   ],
   "total_milestones": 33,
-  "total_concepts": 19,
+  "total_concepts": 27,
   "lo_count": 99
 }

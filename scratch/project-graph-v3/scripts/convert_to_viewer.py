@@ -38,7 +38,7 @@ def convert(roadmap: dict) -> dict:
             los_out = []
             for lo in m.get("los", []):
                 lo_counter += 1
-                concept = lo.get("concept_code") or (m.get("concepts") or ["CONCEPT"])[0]
+                concept = lo.get("concept_code") or (m.get("concepts") or [task_id])[0]
                 all_concepts.add(concept)
                 lo_type = lo.get("lo_type", "SPECIFIC_IMPL")
                 prefix = {"UNIVERSAL": "ULO", "CONCEPTUAL_IMPL": "CIO", "SPECIFIC_IMPL": "SIO"}.get(

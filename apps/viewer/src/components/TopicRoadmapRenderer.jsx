@@ -203,13 +203,24 @@ function describeImplementation(milestone, los) {
 
 function KnowledgeItem({ item, index }) {
   const [hover, setHover] = useState(false);
+  const [pos, setPos] = useState(null); // {x, y} cho popup fixed — không bị cắt bởi overflow ancestor
   const bloomColor = BLOOM_COLORS[item.bloom] || '#333';
   const showReview = item.ulo && item.ulo.bloom === 'remember' && index > 0;
 
+  const onEnter = (e) => {
+    setHover(true);
+    // Tính vị trí fixed từ item rect — tránh popup tràn ra ngoài scroll container
+    const r = e.currentTarget.getBoundingClientRect();
+    const popupW = 320;
+    let x = r.right + 8;
+    if (x + popupW > window.innerWidth - 8) x = Math.max(8, r.left - popupW - 8);
+    setPos({ x, y: r.top });
+  };
+
   return React.createElement('li', {
     className: 'tkr-knowledge-item',
-    onMouseEnter: () => setHover(true),
-    onMouseLeave: () => setHover(false),
+    onMouseEnter: onEnter,
+    onMouseLeave: () => { setHover(false); setPos(null); },
     style: { position: 'relative', display: 'flex', alignItems: 'flex-start', gap: '8px', fontSize: '13px', marginBottom: '8px', cursor: 'default' },
   }, [
     // Dot (giống ActionRoadmapWeb cũ)
@@ -238,10 +249,10 @@ function KnowledgeItem({ item, index }) {
       },
     }, item.bloom),
 
-    // Hover: hiện ĐỦ các LO liên quan đến item
+    // Hover: hiện ĐỦ các LO liên quan đến item — POPUP FIXED (không bị cắt)
     // - "Concept X" → danh sách ULO + CIO (mỗi cái kèm bloom + desc)
     // - "Keyword X" → SIO tương ứng
-    hover && (() => {
+    hover && pos && (() => {
       if (item.lois && item.lois.length > 0) {
         // CONCEPT ITEM: hiện tất cả ULO + CIO
         const lois = item.lois;
@@ -250,10 +261,10 @@ function KnowledgeItem({ item, index }) {
           key: 'hover',
           className: 'tkr-hover-popup',
           style: {
-            position: 'absolute', left: '100%', top: 0, zIndex: 9999,
+            position: 'fixed', left: pos.x, top: pos.y, zIndex: 99999,
             background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
-            padding: '10px 12px', width: '320px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-            fontSize: '12px', lineHeight: 1.5,
+            padding: '10px 12px', width: '320px', maxHeight: '70vh', overflowY: 'auto',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.12)', fontSize: '12px', lineHeight: 1.5,
           },
         }, [
           React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '6px' } },
@@ -278,10 +289,10 @@ function KnowledgeItem({ item, index }) {
           key: 'hover',
           className: 'tkr-hover-popup',
           style: {
-            position: 'absolute', left: '100%', top: 0, zIndex: 9999,
+            position: 'fixed', left: pos.x, top: pos.y, zIndex: 99999,
             background: '#fff', border: '1px solid #e6e6e6', borderRadius: '8px',
-            padding: '10px 12px', width: '300px', boxShadow: '0 4px 16px rgba(0,0,0,0.12)',
-            fontSize: '12px', lineHeight: 1.5,
+            padding: '10px 12px', width: '300px', maxHeight: '70vh', overflowY: 'auto',
+            boxShadow: '0 4px 16px rgba(0,0,0,0.12)', fontSize: '12px', lineHeight: 1.5,
           },
         }, [
           React.createElement('div', { key: 'title', style: { fontWeight: 600, color: '#18181b', marginBottom: '4px' } },
@@ -309,7 +320,7 @@ function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
     className: 'tkr-card',
     style: {
       background: '#fff', border: '1px solid #e6e6e6', borderRadius: '12px',
-      marginBottom: '12px', overflow: 'hidden',
+      marginBottom: '12px',
       opacity: done ? 0.55 : 1,
     },
   }, [
