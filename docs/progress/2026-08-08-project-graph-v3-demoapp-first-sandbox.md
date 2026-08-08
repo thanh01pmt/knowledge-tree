@@ -125,3 +125,10 @@ scratch/project-graph-v3/
 | M4 | Thiếu trace nguồn P3 (product-first Chương 6) | STEP 2: line-level evidence `file#L45` + `ref` tag |
 
 **Ghi chú vận hành**: M3 chỉ có hiệu lực khi chạy lại STEP 1 với prompt mới (sinh completion_level + scaffold + requirement_ids) — output hiện tại chưa có nên fallback feature.priority.
+
+---
+**▶ BẢN CẬP NHẬT BUỔI CHIỀU (2026-08-08):** Phiên này đã phát triển tiếp thành
+Curriculum Graph tầng (6 lý thuyết sư phạm) + LLM-as-judge auto + development_stages
+narrative + deterministic mapping. Xem chi tiết:
+[`2026-08-08-project-graph-v3-curriculum-llm-judge.md`](./2026-08-08-project-graph-v3-curriculum-llm-judge.md)
+và practice tổng hợp: `scratch/project-graph-v3/docs/ideas/academic-practices-applied.md`.
