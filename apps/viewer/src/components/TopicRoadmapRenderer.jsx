@@ -28,13 +28,18 @@ function transformToCardData(roadmap) {
   if (!roadmap?.phases) return { phases: [], cards: [] };
 
   // Gom toàn bộ LO của MỖI concept từ mọi phase (ULO+CIO+SIO)
-  // → mỗi card luôn có CẢ Concept (ULO/CIO) lẫn Keyword (SIO), không thiếu bên nào
+  // → mỗi concept luôn có CẢ ULO/CIO lẫn SIO, không thiếu bên nào.
+  // Gom theo lo.concept_code (concept THẬT của LO) — milestone v3 là task
+  // có thể chứa nhiều concepts, không phải 1 concept/1 milestone như v2.
   const conceptLoisAll = new Map();  // concept_code -> [all LOs across phases]
   roadmap.phases.forEach(phase => {
     (phase.milestones || []).forEach(milestone => {
-      const key = milestone.concept_code;
-      if (!conceptLoisAll.has(key)) conceptLoisAll.set(key, []);
-      (milestone.learning_objectives || []).forEach(lo => conceptLoisAll.get(key).push({ ...lo }));
+      (milestone.learning_objectives || []).forEach(lo => {
+        const key = lo.concept || lo.concept_code || milestone.concept_code;
+        if (!key) return;
+        if (!conceptLoisAll.has(key)) conceptLoisAll.set(key, []);
+        conceptLoisAll.get(key).push({ ...lo });
+      });
     });
   });
 
@@ -47,7 +52,9 @@ function transformToCardData(roadmap) {
       const cios = los.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
       const sios = los.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
       // Lấy đủ LO của concept này từ MỌI phase (không chỉ phase hiện tại)
-      const allLois = conceptLoisAll.get(milestone.concept_code) || los;
+      // Milestone v3 = task nhiều concepts → allLois = gom theo concept của LO đầu
+      const primaryConcept = los[0]?.concept || los[0]?.concept_code || milestone.concept_code;
+      const allLois = conceptLoisAll.get(primaryConcept) || los;
       const allUlos = allLois.filter(lo => lo.lo_type === 'UNIVERSAL');
       const allCios = allLois.filter(lo => lo.lo_type === 'CONCEPTUAL_IMPL');
       const allSios = allLois.filter(lo => lo.lo_type === 'SPECIFIC_IMPL');
@@ -57,7 +64,8 @@ function transformToCardData(roadmap) {
       // - SIO → mỗi item "Keyword <kw>" (thực hành cụ thể)
       // Hover trên item → hiện đủ các LO liên quan (ULO + CIO, hoặc SIO)
       const knowledge = [];
-      const conceptLabel = humanizeCode(milestone.concept_code);
+      const conceptLabel = humanizeCode(primaryConcept);
+      const cardKey = primaryConcept || milestone.concept_code || `card-${cards.length}`;
 
       // Gom ULO + CIO của concept thành 1 item "Concept XYZ" (từ MỌI phase)
       const conceptLois = [...allUlos, ...allCios];
@@ -66,10 +74,10 @@ function transformToCardData(roadmap) {
         const blooms = [...new Set(conceptLois.map(lo => (lo.bloom_level || '').toLowerCase()).filter(Boolean))];
         const allBlooms = blooms.length > 0 ? blooms.join(' · ') : 'understand';
         knowledge.push({
-          id: `${milestone.concept_code}-concept`,
+          id: `${cardKey}-concept`,
           label: `Concept ${conceptLabel}`,
           bloom: allBlooms,  // có thể nhiều cấp: "understand · apply"
-          conceptCode: milestone.concept_code,
+          conceptCode: primaryConcept,
           conceptLabel,
           lois: conceptLois.map(lo => ({
             code: lo.code, name: cleanLabel(lo.name), description: lo.description,
@@ -100,7 +108,7 @@ function transformToCardData(roadmap) {
           const platformBadge = platform === 'esp32' ? ' [ESP32]' : '';
           const sioLabel = kw ? `Keyword ${kw}${platformBadge}` : cleanLabel(sio.name || sio.code || 'SIO');
           knowledge.push({
-            id: `${milestone.concept_code}-sio-${i}`,
+            id: `${cardKey}-sio-${i}`,
             label: sioLabel,
             bloom: sio.bloom_level || 'apply',
             ulo: null,
@@ -115,13 +123,16 @@ function transformToCardData(roadmap) {
         });
       }
 
+      // Card key = milestone.id (task id — DUY NHẤT, không phải concept: nhiều
+      // task có thể dạy cùng concept VD API_INTEGRATION ở 8 task → key trùng)
       cards.push({
-        id: milestone.concept_code || `card-${cards.length}`,
-        conceptCode: milestone.concept_code,
+        id: milestone.id || cardKey,
+        conceptCode: primaryConcept,
+        name: milestone.name || '',
         phaseId: pid,
-        description: describeImplementation(milestone, los),
-        knowledge: knowledge,
         loCount: los.length,
+        knowledge,
+        description: describeImplementation(milestone, los),
       });
     });
   });
@@ -130,7 +141,7 @@ function transformToCardData(roadmap) {
     phases: roadmap.phases.map(p => ({
       id: p.phase_id,
       name: p.title || PHASE_NAMES[p.phase_id] || `Phase ${p.phase_id}`,
-      cardIds: p.milestones.map(m => m.concept_code || ''),
+      cardIds: p.milestones.map(m => m.id || m.concept_code || ''),
     })),
     cards,
   };
@@ -161,8 +172,8 @@ function cleanLabel(label) {
 
 // Cột trái: mô tả tính chất dự án đến implementation hiện tại
 function describeImplementation(milestone, los) {
-  const concept = milestone.concept_code || 'UNSPECIFIED';
-  const conceptName = concept.toLowerCase().replace(/_/g, ' ');
+  const taskName = milestone.name || milestone.concept_code || 'UNSPECIFIED';
+  const concept = milestone.concept_code || '';
 
   // Ưu tiên theo thứ tự mô tả thật: ULO → CIO → SIO name
   // Phase 1 (ULO): "Người học có khả năng hiểu X" từ ULO description
@@ -183,7 +194,7 @@ function describeImplementation(milestone, los) {
   if (sioNames.length > 0) {
     return `Người học triển khai ${sioNames[0].replace(/^SWIFT:\s*/i, 'Swift — ')}.`;
   }
-  return `Người học triển khai ${conceptName}.`;
+  return `Người học triển khai ${taskName}.`;
 }
 
 // ============================================================================
@@ -322,10 +333,10 @@ function TopicCard({ card, approach, onToggleApproach, done, onToggle }) {
           }, done && React.createElement('span', { style: { color: '#fff', fontSize: '10px' } }, '✓')),
           React.createElement('span', {
             style: { fontFamily: '"IBM Plex Mono", monospace', fontWeight: 600, fontSize: '12.5px', color: '#18181b' },
-          }, card.conceptCode),
+          }, card.name || card.conceptCode),
           React.createElement('span', {
             style: { marginLeft: 'auto', fontSize: '10px', color: '#9a9aa5', fontFamily: 'monospace' },
-          }, `${card.loCount} mục tiêu`),
+          }, card.conceptCode ? `📚 ${card.conceptCode} · ${card.loCount} mục tiêu` : `${card.loCount} mục tiêu`),
         ]),
         // Mô tả: "App có thể..." (hướng đã chọn)
         React.createElement('div', {

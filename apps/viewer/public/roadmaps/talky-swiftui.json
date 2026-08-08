@@ -37,7 +37,11 @@
         {
           "id": "T-SCAFFOLD",
           "name": "Scaffold iOS SwiftUI app from Xcode template, add Firebase S",
-          "concept_code": "T-SCAFFOLD",
+          "concepts": [
+            "API_INTEGRATION",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "ULO-API_INTEGRATION-01",
@@ -83,7 +87,11 @@
         {
           "id": "T-FIREBASE-MANAGER",
           "name": "Implement FirebaseManager singleton exposing shared Auth, Fi",
-          "concept_code": "T-FIREBASE-MANAGER",
+          "concepts": [
+            "API_INTEGRATION",
+            "CREATIONAL_PATTERNS"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "ULO-CREATIONAL_PATTERNS-04",
@@ -116,7 +124,10 @@
         {
           "id": "T-FB-BOOTSTRAP",
           "name": "Implement AppDelegate with UIApplicationDelegateAdaptor and ",
-          "concept_code": "T-FB-BOOTSTRAP",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "ULO-API_INTEGRATION-06",
@@ -156,7 +167,11 @@
         {
           "id": "T-MODELS",
           "name": "Implement Codable models ChatMessage, ChatUser, RecentMessag",
-          "concept_code": "T-MODELS",
+          "concepts": [
+            "JSON_SERIALIZATION",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "JSON_SERIALIZATION",
           "learning_objectives": [
             {
               "code": "ULO-JSON_SERIALIZATION-08",
@@ -202,6 +217,7 @@
         {
           "id": "T-REGISTER",
           "name": "Implement registration screen with email, password, confirm ",
+          "concepts": [],
           "concept_code": "T-REGISTER",
           "learning_objectives": [
             {
@@ -248,7 +264,10 @@
         {
           "id": "T-WELCOME",
           "name": "Implement WelcomeView with hero image, gradient, branding an",
-          "concept_code": "T-WELCOME",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
           "learning_objectives": [
             {
               "code": "ULO-DECLARATIVE_UI_PARADIGM-14",
@@ -281,7 +300,11 @@
         {
           "id": "T-LOGIN",
           "name": "Implement login screen with email/password fields, show/hide",
-          "concept_code": "T-LOGIN",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
           "learning_objectives": [
             {
               "code": "ULO-DECLARATIVE_UI_PARADIGM-16",
@@ -327,7 +350,11 @@
         {
           "id": "T-AUTH-VM",
           "name": "Implement AuthViewModel with register, login, logout, editPr",
-          "concept_code": "T-AUTH-VM",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
               "code": "ULO-SHARED_OBSERVABLE_STATE-19",
@@ -386,7 +413,10 @@
         {
           "id": "T-CHAT-VM",
           "name": "Implement ChatDetailViewModel to listen for 1-1 messages, se",
-          "concept_code": "T-CHAT-VM",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "ULO-API_INTEGRATION-23",
@@ -432,7 +462,11 @@
         {
           "id": "T-RECENT-VM",
           "name": "Implement RecentChatViewModel to fetch recent messages, fetc",
-          "concept_code": "T-RECENT-VM",
+          "concepts": [
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
           "learning_objectives": [
             {
               "code": "ULO-PUBLISHER_SUBSCRIBER_MODEL-26",
@@ -478,7 +512,12 @@
         {
           "id": "T-RECENT-VIEW",
           "name": "Implement RecentChatView with header, recent message list, p",
-          "concept_code": "T-RECENT-VIEW",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
               "code": "CIO-UI_MODIFIERS_CONCEPT-29",
@@ -524,7 +563,11 @@
         {
           "id": "T-CHAT-VIEW",
           "name": "Implement ChatDetailView UI with message bubbles, ScrollView",
-          "concept_code": "T-CHAT-VIEW",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
           "learning_objectives": [
             {
               "code": "ULO-DECLARATIVE_UI_PARADIGM-32",
@@ -570,7 +613,10 @@
         {
           "id": "T-NEWCHAT-VM",
           "name": "Implement NewChatViewModel to fetch all Firestore users and ",
-          "concept_code": "T-NEWCHAT-VM",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-35",
@@ -603,7 +649,10 @@
         {
           "id": "T-NEWCHAT-VIEW",
           "name": "Implement NewChatView with user directory list, cancel butto",
-          "concept_code": "T-NEWCHAT-VIEW",
+          "concepts": [
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "UI_MODIFIERS_CONCEPT",
           "learning_objectives": [
             {
               "code": "CIO-UI_MODIFIERS_CONCEPT-37",
@@ -656,7 +705,11 @@
         {
           "id": "T-IMAGE-PICKER",
           "name": "Implement ImagePicker as a UIViewControllerRepresentable wra",
-          "concept_code": "T-IMAGE-PICKER",
+          "concepts": [
+            "TWO_WAY_BINDING",
+            "MEDIA_PICKER_API"
+          ],
+          "concept_code": "TWO_WAY_BINDING",
           "learning_objectives": [
             {
               "code": "ULO-MEDIA_PICKER_API-40",
@@ -702,6 +755,7 @@
         {
           "id": "T-PROFILE",
           "name": "Implement ProfileView with user info, avatar, edit profile n",
+          "concepts": [],
           "concept_code": "T-PROFILE",
           "learning_objectives": [
             {
@@ -748,7 +802,10 @@
         {
           "id": "T-EDIT-PROFILE",
           "name": "Implement EditProfileView with avatar picker, email display,",
-          "concept_code": "T-EDIT-PROFILE",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-46",
@@ -794,7 +851,12 @@
         {
           "id": "T-PUSH-MANAGER",
           "name": "Implement PushNotificationManager to save FCM token to UserD",
-          "concept_code": "T-PUSH-MANAGER",
+          "concepts": [
+            "API_INTEGRATION",
+            "JSON_SERIALIZATION",
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-49",
@@ -840,7 +902,11 @@
         {
           "id": "T-PUSH-SETUP",
           "name": "Integrate MessagingDelegate and UNUserNotificationCenterDele",
-          "concept_code": "T-PUSH-SETUP",
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-52",
@@ -886,7 +952,12 @@
         {
           "id": "T-NOTIFICATION-MANAGER",
           "name": "Implement NotificationManager to request notification permis",
-          "concept_code": "T-NOTIFICATION-MANAGER",
+          "concepts": [
+            "ASYNC_PATTERNS",
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "ASYNC_PATTERNS",
           "learning_objectives": [
             {
               "code": "ULO-LOCAL_NOTIFICATION_API-55",
@@ -939,7 +1010,10 @@
         {
           "id": "polish-gap-1",
           "name": "Khắc phục: FCM server key hardcoded trong PushNotificationMa",
-          "concept_code": "polish-gap-1",
+          "concepts": [
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "concept_code": "KEY_VALUE_PERSISTENCE",
           "learning_objectives": [
             {
               "code": "CIO-KEY_VALUE_PERSISTENCE-58",
@@ -985,7 +1059,11 @@
         {
           "id": "polish-gap-2",
           "name": "Khắc phục: MainView trong TalkyApp.swift là demo leftover vớ",
-          "concept_code": "polish-gap-2",
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-LOCAL_NOTIFICATION_API-61",
@@ -1031,7 +1109,10 @@
         {
           "id": "polish-gap-3",
           "name": "Khắc phục: Không có unit test cho AuthViewModel (validate in",
-          "concept_code": "polish-gap-3",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-64",
@@ -1077,7 +1158,10 @@
         {
           "id": "polish-gap-4",
           "name": "Khắc phục: Force unwrap optional profileImageUrl trong Profi",
-          "concept_code": "polish-gap-4",
+          "concepts": [
+            "MEDIA_PICKER_API"
+          ],
+          "concept_code": "MEDIA_PICKER_API",
           "learning_objectives": [
             {
               "code": "CIO-MEDIA_PICKER_API-67",
@@ -1123,7 +1207,10 @@
         {
           "id": "polish-gap-5",
           "name": "Khắc phục: Nút camera/mic trong ChatDetailView chỉ là placeh",
-          "concept_code": "polish-gap-5",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
               "code": "CIO-SHARED_OBSERVABLE_STATE-70",
@@ -1169,7 +1256,10 @@
         {
           "id": "polish-gap-6",
           "name": "Khắc phục: Không có empty state khi recentMessages rỗng; use",
-          "concept_code": "polish-gap-6",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-73",
@@ -1215,7 +1305,10 @@
         {
           "id": "polish-gap-7",
           "name": "Khắc phục: NewChatView hiển thị cả chính user hiện tại trong",
-          "concept_code": "polish-gap-7",
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-76",
@@ -1261,7 +1354,12 @@
         {
           "id": "polish-debt-1",
           "name": "Refactor: MainView demo code trùng logic push notification v",
-          "concept_code": "polish-debt-1",
+          "concepts": [
+            "API_INTEGRATION",
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "concept_code": "API_INTEGRATION",
           "learning_objectives": [
             {
               "code": "CIO-API_INTEGRATION-79",
@@ -1307,7 +1405,12 @@
         {
           "id": "polish-debt-2",
           "name": "Refactor: Body và messagesView duplicate gần hết UI chat bub",
-          "concept_code": "polish-debt-2",
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "DECLARATIVE_UI_PARADIGM",
           "learning_objectives": [
             {
               "code": "CIO-DECLARATIVE_UI_PARADIGM-82",
@@ -1353,7 +1456,11 @@
         {
           "id": "polish-debt-3",
           "name": "Refactor: Force unwrap authViewModel.user! và profileImageUr",
-          "concept_code": "polish-debt-3",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
               "code": "CIO-SHARED_OBSERVABLE_STATE-85",
@@ -1399,7 +1506,12 @@
         {
           "id": "polish-debt-4",
           "name": "Refactor: AsyncImage phase switch lặp lại ở RecentChatView, ",
-          "concept_code": "polish-debt-4",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
               "code": "SIO-UI_MODIFIERS_CONCEPT-88",
@@ -1445,7 +1557,11 @@
         {
           "id": "polish-debt-5",
           "name": "Refactor: Các SecureTextField dùng chung binding $showPasswo",
-          "concept_code": "polish-debt-5",
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "concept_code": "SHARED_OBSERVABLE_STATE",
           "learning_objectives": [
             {
               "code": "CIO-SHARED_OBSERVABLE_STATE-91",

@@ -59,10 +59,16 @@ def convert(roadmap: dict) -> dict:
                     "task_id": lo.get("task_id", task_id),
                 })
 
+            # Milestone dùng concepts THẬT của task (KHÔNG phải task_id — task
+            # không phải concept). Renderer dùng field này làm nhãn concept.
+            milestone_concepts = m.get("concepts") or list({
+                lo.get("concept_code") for lo in los_out if lo.get("concept_code")
+            })
             milestones_out.append({
                 "id": task_id,
                 "name": task_name,
-                "concept_code": task_id,  # renderer dùng cái này làm nhãn card
+                "concepts": milestone_concepts,
+                "concept_code": milestone_concepts[0] if milestone_concepts else task_id,
                 "learning_objectives": los_out,
             })
             concept_counter += 1
