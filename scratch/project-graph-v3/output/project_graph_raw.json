@@ -631,8 +631,878 @@
       }
     ]
   },
-  "experience": {},
-  "data_integration": {},
+  "experience": {
+    "screens": [
+      {
+        "id": "screen_login",
+        "name": "Login",
+        "purpose": "F1: Allow a user to select a pre-configured Stream test user, persist the selected user id, and manage logout/disconnect. Observed: README ('login screen is the initial screen') and UserDefaults+Shared.swift.",
+        "entry_point": true,
+        "components": [
+          "component_login_user_list",
+          "component_advanced_options_form"
+        ],
+        "states": [
+          "ui_login_idle",
+          "ui_login_authenticating",
+          "ui_login_authenticated",
+          "ui_login_error"
+        ],
+        "navigates_to": [
+          "screen_advanced_login",
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "UserDefaults(suiteName:).string(forKey:)",
+          "UserDefaults(suiteName:).set(_:forKey:)",
+          "UserCredentials.builtInUsersByID(id:)"
+        ]
+      },
+      {
+        "id": "screen_advanced_login",
+        "name": "Advanced Login Options",
+        "purpose": "F1: Log in to a different server using custom user credentials and a JWT. Observed: README ('Advanced options' and JWT generator).",
+        "entry_point": false,
+        "components": [
+          "component_advanced_options_form"
+        ],
+        "states": [
+          "ui_advanced_login_idle",
+          "ui_advanced_login_submitting",
+          "ui_advanced_login_error"
+        ],
+        "navigates_to": [
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "JWT",
+          "custom_credentials"
+        ]
+      },
+      {
+        "id": "screen_channel_list",
+        "name": "Channel List",
+        "purpose": "F2: Show a scrollable list of channels with unread indicators, avatars, last-message previews and timestamps, plus create/delete actions. Observed: README and ChatChannelListViewController.",
+        "entry_point": false,
+        "components": [
+          "component_channel_list_view",
+          "component_channel_list_cell",
+          "component_user_options_alert",
+          "component_stream_chat_appearance"
+        ],
+        "states": [
+          "ui_channel_list_loading",
+          "ui_channel_list_loaded",
+          "ui_channel_list_empty",
+          "ui_channel_list_error",
+          "ui_channel_deleting"
+        ],
+        "navigates_to": [
+          "screen_channel_chat",
+          "screen_user_profile",
+          "screen_login"
+        ],
+        "keywords": [
+          "ChatChannelListViewController",
+          "StreamChatUI",
+          "Dark Mode",
+          "Dynamic Type"
+        ]
+      },
+      {
+        "id": "screen_channel_chat",
+        "name": "Channel Chat & Messaging",
+        "purpose": "F3: Provide the chat screen with infinite message scrolling, rich media/GIF, message composer with attachments, and message reactions. Observed: README and ChatChannelViewController.",
+        "entry_point": false,
+        "components": [
+          "component_channel_chat_view",
+          "component_message_composer",
+          "component_message_cell",
+          "component_reaction_selector",
+          "component_stream_chat_appearance"
+        ],
+        "states": [
+          "ui_channel_chat_loading",
+          "ui_channel_chat_loaded",
+          "ui_channel_chat_error",
+          "ui_message_sending",
+          "ui_message_send_error",
+          "ui_attachment_picking"
+        ],
+        "navigates_to": [
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "ChatChannelViewController",
+          "MessageReactionType.position",
+          "UIImage.resized(to:)",
+          "UIViewController.presentAlert",
+          "Dark Mode",
+          "Dynamic Type"
+        ]
+      },
+      {
+        "id": "screen_user_profile",
+        "name": "User Profile",
+        "purpose": "F5: Display the current user's profile from ChatClient.currentUserController(). Observed: UIViewController+Alert.swift.",
+        "entry_point": false,
+        "components": [
+          "component_user_profile_view"
+        ],
+        "states": [
+          "ui_profile_loading",
+          "ui_profile_loaded",
+          "ui_profile_error"
+        ],
+        "navigates_to": [
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "UserProfileViewController(currentUserController:)",
+          "UINavigationController.pushViewController(_:animated:)"
+        ]
+      }
+    ],
+    "components": [
+      {
+        "id": "component_login_user_list",
+        "type": "list",
+        "purpose": "F1: Present pre-configured test users; selecting one persists currentUserId via UserDefaults.shared (UserDefaults+Shared.swift).",
+        "inputs": [
+          "user_credentials_list"
+        ],
+        "outputs": [
+          "selected_user_id"
+        ],
+        "state": [
+          "idle",
+          "loaded"
+        ]
+      },
+      {
+        "id": "component_advanced_options_form",
+        "type": "container",
+        "purpose": "F1: Accept custom server URL, user id, and JWT for alternate login (README 'Advanced options').",
+        "inputs": [
+          "server_url",
+          "user_id",
+          "jwt_token"
+        ],
+        "outputs": [
+          "custom_credentials"
+        ],
+        "state": [
+          "idle",
+          "submitting",
+          "error"
+        ]
+      },
+      {
+        "id": "component_channel_list_view",
+        "type": "container",
+        "purpose": "F2: Encapsulate ChatChannelListViewController; infinite scrolling channel list with unread indicators, avatars, last-message previews, timestamps, create and delete actions (README).",
+        "inputs": [
+          "current_user_id",
+          "channel_query"
+        ],
+        "outputs": [
+          "selected_channel_id",
+          "channel_to_create",
+          "channel_to_delete"
+        ],
+        "state": [
+          "loading",
+          "loaded",
+          "creating",
+          "deleting",
+          "error"
+        ]
+      },
+      {
+        "id": "component_channel_list_cell",
+        "type": "cell",
+        "purpose": "F2: Display channel avatar, unread indicator, last message preview and timestamp (README).",
+        "inputs": [
+          "channel_avatar",
+          "unread_indicator",
+          "last_message_preview",
+          "timestamp"
+        ],
+        "outputs": [
+          "channel_tap"
+        ],
+        "state": [
+          "normal",
+          "unread"
+        ]
+      },
+      {
+        "id": "component_channel_chat_view",
+        "type": "container",
+        "purpose": "F3: Encapsulate ChatChannelViewController; infinite scrolling messages, header, rich media/GIF, composer with attachments, and reactions (README).",
+        "inputs": [
+          "selected_channel_id"
+        ],
+        "outputs": [
+          "message_sent",
+          "reaction_applied",
+          "attachment_selected"
+        ],
+        "state": [
+          "loading",
+          "loaded",
+          "error"
+        ]
+      },
+      {
+        "id": "component_message_composer",
+        "type": "reusable_view",
+        "purpose": "F3: Compose text and file attachments for sending. Observed: README and Info.plist camera/microphone permission strings.",
+        "inputs": [
+          "message_text",
+          "attachment"
+        ],
+        "outputs": [
+          "message_draft_to_send"
+        ],
+        "state": [
+          "idle",
+          "composing",
+          "sending"
+        ]
+      },
+      {
+        "id": "component_message_cell",
+        "type": "cell",
+        "purpose": "F3: Display a message with optional media/GIF and reaction badges; long press triggers reaction picker (README).",
+        "inputs": [
+          "message_content",
+          "reactions"
+        ],
+        "outputs": [
+          "message_long_press"
+        ],
+        "state": [
+          "normal",
+          "reacting"
+        ]
+      },
+      {
+        "id": "component_reaction_selector",
+        "type": "reusable_view",
+        "purpose": "F3: Show reaction choices; MessageReactionType.position maps love/haha/like/sad/wow order (MessageReactionType+Position.swift).",
+        "inputs": [
+          "reaction_types"
+        ],
+        "outputs": [
+          "selected_reaction"
+        ],
+        "state": [
+          "hidden",
+          "visible"
+        ]
+      },
+      {
+        "id": "component_user_profile_view",
+        "type": "container",
+        "purpose": "F5: Display current user profile using ChatClient.currentUserController() (UIViewController+Alert.swift).",
+        "inputs": [
+          "currentUserController"
+        ],
+        "outputs": [],
+        "state": [
+          "loading",
+          "loaded",
+          "error"
+        ]
+      },
+      {
+        "id": "component_user_options_alert",
+        "type": "reusable_view",
+        "purpose": "F1/F5: System alert with Show Profile, Logout, and Disconnect actions (UIViewController+Alert.swift presentUserOptionsAlert).",
+        "inputs": [
+          "chat_client",
+          "logout_handler",
+          "disconnect_handler"
+        ],
+        "outputs": [
+          "show_profile_action",
+          "logout_action",
+          "disconnect_action"
+        ],
+        "state": [
+          "presented"
+        ]
+      },
+      {
+        "id": "component_stream_chat_appearance",
+        "type": "reusable_view",
+        "purpose": "F6: Ensure StreamChatUI components respect system Dark Mode and Dynamic Type (README).",
+        "inputs": [
+          "system_color_scheme",
+          "preferred_content_size_category"
+        ],
+        "outputs": [],
+        "state": []
+      }
+    ],
+    "ui_states": [
+      {
+        "id": "ui_login_idle",
+        "owner": "screen_login",
+        "triggered_by": [
+          "app_launch",
+          "logout_completed"
+        ],
+        "transitions_to": [
+          "ui_login_authenticating"
+        ]
+      },
+      {
+        "id": "ui_login_authenticating",
+        "owner": "screen_login",
+        "triggered_by": [
+          "user_selected",
+          "custom_credentials_submitted"
+        ],
+        "transitions_to": [
+          "ui_login_authenticated",
+          "ui_login_error"
+        ]
+      },
+      {
+        "id": "ui_login_authenticated",
+        "owner": "screen_login",
+        "triggered_by": [
+          "stream_chat_connection_succeeded"
+        ],
+        "transitions_to": [
+          "ui_channel_list_loading"
+        ]
+      },
+      {
+        "id": "ui_login_error",
+        "owner": "screen_login",
+        "triggered_by": [
+          "stream_chat_connection_failed"
+        ],
+        "transitions_to": [
+          "ui_login_idle"
+        ]
+      },
+      {
+        "id": "ui_advanced_login_idle",
+        "owner": "screen_advanced_login",
+        "triggered_by": [
+          "advanced_options_opened"
+        ],
+        "transitions_to": [
+          "ui_advanced_login_submitting"
+        ]
+      },
+      {
+        "id": "ui_advanced_login_submitting",
+        "owner": "screen_advanced_login",
+        "triggered_by": [
+          "custom_credentials_submitted"
+        ],
+        "transitions_to": [
+          "ui_advanced_login_error",
+          "ui_channel_list_loading"
+        ]
+      },
+      {
+        "id": "ui_advanced_login_error",
+        "owner": "screen_advanced_login",
+        "triggered_by": [
+          "custom_credentials_rejected"
+        ],
+        "transitions_to": [
+          "ui_advanced_login_idle"
+        ]
+      },
+      {
+        "id": "ui_channel_list_loading",
+        "owner": "screen_channel_list",
+        "triggered_by": [
+          "login_authenticated",
+          "retry_after_error"
+        ],
+        "transitions_to": [
+          "ui_channel_list_loaded",
+          "ui_channel_list_empty",
+          "ui_channel_list_error"
+        ]
+      },
+      {
+        "id": "ui_channel_list_loaded",
+        "owner": "screen_channel_list",
+        "triggered_by": [
+          "channels_fetch_succeeded"
+        ],
+        "transitions_to": [
+          "ui_channel_deleting",
+          "ui_channel_list_error"
+        ]
+      },
+      {
+        "id": "ui_channel_list_empty",
+        "owner": "screen_channel_list",
+        "triggered_by": [
+          "channels_fetch_succeeded_empty"
+        ],
+        "transitions_to": [
+          "ui_channel_list_loaded"
+        ]
+      },
+      {
+        "id": "ui_channel_list_error",
+        "owner": "screen_channel_list",
+        "triggered_by": [
+          "channels_fetch_failed",
+          "delete_channel_failed"
+        ],
+        "transitions_to": [
+          "ui_channel_list_loading"
+        ]
+      },
+      {
+        "id": "ui_channel_deleting",
+        "owner": "screen_channel_list",
+        "triggered_by": [
+          "delete_channel_action"
+        ],
+        "transitions_to": [
+          "ui_channel_list_loaded",
+          "ui_channel_list_error"
+        ]
+      },
+      {
+        "id": "ui_channel_chat_loading",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "channel_selected"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded",
+          "ui_channel_chat_error"
+        ]
+      },
+      {
+        "id": "ui_channel_chat_loaded",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "messages_fetch_succeeded"
+        ],
+        "transitions_to": [
+          "ui_message_sending",
+          "ui_attachment_picking",
+          "ui_channel_chat_error"
+        ]
+      },
+      {
+        "id": "ui_channel_chat_error",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "messages_fetch_failed"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loading"
+        ]
+      },
+      {
+        "id": "ui_message_sending",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "composer_submit"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded",
+          "ui_message_send_error"
+        ]
+      },
+      {
+        "id": "ui_message_send_error",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "send_message_failed"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded"
+        ]
+      },
+      {
+        "id": "ui_attachment_picking",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "attach_button_tapped"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded"
+        ]
+      },
+      {
+        "id": "ui_profile_loading",
+        "owner": "screen_user_profile",
+        "triggered_by": [
+          "show_profile_action"
+        ],
+        "transitions_to": [
+          "ui_profile_loaded",
+          "ui_profile_error"
+        ]
+      },
+      {
+        "id": "ui_profile_loaded",
+        "owner": "screen_user_profile",
+        "triggered_by": [
+          "current_user_fetch_succeeded"
+        ],
+        "transitions_to": []
+      },
+      {
+        "id": "ui_profile_error",
+        "owner": "screen_user_profile",
+        "triggered_by": [
+          "current_user_fetch_failed"
+        ],
+        "transitions_to": [
+          "ui_profile_loading"
+        ]
+      }
+    ],
+    "navigation": [
+      {
+        "from": "screen_login",
+        "to": "screen_advanced_login",
+        "trigger": "advanced_options_tapped",
+        "presentation": "push"
+      },
+      {
+        "from": "screen_login",
+        "to": "screen_channel_list",
+        "trigger": "login_authenticated",
+        "presentation": "root_replacement"
+      },
+      {
+        "from": "screen_advanced_login",
+        "to": "screen_channel_list",
+        "trigger": "custom_credentials_authenticated",
+        "presentation": "root_replacement"
+      },
+      {
+        "from": "screen_channel_list",
+        "to": "screen_channel_chat",
+        "trigger": "channel_tapped",
+        "presentation": "push"
+      },
+      {
+        "from": "screen_channel_list",
+        "to": "screen_user_profile",
+        "trigger": "show_profile_action",
+        "presentation": "push"
+      },
+      {
+        "from": "screen_user_profile",
+        "to": "screen_channel_list",
+        "trigger": "navigation_back",
+        "presentation": "pop"
+      },
+      {
+        "from": "screen_channel_chat",
+        "to": "screen_channel_list",
+        "trigger": "navigation_back",
+        "presentation": "pop"
+      },
+      {
+        "from": "screen_channel_list",
+        "to": "screen_login",
+        "trigger": "logout_action",
+        "presentation": "root_replacement"
+      }
+    ]
+  },
+  "data_integration": {
+    "data_flows": [
+      {
+        "id": "flow_login",
+        "flow": [
+          "user_selection",
+          "UserCredentials.builtInUsersByID(id:)",
+          "UserDefaults.currentUserId",
+          "StreamChatWrapper.shared",
+          "ChatClient.currentUserController()"
+        ]
+      },
+      {
+        "id": "flow_channel_list",
+        "flow": [
+          "StreamChat API",
+          "StreamChat local database",
+          "ChatChannelListViewController"
+        ]
+      },
+      {
+        "id": "flow_chat_messages",
+        "flow": [
+          "StreamChat API",
+          "StreamChat WebSocket",
+          "StreamChat local database",
+          "ChatChannelViewController"
+        ]
+      },
+      {
+        "id": "flow_push_token",
+        "flow": [
+          "UIApplicationDelegate.didRegisterForRemoteNotificationsWithDeviceToken",
+          "StreamChatWrapper.shared.registerForPushNotifications(with:)",
+          "StreamChat backend"
+        ]
+      },
+      {
+        "id": "flow_profile",
+        "flow": [
+          "ChatClient.currentUserController()",
+          "UserProfileViewController"
+        ]
+      },
+      {
+        "id": "flow_reactions",
+        "flow": [
+          "long_press_message",
+          "MessageReactionType.position",
+          "ChatChannelViewController"
+        ]
+      },
+      {
+        "id": "flow_media_resize",
+        "flow": [
+          "UIImage.resized(to:)",
+          "ChatChannelViewController"
+        ]
+      },
+      {
+        "id": "flow_crash_report",
+        "flow": [
+          "DemoAppConfiguration.configureSentry()",
+          "SentrySDK.start(options:)",
+          "Sentry backend"
+        ]
+      },
+      {
+        "id": "flow_http_proxy",
+        "flow": [
+          "AppConfig.shared.demoAppConfig.isAtlantisEnabled",
+          "Atlantis.start()",
+          "Atlantis.stop()",
+          "Proxyman"
+        ]
+      },
+      {
+        "id": "flow_performance",
+        "flow": [
+          "DispatchQueue.main.asyncAfter(deadline: .now() + 3)",
+          "PerformanceMonitor.shared().start()"
+        ]
+      }
+    ],
+    "models": [
+      {
+        "id": "model_user_credentials",
+        "type": "domain",
+        "properties": [
+          "id"
+        ]
+      },
+      {
+        "id": "model_current_user",
+        "type": "domain",
+        "properties": [
+          "id"
+        ]
+      },
+      {
+        "id": "model_channel",
+        "type": "domain",
+        "properties": [
+          "id",
+          "name",
+          "unread_count",
+          "last_message_preview",
+          "avatar"
+        ]
+      },
+      {
+        "id": "model_message",
+        "type": "domain",
+        "properties": [
+          "id",
+          "text",
+          "attachment",
+          "reaction_type"
+        ]
+      },
+      {
+        "id": "model_reaction_type",
+        "type": "domain",
+        "properties": [
+          "rawValue",
+          "position"
+        ]
+      },
+      {
+        "id": "model_app_config",
+        "type": "view_model",
+        "properties": [
+          "isAtlantisEnabled",
+          "sentryDsn",
+          "tracesSampleRate"
+        ]
+      },
+      {
+        "id": "model_push_token",
+        "type": "dto",
+        "properties": [
+          "deviceToken"
+        ]
+      }
+    ],
+    "integrations": [
+      {
+        "id": "integration_stream_chat",
+        "type": "chat_sdk",
+        "protocol": "HTTP + WebSocket",
+        "operations": [
+          "connectUser",
+          "queryChannels",
+          "createChannel",
+          "deleteChannel",
+          "sendMessage",
+          "addReaction",
+          "uploadAttachment",
+          "registerForPushNotifications"
+        ],
+        "inputs": [
+          "user_credentials",
+          "channel_query",
+          "message_draft",
+          "device_token"
+        ],
+        "outputs": [
+          "channels",
+          "messages",
+          "push_registration_status"
+        ],
+        "failure_modes": [
+          "network_unavailable",
+          "authentication_failed",
+          "websocket_disconnected"
+        ]
+      },
+      {
+        "id": "integration_apns",
+        "type": "push_notification",
+        "protocol": "APNs",
+        "operations": [
+          "receiveDeviceToken",
+          "forwardDeviceToken"
+        ],
+        "inputs": [
+          "deviceToken"
+        ],
+        "outputs": [
+          "push_registration_status"
+        ],
+        "failure_modes": [
+          "push_permission_denied",
+          "registration_failed"
+        ]
+      },
+      {
+        "id": "integration_sentry",
+        "type": "crash_reporting",
+        "protocol": "HTTPS",
+        "operations": [
+          "start",
+          "captureCrashReports",
+          "capturePerformanceTraces"
+        ],
+        "inputs": [
+          "dsn",
+          "traces_sample_rate"
+        ],
+        "outputs": [
+          "crash_events",
+          "performance_traces"
+        ],
+        "failure_modes": [
+          "network_unavailable",
+          "invalid_dsn"
+        ]
+      },
+      {
+        "id": "integration_atlantis",
+        "type": "http_proxy",
+        "protocol": "Bonjour / HTTP / WebSocket",
+        "operations": [
+          "start",
+          "stop"
+        ],
+        "inputs": [
+          "isAtlantisEnabled"
+        ],
+        "outputs": [
+          "proxied_http_traffic",
+          "proxied_websocket_traffic"
+        ],
+        "failure_modes": [
+          "proxyman_not_running_on_local_network"
+        ]
+      },
+      {
+        "id": "integration_performance_monitor",
+        "type": "performance_monitor",
+        "protocol": "in_process",
+        "operations": [
+          "start",
+          "showPerformanceOverlay"
+        ],
+        "inputs": [],
+        "outputs": [
+          "fps_performance"
+        ],
+        "failure_modes": [
+          "view_hierarchy_not_found"
+        ]
+      }
+    ],
+    "persistence": [
+      {
+        "id": "persistence_user_defaults",
+        "technology": "UserDefaults (app group suite)",
+        "entities": [
+          "currentUserId",
+          "currentUser"
+        ],
+        "operations": [
+          "read",
+          "write"
+        ]
+      },
+      {
+        "id": "persistence_stream_chat_db",
+        "technology": "StreamChat local database",
+        "entities": [
+          "channels",
+          "messages"
+        ],
+        "operations": [
+          "offline_store",
+          "sync"
+        ]
+      }
+    ]
+  },
   "implementation": {
     "tasks": [
       {

@@ -53,8 +53,35 @@ except ImportError:
 # ============ KEYWORD EXTRACTION (code, không LLM) ============
 
 def collect_keywords(project_graph: Dict[str, Any], repo_dir: Path) -> Dict[str, Dict[str, Any]]:
-    """Thu thập keyword thật từ (1) evidence OBSERVED, (2) imports code, (3) framework calls."""
+    """Thu thập keyword THẬT từ project graph:
+    1. PER-NODE keywords (A1): task.keywords[] + feature.api_usage[] + screen.keywords[]
+       — gắn node_id để giữ quan hệ task → keyword → concept
+    2. imports/framework calls từ code (bổ sung)
+    3. evidence OBSERVED
+    """
     keywords: Dict[str, Dict[str, Any]] = {}
+
+    # 0. Per-node keywords từ STEP 1 (A1/A2) — GIỮ QUAN HỆ node
+    for t in project_graph.get("implementation", {}).get("tasks", []):
+        node_id = f"task:{t.get('id', '')}"
+        for kw in t.get("keywords", []):
+            keywords.setdefault(kw, {"source": "task_keyword",
+                                     "evidence": {"file": (t.get("source_evidence") or [""])[0]},
+                                     "node_id": node_id})
+    for f in project_graph.get("features", []):
+        node_id = f"feature:{f.get('id', '')}"
+        for kw in f.get("api_usage", []):
+            # api_usage có thể là 'UserDefaults.currentUserId' — lấy token đầu
+            base_kw = kw.split(".")[0] if isinstance(kw, str) else kw
+            keywords.setdefault(base_kw, {"source": "feature_api_usage",
+                                          "evidence": {},
+                                          "node_id": node_id})
+    for s in project_graph.get("experience", {}).get("screens", []):
+        node_id = f"screen:{s.get('id', '')}"
+        for kw in s.get("keywords", []):
+            keywords.setdefault(kw, {"source": "screen_keyword",
+                                     "evidence": {},
+                                     "node_id": node_id})
 
     # 1. Symbols OBSERVED từ evidence (đã verify tồn tại)
     for e in project_graph.get("evidence", {}).get("entries", []):
@@ -166,6 +193,7 @@ def apply_mappings(project_graph: Dict[str, Any], keywords: Dict[str, Dict[str, 
         status = "MAPPED" if m.get("status") == "mapped" else "UNMAPPED_CONCEPT"
         entry = {
             "project_node": kw,
+            "node_id": info.get("node_id", ""),  # giữ quan hệ task/feature/screen → keyword
             "keywords": [kw],
             "concepts": [m.get("concept_code", "")] if m.get("concept_code") else [],
             "status": status,

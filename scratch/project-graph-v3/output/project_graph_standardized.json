@@ -1,9 +1,10 @@
 {
   "schema_version": 3,
   "project": {
-    "id": "stream-chat-ui-demo-app",
-    "name": "Stream Chat UI Demo App",
-    "purpose": "Demo app chính thức của Stream Chat UI: minh hoạ tích hợp chat real-time với StreamChatUI, dùng để preview/test tính năng chat và làm reference implementation.",
+    "id": "stream-chat-demo-ios",
+    "name": "StreamChatDemoApp",
+    "version": "1.0.0",
+    "purpose": "iOS demo app for Stream Chat UI. It showcases standard StreamChatUI implementation with login, channel list, messaging, reactions, push notifications and developer tooling. The provided source is UIKit/StreamChatUI-based.",
     "platform": [
       "iOS"
     ],
@@ -16,536 +17,617 @@
         "StreamChatUI"
       ],
       "persistence": [
-        "UserDefaults"
+        "UserDefaults (shared app group)"
       ],
       "networking": [
-        "StreamChat SDK",
-        "WebSocket",
-        "HTTP",
-        "APNs"
+        "StreamChat API/WebSocket client"
       ],
       "other": [
         "Sentry",
         "Atlantis",
-        "GDPerformanceView_Swift"
+        "GDPerformanceView_Swift",
+        "StreamChat SDK"
       ]
     },
     "architecture": [
-      "UIKit MVC (UIApplicationDelegate + UIViewController)",
-      "Màn hình được compose từ StreamChatUI"
+      "AppDelegate life cycle",
+      "Singleton service wrapper (StreamChatWrapper)",
+      "UIViewController extension-based UI composition"
     ],
     "source": {
+      "repository": "",
+      "commit": "",
       "scan_dir": "DemoApp"
     }
   },
   "product": {
     "goals": [
       {
-        "id": "g1",
-        "description": "Cung cấp trải nghiệm chat real-time: xem danh sách kênh, nhắn tin, gửi attachment, phản ứng tin nhắn."
+        "id": "G1",
+        "description": "Provide a runnable demo app that previews StreamChatUI features using pre-configured test users."
       },
       {
-        "id": "g2",
-        "description": "Showcase khả năng của SDK StreamChatUI cho nhà phát triển đánh giá."
+        "id": "G2",
+        "description": "Demonstrate the standard chat user journey: login, channel list, chat screen, reactions, attachments."
+      },
+      {
+        "id": "G3",
+        "description": "Show production-adjacent setup: push notifications, crash reporting, proxy debugging, and performance monitoring."
+      },
+      {
+        "id": "G4",
+        "description": "Serve as a reference implementation for StreamChat SDK integration and common UIKit customization patterns."
       }
     ],
     "users": [
       {
-        "id": "u1",
+        "id": "U1",
         "goals": [
-          "g1"
+          "G1",
+          "G2",
+          "G3"
         ]
       },
       {
-        "id": "u2",
+        "id": "U2",
         "goals": [
-          "g2"
+          "G1",
+          "G2"
         ]
       }
     ],
     "journeys": [
       {
-        "id": "j_login",
-        "name": "Đăng nhập bằng user cấu hình sẵn",
+        "id": "J1",
+        "name": "Login with pre-configured user",
         "steps": [
-          "Mở app → màn hình login",
-          "Chọn user từ danh sách pre-configured",
-          "(Tuỳ chọn) Mở Advanced options để nhập server/token tuỳ chỉnh",
-          "Đăng nhập và điều hướng tới Channel List"
+          "Open the app",
+          "Login screen displays pre-configured users",
+          "User selects a test user",
+          "App connects to StreamChat test server",
+          "User lands on channel list"
         ],
         "requirement_ids": [
-          "req_login"
+          "RQ1",
+          "RQ2"
         ]
       },
       {
-        "id": "j_channel_list",
-        "name": "Duyệt và quản lý danh sách kênh",
+        "id": "J2",
+        "name": "Browse and open channels",
         "steps": [
-          "Xem danh sách kênh infinite scroll",
-          "Nhìn avatar, unread indicator, preview tin nhắn cuối, timestamp",
-          "Tạo kênh mới từ nút top-right",
-          "Xoá kênh bằng swipe left"
+          "User sees channel list with avatars, unread indicators, last message previews and timestamps",
+          "User taps a channel",
+          "Chat screen opens for that channel"
         ],
         "requirement_ids": [
-          "req_channel_list"
+          "RQ3",
+          "RQ4"
         ]
       },
       {
-        "id": "j_chat",
-        "name": "Nhắn tin trong kênh",
+        "id": "J3",
+        "name": "Send messages and react",
         "steps": [
-          "Mở kênh từ Channel List",
-          "Xem danh sách tin nhắn, rich media, GIF",
-          "Soạn và gửi tin nhắn, file attachment",
-          "Long press để react tin nhắn"
+          "User opens a channel",
+          "User composes and sends a message",
+          "User long-presses a message",
+          "Reaction picker appears",
+          "User selects a reaction"
         ],
         "requirement_ids": [
-          "req_channel_chat"
+          "RQ5",
+          "RQ6"
+        ]
+      },
+      {
+        "id": "J4",
+        "name": "Manage session from options menu",
+        "steps": [
+          "User opens options menu",
+          "User can view profile, logout, or disconnect",
+          "App performs selected action"
+        ],
+        "requirement_ids": [
+          "RQ2",
+          "RQ10"
         ]
       }
     ],
     "requirements": [
       {
-        "id": "req_login",
-        "statement": "Cho phép đăng nhập với user pre-configured hoặc custom credentials qua Advanced options.",
+        "id": "RQ1",
+        "statement": "The app must present a login screen listing pre-configured users and an Advanced options path for custom credentials.",
         "priority": "core",
         "acceptance": [
-          "Chọn user từ danh sách → vào được Channel List",
-          "Advanced options cho phép nhập thông tin server và JWT token"
+          "Login screen is the initial screen",
+          "Built-in users are selectable from a list",
+          "Advanced options allow custom server/user credentials"
         ]
       },
       {
-        "id": "req_channel_list",
-        "statement": "Hiển thị danh sách kênh dạng infinite scroll kèm avatar, unread indicator, preview tin nhắn cuối và timestamp; hỗ trợ tạo và xoá kênh.",
+        "id": "RQ2",
+        "statement": "The user must be able to log out and disconnect from the StreamChat client via an options menu.",
         "priority": "core",
         "acceptance": [
-          "Danh sách cuộn vô hạn theo query",
-          "Có thể tạo kênh từ nút top-right",
-          "Có thể xoá kênh bằng swipe left"
+          "Options menu shows Logout and Disconnect actions",
+          "Logout clears current user/session state",
+          "Disconnect disconnects the chat client"
         ]
       },
       {
-        "id": "req_channel_chat",
-        "statement": "Hiển thị tin nhắn trong kênh với message composer, file attachment, rich media/GIF và reaction khi long press.",
+        "id": "RQ3",
+        "statement": "The channel list screen must display channels with avatars, unread indicators, last message previews and timestamps, in an infinite scrolling list.",
         "priority": "core",
         "acceptance": [
-          "Gửi và nhận tin nhắn real-time",
-          "Gửi file attachment từ composer",
-          "Long press tin nhắn để chọn reaction"
+          "Channel list scrolls infinitely",
+          "Each row shows avatar, unread indicator, last message preview and timestamp"
         ]
       },
       {
-        "id": "req_push",
-        "statement": "Đăng ký thiết bị nhận push notification từ Stream backend thông qua APNs.",
+        "id": "RQ4",
+        "statement": "The channel list must support creating a channel and deleting a channel by swiping.",
         "priority": "supporting",
         "acceptance": [
-          "Device token từ didRegisterForRemoteNotificationsWithDeviceToken được truyền cho chat.registerForPushNotifications"
+          "Top-right button can create a channel",
+          "Swiping a channel reveals delete action"
         ]
       },
       {
-        "id": "req_profile",
-        "statement": "Cho phép xem profile của user đang đăng nhập.",
-        "priority": "optional",
+        "id": "RQ5",
+        "statement": "The channel screen must display an infinite scrolling list of messages and include rich media support and a message composer with file attachment support.",
+        "priority": "core",
         "acceptance": [
-          "Từ user options alert chọn Show Profile → mở UserProfileViewController"
+          "Messages scroll infinitely",
+          "GIF/rich media is rendered",
+          "Composer supports text and file attachments"
         ]
       },
       {
-        "id": "req_a11y",
-        "statement": "UI tương thích Dark Mode và Dynamic Type của hệ thống.",
+        "id": "RQ6",
+        "statement": "The user must be able to react to messages by long-pressing a message.",
+        "priority": "supporting",
+        "acceptance": [
+          "Long-press opens reaction picker",
+          "Reaction ordering includes love, haha, like, sad, wow"
+        ]
+      },
+      {
+        "id": "RQ7",
+        "statement": "The app must support push notification registration and forwarding the device token to the StreamChat backend.",
+        "priority": "supporting",
+        "acceptance": [
+          "AppDelegate registers remote notifications",
+          "Device token is passed to StreamChatWrapper.registerForPushNotifications",
+          "Entitlements include aps-environment and app group"
+        ]
+      },
+      {
+        "id": "RQ8",
+        "statement": "UI components must be compatible with system Dark Mode and Dynamic Type.",
         "priority": "polish",
         "acceptance": [
-          "UI hiển thị đúng khi bật Dark Mode",
-          "Font scale theo cài đặt Dynamic Type"
+          "Dark Mode renders all screens correctly",
+          "Dynamic Type scales text for visually impaired users"
+        ]
+      },
+      {
+        "id": "RQ9",
+        "statement": "The demo app should include developer tooling: crash reporting, proxy debugging, and a performance tracker.",
+        "priority": "supporting",
+        "acceptance": [
+          "Sentry starts in Release builds",
+          "Atlantis can be enabled/disabled via AppConfig",
+          "Performance monitor is available for internal builds"
+        ]
+      },
+      {
+        "id": "RQ10",
+        "statement": "The user options menu must provide a way to view the current user's profile.",
+        "priority": "supporting",
+        "acceptance": [
+          "Options menu contains 'Show Profile' action",
+          "Profile screen is pushed using currentUserController"
         ]
       }
     ]
   },
   "features": [
     {
-      "id": "f_login",
-      "name": "Authentication / Login",
-      "purpose": "Chọn user pre-configured hoặc nhập custom credentials để kết nối tới Stream test server.",
+      "id": "F1",
+      "name": "Login & Session Management",
+      "purpose": "Allow a user to select a pre-configured test user, persist the current user, and manage logout/disconnect.",
       "priority": "core",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "req_login"
+        "RQ1",
+        "RQ2"
       ],
       "journey_ids": [
-        "j_login"
+        "J1",
+        "J4"
       ],
-      "depends_on": []
+      "depends_on": [],
+      "api_usage": [
+        "UserDefaults(suiteName:).string(forKey:) / set(_:forKey:)",
+        "UserCredentials.builtInUsersByID(id:)",
+        "UserDefaults.currentUserId",
+        "UserDefaults.currentUser",
+        "client.currentUserController()",
+        "UIAlertController actions"
+      ]
     },
     {
-      "id": "f_channel_list",
+      "id": "F2",
       "name": "Channel List",
-      "purpose": "Duyệt danh sách kênh, xem preview/unread, tạo và xoá kênh.",
+      "purpose": "Show a scrollable list of channels with unread indicators, avatars, last-message previews, and timestamps, plus create/delete actions.",
       "priority": "core",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "req_channel_list"
+        "RQ3",
+        "RQ4"
       ],
       "journey_ids": [
-        "j_channel_list"
+        "J2"
       ],
       "depends_on": [
-        "f_login"
+        "F1"
+      ],
+      "api_usage": [
+        "ChatChannelListViewController (from README)"
       ]
     },
     {
-      "id": "f_channel_chat",
-      "name": "Channel Chat",
-      "purpose": "Trò chuyện real-time trong kênh: tin nhắn, attachment, rich media, GIF, reaction.",
+      "id": "F3",
+      "name": "Channel Chat & Messaging",
+      "purpose": "Provide the chat screen with infinite message scrolling, rich media/GIF, message composer with attachments, and message reactions.",
       "priority": "core",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "req_channel_chat"
+        "RQ5",
+        "RQ6"
       ],
       "journey_ids": [
-        "j_chat"
+        "J3"
       ],
       "depends_on": [
-        "f_channel_list"
+        "F1",
+        "F2"
+      ],
+      "api_usage": [
+        "ChatChannelViewController (from README)",
+        "MessageReactionType.position",
+        "UIImage.resized(to:)",
+        "UIViewController.presentAlert"
       ]
     },
     {
-      "id": "f_push",
+      "id": "F4",
       "name": "Push Notifications",
-      "purpose": "Nhận thông báo real-time qua APNs và Stream backend.",
+      "purpose": "Register the device for remote push notifications and forward the device token to the StreamChat backend.",
       "priority": "supporting",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "req_push"
+        "RQ7"
       ],
       "journey_ids": [],
       "depends_on": [
-        "f_login"
+        "F1"
+      ],
+      "api_usage": [
+        "UIApplicationDelegate.didRegisterForRemoteNotificationsWithDeviceToken",
+        "StreamChatWrapper.shared.registerForPushNotifications(with:)"
       ]
     },
     {
-      "id": "f_profile",
+      "id": "F5",
       "name": "User Profile",
-      "purpose": "Xem thông tin user đang đăng nhập.",
-      "priority": "optional",
+      "purpose": "Display the current user's profile from the current user controller.",
+      "priority": "supporting",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "req_profile"
+        "RQ10"
       ],
-      "journey_ids": [],
+      "journey_ids": [
+        "J4"
+      ],
       "depends_on": [
-        "f_login"
+        "F1"
+      ],
+      "api_usage": [
+        "UserProfileViewController(currentUserController:)",
+        "UINavigationController.pushViewController(_:animated:)"
       ]
     },
     {
-      "id": "f_a11y",
+      "id": "F6",
       "name": "Dark Mode & Dynamic Type",
-      "purpose": "Hỗ trợ hệ thống Dark Mode và Dynamic Type để tăng accessibility.",
+      "purpose": "Ensure all StreamChatUI components respect system appearance and font sizes.",
       "priority": "polish",
       "status": "IMPLEMENTED",
       "requirement_ids": [
-        "req_a11y"
+        "RQ8"
       ],
       "journey_ids": [],
-      "depends_on": []
+      "depends_on": [
+        "F2",
+        "F3"
+      ],
+      "api_usage": []
+    },
+    {
+      "id": "F7",
+      "name": "Developer Tooling",
+      "purpose": "Provide crash reporting, HTTP/WebSocket proxy debugging, and performance monitoring for the demo app.",
+      "priority": "supporting",
+      "status": "IMPLEMENTED",
+      "requirement_ids": [
+        "RQ9"
+      ],
+      "journey_ids": [],
+      "depends_on": [],
+      "api_usage": [
+        "DemoAppConfiguration.configureSentry()",
+        "SentrySDK.start(options:)",
+        "Atlantis.start()",
+        "Atlantis.stop()",
+        "PerformanceMonitor.shared().start()"
+      ]
     }
   ],
   "capabilities": [
     {
-      "id": "cap_chat_client",
-      "feature_id": "f_login",
-      "purpose": "Cấu hình và expose StreamChat client (ChatClient) để app gọi register, query channels, gửi tin nhắn.",
+      "id": "CAP-LOGIN",
+      "feature_id": "F1",
+      "purpose": "Load pre-configured users and restore the current user from shared UserDefaults for the login screen.",
       "depends_on": [],
       "produces": [
-        "StreamChatWrapper",
-        "ChatClient instance",
-        "chat.registerForPushNotifications(with:)"
+        "currentUserId restored from UserDefaults",
+        "currentUser object available for session setup"
       ]
     },
     {
-      "id": "cap_user_session",
-      "feature_id": "f_login",
-      "purpose": "Persist user id hiện tại và resolve UserCredentials từ danh sách built-in users.",
+      "id": "CAP-SESSION-ACTIONS",
+      "feature_id": "F1",
+      "purpose": "Present user options menu containing Show Profile, Logout, and Disconnect and route the selected action.",
+      "depends_on": [
+        "CAP-LOGIN"
+      ],
+      "produces": [
+        "User options menu",
+        "Logout navigation",
+        "Disconnect routing",
+        "Profile screen navigation"
+      ]
+    },
+    {
+      "id": "CAP-CHANNEL-BROWSING",
+      "feature_id": "F2",
+      "purpose": "Display an infinite-scrolling channel list with avatars, unread indicators, last message previews, and timestamps.",
+      "depends_on": [
+        "CAP-LOGIN"
+      ],
+      "produces": [
+        "Channel list screen",
+        "Channel selection navigation"
+      ]
+    },
+    {
+      "id": "CAP-MESSAGING",
+      "feature_id": "F3",
+      "purpose": "Show a chat screen with message list, composer, rich media support, and message reactions.",
+      "depends_on": [
+        "CAP-CHANNEL-BROWSING"
+      ],
+      "produces": [
+        "Chat screen",
+        "Message reaction UI",
+        "Attachment-aware composer"
+      ]
+    },
+    {
+      "id": "CAP-PUSH",
+      "feature_id": "F4",
+      "purpose": "Receive APNs device token and register it with StreamChat backend via the shared wrapper.",
+      "depends_on": [
+        "CAP-LOGIN"
+      ],
+      "produces": [
+        "Push token registration"
+      ]
+    },
+    {
+      "id": "CAP-PROFILE",
+      "feature_id": "F5",
+      "purpose": "Present the current user's profile using the current user controller from ChatClient.",
+      "depends_on": [
+        "CAP-LOGIN"
+      ],
+      "produces": [
+        "User profile screen"
+      ]
+    },
+    {
+      "id": "CAP-ACCESSIBILITY",
+      "feature_id": "F6",
+      "purpose": "Ensure channel list and chat screens adapt to system Dark Mode and Dynamic Type settings.",
+      "depends_on": [
+        "CAP-CHANNEL-BROWSING",
+        "CAP-MESSAGING"
+      ],
+      "produces": [
+        "Dark-mode compatible UI",
+        "Dynamic Type font scaling"
+      ]
+    },
+    {
+      "id": "CAP-DEVMODE",
+      "feature_id": "F7",
+      "purpose": "Configure third-party developer tools: Sentry crash reporting, Atlantis proxy, and performance monitor.",
       "depends_on": [],
       "produces": [
-        "UserDefaults.currentUserId",
-        "UserDefaults.currentUser",
-        "applicationGroupIdentifier"
-      ]
-    },
-    {
-      "id": "cap_push_registration",
-      "feature_id": "f_push",
-      "purpose": "Đăng ký APNs device token lên Stream backend sau khi app nhận được token.",
-      "depends_on": [
-        "cap_chat_client"
-      ],
-      "produces": [
-        "Device token registration call",
-        "aps-environment entitlement"
-      ]
-    },
-    {
-      "id": "cap_user_options",
-      "feature_id": "f_profile",
-      "purpose": "Hiện menu user options: Show Profile, Logout, Disconnect với ChatClient.",
-      "depends_on": [
-        "cap_user_session"
-      ],
-      "produces": [
-        "UserProfileViewController",
-        "navigation push",
-        "logout/disconnect actions"
-      ]
-    },
-    {
-      "id": "cap_channel_list",
-      "feature_id": "f_channel_list",
-      "purpose": "Hiển thị danh sách kênh infinite scroll với avatar, unread, preview; hỗ trợ tạo/xoá kênh.",
-      "depends_on": [
-        "cap_chat_client"
-      ],
-      "produces": [
-        "ChatChannelListViewController"
-      ]
-    },
-    {
-      "id": "cap_chat_messaging",
-      "feature_id": "f_channel_chat",
-      "purpose": "Cho phép xem/gửi tin nhắn, react, gửi file attachment và hiển thị rich media/GIF.",
-      "depends_on": [
-        "cap_chat_client",
-        "cap_channel_list"
-      ],
-      "produces": [
-        "ChatChannelViewController",
-        "message composer",
-        "reaction list"
-      ]
-    },
-    {
-      "id": "cap_reaction_order",
-      "feature_id": "f_channel_chat",
-      "purpose": "Xác định thứ tự hiển thị reaction types (love, haha, like, sad, wow, other).",
-      "depends_on": [],
-      "produces": [
-        "MessageReactionType.position"
-      ]
-    },
-    {
-      "id": "cap_image_utility",
-      "feature_id": "f_channel_chat",
-      "purpose": "Resize ảnh theo target size giữ aspect ratio để dùng cho attachment hiển thị.",
-      "depends_on": [],
-      "produces": [
-        "UIImage.resized(to:)"
+        "Sentry DSN configuration",
+        "Atlantis proxy enable/disable",
+        "Performance overlay"
       ]
     }
   ],
   "architecture": {
     "pattern": [
-      "UIKit MVC (UIApplicationDelegate + UIViewController)",
-      "Màn hình được compose từ StreamChatUI"
+      "AppDelegate life cycle",
+      "Singleton manager (StreamChatWrapper)",
+      "UIViewController extension-based UI composition"
     ],
-    "confidence": 0.72,
+    "confidence": 0.6,
     "evidence": [
       "DemoApp/AppDelegate.swift",
-      "DemoApp/Info.plist",
-      "DemoApp/README.md",
       "DemoApp/DemoAppConfiguration.swift",
       "DemoApp/Extensions/UIViewController+Alert.swift",
-      "DemoApp/Extensions/UserDefaults+Shared.swift"
+      "DemoApp/Extensions/UserDefaults+Shared.swift",
+      "DemoApp/README.md"
     ],
     "nodes": [
       {
-        "id": "app_delegate",
+        "id": "demo_app",
         "type": "app",
         "layer": "presentation",
-        "responsibility": "Entry point iOS: khởi chạy app, cấu hình Sentry, đăng ký APNs device token, tạo UISceneConfiguration.",
-        "depends_on": [],
+        "responsibility": "iOS demo chat application built on StreamChatUI.",
         "evidence_type": "OBSERVED",
         "confidence": 1.0
       },
       {
-        "id": "scene_delegate",
+        "id": "app_delegate",
         "type": "component",
-        "layer": "presentation",
-        "responsibility": "Quản lý scene lifecycle; được khai báo trong UIApplicationSceneManifest của Info.plist.",
-        "depends_on": [],
-        "evidence_type": "OBSERVED",
-        "confidence": 0.85
-      },
-      {
-        "id": "chat_wrapper",
-        "type": "manager",
-        "layer": "domain",
-        "custom_type": "StreamChatWrapper",
-        "responsibility": "Singleton wrap StreamChat API cho toàn app; expose các thao tác như registerForPushNotifications.",
+        "custom_type": "UIApplicationDelegate",
+        "layer": "infra",
+        "responsibility": "Handle app lifecycle, remote notification registration, and scene configuration.",
         "depends_on": [
-          "chat_client"
+          "demo_app_config",
+          "stream_chat_wrapper"
         ],
         "used_by": [
-          "app_delegate",
-          "channel_list_screen",
-          "channel_chat_screen"
+          "demo_app"
         ],
-        "evidence_type": "INFERRED",
+        "evidence_type": "OBSERVED",
+        "confidence": 1.0
+      },
+      {
+        "id": "demo_app_config",
+        "type": "utility",
+        "layer": "infra",
+        "responsibility": "Configure Sentry, Atlantis proxy, and performance monitor for the demo app.",
+        "depends_on": [],
+        "used_by": [
+          "app_delegate"
+        ],
+        "evidence_type": "OBSERVED",
+        "confidence": 1.0
+      },
+      {
+        "id": "stream_chat_wrapper",
+        "type": "service",
+        "layer": "domain",
+        "responsibility": "Shared wrapper around StreamChat client for push registration and general access.",
+        "depends_on": [],
+        "used_by": [
+          "app_delegate"
+        ],
+        "evidence_type": "OBSERVED",
         "confidence": 0.8
       },
       {
-        "id": "chat_client",
-        "type": "service",
-        "layer": "infra",
-        "custom_type": "ChatClient (StreamChat SDK)",
-        "responsibility": "Client kết nối Stream backend: API calls, WebSocket realtime, local database logic.",
-        "depends_on": [],
-        "used_by": [
-          "chat_wrapper",
-          "ui_alert",
-          "profile_screen"
-        ],
-        "evidence_type": "INFERRED",
-        "confidence": 0.85
-      },
-      {
-        "id": "demo_config",
+        "id": "user_defaults_shared",
         "type": "utility",
-        "layer": "infra",
-        "responsibility": "Cấu hình tooling: Sentry crash report, Atlantis HTTP/WebSocket proxy, performance monitor.",
-        "depends_on": [],
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0
-      },
-      {
-        "id": "ui_alert",
-        "type": "utility",
-        "layer": "presentation",
-        "responsibility": "Extension UIViewController: helper hiện alert với một nút/text field/actions và user options (Show Profile/Logout/Disconnect).",
-        "depends_on": [],
-        "used_by": [
-          "channel_list_screen"
-        ],
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0
-      },
-      {
-        "id": "user_defaults",
-        "type": "repository",
         "layer": "data",
-        "responsibility": "Lưu/đọc current user id trong shared UserDefaults và resolve UserCredentials từ built-in users.",
+        "responsibility": "Provide shared UserDefaults suite and persist/retrieve current user credentials.",
         "depends_on": [],
+        "used_by": [
+          "demo_app"
+        ],
         "evidence_type": "OBSERVED",
-        "confidence": 1.0
+        "confidence": 0.8
       },
       {
-        "id": "reaction_position",
-        "type": "utility",
-        "layer": "domain",
-        "responsibility": "Ánh xạ MessageReactionType raw value (love/haha/like/sad/wow/other) sang vị trí hiển thị.",
-        "depends_on": [],
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0
-      },
-      {
-        "id": "image_resized",
+        "id": "uiviewcontroller_alert",
         "type": "utility",
         "layer": "presentation",
-        "responsibility": "Resize UIImage theo targetSize, giữ aspect ratio.",
-        "depends_on": [],
+        "responsibility": "Reusable UIAlertController helpers and user options menu (profile/logout/disconnect).",
+        "depends_on": [
+          "user_profile_vc"
+        ],
+        "used_by": [
+          "demo_app"
+        ],
         "evidence_type": "OBSERVED",
         "confidence": 1.0
       },
       {
-        "id": "login_screen",
+        "id": "user_profile_vc",
         "type": "component",
+        "custom_type": "UIViewController",
         "layer": "presentation",
-        "responsibility": "Màn hình đăng nhập ban đầu: chọn user pre-configured hoặc mở Advanced options.",
+        "responsibility": "Displays current user profile using ChatClient currentUserController.",
         "depends_on": [],
-        "evidence_type": "INFERRED",
-        "confidence": 0.7
-      },
-      {
-        "id": "channel_list_screen",
-        "type": "component",
-        "layer": "presentation",
-        "custom_type": "ChatChannelListViewController (StreamChatUI)",
-        "responsibility": "Danh sách kênh infinite scroll: avatar, unread indicator, preview tin nhắn, tạo/xoá kênh.",
-        "depends_on": [
-          "chat_wrapper"
-        ],
-        "used_by": [],
-        "evidence_type": "INFERRED",
-        "confidence": 0.75
-      },
-      {
-        "id": "channel_chat_screen",
-        "type": "component",
-        "layer": "presentation",
-        "custom_type": "ChatChannelViewController (StreamChatUI)",
-        "responsibility": "Màn hình chat: message list, rich media, GIF, composer, file attachment, reactions.",
-        "depends_on": [
-          "chat_wrapper"
+        "used_by": [
+          "uiviewcontroller_alert"
         ],
         "evidence_type": "INFERRED",
-        "confidence": 0.75
+        "confidence": 0.6
       },
       {
-        "id": "profile_screen",
-        "type": "component",
-        "layer": "presentation",
-        "custom_type": "UserProfileViewController",
-        "responsibility": "Hiển thị profile user hiện tại thông qua currentUserController.",
-        "depends_on": [
-          "chat_client"
+        "id": "chat_sample_entitlements",
+        "type": "utility",
+        "custom_type": "entitlements",
+        "layer": "infra",
+        "responsibility": "Declares aps-environment and application-group container for push/shared storage.",
+        "depends_on": [],
+        "used_by": [
+          "demo_app"
         ],
-        "evidence_type": "INFERRED",
-        "confidence": 0.75
+        "evidence_type": "OBSERVED",
+        "confidence": 1.0
       }
     ],
     "edges": [
       {
-        "from": "app_delegate",
-        "to": "chat_wrapper",
-        "type": "USES"
+        "from": "demo_app",
+        "to": "app_delegate",
+        "type": "CONTAINS"
+      },
+      {
+        "from": "demo_app",
+        "to": "demo_app_config",
+        "type": "CONTAINS"
+      },
+      {
+        "from": "demo_app",
+        "to": "user_defaults_shared",
+        "type": "CONTAINS"
+      },
+      {
+        "from": "demo_app",
+        "to": "uiviewcontroller_alert",
+        "type": "CONTAINS"
+      },
+      {
+        "from": "demo_app",
+        "to": "chat_sample_entitlements",
+        "type": "CONTAINS"
       },
       {
         "from": "app_delegate",
-        "to": "demo_config",
+        "to": "demo_app_config",
         "type": "USES"
       },
       {
-        "from": "chat_wrapper",
-        "to": "chat_client",
+        "from": "app_delegate",
+        "to": "stream_chat_wrapper",
         "type": "USES"
       },
       {
-        "from": "ui_alert",
-        "to": "chat_client",
-        "type": "USES"
-      },
-      {
-        "from": "ui_alert",
-        "to": "profile_screen",
-        "type": "CREATES"
-      },
-      {
-        "from": "channel_list_screen",
-        "to": "chat_wrapper",
-        "type": "USES"
-      },
-      {
-        "from": "channel_list_screen",
-        "to": "ui_alert",
-        "type": "USES"
-      },
-      {
-        "from": "channel_chat_screen",
-        "to": "chat_wrapper",
-        "type": "USES"
-      },
-      {
-        "from": "profile_screen",
-        "to": "chat_client",
-        "type": "USES"
+        "from": "uiviewcontroller_alert",
+        "to": "user_profile_vc",
+        "type": "NAVIGATES_TO"
       }
     ]
   },
@@ -553,202 +635,346 @@
     "screens": [
       {
         "id": "screen_login",
-        "name": "Login Screen",
-        "purpose": "Choose a pre-configured test user or enter custom credentials to connect to the Stream test server.",
+        "name": "Login",
+        "purpose": "F1: Allow a user to select a pre-configured Stream test user, persist the selected user id, and manage logout/disconnect. Observed: README ('login screen is the initial screen') and UserDefaults+Shared.swift.",
         "entry_point": true,
         "components": [
-          "comp_preconfigured_user_list",
-          "comp_advanced_options",
-          "comp_credentials_form"
+          "component_login_user_list",
+          "component_advanced_options_form"
         ],
         "states": [
           "ui_login_idle",
-          "ui_login_loading",
-          "ui_login_loaded",
+          "ui_login_authenticating",
+          "ui_login_authenticated",
           "ui_login_error"
         ],
         "navigates_to": [
+          "screen_advanced_login",
           "screen_channel_list"
+        ],
+        "keywords": [
+          "UserDefaults(suiteName:).string(forKey:)",
+          "UserDefaults(suiteName:).set(_:forKey:)",
+          "UserCredentials.builtInUsersByID(id:)"
+        ]
+      },
+      {
+        "id": "screen_advanced_login",
+        "name": "Advanced Login Options",
+        "purpose": "F1: Log in to a different server using custom user credentials and a JWT. Observed: README ('Advanced options' and JWT generator).",
+        "entry_point": false,
+        "components": [
+          "component_advanced_options_form"
+        ],
+        "states": [
+          "ui_advanced_login_idle",
+          "ui_advanced_login_submitting",
+          "ui_advanced_login_error"
+        ],
+        "navigates_to": [
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "JWT",
+          "custom_credentials"
         ]
       },
       {
         "id": "screen_channel_list",
-        "name": "Channel List Screen",
-        "purpose": "Browse channels with avatar, unread indicators, last message previews and timestamps; create and delete channels.",
+        "name": "Channel List",
+        "purpose": "F2: Show a scrollable list of channels with unread indicators, avatars, last-message previews and timestamps, plus create/delete actions. Observed: README and ChatChannelListViewController.",
         "entry_point": false,
         "components": [
-          "comp_channel_list",
-          "comp_channel_list_cell",
-          "comp_create_channel_button",
-          "comp_unread_indicator"
+          "component_channel_list_view",
+          "component_channel_list_cell",
+          "component_user_options_alert",
+          "component_stream_chat_appearance"
         ],
         "states": [
           "ui_channel_list_loading",
           "ui_channel_list_loaded",
           "ui_channel_list_empty",
-          "ui_channel_list_error"
+          "ui_channel_list_error",
+          "ui_channel_deleting"
         ],
         "navigates_to": [
           "screen_channel_chat",
-          "screen_user_profile"
+          "screen_user_profile",
+          "screen_login"
+        ],
+        "keywords": [
+          "ChatChannelListViewController",
+          "StreamChatUI",
+          "Dark Mode",
+          "Dynamic Type"
         ]
       },
       {
         "id": "screen_channel_chat",
-        "name": "Channel Chat Screen",
-        "purpose": "Real-time conversation inside a channel: messages, rich media, GIFs, file attachments and reactions.",
+        "name": "Channel Chat & Messaging",
+        "purpose": "F3: Provide the chat screen with infinite message scrolling, rich media/GIF, message composer with attachments, and message reactions. Observed: README and ChatChannelViewController.",
         "entry_point": false,
         "components": [
-          "comp_channel_header",
-          "comp_message_list",
-          "comp_message_composer",
-          "comp_attachment_picker",
-          "comp_reaction_overlay"
+          "component_channel_chat_view",
+          "component_message_composer",
+          "component_message_cell",
+          "component_reaction_selector",
+          "component_stream_chat_appearance"
         ],
         "states": [
-          "ui_chat_loading",
-          "ui_chat_loaded",
-          "ui_chat_sending",
-          "ui_chat_error"
+          "ui_channel_chat_loading",
+          "ui_channel_chat_loaded",
+          "ui_channel_chat_error",
+          "ui_message_sending",
+          "ui_message_send_error",
+          "ui_attachment_picking"
         ],
-        "navigates_to": []
+        "navigates_to": [
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "ChatChannelViewController",
+          "MessageReactionType.position",
+          "UIImage.resized(to:)",
+          "UIViewController.presentAlert",
+          "Dark Mode",
+          "Dynamic Type"
+        ]
       },
       {
         "id": "screen_user_profile",
-        "name": "User Profile Screen",
-        "purpose": "Display information about the currently logged-in user.",
+        "name": "User Profile",
+        "purpose": "F5: Display the current user's profile from ChatClient.currentUserController(). Observed: UIViewController+Alert.swift.",
         "entry_point": false,
         "components": [
-          "comp_profile_header"
+          "component_user_profile_view"
         ],
         "states": [
           "ui_profile_loading",
           "ui_profile_loaded",
           "ui_profile_error"
         ],
-        "navigates_to": []
+        "navigates_to": [
+          "screen_channel_list"
+        ],
+        "keywords": [
+          "UserProfileViewController(currentUserController:)",
+          "UINavigationController.pushViewController(_:animated:)"
+        ]
       }
     ],
     "components": [
       {
-        "id": "comp_preconfigured_user_list",
+        "id": "component_login_user_list",
         "type": "list",
-        "purpose": "Show built-in test users for quick login selection."
+        "purpose": "F1: Present pre-configured test users; selecting one persists currentUserId via UserDefaults.shared (UserDefaults+Shared.swift).",
+        "inputs": [
+          "user_credentials_list"
+        ],
+        "outputs": [
+          "selected_user_id"
+        ],
+        "state": [
+          "idle",
+          "loaded"
+        ]
       },
       {
-        "id": "comp_advanced_options",
-        "type": "button",
-        "purpose": "Reveal custom credential fields for connecting to a different server."
-      },
-      {
-        "id": "comp_credentials_form",
-        "type": "form",
-        "purpose": "Collect server URL, user id and JWT token for custom login.",
+        "id": "component_advanced_options_form",
+        "type": "container",
+        "purpose": "F1: Accept custom server URL, user id, and JWT for alternate login (README 'Advanced options').",
         "inputs": [
           "server_url",
           "user_id",
-          "token"
+          "jwt_token"
         ],
         "outputs": [
-          "login_credentials"
+          "custom_credentials"
+        ],
+        "state": [
+          "idle",
+          "submitting",
+          "error"
         ]
       },
       {
-        "id": "comp_channel_list",
+        "id": "component_channel_list_view",
         "type": "container",
-        "purpose": "Render an infinite-scrolling list of channels based on a channel query."
+        "purpose": "F2: Encapsulate ChatChannelListViewController; infinite scrolling channel list with unread indicators, avatars, last-message previews, timestamps, create and delete actions (README).",
+        "inputs": [
+          "current_user_id",
+          "channel_query"
+        ],
+        "outputs": [
+          "selected_channel_id",
+          "channel_to_create",
+          "channel_to_delete"
+        ],
+        "state": [
+          "loading",
+          "loaded",
+          "creating",
+          "deleting",
+          "error"
+        ]
       },
       {
-        "id": "comp_channel_list_cell",
+        "id": "component_channel_list_cell",
         "type": "cell",
-        "purpose": "Display channel avatar, name, last message preview, timestamp and unread indicator.",
+        "purpose": "F2: Display channel avatar, unread indicator, last message preview and timestamp (README).",
         "inputs": [
-          "ChatChannel"
+          "channel_avatar",
+          "unread_indicator",
+          "last_message_preview",
+          "timestamp"
         ],
         "outputs": [
-          "select_channel"
+          "channel_tap"
+        ],
+        "state": [
+          "normal",
+          "unread"
         ]
       },
       {
-        "id": "comp_create_channel_button",
-        "type": "button",
-        "purpose": "Open a flow to create a new channel."
-      },
-      {
-        "id": "comp_unread_indicator",
-        "type": "reusable_view",
-        "purpose": "Show unread message badge on a channel cell."
-      },
-      {
-        "id": "comp_channel_header",
+        "id": "component_channel_chat_view",
         "type": "container",
-        "purpose": "Display active channel info in the chat screen header."
-      },
-      {
-        "id": "comp_message_list",
-        "type": "list",
-        "purpose": "Render an infinite-scrolling list of messages in a channel."
-      },
-      {
-        "id": "comp_message_composer",
-        "type": "input",
-        "purpose": "Compose and send text messages with support for file attachments.",
+        "purpose": "F3: Encapsulate ChatChannelViewController; infinite scrolling messages, header, rich media/GIF, composer with attachments, and reactions (README).",
         "inputs": [
-          "message_draft"
+          "selected_channel_id"
         ],
         "outputs": [
-          "send_message",
-          "attach_file"
+          "message_sent",
+          "reaction_applied",
+          "attachment_selected"
+        ],
+        "state": [
+          "loading",
+          "loaded",
+          "error"
         ]
       },
       {
-        "id": "comp_attachment_picker",
-        "type": "menu",
-        "purpose": "Pick photo, video, file or location attachment from the system."
-      },
-      {
-        "id": "comp_reaction_overlay",
+        "id": "component_message_composer",
         "type": "reusable_view",
-        "purpose": "Allow reacting to a message via long press.",
+        "purpose": "F3: Compose text and file attachments for sending. Observed: README and Info.plist camera/microphone permission strings.",
         "inputs": [
-          "ChatMessage"
+          "message_text",
+          "attachment"
         ],
         "outputs": [
-          "send_reaction"
+          "message_draft_to_send"
+        ],
+        "state": [
+          "idle",
+          "composing",
+          "sending"
         ]
       },
       {
-        "id": "comp_profile_header",
+        "id": "component_message_cell",
+        "type": "cell",
+        "purpose": "F3: Display a message with optional media/GIF and reaction badges; long press triggers reaction picker (README).",
+        "inputs": [
+          "message_content",
+          "reactions"
+        ],
+        "outputs": [
+          "message_long_press"
+        ],
+        "state": [
+          "normal",
+          "reacting"
+        ]
+      },
+      {
+        "id": "component_reaction_selector",
+        "type": "reusable_view",
+        "purpose": "F3: Show reaction choices; MessageReactionType.position maps love/haha/like/sad/wow order (MessageReactionType+Position.swift).",
+        "inputs": [
+          "reaction_types"
+        ],
+        "outputs": [
+          "selected_reaction"
+        ],
+        "state": [
+          "hidden",
+          "visible"
+        ]
+      },
+      {
+        "id": "component_user_profile_view",
         "type": "container",
-        "purpose": "Display current user avatar and identity in the profile screen."
+        "purpose": "F5: Display current user profile using ChatClient.currentUserController() (UIViewController+Alert.swift).",
+        "inputs": [
+          "currentUserController"
+        ],
+        "outputs": [],
+        "state": [
+          "loading",
+          "loaded",
+          "error"
+        ]
+      },
+      {
+        "id": "component_user_options_alert",
+        "type": "reusable_view",
+        "purpose": "F1/F5: System alert with Show Profile, Logout, and Disconnect actions (UIViewController+Alert.swift presentUserOptionsAlert).",
+        "inputs": [
+          "chat_client",
+          "logout_handler",
+          "disconnect_handler"
+        ],
+        "outputs": [
+          "show_profile_action",
+          "logout_action",
+          "disconnect_action"
+        ],
+        "state": [
+          "presented"
+        ]
+      },
+      {
+        "id": "component_stream_chat_appearance",
+        "type": "reusable_view",
+        "purpose": "F6: Ensure StreamChatUI components respect system Dark Mode and Dynamic Type (README).",
+        "inputs": [
+          "system_color_scheme",
+          "preferred_content_size_category"
+        ],
+        "outputs": [],
+        "state": []
       }
     ],
     "ui_states": [
       {
         "id": "ui_login_idle",
         "owner": "screen_login",
-        "triggered_by": [],
+        "triggered_by": [
+          "app_launch",
+          "logout_completed"
+        ],
         "transitions_to": [
-          "ui_login_loading"
+          "ui_login_authenticating"
         ]
       },
       {
-        "id": "ui_login_loading",
+        "id": "ui_login_authenticating",
         "owner": "screen_login",
         "triggered_by": [
-          "select_user",
-          "submit_custom_credentials"
+          "user_selected",
+          "custom_credentials_submitted"
         ],
         "transitions_to": [
-          "ui_login_loaded",
+          "ui_login_authenticated",
           "ui_login_error"
         ]
       },
       {
-        "id": "ui_login_loaded",
+        "id": "ui_login_authenticated",
         "owner": "screen_login",
         "triggered_by": [
-          "connect_success"
+          "stream_chat_connection_succeeded"
         ],
         "transitions_to": [
           "ui_channel_list_loading"
@@ -758,18 +984,49 @@
         "id": "ui_login_error",
         "owner": "screen_login",
         "triggered_by": [
-          "connect_failure"
+          "stream_chat_connection_failed"
         ],
         "transitions_to": [
-          "ui_login_loading"
+          "ui_login_idle"
+        ]
+      },
+      {
+        "id": "ui_advanced_login_idle",
+        "owner": "screen_advanced_login",
+        "triggered_by": [
+          "advanced_options_opened"
+        ],
+        "transitions_to": [
+          "ui_advanced_login_submitting"
+        ]
+      },
+      {
+        "id": "ui_advanced_login_submitting",
+        "owner": "screen_advanced_login",
+        "triggered_by": [
+          "custom_credentials_submitted"
+        ],
+        "transitions_to": [
+          "ui_advanced_login_error",
+          "ui_channel_list_loading"
+        ]
+      },
+      {
+        "id": "ui_advanced_login_error",
+        "owner": "screen_advanced_login",
+        "triggered_by": [
+          "custom_credentials_rejected"
+        ],
+        "transitions_to": [
+          "ui_advanced_login_idle"
         ]
       },
       {
         "id": "ui_channel_list_loading",
         "owner": "screen_channel_list",
         "triggered_by": [
-          "login_success",
-          "pull_to_refresh"
+          "login_authenticated",
+          "retry_after_error"
         ],
         "transitions_to": [
           "ui_channel_list_loaded",
@@ -781,11 +1038,10 @@
         "id": "ui_channel_list_loaded",
         "owner": "screen_channel_list",
         "triggered_by": [
-          "query_success"
+          "channels_fetch_succeeded"
         ],
         "transitions_to": [
-          "ui_channel_list_loading",
-          "ui_channel_list_empty",
+          "ui_channel_deleting",
           "ui_channel_list_error"
         ]
       },
@@ -793,72 +1049,103 @@
         "id": "ui_channel_list_empty",
         "owner": "screen_channel_list",
         "triggered_by": [
-          "no_channels"
+          "channels_fetch_succeeded_empty"
         ],
         "transitions_to": [
-          "ui_channel_list_loading"
+          "ui_channel_list_loaded"
         ]
       },
       {
         "id": "ui_channel_list_error",
         "owner": "screen_channel_list",
         "triggered_by": [
-          "query_failure"
+          "channels_fetch_failed",
+          "delete_channel_failed"
         ],
         "transitions_to": [
           "ui_channel_list_loading"
         ]
       },
       {
-        "id": "ui_chat_loading",
-        "owner": "screen_channel_chat",
+        "id": "ui_channel_deleting",
+        "owner": "screen_channel_list",
         "triggered_by": [
-          "open_channel"
+          "delete_channel_action"
         ],
         "transitions_to": [
-          "ui_chat_loaded",
-          "ui_chat_error"
+          "ui_channel_list_loaded",
+          "ui_channel_list_error"
         ]
       },
       {
-        "id": "ui_chat_loaded",
+        "id": "ui_channel_chat_loading",
         "owner": "screen_channel_chat",
         "triggered_by": [
-          "messages_loaded",
-          "new_message"
+          "channel_selected"
         ],
         "transitions_to": [
-          "ui_chat_sending",
-          "ui_chat_error"
+          "ui_channel_chat_loaded",
+          "ui_channel_chat_error"
         ]
       },
       {
-        "id": "ui_chat_sending",
+        "id": "ui_channel_chat_loaded",
         "owner": "screen_channel_chat",
         "triggered_by": [
-          "composer_send"
+          "messages_fetch_succeeded"
         ],
         "transitions_to": [
-          "ui_chat_loaded",
-          "ui_chat_error"
+          "ui_message_sending",
+          "ui_attachment_picking",
+          "ui_channel_chat_error"
         ]
       },
       {
-        "id": "ui_chat_error",
+        "id": "ui_channel_chat_error",
         "owner": "screen_channel_chat",
         "triggered_by": [
-          "load_failure",
-          "send_failure"
+          "messages_fetch_failed"
         ],
         "transitions_to": [
-          "ui_chat_loaded"
+          "ui_channel_chat_loading"
+        ]
+      },
+      {
+        "id": "ui_message_sending",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "composer_submit"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded",
+          "ui_message_send_error"
+        ]
+      },
+      {
+        "id": "ui_message_send_error",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "send_message_failed"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded"
+        ]
+      },
+      {
+        "id": "ui_attachment_picking",
+        "owner": "screen_channel_chat",
+        "triggered_by": [
+          "attach_button_tapped"
+        ],
+        "transitions_to": [
+          "ui_channel_chat_loaded"
         ]
       },
       {
         "id": "ui_profile_loading",
         "owner": "screen_user_profile",
         "triggered_by": [
-          "open_profile"
+          "show_profile_action"
         ],
         "transitions_to": [
           "ui_profile_loaded",
@@ -869,7 +1156,7 @@
         "id": "ui_profile_loaded",
         "owner": "screen_user_profile",
         "triggered_by": [
-          "profile_loaded"
+          "current_user_fetch_succeeded"
         ],
         "transitions_to": []
       },
@@ -877,7 +1164,7 @@
         "id": "ui_profile_error",
         "owner": "screen_user_profile",
         "triggered_by": [
-          "profile_load_failure"
+          "current_user_fetch_failed"
         ],
         "transitions_to": [
           "ui_profile_loading"
@@ -887,14 +1174,26 @@
     "navigation": [
       {
         "from": "screen_login",
+        "to": "screen_advanced_login",
+        "trigger": "advanced_options_tapped",
+        "presentation": "push"
+      },
+      {
+        "from": "screen_login",
         "to": "screen_channel_list",
-        "trigger": "login_success",
-        "presentation": "replace"
+        "trigger": "login_authenticated",
+        "presentation": "root_replacement"
+      },
+      {
+        "from": "screen_advanced_login",
+        "to": "screen_channel_list",
+        "trigger": "custom_credentials_authenticated",
+        "presentation": "root_replacement"
       },
       {
         "from": "screen_channel_list",
         "to": "screen_channel_chat",
-        "trigger": "select_channel",
+        "trigger": "channel_tapped",
         "presentation": "push"
       },
       {
@@ -902,6 +1201,24 @@
         "to": "screen_user_profile",
         "trigger": "show_profile_action",
         "presentation": "push"
+      },
+      {
+        "from": "screen_user_profile",
+        "to": "screen_channel_list",
+        "trigger": "navigation_back",
+        "presentation": "pop"
+      },
+      {
+        "from": "screen_channel_chat",
+        "to": "screen_channel_list",
+        "trigger": "navigation_back",
+        "presentation": "pop"
+      },
+      {
+        "from": "screen_channel_list",
+        "to": "screen_login",
+        "trigger": "logout_action",
+        "presentation": "root_replacement"
       }
     ]
   },
@@ -911,84 +1228,142 @@
         "id": "flow_login",
         "flow": [
           "user_selection",
-          "UserCredentials",
-          "StreamChatWrapper.connect",
-          "ChatClient",
-          "ChatChannelListViewController"
+          "UserCredentials.builtInUsersByID(id:)",
+          "UserDefaults.currentUserId",
+          "StreamChatWrapper.shared",
+          "ChatClient.currentUserController()"
         ]
       },
       {
         "id": "flow_channel_list",
         "flow": [
-          "ChatClient.channelListController",
-          "ChannelListQuery",
-          "ChatChannel",
-          "ChannelListCell"
+          "StreamChat API",
+          "StreamChat local database",
+          "ChatChannelListViewController"
         ]
       },
       {
-        "id": "flow_chat",
+        "id": "flow_chat_messages",
         "flow": [
-          "ChatClient.channelController",
-          "ChatMessage",
-          "MessageComposer",
-          "AttachmentUploader",
-          "StreamBackend"
+          "StreamChat API",
+          "StreamChat WebSocket",
+          "StreamChat local database",
+          "ChatChannelViewController"
         ]
       },
       {
-        "id": "flow_push_registration",
+        "id": "flow_push_token",
         "flow": [
-          "APNs",
-          "AppDelegate.didRegisterForRemoteNotificationsWithDeviceToken",
-          "StreamChatWrapper.registerForPushNotifications",
-          "StreamBackend"
+          "UIApplicationDelegate.didRegisterForRemoteNotificationsWithDeviceToken",
+          "StreamChatWrapper.shared.registerForPushNotifications(with:)",
+          "StreamChat backend"
         ]
       },
       {
         "id": "flow_profile",
         "flow": [
-          "ChatClient.currentUserController",
-          "CurrentUser",
+          "ChatClient.currentUserController()",
           "UserProfileViewController"
+        ]
+      },
+      {
+        "id": "flow_reactions",
+        "flow": [
+          "long_press_message",
+          "MessageReactionType.position",
+          "ChatChannelViewController"
+        ]
+      },
+      {
+        "id": "flow_media_resize",
+        "flow": [
+          "UIImage.resized(to:)",
+          "ChatChannelViewController"
+        ]
+      },
+      {
+        "id": "flow_crash_report",
+        "flow": [
+          "DemoAppConfiguration.configureSentry()",
+          "SentrySDK.start(options:)",
+          "Sentry backend"
+        ]
+      },
+      {
+        "id": "flow_http_proxy",
+        "flow": [
+          "AppConfig.shared.demoAppConfig.isAtlantisEnabled",
+          "Atlantis.start()",
+          "Atlantis.stop()",
+          "Proxyman"
+        ]
+      },
+      {
+        "id": "flow_performance",
+        "flow": [
+          "DispatchQueue.main.asyncAfter(deadline: .now() + 3)",
+          "PerformanceMonitor.shared().start()"
         ]
       }
     ],
     "models": [
       {
-        "id": "m_user_credentials",
+        "id": "model_user_credentials",
         "type": "domain",
         "properties": [
           "id"
         ]
       },
       {
-        "id": "m_chat_channel",
-        "type": "dto",
+        "id": "model_current_user",
+        "type": "domain",
         "properties": [
-          "id",
-          "name",
-          "unreadCount",
-          "lastMessageAt"
+          "id"
         ]
       },
       {
-        "id": "m_chat_message",
-        "type": "dto",
+        "id": "model_channel",
+        "type": "domain",
         "properties": [
+          "id",
+          "name",
+          "unread_count",
+          "last_message_preview",
+          "avatar"
+        ]
+      },
+      {
+        "id": "model_message",
+        "type": "domain",
+        "properties": [
+          "id",
           "text",
-          "attachments",
-          "reactions",
-          "giphy"
+          "attachment",
+          "reaction_type"
         ]
       },
       {
-        "id": "m_current_user",
+        "id": "model_reaction_type",
+        "type": "domain",
+        "properties": [
+          "rawValue",
+          "position"
+        ]
+      },
+      {
+        "id": "model_app_config",
+        "type": "view_model",
+        "properties": [
+          "isAtlantisEnabled",
+          "sentryDsn",
+          "tracesSampleRate"
+        ]
+      },
+      {
+        "id": "model_push_token",
         "type": "dto",
         "properties": [
-          "id",
-          "name",
-          "imageURL"
+          "deviceToken"
         ]
       }
     ],
@@ -996,31 +1371,32 @@
       {
         "id": "integration_stream_chat",
         "type": "chat_sdk",
-        "protocol": "WebSocket + HTTPS",
+        "protocol": "HTTP + WebSocket",
         "operations": [
-          "connect_user",
-          "query_channels",
-          "watch_channel",
-          "send_message",
-          "send_reaction",
-          "upload_attachment",
-          "register_push_token",
-          "disconnect"
+          "connectUser",
+          "queryChannels",
+          "createChannel",
+          "deleteChannel",
+          "sendMessage",
+          "addReaction",
+          "uploadAttachment",
+          "registerForPushNotifications"
         ],
         "inputs": [
-          "UserCredentials",
-          "ChannelQuery",
-          "MessageDraft"
+          "user_credentials",
+          "channel_query",
+          "message_draft",
+          "device_token"
         ],
         "outputs": [
-          "ChatChannel",
-          "ChatMessage",
-          "CurrentUser"
+          "channels",
+          "messages",
+          "push_registration_status"
         ],
         "failure_modes": [
-          "network_error",
-          "invalid_token",
-          "connection_lost"
+          "network_unavailable",
+          "authentication_failed",
+          "websocket_disconnected"
         ]
       },
       {
@@ -1028,17 +1404,18 @@
         "type": "push_notification",
         "protocol": "APNs",
         "operations": [
-          "register_device_token"
+          "receiveDeviceToken",
+          "forwardDeviceToken"
         ],
         "inputs": [
           "deviceToken"
         ],
         "outputs": [
-          "registered_token"
+          "push_registration_status"
         ],
         "failure_modes": [
-          "permission_denied",
-          "token_invalid"
+          "push_permission_denied",
+          "registration_failed"
         ]
       },
       {
@@ -1047,52 +1424,81 @@
         "protocol": "HTTPS",
         "operations": [
           "start",
-          "capture_error"
+          "captureCrashReports",
+          "capturePerformanceTraces"
         ],
         "inputs": [
-          "dsn"
+          "dsn",
+          "traces_sample_rate"
         ],
         "outputs": [
-          "sentry_event"
+          "crash_events",
+          "performance_traces"
         ],
-        "failure_modes": []
+        "failure_modes": [
+          "network_unavailable",
+          "invalid_dsn"
+        ]
       },
       {
         "id": "integration_atlantis",
-        "type": "debug_proxy",
-        "protocol": "Bonjour / HTTP",
+        "type": "http_proxy",
+        "protocol": "Bonjour / HTTP / WebSocket",
         "operations": [
           "start",
           "stop"
         ],
+        "inputs": [
+          "isAtlantisEnabled"
+        ],
+        "outputs": [
+          "proxied_http_traffic",
+          "proxied_websocket_traffic"
+        ],
+        "failure_modes": [
+          "proxyman_not_running_on_local_network"
+        ]
+      },
+      {
+        "id": "integration_performance_monitor",
+        "type": "performance_monitor",
+        "protocol": "in_process",
+        "operations": [
+          "start",
+          "showPerformanceOverlay"
+        ],
         "inputs": [],
-        "outputs": [],
-        "failure_modes": []
+        "outputs": [
+          "fps_performance"
+        ],
+        "failure_modes": [
+          "view_hierarchy_not_found"
+        ]
       }
     ],
     "persistence": [
       {
-        "id": "p_user_defaults",
-        "technology": "UserDefaults",
+        "id": "persistence_user_defaults",
+        "technology": "UserDefaults (app group suite)",
         "entities": [
-          "currentUserId"
+          "currentUserId",
+          "currentUser"
         ],
         "operations": [
-          "read_current_user",
-          "write_current_user"
+          "read",
+          "write"
         ]
       },
       {
-        "id": "p_stream_chat_db",
+        "id": "persistence_stream_chat_db",
         "technology": "StreamChat local database",
         "entities": [
-          "m_chat_channel",
-          "m_chat_message"
+          "channels",
+          "messages"
         ],
         "operations": [
-          "persist_channels",
-          "persist_messages",
-          "sync_offline"
+          "offline_store",
+          "sync"
         ]
       }
     ]
@@ -1100,632 +1506,802 @@
   "implementation": {
     "tasks": [
       {
-        "id": "t_setup_app_delegate",
-        "capability_id": "cap_foundation",
-        "action": "Implement AppDelegate là entry point: khởi chạy app, cấu hình Sentry, khai báo UISceneConfiguration và đăng ký APNs device token.",
+        "id": "task-01-app-lifecycle",
+        "capability_id": "app-lifecycle",
+        "action": "Implement AppDelegate as @main entry point that exposes a shared StreamChatWrapper",
         "modifies": [
-          "DemoApp/AppDelegate.swift",
-          "DemoApp/Info.plist"
+          "DemoApp/AppDelegate.swift"
         ],
         "creates": [
-          "UIApplicationDelegate lifecycle",
-          "APNs device token registration hook"
+          "App lifecycle hooks",
+          "StreamChatWrapper shared access point"
         ],
         "depends_on": [],
         "acceptance": [
-          "didFinishLaunchingWithOptions gọi DemoAppConfiguration.configureSentry()",
-          "UIApplicationSceneManifest trong Info.plist trỏ tới SceneDelegate",
-          "didRegisterForRemoteNotificationsWithDeviceToken gọi StreamChatWrapper.shared.registerForPushNotifications(with:)"
+          "App launches without crashing",
+          "didFinishLaunching returns true",
+          "StreamChatWrapper.shared is accessible via the chat property"
         ],
-        "intent": "Người dùng cần app khởi động đúng lifecycle iOS và có điểm cắm đăng ký push notification khi chạy.",
+        "intent": "Provide a single app entry point that wires StreamChat into the iOS app lifecycle",
         "outcome": {
-          "user_visible": "App khởi động ổn định; khi user cấp quyền notification, device token được đăng ký tới Stream backend.",
+          "user_visible": "App starts to a known login/channel flow after launch",
           "technical": [
-            "AppDelegate conforms UIApplicationDelegate",
-            "SceneDelegate được khai báo trong UIApplicationSceneManifest",
-            "Sentry SDK được start trong RELEASE"
+            "AppDelegate conforms to UIApplicationDelegate",
+            "StreamChatWrapper.shared is accessible",
+            "didFinishLaunching configures Sentry"
           ]
         },
         "source_evidence": [
-          "DemoApp/AppDelegate.swift",
-          "DemoApp/Info.plist",
-          "DemoApp/DemoAppConfiguration.swift"
-        ]
-      },
-      {
-        "id": "t_setup_tooling",
-        "capability_id": "cap_foundation",
-        "action": "Implement DemoAppConfiguration để bật/tắt Sentry, Atlantis HTTP/WebSocket proxy và performance tracker theo môi trường.",
-        "modifies": [
-          "DemoApp/DemoAppConfiguration.swift"
+          "DemoApp/AppDelegate.swift"
         ],
-        "creates": [
-          "Sentry DSN configuration",
-          "Atlantis start/stop helper",
-          "PerformanceMonitor gate"
-        ],
-        "depends_on": [
-          "t_setup_app_delegate"
-        ],
-        "acceptance": [
-          "RELEASE build có SentrySDK.start với DSN",
-          "AppConfig.shared.demoAppConfig.isAtlantisEnabled điều khiển Atlantis.start()/stop()",
-          "PerformanceMonitor chỉ chạy khi StreamRuntimeCheck.isStreamInternalConfiguration"
-        ],
-        "intent": "Nhà phát triển cần observability và debugging network để phát hiện crash và inspect traffic chat realtime.",
-        "outcome": {
-          "user_visible": "Không thay đổi trải nghiệm người dùng ở release (Sentry chạy nền).",
-          "technical": [
-            "Environment-gated tooling",
-            "SentrySDK.start(options:)",
-            "Atlantis proxy cho HTTP/WebSocket"
-          ]
-        },
-        "source_evidence": [
-          "DemoApp/DemoAppConfiguration.swift"
-        ]
-      },
-      {
-        "id": "t_wrap_stream_chat",
-        "capability_id": "cap_foundation",
-        "action": "Implement singleton StreamChatWrapper wrap ChatClient và expose registerForPushNotifications để cả app dùng chung một client.",
-        "modifies": [],
-        "creates": [
+        "keywords": [
+          "@main",
+          "UIApplicationDelegate",
           "StreamChatWrapper",
-          "StreamChatWrapper.shared",
-          "registerForPushNotifications(with:)"
+          "StreamChat"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 1,
+          "estimated_minutes": 30
+        }
+      },
+      {
+        "id": "task-02-diagnostics",
+        "capability_id": "observability",
+        "action": "Implement DemoAppConfiguration to configure Sentry, Atlantis, and performance monitor",
+        "modifies": [
+          "DemoApp/DemoAppConfiguration.swift"
+        ],
+        "creates": [
+          "Sentry crash reporting setup",
+          "Atlantis network proxy toggle",
+          "Performance tracker start"
         ],
         "depends_on": [
-          "t_setup_app_delegate"
+          "task-01-app-lifecycle"
         ],
         "acceptance": [
-          "AppDelegate.chat trỏ tới StreamChatWrapper.shared",
-          "registerForPushNotifications(with:) forward device token tới ChatClient"
+          "Sentry starts only in RELEASE builds",
+          "Atlantis starts/stops based on AppConfig.shared.demoAppConfig.isAtlantisEnabled",
+          "Performance monitor starts for internal builds after 3s delay"
         ],
-        "intent": "Mọi màn hình cần cùng một ChatClient instance để duy trì kết nối realtime; tránh tạo client rời rạc.",
+        "intent": "Enable debugging and crash reporting to keep the chat app maintainable and observable",
         "outcome": {
-          "user_visible": "Sau khi đăng ký token, push notification từ Stream có thể gửi tới device.",
+          "user_visible": "No visible change; developers can inspect network traffic and crash reports",
           "technical": [
-            "Singleton pattern",
-            "Wrap ChatClient API",
-            "Central push registration hook"
+            "Sentry DSN configured",
+            "Atlantis starts for Proxyman traffic inspection",
+            "PerformanceMonitor configured with .performance option"
+          ]
+        },
+        "source_evidence": [
+          "DemoApp/DemoAppConfiguration.swift"
+        ],
+        "keywords": [
+          "SentrySDK",
+          "Atlantis",
+          "PerformanceMonitor",
+          "StreamRuntimeCheck"
+        ],
+        "concurrency": [
+          "DispatchQueue.main.asyncAfter"
+        ],
+        "effort": {
+          "concepts_count": 3,
+          "files_touched": 1,
+          "estimated_minutes": 45
+        }
+      },
+      {
+        "id": "task-03-session-persistence",
+        "capability_id": "state-management",
+        "action": "Implement shared UserDefaults accessor for current user credentials",
+        "modifies": [
+          "DemoApp/Extensions/UserDefaults+Shared.swift"
+        ],
+        "creates": [
+          "currentUserId persisted property",
+          "currentUser derived from built-in users"
+        ],
+        "depends_on": [],
+        "acceptance": [
+          "currentUserId reads/writes to shared App Group UserDefaults",
+          "currentUser returns UserCredentials matching stored id or nil"
+        ],
+        "intent": "Persist the selected user across app launches so the chat session survives restarts",
+        "outcome": {
+          "user_visible": "User stays logged in after relaunch",
+          "technical": [
+            "UserDefaults suite backed by applicationGroupIdentifier",
+            "currentUserId uses #function as key"
+          ]
+        },
+        "source_evidence": [
+          "DemoApp/Extensions/UserDefaults+Shared.swift"
+        ],
+        "keywords": [
+          "UserDefaults",
+          "applicationGroupIdentifier",
+          "UserCredentials"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 1,
+          "estimated_minutes": 20
+        }
+      },
+      {
+        "id": "task-04-alert-helpers",
+        "capability_id": "ui-utils",
+        "action": "Implement reusable UIViewController alert extension for options, text input, and user actions",
+        "modifies": [
+          "DemoApp/Extensions/UIViewController+Alert.swift"
+        ],
+        "creates": [
+          "presentAlert overloads",
+          "presentUserOptionsAlert for Profile/Logout/Disconnect"
+        ],
+        "depends_on": [],
+        "acceptance": [
+          "Alerts can show title/message with OK/Cancel",
+          "Text input alert returns entered text via okHandler",
+          "User options alert pushes UserProfileViewController and invokes logout/disconnect closures"
+        ],
+        "intent": "Provide consistent alert and presentation patterns across the app's account and channel flows",
+        "outcome": {
+          "user_visible": "Tapping profile/logout/disconnect shows familiar system alerts",
+          "technical": [
+            "UIAlertController wrappers added",
+            "Closure-based callbacks",
+            "Navigation push to UserProfileViewController"
+          ]
+        },
+        "source_evidence": [
+          "DemoApp/Extensions/UIViewController+Alert.swift"
+        ],
+        "keywords": [
+          "UIAlertController",
+          "UIAlertAction",
+          "ChatClient",
+          "UserProfileViewController"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 3,
+          "files_touched": 1,
+          "estimated_minutes": 60
+        }
+      },
+      {
+        "id": "task-05-image-resize",
+        "capability_id": "image-handling",
+        "action": "Implement UIImage resizing extension for attachment thumbnails",
+        "modifies": [
+          "DemoApp/Extensions/UIImage+Resized.swift"
+        ],
+        "creates": [
+          "resized(to:) utility"
+        ],
+        "depends_on": [],
+        "acceptance": [
+          "Resized image preserves aspect ratio",
+          "Image context is ended in defer"
+        ],
+        "intent": "Standardize image resizing for chat attachments so media messages display efficiently",
+        "outcome": {
+          "user_visible": "Images sent in chat appear correctly sized without distortion",
+          "technical": [
+            "UIGraphicsBeginImageContextWithOptions used",
+            "Aspect-fit calculation implemented"
+          ]
+        },
+        "source_evidence": [
+          "DemoApp/Extensions/UIImage+Resized.swift"
+        ],
+        "keywords": [
+          "UIImage",
+          "UIGraphicsBeginImageContextWithOptions",
+          "CGSize"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 1,
+          "estimated_minutes": 30
+        }
+      },
+      {
+        "id": "task-06-reaction-position",
+        "capability_id": "message-customization",
+        "action": "Implement MessageReactionType position mapping for reaction ordering",
+        "modifies": [
+          "DemoApp/Extensions/MessageReactionType+Position.swift"
+        ],
+        "creates": [
+          "position computed property on MessageReactionType"
+        ],
+        "depends_on": [],
+        "acceptance": [
+          "love/haha/like/sad/wow map to positions 0-4",
+          "Unknown reactions map to position 5"
+        ],
+        "intent": "Give deterministic ordering to message reactions in the reaction picker/list",
+        "outcome": {
+          "user_visible": "Message reactions appear in a stable, predictable order",
+          "technical": [
+            "MessageReactionType extension added",
+            "rawValue switch returns stable position"
+          ]
+        },
+        "source_evidence": [
+          "DemoApp/Extensions/MessageReactionType+Position.swift"
+        ],
+        "keywords": [
+          "MessageReactionType",
+          "rawValue"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 1,
+          "files_touched": 1,
+          "estimated_minutes": 15
+        }
+      },
+      {
+        "id": "task-07-push-registration",
+        "capability_id": "push-notifications",
+        "action": "Register device token with Stream backend after remote notification registration",
+        "modifies": [
+          "DemoApp/AppDelegate.swift"
+        ],
+        "creates": [
+          "Push notification device token forwarding"
+        ],
+        "depends_on": [
+          "task-01-app-lifecycle"
+        ],
+        "acceptance": [
+          "didRegisterForRemoteNotificationsWithDeviceToken calls chat.registerForPushNotifications",
+          "aps-environment entitlement exists"
+        ],
+        "intent": "Enable push notifications so users receive mentions and new messages even when the app is backgrounded",
+        "outcome": {
+          "user_visible": "Users receive push notifications for new chat activity",
+          "technical": [
+            "registerForPushNotifications called on StreamChatWrapper",
+            "ChatSample.entitlements contains aps-environment"
           ]
         },
         "source_evidence": [
           "DemoApp/AppDelegate.swift",
-          "DemoApp/Extensions/UIViewController+Alert.swift"
-        ]
+          "DemoApp/ChatSample.entitlements"
+        ],
+        "keywords": [
+          "registerForPushNotifications",
+          "didRegisterForRemoteNotificationsWithDeviceToken",
+          "aps-environment"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 2,
+          "estimated_minutes": 45
+        }
       },
       {
-        "id": "t_user_defaults",
-        "capability_id": "cap_foundation",
-        "action": "Implement UserDefaults shared extension đọc/ghi currentUserId và resolve currentUser từ built-in users.",
-        "modifies": [
-          "DemoApp/Extensions/UserDefaults+Shared.swift"
-        ],
-        "creates": [
-          "UserDefaults.shared",
-          "currentUserId property",
-          "currentUser property"
-        ],
-        "depends_on": [],
-        "acceptance": [
-          "UserDefaults.shared dùng suiteName applicationGroupIdentifier",
-          "currentUserId được persist",
-          "currentUser trả UserCredentials.builtInUsersByID(id:)"
-        ],
-        "intent": "Login cần nhớ user đang đăng nhập để khôi phục session và hiển thị đúng profile.",
-        "outcome": {
-          "user_visible": "User không phải login lại sau khi app restart; current user được khôi phục.",
-          "technical": [
-            "UserDefaults suite",
-            "Computed property",
-            "Lookup built-in credentials"
-          ]
-        },
-        "source_evidence": [
-          "DemoApp/Extensions/UserDefaults+Shared.swift"
-        ]
-      },
-      {
-        "id": "t_alert_helpers",
-        "capability_id": "cap_foundation",
-        "action": "Implement UIViewController alert extensions: OK/cancel, text field input, action list và user options (Show Profile/Logout/Disconnect).",
-        "modifies": [
-          "DemoApp/Extensions/UIViewController+Alert.swift"
-        ],
-        "creates": [
-          "presentAlert(title:message:okHandler:cancelHandler:)",
-          "presentAlert(title:message:textFieldPlaceholder:okHandler:cancelHandler:)",
-          "presentAlert(title:message:actions:cancelHandler:preferredStyle:sourceView:)",
-          "presentUserOptionsAlert(onLogout:onDisconnect:client:)"
-        ],
-        "depends_on": [],
-        "acceptance": [
-          "Alert hiện text field khi cần input custom credentials",
-          "User options alert tạo UserProfileViewController với currentUserController",
-          "Logout/Disconnect callback gọi đúng"
-        ],
-        "intent": "Người dùng cần thao tác đăng xuất, xem profile và nhập custom credentials qua alert; helper tái sử dụng cho nhiều màn hình.",
-        "outcome": {
-          "user_visible": "User có thể chọn Show Profile/Logout/Disconnect từ màn hình channel list.",
-          "technical": [
-            "UIAlertController configuration",
-            "Text field alert",
-            "Action sheet với sourceView cho iPad"
-          ]
-        },
-        "source_evidence": [
-          "DemoApp/Extensions/UIViewController+Alert.swift"
-        ]
-      },
-      {
-        "id": "t_image_resize",
-        "capability_id": "cap_foundation",
-        "action": "Implement UIImage extension resized(to:) để resize ảnh giữ aspect ratio dùng cho attachment.",
-        "modifies": [
-          "DemoApp/Extensions/UIImage+Resized.swift"
-        ],
-        "creates": [
-          "UIImage.resized(to:)"
-        ],
-        "depends_on": [],
-        "acceptance": [
-          "Kết quả giữ aspect ratio",
-          "Dùng UIGraphicsBeginImageContextWithOptions",
-          "Không crash khi size bằng 0"
-        ],
-        "intent": "Attachments cần thumbnail/resized ảnh để hiển thị trong chat.",
-        "outcome": {
-          "user_visible": "Ảnh gửi trong chat được resize vừa khung hiển thị.",
-          "technical": [
-            "UIGraphics image context",
-            "Aspect fit calculation"
-          ]
-        },
-        "source_evidence": [
-          "DemoApp/Extensions/UIImage+Resized.swift"
-        ]
-      },
-      {
-        "id": "t_reaction_position",
-        "capability_id": "cap_foundation",
-        "action": "Implement extension MessageReactionType.position map raw value (love/haha/like/sad/wow/other) sang vị trí hiển thị.",
-        "modifies": [
-          "DemoApp/Extensions/MessageReactionType+Position.swift"
-        ],
-        "creates": [
-          "MessageReactionType.position"
-        ],
-        "depends_on": [],
-        "acceptance": [
-          "love→0, haha→1, like→2, sad→3, wow→4, other→5"
-        ],
-        "intent": "Reaction bar trong chat cần thứ tự hiển thị cố định cho các loại reaction.",
-        "outcome": {
-          "user_visible": "Reaction hiển thị đúng vị trí khi long-press tin nhắn.",
-          "technical": [
-            "Raw value mapping",
-            "Ordered reaction display"
-          ]
-        },
-        "source_evidence": [
-          "DemoApp/Extensions/MessageReactionType+Position.swift"
-        ]
-      },
-      {
-        "id": "t_login_flow",
-        "capability_id": "cap_f_login",
-        "action": "Implement login screen với danh sách user pre-configured và Advanced options nhập custom credentials để kết nối tới Stream test server.",
+        "id": "task-08-login",
+        "capability_id": "session-auth",
+        "action": "Implement login flow to pick a pre-configured user or enter advanced credentials",
         "modifies": [],
         "creates": [
           "Login screen",
-          "Advanced options input",
-          "Stream connection on user select"
+          "Authentication to StreamChat client"
         ],
         "depends_on": [
-          "t_user_defaults",
-          "t_alert_helpers"
+          "task-03-session-persistence",
+          "task-04-alert-helpers"
         ],
         "acceptance": [
-          "Hiển thị danh sách user pre-configured",
-          "Chọn user → connect tới Stream test server và lưu currentUserId",
-          "Advanced options → alert text field nhập server/user/token"
+          "Pre-configured user list is displayed on first screen",
+          "Advanced options allow custom server and JWT token",
+          "Selected user is persisted via UserDefaults.currentUser"
         ],
-        "intent": "Người dùng cần chọn danh tính nhanh hoặc dùng server riêng để test chat.",
+        "intent": "Let users enter the chat app with a known identity and receive their channels",
         "outcome": {
-          "user_visible": "User có thể đăng nhập và đi vào channel list.",
+          "user_visible": "Users can choose a demo user or log in with custom credentials and land on channel list",
           "technical": [
-            "ChatClient.connect",
-            "UserDefaults persistence",
-            "Custom credentials alert"
+            "UserCredentials built-in users power the list",
+            "JWT token generation required for advanced login",
+            "Session persisted in UserDefaults"
           ]
         },
         "source_evidence": [
           "DemoApp/README.md",
-          "DemoApp/Extensions/UserDefaults+Shared.swift",
-          "DemoApp/Extensions/UIViewController+Alert.swift"
-        ]
+          "DemoApp/Extensions/UserDefaults+Shared.swift"
+        ],
+        "keywords": [
+          "UserCredentials",
+          "JWT",
+          "ChatClient",
+          "currentUser"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 5,
+          "files_touched": 3,
+          "estimated_minutes": 120
+        }
       },
       {
-        "id": "t_channel_list",
-        "capability_id": "cap_f_channel_list",
-        "action": "Implement channel list screen dùng ChatChannelListViewController: infinite scroll avatar/unread/preview, tạo và xoá kênh.",
+        "id": "task-09-channel-list",
+        "capability_id": "channel-list",
+        "action": "Implement channel list screen with infinite scrolling, unread indicators, and channel creation/deletion",
         "modifies": [],
         "creates": [
-          "ChatChannelListViewController screen",
-          "Create channel action",
-          "Delete channel action"
+          "ChatChannelListViewController flow",
+          "Channel query-driven list"
         ],
         "depends_on": [
-          "t_login_flow"
+          "task-08-login"
         ],
         "acceptance": [
-          "Danh sách kênh load theo query và infinite scroll",
-          "Unread indicator hiển thị trên kênh chưa đọc",
-          "Tạo kênh từ top right button",
-          "Xoá kênh bằng swipe left",
-          "Tap channel → push ChatChannelViewController"
+          "Channels for logged-in user appear as infinite scrolling list",
+          "Avatar, unread counts, last message previews, and timestamps shown",
+          "New channel can be created from top-right button",
+          "Swiping left deletes channel"
         ],
-        "intent": "Sau login, người dùng cần duyệt kênh tham gia, biết kênh nào chưa đọc và tạo/xoá kênh.",
+        "intent": "Show a user all their chat channels at a glance and let them navigate into conversation",
         "outcome": {
-          "user_visible": "User thấy danh sách kênh với avatar/unread/preview; có thể tạo/xoá kênh.",
+          "user_visible": "User sees all channels and can open any of them",
           "technical": [
-            "StreamChatUI ChatChannelListViewController",
-            "Channel list query",
-            "Swipe actions"
+            "StreamChatUI ChatChannelListViewController used",
+            "Controller-backed channel query",
+            "Swipe actions for delete"
           ]
         },
         "source_evidence": [
-          "DemoApp/README.md",
-          "DemoApp/Extensions/UIViewController+Alert.swift"
-        ]
+          "DemoApp/README.md"
+        ],
+        "keywords": [
+          "ChatChannelListViewController",
+          "ChatClient",
+          "query",
+          "delete"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 4,
+          "files_touched": 2,
+          "estimated_minutes": 90
+        }
       },
       {
-        "id": "t_channel_chat",
-        "capability_id": "cap_f_channel_chat",
-        "action": "Implement channel chat screen dùng ChatChannelViewController: message list, rich media/GIF, composer, file attachment và reaction bằng long-press.",
+        "id": "task-10-channel-detail",
+        "capability_id": "message-thread",
+        "action": "Implement channel screen with message list, rich media, and composer",
         "modifies": [],
         "creates": [
-          "ChatChannelViewController screen"
+          "ChatChannelViewController flow",
+          "Message composer and reactions"
         ],
         "depends_on": [
-          "t_channel_list",
-          "t_reaction_position",
-          "t_image_resize"
+          "task-09-channel-list"
         ],
         "acceptance": [
-          "Message list hiển thị realtime",
-          "Gửi text/file/rich media/GIF qua composer",
-          "Long-press tin nhắn hiển thị reaction đúng vị trí"
+          "Infinite scrolling messages in channel",
+          "Header shows channel info",
+          "Rich media including GIF supported",
+          "Composer supports file attachments",
+          "Long press on message adds reactions"
         ],
-        "intent": "Người dùng cần trò chuyện realtime trong kênh: gửi tin nhắn kèm media, attachment và reaction.",
+        "intent": "Enable the core chat experience: reading and sending messages with media and reactions",
         "outcome": {
-          "user_visible": "User gửi/nhận tin nhắn realtime, reaction, attachment trong kênh.",
+          "user_visible": "User can read and send messages, attach files, send GIFs, and react to messages",
           "technical": [
-            "StreamChatUI ChatChannelViewController",
-            "Message composer",
-            "Attachment handling",
-            "Reaction position mapping"
+            "StreamChatUI ChatChannelViewController used",
+            "Composer with attachment support",
+            "Reaction long-press gesture"
           ]
         },
         "source_evidence": [
           "DemoApp/README.md",
-          "DemoApp/Extensions/MessageReactionType+Position.swift",
-          "DemoApp/Extensions/UIImage+Resized.swift"
-        ]
+          "DemoApp/Extensions/MessageReactionType+Position.swift"
+        ],
+        "keywords": [
+          "ChatChannelViewController",
+          "MessageComposer",
+          "attachment",
+          "MessageReactionType"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 5,
+          "files_touched": 2,
+          "estimated_minutes": 180
+        }
       },
       {
-        "id": "t_profile_screen",
-        "capability_id": "cap_f_profile",
-        "action": "Implement UserProfileViewController hiển thị thông tin current user qua currentUserController.",
+        "id": "task-11-user-profile",
+        "capability_id": "user-management",
+        "action": "Implement user profile screen accessible from account options",
         "modifies": [],
         "creates": [
-          "UserProfileViewController"
+          "UserProfileViewController backed by CurrentUserController"
         ],
         "depends_on": [
-          "t_alert_helpers",
-          "t_channel_list"
+          "task-04-alert-helpers"
         ],
         "acceptance": [
-          "Profile mở từ Show Profile option",
-          "Hiển thị tên/avatar user đang login"
+          "Profile screen initializes with ChatClient.currentUserController",
+          "Profile can be pushed from alert action"
         ],
-        "intent": "Người dùng muốn xem thông tin account đang đăng nhập.",
+        "intent": "Let users view their own profile information within the app",
         "outcome": {
-          "user_visible": "User xem được profile của mình khi chọn Show Profile.",
+          "user_visible": "User can see profile info by tapping Show Profile",
           "technical": [
-            "ChatClient.currentUserController()",
-            "Push navigation"
+            "CurrentUserController from ChatClient",
+            "Navigation push from alert"
           ]
         },
         "source_evidence": [
           "DemoApp/Extensions/UIViewController+Alert.swift"
-        ]
+        ],
+        "keywords": [
+          "UserProfileViewController",
+          "CurrentUserController",
+          "ChatClient"
+        ],
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 1,
+          "estimated_minutes": 45
+        }
       },
       {
-        "id": "t_push_notifications",
-        "capability_id": "cap_f_push",
-        "action": "Implement push notification: khai báo APNs entitlement và đăng ký device token tới Stream backend.",
-        "modifies": [
-          "DemoApp/ChatSample.entitlements",
-          "DemoApp/Info.plist"
-        ],
+        "id": "task-12-logout-disconnect",
+        "capability_id": "session-control",
+        "action": "Implement logout and disconnect actions in user options alert",
+        "modifies": [],
         "creates": [
-          "aps-environment entitlement",
-          "PushNotification-Configuration"
+          "Logout/disconnect callback wiring"
         ],
         "depends_on": [
-          "t_wrap_stream_chat"
+          "task-04-alert-helpers"
         ],
         "acceptance": [
-          "Entitlement aps-environment development có mặt",
-          "Info.plist có PushNotification-Configuration APN-Configuration",
-          "Device token được forward tới Stream backend qua registerForPushNotifications"
+          "Logout clears current user",
+          "Disconnect stops chat connection",
+          "Both options reachable from user options alert"
         ],
-        "intent": "Người dùng cần nhận thông báo chat khi app không mở.",
+        "intent": "Give users control over ending their chat session cleanly",
         "outcome": {
-          "user_visible": "Nhận push notification realtime khi app background/terminated.",
+          "user_visible": "Users can log out or disconnect via the alert menu",
           "technical": [
-            "APNs registration",
-            "Stream push configuration",
-            "AppDelegate callback"
+            "onLogout/onDisconnect closures wired",
+            "ChatClient disconnect invoked"
           ]
         },
         "source_evidence": [
-          "DemoApp/ChatSample.entitlements",
-          "DemoApp/AppDelegate.swift",
-          "DemoApp/Info.plist"
-        ]
-      },
-      {
-        "id": "t_a11y",
-        "capability_id": "cap_f_a11y",
-        "action": "Implement/verify Dark Mode và Dynamic Type cho toàn bộ UI components.",
-        "modifies": [
-          "DemoApp/Resources/Assets.xcassets/AccentColor.colorset/Contents.json"
+          "DemoApp/Extensions/UIViewController+Alert.swift"
         ],
-        "creates": [
-          "Dark Mode compatible UI",
-          "Dynamic Type compatible components"
+        "keywords": [
+          "ChatClient",
+          "disconnect",
+          "logout"
         ],
-        "depends_on": [
-          "t_channel_list",
-          "t_channel_chat"
-        ],
-        "acceptance": [
-          "UI tự động đổi theme theo system dark mode",
-          "Text scale theo Dynamic Type",
-          "Không vỡ layout khi font lớn"
-        ],
-        "intent": "Người dùng khiếm thị hoặc dùng dark mode cần UI readable và tôn trọng system setting.",
-        "outcome": {
-          "user_visible": "App chuyển dark mode đúng; text phóng to theo cài đặt không vỡ layout.",
-          "technical": [
-            "Semantic colors",
-            "Dynamic Type support trong StreamChatUI",
-            "Accessibility check"
-          ]
-        },
-        "source_evidence": [
-          "DemoApp/README.md",
-          "DemoApp/Resources/Assets.xcassets/AccentColor.colorset/Contents.json"
-        ]
+        "concurrency": [],
+        "effort": {
+          "concepts_count": 2,
+          "files_touched": 1,
+          "estimated_minutes": 30
+        }
       }
     ],
     "task_dependencies": [
       {
-        "from": "t_setup_app_delegate",
-        "to": "t_setup_tooling",
-        "type": "ENABLES",
-        "reason": "AppDelegate khởi chạy gọi DemoAppConfiguration.configureSentry() nên cấu hình tooling phải sẵn sàng."
-      },
-      {
-        "from": "t_setup_app_delegate",
-        "to": "t_wrap_stream_chat",
+        "from": "task-02-diagnostics",
+        "to": "task-01-app-lifecycle",
         "type": "DEPENDS_ON",
-        "reason": "AppDelegate.chat cần StreamChatWrapper.shared để gọi registerForPushNotifications."
+        "reason": "AppDelegate calls DemoAppConfiguration.configureSentry() in didFinishLaunching"
       },
       {
-        "from": "t_wrap_stream_chat",
-        "to": "t_push_notifications",
+        "from": "task-07-push-registration",
+        "to": "task-01-app-lifecycle",
         "type": "DEPENDS_ON",
-        "reason": "Push registration forward device token qua StreamChatWrapper.registerForPushNotifications."
+        "reason": "Push token forwarding lives in AppDelegate and uses StreamChatWrapper"
       },
       {
-        "from": "t_user_defaults",
-        "to": "t_login_flow",
+        "from": "task-08-login",
+        "to": "task-03-session-persistence",
         "type": "DEPENDS_ON",
-        "reason": "Login cần lưu/đọc currentUserId qua UserDefaults.shared."
+        "reason": "Selected user identity is persisted via UserDefaults.currentUserId"
       },
       {
-        "from": "t_alert_helpers",
-        "to": "t_login_flow",
+        "from": "task-08-login",
+        "to": "task-04-alert-helpers",
         "type": "DEPENDS_ON",
-        "reason": "Advanced options dùng presentAlert với text field để nhập custom credentials."
+        "reason": "Advanced login and error presentation reuse the alert helpers"
       },
       {
-        "from": "t_login_flow",
-        "to": "t_channel_list",
+        "from": "task-09-channel-list",
+        "to": "task-08-login",
+        "type": "BLOCKED_BY",
+        "reason": "Channel list requires an authenticated StreamChat client session"
+      },
+      {
+        "from": "task-10-channel-detail",
+        "to": "task-09-channel-list",
         "type": "DEPENDS_ON",
-        "reason": "Sau khi connect thành công, user mới vào được channel list."
+        "reason": "Channel screen is opened by selecting a channel from the list"
       },
       {
-        "from": "t_channel_list",
-        "to": "t_channel_chat",
+        "from": "task-10-channel-detail",
+        "to": "task-06-reaction-position",
         "type": "DEPENDS_ON",
-        "reason": "Tap channel trong danh sách push ChatChannelViewController."
+        "reason": "Reaction order in channel screen uses MessageReactionType.position"
       },
       {
-        "from": "t_reaction_position",
-        "to": "t_channel_chat",
-        "type": "ENABLES",
-        "reason": "MessageReactionType.position cung cấp thứ tự hiển thị reaction cho chat screen."
-      },
-      {
-        "from": "t_image_resize",
-        "to": "t_channel_chat",
-        "type": "ENABLES",
-        "reason": "UIImage.resized(to:) hỗ trợ hiển thị attachment ảnh đúng kích thước."
-      },
-      {
-        "from": "t_alert_helpers",
-        "to": "t_profile_screen",
+        "from": "task-10-channel-detail",
+        "to": "task-05-image-resize",
         "type": "DEPENDS_ON",
-        "reason": "presentUserOptionsAlert tạo và push UserProfileViewController."
+        "reason": "Image attachments are resized before display using resized(to:)"
       },
       {
-        "from": "t_channel_list",
-        "to": "t_profile_screen",
+        "from": "task-11-user-profile",
+        "to": "task-04-alert-helpers",
         "type": "DEPENDS_ON",
-        "reason": "User options alert được hiển thị từ channel list; push navigation cần navigationController."
+        "reason": "Show Profile action is launched from presentUserOptionsAlert"
       },
       {
-        "from": "t_channel_list",
-        "to": "t_a11y",
+        "from": "task-12-logout-disconnect",
+        "to": "task-04-alert-helpers",
         "type": "DEPENDS_ON",
-        "reason": "Dark Mode/Dynamic Type phải được verify trên channel list screen."
+        "reason": "Logout/disconnect actions are presented in user options alert"
+      }
+    ],
+    "missing_gaps": [
+      {
+        "feature_id": "media-handling",
+        "gap": "UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), which can crash on edge cases",
+        "suggested_lo": "Add nil-coalescing fallback to original image when resizing fails"
       },
       {
-        "from": "t_channel_chat",
-        "to": "t_a11y",
-        "type": "DEPENDS_ON",
-        "reason": "Dark Mode/Dynamic Type phải được verify trên channel chat screen."
+        "feature_id": "localization",
+        "gap": "UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, Logout, Disconnect)",
+        "suggested_lo": "Move user-facing strings to Localizable.strings and use NSLocalizedString"
+      },
+      {
+        "feature_id": "push-notifications",
+        "gap": "No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate",
+        "suggested_lo": "Implement push registration failure callback and surface a non-fatal error"
+      },
+      {
+        "feature_id": "login",
+        "gap": "Login flow in README has no visible error handling for invalid JWT or failed authentication",
+        "suggested_lo": "Add error alert for advanced login failures and preserve current user on failure"
+      },
+      {
+        "feature_id": "testing",
+        "gap": "No unit tests for UserDefaults.currentUserId or MessageReactionType.position mapping",
+        "suggested_lo": "Add unit tests covering session persistence and reaction ordering"
+      }
+    ],
+    "tech_debt": [
+      {
+        "location": "DemoApp/Extensions/UIViewController+Alert.swift",
+        "issue": "Three presentAlert overloads duplicate alert creation logic",
+        "suggested_phase": "POLISH"
+      },
+      {
+        "location": "DemoApp/DemoAppConfiguration.swift",
+        "issue": "Sentry DSN is hardcoded in source; Atlantis and performance config are entangled with internal flags",
+        "suggested_phase": "POLISH"
+      },
+      {
+        "location": "DemoApp/AppDelegate.swift",
+        "issue": "AppDelegate combines app lifecycle, push registration, and wrapper access; could be extracted into a coordinator",
+        "suggested_phase": "POLISH"
+      },
+      {
+        "location": "DemoApp/Extensions/UIImage+Resized.swift",
+        "issue": "Force unwrap of image context result can crash on edge cases",
+        "suggested_phase": "POLISH"
+      },
+      {
+        "location": "DemoApp/README.md",
+        "issue": "Login and channel behavior documented but not covered by automated tests",
+        "suggested_phase": "POLISH"
       }
     ]
   },
   "validation": {
     "validations": [
       {
-        "id": "v_setup_app_delegate",
-        "target": "t_setup_app_delegate",
+        "id": "validation-01-app-lifecycle",
+        "target": "task-01-app-lifecycle",
         "criteria": [
-          "App launch không crash",
-          "Sentry start trong RELEASE",
-          "Device token callback chạy khi cấp quyền notification"
+          "App launches without crashing",
+          "didFinishLaunching returns true"
         ],
         "method": [
           "manual"
         ]
       },
       {
-        "id": "v_login_flow",
-        "target": "t_login_flow",
+        "id": "validation-02-diagnostics",
+        "target": "task-02-diagnostics",
         "criteria": [
-          "Đăng nhập bằng user built-in thành công",
-          "Advanced options nhập custom credentials kết nối tới server khác",
-          "Logout/Disconnect từ user actions hoạt động"
+          "Sentry starts only in RELEASE builds",
+          "Atlantis starts/stops based on configuration"
         ],
         "method": [
           "manual"
         ]
       },
       {
-        "id": "v_channel_list",
-        "target": "t_channel_list",
+        "id": "validation-03-session-persistence",
+        "target": "task-03-session-persistence",
         "criteria": [
-          "Danh sách kênh infinite scroll",
-          "Unread indicator hiển thị đúng",
-          "Tạo kênh mới thành công",
-          "Xoá kênh bằng swipe hoạt động",
-          "Tap kênh mở chat screen"
+          "currentUserId persists across launches",
+          "currentUser returns nil for unknown stored id"
         ],
         "method": [
-          "manual"
-        ]
-      },
-      {
-        "id": "v_channel_chat",
-        "target": "t_channel_chat",
-        "criteria": [
-          "Message list hiển thị realtime",
-          "Gửi text thành công",
-          "Gửi file attachment thành công",
-          "Rich media/GIF hiển thị",
-          "Long-press reaction hiển thị đúng vị trí"
-        ],
-        "method": [
-          "manual",
           "unit_test"
         ]
       },
       {
-        "id": "v_push",
-        "target": "t_push_notifications",
+        "id": "validation-04-alert-helpers",
+        "target": "task-04-alert-helpers",
         "criteria": [
-          "App đăng ký device token với Stream backend",
-          "Nhận push khi app background",
-          "Tap push mở app đúng channel"
+          "Alerts display title, message, and actions correctly",
+          "Text input alert returns entered text"
+        ],
+        "method": [
+          "ui_test",
+          "manual"
+        ]
+      },
+      {
+        "id": "validation-05-image-resize",
+        "target": "task-05-image-resize",
+        "criteria": [
+          "Aspect ratio is preserved",
+          "Graphics context is ended after resizing"
+        ],
+        "method": [
+          "unit_test"
+        ]
+      },
+      {
+        "id": "validation-06-reaction-position",
+        "target": "task-06-reaction-position",
+        "criteria": [
+          "Known reactions map to positions 0-4",
+          "Unknown reactions map to position 5"
+        ],
+        "method": [
+          "unit_test"
+        ]
+      },
+      {
+        "id": "validation-07-push-registration",
+        "target": "task-07-push-registration",
+        "criteria": [
+          "Device token is forwarded to StreamChatWrapper",
+          "aps-environment entitlement is present"
         ],
         "method": [
           "manual"
         ]
       },
       {
-        "id": "v_profile",
-        "target": "t_profile_screen",
+        "id": "validation-08-login",
+        "target": "task-08-login",
         "criteria": [
-          "Profile hiển thị đúng user đang login",
-          "Mở được từ Show Profile option"
+          "Pre-configured users can be selected",
+          "Advanced login with custom JWT works",
+          "Selected user session persists"
         ],
         "method": [
-          "manual"
-        ]
-      },
-      {
-        "id": "v_a11y",
-        "target": "t_a11y",
-        "criteria": [
-          "Dark mode chuyển theme đúng trên all screens",
-          "Dynamic Type scale text toàn app",
-          "Không vỡ layout khi font lớn"
-        ],
-        "method": [
-          "manual",
           "ui_test"
+        ]
+      },
+      {
+        "id": "validation-09-channel-list",
+        "target": "task-09-channel-list",
+        "criteria": [
+          "Channel list loads and scrolls infinitely",
+          "Unread indicators are visible",
+          "Create and delete channel actions work"
+        ],
+        "method": [
+          "ui_test"
+        ]
+      },
+      {
+        "id": "validation-10-channel-detail",
+        "target": "task-10-channel-detail",
+        "criteria": [
+          "Messages load and send successfully",
+          "GIF and file attachments are supported",
+          "Reactions can be added by long-pressing"
+        ],
+        "method": [
+          "ui_test"
+        ]
+      },
+      {
+        "id": "validation-11-user-profile",
+        "target": "task-11-user-profile",
+        "criteria": [
+          "Profile shows current user data",
+          "Profile screen pushes from alert action"
+        ],
+        "method": [
+          "manual"
+        ]
+      },
+      {
+        "id": "validation-12-logout-disconnect",
+        "target": "task-12-logout-disconnect",
+        "criteria": [
+          "Logout clears current user",
+          "Disconnect stops chat updates"
+        ],
+        "method": [
+          "manual"
         ]
       }
     ],
     "quality_requirements": [
       {
-        "id": "qr_realtime",
-        "type": "functional",
-        "requirement": "Tin nhắn phải được gửi/nhận realtime qua WebSocket do StreamChat cung cấp."
-      },
-      {
-        "id": "qr_infinite_scroll",
-        "type": "performance",
-        "requirement": "Channel list và message list cuộn mượt với infinite scroll, không block UI."
-      },
-      {
-        "id": "qr_dynamic_type",
+        "id": "req-acc-01",
         "type": "accessibility",
-        "requirement": "Toàn bộ UI tôn trọng Dynamic Type; chữ phóng to không vỡ layout."
+        "requirement": "All UI components support Dynamic Type and system font scaling"
       },
       {
-        "id": "qr_dark_mode",
+        "id": "req-acc-02",
         "type": "accessibility",
-        "requirement": "Toàn bộ UI tương thích Dark Mode hệ thống."
+        "requirement": "Channel list and channel screens are fully compatible with Dark Mode"
       },
       {
-        "id": "qr_token_security",
-        "type": "security",
-        "requirement": "Device token và user credentials không được log ra console; token xử lý qua secure channel."
-      },
-      {
-        "id": "qr_reconnect",
-        "type": "reliability",
-        "requirement": "ChatClient tự reconnect khi mất mạng và đồng bộ lại message."
-      },
-      {
-        "id": "qr_push_reliability",
-        "type": "reliability",
-        "requirement": "Push notification tới được device khi app background/terminated."
-      },
-      {
-        "id": "qr_maintainability",
+        "id": "req-l10n-01",
         "type": "maintainability",
-        "requirement": "Singleton StreamChatWrapper là điểm truy cập duy nhất cho ChatClient; extensions tách theo responsibility."
+        "requirement": "All user-facing strings are extracted to Localizable.strings with no hardcoded English text"
+      },
+      {
+        "id": "req-sec-01",
+        "type": "security",
+        "requirement": "JWT tokens are never logged and app secret is never embedded in client code"
+      },
+      {
+        "id": "req-rel-01",
+        "type": "reliability",
+        "requirement": "Push notification registration handles APNs failure callbacks gracefully"
+      },
+      {
+        "id": "req-perf-01",
+        "type": "performance",
+        "requirement": "Channel list and message list use pagination/infinite scrolling to avoid loading all content at once"
+      },
+      {
+        "id": "req-ux-01",
+        "type": "ux",
+        "requirement": "Message reaction order is stable and matches MessageReactionType.position mapping"
+      },
+      {
+        "id": "req-maint-01",
+        "type": "maintainability",
+        "requirement": "Alert presentation logic is extracted into a shared factory or helper to avoid duplication"
+      },
+      {
+        "id": "req-sec-02",
+        "type": "security",
+        "requirement": "Sentry DSN and internal configuration flags are gated behind RELEASE/internal runtime checks"
       }
     ]
   },
@@ -1795,15 +2371,6 @@
         "extraction_method": "git_tracker_file_exists"
       },
       {
-        "target_id": "DemoApp/Info.plist",
-        "source": {
-          "file": "DemoApp/Info.plist"
-        },
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0,
-        "extraction_method": "git_tracker_file_exists"
-      },
-      {
         "target_id": "DemoApp/README.md",
         "source": {
           "file": "DemoApp/README.md"
@@ -1813,16 +2380,7 @@
         "extraction_method": "git_tracker_file_exists"
       },
       {
-        "target_id": "DemoApp/Resources/Assets.xcassets/AccentColor.colorset/Contents.json",
-        "source": {
-          "file": "DemoApp/Resources/Assets.xcassets/AccentColor.colorset/Contents.json"
-        },
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0,
-        "extraction_method": "git_tracker_file_exists"
-      },
-      {
-        "target_id": "t_setup_app_delegate:AppDelegate",
+        "target_id": "task-01-app-lifecycle:AppDelegate",
         "source": {
           "file": "DemoApp/AppDelegate.swift",
           "symbol": "AppDelegate"
@@ -1832,7 +2390,7 @@
         "extraction_method": "source_analysis_symbol"
       },
       {
-        "target_id": "t_setup_app_delegate:DemoAppConfiguration",
+        "target_id": "task-02-diagnostics:DemoAppConfiguration",
         "source": {
           "file": "DemoApp/DemoAppConfiguration.swift",
           "symbol": "DemoAppConfiguration"
@@ -1842,17 +2400,7 @@
         "extraction_method": "source_analysis_symbol"
       },
       {
-        "target_id": "t_setup_tooling:DemoAppConfiguration",
-        "source": {
-          "file": "DemoApp/DemoAppConfiguration.swift",
-          "symbol": "DemoAppConfiguration"
-        },
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0,
-        "extraction_method": "source_analysis_symbol"
-      },
-      {
-        "target_id": "t_wrap_stream_chat:AppDelegate",
+        "target_id": "task-07-push-registration:AppDelegate",
         "source": {
           "file": "DemoApp/AppDelegate.swift",
           "symbol": "AppDelegate"
@@ -1862,55 +2410,10 @@
         "extraction_method": "source_analysis_symbol"
       },
       {
-        "target_id": "t_push_notifications:AppDelegate",
-        "source": {
-          "file": "DemoApp/AppDelegate.swift",
-          "symbol": "AppDelegate"
-        },
-        "evidence_type": "OBSERVED",
-        "confidence": 1.0,
-        "extraction_method": "source_analysis_symbol"
-      },
-      {
-        "target_id": "chat_wrapper",
+        "target_id": "user_profile_vc",
         "source": {},
         "evidence_type": "INFERRED",
-        "confidence": 0.8,
-        "extraction_method": "LLM_inference"
-      },
-      {
-        "target_id": "chat_client",
-        "source": {},
-        "evidence_type": "INFERRED",
-        "confidence": 0.85,
-        "extraction_method": "LLM_inference"
-      },
-      {
-        "target_id": "login_screen",
-        "source": {},
-        "evidence_type": "INFERRED",
-        "confidence": 0.7,
-        "extraction_method": "LLM_inference"
-      },
-      {
-        "target_id": "channel_list_screen",
-        "source": {},
-        "evidence_type": "INFERRED",
-        "confidence": 0.75,
-        "extraction_method": "LLM_inference"
-      },
-      {
-        "target_id": "channel_chat_screen",
-        "source": {},
-        "evidence_type": "INFERRED",
-        "confidence": 0.75,
-        "extraction_method": "LLM_inference"
-      },
-      {
-        "target_id": "profile_screen",
-        "source": {},
-        "evidence_type": "INFERRED",
-        "confidence": 0.75,
+        "confidence": 0.6,
         "extraction_method": "LLM_inference"
       }
     ]
@@ -1919,26 +2422,28 @@
     "mappings": [
       {
         "project_node": "@Environment",
+        "node_id": "",
         "keywords": [
           "@Environment"
         ],
         "concepts": [
-          "ENVIRONMENT_INJECTION"
+          "ENVIRONMENT_VALUES_INJECTION"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "/tmp/stream-chat-swift/DemoApp/StreamChat/Components/DeliveredMessages/DemoMessageReadsInfoView.swift"
         },
         "suggested_concept": {
-          "code": "ENVIRONMENT_INJECTION",
-          "name": "Environment / Dependency Injection",
-          "topic": "Environment & Dependency Injection",
-          "category": "App Architecture",
-          "reason": "@Environment dùng để inject các giá trị môi trường vào View; không có concept sẵn trong bank."
+          "code": "ENVIRONMENT_VALUES_INJECTION",
+          "name": "Environment Values Injection",
+          "topic": "SwiftUI environment values and dependency injection",
+          "category": "UI State Management",
+          "reason": "@Environment is a SwiftUI property wrapper for reading environment values; no existing concept explicitly covers environment injection."
         }
       },
       {
         "project_node": "@State",
+        "node_id": "",
         "keywords": [
           "@State"
         ],
@@ -1951,21 +2456,51 @@
         }
       },
       {
+        "project_node": "@main",
+        "node_id": "task:task-01-app-lifecycle",
+        "keywords": [
+          "@main"
+        ],
+        "concepts": [
+          "APP_ENTRY_POINT"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/AppDelegate.swift"
+        },
+        "suggested_concept": {
+          "code": "APP_ENTRY_POINT",
+          "name": "App Entry Point",
+          "topic": "Program lifecycle and entry point annotation",
+          "category": "Application Architecture",
+          "reason": "@main marks the entry point of a program; no existing concept in the bank covers app entry points."
+        }
+      },
+      {
         "project_node": "AppDelegate",
+        "node_id": "",
         "keywords": [
           "AppDelegate"
         ],
         "concepts": [
-          "EVENT_BASED_PROGRAMMING"
+          "APP_LIFECYCLE"
         ],
-        "status": "MAPPED",
+        "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "DemoApp/AppDelegate.swift",
           "symbol": "AppDelegate"
+        },
+        "suggested_concept": {
+          "code": "APP_LIFECYCLE",
+          "name": "App Lifecycle",
+          "topic": "Application lifecycle management and delegate callbacks",
+          "category": "Application Architecture",
+          "reason": "AppDelegate is the central object managing app lifecycle events; no existing concept covers this pattern."
         }
       },
       {
         "project_node": "Atlantis",
+        "node_id": "task:task-02-diagnostics",
         "keywords": [
           "Atlantis"
         ],
@@ -1974,31 +2509,61 @@
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
-          "file": "/tmp/stream-chat-swift/DemoApp/DemoAppConfiguration.swift"
+          "file": "DemoApp/DemoAppConfiguration.swift"
         },
         "suggested_concept": {
           "code": "NETWORK_DEBUGGING",
-          "name": "Network Debugging / Proxy",
-          "topic": "Network Debugging and Proxy Tools",
+          "name": "Network Debugging",
+          "topic": "Network request logging and debugging tools",
           "category": "Development Tools",
-          "reason": "Atlantis là thư viện hỗ trợ bắt/giám sát network, không có concept sẵn."
+          "reason": "Atlantis is a network debugging tool for iOS; no concept in the bank describes network debugging utilities."
         }
       },
       {
         "project_node": "Bundle",
+        "node_id": "",
         "keywords": [
           "Bundle"
         ],
         "concepts": [
-          "PROJECT_ASSETS_MANAGEMENT"
+          "RESOURCE_BUNDLE_ACCESS"
         ],
-        "status": "MAPPED",
+        "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "/tmp/stream-chat-swift/DemoApp/Shared/Bundle+PushProvider.swift"
+        },
+        "suggested_concept": {
+          "code": "RESOURCE_BUNDLE_ACCESS",
+          "name": "Resource Bundle Access",
+          "topic": "Accessing bundled resources and code",
+          "category": "Platform Foundation",
+          "reason": "Bundle provides access to app resources and code; no existing concept covers resource bundle access."
+        }
+      },
+      {
+        "project_node": "CGSize",
+        "node_id": "task:task-05-image-resize",
+        "keywords": [
+          "CGSize"
+        ],
+        "concepts": [
+          "GEOMETRIC_PRIMITIVES"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIImage+Resized.swift"
+        },
+        "suggested_concept": {
+          "code": "GEOMETRIC_PRIMITIVES",
+          "name": "Geometric Primitives",
+          "topic": "2D geometry types such as size, point, and rect",
+          "category": "Graphics & UI",
+          "reason": "CGSize is a core geometric structure for 2D sizes; no existing concept covers basic geometry types."
         }
       },
       {
         "project_node": "ChatChannel",
+        "node_id": "",
         "keywords": [
           "ChatChannel"
         ],
@@ -2011,7 +2576,60 @@
         }
       },
       {
+        "project_node": "ChatChannelListViewController",
+        "node_id": "task:task-09-channel-list",
+        "keywords": [
+          "ChatChannelListViewController"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
+        "project_node": "ChatChannelListViewController (from README)",
+        "node_id": "feature:F2",
+        "keywords": [
+          "ChatChannelListViewController (from README)"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "ChatChannelViewController",
+        "node_id": "task:task-10-channel-detail",
+        "keywords": [
+          "ChatChannelViewController"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
+        "project_node": "ChatChannelViewController (from README)",
+        "node_id": "feature:F3",
+        "keywords": [
+          "ChatChannelViewController (from README)"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
         "project_node": "ChatClient",
+        "node_id": "task:task-04-alert-helpers",
         "keywords": [
           "ChatClient"
         ],
@@ -2020,11 +2638,12 @@
         ],
         "status": "MAPPED",
         "evidence": {
-          "file": "/tmp/stream-chat-swift/DemoApp/StreamChat/StreamChatWrapper+DemoApp.swift"
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
         }
       },
       {
         "project_node": "ChatMessage",
+        "node_id": "",
         "keywords": [
           "ChatMessage"
         ],
@@ -2038,6 +2657,7 @@
       },
       {
         "project_node": "Combine",
+        "node_id": "",
         "keywords": [
           "Combine"
         ],
@@ -2051,6 +2671,7 @@
       },
       {
         "project_node": "CoreLocation",
+        "node_id": "",
         "keywords": [
           "CoreLocation"
         ],
@@ -2064,6 +2685,7 @@
       },
       {
         "project_node": "CryptoKit",
+        "node_id": "",
         "keywords": [
           "CryptoKit"
         ],
@@ -2076,14 +2698,48 @@
         },
         "suggested_concept": {
           "code": "CRYPTOGRAPHIC_OPERATIONS",
-          "name": "Cryptographic Operations / Primitives",
-          "topic": "Cryptographic primitives and operations",
+          "name": "Cryptographic Operations",
+          "topic": "Encryption, decryption, hashing, and signing",
           "category": "Security",
-          "reason": "Framework cung cấp các phép toán mã hóa; không có concept sẵn phù hợp."
+          "reason": "CryptoKit is a framework for performing cryptographic operations; no existing concept covers general cryptography."
+        }
+      },
+      {
+        "project_node": "CurrentUserController",
+        "node_id": "task:task-11-user-profile",
+        "keywords": [
+          "CurrentUserController"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
+        }
+      },
+      {
+        "project_node": "Dark Mode",
+        "node_id": "screen:screen_channel_list",
+        "keywords": [
+          "Dark Mode"
+        ],
+        "concepts": [
+          "DARK_MODE_SUPPORT"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {},
+        "suggested_concept": {
+          "code": "DARK_MODE_SUPPORT",
+          "name": "Dark Mode Support",
+          "topic": "Adapting UI to system dark mode appearance",
+          "category": "UI & Accessibility",
+          "reason": "Dark Mode is a system-wide UI appearance feature; no existing concept describes adaptive theming."
         }
       },
       {
         "project_node": "DemoAppConfiguration",
+        "node_id": "",
         "keywords": [
           "DemoAppConfiguration"
         ],
@@ -2098,13 +2754,14 @@
         "suggested_concept": {
           "code": "APP_CONFIGURATION",
           "name": "Application Configuration",
-          "topic": "App configuration management",
-          "category": "App Architecture",
-          "reason": "Class cấu hình riêng cho demo, không có concept sẵn."
+          "topic": "Configuration of app-specific demo settings",
+          "category": "Application Architecture",
+          "reason": "DemoAppConfiguration is a type used for app configuration; no concept covers application configuration."
         }
       },
       {
         "project_node": "DispatchQueue",
+        "node_id": "",
         "keywords": [
           "DispatchQueue"
         ],
@@ -2117,27 +2774,41 @@
         }
       },
       {
+        "project_node": "Dynamic Type",
+        "node_id": "screen:screen_channel_list",
+        "keywords": [
+          "Dynamic Type"
+        ],
+        "concepts": [
+          "INCLUSIVE_DESIGN_ACCESSIBILITY_WCAG"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
         "project_node": "Foundation",
+        "node_id": "",
         "keywords": [
           "Foundation"
         ],
         "concepts": [
-          "STANDARD_LIBRARY"
+          "PLATFORM_FOUNDATION_LIBRARY"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "/tmp/stream-chat-swift/DemoApp/StreamRuntimeCheck+StreamInternal.swift"
         },
         "suggested_concept": {
-          "code": "STANDARD_LIBRARY",
-          "name": "Standard Library / Base Framework",
-          "topic": "Standard library fundamentals",
-          "category": "Development Fundamentals",
-          "reason": "Foundation là framework nền tảng cung cấp các tiện ích cơ bản; không có concept sẵn."
+          "code": "PLATFORM_FOUNDATION_LIBRARY",
+          "name": "Platform Foundation Library",
+          "topic": "Core system frameworks and standard utilities",
+          "category": "Platform Foundation",
+          "reason": "Foundation is the base framework providing core utilities; no concept in the bank covers standard platform libraries."
         }
       },
       {
         "project_node": "GDPerformanceView_Swift",
+        "node_id": "",
         "keywords": [
           "GDPerformanceView_Swift"
         ],
@@ -2150,14 +2821,15 @@
         },
         "suggested_concept": {
           "code": "PERFORMANCE_MONITORING",
-          "name": "Performance Monitoring / Metrics",
-          "topic": "Performance monitoring overlay",
+          "name": "Performance Monitoring",
+          "topic": "Monitoring and displaying performance metrics",
           "category": "Development Tools",
-          "reason": "Thư viện hiển thị performance metrics; không có concept sẵn."
+          "reason": "GDPerformanceView_Swift is a library that displays performance metrics; no existing concept covers performance monitoring."
         }
       },
       {
         "project_node": "JSONEncoder",
+        "node_id": "",
         "keywords": [
           "JSONEncoder"
         ],
@@ -2170,7 +2842,22 @@
         }
       },
       {
+        "project_node": "JWT",
+        "node_id": "task:task-08-login",
+        "keywords": [
+          "JWT"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
         "project_node": "MapKit",
+        "node_id": "",
         "keywords": [
           "MapKit"
         ],
@@ -2183,12 +2870,67 @@
         }
       },
       {
+        "project_node": "MessageComposer",
+        "node_id": "task:task-10-channel-detail",
+        "keywords": [
+          "MessageComposer"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
+        "project_node": "MessageReactionType",
+        "node_id": "task:task-06-reaction-position",
+        "keywords": [
+          "MessageReactionType"
+        ],
+        "concepts": [
+          "MESSAGE_REACTION_MODEL"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/Extensions/MessageReactionType+Position.swift"
+        },
+        "suggested_concept": {
+          "code": "MESSAGE_REACTION_MODEL",
+          "name": "Message Reaction Model",
+          "topic": "Chat message reactions and their types",
+          "category": "Chat Domain",
+          "reason": "MessageReactionType is an enum representing message reactions in chat; no general concept covers this domain model."
+        }
+      },
+      {
+        "project_node": "MessageReactionType.position",
+        "node_id": "screen:screen_channel_chat",
+        "keywords": [
+          "MessageReactionType.position"
+        ],
+        "concepts": [
+          "MESSAGE_REACTION_MODEL"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {},
+        "suggested_concept": {
+          "code": "MESSAGE_REACTION_MODEL",
+          "name": "Message Reaction Model",
+          "topic": "Chat message reactions and their types",
+          "category": "Chat Domain",
+          "reason": "MessageReactionType.position is an associated value of the reaction enum; same domain model as MessageReactionType."
+        }
+      },
+      {
         "project_node": "NotificationCenter",
+        "node_id": "",
         "keywords": [
           "NotificationCenter"
         ],
         "concepts": [
-          "EVENT_LISTENERS"
+          "PUBLISHER_SUBSCRIBER_MODEL"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -2196,27 +2938,71 @@
         }
       },
       {
+        "project_node": "PerformanceMonitor",
+        "node_id": "task:task-02-diagnostics",
+        "keywords": [
+          "PerformanceMonitor"
+        ],
+        "concepts": [
+          "PERFORMANCE_MONITORING"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/DemoAppConfiguration.swift"
+        },
+        "suggested_concept": {
+          "code": "PERFORMANCE_MONITORING",
+          "name": "Performance Monitoring",
+          "topic": "Monitoring and displaying performance metrics",
+          "category": "Development Tools",
+          "reason": "PerformanceMonitor is a component for observing performance metrics; no existing concept."
+        }
+      },
+      {
         "project_node": "Sentry",
+        "node_id": "",
         "keywords": [
           "Sentry"
         ],
         "concepts": [
-          "ERROR_MONITORING"
+          "ERROR_MONITORING_SERVICE"
         ],
         "status": "UNMAPPED_CONCEPT",
         "evidence": {
           "file": "/tmp/stream-chat-swift/DemoApp/DemoAppConfiguration.swift"
         },
         "suggested_concept": {
-          "code": "ERROR_MONITORING",
-          "name": "Error Monitoring / Crash Reporting",
-          "topic": "Error monitoring and crash reporting",
-          "category": "Observability",
-          "reason": "Sentry là SDK theo dõi lỗi/crash; không có concept sẵn."
+          "code": "ERROR_MONITORING_SERVICE",
+          "name": "Error Monitoring Service",
+          "topic": "Crash and error reporting/monitoring",
+          "category": "Development Tools",
+          "reason": "Sentry is a service for error and crash monitoring; no existing concept covers error monitoring."
+        }
+      },
+      {
+        "project_node": "SentrySDK",
+        "node_id": "task:task-02-diagnostics",
+        "keywords": [
+          "SentrySDK"
+        ],
+        "concepts": [
+          "ERROR_MONITORING_SERVICE"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/DemoAppConfiguration.swift"
+        },
+        "suggested_concept": {
+          "code": "ERROR_MONITORING_SERVICE",
+          "name": "Error Monitoring Service",
+          "topic": "Crash and error reporting/monitoring",
+          "category": "Development Tools",
+          "reason": "SentrySDK is the SDK for integrating Sentry; same error monitoring concept."
         }
       },
       {
         "project_node": "StreamChat",
+        "node_id": "task:task-01-app-lifecycle",
         "keywords": [
           "StreamChat"
         ],
@@ -2225,11 +3011,12 @@
         ],
         "status": "MAPPED",
         "evidence": {
-          "file": "/tmp/stream-chat-swift/DemoApp/DemoAppConfiguration.swift"
+          "file": "DemoApp/AppDelegate.swift"
         }
       },
       {
         "project_node": "StreamChatCommonUI",
+        "node_id": "",
         "keywords": [
           "StreamChatCommonUI"
         ],
@@ -2243,6 +3030,7 @@
       },
       {
         "project_node": "StreamChatUI",
+        "node_id": "screen:screen_channel_list",
         "keywords": [
           "StreamChatUI"
         ],
@@ -2250,12 +3038,46 @@
           "FRONTEND_FRAMEWORKS"
         ],
         "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "StreamChatWrapper",
+        "node_id": "task:task-01-app-lifecycle",
+        "keywords": [
+          "StreamChatWrapper"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
         "evidence": {
-          "file": "/tmp/stream-chat-swift/DemoApp/StreamChat/DemoAppCoordinator+DemoApp.swift"
+          "file": "DemoApp/AppDelegate.swift"
+        }
+      },
+      {
+        "project_node": "StreamRuntimeCheck",
+        "node_id": "task:task-02-diagnostics",
+        "keywords": [
+          "StreamRuntimeCheck"
+        ],
+        "concepts": [
+          "SDK_RUNTIME_VALIDATION"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/DemoAppConfiguration.swift"
+        },
+        "suggested_concept": {
+          "code": "SDK_RUNTIME_VALIDATION",
+          "name": "SDK Runtime Validation",
+          "topic": "Checking SDK configuration at runtime",
+          "category": "SDK Integration",
+          "reason": "StreamRuntimeCheck is a utility for validating StreamChat runtime setup; no existing concept."
         }
       },
       {
         "project_node": "SwiftUI",
+        "node_id": "",
         "keywords": [
           "SwiftUI"
         ],
@@ -2269,6 +3091,7 @@
       },
       {
         "project_node": "Task",
+        "node_id": "",
         "keywords": [
           "Task"
         ],
@@ -2282,11 +3105,12 @@
       },
       {
         "project_node": "Timer",
+        "node_id": "",
         "keywords": [
           "Timer"
         ],
         "concepts": [
-          "EVENT_BASED_PROGRAMMING"
+          "ASYNC_PATTERNS"
         ],
         "status": "MAPPED",
         "evidence": {
@@ -2294,7 +3118,130 @@
         }
       },
       {
+        "project_node": "UIAlertAction",
+        "node_id": "task:task-04-alert-helpers",
+        "keywords": [
+          "UIAlertAction"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
+        }
+      },
+      {
+        "project_node": "UIAlertController",
+        "node_id": "task:task-04-alert-helpers",
+        "keywords": [
+          "UIAlertController"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
+        }
+      },
+      {
+        "project_node": "UIAlertController actions",
+        "node_id": "feature:F1",
+        "keywords": [
+          "UIAlertController actions"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UIApplicationDelegate",
+        "node_id": "task:task-01-app-lifecycle",
+        "keywords": [
+          "UIApplicationDelegate"
+        ],
+        "concepts": [
+          "APP_LIFECYCLE"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/AppDelegate.swift"
+        },
+        "suggested_concept": {
+          "code": "APP_LIFECYCLE",
+          "name": "App Lifecycle",
+          "topic": "Application lifecycle management and delegate callbacks",
+          "category": "Application Architecture",
+          "reason": "UIApplicationDelegate is the protocol that handles app lifecycle callbacks; no existing concept for app lifecycle."
+        }
+      },
+      {
+        "project_node": "UIGraphicsBeginImageContextWithOptions",
+        "node_id": "task:task-05-image-resize",
+        "keywords": [
+          "UIGraphicsBeginImageContextWithOptions"
+        ],
+        "concepts": [
+          "IMAGE_RENDERING_CONTEXT"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIImage+Resized.swift"
+        },
+        "suggested_concept": {
+          "code": "IMAGE_RENDERING_CONTEXT",
+          "name": "Image Rendering Context",
+          "topic": "Creating bitmap graphics contexts for custom drawing",
+          "category": "Graphics & Image Processing",
+          "reason": "This function creates a bitmap graphics context for drawing; no existing concept covers low-level image contexts."
+        }
+      },
+      {
+        "project_node": "UIImage",
+        "node_id": "task:task-05-image-resize",
+        "keywords": [
+          "UIImage"
+        ],
+        "concepts": [
+          "IMAGE_DATA_MODEL"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIImage+Resized.swift"
+        },
+        "suggested_concept": {
+          "code": "IMAGE_DATA_MODEL",
+          "name": "Image Data Model",
+          "topic": "Image representation and manipulation on Apple platforms",
+          "category": "Graphics & Image Processing",
+          "reason": "UIImage is the foundational image class in UIKit; no existing concept describes image data models."
+        }
+      },
+      {
+        "project_node": "UIImage.resized(to:)",
+        "node_id": "screen:screen_channel_chat",
+        "keywords": [
+          "UIImage.resized(to:)"
+        ],
+        "concepts": [
+          "IMAGE_RESIZING_OPERATION"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {},
+        "suggested_concept": {
+          "code": "IMAGE_RESIZING_OPERATION",
+          "name": "Image Resizing Operation",
+          "topic": "Resizing images to specific dimensions",
+          "category": "Graphics & Image Processing",
+          "reason": "UIImage.resized(to:) is an extension method for resizing images; no concept covers resizing operations."
+        }
+      },
+      {
         "project_node": "UIKit",
+        "node_id": "",
         "keywords": [
           "UIKit"
         ],
@@ -2307,7 +3254,82 @@
         }
       },
       {
+        "project_node": "UINavigationController",
+        "node_id": "feature:F5",
+        "keywords": [
+          "UINavigationController"
+        ],
+        "concepts": [
+          "VIEW_TRANSITIONS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UINavigationController.pushViewController(_:animated:)",
+        "node_id": "screen:screen_user_profile",
+        "keywords": [
+          "UINavigationController.pushViewController(_:animated:)"
+        ],
+        "concepts": [
+          "VIEW_TRANSITIONS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UIViewController",
+        "node_id": "feature:F3",
+        "keywords": [
+          "UIViewController"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UIViewController.presentAlert",
+        "node_id": "screen:screen_channel_chat",
+        "keywords": [
+          "UIViewController.presentAlert"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UserCredentials",
+        "node_id": "task:task-03-session-persistence",
+        "keywords": [
+          "UserCredentials"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UserDefaults+Shared.swift"
+        }
+      },
+      {
+        "project_node": "UserCredentials.builtInUsersByID(id:)",
+        "node_id": "screen:screen_login",
+        "keywords": [
+          "UserCredentials.builtInUsersByID(id:)"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
         "project_node": "UserDefaults",
+        "node_id": "task:task-03-session-persistence",
         "keywords": [
           "UserDefaults"
         ],
@@ -2316,11 +3338,48 @@
         ],
         "status": "MAPPED",
         "evidence": {
-          "file": "/tmp/stream-chat-swift/DemoApp/StreamChat/DemoAppCoordinator+DemoApp.swift"
+          "file": "DemoApp/Extensions/UserDefaults+Shared.swift"
         }
       },
       {
+        "project_node": "UserDefaults(suiteName:)",
+        "node_id": "feature:F1",
+        "keywords": [
+          "UserDefaults(suiteName:)"
+        ],
+        "concepts": [
+          "KEY_VALUE_PERSISTENCE"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UserDefaults(suiteName:).set(_:forKey:)",
+        "node_id": "screen:screen_login",
+        "keywords": [
+          "UserDefaults(suiteName:).set(_:forKey:)"
+        ],
+        "concepts": [
+          "KEY_VALUE_PERSISTENCE"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "UserDefaults(suiteName:).string(forKey:)",
+        "node_id": "screen:screen_login",
+        "keywords": [
+          "UserDefaults(suiteName:).string(forKey:)"
+        ],
+        "concepts": [
+          "KEY_VALUE_PERSISTENCE"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
         "project_node": "UserNotifications",
+        "node_id": "",
         "keywords": [
           "UserNotifications"
         ],
@@ -2330,6 +3389,245 @@
         "status": "MAPPED",
         "evidence": {
           "file": "/tmp/stream-chat-swift/DemoApp/Shared/PushNotifications.swift"
+        }
+      },
+      {
+        "project_node": "UserProfileViewController",
+        "node_id": "task:task-04-alert-helpers",
+        "keywords": [
+          "UserProfileViewController"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
+        }
+      },
+      {
+        "project_node": "UserProfileViewController(currentUserController:)",
+        "node_id": "feature:F5",
+        "keywords": [
+          "UserProfileViewController(currentUserController:)"
+        ],
+        "concepts": [
+          "FRONTEND_FRAMEWORKS"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "applicationGroupIdentifier",
+        "node_id": "task:task-03-session-persistence",
+        "keywords": [
+          "applicationGroupIdentifier"
+        ],
+        "concepts": [
+          "KEY_VALUE_PERSISTENCE"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UserDefaults+Shared.swift"
+        }
+      },
+      {
+        "project_node": "aps-environment",
+        "node_id": "task:task-07-push-registration",
+        "keywords": [
+          "aps-environment"
+        ],
+        "concepts": [
+          "REMOTE_NOTIFICATION_ENTITLEMENT"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/AppDelegate.swift"
+        },
+        "suggested_concept": {
+          "code": "REMOTE_NOTIFICATION_ENTITLEMENT",
+          "name": "Remote Notification Entitlement",
+          "topic": "Push notification entitlements and provisioning",
+          "category": "Notifications",
+          "reason": "aps-environment is an entitlement required for remote push notifications; no concept covers remote push entitlements."
+        }
+      },
+      {
+        "project_node": "attachment",
+        "node_id": "task:task-10-channel-detail",
+        "keywords": [
+          "attachment"
+        ],
+        "concepts": [
+          "MESSAGE_ATTACHMENT_MODEL"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        },
+        "suggested_concept": {
+          "code": "MESSAGE_ATTACHMENT_MODEL",
+          "name": "Message Attachment Model",
+          "topic": "File/media attachments in chat messages",
+          "category": "Chat Domain",
+          "reason": "attachment represents a file or media item attached to a chat message; no concept covers chat attachments."
+        }
+      },
+      {
+        "project_node": "client",
+        "node_id": "feature:F1",
+        "keywords": [
+          "client"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "currentUser",
+        "node_id": "task:task-08-login",
+        "keywords": [
+          "currentUser"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
+        "project_node": "custom_credentials",
+        "node_id": "screen:screen_advanced_login",
+        "keywords": [
+          "custom_credentials"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {}
+      },
+      {
+        "project_node": "delete",
+        "node_id": "task:task-09-channel-list",
+        "keywords": [
+          "delete"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
+        "project_node": "didRegisterForRemoteNotificationsWithDeviceToken",
+        "node_id": "task:task-07-push-registration",
+        "keywords": [
+          "didRegisterForRemoteNotificationsWithDeviceToken"
+        ],
+        "concepts": [
+          "REMOTE_NOTIFICATION_REGISTRATION"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/AppDelegate.swift"
+        },
+        "suggested_concept": {
+          "code": "REMOTE_NOTIFICATION_REGISTRATION",
+          "name": "Remote Notification Registration",
+          "topic": "Registering a device for remote push notifications",
+          "category": "Notifications",
+          "reason": "This is a delegate callback for successful remote notification registration; no concept covers remote registration."
+        }
+      },
+      {
+        "project_node": "disconnect",
+        "node_id": "task:task-12-logout-disconnect",
+        "keywords": [
+          "disconnect"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
+        }
+      },
+      {
+        "project_node": "logout",
+        "node_id": "task:task-12-logout-disconnect",
+        "keywords": [
+          "logout"
+        ],
+        "concepts": [
+          "IDENTITY_AND_ACCESS_MANAGEMENT"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/Extensions/UIViewController+Alert.swift"
+        }
+      },
+      {
+        "project_node": "query",
+        "node_id": "task:task-09-channel-list",
+        "keywords": [
+          "query"
+        ],
+        "concepts": [
+          "API_INTEGRATION"
+        ],
+        "status": "MAPPED",
+        "evidence": {
+          "file": "DemoApp/README.md"
+        }
+      },
+      {
+        "project_node": "rawValue",
+        "node_id": "task:task-06-reaction-position",
+        "keywords": [
+          "rawValue"
+        ],
+        "concepts": [
+          "ENUM_RAW_VALUE"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/Extensions/MessageReactionType+Position.swift"
+        },
+        "suggested_concept": {
+          "code": "ENUM_RAW_VALUE",
+          "name": "Enum Raw Value",
+          "topic": "Swift enum raw-value access",
+          "category": "Language Features",
+          "reason": "rawValue is a Swift property for accessing an enum's raw value; no existing concept covers enum implementation details."
+        }
+      },
+      {
+        "project_node": "registerForPushNotifications",
+        "node_id": "task:task-07-push-registration",
+        "keywords": [
+          "registerForPushNotifications"
+        ],
+        "concepts": [
+          "REMOTE_NOTIFICATION_REGISTRATION"
+        ],
+        "status": "UNMAPPED_CONCEPT",
+        "evidence": {
+          "file": "DemoApp/AppDelegate.swift"
+        },
+        "suggested_concept": {
+          "code": "REMOTE_NOTIFICATION_REGISTRATION",
+          "name": "Remote Notification Registration",
+          "topic": "Registering a device for remote push notifications",
+          "category": "Notifications",
+          "reason": "This method requests remote push notification registration; no concept covers remote notification registration."
         }
       }
     ]
