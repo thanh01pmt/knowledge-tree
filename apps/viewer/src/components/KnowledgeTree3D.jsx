@@ -745,7 +745,7 @@ export default function KnowledgeTree3D({
   const [showHelpModal, setShowHelpModal] = useState(false);
 
   return (
-    <div className="relative w-full h-full overflow-hidden" ref={containerRef}>
+    <div className={`relative w-full h-full overflow-hidden ${theme === 'dark' ? 'bg-[#0f172a]' : 'bg-[#f8fafc]'}`} ref={containerRef}>
       <ForceGraph3D
         ref={fgRef}
         width={dimensions.width}
