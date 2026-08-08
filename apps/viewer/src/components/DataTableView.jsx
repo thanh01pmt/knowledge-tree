@@ -61,7 +61,6 @@ export default function DataTableView({ rawTreeData, theme, linksBySource, links
 
 const isRelated = (item, type, context) => {
     if (!context || !context.item) return true;
-    if (type === context.type) return true;
     return relatedIds.has(item.code);
   };
 
