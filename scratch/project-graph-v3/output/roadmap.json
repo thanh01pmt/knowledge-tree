@@ -1,9 +1,10 @@
 {
   "project": {
-    "id": "stream-chat-demo-ios",
-    "name": "StreamChatDemoApp",
+    "id": "talky",
+    "name": "Talky",
     "version": "1.0.0",
-    "purpose": "iOS demo app for Stream Chat UI. It showcases standard StreamChatUI implementation with login, channel list, messaging, reactions, push notifications and developer tooling. The provided source is UIKit/StreamChatUI-based.",
+    "purpose": "Talky là ứng dụng chat messenger iOS cho phép người dùng đăng ký/đăng nhập, trò chuyện 1-1 theo thời gian thực và nhận thông báo đẩy khi có tin nhắn mới.",
+    "project_type": "mobile_app",
     "platform": [
       "iOS"
     ],
@@ -12,31 +13,790 @@
         "Swift"
       ],
       "ui": [
-        "UIKit",
-        "StreamChatUI"
+        "SwiftUI"
       ],
       "persistence": [
-        "UserDefaults (shared app group)"
+        "Firebase Firestore",
+        "UserDefaults"
       ],
       "networking": [
-        "StreamChat API/WebSocket client"
+        "Firebase Auth",
+        "Firebase Firestore",
+        "Firebase Storage",
+        "Firebase Cloud Messaging",
+        "URLSession"
       ],
       "other": [
-        "Sentry",
-        "Atlantis",
-        "GDPerformanceView_Swift",
-        "StreamChat SDK"
+        "FirebaseMessaging",
+        "UserNotifications",
+        "FCM"
       ]
     },
     "architecture": [
-      "AppDelegate life cycle",
-      "Singleton service wrapper (StreamChatWrapper)",
-      "UIViewController extension-based UI composition"
+      "MVVM",
+      "Singleton"
     ],
     "source": {
       "repository": "",
       "commit": "",
-      "scan_dir": "DemoApp"
+      "scan_dir": "Talky"
+    }
+  },
+  "curriculum": {
+    "schema_version": 1,
+    "concept_prerequisites": [
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "ASYNC_PATTERNS",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.9,
+        "hub": false,
+        "judge_rationale": "API calls are asynchronous; understanding async patterns is a logical prerequisite."
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "requires": "JSON_SERIALIZATION",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.9,
+        "hub": false,
+        "judge_rationale": "APIs typically exchange JSON; JSON serialization/deserialization is needed before integrating."
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.7,
+        "hub": false,
+        "judge_rationale": "Shared observable state is used in declarative UI to drive recomposition; understanding declarative paradigm is foundational."
+      },
+      {
+        "concept_code": "SHARED_OBSERVABLE_STATE",
+        "requires": "PUBLISHER_SUBSCRIBER_MODEL",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.7,
+        "hub": false,
+        "judge_rationale": "Shared observable state is typically implemented using publisher-subscriber; understanding pub/sub is a prerequisite."
+      },
+      {
+        "concept_code": "TWO_WAY_BINDING",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.8,
+        "hub": false,
+        "judge_rationale": "Two-way binding relies on declarative UI concepts where state drives UI and UI events update state."
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "requires": "DECLARATIVE_UI_PARADIGM",
+        "source": "TASK_DEPENDENCY_VERIFIED",
+        "confidence": 0.9,
+        "hub": false,
+        "judge_rationale": "UI modifiers are part of a declarative UI toolkit; understanding declarative paradigm is necessary first."
+      }
+    ],
+    "concept_sequence": [
+      {
+        "concept_code": "CREATIONAL_PATTERNS",
+        "task_id": "T-FIREBASE-MANAGER",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-FB-BOOTSTRAP",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T-SCAFFOLD",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T-RECENT-VIEW",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T-CHAT-VIEW",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-CHAT-VM",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "DECLARATIVE_UI_PARADIGM",
+        "task_id": "T-WELCOME",
+        "encounter": 2,
+        "bloom_cap": "APPLY"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T-LOGIN",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-RECENT-VM",
+        "encounter": 3,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-AUTH-VM",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "UI_MODIFIERS_CONCEPT",
+        "task_id": "T-NEWCHAT-VIEW",
+        "encounter": 4,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-NEWCHAT-VM",
+        "encounter": 5,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-MODELS",
+        "encounter": 6,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-EDIT-PROFILE",
+        "encounter": 7,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "MEDIA_PICKER_API",
+        "task_id": "T-IMAGE-PICKER",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "API_INTEGRATION",
+        "task_id": "T-PUSH-SETUP",
+        "encounter": 8,
+        "bloom_cap": "ANALYZE"
+      },
+      {
+        "concept_code": "LOCAL_NOTIFICATION_API",
+        "task_id": "T-NOTIFICATION-MANAGER",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      },
+      {
+        "concept_code": "KEY_VALUE_PERSISTENCE",
+        "task_id": "T-PUSH-MANAGER",
+        "encounter": 1,
+        "bloom_cap": "UNDERSTAND"
+      }
+    ],
+    "walking_skeleton": {
+      "epitome": "Implement FirebaseManager singleton exposing shared Auth, Firestore, and Storage instances | Implement AppDelegate with UIApplicationDelegateAdaptor and call FirebaseApp.configure() | Scaffold iOS Swi",
+      "elaborations": [
+        "MVP: Implement RecentChatView with header, recent message list, p",
+        "MVP: Implement ChatDetailView UI with message bubbles, ScrollView",
+        "MVP: Implement ChatDetailViewModel to listen for 1-1 messages, se",
+        "MVP: Implement WelcomeView with hero image, gradient, branding an",
+        "MVP: Implement login screen with email/password fields, show/hide",
+        "MVP: Implement RecentChatViewModel to fetch recent messages, fetc",
+        "MVP: Implement registration screen with email, password, confirm ",
+        "MVP: Implement AuthViewModel with register, login, logout, editPr",
+        "MVP: Implement NewChatView with user directory list, cancel butto",
+        "MVP: Implement NewChatViewModel to fetch all Firestore users and ",
+        "MVP: Implement Codable models ChatMessage, ChatUser, RecentMessag",
+        "EXTEND: Implement ProfileView with user info, avatar, edit profile n"
+      ]
+    },
+    "zpd_checks": [
+      {
+        "task_id": "T-FIREBASE-MANAGER",
+        "new_concepts": [
+          "CREATIONAL_PATTERNS"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-FB-BOOTSTRAP",
+        "new_concepts": [
+          "API_INTEGRATION"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-SCAFFOLD",
+        "new_concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-RECENT-VIEW",
+        "new_concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-CHAT-VIEW",
+        "new_concepts": [],
+        "known_concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-CHAT-VM",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-WELCOME",
+        "new_concepts": [],
+        "known_concepts": [
+          "DECLARATIVE_UI_PARADIGM"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-LOGIN",
+        "new_concepts": [],
+        "known_concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-RECENT-VM",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-REGISTER",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-AUTH-VM",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-NEWCHAT-VIEW",
+        "new_concepts": [],
+        "known_concepts": [
+          "UI_MODIFIERS_CONCEPT"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-NEWCHAT-VM",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-MODELS",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-PROFILE",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-EDIT-PROFILE",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-IMAGE-PICKER",
+        "new_concepts": [
+          "MEDIA_PICKER_API"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-PUSH-SETUP",
+        "new_concepts": [],
+        "known_concepts": [
+          "API_INTEGRATION"
+        ],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-NOTIFICATION-MANAGER",
+        "new_concepts": [
+          "LOCAL_NOTIFICATION_API"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "T-PUSH-MANAGER",
+        "new_concepts": [
+          "KEY_VALUE_PERSISTENCE"
+        ],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-1",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-2",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-3",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-4",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-5",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-6",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-gap-7",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-debt-1",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-debt-2",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-debt-3",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-debt-4",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      },
+      {
+        "task_id": "polish-debt-5",
+        "new_concepts": [],
+        "known_concepts": [],
+        "verdict": "OK",
+        "issues": []
+      }
+    ],
+    "mastery_gates": [
+      {
+        "phase": "FOUNDATION",
+        "criteria": [
+          "T-FIREBASE-MANAGER: FirebaseManager.shared.auth returns the shared Auth instance",
+          "T-FIREBASE-MANAGER: Firestore.firestore() and Storage.storage() resolve correctl",
+          "T-FB-BOOTSTRAP: App launches without crashing",
+          "T-FB-BOOTSTRAP: FirebaseApp.configure() is called once on launch",
+          "T-SCAFFOLD: Project builds and runs in iOS Simulator",
+          "T-SCAFFOLD: Firebase SDK installed and linked",
+          "T-SCAFFOLD: GoogleService-Info.plist is added to the app target"
+        ],
+        "next_phase": "MVP"
+      },
+      {
+        "phase": "MVP",
+        "criteria": [
+          "T-RECENT-VIEW: User sees recent messages with avatar, username, text and ti",
+          "T-RECENT-VIEW: Tapping profile icon opens ProfileView",
+          "T-RECENT-VIEW: Tapping New Chat opens NewChatView",
+          "T-RECENT-VIEW: Logged-out user is shown WelcomeView via fullScreenCover",
+          "T-CHAT-VIEW: User sees chat bubbles aligned by sender",
+          "T-CHAT-VIEW: Typing in TextField and tapping send calls vm.handleSend()",
+          "T-CHAT-VIEW: ScrollView auto-scrolls to latest message",
+          "T-CHAT-VIEW: Camera/Mic buttons appear when input is empty"
+        ],
+        "next_phase": "EXTEND"
+      },
+      {
+        "phase": "EXTEND",
+        "criteria": [
+          "T-PROFILE: User sees avatar, username and email",
+          "T-PROFILE: Tapping Edit Profile navigates to EditProfileView",
+          "T-PROFILE: Tapping Log Out calls authViewModel.handleSignOut() and dism",
+          "T-EDIT-PROFILE: User can pick a new avatar image",
+          "T-EDIT-PROFILE: User can change password with current password",
+          "T-EDIT-PROFILE: Save button shows loading while editProfile runs",
+          "T-EDIT-PROFILE: Screen dismisses after successful save",
+          "T-IMAGE-PICKER: SwiftUI view can present photo library"
+        ],
+        "next_phase": "POLISH"
+      }
+    ],
+    "master_bloom_progression": {
+      "2D_3D_TRANSFORMATIONS_MATH": 1,
+      "ABSTRACTION_LAYERS": 1,
+      "ACCESS_MODIFIERS": 1,
+      "ADJUSTMENT_LAYERS": 1,
+      "AFFORDANCES_SIGNIFIERS": 1,
+      "AGENTIC_WORKFLOW_ORCHESTRATION": 1,
+      "AGENT_MEMORY_SYSTEMS": 1,
+      "AGILE_PRINCIPLES": 1,
+      "AIOT_DATA_PIPELINE": 1,
+      "AI_ARTIFACT_VERIFICATION_AND_EVALUATION": 1,
+      "AI_BIAS": 1,
+      "AI_GOVERNANCE_AND_RED_TEAMING": 1,
+      "AI_HISTORY_MILESTONES": 1,
+      "AI_VS_ML": 1,
+      "ALGORITHMIC_BIAS_SOCIETY": 1,
+      "ALGORITHMIC_GENERATIVE_ART": 1,
+      "API_INTEGRATION": 1,
+      "APP_EXTENSION_MODEL": 1,
+      "ARDUINO_BASICS": 1,
+      "ARRAY_OPERATIONS": 1,
+      "ASYNC_PATTERNS": 1,
+      "AUTONOMOUS_DRONE_NAVIGATION": 1,
+      "BACKEND_FRAMEWORKS": 1,
+      "ELECTRONIC_ELEMENTS": 1,
+      "MECHANICAL_SIMPLE": 1,
+      "BATTERY_MANAGEMENT_ALGORITHMS": 1,
+      "BEHAVIORAL_PATTERNS": 1,
+      "BIG_O_NOTATION": 1,
+      "BIOINFORMATICS_GENOMIC_ANALYSIS": 1,
+      "BOOLEAN_OPERATIONS_3D": 1,
+      "BREAKPOINTS": 1,
+      "BUBBLE_INSERTION_SORT": 1,
+      "CACHE_HIERARCHY": 1,
+      "CAP_THEOREM": 1,
+      "CARBON_FOOTPRINT_ACCOUNTING_SOFTWARE": 1,
+      "CHART_TYPES": 1,
+      "CIRCUIT_FUNDAMENTALS": 1,
+      "CLASS_DEFINITION": 1,
+      "CLOSED_LOOP_NEUROSTIMULATION": 1,
+      "CLOUD_DEPLOYMENT_MODELS": 1,
+      "CLOUD_MODELS_IAAS_PAAS_SAAS": 1,
+      "CLUSTERING_ALGORITHMS": 1,
+      "COLLABORATIVE_PLATFORMS": 1,
+      "COLLISION_DETECTION": 1,
+      "COLOR_THEORY": 1,
+      "COLOR_THEORY_AND_PALETTE_DESIGN": 1,
+      "COMBINATORICS": 1,
+      "COMPOSITION_PRINCIPLES": 1,
+      "COMPUTATIONAL_GENETICS_MODELS": 1,
+      "COMPUTER_VISION_FEATURE_EXTRACTION": 1,
+      "COMPUTE_IN_MEMORY_ACCELERATION": 1,
+      "COPYRIGHT_CREATIVE_COMMONS": 1,
+      "CORE_DATA_ORM": 1,
+      "CPU_ARCHITECTURE": 1,
+      "CREATIONAL_PATTERNS": 1,
+      "CROSSCUTTING_SCIENCE_CONCEPTS": 1,
+      "CSS_SELECTORS": 1,
+      "CYBERBULLYING": 1,
+      "DATABASE_NORMALIZATION": 1,
+      "DATA_CLEANING_TECHNIQUES": 1,
+      "DATA_DISTRIBUTIONS": 1,
+      "DATA_EXPLORATION_EDA": 1,
+      "DATA_LITERACY_DIKW_MODEL": 1,
+      "DECENTRALIZED_LEDGER_CONSENSUS": 1,
+      "DESIGN_THINKING_PROCESS": 1,
+      "DIGITAL_ANALOG_IO": 1,
+      "DIGITAL_DIVIDE": 1,
+      "DIGITAL_FILTERING_AND_SAMPLING": 1,
+      "DIGITAL_FOOTPRINT": 1,
+      "DIGITAL_IDENTITY": 1,
+      "DIGITAL_TWIN_SIMULATION": 1,
+      "DIVIDE_CONQUER": 1,
+      "DMA": 1,
+      "DNS_LOOKUP": 1,
+      "DOM_MANIPULATION": 1,
+      "DRAG_GESTURE": 1,
+      "DURABLE_AGENT_STATE_MANAGEMENT": 1,
+      "DYNAMIC_PROGRAMMING": 1,
+      "EDGE_MODEL_QUANTIZATION": 1,
+      "ENGINEERING_DESIGN_CYCLE": 1,
+      "ERROR_MSG_PARSING": 1,
+      "ETHICAL_AI_AND_BIAS_AWARENESS": 1,
+      "EVENT_BASED_PROGRAMMING": 1,
+      "EVENT_LISTENERS": 1,
+      "FEEDBACK_AND_RESPONSE": 1,
+      "FETCH_DECODE_EXECUTE": 1,
+      "FILE_ALLOCATION": 1,
+      "FIRST_CLASS_VALUES": 1,
+      "FORMAL_PROGRAM_VERIFICATION": 1,
+      "FOR_LOOP": 1,
+      "FOURIER_TRANSFORM_SIGNAL_ANALYSIS": 1,
+      "FRONTEND_FRAMEWORKS": 1,
+      "GAME_LOOP": 1,
+      "GRADIENT_DESCENT_OPTIMIZATION": 1,
+      "GRAPH_BASED_AGENTIC_WORKFLOW": 1,
+      "GRAPH_MODELS": 1,
+      "GREEDY_ALGORITHMS": 1,
+      "HDD_VS_SSD": 1,
+      "HTML_STRUCTURE": 1,
+      "HTTP_METHODS": 1,
+      "HYBRID_VECTOR_SPARSE_SEARCH": 1,
+      "IDENTITY_AND_ACCESS_MANAGEMENT": 1,
+      "IF_ELSE_STATEMENT": 1,
+      "IMAGE_COMPOSITING": 1,
+      "IMAGE_RETOUCHING": 1,
+      "IMAGE_WARPING": 1,
+      "IMMUTABLE_CONCEPTS": 1,
+      "IMPLICIT_EXPLICIT_ANIMATION": 1,
+      "INCLUSIVE_DESIGN_ACCESSIBILITY_WCAG": 1,
+      "INFORMATION_CREDIBILITY": 1,
+      "INFORMATION_ENTROPY_METRICS": 1,
+      "INHERITANCE_SYNTAX": 1,
+      "IOT_MESSAGING_PROTOCOLS": 1,
+      "IOT_SAFETY_RISKS": 1,
+      "IOT_SECURITY_THREATS": 1,
+      "IO_METHODS_POLLING_INTERRUPT": 1,
+      "IPV4_VS_IPV6": 1,
+      "JSON_SERIALIZATION": 1,
+      "KEYFRAME_ANIMATION": 1,
+      "KEY_VALUE_PERSISTENCE": 1,
+      "KNOWLEDGE_GRAPH_RETRIEVAL_AUGMENTATION": 1,
+      "LARGE_LANGUAGE_MODEL_CONCEPTS": 1,
+      "LAYER_BLEND_MODES": 1,
+      "LAYER_MASKING": 1,
+      "LAYOUT_GRID_AND_COMPOSITION_RULES": 1,
+      "LEADERBOARD_SYSTEM": 1,
+      "LEVEL_LAYOUT": 1,
+      "LIGHTING_AND_SHADOWS": 1,
+      "LIGHT_MOTION_SENSORS": 1,
+      "LINEAR_BINARY_SEARCH": 1,
+      "LIST_OPERATIONS": 1,
+      "LOCAL_NOTIFICATION_API": 1,
+      "LOCAL_VIEW_STATE": 1,
+      "LOCATION_SERVICES_API": 1,
+      "LOGIC_ERRORS": 1,
+      "LOGIC_GATES": 1,
+      "MALWARE_KINDS": 1,
+      "MAPREDUCE": 1,
+      "MAP_INTEGRATION": 1,
+      "MARITIME_UNDERWATER_ROBOTICS": 1,
+      "MATERIAL_AND_TEXTURE": 1,
+      "MECHATRONICS_SYSTEMS_DIAGNOSTICS": 1,
+      "MEDIA_PICKER_API": 1,
+      "MEDICAL_IMAGE_DICOM_SEGMENTATION": 1,
+      "MEMORY_TYPES": 1,
+      "MESH_EXTRUSION": 1,
+      "METHOD_OVERRIDING": 1,
+      "MODEL_CONTEXT_PROTOCOL_STANDARD": 1,
+      "MOLECULAR_DYNAMICS_MODELING": 1,
+      "MOTOR_CONTROL": 1,
+      "MULTI_AGENT_COOPERATION": 1,
+      "MULTI_SENSOR_FUSION_ALGORITHMS": 1,
+      "MVVM_PATTERN": 1,
+      "NATURAL_LANGUAGE_PARSING": 1,
+      "NETIQUETTE": 1,
+      "TOPOLOGY_STRUCTURES": 1,
+      "NEURAL_NETWORKS_BASICS": 1,
+      "NEURAL_SIGNAL_DECODING_BCI": 1,
+      "NEUROMORPHIC_COMPUTING_SPIKING_NEURONS": 1,
+      "OBJECT_INSTANTIATION": 1,
+      "OBJECT_PROPERTIES": 1,
+      "ORBITAL_MECHANICS_SATELLITE_MESH": 1,
+      "OSI_MODEL": 1,
+      "PARAMETERIZED_QUANTUM_CIRCUITS": 1,
+      "PASSWORD_CRITERIA": 1,
+      "PATTERN_RECOGNITION": 1,
+      "PERSONAS_AND_SCENARIOS": 1,
+      "PHISHING_IDENTIFICATION": 1,
+      "PHOTOGRAMMETRY_AND_POINT_CLOUD": 1,
+      "PHYSICAL_FLUID_DYNAMICS_SIMULATION": 1,
+      "MEDIUM_TYPES": 1,
+      "CONSTRAINT_MECHANICS": 1,
+      "POLYGON_MESH": 1,
+      "PRIMITIVE_TYPE_DECLARATION": 1,
+      "PROBABILISTIC_VS_DETERMINISTIC_REASONING": 1,
+      "PROBABILITY_BASICS": 1,
+      "PROBLEM_DECOMPOSITION": 1,
+      "PROBLEM_DECOMPOSITION_CONCEPT": 1,
+      "PROCESS_VS_THREAD": 1,
+      "PROPOSITIONAL_LOGIC": 1,
+      "PROTOTYPING": 1,
+      "PUBLIC_KEY_INFRASTRUCTURE": 1,
+      "PUBLISHER_SUBSCRIBER_MODEL": 1,
+      "PWM": 1,
+      "QR_CODE_GENERATION": 1,
+      "QUANTITATIVE_FINANCIAL_RISK_MODELING": 1,
+      "QUANTUM_ENTANGLEMENT": 1,
+      "QUANTUM_KEY_DISTRIBUTION_QKD": 1,
+      "QUANTUM_LOGIC_GATES": 1,
+      "QUANTUM_REPEATER_NETWORKS": 1,
+      "QUANTUM_STATES_SUPERPOSITION": 1,
+      "QUEUE_OPERATIONS": 1,
+      "RADIATION_HARDENED_SPACE_COMPUTING": 1,
+      "REFERENCE_TYPE_DECLARATION": 1,
+      "REGRESSION_CLASSIFICATION": 1,
+      "REINFORCEMENT_LEARNING_BASICS": 1,
+      "RELATIONAL_VS_NONRELATIONAL": 1,
+      "RENDERING_PIPELINE": 1,
+      "RENEWABLE_ENERGY_FORECASTING": 1,
+      "REST_PRINCIPLES": 1,
+      "RETRIEVAL_AUGMENTED_GENERATION": 1,
+      "ROBOTIC_ACTUATION_CONTROL": 1,
+      "ROBOTIC_PATH_PLANNING": 1,
+      "ROUTING_SWITCHING": 1,
+      "RUNTIME_ERRORS": 1,
+      "SBC_BASICS": 1,
+      "SCHEDULING_ALGORITHMS": 1,
+      "SCIENTIFIC_INQUIRY_METHOD": 1,
+      "SCREEN_READERS": 1,
+      "SCRUM_ROLES_EVENTS": 1,
+      "SET_THEORY": 1,
+      "SHAPE_BUILDING": 1,
+      "SHARED_EDITING_ETIQUETTE": 1,
+      "SHARED_OBSERVABLE_STATE": 1,
+      "SIMULATION_MODELING": 1,
+      "SIMULTANEOUS_LOCALIZATION_MAPPING": 1,
+      "SINGULAR_VALUE_DECOMPOSITION": 1,
+      "SMALL_LANGUAGE_MODEL_OPTIMIZATION": 1,
+      "SMART_GRID_ENERGY_OPTIMIZATION": 1,
+      "SPATIAL_AUDIO_AND_HAPTICS": 1,
+      "SPATIAL_COMPUTING_XR_MAPPING": 1,
+      "SPEECH_RECOGNITION_AND_SYNTHESIS": 1,
+      "SQL_JOIN": 1,
+      "SQL_SELECT": 1,
+      "STACK_OPERATIONS": 1,
+      "STATIC_ATTRIBUTES": 1,
+      "STATIC_PROGRAM_ANALYSIS": 1,
+      "STATISTICAL_MEASURES": 1,
+      "STROKE_PROPERTIES": 1,
+      "STRUCTURAL_PATTERNS": 1,
+      "SUBNETTING": 1,
+      "SUSTAINABLE_COMPUTING_AND_EFFICIENT_AI": 1,
+      "SWARM_INTELLIGENCE_OPTIMIZATION": 1,
+      "SWARM_ROBOTICS_FORMATION_CONTROL": 1,
+      "SWITCH_CASE": 1,
+      "SYNTAX_ERRORS": 1,
+      "TAP_GESTURE": 1,
+      "TCP_HANDSHAKE": 1,
+      "TCP_IP_MODEL": 1,
+      "TEMP_HUMIDITY_SENSORS": 1,
+      "THREAT_MODELING_ASSESSMENT": 1,
+      "TINYML_INFERENCE": 1,
+      "TINY_MLOPS_LIFECYCLE_MANAGEMENT": 1,
+      "TRANSFORMATION_OPERATIONS": 1,
+      "TRANSFORMER_ARCHITECTURE": 1,
+      "TROUBLESHOOTING_STEPS": 1,
+      "TRUTH_TABLES": 1,
+      "TWO_FACTOR_AUTH": 1,
+      "TWO_WAY_BINDING": 1,
+      "TYPES_OF_AI": 1,
+      "TYPE_SYSTEMS_AND_SAFETY": 1,
+      "TYPOGRAPHY_AND_VISUAL_HIERARCHY": 1,
+      "UAV_FLIGHT_DYNAMICS_AND_CONTROL": 1,
+      "ULTRA_LOW_LATENCY_HFT_ARCHITECTURE": 1,
+      "UNIT_TESTING": 1,
+      "UNPLUGGED_ALGORITHM_MIMICRY": 1,
+      "USABILITY_TESTING": 1,
+      "USER_CENTERED_DESIGN": 1,
+      "USER_PERSONAS": 1,
+      "VECTOR_EMBEDDING_SEARCH": 1,
+      "VERSION_CONTROL_WORKFLOW": 1,
+      "VIEW_TRANSITIONS": 1,
+      "VIRTUALIZATION": 1,
+      "VIRTUAL_MEMORY": 1,
+      "VISUAL_BLOCK_TO_CODE_TRANSITION": 1,
+      "WCAG_PRINCIPLES": 1,
+      "WEARABLE_PHYSIOLOGICAL_MONITORING": 1,
+      "WHILE_LOOP": 1,
+      "WIREFRAMING": 1,
+      "ZERO_TRUST_ARCHITECTURE": 1
     }
   },
   "phases": [
@@ -45,116 +805,220 @@
       "milestones": [
         {
           "task": {
-            "id": "task-01-app-lifecycle",
-            "capability_id": "app-lifecycle",
-            "action": "Implement AppDelegate as @main entry point that exposes a shared StreamChatWrapper",
-            "modifies": [
-              "DemoApp/AppDelegate.swift"
-            ],
+            "id": "T-SCAFFOLD",
+            "capability_id": "F-CORE",
+            "action": "Scaffold iOS SwiftUI app from Xcode template, add Firebase SDK and GoogleService-Info.plist",
+            "modifies": [],
             "creates": [
-              "App lifecycle hooks",
-              "StreamChatWrapper shared access point"
+              "Xcode project",
+              "App entry point",
+              "GoogleService-Info.plist"
             ],
             "depends_on": [],
             "acceptance": [
-              "App launches without crashing",
-              "didFinishLaunching returns true",
-              "StreamChatWrapper.shared is accessible via the chat property"
+              "Project builds and runs in iOS Simulator",
+              "Firebase SDK installed and linked",
+              "GoogleService-Info.plist is added to the app target"
             ],
-            "intent": "Provide a single app entry point that wires StreamChat into the iOS app lifecycle",
+            "intent": "Tạo nền tảng Xcode + Firebase trước khi bắt đầu code tính năng chat.",
             "outcome": {
-              "user_visible": "App starts to a known login/channel flow after launch",
+              "user_visible": "Người dùng thấy màn hình SwiftUI mặc định khi mở app, chưa có tính năng.",
               "technical": [
-                "AppDelegate conforms to UIApplicationDelegate",
-                "StreamChatWrapper.shared is accessible",
-                "didFinishLaunching configures Sentry"
+                "Xcode project with SwiftUI lifecycle",
+                "Firebase SDK integrated",
+                "GoogleService-Info.plist configured"
+              ]
+            },
+            "source_evidence": [],
+            "keywords": [
+              "SwiftUI",
+              "Xcode",
+              "Firebase"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 3,
+              "files_touched": 5,
+              "estimated_minutes": 60
+            },
+            "requirement_ids": [
+              "REQ-SCAFFOLD"
+            ]
+          },
+          "concepts": [
+            "API_INTEGRATION",
+            "DECLARATIVE_UI_PARADIGM"
+          ],
+          "order": 2,
+          "los": [
+            {
+              "task_id": "T-SCAFFOLD",
+              "description": "Người học có khả năng giải thích vai trò của Firebase SDK trong việc cung cấp backend cho ứng dụng iOS.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "Firebase",
+              "assessment": "Project builds and runs in iOS Simulator; Firebase SDK installed and linked; GoogleService-Info.plist is added to the app target"
+            },
+            {
+              "task_id": "T-SCAFFOLD",
+              "description": "Người học có khả năng mô tả mô hình khai báo giao diện SwiftUI với view hierarchy.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "SwiftUI",
+              "assessment": "Project builds and runs in iOS Simulator; Firebase SDK installed and linked; GoogleService-Info.plist is added to the app target"
+            },
+            {
+              "task_id": "T-SCAFFOLD",
+              "description": "Người học có khả năng thực hiện tích hợp Firebase bằng cách thêm GoogleService-Info.plist và link SDK vào Xcode project.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "GoogleService-Info.plist",
+              "assessment": "Project builds and runs in iOS Simulator; Firebase SDK installed and linked; GoogleService-Info.plist is added to the app target"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-FIREBASE-MANAGER",
+            "capability_id": "F-CORE",
+            "action": "Implement FirebaseManager singleton exposing shared Auth, Firestore, and Storage instances",
+            "modifies": [],
+            "creates": [
+              "FirebaseManager",
+              "Auth",
+              "Firestore",
+              "Storage"
+            ],
+            "depends_on": [
+              "T-FB-BOOTSTRAP"
+            ],
+            "acceptance": [
+              "FirebaseManager.shared.auth returns the shared Auth instance",
+              "Firestore.firestore() and Storage.storage() resolve correctly"
+            ],
+            "intent": "Các ViewModel cùng dùng một nguồn Firebase thay vì khởi tạo lặp lại.",
+            "outcome": {
+              "user_visible": "Không đổi UI, nhưng là hạ tầng nền cho đăng nhập và chat.",
+              "technical": [
+                "Singleton pattern",
+                "Central access to Auth/Firestore/Storage"
               ]
             },
             "source_evidence": [
-              "DemoApp/AppDelegate.swift"
+              "Talky/Util/Helper/FirebaseManager.swift"
             ],
             "keywords": [
-              "@main",
-              "UIApplicationDelegate",
-              "StreamChatWrapper",
-              "StreamChat"
+              "FirebaseManager",
+              "Auth.auth()",
+              "Firestore.firestore()",
+              "Storage.storage()",
+              "singleton"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 2,
+              "files_touched": 1,
+              "estimated_minutes": 15
+            },
+            "requirement_ids": [
+              "REQ-SCAFFOLD"
+            ]
+          },
+          "concepts": [
+            "API_INTEGRATION",
+            "CREATIONAL_PATTERNS"
+          ],
+          "order": 1,
+          "los": [
+            {
+              "task_id": "T-FIREBASE-MANAGER",
+              "description": "Người học có khả năng giải thích mục đích của singleton pattern trong việc đảm bảo một phiên bản dùng chung của FirebaseManager.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "CREATIONAL_PATTERNS",
+              "keyword": "singleton",
+              "assessment": "FirebaseManager.shared.auth returns the shared Auth instance; Firestore.firestore() and Storage.storage() resolve correctly"
+            },
+            {
+              "task_id": "T-FIREBASE-MANAGER",
+              "description": "Người học có khả năng triển khai FirebaseManager.shared để expose các instance Auth, Firestore và Storage dùng chung.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "FirebaseManager",
+              "assessment": "FirebaseManager.shared.auth returns the shared Auth instance; Firestore.firestore() and Storage.storage() resolve correctly"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-FB-BOOTSTRAP",
+            "capability_id": "F-CORE",
+            "action": "Implement AppDelegate with UIApplicationDelegateAdaptor and call FirebaseApp.configure()",
+            "modifies": [
+              "Talky/TalkyApp.swift"
+            ],
+            "creates": [
+              "AppDelegate",
+              "Firebase initialization"
+            ],
+            "depends_on": [
+              "T-SCAFFOLD"
+            ],
+            "acceptance": [
+              "App launches without crashing",
+              "FirebaseApp.configure() is called once on launch"
+            ],
+            "intent": "Firebase phải được khởi tạo trước khi các service Auth/Firestore/Storage được dùng.",
+            "outcome": {
+              "user_visible": "App mở được nhưng chưa hiện màn hình chào mừng vì auth chưa inject.",
+              "technical": [
+                "UIApplicationDelegateAdaptor connected to @main App",
+                "Firebase configured in didFinishLaunching"
+              ]
+            },
+            "source_evidence": [
+              "Talky/TalkyApp.swift"
+            ],
+            "keywords": [
+              "FirebaseApp.configure()",
+              "UIApplicationDelegateAdaptor"
             ],
             "concurrency": [],
             "effort": {
               "concepts_count": 2,
               "files_touched": 1,
               "estimated_minutes": 30
-            }
+            },
+            "requirement_ids": [
+              "REQ-SCAFFOLD"
+            ]
           },
           "concepts": [
             "API_INTEGRATION"
           ],
-          "order": 0,
+          "order": 3,
           "los": [
             {
-              "task_id": "task-01-app-lifecycle",
-              "concepts": [
-                "API_INTEGRATION"
-              ],
-              "lo": "[skip-jit] Implement AppDelegate as @main entry point that exposes a shared StreamChatWrapper"
-            }
-          ]
-        },
-        {
-          "task": {
-            "id": "task-02-diagnostics",
-            "capability_id": "observability",
-            "action": "Implement DemoAppConfiguration to configure Sentry, Atlantis, and performance monitor",
-            "modifies": [
-              "DemoApp/DemoAppConfiguration.swift"
-            ],
-            "creates": [
-              "Sentry crash reporting setup",
-              "Atlantis network proxy toggle",
-              "Performance tracker start"
-            ],
-            "depends_on": [
-              "task-01-app-lifecycle"
-            ],
-            "acceptance": [
-              "Sentry starts only in RELEASE builds",
-              "Atlantis starts/stops based on AppConfig.shared.demoAppConfig.isAtlantisEnabled",
-              "Performance monitor starts for internal builds after 3s delay"
-            ],
-            "intent": "Enable debugging and crash reporting to keep the chat app maintainable and observable",
-            "outcome": {
-              "user_visible": "No visible change; developers can inspect network traffic and crash reports",
-              "technical": [
-                "Sentry DSN configured",
-                "Atlantis starts for Proxyman traffic inspection",
-                "PerformanceMonitor configured with .performance option"
-              ]
+              "task_id": "T-FB-BOOTSTRAP",
+              "description": "Người học có khả năng giải thích vì sao FirebaseApp.configure() cần được gọi trước khi sử dụng các dịch vụ Firebase.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "FirebaseApp.configure()",
+              "assessment": "App launches without crashing; FirebaseApp.configure() is called once on launch"
             },
-            "source_evidence": [
-              "DemoApp/DemoAppConfiguration.swift"
-            ],
-            "keywords": [
-              "SentrySDK",
-              "Atlantis",
-              "PerformanceMonitor",
-              "StreamRuntimeCheck"
-            ],
-            "concurrency": [
-              "DispatchQueue.main.asyncAfter"
-            ],
-            "effort": {
-              "concepts_count": 3,
-              "files_touched": 1,
-              "estimated_minutes": 45
-            }
-          },
-          "concepts": [],
-          "order": 1,
-          "los": [
             {
-              "task_id": "task-02-diagnostics",
-              "concepts": [],
-              "lo": "[skip-jit] Implement DemoAppConfiguration to configure Sentry, Atlantis, and performance monitor"
+              "task_id": "T-FB-BOOTSTRAP",
+              "description": "Người học có khả năng mô tả cách UIApplicationDelegateAdaptor tích hợp AppDelegate vào vòng đời SwiftUI app.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "UIApplicationDelegateAdaptor",
+              "assessment": "App launches without crashing; FirebaseApp.configure() is called once on launch"
             }
           ]
         }
@@ -165,448 +1029,927 @@
       "milestones": [
         {
           "task": {
-            "id": "task-03-session-persistence",
-            "capability_id": "state-management",
-            "action": "Implement shared UserDefaults accessor for current user credentials",
-            "modifies": [
-              "DemoApp/Extensions/UserDefaults+Shared.swift"
-            ],
+            "id": "T-MODELS",
+            "capability_id": "F-CORE",
+            "action": "Implement Codable models ChatMessage, ChatUser, RecentMessage with @DocumentID and computed properties",
+            "modifies": [],
             "creates": [
-              "currentUserId persisted property",
-              "currentUser derived from built-in users"
+              "ChatMessage",
+              "ChatUser",
+              "RecentMessage",
+              "username",
+              "timeAgo"
             ],
-            "depends_on": [],
+            "depends_on": [
+              "T-FIREBASE-MANAGER"
+            ],
             "acceptance": [
-              "currentUserId reads/writes to shared App Group UserDefaults",
-              "currentUser returns UserCredentials matching stored id or nil"
+              "Models decode Firestore documents into Swift structs",
+              "ChatUser.username is derived from email",
+              "RecentMessage.timeAgo uses RelativeDateTimeFormatter"
             ],
-            "intent": "Persist the selected user across app launches so the chat session survives restarts",
+            "intent": "Cần cấu trúc dữ liệu để đọc/ghi Firestore cho tin nhắn, user và hội thoại gần đây.",
             "outcome": {
-              "user_visible": "User stays logged in after relaunch",
+              "user_visible": "Chưa ảnh hưởng trực tiếp, nhưng dữ liệu chat/recent có thể lưu và đọc.",
               "technical": [
-                "UserDefaults suite backed by applicationGroupIdentifier",
-                "currentUserId uses #function as key"
+                "Codable + Identifiable",
+                "@DocumentID maps Firestore document id",
+                "Custom encode/decode in ChatUser"
               ]
             },
             "source_evidence": [
-              "DemoApp/Extensions/UserDefaults+Shared.swift"
+              "Talky/Model/ChatMessage.swift",
+              "Talky/Model/ChatUser.swift",
+              "Talky/Model/RecentMessage.swift"
             ],
             "keywords": [
-              "UserDefaults",
-              "applicationGroupIdentifier",
-              "UserCredentials"
-            ],
-            "concurrency": [],
-            "effort": {
-              "concepts_count": 2,
-              "files_touched": 1,
-              "estimated_minutes": 20
-            }
-          },
-          "concepts": [
-            "IDENTITY_AND_ACCESS_MANAGEMENT",
-            "KEY_VALUE_PERSISTENCE"
-          ],
-          "order": 2,
-          "los": [
-            {
-              "task_id": "task-03-session-persistence",
-              "concepts": [
-                "IDENTITY_AND_ACCESS_MANAGEMENT",
-                "KEY_VALUE_PERSISTENCE"
-              ],
-              "lo": "[skip-jit] Implement shared UserDefaults accessor for current user credentials"
-            }
-          ]
-        },
-        {
-          "task": {
-            "id": "task-04-alert-helpers",
-            "capability_id": "ui-utils",
-            "action": "Implement reusable UIViewController alert extension for options, text input, and user actions",
-            "modifies": [
-              "DemoApp/Extensions/UIViewController+Alert.swift"
-            ],
-            "creates": [
-              "presentAlert overloads",
-              "presentUserOptionsAlert for Profile/Logout/Disconnect"
-            ],
-            "depends_on": [],
-            "acceptance": [
-              "Alerts can show title/message with OK/Cancel",
-              "Text input alert returns entered text via okHandler",
-              "User options alert pushes UserProfileViewController and invokes logout/disconnect closures"
-            ],
-            "intent": "Provide consistent alert and presentation patterns across the app's account and channel flows",
-            "outcome": {
-              "user_visible": "Tapping profile/logout/disconnect shows familiar system alerts",
-              "technical": [
-                "UIAlertController wrappers added",
-                "Closure-based callbacks",
-                "Navigation push to UserProfileViewController"
-              ]
-            },
-            "source_evidence": [
-              "DemoApp/Extensions/UIViewController+Alert.swift"
-            ],
-            "keywords": [
-              "UIAlertController",
-              "UIAlertAction",
-              "ChatClient",
-              "UserProfileViewController"
+              "Codable",
+              "@DocumentID",
+              "RelativeDateTimeFormatter",
+              "FirestoreSwift"
             ],
             "concurrency": [],
             "effort": {
               "concepts_count": 3,
-              "files_touched": 1,
-              "estimated_minutes": 60
-            }
+              "files_touched": 3,
+              "estimated_minutes": 45
+            },
+            "requirement_ids": []
           },
           "concepts": [
-            "API_INTEGRATION",
-            "FRONTEND_FRAMEWORKS"
+            "JSON_SERIALIZATION",
+            "API_INTEGRATION"
           ],
-          "order": 3,
+          "order": 0,
           "los": [
             {
-              "task_id": "task-04-alert-helpers",
-              "concepts": [
-                "API_INTEGRATION",
-                "FRONTEND_FRAMEWORKS"
-              ],
-              "lo": "[skip-jit] Implement reusable UIViewController alert extension for options, text input, and user actions"
+              "task_id": "T-MODELS",
+              "description": "Người học có khả năng giải thích cách Codable và @DocumentID ánh xạ Firestore document thành Swift struct.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "JSON_SERIALIZATION",
+              "keyword": "Codable",
+              "assessment": "Models decode Firestore documents into Swift structs; ChatUser.username is derived from email; RecentMessage.timeAgo uses RelativeDateTimeFormatter"
+            },
+            {
+              "task_id": "T-MODELS",
+              "description": "Người học có khả năng triển khai các model ChatMessage, ChatUser, RecentMessage với Codable, @DocumentID và computed properties.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "JSON_SERIALIZATION",
+              "keyword": "@DocumentID",
+              "assessment": "Models decode Firestore documents into Swift structs; ChatUser.username is derived from email; RecentMessage.timeAgo uses RelativeDateTimeFormatter"
+            },
+            {
+              "task_id": "T-MODELS",
+              "description": "Người học có khả năng phân tích cách dữ liệu Firestore được decode/encode qua Codable, bao gồm việc suy ra username từ email và tính timeAgo bằng RelativeDateTimeFormatter.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "FirestoreSwift",
+              "assessment": "Models decode Firestore documents into Swift structs; ChatUser.username is derived from email; RecentMessage.timeAgo uses RelativeDateTimeFormatter"
             }
           ]
         },
         {
           "task": {
-            "id": "task-05-image-resize",
-            "capability_id": "image-handling",
-            "action": "Implement UIImage resizing extension for attachment thumbnails",
-            "modifies": [
-              "DemoApp/Extensions/UIImage+Resized.swift"
-            ],
+            "id": "T-REGISTER",
+            "capability_id": "F-AUTH",
+            "action": "Implement registration screen with email, password, confirm password, sign-up button and error alert",
+            "modifies": [],
             "creates": [
-              "resized(to:) utility"
+              "RegisterxView",
+              "Sign up button",
+              "Error alert"
             ],
-            "depends_on": [],
+            "depends_on": [
+              "T-AUTH-VM"
+            ],
             "acceptance": [
-              "Resized image preserves aspect ratio",
-              "Image context is ended in defer"
+              "User can enter email, password and confirm password",
+              "Tapping Sign up calls authViewModel.register()",
+              "Failed registration shows alert"
             ],
-            "intent": "Standardize image resizing for chat attachments so media messages display efficiently",
+            "intent": "Người dùng mới cần tạo tài khoản trước khi sử dụng chat.",
             "outcome": {
-              "user_visible": "Images sent in chat appear correctly sized without distortion",
+              "user_visible": "Người dùng đăng ký và tự đăng nhập sau khi tạo tài khoản.",
               "technical": [
-                "UIGraphicsBeginImageContextWithOptions used",
-                "Aspect-fit calculation implemented"
+                "SecureTextField reuse",
+                "Async register call",
+                "Alert on .error state"
               ]
             },
             "source_evidence": [
-              "DemoApp/Extensions/UIImage+Resized.swift"
+              "Talky/View/RegisterxView.swift",
+              "Talky/View/Component/SecureTextField.swift"
             ],
             "keywords": [
-              "UIImage",
-              "UIGraphicsBeginImageContextWithOptions",
-              "CGSize"
+              "TextField",
+              "SecureField",
+              "@EnvironmentObject",
+              "alert"
             ],
-            "concurrency": [],
+            "concurrency": [
+              "async/await",
+              "Task"
+            ],
             "effort": {
-              "concepts_count": 2,
-              "files_touched": 1,
-              "estimated_minutes": 30
-            }
+              "concepts_count": 3,
+              "files_touched": 2,
+              "estimated_minutes": 45
+            },
+            "requirement_ids": [
+              "REQ-REGISTER"
+            ]
           },
           "concepts": [],
           "order": 4,
           "los": [
             {
-              "task_id": "task-05-image-resize",
-              "concepts": [],
-              "lo": "[skip-jit] Implement UIImage resizing extension for attachment thumbnails"
+              "task_id": "T-REGISTER",
+              "description": "Người học có khả năng nhận diện vai trò của TextField, SecureField và @EnvironmentObject trong màn hình đăng ký SwiftUI.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "",
+              "keyword": "SwiftUI",
+              "assessment": "User can enter email, password and confirm password; Tapping Sign up calls authViewModel.register(); Failed registration shows alert"
+            },
+            {
+              "task_id": "T-REGISTER",
+              "description": "Người học có khả năng xây dựng màn hình đăng ký với các trường email, password, confirm password và nút Sign Up.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "TextField",
+              "assessment": "User can enter email, password and confirm password; Tapping Sign up calls authViewModel.register(); Failed registration shows alert"
+            },
+            {
+              "task_id": "T-REGISTER",
+              "description": "Người học có khả năng sử dụng alert để hiển thị thông báo lỗi khi đăng ký thất bại thông qua authViewModel.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "alert",
+              "assessment": "User can enter email, password and confirm password; Tapping Sign up calls authViewModel.register(); Failed registration shows alert"
             }
           ]
         },
         {
           "task": {
-            "id": "task-06-reaction-position",
-            "capability_id": "message-customization",
-            "action": "Implement MessageReactionType position mapping for reaction ordering",
-            "modifies": [
-              "DemoApp/Extensions/MessageReactionType+Position.swift"
-            ],
+            "id": "T-WELCOME",
+            "capability_id": "F-ONBOARD",
+            "action": "Implement WelcomeView with hero image, gradient, branding and navigation links to Login and Register",
+            "modifies": [],
             "creates": [
-              "position computed property on MessageReactionType"
+              "WelcomeView",
+              "Start Messaging CTA",
+              "Navigation links to auth screens"
             ],
-            "depends_on": [],
+            "depends_on": [
+              "T-LOGIN",
+              "T-REGISTER"
+            ],
             "acceptance": [
-              "love/haha/like/sad/wow map to positions 0-4",
-              "Unknown reactions map to position 5"
+              "User sees 'Connect with Talky' welcome screen",
+              "Tapping Start Messaging navigates to Register",
+              "WelcomeView is used as logged-out fallback"
             ],
-            "intent": "Give deterministic ordering to message reactions in the reaction picker/list",
+            "intent": "Lần đầu mở app cần màn hình giới thiệu để dẫn người dùng vào đăng nhập/đăng ký.",
             "outcome": {
-              "user_visible": "Message reactions appear in a stable, predictable order",
+              "user_visible": "Người dùng thấy màn hình chào mừng với hình ảnh và nút Start Messaging.",
               "technical": [
-                "MessageReactionType extension added",
-                "rawValue switch returns stable position"
+                "NavigationView + NavigationLink",
+                "LinearGradient overlay"
               ]
             },
             "source_evidence": [
-              "DemoApp/Extensions/MessageReactionType+Position.swift"
+              "Talky/View/WelcomeView.swift"
             ],
             "keywords": [
-              "MessageReactionType",
-              "rawValue"
+              "NavigationView",
+              "NavigationLink",
+              "LinearGradient",
+              "Image"
             ],
             "concurrency": [],
             "effort": {
-              "concepts_count": 1,
+              "concepts_count": 3,
               "files_touched": 1,
-              "estimated_minutes": 15
-            }
+              "estimated_minutes": 30
+            },
+            "requirement_ids": [
+              "REQ-ONBOARD"
+            ]
           },
-          "concepts": [],
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM"
+          ],
           "order": 5,
           "los": [
             {
-              "task_id": "task-06-reaction-position",
-              "concepts": [],
-              "lo": "[skip-jit] Implement MessageReactionType position mapping for reaction ordering"
+              "task_id": "T-WELCOME",
+              "description": "Người học có khả năng giải thích cách NavigationView và NavigationLink điều hướng giữa các màn hình trong SwiftUI.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "NavigationLink",
+              "assessment": "User sees 'Connect with Talky' welcome screen; Tapping Start Messaging navigates to Register; WelcomeView is used as logged-out fallback"
+            },
+            {
+              "task_id": "T-WELCOME",
+              "description": "Người học có khả năng sử dụng LinearGradient, Image và NavigationLink để thiết kế màn hình WelcomeView với branding và nút Start Messaging.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "LinearGradient",
+              "assessment": "User sees 'Connect with Talky' welcome screen; Tapping Start Messaging navigates to Register; WelcomeView is used as logged-out fallback"
             }
           ]
         },
         {
           "task": {
-            "id": "task-08-login",
-            "capability_id": "session-auth",
-            "action": "Implement login flow to pick a pre-configured user or enter advanced credentials",
+            "id": "T-LOGIN",
+            "capability_id": "F-AUTH",
+            "action": "Implement login screen with email/password fields, show/hide password, sign-in button and error alert",
             "modifies": [],
             "creates": [
-              "Login screen",
-              "Authentication to StreamChat client"
+              "LoginxView",
+              "Sign in button",
+              "Error alert"
             ],
             "depends_on": [
-              "task-03-session-persistence",
-              "task-04-alert-helpers"
+              "T-AUTH-VM"
             ],
             "acceptance": [
-              "Pre-configured user list is displayed on first screen",
-              "Advanced options allow custom server and JWT token",
-              "Selected user is persisted via UserDefaults.currentUser"
+              "User can type email and password",
+              "Tapping Sign in calls authViewModel.login()",
+              "Wrong credentials shows alert with logMessage"
             ],
-            "intent": "Let users enter the chat app with a known identity and receive their channels",
+            "intent": "Người dùng có tài khoản cần đăng nhập để vào Recent Chats.",
             "outcome": {
-              "user_visible": "Users can choose a demo user or log in with custom credentials and land on channel list",
+              "user_visible": "Người dùng đăng nhập được bằng email/mật khẩu.",
               "technical": [
-                "UserCredentials built-in users power the list",
-                "JWT token generation required for advanced login",
-                "Session persisted in UserDefaults"
+                "TextField + SecureTextField bound to AuthViewModel",
+                "onChange of viewState shows alert"
               ]
             },
             "source_evidence": [
-              "DemoApp/README.md",
-              "DemoApp/Extensions/UserDefaults+Shared.swift"
+              "Talky/View/LoginxView.swift",
+              "Talky/View/Component/SecureTextField.swift"
             ],
             "keywords": [
-              "UserCredentials",
-              "JWT",
-              "ChatClient",
-              "currentUser"
+              "TextField",
+              "SecureField",
+              "@EnvironmentObject",
+              "alert"
             ],
-            "concurrency": [],
+            "concurrency": [
+              "async/await",
+              "Task"
+            ],
             "effort": {
-              "concepts_count": 5,
-              "files_touched": 3,
-              "estimated_minutes": 120
-            }
+              "concepts_count": 3,
+              "files_touched": 2,
+              "estimated_minutes": 45
+            },
+            "requirement_ids": [
+              "REQ-LOGIN"
+            ]
           },
           "concepts": [
-            "IDENTITY_AND_ACCESS_MANAGEMENT"
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "order": 6,
+          "los": [
+            {
+              "task_id": "T-LOGIN",
+              "description": "Người học có khả năng giải thích cách TextField và SecureField hoạt động trong form đăng nhập SwiftUI.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "SecureField",
+              "assessment": "User can type email and password; Tapping Sign in calls authViewModel.login(); Wrong credentials shows alert with logMessage"
+            },
+            {
+              "task_id": "T-LOGIN",
+              "description": "Người học có khả năng áp dụng các UI modifier để hiện/ẩn mật khẩu và tạo trải nghiệm nhập liệu cho màn hình login.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "UI modifier",
+              "assessment": "User can type email and password; Tapping Sign in calls authViewModel.login(); Wrong credentials shows alert with logMessage"
+            },
+            {
+              "task_id": "T-LOGIN",
+              "description": "Người học có khả năng kết nối nút Sign In với authViewModel.login() và hiển thị alert logMessage khi đăng nhập thất bại.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "alert",
+              "assessment": "User can type email and password; Tapping Sign in calls authViewModel.login(); Wrong credentials shows alert with logMessage"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-AUTH-VM",
+            "capability_id": "F-AUTH",
+            "action": "Implement AuthViewModel with register, login, logout, editProfile, published viewState, logMessage and user",
+            "modifies": [],
+            "creates": [
+              "AuthViewModel",
+              "viewState",
+              "logMessage",
+              "loggedOut",
+              "user"
+            ],
+            "depends_on": [
+              "T-FIREBASE-MANAGER",
+              "T-MODELS"
+            ],
+            "acceptance": [
+              "User can create an account and the user document is saved",
+              "User can sign in with correct email/password",
+              "User can sign out and loggedOut publishes true",
+              "Failed auth sets viewState .error and logMessage"
+            ],
+            "intent": "Authentication là cửa ngõ để vào danh sách chat, profile, và realtime messaging.",
+            "outcome": {
+              "user_visible": "Người dùng có thể đăng ký, đăng nhập và đăng xuất.",
+              "technical": [
+                "@Published state drives SwiftUI views",
+                "Firebase Auth calls",
+                "Firestore users collection update"
+              ]
+            },
+            "source_evidence": [
+              "Talky/TalkyApp.swift",
+              "Talky/View/LoginxView.swift",
+              "Talky/View/RegisterxView.swift",
+              "Talky/View/ProfileView.swift",
+              "Talky/View/EditProfileView.swift"
+            ],
+            "keywords": [
+              "@StateObject",
+              "@EnvironmentObject",
+              "Auth.auth().createUser(withEmail:password:)",
+              "Auth.auth().signIn(withEmail:password:)",
+              "Auth.auth().signOut()"
+            ],
+            "concurrency": [
+              "async/await",
+              "Task"
+            ],
+            "effort": {
+              "concepts_count": 5,
+              "files_touched": 5,
+              "estimated_minutes": 90
+            },
+            "requirement_ids": [
+              "REQ-REGISTER",
+              "REQ-LOGIN",
+              "REQ-LOGOUT"
+            ]
+          },
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
           ],
           "order": 7,
           "los": [
             {
-              "task_id": "task-08-login",
-              "concepts": [
-                "IDENTITY_AND_ACCESS_MANAGEMENT"
-              ],
-              "lo": "[skip-jit] Implement login flow to pick a pre-configured user or enter advanced credentials"
+              "task_id": "T-AUTH-VM",
+              "description": "Người học có khả năng giải thích cách @StateObject và @EnvironmentObject chia sẻ AuthViewModel trong toàn app.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "@EnvironmentObject",
+              "assessment": "User can create an account and the user document is saved; User can sign in with correct email/password; User can sign out and loggedOut publishes true; Failed auth sets viewState .error and logMessag"
+            },
+            {
+              "task_id": "T-AUTH-VM",
+              "description": "Người học có khả năng triển khai đăng ký, đăng nhập, đăng xuất và chỉnh sửa profile bằng Firebase Auth trong AuthViewModel.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "Auth.auth()",
+              "assessment": "User can create an account and the user document is saved; User can sign in with correct email/password; User can sign out and loggedOut publishes true; Failed auth sets viewState .error and logMessag"
+            },
+            {
+              "task_id": "T-AUTH-VM",
+              "description": "Người học có khả năng phân tích luồng dữ liệu khi các hàm auth cập nhật viewState, logMessage và user trong AuthViewModel.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "viewState",
+              "assessment": "User can create an account and the user document is saved; User can sign in with correct email/password; User can sign out and loggedOut publishes true; Failed auth sets viewState .error and logMessag"
+            },
+            {
+              "task_id": "T-AUTH-VM",
+              "description": "Người học có khả năng áp dụng @Published để công bố trạng thái xác thực và thông báo lỗi tới view.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "@Published",
+              "assessment": "User can create an account and the user document is saved; User can sign in with correct email/password; User can sign out and loggedOut publishes true; Failed auth sets viewState .error and logMessag"
             }
           ]
         },
         {
           "task": {
-            "id": "task-09-channel-list",
-            "capability_id": "channel-list",
-            "action": "Implement channel list screen with infinite scrolling, unread indicators, and channel creation/deletion",
+            "id": "T-CHAT-VM",
+            "capability_id": "F-CHAT",
+            "action": "Implement ChatDetailViewModel to listen for 1-1 messages, send text, and expose auto-scroll count",
             "modifies": [],
             "creates": [
-              "ChatChannelListViewController flow",
-              "Channel query-driven list"
+              "ChatDetailViewModel",
+              "chatText",
+              "chatMessages",
+              "chatUser",
+              "count"
             ],
             "depends_on": [
-              "task-08-login"
+              "T-FIREBASE-MANAGER",
+              "T-AUTH-VM",
+              "T-MODELS"
             ],
             "acceptance": [
-              "Channels for logged-in user appear as infinite scrolling list",
-              "Avatar, unread counts, last message previews, and timestamps shown",
-              "New channel can be created from top-right button",
-              "Swiping left deletes channel"
+              "Messages between current user and chatUser are observed realtime",
+              "handleSend() persists a new message to Firestore",
+              "count increments to trigger auto-scroll"
             ],
-            "intent": "Show a user all their chat channels at a glance and let them navigate into conversation",
+            "intent": "Trái tim của app chat: gửi/nhận tin nhắn realtime giữa hai người.",
             "outcome": {
-              "user_visible": "User sees all channels and can open any of them",
+              "user_visible": "Tin nhắn gửi đi và nhận về hiển thị ngay lập tức.",
               "technical": [
-                "StreamChatUI ChatChannelListViewController used",
-                "Controller-backed channel query",
-                "Swipe actions for delete"
+                "Firestore messages collection",
+                "Snapshot listener filtered by chat partner",
+                "@Published count"
               ]
             },
             "source_evidence": [
-              "DemoApp/README.md"
+              "Talky/View/ChatDetailView.swift",
+              "Talky/Model/ChatMessage.swift"
             ],
             "keywords": [
-              "ChatChannelListViewController",
-              "ChatClient",
-              "query",
-              "delete"
+              "@StateObject",
+              "@Published",
+              "addSnapshotListener",
+              "document().setData"
             ],
             "concurrency": [],
             "effort": {
               "concepts_count": 4,
               "files_touched": 2,
-              "estimated_minutes": 90
-            }
+              "estimated_minutes": 75
+            },
+            "requirement_ids": [
+              "REQ-CHAT"
+            ]
           },
           "concepts": [
-            "FRONTEND_FRAMEWORKS",
             "API_INTEGRATION"
           ],
           "order": 8,
           "los": [
             {
-              "task_id": "task-09-channel-list",
-              "concepts": [
-                "FRONTEND_FRAMEWORKS",
-                "API_INTEGRATION"
-              ],
-              "lo": "[skip-jit] Implement channel list screen with infinite scrolling, unread indicators, and channel creation/deletion"
+              "task_id": "T-CHAT-VM",
+              "description": "Người học có khả năng giải thích cách addSnapshotListener lắng nghe thay đổi realtime từ Firestore.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "addSnapshotListener",
+              "assessment": "Messages between current user and chatUser are observed realtime; handleSend() persists a new message to Firestore; count increments to trigger auto-scroll"
+            },
+            {
+              "task_id": "T-CHAT-VM",
+              "description": "Người học có khả năng triển khai ChatDetailViewModel để gửi tin nhắn qua document().setData và lắng nghe tin nhắn giữa hai người.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "setData",
+              "assessment": "Messages between current user and chatUser are observed realtime; handleSend() persists a new message to Firestore; count increments to trigger auto-scroll"
+            },
+            {
+              "task_id": "T-CHAT-VM",
+              "description": "Người học có khả năng sử dụng Firestore snapshot listener để cập nhật bộ đếm auto-scroll nhằm theo dõi tin nhắn mới.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "auto-scroll",
+              "assessment": "Messages between current user and chatUser are observed realtime; handleSend() persists a new message to Firestore; count increments to trigger auto-scroll"
             }
           ]
         },
         {
           "task": {
-            "id": "task-10-channel-detail",
-            "capability_id": "message-thread",
-            "action": "Implement channel screen with message list, rich media, and composer",
+            "id": "T-RECENT-VM",
+            "capability_id": "F-RECENT",
+            "action": "Implement RecentChatViewModel to fetch recent messages, fetch all users, and track selectedChatUser",
             "modifies": [],
             "creates": [
-              "ChatChannelViewController flow",
-              "Message composer and reactions"
+              "RecentChatViewModel",
+              "recentMessages",
+              "users",
+              "selectedChatUser"
             ],
             "depends_on": [
-              "task-09-channel-list"
+              "T-AUTH-VM",
+              "T-MODELS",
+              "T-FIREBASE-MANAGER"
             ],
             "acceptance": [
-              "Infinite scrolling messages in channel",
-              "Header shows channel info",
-              "Rich media including GIF supported",
-              "Composer supports file attachments",
-              "Long press on message adds reactions"
+              "recentMessages updates when Firestore recent_messages changes",
+              "users contains all users for resolving chat partner",
+              "selectedChatUser is set when a recent conversation is tapped"
             ],
-            "intent": "Enable the core chat experience: reading and sending messages with media and reactions",
+            "intent": "Màn hình Recent Chats cần dữ liệu realtime của các cuộc trò chuyện gần đây.",
             "outcome": {
-              "user_visible": "User can read and send messages, attach files, send GIFs, and react to messages",
+              "user_visible": "Người dùng thấy danh sách hội thoại gần đây cập nhật realtime.",
               "technical": [
-                "StreamChatUI ChatChannelViewController used",
-                "Composer with attachment support",
-                "Reaction long-press gesture"
+                "Firestore snapshot listener",
+                "Mapping recent message to ChatUser"
               ]
             },
             "source_evidence": [
-              "DemoApp/README.md",
-              "DemoApp/Extensions/MessageReactionType+Position.swift"
+              "Talky/View/RecentChatView.swift",
+              "Talky/Model/RecentMessage.swift",
+              "Talky/Model/ChatUser.swift"
             ],
             "keywords": [
-              "ChatChannelViewController",
-              "MessageComposer",
-              "attachment",
-              "MessageReactionType"
+              "@Published",
+              "addSnapshotListener",
+              "Firestore"
             ],
             "concurrency": [],
             "effort": {
-              "concepts_count": 5,
-              "files_touched": 2,
-              "estimated_minutes": 180
-            }
+              "concepts_count": 4,
+              "files_touched": 3,
+              "estimated_minutes": 60
+            },
+            "requirement_ids": [
+              "REQ-RECENT"
+            ]
           },
           "concepts": [
-            "FRONTEND_FRAMEWORKS"
+            "PUBLISHER_SUBSCRIBER_MODEL",
+            "API_INTEGRATION"
           ],
           "order": 9,
           "los": [
             {
-              "task_id": "task-10-channel-detail",
-              "concepts": [
-                "FRONTEND_FRAMEWORKS"
-              ],
-              "lo": "[skip-jit] Implement channel screen with message list, rich media, and composer"
+              "task_id": "T-RECENT-VM",
+              "description": "Người học có khả năng giải thích mô hình Publisher-Subscriber với @Published và addSnapshotListener trong việc cập nhật danh sách hội thoại realtime.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "PUBLISHER_SUBSCRIBER_MODEL",
+              "keyword": "@Published",
+              "assessment": "recentMessages updates when Firestore recent_messages changes; users contains all users for resolving chat partner; selectedChatUser is set when a recent conversation is tapped"
+            },
+            {
+              "task_id": "T-RECENT-VM",
+              "description": "Người học có khả năng triển khai RecentChatViewModel để tải recent_messages và danh sách users từ Firestore.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "Firestore",
+              "assessment": "recentMessages updates when Firestore recent_messages changes; users contains all users for resolving chat partner; selectedChatUser is set when a recent conversation is tapped"
+            },
+            {
+              "task_id": "T-RECENT-VM",
+              "description": "Người học có khả năng phân tích luồng dữ liệu từ snapshot Firestore tới @Published recentMessages và thiết lập selectedChatUser khi chọn cuộc trò chuyện.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "selectedChatUser",
+              "assessment": "recentMessages updates when Firestore recent_messages changes; users contains all users for resolving chat partner; selectedChatUser is set when a recent conversation is tapped"
             }
           ]
         },
         {
           "task": {
-            "id": "task-12-logout-disconnect",
-            "capability_id": "session-control",
-            "action": "Implement logout and disconnect actions in user options alert",
+            "id": "T-RECENT-VIEW",
+            "capability_id": "F-RECENT",
+            "action": "Implement RecentChatView with header, recent message list, profile navigation, new chat button and logged-out cover",
             "modifies": [],
             "creates": [
-              "Logout/disconnect callback wiring"
+              "RecentChatView",
+              "Messages list UI",
+              "Profile navigation",
+              "New Chat fullScreenCover"
             ],
             "depends_on": [
-              "task-04-alert-helpers"
+              "T-RECENT-VM",
+              "T-AUTH-VM",
+              "T-WELCOME",
+              "T-PROFILE",
+              "T-NEWCHAT-VIEW",
+              "T-CHAT-VIEW"
             ],
             "acceptance": [
-              "Logout clears current user",
-              "Disconnect stops chat connection",
-              "Both options reachable from user options alert"
+              "User sees recent messages with avatar, username, text and time ago",
+              "Tapping profile icon opens ProfileView",
+              "Tapping New Chat opens NewChatView",
+              "Logged-out user is shown WelcomeView via fullScreenCover"
             ],
-            "intent": "Give users control over ending their chat session cleanly",
+            "intent": "Người dùng cần cái nhìn tổng quan các cuộc trò chuyện và lối vào chat/profile.",
             "outcome": {
-              "user_visible": "Users can log out or disconnect via the alert menu",
+              "user_visible": "Người dùng thấy danh sách hội thoại, số incoming messages, và nút New Chat.",
               "technical": [
-                "onLogout/onDisconnect closures wired",
-                "ChatClient disconnect invoked"
+                "NavigationView",
+                "AsyncImage avatar",
+                "fullScreenCover for NewChat/Welcome"
               ]
             },
             "source_evidence": [
-              "DemoApp/Extensions/UIViewController+Alert.swift"
+              "Talky/View/RecentChatView.swift"
             ],
             "keywords": [
-              "ChatClient",
-              "disconnect",
-              "logout"
+              "NavigationLink",
+              "AsyncImage",
+              "fullScreenCover",
+              "@ObservedObject",
+              "@EnvironmentObject"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 5,
+              "files_touched": 1,
+              "estimated_minutes": 75
+            },
+            "requirement_ids": [
+              "REQ-RECENT"
+            ]
+          },
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "order": 10,
+          "los": [
+            {
+              "task_id": "T-RECENT-VIEW",
+              "description": "Người học có khả năng giải thích cách NavigationLink, AsyncImage và fullScreenCover được dùng trong RecentChatView để điều hướng tới ProfileView, NewChatView và hiển thị lớp phủ khi chưa đăng nhập.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "NavigationLink",
+              "assessment": "User sees recent messages with avatar, username, text and time ago; Tapping profile icon opens ProfileView; Tapping New Chat opens NewChatView; Logged-out user is shown WelcomeView via fullScreenCover"
+            },
+            {
+              "task_id": "T-RECENT-VIEW",
+              "description": "Người học có khả năng áp dụng @ObservedObject và @EnvironmentObject để đọc danh sách hội thoại gần đây và trạng thái đăng xuất từ view model tương ứng.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "@ObservedObject",
+              "assessment": "User sees recent messages with avatar, username, text and time ago; Tapping profile icon opens ProfileView; Tapping New Chat opens NewChatView; Logged-out user is shown WelcomeView via fullScreenCover"
+            },
+            {
+              "task_id": "T-RECENT-VIEW",
+              "description": "Người học có khả năng hiển thị các mục tin nhắn gần đây với avatar, username, nội dung tóm tắt, thời gian và số incoming messages từ dữ liệu API do view model cung cấp.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "AsyncImage",
+              "assessment": "User sees recent messages with avatar, username, text and time ago; Tapping profile icon opens ProfileView; Tapping New Chat opens NewChatView; Logged-out user is shown WelcomeView via fullScreenCover"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-CHAT-VIEW",
+            "capability_id": "F-CHAT",
+            "action": "Implement ChatDetailView UI with message bubbles, ScrollViewReader auto-scroll, and chat input bar",
+            "modifies": [],
+            "creates": [
+              "ChatDetailView",
+              "Bubble UI",
+              "chatBar",
+              "ScrollViewReader auto-scroll"
+            ],
+            "depends_on": [
+              "T-CHAT-VM"
+            ],
+            "acceptance": [
+              "User sees chat bubbles aligned by sender",
+              "Typing in TextField and tapping send calls vm.handleSend()",
+              "ScrollView auto-scrolls to latest message",
+              "Camera/Mic buttons appear when input is empty"
+            ],
+            "intent": "Người dùng cần giao diện trò chuyện trực quan để đọc và gửi tin nhắn.",
+            "outcome": {
+              "user_visible": "Người dùng thấy tin nhắn dạng bubble, ô nhập liệu và nút gửi.",
+              "technical": [
+                "ScrollViewReader scrollTo",
+                "TextField(axis: .vertical)",
+                "Custom RoundedCorner shape"
+              ]
+            },
+            "source_evidence": [
+              "Talky/View/ChatDetailView.swift"
+            ],
+            "keywords": [
+              "ScrollViewReader",
+              "TextField(axis: .vertical)",
+              "@StateObject",
+              "cornerRadius"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 4,
+              "files_touched": 1,
+              "estimated_minutes": 75
+            },
+            "requirement_ids": [
+              "REQ-CHAT"
+            ]
+          },
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "order": 11,
+          "los": [
+            {
+              "task_id": "T-CHAT-VIEW",
+              "description": "Người học có khả năng giải thích vì sao giao diện chat được xây dựng theo cách khai báo, trong đó ScrollViewReader và state của messages quyết định nội dung và vị trí cuộn.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "ScrollViewReader",
+              "assessment": "User sees chat bubbles aligned by sender; Typing in TextField and tapping send calls vm.handleSend(); ScrollView auto-scrolls to latest message; Camera/Mic buttons appear when input is empty"
+            },
+            {
+              "task_id": "T-CHAT-VIEW",
+              "description": "Người học có khả năng sử dụng ScrollViewReader, TextField(axis: .vertical) và cornerRadius để tạo message bubbles căn theo người gửi, ô nhập tin nhắn và auto-scroll tới tin nhắn mới nhất.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "TextField(axis: .vertical)",
+              "assessment": "User sees chat bubbles aligned by sender; Typing in TextField and tapping send calls vm.handleSend(); ScrollView auto-scrolls to latest message; Camera/Mic buttons appear when input is empty"
+            },
+            {
+              "task_id": "T-CHAT-VIEW",
+              "description": "Người học có khả năng triển khai nút gửi và camera/mic buttons dựa trên nội dung TextField, gọi vm.handleSend() theo mô hình khai báo state.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "@StateObject",
+              "assessment": "User sees chat bubbles aligned by sender; Typing in TextField and tapping send calls vm.handleSend(); ScrollView auto-scrolls to latest message; Camera/Mic buttons appear when input is empty"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-NEWCHAT-VM",
+            "capability_id": "F-NEWCHAT",
+            "action": "Implement NewChatViewModel to fetch all Firestore users and expose errorMessage",
+            "modifies": [],
+            "creates": [
+              "NewChatViewModel",
+              "users",
+              "errorMessage"
+            ],
+            "depends_on": [
+              "T-FIREBASE-MANAGER",
+              "T-MODELS"
+            ],
+            "acceptance": [
+              "users array is populated from Firestore users collection",
+              "errorMessage is set when fetch fails"
+            ],
+            "intent": "User muốn bắt đầu chat mới cần danh sách user khác trong hệ thống.",
+            "outcome": {
+              "user_visible": "Người dùng có thể duyệt danh sách user.",
+              "technical": [
+                "Firestore getDocuments",
+                "ObservableObject"
+              ]
+            },
+            "source_evidence": [
+              "Talky/View/NewChatView.swift"
+            ],
+            "keywords": [
+              "@ObservedObject",
+              "getDocuments",
+              "Firestore"
             ],
             "concurrency": [],
             "effort": {
               "concepts_count": 2,
               "files_touched": 1,
               "estimated_minutes": 30
-            }
+            },
+            "requirement_ids": [
+              "REQ-NEWCHAT"
+            ]
           },
           "concepts": [
-            "API_INTEGRATION",
-            "IDENTITY_AND_ACCESS_MANAGEMENT"
+            "API_INTEGRATION"
           ],
-          "order": 11,
+          "order": 12,
           "los": [
             {
-              "task_id": "task-12-logout-disconnect",
-              "concepts": [
-                "API_INTEGRATION",
-                "IDENTITY_AND_ACCESS_MANAGEMENT"
-              ],
-              "lo": "[skip-jit] Implement logout and disconnect actions in user options alert"
+              "task_id": "T-NEWCHAT-VM",
+              "description": "Người học có khả năng phân tích luồng dữ liệu từ Firestore khi NewChatViewModel gọi getDocuments trên collection users, bao gồm ánh xạ kết quả thành mảng users và gán errorMessage khi thất bại.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "getDocuments",
+              "assessment": "users array is populated from Firestore users collection; errorMessage is set when fetch fails"
+            },
+            {
+              "task_id": "T-NEWCHAT-VM",
+              "description": "Người học có khả năng triển khai NewChatViewModel với thuộc tính users và errorMessage, sử dụng lời gọi Firestore getDocuments để nạp toàn bộ người dùng.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "Firestore",
+              "assessment": "users array is populated from Firestore users collection; errorMessage is set when fetch fails"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-NEWCHAT-VIEW",
+            "capability_id": "F-NEWCHAT",
+            "action": "Implement NewChatView with user directory list, cancel button and didSelectNewUser callback",
+            "modifies": [],
+            "creates": [
+              "NewChatView",
+              "User row UI",
+              "didSelectNewUser callback"
+            ],
+            "depends_on": [
+              "T-NEWCHAT-VM"
+            ],
+            "acceptance": [
+              "User sees all users with avatar and email",
+              "Tapping a user dismisses screen and starts chat",
+              "Cancel button dismisses"
+            ],
+            "intent": "Người dùng cần chọn người nhận khi bắt đầu cuộc trò chuyện mới.",
+            "outcome": {
+              "user_visible": "Người dùng chọn user từ danh sách và được chuyển vào màn hình chat.",
+              "technical": [
+                "ScrollView + ForEach",
+                "PlainButtonStyle",
+                "NavigationView toolbar"
+              ]
+            },
+            "source_evidence": [
+              "Talky/View/NewChatView.swift"
+            ],
+            "keywords": [
+              "@ObservedObject",
+              "AsyncImage",
+              "NavigationView",
+              "toolbar"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 3,
+              "files_touched": 1,
+              "estimated_minutes": 45
+            },
+            "requirement_ids": [
+              "REQ-NEWCHAT"
+            ]
+          },
+          "concepts": [
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "order": 13,
+          "los": [
+            {
+              "task_id": "T-NEWCHAT-VIEW",
+              "description": "Người học có khả năng sử dụng NavigationView, toolbar và AsyncImage để hiển thị danh sách user directory với avatar và email trong NewChatView.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "AsyncImage",
+              "assessment": "User sees all users with avatar and email; Tapping a user dismisses screen and starts chat; Cancel button dismisses"
+            },
+            {
+              "task_id": "T-NEWCHAT-VIEW",
+              "description": "Người học có khả năng gắn nút Cancel với toolbar để dismiss NewChatView và kết nối @ObservedObject NewChatViewModel vào danh sách.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "toolbar",
+              "assessment": "User sees all users with avatar and email; Tapping a user dismisses screen and starts chat; Cancel button dismisses"
+            },
+            {
+              "task_id": "T-NEWCHAT-VIEW",
+              "description": "Người học có khả năng sử dụng NavigationView và callback didSelectNewUser để dismiss NewChatView và mở màn hình chat với user được chọn.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "NavigationView",
+              "assessment": "User sees all users with avatar and email; Tapping a user dismisses screen and starts chat; Cancel button dismisses"
             }
           ]
         }
@@ -617,106 +1960,511 @@
       "milestones": [
         {
           "task": {
-            "id": "task-07-push-registration",
-            "capability_id": "push-notifications",
-            "action": "Register device token with Stream backend after remote notification registration",
-            "modifies": [
-              "DemoApp/AppDelegate.swift"
-            ],
+            "id": "T-IMAGE-PICKER",
+            "capability_id": "F-PROFILE",
+            "action": "Implement ImagePicker as a UIViewControllerRepresentable wrapping UIImagePickerController",
+            "modifies": [],
             "creates": [
-              "Push notification device token forwarding"
+              "ImagePicker",
+              "Coordinator",
+              "Image selection binding"
             ],
             "depends_on": [
-              "task-01-app-lifecycle"
+              "T-SCAFFOLD"
             ],
             "acceptance": [
-              "didRegisterForRemoteNotificationsWithDeviceToken calls chat.registerForPushNotifications",
-              "aps-environment entitlement exists"
+              "SwiftUI view can present photo library",
+              "Selected UIImage is written to binding",
+              "Cancel dismisses picker"
             ],
-            "intent": "Enable push notifications so users receive mentions and new messages even when the app is backgrounded",
+            "intent": "Chức năng đổi avatar cần chọn ảnh từ thư viện ảnh.",
             "outcome": {
-              "user_visible": "Users receive push notifications for new chat activity",
+              "user_visible": "Người dùng có thể chọn ảnh từ thư viện.",
               "technical": [
-                "registerForPushNotifications called on StreamChatWrapper",
-                "ChatSample.entitlements contains aps-environment"
+                "UIViewControllerRepresentable",
+                "UIImagePickerControllerDelegate"
               ]
             },
             "source_evidence": [
-              "DemoApp/AppDelegate.swift",
-              "DemoApp/ChatSample.entitlements"
+              "Talky/Util/Helper/ImagePicker.swift"
             ],
             "keywords": [
-              "registerForPushNotifications",
-              "didRegisterForRemoteNotificationsWithDeviceToken",
-              "aps-environment"
+              "UIViewControllerRepresentable",
+              "UIImagePickerController",
+              "Binding"
             ],
             "concurrency": [],
             "effort": {
-              "concepts_count": 2,
-              "files_touched": 2,
-              "estimated_minutes": 45
-            }
+              "concepts_count": 3,
+              "files_touched": 1,
+              "estimated_minutes": 30
+            },
+            "requirement_ids": [
+              "REQ-EDITPROFILE"
+            ]
           },
-          "concepts": [],
-          "order": 6,
+          "concepts": [
+            "TWO_WAY_BINDING",
+            "MEDIA_PICKER_API"
+          ],
+          "order": 14,
           "los": [
             {
-              "task_id": "task-07-push-registration",
-              "concepts": [],
-              "lo": "[skip-jit] Register device token with Stream backend after remote notification registration"
+              "task_id": "T-IMAGE-PICKER",
+              "description": "Người học có khả năng giải thích cách UIViewControllerRepresentable cho phép tích hợp UIImagePickerController vào SwiftUI để chọn ảnh từ thư viện.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "MEDIA_PICKER_API",
+              "keyword": "UIViewControllerRepresentable",
+              "assessment": "SwiftUI view can present photo library; Selected UIImage is written to binding; Cancel dismisses picker"
+            },
+            {
+              "task_id": "T-IMAGE-PICKER",
+              "description": "Người học có khả năng sử dụng Binding để ghi UIImage người dùng chọn từ photo library vào thuộc tính được quản lý bởi SwiftUI view.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "TWO_WAY_BINDING",
+              "keyword": "Binding",
+              "assessment": "SwiftUI view can present photo library; Selected UIImage is written to binding; Cancel dismisses picker"
+            },
+            {
+              "task_id": "T-IMAGE-PICKER",
+              "description": "Người học có khả năng xử lý các sự kiện didFinishPickingMedia và cancel trong coordinator để cập nhật Binding và đóng UIImagePickerController.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "TWO_WAY_BINDING",
+              "keyword": "UIImagePickerController",
+              "assessment": "SwiftUI view can present photo library; Selected UIImage is written to binding; Cancel dismisses picker"
             }
           ]
         },
         {
           "task": {
-            "id": "task-11-user-profile",
-            "capability_id": "user-management",
-            "action": "Implement user profile screen accessible from account options",
+            "id": "T-PROFILE",
+            "capability_id": "F-PROFILE",
+            "action": "Implement ProfileView with user info, avatar, edit profile navigation and logout button",
             "modifies": [],
             "creates": [
-              "UserProfileViewController backed by CurrentUserController"
+              "ProfileView",
+              "Avatar display",
+              "Edit Profile navigation",
+              "Logout handler"
             ],
             "depends_on": [
-              "task-04-alert-helpers"
+              "T-AUTH-VM",
+              "T-EDIT-PROFILE"
             ],
             "acceptance": [
-              "Profile screen initializes with ChatClient.currentUserController",
-              "Profile can be pushed from alert action"
+              "User sees avatar, username and email",
+              "Tapping Edit Profile navigates to EditProfileView",
+              "Tapping Log Out calls authViewModel.handleSignOut() and dismisses"
             ],
-            "intent": "Let users view their own profile information within the app",
+            "intent": "Người dùng cần xem thông tin cá nhân và đăng xuất/điều hướng chỉnh sửa hồ sơ.",
             "outcome": {
-              "user_visible": "User can see profile info by tapping Show Profile",
+              "user_visible": "Người dùng xem được hồ sơ và đăng xuất.",
               "technical": [
-                "CurrentUserController from ChatClient",
-                "Navigation push from alert"
+                "AsyncImage with phase handling",
+                "NavigationLink isActive"
               ]
             },
             "source_evidence": [
-              "DemoApp/Extensions/UIViewController+Alert.swift"
+              "Talky/View/ProfileView.swift"
             ],
             "keywords": [
-              "UserProfileViewController",
-              "CurrentUserController",
-              "ChatClient"
+              "@EnvironmentObject",
+              "AsyncImage",
+              "NavigationLink"
             ],
-            "concurrency": [],
+            "concurrency": [
+              "async/await",
+              "Task"
+            ],
             "effort": {
-              "concepts_count": 2,
+              "concepts_count": 3,
               "files_touched": 1,
               "estimated_minutes": 45
+            },
+            "requirement_ids": [
+              "REQ-PROFILE",
+              "REQ-LOGOUT"
+            ]
+          },
+          "concepts": [],
+          "order": 15,
+          "los": [
+            {
+              "task_id": "T-PROFILE",
+              "description": "Người học có khả năng hiển thị avatar, username và email của người dùng hiện tại trong ProfileView dựa trên dữ liệu từ authViewModel.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "AsyncImage",
+              "assessment": "User sees avatar, username and email; Tapping Edit Profile navigates to EditProfileView; Tapping Log Out calls authViewModel.handleSignOut() and dismisses"
+            },
+            {
+              "task_id": "T-PROFILE",
+              "description": "Người học có khả năng điều hướng đến EditProfileView bằng NavigationLink khi người dùng nhấn Edit Profile.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "NavigationLink",
+              "assessment": "User sees avatar, username and email; Tapping Edit Profile navigates to EditProfileView; Tapping Log Out calls authViewModel.handleSignOut() and dismisses"
+            },
+            {
+              "task_id": "T-PROFILE",
+              "description": "Người học có khả năng gọi authViewModel.handleSignOut() từ nút Log Out và dismiss ProfileView sau khi đăng xuất.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "",
+              "keyword": "@EnvironmentObject",
+              "assessment": "User sees avatar, username and email; Tapping Edit Profile navigates to EditProfileView; Tapping Log Out calls authViewModel.handleSignOut() and dismisses"
             }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-EDIT-PROFILE",
+            "capability_id": "F-PROFILE",
+            "action": "Implement EditProfileView with avatar picker, email display, password fields and save action",
+            "modifies": [],
+            "creates": [
+              "EditProfileView",
+              "Avatar upload",
+              "Change password",
+              "Save button"
+            ],
+            "depends_on": [
+              "T-AUTH-VM",
+              "T-IMAGE-PICKER"
+            ],
+            "acceptance": [
+              "User can pick a new avatar image",
+              "User can change password with current password",
+              "Save button shows loading while editProfile runs",
+              "Screen dismisses after successful save"
+            ],
+            "intent": "Người dùng muốn cập nhật ảnh đại diện và mật khẩu.",
+            "outcome": {
+              "user_visible": "Người dùng đổi được ảnh đại diện và mật khẩu.",
+              "technical": [
+                "fullScreenCover for ImagePicker",
+                "Firebase Storage upload",
+                "updatePassword"
+              ]
+            },
+            "source_evidence": [
+              "Talky/View/EditProfileView.swift",
+              "Talky/Util/Helper/ImagePicker.swift"
+            ],
+            "keywords": [
+              "AsyncImage",
+              "fullScreenCover",
+              "Storage",
+              "updatePassword",
+              "@EnvironmentObject"
+            ],
+            "concurrency": [
+              "async/await",
+              "Task"
+            ],
+            "effort": {
+              "concepts_count": 5,
+              "files_touched": 2,
+              "estimated_minutes": 75
+            },
+            "requirement_ids": [
+              "REQ-PROFILE",
+              "REQ-EDITPROFILE"
+            ]
           },
           "concepts": [
             "API_INTEGRATION"
           ],
-          "order": 10,
+          "order": 16,
           "los": [
             {
-              "task_id": "task-11-user-profile",
-              "concepts": [
-                "API_INTEGRATION"
-              ],
-              "lo": "[skip-jit] Implement user profile screen accessible from account options"
+              "task_id": "T-EDIT-PROFILE",
+              "description": "Người học có khả năng phân tích quy trình editProfile bao gồm upload avatar lên Storage, cập nhật email/password và làm mới thông tin người dùng.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "Storage",
+              "assessment": "User can pick a new avatar image; User can change password with current password; Save button shows loading while editProfile runs; Screen dismisses after successful save"
+            },
+            {
+              "task_id": "T-EDIT-PROFILE",
+              "description": "Người học có khả năng xây dựng EditProfileView hiển thị email hiện tại, avatar và các trường current password/new password, đồng thời dùng fullScreenCover để mở ImagePicker chọn avatar mới.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "fullScreenCover",
+              "assessment": "User can pick a new avatar image; User can change password with current password; Save button shows loading while editProfile runs; Screen dismisses after successful save"
+            },
+            {
+              "task_id": "T-EDIT-PROFILE",
+              "description": "Người học có khả năng gọi editProfile với avatar và mật khẩu mới, hiển thị trạng thái loading trên nút Save và dismiss khi thành công.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "updatePassword",
+              "assessment": "User can pick a new avatar image; User can change password with current password; Save button shows loading while editProfile runs; Screen dismisses after successful save"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-PUSH-MANAGER",
+            "capability_id": "F-PUSH",
+            "action": "Implement PushNotificationManager to save FCM token to UserDefaults and send notifications via FCM HTTP API",
+            "modifies": [],
+            "creates": [
+              "PushNotificationManager",
+              "saveFCM",
+              "getFCM",
+              "sendPushNotification"
+            ],
+            "depends_on": [
+              "T-SCAFFOLD"
+            ],
+            "acceptance": [
+              "FCM token is saved to UserDefaults",
+              "sendPushNotification posts JSON payload to FCM endpoint",
+              "Network error is printed, not crash"
+            ],
+            "intent": "Cần có token và cơ chế gọi FCM để gửi thông báo đẩy khi có tin nhắn mới.",
+            "outcome": {
+              "user_visible": "Người dùng nhận được push notification khi có tin nhắn mới.",
+              "technical": [
+                "URLSession.dataTask",
+                "UserDefaults storage",
+                "JSONSerialization"
+              ]
+            },
+            "source_evidence": [
+              "Talky/Util/Helper/PushNotificationManager.swift"
+            ],
+            "keywords": [
+              "URLSession",
+              "UserDefaults.standard.set",
+              "JSONSerialization",
+              "FCM"
+            ],
+            "concurrency": [
+              "URLSession.dataTask"
+            ],
+            "effort": {
+              "concepts_count": 3,
+              "files_touched": 1,
+              "estimated_minutes": 45
+            },
+            "requirement_ids": [
+              "REQ-PUSH"
+            ]
+          },
+          "concepts": [
+            "API_INTEGRATION",
+            "JSON_SERIALIZATION",
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "order": 17,
+          "los": [
+            {
+              "task_id": "T-PUSH-MANAGER",
+              "description": "Người học có khả năng phân tích luồng gửi thông báo đẩy bằng URLSession POST tới FCM endpoint, bao gồm cấu trúc JSON payload và xử lý lỗi mạng.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "URLSession",
+              "assessment": "FCM token is saved to UserDefaults; sendPushNotification posts JSON payload to FCM endpoint; Network error is printed, not crash"
+            },
+            {
+              "task_id": "T-PUSH-MANAGER",
+              "description": "Người học có khả năng xây dựng JSONSerialization payload cho FCM với token, notification title/body và các dữ liệu tùy chọn.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "JSON_SERIALIZATION",
+              "keyword": "JSONSerialization",
+              "assessment": "FCM token is saved to UserDefaults; sendPushNotification posts JSON payload to FCM endpoint; Network error is printed, not crash"
+            },
+            {
+              "task_id": "T-PUSH-MANAGER",
+              "description": "Người học có khả năng giải thích lý do lưu FCM token vào UserDefaults.standard.set để tái sử dụng trong các lần khởi động app và gửi thông báo.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "KEY_VALUE_PERSISTENCE",
+              "keyword": "UserDefaults.standard.set",
+              "assessment": "FCM token is saved to UserDefaults; sendPushNotification posts JSON payload to FCM endpoint; Network error is printed, not crash"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-PUSH-SETUP",
+            "capability_id": "F-PUSH",
+            "action": "Integrate MessagingDelegate and UNUserNotificationCenterDelegate into AppDelegate to forward APNs token to FCM",
+            "modifies": [
+              "Talky/TalkyApp.swift"
+            ],
+            "creates": [
+              "MessagingDelegate",
+              "UNUserNotificationCenterDelegate",
+              "APNs token forwarding"
+            ],
+            "depends_on": [
+              "T-NOTIFICATION-MANAGER",
+              "T-PUSH-MANAGER"
+            ],
+            "acceptance": [
+              "App registers for remote notifications",
+              "FCM token is saved through PushNotificationManager.saveFCM",
+              "UNUserNotificationCenter delegate is assigned"
+            ],
+            "intent": "AppDelegate phải nhận FCM token từ APNs để push notification hoạt động.",
+            "outcome": {
+              "user_visible": "Không trực tiếp, nhưng push notification có thể gửi đến đúng thiết bị.",
+              "technical": [
+                "Messaging.messaging().delegate = self",
+                "didRegisterForRemoteNotificationsWithDeviceToken",
+                "Messaging.messaging().apnsToken = deviceToken"
+              ]
+            },
+            "source_evidence": [
+              "Talky/TalkyApp.swift",
+              "Talky/Util/Helper/PushNotificationManager.swift"
+            ],
+            "keywords": [
+              "Messaging.messaging().delegate",
+              "apnsToken",
+              "UNUserNotificationCenter.current().delegate"
+            ],
+            "concurrency": [],
+            "effort": {
+              "concepts_count": 4,
+              "files_touched": 1,
+              "estimated_minutes": 30
+            },
+            "requirement_ids": [
+              "REQ-PUSH"
+            ]
+          },
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "order": 18,
+          "los": [
+            {
+              "task_id": "T-PUSH-SETUP",
+              "description": "Người học có khả năng giải thích vai trò của AppDelegate trong việc nhận APNs token và chuyển token này cho FCM qua Messaging.messaging().apnsToken.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "apnsToken",
+              "assessment": "App registers for remote notifications; FCM token is saved through PushNotificationManager.saveFCM; UNUserNotificationCenter delegate is assigned"
+            },
+            {
+              "task_id": "T-PUSH-SETUP",
+              "description": "Người học có khả năng gán Messaging.messaging().delegate và UNUserNotificationCenter.current().delegate trong AppDelegate để nhận FCM token và xử lý thông báo hiển thị.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "Messaging.messaging().delegate",
+              "assessment": "App registers for remote notifications; FCM token is saved through PushNotificationManager.saveFCM; UNUserNotificationCenter delegate is assigned"
+            },
+            {
+              "task_id": "T-PUSH-SETUP",
+              "description": "Người học có khả năng đăng ký remote notifications và lưu FCM token nhận được từ Messaging delegate bằng PushNotificationManager.saveFCM.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "LOCAL_NOTIFICATION_API",
+              "keyword": "UNUserNotificationCenter.current().delegate",
+              "assessment": "App registers for remote notifications; FCM token is saved through PushNotificationManager.saveFCM; UNUserNotificationCenter delegate is assigned"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "T-NOTIFICATION-MANAGER",
+            "capability_id": "F-PUSH",
+            "action": "Implement NotificationManager to request notification permission and expose hasPermission",
+            "modifies": [],
+            "creates": [
+              "NotificationManager",
+              "hasPermission",
+              "request()",
+              "getAuthStatus()"
+            ],
+            "depends_on": [
+              "T-SCAFFOLD"
+            ],
+            "acceptance": [
+              "App requests notification permission on launch",
+              "hasPermission reflects authorized status"
+            ],
+            "intent": "Để nhận push notification, app cần xin quyền thông báo từ người dùng.",
+            "outcome": {
+              "user_visible": "Hệ thống hiện hộp thoại xin phép thông báo.",
+              "technical": [
+                "UNUserNotificationCenter requestAuthorization",
+                "@MainActor ObservableObject"
+              ]
+            },
+            "source_evidence": [
+              "Talky/Util/Helper/NotificationManager.swift",
+              "Talky/TalkyApp.swift"
+            ],
+            "keywords": [
+              "UNUserNotificationCenter.current().requestAuthorization",
+              "@MainActor",
+              "@Published",
+              "ObservableObject"
+            ],
+            "concurrency": [
+              "async/await",
+              "Task"
+            ],
+            "effort": {
+              "concepts_count": 3,
+              "files_touched": 2,
+              "estimated_minutes": 30
+            },
+            "requirement_ids": [
+              "REQ-PUSH"
+            ]
+          },
+          "concepts": [
+            "ASYNC_PATTERNS",
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "order": 19,
+          "los": [
+            {
+              "task_id": "T-NOTIFICATION-MANAGER",
+              "description": "Người học có khả năng giải thích cách UNUserNotificationCenter.requestAuthorization xin quyền thông báo và trả về trạng thái authorized để gán cho hasPermission.",
+              "bloom_level": "UNDERSTAND",
+              "lo_type": "UNIVERSAL",
+              "concept_code": "LOCAL_NOTIFICATION_API",
+              "keyword": "UNUserNotificationCenter.current().requestAuthorization",
+              "assessment": "App requests notification permission on launch; hasPermission reflects authorized status"
+            },
+            {
+              "task_id": "T-NOTIFICATION-MANAGER",
+              "description": "Người học có khả năng sử dụng @MainActor và async/await để xử lý kết quả requestAuthorization và cập nhật thuộc tính hasPermission trên MainActor.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "ASYNC_PATTERNS",
+              "keyword": "@MainActor",
+              "assessment": "App requests notification permission on launch; hasPermission reflects authorized status"
+            },
+            {
+              "task_id": "T-NOTIFICATION-MANAGER",
+              "description": "Người học có khả năng xây dựng NotificationManager là ObservableObject với @Published hasPermission để các view lắng nghe trạng thái quyền thông báo.",
+              "bloom_level": "APPLY",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "@Published",
+              "assessment": "App requests notification permission on launch; hasPermission reflects authorized status"
             }
           ]
         }
@@ -729,21 +2477,45 @@
           "task": {
             "id": "polish-gap-1",
             "capability_id": "",
-            "action": "Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), which can crash on e",
-            "intent": "Cải thiện chất lượng: UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), ",
+            "action": "Khắc phục: FCM server key hardcoded trong PushNotificationManager.swift và MainView demo; kẻ đọc source có thể ",
+            "intent": "Cải thiện chất lượng: FCM server key hardcoded trong PushNotificationManager.swift và MainView demo; k",
             "outcome": {
-              "user_visible": "Add nil-coalescing fallback to original image when resizing fails"
+              "user_visible": "security"
             },
             "keywords": [],
             "source_evidence": []
           },
-          "concepts": [],
-          "order": 12,
+          "concepts": [
+            "KEY_VALUE_PERSISTENCE"
+          ],
+          "order": 20,
           "los": [
             {
               "task_id": "polish-gap-1",
-              "concepts": [],
-              "lo": "[skip-jit] Khắc phục: UIImage resized(to:) force-unwraps UIGraphicsGetImageFromCurrentImageContext(), which can crash on e"
+              "description": "Người học có khả năng phân tích rủi ro bảo mật khi FCM server key bị hardcode và xác định các điểm lưu trữ không an toàn trong PushNotificationManager và MainView.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "KEY_VALUE_PERSISTENCE",
+              "keyword": "FCM security risk",
+              "assessment": "security"
+            },
+            {
+              "task_id": "polish-gap-1",
+              "description": "Người học có khả năng thiết kế giải pháp lưu trữ FCM server key an toàn sử dụng key-value persistence, đảm bảo không nhúng key trong source code.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "KEY_VALUE_PERSISTENCE",
+              "keyword": "secure key storage",
+              "assessment": "security"
+            },
+            {
+              "task_id": "polish-gap-1",
+              "description": "Người học có khả năng triển khai việc lưu trữ và đọc FCM server key thông qua key-value persistence trong ứng dụng, thay thế hoàn toàn hardcode.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "KEY_VALUE_PERSISTENCE",
+              "keyword": "replace hardcoded key",
+              "assessment": "security"
             }
           ]
         },
@@ -751,21 +2523,46 @@
           "task": {
             "id": "polish-gap-2",
             "capability_id": "",
-            "action": "Khắc phục: UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, Logout, Disconnect)",
-            "intent": "Cải thiện chất lượng: UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, L",
+            "action": "Khắc phục: MainView trong TalkyApp.swift là demo leftover với hardcoded device token, cần xoá trước production.",
+            "intent": "Cải thiện chất lượng: MainView trong TalkyApp.swift là demo leftover với hardcoded device token, cần x",
             "outcome": {
-              "user_visible": "Move user-facing strings to Localizable.strings and use NSLocalizedString"
+              "user_visible": "cleanup"
             },
             "keywords": [],
             "source_evidence": []
           },
-          "concepts": [],
-          "order": 13,
+          "concepts": [
+            "API_INTEGRATION",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "order": 21,
           "los": [
             {
               "task_id": "polish-gap-2",
-              "concepts": [],
-              "lo": "[skip-jit] Khắc phục: UIViewController+Alert.swift uses hardcoded English action titles (OK, Cancel, Logout, Disconnect)"
+              "description": "Người học có khả năng phân tích MainView trong TalkyApp.swift để xác định device token hardcode và luồng demo leftover có thể gây rò rỉ trong production.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "LOCAL_NOTIFICATION_API",
+              "keyword": "demo leftover analysis",
+              "assessment": "cleanup"
+            },
+            {
+              "task_id": "polish-gap-2",
+              "description": "Người học có khả năng thiết kế cách tách biệt demo code khỏi production bằng cách sử dụng API_INTEGRATION và LOCAL_NOTIFICATION_API một cách đúng đắn.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "production separation",
+              "assessment": "cleanup"
+            },
+            {
+              "task_id": "polish-gap-2",
+              "description": "Người học có khả năng thực hiện xoá hardcoded device token và cập nhật logic push notification trong MainView để sẵn sàng production.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "LOCAL_NOTIFICATION_API",
+              "keyword": "remove hardcoded token",
+              "assessment": "cleanup"
             }
           ]
         },
@@ -773,21 +2570,45 @@
           "task": {
             "id": "polish-gap-3",
             "capability_id": "",
-            "action": "Khắc phục: No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate",
-            "intent": "Cải thiện chất lượng: No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate",
+            "action": "Khắc phục: Không có unit test cho AuthViewModel (validate input, error state, loading state).",
+            "intent": "Cải thiện chất lượng: Không có unit test cho AuthViewModel (validate input, error state, loading state",
             "outcome": {
-              "user_visible": "Implement push registration failure callback and surface a non-fatal error"
+              "user_visible": "testing"
             },
             "keywords": [],
             "source_evidence": []
           },
-          "concepts": [],
-          "order": 14,
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "order": 22,
           "los": [
             {
               "task_id": "polish-gap-3",
-              "concepts": [],
-              "lo": "[skip-jit] Khắc phục: No didFailToRegisterForRemoteNotificationsWithError handler in AppDelegate"
+              "description": "Người học có khả năng phân tích các trạng thái (validate input, error, loading) trong AuthViewModel để xác định danh sách unit test cần viết.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "AuthViewModel state analysis",
+              "assessment": "testing"
+            },
+            {
+              "task_id": "polish-gap-3",
+              "description": "Người học có khả năng thiết kế bộ unit test cho AuthViewModel, bao gồm mock API_INTEGRATION để kiểm thử các trạng thái khác nhau.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "unit test design",
+              "assessment": "testing"
+            },
+            {
+              "task_id": "polish-gap-3",
+              "description": "Người học có khả năng viết và chạy unit test cho AuthViewModel, đảm bảo validate input, error state và loading state hoạt động đúng.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "AuthViewModel unit tests",
+              "assessment": "testing"
             }
           ]
         },
@@ -795,21 +2616,45 @@
           "task": {
             "id": "polish-gap-4",
             "capability_id": "",
-            "action": "Khắc phục: Login flow in README has no visible error handling for invalid JWT or failed authentication",
-            "intent": "Cải thiện chất lượng: Login flow in README has no visible error handling for invalid JWT or failed aut",
+            "action": "Khắc phục: Force unwrap optional profileImageUrl trong ProfileView và EditProfileView dễ crash khi nil.",
+            "intent": "Cải thiện chất lượng: Force unwrap optional profileImageUrl trong ProfileView và EditProfileView dễ cr",
             "outcome": {
-              "user_visible": "Add error alert for advanced login failures and preserve current user on failure"
+              "user_visible": "error_handling"
             },
             "keywords": [],
             "source_evidence": []
           },
-          "concepts": [],
-          "order": 15,
+          "concepts": [
+            "MEDIA_PICKER_API"
+          ],
+          "order": 23,
           "los": [
             {
               "task_id": "polish-gap-4",
-              "concepts": [],
-              "lo": "[skip-jit] Khắc phục: Login flow in README has no visible error handling for invalid JWT or failed authentication"
+              "description": "Người học có khả năng phân tích các điểm force unwrap profileImageUrl trong ProfileView và EditProfileView, xác định nguy cơ crash khi giá trị nil.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "MEDIA_PICKER_API",
+              "keyword": "force unwrap risk",
+              "assessment": "error_handling"
+            },
+            {
+              "task_id": "polish-gap-4",
+              "description": "Người học có khả năng thiết kế chiến lược optional handling an toàn cho profileImageUrl khi kết hợp với MEDIA_PICKER_API để chọn ảnh đại diện.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "MEDIA_PICKER_API",
+              "keyword": "safe optional handling",
+              "assessment": "error_handling"
+            },
+            {
+              "task_id": "polish-gap-4",
+              "description": "Người học có khả năng triển khai xử lý nil an toàn (guard/if-let) cho profileImageUrl trong ProfileView và EditProfileView, đồng thời tích hợp MEDIA_PICKER_API đúng cách.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "MEDIA_PICKER_API",
+              "keyword": "apply safe unwrap",
+              "assessment": "error_handling"
             }
           ]
         },
@@ -817,21 +2662,137 @@
           "task": {
             "id": "polish-gap-5",
             "capability_id": "",
-            "action": "Khắc phục: No unit tests for UserDefaults.currentUserId or MessageReactionType.position mapping",
-            "intent": "Cải thiện chất lượng: No unit tests for UserDefaults.currentUserId or MessageReactionType.position map",
+            "action": "Khắc phục: Nút camera/mic trong ChatDetailView chỉ là placeholder, chưa gửi ảnh/audio.",
+            "intent": "Cải thiện chất lượng: Nút camera/mic trong ChatDetailView chỉ là placeholder, chưa gửi ảnh/audio.",
             "outcome": {
-              "user_visible": "Add unit tests covering session persistence and reaction ordering"
+              "user_visible": "feature_completion"
             },
             "keywords": [],
             "source_evidence": []
           },
-          "concepts": [],
-          "order": 16,
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE"
+          ],
+          "order": 24,
           "los": [
             {
               "task_id": "polish-gap-5",
-              "concepts": [],
-              "lo": "[skip-jit] Khắc phục: No unit tests for UserDefaults.currentUserId or MessageReactionType.position mapping"
+              "description": "Người học có khả năng phân tích hiện trạng placeholder của nút camera/mic trong ChatDetailView, xác định luồng dữ liệu cần thiết để gửi ảnh/audio.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "media send flow",
+              "assessment": "feature_completion"
+            },
+            {
+              "task_id": "polish-gap-5",
+              "description": "Người học có khả năng thiết kế giải pháp sử dụng shared observable state để cập nhật tin nhắn mới khi gửi ảnh/audio từ ChatDetailView.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "shared state design",
+              "assessment": "feature_completion"
+            },
+            {
+              "task_id": "polish-gap-5",
+              "description": "Người học có khả năng triển khai chức năng gửi ảnh/audio từ camera/mic, đồng bộ với shared observable state trong ChatDetailView.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "implement media send",
+              "assessment": "feature_completion"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-gap-6",
+            "capability_id": "",
+            "action": "Khắc phục: Không có empty state khi recentMessages rỗng; user thấy màn hình trống.",
+            "intent": "Cải thiện chất lượng: Không có empty state khi recentMessages rỗng; user thấy màn hình trống.",
+            "outcome": {
+              "user_visible": "ux"
+            },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "order": 25,
+          "los": [
+            {
+              "task_id": "polish-gap-6",
+              "description": "Người học có khả năng phân tích trải nghiệm người dùng khi recentMessages rỗng và xác định yêu cầu hiển thị empty state phù hợp.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "empty state analysis",
+              "assessment": "ux"
+            },
+            {
+              "task_id": "polish-gap-6",
+              "description": "Người học có khả năng thiết kế giao diện empty state cho danh sách recentMessages dựa trên dữ liệu trả về từ API_INTEGRATION.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "empty state design",
+              "assessment": "ux"
+            },
+            {
+              "task_id": "polish-gap-6",
+              "description": "Người học có khả năng triển khai empty state để hiển thị thông báo hợp lý khi recentMessages không có dữ liệu từ API_INTEGRATION.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "implement empty state",
+              "assessment": "ux"
+            }
+          ]
+        },
+        {
+          "task": {
+            "id": "polish-gap-7",
+            "capability_id": "",
+            "action": "Khắc phục: NewChatView hiển thị cả chính user hiện tại trong danh sách; cần lọc bỏ.",
+            "intent": "Cải thiện chất lượng: NewChatView hiển thị cả chính user hiện tại trong danh sách; cần lọc bỏ.",
+            "outcome": {
+              "user_visible": "feature_fix"
+            },
+            "keywords": [],
+            "source_evidence": []
+          },
+          "concepts": [
+            "API_INTEGRATION"
+          ],
+          "order": 26,
+          "los": [
+            {
+              "task_id": "polish-gap-7",
+              "description": "Người học có khả năng phân tích luồng dữ liệu user trong NewChatView từ API_INTEGRATION, xác định nguyên nhân hiển thị cả chính user hiện tại.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "user list filter analysis",
+              "assessment": "feature_fix"
+            },
+            {
+              "task_id": "polish-gap-7",
+              "description": "Người học có khả năng thiết kế logic lọc bỏ user hiện tại khỏi danh sách NewChatView dựa trên dữ liệu xác thực.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "filter current user design",
+              "assessment": "feature_fix"
+            },
+            {
+              "task_id": "polish-gap-7",
+              "description": "Người học có khả năng triển khai bộ lọc để loại bỏ user hiện tại khỏi danh sách NewChatView khi hiển thị dữ liệu từ API_INTEGRATION.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "apply user filter",
+              "assessment": "feature_fix"
             }
           ]
         },
@@ -839,23 +2800,49 @@
           "task": {
             "id": "polish-debt-1",
             "capability_id": "",
-            "action": "Refactor: Three presentAlert overloads duplicate alert creation logic",
-            "intent": "Giảm tech debt: Three presentAlert overloads duplicate alert creation logic",
+            "action": "Refactor: MainView demo code trùng logic push notification và chứa hardcoded token; tăng rủi ro bảo mật và khó",
+            "intent": "Giảm tech debt: MainView demo code trùng logic push notification và chứa hardcoded token; tăng r",
             "outcome": {
               "user_visible": "POLISH"
             },
             "keywords": [],
             "source_evidence": [
-              "DemoApp/Extensions/UIViewController+Alert.swift"
+              "Talky/TalkyApp.swift"
             ]
           },
-          "concepts": [],
-          "order": 17,
+          "concepts": [
+            "API_INTEGRATION",
+            "SHARED_OBSERVABLE_STATE",
+            "LOCAL_NOTIFICATION_API"
+          ],
+          "order": 27,
           "los": [
             {
               "task_id": "polish-debt-1",
-              "concepts": [],
-              "lo": "[skip-jit] Refactor: Three presentAlert overloads duplicate alert creation logic"
+              "description": "Người học có khả năng đánh giá mức độ trùng lặp logic push notification giữa MainView và PushNotificationManager, đồng thời xác định rủi ro bảo mật từ hardcoded token.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "push logic duplication",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-1",
+              "description": "Người học có khả năng thiết kế giải pháp tách logic push notification khỏi MainView, sử dụng shared observable state để quản lý trạng thái thông báo tập trung.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "centralized notification state",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-1",
+              "description": "Người học có khả năng refactor MainView để loại bỏ hardcoded token và tái sử dụng logic từ PushNotificationManager thông qua API_INTEGRATION và LOCAL_NOTIFICATION_API.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "LOCAL_NOTIFICATION_API",
+              "keyword": "refactor MainView push",
+              "assessment": "POLISH"
             }
           ]
         },
@@ -863,23 +2850,49 @@
           "task": {
             "id": "polish-debt-2",
             "capability_id": "",
-            "action": "Refactor: Sentry DSN is hardcoded in source; Atlantis and performance config are entangled with internal flags",
-            "intent": "Giảm tech debt: Sentry DSN is hardcoded in source; Atlantis and performance config are entangled",
+            "action": "Refactor: Body và messagesView duplicate gần hết UI chat bubble; file quá lớn, dễ sai lệch khi sửa.",
+            "intent": "Giảm tech debt: Body và messagesView duplicate gần hết UI chat bubble; file quá lớn, dễ sai lệch",
             "outcome": {
               "user_visible": "POLISH"
             },
             "keywords": [],
             "source_evidence": [
-              "DemoApp/DemoAppConfiguration.swift"
+              "Talky/View/ChatDetailView.swift"
             ]
           },
-          "concepts": [],
-          "order": 18,
+          "concepts": [
+            "DECLARATIVE_UI_PARADIGM",
+            "UI_MODIFIERS_CONCEPT",
+            "API_INTEGRATION"
+          ],
+          "order": 28,
           "los": [
             {
               "task_id": "polish-debt-2",
-              "concepts": [],
-              "lo": "[skip-jit] Refactor: Sentry DSN is hardcoded in source; Atlantis and performance config are entangled with internal flags"
+              "description": "Người học có khả năng phân tích sự trùng lặp trong code UI chat bubble giữa Body và messagesView, xác định các thành phần dùng chung và hậu quả khi file quá lớn.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "DECLARATIVE_UI_PARADIGM",
+              "keyword": "chat bubble duplication",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-2",
+              "description": "Người học có khả năng thiết kế component chat bubble tái sử dụng dựa trên declarative UI paradigm và UI modifiers để giảm trùng lặp trong messagesView.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "reusable chat bubble",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-2",
+              "description": "Người học có khả năng refactor Body và messagesView bằng cách tạo view chat bubble dùng chung và áp dụng UI modifiers, đảm bảo dữ liệu từ API_INTEGRATION được hiển thị nhất quán.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "refactor chat UI",
+              "assessment": "POLISH"
             }
           ]
         },
@@ -887,23 +2900,48 @@
           "task": {
             "id": "polish-debt-3",
             "capability_id": "",
-            "action": "Refactor: AppDelegate combines app lifecycle, push registration, and wrapper access; could be extracted into a",
-            "intent": "Giảm tech debt: AppDelegate combines app lifecycle, push registration, and wrapper access; could",
+            "action": "Refactor: Force unwrap authViewModel.user! và profileImageUrl!; optional handling không an toàn.",
+            "intent": "Giảm tech debt: Force unwrap authViewModel.user! và profileImageUrl!; optional handling không an",
             "outcome": {
               "user_visible": "POLISH"
             },
             "keywords": [],
             "source_evidence": [
-              "DemoApp/AppDelegate.swift"
+              "Talky/View/ProfileView.swift"
             ]
           },
-          "concepts": [],
-          "order": 19,
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "order": 29,
           "los": [
             {
               "task_id": "polish-debt-3",
-              "concepts": [],
-              "lo": "[skip-jit] Refactor: AppDelegate combines app lifecycle, push registration, and wrapper access; could be extracted into a"
+              "description": "Người học có khả năng rà soát các điểm force unwrap authViewModel.user! và profileImageUrl! trong code, đánh giá rủi ro crash và nguyên nhân optional handling không an toàn.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "force unwrap audit",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-3",
+              "description": "Người học có khả năng thiết kế chiến lược optional handling an toàn dựa trên shared observable state và dữ liệu từ API_INTEGRATION để tránh crash.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "safe optional strategy",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-3",
+              "description": "Người học có khả năng refactor các unwrap thành optional binding/guard và cập nhật luồng dữ liệu từ API_INTEGRATION và shared observable state, đảm bảo không có force unwrap trong production.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "apply safe unwrapping",
+              "assessment": "POLISH"
             }
           ]
         },
@@ -911,23 +2949,49 @@
           "task": {
             "id": "polish-debt-4",
             "capability_id": "",
-            "action": "Refactor: Force unwrap of image context result can crash on edge cases",
-            "intent": "Giảm tech debt: Force unwrap of image context result can crash on edge cases",
+            "action": "Refactor: AsyncImage phase switch lặp lại ở RecentChatView, NewChatView, ProfileView; nên tách AvatarView comp",
+            "intent": "Giảm tech debt: AsyncImage phase switch lặp lại ở RecentChatView, NewChatView, ProfileView; nên ",
             "outcome": {
               "user_visible": "POLISH"
             },
             "keywords": [],
             "source_evidence": [
-              "DemoApp/Extensions/UIImage+Resized.swift"
+              "Talky/View/RecentChatView.swift"
             ]
           },
-          "concepts": [],
-          "order": 20,
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION",
+            "UI_MODIFIERS_CONCEPT"
+          ],
+          "order": 30,
           "los": [
             {
               "task_id": "polish-debt-4",
-              "concepts": [],
-              "lo": "[skip-jit] Refactor: Force unwrap of image context result can crash on edge cases"
+              "description": "Người học có khả năng phân tích các khối AsyncImage phase switch trong RecentChatView, NewChatView và ProfileView để chỉ ra thành phần UI lặp lại và trách nhiệm của AvatarView.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "AsyncImage phase switch",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-4",
+              "description": "Người học có khả năng thiết kế component AvatarView tái sử dụng, đóng gói phase switch, trạng thái loading/error và các SwiftUI modifier chung.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "UI_MODIFIERS_CONCEPT",
+              "keyword": "AvatarView",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-4",
+              "description": "Người học có khả năng áp dụng AvatarView để thay thế các đoạn AsyncImage lặp lại trong ba màn hình và kiểm tra hành vi hiển thị không thay đổi.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "API_INTEGRATION",
+              "keyword": "refactor",
+              "assessment": "POLISH"
             }
           ]
         },
@@ -935,28 +2999,53 @@
           "task": {
             "id": "polish-debt-5",
             "capability_id": "",
-            "action": "Refactor: Login and channel behavior documented but not covered by automated tests",
-            "intent": "Giảm tech debt: Login and channel behavior documented but not covered by automated tests",
+            "action": "Refactor: Các SecureTextField dùng chung binding $showPassword nên bật/tắt hiện mật khẩu đồng loạt cả 3 field.",
+            "intent": "Giảm tech debt: Các SecureTextField dùng chung binding $showPassword nên bật/tắt hiện mật khẩu đ",
             "outcome": {
               "user_visible": "POLISH"
             },
             "keywords": [],
             "source_evidence": [
-              "DemoApp/README.md"
+              "Talky/View/EditProfileView.swift"
             ]
           },
-          "concepts": [],
-          "order": 21,
+          "concepts": [
+            "SHARED_OBSERVABLE_STATE",
+            "API_INTEGRATION"
+          ],
+          "order": 31,
           "los": [
             {
               "task_id": "polish-debt-5",
-              "concepts": [],
-              "lo": "[skip-jit] Refactor: Login and channel behavior documented but not covered by automated tests"
+              "description": "Người học có khả năng phân tích luồng binding $showPassword trong các SecureTextField để xác định vì sao thao tác trên một field làm cả ba field hiện/ẩn đồng loạt.",
+              "bloom_level": "ANALYZE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "$showPassword",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-5",
+              "description": "Người học có khả năng thiết kế giải pháp tách trạng thái hiện/ẩn mật khẩu thành biến riêng cho từng field, tránh chia sẻ binding chung giữa các SecureTextField.",
+              "bloom_level": "CREATE",
+              "lo_type": "CONCEPTUAL_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "binding riêng",
+              "assessment": "POLISH"
+            },
+            {
+              "task_id": "polish-debt-5",
+              "description": "Người học có khả năng áp dụng refactor để truyền binding riêng cho từng SecureTextField và xác minh hành vi hiện/ẩn chỉ tác động đúng field tương ứng.",
+              "bloom_level": "APPLY",
+              "lo_type": "SPECIFIC_IMPL",
+              "concept_code": "SHARED_OBSERVABLE_STATE",
+              "keyword": "refactor",
+              "assessment": "POLISH"
             }
           ]
         }
       ]
     }
   ],
-  "total_tasks": 22
+  "total_tasks": 32
 }

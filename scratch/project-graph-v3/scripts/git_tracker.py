@@ -1330,11 +1330,22 @@ class GitFileTracker:
             self.logger.error(f"Lỗi: Đường dẫn '{dir_path_str}' không tồn tại hoặc không phải là thư mục.")
             return
 
+        # Bộ extensions code được phép merge (từ file_types) — lọc asset/build rác
+        allowed_extensions: Set[str] = set()
+        for _type_name, extensions in self.file_types.items():
+            for ext in extensions:
+                allowed_extensions.add(ext.lower())
+
         files_to_merge_from_dir = []
         for path_obj in target_dir.rglob('*'):
             if path_obj.is_file():
                 relative_path = path_obj.relative_to(self.project_path)
                 relative_path_str = str(relative_path).replace('\\', '/')
+                file_ext = path_obj.suffix.lower()
+                if allowed_extensions and file_ext not in allowed_extensions:
+                    self.logger.debug(
+                        f"Bỏ qua file ngoài extensions ({file_ext}): {relative_path_str}")
+                    continue
                 if not self.should_ignore_file(relative_path_str):
                     files_to_merge_from_dir.append(relative_path_str)
                 else:

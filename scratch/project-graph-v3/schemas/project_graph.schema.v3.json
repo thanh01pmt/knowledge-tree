@@ -29,6 +29,7 @@
         "id",
         "name",
         "purpose",
+        "project_type",
         "platform",
         "tech_stack",
         "architecture",
@@ -43,6 +44,25 @@
         },
         "version": {
           "type": "string"
+        },
+        "project_type": {
+          "type": "string",
+          "enum": [
+            "mobile_app",
+            "web_app",
+            "cli_tool",
+            "library_sdk",
+            "desktop_app",
+            "backend_service",
+            "fullstack_app",
+            "game",
+            "design_tool",
+            "ai_agent",
+            "plugin_extension",
+            "data_pipeline",
+            "other"
+          ],
+          "description": "BẮT BUỘC: loại dự án (game/design_tool/ai_agent... có thể mở rộng)"
         },
         "purpose": {
           "type": "string",

@@ -1,0 +1,92 @@
+# Project Structure
+# Generated: 2026-08-08T13:20:38.387940
+# Project Path: /private/tmp/repocand-Talky
+================================================================================
+
+repocand-Talky/
+├── Talky/
+│   ├── Assets.xcassets/
+│   │   ├── AccentColor.colorset/
+│   │   │   └── Contents.json ⚙️
+│   │   ├── AppIcon.appiconset/
+│   │   │   └── Contents.json ⚙️
+│   │   ├── primary.colorset/
+│   │   │   └── Contents.json ⚙️
+│   │   ├── secondary.colorset/
+│   │   │   └── Contents.json ⚙️
+│   │   ├── secondaryDark.colorset/
+│   │   │   └── Contents.json ⚙️
+│   │   ├── shots.imageset/
+│   │   │   ├── Contents.json ⚙️
+│   │   │   └── Group 37.png 🖼️
+│   │   └── Contents.json ⚙️
+│   ├── Model/
+│   │   ├── ChatMessage.swift 📄
+│   │   ├── ChatUser.swift 📄
+│   │   └── RecentMessage.swift 📄
+│   ├── Preview Content/
+│   │   └── Preview Assets.xcassets/
+│   │       └── Contents.json ⚙️
+│   ├── Util/
+│   │   ├── Enum/
+│   │   │   └── ViewState.swift 📄
+│   │   └── Helper/
+│   │       ├── FirebaseManager.swift 📄
+│   │       ├── ImagePicker.swift 📄
+│   │       ├── NotificationManager.swift 📄
+│   │       └── PushNotificationManager.swift 📄
+│   ├── View/
+│   │   ├── Component/
+│   │   │   └── SecureTextField.swift 📄
+│   │   ├── ChatDetailView.swift 📄
+│   │   ├── EditProfileView.swift 📄
+│   │   ├── LoginxView.swift 📄
+│   │   ├── NewChatView.swift 📄
+│   │   ├── ProfileView.swift 📄
+│   │   ├── RecentChatView.swift 📄
+│   │   ├── RegisterxView.swift 📄
+│   │   └── WelcomeView.swift 📄
+│   ├── ViewModel/
+│   │   ├── AuthViewModel.swift 📄
+│   │   ├── ChatDetailViewModel.swift 📄
+│   │   ├── NewChatViewModel.swift 📄
+│   │   └── RecentChatViewModel.swift 📄
+│   ├── GoogleService-Info.plist 📄
+│   ├── Info.plist 📄
+│   ├── Talky.entitlements 📄
+│   └── TalkyApp.swift 📄
+├── Talky.xcodeproj/
+│   ├── project.xcworkspace/
+│   │   ├── xcshareddata/
+│   │   │   ├── swiftpm/
+│   │   │   │   └── Package.resolved 📄
+│   │   │   └── IDEWorkspaceChecks.plist 📄
+│   │   └── contents.xcworkspacedata 📄
+│   ├── xcuserdata/
+│   │   └── mrezkys.xcuserdatad/
+│   │       ├── xcdebugger/
+│   │       │   └── Breakpoints_v2.xcbkptlist 📄
+│   │       └── xcschemes/
+│   │           └── xcschememanagement.plist 📄
+│   └── project.pbxproj 📄
+├── README.md 📝
+└── shot.jpg 🖼️
+
+================================================================================
+# STATISTICS
+================================================================================
+Total tracked files (respecting .gitignore & script ignores): 42
+Total size: 1.13 MB
+
+Files by type:
+  🖼️ Assets: 2 files (4.8%)
+  ⚙️ Config: 8 files (19.0%)
+  📝 Markdown: 1 files (2.4%)
+  📄 Other: 9 files (21.4%)
+  📄 Swift: 22 files (52.4%)
+
+Directory statistics (top 10 by file count in top-level dirs):
+  📁 Talky: 34 files
+  📁 Talky.xcodeproj: 6 files
+  📁 README.md: 1 files
+  📁 shot.jpg: 1 files

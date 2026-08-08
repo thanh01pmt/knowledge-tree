@@ -280,6 +280,8 @@ def llm_chat_json(
     - Auth/model errors (fatal, no retry)
     """
     def _call():
+        import time as _time
+        _t0 = _time.monotonic()
         try:
             completion = client.chat.completions.create(
                 model=model,
@@ -293,6 +295,20 @@ def llm_chat_json(
         except Exception as e:
             error_type, retryable = _classify_error(e)
             raise LLMCallError(str(e), error_type, retryable, original=e)
+
+        _elapsed = _time.monotonic() - _t0
+        # Log token usage + duration (có sẵn từ API, trước đây bị bỏ)
+        try:
+            usage = completion.usage
+            if usage is not None:
+                print(
+                    f"[TOKEN] in={usage.prompt_tokens} out={usage.completion_tokens} "
+                    f"total={usage.total_tokens} | {_elapsed:.1f}s | model={model}"
+                )
+            else:
+                print(f"[TOKEN] usage=None | {_elapsed:.1f}s | model={model}")
+        except Exception:
+            print(f"[TOKEN] (không đọc được usage) | {_elapsed:.1f}s | model={model}")
 
         raw = (completion.choices[0].message.content or "").strip()
         if not raw:

@@ -1,0 +1,21 @@
+{
+  "tech_stack": [
+    "Swift",
+    "SwiftUI",
+    "Firebase",
+    "FirebaseAuth",
+    "FirebaseFirestore",
+    "MVVM"
+  ],
+  "extensions": [
+    ".swift"
+  ],
+  "include_dirs": [
+    "Talky"
+  ],
+  "exclude_dirs": [
+    "Talky/Assets.xcassets",
+    "Talky/Preview Content"
+  ],
+  "reasoning": "Project is a native iOS chat app built with SwiftUI. The main source lives in the Talky directory, containing Swift files for views, view models, models, and helpers. Firebase integration is evident from FirebaseManager.swift and GoogleService-Info.plist, supporting auth and realtime chat. Code files are exclusively .swift; asset catalogs, preview assets, and Xcode project files are excluded."
+}

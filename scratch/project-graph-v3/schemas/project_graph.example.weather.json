@@ -4,6 +4,7 @@
     "id": "weather_app",
     "name": "Weather App",
     "version": "1.0",
+    "project_type": "mobile_app",
     "purpose": "Allow users to search and view weather information.",
     "platform": ["iOS"],
     "tech_stack": {

@@ -1,0 +1,2265 @@
+# Merged Files
+# Generated: 2026-08-08T13:41:01.061985
+# Total files merged: 22
+================================================================================
+
+# FILE: Talky/Model/ChatMessage.swift
+------------------------------------------------------------
+//
+//  ChatMessage.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 10/08/23.
+//
+
+import Foundation
+import FirebaseFirestoreSwift
+
+struct ChatMessage: Codable, Identifiable {
+    @DocumentID var id: String?
+    let fromId, toId, text: String
+    let timestamp: Date
+}
+
+
+================================================================================
+
+# FILE: Talky/Model/ChatUser.swift
+------------------------------------------------------------
+//
+//  ChatUser.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 25/06/23.
+//
+
+import Foundation
+import FirebaseFirestore
+import FirebaseFirestoreSwift
+
+struct ChatUser: Codable, Identifiable {
+    @DocumentID var id: String?
+    let uid, email: String
+    let profileImageUrl: String?
+    let fcm: String?
+    
+    var username: String {
+        guard let atIndex = email.firstIndex(of: "@") else {
+            return email
+        }
+        return String(email[..<atIndex])
+    }
+    
+    // Custom initializer
+    init(id: String? = nil, uid: String, email: String, profileImageUrl: String? = nil, fcm: String? = nil) {
+        self.id = id
+        self.uid = uid
+        self.email = email
+        self.profileImageUrl = profileImageUrl
+        self.fcm = fcm
+    }
+    
+    enum CodingKeys: String, CodingKey {
+        case id
+        case uid
+        case email
+        case profileImageUrl
+        case fcm
+    }
+    
+    
+    // Custom init(from:) function that decodes the id property using the Firestore.Decoder
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        // Decode the DocumentID property using the Firestore.Decoder
+        if let idContainer = try? decoder.container(keyedBy: CodingKeys.self),
+           let id = try? idContainer.decode(String.self, forKey: .id) {
+            self.id = id
+        }
+        uid = try container.decode(String.self, forKey: .uid)
+        email = try container.decode(String.self, forKey: .email)
+        profileImageUrl = try container.decode(String.self, forKey: .profileImageUrl)
+        fcm = try container.decode(String.self, forKey: .fcm)
+        
+    }
+    
+    // Custom encode function that encodes the DocumentID property using the Firestore.Encoder
+    func encode(to encoder: Encoder) throws {
+        var container = encoder.container(keyedBy: CodingKeys.self)
+        // Encode the DocumentID property using the Firestore.Encoder
+        if let id = id {
+            let firestoreEncoder = Firestore.Encoder()
+            let something = try firestoreEncoder.encode(["id":id])
+
+            if let mapId = something["id"] as? String {
+                try container.encode(mapId, forKey: .id)
+            }
+        }
+        try container.encode(uid, forKey: .uid)
+        try container.encode(email, forKey: .email)
+        try container.encode(profileImageUrl, forKey: .profileImageUrl)
+        try container.encode(fcm, forKey: .fcm)
+        //
+                
+    }
+    
+    static func fromRecentMessage(_ data: RecentMessage) -> ChatUser{
+        let uid = FirebaseManager.shared.auth.currentUser?.uid == data.fromId ? data.toId : data.fromId
+        return  ChatUser.init(id: uid, uid: uid, email: data.email, profileImageUrl: data.profileImageUrl)
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/Model/RecentMessage.swift
+------------------------------------------------------------
+//
+//  RecentMessage.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 10/08/23.
+//
+
+import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
+
+
+struct RecentMessage: Codable, Identifiable, Hashable {
+    @DocumentID var id: String?
+    let text, email: String
+    let fromId, toId: String
+    let profileImageUrl: String?
+    let timestamp: Date
+    
+    var username: String {
+        email.components(separatedBy: "@").first ?? email
+    }
+    
+    var timeAgo: String {
+        let formatter = RelativeDateTimeFormatter()
+        formatter.unitsStyle = .abbreviated
+        return formatter.localizedString(for: timestamp, relativeTo: Date())
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/TalkyApp.swift
+------------------------------------------------------------
+//
+//  TalkyApp.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 24/06/23.
+//
+
+import SwiftUI
+import FirebaseCore
+import FirebaseMessaging
+import UserNotifications
+
+class AppDelegate: NSObject, UIApplicationDelegate {
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        application.registerForRemoteNotifications()
+        FirebaseApp.configure()
+        Messaging.messaging().delegate = self
+        UNUserNotificationCenter.current().delegate = self
+        return true
+    }
+}
+
+extension AppDelegate: UNUserNotificationCenterDelegate{
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse) async {
+        
+    }
+    
+}
+
+extension AppDelegate: MessagingDelegate {
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        Messaging.messaging().apnsToken = deviceToken
+    }
+    
+    func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        if let fcm = fcmToken {
+            print(fcm, "key")
+                PushNotificationManager.saveFCM(fcmToken!)
+        }
+    }
+}
+
+
+@main
+struct YourApp: App {
+    // register app delegate for Firebase setup
+    @UIApplicationDelegateAdaptor var delegate: AppDelegate
+    @StateObject var authViewModel = AuthViewModel()
+    @StateObject private var manager = NotificationManager()
+
+    var body: some Scene {
+        WindowGroup {
+                RecentChatView()
+                .onAppear{
+                    Task{
+                        await manager.request()
+                    }
+                }
+                .environmentObject(authViewModel)
+            }
+        }
+    
+}
+
+struct MainView: View {
+    @StateObject private var manager = NotificationManager()
+    
+    func sendPushNotification() {
+         let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
+         var request = URLRequest(url: url)
+         request.httpMethod = "POST"
+         
+         // Set the request headers
+         request.setValue("key=AAAAMqvz0mI:APA91bHx1daPzvUdYfQMEcoqe6Q6MsxW28blYE9FN-qTzymUZtnTSCFyJrWqoAC43UBoaIeATthY0NpqB5uq_EibbSk7uFfHnOQm0BhpbRlt0NOB0U7OgmZgj-xEzwaDrujwRshkZK-0", forHTTPHeaderField: "Authorization")
+         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+         
+         // Set the request body data
+         let bodyData = """
+         {
+             "to": "cqke-3LT9USzoFp0nY4QhM:APA91bF662-T8EUrFXkm3Dadg9BhENxNLWza_JSwbig2XVz9RMq76nsQXDN49CDAbOWenRkY36MGynlpNKJ9YOleWFO3oSGCRxCV7Hx6pkzNKt8eB2WBJ8FD1al1QcIK7tngfRm3xuos",
+             "notification": {
+                 "title": "title",
+                 "body": "body"
+             }
+         }
+         """.data(using: .utf8)
+         
+         request.httpBody = bodyData
+         
+         // Send the request
+         URLSession.shared.dataTask(with: request) { data, response, error in
+             if let error = error {
+                 print("Error: \(error.localizedDescription)")
+                 return
+             }
+             
+             if let data = data {
+                 if let responseString = String(data: data, encoding: .utf8) {
+                     print("Response: \(responseString)")
+                 }
+             }
+         }.resume()
+     }
+    
+    var body: some View{
+        VStack{
+            Button("Request Notification"){
+                Task{
+                    await manager.request()
+                }
+            }
+            .buttonStyle(.bordered)
+            .disabled(manager.hasPermission)
+            .task {
+                await manager.getAuthStatus()
+            }
+            Button("Send Pu"){
+                Task{
+                    await sendPushNotification()
+                }
+            }
+            .buttonStyle(.bordered)
+            .disabled(manager.hasPermission)
+            .task {
+                await manager.getAuthStatus()
+            }
+        }
+    }
+}
+//
+//struct MainView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        MainView()
+//    }
+//}
+
+
+================================================================================
+
+# FILE: Talky/Util/Enum/ViewState.swift
+------------------------------------------------------------
+//
+//  ViewState.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 09/08/23.
+//
+
+import Foundation
+
+enum ViewState{
+    case loading
+    case loaded
+    case empty
+    case error
+}
+
+
+================================================================================
+
+# FILE: Talky/Util/Helper/FirebaseManager.swift
+------------------------------------------------------------
+//
+//  FirebaseManager.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 25/06/23.
+//
+
+import SwiftUI
+import Firebase
+import FirebaseStorage
+
+class FirebaseManager: NSObject {
+    
+    let auth: Auth
+    let storage: Storage
+    let firestore: Firestore
+//    let storage: Storage
+    
+    static let shared = FirebaseManager()
+    
+    
+    override init() {
+        self.auth = Auth.auth()
+        self.storage = Storage.storage()
+        self.firestore = Firestore.firestore()
+        super.init()
+    }
+    
+}
+
+
+================================================================================
+
+# FILE: Talky/Util/Helper/ImagePicker.swift
+------------------------------------------------------------
+//
+//  ImagePicker.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 24/06/23.
+//
+
+import SwiftUI
+
+struct ImagePicker: UIViewControllerRepresentable {
+    
+    @Binding var image: UIImage?
+    
+    private let controller = UIImagePickerController()
+    
+    func makeCoordinator() -> Coordinator {
+        return Coordinator(parent: self)
+    }
+    
+    class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+        
+        let parent: ImagePicker
+        
+        init(parent: ImagePicker) {
+            self.parent = parent
+        }
+        
+        func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+            parent.image = info[.originalImage] as? UIImage
+            picker.dismiss(animated: true)
+        }
+        
+        func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+            picker.dismiss(animated: true)
+        }
+        
+    }
+    
+    func makeUIViewController(context: Context) -> some UIViewController {
+        controller.delegate = context.coordinator
+        return controller
+    }
+    
+    func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
+        
+    }
+    
+}
+
+
+================================================================================
+
+# FILE: Talky/Util/Helper/NotificationManager.swift
+------------------------------------------------------------
+//
+//  NotificationManager.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 04/08/23.
+//
+
+import Foundation
+import UserNotifications
+
+@MainActor
+class NotificationManager: ObservableObject{
+    @Published private(set) var hasPermission = false
+    
+    init() {
+        Task{
+            await getAuthStatus()
+        }
+    }
+    
+    func request() async{
+        do {
+            try await UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .badge, .sound])
+             await getAuthStatus()
+        } catch{
+            print(error)
+        }
+    }
+    
+    func getAuthStatus() async {
+        let status = await UNUserNotificationCenter.current().notificationSettings()
+        switch status.authorizationStatus {
+        case .authorized, .ephemeral, .provisional:
+            hasPermission = true
+        default:
+            hasPermission = false
+        }
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/Util/Helper/PushNotificationManager.swift
+------------------------------------------------------------
+//
+//  PushNotificationManager.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 11/08/23.
+//
+
+import Foundation
+
+class PushNotificationManager{
+    static func saveFCM(_ key: String){
+        UserDefaults.standard.set(key, forKey: "fcm")
+    }
+    
+    static func getFCM() -> String? {
+        if let savedData = UserDefaults.standard.string(forKey: "fcm") {
+            return "\(savedData)"
+        }
+        return nil
+    }
+    
+    static func sendPushNotification(_ fcm: String, username: String, text: String) {
+            let receiverFCM = fcm
+            let serverKey = "AAAAMqvz0mI:APA91bHx1daPzvUdYfQMEcoqe6Q6MsxW28blYE9FN-qTzymUZtnTSCFyJrWqoAC43UBoaIeATthY0NpqB5uq_EibbSk7uFfHnOQm0BhpbRlt0NOB0U7OgmZgj-xEzwaDrujwRshkZK-0"
+            
+            let url = URL(string: "https://fcm.googleapis.com/fcm/send")!
+            var request = URLRequest(url: url)
+            request.httpMethod = "POST"
+            
+            // Set the request headers
+            request.setValue("key=\(serverKey)", forHTTPHeaderField: "Authorization")
+            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            
+            // Set the request body data
+            let requestBody: [String: Any] = [
+                "to": receiverFCM,
+                "notification": [
+                    "title": "New message from \(username)",
+                    "body": "\(text)"
+                ]
+            ]
+        
+        print("--------aaaa")
+            
+            if let jsonData = try? JSONSerialization.data(withJSONObject: requestBody) {
+                request.httpBody = jsonData
+                
+                // Send the request
+                URLSession.shared.dataTask(with: request) { data, response, error in
+                    if let error = error {
+                        print("Error: \(error.localizedDescription)")
+                        return
+                    }
+                    
+                    if let data = data {
+                        if let responseString = String(data: data, encoding: .utf8) {
+                            print("Response: \(responseString)")
+                        }
+                    }
+                }.resume()
+            }
+        }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/ChatDetailView.swift
+------------------------------------------------------------
+//
+//  ChatDetailView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 06/08/23.
+//
+
+import SwiftUI
+
+struct ChatDetailView: View {
+    @StateObject var vm: ChatDetailViewModel = ChatDetailViewModel()
+    var chatUser: ChatUser
+    static let emptyScrollToString = "Empty"
+    
+    init(chatUser: ChatUser) {
+        self.chatUser = chatUser
+    }
+    
+    var body: some View {
+        ZStack{
+            Color("secondary")
+                .ignoresSafeArea()
+                .onAppear{
+                    
+                    vm.chatUser = chatUser
+                    vm.fetchMessage()
+                }
+            ScrollView {
+                ScrollViewReader { scrollViewProxy in
+                    VStack{
+                        ForEach(vm.chatMessages) { message in
+                            if message.fromId == FirebaseManager.shared.auth.currentUser?.uid {
+                                HStack{
+                                    Spacer()
+                                    Text(message.text)
+                                        .fontWeight(.regular)
+                                        .lineSpacing(4)
+                                        .font(.subheadline)
+                                        .multilineTextAlignment(.trailing)
+                                        .padding(16)
+                                    
+                                        .background(Color("primary"))
+                                        .cornerRadius(16, corners: [.topLeft, .topRight, .bottomLeft])
+                                        .frame(maxWidth: UIScreen.main.bounds.width * 0.70, alignment: .trailing)
+                                        .foregroundColor(.white)
+                                }
+                            } else {
+                                HStack{
+                                    Text(message.text)
+                                        .fontWeight(.regular)
+                                        .lineSpacing(4)
+                                        .font(.subheadline)
+                                        .multilineTextAlignment(.leading)
+                                        .padding(16)
+                                        .background(Color.white)
+                                        .foregroundColor(.black)
+                                        .cornerRadius(16, corners: [.topRight, .bottomLeft, .bottomRight])
+                                        .frame(maxWidth: UIScreen.main.bounds.width * 0.70, alignment: .leading)
+                                    Spacer()
+                                }
+                            }
+                        }
+                        
+                        HStack{ Spacer() }
+                            .padding(.bottom, 100)
+                            .id(Self.emptyScrollToString)
+                    }
+                    
+                    .padding(24)
+                    .onReceive(vm.$count) { _ in
+                        withAnimation(.easeOut(duration: 0.5)) {
+                            scrollViewProxy.scrollTo(Self.emptyScrollToString, anchor: .bottom)
+                        }
+                    }
+                }
+            }
+            VStack{
+                Spacer()
+                chatBar
+            }
+        }
+        .navigationTitle(vm.chatUser?.email ?? "")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+    
+    private var messagesView: some View {
+        ScrollView {
+            ScrollViewReader { scrollViewProxy in
+                VStack{
+                    ForEach(vm.chatMessages) { message in
+                        
+                        if message.fromId == FirebaseManager.shared.auth.currentUser?.uid {
+                            HStack {
+                                Spacer()
+                                HStack {
+                                    Text(message.text)
+                                        .foregroundColor(.white)
+                                }
+                                .padding()
+                                .background(Color.blue)
+                                .cornerRadius(8)
+                            }
+                        } else {
+                            HStack {
+                                HStack {
+                                    Text(message.text)
+                                        .foregroundColor(.black)
+                                }
+                                .padding()
+                                .background(Color.white)
+                                .cornerRadius(8)
+                                Spacer()
+                            }
+                        }
+                    }
+                    
+                    .padding(.horizontal)
+                    .padding(.top, 8)
+                    .onReceive(vm.$count) { _ in
+                        withAnimation(.easeOut(duration: 0.5)) {
+                            scrollViewProxy.scrollTo(Self.emptyScrollToString, anchor: .bottom)
+                        }
+                    }
+                    HStack{ Spacer() }
+                        .padding(.bottom,64)
+                        .id(Self.emptyScrollToString)
+                }
+            }
+            
+            HStack{ Spacer() }
+                .frame(height: 50)
+        }
+        .background(Color(.init(white: 0.95, alpha: 1)))
+    }
+    
+    var chatBar: some View{
+        HStack(alignment: .bottom, spacing: 16){
+            TextField("write a message...", text: $vm.chatText, axis: .vertical)
+                .padding(.leading, 16)
+                .padding(.vertical, 2)
+                .frame(minHeight: 56)
+                .background(Color("secondary"))
+                .cornerRadius(16)
+                .multilineTextAlignment(.leading)
+                .lineLimit(nil)
+            if(vm.chatText.isEmpty){
+                HStack(spacing: 8){
+                    Button{} label: {
+                        Image(systemName: "camera")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(16)
+                            .frame(maxWidth: 56, maxHeight: 56)
+                            .background(Color("secondary"))
+                            .cornerRadius(16)
+                            .foregroundColor(.black)
+                    }
+                    Button{} label: {
+                        Image(systemName: "mic")
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .padding(16)
+                            .frame(maxWidth: 56, maxHeight: 56)
+                            .background(Color("primary"))
+                            .cornerRadius(16)
+                            .foregroundColor(.white)
+                    }
+                }
+            } else {
+                Button{
+                    vm.handleSend()
+                } label: {
+                    Image(systemName: "paperplane.fill")
+                        .resizable()
+                        .aspectRatio(contentMode: .fit)
+                        .padding(16)
+                        .frame(maxWidth: 56, maxHeight: 56)
+                        .background(Color("primary"))
+                        .cornerRadius(16)
+                        .foregroundColor(.white)
+                }
+            }
+        }
+        .padding(16)
+        .frame(maxWidth: .infinity)
+        .background(.white)
+    }
+}
+
+//struct ChatDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ChatDetailView(vm: ChatLogViewModel(chatUser: nil))
+//    }
+//}
+
+extension View {
+    func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {
+        clipShape( RoundedCorner(radius: radius, corners: corners) )
+    }
+}
+
+struct RoundedCorner: Shape {
+    
+    var radius: CGFloat = .infinity
+    var corners: UIRectCorner = .allCorners
+    
+    func path(in rect: CGRect) -> Path {
+        let path = UIBezierPath(roundedRect: rect, byRoundingCorners: corners, cornerRadii: CGSize(width: radius, height: radius))
+        return Path(path.cgPath)
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/Component/SecureTextField.swift
+------------------------------------------------------------
+//
+//  SecureTextFieldView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 09/08/23.
+//
+
+import SwiftUI
+
+struct SecureTextField: View {
+    var placeholder: String
+    @Binding var show: Bool
+    @Binding var text: String
+    
+    var body: some View {
+        if show{
+            TextField(placeholder, text: $text, axis: .vertical)
+                .padding(.leading, 16)
+                .padding(.vertical, 2)
+                .frame(minHeight: 56)
+                .background(Color("secondary"))
+                .cornerRadius(16)
+                .multilineTextAlignment(.leading)
+                .lineLimit(1)
+                .foregroundColor(.black)
+                .overlay(
+                    Button(action: {
+                        show.toggle()
+                    }) {
+                        Image(systemName: show ? "eye.slash.fill" : "eye.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.trailing, 16)
+                    .padding(.vertical, 16),
+                    alignment: .trailing
+                )
+        } else {
+            SecureField(placeholder, text: $text)
+                
+                .padding(.leading, 16)
+                .padding(.vertical, 2)
+                .frame(minHeight: 56)
+                .background(Color("secondary"))
+                .cornerRadius(16)
+                .multilineTextAlignment(.leading)
+                .lineLimit(1)
+                .foregroundColor(.black)
+                .overlay(
+                    Button(action: {
+                        show.toggle()
+                    }) {
+                        Image(systemName: show ? "eye.slash.fill" : "eye.fill")
+                            .foregroundColor(.gray)
+                    }
+                    .padding(.trailing, 16)
+                    .padding(.vertical, 16),
+                    alignment: .trailing
+                )
+        }
+    }
+}
+
+
+
+================================================================================
+
+# FILE: Talky/View/EditProfileView.swift
+------------------------------------------------------------
+//
+//  EditProfileView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 10/08/23.
+//
+
+import SwiftUI
+
+struct EditProfileView: View {
+    @Environment(\.presentationMode) var presentationMode
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @State var email = ""
+    @State var currpassword = ""
+    @State var password = ""
+    @State var repassword = ""
+    @State var showPassword = false
+    @State var showAlert = false
+    @State var shouldShowImagePicker = false
+    
+    
+    var body: some View {
+        VStack(spacing: 32){
+            ZStack(alignment: .top){
+                Rectangle()
+                    .frame(height: 150)
+                    .foregroundColor(Color("secondary"))
+                ZStack(alignment: .bottomTrailing){
+                    if(authViewModel.image != nil){
+                        Image(uiImage: authViewModel.image!)
+                            .resizable()
+                            .scaledToFill()
+                            .frame(width: 200, height: 200)
+                            .cornerRadius(16)
+                    } else {
+                        AsyncImage(url: URL(string: authViewModel.user!.profileImageUrl!)) { phase in
+                            switch phase {
+                            case .empty:
+                                Rectangle()
+                                    .frame(width: 200, height: 200)
+                                    .cornerRadius(16)
+                                    .foregroundColor(Color("secondaryDark"))
+                            case .success(let image):
+                                // Display the image
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                
+                                    .frame(width: 200, height: 200)
+                                    .clipped()
+                                    .cornerRadius(16)
+                            case .failure:
+                                // Error handling view
+                                Rectangle()
+                                    .frame(width: 200, height: 200)
+                                    .cornerRadius(16)
+                                    .foregroundColor(.red)
+                            }
+                        }
+                    }
+                    
+                    Button{
+                        shouldShowImagePicker.toggle()
+                    } label: {
+                        Image(systemName: "camera")
+                            .foregroundColor(.white)
+                            .padding(8)
+                            .background(Color("primary"))
+                            .cornerRadius(8)
+                    }
+                }
+                .padding(.top, 32)
+                
+                
+            }
+            VStack(alignment: .leading, spacing: 16){
+                TextField("Email", text: $email, axis: .vertical)
+                    .disabled(true)
+                    .autocorrectionDisabled(true)
+                    .keyboardType(.emailAddress)
+                    .padding(.leading, 16)
+                    .padding(.vertical, 2)
+                    .frame(minHeight: 56)
+                    .background(Color("secondary"))
+                    .cornerRadius(16)
+                    .multilineTextAlignment(.leading)
+                    .lineLimit(1)
+                    .foregroundColor(.black)
+                    .opacity(0.5)
+                SecureTextField(placeholder: "Current Password", show: $showPassword, text: $currpassword)
+                SecureTextField(placeholder: "New Password", show: $showPassword, text: $password)
+                SecureTextField(placeholder: "Confirm New Password", show: $showPassword, text: $repassword)
+            }
+            .padding(.horizontal, 24)
+            Spacer()
+        }
+        .onAppear{
+            
+                email = authViewModel.user?.email ?? ""
+        }
+        .navigationTitle("Edit Profile")
+        .navigationBarItems(
+            trailing:
+                Button{
+                    Task {
+                        await authViewModel.editProfile(email: email, currPassword: currpassword, newPassword: password, newRePassword: repassword){
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                    }
+                }label : {
+                    Text(authViewModel.viewState == .loading ? "Loading..." : "Save")
+                }
+        )
+        
+        .alert(isPresented: $showAlert) {
+            Alert(title: Text(authViewModel.logMessage))
+        }
+        
+        .onChange(of: authViewModel.viewState, perform: { newValue in
+            if newValue == .error{
+                showAlert = true
+            }
+        })
+        .fullScreenCover(isPresented: $shouldShowImagePicker, onDismiss: nil) {
+            ImagePicker(image: $authViewModel.image)
+                .ignoresSafeArea()
+        }
+        
+    }
+    
+}
+
+struct EditProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        EditProfileView()
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/LoginxView.swift
+------------------------------------------------------------
+//
+//  LoginView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 08/08/23.
+//
+
+import SwiftUI
+
+struct LoginxView: View {
+    @State var showAlert = false
+    @State private var showPassword = false
+    @EnvironmentObject var authViewModel: AuthViewModel
+    var body: some View {
+        ZStack{
+            Color("secondary").ignoresSafeArea()
+            VStack{
+                    VStack{
+                        Spacer()
+                    }
+                    .overlay {
+                        ZStack{
+                            Image("shots")
+                            LinearGradient(
+                            stops: [
+                            Gradient.Stop(color: Color(red: 0.93, green: 0.94, blue: 0.97).opacity(0), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.93, green: 0.94, blue: 0.97), location: 1.00),
+                            ],
+                            startPoint: UnitPoint(x: 0.5, y: 0),
+                            endPoint: UnitPoint(x: 0.5, y: 1)
+                            )
+                        }
+                    }
+                VStack(alignment: .leading, spacing: 24){
+                    VStack(alignment: .leading, spacing: 8){
+                        Text("Login")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Text("You need lo login first.")
+                            .font(.body)
+                            .foregroundColor(Color("secondaryDark"))
+                    }
+                    VStack(alignment: .leading, spacing: 16){
+                        TextField("Email", text: $authViewModel.email, axis: .vertical)
+                            .autocorrectionDisabled(true)
+                            .keyboardType(.emailAddress)
+                            .padding(.leading, 16)
+                            .padding(.vertical, 2)
+                            .frame(minHeight: 56)
+                            .background(Color("secondary"))
+                            .cornerRadius(16)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(1)
+                            .foregroundColor(.black)
+                        SecureTextField(placeholder: "Password", show: $showPassword, text: $authViewModel.password)
+                    }
+                    Button{
+                        
+                    } label: {
+                        HStack{
+                            Spacer()
+                            Text("Forgot Password?")
+                            
+                        }
+                        .foregroundColor(Color("primary"))
+                    }
+                    Button{
+                        Task{
+                            await
+                            authViewModel.login()
+                        }
+                    } label: {
+                        HStack{
+                            Text(authViewModel.viewState == .loading ? "Loading..." : "Sign in")
+
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color("primary"))
+                        .cornerRadius(16)
+                    }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text(authViewModel.logMessage))
+                    }
+                }
+                .padding([.horizontal, .bottom], 24)
+                .padding(.top, 42)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.white)
+            }
+        }
+        .onChange(of: authViewModel.viewState, perform: { newValue in
+            if newValue == .error{
+                showAlert = true
+            }
+        })
+        
+        .navigationTitle("")
+        .navigationBarTitleDisplayMode(.inline)
+    }
+}
+
+struct LoginxView_Previews: PreviewProvider {
+    static var previews: some View {
+        LoginxView()
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/NewChatView.swift
+------------------------------------------------------------
+//
+//  NewChatView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 07/08/23.
+//
+
+import SwiftUI
+
+struct NewChatView: View {
+    
+    @Environment(\.presentationMode) var presentationMode
+    
+    @ObservedObject var vm = NewChatViewModel()
+    
+    let didSelectNewUser: (ChatUser) -> ()
+    
+    
+    var body: some View {
+        NavigationView {
+            ScrollView {
+                Text(vm.errorMessage)
+                
+                ForEach(vm.users) { user in
+                    Button{
+                        presentationMode.wrappedValue.dismiss()
+                        didSelectNewUser(user)
+                    } label: {
+                        VStack(spacing: 0){
+                            HStack(spacing: 0){
+                                
+                                if user.profileImageUrl != nil {
+                                    AsyncImage(url: URL(string: user.profileImageUrl!)) { phase in
+                                        switch phase {
+                                        case .empty:
+                                                Rectangle()
+                                                    .frame(width: 64, height: 64)
+                                                    .cornerRadius(16)
+                                                    .foregroundColor(Color("secondary"))                                            case .success(let image):
+                                            // Display the image
+                                            image
+                                                .resizable()
+                                                .aspectRatio(contentMode: .fill)
+                                            
+                                                .frame(width: 64, height: 64)
+                                                .clipped()
+                                                .cornerRadius(16)
+                                        case .failure:
+                                            // Error handling view
+                                            Rectangle()
+                                                .frame(width: 64, height: 64)
+                                                .cornerRadius(16)
+                                                .background(.red)
+                                        }
+                                    }
+                                } else {
+                                    
+                                    Rectangle()
+                                        .frame(width: 64, height: 64)
+                                        .cornerRadius(16)
+                                        .background(Color("secondary"))
+                                }
+                                Spacer()
+                                    .frame(width: 24)
+                                VStack(alignment: .leading, spacing: 4){
+                                    Text(user.email)
+                                        .font(.body)
+                                        .lineLimit(1)
+                                        .fontWeight(.semibold)
+                                        .multilineTextAlignment(.leading)
+                                }
+                                Spacer()
+                            }
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 16)
+                            Divider()
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(.white)
+                    }
+                    .buttonStyle(PlainButtonStyle())
+                    
+                    
+                }
+            }
+            
+                .onAppear{
+                    vm.fetchAllUser()
+                }
+            .navigationTitle("New Message")
+                .toolbar {
+                    ToolbarItemGroup(placement: .navigationBarLeading) {
+                        Button {
+                            presentationMode.wrappedValue.dismiss()
+                        } label: {
+                            Text("Cancel")
+                        }
+                    }
+                }
+                
+        }
+    }
+}
+
+struct NewChatView_Previews: PreviewProvider {
+    static var previews: some View {
+        NewChatView(didSelectNewUser: {_ in })
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/ProfileView.swift
+------------------------------------------------------------
+//
+//  ProfileView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 07/08/23.
+//
+
+import SwiftUI
+
+struct ProfileView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @Environment(\.presentationMode) var presentationMode: Binding<PresentationMode>
+    @State var toEditProfile = false
+
+
+    var body: some View {
+        ZStack{
+            NavigationLink(destination: EditProfileView(), isActive: $toEditProfile){
+                EmptyView()
+            }
+            VStack{
+                Rectangle()
+                    .frame(height: 250)
+                    .foregroundColor(Color("secondary"))
+                Spacer()
+            }
+            .ignoresSafeArea()
+            VStack(spacing: 16){
+                Spacer()
+                    .frame(height: 32)
+                if authViewModel.user?.profileImageUrl != nil {
+                    AsyncImage(url: URL(string: authViewModel.user!.profileImageUrl!)) { phase in
+                        switch phase {
+                        case .empty:
+                                Rectangle()
+                                .frame(width: 200, height: 200)
+                                    .cornerRadius(16)
+                                    .foregroundColor(Color("secondaryDark"))                                            case .success(let image):
+                            // Display the image
+                            image
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                            
+                                .frame(width: 200, height: 200)
+                                .clipped()
+                                .cornerRadius(16)
+                        case .failure:
+                            // Error handling view
+                            Rectangle()
+                                .frame(width: 200, height: 200)
+                                .cornerRadius(16)
+                                .foregroundColor(.red)
+                        }
+                    }
+                } else {
+                    
+                    Rectangle()
+                        .frame(width: 200, height: 200)
+                        .cornerRadius(16)
+                        .foregroundColor(Color("secondaryDark"))
+                }
+                VStack(spacing: 4){
+                    Text(authViewModel.user?.username ?? "")
+                        .font(.title)
+                        .fontWeight(.bold)
+                    Text(verbatim: authViewModel.user?.email ?? "")
+                        .font(.callout)
+                        .fontWeight(.regular)
+                        .foregroundColor(.black)
+                }
+                Spacer()
+                VStack(spacing: 16){
+                    Button{
+                        toEditProfile.toggle()
+                    } label: {
+                        HStack{
+                            Text("Edit Profile")
+                            
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color("primary"))
+                        .cornerRadius(16)
+                        .padding(.horizontal, 16)
+                    }
+                    Button{
+                        Task{
+                            await authViewModel.handleSignOut()
+                            presentationMode.wrappedValue.dismiss()
+                        }
+                        
+                        
+                    } label: {
+                        HStack{
+                            Image(systemName: "rectangle.portrait.and.arrow.right")
+                            Text("Log Out")
+                            
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.black)
+                        .background(Color("secondary"))
+                        .cornerRadius(16)
+                        .padding(.horizontal, 16)
+                    }
+                }
+            }
+        }
+    }
+}
+
+struct ProfileView_Previews: PreviewProvider {
+    static var previews: some View {
+        ProfileView()
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/RecentChatView.swift
+------------------------------------------------------------
+//
+//  ChatView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 06/08/23.
+//
+
+import SwiftUI
+
+struct RecentChatView: View {
+    @State var shouldShowLogOutOptions = false
+    @State var shouldNavigateToChatLogView = false
+    @State var shouldShowNewMessageScreen = false
+    
+    @EnvironmentObject var authViewModel: AuthViewModel
+    @ObservedObject private var vm = RecentChatViewModel()
+    
+    var body: some View {
+        NavigationView {
+            
+            ZStack(alignment: .bottom){
+                VStack{
+                    ZStack{
+                        Color("secondary")
+                            .edgesIgnoringSafeArea(.top)
+                        HStack(){
+                            VStack(alignment: .leading, spacing: 8){
+                                Text("Messages")
+                                    .font(.largeTitle)
+                                    .fontWeight(.bold)
+                                Text("\(vm.recentMessages.count) Incoming messages.")
+                                    .font(.footnote)
+                                    .foregroundColor(.gray)
+                            }
+                            Spacer()
+                            NavigationLink(destination: ProfileView()) {
+                                Image(systemName: "person.crop.circle")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fit)
+                                    .frame(width: 24, height: 24)
+                                    .foregroundColor(Color("primary"))
+                            }
+                        }
+                        .padding(24)
+                    }
+                    .frame(height: 98)
+                    ScrollView{
+                        if(vm.selectedChatUser != nil){
+                            NavigationLink(destination: ChatDetailView(chatUser: vm.selectedChatUser!), isActive:  $shouldNavigateToChatLogView){
+                                    EmptyView()
+                                }
+                        }
+                        VStack{
+                            
+                            ForEach(vm.recentMessages, id: \.self) { recentMessage in
+                                var _ = print(recentMessage)
+                                Button{
+                                    vm.selectedChatUser = vm.users.first(where: { ChatUser in
+                                       return ChatUser.uid == recentMessage.fromId
+                                    })
+                                    if(vm.selectedChatUser != nil){
+                                        
+                                        self.shouldNavigateToChatLogView.toggle()
+                                    }
+                                } label: {
+                                    VStack(spacing: 0){
+                                        HStack(spacing: 0){
+                                            
+                                            if recentMessage.profileImageUrl != nil {
+                                                AsyncImage(url: URL(string: recentMessage.profileImageUrl!)) { phase in
+                                                    switch phase {
+                                                    case .empty:
+                                                            Rectangle()
+                                                                .frame(width: 64, height: 64)
+                                                                .cornerRadius(16)
+                                                                .foregroundColor(Color("secondary"))                                            case .success(let image):
+                                                        // Display the image
+                                                        image
+                                                            .resizable()
+                                                            .aspectRatio(contentMode: .fill)
+                                                        
+                                                            .frame(width: 64, height: 64)
+                                                            .clipped()
+                                                            .cornerRadius(16)
+                                                    case .failure:
+                                                        // Error handling view
+                                                        Rectangle()
+                                                            .frame(width: 64, height: 64)
+                                                            .cornerRadius(16)
+                                                            .foregroundColor(.red)
+                                                    }
+                                                }
+                                            } else {
+                                                
+                                                Rectangle()
+                                                    .frame(width: 64, height: 64)
+                                                    .cornerRadius(16)
+                                                    .foregroundColor(Color("secondary"))
+                                            }
+                                            Spacer()
+                                                .frame(width: 24)
+                                            VStack(alignment: .leading, spacing: 4){
+                                                Text(recentMessage.username)
+                                                    .font(.body)
+                                                    .lineLimit(1)
+                                                    .fontWeight(.semibold)
+                                                    .multilineTextAlignment(.leading)
+                                                Text(recentMessage.text)
+                                                    .lineLimit(1)
+                                                    .font(.footnote)
+                                                    .fontWeight(.light)
+                                                    .multilineTextAlignment(.leading)
+                                            }
+                                            Spacer()
+                                            VStack(alignment: .trailing, spacing: 8){
+                                                Text(recentMessage.timeAgo)
+                                                    .font(.caption2)
+                                                    .fontWeight(.light)
+                                                    .multilineTextAlignment(.leading)
+                                                Rectangle()
+                                                    .frame(width: 8, height: 8)
+                                                    .cornerRadius(100)
+                                                    .foregroundColor(Color("primary"))
+                                            }
+                                        }
+                                        .padding(.horizontal, 24)
+                                        .padding(.vertical, 16)
+                                        Divider()
+                                    }
+                                    .frame(maxWidth: .infinity)
+                                    .background(.white)
+                                }
+                                .buttonStyle(PlainButtonStyle())
+                            }
+                            
+                        }
+                        .frame(maxWidth: .infinity)
+                        .background(.white)
+                        
+                    }
+                }
+                Button{
+                    shouldShowNewMessageScreen.toggle()
+                    
+                } label: {
+                    HStack{
+                        Image(systemName: "text.bubble")
+                        Text("New Chat")
+                        
+                    }
+                    .padding(.vertical, 20)
+                    .frame(maxWidth: .infinity)
+                    .foregroundColor(.white)
+                    .background(Color("primary"))
+                    .cornerRadius(16)
+                    .padding(16)
+                }
+                .fullScreenCover(isPresented: $shouldShowNewMessageScreen){
+                    NewChatView { chatUser in
+                        self.vm.selectedChatUser = chatUser
+                        self.shouldNavigateToChatLogView.toggle()
+                    }
+                }
+            }
+            .onAppear{
+                vm.fetchRecentMessages()
+                vm.fetchAllUser()
+            }
+            .fullScreenCover(isPresented: $authViewModel.loggedOut){
+                WelcomeView()
+                    .onDisappear{
+                        vm.fetchRecentMessages()
+                    }
+            }
+        }
+        
+    }
+}
+
+struct ChatView_Previews: PreviewProvider {
+    static var previews: some View {
+        RecentChatView()
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/RegisterxView.swift
+------------------------------------------------------------
+//
+//  RegisterxView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 08/08/23.
+//
+
+import SwiftUI
+
+struct RegisterxView: View {
+    @State var showAlert = false
+    @State private var showPassword = false
+    @EnvironmentObject var authViewModel: AuthViewModel
+    var body: some View {
+        ZStack{
+            Color("secondary").ignoresSafeArea()
+            VStack{
+                    VStack{
+                        Spacer()
+                    }
+                    .overlay {
+                        ZStack{
+                            Image("shots")
+                            LinearGradient(
+                            stops: [
+                            Gradient.Stop(color: Color(red: 0.93, green: 0.94, blue: 0.97).opacity(0), location: 0.00),
+                            Gradient.Stop(color: Color(red: 0.93, green: 0.94, blue: 0.97), location: 1.00),
+                            ],
+                            startPoint: UnitPoint(x: 0.5, y: 0),
+                            endPoint: UnitPoint(x: 0.5, y: 1)
+                            )
+                        }
+                    }
+                VStack(alignment: .leading, spacing: 24){
+                    VStack(alignment: .leading, spacing: 8){
+                        Text("Register")
+                            .font(.title)
+                            .fontWeight(.bold)
+                        Text("Register to use this app.")
+                            .font(.body)
+                            .foregroundColor(Color("secondaryDark"))
+                    }
+                    VStack(alignment: .leading, spacing: 16){
+                        
+                        TextField("Email", text: $authViewModel.email, axis: .vertical)
+                            .autocorrectionDisabled(true)
+                            .keyboardType(.emailAddress)
+                            .padding(.leading, 16)
+                            .padding(.vertical, 2)
+                            .frame(minHeight: 56)
+                            .background(Color("secondary"))
+                            .cornerRadius(16)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(1)
+                            .foregroundColor(.black)
+                        SecureTextField(placeholder: "Password", show: $showPassword, text: $authViewModel.password)
+                        SecureTextField(placeholder: "Confirm Password", show: $showPassword, text: $authViewModel.repassword)
+                    }
+                    Button{
+                        Task{
+                            await authViewModel.register()
+                        }
+                    } label: {
+                        HStack{
+                            Text(authViewModel.viewState == .loading ? "Loading..." : "Sign up")
+                            
+                        }
+                        .padding(.vertical, 20)
+                        .frame(maxWidth: .infinity)
+                        .foregroundColor(.white)
+                        .background(Color("primary"))
+                        .cornerRadius(16)
+                    }
+                    
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text(authViewModel.logMessage))
+                    }
+                }
+                .padding([.horizontal, .bottom], 24)
+                .padding(.top, 42)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(.white)
+            }
+        }
+        
+        .onChange(of: authViewModel.viewState, perform: { newValue in
+            if newValue == .error{
+                showAlert = true
+            }
+        })
+    }
+}
+
+struct RegisterxView_Previews: PreviewProvider {
+    static var previews: some View {
+        RegisterxView()
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/View/WelcomeView.swift
+------------------------------------------------------------
+//
+//  WelcomeView.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 08/08/23.
+//
+
+import SwiftUI
+
+struct WelcomeView: View {
+    @State var toRegister = false
+    @State var toLogin = false
+    var body: some View {
+        NavigationView{
+            ZStack{
+                Color("secondary").ignoresSafeArea()
+                
+                NavigationLink(destination: LoginxView(), isActive: $toLogin){
+                    EmptyView()
+                }
+                NavigationLink(destination: RegisterxView(), isActive: $toRegister){
+                    EmptyView()
+                }
+                VStack{
+                        VStack{
+                            Spacer()
+                        }
+                        .overlay {
+                            ZStack{
+                                Image("shots")
+                                    .padding(.top, 144)
+                                LinearGradient(
+                                stops: [
+                                Gradient.Stop(color: Color(red: 0.93, green: 0.94, blue: 0.97).opacity(0), location: 0.00),
+                                Gradient.Stop(color: Color(red: 0.93, green: 0.94, blue: 0.97), location: 1.00),
+                                ],
+                                startPoint: UnitPoint(x: 0.5, y: 0),
+                                endPoint: UnitPoint(x: 0.5, y: 1)
+                                )
+                            }
+                        }
+                    VStack(alignment: .center, spacing: 32){
+                            Text("Connect with Talky")
+                                .font(.title)
+                                .fontWeight(.bold)
+                        VStack(spacing:16){
+                            Button{
+                                toRegister.toggle()
+                            } label: {
+                                HStack{
+                                    Text("Start Messaging")
+                                    
+                                }
+                                .padding(.vertical, 20)
+                                .frame(maxWidth: .infinity)
+                                .foregroundColor(.white)
+                                .background(Color("primary"))
+                                .cornerRadius(16)
+                            }
+                            Button{
+                                toLogin.toggle()
+                            } label: {
+                                HStack{
+                                    Text("Already have account?")
+                                        .foregroundColor(Color("secondaryDark"))
+                                    Text("Log in")
+                                    
+                                }
+                            }
+                        }
+                    }
+                    .padding([.horizontal, .bottom], 24)
+                    .padding(.top, 42)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    .background(.white)
+                }
+            }
+        }
+    }
+}
+
+struct WelcomeView_Previews: PreviewProvider {
+    static var previews: some View {
+        WelcomeView()
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/ViewModel/AuthViewModel.swift
+------------------------------------------------------------
+//
+//  AuthViewModel.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 09/08/23.
+//import SwiftUI
+import Firebase
+import FirebaseStorage
+
+@MainActor
+class AuthViewModel: ObservableObject {
+    @Published var loggedOut = true
+    @Published var viewState = ViewState.empty
+    @Published var logMessage = ""
+    @Published var email = ""
+    @Published var password = ""
+    // other variables for registering new user
+    @Published var repassword = ""
+    @Published var image: UIImage?
+    
+    @Published var user: ChatUser?
+    @Published var fcm: String?
+    
+    
+    init() {
+        self.loggedOut = FirebaseManager.shared.auth.currentUser?.uid == nil
+        if(!loggedOut){
+            getCurrentUser()
+        }
+    }
+
+    
+    private func getCurrentUser(){
+        if let savedData = UserDefaults.standard.data(forKey: "xxxx") {
+            do {
+                let decodedUser = try JSONDecoder().decode(ChatUser.self, from: savedData)
+                user = decodedUser
+            } catch {
+                print("Error decoding user:", error)
+            }
+        }
+    }
+    
+    
+    private func saveUserData() async {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {return}
+        do {
+            let userRef = FirebaseManager.shared.firestore.collection("users").document(uid)
+            let userDoc =  try await userRef.getDocument(as: ChatUser.self)
+            user = userDoc
+            let encodedUser =  try JSONEncoder().encode(userDoc)
+            UserDefaults.standard.set(encodedUser, forKey: "xxxx")
+        } catch {
+            print(error)
+        }
+    }
+    
+    func handleSignOut() async {
+        do{
+            try  FirebaseManager.shared.auth.signOut()
+            loggedOut = true
+        } catch{
+            print(error)
+        }
+    }
+    
+    func editProfile( email: String, currPassword: String, newPassword: String, newRePassword: String, onComplete: ()-> ()) async {
+        viewState = .loading
+        if image != nil{
+            await persistImageToStorage()
+            await saveUserData()
+            getCurrentUser()
+            
+            
+            
+        } else {
+            viewState = .empty
+        }
+        if(!currPassword.isEmpty && !newPassword.isEmpty && !newRePassword.isEmpty){
+            await resetPassword(email: email, currPassword: currPassword, newPassword: newPassword, newRePassword: newRePassword)
+        }else {
+            viewState = .empty
+        }
+        
+        onComplete()
+    }
+    
+    private func persistImageToStorage() async {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let ref = FirebaseManager.shared.storage.reference(withPath: uid)
+        guard let imageData = self.image?.jpegData(compressionQuality: 0.5) else { return }
+
+
+        let metadata =  ref.putData(imageData, metadata: nil)
+        
+        do {
+            let url = try await ref.downloadURL()
+            self.logMessage = "Successfully stored image with url: \(url.absoluteString)"
+            self.viewState = .loaded
+            print("-------")
+            print(url.absoluteString)
+            await updateUserProfile(uid: uid, updateData: ["profileImageUrl": url.absoluteString])
+        } catch {
+            self.logMessage = "Failed to retrieve downloadURL: \(error)"
+            self.viewState = .error
+        }
+        
+    }
+
+    
+    func resetPassword(email: String, currPassword: String, newPassword: String, newRePassword: String) async {
+        guard let user = FirebaseManager.shared.auth.currentUser else {
+            return
+        }
+        
+        if newPassword != newRePassword {
+            viewState = .error
+            logMessage = "New Password should same with Confirmation New Password"
+            return
+        }
+        
+        viewState = .loading
+        let credential = EmailAuthProvider.credential(withEmail: email, password: currPassword)
+           
+        do {
+            try await user.reauthenticate(with: credential)
+            try await user.updatePassword(to: newPassword)
+            viewState = .loaded
+        } catch{
+            print(error)
+            logMessage = "Error : \(error)"
+            viewState = .error
+        }
+       
+    }
+    
+    func login() async {
+        viewState = .loading
+        do {
+            try await FirebaseManager.shared.auth.signIn(withEmail: email, password: password)
+            viewState = .loaded
+            logMessage = "Successfully logged in as user: \(FirebaseManager.shared.auth.currentUser?.uid ?? "")"
+            loggedOut = false
+            await updateUserFCM()
+            await saveUserData()
+        } catch {
+            viewState = .error
+            logMessage = "Failed to login user: \(error.localizedDescription)"
+        }
+    }
+    
+    func register() async {
+        viewState = .loading
+        if password != repassword {
+            viewState = .error
+            logMessage = "Password and Confirmation Password should be same."
+            return
+        }
+        
+        do {
+            let result = try await FirebaseManager.shared.auth.createUser(withEmail: email, password: password)
+            viewState = .loaded
+            logMessage = "Successfully created user: \(result.user.uid)"
+            await storeUserInformation()
+            viewState = .loaded
+            loggedOut = false
+            await saveUserData()
+        } catch {
+            viewState = .error
+            logMessage = "Failed to create user: \(error.localizedDescription)"
+        }
+    }
+    
+    private func uploadProfileImage() async {
+        if image == nil {
+            viewState = .error
+            logMessage = "You must select an avatar image"
+            return
+        }
+        
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let ref = FirebaseManager.shared.storage.reference(withPath: uid)
+        guard let imageData = image?.jpegData(compressionQuality: 0.5) else { return }
+        
+        do {
+            ref.putData(imageData, metadata: nil)
+            let url = try await ref.downloadURL()
+            logMessage = "Successfully stored image with url: \(url.absoluteString)"
+            let updateData: [String: Any] = ["imageProfileUrl": url.absoluteString]
+            
+            await updateUserProfile(uid: uid, updateData: updateData)
+        } catch {
+            viewState = .error
+            logMessage = "Failed to push image to Storage: \(error.localizedDescription)"
+        }
+    }
+    
+    private func updateUserProfile(uid: String, updateData: [String: Any]) async {
+        let userRef = FirebaseManager.shared.firestore.collection("users").document(uid)
+        
+        do {
+            try await userRef.updateData(updateData)
+            self.logMessage = "User profile updated with image URL."
+            self.viewState = .loaded
+        } catch {
+            self.logMessage = "Failed to update user profile: \(error.localizedDescription)"
+            self.viewState = .error
+        }
+    }
+    
+    private func updateUserFCM() async {
+        guard let userFCM = PushNotificationManager.getFCM() else {return}
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        let userData = ["fcm" : userFCM]
+        
+        
+        await updateUserProfile(uid: uid, updateData: userData)
+        
+        
+    }
+
+    
+    private func storeUserInformation() async {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        if let userFCM = PushNotificationManager.getFCM() {
+            fcm = userFCM
+        }
+        let userData = ["id": uid, "email": email, "uid": uid, "fcm": fcm ?? "", "profileImageUrl": ""]
+        
+        do {
+            try await FirebaseManager.shared.firestore.collection("users").document(uid).setData(userData)
+        } catch {
+            viewState = .error
+            logMessage = error.localizedDescription
+        }
+    }
+}
+
+
+
+================================================================================
+
+# FILE: Talky/ViewModel/ChatDetailViewModel.swift
+------------------------------------------------------------
+//
+//  ChatDetailViewModel.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 10/08/23.
+//
+
+import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
+
+
+class ChatDetailViewModel: ObservableObject {
+    @Published var chatText = ""
+    @Published var errorMessage = ""
+    @Published var chatMessages = [ChatMessage]()
+    @Published var count = 0
+    
+    
+    var firestoreListener: ListenerRegistration?
+    
+    var chatUser: ChatUser?
+    var user: ChatUser?
+    
+    init(){
+        getCurrentUser()
+    }
+    
+    private func getCurrentUser(){
+        if let savedData = UserDefaults.standard.data(forKey: "xxxx") {
+            do {
+                let decodedUser = try JSONDecoder().decode(ChatUser.self, from: savedData)
+                user = decodedUser
+            } catch {
+                print("Error decoding user:", error)
+            }
+        }
+    }
+    
+    
+    
+    func fetchMessage(){
+        guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else {return}
+        guard let toId = chatUser?.uid else {return}
+        
+        firestoreListener?.remove()
+        chatMessages.removeAll()
+        firestoreListener =   FirebaseManager.shared.firestore.collection("messages")
+            .document(fromId)
+            .collection(toId)
+            .order(by: "timestamp", descending: false) // Sorting by timestamp in ascending order
+        
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    self.errorMessage = "Failed to listen messages: \(error)"
+                    DispatchQueue.main.async {
+                        self.errorMessage = error.localizedDescription
+                    }
+                    
+                }
+                
+                querySnapshot?.documentChanges.forEach({ change in
+                    if change.type == .added {
+                        
+                        if let data = try? change.document.data(as: ChatMessage.self){
+                            self.chatMessages.append(data)
+                            
+                        }
+                        
+                    }
+                })
+                
+                DispatchQueue.main.async {
+                    self.count += 1
+                }
+            }
+    }
+    
+    func handleSend(){
+        guard let fromId = FirebaseManager.shared.auth.currentUser?.uid else {return}
+        guard let toId = chatUser?.uid else {return}
+        
+        let document = FirebaseManager.shared.firestore
+            .collection("messages")
+            .document(fromId)
+            .collection(toId)
+            .document()
+        
+        let messageData: [String: Any] = [
+            "fromId" : fromId,
+            "toId" : toId,
+            "text" : self.chatText,
+            "timestamp": Timestamp()
+        ]
+        
+        document.setData(messageData){ error in
+            if let error = error {
+                self.errorMessage = "Failed to save message into Firestore: \(error)"
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+                
+            }
+            
+            self.persistRecentMessage()
+            
+            self.chatText = ""
+            self.count += 1
+            print ("Successfully saved current user sending message")
+        }
+        
+        let receiver = FirebaseManager.shared.firestore
+            .collection("messages")
+            .document(toId)
+            .collection(fromId)
+            .document()
+        
+        
+        receiver.setData(messageData){ error in
+            if let error = error {
+                self.errorMessage = "Failed to save message into Firestore: \(error)"
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+                
+            }
+            print ("Recipient saved message as well")
+        }
+    }
+    
+    private func persistRecentMessage(){
+        print("persistsss")
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else {return}
+        guard let toId = chatUser?.uid else {return}
+        
+        
+        let document = FirebaseManager.shared.firestore.collection("recent_messages")
+            .document(uid)
+            .collection("messages")
+            .document(toId)
+        
+        let data = [
+            "fromId" : uid,
+            "toId" : toId,
+            "text" : self.chatText,
+            "timestamp": Timestamp(),
+            "profileImageUrl" : self.chatUser?.profileImageUrl ?? "",
+            "email" : self.chatUser?.email ?? ""
+        ] as [String: Any]
+        
+        document.setData(data){error in
+            if let error = error {
+                self.errorMessage = "Failed to save recent message: \(error)"
+                print(self.errorMessage);
+                DispatchQueue.main.async {
+                    self.errorMessage = error.localizedDescription
+                }
+                
+            }
+        }
+        
+        // for recipient
+        guard let currentUser = FirebaseManager.shared.auth.currentUser else { return }
+        
+        
+        let recipientRecentMessageDictionary = [
+            "timestamp": Timestamp(),
+            "text": self.chatText,
+            "fromId": uid,
+            "toId": toId,
+            "profileImageUrl": self.user?.profileImageUrl ?? "",
+            "email": currentUser.email!
+        ] as [String : Any]
+        
+        
+        
+        FirebaseManager.shared.firestore
+            .collection("recent_messages")
+            .document(toId)
+            .collection("messages")
+            .document(currentUser.uid)
+            .setData(recipientRecentMessageDictionary) { error in
+                if let error = error {
+                    print("Failed to save recipient recent message: \(error)")
+                    return
+                }
+            }
+        if  chatUser?.fcm != "" {
+            print("executed")
+            PushNotificationManager.sendPushNotification(chatUser!.fcm!, username: chatUser!.username, text: self.chatText)
+        }
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/ViewModel/NewChatViewModel.swift
+------------------------------------------------------------
+//
+//  NewChatViewModel.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 10/08/23.
+//
+
+
+import SwiftUI
+import FirebaseFirestoreSwift
+
+class NewChatViewModel: ObservableObject {
+    @Published var users: [ChatUser] = []
+    @Published var errorMessage = ""
+    init() {
+    }
+    
+    func fetchAllUser(){
+        users.removeAll()
+        FirebaseManager.shared.firestore.collection("users")
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    self.errorMessage = "Failed to fetch users: \(error)"
+                    print("Failed to fetch users: \(error)")
+                    return
+                }
+                
+                snapshot?.documents.forEach({ snapshot in
+                    if let data = try? snapshot.data(as: ChatUser.self){
+                        if data.uid != FirebaseManager.shared.auth.currentUser?.uid {
+                            self.users.append(data)
+                        }
+                    }
+                   
+                })
+            }
+    }
+}
+
+
+================================================================================
+
+# FILE: Talky/ViewModel/RecentChatViewModel.swift
+------------------------------------------------------------
+//
+//  ChatViewModel.swift
+//  Talky
+//
+//  Created by Muhammad Rezky on 09/08/23.
+//
+
+import SwiftUI
+import Firebase
+import FirebaseFirestoreSwift
+
+@MainActor
+class RecentChatViewModel: ObservableObject {
+    @Published var viewState = ViewState.empty
+    @Published var logMessage = ""
+    @Published var recentMessages = [RecentMessage]()
+    @Published var users: [ChatUser] = []
+    @Published var selectedChatUser: ChatUser?
+    private var firestoreListener: ListenerRegistration?
+    
+    
+    init() {
+        fetchRecentMessages()
+        fetchAllUser()
+    }
+    
+    func fetchAllUser(){
+        users.removeAll()
+        FirebaseManager.shared.firestore.collection("users")
+            .getDocuments { snapshot, error in
+                if let error = error {
+                    self.logMessage = "Failed to fetch users: \(error)"
+                    print("Failed to fetch users: \(error)")
+                    return
+                }
+                
+                snapshot?.documents.forEach({ snapshot in
+                    if let data = try? snapshot.data(as: ChatUser.self){
+                        if data.uid != FirebaseManager.shared.auth.currentUser?.uid {
+                            self.users.append(data)
+                        }
+                    }
+                   
+                })
+            }
+    }
+    
+    func fetchRecentMessages() {
+        guard let uid = FirebaseManager.shared.auth.currentUser?.uid else { return }
+        firestoreListener?.remove()
+        self.recentMessages.removeAll()
+        
+        firestoreListener =   FirebaseManager.shared.firestore
+            .collection("recent_messages")
+            .document(uid)
+            .collection("messages")
+            .order(by: "timestamp")
+            .addSnapshotListener { querySnapshot, error in
+                if let error = error {
+                    self.viewState = .error
+                    self.logMessage = "Failed to listen for recent messages: \(error)"
+                    print(error)
+                    return
+                }
+                
+                querySnapshot?.documentChanges.forEach({ change in
+                    let docId = change.document.documentID
+                    
+                    
+                    if let index = self.recentMessages.firstIndex(where: { rm in
+                        return rm.id == docId
+                    }) {
+                        self.recentMessages.remove(at: index)
+                    }
+                    print("as-asaojsahhaihiosahsioaoi")
+                    print(change.document.data())
+                    if let rm = try? change.document.data(as: RecentMessage.self){
+                        self.recentMessages.insert(rm, at: 0)
+                    }
+                    
+                    
+                    // self.recentMessages.insert(.init(documentId: docId, data: change.document.data()), at: 0)
+                })
+            }
+    }
+    
+    
+
+    
+    
+}
+
+
+
+================================================================================

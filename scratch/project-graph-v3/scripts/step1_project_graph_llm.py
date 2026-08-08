@@ -137,6 +137,16 @@ BASE_SYSTEM = (
     "sinh sẵn: AppDelegate, ContentView, Assets...), build chạy được đầu tiên, làm quen công cụ. "
     "Đây là bước TRƯỚC khi code tồn tại — phân tích từ tech_stack + cấu trúc repo, không phải từ "
     "nội dung file.\n"
+    "9. project_type (identity domain) là field BẮT BUỘC: một trong "
+    "['mobile_app', 'web_app', 'cli_tool', 'library_sdk', 'desktop_app', 'backend_service', "
+    "'fullstack_app', 'game', 'design_tool', 'ai_agent', 'plugin_extension', 'data_pipeline', 'other']. "
+    "Luôn điền, không để null/empty.\n"
+    "10. completion_level (product domain, mỗi requirement) BẮT BUỘC cho MỌI requirement: "
+    "một trong ['base', 'mvp', 'extend', 'polish'] — base = nền tảng cần có trước, mvp = chức năng "
+    "lõi vận hành được, extend = mở rộng thêm, polish = hoàn thiện/refactor.\n"
+    "11. Architecture confidence: node/pattern có bằng chứng cấu trúc THẬT (thư mục tên "
+    "ViewModel/, Model/, View/; file tên rõ vai trò) thì INFERRED confidence PHẢI ≥ 0.7. "
+    "Chỉ thấp (0.3-0.5) khi đoán không có bằng chứng.\n"
 )
 
 def _file_context(source_text: str, max_chars: int) -> str:
@@ -199,7 +209,11 @@ def build_call_c(source_text: str, goal: str, features_summary: str, arch_summar
     system = BASE_SYSTEM + (
         f"\n\nNHIỆM VỤ NÀY: Phân tích các domain: {domain_desc}.\n"
         "Mỗi task: action = hành động cụ thể, intent = WHY, outcome = WHAT thay đổi, "
-        "source_evidence = file thật minh hoạ (KHÔNG phải 'task = tạo file đó').\n"
+        "source_evidence = danh sách ĐƯỜNG DẪN FILE CHÍNH XÁC từ header '# FILE: <path>' trong SOURCE CODE. "
+        "BẮT BUỘC: mỗi entry source_evidence phải là 1 path y hệt header (VD 'Talky/ViewModel/AuthViewModel.swift'), "
+        "KHÔNG viết mô tả text, KHÔNG viết nội dung file, KHÔNG viết 'task = tạo file'. "
+        "Nếu task liên quan nhiều file, liệt kê hết path. "
+        "Nếu task chưa có file (VD task scaffold), để rỗng [].\n"
         "Trả JSON theo schema — chỉ điền domain được yêu cầu, các domain khác để rỗng.\n"
         + profile_extra + "\n"
     )
